@@ -1,0 +1,1605 @@
+{
+  "case_id": "eval_sup_04",
+  "message": "帮我看看所有互联网大厂的AI产品岗",
+  "gold_intents": [
+    "explore"
+  ],
+  "expected_tools": [
+    "kb_retrieve",
+    "global_rank"
+  ],
+  "scenario": "reranker_多结果重排序",
+  "status": "success",
+  "error": null,
+  "ttfb": 0.007,
+  "total_latency": 85.05,
+  "event_count": 223,
+  "pred_intent": "position_explore",
+  "pred_tools": [
+    {
+      "tool": "kb_retrieve",
+      "status": "✅",
+      "params": {
+        "query": "互联网大厂 AI产品岗",
+        "top_k": 10
+      },
+      "result_preview": "{'chunks': [{'chunk_id': '4156a58f-e1d2-4d9c-bb69-2235f8aaad44_c12', 'content': '【滴滴·27届秋储-AI产品实习生（AIoT产品事业部） 软性要求】有算法、物联网相关经验者优先', 'metadata': {'company': '滴滴', 'index': 12, 'jd_id': '4156a58f-e1d2-4"
+    },
+    {
+      "tool": "global_rank",
+      "status": "✅",
+      "params": {
+        "resume_text": "AI\n / \n157-xxxx-3421  |  chenyutong2027@163.com  |  \n  |  2027\n6\n2024.09  2027.06\n · \nAI\n· \nGPA\n3.4/4.0  |  \n2020.09  2024.06\n · \n · \n  |  \nWeb\n \n \n2025.03  2025.11\n  |  \n40\n\"\n\"\n\"\n\"\nFigma\nAI\nEmbedding\nJD\nAPI\nPrompt\n20\nPDF\n \n \nRAG\n2024.10  2025.02\n  |  \n80\nOCR\nWeb\n\"\n\"\n · \n2024.09  2025.06\n10\n · \n2022.03  2023.06\n2025.05    \n2024.11    \nAI\n2023.06    \n2022.12    \nFigma\nAxure\nXmind\n/\nPRD\nPrompt Engineering\nRAG\nEmbedding\nCET-4\n525\nOffice\nExcel",
+        "candidate_jds": [
+          {
+            "chunk_id": "4156a58f-e1d2-4d9c-bb69-2235f8aaad44_c12",
+            "content": "【滴滴·27届秋储-AI产品实习生（AIoT产品事业部） 软性要求】有算法、物联网相关经验者优先",
+            "metadata": {
+              "company": "滴滴",
+              "index": 12,
+              "jd_id": "4156a58f-e1d2-4d9c-bb69-2235f8aaad44",
+              "position": "27届秋储-AI产品实习生（AIoT产品事业部）",
+              "priority": "medium",
+              "section": "soft_requirements",
+              "strategy": "semantic"
+            },
+            "distance": null,
+            "bm25_score": 9.383241828479099,
+            "vec_norm": 0.0,
+            "bm25_norm": 0.25214532808778894,
+            "hybrid_score": 0.07564359842633668,
+            "rerank_score": 0.9484
+          },
+          {
+            "chunk_id": "22fa0d11-9483-4b94-bb38-c3c90676fd9b_chunk_1",
+            "content": "【百度 · AI产品实习生 岗位职责】\n协助进行AI产品相关的市场趋势分析，包括竞争对手产品分析、用户需求调研等。参与用户访谈、问卷调查，收集并分析用户反馈，为产品优化提供数据支持跟进AI产品开发进度，与研发、设计、测试等团队紧密合作，确保项目按时交付参与产品测试，收集并反馈测试结果，协助解决开发过程中遇到的问题",
+            "metadata": {
+              "company": "百度",
+              "index": 1,
+              "jd_id": "22fa0d11-9483-4b94-bb38-c3c90676fd9b",
+              "position": "AI产品实习生",
+              "section": "responsibilities",
+              "strategy": "semantic"
+            },
+            "distance": 0.5698882937431335,
+            "bm25_score": 0.0,
+            "vec_norm": 1.0,
+            "bm25_norm": 0.0,
+            "hybrid_score": 0.7,
+            "rerank_score": 0.9433
+          },
+          {
+            "chunk_id": "ac9973c8-01be-4cd6-9a99-097873a59cf0_chunk_0",
+            "content": "公司：字节跳动，岗位：AI产品经理，地点：北京，薪资：30k-60k",
+            "metadata": {
+              "category": "产品",
+              "company": "字节跳动",
+              "domain": "AI",
+              "index": 0,
+              "jd_id": "ac9973c8-01be-4cd6-9a99-097873a59cf0",
+              "max_years": 5,
+              "min_education": "本科",
+              "min_years": 3,
+              "position": "AI产品经理",
+              "section": "basic_info",
+              "strategy": "semantic"
+            },
+            "distance": 0.6404487490653992,
+            "bm25_score": 0.0,
+            "vec_norm": 0.05015650086374357,
+            "bm25_norm": 0.0,
+            "hybrid_score": 0.035109550604620496,
+            "rerank_score": 0.9382
+          },
+          {
+            "chunk_id": "6226ff8a-27b8-4d56-9cb9-e194c0578739_chunk_1",
+            "content": "【阿里巴巴 · AI产品经理 岗位职责】\n深入理解业务场景，通过用户调研、行业分析及研究挖掘AI落地的创新机会；\n负责AI应用/平台的方案设计，包括核心功能定义、工作流（Workflow）编排及Prompt设计，输出高质量的产品路线图；\n与算法工程师、后端开发紧密协作，将大模型能力（LLM、多模态、Agent、RAG等）转化为可规模化的产品功能；\n建立产品评估体系，利用数据工具（SQL/Python）监控指标波动，根据数据反馈和用户原声持续优化算法表现与用户体验。",
+            "metadata": {
+              "company": "阿里巴巴",
+              "index": 1,
+              "jd_id": "6226ff8a-27b8-4d56-9cb9-e194c0578739",
+              "position": "AI产品经理",
+              "section": "responsibilities",
+              "strategy": "semantic"
+            },
+            "distance": 0.5813341736793518,
+            "bm25_score": 0.0,
+            "vec_norm": 0.8459222719063098,
+            "bm25_norm": 0.0,
+            "hybrid_score": 0.5921455903344168,
+            "rerank_score": 0.9345
+          },
+          {
+            "chunk_id": "bbbe5988-01f4-447f-a9e2-6715c006d33c_chunk_7",
+            "content": "【小米 · AI培训方向产品实习生 软性要求/加分项】\n有互联网产品实习经验者优先",
+            "metadata": {
+              "company": "小米",
+              "index": 7,
+              "jd_id": "bbbe5988-01f4-447f-a9e2-6715c006d33c",
+              "position": "AI培训方向产品实习生",
+              "priority": "medium",
+              "section": "soft_requirements",
+              "strategy": "semantic"
+            },
+            "distance": null,
+            "bm25_score": 21.0226388792829,
+            "vec_norm": 0.0,
+            "bm25_norm": 1.0,
+            "hybrid_score": 0.3,
+            "rerank_score": 0.9298
+          },
+          {
+            "chunk_id": "042ee372-b79c-4ee5-a8d6-0865b3e2dde6_chunk_10",
+            "content": "【小米 · AI培训方向产品实习生-2027届 软性要求/加分项】有互联网产品实习经验者优先",
+            "metadata": {
+              "company": "小米",
+              "index": 10,
+              "jd_id": "042ee372-b79c-4ee5-a8d6-0865b3e2dde6",
+              "position": "AI培训方向产品实习生-2027届",
+              "priority": "medium",
+              "section": "soft_requirements",
+              "strategy": "semantic"
+            },
+            "distance": null,
+            "bm25_score": 20.581600369995577,
+            "vec_norm": 0.0,
+            "bm25_norm": 0.9716623886766588,
+            "hybrid_score": 0.29149871660299764,
+            "rerank_score": 0.9241
+          },
+          {
+            "chunk_id": "80a6b94d-8d24-464d-a950-6d7a399fcc5b_chunk_1",
+            "content": "【阿里巴巴 · AI产品经理-超级智能体 岗位职责】\n1.参与或负责千问AI产品规划、模型迭代、行业策略、数据机制、产品方案；\n2.分析用户需求、技术趋势、行业场景和竞品动态，落实到具体产品业务；\n3.构建用户需求、产品形态和模型范式之间的评估评价体系，不拘一格思考产品方案；\n4.跟进产品开发or运营进度，与算法、研发、设计等团队密切协同，确保产品快速迭代和实践。",
+            "metadata": {
+              "company": "阿里巴巴",
+              "index": 1,
+              "jd_id": "80a6b94d-8d24-464d-a950-6d7a399fcc5b",
+              "position": "AI产品经理-超级智能体",
+              "section": "responsibilities",
+              "strategy": "semantic"
+            },
+            "distance": 0.6241233348846436,
+            "bm25_score": 0.0,
+            "vec_norm": 0.2699196594130395,
+            "bm25_norm": 0.0,
+            "hybrid_score": 0.18894376158912765,
+            "rerank_score": 0.8992
+          },
+          {
+            "chunk_id": "d8f1f630-f372-467a-b0a0-5a68a6db4ffd_chunk_5",
+            "content": "【百度 · AI应用-产品经理 硬性要求】\n对AI产品、大模型应用有热情，愿意学习并将AI能力落地到HR产品中",
+            "metadata": {
+              "company": "百度",
+              "index": 5,
+              "jd_id": "d8f1f630-f372-467a-b0a0-5a68a6db4ffd",
+              "position": "AI应用-产品经理",
+              "priority": "high",
+              "section": "hard_requirements",
+              "strategy": "semantic"
+            },
+            "distance": 0.6072044372558594,
+            "bm25_score": 5.664663224424136,
+            "vec_norm": 0.4976719443416975,
+            "bm25_norm": 0.01321917325546091,
+            "hybrid_score": 0.3523361130158265,
+            "rerank_score": 0.6204
+          },
+          {
+            "chunk_id": "1983c425-982c-4116-8883-04eb0109edb3_chunk_6",
+            "content": "【vivo · AI产品经理-27届暑期实习 软性要求/加分项】\n人工智能、互联网等相关行业实习或项目经验者优先考虑。",
+            "metadata": {
+              "company": "vivo",
+              "index": 6,
+              "jd_id": "1983c425-982c-4116-8883-04eb0109edb3",
+              "position": "AI产品经理-27届暑期实习",
+              "priority": "medium",
+              "section": "soft_requirements",
+              "strategy": "semantic"
+            },
+            "distance": null,
+            "bm25_score": 18.356438420353484,
+            "vec_norm": 0.0,
+            "bm25_norm": 0.8286912577376895,
+            "hybrid_score": 0.24860737732130683,
+            "rerank_score": 0.5213
+          },
+          {
+            "chunk_id": "94df2ae7-baa3-418d-be25-1974b64a5b06_chunk_8",
+            "content": "【百度 · AI能力产品实习生 关键词】\n百度, AI能力, 产品实习生, 策略评估, 用户调研, 数据分析, 竞品跟踪, 产品规划, agent产品, MCP, A2A, AI产品, AI策略产品, 暑期实习, PSIG",
+            "metadata": {
+              "company": "百度",
+              "index": 8,
+              "jd_id": "94df2ae7-baa3-418d-be25-1974b64a5b06",
+              "position": "AI能力产品实习生",
+              "section": "keywords",
+              "strategy": "semantic"
+            },
+            "distance": null,
+            "bm25_score": 6.0965817454655316,
+            "vec_norm": 0.0,
+            "bm25_norm": 0.04097080699012359,
+            "hybrid_score": 0.012291242097037077,
+            "rerank_score": 0.2724
+          }
+        ],
+        "top_k": 5
+      },
+      "result_preview": "{'rankings': [{'rank': 1, 'company': '百度', 'position': 'AI产品实习生', 'match_score': 88, 'recommend_reason': '用户简历中有明确的用户调研（用户访谈、问卷调查）、AI项目经验（RAG、Embedding、Prompt Engineering）以及产品设计工具（Figma、Axure），与岗位职责高度"
+    }
+  ],
+  "tools_called": [
+    "kb_retrieve",
+    "global_rank"
+  ],
+  "reply": "您好！基于对互联网大厂 AI 产品岗位的最新检索与匹配分析，我为您整理了当前的岗位概况、投递优先级建议及核心能力要求。\n\n### 1. 岗位概况检索\n目前市场上主要的互联网大厂均开放了 AI 产品相关岗位，涵盖正式职与实习生岗位，具体如下：\n*   **阿里巴巴**：AI 产品经理（涉及超级智能体方向），侧重业务场景落地与大模型能力转化。\n*   **百度**：AI 产品实习生，侧重市场趋势分析、用户调研及产品开发进度跟进。\n*   **字节跳动**：AI 产品经理，薪资范围约 30k-60k（北京）。\n*   **小米**：AI 培训方向产品实习生（含 2027 届），偏好有互联网产品实习经验的候选人。\n*   **滴滴**：27 届秋储 -AI 产品实习生（AIoT 产品事业部），偏好有算法、物联网相关经验者。\n\n### 2. 匹配度分析与投递策略\n根据您简历与岗位需求的匹配度分析，建议采取以下投递策略：\n\n*   **第一梯队（优先投递）**：\n    *   **百度（AI 产品实习生）**\n    *   **阿里巴巴（AI 产品经理）**\n    *   **vivo（AI 产品经理 -27 届暑期实习）**\n    *   **理由**：这三个岗位与您的背景匹配度最高，且均为头部公司，实习或任职含金量高。\n\n*   **第二梯队（重点尝试）**：\n    *   **字节跳动（AI 产品经理）**\n    *   **理由**：竞争力较强，建议在简历中特别突出用户调研和数据分析能力。\n\n*   **第三梯队（备选方案）**：\n    *   **小米、滴滴**\n    *   **理由**：行业方向差异稍大，建议作为备选。投递前可针对性补充相关项目经验或调整简历侧重点（如滴滴侧重算法/物联网背景）。\n\n### 3. 核心能力要求解读\n通过分析各厂 JD，AI 产品岗普遍关注以下核心能力，建议在简历和面试中重点准备：\n\n*   **大模型技术应用**：阿里巴巴等大厂明确要求熟悉 **LLM、多模态、Agent、RAG** 等技术，具备 **Prompt 设计** 及工作流（Workflow）编排能力。\n*   **数据分析与评估**：需掌握 **SQL/Python** 等数据工具，能够建立产品评估体系，监控指标波动并优化算法表现。\n*   **用户研究与落地**：百度等岗位强调市场趋势分析、竞争对手分析及用户访谈能力，需能将技术转化为可规模化的产品功能。\n*   **跨部门协作**：所有岗位均要求与算法工程师、后端开发紧密协作，确保项目按时交付。\n\n### 4. 下一步行动建议\n1.  **简历优化**：主攻 AI 产品方向，突出 **Prompt Engineering、RAG 等大模型应用经验**，同时强调用户调研和产品设计能力。\n2.  **针对性调整**：投递滴滴前，若有过往算法或物联网项目，请在简历中加粗展示；投递字节前，强化数据分析案例。\n3.  **持续跟进**：优先完成第一梯队岗位的投递，并准备好相关的作品集或项目复盘，以应对可能的笔试或面试。\n\n祝您求职顺利，如有具体简历修改需求，欢迎随时沟通！",
+  "reply_length": 1337,
+  "intent_match": true,
+  "tool_match_rate": 1.0,
+  "has_reply": true,
+  "events": [
+    {
+      "step": "intent",
+      "message": "正在识别您的意图...",
+      "_time": 0.007552623748779297,
+      "type": "status"
+    },
+    {
+      "step": "plan",
+      "message": "正在规划任务...",
+      "_time": 1.437117576599121,
+      "type": "status"
+    },
+    {
+      "step": "execute",
+      "message": "正在执行分析...",
+      "_time": 5.710055828094482,
+      "type": "status"
+    },
+    {
+      "step": "aggregate",
+      "message": "正在生成回复...",
+      "_time": 31.66472291946411,
+      "type": "status"
+    },
+    {
+      "text": "您好",
+      "_time": 71.91410326957703,
+      "type": "delta"
+    },
+    {
+      "text": "！基于对互联网",
+      "_time": 72.01917839050293,
+      "type": "delta"
+    },
+    {
+      "text": "大厂 AI ",
+      "_time": 72.02405786514282,
+      "type": "delta"
+    },
+    {
+      "text": "产品岗位的最新检索",
+      "_time": 72.14626574516296,
+      "type": "delta"
+    },
+    {
+      "text": "与",
+      "_time": 72.14908790588379,
+      "type": "delta"
+    },
+    {
+      "text": "匹配分析，我",
+      "_time": 72.2611677646637,
+      "type": "delta"
+    },
+    {
+      "text": "为您整理了当前的",
+      "_time": 72.26401591300964,
+      "type": "delta"
+    },
+    {
+      "text": "岗位概况、投递",
+      "_time": 72.36011362075806,
+      "type": "delta"
+    },
+    {
+      "text": "优先级",
+      "_time": 72.36500668525696,
+      "type": "delta"
+    },
+    {
+      "text": "建议及核心能力",
+      "_time": 72.47036981582642,
+      "type": "delta"
+    },
+    {
+      "text": "要求",
+      "_time": 72.47505259513855,
+      "type": "delta"
+    },
+    {
+      "text": "。\n\n### ",
+      "_time": 72.57140755653381,
+      "type": "delta"
+    },
+    {
+      "text": "1. 岗位",
+      "_time": 72.57287263870239,
+      "type": "delta"
+    },
+    {
+      "text": "概况检索\n目前",
+      "_time": 72.68516254425049,
+      "type": "delta"
+    },
+    {
+      "text": "市场上",
+      "_time": 72.6889877319336,
+      "type": "delta"
+    },
+    {
+      "text": "主要的互联网大厂均",
+      "_time": 72.77493500709534,
+      "type": "delta"
+    },
+    {
+      "text": "开放了",
+      "_time": 72.80997967720032,
+      "type": "delta"
+    },
+    {
+      "text": " AI 产品相关",
+      "_time": 72.88463234901428,
+      "type": "delta"
+    },
+    {
+      "text": "岗位，涵盖",
+      "_time": 72.88724756240845,
+      "type": "delta"
+    },
+    {
+      "text": "正式职与实习生",
+      "_time": 73.00970387458801,
+      "type": "delta"
+    },
+    {
+      "text": "岗位",
+      "_time": 73.01424288749695,
+      "type": "delta"
+    },
+    {
+      "text": "，具体如下：\n",
+      "_time": 73.13443732261658,
+      "type": "delta"
+    },
+    {
+      "text": "*  ",
+      "_time": 73.13948631286621,
+      "type": "delta"
+    },
+    {
+      "text": " **阿里巴巴**：",
+      "_time": 73.2054431438446,
+      "type": "delta"
+    },
+    {
+      "text": "AI 产品经理（",
+      "_time": 73.21033334732056,
+      "type": "delta"
+    },
+    {
+      "text": "涉及超级智能体",
+      "_time": 73.35256624221802,
+      "type": "delta"
+    },
+    {
+      "text": "方向",
+      "_time": 73.37940573692322,
+      "type": "delta"
+    },
+    {
+      "text": "），侧重业务场景",
+      "_time": 73.44142389297485,
+      "type": "delta"
+    },
+    {
+      "text": "落地",
+      "_time": 73.44530582427979,
+      "type": "delta"
+    },
+    {
+      "text": "与大模型能力转化",
+      "_time": 73.53052186965942,
+      "type": "delta"
+    },
+    {
+      "text": "。\n*",
+      "_time": 73.53343319892883,
+      "type": "delta"
+    },
+    {
+      "text": "   **百度**",
+      "_time": 73.68851709365845,
+      "type": "delta"
+    },
+    {
+      "text": "：",
+      "_time": 73.72035932540894,
+      "type": "delta"
+    },
+    {
+      "text": "AI 产品实习生",
+      "_time": 73.74643802642822,
+      "type": "delta"
+    },
+    {
+      "text": "，侧重市场趋势",
+      "_time": 73.75128412246704,
+      "type": "delta"
+    },
+    {
+      "text": "分析、用户调研",
+      "_time": 73.89157819747925,
+      "type": "delta"
+    },
+    {
+      "text": "及产品开发",
+      "_time": 73.93250823020935,
+      "type": "delta"
+    },
+    {
+      "text": "进度跟进。\n",
+      "_time": 74.02730369567871,
+      "type": "delta"
+    },
+    {
+      "text": "*  ",
+      "_time": 74.03196382522583,
+      "type": "delta"
+    },
+    {
+      "text": " **字节跳动**",
+      "_time": 74.10726237297058,
+      "type": "delta"
+    },
+    {
+      "text": "：AI 产品经理",
+      "_time": 74.10982751846313,
+      "type": "delta"
+    },
+    {
+      "text": "，薪资范围约",
+      "_time": 74.27723741531372,
+      "type": "delta"
+    },
+    {
+      "text": " 30k",
+      "_time": 74.31796979904175,
+      "type": "delta"
+    },
+    {
+      "text": "-60k",
+      "_time": 74.39394068717957,
+      "type": "delta"
+    },
+    {
+      "text": "（北京）。\n",
+      "_time": 74.4360032081604,
+      "type": "delta"
+    },
+    {
+      "text": "*   **小米",
+      "_time": 74.53738689422607,
+      "type": "delta"
+    },
+    {
+      "text": "**：",
+      "_time": 74.53993511199951,
+      "type": "delta"
+    },
+    {
+      "text": "AI 培训方向",
+      "_time": 74.67424464225769,
+      "type": "delta"
+    },
+    {
+      "text": "产品实习生（",
+      "_time": 74.6778130531311,
+      "type": "delta"
+    },
+    {
+      "text": "含 20",
+      "_time": 74.77347254753113,
+      "type": "delta"
+    },
+    {
+      "text": "2",
+      "_time": 74.77793622016907,
+      "type": "delta"
+    },
+    {
+      "text": "7 届），",
+      "_time": 74.86349749565125,
+      "type": "delta"
+    },
+    {
+      "text": "偏好",
+      "_time": 74.86624574661255,
+      "type": "delta"
+    },
+    {
+      "text": "有互联网产品实习",
+      "_time": 74.95229578018188,
+      "type": "delta"
+    },
+    {
+      "text": "经验的候选人。\n",
+      "_time": 74.98322820663452,
+      "type": "delta"
+    },
+    {
+      "text": "*   **滴滴",
+      "_time": 75.0974268913269,
+      "type": "delta"
+    },
+    {
+      "text": "**：",
+      "_time": 75.10190105438232,
+      "type": "delta"
+    },
+    {
+      "text": "27 届",
+      "_time": 75.20558857917786,
+      "type": "delta"
+    },
+    {
+      "text": "秋储 -",
+      "_time": 75.20935654640198,
+      "type": "delta"
+    },
+    {
+      "text": "AI 产品实习生",
+      "_time": 75.35766386985779,
+      "type": "delta"
+    },
+    {
+      "text": "（AIoT",
+      "_time": 75.36124444007874,
+      "type": "delta"
+    },
+    {
+      "text": " 产品事业部），",
+      "_time": 75.47633123397827,
+      "type": "delta"
+    },
+    {
+      "text": "偏好有算法、",
+      "_time": 75.48123931884766,
+      "type": "delta"
+    },
+    {
+      "text": "物联网相关经验者",
+      "_time": 75.65436673164368,
+      "type": "delta"
+    },
+    {
+      "text": "。\n\n### ",
+      "_time": 75.65921354293823,
+      "type": "delta"
+    },
+    {
+      "text": "2. 匹配",
+      "_time": 75.76440906524658,
+      "type": "delta"
+    },
+    {
+      "text": "度分析与投递策略",
+      "_time": 75.77030968666077,
+      "type": "delta"
+    },
+    {
+      "text": "\n根据您简历",
+      "_time": 75.90654015541077,
+      "type": "delta"
+    },
+    {
+      "text": "与岗位",
+      "_time": 75.93838429450989,
+      "type": "delta"
+    },
+    {
+      "text": "需求的匹配度分析",
+      "_time": 76.01542687416077,
+      "type": "delta"
+    },
+    {
+      "text": "，建议",
+      "_time": 76.01694416999817,
+      "type": "delta"
+    },
+    {
+      "text": "采取以下投递策略",
+      "_time": 76.12329483032227,
+      "type": "delta"
+    },
+    {
+      "text": "：\n\n*",
+      "_time": 76.12715172767639,
+      "type": "delta"
+    },
+    {
+      "text": "   **第一梯队",
+      "_time": 76.2774384021759,
+      "type": "delta"
+    },
+    {
+      "text": "（",
+      "_time": 76.28123545646667,
+      "type": "delta"
+    },
+    {
+      "text": "优先投递）**：",
+      "_time": 76.33926200866699,
+      "type": "delta"
+    },
+    {
+      "text": "\n   ",
+      "_time": 76.34219312667847,
+      "type": "delta"
+    },
+    {
+      "text": " *   **百度",
+      "_time": 76.44649004936218,
+      "type": "delta"
+    },
+    {
+      "text": "（",
+      "_time": 76.45027017593384,
+      "type": "delta"
+    },
+    {
+      "text": "AI 产品实习生",
+      "_time": 76.5684540271759,
+      "type": "delta"
+    },
+    {
+      "text": "）**\n",
+      "_time": 76.5731999874115,
+      "type": "delta"
+    },
+    {
+      "text": "    *   **",
+      "_time": 76.64424252510071,
+      "type": "delta"
+    },
+    {
+      "text": "阿里巴巴",
+      "_time": 76.6523220539093,
+      "type": "delta"
+    },
+    {
+      "text": "（AI 产品经理",
+      "_time": 76.73423910140991,
+      "type": "delta"
+    },
+    {
+      "text": "）**\n   ",
+      "_time": 76.76518368721008,
+      "type": "delta"
+    },
+    {
+      "text": " *   **v",
+      "_time": 76.86238813400269,
+      "type": "delta"
+    },
+    {
+      "text": "ivo（AI ",
+      "_time": 76.86619710922241,
+      "type": "delta"
+    },
+    {
+      "text": "产品经理 -27",
+      "_time": 77.00437450408936,
+      "type": "delta"
+    },
+    {
+      "text": " 届暑期实习",
+      "_time": 77.03835153579712,
+      "type": "delta"
+    },
+    {
+      "text": "）**\n    *",
+      "_time": 77.14956259727478,
+      "type": "delta"
+    },
+    {
+      "text": "   **",
+      "_time": 77.15414547920227,
+      "type": "delta"
+    },
+    {
+      "text": "理由**：这三个",
+      "_time": 77.26426982879639,
+      "type": "delta"
+    },
+    {
+      "text": "岗位与您的背景",
+      "_time": 77.31120991706848,
+      "type": "delta"
+    },
+    {
+      "text": "匹配度最高，",
+      "_time": 77.40144991874695,
+      "type": "delta"
+    },
+    {
+      "text": "且均为头部公司",
+      "_time": 77.40613746643066,
+      "type": "delta"
+    },
+    {
+      "text": "，实习或任职",
+      "_time": 77.5447130203247,
+      "type": "delta"
+    },
+    {
+      "text": "含金量高。\n\n",
+      "_time": 77.6104085445404,
+      "type": "delta"
+    },
+    {
+      "text": "*   **第二",
+      "_time": 77.68949222564697,
+      "type": "delta"
+    },
+    {
+      "text": "梯队（",
+      "_time": 77.69312191009521,
+      "type": "delta"
+    },
+    {
+      "text": "重点尝试）**：",
+      "_time": 77.79858422279358,
+      "type": "delta"
+    },
+    {
+      "text": "\n    *  ",
+      "_time": 77.79998421669006,
+      "type": "delta"
+    },
+    {
+      "text": " **字节跳动（",
+      "_time": 77.99445915222168,
+      "type": "delta"
+    },
+    {
+      "text": "AI 产品经理）**",
+      "_time": 77.99913334846497,
+      "type": "delta"
+    },
+    {
+      "text": "\n    *  ",
+      "_time": 78.08528566360474,
+      "type": "delta"
+    },
+    {
+      "text": " **理由**：",
+      "_time": 78.12925863265991,
+      "type": "delta"
+    },
+    {
+      "text": "竞争力较强，建议在",
+      "_time": 78.22960686683655,
+      "type": "delta"
+    },
+    {
+      "text": "简历中特别",
+      "_time": 78.23237752914429,
+      "type": "delta"
+    },
+    {
+      "text": "突出用户调研和",
+      "_time": 78.35569429397583,
+      "type": "delta"
+    },
+    {
+      "text": "数据分析能力。\n\n",
+      "_time": 78.41251254081726,
+      "type": "delta"
+    },
+    {
+      "text": "*   **第三",
+      "_time": 78.50035381317139,
+      "type": "delta"
+    },
+    {
+      "text": "梯队（",
+      "_time": 78.50415539741516,
+      "type": "delta"
+    },
+    {
+      "text": "备选方案）**：",
+      "_time": 78.60733723640442,
+      "type": "delta"
+    },
+    {
+      "text": "\n    *  ",
+      "_time": 78.6100640296936,
+      "type": "delta"
+    },
+    {
+      "text": " **小米、滴滴",
+      "_time": 78.78506994247437,
+      "type": "delta"
+    },
+    {
+      "text": "**\n    *",
+      "_time": 78.78967046737671,
+      "type": "delta"
+    },
+    {
+      "text": "   **理由**",
+      "_time": 78.89427018165588,
+      "type": "delta"
+    },
+    {
+      "text": "：行业方向差异",
+      "_time": 78.92736959457397,
+      "type": "delta"
+    },
+    {
+      "text": "稍大，建议",
+      "_time": 79.0403802394867,
+      "type": "delta"
+    },
+    {
+      "text": "作为备选。",
+      "_time": 79.04496121406555,
+      "type": "delta"
+    },
+    {
+      "text": "投递前可针对性",
+      "_time": 79.16744899749756,
+      "type": "delta"
+    },
+    {
+      "text": "补充相关项目经验",
+      "_time": 79.17102527618408,
+      "type": "delta"
+    },
+    {
+      "text": "或调整简历侧",
+      "_time": 79.34434366226196,
+      "type": "delta"
+    },
+    {
+      "text": "重点（",
+      "_time": 79.34683036804199,
+      "type": "delta"
+    },
+    {
+      "text": "如滴滴侧重算法",
+      "_time": 79.41745805740356,
+      "type": "delta"
+    },
+    {
+      "text": "/物联网背景",
+      "_time": 79.42405438423157,
+      "type": "delta"
+    },
+    {
+      "text": "）。\n\n### ",
+      "_time": 79.54436564445496,
+      "type": "delta"
+    },
+    {
+      "text": "3. 核心",
+      "_time": 79.57535576820374,
+      "type": "delta"
+    },
+    {
+      "text": "能力要求解读\n",
+      "_time": 79.68736338615417,
+      "type": "delta"
+    },
+    {
+      "text": "通过分析",
+      "_time": 79.69012093544006,
+      "type": "delta"
+    },
+    {
+      "text": "各厂 JD，",
+      "_time": 79.85637283325195,
+      "type": "delta"
+    },
+    {
+      "text": "AI 产品岗",
+      "_time": 79.86214089393616,
+      "type": "delta"
+    },
+    {
+      "text": "普遍关注以下核心",
+      "_time": 79.95034527778625,
+      "type": "delta"
+    },
+    {
+      "text": "能力",
+      "_time": 79.95405006408691,
+      "type": "delta"
+    },
+    {
+      "text": "，建议在简历和",
+      "_time": 80.01303195953369,
+      "type": "delta"
+    },
+    {
+      "text": "面试中重点准备",
+      "_time": 80.0179090499878,
+      "type": "delta"
+    },
+    {
+      "text": "：\n\n*  ",
+      "_time": 80.15522480010986,
+      "type": "delta"
+    },
+    {
+      "text": " **大",
+      "_time": 80.15891361236572,
+      "type": "delta"
+    },
+    {
+      "text": "模型技术应用**：",
+      "_time": 80.29717373847961,
+      "type": "delta"
+    },
+    {
+      "text": "阿里巴巴",
+      "_time": 80.30092096328735,
+      "type": "delta"
+    },
+    {
+      "text": "等大厂明确要求熟悉",
+      "_time": 80.35222673416138,
+      "type": "delta"
+    },
+    {
+      "text": " **",
+      "_time": 80.35596299171448,
+      "type": "delta"
+    },
+    {
+      "text": "LLM、多",
+      "_time": 80.44227313995361,
+      "type": "delta"
+    },
+    {
+      "text": "模态、Agent",
+      "_time": 80.48013949394226,
+      "type": "delta"
+    },
+    {
+      "text": "、RAG**",
+      "_time": 80.58731698989868,
+      "type": "delta"
+    },
+    {
+      "text": " 等技术，具备",
+      "_time": 80.58888864517212,
+      "type": "delta"
+    },
+    {
+      "text": " **Prompt 设计",
+      "_time": 80.75530815124512,
+      "type": "delta"
+    },
+    {
+      "text": "**",
+      "_time": 80.75999736785889,
+      "type": "delta"
+    },
+    {
+      "text": " 及工作流",
+      "_time": 80.8214418888092,
+      "type": "delta"
+    },
+    {
+      "text": "（Workflow）编排",
+      "_time": 80.82406711578369,
+      "type": "delta"
+    },
+    {
+      "text": "能力。\n*",
+      "_time": 80.96733355522156,
+      "type": "delta"
+    },
+    {
+      "text": "   **数据分析",
+      "_time": 80.99418091773987,
+      "type": "delta"
+    },
+    {
+      "text": "与评估**：",
+      "_time": 81.09217572212219,
+      "type": "delta"
+    },
+    {
+      "text": "需",
+      "_time": 81.09603691101074,
+      "type": "delta"
+    },
+    {
+      "text": "掌握 **SQL/",
+      "_time": 81.18222832679749,
+      "type": "delta"
+    },
+    {
+      "text": "Python**",
+      "_time": 81.18795776367188,
+      "type": "delta"
+    },
+    {
+      "text": " 等数据工具",
+      "_time": 81.31418824195862,
+      "type": "delta"
+    },
+    {
+      "text": "，能够建立",
+      "_time": 81.31781482696533,
+      "type": "delta"
+    },
+    {
+      "text": "产品评估体系，",
+      "_time": 81.41412568092346,
+      "type": "delta"
+    },
+    {
+      "text": "监控指标波动并",
+      "_time": 81.41787266731262,
+      "type": "delta"
+    },
+    {
+      "text": "优化算法表现。",
+      "_time": 81.56638240814209,
+      "type": "delta"
+    },
+    {
+      "text": "\n*   **",
+      "_time": 81.59302425384521,
+      "type": "delta"
+    },
+    {
+      "text": "用户研究与落地**",
+      "_time": 81.70325303077698,
+      "type": "delta"
+    },
+    {
+      "text": "：百度等",
+      "_time": 81.70599961280823,
+      "type": "delta"
+    },
+    {
+      "text": "岗位强调市场趋势",
+      "_time": 81.82918000221252,
+      "type": "delta"
+    },
+    {
+      "text": "分析、竞争对手",
+      "_time": 81.86413049697876,
+      "type": "delta"
+    },
+    {
+      "text": "分析及用户访谈能力",
+      "_time": 81.95519065856934,
+      "type": "delta"
+    },
+    {
+      "text": "，需能将",
+      "_time": 81.95889019966125,
+      "type": "delta"
+    },
+    {
+      "text": "技术转化为可规模",
+      "_time": 82.08100485801697,
+      "type": "delta"
+    },
+    {
+      "text": "化的产品",
+      "_time": 82.08595585823059,
+      "type": "delta"
+    },
+    {
+      "text": "功能。\n*",
+      "_time": 82.21516704559326,
+      "type": "delta"
+    },
+    {
+      "text": "   **跨",
+      "_time": 82.2570424079895,
+      "type": "delta"
+    },
+    {
+      "text": "部门协作**：",
+      "_time": 82.32921361923218,
+      "type": "delta"
+    },
+    {
+      "text": "所有岗位均要求",
+      "_time": 82.33384680747986,
+      "type": "delta"
+    },
+    {
+      "text": "与算法工程师、",
+      "_time": 82.49422574043274,
+      "type": "delta"
+    },
+    {
+      "text": "后端开发紧密",
+      "_time": 82.49677276611328,
+      "type": "delta"
+    },
+    {
+      "text": "协作，确保项目",
+      "_time": 82.5853202342987,
+      "type": "delta"
+    },
+    {
+      "text": "按时交付。\n\n",
+      "_time": 82.59085869789124,
+      "type": "delta"
+    },
+    {
+      "text": "### 4.",
+      "_time": 82.72919917106628,
+      "type": "delta"
+    },
+    {
+      "text": " 下一步行动建议",
+      "_time": 82.7579038143158,
+      "type": "delta"
+    },
+    {
+      "text": "\n1. ",
+      "_time": 82.87411880493164,
+      "type": "delta"
+    },
+    {
+      "text": " **简历优化**",
+      "_time": 82.87712168693542,
+      "type": "delta"
+    },
+    {
+      "text": "：主攻 AI ",
+      "_time": 83.01804327964783,
+      "type": "delta"
+    },
+    {
+      "text": "产品方向，",
+      "_time": 83.04496026039124,
+      "type": "delta"
+    },
+    {
+      "text": "突出 **Prompt Engineering",
+      "_time": 83.14393925666809,
+      "type": "delta"
+    },
+    {
+      "text": "、",
+      "_time": 83.14991164207458,
+      "type": "delta"
+    },
+    {
+      "text": "RAG 等大",
+      "_time": 83.26714730262756,
+      "type": "delta"
+    },
+    {
+      "text": "模型应用经验**",
+      "_time": 83.27188158035278,
+      "type": "delta"
+    },
+    {
+      "text": "，同时强调用户",
+      "_time": 83.37724566459656,
+      "type": "delta"
+    },
+    {
+      "text": "调研和产品设计能力",
+      "_time": 83.38181018829346,
+      "type": "delta"
+    },
+    {
+      "text": "。\n2.",
+      "_time": 83.52111482620239,
+      "type": "delta"
+    },
+    {
+      "text": "  **针对性调整",
+      "_time": 83.549889087677,
+      "type": "delta"
+    },
+    {
+      "text": "**：投递滴滴",
+      "_time": 83.66513204574585,
+      "type": "delta"
+    },
+    {
+      "text": "前",
+      "_time": 83.66902565956116,
+      "type": "delta"
+    },
+    {
+      "text": "，若有过往",
+      "_time": 83.75507354736328,
+      "type": "delta"
+    },
+    {
+      "text": "算法或物联网项目",
+      "_time": 83.75862002372742,
+      "type": "delta"
+    },
+    {
+      "text": "，请在简历中",
+      "_time": 83.9331328868866,
+      "type": "delta"
+    },
+    {
+      "text": "加",
+      "_time": 83.9368793964386,
+      "type": "delta"
+    },
+    {
+      "text": "粗展示；投递",
+      "_time": 83.99101781845093,
+      "type": "delta"
+    },
+    {
+      "text": "字节前",
+      "_time": 83.99702477455139,
+      "type": "delta"
+    },
+    {
+      "text": "，强化数据分析案例",
+      "_time": 84.09599757194519,
+      "type": "delta"
+    },
+    {
+      "text": "。",
+      "_time": 84.1008231639862,
+      "type": "delta"
+    },
+    {
+      "text": "\n3. ",
+      "_time": 84.18797969818115,
+      "type": "delta"
+    },
+    {
+      "text": " **持续",
+      "_time": 84.2190010547638,
+      "type": "delta"
+    },
+    {
+      "text": "跟进**：优先",
+      "_time": 84.2960262298584,
+      "type": "delta"
+    },
+    {
+      "text": "完成",
+      "_time": 84.29870533943176,
+      "type": "delta"
+    },
+    {
+      "text": "第一梯队岗位的投递",
+      "_time": 84.38397645950317,
+      "type": "delta"
+    },
+    {
+      "text": "，并",
+      "_time": 84.38786005973816,
+      "type": "delta"
+    },
+    {
+      "text": "准备好相关的作品集或",
+      "_time": 84.52696752548218,
+      "type": "delta"
+    },
+    {
+      "text": "项目",
+      "_time": 84.53274631500244,
+      "type": "delta"
+    },
+    {
+      "text": "复盘，以应对",
+      "_time": 84.58315563201904,
+      "type": "delta"
+    },
+    {
+      "text": "可能的",
+      "_time": 84.58789229393005,
+      "type": "delta"
+    },
+    {
+      "text": "笔试或面试。",
+      "_time": 84.67297434806824,
+      "type": "delta"
+    },
+    {
+      "text": "\n\n祝您",
+      "_time": 84.67783784866333,
+      "type": "delta"
+    },
+    {
+      "text": "求职顺利，如有",
+      "_time": 84.81337594985962,
+      "type": "delta"
+    },
+    {
+      "text": "具体",
+      "_time": 84.81568169593811,
+      "type": "delta"
+    },
+    {
+      "text": "简历修改需求，",
+      "_time": 84.87097501754761,
+      "type": "delta"
+    },
+    {
+      "text": "欢迎随时",
+      "_time": 84.87378811836243,
+      "type": "delta"
+    },
+    {
+      "text": "沟通！",
+      "_time": 84.98214840888977,
+      "type": "delta"
+    },
+    {
+      "session_id": "eval_sup_04_1777543343189",
+      "intent": "position_explore",
+      "route_meta": {
+        "layer": "llm",
+        "intent": "position_explore",
+        "confidence": 0.95,
+        "demands": [
+          {
+            "intent": "position_explore",
+            "entities": {}
+          }
+        ],
+        "plan_tasks": 3
+      },
+      "agent_mode": "llm",
+      "is_clarification": false,
+      "agent": {
+        "rewritten_query": "帮我看看所有互联网大厂的AI产品岗",
+        "tools": [
+          {
+            "tool": "kb_retrieve",
+            "status": "✅",
+            "params": {
+              "query": "互联网大厂 AI产品岗",
+              "top_k": 10
+            },
+            "result_preview": "{'chunks': [{'chunk_id': '4156a58f-e1d2-4d9c-bb69-2235f8aaad44_c12', 'content': '【滴滴·27届秋储-AI产品实习生（AIoT产品事业部） 软性要求】有算法、物联网相关经验者优先', 'metadata': {'company': '滴滴', 'index': 12, 'jd_id': '4156a58f-e1d2-4"
+          },
+          {
+            "tool": "global_rank",
+            "status": "✅",
+            "params": {
+              "resume_text": "AI\n / \n157-xxxx-3421  |  chenyutong2027@163.com  |  \n  |  2027\n6\n2024.09  2027.06\n · \nAI\n· \nGPA\n3.4/4.0  |  \n2020.09  2024.06\n · \n · \n  |  \nWeb\n \n \n2025.03  2025.11\n  |  \n40\n\"\n\"\n\"\n\"\nFigma\nAI\nEmbedding\nJD\nAPI\nPrompt\n20\nPDF\n \n \nRAG\n2024.10  2025.02\n  |  \n80\nOCR\nWeb\n\"\n\"\n · \n2024.09  2025.06\n10\n · \n2022.03  2023.06\n2025.05    \n2024.11    \nAI\n2023.06    \n2022.12    \nFigma\nAxure\nXmind\n/\nPRD\nPrompt Engineering\nRAG\nEmbedding\nCET-4\n525\nOffice\nExcel",
+              "candidate_jds": [
+                {
+                  "chunk_id": "4156a58f-e1d2-4d9c-bb69-2235f8aaad44_c12",
+                  "content": "【滴滴·27届秋储-AI产品实习生（AIoT产品事业部） 软性要求】有算法、物联网相关经验者优先",
+                  "metadata": {
+                    "company": "滴滴",
+                    "index": 12,
+                    "jd_id": "4156a58f-e1d2-4d9c-bb69-2235f8aaad44",
+                    "position": "27届秋储-AI产品实习生（AIoT产品事业部）",
+                    "priority": "medium",
+                    "section": "soft_requirements",
+                    "strategy": "semantic"
+                  },
+                  "distance": null,
+                  "bm25_score": 9.383241828479099,
+                  "vec_norm": 0.0,
+                  "bm25_norm": 0.25214532808778894,
+                  "hybrid_score": 0.07564359842633668,
+                  "rerank_score": 0.9484
+                },
+                {
+                  "chunk_id": "22fa0d11-9483-4b94-bb38-c3c90676fd9b_chunk_1",
+                  "content": "【百度 · AI产品实习生 岗位职责】\n协助进行AI产品相关的市场趋势分析，包括竞争对手产品分析、用户需求调研等。参与用户访谈、问卷调查，收集并分析用户反馈，为产品优化提供数据支持跟进AI产品开发进度，与研发、设计、测试等团队紧密合作，确保项目按时交付参与产品测试，收集并反馈测试结果，协助解决开发过程中遇到的问题",
+                  "metadata": {
+                    "company": "百度",
+                    "index": 1,
+                    "jd_id": "22fa0d11-9483-4b94-bb38-c3c90676fd9b",
+                    "position": "AI产品实习生",
+                    "section": "responsibilities",
+                    "strategy": "semantic"
+                  },
+                  "distance": 0.5698882937431335,
+                  "bm25_score": 0.0,
+                  "vec_norm": 1.0,
+                  "bm25_norm": 0.0,
+                  "hybrid_score": 0.7,
+                  "rerank_score": 0.9433
+                },
+                {
+                  "chunk_id": "ac9973c8-01be-4cd6-9a99-097873a59cf0_chunk_0",
+                  "content": "公司：字节跳动，岗位：AI产品经理，地点：北京，薪资：30k-60k",
+                  "metadata": {
+                    "category": "产品",
+                    "company": "字节跳动",
+                    "domain": "AI",
+                    "index": 0,
+                    "jd_id": "ac9973c8-01be-4cd6-9a99-097873a59cf0",
+                    "max_years": 5,
+                    "min_education": "本科",
+                    "min_years": 3,
+                    "position": "AI产品经理",
+                    "section": "basic_info",
+                    "strategy": "semantic"
+                  },
+                  "distance": 0.6404487490653992,
+                  "bm25_score": 0.0,
+                  "vec_norm": 0.05015650086374357,
+                  "bm25_norm": 0.0,
+                  "hybrid_score": 0.035109550604620496,
+                  "rerank_score": 0.9382
+                },
+                {
+                  "chunk_id": "6226ff8a-27b8-4d56-9cb9-e194c0578739_chunk_1",
+                  "content": "【阿里巴巴 · AI产品经理 岗位职责】\n深入理解业务场景，通过用户调研、行业分析及研究挖掘AI落地的创新机会；\n负责AI应用/平台的方案设计，包括核心功能定义、工作流（Workflow）编排及Prompt设计，输出高质量的产品路线图；\n与算法工程师、后端开发紧密协作，将大模型能力（LLM、多模态、Agent、RAG等）转化为可规模化的产品功能；\n建立产品评估体系，利用数据工具（SQL/Python）监控指标波动，根据数据反馈和用户原声持续优化算法表现与用户体验。",
+                  "metadata": {
+                    "company": "阿里巴巴",
+                    "index": 1,
+                    "jd_id": "6226ff8a-27b8-4d56-9cb9-e194c0578739",
+                    "position": "AI产品经理",
+                    "section": "responsibilities",
+                    "strategy": "semantic"
+                  },
+                  "distance": 0.5813341736793518,
+                  "bm25_score": 0.0,
+                  "vec_norm": 0.8459222719063098,
+                  "bm25_norm": 0.0,
+                  "hybrid_score": 0.5921455903344168,
+                  "rerank_score": 0.9345
+                },
+                {
+                  "chunk_id": "bbbe5988-01f4-447f-a9e2-6715c006d33c_chunk_7",
+                  "content": "【小米 · AI培训方向产品实习生 软性要求/加分项】\n有互联网产品实习经验者优先",
+                  "metadata": {
+                    "company": "小米",
+                    "index": 7,
+                    "jd_id": "bbbe5988-01f4-447f-a9e2-6715c006d33c",
+                    "position": "AI培训方向产品实习生",
+                    "priority": "medium",
+                    "section": "soft_requirements",
+                    "strategy": "semantic"
+                  },
+                  "distance": null,
+                  "bm25_score": 21.0226388792829,
+                  "vec_norm": 0.0,
+                  "bm25_norm": 1.0,
+                  "hybrid_score": 0.3,
+                  "rerank_score": 0.9298
+                },
+                {
+                  "chunk_id": "042ee372-b79c-4ee5-a8d6-0865b3e2dde6_chunk_10",
+                  "content": "【小米 · AI培训方向产品实习生-2027届 软性要求/加分项】有互联网产品实习经验者优先",
+                  "metadata": {
+                    "company": "小米",
+                    "index": 10,
+                    "jd_id": "042ee372-b79c-4ee5-a8d6-0865b3e2dde6",
+                    "position": "AI培训方向产品实习生-2027届",
+                    "priority": "medium",
+                    "section": "soft_requirements",
+                    "strategy": "semantic"
+                  },
+                  "distance": null,
+                  "bm25_score": 20.581600369995577,
+                  "vec_norm": 0.0,
+                  "bm25_norm": 0.9716623886766588,
+                  "hybrid_score": 0.29149871660299764,
+                  "rerank_score": 0.9241
+                },
+                {
+                  "chunk_id": "80a6b94d-8d24-464d-a950-6d7a399fcc5b_chunk_1",
+                  "content": "【阿里巴巴 · AI产品经理-超级智能体 岗位职责】\n1.参与或负责千问AI产品规划、模型迭代、行业策略、数据机制、产品方案；\n2.分析用户需求、技术趋势、行业场景和竞品动态，落实到具体产品业务；\n3.构建用户需求、产品形态和模型范式之间的评估评价体系，不拘一格思考产品方案；\n4.跟进产品开发or运营进度，与算法、研发、设计等团队密切协同，确保产品快速迭代和实践。",
+                  "metadata": {
+                    "company": "阿里巴巴",
+                    "index": 1,
+                    "jd_id": "80a6b94d-8d24-464d-a950-6d7a399fcc5b",
+                    "position": "AI产品经理-超级智能体",
+                    "section": "responsibilities",
+                    "strategy": "semantic"
+                  },
+                  "distance": 0.6241233348846436,
+                  "bm25_score": 0.0,
+                  "vec_norm": 0.2699196594130395,
+                  "bm25_norm": 0.0,
+                  "hybrid_score": 0.18894376158912765,
+                  "rerank_score": 0.8992
+                },
+                {
+                  "chunk_id": "d8f1f630-f372-467a-b0a0-5a68a6db4ffd_chunk_5",
+                  "content": "【百度 · AI应用-产品经理 硬性要求】\n对AI产品、大模型应用有热情，愿意学习并将AI能力落地到HR产品中",
+                  "metadata": {
+                    "company": "百度",
+                    "index": 5,
+                    "jd_id": "d8f1f630-f372-467a-b0a0-5a68a6db4ffd",
+                    "position": "AI应用-产品经理",
+                    "priority": "high",
+                    "section": "hard_requirements",
+                    "strategy": "semantic"
+                  },
+                  "distance": 0.6072044372558594,
+                  "bm25_score": 5.664663224424136,
+                  "vec_norm": 0.4976719443416975,
+                  "bm25_norm": 0.01321917325546091,
+                  "hybrid_score": 0.3523361130158265,
+                  "rerank_score": 0.6204
+                },
+                {
+                  "chunk_id": "1983c425-982c-4116-8883-04eb0109edb3_chunk_6",
+                  "content": "【vivo · AI产品经理-27届暑期实习 软性要求/加分项】\n人工智能、互联网等相关行业实习或项目经验者优先考虑。",
+                  "metadata": {
+                    "company": "vivo",
+                    "index": 6,
+                    "jd_id": "1983c425-982c-4116-8883-04eb0109edb3",
+                    "position": "AI产品经理-27届暑期实习",
+                    "priority": "medium",
+                    "section": "soft_requirements",
+                    "strategy": "semantic"
+                  },
+                  "distance": null,
+                  "bm25_score": 18.356438420353484,
+                  "vec_norm": 0.0,
+                  "bm25_norm": 0.8286912577376895,
+                  "hybrid_score": 0.24860737732130683,
+                  "rerank_score": 0.5213
+                },
+                {
+                  "chunk_id": "94df2ae7-baa3-418d-be25-1974b64a5b06_chunk_8",
+                  "content": "【百度 · AI能力产品实习生 关键词】\n百度, AI能力, 产品实习生, 策略评估, 用户调研, 数据分析, 竞品跟踪, 产品规划, agent产品, MCP, A2A, AI产品, AI策略产品, 暑期实习, PSIG",
+                  "metadata": {
+                    "company": "百度",
+                    "index": 8,
+                    "jd_id": "94df2ae7-baa3-418d-be25-1974b64a5b06",
+                    "position": "AI能力产品实习生",
+                    "section": "keywords",
+                    "strategy": "semantic"
+                  },
+                  "distance": null,
+                  "bm25_score": 6.0965817454655316,
+                  "vec_norm": 0.0,
+                  "bm25_norm": 0.04097080699012359,
+                  "hybrid_score": 0.012291242097037077,
+                  "rerank_score": 0.2724
+                }
+              ],
+              "top_k": 5
+            },
+            "result_preview": "{'rankings': [{'rank': 1, 'company': '百度', 'position': 'AI产品实习生', 'match_score': 88, 'recommend_reason': '用户简历中有明确的用户调研（用户访谈、问卷调查）、AI项目经验（RAG、Embedding、Prompt Engineering）以及产品设计工具（Figma、Axure），与岗位职责高度"
+          }
+        ],
+        "kb_chunks_count": 3,
+        "system_prompt_preview": "你是一位专业的求职顾问。请基于以下工具执行结果，给用户一个清晰、有帮助的回复。\n要求：\n1. 直接回答用户的问题，不要重复用户的原话\n2. 如果有匹配分析结果，给出具体的分数和建议\n3. 如果有检索结果，基于事实回答，不要编造\n4. 语气友好、专业、结构化"
+      },
+      "memory": {
+        "working_turns": 1,
+        "compressed_blocks": 0,
+        "current_topic": "general",
+        "evidence_cache_size": 5
+      },
+      "reply": {
+        "type": "text",
+        "content": "您好！基于对互联网大厂 AI 产品岗位的最新检索与匹配分析，我为您整理了当前的岗位概况、投递优先级建议及核心能力要求。\n\n### 1. 岗位概况检索\n目前市场上主要的互联网大厂均开放了 AI 产品相关岗位，涵盖正式职与实习生岗位，具体如下：\n*   **阿里巴巴**：AI 产品经理（涉及超级智能体方向），侧重业务场景落地与大模型能力转化。\n*   **百度**：AI 产品实习生，侧重市场趋势分析、用户调研及产品开发进度跟进。\n*   **字节跳动**：AI 产品经理，薪资范围约 30k-60k（北京）。\n*   **小米**：AI 培训方向产品实习生（含 2027 届），偏好有互联网产品实习经验的候选人。\n*   **滴滴**：27 届秋储 -AI 产品实习生（AIoT 产品事业部），偏好有算法、物联网相关经验者。\n\n### 2. 匹配度分析与投递策略\n根据您简历与岗位需求的匹配度分析，建议采取以下投递策略：\n\n*   **第一梯队（优先投递）**：\n    *   **百度（AI 产品实习生）**\n    *   **阿里巴巴（AI 产品经理）**\n    *   **vivo（AI 产品经理 -27 届暑期实习）**\n    *   **理由**：这三个岗位与您的背景匹配度最高，且均为头部公司，实习或任职含金量高。\n\n*   **第二梯队（重点尝试）**：\n    *   **字节跳动（AI 产品经理）**\n    *   **理由**：竞争力较强，建议在简历中特别突出用户调研和数据分析能力。\n\n*   **第三梯队（备选方案）**：\n    *   **小米、滴滴**\n    *   **理由**：行业方向差异稍大，建议作为备选。投递前可针对性补充相关项目经验或调整简历侧重点（如滴滴侧重算法/物联网背景）。\n\n### 3. 核心能力要求解读\n通过分析各厂 JD，AI 产品岗普遍关注以下核心能力，建议在简历和面试中重点准备：\n\n*   **大模型技术应用**：阿里巴巴等大厂明确要求熟悉 **LLM、多模态、Agent、RAG** 等技术，具备 **Prompt 设计** 及工作流（Workflow）编排能力。\n*   **数据分析与评估**：需掌握 **SQL/Python** 等数据工具，能够建立产品评估体系，监控指标波动并优化算法表现。\n*   **用户研究与落地**：百度等岗位强调市场趋势分析、竞争对手分析及用户访谈能力，需能将技术转化为可规模化的产品功能。\n*   **跨部门协作**：所有岗位均要求与算法工程师、后端开发紧密协作，确保项目按时交付。\n\n### 4. 下一步行动建议\n1.  **简历优化**：主攻 AI 产品方向，突出 **Prompt Engineering、RAG 等大模型应用经验**，同时强调用户调研和产品设计能力。\n2.  **针对性调整**：投递滴滴前，若有过往算法或物联网项目，请在简历中加粗展示；投递字节前，强化数据分析案例。\n3.  **持续跟进**：优先完成第一梯队岗位的投递，并准备好相关的作品集或项目复盘，以应对可能的笔试或面试。\n\n祝您求职顺利，如有具体简历修改需求，欢迎随时沟通！",
+        "data": null,
+        "sources": null
+      },
+      "_time": 85.05307912826538,
+      "type": "done"
+    }
+  ],
+  "timestamp": "2026-04-30T18:02:23.189085"
+}

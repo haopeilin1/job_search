@@ -17,6 +17,7 @@ from typing import Dict, Optional
 
 import httpx
 
+from app.core.config import settings
 from app.core.state import llm_config_store
 
 logger = logging.getLogger(__name__)
@@ -25,9 +26,9 @@ logger = logging.getLogger(__name__)
 # 分层超时常量（秒）
 # ═══════════════════════════════════════════════════════
 
-TIMEOUT_LIGHT = 10.0     # 轻量调用：token 少、快速分类（evidence_relevance_check、轻量推理）
-TIMEOUT_STANDARD = 20.0  # 标准调用：常规生成（意图识别、Planner、match_analyze、qa_synthesize）
-TIMEOUT_HEAVY = 30.0     # 重型调用：最终聚合回复（实测 deepseek-v3.2 正常 5-15s，给 30s 足够）
+TIMEOUT_LIGHT = 60.0     # 轻量调用：token 少、快速分类（本地模型加载慢，适当放宽）
+TIMEOUT_STANDARD = 180.0 # 标准调用：常规生成（本地模型可能部分层在CPU，给足时间）
+TIMEOUT_HEAVY = 300.0    # 重型调用：最终聚合回复（本地27B模型推理较慢，给足时间）
 
 # 可重试的错误类型：超时、连接错误、5xx 服务端错误
 _RETRYABLE_EXCEPTIONS = (
@@ -123,6 +124,14 @@ class LLMClient:
             cfg = llm_config_store.memory
         elif name == "vision":
             cfg = llm_config_store.vision
+        elif name == "judge":
+            # Judge 配置直接读取 settings，避免影响前端 API schema
+            from app.schemas.settings import LLMModelConfig
+            cfg = LLMModelConfig(
+                base_url=settings.JUDGE_BASE_URL or llm_config_store.chat.base_url,
+                api_key=settings.JUDGE_API_KEY or llm_config_store.chat.api_key,
+                model=settings.JUDGE_MODEL or llm_config_store.chat.model,
+            )
         else:
             logger.warning(f"[LLMClient] 未知配置层 '{name}'，fallback 到 chat")
             cfg = llm_config_store.chat
@@ -163,6 +172,9 @@ class LLMClient:
             payload["max_tokens"] = max_tokens
         if json_mode:
             payload["response_format"] = {"type": "json_object"}
+        # Ollama 本地模型：设置 keep_alive 避免 5 分钟卸载
+        if "localhost" in self.base_url or "127.0.0.1" in self.base_url:
+            payload["keep_alive"] = "1h"
 
         effective_timeout = timeout if timeout is not None else self.timeout
         max_retries = 2  # 最多 2 次额外重试（共 3 次尝试）
@@ -175,7 +187,11 @@ class LLMClient:
                 resp.raise_for_status()
                 data = resp.json()
 
-                content = data["choices"][0]["message"]["content"]
+                msg = data["choices"][0]["message"]
+                content = msg.get("content", "")
+                # Qwen3 系列模型将思考内容放在 reasoning 字段，content 可能为空
+                if not content and msg.get("reasoning"):
+                    content = msg["reasoning"]
                 if attempt > 0:
                     logger.info(
                         f"[LLMClient] 第 {attempt + 1} 次尝试成功 | model={self.model}"
@@ -278,6 +294,9 @@ class LLMClient:
         }
         if max_tokens is not None:
             payload["max_tokens"] = max_tokens
+        # Ollama 本地模型：设置 keep_alive 避免 5 分钟卸载
+        if "localhost" in self.base_url or "127.0.0.1" in self.base_url:
+            payload["keep_alive"] = "1h"
 
         effective_timeout = timeout if timeout is not None else self.timeout
         client = _get_async_client(self.base_url, effective_timeout)

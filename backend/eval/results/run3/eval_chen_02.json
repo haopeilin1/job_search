@@ -1,0 +1,1294 @@
+{
+  "case_id": "eval_chen_02",
+  "message": "字节跳动的AI产品经理我够格吗",
+  "gold_intents": [
+    "assess"
+  ],
+  "expected_tools": [
+    "kb_retrieve",
+    "match_analyze"
+  ],
+  "scenario": "有简历_单JD匹配_知识库命中",
+  "status": "success",
+  "error": null,
+  "ttfb": 0.009,
+  "total_latency": 49.65,
+  "event_count": 224,
+  "pred_intent": "match_assess",
+  "pred_tools": [
+    {
+      "tool": "kb_retrieve",
+      "status": "✅",
+      "params": {
+        "query": "AI产品经理",
+        "company": "字节跳动",
+        "top_k": 1,
+        "position": "产品经理"
+      },
+      "result_preview": "{'chunks': [{'chunk_id': 'ac9973c8-01be-4cd6-9a99-097873a59cf0_chunk_8', 'content': '【字节跳动 · AI产品经理 关键词】\\nPython, PyTorch, LangChain, RAG, Agent, 产品经理, AI', 'metadata': {'company': '字节跳动', 'index': 8,"
+    },
+    {
+      "tool": "match_analyze",
+      "status": "✅",
+      "params": {
+        "resume_text": "AI\n / \n157-xxxx-3421  |  chenyutong2027@163.com  |  \n  |  2027\n6\n2024.09  2027.06\n · \nAI\n· \nGPA\n3.4/4.0  |  \n2020.09  2024.06\n · \n · \n  |  \nWeb\n \n \n2025.03  2025.11\n  |  \n40\n\"\n\"\n\"\n\"\nFigma\nAI\nEmbedding\nJD\nAPI\nPrompt\n20\nPDF\n \n \nRAG\n2024.10  2025.02\n  |  \n80\nOCR\nWeb\n\"\n\"\n · \n2024.09  2025.06\n10\n · \n2022.03  2023.06\n2025.05    \n2024.11    \nAI\n2023.06    \n2022.12    \nFigma\nAxure\nXmind\n/\nPRD\nPrompt Engineering\nRAG\nEmbedding\nCET-4\n525\nOffice\nExcel",
+        "jd_text": [
+          {
+            "chunk_id": "ac9973c8-01be-4cd6-9a99-097873a59cf0_chunk_8",
+            "content": "【字节跳动 · AI产品经理 关键词】\nPython, PyTorch, LangChain, RAG, Agent, 产品经理, AI",
+            "metadata": {
+              "company": "字节跳动",
+              "index": 8,
+              "jd_id": "ac9973c8-01be-4cd6-9a99-097873a59cf0",
+              "position": "AI产品经理",
+              "section": "keywords",
+              "strategy": "semantic"
+            },
+            "distance": null,
+            "bm25_score": 5.021517779516011,
+            "vec_norm": 0.0,
+            "bm25_norm": 1.0,
+            "hybrid_score": 0.3,
+            "rerank_score": 0.993
+          }
+        ],
+        "company": "字节跳动",
+        "position": "产品经理"
+      },
+      "result_preview": "{'score': 65, 'label': '略有差距', 'advantages': ['AI', 'Figma', 'Prompt Engineering', 'RAG'], 'weaknesses': ['候选人缺乏Python编程技能、PyTorch、LangChain等相关技术经验。同时，缺乏产品管理经验，特别是作为产品经理的角色。此外，候选人没有提及任何与Agent相关的经验，这也是"
+    },
+    {
+      "tool": "external_search",
+      "status": "✅",
+      "params": {
+        "query": "AI产品经理",
+        "count": 5
+      },
+      "result_preview": "{'chunks': [{'chunk_id': 'tavily_571322869', 'content': '【来源：网络搜索】AI产品经理一文详解：25年新趋势\\n## AI产品经理一文详解：25年新趋势. 6 评论 12715 浏览 101 收藏  39 分钟. > 想做AI产品经理，不知道该学什么、干什么？这篇文章用最清晰的方式告诉你：现在AI产品经理要掌握哪些能力？需要会什么工具？要懂"
+    }
+  ],
+  "tools_called": [
+    "kb_retrieve",
+    "match_analyze",
+    "external_search"
+  ],
+  "reply": "你好！基于对你的简历与字节跳动 AI 产品经理岗位要求的综合评估，目前的结论是：**你暂时还未完全达到该岗位的录用标准，匹配度为 65 分，属于“略有差距”**。\n\n不过，你在部分核心领域已经具备了基础，只要针对性补充缺失技能，竞争力会有显著提升。以下是详细的分析与建议：\n\n### 📊 匹配度分析\n*   **综合得分**：65 / 100\n*   **评估结论**：略有差距\n*   **岗位核心要求**：Python, PyTorch, LangChain, RAG, Agent, 产品经理，AI\n\n### ✅ 你的优势\n你已经在以下关键领域展现了相关能力，这是很好的入门基础：\n*   **AI 与大模型应用**：具备 AI 基本概念。\n*   **工具技能**：熟悉 Figma（原型设计）、Prompt Engineering（提示词工程）。\n*   **技术架构**：了解 RAG（检索增强生成），这是当前 AI 应用落地的主流架构之一。\n\n### ❌ 主要差距\n字节跳动该岗位偏向“技术型产品经理”，以下缺失项是阻碍你获得面试机会的关键：\n1.  **编程与框架能力**：缺乏 **Python** 编程技能，以及 **PyTorch**、**LangChain** 等深度学习与大模型开发框架的实际经验。\n2.  **产品管理经验**：简历中未体现明确的产品经理角色经历（如需求分析、版本迭代、跨部门协同等）。\n3.  **前沿技术应用**：缺少 **Agent**（智能体）相关的项目或实践经验，这是目前大厂 AI 岗位的核心关注点。\n\n### 💡 提升建议\n为了缩小这 35 分的差距，建议你从以下三个方面着手：\n\n1.  **补齐技术栈短板**\n    *   **学习路径**：快速掌握 Python 基础，重点学习 **LangChain** 框架，尝试搭建一个简单的 AI 应用。\n    *   **目标**：能够与技术团队无障碍沟通模型选型与实现逻辑，理解 PyTorch 的基本原理。\n\n2.  **打造 Agent 实战项目**\n    *   **行动**：利用现有知识，结合 LangChain 开发一个具备自主规划能力的 Agent  Demo（例如自动化工作流助手）。\n    *   **价值**：这将直接弥补“缺乏 Agent 经验”的短板，并证明你的技术落地能力。\n\n3.  **强化产品方法论**\n    *   **行动**：在简历中突出产品思维，补充关于用户需求洞察、商业意识以及产品全生命周期管理的描述。\n    *   **参考**：2025 年 AI 产品经理趋势显示，除了技术底层，更需要具备“以用户为中心”的商业落地能力。\n\n### 🌟 行业视角\n根据行业最新趋势，AI 产品经理与传统产品经理的最大区别在于**对技术底层与模型能力的理解**。字节跳动作为技术驱动型公司，对该岗位的技术要求较高。你目前具备的 RAG 和 Prompt 经验是很好的切入点，若能结合编程能力与完整的产品案例，将极大增加入职几率。\n\n加油！方向已经明确，针对性补充后很有希望达成目标。如果有具体的项目想法需要评估，欢迎随时沟通。",
+  "reply_length": 1339,
+  "intent_match": true,
+  "tool_match_rate": 1.0,
+  "has_reply": true,
+  "events": [
+    {
+      "step": "intent",
+      "message": "正在识别您的意图...",
+      "_time": 0.00882720947265625,
+      "type": "status"
+    },
+    {
+      "step": "plan",
+      "message": "正在规划任务...",
+      "_time": 1.2475965023040771,
+      "type": "status"
+    },
+    {
+      "step": "execute",
+      "message": "正在执行分析...",
+      "_time": 5.80558443069458,
+      "type": "status"
+    },
+    {
+      "step": "aggregate",
+      "message": "正在生成回复...",
+      "_time": 8.397316217422485,
+      "type": "status"
+    },
+    {
+      "text": "你好！基于对你的",
+      "_time": 35.576310873031616,
+      "type": "delta"
+    },
+    {
+      "text": "简历与",
+      "_time": 35.582096099853516,
+      "type": "delta"
+    },
+    {
+      "text": "字节跳动 AI ",
+      "_time": 35.6846923828125,
+      "type": "delta"
+    },
+    {
+      "text": "产品经理岗位",
+      "_time": 35.68829655647278,
+      "type": "delta"
+    },
+    {
+      "text": "要求的综合评估，",
+      "_time": 35.828784465789795,
+      "type": "delta"
+    },
+    {
+      "text": "目前的结论",
+      "_time": 35.83010387420654,
+      "type": "delta"
+    },
+    {
+      "text": "是：**你暂时",
+      "_time": 35.900198221206665,
+      "type": "delta"
+    },
+    {
+      "text": "还未",
+      "_time": 35.90398597717285,
+      "type": "delta"
+    },
+    {
+      "text": "完全达到该岗位的",
+      "_time": 35.991063594818115,
+      "type": "delta"
+    },
+    {
+      "text": "录用",
+      "_time": 35.992841720581055,
+      "type": "delta"
+    },
+    {
+      "text": "标准，匹配度",
+      "_time": 36.11651682853699,
+      "type": "delta"
+    },
+    {
+      "text": "为 6",
+      "_time": 36.117926597595215,
+      "type": "delta"
+    },
+    {
+      "text": "5 分，",
+      "_time": 36.20619797706604,
+      "type": "delta"
+    },
+    {
+      "text": "属于“略有差距",
+      "_time": 36.20902991294861,
+      "type": "delta"
+    },
+    {
+      "text": "”**。\n\n不过",
+      "_time": 36.35052156448364,
+      "type": "delta"
+    },
+    {
+      "text": "，你在",
+      "_time": 36.35417103767395,
+      "type": "delta"
+    },
+    {
+      "text": "部分核心领域已经",
+      "_time": 36.493653774261475,
+      "type": "delta"
+    },
+    {
+      "text": "具备了",
+      "_time": 36.496201276779175,
+      "type": "delta"
+    },
+    {
+      "text": "基础，只要针对性",
+      "_time": 36.614508390426636,
+      "type": "delta"
+    },
+    {
+      "text": "补充",
+      "_time": 36.61518907546997,
+      "type": "delta"
+    },
+    {
+      "text": "缺失技能，竞争力",
+      "_time": 36.771812438964844,
+      "type": "delta"
+    },
+    {
+      "text": "会有",
+      "_time": 36.77425003051758,
+      "type": "delta"
+    },
+    {
+      "text": "显著提升。以下是详细的",
+      "_time": 36.907707929611206,
+      "type": "delta"
+    },
+    {
+      "text": "分析与",
+      "_time": 36.91009449958801,
+      "type": "delta"
+    },
+    {
+      "text": "建议：\n\n###",
+      "_time": 36.984614849090576,
+      "type": "delta"
+    },
+    {
+      "text": " 📊 ",
+      "_time": 36.98618960380554,
+      "type": "delta"
+    },
+    {
+      "text": "匹配度分析\n",
+      "_time": 37.128671169281006,
+      "type": "delta"
+    },
+    {
+      "text": "*   **综合",
+      "_time": 37.130053997039795,
+      "type": "delta"
+    },
+    {
+      "text": "得分**：6",
+      "_time": 37.18875861167908,
+      "type": "delta"
+    },
+    {
+      "text": "5 /",
+      "_time": 37.23338341712952,
+      "type": "delta"
+    },
+    {
+      "text": " 100",
+      "_time": 37.296518087387085,
+      "type": "delta"
+    },
+    {
+      "text": "\n*   **",
+      "_time": 37.298129081726074,
+      "type": "delta"
+    },
+    {
+      "text": "评估结论**：",
+      "_time": 37.44166922569275,
+      "type": "delta"
+    },
+    {
+      "text": "略有差距",
+      "_time": 37.44421887397766,
+      "type": "delta"
+    },
+    {
+      "text": "\n*   **",
+      "_time": 37.50218391418457,
+      "type": "delta"
+    },
+    {
+      "text": "岗位核心要求**",
+      "_time": 37.50486445426941,
+      "type": "delta"
+    },
+    {
+      "text": "：Python, Py",
+      "_time": 37.641600131988525,
+      "type": "delta"
+    },
+    {
+      "text": "Torch",
+      "_time": 37.64317798614502,
+      "type": "delta"
+    },
+    {
+      "text": ", LangChain,",
+      "_time": 37.720526456832886,
+      "type": "delta"
+    },
+    {
+      "text": " RAG, Agent",
+      "_time": 37.74930143356323,
+      "type": "delta"
+    },
+    {
+      "text": ", 产品经理，",
+      "_time": 37.863524436950684,
+      "type": "delta"
+    },
+    {
+      "text": "AI\n\n### ✅",
+      "_time": 37.86727333068848,
+      "type": "delta"
+    },
+    {
+      "text": " 你的优势\n",
+      "_time": 38.00663495063782,
+      "type": "delta"
+    },
+    {
+      "text": "你",
+      "_time": 38.00941228866577,
+      "type": "delta"
+    },
+    {
+      "text": "已经在以下关键领域",
+      "_time": 38.13542675971985,
+      "type": "delta"
+    },
+    {
+      "text": "展现了",
+      "_time": 38.135966777801514,
+      "type": "delta"
+    },
+    {
+      "text": "相关能力，这是",
+      "_time": 38.186283349990845,
+      "type": "delta"
+    },
+    {
+      "text": "很好的入门",
+      "_time": 38.189287185668945,
+      "type": "delta"
+    },
+    {
+      "text": "基础：\n*",
+      "_time": 38.29441452026367,
+      "type": "delta"
+    },
+    {
+      "text": "   **AI ",
+      "_time": 38.32724189758301,
+      "type": "delta"
+    },
+    {
+      "text": "与大模型应用**",
+      "_time": 38.447577476501465,
+      "type": "delta"
+    },
+    {
+      "text": "：具备 AI",
+      "_time": 38.450217723846436,
+      "type": "delta"
+    },
+    {
+      "text": " 基本概念。\n",
+      "_time": 38.60251975059509,
+      "type": "delta"
+    },
+    {
+      "text": "*   **",
+      "_time": 38.638489961624146,
+      "type": "delta"
+    },
+    {
+      "text": "工具技能**：",
+      "_time": 38.71256685256958,
+      "type": "delta"
+    },
+    {
+      "text": "熟悉 F",
+      "_time": 38.715081214904785,
+      "type": "delta"
+    },
+    {
+      "text": "igma（原型设计",
+      "_time": 38.86852502822876,
+      "type": "delta"
+    },
+    {
+      "text": "）、Prompt Engineering",
+      "_time": 38.895254373550415,
+      "type": "delta"
+    },
+    {
+      "text": "（提示词工程",
+      "_time": 38.97661566734314,
+      "type": "delta"
+    },
+    {
+      "text": "）。\n*",
+      "_time": 38.98060631752014,
+      "type": "delta"
+    },
+    {
+      "text": "   **技术架构",
+      "_time": 39.07827115058899,
+      "type": "delta"
+    },
+    {
+      "text": "**：了解",
+      "_time": 39.11116909980774,
+      "type": "delta"
+    },
+    {
+      "text": " RAG（检索",
+      "_time": 39.18025779724121,
+      "type": "delta"
+    },
+    {
+      "text": "增强生成",
+      "_time": 39.18284797668457,
+      "type": "delta"
+    },
+    {
+      "text": "），这是当前 AI",
+      "_time": 39.34217977523804,
+      "type": "delta"
+    },
+    {
+      "text": " 应用",
+      "_time": 39.345993757247925,
+      "type": "delta"
+    },
+    {
+      "text": "落地的主流架构",
+      "_time": 39.531588554382324,
+      "type": "delta"
+    },
+    {
+      "text": "之一",
+      "_time": 39.53302836418152,
+      "type": "delta"
+    },
+    {
+      "text": "。\n\n###",
+      "_time": 39.60143184661865,
+      "type": "delta"
+    },
+    {
+      "text": " ❌ 主要",
+      "_time": 39.60404014587402,
+      "type": "delta"
+    },
+    {
+      "text": "差距\n字节跳动",
+      "_time": 39.7553870677948,
+      "type": "delta"
+    },
+    {
+      "text": "该",
+      "_time": 39.757224798202515,
+      "type": "delta"
+    },
+    {
+      "text": "岗位偏向“技术",
+      "_time": 39.943479776382446,
+      "type": "delta"
+    },
+    {
+      "text": "型",
+      "_time": 39.94508099555969,
+      "type": "delta"
+    },
+    {
+      "text": "产品经理”，以下缺失",
+      "_time": 40.07438564300537,
+      "type": "delta"
+    },
+    {
+      "text": "项",
+      "_time": 40.08307981491089,
+      "type": "delta"
+    },
+    {
+      "text": "是阻碍你获得",
+      "_time": 40.22645974159241,
+      "type": "delta"
+    },
+    {
+      "text": "面试",
+      "_time": 40.229289531707764,
+      "type": "delta"
+    },
+    {
+      "text": "机会的关键：\n",
+      "_time": 40.3845694065094,
+      "type": "delta"
+    },
+    {
+      "text": "1.",
+      "_time": 40.41734862327576,
+      "type": "delta"
+    },
+    {
+      "text": "  **编程与",
+      "_time": 40.49131965637207,
+      "type": "delta"
+    },
+    {
+      "text": "框架",
+      "_time": 40.49420499801636,
+      "type": "delta"
+    },
+    {
+      "text": "能力**：缺乏",
+      "_time": 40.59538793563843,
+      "type": "delta"
+    },
+    {
+      "text": " **Python**",
+      "_time": 40.598116397857666,
+      "type": "delta"
+    },
+    {
+      "text": " 编程技能，",
+      "_time": 40.74245643615723,
+      "type": "delta"
+    },
+    {
+      "text": "以及 **PyT",
+      "_time": 40.7440299987793,
+      "type": "delta"
+    },
+    {
+      "text": "orch**、**",
+      "_time": 40.803030490875244,
+      "type": "delta"
+    },
+    {
+      "text": "LangChain** ",
+      "_time": 40.83737397193909,
+      "type": "delta"
+    },
+    {
+      "text": "等深度学习与大模型",
+      "_time": 40.9104425907135,
+      "type": "delta"
+    },
+    {
+      "text": "开发框架的实际",
+      "_time": 40.913007736206055,
+      "type": "delta"
+    },
+    {
+      "text": "经验。\n2",
+      "_time": 41.01340913772583,
+      "type": "delta"
+    },
+    {
+      "text": ".  **产品",
+      "_time": 41.04813814163208,
+      "type": "delta"
+    },
+    {
+      "text": "管理经验**：简历",
+      "_time": 41.12027096748352,
+      "type": "delta"
+    },
+    {
+      "text": "中未",
+      "_time": 41.12416958808899,
+      "type": "delta"
+    },
+    {
+      "text": "体现明确的产品经理",
+      "_time": 41.22431993484497,
+      "type": "delta"
+    },
+    {
+      "text": "角色经历",
+      "_time": 41.227967262268066,
+      "type": "delta"
+    },
+    {
+      "text": "（如需求分析",
+      "_time": 41.415438652038574,
+      "type": "delta"
+    },
+    {
+      "text": "、版本",
+      "_time": 41.41814661026001,
+      "type": "delta"
+    },
+    {
+      "text": "迭代、跨部门",
+      "_time": 41.52144265174866,
+      "type": "delta"
+    },
+    {
+      "text": "协同",
+      "_time": 41.52293086051941,
+      "type": "delta"
+    },
+    {
+      "text": "等）。\n3",
+      "_time": 41.599283933639526,
+      "type": "delta"
+    },
+    {
+      "text": ".  **前沿",
+      "_time": 41.60136938095093,
+      "type": "delta"
+    },
+    {
+      "text": "技术应用**：缺少",
+      "_time": 41.7792022228241,
+      "type": "delta"
+    },
+    {
+      "text": " **Agent**",
+      "_time": 41.78206396102905,
+      "type": "delta"
+    },
+    {
+      "text": "（智能体）",
+      "_time": 41.87612295150757,
+      "type": "delta"
+    },
+    {
+      "text": "相关的项目",
+      "_time": 41.880206823349,
+      "type": "delta"
+    },
+    {
+      "text": "或实践经验，这是",
+      "_time": 41.99748086929321,
+      "type": "delta"
+    },
+    {
+      "text": "目前",
+      "_time": 42.00006937980652,
+      "type": "delta"
+    },
+    {
+      "text": "大厂 AI 岗位",
+      "_time": 42.11217021942139,
+      "type": "delta"
+    },
+    {
+      "text": "的核心",
+      "_time": 42.1149685382843,
+      "type": "delta"
+    },
+    {
+      "text": "关注点。\n\n",
+      "_time": 42.21335959434509,
+      "type": "delta"
+    },
+    {
+      "text": "###",
+      "_time": 42.21485948562622,
+      "type": "delta"
+    },
+    {
+      "text": " 💡 提升",
+      "_time": 42.31932044029236,
+      "type": "delta"
+    },
+    {
+      "text": "建议\n",
+      "_time": 42.34809494018555,
+      "type": "delta"
+    },
+    {
+      "text": "为了缩小这 ",
+      "_time": 42.422247886657715,
+      "type": "delta"
+    },
+    {
+      "text": "3",
+      "_time": 42.42500114440918,
+      "type": "delta"
+    },
+    {
+      "text": "5 分的差距",
+      "_time": 42.525383710861206,
+      "type": "delta"
+    },
+    {
+      "text": "，建议你",
+      "_time": 42.52790832519531,
+      "type": "delta"
+    },
+    {
+      "text": "从以下三个方面着手",
+      "_time": 42.74028706550598,
+      "type": "delta"
+    },
+    {
+      "text": "：\n\n1.",
+      "_time": 42.77408576011658,
+      "type": "delta"
+    },
+    {
+      "text": "  **补齐技术",
+      "_time": 42.843327045440674,
+      "type": "delta"
+    },
+    {
+      "text": "栈短板",
+      "_time": 42.846972942352295,
+      "type": "delta"
+    },
+    {
+      "text": "**\n    *",
+      "_time": 42.94716835021973,
+      "type": "delta"
+    },
+    {
+      "text": "   **",
+      "_time": 42.950029134750366,
+      "type": "delta"
+    },
+    {
+      "text": "学习路径**：",
+      "_time": 43.086297035217285,
+      "type": "delta"
+    },
+    {
+      "text": "快速",
+      "_time": 43.087748289108276,
+      "type": "delta"
+    },
+    {
+      "text": "掌握 Python 基础",
+      "_time": 43.17041540145874,
+      "type": "delta"
+    },
+    {
+      "text": "，重点学习 **",
+      "_time": 43.17171621322632,
+      "type": "delta"
+    },
+    {
+      "text": "LangChain** ",
+      "_time": 43.30631709098816,
+      "type": "delta"
+    },
+    {
+      "text": "框架，",
+      "_time": 43.306715965270996,
+      "type": "delta"
+    },
+    {
+      "text": "尝试搭建一个简单的 AI",
+      "_time": 43.430458784103394,
+      "type": "delta"
+    },
+    {
+      "text": " 应用。",
+      "_time": 43.43180990219116,
+      "type": "delta"
+    },
+    {
+      "text": "\n    *  ",
+      "_time": 43.56234860420227,
+      "type": "delta"
+    },
+    {
+      "text": " **目标**：",
+      "_time": 43.56492733955383,
+      "type": "delta"
+    },
+    {
+      "text": "能够与技术团队无障碍",
+      "_time": 43.69346857070923,
+      "type": "delta"
+    },
+    {
+      "text": "沟通模型",
+      "_time": 43.69588375091553,
+      "type": "delta"
+    },
+    {
+      "text": "选型与实现逻辑",
+      "_time": 43.878289461135864,
+      "type": "delta"
+    },
+    {
+      "text": "，理解 Py",
+      "_time": 43.88112497329712,
+      "type": "delta"
+    },
+    {
+      "text": "Torch 的基本",
+      "_time": 43.95020914077759,
+      "type": "delta"
+    },
+    {
+      "text": "原理。\n\n2",
+      "_time": 43.95169138908386,
+      "type": "delta"
+    },
+    {
+      "text": ".  **打造",
+      "_time": 44.08621549606323,
+      "type": "delta"
+    },
+    {
+      "text": " Agent 实战",
+      "_time": 44.08789014816284,
+      "type": "delta"
+    },
+    {
+      "text": "项目**\n   ",
+      "_time": 44.15697240829468,
+      "type": "delta"
+    },
+    {
+      "text": " *   **",
+      "_time": 44.199071168899536,
+      "type": "delta"
+    },
+    {
+      "text": "行动**：利用",
+      "_time": 44.30532503128052,
+      "type": "delta"
+    },
+    {
+      "text": "现有",
+      "_time": 44.309077501297,
+      "type": "delta"
+    },
+    {
+      "text": "知识，结合 Lang",
+      "_time": 44.470232248306274,
+      "type": "delta"
+    },
+    {
+      "text": "Chain 开发一个",
+      "_time": 44.471959829330444,
+      "type": "delta"
+    },
+    {
+      "text": "具备自主规划能力的",
+      "_time": 44.60324430465698,
+      "type": "delta"
+    },
+    {
+      "text": " Agent ",
+      "_time": 44.604801654815674,
+      "type": "delta"
+    },
+    {
+      "text": " Demo（例如自动化",
+      "_time": 44.731337785720825,
+      "type": "delta"
+    },
+    {
+      "text": "工作",
+      "_time": 44.733967304229736,
+      "type": "delta"
+    },
+    {
+      "text": "流助手）。\n",
+      "_time": 44.838112115859985,
+      "type": "delta"
+    },
+    {
+      "text": "   ",
+      "_time": 44.86690902709961,
+      "type": "delta"
+    },
+    {
+      "text": " *   **价值",
+      "_time": 44.93326282501221,
+      "type": "delta"
+    },
+    {
+      "text": "**：这将",
+      "_time": 44.93690609931946,
+      "type": "delta"
+    },
+    {
+      "text": "直接弥补“缺乏",
+      "_time": 45.14925932884216,
+      "type": "delta"
+    },
+    {
+      "text": " Agent",
+      "_time": 45.15191984176636,
+      "type": "delta"
+    },
+    {
+      "text": " 经验”的",
+      "_time": 45.27485799789429,
+      "type": "delta"
+    },
+    {
+      "text": "短板",
+      "_time": 45.277547121047974,
+      "type": "delta"
+    },
+    {
+      "text": "，并证明你的",
+      "_time": 45.40637564659119,
+      "type": "delta"
+    },
+    {
+      "text": "技术落地能力。",
+      "_time": 45.410866022109985,
+      "type": "delta"
+    },
+    {
+      "text": "\n\n3. ",
+      "_time": 45.51314640045166,
+      "type": "delta"
+    },
+    {
+      "text": " **强化",
+      "_time": 45.51688313484192,
+      "type": "delta"
+    },
+    {
+      "text": "产品方法论**\n",
+      "_time": 45.65623331069946,
+      "type": "delta"
+    },
+    {
+      "text": "    *",
+      "_time": 45.6769905090332,
+      "type": "delta"
+    },
+    {
+      "text": "   **行动**",
+      "_time": 45.72614407539368,
+      "type": "delta"
+    },
+    {
+      "text": "：在",
+      "_time": 45.72780156135559,
+      "type": "delta"
+    },
+    {
+      "text": "简历中突出产品",
+      "_time": 45.916834115982056,
+      "type": "delta"
+    },
+    {
+      "text": "思维，补充",
+      "_time": 45.91936159133911,
+      "type": "delta"
+    },
+    {
+      "text": "关于用户需求洞察、",
+      "_time": 46.08319807052612,
+      "type": "delta"
+    },
+    {
+      "text": "商业",
+      "_time": 46.084737062454224,
+      "type": "delta"
+    },
+    {
+      "text": "意识以及产品全",
+      "_time": 46.240991830825806,
+      "type": "delta"
+    },
+    {
+      "text": "生命周期管理的",
+      "_time": 46.28010153770447,
+      "type": "delta"
+    },
+    {
+      "text": "描述。\n   ",
+      "_time": 46.34102749824524,
+      "type": "delta"
+    },
+    {
+      "text": " *   **参考",
+      "_time": 46.342503786087036,
+      "type": "delta"
+    },
+    {
+      "text": "**：20",
+      "_time": 46.446221590042114,
+      "type": "delta"
+    },
+    {
+      "text": "25 ",
+      "_time": 46.44751524925232,
+      "type": "delta"
+    },
+    {
+      "text": "年 AI 产品经理",
+      "_time": 46.596081495285034,
+      "type": "delta"
+    },
+    {
+      "text": "趋势显示，除了",
+      "_time": 46.5988495349884,
+      "type": "delta"
+    },
+    {
+      "text": "技术底层，更需要",
+      "_time": 46.7079861164093,
+      "type": "delta"
+    },
+    {
+      "text": "具备",
+      "_time": 46.75995349884033,
+      "type": "delta"
+    },
+    {
+      "text": "“以用户为中心",
+      "_time": 46.80885434150696,
+      "type": "delta"
+    },
+    {
+      "text": "”的商业",
+      "_time": 46.83983254432678,
+      "type": "delta"
+    },
+    {
+      "text": "落地能力。\n\n",
+      "_time": 47.020113706588745,
+      "type": "delta"
+    },
+    {
+      "text": "###",
+      "_time": 47.02264142036438,
+      "type": "delta"
+    },
+    {
+      "text": " 🌟 ",
+      "_time": 47.17417359352112,
+      "type": "delta"
+    },
+    {
+      "text": "行业视角",
+      "_time": 47.1756055355072,
+      "type": "delta"
+    },
+    {
+      "text": "\n根据行业最新",
+      "_time": 47.385233640670776,
+      "type": "delta"
+    },
+    {
+      "text": "趋势，AI ",
+      "_time": 47.41196632385254,
+      "type": "delta"
+    },
+    {
+      "text": "产品经理与传统产品经理的最大",
+      "_time": 47.54312086105347,
+      "type": "delta"
+    },
+    {
+      "text": "区别在于**",
+      "_time": 47.54660415649414,
+      "type": "delta"
+    },
+    {
+      "text": "对技术底层与",
+      "_time": 47.65399432182312,
+      "type": "delta"
+    },
+    {
+      "text": "模型能力的理解**。",
+      "_time": 47.685845375061035,
+      "type": "delta"
+    },
+    {
+      "text": "字节跳动作为技术",
+      "_time": 47.75491499900818,
+      "type": "delta"
+    },
+    {
+      "text": "驱动型公司，",
+      "_time": 47.755444288253784,
+      "type": "delta"
+    },
+    {
+      "text": "对该岗位的技术要求",
+      "_time": 47.94906949996948,
+      "type": "delta"
+    },
+    {
+      "text": "较高",
+      "_time": 47.95275139808655,
+      "type": "delta"
+    },
+    {
+      "text": "。你目前具备",
+      "_time": 48.0719039440155,
+      "type": "delta"
+    },
+    {
+      "text": "的 RAG",
+      "_time": 48.07471513748169,
+      "type": "delta"
+    },
+    {
+      "text": " 和 Prompt ",
+      "_time": 48.17987871170044,
+      "type": "delta"
+    },
+    {
+      "text": "经验",
+      "_time": 48.18268394470215,
+      "type": "delta"
+    },
+    {
+      "text": "是很好的切入点，",
+      "_time": 48.364174127578735,
+      "type": "delta"
+    },
+    {
+      "text": "若能",
+      "_time": 48.367610931396484,
+      "type": "delta"
+    },
+    {
+      "text": "结合编程能力与",
+      "_time": 48.48796510696411,
+      "type": "delta"
+    },
+    {
+      "text": "完整",
+      "_time": 48.49064230918884,
+      "type": "delta"
+    },
+    {
+      "text": "的产品案例，将",
+      "_time": 48.7009015083313,
+      "type": "delta"
+    },
+    {
+      "text": "极大",
+      "_time": 48.70374011993408,
+      "type": "delta"
+    },
+    {
+      "text": "增加入职几率。",
+      "_time": 48.975881814956665,
+      "type": "delta"
+    },
+    {
+      "text": "\n\n",
+      "_time": 48.97853899002075,
+      "type": "delta"
+    },
+    {
+      "text": "加油！方向已经",
+      "_time": 49.06694221496582,
+      "type": "delta"
+    },
+    {
+      "text": "明确，针对性",
+      "_time": 49.06845831871033,
+      "type": "delta"
+    },
+    {
+      "text": "补充后很有希望",
+      "_time": 49.22089123725891,
+      "type": "delta"
+    },
+    {
+      "text": "达成",
+      "_time": 49.22253155708313,
+      "type": "delta"
+    },
+    {
+      "text": "目标。如果有具体的",
+      "_time": 49.41092300415039,
+      "type": "delta"
+    },
+    {
+      "text": "项目",
+      "_time": 49.41453576087952,
+      "type": "delta"
+    },
+    {
+      "text": "想法需要评估，",
+      "_time": 49.53194308280945,
+      "type": "delta"
+    },
+    {
+      "text": "欢迎随时沟通",
+      "_time": 49.53344678878784,
+      "type": "delta"
+    },
+    {
+      "text": "。",
+      "_time": 49.5868456363678,
+      "type": "delta"
+    },
+    {
+      "session_id": "eval_chen_02_1777539717405",
+      "intent": "match_assess",
+      "route_meta": {
+        "layer": "llm",
+        "intent": "match_assess",
+        "confidence": 0.95,
+        "demands": [
+          {
+            "intent": "match_assess",
+            "entities": {
+              "company": "字节跳动",
+              "position": "产品经理"
+            }
+          }
+        ],
+        "plan_tasks": 4
+      },
+      "agent_mode": "llm",
+      "is_clarification": false,
+      "agent": {
+        "rewritten_query": "字节跳动的AI产品经理我够格吗",
+        "tools": [
+          {
+            "tool": "kb_retrieve",
+            "status": "✅",
+            "params": {
+              "query": "AI产品经理",
+              "company": "字节跳动",
+              "top_k": 1,
+              "position": "产品经理"
+            },
+            "result_preview": "{'chunks': [{'chunk_id': 'ac9973c8-01be-4cd6-9a99-097873a59cf0_chunk_8', 'content': '【字节跳动 · AI产品经理 关键词】\\nPython, PyTorch, LangChain, RAG, Agent, 产品经理, AI', 'metadata': {'company': '字节跳动', 'index': 8,"
+          },
+          {
+            "tool": "match_analyze",
+            "status": "✅",
+            "params": {
+              "resume_text": "AI\n / \n157-xxxx-3421  |  chenyutong2027@163.com  |  \n  |  2027\n6\n2024.09  2027.06\n · \nAI\n· \nGPA\n3.4/4.0  |  \n2020.09  2024.06\n · \n · \n  |  \nWeb\n \n \n2025.03  2025.11\n  |  \n40\n\"\n\"\n\"\n\"\nFigma\nAI\nEmbedding\nJD\nAPI\nPrompt\n20\nPDF\n \n \nRAG\n2024.10  2025.02\n  |  \n80\nOCR\nWeb\n\"\n\"\n · \n2024.09  2025.06\n10\n · \n2022.03  2023.06\n2025.05    \n2024.11    \nAI\n2023.06    \n2022.12    \nFigma\nAxure\nXmind\n/\nPRD\nPrompt Engineering\nRAG\nEmbedding\nCET-4\n525\nOffice\nExcel",
+              "jd_text": [
+                {
+                  "chunk_id": "ac9973c8-01be-4cd6-9a99-097873a59cf0_chunk_8",
+                  "content": "【字节跳动 · AI产品经理 关键词】\nPython, PyTorch, LangChain, RAG, Agent, 产品经理, AI",
+                  "metadata": {
+                    "company": "字节跳动",
+                    "index": 8,
+                    "jd_id": "ac9973c8-01be-4cd6-9a99-097873a59cf0",
+                    "position": "AI产品经理",
+                    "section": "keywords",
+                    "strategy": "semantic"
+                  },
+                  "distance": null,
+                  "bm25_score": 5.021517779516011,
+                  "vec_norm": 0.0,
+                  "bm25_norm": 1.0,
+                  "hybrid_score": 0.3,
+                  "rerank_score": 0.993
+                }
+              ],
+              "company": "字节跳动",
+              "position": "产品经理"
+            },
+            "result_preview": "{'score': 65, 'label': '略有差距', 'advantages': ['AI', 'Figma', 'Prompt Engineering', 'RAG'], 'weaknesses': ['候选人缺乏Python编程技能、PyTorch、LangChain等相关技术经验。同时，缺乏产品管理经验，特别是作为产品经理的角色。此外，候选人没有提及任何与Agent相关的经验，这也是"
+          },
+          {
+            "tool": "external_search",
+            "status": "✅",
+            "params": {
+              "query": "AI产品经理",
+              "count": 5
+            },
+            "result_preview": "{'chunks': [{'chunk_id': 'tavily_571322869', 'content': '【来源：网络搜索】AI产品经理一文详解：25年新趋势\\n## AI产品经理一文详解：25年新趋势. 6 评论 12715 浏览 101 收藏  39 分钟. > 想做AI产品经理，不知道该学什么、干什么？这篇文章用最清晰的方式告诉你：现在AI产品经理要掌握哪些能力？需要会什么工具？要懂"
+          }
+        ],
+        "kb_chunks_count": 4,
+        "system_prompt_preview": "你是一位专业的求职顾问。请基于以下工具执行结果，给用户一个清晰、有帮助的回复。\n要求：\n1. 直接回答用户的问题，不要重复用户的原话\n2. 如果有匹配分析结果，给出具体的分数和建议\n3. 如果有检索结果，基于事实回答，不要编造\n4. 语气友好、专业、结构化"
+      },
+      "memory": {
+        "working_turns": 1,
+        "compressed_blocks": 0,
+        "current_topic": "general",
+        "evidence_cache_size": 1
+      },
+      "reply": {
+        "type": "text",
+        "content": "你好！基于对你的简历与字节跳动 AI 产品经理岗位要求的综合评估，目前的结论是：**你暂时还未完全达到该岗位的录用标准，匹配度为 65 分，属于“略有差距”**。\n\n不过，你在部分核心领域已经具备了基础，只要针对性补充缺失技能，竞争力会有显著提升。以下是详细的分析与建议：\n\n### 📊 匹配度分析\n*   **综合得分**：65 / 100\n*   **评估结论**：略有差距\n*   **岗位核心要求**：Python, PyTorch, LangChain, RAG, Agent, 产品经理，AI\n\n### ✅ 你的优势\n你已经在以下关键领域展现了相关能力，这是很好的入门基础：\n*   **AI 与大模型应用**：具备 AI 基本概念。\n*   **工具技能**：熟悉 Figma（原型设计）、Prompt Engineering（提示词工程）。\n*   **技术架构**：了解 RAG（检索增强生成），这是当前 AI 应用落地的主流架构之一。\n\n### ❌ 主要差距\n字节跳动该岗位偏向“技术型产品经理”，以下缺失项是阻碍你获得面试机会的关键：\n1.  **编程与框架能力**：缺乏 **Python** 编程技能，以及 **PyTorch**、**LangChain** 等深度学习与大模型开发框架的实际经验。\n2.  **产品管理经验**：简历中未体现明确的产品经理角色经历（如需求分析、版本迭代、跨部门协同等）。\n3.  **前沿技术应用**：缺少 **Agent**（智能体）相关的项目或实践经验，这是目前大厂 AI 岗位的核心关注点。\n\n### 💡 提升建议\n为了缩小这 35 分的差距，建议你从以下三个方面着手：\n\n1.  **补齐技术栈短板**\n    *   **学习路径**：快速掌握 Python 基础，重点学习 **LangChain** 框架，尝试搭建一个简单的 AI 应用。\n    *   **目标**：能够与技术团队无障碍沟通模型选型与实现逻辑，理解 PyTorch 的基本原理。\n\n2.  **打造 Agent 实战项目**\n    *   **行动**：利用现有知识，结合 LangChain 开发一个具备自主规划能力的 Agent  Demo（例如自动化工作流助手）。\n    *   **价值**：这将直接弥补“缺乏 Agent 经验”的短板，并证明你的技术落地能力。\n\n3.  **强化产品方法论**\n    *   **行动**：在简历中突出产品思维，补充关于用户需求洞察、商业意识以及产品全生命周期管理的描述。\n    *   **参考**：2025 年 AI 产品经理趋势显示，除了技术底层，更需要具备“以用户为中心”的商业落地能力。\n\n### 🌟 行业视角\n根据行业最新趋势，AI 产品经理与传统产品经理的最大区别在于**对技术底层与模型能力的理解**。字节跳动作为技术驱动型公司，对该岗位的技术要求较高。你目前具备的 RAG 和 Prompt 经验是很好的切入点，若能结合编程能力与完整的产品案例，将极大增加入职几率。\n\n加油！方向已经明确，针对性补充后很有希望达成目标。如果有具体的项目想法需要评估，欢迎随时沟通。",
+        "data": null,
+        "sources": null
+      },
+      "_time": 49.64592933654785,
+      "type": "done"
+    }
+  ],
+  "timestamp": "2026-04-30T17:01:57.405232"
+}

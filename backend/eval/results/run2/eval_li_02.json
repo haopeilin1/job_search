@@ -1,0 +1,813 @@
+{
+  "case_id": "eval_li_02",
+  "message": "阿里巴巴后端开发我匹配吗",
+  "gold_intents": [
+    "assess"
+  ],
+  "expected_tools": [
+    "kb_retrieve",
+    "match_analyze"
+  ],
+  "scenario": "有简历_单JD匹配_阿里巴巴",
+  "status": "success",
+  "error": null,
+  "ttfb": 0.007,
+  "total_latency": 63.61,
+  "event_count": 127,
+  "pred_intent": "match_assess",
+  "pred_tools": [
+    {
+      "tool": "kb_retrieve",
+      "status": "✅",
+      "params": {
+        "query": "阿里巴巴后端开发",
+        "company": "阿里巴巴",
+        "position": "后端开发",
+        "top_k": 1
+      },
+      "result_preview": "{'chunks': [{'chunk_id': '9cde8355-dcc0-434e-97c4-67dfc5dae5b8_chunk_4', 'content': '【阿里巴巴 · 后端开发 硬性要求】\\n熟悉分布式系统设计与微服务架构', 'metadata': {'company': '阿里巴巴', 'index': 4, 'jd_id': '9cde8355-dcc0-434e-97c4"
+    },
+    {
+      "tool": "match_analyze",
+      "status": "✅",
+      "params": {
+        "resume_text": "AI\n / \n157-xxxx-3421  |  chenyutong2027@163.com  |  \n  |  2027\n6\n2024.09  2027.06\n · \nAI\n· \nGPA\n3.4/4.0  |  \n2020.09  2024.06\n · \n · \n  |  \nWeb\n \n \n2025.03  2025.11\n  |  \n40\n\"\n\"\n\"\n\"\nFigma\nAI\nEmbedding\nJD\nAPI\nPrompt\n20\nPDF\n \n \nRAG\n2024.10  2025.02\n  |  \n80\nOCR\nWeb\n\"\n\"\n · \n2024.09  2025.06\n10\n · \n2022.03  2023.06\n2025.05    \n2024.11    \nAI\n2023.06    \n2022.12    \nFigma\nAxure\nXmind\n/\nPRD\nPrompt Engineering\nRAG\nEmbedding\nCET-4\n525\nOffice\nExcel",
+        "jd_text": [
+          {
+            "chunk_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8_chunk_4",
+            "content": "【阿里巴巴 · 后端开发 硬性要求】\n熟悉分布式系统设计与微服务架构",
+            "metadata": {
+              "company": "阿里巴巴",
+              "index": 4,
+              "jd_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8",
+              "position": "后端开发",
+              "priority": "high",
+              "section": "hard_requirements",
+              "strategy": "semantic"
+            },
+            "distance": 0.3749150335788727,
+            "bm25_score": 17.486238673995892,
+            "vec_norm": 0.9228530208940438,
+            "bm25_norm": 0.8322076462414304,
+            "hybrid_score": 0.8956594084982596,
+            "rerank_score": 0.9979
+          }
+        ],
+        "company": "阿里巴巴",
+        "position": "后端开发"
+      },
+      "result_preview": "{'score': 60, 'label': '略有差距', 'advantages': [], 'weaknesses': ['候选人缺乏分布式系统设计与微服务架构的相关经验。简历中提及的技能包括AI、Figma、PDF、RAG、OCR、Web、Embedding等，但没有明确提到与分布式系统设计或微服务架构相关的经验或项目。'], 'suggestions': ['核心能力要求: 分布式系统设"
+    },
+    {
+      "tool": "external_search",
+      "status": "✅",
+      "params": {
+        "query": "阿里巴巴后端开发",
+        "count": 5
+      },
+      "result_preview": "{'chunks': [{'chunk_id': 'tavily_778380827', 'content': '【来源：网络搜索】阿里巴巴常用的12个后端开发工具_billzhanu-腾讯云开发者社区\\n# logo 腾讯云开发者社区. ## 登录社区云. ### 腾讯云开发者社区. # 阿里巴巴常用的12个后端开发工具. 从手动编码到自动化，从重复工作到创新，开发人员工具随着技术的发展而不断发"
+    }
+  ],
+  "tools_called": [
+    "kb_retrieve",
+    "match_analyze",
+    "external_search"
+  ],
+  "reply": "您好！基于对您简历与阿里巴巴后端开发岗位的综合分析，目前的匹配结果为**60 分**，整体评价为**“略有差距”**。\n\n以下是详细的匹配分析与建议：\n\n### 1. 核心差距分析\n*   **岗位硬性要求**：阿里巴巴后端开发岗位明确强调需要**“熟悉分布式系统设计与微服务架构”**。\n*   **当前简历现状**：您的技能栈主要集中在 AI 与应用层领域（如 AI、RAG、OCR、Embedding、Figma 等），简历中未明确体现分布式系统设计或微服务架构相关的实战经验或项目经历。这是导致匹配度未达预期的主要原因。\n\n### 2. 提升建议\n*   **补充核心架构经验**：建议在简历中挖掘或补充涉及高并发、分布式系统设计的項目经历。如果现有项目涉及后端，请着重描述如何解决分布式一致性、服务拆分、链路追踪等问题。\n*   **强化技术栈描述**：针对“微服务架构”这一核心要求，明确列出您熟悉的相关中间件（如 Dubbo, Spring Cloud, RocketMQ 等）及设计模式。\n*   **调整简历侧重**：虽然 AI 技能是加分项，但申请后端开发岗位时，应确保后端基础架构能力的展示优先级高于应用层工具技能。\n\n### 3. 岗位参考信息\n*   **薪资范围**：根据市场信息，阿里巴巴后端开发岗位薪资跨度较大，实习岗约 200-250 元/天，正式研发工程师月薪通常在 25-50K 之间（部分实验室岗位如通义实验室魔搭可达 30-50K）。\n*   **常用工具**：阿里巴巴后端生态中常涉及 Arthas 等诊断工具，以及各类开源中间件，熟悉这些工具链有助于提升面试竞争力。\n\n总体而言，您具备不错的技术背景，但需要针对后端架构核心能力进行针对性优化。祝您求职顺利！",
+  "reply_length": 752,
+  "intent_match": true,
+  "tool_match_rate": 1.0,
+  "has_reply": true,
+  "events": [
+    {
+      "step": "intent",
+      "message": "正在识别您的意图...",
+      "_time": 0.00701451301574707,
+      "type": "status"
+    },
+    {
+      "step": "plan",
+      "message": "正在规划任务...",
+      "_time": 1.234473466873169,
+      "type": "status"
+    },
+    {
+      "step": "execute",
+      "message": "正在执行分析...",
+      "_time": 7.252481698989868,
+      "type": "status"
+    },
+    {
+      "step": "aggregate",
+      "message": "正在生成回复...",
+      "_time": 11.111721992492676,
+      "type": "status"
+    },
+    {
+      "text": "您好！",
+      "_time": 54.46339702606201,
+      "type": "delta"
+    },
+    {
+      "text": "基于对您简历",
+      "_time": 54.46626400947571,
+      "type": "delta"
+    },
+    {
+      "text": "与阿里巴巴后端开发",
+      "_time": 54.602272748947144,
+      "type": "delta"
+    },
+    {
+      "text": "岗位的综合分析，",
+      "_time": 54.60419535636902,
+      "type": "delta"
+    },
+    {
+      "text": "目前的匹配结果为**",
+      "_time": 54.853224992752075,
+      "type": "delta"
+    },
+    {
+      "text": "60 分",
+      "_time": 54.85618853569031,
+      "type": "delta"
+    },
+    {
+      "text": "**，整体评价",
+      "_time": 54.95524621009827,
+      "type": "delta"
+    },
+    {
+      "text": "为**“",
+      "_time": 54.959070920944214,
+      "type": "delta"
+    },
+    {
+      "text": "略有差距”**。",
+      "_time": 55.0964138507843,
+      "type": "delta"
+    },
+    {
+      "text": "\n\n以下是详细的",
+      "_time": 55.12421894073486,
+      "type": "delta"
+    },
+    {
+      "text": "匹配分析与建议：",
+      "_time": 55.23922777175903,
+      "type": "delta"
+    },
+    {
+      "text": "\n\n###",
+      "_time": 55.24221205711365,
+      "type": "delta"
+    },
+    {
+      "text": " 1. ",
+      "_time": 55.373106956481934,
+      "type": "delta"
+    },
+    {
+      "text": "核心差距",
+      "_time": 55.374616861343384,
+      "type": "delta"
+    },
+    {
+      "text": "分析\n*  ",
+      "_time": 55.54344058036804,
+      "type": "delta"
+    },
+    {
+      "text": " **岗位硬性要求",
+      "_time": 55.546223878860474,
+      "type": "delta"
+    },
+    {
+      "text": "**：阿里巴巴后端",
+      "_time": 55.65822076797485,
+      "type": "delta"
+    },
+    {
+      "text": "开发岗位明确",
+      "_time": 55.662144899368286,
+      "type": "delta"
+    },
+    {
+      "text": "强调需要**“",
+      "_time": 55.96928811073303,
+      "type": "delta"
+    },
+    {
+      "text": "熟悉分布式系统设计与",
+      "_time": 55.9721245765686,
+      "type": "delta"
+    },
+    {
+      "text": "微服务架构”**",
+      "_time": 56.079020500183105,
+      "type": "delta"
+    },
+    {
+      "text": "。\n*  ",
+      "_time": 56.08198070526123,
+      "type": "delta"
+    },
+    {
+      "text": " **当前简历现状",
+      "_time": 56.32110548019409,
+      "type": "delta"
+    },
+    {
+      "text": "**：您的技能",
+      "_time": 56.32280445098877,
+      "type": "delta"
+    },
+    {
+      "text": "栈主要集中在 AI ",
+      "_time": 56.50105857849121,
+      "type": "delta"
+    },
+    {
+      "text": "与应用层领域",
+      "_time": 56.53032040596008,
+      "type": "delta"
+    },
+    {
+      "text": "（如 AI、",
+      "_time": 56.642542600631714,
+      "type": "delta"
+    },
+    {
+      "text": "RAG、OCR",
+      "_time": 56.64378023147583,
+      "type": "delta"
+    },
+    {
+      "text": "、Embedding、",
+      "_time": 56.78615355491638,
+      "type": "delta"
+    },
+    {
+      "text": "F",
+      "_time": 56.835060358047485,
+      "type": "delta"
+    },
+    {
+      "text": "igma 等），",
+      "_time": 56.9531307220459,
+      "type": "delta"
+    },
+    {
+      "text": "简历",
+      "_time": 56.953733921051025,
+      "type": "delta"
+    },
+    {
+      "text": "中未明确体现",
+      "_time": 57.05708646774292,
+      "type": "delta"
+    },
+    {
+      "text": "分布式",
+      "_time": 57.06106877326965,
+      "type": "delta"
+    },
+    {
+      "text": "系统设计或微服务",
+      "_time": 57.19312119483948,
+      "type": "delta"
+    },
+    {
+      "text": "架构",
+      "_time": 57.19604969024658,
+      "type": "delta"
+    },
+    {
+      "text": "相关的实战经验或",
+      "_time": 57.38505840301514,
+      "type": "delta"
+    },
+    {
+      "text": "项目经历",
+      "_time": 57.38907051086426,
+      "type": "delta"
+    },
+    {
+      "text": "。这是导致匹配",
+      "_time": 57.50010418891907,
+      "type": "delta"
+    },
+    {
+      "text": "度未",
+      "_time": 57.50412392616272,
+      "type": "delta"
+    },
+    {
+      "text": "达预期的主要原因。",
+      "_time": 57.60814452171326,
+      "type": "delta"
+    },
+    {
+      "text": "\n\n### 2",
+      "_time": 57.6503746509552,
+      "type": "delta"
+    },
+    {
+      "text": ". 提升建议",
+      "_time": 57.74236059188843,
+      "type": "delta"
+    },
+    {
+      "text": "\n*   **",
+      "_time": 57.74506497383118,
+      "type": "delta"
+    },
+    {
+      "text": "补充核心架构经验",
+      "_time": 57.886136054992676,
+      "type": "delta"
+    },
+    {
+      "text": "**：建议在",
+      "_time": 57.8890540599823,
+      "type": "delta"
+    },
+    {
+      "text": "简历中挖掘或",
+      "_time": 58.04716658592224,
+      "type": "delta"
+    },
+    {
+      "text": "补充",
+      "_time": 58.04905939102173,
+      "type": "delta"
+    },
+    {
+      "text": "涉及高并发、",
+      "_time": 58.15202879905701,
+      "type": "delta"
+    },
+    {
+      "text": "分布式系统设计的項目",
+      "_time": 58.15491580963135,
+      "type": "delta"
+    },
+    {
+      "text": "经历。如果现有",
+      "_time": 58.360268354415894,
+      "type": "delta"
+    },
+    {
+      "text": "项目涉及",
+      "_time": 58.43505334854126,
+      "type": "delta"
+    },
+    {
+      "text": "后端，请着重",
+      "_time": 58.500033378601074,
+      "type": "delta"
+    },
+    {
+      "text": "描述如何解决",
+      "_time": 58.50291037559509,
+      "type": "delta"
+    },
+    {
+      "text": "分布式一致性、服务",
+      "_time": 58.636146545410156,
+      "type": "delta"
+    },
+    {
+      "text": "拆分",
+      "_time": 58.63807153701782,
+      "type": "delta"
+    },
+    {
+      "text": "、链路追踪等问题",
+      "_time": 58.87922930717468,
+      "type": "delta"
+    },
+    {
+      "text": "。\n*",
+      "_time": 58.880937814712524,
+      "type": "delta"
+    },
+    {
+      "text": "   **强化技术",
+      "_time": 58.981043100357056,
+      "type": "delta"
+    },
+    {
+      "text": "栈描述",
+      "_time": 58.98267602920532,
+      "type": "delta"
+    },
+    {
+      "text": "**：针对“",
+      "_time": 59.117204427719116,
+      "type": "delta"
+    },
+    {
+      "text": "微服务架构”",
+      "_time": 59.153016328811646,
+      "type": "delta"
+    },
+    {
+      "text": "这一核心要求，",
+      "_time": 59.27405762672424,
+      "type": "delta"
+    },
+    {
+      "text": "明确列出您熟悉",
+      "_time": 59.275779724121094,
+      "type": "delta"
+    },
+    {
+      "text": "的相关中间件（",
+      "_time": 59.474063873291016,
+      "type": "delta"
+    },
+    {
+      "text": "如 Dub",
+      "_time": 59.475974559783936,
+      "type": "delta"
+    },
+    {
+      "text": "bo, Spring Cloud",
+      "_time": 59.63808846473694,
+      "type": "delta"
+    },
+    {
+      "text": ",",
+      "_time": 59.63992190361023,
+      "type": "delta"
+    },
+    {
+      "text": " RocketMQ 等",
+      "_time": 59.75324583053589,
+      "type": "delta"
+    },
+    {
+      "text": "）及",
+      "_time": 59.754706144332886,
+      "type": "delta"
+    },
+    {
+      "text": "设计模式。\n",
+      "_time": 59.92132353782654,
+      "type": "delta"
+    },
+    {
+      "text": "*  ",
+      "_time": 59.923773765563965,
+      "type": "delta"
+    },
+    {
+      "text": " **调整简历侧重",
+      "_time": 60.02400827407837,
+      "type": "delta"
+    },
+    {
+      "text": "**：虽然",
+      "_time": 60.0259907245636,
+      "type": "delta"
+    },
+    {
+      "text": " AI 技能是",
+      "_time": 60.15898084640503,
+      "type": "delta"
+    },
+    {
+      "text": "加分",
+      "_time": 60.16185235977173,
+      "type": "delta"
+    },
+    {
+      "text": "项，但申请",
+      "_time": 60.32507348060608,
+      "type": "delta"
+    },
+    {
+      "text": "后端开发岗位时",
+      "_time": 60.32556939125061,
+      "type": "delta"
+    },
+    {
+      "text": "，应确保后端",
+      "_time": 60.432913303375244,
+      "type": "delta"
+    },
+    {
+      "text": "基础架构能力的",
+      "_time": 60.43593382835388,
+      "type": "delta"
+    },
+    {
+      "text": "展示优先级高于应用",
+      "_time": 60.671053409576416,
+      "type": "delta"
+    },
+    {
+      "text": "层工具技能",
+      "_time": 60.6739776134491,
+      "type": "delta"
+    },
+    {
+      "text": "。\n\n### ",
+      "_time": 60.78095984458923,
+      "type": "delta"
+    },
+    {
+      "text": "3. 岗位",
+      "_time": 60.782779932022095,
+      "type": "delta"
+    },
+    {
+      "text": "参考信息\n*",
+      "_time": 60.921775817871094,
+      "type": "delta"
+    },
+    {
+      "text": "  ",
+      "_time": 60.923341512680054,
+      "type": "delta"
+    },
+    {
+      "text": " **薪资范围**",
+      "_time": 61.09827923774719,
+      "type": "delta"
+    },
+    {
+      "text": "：根据市场信息",
+      "_time": 61.10088896751404,
+      "type": "delta"
+    },
+    {
+      "text": "，阿里巴巴后端开发",
+      "_time": 61.20181632041931,
+      "type": "delta"
+    },
+    {
+      "text": "岗位薪资跨度较大",
+      "_time": 61.35300040245056,
+      "type": "delta"
+    },
+    {
+      "text": "，实习岗约",
+      "_time": 61.354764461517334,
+      "type": "delta"
+    },
+    {
+      "text": " 20",
+      "_time": 61.35787391662598,
+      "type": "delta"
+    },
+    {
+      "text": "0-25",
+      "_time": 61.48104429244995,
+      "type": "delta"
+    },
+    {
+      "text": "0 元/",
+      "_time": 61.482654333114624,
+      "type": "delta"
+    },
+    {
+      "text": "天，正式研发",
+      "_time": 61.610984086990356,
+      "type": "delta"
+    },
+    {
+      "text": "工程师",
+      "_time": 61.61583662033081,
+      "type": "delta"
+    },
+    {
+      "text": "月薪通常在 2",
+      "_time": 61.79095959663391,
+      "type": "delta"
+    },
+    {
+      "text": "5-50",
+      "_time": 61.7938506603241,
+      "type": "delta"
+    },
+    {
+      "text": "K 之间（",
+      "_time": 61.89515924453735,
+      "type": "delta"
+    },
+    {
+      "text": "部分实验室",
+      "_time": 61.89673829078674,
+      "type": "delta"
+    },
+    {
+      "text": "岗位如通义",
+      "_time": 62.034215450286865,
+      "type": "delta"
+    },
+    {
+      "text": "实验室",
+      "_time": 62.07591009140015,
+      "type": "delta"
+    },
+    {
+      "text": "魔搭可达 ",
+      "_time": 62.2171950340271,
+      "type": "delta"
+    },
+    {
+      "text": "30",
+      "_time": 62.21855068206787,
+      "type": "delta"
+    },
+    {
+      "text": "-50K",
+      "_time": 62.318238735198975,
+      "type": "delta"
+    },
+    {
+      "text": "）。\n*  ",
+      "_time": 62.32184553146362,
+      "type": "delta"
+    },
+    {
+      "text": " **常用工具**",
+      "_time": 62.453043937683105,
+      "type": "delta"
+    },
+    {
+      "text": "：阿里巴巴后端",
+      "_time": 62.45466136932373,
+      "type": "delta"
+    },
+    {
+      "text": "生态中常涉及",
+      "_time": 62.615875005722046,
+      "type": "delta"
+    },
+    {
+      "text": " Arthas ",
+      "_time": 62.61983299255371,
+      "type": "delta"
+    },
+    {
+      "text": "等诊断工具，",
+      "_time": 62.72883701324463,
+      "type": "delta"
+    },
+    {
+      "text": "以及各类开源中间",
+      "_time": 62.73274850845337,
+      "type": "delta"
+    },
+    {
+      "text": "件，熟悉这些",
+      "_time": 62.89885687828064,
+      "type": "delta"
+    },
+    {
+      "text": "工具链",
+      "_time": 62.9017550945282,
+      "type": "delta"
+    },
+    {
+      "text": "有助于提升面试竞争力",
+      "_time": 63.005857706069946,
+      "type": "delta"
+    },
+    {
+      "text": "。\n\n总体而言，",
+      "_time": 63.006507396698,
+      "type": "delta"
+    },
+    {
+      "text": "您具备不错的技术",
+      "_time": 63.178157806396484,
+      "type": "delta"
+    },
+    {
+      "text": "背景，但",
+      "_time": 63.18082809448242,
+      "type": "delta"
+    },
+    {
+      "text": "需要针对后端架构",
+      "_time": 63.36920666694641,
+      "type": "delta"
+    },
+    {
+      "text": "核心能力进行针对性",
+      "_time": 63.37166357040405,
+      "type": "delta"
+    },
+    {
+      "text": "优化。祝您求职",
+      "_time": 63.51487874984741,
+      "type": "delta"
+    },
+    {
+      "text": "顺利！",
+      "_time": 63.5477728843689,
+      "type": "delta"
+    },
+    {
+      "session_id": "eval_li_02_1777544726900",
+      "intent": "match_assess",
+      "route_meta": {
+        "layer": "llm",
+        "intent": "match_assess",
+        "confidence": 0.95,
+        "demands": [
+          {
+            "intent": "match_assess",
+            "entities": {
+              "company": "阿里巴巴",
+              "position": "后端开发"
+            }
+          }
+        ],
+        "plan_tasks": 4
+      },
+      "agent_mode": "llm",
+      "is_clarification": false,
+      "agent": {
+        "rewritten_query": "阿里巴巴后端开发我匹配吗",
+        "tools": [
+          {
+            "tool": "kb_retrieve",
+            "status": "✅",
+            "params": {
+              "query": "阿里巴巴后端开发",
+              "company": "阿里巴巴",
+              "position": "后端开发",
+              "top_k": 1
+            },
+            "result_preview": "{'chunks': [{'chunk_id': '9cde8355-dcc0-434e-97c4-67dfc5dae5b8_chunk_4', 'content': '【阿里巴巴 · 后端开发 硬性要求】\\n熟悉分布式系统设计与微服务架构', 'metadata': {'company': '阿里巴巴', 'index': 4, 'jd_id': '9cde8355-dcc0-434e-97c4"
+          },
+          {
+            "tool": "match_analyze",
+            "status": "✅",
+            "params": {
+              "resume_text": "AI\n / \n157-xxxx-3421  |  chenyutong2027@163.com  |  \n  |  2027\n6\n2024.09  2027.06\n · \nAI\n· \nGPA\n3.4/4.0  |  \n2020.09  2024.06\n · \n · \n  |  \nWeb\n \n \n2025.03  2025.11\n  |  \n40\n\"\n\"\n\"\n\"\nFigma\nAI\nEmbedding\nJD\nAPI\nPrompt\n20\nPDF\n \n \nRAG\n2024.10  2025.02\n  |  \n80\nOCR\nWeb\n\"\n\"\n · \n2024.09  2025.06\n10\n · \n2022.03  2023.06\n2025.05    \n2024.11    \nAI\n2023.06    \n2022.12    \nFigma\nAxure\nXmind\n/\nPRD\nPrompt Engineering\nRAG\nEmbedding\nCET-4\n525\nOffice\nExcel",
+              "jd_text": [
+                {
+                  "chunk_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8_chunk_4",
+                  "content": "【阿里巴巴 · 后端开发 硬性要求】\n熟悉分布式系统设计与微服务架构",
+                  "metadata": {
+                    "company": "阿里巴巴",
+                    "index": 4,
+                    "jd_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8",
+                    "position": "后端开发",
+                    "priority": "high",
+                    "section": "hard_requirements",
+                    "strategy": "semantic"
+                  },
+                  "distance": 0.3749150335788727,
+                  "bm25_score": 17.486238673995892,
+                  "vec_norm": 0.9228530208940438,
+                  "bm25_norm": 0.8322076462414304,
+                  "hybrid_score": 0.8956594084982596,
+                  "rerank_score": 0.9979
+                }
+              ],
+              "company": "阿里巴巴",
+              "position": "后端开发"
+            },
+            "result_preview": "{'score': 60, 'label': '略有差距', 'advantages': [], 'weaknesses': ['候选人缺乏分布式系统设计与微服务架构的相关经验。简历中提及的技能包括AI、Figma、PDF、RAG、OCR、Web、Embedding等，但没有明确提到与分布式系统设计或微服务架构相关的经验或项目。'], 'suggestions': ['核心能力要求: 分布式系统设"
+          },
+          {
+            "tool": "external_search",
+            "status": "✅",
+            "params": {
+              "query": "阿里巴巴后端开发",
+              "count": 5
+            },
+            "result_preview": "{'chunks': [{'chunk_id': 'tavily_778380827', 'content': '【来源：网络搜索】阿里巴巴常用的12个后端开发工具_billzhanu-腾讯云开发者社区\\n# logo 腾讯云开发者社区. ## 登录社区云. ### 腾讯云开发者社区. # 阿里巴巴常用的12个后端开发工具. 从手动编码到自动化，从重复工作到创新，开发人员工具随着技术的发展而不断发"
+          }
+        ],
+        "kb_chunks_count": 4,
+        "system_prompt_preview": "你是一位专业的求职顾问。请基于以下工具执行结果，给用户一个清晰、有帮助的回复。\n要求：\n1. 直接回答用户的问题，不要重复用户的原话\n2. 如果有匹配分析结果，给出具体的分数和建议\n3. 如果有检索结果，基于事实回答，不要编造\n4. 语气友好、专业、结构化"
+      },
+      "memory": {
+        "working_turns": 1,
+        "compressed_blocks": 0,
+        "current_topic": "general",
+        "evidence_cache_size": 1
+      },
+      "reply": {
+        "type": "text",
+        "content": "您好！基于对您简历与阿里巴巴后端开发岗位的综合分析，目前的匹配结果为**60 分**，整体评价为**“略有差距”**。\n\n以下是详细的匹配分析与建议：\n\n### 1. 核心差距分析\n*   **岗位硬性要求**：阿里巴巴后端开发岗位明确强调需要**“熟悉分布式系统设计与微服务架构”**。\n*   **当前简历现状**：您的技能栈主要集中在 AI 与应用层领域（如 AI、RAG、OCR、Embedding、Figma 等），简历中未明确体现分布式系统设计或微服务架构相关的实战经验或项目经历。这是导致匹配度未达预期的主要原因。\n\n### 2. 提升建议\n*   **补充核心架构经验**：建议在简历中挖掘或补充涉及高并发、分布式系统设计的項目经历。如果现有项目涉及后端，请着重描述如何解决分布式一致性、服务拆分、链路追踪等问题。\n*   **强化技术栈描述**：针对“微服务架构”这一核心要求，明确列出您熟悉的相关中间件（如 Dubbo, Spring Cloud, RocketMQ 等）及设计模式。\n*   **调整简历侧重**：虽然 AI 技能是加分项，但申请后端开发岗位时，应确保后端基础架构能力的展示优先级高于应用层工具技能。\n\n### 3. 岗位参考信息\n*   **薪资范围**：根据市场信息，阿里巴巴后端开发岗位薪资跨度较大，实习岗约 200-250 元/天，正式研发工程师月薪通常在 25-50K 之间（部分实验室岗位如通义实验室魔搭可达 30-50K）。\n*   **常用工具**：阿里巴巴后端生态中常涉及 Arthas 等诊断工具，以及各类开源中间件，熟悉这些工具链有助于提升面试竞争力。\n\n总体而言，您具备不错的技术背景，但需要针对后端架构核心能力进行针对性优化。祝您求职顺利！",
+        "data": null,
+        "sources": null
+      },
+      "_time": 63.60506010055542,
+      "type": "done"
+    }
+  ],
+  "timestamp": "2026-04-30T18:25:26.900517",
+  "tool_execution_success_rate": 1.0,
+  "tool_correct_rate": 1.0
+}

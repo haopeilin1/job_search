@@ -1,0 +1,59 @@
+{
+  "case_id": "eval_gen_04",
+  "message": "帮我看看有什么岗，然后第一个推荐的具体要求是什么，再帮我准备几道面试题",
+  "gold_intents": [
+    "explore",
+    "prepare",
+    "verify"
+  ],
+  "expected_tools": [
+    "kb_retrieve",
+    "global_rank",
+    "qa_synthesize",
+    "interview_questions"
+  ],
+  "scenario": "复杂多意图_探索+属性查询+面试准备",
+  "status": "success",
+  "error": null,
+  "ttfb": 0.009,
+  "total_latency": 85.34,
+  "event_count": 3,
+  "pred_intent": "chat",
+  "pred_tools": [],
+  "tools_called": [],
+  "reply": "",
+  "reply_length": 0,
+  "intent_match": false,
+  "tool_match_rate": 0.0,
+  "has_reply": false,
+  "events": [
+    {
+      "step": "intent",
+      "message": "正在识别您的意图...",
+      "_time": 0.009504318237304688,
+      "type": "status"
+    },
+    {
+      "question": "为了给您推荐合适的岗位和准备针对性的面试题，请问您期望的职位方向或专业背景是什么？",
+      "_time": 85.33921432495117,
+      "type": "clarification"
+    },
+    {
+      "session_id": "eval_gen_04_1777535099053",
+      "intent": "chat",
+      "is_clarification": true,
+      "reply": {
+        "text": "为了给您推荐合适的岗位和准备针对性的面试题，请问您期望的职位方向或专业背景是什么？"
+      },
+      "_time": 85.33928394317627,
+      "type": "done"
+    }
+  ],
+  "timestamp": "2026-04-30T15:44:59.053131",
+  "tool_execution_success_rate": 0.0,
+  "tool_correct_rate": 0.0,
+  "tools_total_called": 0,
+  "tools_success_called": 0,
+  "judge_resolved": false,
+  "judge_reason": "回复为空或过短"
+}

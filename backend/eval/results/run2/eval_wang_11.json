@@ -1,0 +1,1752 @@
+{
+  "case_id": "eval_wang_11",
+  "message": "帮我筛几个岗，再看看哪个需要设计经验",
+  "gold_intents": [
+    "explore",
+    "verify"
+  ],
+  "expected_tools": [
+    "kb_retrieve",
+    "global_rank",
+    "qa_synthesize"
+  ],
+  "scenario": "多意图_探索+属性查询",
+  "status": "success",
+  "error": null,
+  "ttfb": 0.008,
+  "total_latency": 44.96,
+  "event_count": 171,
+  "pred_intent": "position_explore",
+  "pred_tools": [
+    {
+      "tool": "kb_retrieve",
+      "status": "✅",
+      "params": {
+        "query": "帮我筛几个岗，再看看哪个需要设计经验",
+        "top_k": "10"
+      },
+      "result_preview": "{'chunks': [{'chunk_id': '45bd2600-af57-45fe-a96e-c6cae6838c7a_chunk_5', 'content': '【某小公司 · Java后端 软性要求/加分项】\\n有ERP系统开发经验优先', 'metadata': {'company': '某小公司', 'index': 5, 'jd_id': '45bd2600-af57-45fe-a"
+    },
+    {
+      "tool": "match_analyze",
+      "status": "✅",
+      "params": {
+        "resume_text": "AI\n / \n157-xxxx-3421  |  chenyutong2027@163.com  |  \n  |  2027\n6\n2024.09  2027.06\n · \nAI\n· \nGPA\n3.4/4.0  |  \n2020.09  2024.06\n · \n · \n  |  \nWeb\n \n \n2025.03  2025.11\n  |  \n40\n\"\n\"\n\"\n\"\nFigma\nAI\nEmbedding\nJD\nAPI\nPrompt\n20\nPDF\n \n \nRAG\n2024.10  2025.02\n  |  \n80\nOCR\nWeb\n\"\n\"\n · \n2024.09  2025.06\n10\n · \n2022.03  2023.06\n2025.05    \n2024.11    \nAI\n2023.06    \n2022.12    \nFigma\nAxure\nXmind\n/\nPRD\nPrompt Engineering\nRAG\nEmbedding\nCET-4\n525\nOffice\nExcel",
+        "jd_text": [
+          {
+            "chunk_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a_chunk_5",
+            "content": "【某小公司 · Java后端 软性要求/加分项】\n有ERP系统开发经验优先",
+            "metadata": {
+              "company": "某小公司",
+              "index": 5,
+              "jd_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a",
+              "position": "Java后端",
+              "priority": "medium",
+              "section": "soft_requirements",
+              "strategy": "semantic"
+            },
+            "distance": 0.7367552518844604,
+            "bm25_score": 0.0,
+            "vec_norm": 0.9664551313893918,
+            "bm25_norm": 0.0,
+            "hybrid_score": 0.6765185919725742,
+            "rerank_score": 0.2376
+          },
+          {
+            "chunk_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a_chunk_2",
+            "content": "【某小公司 · Java后端 硬性要求】\n1年以上Java开发经验",
+            "metadata": {
+              "company": "某小公司",
+              "index": 2,
+              "jd_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a",
+              "position": "Java后端",
+              "priority": "high",
+              "section": "hard_requirements",
+              "strategy": "semantic"
+            },
+            "distance": 0.7335311770439148,
+            "bm25_score": 3.1204029518076792,
+            "vec_norm": 1.0,
+            "bm25_norm": 0.017925084314623262,
+            "hybrid_score": 0.7053775252943869,
+            "rerank_score": 0.1595
+          },
+          {
+            "chunk_id": "52a150f9-cff3-49d2-a2df-d514081eed9e_chunk_4",
+            "content": "【小米 · AI产品实习生 硬性要求】\n对用户体验敏感，熟练掌握产品设计工具如Figma、Sketch等，能独立完成方案设计",
+            "metadata": {
+              "company": "小米",
+              "index": 4,
+              "jd_id": "52a150f9-cff3-49d2-a2df-d514081eed9e",
+              "position": "AI产品实习生",
+              "priority": "high",
+              "section": "hard_requirements",
+              "strategy": "semantic"
+            },
+            "distance": 0.7488115429878235,
+            "bm25_score": 3.8611644803244096,
+            "vec_norm": 0.8410155181684059,
+            "bm25_norm": 0.6623888351077654,
+            "hybrid_score": 0.7874275132502137,
+            "rerank_score": 0.127
+          },
+          {
+            "chunk_id": "94df2ae7-baa3-418d-be25-1974b64a5b06_chunk_4",
+            "content": "【百度 · AI能力产品实习生 硬性要求】\n对AI产品有热情，有AI策略产品相关实习经验",
+            "metadata": {
+              "company": "百度",
+              "index": 4,
+              "jd_id": "94df2ae7-baa3-418d-be25-1974b64a5b06",
+              "position": "AI能力产品实习生",
+              "priority": "high",
+              "section": "hard_requirements",
+              "strategy": "semantic"
+            },
+            "distance": null,
+            "bm25_score": 4.101617219000179,
+            "vec_norm": 0.0,
+            "bm25_norm": 0.871583114089506,
+            "hybrid_score": 0.26147493422685175,
+            "rerank_score": 0.1183
+          },
+          {
+            "chunk_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8_chunk_6",
+            "content": "【阿里巴巴 · 后端开发 软性要求/加分项】\n有电商行业经验优先",
+            "metadata": {
+              "company": "阿里巴巴",
+              "index": 6,
+              "jd_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8",
+              "position": "后端开发",
+              "priority": "medium",
+              "section": "soft_requirements",
+              "strategy": "semantic"
+            },
+            "distance": 0.7554360628128052,
+            "bm25_score": 0.0,
+            "vec_norm": 0.7720907387734675,
+            "bm25_norm": 0.0,
+            "hybrid_score": 0.5404635171414272,
+            "rerank_score": 0.1105
+          },
+          {
+            "chunk_id": "d64b1fc3-41aa-437a-8e7a-40c3a74dc383_chunk_7",
+            "content": "【ACG · 干帆智能体平台/DuMate产品实习生 软性要求/加分项】\n加分项：有AI产品相关实习经验、参与过C端app设计优先",
+            "metadata": {
+              "company": "ACG",
+              "index": 7,
+              "jd_id": "d64b1fc3-41aa-437a-8e7a-40c3a74dc383",
+              "position": "干帆智能体平台/DuMate产品实习生",
+              "priority": "medium",
+              "section": "soft_requirements",
+              "strategy": "semantic"
+            },
+            "distance": null,
+            "bm25_score": 4.073021621751346,
+            "vec_norm": 0.0,
+            "bm25_norm": 0.8467048973494251,
+            "hybrid_score": 0.25401146920482753,
+            "rerank_score": 0.0819
+          },
+          {
+            "chunk_id": "cefd5831-fea0-4676-a46f-cd81c3e67fcc_chunk_2",
+            "content": "【联想 · 产品经理-AI方向（实习） 岗位职责】依据业务需求以及客户反馈，精心撰写产品设计文档与原型设计文档，确保产品设计方案清晰、可行",
+            "metadata": {
+              "company": "联想",
+              "index": 2,
+              "jd_id": "cefd5831-fea0-4676-a46f-cd81c3e67fcc",
+              "position": "产品经理-AI方向（实习）",
+              "section": "responsibilities",
+              "strategy": "semantic"
+            },
+            "distance": null,
+            "bm25_score": 4.044025475254898,
+            "vec_norm": 0.0,
+            "bm25_norm": 0.8214782021037009,
+            "hybrid_score": 0.24644346063111028,
+            "rerank_score": 0.0726
+          },
+          {
+            "chunk_id": "f46e2577-eca2-448d-a9a8-7fc14402179b_chunk_3",
+            "content": "【百度 · 大模型应用PM 硬性要求】\n5年以上AI产品经验，有大模型落地案例",
+            "metadata": {
+              "company": "百度",
+              "index": 3,
+              "jd_id": "f46e2577-eca2-448d-a9a8-7fc14402179b",
+              "position": "大模型应用PM",
+              "priority": "high",
+              "section": "hard_requirements",
+              "strategy": "semantic"
+            },
+            "distance": null,
+            "bm25_score": 4.249222555339646,
+            "vec_norm": 0.0,
+            "bm25_norm": 1.0,
+            "hybrid_score": 0.3,
+            "rerank_score": 0.0266
+          },
+          {
+            "chunk_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a_chunk_4",
+            "content": "【某小公司 · Java后端 硬性要求】\n大专及以上学历",
+            "metadata": {
+              "company": "某小公司",
+              "index": 4,
+              "jd_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a",
+              "position": "Java后端",
+              "priority": "high",
+              "section": "hard_requirements",
+              "strategy": "semantic"
+            },
+            "distance": 0.747747540473938,
+            "bm25_score": 0.0,
+            "vec_norm": 0.8520859263614133,
+            "bm25_norm": 0.0,
+            "hybrid_score": 0.5964601484529893,
+            "rerank_score": 0.0152
+          },
+          {
+            "chunk_id": "c6ac33c8-1c91-49f7-b4b0-f205a6c92b91_chunk_7",
+            "content": "【vivo · AI应用-产品经理 软性要求/加分项】\n高效的沟通能力和在多团队协同中(算法、设计、研发)中展现推动力，以及能够熟练使用数据分析工具(加分项)",
+            "metadata": {
+              "company": "vivo",
+              "index": 7,
+              "jd_id": "c6ac33c8-1c91-49f7-b4b0-f205a6c92b91",
+              "position": "AI应用-产品经理",
+              "priority": "medium",
+              "section": "soft_requirements",
+              "strategy": "semantic"
+            },
+            "distance": 0.7986761927604675,
+            "bm25_score": 0.0,
+            "vec_norm": 0.3221990490524944,
+            "bm25_norm": 0.0,
+            "hybrid_score": 0.22553933433674608,
+            "rerank_score": 0.0006
+          }
+        ]
+      },
+      "result_preview": "{'score': 55, 'label': '略有差距', 'advantages': ['Figma', 'Java开发经验'], 'weaknesses': ['候选人缺乏1年以上Java开发经验。虽然有AI相关的项目经验，但缺乏明确的AI产品实习经验，且没有参与过C端app设计。此外，没有提供明确的PRD撰写和产品设计文档编写经验。'], 'suggestions': [\"核心能力要求: "
+    },
+    {
+      "tool": "global_rank",
+      "status": "❌",
+      "params": {
+        "resume_text": "AI\n / \n157-xxxx-3421  |  chenyutong2027@163.com  |  \n  |  2027\n6\n2024.09  2027.06\n · \nAI\n· \nGPA\n3.4/4.0  |  \n2020.09  2024.06\n · \n · \n  |  \nWeb\n \n \n2025.03  2025.11\n  |  \n40\n\"\n\"\n\"\n\"\nFigma\nAI\nEmbedding\nJD\nAPI\nPrompt\n20\nPDF\n \n \nRAG\n2024.10  2025.02\n  |  \n80\nOCR\nWeb\n\"\n\"\n · \n2024.09  2025.06\n10\n · \n2022.03  2023.06\n2025.05    \n2024.11    \nAI\n2023.06    \n2022.12    \nFigma\nAxure\nXmind\n/\nPRD\nPrompt Engineering\nRAG\nEmbedding\nCET-4\n525\nOffice\nExcel",
+        "candidate_jds": [
+          {
+            "chunk_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a_chunk_5",
+            "content": "【某小公司 · Java后端 软性要求/加分项】\n有ERP系统开发经验优先",
+            "metadata": {
+              "company": "某小公司",
+              "index": 5,
+              "jd_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a",
+              "position": "Java后端",
+              "priority": "medium",
+              "section": "soft_requirements",
+              "strategy": "semantic"
+            },
+            "distance": 0.7367552518844604,
+            "bm25_score": 0.0,
+            "vec_norm": 0.9664551313893918,
+            "bm25_norm": 0.0,
+            "hybrid_score": 0.6765185919725742,
+            "rerank_score": 0.2376
+          },
+          {
+            "chunk_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a_chunk_2",
+            "content": "【某小公司 · Java后端 硬性要求】\n1年以上Java开发经验",
+            "metadata": {
+              "company": "某小公司",
+              "index": 2,
+              "jd_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a",
+              "position": "Java后端",
+              "priority": "high",
+              "section": "hard_requirements",
+              "strategy": "semantic"
+            },
+            "distance": 0.7335311770439148,
+            "bm25_score": 3.1204029518076792,
+            "vec_norm": 1.0,
+            "bm25_norm": 0.017925084314623262,
+            "hybrid_score": 0.7053775252943869,
+            "rerank_score": 0.1595
+          },
+          {
+            "chunk_id": "52a150f9-cff3-49d2-a2df-d514081eed9e_chunk_4",
+            "content": "【小米 · AI产品实习生 硬性要求】\n对用户体验敏感，熟练掌握产品设计工具如Figma、Sketch等，能独立完成方案设计",
+            "metadata": {
+              "company": "小米",
+              "index": 4,
+              "jd_id": "52a150f9-cff3-49d2-a2df-d514081eed9e",
+              "position": "AI产品实习生",
+              "priority": "high",
+              "section": "hard_requirements",
+              "strategy": "semantic"
+            },
+            "distance": 0.7488115429878235,
+            "bm25_score": 3.8611644803244096,
+            "vec_norm": 0.8410155181684059,
+            "bm25_norm": 0.6623888351077654,
+            "hybrid_score": 0.7874275132502137,
+            "rerank_score": 0.127
+          },
+          {
+            "chunk_id": "94df2ae7-baa3-418d-be25-1974b64a5b06_chunk_4",
+            "content": "【百度 · AI能力产品实习生 硬性要求】\n对AI产品有热情，有AI策略产品相关实习经验",
+            "metadata": {
+              "company": "百度",
+              "index": 4,
+              "jd_id": "94df2ae7-baa3-418d-be25-1974b64a5b06",
+              "position": "AI能力产品实习生",
+              "priority": "high",
+              "section": "hard_requirements",
+              "strategy": "semantic"
+            },
+            "distance": null,
+            "bm25_score": 4.101617219000179,
+            "vec_norm": 0.0,
+            "bm25_norm": 0.871583114089506,
+            "hybrid_score": 0.26147493422685175,
+            "rerank_score": 0.1183
+          },
+          {
+            "chunk_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8_chunk_6",
+            "content": "【阿里巴巴 · 后端开发 软性要求/加分项】\n有电商行业经验优先",
+            "metadata": {
+              "company": "阿里巴巴",
+              "index": 6,
+              "jd_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8",
+              "position": "后端开发",
+              "priority": "medium",
+              "section": "soft_requirements",
+              "strategy": "semantic"
+            },
+            "distance": 0.7554360628128052,
+            "bm25_score": 0.0,
+            "vec_norm": 0.7720907387734675,
+            "bm25_norm": 0.0,
+            "hybrid_score": 0.5404635171414272,
+            "rerank_score": 0.1105
+          },
+          {
+            "chunk_id": "d64b1fc3-41aa-437a-8e7a-40c3a74dc383_chunk_7",
+            "content": "【ACG · 干帆智能体平台/DuMate产品实习生 软性要求/加分项】\n加分项：有AI产品相关实习经验、参与过C端app设计优先",
+            "metadata": {
+              "company": "ACG",
+              "index": 7,
+              "jd_id": "d64b1fc3-41aa-437a-8e7a-40c3a74dc383",
+              "position": "干帆智能体平台/DuMate产品实习生",
+              "priority": "medium",
+              "section": "soft_requirements",
+              "strategy": "semantic"
+            },
+            "distance": null,
+            "bm25_score": 4.073021621751346,
+            "vec_norm": 0.0,
+            "bm25_norm": 0.8467048973494251,
+            "hybrid_score": 0.25401146920482753,
+            "rerank_score": 0.0819
+          },
+          {
+            "chunk_id": "cefd5831-fea0-4676-a46f-cd81c3e67fcc_chunk_2",
+            "content": "【联想 · 产品经理-AI方向（实习） 岗位职责】依据业务需求以及客户反馈，精心撰写产品设计文档与原型设计文档，确保产品设计方案清晰、可行",
+            "metadata": {
+              "company": "联想",
+              "index": 2,
+              "jd_id": "cefd5831-fea0-4676-a46f-cd81c3e67fcc",
+              "position": "产品经理-AI方向（实习）",
+              "section": "responsibilities",
+              "strategy": "semantic"
+            },
+            "distance": null,
+            "bm25_score": 4.044025475254898,
+            "vec_norm": 0.0,
+            "bm25_norm": 0.8214782021037009,
+            "hybrid_score": 0.24644346063111028,
+            "rerank_score": 0.0726
+          },
+          {
+            "chunk_id": "f46e2577-eca2-448d-a9a8-7fc14402179b_chunk_3",
+            "content": "【百度 · 大模型应用PM 硬性要求】\n5年以上AI产品经验，有大模型落地案例",
+            "metadata": {
+              "company": "百度",
+              "index": 3,
+              "jd_id": "f46e2577-eca2-448d-a9a8-7fc14402179b",
+              "position": "大模型应用PM",
+              "priority": "high",
+              "section": "hard_requirements",
+              "strategy": "semantic"
+            },
+            "distance": null,
+            "bm25_score": 4.249222555339646,
+            "vec_norm": 0.0,
+            "bm25_norm": 1.0,
+            "hybrid_score": 0.3,
+            "rerank_score": 0.0266
+          },
+          {
+            "chunk_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a_chunk_4",
+            "content": "【某小公司 · Java后端 硬性要求】\n大专及以上学历",
+            "metadata": {
+              "company": "某小公司",
+              "index": 4,
+              "jd_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a",
+              "position": "Java后端",
+              "priority": "high",
+              "section": "hard_requirements",
+              "strategy": "semantic"
+            },
+            "distance": 0.747747540473938,
+            "bm25_score": 0.0,
+            "vec_norm": 0.8520859263614133,
+            "bm25_norm": 0.0,
+            "hybrid_score": 0.5964601484529893,
+            "rerank_score": 0.0152
+          },
+          {
+            "chunk_id": "c6ac33c8-1c91-49f7-b4b0-f205a6c92b91_chunk_7",
+            "content": "【vivo · AI应用-产品经理 软性要求/加分项】\n高效的沟通能力和在多团队协同中(算法、设计、研发)中展现推动力，以及能够熟练使用数据分析工具(加分项)",
+            "metadata": {
+              "company": "vivo",
+              "index": 7,
+              "jd_id": "c6ac33c8-1c91-49f7-b4b0-f205a6c92b91",
+              "position": "AI应用-产品经理",
+              "priority": "medium",
+              "section": "soft_requirements",
+              "strategy": "semantic"
+            },
+            "distance": 0.7986761927604675,
+            "bm25_score": 0.0,
+            "vec_norm": 0.3221990490524944,
+            "bm25_norm": 0.0,
+            "hybrid_score": 0.22553933433674608,
+            "rerank_score": 0.0006
+          }
+        ],
+        "top_k": "5"
+      },
+      "result_preview": "'>' not supported between instances of 'int' and 'str'"
+    }
+  ],
+  "tools_called": [
+    "kb_retrieve",
+    "match_analyze",
+    "global_rank"
+  ],
+  "reply": "你好！根据检索到的岗位信息和个人匹配度分析，我为你整理了以下求职建议：\n\n### 1. 岗位筛选与设计经验要求\n本次共检索到 5 个相关岗位，其中 **2 个岗位明确需要设计经验**，具体如下：\n\n*   **需要设计经验的岗位：**\n    *   **小米 · AI 产品实习生**：**硬性要求**。需熟练掌握 Figma、Sketch 等产品设计工具，并能独立完成方案设计。\n    *   **ACG · 干帆智能体平台/DuMate 产品实习生**：**加分项**。若有参与过 C 端 App 设计经验会优先录取。\n*   **无需设计经验的岗位：**\n    *   某小公司 · Java 后端（侧重 ERP 系统开发经验）\n    *   百度 · AI 能力产品实习生（侧重 AI 策略产品实习经验）\n    *   阿里巴巴 · 后端开发（侧重电商行业经验）\n\n### 2. 个人匹配度分析\n基于上述岗位的核心要求，目前的匹配情况如下：\n\n*   **匹配分数**：**55 分**（略有差距）\n*   **你的优势**：\n    *   具备 **Figma** 工具使用能力。\n    *   拥有 **Java 开发经验**。\n*   **主要差距**：\n    *   **年限不足**：缺乏 1 年以上 Java 开发经验。\n    *   **经历缺失**：缺乏明确的 AI 产品实习经验，且没有参与过 C 端 App 设计。\n    *   **文档能力**：未提供明确的 PRD 撰写和产品设计文档编写经验。\n\n### 3. 提升建议\n为了提高求职成功率，建议重点补充以下核心能力：\n\n1.  **补充设计作品集**：针对小米和 ACG 的岗位，整理一份包含 Figma/Sketch 原型设计的作品集，特别是若有 C 端 App 的设计案例，请重点展示。\n2.  **强化产品文档能力**：尝试撰写一份完整的 PRD（产品需求文档）或原型设计文档，以证明具备独立完成方案设计的能力。\n3.  **积累 AI 相关经历**：若暂时无法获得实习机会，可参与一些大模型落地的个人项目或开源项目，并在简历中突出“大模型落地案例”。\n4.  **突出沟通与协同**：在面试中准备多团队协同的案例，展现高效的沟通能力。\n\n虽然目前匹配度尚有提升空间，但你在工具和开发背景上已有基础，针对性补充产品和设计文档经验后，竞争力会显著增强。加油！",
+  "reply_length": 1033,
+  "intent_match": true,
+  "tool_match_rate": 0.67,
+  "has_reply": true,
+  "events": [
+    {
+      "step": "intent",
+      "message": "正在识别您的意图...",
+      "_time": 0.008128166198730469,
+      "type": "status"
+    },
+    {
+      "step": "plan",
+      "message": "正在规划任务...",
+      "_time": 1.48329758644104,
+      "type": "status"
+    },
+    {
+      "step": "execute",
+      "message": "正在执行分析...",
+      "_time": 6.2237913608551025,
+      "type": "status"
+    },
+    {
+      "step": "aggregate",
+      "message": "正在生成回复...",
+      "_time": 9.160192966461182,
+      "type": "status"
+    },
+    {
+      "text": "你好！根据",
+      "_time": 35.03067111968994,
+      "type": "delta"
+    },
+    {
+      "text": "检索到的岗位信息",
+      "_time": 35.131377935409546,
+      "type": "delta"
+    },
+    {
+      "text": "和个人",
+      "_time": 35.13386869430542,
+      "type": "delta"
+    },
+    {
+      "text": "匹配度分析，",
+      "_time": 35.23824954032898,
+      "type": "delta"
+    },
+    {
+      "text": "我为你整理了以下",
+      "_time": 35.27002573013306,
+      "type": "delta"
+    },
+    {
+      "text": "求职建议：\n\n",
+      "_time": 35.39916706085205,
+      "type": "delta"
+    },
+    {
+      "text": "### 1",
+      "_time": 35.4030237197876,
+      "type": "delta"
+    },
+    {
+      "text": ". 岗位筛选",
+      "_time": 35.50318741798401,
+      "type": "delta"
+    },
+    {
+      "text": "与设计经验要求",
+      "_time": 35.50673532485962,
+      "type": "delta"
+    },
+    {
+      "text": "\n本次共检索",
+      "_time": 35.64243412017822,
+      "type": "delta"
+    },
+    {
+      "text": "到",
+      "_time": 35.64602208137512,
+      "type": "delta"
+    },
+    {
+      "text": " 5 个",
+      "_time": 35.73130798339844,
+      "type": "delta"
+    },
+    {
+      "text": "相关",
+      "_time": 35.73394322395325,
+      "type": "delta"
+    },
+    {
+      "text": "岗位，其中 **",
+      "_time": 35.817110776901245,
+      "type": "delta"
+    },
+    {
+      "text": "2 个岗位",
+      "_time": 35.822023153305054,
+      "type": "delta"
+    },
+    {
+      "text": "明确需要设计经验",
+      "_time": 35.92008638381958,
+      "type": "delta"
+    },
+    {
+      "text": "**，具体如下",
+      "_time": 35.94606614112854,
+      "type": "delta"
+    },
+    {
+      "text": "：\n\n*  ",
+      "_time": 36.03816056251526,
+      "type": "delta"
+    },
+    {
+      "text": " **需要设计经验的",
+      "_time": 36.04201889038086,
+      "type": "delta"
+    },
+    {
+      "text": "岗位：**\n   ",
+      "_time": 36.212331771850586,
+      "type": "delta"
+    },
+    {
+      "text": " *   **小米",
+      "_time": 36.21607494354248,
+      "type": "delta"
+    },
+    {
+      "text": " · AI 产品",
+      "_time": 36.326048851013184,
+      "type": "delta"
+    },
+    {
+      "text": "实习生**：**",
+      "_time": 36.368043422698975,
+      "type": "delta"
+    },
+    {
+      "text": "硬性要求**。需",
+      "_time": 36.4860360622406,
+      "type": "delta"
+    },
+    {
+      "text": "熟练掌握 F",
+      "_time": 36.489970684051514,
+      "type": "delta"
+    },
+    {
+      "text": "igma、Sketch ",
+      "_time": 36.560210943222046,
+      "type": "delta"
+    },
+    {
+      "text": "等产品设计",
+      "_time": 36.60133361816406,
+      "type": "delta"
+    },
+    {
+      "text": "工具，并能独立完成",
+      "_time": 36.75235676765442,
+      "type": "delta"
+    },
+    {
+      "text": "方案设计。",
+      "_time": 36.75704479217529,
+      "type": "delta"
+    },
+    {
+      "text": "\n    *  ",
+      "_time": 36.77707028388977,
+      "type": "delta"
+    },
+    {
+      "text": " **AC",
+      "_time": 36.78195595741272,
+      "type": "delta"
+    },
+    {
+      "text": "G · 干",
+      "_time": 36.88606524467468,
+      "type": "delta"
+    },
+    {
+      "text": "帆智能体平台",
+      "_time": 36.915987730026245,
+      "type": "delta"
+    },
+    {
+      "text": "/DuMate ",
+      "_time": 37.02692723274231,
+      "type": "delta"
+    },
+    {
+      "text": "产品实习生**：**",
+      "_time": 37.03100275993347,
+      "type": "delta"
+    },
+    {
+      "text": "加分项**。若有",
+      "_time": 37.20437502861023,
+      "type": "delta"
+    },
+    {
+      "text": "参与过 C ",
+      "_time": 37.20673966407776,
+      "type": "delta"
+    },
+    {
+      "text": "端 App 设计",
+      "_time": 37.317461252212524,
+      "type": "delta"
+    },
+    {
+      "text": "经验",
+      "_time": 37.321025371551514,
+      "type": "delta"
+    },
+    {
+      "text": "会优先录取。",
+      "_time": 37.40601134300232,
+      "type": "delta"
+    },
+    {
+      "text": "\n*  ",
+      "_time": 37.408966302871704,
+      "type": "delta"
+    },
+    {
+      "text": " **无需设计经验的",
+      "_time": 37.5580530166626,
+      "type": "delta"
+    },
+    {
+      "text": "岗位：**\n   ",
+      "_time": 37.561028718948364,
+      "type": "delta"
+    },
+    {
+      "text": " *   某",
+      "_time": 37.67617869377136,
+      "type": "delta"
+    },
+    {
+      "text": "小公司 ·",
+      "_time": 37.680992603302,
+      "type": "delta"
+    },
+    {
+      "text": " Java 后端（",
+      "_time": 37.827178955078125,
+      "type": "delta"
+    },
+    {
+      "text": "侧重",
+      "_time": 37.83385515213013,
+      "type": "delta"
+    },
+    {
+      "text": " ERP 系统开发",
+      "_time": 37.89310574531555,
+      "type": "delta"
+    },
+    {
+      "text": "经验）\n",
+      "_time": 37.896987199783325,
+      "type": "delta"
+    },
+    {
+      "text": "    *   ",
+      "_time": 38.01692175865173,
+      "type": "delta"
+    },
+    {
+      "text": "百度",
+      "_time": 38.052091121673584,
+      "type": "delta"
+    },
+    {
+      "text": " · AI 能力",
+      "_time": 38.10811710357666,
+      "type": "delta"
+    },
+    {
+      "text": "产品实习生（侧重",
+      "_time": 38.11178255081177,
+      "type": "delta"
+    },
+    {
+      "text": " AI 策略产品",
+      "_time": 38.251131534576416,
+      "type": "delta"
+    },
+    {
+      "text": "实习经验）\n",
+      "_time": 38.28683090209961,
+      "type": "delta"
+    },
+    {
+      "text": "    *   ",
+      "_time": 38.39723467826843,
+      "type": "delta"
+    },
+    {
+      "text": "阿里巴巴 · 后端",
+      "_time": 38.39991879463196,
+      "type": "delta"
+    },
+    {
+      "text": "开发（侧重电商",
+      "_time": 38.539376974105835,
+      "type": "delta"
+    },
+    {
+      "text": "行业经验）",
+      "_time": 38.571983337402344,
+      "type": "delta"
+    },
+    {
+      "text": "\n\n### 2",
+      "_time": 38.669103145599365,
+      "type": "delta"
+    },
+    {
+      "text": ". 个人",
+      "_time": 38.67377996444702,
+      "type": "delta"
+    },
+    {
+      "text": "匹配度分析\n",
+      "_time": 38.79216718673706,
+      "type": "delta"
+    },
+    {
+      "text": "基于上述",
+      "_time": 38.79584217071533,
+      "type": "delta"
+    },
+    {
+      "text": "岗位的核心要求，",
+      "_time": 38.90021562576294,
+      "type": "delta"
+    },
+    {
+      "text": "目前的",
+      "_time": 38.9319007396698,
+      "type": "delta"
+    },
+    {
+      "text": "匹配情况如下：",
+      "_time": 38.98992991447449,
+      "type": "delta"
+    },
+    {
+      "text": "\n\n",
+      "_time": 38.99379205703735,
+      "type": "delta"
+    },
+    {
+      "text": "*   **匹配",
+      "_time": 39.079880237579346,
+      "type": "delta"
+    },
+    {
+      "text": "分数",
+      "_time": 39.08388614654541,
+      "type": "delta"
+    },
+    {
+      "text": "**：**55",
+      "_time": 39.170841217041016,
+      "type": "delta"
+    },
+    {
+      "text": " 分**",
+      "_time": 39.19582962989807,
+      "type": "delta"
+    },
+    {
+      "text": "（略有差距）",
+      "_time": 39.294814109802246,
+      "type": "delta"
+    },
+    {
+      "text": "\n*   **",
+      "_time": 39.30149793624878,
+      "type": "delta"
+    },
+    {
+      "text": "你的优势**：",
+      "_time": 39.439926624298096,
+      "type": "delta"
+    },
+    {
+      "text": "\n    *",
+      "_time": 39.443604469299316,
+      "type": "delta"
+    },
+    {
+      "text": "   具备 **",
+      "_time": 39.59913516044617,
+      "type": "delta"
+    },
+    {
+      "text": "Figma",
+      "_time": 39.60287380218506,
+      "type": "delta"
+    },
+    {
+      "text": "** 工具使用",
+      "_time": 39.67411684989929,
+      "type": "delta"
+    },
+    {
+      "text": "能力",
+      "_time": 39.67772936820984,
+      "type": "delta"
+    },
+    {
+      "text": "。\n    *",
+      "_time": 39.765162229537964,
+      "type": "delta"
+    },
+    {
+      "text": "   拥有",
+      "_time": 39.792893171310425,
+      "type": "delta"
+    },
+    {
+      "text": " **Java 开发",
+      "_time": 39.89107322692871,
+      "type": "delta"
+    },
+    {
+      "text": "经验**。",
+      "_time": 39.89466404914856,
+      "type": "delta"
+    },
+    {
+      "text": "\n*   **",
+      "_time": 39.99713611602783,
+      "type": "delta"
+    },
+    {
+      "text": "主要差距",
+      "_time": 40.00179719924927,
+      "type": "delta"
+    },
+    {
+      "text": "**：\n   ",
+      "_time": 40.135098934173584,
+      "type": "delta"
+    },
+    {
+      "text": " *   **年限",
+      "_time": 40.15079212188721,
+      "type": "delta"
+    },
+    {
+      "text": "不足**：缺乏",
+      "_time": 40.2506422996521,
+      "type": "delta"
+    },
+    {
+      "text": " 1 年以上",
+      "_time": 40.25348663330078,
+      "type": "delta"
+    },
+    {
+      "text": " Java 开发经验",
+      "_time": 40.422852993011475,
+      "type": "delta"
+    },
+    {
+      "text": "。\n   ",
+      "_time": 40.426844358444214,
+      "type": "delta"
+    },
+    {
+      "text": " *   **经历",
+      "_time": 40.519885301589966,
+      "type": "delta"
+    },
+    {
+      "text": "缺失**：缺乏",
+      "_time": 40.52461242675781,
+      "type": "delta"
+    },
+    {
+      "text": "明确的 AI 产品",
+      "_time": 40.69505524635315,
+      "type": "delta"
+    },
+    {
+      "text": "实习经验，",
+      "_time": 40.69871473312378,
+      "type": "delta"
+    },
+    {
+      "text": "且没有参与过",
+      "_time": 40.79014873504639,
+      "type": "delta"
+    },
+    {
+      "text": " C ",
+      "_time": 40.7930212020874,
+      "type": "delta"
+    },
+    {
+      "text": "端 App 设计",
+      "_time": 40.89980673789978,
+      "type": "delta"
+    },
+    {
+      "text": "。\n   ",
+      "_time": 40.926793575286865,
+      "type": "delta"
+    },
+    {
+      "text": " *   **文档",
+      "_time": 41.029279470443726,
+      "type": "delta"
+    },
+    {
+      "text": "能力**：未",
+      "_time": 41.03286862373352,
+      "type": "delta"
+    },
+    {
+      "text": "提供明确的 PRD",
+      "_time": 41.17015886306763,
+      "type": "delta"
+    },
+    {
+      "text": " 撰写和",
+      "_time": 41.198668241500854,
+      "type": "delta"
+    },
+    {
+      "text": "产品设计文档编写经验",
+      "_time": 41.293739795684814,
+      "type": "delta"
+    },
+    {
+      "text": "。\n\n### ",
+      "_time": 41.29771137237549,
+      "type": "delta"
+    },
+    {
+      "text": "3. 提升",
+      "_time": 41.43890976905823,
+      "type": "delta"
+    },
+    {
+      "text": "建议\n为了提高",
+      "_time": 41.469762563705444,
+      "type": "delta"
+    },
+    {
+      "text": "求职成功率，建议",
+      "_time": 41.5647656917572,
+      "type": "delta"
+    },
+    {
+      "text": "重点",
+      "_time": 41.56872892379761,
+      "type": "delta"
+    },
+    {
+      "text": "补充以下核心能力",
+      "_time": 41.659735679626465,
+      "type": "delta"
+    },
+    {
+      "text": "：\n\n1",
+      "_time": 41.66273474693298,
+      "type": "delta"
+    },
+    {
+      "text": ".  **补充",
+      "_time": 41.81094789505005,
+      "type": "delta"
+    },
+    {
+      "text": "设计作品集**：",
+      "_time": 41.81681990623474,
+      "type": "delta"
+    },
+    {
+      "text": "针对小米和 A",
+      "_time": 41.92513585090637,
+      "type": "delta"
+    },
+    {
+      "text": "CG 的岗位",
+      "_time": 41.928897857666016,
+      "type": "delta"
+    },
+    {
+      "text": "，整理一份包含",
+      "_time": 42.0689640045166,
+      "type": "delta"
+    },
+    {
+      "text": " Figma/S",
+      "_time": 42.104758739471436,
+      "type": "delta"
+    },
+    {
+      "text": "ketch 原型",
+      "_time": 42.19513154029846,
+      "type": "delta"
+    },
+    {
+      "text": "设计的作品集",
+      "_time": 42.19862985610962,
+      "type": "delta"
+    },
+    {
+      "text": "，特别是若有 C",
+      "_time": 42.31890344619751,
+      "type": "delta"
+    },
+    {
+      "text": " 端 App",
+      "_time": 42.332735538482666,
+      "type": "delta"
+    },
+    {
+      "text": " 的设计案例，",
+      "_time": 42.42882704734802,
+      "type": "delta"
+    },
+    {
+      "text": "请",
+      "_time": 42.43275237083435,
+      "type": "delta"
+    },
+    {
+      "text": "重点展示。\n",
+      "_time": 42.51859951019287,
+      "type": "delta"
+    },
+    {
+      "text": "2.  **",
+      "_time": 42.52267670631409,
+      "type": "delta"
+    },
+    {
+      "text": "强化产品文档能力",
+      "_time": 42.6928026676178,
+      "type": "delta"
+    },
+    {
+      "text": "**：尝试",
+      "_time": 42.69549322128296,
+      "type": "delta"
+    },
+    {
+      "text": "撰写一份完整的 PR",
+      "_time": 42.78975582122803,
+      "type": "delta"
+    },
+    {
+      "text": "D（",
+      "_time": 42.79359316825867,
+      "type": "delta"
+    },
+    {
+      "text": "产品需求文档）",
+      "_time": 42.89475655555725,
+      "type": "delta"
+    },
+    {
+      "text": "或原型设计文档",
+      "_time": 42.92502737045288,
+      "type": "delta"
+    },
+    {
+      "text": "，以证明具备",
+      "_time": 43.0409951210022,
+      "type": "delta"
+    },
+    {
+      "text": "独立完成",
+      "_time": 43.0445442199707,
+      "type": "delta"
+    },
+    {
+      "text": "方案设计的能力。\n",
+      "_time": 43.129610538482666,
+      "type": "delta"
+    },
+    {
+      "text": "3.  **",
+      "_time": 43.13435649871826,
+      "type": "delta"
+    },
+    {
+      "text": "积累 AI 相关",
+      "_time": 43.302103996276855,
+      "type": "delta"
+    },
+    {
+      "text": "经历",
+      "_time": 43.305487871170044,
+      "type": "delta"
+    },
+    {
+      "text": "**：若暂时",
+      "_time": 43.36578440666199,
+      "type": "delta"
+    },
+    {
+      "text": "无法获得",
+      "_time": 43.36863899230957,
+      "type": "delta"
+    },
+    {
+      "text": "实习机会，可",
+      "_time": 43.47168278694153,
+      "type": "delta"
+    },
+    {
+      "text": "参与",
+      "_time": 43.476706981658936,
+      "type": "delta"
+    },
+    {
+      "text": "一些大模型落",
+      "_time": 43.6005322933197,
+      "type": "delta"
+    },
+    {
+      "text": "地的个人",
+      "_time": 43.60555648803711,
+      "type": "delta"
+    },
+    {
+      "text": "项目或开源项目",
+      "_time": 43.670530557632446,
+      "type": "delta"
+    },
+    {
+      "text": "，并在",
+      "_time": 43.674575090408325,
+      "type": "delta"
+    },
+    {
+      "text": "简历中突出“",
+      "_time": 43.77969455718994,
+      "type": "delta"
+    },
+    {
+      "text": "大模型落地案例",
+      "_time": 43.785648822784424,
+      "type": "delta"
+    },
+    {
+      "text": "”。\n4.",
+      "_time": 43.95778036117554,
+      "type": "delta"
+    },
+    {
+      "text": " ",
+      "_time": 43.96264624595642,
+      "type": "delta"
+    },
+    {
+      "text": " **突出沟通与",
+      "_time": 44.01262187957764,
+      "type": "delta"
+    },
+    {
+      "text": "协同",
+      "_time": 44.016589403152466,
+      "type": "delta"
+    },
+    {
+      "text": "**：在面试",
+      "_time": 44.10248017311096,
+      "type": "delta"
+    },
+    {
+      "text": "中准备",
+      "_time": 44.107611656188965,
+      "type": "delta"
+    },
+    {
+      "text": "多团队协同的案例",
+      "_time": 44.23954939842224,
+      "type": "delta"
+    },
+    {
+      "text": "，展现高效的",
+      "_time": 44.24332046508789,
+      "type": "delta"
+    },
+    {
+      "text": "沟通能力。\n\n虽然",
+      "_time": 44.33573269844055,
+      "type": "delta"
+    },
+    {
+      "text": "目前",
+      "_time": 44.34139347076416,
+      "type": "delta"
+    },
+    {
+      "text": "匹配度尚有提升",
+      "_time": 44.42483878135681,
+      "type": "delta"
+    },
+    {
+      "text": "空间，但",
+      "_time": 44.452492237091064,
+      "type": "delta"
+    },
+    {
+      "text": "你在工具和开发背景",
+      "_time": 44.55182361602783,
+      "type": "delta"
+    },
+    {
+      "text": "上已有基础，",
+      "_time": 44.55653119087219,
+      "type": "delta"
+    },
+    {
+      "text": "针对性补充产品和设计",
+      "_time": 44.6956467628479,
+      "type": "delta"
+    },
+    {
+      "text": "文档",
+      "_time": 44.699538230895996,
+      "type": "delta"
+    },
+    {
+      "text": "经验后，竞争力",
+      "_time": 44.80967307090759,
+      "type": "delta"
+    },
+    {
+      "text": "会显著",
+      "_time": 44.81441831588745,
+      "type": "delta"
+    },
+    {
+      "text": "增强。加油！",
+      "_time": 44.893548011779785,
+      "type": "delta"
+    },
+    {
+      "session_id": "eval_wang_11_1777546375561",
+      "intent": "position_explore",
+      "route_meta": {
+        "layer": "llm",
+        "intent": "position_explore",
+        "confidence": 0.95,
+        "demands": [
+          {
+            "intent": "position_explore",
+            "entities": {}
+          },
+          {
+            "intent": "match_assess",
+            "entities": {
+              "evaluation_target": "设计经验"
+            }
+          }
+        ],
+        "plan_tasks": 3
+      },
+      "agent_mode": "llm",
+      "is_clarification": false,
+      "agent": {
+        "rewritten_query": "帮我筛几个岗，再看看哪个需要设计经验",
+        "tools": [
+          {
+            "tool": "kb_retrieve",
+            "status": "✅",
+            "params": {
+              "query": "帮我筛几个岗，再看看哪个需要设计经验",
+              "top_k": "10"
+            },
+            "result_preview": "{'chunks': [{'chunk_id': '45bd2600-af57-45fe-a96e-c6cae6838c7a_chunk_5', 'content': '【某小公司 · Java后端 软性要求/加分项】\\n有ERP系统开发经验优先', 'metadata': {'company': '某小公司', 'index': 5, 'jd_id': '45bd2600-af57-45fe-a"
+          },
+          {
+            "tool": "match_analyze",
+            "status": "✅",
+            "params": {
+              "resume_text": "AI\n / \n157-xxxx-3421  |  chenyutong2027@163.com  |  \n  |  2027\n6\n2024.09  2027.06\n · \nAI\n· \nGPA\n3.4/4.0  |  \n2020.09  2024.06\n · \n · \n  |  \nWeb\n \n \n2025.03  2025.11\n  |  \n40\n\"\n\"\n\"\n\"\nFigma\nAI\nEmbedding\nJD\nAPI\nPrompt\n20\nPDF\n \n \nRAG\n2024.10  2025.02\n  |  \n80\nOCR\nWeb\n\"\n\"\n · \n2024.09  2025.06\n10\n · \n2022.03  2023.06\n2025.05    \n2024.11    \nAI\n2023.06    \n2022.12    \nFigma\nAxure\nXmind\n/\nPRD\nPrompt Engineering\nRAG\nEmbedding\nCET-4\n525\nOffice\nExcel",
+              "jd_text": [
+                {
+                  "chunk_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a_chunk_5",
+                  "content": "【某小公司 · Java后端 软性要求/加分项】\n有ERP系统开发经验优先",
+                  "metadata": {
+                    "company": "某小公司",
+                    "index": 5,
+                    "jd_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a",
+                    "position": "Java后端",
+                    "priority": "medium",
+                    "section": "soft_requirements",
+                    "strategy": "semantic"
+                  },
+                  "distance": 0.7367552518844604,
+                  "bm25_score": 0.0,
+                  "vec_norm": 0.9664551313893918,
+                  "bm25_norm": 0.0,
+                  "hybrid_score": 0.6765185919725742,
+                  "rerank_score": 0.2376
+                },
+                {
+                  "chunk_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a_chunk_2",
+                  "content": "【某小公司 · Java后端 硬性要求】\n1年以上Java开发经验",
+                  "metadata": {
+                    "company": "某小公司",
+                    "index": 2,
+                    "jd_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a",
+                    "position": "Java后端",
+                    "priority": "high",
+                    "section": "hard_requirements",
+                    "strategy": "semantic"
+                  },
+                  "distance": 0.7335311770439148,
+                  "bm25_score": 3.1204029518076792,
+                  "vec_norm": 1.0,
+                  "bm25_norm": 0.017925084314623262,
+                  "hybrid_score": 0.7053775252943869,
+                  "rerank_score": 0.1595
+                },
+                {
+                  "chunk_id": "52a150f9-cff3-49d2-a2df-d514081eed9e_chunk_4",
+                  "content": "【小米 · AI产品实习生 硬性要求】\n对用户体验敏感，熟练掌握产品设计工具如Figma、Sketch等，能独立完成方案设计",
+                  "metadata": {
+                    "company": "小米",
+                    "index": 4,
+                    "jd_id": "52a150f9-cff3-49d2-a2df-d514081eed9e",
+                    "position": "AI产品实习生",
+                    "priority": "high",
+                    "section": "hard_requirements",
+                    "strategy": "semantic"
+                  },
+                  "distance": 0.7488115429878235,
+                  "bm25_score": 3.8611644803244096,
+                  "vec_norm": 0.8410155181684059,
+                  "bm25_norm": 0.6623888351077654,
+                  "hybrid_score": 0.7874275132502137,
+                  "rerank_score": 0.127
+                },
+                {
+                  "chunk_id": "94df2ae7-baa3-418d-be25-1974b64a5b06_chunk_4",
+                  "content": "【百度 · AI能力产品实习生 硬性要求】\n对AI产品有热情，有AI策略产品相关实习经验",
+                  "metadata": {
+                    "company": "百度",
+                    "index": 4,
+                    "jd_id": "94df2ae7-baa3-418d-be25-1974b64a5b06",
+                    "position": "AI能力产品实习生",
+                    "priority": "high",
+                    "section": "hard_requirements",
+                    "strategy": "semantic"
+                  },
+                  "distance": null,
+                  "bm25_score": 4.101617219000179,
+                  "vec_norm": 0.0,
+                  "bm25_norm": 0.871583114089506,
+                  "hybrid_score": 0.26147493422685175,
+                  "rerank_score": 0.1183
+                },
+                {
+                  "chunk_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8_chunk_6",
+                  "content": "【阿里巴巴 · 后端开发 软性要求/加分项】\n有电商行业经验优先",
+                  "metadata": {
+                    "company": "阿里巴巴",
+                    "index": 6,
+                    "jd_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8",
+                    "position": "后端开发",
+                    "priority": "medium",
+                    "section": "soft_requirements",
+                    "strategy": "semantic"
+                  },
+                  "distance": 0.7554360628128052,
+                  "bm25_score": 0.0,
+                  "vec_norm": 0.7720907387734675,
+                  "bm25_norm": 0.0,
+                  "hybrid_score": 0.5404635171414272,
+                  "rerank_score": 0.1105
+                },
+                {
+                  "chunk_id": "d64b1fc3-41aa-437a-8e7a-40c3a74dc383_chunk_7",
+                  "content": "【ACG · 干帆智能体平台/DuMate产品实习生 软性要求/加分项】\n加分项：有AI产品相关实习经验、参与过C端app设计优先",
+                  "metadata": {
+                    "company": "ACG",
+                    "index": 7,
+                    "jd_id": "d64b1fc3-41aa-437a-8e7a-40c3a74dc383",
+                    "position": "干帆智能体平台/DuMate产品实习生",
+                    "priority": "medium",
+                    "section": "soft_requirements",
+                    "strategy": "semantic"
+                  },
+                  "distance": null,
+                  "bm25_score": 4.073021621751346,
+                  "vec_norm": 0.0,
+                  "bm25_norm": 0.8467048973494251,
+                  "hybrid_score": 0.25401146920482753,
+                  "rerank_score": 0.0819
+                },
+                {
+                  "chunk_id": "cefd5831-fea0-4676-a46f-cd81c3e67fcc_chunk_2",
+                  "content": "【联想 · 产品经理-AI方向（实习） 岗位职责】依据业务需求以及客户反馈，精心撰写产品设计文档与原型设计文档，确保产品设计方案清晰、可行",
+                  "metadata": {
+                    "company": "联想",
+                    "index": 2,
+                    "jd_id": "cefd5831-fea0-4676-a46f-cd81c3e67fcc",
+                    "position": "产品经理-AI方向（实习）",
+                    "section": "responsibilities",
+                    "strategy": "semantic"
+                  },
+                  "distance": null,
+                  "bm25_score": 4.044025475254898,
+                  "vec_norm": 0.0,
+                  "bm25_norm": 0.8214782021037009,
+                  "hybrid_score": 0.24644346063111028,
+                  "rerank_score": 0.0726
+                },
+                {
+                  "chunk_id": "f46e2577-eca2-448d-a9a8-7fc14402179b_chunk_3",
+                  "content": "【百度 · 大模型应用PM 硬性要求】\n5年以上AI产品经验，有大模型落地案例",
+                  "metadata": {
+                    "company": "百度",
+                    "index": 3,
+                    "jd_id": "f46e2577-eca2-448d-a9a8-7fc14402179b",
+                    "position": "大模型应用PM",
+                    "priority": "high",
+                    "section": "hard_requirements",
+                    "strategy": "semantic"
+                  },
+                  "distance": null,
+                  "bm25_score": 4.249222555339646,
+                  "vec_norm": 0.0,
+                  "bm25_norm": 1.0,
+                  "hybrid_score": 0.3,
+                  "rerank_score": 0.0266
+                },
+                {
+                  "chunk_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a_chunk_4",
+                  "content": "【某小公司 · Java后端 硬性要求】\n大专及以上学历",
+                  "metadata": {
+                    "company": "某小公司",
+                    "index": 4,
+                    "jd_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a",
+                    "position": "Java后端",
+                    "priority": "high",
+                    "section": "hard_requirements",
+                    "strategy": "semantic"
+                  },
+                  "distance": 0.747747540473938,
+                  "bm25_score": 0.0,
+                  "vec_norm": 0.8520859263614133,
+                  "bm25_norm": 0.0,
+                  "hybrid_score": 0.5964601484529893,
+                  "rerank_score": 0.0152
+                },
+                {
+                  "chunk_id": "c6ac33c8-1c91-49f7-b4b0-f205a6c92b91_chunk_7",
+                  "content": "【vivo · AI应用-产品经理 软性要求/加分项】\n高效的沟通能力和在多团队协同中(算法、设计、研发)中展现推动力，以及能够熟练使用数据分析工具(加分项)",
+                  "metadata": {
+                    "company": "vivo",
+                    "index": 7,
+                    "jd_id": "c6ac33c8-1c91-49f7-b4b0-f205a6c92b91",
+                    "position": "AI应用-产品经理",
+                    "priority": "medium",
+                    "section": "soft_requirements",
+                    "strategy": "semantic"
+                  },
+                  "distance": 0.7986761927604675,
+                  "bm25_score": 0.0,
+                  "vec_norm": 0.3221990490524944,
+                  "bm25_norm": 0.0,
+                  "hybrid_score": 0.22553933433674608,
+                  "rerank_score": 0.0006
+                }
+              ]
+            },
+            "result_preview": "{'score': 55, 'label': '略有差距', 'advantages': ['Figma', 'Java开发经验'], 'weaknesses': ['候选人缺乏1年以上Java开发经验。虽然有AI相关的项目经验，但缺乏明确的AI产品实习经验，且没有参与过C端app设计。此外，没有提供明确的PRD撰写和产品设计文档编写经验。'], 'suggestions': [\"核心能力要求: "
+          },
+          {
+            "tool": "global_rank",
+            "status": "❌",
+            "params": {
+              "resume_text": "AI\n / \n157-xxxx-3421  |  chenyutong2027@163.com  |  \n  |  2027\n6\n2024.09  2027.06\n · \nAI\n· \nGPA\n3.4/4.0  |  \n2020.09  2024.06\n · \n · \n  |  \nWeb\n \n \n2025.03  2025.11\n  |  \n40\n\"\n\"\n\"\n\"\nFigma\nAI\nEmbedding\nJD\nAPI\nPrompt\n20\nPDF\n \n \nRAG\n2024.10  2025.02\n  |  \n80\nOCR\nWeb\n\"\n\"\n · \n2024.09  2025.06\n10\n · \n2022.03  2023.06\n2025.05    \n2024.11    \nAI\n2023.06    \n2022.12    \nFigma\nAxure\nXmind\n/\nPRD\nPrompt Engineering\nRAG\nEmbedding\nCET-4\n525\nOffice\nExcel",
+              "candidate_jds": [
+                {
+                  "chunk_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a_chunk_5",
+                  "content": "【某小公司 · Java后端 软性要求/加分项】\n有ERP系统开发经验优先",
+                  "metadata": {
+                    "company": "某小公司",
+                    "index": 5,
+                    "jd_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a",
+                    "position": "Java后端",
+                    "priority": "medium",
+                    "section": "soft_requirements",
+                    "strategy": "semantic"
+                  },
+                  "distance": 0.7367552518844604,
+                  "bm25_score": 0.0,
+                  "vec_norm": 0.9664551313893918,
+                  "bm25_norm": 0.0,
+                  "hybrid_score": 0.6765185919725742,
+                  "rerank_score": 0.2376
+                },
+                {
+                  "chunk_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a_chunk_2",
+                  "content": "【某小公司 · Java后端 硬性要求】\n1年以上Java开发经验",
+                  "metadata": {
+                    "company": "某小公司",
+                    "index": 2,
+                    "jd_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a",
+                    "position": "Java后端",
+                    "priority": "high",
+                    "section": "hard_requirements",
+                    "strategy": "semantic"
+                  },
+                  "distance": 0.7335311770439148,
+                  "bm25_score": 3.1204029518076792,
+                  "vec_norm": 1.0,
+                  "bm25_norm": 0.017925084314623262,
+                  "hybrid_score": 0.7053775252943869,
+                  "rerank_score": 0.1595
+                },
+                {
+                  "chunk_id": "52a150f9-cff3-49d2-a2df-d514081eed9e_chunk_4",
+                  "content": "【小米 · AI产品实习生 硬性要求】\n对用户体验敏感，熟练掌握产品设计工具如Figma、Sketch等，能独立完成方案设计",
+                  "metadata": {
+                    "company": "小米",
+                    "index": 4,
+                    "jd_id": "52a150f9-cff3-49d2-a2df-d514081eed9e",
+                    "position": "AI产品实习生",
+                    "priority": "high",
+                    "section": "hard_requirements",
+                    "strategy": "semantic"
+                  },
+                  "distance": 0.7488115429878235,
+                  "bm25_score": 3.8611644803244096,
+                  "vec_norm": 0.8410155181684059,
+                  "bm25_norm": 0.6623888351077654,
+                  "hybrid_score": 0.7874275132502137,
+                  "rerank_score": 0.127
+                },
+                {
+                  "chunk_id": "94df2ae7-baa3-418d-be25-1974b64a5b06_chunk_4",
+                  "content": "【百度 · AI能力产品实习生 硬性要求】\n对AI产品有热情，有AI策略产品相关实习经验",
+                  "metadata": {
+                    "company": "百度",
+                    "index": 4,
+                    "jd_id": "94df2ae7-baa3-418d-be25-1974b64a5b06",
+                    "position": "AI能力产品实习生",
+                    "priority": "high",
+                    "section": "hard_requirements",
+                    "strategy": "semantic"
+                  },
+                  "distance": null,
+                  "bm25_score": 4.101617219000179,
+                  "vec_norm": 0.0,
+                  "bm25_norm": 0.871583114089506,
+                  "hybrid_score": 0.26147493422685175,
+                  "rerank_score": 0.1183
+                },
+                {
+                  "chunk_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8_chunk_6",
+                  "content": "【阿里巴巴 · 后端开发 软性要求/加分项】\n有电商行业经验优先",
+                  "metadata": {
+                    "company": "阿里巴巴",
+                    "index": 6,
+                    "jd_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8",
+                    "position": "后端开发",
+                    "priority": "medium",
+                    "section": "soft_requirements",
+                    "strategy": "semantic"
+                  },
+                  "distance": 0.7554360628128052,
+                  "bm25_score": 0.0,
+                  "vec_norm": 0.7720907387734675,
+                  "bm25_norm": 0.0,
+                  "hybrid_score": 0.5404635171414272,
+                  "rerank_score": 0.1105
+                },
+                {
+                  "chunk_id": "d64b1fc3-41aa-437a-8e7a-40c3a74dc383_chunk_7",
+                  "content": "【ACG · 干帆智能体平台/DuMate产品实习生 软性要求/加分项】\n加分项：有AI产品相关实习经验、参与过C端app设计优先",
+                  "metadata": {
+                    "company": "ACG",
+                    "index": 7,
+                    "jd_id": "d64b1fc3-41aa-437a-8e7a-40c3a74dc383",
+                    "position": "干帆智能体平台/DuMate产品实习生",
+                    "priority": "medium",
+                    "section": "soft_requirements",
+                    "strategy": "semantic"
+                  },
+                  "distance": null,
+                  "bm25_score": 4.073021621751346,
+                  "vec_norm": 0.0,
+                  "bm25_norm": 0.8467048973494251,
+                  "hybrid_score": 0.25401146920482753,
+                  "rerank_score": 0.0819
+                },
+                {
+                  "chunk_id": "cefd5831-fea0-4676-a46f-cd81c3e67fcc_chunk_2",
+                  "content": "【联想 · 产品经理-AI方向（实习） 岗位职责】依据业务需求以及客户反馈，精心撰写产品设计文档与原型设计文档，确保产品设计方案清晰、可行",
+                  "metadata": {
+                    "company": "联想",
+                    "index": 2,
+                    "jd_id": "cefd5831-fea0-4676-a46f-cd81c3e67fcc",
+                    "position": "产品经理-AI方向（实习）",
+                    "section": "responsibilities",
+                    "strategy": "semantic"
+                  },
+                  "distance": null,
+                  "bm25_score": 4.044025475254898,
+                  "vec_norm": 0.0,
+                  "bm25_norm": 0.8214782021037009,
+                  "hybrid_score": 0.24644346063111028,
+                  "rerank_score": 0.0726
+                },
+                {
+                  "chunk_id": "f46e2577-eca2-448d-a9a8-7fc14402179b_chunk_3",
+                  "content": "【百度 · 大模型应用PM 硬性要求】\n5年以上AI产品经验，有大模型落地案例",
+                  "metadata": {
+                    "company": "百度",
+                    "index": 3,
+                    "jd_id": "f46e2577-eca2-448d-a9a8-7fc14402179b",
+                    "position": "大模型应用PM",
+                    "priority": "high",
+                    "section": "hard_requirements",
+                    "strategy": "semantic"
+                  },
+                  "distance": null,
+                  "bm25_score": 4.249222555339646,
+                  "vec_norm": 0.0,
+                  "bm25_norm": 1.0,
+                  "hybrid_score": 0.3,
+                  "rerank_score": 0.0266
+                },
+                {
+                  "chunk_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a_chunk_4",
+                  "content": "【某小公司 · Java后端 硬性要求】\n大专及以上学历",
+                  "metadata": {
+                    "company": "某小公司",
+                    "index": 4,
+                    "jd_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a",
+                    "position": "Java后端",
+                    "priority": "high",
+                    "section": "hard_requirements",
+                    "strategy": "semantic"
+                  },
+                  "distance": 0.747747540473938,
+                  "bm25_score": 0.0,
+                  "vec_norm": 0.8520859263614133,
+                  "bm25_norm": 0.0,
+                  "hybrid_score": 0.5964601484529893,
+                  "rerank_score": 0.0152
+                },
+                {
+                  "chunk_id": "c6ac33c8-1c91-49f7-b4b0-f205a6c92b91_chunk_7",
+                  "content": "【vivo · AI应用-产品经理 软性要求/加分项】\n高效的沟通能力和在多团队协同中(算法、设计、研发)中展现推动力，以及能够熟练使用数据分析工具(加分项)",
+                  "metadata": {
+                    "company": "vivo",
+                    "index": 7,
+                    "jd_id": "c6ac33c8-1c91-49f7-b4b0-f205a6c92b91",
+                    "position": "AI应用-产品经理",
+                    "priority": "medium",
+                    "section": "soft_requirements",
+                    "strategy": "semantic"
+                  },
+                  "distance": 0.7986761927604675,
+                  "bm25_score": 0.0,
+                  "vec_norm": 0.3221990490524944,
+                  "bm25_norm": 0.0,
+                  "hybrid_score": 0.22553933433674608,
+                  "rerank_score": 0.0006
+                }
+              ],
+              "top_k": "5"
+            },
+            "result_preview": "'>' not supported between instances of 'int' and 'str'"
+          }
+        ],
+        "kb_chunks_count": 2,
+        "system_prompt_preview": "你是一位专业的求职顾问。请基于以下工具执行结果，给用户一个清晰、有帮助的回复。\n要求：\n1. 直接回答用户的问题，不要重复用户的原话\n2. 如果有匹配分析结果，给出具体的分数和建议\n3. 如果有检索结果，基于事实回答，不要编造\n4. 语气友好、专业、结构化"
+      },
+      "memory": {
+        "working_turns": 1,
+        "compressed_blocks": 0,
+        "current_topic": "general",
+        "evidence_cache_size": 5
+      },
+      "reply": {
+        "type": "text",
+        "content": "你好！根据检索到的岗位信息和个人匹配度分析，我为你整理了以下求职建议：\n\n### 1. 岗位筛选与设计经验要求\n本次共检索到 5 个相关岗位，其中 **2 个岗位明确需要设计经验**，具体如下：\n\n*   **需要设计经验的岗位：**\n    *   **小米 · AI 产品实习生**：**硬性要求**。需熟练掌握 Figma、Sketch 等产品设计工具，并能独立完成方案设计。\n    *   **ACG · 干帆智能体平台/DuMate 产品实习生**：**加分项**。若有参与过 C 端 App 设计经验会优先录取。\n*   **无需设计经验的岗位：**\n    *   某小公司 · Java 后端（侧重 ERP 系统开发经验）\n    *   百度 · AI 能力产品实习生（侧重 AI 策略产品实习经验）\n    *   阿里巴巴 · 后端开发（侧重电商行业经验）\n\n### 2. 个人匹配度分析\n基于上述岗位的核心要求，目前的匹配情况如下：\n\n*   **匹配分数**：**55 分**（略有差距）\n*   **你的优势**：\n    *   具备 **Figma** 工具使用能力。\n    *   拥有 **Java 开发经验**。\n*   **主要差距**：\n    *   **年限不足**：缺乏 1 年以上 Java 开发经验。\n    *   **经历缺失**：缺乏明确的 AI 产品实习经验，且没有参与过 C 端 App 设计。\n    *   **文档能力**：未提供明确的 PRD 撰写和产品设计文档编写经验。\n\n### 3. 提升建议\n为了提高求职成功率，建议重点补充以下核心能力：\n\n1.  **补充设计作品集**：针对小米和 ACG 的岗位，整理一份包含 Figma/Sketch 原型设计的作品集，特别是若有 C 端 App 的设计案例，请重点展示。\n2.  **强化产品文档能力**：尝试撰写一份完整的 PRD（产品需求文档）或原型设计文档，以证明具备独立完成方案设计的能力。\n3.  **积累 AI 相关经历**：若暂时无法获得实习机会，可参与一些大模型落地的个人项目或开源项目，并在简历中突出“大模型落地案例”。\n4.  **突出沟通与协同**：在面试中准备多团队协同的案例，展现高效的沟通能力。\n\n虽然目前匹配度尚有提升空间，但你在工具和开发背景上已有基础，针对性补充产品和设计文档经验后，竞争力会显著增强。加油！",
+        "data": null,
+        "sources": null
+      },
+      "_time": 44.95599937438965,
+      "type": "done"
+    }
+  ],
+  "timestamp": "2026-04-30T18:52:55.561752",
+  "tool_execution_success_rate": 0.67,
+  "tool_correct_rate": 0.33
+}

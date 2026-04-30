@@ -212,7 +212,7 @@ def chunk_semantic(jd: dict) -> List[Chunk]:
 # ──────────────────────────── 策略 C：递归分块（recursive） ────────────────────────────
 
 def _recursive_split(text: str, max_length: int) -> List[str]:
-    """
+    r"""
     递归切分辅助函数。
 
     核心原则：只有文本长度超过 max_length 时，才进行降级切分。

@@ -6,6 +6,7 @@ Agent 工具集合 —— 意图识别后可调用的工具定义
 """
 
 import hashlib
+import json
 import logging
 import re
 import time
@@ -179,6 +180,13 @@ async def _kb_retrieve_stub(query: str, company: Optional[str] = None,
     """
     logger.info(f"[Tool:kb_retrieve] query='{query[:40]}...' company={company} position={position}")
 
+    # 防御：Planner 可能将 top_k 生成为字符串
+    if top_k is not None:
+        try:
+            top_k = int(top_k)
+        except (ValueError, TypeError):
+            top_k = None
+
     try:
         import numpy as np
         import jieba
@@ -207,7 +215,11 @@ async def _kb_retrieve_stub(query: str, company: Optional[str] = None,
         bm25_scores = _bm25_index.get_scores(query_tokens)  # numpy array, len = 总文档数
 
         # 取 BM25 top-20（分数 > 0 的才要）
+        # 防御：确保 bm25_scores 是 numpy array
+        if not isinstance(bm25_scores, np.ndarray):
+            bm25_scores = np.array(bm25_scores)
         bm25_top_indices = np.argsort(bm25_scores)[::-1][:settings.RETRIEVAL_BM25_TOP_K]
+        bm25_top_indices = np.asarray(bm25_top_indices, dtype=int)
         bm25_results = []
         for idx in bm25_top_indices:
             if bm25_scores[idx] > 0:
@@ -888,9 +900,23 @@ class MatchAnalyzeTool(BaseTool):
 
     async def execute(self, params: dict) -> NewToolResult:
         jd_text = params.get("jd_text", "")
-        # 防御：如果 jd_text 是 chunks 列表，拼接为字符串
+        # 防御：如果 jd_text 是 chunks 列表，按 company/position 筛选后拼接
         if isinstance(jd_text, list):
             chunks = jd_text
+            company = params.get("company")
+            position = params.get("position")
+            if company or position:
+                filtered = []
+                for c in chunks:
+                    if isinstance(c, dict):
+                        meta = c.get("metadata", {})
+                        c_company = meta.get("company", "")
+                        c_position = meta.get("position", "")
+                        if (not company or company in c_company) and (not position or position in c_position):
+                            filtered.append(c)
+                if filtered:
+                    logger.info(f"[MatchAnalyzeTool] 按 company={company} position={position} 筛选，从 {len(chunks)} 个 chunk 中命中 {len(filtered)} 个")
+                    chunks = filtered
             jd_text = "\n\n".join(
                 c.get("content", "") if isinstance(c, dict) else str(c)
                 for c in chunks
@@ -939,6 +965,15 @@ class InterviewGenTool(BaseTool):
 
     async def execute(self, params: dict) -> NewToolResult:
         match_result = params.get("match_result", {})
+        # 防御：match_result 可能被解析为字符串
+        if isinstance(match_result, str):
+            logger.warning(f"[InterviewGenTool] match_result 为字符串，尝试解析: {match_result[:200]}")
+            try:
+                match_result = json.loads(match_result)
+            except Exception:
+                match_result = {}
+        if not isinstance(match_result, dict):
+            match_result = {}
         result = await _interview_questions(
             match_result=match_result,
             company=match_result.get("company"),
@@ -1065,6 +1100,7 @@ class GlobalRankTool(BaseTool):
         """
         从简历文本中快速提取结构化信息（用于粗筛层）。
         基于正则，零成本，不调用 LLM。
+        支持多种格式：技术技能/个人技能/产品工具/技术理解/项目经历中的技能描述。
         """
         import re
 
@@ -1075,24 +1111,76 @@ class GlobalRankTool(BaseTool):
             "education": "",
             "domain": "",
         }
+        text_lower = resume_text.lower()
 
-        # 1. 技术技能：匹配 "技术技能：Python, PyTorch, Docker"
+        # ═══════════════════════════════════════════════════════
+        # 1. 技能提取：多格式匹配
+        # ═══════════════════════════════════════════════════════
+        skill_sources = []
+
+        # 1a. 传统 "技术技能：xxx" 格式
         m = re.search(r"技术技能[：:]\s*(.+?)(?:\n|$)", resume_text, re.IGNORECASE)
         if m:
-            result["hard_skills"] = [s.strip() for s in re.split(r"[,，、]", m.group(1)) if s.strip()]
-        # 兜底：从全文匹配常见技术关键词（从配置读取，避免硬编码）
-        if not result["hard_skills"]:
-            for kw in settings.RESUME_TECH_KEYWORDS:
-                escaped = re.escape(kw)
-                if re.search(rf"\b{escaped}\b", resume_text, re.IGNORECASE):
-                    result["hard_skills"].append(kw)
+            skill_sources.append(m.group(1))
 
+        # 1b. "个人技能" / "专业技能" / "技能" 区块（匹配多行列表）
+        m = re.search(r"(?:个人|专业)?技能[：:]\s*(.+?)(?=\n\n|\n[A-Z]|\n[^-•·]|\Z)", resume_text, re.IGNORECASE | re.DOTALL)
+        if m:
+            skill_sources.append(m.group(1))
+
+        # 1c. "产品工具：xxx" / "技术理解：xxx" 等子类别
+        for label in ["产品工具", "技术理解", "技术栈", "开发工具"]:
+            pat = rf"{label}[：:]\s*(.+?)(?:\n|$)"
+            m = re.search(pat, resume_text, re.IGNORECASE)
+            if m:
+                skill_sources.append(m.group(1))
+
+        # 1d. 从区块内的列表项提取（- xxx / • xxx / · xxx）
+        for m in re.finditer(r"^\s*[-•·]\s*(.+)$", resume_text, re.MULTILINE):
+            item = m.group(1).strip()
+            # 去掉 "xxx：" 前缀
+            item = re.sub(r"^[^：:]*[：:]\s*", "", item)
+            skill_sources.append(item)
+
+        # 统一解析所有来源中的技能词
+        all_skills = set()
+        for src in skill_sources:
+            # 按逗号、顿号、分号、空格分隔
+            parts = re.split(r"[,，;；/\\\s]+", src)
+            for p in parts:
+                p = p.strip().strip("-•·")
+                # 去掉前缀动词
+                p = re.sub(r"^(?:熟练|掌握|了解|熟悉|使用|具备|涉及|能够|通过|运用)\s*", "", p)
+                # 去掉常见后缀动词/虚词
+                p = re.sub(r"(?:进行|通过|能够|可以|了解|具备|涉及|使用|掌握|熟练|熟悉|运用|及|等|的|了|与|和|或)\s*$", "", p)
+                p = p.strip('，、,;；.。:：')
+                # 过滤：长度 2-20，不包含过多中文字符的句子
+                if 2 <= len(p) <= 20 and len(p) < 15 or (len(p) >= 15 and not re.search(r"[\u4e00-\u9fa5]{4,}", p)):
+                    all_skills.add(p)
+
+        # 1e. 兜底：从全文匹配配置中的技术关键词（确保覆盖）
+        for kw in settings.RESUME_TECH_KEYWORDS:
+            escaped = re.escape(kw)
+            if re.search(rf"(^|[^a-zA-Z0-9\u4e00-\u9fa5]){escaped}([^a-zA-Z0-9\u4e00-\u9fa5]|$)", resume_text, re.IGNORECASE):
+                all_skills.add(kw)
+
+        result["hard_skills"] = sorted(all_skills)
+
+        # 1f. 质量检查：如果提取结果噪音太大，标记为低质量
+        avg_len = sum(len(s) for s in result["hard_skills"]) / len(result["hard_skills"]) if result["hard_skills"] else 0
+        is_low_quality = len(result["hard_skills"]) > 15 or avg_len > 12
+
+        # ═══════════════════════════════════════════════════════
         # 2. 软技能
+        # ═══════════════════════════════════════════════════════
         m = re.search(r"(?:软技能|综合素质)[：:]\s*(.+?)(?:\n|$)", resume_text, re.IGNORECASE)
         if m and m.group(1):
             result["soft_skills"] = [s.strip() for s in re.split(r"[,，、]", m.group(1)) if s.strip()]
 
-        # 3. 工作年限：匹配 "4年经验"、"工作经验：5年"、"5年以上"
+        # ═══════════════════════════════════════════════════════
+        # 3. 工作年限：多种模式匹配
+        # ═══════════════════════════════════════════════════════
+        # 3a. 直接声明工作年限
         patterns = [
             r"(\d+\.?\d*)\s*年\s*(?:以上|经验|工作)",
             r"工作年限[：:]\s*(\d+\.?\d*)\s*年",
@@ -1104,13 +1192,69 @@ class GlobalRankTool(BaseTool):
                 result["years_of_experience"] = float(m.group(1))
                 break
 
-        # 4. 学历：匹配 "硕士"、"本科"、"博士"
+        # 3b. 从教育背景推断：如果最高学历在读且预计毕业年份在未来 → 在校生(years=0)
+        # 匹配 "20XX.XX-20XX.XX（预计）" 或 "20XX-20XX"
+        edu_year_match = re.search(r"(\d{4})[\.\-]\d{2}[\s\-~～]*(\d{4})[\.\-]?\d{0,2}\s*[（(]?预计[）)]?", resume_text)
+        if edu_year_match:
+            grad_year = int(edu_year_match.group(2))
+            from datetime import datetime
+            if grad_year > datetime.now().year:
+                result["years_of_experience"] = 0  # 在校生
+                result["is_student"] = True
+
+        # ═══════════════════════════════════════════════════════
+        # 4. 学历：匹配最高学历
+        # ═══════════════════════════════════════════════════════
         edu_patterns = [("博士", 3), ("硕士", 2), ("本科", 1), ("大专", 0)]
         for edu, level in edu_patterns:
             if edu in resume_text:
                 result["education"] = edu
                 result["education_level"] = level
                 break
+
+        # ═══════════════════════════════════════════════════════
+        # 5. 领域推断（简单规则）
+        # ═══════════════════════════════════════════════════════
+        domain_keywords = {
+            "AI": ["人工智能", "AI", "大模型", "机器学习", "深度学习", "NLP", "计算机视觉"],
+            "后端": ["Java", "后端", "Spring", "微服务", "高并发", "分布式"],
+            "前端": ["前端", "React", "Vue", "JavaScript", "TypeScript", "CSS"],
+            "产品": ["产品经理", "产品助理", "产品实习", "PRD", "原型", "需求分析"],
+            "设计": ["UI", "UX", "设计", "Figma", "视觉", "交互"],
+        }
+        for domain, kws in domain_keywords.items():
+            if any(kw in resume_text for kw in kws):
+                result["domain"] = domain
+                break
+
+        # ═══════════════════════════════════════════════════════
+        # 6. Fallback：如果正则提取效果差，尝试从 resumes.json 读取结构化数据
+        # ═══════════════════════════════════════════════════════
+        if len(result["hard_skills"]) < 3 or is_low_quality:
+            try:
+                import json
+                from pathlib import Path
+                resume_path = Path(__file__).resolve().parent.parent.parent / "data" / "resumes.json"
+                with open(resume_path, encoding="utf-8") as f:
+                    resumes = json.load(f)
+                for r in resumes:
+                    raw = r.get("parsed_schema", {}).get("meta", {}).get("raw_text", "")
+                    # 使用内容相似度匹配（避免空白差异）
+                    if raw and len(raw) > 100 and resume_text and len(resume_text) > 100:
+                        raw_norm = raw.strip().replace(" ", "").replace("\r\n", "").replace("\n", "")
+                        text_norm = resume_text.strip().replace(" ", "").replace("\r\n", "").replace("\n", "")
+                        if raw_norm == text_norm or (len(raw_norm) > 200 and raw_norm[:200] == text_norm[:200]):
+                            tech = r.get("parsed_schema", {}).get("skills", {}).get("technical", [])
+                            if tech and len(tech) >= 3:
+                                result["hard_skills"] = tech
+                            # 补充年限（如果正则未提取到）
+                            if result["years_of_experience"] == 0:
+                                years = r.get("parsed_schema", {}).get("basic_info", {}).get("years_exp")
+                                if years is not None:
+                                    result["years_of_experience"] = float(years)
+                            break
+            except Exception:
+                pass
 
         return result
 
@@ -1190,7 +1334,7 @@ class GlobalRankTool(BaseTool):
         )
         return filtered
 
-    def _build_jd_summary(self, jd: dict, max_chars: int = 400) -> str:
+    def _build_jd_summary(self, jd: dict, max_chars: int = 200) -> str:
         """为单个 JD 构建结构化摘要文本"""
         lines = [f"【{jd['company']} · {jd['position']}】"]
         sections = jd.get("sections", {})
@@ -1214,16 +1358,155 @@ class GlobalRankTool(BaseTool):
         text = "\n".join(lines)
         return text[:max_chars]
 
+    def _template_rank(self, filtered_jds: list, resume_summary: dict, top_k: int = 5) -> dict:
+        """
+        模板化排序：当 JD 数量较少时跳过 LLM，基于规则生成推荐理由。
+        输出格式与 LLM 精排完全一致，确保下游处理无差异。
+        """
+        resume_skills = set(s.lower() for s in resume_summary.get("hard_skills", []))
+        resume_years = resume_summary.get("years_of_experience", 0)
+        resume_edu_level = resume_summary.get("education_level", 0)
+        resume_domain = resume_summary.get("domain", "")
+        edu_map = {"博士": 3, "硕士": 2, "本科": 1, "大专": 0}
+
+        rankings = []
+        for i, jd in enumerate(filtered_jds[:top_k]):
+            jd_meta = jd.get("structured_summary", {}) or {}
+            jd_keywords = set(k.strip().lower() for k in jd.get("keywords", []))
+
+            # 计算技能交集
+            skill_overlap = resume_skills & jd_keywords if resume_skills and jd_keywords else set()
+
+            # 计算年限差距（resume_years=0 视为在校生，任何 min_years>0 都算差距）
+            min_years = jd_meta.get("min_years")
+            year_gap = 0
+            if min_years is not None:
+                if resume_years > 0 and resume_years < min_years:
+                    year_gap = min_years - resume_years
+                elif resume_years == 0 and min_years > 0:
+                    year_gap = min_years  # 在校生 vs 有年限要求的社招
+
+            # 计算学历差距
+            min_edu = jd_meta.get("min_education")
+            edu_gap = False
+            if min_edu and resume_edu_level > 0:
+                min_edu_level = edu_map.get(min_edu, 0)
+                edu_gap = resume_edu_level < min_edu_level
+
+            # 判断方向/领域是否一致
+            jd_domain = jd_meta.get("domain", "")
+            domain_match = bool(resume_domain and jd_domain and resume_domain == jd_domain)
+            domain_mismatch = bool(resume_domain and jd_domain and resume_domain != jd_domain)
+
+            # 匹配分数：基于 hybrid_score + 规则调整
+            base_score = min(60 + jd.get("avg_hybrid_score", 0) * 30, 95)
+            if skill_overlap:
+                base_score = min(base_score + len(skill_overlap) * 3, 95)
+            if year_gap > 0:
+                base_score = max(base_score - 15, 20)
+            if edu_gap:
+                base_score = max(base_score - 10, 20)
+            if domain_mismatch:
+                base_score = max(base_score - 10, 15)
+
+            # 生成推荐理由
+            reasons = []
+            if skill_overlap:
+                reasons.append(f"技能匹配：{', '.join(list(skill_overlap)[:3])}")
+            if domain_match:
+                reasons.append("领域方向一致")
+            if domain_mismatch:
+                reasons.append(f"方向差异：简历侧重{resume_domain}，JD方向{jd_domain}")
+            if year_gap > 0:
+                if resume_years == 0:
+                    reasons.append(f"经验门槛：需{min_years}年+经验（当前在校生）")
+                else:
+                    reasons.append(f"经验要求：需{min_years}年+经验（当前{resume_years}年）")
+            if edu_gap:
+                reasons.append(f"学历要求：需{min_edu}及以上学历")
+            if not reasons:
+                reasons.append(f"检索相关度较高（{jd.get('avg_hybrid_score', 0):.2f}）")
+
+            # 确定优先级
+            if base_score >= 80:
+                priority = "高"
+            elif base_score >= 60:
+                priority = "中"
+            elif base_score >= 40:
+                priority = "低"
+            else:
+                priority = "极低"
+
+            # key_match / key_gap
+            key_match = []
+            key_gap = []
+            if skill_overlap:
+                key_match.append(f"技能交集：{', '.join(list(skill_overlap)[:3])}")
+            if domain_match:
+                key_match.append("领域匹配")
+            if not key_match:
+                key_match.append("检索召回")
+            if domain_mismatch:
+                key_gap.append(f"方向不匹配（简历{resume_domain} vs JD{jd_domain}）")
+            if year_gap > 0:
+                if resume_years == 0:
+                    key_gap.append(f"在校生身份不符社招要求（需{min_years}年经验）")
+                else:
+                    key_gap.append(f"工作年限不足（差{year_gap:.0f}年）")
+            if edu_gap:
+                key_gap.append(f"学历未达要求（需{min_edu}）")
+            if not key_gap:
+                key_gap.append("需进一步了解详细匹配情况")
+
+            rankings.append({
+                "rank": i + 1,
+                "jd_id": jd.get("jd_id", ""),
+                "company": jd.get("company", "未知"),
+                "position": jd.get("position", "未知"),
+                "match_score": round(base_score),
+                "recommend_reason": "；".join(reasons),
+                "key_match": key_match,
+                "key_gap": key_gap,
+                "apply_priority": priority,
+            })
+
+        # 生成策略建议
+        high_count = sum(1 for r in rankings if r["apply_priority"] == "高")
+        med_count = sum(1 for r in rankings if r["apply_priority"] == "中")
+        if high_count >= 2:
+            strategy = f"共识别 {high_count} 个高度匹配岗位，建议优先投递；另有 {med_count} 个中等匹配岗位可作为备选。"
+        elif high_count == 1:
+            strategy = "有 1 个高度匹配岗位建议优先投递，其余岗位可根据个人偏好选择性尝试。"
+        elif med_count > 0:
+            strategy = f"暂未发现高度匹配岗位，{med_count} 个中等匹配岗位可作为参考，建议进一步评估后再投递。"
+        else:
+            strategy = "当前推荐岗位与简历匹配度普遍较低，建议优化简历或调整求职方向。"
+
+        return {
+            "rankings": rankings,
+            "strategy_advice": strategy,
+            "_template_mode": True,
+        }
+
     async def execute(self, params: dict) -> NewToolResult:
         candidate_chunks = params.get("candidate_jds", [])
         resume_text = params.get("resume_text", "")
         top_k = params.get("top_k", 5)
 
+        # 防御：candidate_jds 可能是 JSON 字符串（LLM 输出时序列化）
+        if isinstance(candidate_chunks, str):
+            try:
+                candidate_chunks = json.loads(candidate_chunks)
+            except Exception:
+                candidate_chunks = []
+        if not isinstance(candidate_chunks, list):
+            candidate_chunks = []
+
         if not candidate_chunks:
             return NewToolResult(success=False, error="candidate_jds 为空")
 
         # ═══════════════════════════════════════════════════════
-        # 双层召回：粗筛层 → 精排层
+        # 双层召回：粗筛层 → 精排层（动态决策）
         # ═══════════════════════════════════════════════════════
 
         # ── 1. 将 chunk 列表聚合成 JD 列表 ──
@@ -1237,7 +1520,7 @@ class GlobalRankTool(BaseTool):
 
         # ── 2. 粗筛层：基于结构化元数据快速过滤 ──
         resume_summary = self._extract_resume_summary(resume_text)
-        coarse_top_k = max(top_k * settings.COARSE_FILTER_MULTIPLIER, settings.COARSE_FILTER_MIN_POOL)  # 粗筛保留比最终需求多 N 倍，给 LLM 充分选择空间
+        coarse_top_k = max(top_k * settings.COARSE_FILTER_MULTIPLIER, settings.COARSE_FILTER_MIN_POOL)
         filtered_jds = self._coarse_filter(resume_summary, aggregated_jds, top_k=coarse_top_k)
 
         if not filtered_jds:
@@ -1250,13 +1533,26 @@ class GlobalRankTool(BaseTool):
             f"resume_skills={len(resume_summary.get('hard_skills', []))}"
         )
 
-        # ── 3. 构建 JD 摘要（只对粗筛后的 subset）──
+        # ── 3. 动态决策：JD 数量少时跳过 LLM，使用模板输出 ──
+        if len(aggregated_jds) <= settings.GLOBAL_RANK_LLM_THRESHOLD:
+            logger.info(
+                f"[GlobalRankTool] JD数={len(aggregated_jds)} ≤ 阈值={settings.GLOBAL_RANK_LLM_THRESHOLD}，"
+                f"跳过LLM精排，使用模板输出"
+            )
+            data = self._template_rank(filtered_jds, resume_summary, top_k=top_k)
+            data["_coarse_filter_meta"] = {
+                "input_jds": len(aggregated_jds),
+                "output_jds": len(filtered_jds),
+                "filter_ratio": round(1 - len(filtered_jds) / len(aggregated_jds), 2) if aggregated_jds else 0,
+            }
+            return NewToolResult(success=True, data=data)
+
+        # ── 4. JD 数量较多时，调用 LLM 精排 ──
         jd_summaries = []
         for jd in filtered_jds:
-            summary = self._build_jd_summary(jd, max_chars=400)
+            summary = self._build_jd_summary(jd, max_chars=200)
             jd_summaries.append(summary)
 
-        # ── 4. 构建 Prompt ──
         system_prompt = """你是一位资深HR顾问。请将用户简历与以下多个JD进行对比分析，按匹配度排序并给出投递建议。
 输出严格JSON格式：
 {
@@ -1282,15 +1578,14 @@ class GlobalRankTool(BaseTool):
             + "\n\n请输出JSON："
         )
 
-        # ── 5. 调用 LLM 精排（只处理粗筛后的 subset）──
         try:
-            llm = LLMClient.from_config("chat")
+            llm = LLMClient.from_config("core")
             raw = await llm.generate(
                 prompt=user_prompt,
                 system=system_prompt,
                 temperature=0.3,
                 max_tokens=2500,
-                timeout=TIMEOUT_HEAVY,  # 60s，全局排序需处理大量 JD，属于重型调用
+                timeout=TIMEOUT_HEAVY,
             )
             data = json.loads(raw.strip())
             # 补充 jd_id（LLM 返回的 ranking 可能没有 jd_id）
@@ -1307,30 +1602,15 @@ class GlobalRankTool(BaseTool):
         except Exception as e:
             logger.warning(f"[GlobalRankTool] LLM 排序失败: {e}")
 
-            # Fallback：按粗筛后的结果 + hybrid_score 排序返回
-            rankings = []
-            for i, jd in enumerate(filtered_jds[:top_k]):
-                rankings.append({
-                    "rank": i + 1,
-                    "jd_id": jd.get("jd_id", ""),
-                    "company": jd.get("company", "未知"),
-                    "position": jd.get("position", "未知"),
-                    "match_score": round(min(60 + jd.get("avg_hybrid_score", 0) * 30, 95)),
-                    "recommend_reason": f"检索相关度: {jd.get('avg_hybrid_score', 0):.2f}",
-                    "key_match": [],
-                    "key_gap": [],
-                    "apply_priority": "中",
-                })
-            fallback_data = {
-                "rankings": rankings,
-                "strategy_advice": "LLM排序失败，返回基于检索相关度的默认排序",
-                "_coarse_filter_meta": {
-                    "input_jds": len(aggregated_jds),
-                    "output_jds": len(filtered_jds),
-                    "filter_ratio": round(1 - len(filtered_jds) / len(aggregated_jds), 2) if aggregated_jds else 0,
-                },
+            # Fallback：模板输出
+            data = self._template_rank(filtered_jds, resume_summary, top_k=top_k)
+            data["strategy_advice"] = f"LLM排序失败（{str(e)[:60]}），返回基于规则的默认排序。"
+            data["_coarse_filter_meta"] = {
+                "input_jds": len(aggregated_jds),
+                "output_jds": len(filtered_jds),
+                "filter_ratio": round(1 - len(filtered_jds) / len(aggregated_jds), 2) if aggregated_jds else 0,
             }
-            return NewToolResult(success=True, data=fallback_data)
+            return NewToolResult(success=True, data=data)
 
 
 class QASynthesizeTool(BaseTool):

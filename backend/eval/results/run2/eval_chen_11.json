@@ -1,0 +1,1722 @@
+{
+  "case_id": "eval_chen_11",
+  "message": "先帮我挑几个能投的岗，再告诉我要准备什么面试题",
+  "gold_intents": [
+    "explore",
+    "prepare"
+  ],
+  "expected_tools": [
+    "kb_retrieve",
+    "global_rank",
+    "interview_questions"
+  ],
+  "scenario": "多意图_探索+面试准备",
+  "status": "success",
+  "error": null,
+  "ttfb": 0.006,
+  "total_latency": 70.92,
+  "event_count": 226,
+  "pred_intent": "position_explore",
+  "pred_tools": [
+    {
+      "tool": "kb_retrieve",
+      "status": "✅",
+      "params": {
+        "query": "先帮我挑几个能投递的岗，再告诉我要准备什么面试试题",
+        "top_k": 10
+      },
+      "result_preview": "{'chunks': [{'chunk_id': 'f0427344-e282-48e4-8074-bcc9419cf414_chunk_10', 'content': '【淘天集团 · AI大模型产品经理 软性要求/加分项】投递时需提交过往AI作品集展示，包括但不限于github链接、demo（可互动）等形式', 'metadata': {'company': '淘天集团', 'index': "
+    },
+    {
+      "tool": "global_rank",
+      "status": "✅",
+      "params": {
+        "resume_text": "AI\n / \n157-xxxx-3421  |  chenyutong2027@163.com  |  \n  |  2027\n6\n2024.09  2027.06\n · \nAI\n· \nGPA\n3.4/4.0  |  \n2020.09  2024.06\n · \n · \n  |  \nWeb\n \n \n2025.03  2025.11\n  |  \n40\n\"\n\"\n\"\n\"\nFigma\nAI\nEmbedding\nJD\nAPI\nPrompt\n20\nPDF\n \n \nRAG\n2024.10  2025.02\n  |  \n80\nOCR\nWeb\n\"\n\"\n · \n2024.09  2025.06\n10\n · \n2022.03  2023.06\n2025.05    \n2024.11    \nAI\n2023.06    \n2022.12    \nFigma\nAxure\nXmind\n/\nPRD\nPrompt Engineering\nRAG\nEmbedding\nCET-4\n525\nOffice\nExcel",
+        "candidate_jds": [
+          {
+            "chunk_id": "f0427344-e282-48e4-8074-bcc9419cf414_chunk_10",
+            "content": "【淘天集团 · AI大模型产品经理 软性要求/加分项】投递时需提交过往AI作品集展示，包括但不限于github链接、demo（可互动）等形式",
+            "metadata": {
+              "company": "淘天集团",
+              "index": 10,
+              "jd_id": "f0427344-e282-48e4-8074-bcc9419cf414",
+              "position": "AI大模型产品经理",
+              "priority": "medium",
+              "section": "soft_requirements",
+              "strategy": "semantic"
+            },
+            "distance": 0.9913243651390076,
+            "bm25_score": 6.15925009320981,
+            "vec_norm": 0.21968977432587733,
+            "bm25_norm": 1.0,
+            "hybrid_score": 0.45378284202811414,
+            "rerank_score": 0.1322
+          },
+          {
+            "chunk_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a_chunk_1",
+            "content": "【某小公司 · Java后端 岗位职责】\n1. 负责传统企业内部管理系统的设计与开发。2. 数据库CRUD操作与报表开发。3. 系统日常维护与bug修复。",
+            "metadata": {
+              "company": "某小公司",
+              "index": 1,
+              "jd_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a",
+              "position": "Java后端",
+              "section": "responsibilities",
+              "strategy": "semantic"
+            },
+            "distance": 0.9817094802856445,
+            "bm25_score": 0.0,
+            "vec_norm": 0.37586858251013444,
+            "bm25_norm": 0.0,
+            "hybrid_score": 0.2631080077570941,
+            "rerank_score": 0.0131
+          },
+          {
+            "chunk_id": "50e3830d-c4b8-470f-baf7-2057516a172e_chunk_5",
+            "content": "【阿里巴巴 · AI Agent产品经理 硬性要求】\n熟悉企业服务（如OA、HR SaaS）或AI行业应用，熟悉RPA、低代码等效率工具生态，有Prompt工程优化或AIGC应用实践经验；",
+            "metadata": {
+              "company": "阿里巴巴",
+              "index": 5,
+              "jd_id": "50e3830d-c4b8-470f-baf7-2057516a172e",
+              "position": "AI Agent产品经理",
+              "priority": "high",
+              "section": "hard_requirements",
+              "strategy": "semantic"
+            },
+            "distance": 0.9661113023757935,
+            "bm25_score": 0.0,
+            "vec_norm": 0.6292366543029507,
+            "bm25_norm": 0.0,
+            "hybrid_score": 0.4404656580120655,
+            "rerank_score": 0.0096
+          },
+          {
+            "chunk_id": "51054437-3bd1-4da6-8f09-d5b5d5978de8_chunk_5",
+            "content": "【蚂蚁集团 · AI产品工程师（转正实习） 硬性要求】\n好奇心与学习能力：对新技术和新事物保持强烈好奇心，学习能力强，对业务发展的不确定性和快速变革具备开放心态",
+            "metadata": {
+              "company": "蚂蚁集团",
+              "index": 5,
+              "jd_id": "51054437-3bd1-4da6-8f09-d5b5d5978de8",
+              "position": "AI产品工程师（转正实习）",
+              "priority": "high",
+              "section": "hard_requirements",
+              "strategy": "semantic"
+            },
+            "distance": 0.9789791703224182,
+            "bm25_score": 0.0,
+            "vec_norm": 0.42021820942024146,
+            "bm25_norm": 0.0,
+            "hybrid_score": 0.294152746594169,
+            "rerank_score": 0.0028
+          },
+          {
+            "chunk_id": "1983c425-982c-4116-8883-04eb0109edb3_chunk_5",
+            "content": "【vivo · AI产品经理-27届暑期实习 硬性要求】\n具备团队精神，责任心强，能够在快速发展的AI领域中快速适应和成长;",
+            "metadata": {
+              "company": "vivo",
+              "index": 5,
+              "jd_id": "1983c425-982c-4116-8883-04eb0109edb3",
+              "position": "AI产品经理-27届暑期实习",
+              "priority": "high",
+              "section": "hard_requirements",
+              "strategy": "semantic"
+            },
+            "distance": 0.9827325344085693,
+            "bm25_score": 0.0,
+            "vec_norm": 0.3592506639325137,
+            "bm25_norm": 0.0,
+            "hybrid_score": 0.25147546475275956,
+            "rerank_score": 0.0021
+          },
+          {
+            "chunk_id": "bbbe5988-01f4-447f-a9e2-6715c006d33c_chunk_5",
+            "content": "【小米 · AI培训方向产品实习生 硬性要求】\n沟通协调能力强，细致耐心",
+            "metadata": {
+              "company": "小米",
+              "index": 5,
+              "jd_id": "bbbe5988-01f4-447f-a9e2-6715c006d33c",
+              "position": "AI培训方向产品实习生",
+              "priority": "high",
+              "section": "hard_requirements",
+              "strategy": "semantic"
+            },
+            "distance": 0.9432858824729919,
+            "bm25_score": 0.0,
+            "vec_norm": 1.0,
+            "bm25_norm": 0.0,
+            "hybrid_score": 0.7,
+            "rerank_score": 0.002
+          },
+          {
+            "chunk_id": "1983c425-982c-4116-8883-04eb0109edb3_chunk_4",
+            "content": "【vivo · AI产品经理-27届暑期实习 硬性要求】\n具备较强的同理心和共情能力，具备创新意识并执行力强;",
+            "metadata": {
+              "company": "vivo",
+              "index": 4,
+              "jd_id": "1983c425-982c-4116-8883-04eb0109edb3",
+              "position": "AI产品经理-27届暑期实习",
+              "priority": "high",
+              "section": "hard_requirements",
+              "strategy": "semantic"
+            },
+            "distance": 0.974591851234436,
+            "bm25_score": 0.0,
+            "vec_norm": 0.4914833651381938,
+            "bm25_norm": 0.0,
+            "hybrid_score": 0.3440383555967356,
+            "rerank_score": 0.0019
+          },
+          {
+            "chunk_id": "50e3830d-c4b8-470f-baf7-2057516a172e_chunk_7",
+            "content": "【阿里巴巴 · AI Agent产品经理 硬性要求】\n逻辑清晰，能快速将抽象需求转化为可执行方案；自驱力强，对AI技术落地怀有热情，适应高速迭代的工作节奏。",
+            "metadata": {
+              "company": "阿里巴巴",
+              "index": 7,
+              "jd_id": "50e3830d-c4b8-470f-baf7-2057516a172e",
+              "position": "AI Agent产品经理",
+              "priority": "high",
+              "section": "hard_requirements",
+              "strategy": "semantic"
+            },
+            "distance": 0.9820010662078857,
+            "bm25_score": 4.668132575051411,
+            "vec_norm": 0.3711322239875453,
+            "bm25_norm": 0.18533217021911483,
+            "hybrid_score": 0.31539220785701616,
+            "rerank_score": 0.0015
+          },
+          {
+            "chunk_id": "1983c425-982c-4116-8883-04eb0109edb3_chunk_6",
+            "content": "【vivo · AI产品经理-27届暑期实习 软性要求/加分项】\n人工智能、互联网等相关行业实习或项目经验者优先考虑。",
+            "metadata": {
+              "company": "vivo",
+              "index": 6,
+              "jd_id": "1983c425-982c-4116-8883-04eb0109edb3",
+              "position": "AI产品经理-27届暑期实习",
+              "priority": "medium",
+              "section": "soft_requirements",
+              "strategy": "semantic"
+            },
+            "distance": 0.9805217981338501,
+            "bm25_score": 0.0,
+            "vec_norm": 0.395160626647729,
+            "bm25_norm": 0.0,
+            "hybrid_score": 0.2766124386534103,
+            "rerank_score": 0.0011
+          },
+          {
+            "chunk_id": "52a150f9-cff3-49d2-a2df-d514081eed9e_chunk_3",
+            "content": "【小米 · AI产品实习生 硬性要求】\n具备优秀的学习能力和逻辑能力，能快速掌握新知识，独立思考问题并给出有效全面的解决方案",
+            "metadata": {
+              "company": "小米",
+              "index": 3,
+              "jd_id": "52a150f9-cff3-49d2-a2df-d514081eed9e",
+              "position": "AI产品实习生",
+              "priority": "high",
+              "section": "hard_requirements",
+              "strategy": "semantic"
+            },
+            "distance": 0.9854722023010254,
+            "bm25_score": 4.963928958850132,
+            "vec_norm": 0.31474903205755667,
+            "bm25_norm": 0.3469396861337252,
+            "hybrid_score": 0.3244062282804072,
+            "rerank_score": 0.0003
+          }
+        ],
+        "top_k": 5
+      },
+      "result_preview": "{'rankings': [{'rank': 1, 'jd_id': 'bbbe5988-01f4-447f-a9e2-6715c006d33c', 'company': '小米', 'position': 'AI培训方向产品实习生', 'match_score': 81, 'recommend_reason': '检索相关度较高（0.70）', 'key_match': ['检索召回'], 'k"
+    },
+    {
+      "tool": "match_analyze",
+      "status": "✅",
+      "params": {
+        "resume_text": "AI\n / \n157-xxxx-3421  |  chenyutong2027@163.com  |  \n  |  2027\n6\n2024.09  2027.06\n · \nAI\n· \nGPA\n3.4/4.0  |  \n2020.09  2024.06\n · \n · \n  |  \nWeb\n \n \n2025.03  2025.11\n  |  \n40\n\"\n\"\n\"\n\"\nFigma\nAI\nEmbedding\nJD\nAPI\nPrompt\n20\nPDF\n \n \nRAG\n2024.10  2025.02\n  |  \n80\nOCR\nWeb\n\"\n\"\n · \n2024.09  2025.06\n10\n · \n2022.03  2023.06\n2025.05    \n2024.11    \nAI\n2023.06    \n2022.12    \nFigma\nAxure\nXmind\n/\nPRD\nPrompt Engineering\nRAG\nEmbedding\nCET-4\n525\nOffice\nExcel",
+        "jd_text": "{{T1.output.selected_jds}}",
+        "position": "{{T1.output.selected_positions}}"
+      },
+      "result_preview": "{'score': 70, 'label': '基本匹配', 'advantages': ['Figma', 'Prompt Engineering', 'RAG', 'Embedding'], 'weaknesses': ['候选人缺乏API、OCR、Web、PDF、CET-4、Office Excel等技能和经验。此外，虽然候选人有项目经验，但项目时间跨度较短，缺乏长期项目经验。'], 'su"
+    },
+    {
+      "tool": "interview_gen",
+      "status": "✅",
+      "params": {
+        "match_result": {
+          "score": 70,
+          "label": "基本匹配",
+          "advantages": [
+            "Figma",
+            "Prompt Engineering",
+            "RAG",
+            "Embedding"
+          ],
+          "weaknesses": [
+            "候选人缺乏API、OCR、Web、PDF、CET-4、Office Excel等技能和经验。此外，虽然候选人有项目经验，但项目时间跨度较短，缺乏长期项目经验。"
+          ],
+          "suggestions": [
+            "核心能力要求: API, OCR, Web, PDF, Figma, Axure, Xmind, PRD, Prompt Engineering, RAG, Embedding, CET-4, Office Excel"
+          ],
+          "match_score": 70,
+          "covered": [
+            "Figma",
+            "Prompt Engineering",
+            "RAG",
+            "Embedding"
+          ],
+          "missing_experience": "候选人缺乏API、OCR、Web、PDF、CET-4、Office Excel等技能和经验。此外，虽然候选人有项目经验，但项目时间跨度较短，缺乏长期项目经验。",
+          "core_skills": "API, OCR, Web, PDF, Figma, Axure, Xmind, PRD, Prompt Engineering, RAG, Embedding, CET-4, Office Excel",
+          "company": null,
+          "position": "{{T1.output.selected_positions}}"
+        },
+        "company": "{{T1.output.selected_companies}}",
+        "position": "{{T1.output.selected_positions}}"
+      },
+      "result_preview": "{'questions': ['假设你需要为一个智能文档问答系统设计一个RESTful API，该API接收用户上传的PDF文件，提取文本后基于RAG和Embedding进行问答。请描述API的端点设计、请求/响应格式、错误处理策略，并说明如何保证高并发下的性能。追问方向：1）如果用户上传的PDF包含扫描件（非文本），你如何集成OCR流程？请具体说明API调用链的变化。2）如何设计API的版本管理"
+    }
+  ],
+  "tools_called": [
+    "kb_retrieve",
+    "global_rank",
+    "match_analyze",
+    "interview_gen"
+  ],
+  "reply": "你好！基于你的简历背景与当前市场岗位的匹配情况，我为你筛选了以下推荐岗位，并结合匹配度分析给出了面试准备建议。\n\n### 1. 推荐投递岗位\n根据你的技能优势（Prompt Engineering、RAG 等），建议优先关注 **AI 方向的产品/工程类岗位**。以下是匹配度较高的选择：\n\n*   **阿里巴巴 - AI Agent 产品经理**\n    *   **推荐理由**：岗位明确要求熟悉 Prompt 工程优化及 AIGC 应用实践，与你的核心优势高度契合。\n*   **淘天集团 - AI 大模型产品经理**\n    *   **推荐理由**：侧重 AI 作品集展示，适合有具体 Demo 或 Github 项目的候选人。\n*   **蚂蚁集团 - AI 产品工程师（转正实习）**\n    *   **推荐理由**：强调对新技术的好奇心与学习能力，适合展现快速适应能力的候选人。\n*   **小米 - AI 培训方向产品实习生**\n    *   **推荐理由**：侧重沟通协调能力，可作为备选方案。\n\n### 2. 简历匹配度分析\n目前你的简历与目标岗位的综合匹配得分为 **70 分（基本匹配）**。\n\n*   **✅ 核心优势**：\n    *   具备 **Figma、Prompt Engineering、RAG、Embedding** 等关键技能，这在 AI 产品岗中是非常大的加分项。\n*   **⚠️ 待提升点**：\n    *   **技能缺失**：缺乏 API、OCR、Web、PDF 处理等相关技术经验，以及 CET-4、Office Excel 等基础技能记录。\n    *   **项目经验**：现有项目时间跨度较短，可能被认为缺乏长期深耕的经验。\n\n### 3. 面试准备建议\n基于岗位 JD 硬性要求及你的匹配弱点，建议重点准备以下内容：\n\n*   **作品集准备（针对淘天集团）**\n    *   **事实依据**：JD 明确要求“投递时需提交过往 AI 作品集展示”。\n    *   **行动建议**：整理过往的 Github 链接或可互动的 Demo，确保面试时可现场展示。重点突出你在 **Prompt Engineering** 和 **RAG** 方面的实际应用案例。\n*   **业务场景梳理（针对阿里巴巴）**\n    *   **事实依据**：JD 要求“熟悉企业服务或 AI 行业应用，有 Prompt 工程优化实践经验”。\n    *   **行动建议**：准备 1-2 个具体的 AIGC 应用案例，说明你如何通过 Prompt 优化解决了实际问题，或如何结合低代码/RPA 工具提升效率。\n*   **弥补经验短板（通用建议）**\n    *   **事实依据**：匹配分析显示“项目时间跨度较短”。\n    *   **行动建议**：在面试中主动阐述虽然项目周期短，但你在其中承担的核心职责及快速落地的成果。同时，复习 **API、Web** 相关基础知识，以防技术面试中被问及。\n*   **软性素质展示（针对蚂蚁/小米）**\n    *   **事实依据**：JD 强调“好奇心、学习能力、沟通协调能力强”。\n    *   **行动建议**：准备一个体现你快速学习新技术或跨部门沟通解决冲突的具体事例。\n\n建议优先投递 **阿里巴巴** 或 **淘天集团** 的岗位，因为你的 AI 技能栈与这两家的硬性要求重合度最高。祝你求职顺利！",
+  "reply_length": 1460,
+  "intent_match": true,
+  "tool_match_rate": 0.67,
+  "has_reply": true,
+  "events": [
+    {
+      "step": "intent",
+      "message": "正在识别您的意图...",
+      "_time": 0.00643157958984375,
+      "type": "status"
+    },
+    {
+      "step": "plan",
+      "message": "正在规划任务...",
+      "_time": 1.4678661823272705,
+      "type": "status"
+    },
+    {
+      "step": "execute",
+      "message": "正在执行分析...",
+      "_time": 8.637672901153564,
+      "type": "status"
+    },
+    {
+      "step": "aggregate",
+      "message": "正在生成回复...",
+      "_time": 20.16695237159729,
+      "type": "status"
+    },
+    {
+      "text": "你好！",
+      "_time": 57.721355676651,
+      "type": "delta"
+    },
+    {
+      "text": "基于你的简历背景",
+      "_time": 57.82432723045349,
+      "type": "delta"
+    },
+    {
+      "text": "与当前",
+      "_time": 57.8270103931427,
+      "type": "delta"
+    },
+    {
+      "text": "市场岗位的匹配情况",
+      "_time": 57.930095911026,
+      "type": "delta"
+    },
+    {
+      "text": "，我为你筛选",
+      "_time": 57.933019161224365,
+      "type": "delta"
+    },
+    {
+      "text": "了以下推荐岗位",
+      "_time": 58.10235929489136,
+      "type": "delta"
+    },
+    {
+      "text": "，并结合",
+      "_time": 58.10506057739258,
+      "type": "delta"
+    },
+    {
+      "text": "匹配度分析给出了",
+      "_time": 58.18123459815979,
+      "type": "delta"
+    },
+    {
+      "text": "面试准备建议。",
+      "_time": 58.182698011398315,
+      "type": "delta"
+    },
+    {
+      "text": "\n\n### 1",
+      "_time": 58.35242962837219,
+      "type": "delta"
+    },
+    {
+      "text": ". 推荐投递",
+      "_time": 58.35505533218384,
+      "type": "delta"
+    },
+    {
+      "text": "岗位\n根据你的技能",
+      "_time": 58.48006081581116,
+      "type": "delta"
+    },
+    {
+      "text": "优势（Prompt Engineering",
+      "_time": 58.506046533584595,
+      "type": "delta"
+    },
+    {
+      "text": "、RAG ",
+      "_time": 58.61511039733887,
+      "type": "delta"
+    },
+    {
+      "text": "等），建议优先",
+      "_time": 58.61784768104553,
+      "type": "delta"
+    },
+    {
+      "text": "关注 **AI ",
+      "_time": 58.75836443901062,
+      "type": "delta"
+    },
+    {
+      "text": "方向",
+      "_time": 58.78905487060547,
+      "type": "delta"
+    },
+    {
+      "text": "的产品/工程类",
+      "_time": 58.848063468933105,
+      "type": "delta"
+    },
+    {
+      "text": "岗位**。以下是",
+      "_time": 58.849838972091675,
+      "type": "delta"
+    },
+    {
+      "text": "匹配度较高的选择",
+      "_time": 58.97505331039429,
+      "type": "delta"
+    },
+    {
+      "text": "：\n\n*  ",
+      "_time": 58.978989362716675,
+      "type": "delta"
+    },
+    {
+      "text": " **阿里巴巴 - AI",
+      "_time": 59.14809274673462,
+      "type": "delta"
+    },
+    {
+      "text": " Agent 产品经理",
+      "_time": 59.15083360671997,
+      "type": "delta"
+    },
+    {
+      "text": "**\n    *",
+      "_time": 59.269103050231934,
+      "type": "delta"
+    },
+    {
+      "text": "   **",
+      "_time": 59.2719087600708,
+      "type": "delta"
+    },
+    {
+      "text": "推荐理由**：岗位",
+      "_time": 59.35293650627136,
+      "type": "delta"
+    },
+    {
+      "text": "明确要求",
+      "_time": 59.356727838516235,
+      "type": "delta"
+    },
+    {
+      "text": "熟悉 Prompt 工程",
+      "_time": 59.47116494178772,
+      "type": "delta"
+    },
+    {
+      "text": "优化及",
+      "_time": 59.471596479415894,
+      "type": "delta"
+    },
+    {
+      "text": " AIGC ",
+      "_time": 59.549922943115234,
+      "type": "delta"
+    },
+    {
+      "text": "应用实践",
+      "_time": 59.552958250045776,
+      "type": "delta"
+    },
+    {
+      "text": "，与你的核心",
+      "_time": 59.659087896347046,
+      "type": "delta"
+    },
+    {
+      "text": "优势",
+      "_time": 59.661874771118164,
+      "type": "delta"
+    },
+    {
+      "text": "高度契合。\n",
+      "_time": 59.7470543384552,
+      "type": "delta"
+    },
+    {
+      "text": "*  ",
+      "_time": 59.78499746322632,
+      "type": "delta"
+    },
+    {
+      "text": " **淘天集团",
+      "_time": 59.85614800453186,
+      "type": "delta"
+    },
+    {
+      "text": " - AI 大",
+      "_time": 59.859947681427,
+      "type": "delta"
+    },
+    {
+      "text": "模型产品经理**\n",
+      "_time": 60.00007510185242,
+      "type": "delta"
+    },
+    {
+      "text": "    *   **",
+      "_time": 60.03104591369629,
+      "type": "delta"
+    },
+    {
+      "text": "推荐理由**：侧重",
+      "_time": 60.14423942565918,
+      "type": "delta"
+    },
+    {
+      "text": " AI 作品集",
+      "_time": 60.14695763587952,
+      "type": "delta"
+    },
+    {
+      "text": "展示，适合有",
+      "_time": 60.271031618118286,
+      "type": "delta"
+    },
+    {
+      "text": "具体",
+      "_time": 60.273786306381226,
+      "type": "delta"
+    },
+    {
+      "text": " Demo 或 Github",
+      "_time": 60.393186807632446,
+      "type": "delta"
+    },
+    {
+      "text": " 项目的候选人",
+      "_time": 60.39589810371399,
+      "type": "delta"
+    },
+    {
+      "text": "。\n*  ",
+      "_time": 60.48827600479126,
+      "type": "delta"
+    },
+    {
+      "text": " **蚂蚁集团 -",
+      "_time": 60.513155937194824,
+      "type": "delta"
+    },
+    {
+      "text": " AI 产品工程师",
+      "_time": 60.62998580932617,
+      "type": "delta"
+    },
+    {
+      "text": "（转正实习）**",
+      "_time": 60.632911920547485,
+      "type": "delta"
+    },
+    {
+      "text": "\n    *  ",
+      "_time": 60.77386283874512,
+      "type": "delta"
+    },
+    {
+      "text": " **推荐理由**：",
+      "_time": 60.83295559883118,
+      "type": "delta"
+    },
+    {
+      "text": "强调对新技术的好奇",
+      "_time": 60.91695022583008,
+      "type": "delta"
+    },
+    {
+      "text": "心",
+      "_time": 60.91885471343994,
+      "type": "delta"
+    },
+    {
+      "text": "与学习能力，适合",
+      "_time": 61.00742793083191,
+      "type": "delta"
+    },
+    {
+      "text": "展现",
+      "_time": 61.00993895530701,
+      "type": "delta"
+    },
+    {
+      "text": "快速适应能力的候选人",
+      "_time": 61.15428376197815,
+      "type": "delta"
+    },
+    {
+      "text": "。\n*  ",
+      "_time": 61.155574321746826,
+      "type": "delta"
+    },
+    {
+      "text": " **小米 - AI",
+      "_time": 61.243162631988525,
+      "type": "delta"
+    },
+    {
+      "text": " 培训方向产品",
+      "_time": 61.244654417037964,
+      "type": "delta"
+    },
+    {
+      "text": "实习生**\n   ",
+      "_time": 61.44621968269348,
+      "type": "delta"
+    },
+    {
+      "text": " *   **推荐理由",
+      "_time": 61.44876313209534,
+      "type": "delta"
+    },
+    {
+      "text": "**：侧重沟通",
+      "_time": 61.52928805351257,
+      "type": "delta"
+    },
+    {
+      "text": "协调能力，可作为",
+      "_time": 61.58838200569153,
+      "type": "delta"
+    },
+    {
+      "text": "备选方案。\n\n",
+      "_time": 61.65621519088745,
+      "type": "delta"
+    },
+    {
+      "text": "### ",
+      "_time": 61.65982151031494,
+      "type": "delta"
+    },
+    {
+      "text": "2. 简历",
+      "_time": 61.76296377182007,
+      "type": "delta"
+    },
+    {
+      "text": "匹配度分析\n",
+      "_time": 61.766865968704224,
+      "type": "delta"
+    },
+    {
+      "text": "目前你的简历与",
+      "_time": 61.9729859828949,
+      "type": "delta"
+    },
+    {
+      "text": "目标岗位的综合",
+      "_time": 61.97684049606323,
+      "type": "delta"
+    },
+    {
+      "text": "匹配得分为 **",
+      "_time": 62.03486895561218,
+      "type": "delta"
+    },
+    {
+      "text": "70",
+      "_time": 62.03668928146362,
+      "type": "delta"
+    },
+    {
+      "text": " 分（基本",
+      "_time": 62.14305639266968,
+      "type": "delta"
+    },
+    {
+      "text": "匹配）**。\n\n",
+      "_time": 62.17198610305786,
+      "type": "delta"
+    },
+    {
+      "text": "*   **✅",
+      "_time": 62.28512620925903,
+      "type": "delta"
+    },
+    {
+      "text": " 核心",
+      "_time": 62.28670144081116,
+      "type": "delta"
+    },
+    {
+      "text": "优势**：\n",
+      "_time": 62.39389204978943,
+      "type": "delta"
+    },
+    {
+      "text": "    *   ",
+      "_time": 62.394437313079834,
+      "type": "delta"
+    },
+    {
+      "text": "具备 **Figma",
+      "_time": 62.56577682495117,
+      "type": "delta"
+    },
+    {
+      "text": "、Prompt",
+      "_time": 62.56879448890686,
+      "type": "delta"
+    },
+    {
+      "text": " Engineering、RAG",
+      "_time": 62.67474293708801,
+      "type": "delta"
+    },
+    {
+      "text": "、Embedding**",
+      "_time": 62.680593967437744,
+      "type": "delta"
+    },
+    {
+      "text": " 等关键技能",
+      "_time": 62.787964820861816,
+      "type": "delta"
+    },
+    {
+      "text": "，这在",
+      "_time": 62.79178285598755,
+      "type": "delta"
+    },
+    {
+      "text": " AI 产品岗",
+      "_time": 62.89704394340515,
+      "type": "delta"
+    },
+    {
+      "text": "中是非常",
+      "_time": 62.928807735443115,
+      "type": "delta"
+    },
+    {
+      "text": "大的加分项。",
+      "_time": 63.00387930870056,
+      "type": "delta"
+    },
+    {
+      "text": "\n",
+      "_time": 63.006789207458496,
+      "type": "delta"
+    },
+    {
+      "text": "*   **",
+      "_time": 63.096755027770996,
+      "type": "delta"
+    },
+    {
+      "text": "⚠️ 待",
+      "_time": 63.183801889419556,
+      "type": "delta"
+    },
+    {
+      "text": "提升点",
+      "_time": 63.18680715560913,
+      "type": "delta"
+    },
+    {
+      "text": "**：\n   ",
+      "_time": 63.29366087913513,
+      "type": "delta"
+    },
+    {
+      "text": " *",
+      "_time": 63.32092332839966,
+      "type": "delta"
+    },
+    {
+      "text": "   **技能缺失",
+      "_time": 63.38410186767578,
+      "type": "delta"
+    },
+    {
+      "text": "**：缺乏 API",
+      "_time": 63.38781189918518,
+      "type": "delta"
+    },
+    {
+      "text": "、OCR、Web",
+      "_time": 63.529964208602905,
+      "type": "delta"
+    },
+    {
+      "text": "、PDF ",
+      "_time": 63.5657012462616,
+      "type": "delta"
+    },
+    {
+      "text": "处理等相关技术经验",
+      "_time": 63.65377640724182,
+      "type": "delta"
+    },
+    {
+      "text": "，",
+      "_time": 63.65679430961609,
+      "type": "delta"
+    },
+    {
+      "text": "以及 CET-4",
+      "_time": 63.74368858337402,
+      "type": "delta"
+    },
+    {
+      "text": "、Office",
+      "_time": 63.74677586555481,
+      "type": "delta"
+    },
+    {
+      "text": " Excel 等基础",
+      "_time": 63.88119840621948,
+      "type": "delta"
+    },
+    {
+      "text": "技能记录",
+      "_time": 63.88373303413391,
+      "type": "delta"
+    },
+    {
+      "text": "。\n    *",
+      "_time": 63.95877504348755,
+      "type": "delta"
+    },
+    {
+      "text": "   **项目",
+      "_time": 63.960665464401245,
+      "type": "delta"
+    },
+    {
+      "text": "经验**：现有",
+      "_time": 64.11386013031006,
+      "type": "delta"
+    },
+    {
+      "text": "项目时间",
+      "_time": 64.1167562007904,
+      "type": "delta"
+    },
+    {
+      "text": "跨度较短，可能",
+      "_time": 64.19368290901184,
+      "type": "delta"
+    },
+    {
+      "text": "被认为",
+      "_time": 64.1957278251648,
+      "type": "delta"
+    },
+    {
+      "text": "缺乏长期深耕的经验",
+      "_time": 64.28408622741699,
+      "type": "delta"
+    },
+    {
+      "text": "。\n\n### ",
+      "_time": 64.31581997871399,
+      "type": "delta"
+    },
+    {
+      "text": "3. 面试",
+      "_time": 64.427077293396,
+      "type": "delta"
+    },
+    {
+      "text": "准备建议",
+      "_time": 64.42855286598206,
+      "type": "delta"
+    },
+    {
+      "text": "\n基于岗位 JD",
+      "_time": 64.53601551055908,
+      "type": "delta"
+    },
+    {
+      "text": " 硬性",
+      "_time": 64.53865003585815,
+      "type": "delta"
+    },
+    {
+      "text": "要求及你的匹配",
+      "_time": 64.64596247673035,
+      "type": "delta"
+    },
+    {
+      "text": "弱点",
+      "_time": 64.67574763298035,
+      "type": "delta"
+    },
+    {
+      "text": "，建议重点准备",
+      "_time": 64.73369765281677,
+      "type": "delta"
+    },
+    {
+      "text": "以下内容：\n\n*",
+      "_time": 64.73555088043213,
+      "type": "delta"
+    },
+    {
+      "text": "   **作品集准备",
+      "_time": 64.87712264060974,
+      "type": "delta"
+    },
+    {
+      "text": "（针对淘",
+      "_time": 64.91667628288269,
+      "type": "delta"
+    },
+    {
+      "text": "天集团）**\n",
+      "_time": 65.00407457351685,
+      "type": "delta"
+    },
+    {
+      "text": "    *   **",
+      "_time": 65.00538086891174,
+      "type": "delta"
+    },
+    {
+      "text": "事实依据**：",
+      "_time": 65.14988851547241,
+      "type": "delta"
+    },
+    {
+      "text": "JD",
+      "_time": 65.15177512168884,
+      "type": "delta"
+    },
+    {
+      "text": " 明确要求“投递",
+      "_time": 65.27798295021057,
+      "type": "delta"
+    },
+    {
+      "text": "时需提交过往",
+      "_time": 65.27834892272949,
+      "type": "delta"
+    },
+    {
+      "text": " AI 作品集展示",
+      "_time": 65.36394882202148,
+      "type": "delta"
+    },
+    {
+      "text": "”。\n    *",
+      "_time": 65.3654236793518,
+      "type": "delta"
+    },
+    {
+      "text": "   **行动建议",
+      "_time": 65.5358555316925,
+      "type": "delta"
+    },
+    {
+      "text": "**：整理过往",
+      "_time": 65.53869771957397,
+      "type": "delta"
+    },
+    {
+      "text": "的 Github 链接",
+      "_time": 65.65384912490845,
+      "type": "delta"
+    },
+    {
+      "text": "或可",
+      "_time": 65.65548014640808,
+      "type": "delta"
+    },
+    {
+      "text": "互动的 Demo，",
+      "_time": 65.79190325737,
+      "type": "delta"
+    },
+    {
+      "text": "确保面试",
+      "_time": 65.79468417167664,
+      "type": "delta"
+    },
+    {
+      "text": "时可现场展示。",
+      "_time": 65.86766147613525,
+      "type": "delta"
+    },
+    {
+      "text": "重点突出你在 **",
+      "_time": 65.87167167663574,
+      "type": "delta"
+    },
+    {
+      "text": "Prompt Engineering** ",
+      "_time": 66.04754781723022,
+      "type": "delta"
+    },
+    {
+      "text": "和 **",
+      "_time": 66.0479326248169,
+      "type": "delta"
+    },
+    {
+      "text": "RAG** ",
+      "_time": 66.1208918094635,
+      "type": "delta"
+    },
+    {
+      "text": "方面的实际应用",
+      "_time": 66.26991391181946,
+      "type": "delta"
+    },
+    {
+      "text": "案例。\n*",
+      "_time": 66.27149558067322,
+      "type": "delta"
+    },
+    {
+      "text": "  ",
+      "_time": 66.27561736106873,
+      "type": "delta"
+    },
+    {
+      "text": " **业务场景梳理",
+      "_time": 66.3177547454834,
+      "type": "delta"
+    },
+    {
+      "text": "（针对阿里巴巴）**",
+      "_time": 66.31830215454102,
+      "type": "delta"
+    },
+    {
+      "text": "\n    *  ",
+      "_time": 66.49386835098267,
+      "type": "delta"
+    },
+    {
+      "text": " **事实依据**",
+      "_time": 66.49662828445435,
+      "type": "delta"
+    },
+    {
+      "text": "：JD 要求",
+      "_time": 66.60472464561462,
+      "type": "delta"
+    },
+    {
+      "text": "“",
+      "_time": 66.60761427879333,
+      "type": "delta"
+    },
+    {
+      "text": "熟悉企业服务或 AI",
+      "_time": 66.74311780929565,
+      "type": "delta"
+    },
+    {
+      "text": " 行业应用",
+      "_time": 66.74366879463196,
+      "type": "delta"
+    },
+    {
+      "text": "，有 Prompt ",
+      "_time": 66.82483315467834,
+      "type": "delta"
+    },
+    {
+      "text": "工程优化",
+      "_time": 66.82519364356995,
+      "type": "delta"
+    },
+    {
+      "text": "实践经验”。\n   ",
+      "_time": 66.95704555511475,
+      "type": "delta"
+    },
+    {
+      "text": " *",
+      "_time": 66.95956993103027,
+      "type": "delta"
+    },
+    {
+      "text": "   **行动建议",
+      "_time": 67.02378368377686,
+      "type": "delta"
+    },
+    {
+      "text": "**：准备 ",
+      "_time": 67.02658534049988,
+      "type": "delta"
+    },
+    {
+      "text": "1-2 ",
+      "_time": 67.164546251297,
+      "type": "delta"
+    },
+    {
+      "text": "个具体的 A",
+      "_time": 67.16499066352844,
+      "type": "delta"
+    },
+    {
+      "text": "IGC 应用",
+      "_time": 67.32088017463684,
+      "type": "delta"
+    },
+    {
+      "text": "案例，说明",
+      "_time": 67.32124614715576,
+      "type": "delta"
+    },
+    {
+      "text": "你如何通过 Prompt ",
+      "_time": 67.41574239730835,
+      "type": "delta"
+    },
+    {
+      "text": "优化解决了",
+      "_time": 67.41861391067505,
+      "type": "delta"
+    },
+    {
+      "text": "实际问题，或如何",
+      "_time": 67.55569243431091,
+      "type": "delta"
+    },
+    {
+      "text": "结合",
+      "_time": 67.55844926834106,
+      "type": "delta"
+    },
+    {
+      "text": "低代码/RPA",
+      "_time": 67.61467695236206,
+      "type": "delta"
+    },
+    {
+      "text": " 工具提升",
+      "_time": 67.61660623550415,
+      "type": "delta"
+    },
+    {
+      "text": "效率。\n*",
+      "_time": 67.83642554283142,
+      "type": "delta"
+    },
+    {
+      "text": "   **弥补",
+      "_time": 67.8364634513855,
+      "type": "delta"
+    },
+    {
+      "text": "经验短板（通用",
+      "_time": 67.88313555717468,
+      "type": "delta"
+    },
+    {
+      "text": "建议",
+      "_time": 67.88317632675171,
+      "type": "delta"
+    },
+    {
+      "text": "）**\n    *",
+      "_time": 67.95782828330994,
+      "type": "delta"
+    },
+    {
+      "text": "   **事实依据",
+      "_time": 67.959401845932,
+      "type": "delta"
+    },
+    {
+      "text": "**：匹配分析",
+      "_time": 68.13771390914917,
+      "type": "delta"
+    },
+    {
+      "text": "显示“",
+      "_time": 68.17449283599854,
+      "type": "delta"
+    },
+    {
+      "text": "项目时间跨度较短",
+      "_time": 68.21057081222534,
+      "type": "delta"
+    },
+    {
+      "text": "”。",
+      "_time": 68.2155339717865,
+      "type": "delta"
+    },
+    {
+      "text": "\n    *  ",
+      "_time": 68.29784345626831,
+      "type": "delta"
+    },
+    {
+      "text": " **行动建议",
+      "_time": 68.32973909378052,
+      "type": "delta"
+    },
+    {
+      "text": "**：在面试",
+      "_time": 68.4239113330841,
+      "type": "delta"
+    },
+    {
+      "text": "中主动",
+      "_time": 68.42640805244446,
+      "type": "delta"
+    },
+    {
+      "text": "阐述虽然项目周期",
+      "_time": 68.53183698654175,
+      "type": "delta"
+    },
+    {
+      "text": "短，但你在",
+      "_time": 68.53326296806335,
+      "type": "delta"
+    },
+    {
+      "text": "其中承担的核心职责",
+      "_time": 68.70073056221008,
+      "type": "delta"
+    },
+    {
+      "text": "及快速",
+      "_time": 68.70454573631287,
+      "type": "delta"
+    },
+    {
+      "text": "落地的成果。",
+      "_time": 68.7855532169342,
+      "type": "delta"
+    },
+    {
+      "text": "同时",
+      "_time": 68.78852820396423,
+      "type": "delta"
+    },
+    {
+      "text": "，复习 **API",
+      "_time": 68.87252163887024,
+      "type": "delta"
+    },
+    {
+      "text": "、",
+      "_time": 68.87652945518494,
+      "type": "delta"
+    },
+    {
+      "text": "Web** 相关",
+      "_time": 68.9955780506134,
+      "type": "delta"
+    },
+    {
+      "text": "基础知识",
+      "_time": 68.9972403049469,
+      "type": "delta"
+    },
+    {
+      "text": "，以防技术面试",
+      "_time": 69.0535888671875,
+      "type": "delta"
+    },
+    {
+      "text": "中被",
+      "_time": 69.05722212791443,
+      "type": "delta"
+    },
+    {
+      "text": "问及。\n*",
+      "_time": 69.14652490615845,
+      "type": "delta"
+    },
+    {
+      "text": "   **软",
+      "_time": 69.14805507659912,
+      "type": "delta"
+    },
+    {
+      "text": "性素质展示（",
+      "_time": 69.2986090183258,
+      "type": "delta"
+    },
+    {
+      "text": "针对蚂蚁/小米",
+      "_time": 69.30252432823181,
+      "type": "delta"
+    },
+    {
+      "text": "）**\n    *",
+      "_time": 69.41479563713074,
+      "type": "delta"
+    },
+    {
+      "text": "   **事实依据",
+      "_time": 69.41848278045654,
+      "type": "delta"
+    },
+    {
+      "text": "**：JD ",
+      "_time": 69.58771657943726,
+      "type": "delta"
+    },
+    {
+      "text": "强调“好奇心",
+      "_time": 69.5905122756958,
+      "type": "delta"
+    },
+    {
+      "text": "、学习能力、沟通协调",
+      "_time": 69.70050597190857,
+      "type": "delta"
+    },
+    {
+      "text": "能力强",
+      "_time": 69.70450448989868,
+      "type": "delta"
+    },
+    {
+      "text": "”。\n    *",
+      "_time": 69.80458283424377,
+      "type": "delta"
+    },
+    {
+      "text": "   **行动建议",
+      "_time": 69.8074460029602,
+      "type": "delta"
+    },
+    {
+      "text": "**：准备一个",
+      "_time": 69.91855025291443,
+      "type": "delta"
+    },
+    {
+      "text": "体现你快速学习",
+      "_time": 69.9574089050293,
+      "type": "delta"
+    },
+    {
+      "text": "新技术或跨部门",
+      "_time": 70.09663844108582,
+      "type": "delta"
+    },
+    {
+      "text": "沟通解决",
+      "_time": 70.09829688072205,
+      "type": "delta"
+    },
+    {
+      "text": "冲突的具体事例。",
+      "_time": 70.17073655128479,
+      "type": "delta"
+    },
+    {
+      "text": "\n\n建议",
+      "_time": 70.17338132858276,
+      "type": "delta"
+    },
+    {
+      "text": "优先投递 **阿里巴巴",
+      "_time": 70.27737641334534,
+      "type": "delta"
+    },
+    {
+      "text": "** 或",
+      "_time": 70.30765748023987,
+      "type": "delta"
+    },
+    {
+      "text": " **淘天集团",
+      "_time": 70.40357255935669,
+      "type": "delta"
+    },
+    {
+      "text": "** 的岗位",
+      "_time": 70.4063949584961,
+      "type": "delta"
+    },
+    {
+      "text": "，因为你的 AI",
+      "_time": 70.54669165611267,
+      "type": "delta"
+    },
+    {
+      "text": " 技能栈",
+      "_time": 70.54941129684448,
+      "type": "delta"
+    },
+    {
+      "text": "与这两家的硬性",
+      "_time": 70.70553731918335,
+      "type": "delta"
+    },
+    {
+      "text": "要求",
+      "_time": 70.70934224128723,
+      "type": "delta"
+    },
+    {
+      "text": "重合度最高。",
+      "_time": 70.76340556144714,
+      "type": "delta"
+    },
+    {
+      "text": "祝你",
+      "_time": 70.76637864112854,
+      "type": "delta"
+    },
+    {
+      "text": "求职顺利！",
+      "_time": 70.85437107086182,
+      "type": "delta"
+    },
+    {
+      "session_id": "eval_chen_11_1777544193714",
+      "intent": "position_explore",
+      "route_meta": {
+        "layer": "llm",
+        "intent": "position_explore",
+        "confidence": 0.9,
+        "demands": [
+          {
+            "intent": "position_explore",
+            "entities": {}
+          },
+          {
+            "intent": "interview_prepare",
+            "entities": {
+              "position": "未明确指定"
+            }
+          }
+        ],
+        "plan_tasks": 5
+      },
+      "agent_mode": "llm",
+      "is_clarification": false,
+      "agent": {
+        "rewritten_query": "先帮我挑几个能投递的岗，再告诉我要准备什么面试试题",
+        "tools": [
+          {
+            "tool": "kb_retrieve",
+            "status": "✅",
+            "params": {
+              "query": "先帮我挑几个能投递的岗，再告诉我要准备什么面试试题",
+              "top_k": 10
+            },
+            "result_preview": "{'chunks': [{'chunk_id': 'f0427344-e282-48e4-8074-bcc9419cf414_chunk_10', 'content': '【淘天集团 · AI大模型产品经理 软性要求/加分项】投递时需提交过往AI作品集展示，包括但不限于github链接、demo（可互动）等形式', 'metadata': {'company': '淘天集团', 'index': "
+          },
+          {
+            "tool": "global_rank",
+            "status": "✅",
+            "params": {
+              "resume_text": "AI\n / \n157-xxxx-3421  |  chenyutong2027@163.com  |  \n  |  2027\n6\n2024.09  2027.06\n · \nAI\n· \nGPA\n3.4/4.0  |  \n2020.09  2024.06\n · \n · \n  |  \nWeb\n \n \n2025.03  2025.11\n  |  \n40\n\"\n\"\n\"\n\"\nFigma\nAI\nEmbedding\nJD\nAPI\nPrompt\n20\nPDF\n \n \nRAG\n2024.10  2025.02\n  |  \n80\nOCR\nWeb\n\"\n\"\n · \n2024.09  2025.06\n10\n · \n2022.03  2023.06\n2025.05    \n2024.11    \nAI\n2023.06    \n2022.12    \nFigma\nAxure\nXmind\n/\nPRD\nPrompt Engineering\nRAG\nEmbedding\nCET-4\n525\nOffice\nExcel",
+              "candidate_jds": [
+                {
+                  "chunk_id": "f0427344-e282-48e4-8074-bcc9419cf414_chunk_10",
+                  "content": "【淘天集团 · AI大模型产品经理 软性要求/加分项】投递时需提交过往AI作品集展示，包括但不限于github链接、demo（可互动）等形式",
+                  "metadata": {
+                    "company": "淘天集团",
+                    "index": 10,
+                    "jd_id": "f0427344-e282-48e4-8074-bcc9419cf414",
+                    "position": "AI大模型产品经理",
+                    "priority": "medium",
+                    "section": "soft_requirements",
+                    "strategy": "semantic"
+                  },
+                  "distance": 0.9913243651390076,
+                  "bm25_score": 6.15925009320981,
+                  "vec_norm": 0.21968977432587733,
+                  "bm25_norm": 1.0,
+                  "hybrid_score": 0.45378284202811414,
+                  "rerank_score": 0.1322
+                },
+                {
+                  "chunk_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a_chunk_1",
+                  "content": "【某小公司 · Java后端 岗位职责】\n1. 负责传统企业内部管理系统的设计与开发。2. 数据库CRUD操作与报表开发。3. 系统日常维护与bug修复。",
+                  "metadata": {
+                    "company": "某小公司",
+                    "index": 1,
+                    "jd_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a",
+                    "position": "Java后端",
+                    "section": "responsibilities",
+                    "strategy": "semantic"
+                  },
+                  "distance": 0.9817094802856445,
+                  "bm25_score": 0.0,
+                  "vec_norm": 0.37586858251013444,
+                  "bm25_norm": 0.0,
+                  "hybrid_score": 0.2631080077570941,
+                  "rerank_score": 0.0131
+                },
+                {
+                  "chunk_id": "50e3830d-c4b8-470f-baf7-2057516a172e_chunk_5",
+                  "content": "【阿里巴巴 · AI Agent产品经理 硬性要求】\n熟悉企业服务（如OA、HR SaaS）或AI行业应用，熟悉RPA、低代码等效率工具生态，有Prompt工程优化或AIGC应用实践经验；",
+                  "metadata": {
+                    "company": "阿里巴巴",
+                    "index": 5,
+                    "jd_id": "50e3830d-c4b8-470f-baf7-2057516a172e",
+                    "position": "AI Agent产品经理",
+                    "priority": "high",
+                    "section": "hard_requirements",
+                    "strategy": "semantic"
+                  },
+                  "distance": 0.9661113023757935,
+                  "bm25_score": 0.0,
+                  "vec_norm": 0.6292366543029507,
+                  "bm25_norm": 0.0,
+                  "hybrid_score": 0.4404656580120655,
+                  "rerank_score": 0.0096
+                },
+                {
+                  "chunk_id": "51054437-3bd1-4da6-8f09-d5b5d5978de8_chunk_5",
+                  "content": "【蚂蚁集团 · AI产品工程师（转正实习） 硬性要求】\n好奇心与学习能力：对新技术和新事物保持强烈好奇心，学习能力强，对业务发展的不确定性和快速变革具备开放心态",
+                  "metadata": {
+                    "company": "蚂蚁集团",
+                    "index": 5,
+                    "jd_id": "51054437-3bd1-4da6-8f09-d5b5d5978de8",
+                    "position": "AI产品工程师（转正实习）",
+                    "priority": "high",
+                    "section": "hard_requirements",
+                    "strategy": "semantic"
+                  },
+                  "distance": 0.9789791703224182,
+                  "bm25_score": 0.0,
+                  "vec_norm": 0.42021820942024146,
+                  "bm25_norm": 0.0,
+                  "hybrid_score": 0.294152746594169,
+                  "rerank_score": 0.0028
+                },
+                {
+                  "chunk_id": "1983c425-982c-4116-8883-04eb0109edb3_chunk_5",
+                  "content": "【vivo · AI产品经理-27届暑期实习 硬性要求】\n具备团队精神，责任心强，能够在快速发展的AI领域中快速适应和成长;",
+                  "metadata": {
+                    "company": "vivo",
+                    "index": 5,
+                    "jd_id": "1983c425-982c-4116-8883-04eb0109edb3",
+                    "position": "AI产品经理-27届暑期实习",
+                    "priority": "high",
+                    "section": "hard_requirements",
+                    "strategy": "semantic"
+                  },
+                  "distance": 0.9827325344085693,
+                  "bm25_score": 0.0,
+                  "vec_norm": 0.3592506639325137,
+                  "bm25_norm": 0.0,
+                  "hybrid_score": 0.25147546475275956,
+                  "rerank_score": 0.0021
+                },
+                {
+                  "chunk_id": "bbbe5988-01f4-447f-a9e2-6715c006d33c_chunk_5",
+                  "content": "【小米 · AI培训方向产品实习生 硬性要求】\n沟通协调能力强，细致耐心",
+                  "metadata": {
+                    "company": "小米",
+                    "index": 5,
+                    "jd_id": "bbbe5988-01f4-447f-a9e2-6715c006d33c",
+                    "position": "AI培训方向产品实习生",
+                    "priority": "high",
+                    "section": "hard_requirements",
+                    "strategy": "semantic"
+                  },
+                  "distance": 0.9432858824729919,
+                  "bm25_score": 0.0,
+                  "vec_norm": 1.0,
+                  "bm25_norm": 0.0,
+                  "hybrid_score": 0.7,
+                  "rerank_score": 0.002
+                },
+                {
+                  "chunk_id": "1983c425-982c-4116-8883-04eb0109edb3_chunk_4",
+                  "content": "【vivo · AI产品经理-27届暑期实习 硬性要求】\n具备较强的同理心和共情能力，具备创新意识并执行力强;",
+                  "metadata": {
+                    "company": "vivo",
+                    "index": 4,
+                    "jd_id": "1983c425-982c-4116-8883-04eb0109edb3",
+                    "position": "AI产品经理-27届暑期实习",
+                    "priority": "high",
+                    "section": "hard_requirements",
+                    "strategy": "semantic"
+                  },
+                  "distance": 0.974591851234436,
+                  "bm25_score": 0.0,
+                  "vec_norm": 0.4914833651381938,
+                  "bm25_norm": 0.0,
+                  "hybrid_score": 0.3440383555967356,
+                  "rerank_score": 0.0019
+                },
+                {
+                  "chunk_id": "50e3830d-c4b8-470f-baf7-2057516a172e_chunk_7",
+                  "content": "【阿里巴巴 · AI Agent产品经理 硬性要求】\n逻辑清晰，能快速将抽象需求转化为可执行方案；自驱力强，对AI技术落地怀有热情，适应高速迭代的工作节奏。",
+                  "metadata": {
+                    "company": "阿里巴巴",
+                    "index": 7,
+                    "jd_id": "50e3830d-c4b8-470f-baf7-2057516a172e",
+                    "position": "AI Agent产品经理",
+                    "priority": "high",
+                    "section": "hard_requirements",
+                    "strategy": "semantic"
+                  },
+                  "distance": 0.9820010662078857,
+                  "bm25_score": 4.668132575051411,
+                  "vec_norm": 0.3711322239875453,
+                  "bm25_norm": 0.18533217021911483,
+                  "hybrid_score": 0.31539220785701616,
+                  "rerank_score": 0.0015
+                },
+                {
+                  "chunk_id": "1983c425-982c-4116-8883-04eb0109edb3_chunk_6",
+                  "content": "【vivo · AI产品经理-27届暑期实习 软性要求/加分项】\n人工智能、互联网等相关行业实习或项目经验者优先考虑。",
+                  "metadata": {
+                    "company": "vivo",
+                    "index": 6,
+                    "jd_id": "1983c425-982c-4116-8883-04eb0109edb3",
+                    "position": "AI产品经理-27届暑期实习",
+                    "priority": "medium",
+                    "section": "soft_requirements",
+                    "strategy": "semantic"
+                  },
+                  "distance": 0.9805217981338501,
+                  "bm25_score": 0.0,
+                  "vec_norm": 0.395160626647729,
+                  "bm25_norm": 0.0,
+                  "hybrid_score": 0.2766124386534103,
+                  "rerank_score": 0.0011
+                },
+                {
+                  "chunk_id": "52a150f9-cff3-49d2-a2df-d514081eed9e_chunk_3",
+                  "content": "【小米 · AI产品实习生 硬性要求】\n具备优秀的学习能力和逻辑能力，能快速掌握新知识，独立思考问题并给出有效全面的解决方案",
+                  "metadata": {
+                    "company": "小米",
+                    "index": 3,
+                    "jd_id": "52a150f9-cff3-49d2-a2df-d514081eed9e",
+                    "position": "AI产品实习生",
+                    "priority": "high",
+                    "section": "hard_requirements",
+                    "strategy": "semantic"
+                  },
+                  "distance": 0.9854722023010254,
+                  "bm25_score": 4.963928958850132,
+                  "vec_norm": 0.31474903205755667,
+                  "bm25_norm": 0.3469396861337252,
+                  "hybrid_score": 0.3244062282804072,
+                  "rerank_score": 0.0003
+                }
+              ],
+              "top_k": 5
+            },
+            "result_preview": "{'rankings': [{'rank': 1, 'jd_id': 'bbbe5988-01f4-447f-a9e2-6715c006d33c', 'company': '小米', 'position': 'AI培训方向产品实习生', 'match_score': 81, 'recommend_reason': '检索相关度较高（0.70）', 'key_match': ['检索召回'], 'k"
+          },
+          {
+            "tool": "match_analyze",
+            "status": "✅",
+            "params": {
+              "resume_text": "AI\n / \n157-xxxx-3421  |  chenyutong2027@163.com  |  \n  |  2027\n6\n2024.09  2027.06\n · \nAI\n· \nGPA\n3.4/4.0  |  \n2020.09  2024.06\n · \n · \n  |  \nWeb\n \n \n2025.03  2025.11\n  |  \n40\n\"\n\"\n\"\n\"\nFigma\nAI\nEmbedding\nJD\nAPI\nPrompt\n20\nPDF\n \n \nRAG\n2024.10  2025.02\n  |  \n80\nOCR\nWeb\n\"\n\"\n · \n2024.09  2025.06\n10\n · \n2022.03  2023.06\n2025.05    \n2024.11    \nAI\n2023.06    \n2022.12    \nFigma\nAxure\nXmind\n/\nPRD\nPrompt Engineering\nRAG\nEmbedding\nCET-4\n525\nOffice\nExcel",
+              "jd_text": "{{T1.output.selected_jds}}",
+              "position": "{{T1.output.selected_positions}}"
+            },
+            "result_preview": "{'score': 70, 'label': '基本匹配', 'advantages': ['Figma', 'Prompt Engineering', 'RAG', 'Embedding'], 'weaknesses': ['候选人缺乏API、OCR、Web、PDF、CET-4、Office Excel等技能和经验。此外，虽然候选人有项目经验，但项目时间跨度较短，缺乏长期项目经验。'], 'su"
+          },
+          {
+            "tool": "interview_gen",
+            "status": "✅",
+            "params": {
+              "match_result": {
+                "score": 70,
+                "label": "基本匹配",
+                "advantages": [
+                  "Figma",
+                  "Prompt Engineering",
+                  "RAG",
+                  "Embedding"
+                ],
+                "weaknesses": [
+                  "候选人缺乏API、OCR、Web、PDF、CET-4、Office Excel等技能和经验。此外，虽然候选人有项目经验，但项目时间跨度较短，缺乏长期项目经验。"
+                ],
+                "suggestions": [
+                  "核心能力要求: API, OCR, Web, PDF, Figma, Axure, Xmind, PRD, Prompt Engineering, RAG, Embedding, CET-4, Office Excel"
+                ],
+                "match_score": 70,
+                "covered": [
+                  "Figma",
+                  "Prompt Engineering",
+                  "RAG",
+                  "Embedding"
+                ],
+                "missing_experience": "候选人缺乏API、OCR、Web、PDF、CET-4、Office Excel等技能和经验。此外，虽然候选人有项目经验，但项目时间跨度较短，缺乏长期项目经验。",
+                "core_skills": "API, OCR, Web, PDF, Figma, Axure, Xmind, PRD, Prompt Engineering, RAG, Embedding, CET-4, Office Excel",
+                "company": null,
+                "position": "{{T1.output.selected_positions}}"
+              },
+              "company": "{{T1.output.selected_companies}}",
+              "position": "{{T1.output.selected_positions}}"
+            },
+            "result_preview": "{'questions': ['假设你需要为一个智能文档问答系统设计一个RESTful API，该API接收用户上传的PDF文件，提取文本后基于RAG和Embedding进行问答。请描述API的端点设计、请求/响应格式、错误处理策略，并说明如何保证高并发下的性能。追问方向：1）如果用户上传的PDF包含扫描件（非文本），你如何集成OCR流程？请具体说明API调用链的变化。2）如何设计API的版本管理"
+          }
+        ],
+        "kb_chunks_count": 5,
+        "system_prompt_preview": "你是一位专业的求职顾问。请基于以下工具执行结果，给用户一个清晰、有帮助的回复。\n要求：\n1. 直接回答用户的问题，不要重复用户的原话\n2. 如果有匹配分析结果，给出具体的分数和建议\n3. 如果有检索结果，基于事实回答，不要编造\n4. 语气友好、专业、结构化"
+      },
+      "memory": {
+        "working_turns": 1,
+        "compressed_blocks": 0,
+        "current_topic": "general",
+        "evidence_cache_size": 5
+      },
+      "reply": {
+        "type": "text",
+        "content": "你好！基于你的简历背景与当前市场岗位的匹配情况，我为你筛选了以下推荐岗位，并结合匹配度分析给出了面试准备建议。\n\n### 1. 推荐投递岗位\n根据你的技能优势（Prompt Engineering、RAG 等），建议优先关注 **AI 方向的产品/工程类岗位**。以下是匹配度较高的选择：\n\n*   **阿里巴巴 - AI Agent 产品经理**\n    *   **推荐理由**：岗位明确要求熟悉 Prompt 工程优化及 AIGC 应用实践，与你的核心优势高度契合。\n*   **淘天集团 - AI 大模型产品经理**\n    *   **推荐理由**：侧重 AI 作品集展示，适合有具体 Demo 或 Github 项目的候选人。\n*   **蚂蚁集团 - AI 产品工程师（转正实习）**\n    *   **推荐理由**：强调对新技术的好奇心与学习能力，适合展现快速适应能力的候选人。\n*   **小米 - AI 培训方向产品实习生**\n    *   **推荐理由**：侧重沟通协调能力，可作为备选方案。\n\n### 2. 简历匹配度分析\n目前你的简历与目标岗位的综合匹配得分为 **70 分（基本匹配）**。\n\n*   **✅ 核心优势**：\n    *   具备 **Figma、Prompt Engineering、RAG、Embedding** 等关键技能，这在 AI 产品岗中是非常大的加分项。\n*   **⚠️ 待提升点**：\n    *   **技能缺失**：缺乏 API、OCR、Web、PDF 处理等相关技术经验，以及 CET-4、Office Excel 等基础技能记录。\n    *   **项目经验**：现有项目时间跨度较短，可能被认为缺乏长期深耕的经验。\n\n### 3. 面试准备建议\n基于岗位 JD 硬性要求及你的匹配弱点，建议重点准备以下内容：\n\n*   **作品集准备（针对淘天集团）**\n    *   **事实依据**：JD 明确要求“投递时需提交过往 AI 作品集展示”。\n    *   **行动建议**：整理过往的 Github 链接或可互动的 Demo，确保面试时可现场展示。重点突出你在 **Prompt Engineering** 和 **RAG** 方面的实际应用案例。\n*   **业务场景梳理（针对阿里巴巴）**\n    *   **事实依据**：JD 要求“熟悉企业服务或 AI 行业应用，有 Prompt 工程优化实践经验”。\n    *   **行动建议**：准备 1-2 个具体的 AIGC 应用案例，说明你如何通过 Prompt 优化解决了实际问题，或如何结合低代码/RPA 工具提升效率。\n*   **弥补经验短板（通用建议）**\n    *   **事实依据**：匹配分析显示“项目时间跨度较短”。\n    *   **行动建议**：在面试中主动阐述虽然项目周期短，但你在其中承担的核心职责及快速落地的成果。同时，复习 **API、Web** 相关基础知识，以防技术面试中被问及。\n*   **软性素质展示（针对蚂蚁/小米）**\n    *   **事实依据**：JD 强调“好奇心、学习能力、沟通协调能力强”。\n    *   **行动建议**：准备一个体现你快速学习新技术或跨部门沟通解决冲突的具体事例。\n\n建议优先投递 **阿里巴巴** 或 **淘天集团** 的岗位，因为你的 AI 技能栈与这两家的硬性要求重合度最高。祝你求职顺利！",
+        "data": null,
+        "sources": null
+      },
+      "_time": 70.9156904220581,
+      "type": "done"
+    }
+  ],
+  "timestamp": "2026-04-30T18:16:33.714309",
+  "tool_execution_success_rate": 1.0,
+  "tool_correct_rate": 0.67
+}

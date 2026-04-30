@@ -92,9 +92,10 @@ class Settings(BaseSettings):
 
     # ── 双层召回 / 粗筛配置 ──
     COARSE_FILTER_TOP_K: int = 15              # 粗筛层保留的JD数量
-    COARSE_FILTER_MIN_SCORE: float = -5.0      # 粗筛最低得分阈值
+    COARSE_FILTER_MIN_SCORE: float = 0.0       # 粗筛最低得分阈值（负分直接过滤）
     COARSE_FILTER_MULTIPLIER: int = 3          # 粗筛保留倍数（相对于最终top_k）
     COARSE_FILTER_MIN_POOL: int = 8            # 粗筛最小保留池
+    GLOBAL_RANK_LLM_THRESHOLD: int = 8         # 聚合后JD数≤此值时跳过LLM精排，使用模板输出
 
     # ── 各意图默认检索数量 ──
     EXPLORE_TOP_K: int = 15

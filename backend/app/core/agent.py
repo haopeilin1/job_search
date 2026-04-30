@@ -584,6 +584,7 @@ class EnhancedAgentOrchestrator:
 
         # 5.5 组装 AgentContext
         final_rewritten = plan.context.get("rewritten_query", message)
+        logger.info(f"[EnhancedAgent] exec_result | tool_calls={len(exec_result.tool_calls)} | tool_results={len(exec_result.tool_results)} | kb_chunks={len(exec_result.kb_chunks)}")
         ctx = AgentContext(
             original_message=message,
             rewritten_query=final_rewritten,

@@ -1,0 +1,974 @@
+{
+  "case_id": "eval_chen_03",
+  "message": "百度的AI产品实习生要求什么学历",
+  "gold_intents": [
+    "verify"
+  ],
+  "expected_tools": [
+    "kb_retrieve",
+    "qa_synthesize"
+  ],
+  "scenario": "属性查询_学历要求",
+  "status": "success",
+  "error": null,
+  "ttfb": 0.006,
+  "total_latency": 67.48,
+  "event_count": 149,
+  "pred_intent": "attribute_verify",
+  "pred_tools": [
+    {
+      "tool": "kb_retrieve",
+      "status": "✅",
+      "params": {
+        "query": "百度 AI产品实习生",
+        "company": "百度",
+        "top_k": 1
+      },
+      "result_preview": "{'chunks': [{'chunk_id': '94df2ae7-baa3-418d-be25-1974b64a5b06_chunk_8', 'content': '【百度 · AI能力产品实习生 关键词】\\n百度, AI能力, 产品实习生, 策略评估, 用户调研, 数据分析, 竞品跟踪, 产品规划, agent产品, MCP, A2A, AI产品, AI策略产品, 暑期实习, PSIG', "
+    },
+    {
+      "tool": "match_analyze",
+      "status": "✅",
+      "params": {
+        "resume_text": "AI\n / \n157-xxxx-3421  |  chenyutong2027@163.com  |  \n  |  2027\n6\n2024.09  2027.06\n · \nAI\n· \nGPA\n3.4/4.0  |  \n2020.09  2024.06\n · \n · \n  |  \nWeb\n \n \n2025.03  2025.11\n  |  \n40\n\"\n\"\n\"\n\"\nFigma\nAI\nEmbedding\nJD\nAPI\nPrompt\n20\nPDF\n \n \nRAG\n2024.10  2025.02\n  |  \n80\nOCR\nWeb\n\"\n\"\n · \n2024.09  2025.06\n10\n · \n2022.03  2023.06\n2025.05    \n2024.11    \nAI\n2023.06    \n2022.12    \nFigma\nAxure\nXmind\n/\nPRD\nPrompt Engineering\nRAG\nEmbedding\nCET-4\n525\nOffice\nExcel",
+        "jd_text": [
+          {
+            "chunk_id": "94df2ae7-baa3-418d-be25-1974b64a5b06_chunk_8",
+            "content": "【百度 · AI能力产品实习生 关键词】\n百度, AI能力, 产品实习生, 策略评估, 用户调研, 数据分析, 竞品跟踪, 产品规划, agent产品, MCP, A2A, AI产品, AI策略产品, 暑期实习, PSIG",
+            "metadata": {
+              "company": "百度",
+              "index": 8,
+              "jd_id": "94df2ae7-baa3-418d-be25-1974b64a5b06",
+              "position": "AI能力产品实习生",
+              "section": "keywords",
+              "strategy": "semantic"
+            },
+            "distance": 0.3556419610977173,
+            "bm25_score": 9.207269986550818,
+            "vec_norm": 0.8994126358582982,
+            "bm25_norm": 1.0,
+            "hybrid_score": 0.9295888451008087,
+            "rerank_score": 0.9988
+          }
+        ],
+        "company": "百度",
+        "position": "AI产品实习生"
+      },
+      "result_preview": "{'score': 60, 'label': '略有差距', 'advantages': ['AI产品', 'MCP', 'A2A', 'AI策略产品'], 'weaknesses': ['候选人缺乏用户调研、策略评估、数据分析、竞品跟踪等关键经验。此外，候选人缺少产品规划和PSIG相关经验，这些是职位描述中明确要求的核心能力。'], 'suggestions': [\"核心能力要求: ['AI能力"
+    },
+    {
+      "tool": "qa_synthesize",
+      "status": "❌",
+      "params": {
+        "question": "百度AI产品实习生的学历要求是什么？",
+        "evidence_chunks": [
+          {
+            "chunk_id": "94df2ae7-baa3-418d-be25-1974b64a5b06_chunk_8",
+            "content": "【百度 · AI能力产品实习生 关键词】\n百度, AI能力, 产品实习生, 策略评估, 用户调研, 数据分析, 竞品跟踪, 产品规划, agent产品, MCP, A2A, AI产品, AI策略产品, 暑期实习, PSIG",
+            "metadata": {
+              "company": "百度",
+              "index": 8,
+              "jd_id": "94df2ae7-baa3-418d-be25-1974b64a5b06",
+              "position": "AI能力产品实习生",
+              "section": "keywords",
+              "strategy": "semantic"
+            },
+            "distance": 0.3556419610977173,
+            "bm25_score": 9.207269986550818,
+            "vec_norm": 0.8994126358582982,
+            "bm25_norm": 1.0,
+            "hybrid_score": 0.9295888451008087,
+            "rerank_score": 0.9988
+          }
+        ]
+      },
+      "result_preview": "缺失必填参数: ['qa_type']"
+    },
+    {
+      "tool": "external_search",
+      "status": "✅",
+      "params": {
+        "query": "百度 AI产品实习生",
+        "count": 5
+      },
+      "result_preview": "{'chunks': [{'chunk_id': 'tavily_440571309', 'content': '【来源：网络搜索】百度AI产品实习生（一面）面经_牛客网\\n2025-01-22 15:12 门头沟学院 产品经理. 发布于 2025-01-22 18:40 北京. 同学考虑上海米哈游不，我们正在进行春季招聘，实习也有，社招也有，可看我主页看岗位哈，感兴趣可直接扫码投递. SSE\\x"
+    }
+  ],
+  "tools_called": [
+    "kb_retrieve",
+    "match_analyze",
+    "qa_synthesize",
+    "external_search"
+  ],
+  "reply": "您好！基于最新的招聘信息检索及岗位匹配分析，为您梳理百度 AI 产品实习生的学历要求及核心竞争力建议：\n\n### 1. 学历要求\n根据招聘平台（如 BOSS 直聘）及高校合作项目信息显示，百度 AI 产品实习生岗位通常要求**本科及以上学历**。\n*   **常规岗位**：明确要求本科学历，部分核心部门可能偏好硕士及以上。\n*   **专项计划**：如“百度菁英实习生计划”，面向高校优秀学子，除学历外，还侧重考察技术背景（如熟悉 Python、C++ 及深度学习技术）。\n\n### 2. 核心能力画像\n除了学历门槛，该岗位更看重以下硬性与软性技能（基于 JD 关键词提取）：\n*   **业务技能**：策略评估、用户调研、数据分析、竞品跟踪、产品规划。\n*   **领域知识**：AI 能力、Agent 产品、MCP、A2A、AI 策略产品、PSIG 等前沿技术概念。\n\n### 3. 当前匹配度分析\n基于您目前的背景与岗位要求的匹配分析结果如下：\n*   **匹配分数**：**60 分**（标签：略有差距）\n*   **您的优势**：在 **AI 产品、MCP、A2A、AI 策略产品** 方面有相关积累，符合岗位对前沿 AI 技术的关注。\n*   **待提升点**：\n    *   缺乏 **用户调研、策略评估、数据分析、竞品跟踪** 等关键实操经验。\n    *   缺少 **产品规划** 和 **PSIG** 相关经验，这些是职位描述中明确要求的核心能力。\n\n### 4. 求职建议\n为了提高录用几率，建议您从以下方面优化：\n1.  **补充实战经历**：在简历中增加涉及用户调研和数据分析的项目经历，尽量用量化数据体现成果。\n2.  **强化核心技能**：重点学习策略评估方法和竞品分析框架，并在面试中展示对产品规划的理解。\n3.  **关注专项渠道**：如果您是在校生，可重点关注百度与高校合作的产教融合创新平台项目，利用技术背景优势进行差异化竞争。\n\n祝您求职顺利，如有简历修改需求，欢迎随时沟通！",
+  "reply_length": 861,
+  "intent_match": false,
+  "tool_match_rate": 1.0,
+  "has_reply": true,
+  "events": [
+    {
+      "step": "intent",
+      "message": "正在识别您的意图...",
+      "_time": 0.006319999694824219,
+      "type": "status"
+    },
+    {
+      "step": "plan",
+      "message": "正在规划任务...",
+      "_time": 1.1773571968078613,
+      "type": "status"
+    },
+    {
+      "step": "execute",
+      "message": "正在执行分析...",
+      "_time": 6.895953178405762,
+      "type": "status"
+    },
+    {
+      "step": "aggregate",
+      "message": "正在生成回复...",
+      "_time": 8.811933994293213,
+      "type": "status"
+    },
+    {
+      "text": "您好！基于",
+      "_time": 56.658395767211914,
+      "type": "delta"
+    },
+    {
+      "text": "最新的招聘信息检索及",
+      "_time": 56.92853832244873,
+      "type": "delta"
+    },
+    {
+      "text": "岗位",
+      "_time": 56.9332549571991,
+      "type": "delta"
+    },
+    {
+      "text": "匹配分析，为您",
+      "_time": 57.05844020843506,
+      "type": "delta"
+    },
+    {
+      "text": "梳理百度",
+      "_time": 57.06116223335266,
+      "type": "delta"
+    },
+    {
+      "text": " AI 产品实习",
+      "_time": 57.222408056259155,
+      "type": "delta"
+    },
+    {
+      "text": "生的学历要求",
+      "_time": 57.225239276885986,
+      "type": "delta"
+    },
+    {
+      "text": "及核心竞争力建议：",
+      "_time": 57.38059902191162,
+      "type": "delta"
+    },
+    {
+      "text": "\n\n### ",
+      "_time": 57.384286642074585,
+      "type": "delta"
+    },
+    {
+      "text": "1. 学历要求",
+      "_time": 57.54559588432312,
+      "type": "delta"
+    },
+    {
+      "text": "\n根据招聘平台",
+      "_time": 57.54825711250305,
+      "type": "delta"
+    },
+    {
+      "text": "（如 BOSS",
+      "_time": 57.64736270904541,
+      "type": "delta"
+    },
+    {
+      "text": " 直",
+      "_time": 57.65129065513611,
+      "type": "delta"
+    },
+    {
+      "text": "聘）及高校",
+      "_time": 57.786473512649536,
+      "type": "delta"
+    },
+    {
+      "text": "合作项目",
+      "_time": 57.78807330131531,
+      "type": "delta"
+    },
+    {
+      "text": "信息显示，百度 AI",
+      "_time": 57.94618558883667,
+      "type": "delta"
+    },
+    {
+      "text": " ",
+      "_time": 57.95083212852478,
+      "type": "delta"
+    },
+    {
+      "text": "产品实习生岗位通常",
+      "_time": 58.035457611083984,
+      "type": "delta"
+    },
+    {
+      "text": "要求**本科及以上学历**。",
+      "_time": 58.06443238258362,
+      "type": "delta"
+    },
+    {
+      "text": "\n*   **",
+      "_time": 58.16865587234497,
+      "type": "delta"
+    },
+    {
+      "text": "常规岗位**：",
+      "_time": 58.171109676361084,
+      "type": "delta"
+    },
+    {
+      "text": "明确要求本科学历，部分",
+      "_time": 58.30652451515198,
+      "type": "delta"
+    },
+    {
+      "text": "核心",
+      "_time": 58.34127950668335,
+      "type": "delta"
+    },
+    {
+      "text": "部门可能偏好硕士",
+      "_time": 58.50844597816467,
+      "type": "delta"
+    },
+    {
+      "text": "及以上",
+      "_time": 58.51103901863098,
+      "type": "delta"
+    },
+    {
+      "text": "。\n*  ",
+      "_time": 58.64545273780823,
+      "type": "delta"
+    },
+    {
+      "text": " **专项计划**",
+      "_time": 58.64818477630615,
+      "type": "delta"
+    },
+    {
+      "text": "：如“百度",
+      "_time": 58.806551456451416,
+      "type": "delta"
+    },
+    {
+      "text": "菁英实习生计划”，",
+      "_time": 58.809202432632446,
+      "type": "delta"
+    },
+    {
+      "text": "面向高校优秀学子",
+      "_time": 58.90955328941345,
+      "type": "delta"
+    },
+    {
+      "text": "，除",
+      "_time": 58.91223382949829,
+      "type": "delta"
+    },
+    {
+      "text": "学历外，还",
+      "_time": 59.165528774261475,
+      "type": "delta"
+    },
+    {
+      "text": "侧重",
+      "_time": 59.16822409629822,
+      "type": "delta"
+    },
+    {
+      "text": "考察技术背景（",
+      "_time": 59.32447338104248,
+      "type": "delta"
+    },
+    {
+      "text": "如熟悉",
+      "_time": 59.32707381248474,
+      "type": "delta"
+    },
+    {
+      "text": " Python、C++",
+      "_time": 59.429571866989136,
+      "type": "delta"
+    },
+    {
+      "text": " ",
+      "_time": 59.433237075805664,
+      "type": "delta"
+    },
+    {
+      "text": "及深度学习技术）。",
+      "_time": 59.55631470680237,
+      "type": "delta"
+    },
+    {
+      "text": "\n\n### ",
+      "_time": 59.58735537528992,
+      "type": "delta"
+    },
+    {
+      "text": "2. 核心",
+      "_time": 59.69052600860596,
+      "type": "delta"
+    },
+    {
+      "text": "能力画像",
+      "_time": 59.69188189506531,
+      "type": "delta"
+    },
+    {
+      "text": "\n除了学历门槛",
+      "_time": 59.82444715499878,
+      "type": "delta"
+    },
+    {
+      "text": "，该岗位更",
+      "_time": 59.87024259567261,
+      "type": "delta"
+    },
+    {
+      "text": "看重以下硬性与",
+      "_time": 60.06330370903015,
+      "type": "delta"
+    },
+    {
+      "text": "软性",
+      "_time": 60.06687116622925,
+      "type": "delta"
+    },
+    {
+      "text": "技能（基于 JD",
+      "_time": 60.15301585197449,
+      "type": "delta"
+    },
+    {
+      "text": " 关键词",
+      "_time": 60.154571294784546,
+      "type": "delta"
+    },
+    {
+      "text": "提取）：\n",
+      "_time": 60.28542971611023,
+      "type": "delta"
+    },
+    {
+      "text": "*   **业务",
+      "_time": 60.289121866226196,
+      "type": "delta"
+    },
+    {
+      "text": "技能**：策略",
+      "_time": 60.519402742385864,
+      "type": "delta"
+    },
+    {
+      "text": "评估、用户调研",
+      "_time": 60.52123665809631,
+      "type": "delta"
+    },
+    {
+      "text": "、数据分析、竞品",
+      "_time": 60.61762881278992,
+      "type": "delta"
+    },
+    {
+      "text": "跟踪、产品",
+      "_time": 60.619855642318726,
+      "type": "delta"
+    },
+    {
+      "text": "规划。\n*",
+      "_time": 60.78844356536865,
+      "type": "delta"
+    },
+    {
+      "text": "   **领域",
+      "_time": 60.79097270965576,
+      "type": "delta"
+    },
+    {
+      "text": "知识**：AI",
+      "_time": 60.89636492729187,
+      "type": "delta"
+    },
+    {
+      "text": " 能力、Agent",
+      "_time": 60.897977113723755,
+      "type": "delta"
+    },
+    {
+      "text": " 产品、M",
+      "_time": 61.02640748023987,
+      "type": "delta"
+    },
+    {
+      "text": "CP、A2",
+      "_time": 61.064353227615356,
+      "type": "delta"
+    },
+    {
+      "text": "A、AI ",
+      "_time": 61.15443563461304,
+      "type": "delta"
+    },
+    {
+      "text": "策略产品、",
+      "_time": 61.156790018081665,
+      "type": "delta"
+    },
+    {
+      "text": "PSIG 等",
+      "_time": 61.295050382614136,
+      "type": "delta"
+    },
+    {
+      "text": "前沿",
+      "_time": 61.29869341850281,
+      "type": "delta"
+    },
+    {
+      "text": "技术概念。\n\n",
+      "_time": 61.4933922290802,
+      "type": "delta"
+    },
+    {
+      "text": "### 3.",
+      "_time": 61.52821660041809,
+      "type": "delta"
+    },
+    {
+      "text": " 当前匹配度",
+      "_time": 61.62726283073425,
+      "type": "delta"
+    },
+    {
+      "text": "分析\n基于",
+      "_time": 61.63006043434143,
+      "type": "delta"
+    },
+    {
+      "text": "您目前的背景与",
+      "_time": 61.83929228782654,
+      "type": "delta"
+    },
+    {
+      "text": "岗位要求的",
+      "_time": 61.84087133407593,
+      "type": "delta"
+    },
+    {
+      "text": "匹配分析结果如下",
+      "_time": 62.06619906425476,
+      "type": "delta"
+    },
+    {
+      "text": "：\n*",
+      "_time": 62.06779456138611,
+      "type": "delta"
+    },
+    {
+      "text": "   **匹配分数",
+      "_time": 62.170257568359375,
+      "type": "delta"
+    },
+    {
+      "text": "**：**",
+      "_time": 62.17212677001953,
+      "type": "delta"
+    },
+    {
+      "text": "60 分",
+      "_time": 62.30727982521057,
+      "type": "delta"
+    },
+    {
+      "text": "**（标签",
+      "_time": 62.34711146354675,
+      "type": "delta"
+    },
+    {
+      "text": "：略有差距）",
+      "_time": 62.484330892562866,
+      "type": "delta"
+    },
+    {
+      "text": "\n*   **",
+      "_time": 62.486828327178955,
+      "type": "delta"
+    },
+    {
+      "text": "您的优势**：",
+      "_time": 62.56216335296631,
+      "type": "delta"
+    },
+    {
+      "text": "在",
+      "_time": 62.5638484954834,
+      "type": "delta"
+    },
+    {
+      "text": " **AI 产品",
+      "_time": 62.73027229309082,
+      "type": "delta"
+    },
+    {
+      "text": "、MCP、",
+      "_time": 62.734089612960815,
+      "type": "delta"
+    },
+    {
+      "text": "A2A、",
+      "_time": 62.8241765499115,
+      "type": "delta"
+    },
+    {
+      "text": "AI 策略产品",
+      "_time": 62.8259596824646,
+      "type": "delta"
+    },
+    {
+      "text": "** 方面有相关",
+      "_time": 62.95635628700256,
+      "type": "delta"
+    },
+    {
+      "text": "积累",
+      "_time": 62.96000599861145,
+      "type": "delta"
+    },
+    {
+      "text": "，符合岗位对",
+      "_time": 63.127302408218384,
+      "type": "delta"
+    },
+    {
+      "text": "前沿 AI",
+      "_time": 63.12884593009949,
+      "type": "delta"
+    },
+    {
+      "text": " 技术的关注。",
+      "_time": 63.22105073928833,
+      "type": "delta"
+    },
+    {
+      "text": "\n*   **",
+      "_time": 63.22402572631836,
+      "type": "delta"
+    },
+    {
+      "text": "待提升点**",
+      "_time": 63.36218070983887,
+      "type": "delta"
+    },
+    {
+      "text": "：\n   ",
+      "_time": 63.394129037857056,
+      "type": "delta"
+    },
+    {
+      "text": " *   缺乏",
+      "_time": 63.496052503585815,
+      "type": "delta"
+    },
+    {
+      "text": " **用户调研、",
+      "_time": 63.497923135757446,
+      "type": "delta"
+    },
+    {
+      "text": "策略评估、数据分析",
+      "_time": 63.63437366485596,
+      "type": "delta"
+    },
+    {
+      "text": "、竞品跟踪**",
+      "_time": 63.665069341659546,
+      "type": "delta"
+    },
+    {
+      "text": " 等关键实操",
+      "_time": 63.76398468017578,
+      "type": "delta"
+    },
+    {
+      "text": "经验。\n   ",
+      "_time": 63.76596140861511,
+      "type": "delta"
+    },
+    {
+      "text": " *   缺少",
+      "_time": 63.89995741844177,
+      "type": "delta"
+    },
+    {
+      "text": " **产品规划",
+      "_time": 63.939897775650024,
+      "type": "delta"
+    },
+    {
+      "text": "** 和 **",
+      "_time": 64.0351767539978,
+      "type": "delta"
+    },
+    {
+      "text": "PSIG**",
+      "_time": 64.0367181301117,
+      "type": "delta"
+    },
+    {
+      "text": " 相关经验，",
+      "_time": 64.16608262062073,
+      "type": "delta"
+    },
+    {
+      "text": "这些是职位描述中",
+      "_time": 64.16994047164917,
+      "type": "delta"
+    },
+    {
+      "text": "明确要求的核心能力。",
+      "_time": 64.33920288085938,
+      "type": "delta"
+    },
+    {
+      "text": "\n\n### 4",
+      "_time": 64.34070658683777,
+      "type": "delta"
+    },
+    {
+      "text": ". 求职建议",
+      "_time": 64.42494750022888,
+      "type": "delta"
+    },
+    {
+      "text": "\n为了提高",
+      "_time": 64.42786645889282,
+      "type": "delta"
+    },
+    {
+      "text": "录用几率，建议您",
+      "_time": 64.7502236366272,
+      "type": "delta"
+    },
+    {
+      "text": "从",
+      "_time": 64.75297784805298,
+      "type": "delta"
+    },
+    {
+      "text": "以下方面优化：",
+      "_time": 64.8250036239624,
+      "type": "delta"
+    },
+    {
+      "text": "\n1",
+      "_time": 64.82669043540955,
+      "type": "delta"
+    },
+    {
+      "text": ".  **补充",
+      "_time": 64.94713830947876,
+      "type": "delta"
+    },
+    {
+      "text": "实战",
+      "_time": 64.94996666908264,
+      "type": "delta"
+    },
+    {
+      "text": "经历**：在",
+      "_time": 65.08017945289612,
+      "type": "delta"
+    },
+    {
+      "text": "简历",
+      "_time": 65.12003254890442,
+      "type": "delta"
+    },
+    {
+      "text": "中增加涉及用户",
+      "_time": 65.28830575942993,
+      "type": "delta"
+    },
+    {
+      "text": "调研和",
+      "_time": 65.29086065292358,
+      "type": "delta"
+    },
+    {
+      "text": "数据分析的项目经历，",
+      "_time": 65.42431163787842,
+      "type": "delta"
+    },
+    {
+      "text": "尽量",
+      "_time": 65.42560029029846,
+      "type": "delta"
+    },
+    {
+      "text": "用量化数据体现",
+      "_time": 65.62805891036987,
+      "type": "delta"
+    },
+    {
+      "text": "成果。\n2",
+      "_time": 65.65891718864441,
+      "type": "delta"
+    },
+    {
+      "text": ".  **强化",
+      "_time": 65.75268268585205,
+      "type": "delta"
+    },
+    {
+      "text": "核心技能**：",
+      "_time": 65.75641441345215,
+      "type": "delta"
+    },
+    {
+      "text": "重点学习策略评估",
+      "_time": 65.88920593261719,
+      "type": "delta"
+    },
+    {
+      "text": "方法和",
+      "_time": 65.89186644554138,
+      "type": "delta"
+    },
+    {
+      "text": "竞品分析框架，",
+      "_time": 66.05020260810852,
+      "type": "delta"
+    },
+    {
+      "text": "并在面试",
+      "_time": 66.05290842056274,
+      "type": "delta"
+    },
+    {
+      "text": "中展示对产品规划",
+      "_time": 66.22217798233032,
+      "type": "delta"
+    },
+    {
+      "text": "的理解",
+      "_time": 66.22691035270691,
+      "type": "delta"
+    },
+    {
+      "text": "。\n3.",
+      "_time": 66.35714483261108,
+      "type": "delta"
+    },
+    {
+      "text": "  **关注",
+      "_time": 66.38412547111511,
+      "type": "delta"
+    },
+    {
+      "text": "专项渠道**：",
+      "_time": 66.4830310344696,
+      "type": "delta"
+    },
+    {
+      "text": "如果您",
+      "_time": 66.48464512825012,
+      "type": "delta"
+    },
+    {
+      "text": "是在校生，",
+      "_time": 66.61183476448059,
+      "type": "delta"
+    },
+    {
+      "text": "可重点关注",
+      "_time": 66.61462712287903,
+      "type": "delta"
+    },
+    {
+      "text": "百度与高校合作的",
+      "_time": 66.74207377433777,
+      "type": "delta"
+    },
+    {
+      "text": "产教融合创新平台",
+      "_time": 66.77184724807739,
+      "type": "delta"
+    },
+    {
+      "text": "项目，利用技术",
+      "_time": 66.94694542884827,
+      "type": "delta"
+    },
+    {
+      "text": "背景优势进行",
+      "_time": 66.94965767860413,
+      "type": "delta"
+    },
+    {
+      "text": "差异化竞争。\n\n",
+      "_time": 67.0789840221405,
+      "type": "delta"
+    },
+    {
+      "text": "祝您求职顺利，",
+      "_time": 67.10680747032166,
+      "type": "delta"
+    },
+    {
+      "text": "如有简历修改需求",
+      "_time": 67.27416205406189,
+      "type": "delta"
+    },
+    {
+      "text": "，欢迎随时",
+      "_time": 67.2828140258789,
+      "type": "delta"
+    },
+    {
+      "text": "沟通！",
+      "_time": 67.41708135604858,
+      "type": "delta"
+    },
+    {
+      "session_id": "eval_chen_03_1777539767056",
+      "intent": "attribute_verify",
+      "route_meta": {
+        "layer": "llm",
+        "intent": "attribute_verify",
+        "confidence": 0.95,
+        "demands": [
+          {
+            "intent": "attribute_verify",
+            "entities": {
+              "company": "百度",
+              "attribute": "学历"
+            }
+          }
+        ],
+        "plan_tasks": 5
+      },
+      "agent_mode": "llm",
+      "is_clarification": false,
+      "agent": {
+        "rewritten_query": "百度的AI产品实习生要求什么学历",
+        "tools": [
+          {
+            "tool": "kb_retrieve",
+            "status": "✅",
+            "params": {
+              "query": "百度 AI产品实习生",
+              "company": "百度",
+              "top_k": 1
+            },
+            "result_preview": "{'chunks': [{'chunk_id': '94df2ae7-baa3-418d-be25-1974b64a5b06_chunk_8', 'content': '【百度 · AI能力产品实习生 关键词】\\n百度, AI能力, 产品实习生, 策略评估, 用户调研, 数据分析, 竞品跟踪, 产品规划, agent产品, MCP, A2A, AI产品, AI策略产品, 暑期实习, PSIG', "
+          },
+          {
+            "tool": "match_analyze",
+            "status": "✅",
+            "params": {
+              "resume_text": "AI\n / \n157-xxxx-3421  |  chenyutong2027@163.com  |  \n  |  2027\n6\n2024.09  2027.06\n · \nAI\n· \nGPA\n3.4/4.0  |  \n2020.09  2024.06\n · \n · \n  |  \nWeb\n \n \n2025.03  2025.11\n  |  \n40\n\"\n\"\n\"\n\"\nFigma\nAI\nEmbedding\nJD\nAPI\nPrompt\n20\nPDF\n \n \nRAG\n2024.10  2025.02\n  |  \n80\nOCR\nWeb\n\"\n\"\n · \n2024.09  2025.06\n10\n · \n2022.03  2023.06\n2025.05    \n2024.11    \nAI\n2023.06    \n2022.12    \nFigma\nAxure\nXmind\n/\nPRD\nPrompt Engineering\nRAG\nEmbedding\nCET-4\n525\nOffice\nExcel",
+              "jd_text": [
+                {
+                  "chunk_id": "94df2ae7-baa3-418d-be25-1974b64a5b06_chunk_8",
+                  "content": "【百度 · AI能力产品实习生 关键词】\n百度, AI能力, 产品实习生, 策略评估, 用户调研, 数据分析, 竞品跟踪, 产品规划, agent产品, MCP, A2A, AI产品, AI策略产品, 暑期实习, PSIG",
+                  "metadata": {
+                    "company": "百度",
+                    "index": 8,
+                    "jd_id": "94df2ae7-baa3-418d-be25-1974b64a5b06",
+                    "position": "AI能力产品实习生",
+                    "section": "keywords",
+                    "strategy": "semantic"
+                  },
+                  "distance": 0.3556419610977173,
+                  "bm25_score": 9.207269986550818,
+                  "vec_norm": 0.8994126358582982,
+                  "bm25_norm": 1.0,
+                  "hybrid_score": 0.9295888451008087,
+                  "rerank_score": 0.9988
+                }
+              ],
+              "company": "百度",
+              "position": "AI产品实习生"
+            },
+            "result_preview": "{'score': 60, 'label': '略有差距', 'advantages': ['AI产品', 'MCP', 'A2A', 'AI策略产品'], 'weaknesses': ['候选人缺乏用户调研、策略评估、数据分析、竞品跟踪等关键经验。此外，候选人缺少产品规划和PSIG相关经验，这些是职位描述中明确要求的核心能力。'], 'suggestions': [\"核心能力要求: ['AI能力"
+          },
+          {
+            "tool": "qa_synthesize",
+            "status": "❌",
+            "params": {
+              "question": "百度AI产品实习生的学历要求是什么？",
+              "evidence_chunks": [
+                {
+                  "chunk_id": "94df2ae7-baa3-418d-be25-1974b64a5b06_chunk_8",
+                  "content": "【百度 · AI能力产品实习生 关键词】\n百度, AI能力, 产品实习生, 策略评估, 用户调研, 数据分析, 竞品跟踪, 产品规划, agent产品, MCP, A2A, AI产品, AI策略产品, 暑期实习, PSIG",
+                  "metadata": {
+                    "company": "百度",
+                    "index": 8,
+                    "jd_id": "94df2ae7-baa3-418d-be25-1974b64a5b06",
+                    "position": "AI能力产品实习生",
+                    "section": "keywords",
+                    "strategy": "semantic"
+                  },
+                  "distance": 0.3556419610977173,
+                  "bm25_score": 9.207269986550818,
+                  "vec_norm": 0.8994126358582982,
+                  "bm25_norm": 1.0,
+                  "hybrid_score": 0.9295888451008087,
+                  "rerank_score": 0.9988
+                }
+              ]
+            },
+            "result_preview": "缺失必填参数: ['qa_type']"
+          },
+          {
+            "tool": "external_search",
+            "status": "✅",
+            "params": {
+              "query": "百度 AI产品实习生",
+              "count": 5
+            },
+            "result_preview": "{'chunks': [{'chunk_id': 'tavily_440571309', 'content': '【来源：网络搜索】百度AI产品实习生（一面）面经_牛客网\\n2025-01-22 15:12 门头沟学院 产品经理. 发布于 2025-01-22 18:40 北京. 同学考虑上海米哈游不，我们正在进行春季招聘，实习也有，社招也有，可看我主页看岗位哈，感兴趣可直接扫码投递. SSE\\x"
+          }
+        ],
+        "kb_chunks_count": 3,
+        "system_prompt_preview": "你是一位专业的求职顾问。请基于以下工具执行结果，给用户一个清晰、有帮助的回复。\n要求：\n1. 直接回答用户的问题，不要重复用户的原话\n2. 如果有匹配分析结果，给出具体的分数和建议\n3. 如果有检索结果，基于事实回答，不要编造\n4. 语气友好、专业、结构化"
+      },
+      "memory": {
+        "working_turns": 1,
+        "compressed_blocks": 0,
+        "current_topic": "general",
+        "evidence_cache_size": 1
+      },
+      "reply": {
+        "type": "text",
+        "content": "您好！基于最新的招聘信息检索及岗位匹配分析，为您梳理百度 AI 产品实习生的学历要求及核心竞争力建议：\n\n### 1. 学历要求\n根据招聘平台（如 BOSS 直聘）及高校合作项目信息显示，百度 AI 产品实习生岗位通常要求**本科及以上学历**。\n*   **常规岗位**：明确要求本科学历，部分核心部门可能偏好硕士及以上。\n*   **专项计划**：如“百度菁英实习生计划”，面向高校优秀学子，除学历外，还侧重考察技术背景（如熟悉 Python、C++ 及深度学习技术）。\n\n### 2. 核心能力画像\n除了学历门槛，该岗位更看重以下硬性与软性技能（基于 JD 关键词提取）：\n*   **业务技能**：策略评估、用户调研、数据分析、竞品跟踪、产品规划。\n*   **领域知识**：AI 能力、Agent 产品、MCP、A2A、AI 策略产品、PSIG 等前沿技术概念。\n\n### 3. 当前匹配度分析\n基于您目前的背景与岗位要求的匹配分析结果如下：\n*   **匹配分数**：**60 分**（标签：略有差距）\n*   **您的优势**：在 **AI 产品、MCP、A2A、AI 策略产品** 方面有相关积累，符合岗位对前沿 AI 技术的关注。\n*   **待提升点**：\n    *   缺乏 **用户调研、策略评估、数据分析、竞品跟踪** 等关键实操经验。\n    *   缺少 **产品规划** 和 **PSIG** 相关经验，这些是职位描述中明确要求的核心能力。\n\n### 4. 求职建议\n为了提高录用几率，建议您从以下方面优化：\n1.  **补充实战经历**：在简历中增加涉及用户调研和数据分析的项目经历，尽量用量化数据体现成果。\n2.  **强化核心技能**：重点学习策略评估方法和竞品分析框架，并在面试中展示对产品规划的理解。\n3.  **关注专项渠道**：如果您是在校生，可重点关注百度与高校合作的产教融合创新平台项目，利用技术背景优势进行差异化竞争。\n\n祝您求职顺利，如有简历修改需求，欢迎随时沟通！",
+        "data": null,
+        "sources": null
+      },
+      "_time": 67.47908234596252,
+      "type": "done"
+    }
+  ],
+  "timestamp": "2026-04-30T17:02:47.056710"
+}

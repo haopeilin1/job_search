@@ -799,7 +799,23 @@ async def _handle_llm_route_v2(
     # ── ⑤ LLM聚合：生成最终回复 ──
     # 收集所有成功任务的输出
     tool_outputs = []
+    tool_summary = []
     for task in graph.tasks.values():
+        if task.tool_name and task.status in ("success", "failed"):
+            result_preview = ""
+            if task.result:
+                if isinstance(task.result, dict):
+                    result_preview = str(task.result.get("data", task.result))[:200]
+                else:
+                    result_preview = str(task.result)[:200]
+            elif task.observation:
+                result_preview = str(task.observation)[:200]
+            tool_summary.append({
+                "tool": task.tool_name,
+                "status": "✅" if task.status == "success" else "❌",
+                "params": task.resolved_params if hasattr(task, "resolved_params") else task.parameters,
+                "result_preview": result_preview,
+            })
         if task.status == "success" and task.result:
             tool_outputs.append({
                 "task_id": task.task_id,
@@ -896,6 +912,12 @@ async def _handle_llm_route_v2(
             "global_slots": intent_result.resolved_entities,
             "tool_outputs": [{"tool": o["tool"], "task_id": o["task_id"]} for o in tool_outputs],
         },
+        "agent": {
+            "rewritten_query": rewrite_result.rewritten_query,
+            "tools": tool_summary,
+            "kb_chunks_count": len(tool_outputs),
+            "system_prompt_preview": system_prompt[:200] if system_prompt else "",
+        },
         "memory": memory_state,
         "reply": reply.model_dump(),
     }
@@ -983,13 +1005,67 @@ async def _handle_llm_route_v2_stream(
 
     # ── ④ 收集工具输出 ──
     tool_outputs = []
+    tool_summary = []
     for task in graph.tasks.values():
+        if task.tool_name and task.status in ("success", "failed"):
+            result_preview = ""
+            if task.result:
+                if isinstance(task.result, dict):
+                    result_preview = str(task.result.get("data", task.result))[:200]
+                else:
+                    result_preview = str(task.result)[:200]
+            elif task.observation:
+                result_preview = str(task.observation)[:200]
+            tool_summary.append({
+                "tool": task.tool_name,
+                "status": "✅" if task.status == "success" else "❌",
+                "params": task.resolved_params if hasattr(task, "resolved_params") else task.parameters,
+                "result_preview": result_preview,
+            })
         if task.status == "success" and task.result:
+            result = task.result
+            # 精简 kb_retrieve / global_rank / external_search 结果，避免 tool_outputs 过长被截断
+            if task.tool_name == "kb_retrieve" and isinstance(result, dict):
+                result = dict(result)
+                chunks = result.get("chunks", [])
+                result["chunks"] = [
+                    {
+                        "chunk_id": c.get("chunk_id", ""),
+                        "content": c.get("content", "")[:300],
+                        "metadata": {
+                            "company": c.get("metadata", {}).get("company", ""),
+                            "position": c.get("metadata", {}).get("position", ""),
+                        },
+                    }
+                    for c in chunks[:6]
+                ]
+            elif task.tool_name == "global_rank" and isinstance(result, dict):
+                result = dict(result)
+                rankings = result.get("rankings", [])
+                result["rankings"] = [
+                    {
+                        "company": r.get("company", ""),
+                        "position": r.get("position", ""),
+                        "score": r.get("score", 0),
+                        "reason": r.get("reason", "")[:200],
+                    }
+                    for r in rankings[:5]
+                ]
+            elif task.tool_name == "external_search" and isinstance(result, dict):
+                result = dict(result)
+                chunks = result.get("chunks", [])
+                result["chunks"] = [
+                    {
+                        "title": c.get("title", ""),
+                        "content": c.get("content", "")[:300],
+                    }
+                    for c in chunks[:3]
+                ]
             tool_outputs.append({
                 "task_id": task.task_id,
                 "tool": task.tool_name,
                 "description": task.description,
-                "result": task.result,
+                "result": result,
             })
 
     system_prompt = (
@@ -1069,6 +1145,12 @@ async def _handle_llm_route_v2_stream(
         },
         "agent_mode": "llm",
         "is_clarification": False,
+        "agent": {
+            "rewritten_query": rewrite_result.rewritten_query,
+            "tools": tool_summary,
+            "kb_chunks_count": len(tool_outputs),
+            "system_prompt_preview": system_prompt[:200] if system_prompt else "",
+        },
         "memory": memory_state,
         "reply": reply.model_dump(),
     })

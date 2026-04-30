@@ -1,0 +1,1185 @@
+{
+  "case_id": "eval_li_04",
+  "message": "Java后端面试一般问什么",
+  "gold_intents": [
+    "prepare"
+  ],
+  "expected_tools": [
+    "interview_questions"
+  ],
+  "scenario": "面试准备_泛化岗位",
+  "status": "success",
+  "error": null,
+  "ttfb": 0.01,
+  "total_latency": 45.75,
+  "event_count": 203,
+  "pred_intent": "interview_prepare",
+  "pred_tools": [
+    {
+      "tool": "kb_retrieve",
+      "status": "✅",
+      "params": {
+        "query": "Java 后端开发",
+        "top_k": 1,
+        "position": "后端"
+      },
+      "result_preview": "{'chunks': [{'chunk_id': '9cde8355-dcc0-434e-97c4-67dfc5dae5b8_chunk_2', 'content': '【阿里巴巴 · 后端开发 硬性要求】\\n3年以上Java开发经验', 'metadata': {'company': '阿里巴巴', 'index': 2, 'jd_id': '9cde8355-dcc0-434e-97c4-67"
+    },
+    {
+      "tool": "interview_gen",
+      "status": "❌",
+      "params": {
+        "match_result": [
+          {
+            "chunk_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8_chunk_2",
+            "content": "【阿里巴巴 · 后端开发 硬性要求】\n3年以上Java开发经验",
+            "metadata": {
+              "company": "阿里巴巴",
+              "index": 2,
+              "jd_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8",
+              "position": "后端开发",
+              "priority": "high",
+              "section": "hard_requirements",
+              "strategy": "semantic"
+            },
+            "distance": null,
+            "bm25_score": 18.97016170007786,
+            "vec_norm": 0.0,
+            "bm25_norm": 1.0,
+            "hybrid_score": 0.3,
+            "rerank_score": 0.9807
+          }
+        ],
+        "position": "后端"
+      },
+      "result_preview": "match_result 为空或格式错误"
+    },
+    {
+      "tool": "external_search",
+      "status": "✅",
+      "params": {
+        "query": "Java 后端开发",
+        "count": 5
+      },
+      "result_preview": "{'chunks': [{'chunk_id': 'tavily_4207541310', 'content': '【来源：网络搜索】Java后端开发：从零构建企业级应用的完整架构与技术栈详解一、Java后端架构概述 Java后端架构通常采用分层架构（L - 掘金\\npublic ResponseEntity<User> getUser(@PathVariable Long id) {. User"
+    }
+  ],
+  "tools_called": [
+    "kb_retrieve",
+    "interview_gen",
+    "external_search"
+  ],
+  "reply": "你好！作为求职顾问，我结合最新的岗位招聘要求和技术趋势，为你梳理了 Java 后端面试的核心考察点。面试内容通常会根据职级有所不同，但主要围绕以下几个维度展开：\n\n### 1. 硬性门槛与经验要求\n根据大厂（如阿里巴巴）的后端开发岗位画像，**工作经验**是首要筛选条件：\n*   **年限要求**：核心岗位通常要求 **3 年以上** Java 开发经验。\n*   **建议**：如果你处于初级阶段，建议先通过小项目积累实战经验；如果是资深求职，需准备好能体现复杂系统处理能力的案例。\n\n### 2. 基础技术与编程能力\n面试会重点考察 Java 语言基础及实际编码能力：\n*   **面向对象编程 (OOP)**：这是后端开发的基石，面试官会关注你对封装、继承、多态的理解。\n*   **框架应用**：熟悉企业级应用架构，例如基于 Spring Boot 的分层架构（Controller-Service-Dao）。面试中可能会让你手写或解释类似 `getUser` 或 `createUser` 的标准接口实现。\n*   **建议**：复习 Java 核心语法，确保能独立构建从零开始的企业级应用原型。\n\n### 3. 系统架构与设计\n随着技术演进，架构设计能力成为中高级面试的重点：\n*   **分层架构**：理解标准的分层设计，确保系统高内聚、低耦合。\n*   **微服务架构**：2025 年技术趋势显示，微服务是主流。面试常问如何通过微服务提高系统的可扩展性和可维护性。\n*   **建议**：准备 1-2 个你参与过的架构设计案例，重点说明如何解决耦合度高或扩展性差的问题。\n\n### 4. 工程化与新技术趋势\n除了代码本身，现代后端开发非常看重工程效率和新技术落地：\n*   **DevOps 实践**：包括自动化部署、监控和日志分析工具的使用，这是提高开发效率和系统稳定性的关键。\n*   **云原生技术**：容器化（如 Docker/K8s）及云原生发展趋势是加分项。\n*   **建议**：熟悉常见的 CI/CD 流程，了解容器化部署的基本概念，这在面试中能体现你的技术视野。\n\n### 💡 备考小贴士\n1.  **项目复盘**：挑选一个最具代表性的项目，按照“背景 - 架构 - 难点 - 解决”的逻辑梳理。\n2.  **技术广度**：除了 Java 本身，适当了解微服务、DevOps 和云原生相关概念，以匹配 2025 年的技术架构要求。\n3.  **实战演练**：如果基础薄弱，先专注于 OOP 和小项目练习，再逐步深入后端架构。\n\n希望这些信息能帮助你更有针对性地准备面试！如果有具体的简历需要评估，欢迎随时发给我。祝你求职顺利！",
+  "reply_length": 1132,
+  "intent_match": true,
+  "tool_match_rate": 0.0,
+  "has_reply": true,
+  "events": [
+    {
+      "step": "intent",
+      "message": "正在识别您的意图...",
+      "_time": 0.010191202163696289,
+      "type": "status"
+    },
+    {
+      "step": "plan",
+      "message": "正在规划任务...",
+      "_time": 1.3884775638580322,
+      "type": "status"
+    },
+    {
+      "step": "execute",
+      "message": "正在执行分析...",
+      "_time": 5.487914800643921,
+      "type": "status"
+    },
+    {
+      "step": "aggregate",
+      "message": "正在生成回复...",
+      "_time": 7.544359922409058,
+      "type": "status"
+    },
+    {
+      "text": "你好！",
+      "_time": 34.20567774772644,
+      "type": "delta"
+    },
+    {
+      "text": "作为求职顾问，",
+      "_time": 34.34865069389343,
+      "type": "delta"
+    },
+    {
+      "text": "我",
+      "_time": 34.35041809082031,
+      "type": "delta"
+    },
+    {
+      "text": "结合最新的岗位招聘",
+      "_time": 34.43635058403015,
+      "type": "delta"
+    },
+    {
+      "text": "要求",
+      "_time": 34.439393758773804,
+      "type": "delta"
+    },
+    {
+      "text": "和技术趋势，为你",
+      "_time": 34.558430433273315,
+      "type": "delta"
+    },
+    {
+      "text": "梳理",
+      "_time": 34.561328172683716,
+      "type": "delta"
+    },
+    {
+      "text": "了 Java 后端",
+      "_time": 34.6202871799469,
+      "type": "delta"
+    },
+    {
+      "text": "面试的核心考察",
+      "_time": 34.6233172416687,
+      "type": "delta"
+    },
+    {
+      "text": "点。面试内容",
+      "_time": 34.74936246871948,
+      "type": "delta"
+    },
+    {
+      "text": "通常会根据",
+      "_time": 34.75221014022827,
+      "type": "delta"
+    },
+    {
+      "text": "职级有所不同，",
+      "_time": 34.883567571640015,
+      "type": "delta"
+    },
+    {
+      "text": "但主要",
+      "_time": 34.88632774353027,
+      "type": "delta"
+    },
+    {
+      "text": "围绕以下几个维度展开",
+      "_time": 34.95951175689697,
+      "type": "delta"
+    },
+    {
+      "text": "：\n\n",
+      "_time": 34.9613299369812,
+      "type": "delta"
+    },
+    {
+      "text": "### 1.",
+      "_time": 35.07031273841858,
+      "type": "delta"
+    },
+    {
+      "text": " 硬性门槛与",
+      "_time": 35.09930872917175,
+      "type": "delta"
+    },
+    {
+      "text": "经验要求\n根据",
+      "_time": 35.21330904960632,
+      "type": "delta"
+    },
+    {
+      "text": "大厂（如阿里巴巴",
+      "_time": 35.21614456176758,
+      "type": "delta"
+    },
+    {
+      "text": "）的后端开发",
+      "_time": 35.35756540298462,
+      "type": "delta"
+    },
+    {
+      "text": "岗位画像",
+      "_time": 35.36218547821045,
+      "type": "delta"
+    },
+    {
+      "text": "，**工作经验**",
+      "_time": 35.49359917640686,
+      "type": "delta"
+    },
+    {
+      "text": "是首要",
+      "_time": 35.49539065361023,
+      "type": "delta"
+    },
+    {
+      "text": "筛选条件：\n",
+      "_time": 35.5723671913147,
+      "type": "delta"
+    },
+    {
+      "text": "*   **",
+      "_time": 35.572957277297974,
+      "type": "delta"
+    },
+    {
+      "text": "年限要求**：",
+      "_time": 35.73145341873169,
+      "type": "delta"
+    },
+    {
+      "text": "核心岗位通常要求",
+      "_time": 35.73526740074158,
+      "type": "delta"
+    },
+    {
+      "text": " **3 年以上",
+      "_time": 35.85628318786621,
+      "type": "delta"
+    },
+    {
+      "text": "**",
+      "_time": 35.86124277114868,
+      "type": "delta"
+    },
+    {
+      "text": " Java 开发经验",
+      "_time": 35.93131375312805,
+      "type": "delta"
+    },
+    {
+      "text": "。\n*  ",
+      "_time": 35.96034479141235,
+      "type": "delta"
+    },
+    {
+      "text": " **建议**：",
+      "_time": 36.075713872909546,
+      "type": "delta"
+    },
+    {
+      "text": "如果你",
+      "_time": 36.077998876571655,
+      "type": "delta"
+    },
+    {
+      "text": "处于初级阶段，",
+      "_time": 36.165268421173096,
+      "type": "delta"
+    },
+    {
+      "text": "建议",
+      "_time": 36.165932178497314,
+      "type": "delta"
+    },
+    {
+      "text": "先通过小项目",
+      "_time": 36.257285594940186,
+      "type": "delta"
+    },
+    {
+      "text": "积累实战经验",
+      "_time": 36.28524374961853,
+      "type": "delta"
+    },
+    {
+      "text": "；如果是资深求职",
+      "_time": 36.39820051193237,
+      "type": "delta"
+    },
+    {
+      "text": "，需",
+      "_time": 36.40124225616455,
+      "type": "delta"
+    },
+    {
+      "text": "准备好能体现复杂",
+      "_time": 36.49153971672058,
+      "type": "delta"
+    },
+    {
+      "text": "系统处理",
+      "_time": 36.49423360824585,
+      "type": "delta"
+    },
+    {
+      "text": "能力的案例。\n\n",
+      "_time": 36.624510765075684,
+      "type": "delta"
+    },
+    {
+      "text": "### 2.",
+      "_time": 36.62714743614197,
+      "type": "delta"
+    },
+    {
+      "text": " 基础技术与编程",
+      "_time": 36.742273807525635,
+      "type": "delta"
+    },
+    {
+      "text": "能力\n面试会",
+      "_time": 36.745227336883545,
+      "type": "delta"
+    },
+    {
+      "text": "重点考察 Java ",
+      "_time": 36.914668560028076,
+      "type": "delta"
+    },
+    {
+      "text": "语言",
+      "_time": 36.91722917556763,
+      "type": "delta"
+    },
+    {
+      "text": "基础及实际编码",
+      "_time": 36.97623634338379,
+      "type": "delta"
+    },
+    {
+      "text": "能力：\n*",
+      "_time": 36.97807335853577,
+      "type": "delta"
+    },
+    {
+      "text": "   **面向对象编程",
+      "_time": 37.147504806518555,
+      "type": "delta"
+    },
+    {
+      "text": " (",
+      "_time": 37.15091419219971,
+      "type": "delta"
+    },
+    {
+      "text": "OOP)**：",
+      "_time": 37.21437215805054,
+      "type": "delta"
+    },
+    {
+      "text": "这是后端",
+      "_time": 37.21706223487854,
+      "type": "delta"
+    },
+    {
+      "text": "开发的基石，面试官",
+      "_time": 37.3182954788208,
+      "type": "delta"
+    },
+    {
+      "text": "会关注",
+      "_time": 37.32119631767273,
+      "type": "delta"
+    },
+    {
+      "text": "你对封装、继承",
+      "_time": 37.462279081344604,
+      "type": "delta"
+    },
+    {
+      "text": "、多",
+      "_time": 37.46405577659607,
+      "type": "delta"
+    },
+    {
+      "text": "态的理解。\n",
+      "_time": 37.53514242172241,
+      "type": "delta"
+    },
+    {
+      "text": "*   **框架",
+      "_time": 37.535906076431274,
+      "type": "delta"
+    },
+    {
+      "text": "应用**：熟悉",
+      "_time": 37.692529916763306,
+      "type": "delta"
+    },
+    {
+      "text": "企业",
+      "_time": 37.69389367103577,
+      "type": "delta"
+    },
+    {
+      "text": "级应用架构，",
+      "_time": 37.79546642303467,
+      "type": "delta"
+    },
+    {
+      "text": "例如",
+      "_time": 37.79818081855774,
+      "type": "delta"
+    },
+    {
+      "text": "基于 Spring Boot ",
+      "_time": 37.8881938457489,
+      "type": "delta"
+    },
+    {
+      "text": "的分层架构",
+      "_time": 37.89119791984558,
+      "type": "delta"
+    },
+    {
+      "text": "（Controller-Service",
+      "_time": 38.033236265182495,
+      "type": "delta"
+    },
+    {
+      "text": "-D",
+      "_time": 38.037150621414185,
+      "type": "delta"
+    },
+    {
+      "text": "ao）。面试中",
+      "_time": 38.1172239780426,
+      "type": "delta"
+    },
+    {
+      "text": "可能会让你",
+      "_time": 38.12015438079834,
+      "type": "delta"
+    },
+    {
+      "text": "手写或解释类似",
+      "_time": 38.30950164794922,
+      "type": "delta"
+    },
+    {
+      "text": " `",
+      "_time": 38.31210422515869,
+      "type": "delta"
+    },
+    {
+      "text": "getUser` 或",
+      "_time": 38.439539432525635,
+      "type": "delta"
+    },
+    {
+      "text": " `create",
+      "_time": 38.44120526313782,
+      "type": "delta"
+    },
+    {
+      "text": "User` 的标准",
+      "_time": 38.574299812316895,
+      "type": "delta"
+    },
+    {
+      "text": "接口实现。\n",
+      "_time": 38.57911157608032,
+      "type": "delta"
+    },
+    {
+      "text": "*   **建议",
+      "_time": 38.638147592544556,
+      "type": "delta"
+    },
+    {
+      "text": "**：复习",
+      "_time": 38.642131090164185,
+      "type": "delta"
+    },
+    {
+      "text": " Java 核心语法",
+      "_time": 38.77842307090759,
+      "type": "delta"
+    },
+    {
+      "text": "，",
+      "_time": 38.7821249961853,
+      "type": "delta"
+    },
+    {
+      "text": "确保能独立构建",
+      "_time": 38.92213273048401,
+      "type": "delta"
+    },
+    {
+      "text": "从零",
+      "_time": 38.92507195472717,
+      "type": "delta"
+    },
+    {
+      "text": "开始的企业级应用",
+      "_time": 38.99407482147217,
+      "type": "delta"
+    },
+    {
+      "text": "原型",
+      "_time": 38.995925426483154,
+      "type": "delta"
+    },
+    {
+      "text": "。\n\n### ",
+      "_time": 39.124085426330566,
+      "type": "delta"
+    },
+    {
+      "text": "3. 系统",
+      "_time": 39.12711548805237,
+      "type": "delta"
+    },
+    {
+      "text": "架构与设计\n随着",
+      "_time": 39.24407362937927,
+      "type": "delta"
+    },
+    {
+      "text": "技术",
+      "_time": 39.245908975601196,
+      "type": "delta"
+    },
+    {
+      "text": "演进，架构设计",
+      "_time": 39.34606909751892,
+      "type": "delta"
+    },
+    {
+      "text": "能力成为",
+      "_time": 39.34906840324402,
+      "type": "delta"
+    },
+    {
+      "text": "中高级面试的重点",
+      "_time": 39.485897064208984,
+      "type": "delta"
+    },
+    {
+      "text": "：\n*  ",
+      "_time": 39.488523960113525,
+      "type": "delta"
+    },
+    {
+      "text": " **分层架构**",
+      "_time": 39.55612826347351,
+      "type": "delta"
+    },
+    {
+      "text": "：理解标准的",
+      "_time": 39.56001901626587,
+      "type": "delta"
+    },
+    {
+      "text": "分层设计，确保",
+      "_time": 39.690112352371216,
+      "type": "delta"
+    },
+    {
+      "text": "系统高内聚",
+      "_time": 39.693044900894165,
+      "type": "delta"
+    },
+    {
+      "text": "、低耦合。",
+      "_time": 39.76904034614563,
+      "type": "delta"
+    },
+    {
+      "text": "\n*   **",
+      "_time": 39.80998706817627,
+      "type": "delta"
+    },
+    {
+      "text": "微服务架构**",
+      "_time": 39.87015199661255,
+      "type": "delta"
+    },
+    {
+      "text": "：2",
+      "_time": 39.87405848503113,
+      "type": "delta"
+    },
+    {
+      "text": "025 ",
+      "_time": 39.99513030052185,
+      "type": "delta"
+    },
+    {
+      "text": "年技术趋势显示",
+      "_time": 40.037036180496216,
+      "type": "delta"
+    },
+    {
+      "text": "，微服务是",
+      "_time": 40.07306170463562,
+      "type": "delta"
+    },
+    {
+      "text": "主流。面试常",
+      "_time": 40.07598567008972,
+      "type": "delta"
+    },
+    {
+      "text": "问如何通过微服务",
+      "_time": 40.246371269226074,
+      "type": "delta"
+    },
+    {
+      "text": "提高",
+      "_time": 40.247024059295654,
+      "type": "delta"
+    },
+    {
+      "text": "系统的可扩展性和可",
+      "_time": 40.3781943321228,
+      "type": "delta"
+    },
+    {
+      "text": "维护性。\n",
+      "_time": 40.38202214241028,
+      "type": "delta"
+    },
+    {
+      "text": "*   **建议",
+      "_time": 40.45515704154968,
+      "type": "delta"
+    },
+    {
+      "text": "**：准备",
+      "_time": 40.4568817615509,
+      "type": "delta"
+    },
+    {
+      "text": " 1-2",
+      "_time": 40.61628770828247,
+      "type": "delta"
+    },
+    {
+      "text": " ",
+      "_time": 40.61790990829468,
+      "type": "delta"
+    },
+    {
+      "text": "个你参与过的",
+      "_time": 40.66521406173706,
+      "type": "delta"
+    },
+    {
+      "text": "架构",
+      "_time": 40.667903900146484,
+      "type": "delta"
+    },
+    {
+      "text": "设计案例，重点",
+      "_time": 40.75608849525452,
+      "type": "delta"
+    },
+    {
+      "text": "说明如何解决",
+      "_time": 40.759047746658325,
+      "type": "delta"
+    },
+    {
+      "text": "耦合度高或扩展",
+      "_time": 40.909528732299805,
+      "type": "delta"
+    },
+    {
+      "text": "性",
+      "_time": 40.93571090698242,
+      "type": "delta"
+    },
+    {
+      "text": "差的问题。\n\n",
+      "_time": 41.0113685131073,
+      "type": "delta"
+    },
+    {
+      "text": "###",
+      "_time": 41.035975217819214,
+      "type": "delta"
+    },
+    {
+      "text": " 4. ",
+      "_time": 41.11103653907776,
+      "type": "delta"
+    },
+    {
+      "text": "工程化",
+      "_time": 41.11501741409302,
+      "type": "delta"
+    },
+    {
+      "text": "与新技术趋势\n",
+      "_time": 41.21699547767639,
+      "type": "delta"
+    },
+    {
+      "text": "除了",
+      "_time": 41.21886897087097,
+      "type": "delta"
+    },
+    {
+      "text": "代码本身，现代",
+      "_time": 41.39203405380249,
+      "type": "delta"
+    },
+    {
+      "text": "后端",
+      "_time": 41.39500594139099,
+      "type": "delta"
+    },
+    {
+      "text": "开发非常看重工程",
+      "_time": 41.46597099304199,
+      "type": "delta"
+    },
+    {
+      "text": "效率和",
+      "_time": 41.46895122528076,
+      "type": "delta"
+    },
+    {
+      "text": "新技术落地：\n",
+      "_time": 41.56700563430786,
+      "type": "delta"
+    },
+    {
+      "text": "*",
+      "_time": 41.56981110572815,
+      "type": "delta"
+    },
+    {
+      "text": "   **DevOps",
+      "_time": 41.697004079818726,
+      "type": "delta"
+    },
+    {
+      "text": " 实践**：",
+      "_time": 41.699904680252075,
+      "type": "delta"
+    },
+    {
+      "text": "包括自动化部署、",
+      "_time": 41.768194913864136,
+      "type": "delta"
+    },
+    {
+      "text": "监控",
+      "_time": 41.771889209747314,
+      "type": "delta"
+    },
+    {
+      "text": "和日志分析工具",
+      "_time": 41.866159439086914,
+      "type": "delta"
+    },
+    {
+      "text": "的使用",
+      "_time": 41.894001483917236,
+      "type": "delta"
+    },
+    {
+      "text": "，这是提高开发",
+      "_time": 42.01920819282532,
+      "type": "delta"
+    },
+    {
+      "text": "效率和系统稳定",
+      "_time": 42.02199649810791,
+      "type": "delta"
+    },
+    {
+      "text": "性的关键。\n",
+      "_time": 42.1141414642334,
+      "type": "delta"
+    },
+    {
+      "text": "*   **云",
+      "_time": 42.11991095542908,
+      "type": "delta"
+    },
+    {
+      "text": "原生技术**：",
+      "_time": 42.24495482444763,
+      "type": "delta"
+    },
+    {
+      "text": "容器化（",
+      "_time": 42.24787163734436,
+      "type": "delta"
+    },
+    {
+      "text": "如 Docker/K8",
+      "_time": 42.36595797538757,
+      "type": "delta"
+    },
+    {
+      "text": "s）及",
+      "_time": 42.36777687072754,
+      "type": "delta"
+    },
+    {
+      "text": "云原生发展趋势是",
+      "_time": 42.548056840896606,
+      "type": "delta"
+    },
+    {
+      "text": "加分",
+      "_time": 42.55085492134094,
+      "type": "delta"
+    },
+    {
+      "text": "项。\n*",
+      "_time": 42.6189398765564,
+      "type": "delta"
+    },
+    {
+      "text": "   **建议**",
+      "_time": 42.62292504310608,
+      "type": "delta"
+    },
+    {
+      "text": "：熟悉常见的 CI",
+      "_time": 42.772927045822144,
+      "type": "delta"
+    },
+    {
+      "text": "/",
+      "_time": 42.7758264541626,
+      "type": "delta"
+    },
+    {
+      "text": "CD 流程，",
+      "_time": 42.9081768989563,
+      "type": "delta"
+    },
+    {
+      "text": "了解容器化",
+      "_time": 42.909783363342285,
+      "type": "delta"
+    },
+    {
+      "text": "部署的基本概念，",
+      "_time": 42.984041929244995,
+      "type": "delta"
+    },
+    {
+      "text": "这在",
+      "_time": 42.987855195999146,
+      "type": "delta"
+    },
+    {
+      "text": "面试中能体现",
+      "_time": 43.097951889038086,
+      "type": "delta"
+    },
+    {
+      "text": "你的技术视野",
+      "_time": 43.101893186569214,
+      "type": "delta"
+    },
+    {
+      "text": "。\n\n###",
+      "_time": 43.2369601726532,
+      "type": "delta"
+    },
+    {
+      "text": " 💡",
+      "_time": 43.24064016342163,
+      "type": "delta"
+    },
+    {
+      "text": " 备考小贴士\n",
+      "_time": 43.313191175460815,
+      "type": "delta"
+    },
+    {
+      "text": "1. ",
+      "_time": 43.31481051445007,
+      "type": "delta"
+    },
+    {
+      "text": " **项目复盘**",
+      "_time": 43.41203689575195,
+      "type": "delta"
+    },
+    {
+      "text": "：挑选",
+      "_time": 43.41489315032959,
+      "type": "delta"
+    },
+    {
+      "text": "一个最具代表性的项目",
+      "_time": 43.59995365142822,
+      "type": "delta"
+    },
+    {
+      "text": "，按照",
+      "_time": 43.60288715362549,
+      "type": "delta"
+    },
+    {
+      "text": "“背景 - ",
+      "_time": 43.66887307167053,
+      "type": "delta"
+    },
+    {
+      "text": "架构 -",
+      "_time": 43.67203068733215,
+      "type": "delta"
+    },
+    {
+      "text": " 难点 - ",
+      "_time": 43.78199124336243,
+      "type": "delta"
+    },
+    {
+      "text": "解决”",
+      "_time": 43.83290982246399,
+      "type": "delta"
+    },
+    {
+      "text": "的逻辑梳理。\n",
+      "_time": 43.8839476108551,
+      "type": "delta"
+    },
+    {
+      "text": "2.",
+      "_time": 43.886882305145264,
+      "type": "delta"
+    },
+    {
+      "text": "  **技术广度",
+      "_time": 44.012025594711304,
+      "type": "delta"
+    },
+    {
+      "text": "**：除了",
+      "_time": 44.0155143737793,
+      "type": "delta"
+    },
+    {
+      "text": " Java 本身，",
+      "_time": 44.17281794548035,
+      "type": "delta"
+    },
+    {
+      "text": "适当",
+      "_time": 44.17448592185974,
+      "type": "delta"
+    },
+    {
+      "text": "了解微服务、",
+      "_time": 44.292797327041626,
+      "type": "delta"
+    },
+    {
+      "text": "DevOps 和",
+      "_time": 44.29748845100403,
+      "type": "delta"
+    },
+    {
+      "text": "云原生相关概念",
+      "_time": 44.38563537597656,
+      "type": "delta"
+    },
+    {
+      "text": "，以",
+      "_time": 44.389461517333984,
+      "type": "delta"
+    },
+    {
+      "text": "匹配 20",
+      "_time": 44.51546859741211,
+      "type": "delta"
+    },
+    {
+      "text": "25 年的",
+      "_time": 44.519400119781494,
+      "type": "delta"
+    },
+    {
+      "text": "技术架构要求。",
+      "_time": 44.59446167945862,
+      "type": "delta"
+    },
+    {
+      "text": "\n3",
+      "_time": 44.597423791885376,
+      "type": "delta"
+    },
+    {
+      "text": ".  **实战",
+      "_time": 44.70162630081177,
+      "type": "delta"
+    },
+    {
+      "text": "演练**：如果",
+      "_time": 44.73087525367737,
+      "type": "delta"
+    },
+    {
+      "text": "基础薄弱，先",
+      "_time": 44.80187463760376,
+      "type": "delta"
+    },
+    {
+      "text": "专注于",
+      "_time": 44.80583930015564,
+      "type": "delta"
+    },
+    {
+      "text": " OOP 和小",
+      "_time": 44.89685940742493,
+      "type": "delta"
+    },
+    {
+      "text": "项目练习",
+      "_time": 44.905839920043945,
+      "type": "delta"
+    },
+    {
+      "text": "，再逐步深入",
+      "_time": 45.04893493652344,
+      "type": "delta"
+    },
+    {
+      "text": "后端架构",
+      "_time": 45.08581781387329,
+      "type": "delta"
+    },
+    {
+      "text": "。\n\n希望这些信息",
+      "_time": 45.20218467712402,
+      "type": "delta"
+    },
+    {
+      "text": "能帮助你更有",
+      "_time": 45.20478630065918,
+      "type": "delta"
+    },
+    {
+      "text": "针对性地准备面试",
+      "_time": 45.30501842498779,
+      "type": "delta"
+    },
+    {
+      "text": "！如果有",
+      "_time": 45.350128173828125,
+      "type": "delta"
+    },
+    {
+      "text": "具体的简历需要评估",
+      "_time": 45.53710961341858,
+      "type": "delta"
+    },
+    {
+      "text": "，欢迎",
+      "_time": 45.537508726119995,
+      "type": "delta"
+    },
+    {
+      "text": "随时发给我。",
+      "_time": 45.597859144210815,
+      "type": "delta"
+    },
+    {
+      "text": "祝你",
+      "_time": 45.602823972702026,
+      "type": "delta"
+    },
+    {
+      "text": "求职顺利！",
+      "_time": 45.70094084739685,
+      "type": "delta"
+    },
+    {
+      "session_id": "eval_li_04_1777544862691",
+      "intent": "interview_prepare",
+      "route_meta": {
+        "layer": "llm",
+        "intent": "interview_prepare",
+        "confidence": 0.95,
+        "demands": [
+          {
+            "intent": "interview_prepare",
+            "entities": {
+              "position": "后端"
+            }
+          }
+        ],
+        "plan_tasks": 4
+      },
+      "agent_mode": "llm",
+      "is_clarification": false,
+      "agent": {
+        "rewritten_query": "Java后端面试试一般问什么",
+        "tools": [
+          {
+            "tool": "kb_retrieve",
+            "status": "✅",
+            "params": {
+              "query": "Java 后端开发",
+              "top_k": 1,
+              "position": "后端"
+            },
+            "result_preview": "{'chunks': [{'chunk_id': '9cde8355-dcc0-434e-97c4-67dfc5dae5b8_chunk_2', 'content': '【阿里巴巴 · 后端开发 硬性要求】\\n3年以上Java开发经验', 'metadata': {'company': '阿里巴巴', 'index': 2, 'jd_id': '9cde8355-dcc0-434e-97c4-67"
+          },
+          {
+            "tool": "interview_gen",
+            "status": "❌",
+            "params": {
+              "match_result": [
+                {
+                  "chunk_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8_chunk_2",
+                  "content": "【阿里巴巴 · 后端开发 硬性要求】\n3年以上Java开发经验",
+                  "metadata": {
+                    "company": "阿里巴巴",
+                    "index": 2,
+                    "jd_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8",
+                    "position": "后端开发",
+                    "priority": "high",
+                    "section": "hard_requirements",
+                    "strategy": "semantic"
+                  },
+                  "distance": null,
+                  "bm25_score": 18.97016170007786,
+                  "vec_norm": 0.0,
+                  "bm25_norm": 1.0,
+                  "hybrid_score": 0.3,
+                  "rerank_score": 0.9807
+                }
+              ],
+              "position": "后端"
+            },
+            "result_preview": "match_result 为空或格式错误"
+          },
+          {
+            "tool": "external_search",
+            "status": "✅",
+            "params": {
+              "query": "Java 后端开发",
+              "count": 5
+            },
+            "result_preview": "{'chunks': [{'chunk_id': 'tavily_4207541310', 'content': '【来源：网络搜索】Java后端开发：从零构建企业级应用的完整架构与技术栈详解一、Java后端架构概述 Java后端架构通常采用分层架构（L - 掘金\\npublic ResponseEntity<User> getUser(@PathVariable Long id) {. User"
+          }
+        ],
+        "kb_chunks_count": 2,
+        "system_prompt_preview": "你是一位专业的求职顾问。请基于以下工具执行结果，给用户一个清晰、有帮助的回复。\n要求：\n1. 直接回答用户的问题，不要重复用户的原话\n2. 如果有匹配分析结果，给出具体的分数和建议\n3. 如果有检索结果，基于事实回答，不要编造\n4. 语气友好、专业、结构化"
+      },
+      "memory": {
+        "working_turns": 1,
+        "compressed_blocks": 0,
+        "current_topic": "general",
+        "evidence_cache_size": 1
+      },
+      "reply": {
+        "type": "text",
+        "content": "你好！作为求职顾问，我结合最新的岗位招聘要求和技术趋势，为你梳理了 Java 后端面试的核心考察点。面试内容通常会根据职级有所不同，但主要围绕以下几个维度展开：\n\n### 1. 硬性门槛与经验要求\n根据大厂（如阿里巴巴）的后端开发岗位画像，**工作经验**是首要筛选条件：\n*   **年限要求**：核心岗位通常要求 **3 年以上** Java 开发经验。\n*   **建议**：如果你处于初级阶段，建议先通过小项目积累实战经验；如果是资深求职，需准备好能体现复杂系统处理能力的案例。\n\n### 2. 基础技术与编程能力\n面试会重点考察 Java 语言基础及实际编码能力：\n*   **面向对象编程 (OOP)**：这是后端开发的基石，面试官会关注你对封装、继承、多态的理解。\n*   **框架应用**：熟悉企业级应用架构，例如基于 Spring Boot 的分层架构（Controller-Service-Dao）。面试中可能会让你手写或解释类似 `getUser` 或 `createUser` 的标准接口实现。\n*   **建议**：复习 Java 核心语法，确保能独立构建从零开始的企业级应用原型。\n\n### 3. 系统架构与设计\n随着技术演进，架构设计能力成为中高级面试的重点：\n*   **分层架构**：理解标准的分层设计，确保系统高内聚、低耦合。\n*   **微服务架构**：2025 年技术趋势显示，微服务是主流。面试常问如何通过微服务提高系统的可扩展性和可维护性。\n*   **建议**：准备 1-2 个你参与过的架构设计案例，重点说明如何解决耦合度高或扩展性差的问题。\n\n### 4. 工程化与新技术趋势\n除了代码本身，现代后端开发非常看重工程效率和新技术落地：\n*   **DevOps 实践**：包括自动化部署、监控和日志分析工具的使用，这是提高开发效率和系统稳定性的关键。\n*   **云原生技术**：容器化（如 Docker/K8s）及云原生发展趋势是加分项。\n*   **建议**：熟悉常见的 CI/CD 流程，了解容器化部署的基本概念，这在面试中能体现你的技术视野。\n\n### 💡 备考小贴士\n1.  **项目复盘**：挑选一个最具代表性的项目，按照“背景 - 架构 - 难点 - 解决”的逻辑梳理。\n2.  **技术广度**：除了 Java 本身，适当了解微服务、DevOps 和云原生相关概念，以匹配 2025 年的技术架构要求。\n3.  **实战演练**：如果基础薄弱，先专注于 OOP 和小项目练习，再逐步深入后端架构。\n\n希望这些信息能帮助你更有针对性地准备面试！如果有具体的简历需要评估，欢迎随时发给我。祝你求职顺利！",
+        "data": null,
+        "sources": null
+      },
+      "_time": 45.754711389541626,
+      "type": "done"
+    }
+  ],
+  "timestamp": "2026-04-30T18:27:42.691895",
+  "tool_execution_success_rate": 0.67,
+  "tool_correct_rate": 0.0
+}

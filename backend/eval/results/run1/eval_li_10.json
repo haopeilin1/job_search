@@ -1,0 +1,1572 @@
+{
+  "case_id": "eval_li_10",
+  "message": "后端岗面试要准备什么",
+  "gold_intents": [
+    "prepare"
+  ],
+  "expected_tools": [
+    "interview_questions"
+  ],
+  "scenario": "面试准备_泛化",
+  "status": "success",
+  "error": null,
+  "ttfb": 0.007,
+  "total_latency": 66.01,
+  "event_count": 198,
+  "pred_intent": "interview_prepare",
+  "pred_tools": [
+    {
+      "tool": "kb_retrieve",
+      "status": "✅",
+      "params": {
+        "query": "后端",
+        "position": "后端"
+      },
+      "result_preview": "{'chunks': [{'chunk_id': '9cde8355-dcc0-434e-97c4-67dfc5dae5b8_chunk_0', 'content': '公司：阿里巴巴，岗位：后端开发，地点：杭州，薪资：35k-65k', 'metadata': {'category': '技术', 'company': '阿里巴巴', 'domain': '电商', 'index': 0, 'j"
+    },
+    {
+      "tool": "match_analyze",
+      "status": "✅",
+      "params": {
+        "resume_text": "AI\n / \n157-xxxx-3421  |  chenyutong2027@163.com  |  \n  |  2027\n6\n2024.09  2027.06\n · \nAI\n· \nGPA\n3.4/4.0  |  \n2020.09  2024.06\n · \n · \n  |  \nWeb\n \n \n2025.03  2025.11\n  |  \n40\n\"\n\"\n\"\n\"\nFigma\nAI\nEmbedding\nJD\nAPI\nPrompt\n20\nPDF\n \n \nRAG\n2024.10  2025.02\n  |  \n80\nOCR\nWeb\n\"\n\"\n · \n2024.09  2025.06\n10\n · \n2022.03  2023.06\n2025.05    \n2024.11    \nAI\n2023.06    \n2022.12    \nFigma\nAxure\nXmind\n/\nPRD\nPrompt Engineering\nRAG\nEmbedding\nCET-4\n525\nOffice\nExcel",
+        "jd_text": [
+          {
+            "chunk_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8_chunk_0",
+            "content": "公司：阿里巴巴，岗位：后端开发，地点：杭州，薪资：35k-65k",
+            "metadata": {
+              "category": "技术",
+              "company": "阿里巴巴",
+              "domain": "电商",
+              "index": 0,
+              "jd_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8",
+              "min_education": "本科",
+              "min_years": 3,
+              "position": "后端开发",
+              "section": "basic_info",
+              "strategy": "semantic"
+            },
+            "distance": null,
+            "bm25_score": 7.928353058641949,
+            "vec_norm": 0.0,
+            "bm25_norm": 1.0,
+            "hybrid_score": 0.3,
+            "rerank_score": 0.9741
+          },
+          {
+            "chunk_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8_chunk_5",
+            "content": "【阿里巴巴 · 后端开发 硬性要求】\n本科及以上学历",
+            "metadata": {
+              "company": "阿里巴巴",
+              "index": 5,
+              "jd_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8",
+              "position": "后端开发",
+              "priority": "high",
+              "section": "hard_requirements",
+              "strategy": "semantic"
+            },
+            "distance": null,
+            "bm25_score": 7.928353058641949,
+            "vec_norm": 0.0,
+            "bm25_norm": 1.0,
+            "hybrid_score": 0.3,
+            "rerank_score": 0.9613
+          },
+          {
+            "chunk_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8_chunk_6",
+            "content": "【阿里巴巴 · 后端开发 软性要求/加分项】\n有电商行业经验优先",
+            "metadata": {
+              "company": "阿里巴巴",
+              "index": 6,
+              "jd_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8",
+              "position": "后端开发",
+              "priority": "medium",
+              "section": "soft_requirements",
+              "strategy": "semantic"
+            },
+            "distance": null,
+            "bm25_score": 7.733465097983233,
+            "vec_norm": 0.0,
+            "bm25_norm": 0.9713351682465452,
+            "hybrid_score": 0.29140055047396357,
+            "rerank_score": 0.9514
+          },
+          {
+            "chunk_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8_chunk_7",
+            "content": "【阿里巴巴 · 后端开发 软性要求/加分项】\n熟悉K8s、Docker优先",
+            "metadata": {
+              "company": "阿里巴巴",
+              "index": 7,
+              "jd_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8",
+              "position": "后端开发",
+              "priority": "medium",
+              "section": "soft_requirements",
+              "strategy": "semantic"
+            },
+            "distance": null,
+            "bm25_score": 7.733465097983233,
+            "vec_norm": 0.0,
+            "bm25_norm": 0.9713351682465452,
+            "hybrid_score": 0.29140055047396357,
+            "rerank_score": 0.9469
+          },
+          {
+            "chunk_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8_chunk_1",
+            "content": "【阿里巴巴 · 后端开发 岗位职责】\n1. 负责电商核心系统的设计与开发。2. 高并发系统架构设计与性能优化。3. 分布式系统开发与微服务治理。4. 数据库设计与优化。",
+            "metadata": {
+              "company": "阿里巴巴",
+              "index": 1,
+              "jd_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8",
+              "position": "后端开发",
+              "section": "responsibilities",
+              "strategy": "semantic"
+            },
+            "distance": null,
+            "bm25_score": 5.059530793458788,
+            "vec_norm": 0.0,
+            "bm25_norm": 0.5780431624196218,
+            "hybrid_score": 0.17341294872588656,
+            "rerank_score": 0.9451
+          },
+          {
+            "chunk_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8_chunk_2",
+            "content": "【阿里巴巴 · 后端开发 硬性要求】\n3年以上Java开发经验",
+            "metadata": {
+              "company": "阿里巴巴",
+              "index": 2,
+              "jd_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8",
+              "position": "后端开发",
+              "priority": "high",
+              "section": "hard_requirements",
+              "strategy": "semantic"
+            },
+            "distance": null,
+            "bm25_score": 7.928353058641949,
+            "vec_norm": 0.0,
+            "bm25_norm": 1.0,
+            "hybrid_score": 0.3,
+            "rerank_score": 0.9327
+          },
+          {
+            "chunk_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8_chunk_4",
+            "content": "【阿里巴巴 · 后端开发 硬性要求】\n熟悉分布式系统设计与微服务架构",
+            "metadata": {
+              "company": "阿里巴巴",
+              "index": 4,
+              "jd_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8",
+              "position": "后端开发",
+              "priority": "high",
+              "section": "hard_requirements",
+              "strategy": "semantic"
+            },
+            "distance": null,
+            "bm25_score": 7.458458956431924,
+            "vec_norm": 0.0,
+            "bm25_norm": 0.9308862623618986,
+            "hybrid_score": 0.27926587870856956,
+            "rerank_score": 0.9091
+          },
+          {
+            "chunk_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a_chunk_6",
+            "content": "【某小公司 · Java后端 关键词】\nJava, Spring Boot, MySQL, ERP, 后端",
+            "metadata": {
+              "company": "某小公司",
+              "index": 6,
+              "jd_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a",
+              "position": "Java后端",
+              "section": "keywords",
+              "strategy": "semantic"
+            },
+            "distance": null,
+            "bm25_score": 7.202339909715294,
+            "vec_norm": 0.0,
+            "bm25_norm": 0.8932153392419017,
+            "hybrid_score": 0.2679646017725705,
+            "rerank_score": 0.896
+          },
+          {
+            "chunk_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8_chunk_8",
+            "content": "【阿里巴巴 · 后端开发 关键词】\nJava, Spring Boot, MySQL, Redis, Kafka, 微服务, 电商",
+            "metadata": {
+              "company": "阿里巴巴",
+              "index": 8,
+              "jd_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8",
+              "position": "后端开发",
+              "section": "keywords",
+              "strategy": "semantic"
+            },
+            "distance": null,
+            "bm25_score": 6.598136973061241,
+            "vec_norm": 0.0,
+            "bm25_norm": 0.8043469685863063,
+            "hybrid_score": 0.24130409057589186,
+            "rerank_score": 0.8939
+          },
+          {
+            "chunk_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8_chunk_3",
+            "content": "【阿里巴巴 · 后端开发 硬性要求】\n精通Spring Boot、MySQL、Redis、Kafka",
+            "metadata": {
+              "company": "阿里巴巴",
+              "index": 3,
+              "jd_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8",
+              "position": "后端开发",
+              "priority": "high",
+              "section": "hard_requirements",
+              "strategy": "semantic"
+            },
+            "distance": null,
+            "bm25_score": 7.547928409093866,
+            "vec_norm": 0.0,
+            "bm25_norm": 0.9440457556367007,
+            "hybrid_score": 0.2832137266910102,
+            "rerank_score": 0.8857
+          }
+        ],
+        "position": "后端"
+      },
+      "result_preview": "{'score': 65, 'label': '略有差距', 'advantages': ['Java', 'Spring Boot', 'MySQL', 'Redis', 'Kafka'], 'weaknesses': ['候选人缺乏电商行业经验以及微服务治理的实际项目经验。虽然具备Spring Boot、MySQL、Redis、Kafka等技术栈，但缺乏3年以上Java开发经验，且未提及分布式"
+    },
+    {
+      "tool": "interview_gen",
+      "status": "✅",
+      "params": {
+        "match_result": {
+          "score": 65,
+          "label": "略有差距",
+          "advantages": [
+            "Java",
+            "Spring Boot",
+            "MySQL",
+            "Redis",
+            "Kafka"
+          ],
+          "weaknesses": [
+            "候选人缺乏电商行业经验以及微服务治理的实际项目经验。虽然具备Spring Boot、MySQL、Redis、Kafka等技术栈，但缺乏3年以上Java开发经验，且未提及分布式系统设计与微服务架构的实际经验。"
+          ],
+          "suggestions": [
+            "核心能力要求: ['3年以上Java开发经验', '熟悉分布式系统设计与微服务架构', '电商行业经验', '精通Spring Boot、MySQL、Redis、Kafka']"
+          ],
+          "match_score": 65,
+          "covered": [
+            "Java",
+            "Spring Boot",
+            "MySQL",
+            "Redis",
+            "Kafka"
+          ],
+          "missing_experience": "候选人缺乏电商行业经验以及微服务治理的实际项目经验。虽然具备Spring Boot、MySQL、Redis、Kafka等技术栈，但缺乏3年以上Java开发经验，且未提及分布式系统设计与微服务架构的实际经验。",
+          "core_skills": [
+            "3年以上Java开发经验",
+            "熟悉分布式系统设计与微服务架构",
+            "电商行业经验",
+            "精通Spring Boot、MySQL、Redis、Kafka"
+          ],
+          "company": null,
+          "position": "后端"
+        },
+        "position": "后端"
+      },
+      "result_preview": "{'questions': ['设计一个电商平台的库存扣减系统，要求支持高并发秒杀场景，保证库存不超卖且数据最终一致。请描述你的技术方案，包括数据库、缓存、消息队列的使用策略。追问方向：1）如果Redis和MySQL数据不一致，你会如何检测和修复？2）如果扣减库存时Redis宕机，如何保证业务不中断？', '在微服务架构中，订单服务需要调用库存服务、支付服务、物流服务等多个下游服务。请设计一个健壮"
+    }
+  ],
+  "tools_called": [
+    "kb_retrieve",
+    "match_analyze",
+    "interview_gen"
+  ],
+  "reply": "您好！针对后端开发岗位的面试准备，我结合主流大厂（如阿里巴巴）的岗位需求以及您的简历匹配情况，为您整理了以下核心指南。\n\n### 1. 个人匹配度诊断\n根据对您简历的分析，目前与后端岗位的匹配情况如下：\n*   **匹配评分：** 65 分（略有差距）\n*   **核心优势：** 技术栈基础扎实，覆盖 **Java、Spring Boot、MySQL、Redis、Kafka** 等后端核心组件。\n*   **主要差距：** \n    *   简历中未充分体现 **3 年以上 Java 开发经验**。\n    *   缺乏 **电商行业经验** 以及 **微服务治理、分布式系统设计** 的实际项目落地经验。\n\n### 2. 核心能力准备清单\n参考头部互联网公司的后端开发 JD，面试中会重点考察以下硬性与软性要求：\n*   **硬性门槛：** 本科及以上学历，3 年以上 Java 开发经验。\n*   **架构能力：** 高并发系统架构设计与性能优化、分布式系统开发、微服务治理。\n*   **数据能力：** 数据库设计与优化（MySQL）、缓存策略（Redis）。\n*   **加分项：** 电商行业背景、熟悉容器化技术（K8s、Docker）。\n\n### 3. 高频面试题预测与演练\n基于您的技术背景及岗位常见考点，建议重点准备以下 5 类场景题：\n*   **高并发库存扣减：** 如何设计秒杀场景下的库存系统，保证不超卖且数据最终一致？（重点：Redis 与 MySQL 策略、宕机处理）\n*   **微服务调用健壮性：** 订单服务调用下游多个服务时，如何处理超时、失败及雪崩效应？（重点：熔断、降级、重试机制）\n*   **分布式状态机：** 如何设计订单状态流转（如支付、取消并发冲突），保证原子性？（重点：本地消息表 vs 事务消息）\n*   **秒杀系统架构：** 如何应对瞬时高并发流量，防止恶意刷单？（重点：限流策略、异步队列）\n*   **缓存一致性：** 商品信息更新时，如何保证 MySQL 与 Redis 数据一致？（重点：更新失败补偿、缓存穿透预防）\n\n### 4. 针对性提升建议\n为了缩小 65 分与目标岗位之间的差距，建议采取以下行动：\n*   **深挖项目亮点：** 虽然缺乏电商经验，但可梳理现有项目中涉及 **高并发、分布式** 的模块，用数据量化性能优化成果。\n*   **补足架构知识：** 重点复习微服务治理理论（如 Spring Cloud Alibaba 生态），准备 1-2 个分布式系统设计的伪代码或架构图。\n*   **强化技术深度：** 针对简历中提到的 Spring Boot、MySQL、Redis、Kafka，准备底层原理及调优案例，以弥补年限上的不足。\n\n祝您面试顺利，如有具体技术点需要深入解析，欢迎随时提问！",
+  "reply_length": 1194,
+  "intent_match": true,
+  "tool_match_rate": 0.0,
+  "has_reply": true,
+  "events": [
+    {
+      "step": "intent",
+      "message": "正在识别您的意图...",
+      "_time": 0.006997585296630859,
+      "type": "status"
+    },
+    {
+      "step": "plan",
+      "message": "正在规划任务...",
+      "_time": 1.1927330493927002,
+      "type": "status"
+    },
+    {
+      "step": "execute",
+      "message": "正在执行分析...",
+      "_time": 6.562554121017456,
+      "type": "status"
+    },
+    {
+      "step": "aggregate",
+      "message": "正在生成回复...",
+      "_time": 16.819622039794922,
+      "type": "status"
+    },
+    {
+      "text": "您好！针对后端",
+      "_time": 54.44483280181885,
+      "type": "delta"
+    },
+    {
+      "text": "开发岗位的面试准备",
+      "_time": 54.448256492614746,
+      "type": "delta"
+    },
+    {
+      "text": "，我结合主流",
+      "_time": 54.58850860595703,
+      "type": "delta"
+    },
+    {
+      "text": "大厂（如阿里巴巴",
+      "_time": 54.61752200126648,
+      "type": "delta"
+    },
+    {
+      "text": "）的岗位需求",
+      "_time": 54.73171019554138,
+      "type": "delta"
+    },
+    {
+      "text": "以及您的简历匹配",
+      "_time": 54.734248876571655,
+      "type": "delta"
+    },
+    {
+      "text": "情况，为您整理了",
+      "_time": 54.875547647476196,
+      "type": "delta"
+    },
+    {
+      "text": "以下核心指南",
+      "_time": 54.91734719276428,
+      "type": "delta"
+    },
+    {
+      "text": "。\n\n### ",
+      "_time": 55.03057146072388,
+      "type": "delta"
+    },
+    {
+      "text": "1. 个人",
+      "_time": 55.03329300880432,
+      "type": "delta"
+    },
+    {
+      "text": "匹配度诊断\n",
+      "_time": 55.14768934249878,
+      "type": "delta"
+    },
+    {
+      "text": "根据",
+      "_time": 55.150269746780396,
+      "type": "delta"
+    },
+    {
+      "text": "对您简历的分析，",
+      "_time": 55.24311566352844,
+      "type": "delta"
+    },
+    {
+      "text": "目前",
+      "_time": 55.245859146118164,
+      "type": "delta"
+    },
+    {
+      "text": "与后端岗位的匹配",
+      "_time": 55.43236207962036,
+      "type": "delta"
+    },
+    {
+      "text": "情况",
+      "_time": 55.43272590637207,
+      "type": "delta"
+    },
+    {
+      "text": "如下：\n*",
+      "_time": 55.435834646224976,
+      "type": "delta"
+    },
+    {
+      "text": "   **匹配评分",
+      "_time": 55.439802169799805,
+      "type": "delta"
+    },
+    {
+      "text": "：** 65",
+      "_time": 55.558345317840576,
+      "type": "delta"
+    },
+    {
+      "text": " 分",
+      "_time": 55.592052698135376,
+      "type": "delta"
+    },
+    {
+      "text": "（略有差距）",
+      "_time": 55.66822695732117,
+      "type": "delta"
+    },
+    {
+      "text": "\n*   **",
+      "_time": 55.66983938217163,
+      "type": "delta"
+    },
+    {
+      "text": "核心优势：** ",
+      "_time": 55.812238931655884,
+      "type": "delta"
+    },
+    {
+      "text": "技术栈基础扎实",
+      "_time": 55.81480169296265,
+      "type": "delta"
+    },
+    {
+      "text": "，覆盖 **Java",
+      "_time": 55.98852515220642,
+      "type": "delta"
+    },
+    {
+      "text": "、Spring",
+      "_time": 55.98992729187012,
+      "type": "delta"
+    },
+    {
+      "text": " Boot、MySQL、",
+      "_time": 56.06454658508301,
+      "type": "delta"
+    },
+    {
+      "text": "Redis、Kafka",
+      "_time": 56.093250036239624,
+      "type": "delta"
+    },
+    {
+      "text": "** 等后端",
+      "_time": 56.20735812187195,
+      "type": "delta"
+    },
+    {
+      "text": "核心组件。\n",
+      "_time": 56.207884311676025,
+      "type": "delta"
+    },
+    {
+      "text": "*   **主要",
+      "_time": 56.352336406707764,
+      "type": "delta"
+    },
+    {
+      "text": "差距",
+      "_time": 56.38715696334839,
+      "type": "delta"
+    },
+    {
+      "text": "：** \n    *",
+      "_time": 56.44461178779602,
+      "type": "delta"
+    },
+    {
+      "text": "   ",
+      "_time": 56.444836139678955,
+      "type": "delta"
+    },
+    {
+      "text": "简历中未充分体现",
+      "_time": 56.55048155784607,
+      "type": "delta"
+    },
+    {
+      "text": " **3 年以上",
+      "_time": 56.55093502998352,
+      "type": "delta"
+    },
+    {
+      "text": " Java 开发经验",
+      "_time": 56.73237419128418,
+      "type": "delta"
+    },
+    {
+      "text": "**。",
+      "_time": 56.733898639678955,
+      "type": "delta"
+    },
+    {
+      "text": "\n    *  ",
+      "_time": 56.7851288318634,
+      "type": "delta"
+    },
+    {
+      "text": " 缺乏 **电商",
+      "_time": 56.788039207458496,
+      "type": "delta"
+    },
+    {
+      "text": "行业经验** ",
+      "_time": 56.955610513687134,
+      "type": "delta"
+    },
+    {
+      "text": "以及",
+      "_time": 56.95593547821045,
+      "type": "delta"
+    },
+    {
+      "text": " **微服务治理",
+      "_time": 57.017354011535645,
+      "type": "delta"
+    },
+    {
+      "text": "、分布式系统设计",
+      "_time": 57.0200629234314,
+      "type": "delta"
+    },
+    {
+      "text": "** 的实际项目",
+      "_time": 57.1772780418396,
+      "type": "delta"
+    },
+    {
+      "text": "落地经验。\n\n",
+      "_time": 57.17906880378723,
+      "type": "delta"
+    },
+    {
+      "text": "### 2.",
+      "_time": 57.28930926322937,
+      "type": "delta"
+    },
+    {
+      "text": " 核心能力准备",
+      "_time": 57.29200482368469,
+      "type": "delta"
+    },
+    {
+      "text": "清单\n参考头部",
+      "_time": 57.43124270439148,
+      "type": "delta"
+    },
+    {
+      "text": "互联网",
+      "_time": 57.45821166038513,
+      "type": "delta"
+    },
+    {
+      "text": "公司的后端开发 JD",
+      "_time": 57.52274250984192,
+      "type": "delta"
+    },
+    {
+      "text": "，面试",
+      "_time": 57.52535009384155,
+      "type": "delta"
+    },
+    {
+      "text": "中会重点考察",
+      "_time": 57.629451274871826,
+      "type": "delta"
+    },
+    {
+      "text": "以下硬",
+      "_time": 57.63196086883545,
+      "type": "delta"
+    },
+    {
+      "text": "性与软性要求",
+      "_time": 57.73728108406067,
+      "type": "delta"
+    },
+    {
+      "text": "：\n*",
+      "_time": 57.76934885978699,
+      "type": "delta"
+    },
+    {
+      "text": "   **硬性门槛",
+      "_time": 57.91761517524719,
+      "type": "delta"
+    },
+    {
+      "text": "：** 本科及以上学历",
+      "_time": 57.920188426971436,
+      "type": "delta"
+    },
+    {
+      "text": "，3 年以上",
+      "_time": 57.99054217338562,
+      "type": "delta"
+    },
+    {
+      "text": " Java 开发经验",
+      "_time": 58.01654529571533,
+      "type": "delta"
+    },
+    {
+      "text": "。\n*  ",
+      "_time": 58.13429665565491,
+      "type": "delta"
+    },
+    {
+      "text": " **架构",
+      "_time": 58.1371054649353,
+      "type": "delta"
+    },
+    {
+      "text": "能力：** 高",
+      "_time": 58.24231576919556,
+      "type": "delta"
+    },
+    {
+      "text": "并发",
+      "_time": 58.2438702583313,
+      "type": "delta"
+    },
+    {
+      "text": "系统架构设计与性能",
+      "_time": 58.37149262428284,
+      "type": "delta"
+    },
+    {
+      "text": "优化、分布式系统",
+      "_time": 58.37278699874878,
+      "type": "delta"
+    },
+    {
+      "text": "开发、微服务",
+      "_time": 58.47747611999512,
+      "type": "delta"
+    },
+    {
+      "text": "治理。\n",
+      "_time": 58.48001050949097,
+      "type": "delta"
+    },
+    {
+      "text": "*   **数据",
+      "_time": 58.633402585983276,
+      "type": "delta"
+    },
+    {
+      "text": "能力：** 数据库",
+      "_time": 58.63594317436218,
+      "type": "delta"
+    },
+    {
+      "text": "设计与优化（MySQL",
+      "_time": 58.747272968292236,
+      "type": "delta"
+    },
+    {
+      "text": "）、",
+      "_time": 58.74976587295532,
+      "type": "delta"
+    },
+    {
+      "text": "缓存策略（Redis",
+      "_time": 58.87842273712158,
+      "type": "delta"
+    },
+    {
+      "text": "）。",
+      "_time": 58.87875008583069,
+      "type": "delta"
+    },
+    {
+      "text": "\n*   **",
+      "_time": 58.926175117492676,
+      "type": "delta"
+    },
+    {
+      "text": "加分项：** ",
+      "_time": 58.93093180656433,
+      "type": "delta"
+    },
+    {
+      "text": "电商行业背景、",
+      "_time": 59.06942653656006,
+      "type": "delta"
+    },
+    {
+      "text": "熟悉容器",
+      "_time": 59.09946966171265,
+      "type": "delta"
+    },
+    {
+      "text": "化技术（K",
+      "_time": 59.178322553634644,
+      "type": "delta"
+    },
+    {
+      "text": "8s、D",
+      "_time": 59.17965769767761,
+      "type": "delta"
+    },
+    {
+      "text": "ocker）。\n\n###",
+      "_time": 59.35336709022522,
+      "type": "delta"
+    },
+    {
+      "text": " 3. ",
+      "_time": 59.35567498207092,
+      "type": "delta"
+    },
+    {
+      "text": "高频面试题预测与",
+      "_time": 59.501384258270264,
+      "type": "delta"
+    },
+    {
+      "text": "演练\n基于您的",
+      "_time": 59.50273513793945,
+      "type": "delta"
+    },
+    {
+      "text": "技术背景及岗位",
+      "_time": 59.60918092727661,
+      "type": "delta"
+    },
+    {
+      "text": "常见考点",
+      "_time": 59.61199593544006,
+      "type": "delta"
+    },
+    {
+      "text": "，建议重点准备",
+      "_time": 59.72036552429199,
+      "type": "delta"
+    },
+    {
+      "text": "以下 5 ",
+      "_time": 59.74823331832886,
+      "type": "delta"
+    },
+    {
+      "text": "类场景题：",
+      "_time": 59.862329721450806,
+      "type": "delta"
+    },
+    {
+      "text": "\n*",
+      "_time": 59.86595034599304,
+      "type": "delta"
+    },
+    {
+      "text": "   **高并发",
+      "_time": 59.97000813484192,
+      "type": "delta"
+    },
+    {
+      "text": "库存",
+      "_time": 60.010955572128296,
+      "type": "delta"
+    },
+    {
+      "text": "扣减：** ",
+      "_time": 60.05992102622986,
+      "type": "delta"
+    },
+    {
+      "text": "如何设计秒杀场景",
+      "_time": 60.090949296951294,
+      "type": "delta"
+    },
+    {
+      "text": "下的库存系统，",
+      "_time": 60.203314542770386,
+      "type": "delta"
+    },
+    {
+      "text": "保证不超卖",
+      "_time": 60.20582556724548,
+      "type": "delta"
+    },
+    {
+      "text": "且数据最终一致",
+      "_time": 60.34804034233093,
+      "type": "delta"
+    },
+    {
+      "text": "？（重点",
+      "_time": 60.35059452056885,
+      "type": "delta"
+    },
+    {
+      "text": "：Redis 与",
+      "_time": 60.498950481414795,
+      "type": "delta"
+    },
+    {
+      "text": " MySQL 策略",
+      "_time": 60.536805152893066,
+      "type": "delta"
+    },
+    {
+      "text": "、宕机处理",
+      "_time": 60.60082674026489,
+      "type": "delta"
+    },
+    {
+      "text": "）\n*  ",
+      "_time": 60.60267972946167,
+      "type": "delta"
+    },
+    {
+      "text": " **微服务调用",
+      "_time": 60.76794171333313,
+      "type": "delta"
+    },
+    {
+      "text": "健壮",
+      "_time": 60.77256226539612,
+      "type": "delta"
+    },
+    {
+      "text": "性：** 订单",
+      "_time": 60.83484148979187,
+      "type": "delta"
+    },
+    {
+      "text": "服务调用",
+      "_time": 60.837467670440674,
+      "type": "delta"
+    },
+    {
+      "text": "下游多个服务时",
+      "_time": 60.94106674194336,
+      "type": "delta"
+    },
+    {
+      "text": "，如何处理",
+      "_time": 60.94359064102173,
+      "type": "delta"
+    },
+    {
+      "text": "超时、失败及",
+      "_time": 61.081072092056274,
+      "type": "delta"
+    },
+    {
+      "text": "雪崩效应",
+      "_time": 61.083874225616455,
+      "type": "delta"
+    },
+    {
+      "text": "？（重点：",
+      "_time": 61.17737364768982,
+      "type": "delta"
+    },
+    {
+      "text": "熔断、降级",
+      "_time": 61.17868614196777,
+      "type": "delta"
+    },
+    {
+      "text": "、重试机制）",
+      "_time": 61.30343270301819,
+      "type": "delta"
+    },
+    {
+      "text": "\n*  ",
+      "_time": 61.30590200424194,
+      "type": "delta"
+    },
+    {
+      "text": " **分布式状态机",
+      "_time": 61.46112585067749,
+      "type": "delta"
+    },
+    {
+      "text": "：** 如何",
+      "_time": 61.46388626098633,
+      "type": "delta"
+    },
+    {
+      "text": "设计订单状态流转",
+      "_time": 61.55617046356201,
+      "type": "delta"
+    },
+    {
+      "text": "（",
+      "_time": 61.55663871765137,
+      "type": "delta"
+    },
+    {
+      "text": "如支付、取消",
+      "_time": 61.64333438873291,
+      "type": "delta"
+    },
+    {
+      "text": "并发",
+      "_time": 61.68117642402649,
+      "type": "delta"
+    },
+    {
+      "text": "冲突），保证原子",
+      "_time": 61.734126806259155,
+      "type": "delta"
+    },
+    {
+      "text": "性",
+      "_time": 61.73558688163757,
+      "type": "delta"
+    },
+    {
+      "text": "？（重点：",
+      "_time": 61.82405662536621,
+      "type": "delta"
+    },
+    {
+      "text": "本地消息表",
+      "_time": 61.825519323349,
+      "type": "delta"
+    },
+    {
+      "text": " vs 事务消息",
+      "_time": 61.95106768608093,
+      "type": "delta"
+    },
+    {
+      "text": "）\n*  ",
+      "_time": 61.98481106758118,
+      "type": "delta"
+    },
+    {
+      "text": " **秒杀系统架构",
+      "_time": 62.09477257728577,
+      "type": "delta"
+    },
+    {
+      "text": "：** 如何应对",
+      "_time": 62.09791326522827,
+      "type": "delta"
+    },
+    {
+      "text": "瞬时高并发流量",
+      "_time": 62.221200704574585,
+      "type": "delta"
+    },
+    {
+      "text": "，防止恶意",
+      "_time": 62.250157833099365,
+      "type": "delta"
+    },
+    {
+      "text": "刷单？（",
+      "_time": 62.347291707992554,
+      "type": "delta"
+    },
+    {
+      "text": "重点：限流",
+      "_time": 62.35094404220581,
+      "type": "delta"
+    },
+    {
+      "text": "策略、异步队列",
+      "_time": 62.49027490615845,
+      "type": "delta"
+    },
+    {
+      "text": "）\n*",
+      "_time": 62.491615295410156,
+      "type": "delta"
+    },
+    {
+      "text": "   **缓存一致性",
+      "_time": 62.66114020347595,
+      "type": "delta"
+    },
+    {
+      "text": "：** 商品信息",
+      "_time": 62.66354990005493,
+      "type": "delta"
+    },
+    {
+      "text": "更新时，如何",
+      "_time": 62.743122577667236,
+      "type": "delta"
+    },
+    {
+      "text": "保证 MySQL",
+      "_time": 62.78329396247864,
+      "type": "delta"
+    },
+    {
+      "text": " 与 Redis ",
+      "_time": 62.89325499534607,
+      "type": "delta"
+    },
+    {
+      "text": "数据一致？（",
+      "_time": 62.894553422927856,
+      "type": "delta"
+    },
+    {
+      "text": "重点：更新失败",
+      "_time": 62.99524450302124,
+      "type": "delta"
+    },
+    {
+      "text": "补偿",
+      "_time": 62.9969744682312,
+      "type": "delta"
+    },
+    {
+      "text": "、缓存穿透预防",
+      "_time": 63.08590483665466,
+      "type": "delta"
+    },
+    {
+      "text": "）\n\n### ",
+      "_time": 63.11408805847168,
+      "type": "delta"
+    },
+    {
+      "text": "4. 针对性",
+      "_time": 63.232468366622925,
+      "type": "delta"
+    },
+    {
+      "text": "提升建议\n为了",
+      "_time": 63.23478150367737,
+      "type": "delta"
+    },
+    {
+      "text": "缩小 65",
+      "_time": 63.37314772605896,
+      "type": "delta"
+    },
+    {
+      "text": " 分",
+      "_time": 63.37576651573181,
+      "type": "delta"
+    },
+    {
+      "text": "与目标岗位之间的",
+      "_time": 63.48309302330017,
+      "type": "delta"
+    },
+    {
+      "text": "差距，",
+      "_time": 63.51412773132324,
+      "type": "delta"
+    },
+    {
+      "text": "建议采取以下行动",
+      "_time": 63.59867548942566,
+      "type": "delta"
+    },
+    {
+      "text": "：\n*  ",
+      "_time": 63.599557638168335,
+      "type": "delta"
+    },
+    {
+      "text": " **深挖项目亮点",
+      "_time": 63.7321343421936,
+      "type": "delta"
+    },
+    {
+      "text": "：** 虽然",
+      "_time": 63.73483657836914,
+      "type": "delta"
+    },
+    {
+      "text": "缺乏电商经验，",
+      "_time": 63.959264039993286,
+      "type": "delta"
+    },
+    {
+      "text": "但可",
+      "_time": 63.96054029464722,
+      "type": "delta"
+    },
+    {
+      "text": "梳理现有项目中涉及",
+      "_time": 63.965795278549194,
+      "type": "delta"
+    },
+    {
+      "text": " **高并发、",
+      "_time": 63.968666315078735,
+      "type": "delta"
+    },
+    {
+      "text": "分布式** 的",
+      "_time": 64.1370849609375,
+      "type": "delta"
+    },
+    {
+      "text": "模块，用",
+      "_time": 64.13870549201965,
+      "type": "delta"
+    },
+    {
+      "text": "数据量化性能优化",
+      "_time": 64.23523902893066,
+      "type": "delta"
+    },
+    {
+      "text": "成果。\n",
+      "_time": 64.23663997650146,
+      "type": "delta"
+    },
+    {
+      "text": "*   **补足",
+      "_time": 64.36317849159241,
+      "type": "delta"
+    },
+    {
+      "text": "架构",
+      "_time": 64.365793466568,
+      "type": "delta"
+    },
+    {
+      "text": "知识：** 重点",
+      "_time": 64.48099684715271,
+      "type": "delta"
+    },
+    {
+      "text": "复习",
+      "_time": 64.48248195648193,
+      "type": "delta"
+    },
+    {
+      "text": "微服务治理理论",
+      "_time": 64.54185962677002,
+      "type": "delta"
+    },
+    {
+      "text": "（如 Spring Cloud",
+      "_time": 64.54461812973022,
+      "type": "delta"
+    },
+    {
+      "text": " Alibaba 生态），",
+      "_time": 64.71410822868347,
+      "type": "delta"
+    },
+    {
+      "text": "准备",
+      "_time": 64.71550750732422,
+      "type": "delta"
+    },
+    {
+      "text": " 1-2",
+      "_time": 64.77682733535767,
+      "type": "delta"
+    },
+    {
+      "text": " 个分布式",
+      "_time": 64.77976608276367,
+      "type": "delta"
+    },
+    {
+      "text": "系统设计的伪代码",
+      "_time": 64.93391513824463,
+      "type": "delta"
+    },
+    {
+      "text": "或架构图",
+      "_time": 64.93548107147217,
+      "type": "delta"
+    },
+    {
+      "text": "。\n*  ",
+      "_time": 65.00973010063171,
+      "type": "delta"
+    },
+    {
+      "text": " **强化技术深度",
+      "_time": 65.01222681999207,
+      "type": "delta"
+    },
+    {
+      "text": "：** 针对简历",
+      "_time": 65.1530408859253,
+      "type": "delta"
+    },
+    {
+      "text": "中提到的",
+      "_time": 65.19191122055054,
+      "type": "delta"
+    },
+    {
+      "text": " Spring Boot、MySQL",
+      "_time": 65.30272150039673,
+      "type": "delta"
+    },
+    {
+      "text": "、",
+      "_time": 65.30661678314209,
+      "type": "delta"
+    },
+    {
+      "text": "Redis、Kafka",
+      "_time": 65.38311052322388,
+      "type": "delta"
+    },
+    {
+      "text": "，准备",
+      "_time": 65.38442301750183,
+      "type": "delta"
+    },
+    {
+      "text": "底层原理及调",
+      "_time": 65.45989918708801,
+      "type": "delta"
+    },
+    {
+      "text": "优案例，",
+      "_time": 65.46256136894226,
+      "type": "delta"
+    },
+    {
+      "text": "以弥补年限上的",
+      "_time": 65.58703231811523,
+      "type": "delta"
+    },
+    {
+      "text": "不足",
+      "_time": 65.58743381500244,
+      "type": "delta"
+    },
+    {
+      "text": "。\n\n祝您面试",
+      "_time": 65.70796990394592,
+      "type": "delta"
+    },
+    {
+      "text": "顺利",
+      "_time": 65.71071982383728,
+      "type": "delta"
+    },
+    {
+      "text": "，如有具体技术",
+      "_time": 65.82175970077515,
+      "type": "delta"
+    },
+    {
+      "text": "点",
+      "_time": 65.83369183540344,
+      "type": "delta"
+    },
+    {
+      "text": "需要深入解析，",
+      "_time": 65.89577603340149,
+      "type": "delta"
+    },
+    {
+      "text": "欢迎",
+      "_time": 65.89869117736816,
+      "type": "delta"
+    },
+    {
+      "text": "随时提问！",
+      "_time": 65.94773840904236,
+      "type": "delta"
+    },
+    {
+      "session_id": "eval_li_10_1777532862215",
+      "intent": "interview_prepare",
+      "route_meta": {
+        "layer": "llm",
+        "intent": "interview_prepare",
+        "confidence": 0.95,
+        "demands": [
+          {
+            "intent": "interview_prepare",
+            "entities": {
+              "position": "后端"
+            }
+          }
+        ],
+        "plan_tasks": 4
+      },
+      "agent_mode": "llm",
+      "is_clarification": false,
+      "agent": {
+        "rewritten_query": "后端岗面试试要准备什么",
+        "tools": [
+          {
+            "tool": "kb_retrieve",
+            "status": "✅",
+            "params": {
+              "query": "后端",
+              "position": "后端"
+            },
+            "result_preview": "{'chunks': [{'chunk_id': '9cde8355-dcc0-434e-97c4-67dfc5dae5b8_chunk_0', 'content': '公司：阿里巴巴，岗位：后端开发，地点：杭州，薪资：35k-65k', 'metadata': {'category': '技术', 'company': '阿里巴巴', 'domain': '电商', 'index': 0, 'j"
+          },
+          {
+            "tool": "match_analyze",
+            "status": "✅",
+            "params": {
+              "resume_text": "AI\n / \n157-xxxx-3421  |  chenyutong2027@163.com  |  \n  |  2027\n6\n2024.09  2027.06\n · \nAI\n· \nGPA\n3.4/4.0  |  \n2020.09  2024.06\n · \n · \n  |  \nWeb\n \n \n2025.03  2025.11\n  |  \n40\n\"\n\"\n\"\n\"\nFigma\nAI\nEmbedding\nJD\nAPI\nPrompt\n20\nPDF\n \n \nRAG\n2024.10  2025.02\n  |  \n80\nOCR\nWeb\n\"\n\"\n · \n2024.09  2025.06\n10\n · \n2022.03  2023.06\n2025.05    \n2024.11    \nAI\n2023.06    \n2022.12    \nFigma\nAxure\nXmind\n/\nPRD\nPrompt Engineering\nRAG\nEmbedding\nCET-4\n525\nOffice\nExcel",
+              "jd_text": [
+                {
+                  "chunk_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8_chunk_0",
+                  "content": "公司：阿里巴巴，岗位：后端开发，地点：杭州，薪资：35k-65k",
+                  "metadata": {
+                    "category": "技术",
+                    "company": "阿里巴巴",
+                    "domain": "电商",
+                    "index": 0,
+                    "jd_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8",
+                    "min_education": "本科",
+                    "min_years": 3,
+                    "position": "后端开发",
+                    "section": "basic_info",
+                    "strategy": "semantic"
+                  },
+                  "distance": null,
+                  "bm25_score": 7.928353058641949,
+                  "vec_norm": 0.0,
+                  "bm25_norm": 1.0,
+                  "hybrid_score": 0.3,
+                  "rerank_score": 0.9741
+                },
+                {
+                  "chunk_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8_chunk_5",
+                  "content": "【阿里巴巴 · 后端开发 硬性要求】\n本科及以上学历",
+                  "metadata": {
+                    "company": "阿里巴巴",
+                    "index": 5,
+                    "jd_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8",
+                    "position": "后端开发",
+                    "priority": "high",
+                    "section": "hard_requirements",
+                    "strategy": "semantic"
+                  },
+                  "distance": null,
+                  "bm25_score": 7.928353058641949,
+                  "vec_norm": 0.0,
+                  "bm25_norm": 1.0,
+                  "hybrid_score": 0.3,
+                  "rerank_score": 0.9613
+                },
+                {
+                  "chunk_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8_chunk_6",
+                  "content": "【阿里巴巴 · 后端开发 软性要求/加分项】\n有电商行业经验优先",
+                  "metadata": {
+                    "company": "阿里巴巴",
+                    "index": 6,
+                    "jd_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8",
+                    "position": "后端开发",
+                    "priority": "medium",
+                    "section": "soft_requirements",
+                    "strategy": "semantic"
+                  },
+                  "distance": null,
+                  "bm25_score": 7.733465097983233,
+                  "vec_norm": 0.0,
+                  "bm25_norm": 0.9713351682465452,
+                  "hybrid_score": 0.29140055047396357,
+                  "rerank_score": 0.9514
+                },
+                {
+                  "chunk_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8_chunk_7",
+                  "content": "【阿里巴巴 · 后端开发 软性要求/加分项】\n熟悉K8s、Docker优先",
+                  "metadata": {
+                    "company": "阿里巴巴",
+                    "index": 7,
+                    "jd_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8",
+                    "position": "后端开发",
+                    "priority": "medium",
+                    "section": "soft_requirements",
+                    "strategy": "semantic"
+                  },
+                  "distance": null,
+                  "bm25_score": 7.733465097983233,
+                  "vec_norm": 0.0,
+                  "bm25_norm": 0.9713351682465452,
+                  "hybrid_score": 0.29140055047396357,
+                  "rerank_score": 0.9469
+                },
+                {
+                  "chunk_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8_chunk_1",
+                  "content": "【阿里巴巴 · 后端开发 岗位职责】\n1. 负责电商核心系统的设计与开发。2. 高并发系统架构设计与性能优化。3. 分布式系统开发与微服务治理。4. 数据库设计与优化。",
+                  "metadata": {
+                    "company": "阿里巴巴",
+                    "index": 1,
+                    "jd_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8",
+                    "position": "后端开发",
+                    "section": "responsibilities",
+                    "strategy": "semantic"
+                  },
+                  "distance": null,
+                  "bm25_score": 5.059530793458788,
+                  "vec_norm": 0.0,
+                  "bm25_norm": 0.5780431624196218,
+                  "hybrid_score": 0.17341294872588656,
+                  "rerank_score": 0.9451
+                },
+                {
+                  "chunk_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8_chunk_2",
+                  "content": "【阿里巴巴 · 后端开发 硬性要求】\n3年以上Java开发经验",
+                  "metadata": {
+                    "company": "阿里巴巴",
+                    "index": 2,
+                    "jd_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8",
+                    "position": "后端开发",
+                    "priority": "high",
+                    "section": "hard_requirements",
+                    "strategy": "semantic"
+                  },
+                  "distance": null,
+                  "bm25_score": 7.928353058641949,
+                  "vec_norm": 0.0,
+                  "bm25_norm": 1.0,
+                  "hybrid_score": 0.3,
+                  "rerank_score": 0.9327
+                },
+                {
+                  "chunk_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8_chunk_4",
+                  "content": "【阿里巴巴 · 后端开发 硬性要求】\n熟悉分布式系统设计与微服务架构",
+                  "metadata": {
+                    "company": "阿里巴巴",
+                    "index": 4,
+                    "jd_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8",
+                    "position": "后端开发",
+                    "priority": "high",
+                    "section": "hard_requirements",
+                    "strategy": "semantic"
+                  },
+                  "distance": null,
+                  "bm25_score": 7.458458956431924,
+                  "vec_norm": 0.0,
+                  "bm25_norm": 0.9308862623618986,
+                  "hybrid_score": 0.27926587870856956,
+                  "rerank_score": 0.9091
+                },
+                {
+                  "chunk_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a_chunk_6",
+                  "content": "【某小公司 · Java后端 关键词】\nJava, Spring Boot, MySQL, ERP, 后端",
+                  "metadata": {
+                    "company": "某小公司",
+                    "index": 6,
+                    "jd_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a",
+                    "position": "Java后端",
+                    "section": "keywords",
+                    "strategy": "semantic"
+                  },
+                  "distance": null,
+                  "bm25_score": 7.202339909715294,
+                  "vec_norm": 0.0,
+                  "bm25_norm": 0.8932153392419017,
+                  "hybrid_score": 0.2679646017725705,
+                  "rerank_score": 0.896
+                },
+                {
+                  "chunk_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8_chunk_8",
+                  "content": "【阿里巴巴 · 后端开发 关键词】\nJava, Spring Boot, MySQL, Redis, Kafka, 微服务, 电商",
+                  "metadata": {
+                    "company": "阿里巴巴",
+                    "index": 8,
+                    "jd_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8",
+                    "position": "后端开发",
+                    "section": "keywords",
+                    "strategy": "semantic"
+                  },
+                  "distance": null,
+                  "bm25_score": 6.598136973061241,
+                  "vec_norm": 0.0,
+                  "bm25_norm": 0.8043469685863063,
+                  "hybrid_score": 0.24130409057589186,
+                  "rerank_score": 0.8939
+                },
+                {
+                  "chunk_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8_chunk_3",
+                  "content": "【阿里巴巴 · 后端开发 硬性要求】\n精通Spring Boot、MySQL、Redis、Kafka",
+                  "metadata": {
+                    "company": "阿里巴巴",
+                    "index": 3,
+                    "jd_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8",
+                    "position": "后端开发",
+                    "priority": "high",
+                    "section": "hard_requirements",
+                    "strategy": "semantic"
+                  },
+                  "distance": null,
+                  "bm25_score": 7.547928409093866,
+                  "vec_norm": 0.0,
+                  "bm25_norm": 0.9440457556367007,
+                  "hybrid_score": 0.2832137266910102,
+                  "rerank_score": 0.8857
+                }
+              ],
+              "position": "后端"
+            },
+            "result_preview": "{'score': 65, 'label': '略有差距', 'advantages': ['Java', 'Spring Boot', 'MySQL', 'Redis', 'Kafka'], 'weaknesses': ['候选人缺乏电商行业经验以及微服务治理的实际项目经验。虽然具备Spring Boot、MySQL、Redis、Kafka等技术栈，但缺乏3年以上Java开发经验，且未提及分布式"
+          },
+          {
+            "tool": "interview_gen",
+            "status": "✅",
+            "params": {
+              "match_result": {
+                "score": 65,
+                "label": "略有差距",
+                "advantages": [
+                  "Java",
+                  "Spring Boot",
+                  "MySQL",
+                  "Redis",
+                  "Kafka"
+                ],
+                "weaknesses": [
+                  "候选人缺乏电商行业经验以及微服务治理的实际项目经验。虽然具备Spring Boot、MySQL、Redis、Kafka等技术栈，但缺乏3年以上Java开发经验，且未提及分布式系统设计与微服务架构的实际经验。"
+                ],
+                "suggestions": [
+                  "核心能力要求: ['3年以上Java开发经验', '熟悉分布式系统设计与微服务架构', '电商行业经验', '精通Spring Boot、MySQL、Redis、Kafka']"
+                ],
+                "match_score": 65,
+                "covered": [
+                  "Java",
+                  "Spring Boot",
+                  "MySQL",
+                  "Redis",
+                  "Kafka"
+                ],
+                "missing_experience": "候选人缺乏电商行业经验以及微服务治理的实际项目经验。虽然具备Spring Boot、MySQL、Redis、Kafka等技术栈，但缺乏3年以上Java开发经验，且未提及分布式系统设计与微服务架构的实际经验。",
+                "core_skills": [
+                  "3年以上Java开发经验",
+                  "熟悉分布式系统设计与微服务架构",
+                  "电商行业经验",
+                  "精通Spring Boot、MySQL、Redis、Kafka"
+                ],
+                "company": null,
+                "position": "后端"
+              },
+              "position": "后端"
+            },
+            "result_preview": "{'questions': ['设计一个电商平台的库存扣减系统，要求支持高并发秒杀场景，保证库存不超卖且数据最终一致。请描述你的技术方案，包括数据库、缓存、消息队列的使用策略。追问方向：1）如果Redis和MySQL数据不一致，你会如何检测和修复？2）如果扣减库存时Redis宕机，如何保证业务不中断？', '在微服务架构中，订单服务需要调用库存服务、支付服务、物流服务等多个下游服务。请设计一个健壮"
+          }
+        ],
+        "kb_chunks_count": 4,
+        "system_prompt_preview": "你是一位专业的求职顾问。请基于以下工具执行结果，给用户一个清晰、有帮助的回复。\n要求：\n1. 直接回答用户的问题，不要重复用户的原话\n2. 如果有匹配分析结果，给出具体的分数和建议\n3. 如果有检索结果，基于事实回答，不要编造\n4. 语气友好、专业、结构化"
+      },
+      "memory": {
+        "working_turns": 1,
+        "compressed_blocks": 0,
+        "current_topic": "general",
+        "evidence_cache_size": 5
+      },
+      "reply": {
+        "type": "text",
+        "content": "您好！针对后端开发岗位的面试准备，我结合主流大厂（如阿里巴巴）的岗位需求以及您的简历匹配情况，为您整理了以下核心指南。\n\n### 1. 个人匹配度诊断\n根据对您简历的分析，目前与后端岗位的匹配情况如下：\n*   **匹配评分：** 65 分（略有差距）\n*   **核心优势：** 技术栈基础扎实，覆盖 **Java、Spring Boot、MySQL、Redis、Kafka** 等后端核心组件。\n*   **主要差距：** \n    *   简历中未充分体现 **3 年以上 Java 开发经验**。\n    *   缺乏 **电商行业经验** 以及 **微服务治理、分布式系统设计** 的实际项目落地经验。\n\n### 2. 核心能力准备清单\n参考头部互联网公司的后端开发 JD，面试中会重点考察以下硬性与软性要求：\n*   **硬性门槛：** 本科及以上学历，3 年以上 Java 开发经验。\n*   **架构能力：** 高并发系统架构设计与性能优化、分布式系统开发、微服务治理。\n*   **数据能力：** 数据库设计与优化（MySQL）、缓存策略（Redis）。\n*   **加分项：** 电商行业背景、熟悉容器化技术（K8s、Docker）。\n\n### 3. 高频面试题预测与演练\n基于您的技术背景及岗位常见考点，建议重点准备以下 5 类场景题：\n*   **高并发库存扣减：** 如何设计秒杀场景下的库存系统，保证不超卖且数据最终一致？（重点：Redis 与 MySQL 策略、宕机处理）\n*   **微服务调用健壮性：** 订单服务调用下游多个服务时，如何处理超时、失败及雪崩效应？（重点：熔断、降级、重试机制）\n*   **分布式状态机：** 如何设计订单状态流转（如支付、取消并发冲突），保证原子性？（重点：本地消息表 vs 事务消息）\n*   **秒杀系统架构：** 如何应对瞬时高并发流量，防止恶意刷单？（重点：限流策略、异步队列）\n*   **缓存一致性：** 商品信息更新时，如何保证 MySQL 与 Redis 数据一致？（重点：更新失败补偿、缓存穿透预防）\n\n### 4. 针对性提升建议\n为了缩小 65 分与目标岗位之间的差距，建议采取以下行动：\n*   **深挖项目亮点：** 虽然缺乏电商经验，但可梳理现有项目中涉及 **高并发、分布式** 的模块，用数据量化性能优化成果。\n*   **补足架构知识：** 重点复习微服务治理理论（如 Spring Cloud Alibaba 生态），准备 1-2 个分布式系统设计的伪代码或架构图。\n*   **强化技术深度：** 针对简历中提到的 Spring Boot、MySQL、Redis、Kafka，准备底层原理及调优案例，以弥补年限上的不足。\n\n祝您面试顺利，如有具体技术点需要深入解析，欢迎随时提问！",
+        "data": null,
+        "sources": null
+      },
+      "_time": 66.00547647476196,
+      "type": "done"
+    }
+  ],
+  "timestamp": "2026-04-30T15:07:42.215550",
+  "tool_execution_success_rate": 1.0,
+  "tool_correct_rate": 0.0,
+  "tools_total_called": 3,
+  "tools_success_called": 3,
+  "judge_resolved": true,
+  "judge_reason": "系统提供了针对性的面试准备建议和面试题预测，符合【准备】意图的要求。"
+}

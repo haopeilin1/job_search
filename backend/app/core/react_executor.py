@@ -296,6 +296,36 @@ class ReActExecutor:
             # 优先使用 planner 已静态解析的参数，避免覆盖 entity.xxx 等静态占位符
             base_params = task.resolved_params if task.resolved_params else task.parameters
             resolved_params = self._resolve_dynamic_params(base_params, graph, session)
+
+            # 对 match_analyze 任务：若 jd_text 来自 chunks[N] 但 company/position 不匹配，自动修正
+            if task.tool_name == "match_analyze":
+                company = resolved_params.get("company")
+                position = resolved_params.get("position")
+                jd_text = resolved_params.get("jd_text")
+                if (company or position) and isinstance(jd_text, dict):
+                    meta = jd_text.get("metadata", {})
+                    c_company = meta.get("company", "")
+                    c_position = meta.get("position", "")
+                    is_match = (not company or company in c_company) and (not position or position in c_position)
+                    if not is_match:
+                        # 从 T0 结果中筛选匹配的 chunk
+                        t0 = graph.get_task("T0")
+                        if t0 and t0.status == "success" and isinstance(t0.result, dict):
+                            chunks = t0.result.get("chunks", [])
+                            filtered = []
+                            for c in chunks:
+                                if isinstance(c, dict):
+                                    m = c.get("metadata", {})
+                                    cc = m.get("company", "")
+                                    cp = m.get("position", "")
+                                    if (not company or company in cc) and (not position or position in cp):
+                                        filtered.append(c)
+                            if filtered:
+                                resolved_params["jd_text"] = filtered[0]
+                                logger.info(f"[ReActExecutor] match_analyze jd_text 自动修正: {company}/{position} | 从 {len(chunks)} 个 chunk 中命中 {len(filtered)} 个")
+                            else:
+                                logger.warning(f"[ReActExecutor] match_analyze 未找到 {company}/{position} 匹配的 chunk，保持原样")
+
             task.resolved_params = resolved_params
 
             # 2. 按任务类型执行
@@ -439,6 +469,13 @@ class ReActExecutor:
             for p in parts[start_idx:]:
                 if isinstance(val, dict):
                     val = val.get(p)
+                elif isinstance(val, list):
+                    # 支持 chunks[0] 语法
+                    try:
+                        idx = int(p)
+                        val = val[idx] if 0 <= idx < len(val) else None
+                    except ValueError:
+                        return None
                 else:
                     return None
             return val

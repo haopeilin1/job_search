@@ -454,129 +454,162 @@ def _clean_lines(lines: list) -> list:
 
 def split_jds(raw: str) -> list:
     """将原始文本分割为单个JD"""
-    # 按 "公司名" 开头的模式分割
-    # 匹配行首的公司名：字节跳动、美团、MiniMax、OPPO、360、滴滴
-    company_pattern = r'(?:^|\n\s*\n)(?=字节跳动|美团|MiniMax|OPPO|360\s|滴滴[：:])'
+    # 支持两种格式：
+    # 1. 旧格式：公司名在行首（字节跳动、美团等）
+    # 2. 新格式：以 "公司：" 开头，用 "---" 分隔
+    
+    # 先按 "---" 分隔（新格式）
+    if '---' in raw:
+        parts = [p.strip() for p in raw.split('---') if p.strip()]
+        return parts
+    
+    # 旧格式：按公司名分割
+    company_pattern = r'(?:^|\n\s*\n)(?=字节跳动|美团|MiniMax|OPPO|360\s|滴滴[：:]|ACG\s)'
     parts = re.split(company_pattern, raw.strip())
     parts = [p.strip() for p in parts if p.strip()]
     return parts
 
 
 def parse_single_jd(text: str) -> dict:
-    """解析单个JD为结构化Schema"""
+    """解析单个JD为结构化Schema。支持两种格式：旧格式（公司名行首）和新格式（公司：XXX）。"""
     lines = text.split('\n')
     lines = [l.strip() for l in lines]
-
-    # 1. 公司名（第一行或前3行）
+    
+    # 判断格式：新格式以 "公司：" 开头
+    is_new_format = lines[0].startswith('公司：') if lines else False
+    
     company = "未知公司"
-    first_line = lines[0] if lines else ""
-    if '字节跳动' in first_line:
-        company = '字节跳动'
-    elif '美团' in first_line:
-        company = '美团'
-    elif 'MiniMax' in first_line:
-        company = 'MiniMax'
-    elif 'OPPO' in first_line:
-        company = 'OPPO'
-    elif first_line.startswith('360'):
-        company = '360'
-    elif '滴滴' in first_line:
-        company = '滴滴'
-
-    # 2. 岗位名（从第一行提取）
     title = "未知岗位"
-    # 尝试从第一行提取
-    title_match = re.search(r'(?:字节跳动|美团|MiniMax|OPPO|360|滴滴)[：:\*\s]*(.+?)(?:\n|$)', first_line)
-    if title_match:
-        title = title_match.group(1).strip('*').strip()
+    location = None
+    
+    if is_new_format:
+        # ========== 新格式 ==========
+        # 公司：XXX
+        # 岗位：XXX
+        # 地点：XXX
+        for l in lines[:5]:
+            if l.startswith('公司：'):
+                company = l.replace('公司：', '').strip()
+            elif l.startswith('岗位：'):
+                title = l.replace('岗位：', '').strip()
+            elif l.startswith('地点：'):
+                location = l.replace('地点：', '').strip()
     else:
-        title = first_line.replace('字节跳动', '').replace('美团', '').replace('MiniMax', '').replace('OPPO', '').replace('360', '').replace('滴滴', '').replace('：', '').replace('**', '').strip()
-    # 清理
-    title = re.sub(r'^[：:\*\s]+', '', title)
-    if not title or len(title) < 3:
-        # 从第二行找
-        for l in lines[1:4]:
-            if '实习生' in l or '产品经理' in l or '产品' in l:
-                title = l.strip('*').strip()
-                break
-
-    # 3. 地点
-    location = _extract_location(text)
-
-    # 4. 薪资
+        # ========== 旧格式 ==========
+        first_line = lines[0] if lines else ""
+        if '字节跳动' in first_line:
+            company = '字节跳动'
+        elif '美团' in first_line:
+            company = '美团'
+        elif 'MiniMax' in first_line:
+            company = 'MiniMax'
+        elif 'OPPO' in first_line:
+            company = 'OPPO'
+        elif first_line.startswith('360'):
+            company = '360'
+        elif '滴滴' in first_line:
+            company = '滴滴'
+        elif 'ACG' in first_line:
+            company = 'ACG'
+        
+        title_match = re.search(r'(?:字节跳动|美团|MiniMax|OPPO|360|滴滴|ACG)[：:\*\s]*(.+?)(?:\n|$)', first_line)
+        if title_match:
+            title = title_match.group(1).strip('*').strip()
+        else:
+            title = first_line.replace('字节跳动', '').replace('美团', '').replace('MiniMax', '').replace('OPPO', '').replace('360', '').replace('滴滴', '').replace('ACG', '').replace('：', '').replace('**', '').strip()
+        title = re.sub(r'^[：:\*\s]+', '', title)
+        if not title or len(title) < 3:
+            for l in lines[1:4]:
+                if '实习生' in l or '产品经理' in l or '产品' in l:
+                    title = l.strip('*').strip()
+                    break
+        location = _extract_location(text)
+    
+    # 提取薪资
     salary_range = _extract_salary(text)
-
-    # 5. 职责 / 要求 分段
+    
+    # ========== 按编号提取职责、要求、加分项 ==========
     responsibilities = []
-    requirements = []
-
-    # 找到关键段落标记
-    desc_markers = ['职位描述', '岗位职责', '工作职责', '职位描述\n', '岗位职责\n', '工作职责\n']
-    req_markers = ['职位要求', '任职要求', '任职资格', '职责要求', '职位要求\n', '任职要求\n', '任职资格\n']
-
-    in_desc = False
-    in_req = False
-    desc_lines = []
-    req_lines = []
-
-    for i, line in enumerate(lines):
-        l = line.strip()
-        if not l:
+    hard_requirements = []
+    soft_requirements = []
+    
+    # 段落标记
+    desc_markers = ['工作职责：', '工作职责:', '职位描述', '岗位职责', '工作职责']
+    req_markers = ['职责要求：', '职责要求:', '职位要求', '任职要求', '任职资格']
+    plus_markers = ['加分项：', '加分项:', '加分项']
+    
+    current_section = None
+    
+    for l in lines:
+        l_stripped = l.strip()
+        if not l_stripped:
             continue
+        
         # 检测段落切换
-        is_desc_marker = any(m.strip() == l.replace('*', '').replace('**', '').strip() for m in desc_markers)
-        is_req_marker = any(m.strip() == l.replace('*', '').replace('**', '').strip() for m in req_markers)
-
-        if is_desc_marker:
-            in_desc = True
-            in_req = False
+        if any(l_stripped.startswith(m) for m in desc_markers):
+            current_section = 'desc'
             continue
-        if is_req_marker:
-            in_desc = False
-            in_req = True
+        if any(l_stripped.startswith(m) for m in req_markers):
+            current_section = 'req'
             continue
-        # 下一级标题或新段落退出当前段落
-        if l in ('加分项', '加分', '加分项：', '加分：', '【加入我们可以获得什么？】', '【我们欢迎什么样的你？】'):
-            in_desc = False
-            in_req = False
+        if any(l_stripped.startswith(m) for m in plus_markers):
+            current_section = 'plus'
             continue
-
-        if in_desc:
-            desc_lines.append(l)
-        elif in_req:
-            req_lines.append(l)
-
-    # 如果没有成功分段，尝试基于编号拆分
-    if not desc_lines and not req_lines:
-        # 找 "1、" 或 "1." 开头的行
-        numbered = [l for l in lines if re.match(r'^\d+[、.．]', l.strip())]
-        if len(numbered) >= 4:
-            # 前半部分是职责，后半是要求
-            mid = len(numbered) // 2
-            desc_lines = numbered[:mid]
-            req_lines = numbered[mid:]
-
-    # 清理职责
-    responsibilities = _clean_lines(desc_lines)
-    # 清理要求
-    requirements = _clean_lines(req_lines)
-
-    # 合并职责为一段
+        
+        # 收集编号行
+        if re.match(r'^\d+[\.、．]\s*', l_stripped):
+            item = re.sub(r'^\d+[\.、．]\s*', '', l_stripped).strip()
+            if current_section == 'desc':
+                responsibilities.append(item)
+            elif current_section == 'req':
+                hard_requirements.append(item)
+            elif current_section == 'plus':
+                soft_requirements.append(item)
+    
+    # Fallback：如果没有编号行，按旧逻辑处理
+    if not responsibilities and not hard_requirements:
+        # 旧格式的段落提取
+        in_desc = False
+        in_req = False
+        desc_lines = []
+        req_lines = []
+        
+        for l in lines:
+            l_clean = l.strip().replace('*', '').replace('**', '')
+            if l_clean in desc_markers or l_clean.startswith('工作职责'):
+                in_desc = True
+                in_req = False
+                continue
+            if l_clean in req_markers or l_clean.startswith('职责要求'):
+                in_desc = False
+                in_req = True
+                continue
+            if l_clean in ('加分项', '加分', '加分项：', '加分：'):
+                in_desc = False
+                in_req = False
+                continue
+            if in_desc:
+                desc_lines.append(l)
+            elif in_req:
+                req_lines.append(l)
+        
+        responsibilities = _clean_lines(desc_lines)
+        requirements = _clean_lines(req_lines)
+        hard_requirements, soft_requirements = _split_hard_soft(requirements)
+        if not hard_requirements and requirements:
+            hard_requirements = requirements
+    
+    # 合并职责为一段（用于 description 字段）
     responsibilities_text = '\n'.join(responsibilities)
     if not responsibilities_text:
         responsibilities_text = text[:500]
-
-    # 拆分硬性和软性要求
-    hard_requirements, soft_requirements = _split_hard_soft(requirements)
-    if not hard_requirements and requirements:
-        hard_requirements = requirements
-
+    
     # 关键词
     keywords = _extract_keywords(text, title, company)
-
+    
     now = _now_iso()
     jd_id = str(uuid.uuid4())
-
+    
     return {
         "jd_id": jd_id,
         "company": company,
@@ -606,8 +639,18 @@ def main():
 
     max_id = max([j.get("id", 0) for j in existing], default=0)
 
-    # 2. 分割并解析
-    jd_texts = split_jds(RAW_JDS_TEXT)
+    # 2. 读取 JD 文本（优先从文件，fallback 到变量）
+    raw_text = RAW_JDS_TEXT
+    if RAW_INPUT.exists():
+        raw_text = RAW_INPUT.read_text(encoding="utf-8")
+        print(f"[Parser] 从文件读取: {RAW_INPUT}")
+    
+    if not raw_text.strip():
+        print("[Parser] 没有 JD 文本可处理")
+        return
+
+    # 3. 分割并解析
+    jd_texts = split_jds(raw_text)
     print(f"[Parser] 识别到 {len(jd_texts)} 条 JD")
 
     new_records = []

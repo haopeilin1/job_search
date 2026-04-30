@@ -513,6 +513,12 @@ class TaskPlanner:
 
         for task in graph.tasks.values():
             task.resolved_params = _resolve_value(task.parameters)
+            # 对于 kb_retrieve，自动补全 company/position（LLM 可能遗漏）
+            if task.tool_name == "kb_retrieve":
+                if not task.resolved_params.get("company") and entities.get("company"):
+                    task.resolved_params["company"] = entities.get("company")
+                if not task.resolved_params.get("position") and entities.get("position"):
+                    task.resolved_params["position"] = entities.get("position")
 
         return graph
 
@@ -622,7 +628,11 @@ class TaskPlanner:
                 graph.add_task(TaskNode(
                     task_id="T0", task_type="tool_call", tool_name="kb_retrieve",
                     description="检索目标岗位信息",
-                    parameters={"query": entities.get("company", "") + " " + entities.get("position", "")},
+                    parameters={
+                        "query": entities.get("company", "") + " " + entities.get("position", ""),
+                        "company": entities.get("company"),
+                        "position": entities.get("position"),
+                    },
                     dependencies=[], is_critical=False,
                 ))
                 if intent_type == "match_assess" and has_resume:
@@ -674,7 +684,11 @@ class TaskPlanner:
                 graph.add_task(TaskNode(
                     task_id="T0", task_type="tool_call", tool_name="kb_retrieve",
                     description="检索相关岗位",
-                    parameters={"query": resume_text[:100] if resume_text else "推荐岗位"},
+                    parameters={
+                        "query": resume_text[:100] if resume_text else "推荐岗位",
+                        "company": entities.get("company"),
+                        "position": entities.get("position"),
+                    },
                     dependencies=[], is_critical=False,
                 ))
                 if has_resume:

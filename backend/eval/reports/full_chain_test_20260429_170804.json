@@ -1,0 +1,64 @@
+{
+  "timestamp": "20260429_170804",
+  "backend": "http://127.0.0.1:8001",
+  "frontend": "http://127.0.0.1:5173",
+  "tests": [
+    {
+      "test_name": "backend_blackbox",
+      "case_id": "eval_chen_02",
+      "message": "字节跳动的AI产品经理我够格吗",
+      "steps": [
+        {
+          "name": "resume_activate",
+          "latency_ms": 4.215377000946319
+        }
+      ],
+      "success": true,
+      "total_latency_ms": 88322.16979300028,
+      "error": "",
+      "http_status": 200,
+      "intent": "general_chat",
+      "reply_type": "text",
+      "reply_length": 781,
+      "schema_valid": true,
+      "response_preview": "你好！字节跳动的 AI 产品经理确实是当前极具竞争力的岗位，有这个目标非常棒！👍\n\n由于目前我尚未掌握你的具体背景信息（如学历、工作年限、核心项目等），暂时无法给出确切的**匹配度分数**。但我可以基于该岗位的核心要求，为你提供一份**「胜任力自查清单」**，帮助你初步评估现状与差距：\n\n### 📊 核心胜任力评估维度\n\n**1. 硬技能门槛**\n*   **AI 技术理解**：是否深入理解大模型原理、边界及主流应用场景（如 RAG、Fine-tuning、Agent）？\n*   **数据能力**：能否独立取数并分析指标异动？（掌握 SQL/Python 是重要加分项）\n*   **产品基本功"
+    },
+    {
+      "test_name": "full_chain",
+      "message": "帮我推荐算法工程师岗位",
+      "steps": [
+        {
+          "name": "frontend_load",
+          "latency_ms": 7.454630000211182,
+          "status": 200,
+          "size": 563
+        },
+        {
+          "name": "health_check",
+          "latency_ms": 2.894231000027503,
+          "status": 200
+        },
+        {
+          "name": "resume_check",
+          "latency_ms": 2.3302680001506815
+        },
+        {
+          "name": "chat_api",
+          "latency_ms": 267895.00595099886,
+          "status": 200
+        }
+      ],
+      "success": true,
+      "total_latency_ms": 267908.6095139992,
+      "error": "",
+      "reply_preview": "您好！基于目前的岗位数据库检索结果，我为您筛选到了两个与算法技术高度相关的 AI 岗位。虽然检索结果中未直接匹配到纯“算法工程师”头衔的职位，但以下岗位的核心职责涉及大模型原理、Agent 编排及与算法团队的深度协作，非常适合具备算法背景的候选人考虑：\n\n### 📊 推荐岗位详情\n\n**1. 蚂蚁集团 · AI 产品工程师（转正实习）**\n*   **匹配亮点：** 该岗位对技术底层原理有明确要求",
+      "reply_length": 1051
+    }
+  ],
+  "summary": {
+    "backend_success": true,
+    "backend_latency_sec": 88.3,
+    "fullchain_success": true,
+    "fullchain_latency_sec": 267.9
+  }
+}
