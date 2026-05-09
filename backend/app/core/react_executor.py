@@ -480,9 +480,8 @@ class ReActExecutor:
                     return None
             return val
 
-        # entity.xxx → 从graph的静态上下文中获取
-        if parts[0] == "entity" and len(parts) >= 2:
-            # 尝试从任务的resolved_params中获取，或从session获取
+        # entity.xxx / global_slots.xxx → 从session.global_slots获取
+        if parts[0] in ("entity", "global_slots") and len(parts) >= 2:
             if session and hasattr(session, "global_slots"):
                 return session.global_slots.get(parts[1])
             return None

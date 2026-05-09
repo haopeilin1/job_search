@@ -40,6 +40,18 @@ from pydantic import BaseModel
 
 from app.core.config import settings
 from app.core.llm_client import LLMClient, TIMEOUT_LIGHT, TIMEOUT_STANDARD, TIMEOUT_HEAVY
+
+# 评测模式下临时加大 Ollama 超时（qwen2.5:14b 响应极慢）
+TIMEOUT_LIGHT = 180.0
+TIMEOUT_STANDARD = 300.0
+TIMEOUT_HEAVY = 600.0
+
+# Monkey-patch：让所有引用原始超时的模块使用新值
+import app.core.llm_client as _llm_client_mod
+_llm_client_mod.TIMEOUT_LIGHT = TIMEOUT_LIGHT
+_llm_client_mod.TIMEOUT_STANDARD = TIMEOUT_STANDARD
+_llm_client_mod.TIMEOUT_HEAVY = TIMEOUT_HEAVY
+
 from app.core.memory import SessionMemory, DialogueTurn, WorkingMemory
 from app.core.query_rewrite import QueryRewriter, QueryRewriteResult
 from app.core.llm_intent import LLMIntentRouter
@@ -877,15 +889,53 @@ async def run_single_case(
             for tid, t in result.task_graph.get("tasks", {}).items()
             if t.get("tool_name")
         ]
+    # ── 从 task_graph 提取最终回复 ──
+    final_reply = ""
+    if result.task_graph:
+        tasks = result.task_graph.get("tasks", {})
+        # 优先从 llm_reasoning 任务提取
+        for tid, t in tasks.items():
+            if t.get("task_type") == "llm_reasoning" and t.get("status") == "success" and t.get("result_full"):
+                try:
+                    res = eval(t["result_full"]) if isinstance(t["result_full"], str) else t["result_full"]
+                    if isinstance(res, dict) and "output" in res:
+                        final_reply = res["output"]
+                        break
+                except Exception:
+                    pass
+        # 其次从 aggregate 任务提取
+        if not final_reply:
+            for tid, t in tasks.items():
+                if t.get("task_type") == "aggregate" and t.get("status") == "success" and t.get("result_full"):
+                    try:
+                        res = eval(t["result_full"]) if isinstance(t["result_full"], str) else t["result_full"]
+                        if isinstance(res, dict) and "aggregation" in res:
+                            agg = res["aggregation"]
+                            if isinstance(agg, dict):
+                                for k, v in agg.items():
+                                    if isinstance(v, dict) and "answer" in v:
+                                        final_reply = v["answer"]
+                                        break
+                                    if isinstance(v, dict) and "output" in v:
+                                        final_reply = v["output"]
+                                        break
+                            if not final_reply:
+                                final_reply = json.dumps(agg, ensure_ascii=False)
+                            break
+                    except Exception:
+                        pass
+
+    # 更新 session history 中的 assistant_reply
     turns = session.working_memory.turns if session.working_memory else []
+    if turns:
+        turns[-1].assistant_reply = final_reply
     result.session_history = [
         {"turn_id": turn.turn_id, "user_message": turn.user_message,
          "assistant_reply": turn.assistant_reply, "intent": turn.intent,
          "rewritten_query": turn.rewritten_query}
         for turn in turns
     ]
-    if turns:
-        result.final_response = turns[-1].assistant_reply
+    result.final_response = final_reply
 
     # LLM-as-judge 评估
     if result.has_exception:

@@ -91,7 +91,7 @@ prepare: count=5, difficulty=tricky
 PLANNER_TOOL_REGISTRY_DESC = """
 kb_retrieve(query, top_k, company?, position?) → chunks[], meta, total
   成本: medium | 幂等: 是 | 可缓存: 是
-match_analyze(resume_text, jd_source, attributes?, company?, position?) → score, gaps[], suggestions[]
+match_analyze(resume_text, jd_text, attributes?, company?, position?) → score, gaps[], suggestions[]
   成本: high | 幂等: 是 | 依赖: kb_retrieve.chunks 或附件文本
 qa_synthesize(question, evidence_chunks, qa_type, attributes?, company?, position?) → answer, citations[], confidence
   成本: medium | 幂等: 是 | 依赖: evidence（kb_retrieve.chunks 或附件）
@@ -214,8 +214,9 @@ PLANNER_OUTPUT_SCHEMA = """
       "description": "分析简历与JD匹配度",
       "parameters": {
         "resume_text": "{{global_slots.resume_text}}",
-        "jd_source": "kb",
-        "jd_data": {"chunks": "{{T0.output.chunks}}"},
+        "jd_text": "{{T0.output.chunks}}",
+        "company": "{{global_slots.company}}",
+        "position": "{{global_slots.position}}",
         "attributes": "{{intent_assess.attributes}}"
       },
       "dependencies": ["T0"],
@@ -858,8 +859,9 @@ class TaskGraphPlanner:
                     description="简历匹配分析",
                     parameters={
                         "resume_text": "{{global_slots.resume_text}}",
-                        "jd_source": "kb",
-                        "jd_data": {"chunks": "{{T0.output.chunks}}"},
+                        "jd_text": "{{T0.output.chunks}}",
+                        "company": "{{global_slots.company}}",
+                        "position": "{{global_slots.position}}",
                     },
                     dependencies=["T0"],
                     fallback=TaskFallback(action="skip", reason="匹配分析失败", default_params={"score": 0, "gaps": ["分析失败"]}),
