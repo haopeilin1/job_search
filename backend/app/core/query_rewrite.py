@@ -328,25 +328,28 @@ class QueryRewriter:
         history_slots: Dict[str, str],
     ) -> Optional[Dict]:
         """
-        使用 LLM 进行 follow-up 检测和指代消解。
+        使用 LLM 进行 follow-up 检测、指代消解和口语降噪。
         返回结构化结果，失败返回 None（由上层回退到规则）。
         """
-        if not history_slots:
-            # 没有历史槽位时，无需 LLM 判断
-            return None
+        # 即使首轮对话也应走 LLM 改写（口语降噪），不跳过
 
         system_prompt = """你是对话理解助手。根据用户当前问题和最近对话历史，判断：
 1. follow_up_type：当前问题与历史的关系
    - "expand"：追问/展开（如"具体怎么做""薪资呢""那个岗位加班吗"）
    - "switch"：切换话题/实体（如"那看看百度呢""换成后端"）
-   - "clarify"：澄清/修正（如"不对，我说的是算法岗""纠正一下"）
-   - "none"：全新问题，与历史无关
+   - "clarify"：澄清/修正上轮系统的回答（如"不对，我说的是算法岗""纠正一下"）
+   - "none"：全新问题，与历史无关。注意：如果对话历史为空，则必须是"none"
 
 2. resolved_references：指代消解映射
    - 如果用户用"那个""这个""它""刚才"等指代历史中的实体，给出映射 {指代词: 具体实体}
    - 没有指代则返回空对象 {}
 
 3. rewritten_query：改写后的完整query（将指代替换为具体实体，去除口语冗余）
+   重要原则：
+   - 不要改变用户的原始意图
+   - 不要补全用户没有提到的信息
+   - 不要把它变成疑问句（如"哪个岗位"），保持原意
+   - 首轮对话中用户说"分析一下这个岗"，改写后应为"分析一下这个岗位"，不要变成"请具体分析一下哪个岗位"
 
 必须输出合法JSON，不要markdown代码块：
 {"follow_up_type": "...", "resolved_references": {...}, "rewritten_query": "..."}"""
@@ -361,14 +364,14 @@ class QueryRewriter:
 请输出JSON。"""
 
         try:
-            llm = LLMClient.from_config("memory")
+            llm = LLMClient.from_config("planner")
             raw = await llm.generate(
                 prompt=user_prompt,
                 system=system_prompt,
                 temperature=0.1,
                 max_tokens=512,
                 json_mode=True,
-                timeout=12.0,  # turbo 通常 1-3s 完成，12s 足够容错
+                timeout=60.0,
             )
             parsed = LLMClient.safe_parse_json(raw)
             if not parsed:
@@ -377,6 +380,11 @@ class QueryRewriter:
 
             follow_up_type = parsed.get("follow_up_type", "none")
             if follow_up_type not in ("expand", "switch", "clarify", "none"):
+                follow_up_type = "none"
+            
+            # 兜底：首轮对话（无历史上下文）强制 follow_up_type="none"
+            if not history_context and follow_up_type != "none":
+                logger.info(f"[QueryRewrite] 首轮对话被LLM误判为 {follow_up_type}，强制修正为 none")
                 follow_up_type = "none"
 
             resolved_references = parsed.get("resolved_references", {})

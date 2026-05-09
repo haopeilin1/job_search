@@ -1846,8 +1846,8 @@ class LLMIntentRouter:
         raw_message: Optional[str] = None,
     ) -> MultiIntentResult:
         """多意图识别流水线入口：RuleRegistry → SmallModelCalibrator → LLMFallbackClassifier"""
-        # ① 规则引擎（全量收集，使用原始消息避免 QueryRewriter 副作用）
-        msg_for_rules = raw_message or rewrite_result.rewritten_query
+        # ① 规则引擎（优先使用 QueryRewrite 结果，更好地处理多轮对话）
+        msg_for_rules = rewrite_result.rewritten_query or raw_message
         rule_matches = self.rule_registry.classify_all(
             msg_for_rules, 
             attachments,
