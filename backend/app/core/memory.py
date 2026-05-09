@@ -131,6 +131,21 @@ class LongTermMemory:
 
 
 @dataclass
+class PendingClarification:
+    """澄清状态：当系统需要用户补充信息时保存"""
+    pending_intent: str = ""           # 如 "verify", "assess"
+    missing_slots: List[str] = field(default_factory=list)
+    clarification_question: str = ""   # 上轮系统问的问题
+    expected_slot_types: List[str] = field(default_factory=list)  # 期望补充的槽位类型
+    created_turn_id: int = 0           # 创建时的轮次ID（用于过期判断）
+    resolved_slots: Dict[str, Any] = field(default_factory=dict)  # 已解析的槽位（由QueryRewriter提供）
+
+    def is_expired(self, current_turn_id: int, max_gap: int = 2) -> bool:
+        """超过 max_gap 轮未解决则过期"""
+        return current_turn_id - self.created_turn_id > max_gap
+
+
+@dataclass
 class SessionMemory:
     """完整的会话记忆容器"""
     session_id: str
@@ -147,6 +162,9 @@ class SessionMemory:
 
     # 用户通过附件上传的 JD 文本（OCR 提取），存在时跳过知识库检索
     user_provided_jd: str = ""
+
+    # 澄清状态机：当系统触发澄清时保存，用户回复后恢复
+    pending_clarification: Optional[PendingClarification] = None
 
 
 # ═══════════════════════════════════════════════════════

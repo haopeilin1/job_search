@@ -107,6 +107,35 @@ general_chat(user_message, chat_type?, user_profile?) → response
   成本: low
 """
 
+PLANNER_KB_SCHEMA = """
+### 5. 知识库覆盖范围与检索决策（关键）
+
+#### 知识库实际覆盖（共30条JD，294个文本片段）
+
+**覆盖的公司（13家，按出现频率排序）**：
+字节跳动、百度、阿里巴巴、蚂蚁集团、美团、快手、小米、滴滴、联想、淘天集团、vivo、ACG、某小公司
+
+**覆盖的岗位类型（以AI产品+后端为主）**：
+- AI产品经理（及各类变体：AI Agent产品经理、AI大模型产品经理、AI应用产品经理、搜索推荐AI PM等）
+- AI产品实习生（暑期实习、转正实习、日常实习等）
+- 后端开发 / Java后端
+- 大模型应用PM
+
+**明确不在知识库中的公司**：
+Meta、Google、Amazon、Microsoft、Apple 等海外公司；拼多多、京东、华为、网易、携程、贝壳、蔚来、理想、大疆、商汤、科大讯飞、360、B站、知乎、微博、OPPO、平安、招商银行 等部分国内公司（注：知识库持续扩充中，但当前版本未覆盖）
+
+**明确不在知识库中的岗位类型**：
+算法工程师、前端开发、数据分析师、运营、UI设计师、测试工程师、运维工程师、产品经理（非AI方向）、销售、市场、HR 等
+
+#### 检索决策原则（防止过度依赖外部检索）
+
+1. **先尝试 kb_retrieve**：只要用户提到的公司/岗位在知识库覆盖范围内，必须先调用 kb_retrieve。即使意图是 CHAT，若涉及具体岗位适配性问题，也应先检索JD要求。
+2. **kb_retrieve 结果不足时再 external_search**：当 kb_retrieve 返回 chunks < 2 或 hybrid_score < 0.3 时，再触发 external_search 作为补充。
+3. **明显不在库中的实体可直接 external_search**：用户提到 Meta/Google/海外公司，或明显不在库中的岗位（如算法工程师、前端开发），可在规划时直接加入 external_search，但仍建议先执行一次 kb_retrieve 确认（成本低，且避免知识库已更新）。
+4. **严禁一刀切**：不要将所有查询都路由到 external_search。知识库对国内头部互联网公司的AI产品岗和后端岗覆盖较全，优先使用内部知识。
+5. **实时信息才用 external_search**：涉及"最新融资""最近裁员""组织架构变动""2026/2027年最新招聘"等时效性信息时，external_search 是必要的。静态JD信息优先使用 kb_retrieve。
+"""
+
 PLANNER_RULES = """
 ---
 
@@ -411,6 +440,7 @@ class TaskGraphPlanner:
         return (
             PLANNER_SYSTEM_PROMPT
             + PLANNER_TOOL_REGISTRY_DESC
+            + PLANNER_KB_SCHEMA
             + PLANNER_RULES
             + PLANNER_OUTPUT_SCHEMA
         )
@@ -612,6 +642,69 @@ class TaskGraphPlanner:
         if not graph.execution_strategy.critical_path:
             graph.execution_strategy.critical_path = graph.compute_critical_path()
 
+        # 5. 任务完整性检查：需要检索结果的工具必须有 kb_retrieve 前置
+        graph = self._ensure_kb_retrieve(graph)
+
+        return graph
+
+    def _ensure_kb_retrieve(self, graph: TaskGraph) -> TaskGraph:
+        """
+        确保需要检索结果的工具任务有 kb_retrieve 前置。
+        如果 LLM 规划时漏掉了 kb_retrieve，自动补全。
+        """
+        has_kb = any(t.tool_name == "kb_retrieve" for t in graph.tasks)
+        if has_kb:
+            return graph
+
+        # 需要检索结果的工具列表
+        needs_retrieval = {"global_rank", "match_analyze", "qa_synthesize"}
+        retrieval_consumers = [t for t in graph.tasks if t.tool_name in needs_retrieval]
+        if not retrieval_consumers:
+            return graph
+
+        # 从上下文推断检索 query
+        ctx = getattr(graph, "context", {}) or {}
+        search_keywords = (ctx.get("global_slots") or {}).get("search_keywords", "")
+        if not search_keywords:
+            primary_intent = ctx.get("primary_intent", "chat")
+            search_keywords = primary_intent
+
+        kb_task = TaskNode(
+            task_id="T0",
+            task_type="tool_call",
+            tool_name="kb_retrieve",
+            description="检索候选岗位/证据",
+            parameters={"query": search_keywords, "top_k": 10},
+            fallback=TaskFallback(action="ask_user", reason="未找到相关信息"),
+        )
+        kb_task.params_hash = kb_task.compute_params_hash()
+
+        # 重命名现有任务 ID，为 kb_retrieve 腾出 T0
+        id_map: Dict[str, str] = {}
+        for t in graph.tasks:
+            old_id = t.task_id
+            # 简单重命名：T0 -> T1, T1 -> T2, ...
+            if old_id.startswith("T") and old_id[1:].isdigit():
+                new_id = f"T{int(old_id[1:]) + 1}"
+                id_map[old_id] = new_id
+                t.task_id = new_id
+            else:
+                id_map[old_id] = old_id
+
+        # 更新所有任务的依赖
+        for t in graph.tasks:
+            t.dependencies = [id_map.get(d, d) for d in t.dependencies]
+
+        # 让检索消费者依赖 kb_retrieve
+        for t in graph.tasks:
+            if t.tool_name in needs_retrieval and "T0" not in t.dependencies:
+                t.dependencies.insert(0, "T0")
+
+        graph.tasks.insert(0, kb_task)
+        logger.info(
+            f"[TaskGraphPlanner] 自动补全 kb_retrieve | consumers={len(retrieval_consumers)} | "
+            f"query={search_keywords}"
+        )
         return graph
 
     def _merge_common_prefixes(self, graph: TaskGraph) -> TaskGraph:

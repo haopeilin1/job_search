@@ -45,8 +45,13 @@ from app.core.config import settings
 from app.core.llm_client import LLMClient, TIMEOUT_LIGHT, TIMEOUT_STANDARD, TIMEOUT_HEAVY
 from app.core.memory import SessionMemory, DialogueTurn, WorkingMemory
 from app.core.query_rewrite import QueryRewriter, QueryRewriteResult
-from app.core.intent_recognition import IntentRecognizer, IntentResult
-from app.core.planner import TaskPlanner, TaskGraph, TaskNode
+# 新体系：LLMIntentRouter + TaskGraphPlanner
+from app.core.llm_intent import LLMIntentRouter
+from app.core.llm_planner import TaskGraphPlanner
+from app.core.new_arch_adapter import multi_intent_result_to_intent_result, convert_task_graph
+# 保留旧类型导入用于类型注解和兼容性
+from app.core.intent_recognition import IntentResult
+from app.core.planner import TaskGraph, TaskNode
 from app.core.react_executor import ReActExecutor
 from app.core.state import llm_config_store
 
@@ -478,10 +483,27 @@ async def run_single_case(
     # 多轮对话：复用传入的 session，否则创建新的
     if session is None:
         session = SessionMemory(session_id=sid)
+    # 设置全局槽位：如果有简历，标记 resume_available
+    if resume_text and len(resume_text.strip()) > 50:
+        if not hasattr(session, "global_slots"):
+            session.global_slots = {}
+        session.global_slots["resume_available"] = True
     start_time = time.time()
     tracker.reset()
     result.resume_text = resume_text
     result.user_message = case.get("message", "")
+
+    # 注入模拟多轮上下文（如果 eval_context 中配置了）
+    injected_slots = eval_ctx.get("injected_history_slots")
+    if injected_slots and isinstance(injected_slots, dict):
+        if session.long_term is None:
+            from app.core.memory import LongTermMemory
+            session.long_term = LongTermMemory()
+        session.long_term.entities.update(injected_slots)
+    injected_cache = eval_ctx.get("injected_evidence_cache")
+    if injected_cache and isinstance(injected_cache, list):
+        session.evidence_cache = list(injected_cache)
+        session.evidence_cache_query = eval_ctx.get("injected_evidence_query", "")
 
     try:
         # ── Step 0: Query Rewrite ──
@@ -497,10 +519,17 @@ async def run_single_case(
         )
         result.rewrite_result = result.rewrite.output
 
-        # ── Step 1: Intent Recognition ──
+        # ── Step 1: Intent Recognition (新体系) ──
         t1 = time.time()
-        recognizer = IntentRecognizer()
-        intent_result = await recognizer.recognize(rewrite_result=rw, session=session)
+        intent_router = LLMIntentRouter()
+        multi_result = await intent_router.route_multi(
+            rewrite_result=rw,
+            session=session,
+            attachments=[],  # 测评机无附件
+            raw_message=case["message"],
+        )
+        # 转换为旧格式以保持下游兼容性
+        intent_result = multi_intent_result_to_intent_result(multi_result)
         result.intent = ComponentResult(
             component="intent_recognition",
             success=True,
@@ -511,25 +540,51 @@ async def run_single_case(
 
         # 澄清场景：不生成 plan，直接标记为 clarification
         if intent_result.needs_clarification:
+            # 保存对话历史和澄清状态（供多轮用例复用）
+            turn_id = len(session.working_memory.turns) + 1
+            turn = DialogueTurn(
+                turn_id=turn_id,
+                user_message=case["message"],
+                assistant_reply=intent_result.clarification_question or "抱歉，我没有完全理解您的意思，能再详细说明一下吗？",
+                intent=intent_result.demands[0].intent_type if intent_result.demands else "chat",
+                rewritten_query=rw.rewritten_query,
+                evidence_score=0.0,
+            )
+            session.working_memory.append(turn)
+            # 保存澄清状态机
+            from app.core.memory import PendingClarification
+            primary = intent_result.demands[0].intent_type if intent_result.demands else "chat"
+            session.pending_clarification = PendingClarification(
+                pending_intent=primary,
+                missing_slots=intent_result.missing_entities or [],
+                clarification_question=intent_result.clarification_question or "",
+                expected_slot_types=intent_result.missing_entities or [],
+                created_turn_id=turn_id,
+                resolved_slots=dict(intent_result.resolved_entities or {}),
+            )
+            # 将已解析槽位同步到 global_slots，供 QueryRewrite 检测 follow_up
+            if intent_result.resolved_entities:
+                if not hasattr(session, "global_slots"):
+                    session.global_slots = {}
+                for k, v in intent_result.resolved_entities.items():
+                    if v is not None:
+                        session.global_slots[k] = v
             result.task_success = True  # 澄清也是正确的行为
             result.e2e_latency_ms = (time.time() - start_time) * 1000
             result.llm_summary = tracker.summary()
             return result
 
-        # ── Step 2: Planner ──
+        # ── Step 2: Planner (新体系) ──
         t2 = time.time()
-        evidence_cache_summary = ""
-        planner = TaskPlanner()
-        graph = await planner.create_graph(
-            rewritten_query=rw.rewritten_query,
-            demands=[{"intent_type": d.intent_type, "entities": d.entities, "priority": d.priority}
-                     for d in intent_result.demands],
-            resolved_entities=intent_result.resolved_entities,
+        new_planner = TaskGraphPlanner()
+        new_graph = await new_planner.create_graph(
+            multi_result=multi_result,
+            session=session,
             resume_text=resume_text,
-            search_keywords=rw.search_keywords or "",
-            follow_up_type=rw.follow_up_type,
-            evidence_cache_summary=evidence_cache_summary,
+            rewrite_result=rw,
+            history_cache=[],
         )
+        graph = convert_task_graph(new_graph)
         result.planner = ComponentResult(
             component="planner",
             success=True,
@@ -594,6 +649,17 @@ async def run_single_case(
         # 意图识别跳过
         if result.intent_result:
             result.intent_skipped = result.intent_result.get("skipped_due_to_timeout", False)
+
+        # 保存对话历史（供多轮用例复用上下文）
+        turn = DialogueTurn(
+            turn_id=len(session.working_memory.turns) + 1,
+            user_message=case["message"],
+            assistant_reply="",  # 测评机不生成自然语言回复
+            intent=intent_result.demands[0].intent_type if intent_result.demands else "chat",
+            rewritten_query=rw.rewritten_query,
+            evidence_score=0.0,
+        )
+        session.working_memory.append(turn)
 
         # ── 任务成功判定（前置：非异常、非澄清） ──
         # 最终由 LLM-as-judge 评估，此处先留空，在 final_response 获取后再 judge
@@ -723,6 +789,7 @@ def compute_metrics(results: List[TurnResult]) -> Dict[str, Any]:
         "assess": "match_assess",
         "verify": "attribute_verify",
         "prepare": "interview_prepare",
+        "manage": "resume_manage",
         "chat": "general_chat",
         "clarification": "clarification",
     }

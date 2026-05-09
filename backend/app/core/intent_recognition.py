@@ -309,7 +309,7 @@ class SmallModelRecognizer:
 用户一句话可能包含多个需求，必须同时识别出来。例如：
 - "帮我看看字节AI产品我匹配不，再给我准备几道面试题" → demands 应包含 match_assess + interview_prepare
 - "推几个我能投的，顺便告诉我面试要准备啥" → demands 应包含 position_explore + interview_prepare
-- "字节和百度的产品岗，哪个我更合适？" → demands 应包含两个 match_assess（或一个对比意图）
+- "字节和百度的产品岗，哪个我更适？" → demands 应包含两个 match_assess（或一个对比意图）
 
 输出格式（严格JSON）：
 {

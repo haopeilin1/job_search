@@ -11,28 +11,103 @@
   "scenario": "属性查询_薪资",
   "status": "success",
   "error": null,
-  "ttfb": 0.006,
-  "total_latency": 115.18,
-  "event_count": 93,
+  "ttfb": 0.007,
+  "total_latency": 139.62,
+  "event_count": 196,
   "pred_intent": "attribute_verify",
   "pred_tools": [
     {
       "tool": "kb_retrieve",
       "status": "✅",
       "params": {
-        "query": "阿里后端岗工资",
+        "query": "阿里后端岗",
         "company": "阿里",
         "position": "后端",
-        "top_k": 5
+        "top_k": 10
       },
-      "result_preview": "{'chunks': [{'chunk_id': '45bd2600-af57-45fe-a96e-c6cae6838c7a_chunk_0', 'content': '公司：某小公司，岗位：Java后端，地点：成都，薪资：10k-20k', 'metadata': {'category': '技术', 'company': '某小公司', 'domain': '传统', 'index': 0, "
+      "result_preview": "{'chunks': [{'chunk_id': '9cde8355-dcc0-434e-97c4-67dfc5dae5b8_chunk_5', 'content': '【阿里巴巴 · 后端开发 硬性要求】\\n本科及以上学历', 'metadata': {'company': '阿里巴巴', 'index': 5, 'jd_id': '9cde8355-dcc0-434e-97c4-67dfc5d"
     },
     {
-      "tool": "qa_synthesize",
+      "tool": "match_analyze",
       "status": "✅",
       "params": {
-        "question": "阿里后端岗工资开多少",
-        "evidence_chunks": [
+        "resume_text": "AI\n / \n157-xxxx-3421  |  chenyutong2027@163.com  |  \n  |  2027\n6\n2024.09  2027.06\n · \nAI\n· \nGPA\n3.4/4.0  |  \n2020.09  2024.06\n · \n · \n  |  \nWeb\n \n \n2025.03  2025.11\n  |  \n40\n\"\n\"\n\"\n\"\nFigma\nAI\nEmbedding\nJD\nAPI\nPrompt\n20\nPDF\n \n \nRAG\n2024.10  2025.02\n  |  \n80\nOCR\nWeb\n\"\n\"\n · \n2024.09  2025.06\n10\n · \n2022.03  2023.06\n2025.05    \n2024.11    \nAI\n2023.06    \n2022.12    \nFigma\nAxure\nXmind\n/\nPRD\nPrompt Engineering\nRAG\nEmbedding\nCET-4\n525\nOffice\nExcel",
+        "jd_text": [
+          {
+            "chunk_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8_chunk_5",
+            "content": "【阿里巴巴 · 后端开发 硬性要求】\n本科及以上学历",
+            "metadata": {
+              "company": "阿里巴巴",
+              "index": 5,
+              "jd_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8",
+              "position": "后端开发",
+              "priority": "high",
+              "section": "hard_requirements",
+              "strategy": "semantic"
+            },
+            "distance": null,
+            "bm25_score": 2.419673105222523,
+            "vec_norm": 0.0,
+            "bm25_norm": 0.04303465571006974,
+            "hybrid_score": 0.012910396713020921,
+            "rerank_score": 0.9413
+          },
+          {
+            "chunk_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8_chunk_2",
+            "content": "【阿里巴巴 · 后端开发 硬性要求】\n3年以上Java开发经验",
+            "metadata": {
+              "company": "阿里巴巴",
+              "index": 2,
+              "jd_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8",
+              "position": "后端开发",
+              "priority": "high",
+              "section": "hard_requirements",
+              "strategy": "semantic"
+            },
+            "distance": null,
+            "bm25_score": 2.419673105222523,
+            "vec_norm": 0.0,
+            "bm25_norm": 0.04303465571006974,
+            "hybrid_score": 0.012910396713020921,
+            "rerank_score": 0.9093
+          },
+          {
+            "chunk_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a_chunk_1",
+            "content": "【某小公司 · Java后端 岗位职责】\n1. 负责传统企业内部管理系统的设计与开发。2. 数据库CRUD操作与报表开发。3. 系统日常维护与bug修复。",
+            "metadata": {
+              "company": "某小公司",
+              "index": 1,
+              "jd_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a",
+              "position": "Java后端",
+              "section": "responsibilities",
+              "strategy": "semantic"
+            },
+            "distance": null,
+            "bm25_score": 3.5059591076997942,
+            "vec_norm": 0.0,
+            "bm25_norm": 0.4456776538737023,
+            "hybrid_score": 0.13370329616211069,
+            "rerank_score": 0.849
+          },
+          {
+            "chunk_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a_chunk_5",
+            "content": "【某小公司 · Java后端 软性要求/加分项】\n有ERP系统开发经验优先",
+            "metadata": {
+              "company": "某小公司",
+              "index": 5,
+              "jd_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a",
+              "position": "Java后端",
+              "priority": "medium",
+              "section": "soft_requirements",
+              "strategy": "semantic"
+            },
+            "distance": null,
+            "bm25_score": 4.814752021433315,
+            "vec_norm": 0.0,
+            "bm25_norm": 0.9307951105648626,
+            "hybrid_score": 0.2792385331694588,
+            "rerank_score": 0.5079
+          },
           {
             "chunk_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a_chunk_0",
             "content": "公司：某小公司，岗位：Java后端，地点：成都，薪资：10k-20k",
@@ -54,26 +129,7 @@
             "vec_norm": 0.0,
             "bm25_norm": 1.0,
             "hybrid_score": 0.3,
-            "rerank_score": 0.6751
-          },
-          {
-            "chunk_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a_chunk_5",
-            "content": "【某小公司 · Java后端 软性要求/加分项】\n有ERP系统开发经验优先",
-            "metadata": {
-              "company": "某小公司",
-              "index": 5,
-              "jd_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a",
-              "position": "Java后端",
-              "priority": "medium",
-              "section": "soft_requirements",
-              "strategy": "semantic"
-            },
-            "distance": null,
-            "bm25_score": 4.814752021433315,
-            "vec_norm": 0.0,
-            "bm25_norm": 0.9307951105648626,
-            "hybrid_score": 0.2792385331694588,
-            "rerank_score": 0.153
+            "rerank_score": 0.4779
           },
           {
             "chunk_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a_chunk_2",
@@ -92,7 +148,7 @@
             "vec_norm": 0.0,
             "bm25_norm": 1.0,
             "hybrid_score": 0.3,
-            "rerank_score": 0.0738
+            "rerank_score": 0.3578
           },
           {
             "chunk_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a_chunk_4",
@@ -111,7 +167,25 @@
             "vec_norm": 0.0,
             "bm25_norm": 1.0,
             "hybrid_score": 0.3,
-            "rerank_score": 0.0518
+            "rerank_score": 0.3448
+          },
+          {
+            "chunk_id": "370b955c-4316-461e-9d41-4a2ba2c7389c_chunk_0",
+            "content": "公司：阿里巴巴，岗位：AI产品经理，地点：远程，薪资：薪资面议",
+            "metadata": {
+              "company": "阿里巴巴",
+              "index": 0,
+              "jd_id": "370b955c-4316-461e-9d41-4a2ba2c7389c",
+              "position": "AI产品经理",
+              "section": "basic_info",
+              "strategy": "semantic"
+            },
+            "distance": null,
+            "bm25_score": 2.450550780236238,
+            "vec_norm": 0.0,
+            "bm25_norm": 0.054479781225350056,
+            "hybrid_score": 0.016343934367605017,
+            "rerank_score": 0.3347
           },
           {
             "chunk_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a_chunk_3",
@@ -130,20 +204,241 @@
             "vec_norm": 0.0,
             "bm25_norm": 1.0,
             "hybrid_score": 0.3,
-            "rerank_score": 0.0134
+            "rerank_score": 0.1594
+          },
+          {
+            "chunk_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a_chunk_6",
+            "content": "【某小公司 · Java后端 关键词】\nJava, Spring Boot, MySQL, ERP, 后端",
+            "metadata": {
+              "company": "某小公司",
+              "index": 6,
+              "jd_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a",
+              "position": "Java后端",
+              "section": "keywords",
+              "strategy": "semantic"
+            },
+            "distance": null,
+            "bm25_score": 4.4289686696815735,
+            "vec_norm": 0.0,
+            "bm25_norm": 0.7878005722603091,
+            "hybrid_score": 0.2363401716780927,
+            "rerank_score": 0.0092
           }
         ],
-        "qa_type": "factual"
+        "company": "阿里",
+        "position": "后端"
       },
-      "result_preview": "{'answer': '基于提供的检索证据，无法回答阿里后端岗的具体薪资。现有证据仅包含某小公司 Java 后端岗位的薪资信息（10k-20k）[1]，未涉及阿里巴巴公司的相关数据。建议查阅阿里官方招聘渠道或更具针对性的薪资报告。', 'citations': [{'index': 1, 'source': '某小公司-Java 后端 - 薪资', 'quote': '薪资：10k-20k'}],"
+      "result_preview": "{'score': 40, 'label': '不匹配', 'advantages': ['CET-4', 'Office Excel'], 'weaknesses': ['候选人缺乏3年以上Java开发经验。虽然具备一定的Web开发和设计工具使用经验，但未见明确的后端开发经历。此外，未提供技术技能的具体描述，如嵌入式技术、API开发等。'], 'suggestions': [\"核心能力要求: ["
+    },
+    {
+      "tool": "qa_synthesize",
+      "status": "❌",
+      "params": {
+        "question": "阿里后端岗工资开多少",
+        "evidence_chunks": [
+          {
+            "chunk_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8_chunk_5",
+            "content": "【阿里巴巴 · 后端开发 硬性要求】\n本科及以上学历",
+            "metadata": {
+              "company": "阿里巴巴",
+              "index": 5,
+              "jd_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8",
+              "position": "后端开发",
+              "priority": "high",
+              "section": "hard_requirements",
+              "strategy": "semantic"
+            },
+            "distance": null,
+            "bm25_score": 2.419673105222523,
+            "vec_norm": 0.0,
+            "bm25_norm": 0.04303465571006974,
+            "hybrid_score": 0.012910396713020921,
+            "rerank_score": 0.9413
+          },
+          {
+            "chunk_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8_chunk_2",
+            "content": "【阿里巴巴 · 后端开发 硬性要求】\n3年以上Java开发经验",
+            "metadata": {
+              "company": "阿里巴巴",
+              "index": 2,
+              "jd_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8",
+              "position": "后端开发",
+              "priority": "high",
+              "section": "hard_requirements",
+              "strategy": "semantic"
+            },
+            "distance": null,
+            "bm25_score": 2.419673105222523,
+            "vec_norm": 0.0,
+            "bm25_norm": 0.04303465571006974,
+            "hybrid_score": 0.012910396713020921,
+            "rerank_score": 0.9093
+          },
+          {
+            "chunk_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a_chunk_1",
+            "content": "【某小公司 · Java后端 岗位职责】\n1. 负责传统企业内部管理系统的设计与开发。2. 数据库CRUD操作与报表开发。3. 系统日常维护与bug修复。",
+            "metadata": {
+              "company": "某小公司",
+              "index": 1,
+              "jd_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a",
+              "position": "Java后端",
+              "section": "responsibilities",
+              "strategy": "semantic"
+            },
+            "distance": null,
+            "bm25_score": 3.5059591076997942,
+            "vec_norm": 0.0,
+            "bm25_norm": 0.4456776538737023,
+            "hybrid_score": 0.13370329616211069,
+            "rerank_score": 0.849
+          },
+          {
+            "chunk_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a_chunk_5",
+            "content": "【某小公司 · Java后端 软性要求/加分项】\n有ERP系统开发经验优先",
+            "metadata": {
+              "company": "某小公司",
+              "index": 5,
+              "jd_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a",
+              "position": "Java后端",
+              "priority": "medium",
+              "section": "soft_requirements",
+              "strategy": "semantic"
+            },
+            "distance": null,
+            "bm25_score": 4.814752021433315,
+            "vec_norm": 0.0,
+            "bm25_norm": 0.9307951105648626,
+            "hybrid_score": 0.2792385331694588,
+            "rerank_score": 0.5079
+          },
+          {
+            "chunk_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a_chunk_0",
+            "content": "公司：某小公司，岗位：Java后端，地点：成都，薪资：10k-20k",
+            "metadata": {
+              "category": "技术",
+              "company": "某小公司",
+              "domain": "传统",
+              "index": 0,
+              "jd_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a",
+              "max_years": 3,
+              "min_education": "大专",
+              "min_years": 1,
+              "position": "Java后端",
+              "section": "basic_info",
+              "strategy": "semantic"
+            },
+            "distance": null,
+            "bm25_score": 5.001459111930951,
+            "vec_norm": 0.0,
+            "bm25_norm": 1.0,
+            "hybrid_score": 0.3,
+            "rerank_score": 0.4779
+          },
+          {
+            "chunk_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a_chunk_2",
+            "content": "【某小公司 · Java后端 硬性要求】\n1年以上Java开发经验",
+            "metadata": {
+              "company": "某小公司",
+              "index": 2,
+              "jd_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a",
+              "position": "Java后端",
+              "priority": "high",
+              "section": "hard_requirements",
+              "strategy": "semantic"
+            },
+            "distance": null,
+            "bm25_score": 5.001459111930951,
+            "vec_norm": 0.0,
+            "bm25_norm": 1.0,
+            "hybrid_score": 0.3,
+            "rerank_score": 0.3578
+          },
+          {
+            "chunk_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a_chunk_4",
+            "content": "【某小公司 · Java后端 硬性要求】\n大专及以上学历",
+            "metadata": {
+              "company": "某小公司",
+              "index": 4,
+              "jd_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a",
+              "position": "Java后端",
+              "priority": "high",
+              "section": "hard_requirements",
+              "strategy": "semantic"
+            },
+            "distance": null,
+            "bm25_score": 5.001459111930951,
+            "vec_norm": 0.0,
+            "bm25_norm": 1.0,
+            "hybrid_score": 0.3,
+            "rerank_score": 0.3448
+          },
+          {
+            "chunk_id": "370b955c-4316-461e-9d41-4a2ba2c7389c_chunk_0",
+            "content": "公司：阿里巴巴，岗位：AI产品经理，地点：远程，薪资：薪资面议",
+            "metadata": {
+              "company": "阿里巴巴",
+              "index": 0,
+              "jd_id": "370b955c-4316-461e-9d41-4a2ba2c7389c",
+              "position": "AI产品经理",
+              "section": "basic_info",
+              "strategy": "semantic"
+            },
+            "distance": null,
+            "bm25_score": 2.450550780236238,
+            "vec_norm": 0.0,
+            "bm25_norm": 0.054479781225350056,
+            "hybrid_score": 0.016343934367605017,
+            "rerank_score": 0.3347
+          },
+          {
+            "chunk_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a_chunk_3",
+            "content": "【某小公司 · Java后端 硬性要求】\n熟悉Spring Boot、MySQL",
+            "metadata": {
+              "company": "某小公司",
+              "index": 3,
+              "jd_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a",
+              "position": "Java后端",
+              "priority": "high",
+              "section": "hard_requirements",
+              "strategy": "semantic"
+            },
+            "distance": null,
+            "bm25_score": 5.001459111930951,
+            "vec_norm": 0.0,
+            "bm25_norm": 1.0,
+            "hybrid_score": 0.3,
+            "rerank_score": 0.1594
+          },
+          {
+            "chunk_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a_chunk_6",
+            "content": "【某小公司 · Java后端 关键词】\nJava, Spring Boot, MySQL, ERP, 后端",
+            "metadata": {
+              "company": "某小公司",
+              "index": 6,
+              "jd_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a",
+              "position": "Java后端",
+              "section": "keywords",
+              "strategy": "semantic"
+            },
+            "distance": null,
+            "bm25_score": 4.4289686696815735,
+            "vec_norm": 0.0,
+            "bm25_norm": 0.7878005722603091,
+            "hybrid_score": 0.2363401716780927,
+            "rerank_score": 0.0092
+          }
+        ]
+      },
+      "result_preview": "缺失必填参数: ['qa_type']"
     }
   ],
   "tools_called": [
     "kb_retrieve",
+    "match_analyze",
     "qa_synthesize"
   ],
-  "reply": "您好！针对您关心的阿里后端岗位薪资问题，经过检索分析，目前的情况如下：\n\n### 1. 数据查询结论\n基于当前的知识库检索，**暂时无法提供阿里巴巴公司的具体薪资数据**。\n*   **检索事实**：系统现有的检索结果仅包含“某小公司”Java 后端岗位的薪资信息（范围 10k-20k），并未收录阿里巴巴公司的相关薪酬记录。\n*   **可信度说明**：由于缺乏直接证据，当前无法基于现有数据给出具体的薪资数字。\n\n### 2. 专业求职建议\n为了获取更准确的信息，建议您参考以下渠道和方法：\n*   **官方渠道**：查阅阿里巴巴官方招聘网站或公众号，了解不同职级（如 P 序列）的薪酬结构说明。\n*   **职场社区**：参考脉脉、OfferShow 等平台上近期求职者的分享爆料，获取实时的一手数据。\n*   **行业报告**：关注互联网行业年度薪酬报告，了解后端岗位在市场中的分位值。\n\n### 3. 注意事项\n大厂薪资通常与**职级体系**、**工作地点**及**面试评级**强相关。在面试沟通中，建议您重点关注岗位的具体职级定位，以便更准确地评估薪资范围。\n\n希望这些建议能为您的求职规划提供有价值的参考！如有其他问题，欢迎随时咨询。",
-  "reply_length": 524,
+  "reply": "您好！作为您的求职顾问，我非常理解您对薪资水平的关注，但基于目前的检索结果和分析数据，有一个更关键的信息需要优先与您同步。\n\n### 💰 关于岗位薪资\n经检索现有职位信息库，**目前未收录阿里巴巴后端岗位的具体薪资数值**。知识库中仅包含该岗位的硬性要求（如本科及以上学历、3 年以上 Java 开发经验），而某小公司的后端薪资（10k-20k）参考意义有限。通常大厂薪资属于保密信息，会根据职级体系（如 P 序列）、面试评级及您目前的薪资基数综合定薪。\n\n### 📊 人岗匹配度分析（重要）\n在分析您与该岗位的匹配情况时，系统给出的评估结果需要您重点关注：\n\n*   **匹配度评分：** 40 分\n*   **匹配结论：** 不匹配\n*   **现有优势：** 具备 CET-4 英语能力、熟练使用 Office Excel。\n*   **核心差距：**\n    1.  **经验年限不足：** 岗位硬性要求\"3 年以上 Java 开发经验”，而您目前缺乏相关年限证明。\n    2.  **后端经历缺失：** 简历中未见明确的后端开发经历，多为 Web 开发或设计工具使用经验。\n    3.  **关键技术栈缺失：** 缺少嵌入式技术、API 开发、Prompt Engineering 及 RAG 等岗位核心技能描述。\n\n### 🚀 针对性提升建议\n鉴于目前匹配度较低，直接投递可能通过率不高。建议您采取以下“曲线救国”策略：\n\n1.  **补齐核心硬技能**\n    *   **重点突破：** 针对 JD 中要求的 Java 后端经验，建议参与至少 1 个完整的后端项目（如 API 开发、数据库设计），确保能清晰描述技术栈。\n    *   **新兴技能：** 若岗位涉及 AI 结合（如 Prompt Engineering、RAG），可尝试学习相关基础概念并在简历中体现学习成果。\n\n2.  **优化简历呈现（经验迁移）**\n    *   **挖掘亮点：** 虽然缺乏直接后端经验，但可将过往的 Web 开发经历中与后端交集的部分（如数据库 CRUD、接口联调）放大描述。\n    *   **量化成果：** 使用数据证明能力，例如“优化接口响应速度提升 20%\"而非仅列出工具名称。\n\n3.  **调整求职策略**\n    *   建议先关注对年限要求较宽松（如 1-2 年）的中级后端岗位，或规模稍小的互联网公司积累核心后端经验，待满足\"3 年经验”硬性门槛后再冲刺大厂。\n\n匹配度低并不代表没有机会，而是指明了我们需要填补的“差距”。建议您先集中精力提升 Java 后端实战能力，如有需要，我可以协助您进一步修改简历以突出潜在优势。加油！",
+  "reply_length": 1133,
   "intent_match": false,
   "tool_match_rate": 1.0,
   "has_reply": true,
@@ -151,469 +446,984 @@
     {
       "step": "intent",
       "message": "正在识别您的意图...",
-      "_time": 0.006361722946166992,
+      "_time": 0.006829500198364258,
       "type": "status"
     },
     {
       "step": "plan",
       "message": "正在规划任务...",
-      "_time": 1.4758615493774414,
+      "_time": 1.395958423614502,
       "type": "status"
     },
     {
       "step": "execute",
       "message": "正在执行分析...",
-      "_time": 6.0396728515625,
+      "_time": 7.138140439987183,
       "type": "status"
     },
     {
       "step": "aggregate",
       "message": "正在生成回复...",
-      "_time": 47.274640798568726,
+      "_time": 78.35010290145874,
       "type": "status"
     },
     {
-      "text": "您好！",
-      "_time": 109.95339608192444,
+      "text": "您好！作为您的",
+      "_time": 125.96462774276733,
       "type": "delta"
     },
     {
-      "text": "针对您关心的阿里",
-      "_time": 110.05671238899231,
+      "text": "求职",
+      "_time": 125.96722626686096,
       "type": "delta"
     },
     {
-      "text": "后端岗位薪资问题",
-      "_time": 110.06041169166565,
+      "text": "顾问，我非常理解",
+      "_time": 126.15664863586426,
       "type": "delta"
     },
     {
-      "text": "，经过检索分析",
-      "_time": 110.21271824836731,
+      "text": "您对",
+      "_time": 126.15927076339722,
       "type": "delta"
     },
     {
-      "text": "，目前",
-      "_time": 110.21738266944885,
+      "text": "薪资水平的关注，",
+      "_time": 126.29251337051392,
       "type": "delta"
     },
     {
-      "text": "的情况如下：\n\n",
-      "_time": 110.33986711502075,
+      "text": "但",
+      "_time": 126.29536843299866,
       "type": "delta"
     },
     {
-      "text": "### 1.",
-      "_time": 110.34236264228821,
+      "text": "基于目前的检索结果",
+      "_time": 126.45368480682373,
       "type": "delta"
     },
     {
-      "text": " 数据查询结论",
-      "_time": 110.40775752067566,
+      "text": "和分析",
+      "_time": 126.45637035369873,
       "type": "delta"
     },
     {
-      "text": "\n基于",
-      "_time": 110.41234278678894,
+      "text": "数据，有一个更",
+      "_time": 126.61743354797363,
       "type": "delta"
     },
     {
-      "text": "当前的知识库检索，",
-      "_time": 110.52877259254456,
+      "text": "关键的信息",
+      "_time": 126.62036156654358,
       "type": "delta"
     },
     {
-      "text": "**暂时",
-      "_time": 110.53336882591248,
+      "text": "需要优先与您同步",
+      "_time": 126.8503725528717,
       "type": "delta"
     },
     {
-      "text": "无法提供阿里巴巴公司的",
-      "_time": 110.61107206344604,
+      "text": "。\n\n###",
+      "_time": 126.85430669784546,
       "type": "delta"
     },
     {
-      "text": "具体薪资数据",
-      "_time": 110.61662745475769,
+      "text": " 💰 关于",
+      "_time": 126.93535923957825,
       "type": "delta"
     },
     {
-      "text": "**。\n*  ",
-      "_time": 110.79428100585938,
+      "text": "岗位",
+      "_time": 126.9383385181427,
       "type": "delta"
     },
     {
-      "text": " **检索事实",
-      "_time": 110.79795336723328,
+      "text": "薪资\n经检索",
+      "_time": 127.06253004074097,
       "type": "delta"
     },
     {
-      "text": "**：系统现有的",
-      "_time": 110.91301774978638,
+      "text": "现有",
+      "_time": 127.06544423103333,
       "type": "delta"
     },
     {
-      "text": "检索结果仅",
-      "_time": 110.91650867462158,
+      "text": "职位信息库，",
+      "_time": 127.19068026542664,
       "type": "delta"
     },
     {
-      "text": "包含“某小",
-      "_time": 111.01268076896667,
+      "text": "**目前",
+      "_time": 127.22327518463135,
       "type": "delta"
     },
     {
-      "text": "公司”Java ",
-      "_time": 111.05379009246826,
+      "text": "未收录阿里巴巴后端",
+      "_time": 127.32039546966553,
       "type": "delta"
     },
     {
-      "text": "后端岗位的薪资信息",
-      "_time": 111.10986232757568,
+      "text": "岗位的具体",
+      "_time": 127.32429504394531,
       "type": "delta"
     },
     {
-      "text": "（范围 1",
-      "_time": 111.11341309547424,
+      "text": "薪资数值**。知识库",
+      "_time": 127.45338416099548,
       "type": "delta"
     },
     {
-      "text": "0k-2",
-      "_time": 111.21065878868103,
+      "text": "中仅包含该",
+      "_time": 127.48231244087219,
       "type": "delta"
     },
     {
-      "text": "0k），并未",
-      "_time": 111.21424221992493,
+      "text": "岗位的硬性要求（",
+      "_time": 127.58035159111023,
       "type": "delta"
     },
     {
-      "text": "收录阿里巴巴公司的相关",
-      "_time": 111.33870792388916,
+      "text": "如本科及以上学历",
+      "_time": 127.58630347251892,
       "type": "delta"
     },
     {
-      "text": "薪酬",
-      "_time": 111.34349417686462,
+      "text": "、3 年以上",
+      "_time": 127.70129728317261,
       "type": "delta"
     },
     {
-      "text": "记录。\n*",
-      "_time": 111.41154837608337,
+      "text": " Java 开发",
+      "_time": 127.73327732086182,
       "type": "delta"
     },
     {
-      "text": "   **可信",
-      "_time": 111.4174337387085,
+      "text": "经验），而某",
+      "_time": 127.89233946800232,
       "type": "delta"
     },
     {
-      "text": "度说明**：",
-      "_time": 111.51262927055359,
+      "text": "小公司的后端",
+      "_time": 127.89429211616516,
       "type": "delta"
     },
     {
-      "text": "由于缺乏",
-      "_time": 111.54611730575562,
+      "text": "薪资（10",
+      "_time": 128.01432061195374,
       "type": "delta"
     },
     {
-      "text": "直接证据，当前",
-      "_time": 111.61256146430969,
+      "text": "k-",
+      "_time": 128.01627826690674,
       "type": "delta"
     },
     {
-      "text": "无法基于现有",
-      "_time": 111.61741018295288,
-      "type": "delta"
-    },
-    {
-      "text": "数据给出具体的",
-      "_time": 111.7587788105011,
-      "type": "delta"
-    },
-    {
-      "text": "薪资数字。\n\n",
-      "_time": 111.76439499855042,
-      "type": "delta"
-    },
-    {
-      "text": "### 2.",
-      "_time": 111.88828468322754,
-      "type": "delta"
-    },
-    {
-      "text": " 专业求职",
-      "_time": 111.89006543159485,
-      "type": "delta"
-    },
-    {
-      "text": "建议\n为了获取",
-      "_time": 111.96273469924927,
-      "type": "delta"
-    },
-    {
-      "text": "更",
-      "_time": 111.96734189987183,
-      "type": "delta"
-    },
-    {
-      "text": "准确的信息，建议您",
-      "_time": 112.06470775604248,
+      "text": "20k）",
+      "_time": 128.1353030204773,
       "type": "delta"
     },
     {
       "text": "参考",
-      "_time": 112.06828022003174,
+      "_time": 128.13924264907837,
       "type": "delta"
     },
     {
-      "text": "以下渠道和方法：",
-      "_time": 112.19088125228882,
+      "text": "意义有限。通常",
+      "_time": 128.39762830734253,
       "type": "delta"
     },
     {
-      "text": "\n*  ",
-      "_time": 112.19562315940857,
+      "text": "大厂薪资属于",
+      "_time": 128.40025210380554,
       "type": "delta"
     },
     {
-      "text": " **官方渠道**",
-      "_time": 112.2726616859436,
+      "text": "保密信息，会根据",
+      "_time": 128.50034523010254,
       "type": "delta"
     },
     {
-      "text": "：查阅阿里巴巴官方",
-      "_time": 112.27737760543823,
+      "text": "职级体系",
+      "_time": 128.50319576263428,
       "type": "delta"
     },
     {
-      "text": "招聘网站或公众号",
-      "_time": 112.45476722717285,
+      "text": "（如 P ",
+      "_time": 128.62161922454834,
       "type": "delta"
     },
     {
-      "text": "，了解",
-      "_time": 112.45726346969604,
+      "text": "序列）、面试评级",
+      "_time": 128.65924263000488,
       "type": "delta"
     },
     {
-      "text": "不同职级（",
-      "_time": 112.5427417755127,
+      "text": "及您目前的薪资",
+      "_time": 128.80049753189087,
       "type": "delta"
     },
     {
-      "text": "如",
-      "_time": 112.59571862220764,
+      "text": "基数",
+      "_time": 128.80324149131775,
       "type": "delta"
     },
     {
-      "text": " P 序列）",
-      "_time": 112.67763066291809,
+      "text": "综合定薪。",
+      "_time": 128.9242525100708,
       "type": "delta"
     },
     {
-      "text": "的薪酬结构",
-      "_time": 112.6823251247406,
+      "text": "\n\n",
+      "_time": 128.92715668678284,
       "type": "delta"
     },
     {
-      "text": "说明。\n*",
-      "_time": 112.81374263763428,
+      "text": "### 📊",
+      "_time": 129.0521879196167,
       "type": "delta"
     },
     {
-      "text": "  ",
-      "_time": 112.81825423240662,
+      "text": " 人",
+      "_time": 129.0552155971527,
       "type": "delta"
     },
     {
-      "text": " **职场社区**",
-      "_time": 112.89362525939941,
+      "text": "岗匹配度分析",
+      "_time": 129.22656106948853,
       "type": "delta"
     },
     {
-      "text": "：参考脉",
-      "_time": 112.89631605148315,
+      "text": "（重要）\n",
+      "_time": 129.22919988632202,
       "type": "delta"
     },
     {
-      "text": "脉、OfferShow",
-      "_time": 112.9919695854187,
+      "text": "在分析您与该",
+      "_time": 129.42253398895264,
       "type": "delta"
     },
     {
-      "text": " 等平台上",
-      "_time": 113.02357220649719,
+      "text": "岗位的匹配情况",
+      "_time": 129.42625975608826,
       "type": "delta"
     },
     {
-      "text": "近期求职者的分享",
-      "_time": 113.14762425422668,
+      "text": "时，系统给出的",
+      "_time": 129.60263562202454,
       "type": "delta"
     },
     {
-      "text": "爆料",
-      "_time": 113.15135717391968,
+      "text": "评估结果需要",
+      "_time": 129.64231848716736,
       "type": "delta"
     },
     {
-      "text": "，获取实时的一",
-      "_time": 113.29860711097717,
+      "text": "您重点关注：\n\n",
+      "_time": 129.7272629737854,
       "type": "delta"
     },
     {
-      "text": "手数据",
-      "_time": 113.3032534122467,
+      "text": "*   **匹配",
+      "_time": 129.72923231124878,
       "type": "delta"
     },
     {
-      "text": "。\n*  ",
-      "_time": 113.39657831192017,
+      "text": "度评分：** ",
+      "_time": 129.91228818893433,
       "type": "delta"
     },
     {
-      "text": " **行业报告**",
-      "_time": 113.42763686180115,
+      "text": "40 分",
+      "_time": 129.94722938537598,
       "type": "delta"
     },
     {
-      "text": "：关注互联网行业",
-      "_time": 113.50164556503296,
+      "text": "\n*   **",
+      "_time": 130.03918385505676,
       "type": "delta"
     },
     {
-      "text": "年度薪酬报告，",
-      "_time": 113.50526022911072,
+      "text": "匹配",
+      "_time": 130.04225206375122,
       "type": "delta"
     },
     {
-      "text": "了解后端岗位在市场",
-      "_time": 113.63475131988525,
+      "text": "结论：** 不",
+      "_time": 130.15827345848083,
       "type": "delta"
     },
     {
-      "text": "中的分",
-      "_time": 113.63726735115051,
+      "text": "匹配",
+      "_time": 130.16120839118958,
       "type": "delta"
     },
     {
-      "text": "位值。\n\n",
-      "_time": 113.75269484519958,
+      "text": "\n*   **",
+      "_time": 130.28123426437378,
       "type": "delta"
     },
     {
-      "text": "### 3",
-      "_time": 113.75666117668152,
+      "text": "现有优势：** ",
+      "_time": 130.3132119178772,
       "type": "delta"
     },
     {
-      "text": ". 注意事项\n",
-      "_time": 113.85163521766663,
+      "text": "具备 CET-4",
+      "_time": 130.40551781654358,
+      "type": "delta"
+    },
+    {
+      "text": " ",
+      "_time": 130.4069836139679,
+      "type": "delta"
+    },
+    {
+      "text": "英语能力、熟练使用",
+      "_time": 130.5926628112793,
+      "type": "delta"
+    },
+    {
+      "text": " Office Excel。",
+      "_time": 130.62021923065186,
+      "type": "delta"
+    },
+    {
+      "text": "\n*   **",
+      "_time": 130.7142837047577,
+      "type": "delta"
+    },
+    {
+      "text": "核心差距：**\n",
+      "_time": 130.71485304832458,
+      "type": "delta"
+    },
+    {
+      "text": "    1.",
+      "_time": 130.84517621994019,
+      "type": "delta"
+    },
+    {
+      "text": "  **经验年限",
+      "_time": 130.87110948562622,
+      "type": "delta"
+    },
+    {
+      "text": "不足：** 岗位",
+      "_time": 130.96223163604736,
+      "type": "delta"
+    },
+    {
+      "text": "硬性",
+      "_time": 130.96417212486267,
+      "type": "delta"
+    },
+    {
+      "text": "要求\"3 ",
+      "_time": 131.0911989212036,
+      "type": "delta"
+    },
+    {
+      "text": "年以上 Java",
+      "_time": 131.09317302703857,
+      "type": "delta"
+    },
+    {
+      "text": " 开发经验”，",
+      "_time": 131.2591414451599,
+      "type": "delta"
+    },
+    {
+      "text": "而",
+      "_time": 131.25978112220764,
+      "type": "delta"
+    },
+    {
+      "text": "您目前缺乏相关",
+      "_time": 131.40429162979126,
+      "type": "delta"
+    },
+    {
+      "text": "年限",
+      "_time": 131.40812253952026,
+      "type": "delta"
+    },
+    {
+      "text": "证明。\n   ",
+      "_time": 131.52444672584534,
+      "type": "delta"
+    },
+    {
+      "text": " ",
+      "_time": 131.52712893486023,
+      "type": "delta"
+    },
+    {
+      "text": "2.  **",
+      "_time": 131.6444752216339,
+      "type": "delta"
+    },
+    {
+      "text": "后端经历缺失：**",
+      "_time": 131.67920398712158,
+      "type": "delta"
+    },
+    {
+      "text": " 简历中未见",
+      "_time": 131.77214694023132,
+      "type": "delta"
+    },
+    {
+      "text": "明确的后端开发",
+      "_time": 131.77418565750122,
+      "type": "delta"
+    },
+    {
+      "text": "经历，多为 Web",
+      "_time": 131.89716958999634,
+      "type": "delta"
+    },
+    {
+      "text": " 开发或",
+      "_time": 131.92217898368835,
+      "type": "delta"
+    },
+    {
+      "text": "设计工具使用经验",
+      "_time": 132.0271360874176,
+      "type": "delta"
+    },
+    {
+      "text": "。\n    ",
+      "_time": 132.03017449378967,
+      "type": "delta"
+    },
+    {
+      "text": "3.  **",
+      "_time": 132.15521788597107,
+      "type": "delta"
+    },
+    {
+      "text": "关键技术栈",
+      "_time": 132.1571340560913,
+      "type": "delta"
+    },
+    {
+      "text": "缺失：** 缺少",
+      "_time": 132.32114601135254,
+      "type": "delta"
+    },
+    {
+      "text": "嵌入式技术、API",
+      "_time": 132.32169795036316,
+      "type": "delta"
+    },
+    {
+      "text": " 开发、Prompt",
+      "_time": 132.41624331474304,
+      "type": "delta"
+    },
+    {
+      "text": " Engineering 及 R",
+      "_time": 132.44509840011597,
+      "type": "delta"
+    },
+    {
+      "text": "AG 等岗位",
+      "_time": 132.54414439201355,
+      "type": "delta"
+    },
+    {
+      "text": "核心技能",
+      "_time": 132.54613780975342,
+      "type": "delta"
+    },
+    {
+      "text": "描述。\n\n###",
+      "_time": 132.66531991958618,
+      "type": "delta"
+    },
+    {
+      "text": " 🚀 ",
+      "_time": 132.69309782981873,
+      "type": "delta"
+    },
+    {
+      "text": "针对性提升建议\n",
+      "_time": 132.76819038391113,
+      "type": "delta"
+    },
+    {
+      "text": "鉴于目前",
+      "_time": 132.77193355560303,
+      "type": "delta"
+    },
+    {
+      "text": "匹配度较低，",
+      "_time": 132.87728071212769,
+      "type": "delta"
+    },
+    {
+      "text": "直接投递",
+      "_time": 132.87973999977112,
+      "type": "delta"
+    },
+    {
+      "text": "可能通过率不高。",
+      "_time": 133.07139110565186,
+      "type": "delta"
+    },
+    {
+      "text": "建议您采取",
+      "_time": 133.0750412940979,
+      "type": "delta"
+    },
+    {
+      "text": "以下“曲线救",
+      "_time": 133.2561206817627,
+      "type": "delta"
+    },
+    {
+      "text": "国”策略：",
+      "_time": 133.25995874404907,
+      "type": "delta"
+    },
+    {
+      "text": "\n\n1. ",
+      "_time": 133.36608147621155,
+      "type": "delta"
+    },
+    {
+      "text": " **补齐核心",
+      "_time": 133.4060983657837,
+      "type": "delta"
+    },
+    {
+      "text": "硬技能**\n",
+      "_time": 133.4690454006195,
+      "type": "delta"
+    },
+    {
+      "text": "    *  ",
+      "_time": 133.4708890914917,
+      "type": "delta"
+    },
+    {
+      "text": " **重点突破：**",
+      "_time": 133.6290521621704,
+      "type": "delta"
+    },
+    {
+      "text": " 针对 JD",
+      "_time": 133.63102054595947,
+      "type": "delta"
+    },
+    {
+      "text": " 中要求的 Java",
+      "_time": 133.7650420665741,
+      "type": "delta"
+    },
+    {
+      "text": " 后端",
+      "_time": 133.76798510551453,
+      "type": "delta"
+    },
+    {
+      "text": "经验，建议参与",
+      "_time": 133.8994333744049,
+      "type": "delta"
+    },
+    {
+      "text": "至少",
+      "_time": 133.90062355995178,
+      "type": "delta"
+    },
+    {
+      "text": " 1 个",
+      "_time": 134.0192551612854,
+      "type": "delta"
+    },
+    {
+      "text": "完整的后端项目（",
+      "_time": 134.05800938606262,
+      "type": "delta"
+    },
+    {
+      "text": "如 API 开发",
+      "_time": 134.1199812889099,
+      "type": "delta"
+    },
+    {
+      "text": "、数据库",
+      "_time": 134.1239321231842,
+      "type": "delta"
+    },
+    {
+      "text": "设计），确保能",
+      "_time": 134.2882742881775,
+      "type": "delta"
+    },
+    {
+      "text": "清晰",
+      "_time": 134.2909746170044,
+      "type": "delta"
+    },
+    {
+      "text": "描述技术栈。",
+      "_time": 134.4351418018341,
+      "type": "delta"
+    },
+    {
+      "text": "\n    *  ",
+      "_time": 134.43802642822266,
+      "type": "delta"
+    },
+    {
+      "text": " **新兴技能：**",
+      "_time": 134.56300687789917,
+      "type": "delta"
+    },
+    {
+      "text": " 若",
+      "_time": 134.56601691246033,
+      "type": "delta"
+    },
+    {
+      "text": "岗位涉及 AI ",
+      "_time": 134.67002058029175,
+      "type": "delta"
+    },
+    {
+      "text": "结合",
+      "_time": 134.70397329330444,
+      "type": "delta"
+    },
+    {
+      "text": "（如 Prompt Engineering",
+      "_time": 134.77998399734497,
+      "type": "delta"
+    },
+    {
+      "text": "、",
+      "_time": 134.78391194343567,
+      "type": "delta"
+    },
+    {
+      "text": "RAG），可",
+      "_time": 134.88813018798828,
+      "type": "delta"
+    },
+    {
+      "text": "尝试学习",
+      "_time": 134.91569709777832,
+      "type": "delta"
+    },
+    {
+      "text": "相关基础概念并在",
+      "_time": 135.1362030506134,
+      "type": "delta"
+    },
+    {
+      "text": "简历中体现学习",
+      "_time": 135.13987970352173,
+      "type": "delta"
+    },
+    {
+      "text": "成果。\n\n2",
+      "_time": 135.24392652511597,
+      "type": "delta"
+    },
+    {
+      "text": ".  **",
+      "_time": 135.24881148338318,
+      "type": "delta"
+    },
+    {
+      "text": "优化简历呈现（",
+      "_time": 135.39202523231506,
+      "type": "delta"
+    },
+    {
+      "text": "经验迁移）**\n",
+      "_time": 135.39589405059814,
+      "type": "delta"
+    },
+    {
+      "text": "    *   **",
+      "_time": 135.47294974327087,
+      "type": "delta"
+    },
+    {
+      "text": "挖掘亮点",
+      "_time": 135.47351360321045,
+      "type": "delta"
+    },
+    {
+      "text": "：** 虽然缺乏",
+      "_time": 135.6629650592804,
+      "type": "delta"
+    },
+    {
+      "text": "直接后端经验，",
+      "_time": 135.6658914089203,
+      "type": "delta"
+    },
+    {
+      "text": "但可将过往的",
+      "_time": 135.75094032287598,
+      "type": "delta"
+    },
+    {
+      "text": " Web 开发经历",
+      "_time": 135.7539200782776,
+      "type": "delta"
+    },
+    {
+      "text": "中与后端交集的部分",
+      "_time": 135.9578332901001,
+      "type": "delta"
+    },
+    {
+      "text": "（如数据库",
+      "_time": 135.96088671684265,
+      "type": "delta"
+    },
+    {
+      "text": " CRUD、接口联",
+      "_time": 136.14114379882812,
+      "type": "delta"
+    },
+    {
+      "text": "调）放大描述",
+      "_time": 136.14383029937744,
+      "type": "delta"
+    },
+    {
+      "text": "。\n    *",
+      "_time": 136.2810878753662,
+      "type": "delta"
+    },
+    {
+      "text": "   **量化",
+      "_time": 136.28261375427246,
+      "type": "delta"
+    },
+    {
+      "text": "成果：** 使用",
+      "_time": 136.37388825416565,
+      "type": "delta"
+    },
+    {
+      "text": "数据",
+      "_time": 136.3764934539795,
+      "type": "delta"
+    },
+    {
+      "text": "证明能力，例如",
+      "_time": 136.54024004936218,
+      "type": "delta"
+    },
+    {
+      "text": "“",
+      "_time": 136.54183959960938,
+      "type": "delta"
+    },
+    {
+      "text": "优化接口响应速度",
+      "_time": 136.70198249816895,
+      "type": "delta"
+    },
+    {
+      "text": "提升",
+      "_time": 136.70584297180176,
+      "type": "delta"
+    },
+    {
+      "text": " 20%\"",
+      "_time": 136.7648642063141,
+      "type": "delta"
+    },
+    {
+      "text": "而非",
+      "_time": 136.7669084072113,
+      "type": "delta"
+    },
+    {
+      "text": "仅列出工具名称",
+      "_time": 136.98984742164612,
+      "type": "delta"
+    },
+    {
+      "text": "。\n\n3",
+      "_time": 136.9918348789215,
+      "type": "delta"
+    },
+    {
+      "text": ".  **调整",
+      "_time": 137.14719152450562,
+      "type": "delta"
+    },
+    {
+      "text": "求职策略**\n",
+      "_time": 137.14824771881104,
+      "type": "delta"
+    },
+    {
+      "text": "    *   ",
+      "_time": 137.2169623374939,
+      "type": "delta"
+    },
+    {
+      "text": "建议",
+      "_time": 137.2183382511139,
+      "type": "delta"
+    },
+    {
+      "text": "先关注对年限",
+      "_time": 137.44108033180237,
+      "type": "delta"
+    },
+    {
+      "text": "要求较",
+      "_time": 137.4438190460205,
+      "type": "delta"
+    },
+    {
+      "text": "宽松（如 ",
+      "_time": 137.58085346221924,
+      "type": "delta"
+    },
+    {
+      "text": "1-2 ",
+      "_time": 137.58281207084656,
+      "type": "delta"
+    },
+    {
+      "text": "年）的中级",
+      "_time": 137.78093433380127,
+      "type": "delta"
+    },
+    {
+      "text": "后端岗位，或",
+      "_time": 137.78278970718384,
+      "type": "delta"
+    },
+    {
+      "text": "规模稍小的互联网公司",
+      "_time": 138.00212955474854,
+      "type": "delta"
+    },
+    {
+      "text": "积累",
+      "_time": 138.03381609916687,
+      "type": "delta"
+    },
+    {
+      "text": "核心后端经验，",
+      "_time": 138.22424864768982,
+      "type": "delta"
+    },
+    {
+      "text": "待满足",
+      "_time": 138.22797298431396,
+      "type": "delta"
+    },
+    {
+      "text": "\"3 年经验",
+      "_time": 138.33600616455078,
+      "type": "delta"
+    },
+    {
+      "text": "”",
+      "_time": 138.33970618247986,
+      "type": "delta"
+    },
+    {
+      "text": "硬性门槛后再冲刺",
+      "_time": 138.50008177757263,
       "type": "delta"
     },
     {
       "text": "大厂",
-      "_time": 113.85523509979248,
+      "_time": 138.50278735160828,
       "type": "delta"
     },
     {
-      "text": "薪资通常与**",
-      "_time": 114.04156303405762,
+      "text": "。\n\n匹配度",
+      "_time": 138.64472007751465,
       "type": "delta"
     },
     {
-      "text": "职级体系**",
-      "_time": 114.04567742347717,
+      "text": "低并不代表",
+      "_time": 138.64765286445618,
       "type": "delta"
     },
     {
-      "text": "、**工作地点**",
-      "_time": 114.10749220848083,
+      "text": "没有机会，而是",
+      "_time": 138.716735124588,
       "type": "delta"
     },
     {
-      "text": "及**",
-      "_time": 114.11006498336792,
+      "text": "指明了我们",
+      "_time": 138.7187581062317,
       "type": "delta"
     },
     {
-      "text": "面试评级**强",
-      "_time": 114.25665259361267,
+      "text": "需要填补的“",
+      "_time": 138.88274955749512,
       "type": "delta"
     },
     {
-      "text": "相关。在面试",
-      "_time": 114.28561639785767,
+      "text": "差距”。",
+      "_time": 138.92070698738098,
       "type": "delta"
     },
     {
-      "text": "沟通中，建议您",
-      "_time": 114.41771125793457,
+      "text": "建议您先集中精力提升",
+      "_time": 139.05283093452454,
       "type": "delta"
     },
     {
-      "text": "重点关注岗位",
-      "_time": 114.42536544799805,
+      "text": " Java",
+      "_time": 139.05568194389343,
       "type": "delta"
     },
     {
-      "text": "的具体职级定位",
-      "_time": 114.51064538955688,
+      "text": " 后端实战能力",
+      "_time": 139.16873979568481,
       "type": "delta"
     },
     {
-      "text": "，以便",
-      "_time": 114.51445603370667,
+      "text": "，如有",
+      "_time": 139.17268323898315,
       "type": "delta"
     },
     {
-      "text": "更准确地评估薪资",
-      "_time": 114.685382604599,
+      "text": "需要，我可以协助",
+      "_time": 139.37791776657104,
       "type": "delta"
     },
     {
-      "text": "范围",
-      "_time": 114.68913173675537,
+      "text": "您进一步",
+      "_time": 139.3803825378418,
       "type": "delta"
     },
     {
-      "text": "。\n\n希望这些",
-      "_time": 114.81162023544312,
+      "text": "修改简历以突出",
+      "_time": 139.45091271400452,
       "type": "delta"
     },
     {
-      "text": "建议能为您的求职",
-      "_time": 114.81595540046692,
+      "text": "潜在",
+      "_time": 139.4534788131714,
       "type": "delta"
     },
     {
-      "text": "规划提供有价值的参考",
-      "_time": 114.98704123497009,
+      "text": "优势。加油！",
+      "_time": 139.56407952308655,
       "type": "delta"
     },
     {
-      "text": "！如有",
-      "_time": 115.02150416374207,
-      "type": "delta"
-    },
-    {
-      "text": "其他问题，欢迎",
-      "_time": 115.06544613838196,
-      "type": "delta"
-    },
-    {
-      "text": "随时咨询",
-      "_time": 115.06940770149231,
-      "type": "delta"
-    },
-    {
-      "text": "。",
-      "_time": 115.12358093261719,
-      "type": "delta"
-    },
-    {
-      "session_id": "eval_li_03_1777540914455",
+      "session_id": "eval_li_03_1777548737172",
       "intent": "attribute_verify",
       "route_meta": {
         "layer": "llm",
@@ -629,7 +1439,7 @@
             }
           }
         ],
-        "plan_tasks": 3
+        "plan_tasks": 5
       },
       "agent_mode": "llm",
       "is_clarification": false,
@@ -640,19 +1450,94 @@
             "tool": "kb_retrieve",
             "status": "✅",
             "params": {
-              "query": "阿里后端岗工资",
+              "query": "阿里后端岗",
               "company": "阿里",
               "position": "后端",
-              "top_k": 5
+              "top_k": 10
             },
-            "result_preview": "{'chunks': [{'chunk_id': '45bd2600-af57-45fe-a96e-c6cae6838c7a_chunk_0', 'content': '公司：某小公司，岗位：Java后端，地点：成都，薪资：10k-20k', 'metadata': {'category': '技术', 'company': '某小公司', 'domain': '传统', 'index': 0, "
+            "result_preview": "{'chunks': [{'chunk_id': '9cde8355-dcc0-434e-97c4-67dfc5dae5b8_chunk_5', 'content': '【阿里巴巴 · 后端开发 硬性要求】\\n本科及以上学历', 'metadata': {'company': '阿里巴巴', 'index': 5, 'jd_id': '9cde8355-dcc0-434e-97c4-67dfc5d"
           },
           {
-            "tool": "qa_synthesize",
+            "tool": "match_analyze",
             "status": "✅",
             "params": {
-              "question": "阿里后端岗工资开多少",
-              "evidence_chunks": [
+              "resume_text": "AI\n / \n157-xxxx-3421  |  chenyutong2027@163.com  |  \n  |  2027\n6\n2024.09  2027.06\n · \nAI\n· \nGPA\n3.4/4.0  |  \n2020.09  2024.06\n · \n · \n  |  \nWeb\n \n \n2025.03  2025.11\n  |  \n40\n\"\n\"\n\"\n\"\nFigma\nAI\nEmbedding\nJD\nAPI\nPrompt\n20\nPDF\n \n \nRAG\n2024.10  2025.02\n  |  \n80\nOCR\nWeb\n\"\n\"\n · \n2024.09  2025.06\n10\n · \n2022.03  2023.06\n2025.05    \n2024.11    \nAI\n2023.06    \n2022.12    \nFigma\nAxure\nXmind\n/\nPRD\nPrompt Engineering\nRAG\nEmbedding\nCET-4\n525\nOffice\nExcel",
+              "jd_text": [
+                {
+                  "chunk_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8_chunk_5",
+                  "content": "【阿里巴巴 · 后端开发 硬性要求】\n本科及以上学历",
+                  "metadata": {
+                    "company": "阿里巴巴",
+                    "index": 5,
+                    "jd_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8",
+                    "position": "后端开发",
+                    "priority": "high",
+                    "section": "hard_requirements",
+                    "strategy": "semantic"
+                  },
+                  "distance": null,
+                  "bm25_score": 2.419673105222523,
+                  "vec_norm": 0.0,
+                  "bm25_norm": 0.04303465571006974,
+                  "hybrid_score": 0.012910396713020921,
+                  "rerank_score": 0.9413
+                },
+                {
+                  "chunk_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8_chunk_2",
+                  "content": "【阿里巴巴 · 后端开发 硬性要求】\n3年以上Java开发经验",
+                  "metadata": {
+                    "company": "阿里巴巴",
+                    "index": 2,
+                    "jd_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8",
+                    "position": "后端开发",
+                    "priority": "high",
+                    "section": "hard_requirements",
+                    "strategy": "semantic"
+                  },
+                  "distance": null,
+                  "bm25_score": 2.419673105222523,
+                  "vec_norm": 0.0,
+                  "bm25_norm": 0.04303465571006974,
+                  "hybrid_score": 0.012910396713020921,
+                  "rerank_score": 0.9093
+                },
+                {
+                  "chunk_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a_chunk_1",
+                  "content": "【某小公司 · Java后端 岗位职责】\n1. 负责传统企业内部管理系统的设计与开发。2. 数据库CRUD操作与报表开发。3. 系统日常维护与bug修复。",
+                  "metadata": {
+                    "company": "某小公司",
+                    "index": 1,
+                    "jd_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a",
+                    "position": "Java后端",
+                    "section": "responsibilities",
+                    "strategy": "semantic"
+                  },
+                  "distance": null,
+                  "bm25_score": 3.5059591076997942,
+                  "vec_norm": 0.0,
+                  "bm25_norm": 0.4456776538737023,
+                  "hybrid_score": 0.13370329616211069,
+                  "rerank_score": 0.849
+                },
+                {
+                  "chunk_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a_chunk_5",
+                  "content": "【某小公司 · Java后端 软性要求/加分项】\n有ERP系统开发经验优先",
+                  "metadata": {
+                    "company": "某小公司",
+                    "index": 5,
+                    "jd_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a",
+                    "position": "Java后端",
+                    "priority": "medium",
+                    "section": "soft_requirements",
+                    "strategy": "semantic"
+                  },
+                  "distance": null,
+                  "bm25_score": 4.814752021433315,
+                  "vec_norm": 0.0,
+                  "bm25_norm": 0.9307951105648626,
+                  "hybrid_score": 0.2792385331694588,
+                  "rerank_score": 0.5079
+                },
                 {
                   "chunk_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a_chunk_0",
                   "content": "公司：某小公司，岗位：Java后端，地点：成都，薪资：10k-20k",
@@ -674,26 +1559,7 @@
                   "vec_norm": 0.0,
                   "bm25_norm": 1.0,
                   "hybrid_score": 0.3,
-                  "rerank_score": 0.6751
-                },
-                {
-                  "chunk_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a_chunk_5",
-                  "content": "【某小公司 · Java后端 软性要求/加分项】\n有ERP系统开发经验优先",
-                  "metadata": {
-                    "company": "某小公司",
-                    "index": 5,
-                    "jd_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a",
-                    "position": "Java后端",
-                    "priority": "medium",
-                    "section": "soft_requirements",
-                    "strategy": "semantic"
-                  },
-                  "distance": null,
-                  "bm25_score": 4.814752021433315,
-                  "vec_norm": 0.0,
-                  "bm25_norm": 0.9307951105648626,
-                  "hybrid_score": 0.2792385331694588,
-                  "rerank_score": 0.153
+                  "rerank_score": 0.4779
                 },
                 {
                   "chunk_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a_chunk_2",
@@ -712,7 +1578,7 @@
                   "vec_norm": 0.0,
                   "bm25_norm": 1.0,
                   "hybrid_score": 0.3,
-                  "rerank_score": 0.0738
+                  "rerank_score": 0.3578
                 },
                 {
                   "chunk_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a_chunk_4",
@@ -731,7 +1597,25 @@
                   "vec_norm": 0.0,
                   "bm25_norm": 1.0,
                   "hybrid_score": 0.3,
-                  "rerank_score": 0.0518
+                  "rerank_score": 0.3448
+                },
+                {
+                  "chunk_id": "370b955c-4316-461e-9d41-4a2ba2c7389c_chunk_0",
+                  "content": "公司：阿里巴巴，岗位：AI产品经理，地点：远程，薪资：薪资面议",
+                  "metadata": {
+                    "company": "阿里巴巴",
+                    "index": 0,
+                    "jd_id": "370b955c-4316-461e-9d41-4a2ba2c7389c",
+                    "position": "AI产品经理",
+                    "section": "basic_info",
+                    "strategy": "semantic"
+                  },
+                  "distance": null,
+                  "bm25_score": 2.450550780236238,
+                  "vec_norm": 0.0,
+                  "bm25_norm": 0.054479781225350056,
+                  "hybrid_score": 0.016343934367605017,
+                  "rerank_score": 0.3347
                 },
                 {
                   "chunk_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a_chunk_3",
@@ -750,12 +1634,232 @@
                   "vec_norm": 0.0,
                   "bm25_norm": 1.0,
                   "hybrid_score": 0.3,
-                  "rerank_score": 0.0134
+                  "rerank_score": 0.1594
+                },
+                {
+                  "chunk_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a_chunk_6",
+                  "content": "【某小公司 · Java后端 关键词】\nJava, Spring Boot, MySQL, ERP, 后端",
+                  "metadata": {
+                    "company": "某小公司",
+                    "index": 6,
+                    "jd_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a",
+                    "position": "Java后端",
+                    "section": "keywords",
+                    "strategy": "semantic"
+                  },
+                  "distance": null,
+                  "bm25_score": 4.4289686696815735,
+                  "vec_norm": 0.0,
+                  "bm25_norm": 0.7878005722603091,
+                  "hybrid_score": 0.2363401716780927,
+                  "rerank_score": 0.0092
                 }
               ],
-              "qa_type": "factual"
+              "company": "阿里",
+              "position": "后端"
             },
-            "result_preview": "{'answer': '基于提供的检索证据，无法回答阿里后端岗的具体薪资。现有证据仅包含某小公司 Java 后端岗位的薪资信息（10k-20k）[1]，未涉及阿里巴巴公司的相关数据。建议查阅阿里官方招聘渠道或更具针对性的薪资报告。', 'citations': [{'index': 1, 'source': '某小公司-Java 后端 - 薪资', 'quote': '薪资：10k-20k'}],"
+            "result_preview": "{'score': 40, 'label': '不匹配', 'advantages': ['CET-4', 'Office Excel'], 'weaknesses': ['候选人缺乏3年以上Java开发经验。虽然具备一定的Web开发和设计工具使用经验，但未见明确的后端开发经历。此外，未提供技术技能的具体描述，如嵌入式技术、API开发等。'], 'suggestions': [\"核心能力要求: ["
+          },
+          {
+            "tool": "qa_synthesize",
+            "status": "❌",
+            "params": {
+              "question": "阿里后端岗工资开多少",
+              "evidence_chunks": [
+                {
+                  "chunk_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8_chunk_5",
+                  "content": "【阿里巴巴 · 后端开发 硬性要求】\n本科及以上学历",
+                  "metadata": {
+                    "company": "阿里巴巴",
+                    "index": 5,
+                    "jd_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8",
+                    "position": "后端开发",
+                    "priority": "high",
+                    "section": "hard_requirements",
+                    "strategy": "semantic"
+                  },
+                  "distance": null,
+                  "bm25_score": 2.419673105222523,
+                  "vec_norm": 0.0,
+                  "bm25_norm": 0.04303465571006974,
+                  "hybrid_score": 0.012910396713020921,
+                  "rerank_score": 0.9413
+                },
+                {
+                  "chunk_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8_chunk_2",
+                  "content": "【阿里巴巴 · 后端开发 硬性要求】\n3年以上Java开发经验",
+                  "metadata": {
+                    "company": "阿里巴巴",
+                    "index": 2,
+                    "jd_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8",
+                    "position": "后端开发",
+                    "priority": "high",
+                    "section": "hard_requirements",
+                    "strategy": "semantic"
+                  },
+                  "distance": null,
+                  "bm25_score": 2.419673105222523,
+                  "vec_norm": 0.0,
+                  "bm25_norm": 0.04303465571006974,
+                  "hybrid_score": 0.012910396713020921,
+                  "rerank_score": 0.9093
+                },
+                {
+                  "chunk_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a_chunk_1",
+                  "content": "【某小公司 · Java后端 岗位职责】\n1. 负责传统企业内部管理系统的设计与开发。2. 数据库CRUD操作与报表开发。3. 系统日常维护与bug修复。",
+                  "metadata": {
+                    "company": "某小公司",
+                    "index": 1,
+                    "jd_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a",
+                    "position": "Java后端",
+                    "section": "responsibilities",
+                    "strategy": "semantic"
+                  },
+                  "distance": null,
+                  "bm25_score": 3.5059591076997942,
+                  "vec_norm": 0.0,
+                  "bm25_norm": 0.4456776538737023,
+                  "hybrid_score": 0.13370329616211069,
+                  "rerank_score": 0.849
+                },
+                {
+                  "chunk_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a_chunk_5",
+                  "content": "【某小公司 · Java后端 软性要求/加分项】\n有ERP系统开发经验优先",
+                  "metadata": {
+                    "company": "某小公司",
+                    "index": 5,
+                    "jd_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a",
+                    "position": "Java后端",
+                    "priority": "medium",
+                    "section": "soft_requirements",
+                    "strategy": "semantic"
+                  },
+                  "distance": null,
+                  "bm25_score": 4.814752021433315,
+                  "vec_norm": 0.0,
+                  "bm25_norm": 0.9307951105648626,
+                  "hybrid_score": 0.2792385331694588,
+                  "rerank_score": 0.5079
+                },
+                {
+                  "chunk_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a_chunk_0",
+                  "content": "公司：某小公司，岗位：Java后端，地点：成都，薪资：10k-20k",
+                  "metadata": {
+                    "category": "技术",
+                    "company": "某小公司",
+                    "domain": "传统",
+                    "index": 0,
+                    "jd_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a",
+                    "max_years": 3,
+                    "min_education": "大专",
+                    "min_years": 1,
+                    "position": "Java后端",
+                    "section": "basic_info",
+                    "strategy": "semantic"
+                  },
+                  "distance": null,
+                  "bm25_score": 5.001459111930951,
+                  "vec_norm": 0.0,
+                  "bm25_norm": 1.0,
+                  "hybrid_score": 0.3,
+                  "rerank_score": 0.4779
+                },
+                {
+                  "chunk_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a_chunk_2",
+                  "content": "【某小公司 · Java后端 硬性要求】\n1年以上Java开发经验",
+                  "metadata": {
+                    "company": "某小公司",
+                    "index": 2,
+                    "jd_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a",
+                    "position": "Java后端",
+                    "priority": "high",
+                    "section": "hard_requirements",
+                    "strategy": "semantic"
+                  },
+                  "distance": null,
+                  "bm25_score": 5.001459111930951,
+                  "vec_norm": 0.0,
+                  "bm25_norm": 1.0,
+                  "hybrid_score": 0.3,
+                  "rerank_score": 0.3578
+                },
+                {
+                  "chunk_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a_chunk_4",
+                  "content": "【某小公司 · Java后端 硬性要求】\n大专及以上学历",
+                  "metadata": {
+                    "company": "某小公司",
+                    "index": 4,
+                    "jd_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a",
+                    "position": "Java后端",
+                    "priority": "high",
+                    "section": "hard_requirements",
+                    "strategy": "semantic"
+                  },
+                  "distance": null,
+                  "bm25_score": 5.001459111930951,
+                  "vec_norm": 0.0,
+                  "bm25_norm": 1.0,
+                  "hybrid_score": 0.3,
+                  "rerank_score": 0.3448
+                },
+                {
+                  "chunk_id": "370b955c-4316-461e-9d41-4a2ba2c7389c_chunk_0",
+                  "content": "公司：阿里巴巴，岗位：AI产品经理，地点：远程，薪资：薪资面议",
+                  "metadata": {
+                    "company": "阿里巴巴",
+                    "index": 0,
+                    "jd_id": "370b955c-4316-461e-9d41-4a2ba2c7389c",
+                    "position": "AI产品经理",
+                    "section": "basic_info",
+                    "strategy": "semantic"
+                  },
+                  "distance": null,
+                  "bm25_score": 2.450550780236238,
+                  "vec_norm": 0.0,
+                  "bm25_norm": 0.054479781225350056,
+                  "hybrid_score": 0.016343934367605017,
+                  "rerank_score": 0.3347
+                },
+                {
+                  "chunk_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a_chunk_3",
+                  "content": "【某小公司 · Java后端 硬性要求】\n熟悉Spring Boot、MySQL",
+                  "metadata": {
+                    "company": "某小公司",
+                    "index": 3,
+                    "jd_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a",
+                    "position": "Java后端",
+                    "priority": "high",
+                    "section": "hard_requirements",
+                    "strategy": "semantic"
+                  },
+                  "distance": null,
+                  "bm25_score": 5.001459111930951,
+                  "vec_norm": 0.0,
+                  "bm25_norm": 1.0,
+                  "hybrid_score": 0.3,
+                  "rerank_score": 0.1594
+                },
+                {
+                  "chunk_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a_chunk_6",
+                  "content": "【某小公司 · Java后端 关键词】\nJava, Spring Boot, MySQL, ERP, 后端",
+                  "metadata": {
+                    "company": "某小公司",
+                    "index": 6,
+                    "jd_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a",
+                    "position": "Java后端",
+                    "section": "keywords",
+                    "strategy": "semantic"
+                  },
+                  "distance": null,
+                  "bm25_score": 4.4289686696815735,
+                  "vec_norm": 0.0,
+                  "bm25_norm": 0.7878005722603091,
+                  "hybrid_score": 0.2363401716780927,
+                  "rerank_score": 0.0092
+                }
+              ]
+            },
+            "result_preview": "缺失必填参数: ['qa_type']"
           }
         ],
         "kb_chunks_count": 3,
@@ -769,13 +1873,15 @@
       },
       "reply": {
         "type": "text",
-        "content": "您好！针对您关心的阿里后端岗位薪资问题，经过检索分析，目前的情况如下：\n\n### 1. 数据查询结论\n基于当前的知识库检索，**暂时无法提供阿里巴巴公司的具体薪资数据**。\n*   **检索事实**：系统现有的检索结果仅包含“某小公司”Java 后端岗位的薪资信息（范围 10k-20k），并未收录阿里巴巴公司的相关薪酬记录。\n*   **可信度说明**：由于缺乏直接证据，当前无法基于现有数据给出具体的薪资数字。\n\n### 2. 专业求职建议\n为了获取更准确的信息，建议您参考以下渠道和方法：\n*   **官方渠道**：查阅阿里巴巴官方招聘网站或公众号，了解不同职级（如 P 序列）的薪酬结构说明。\n*   **职场社区**：参考脉脉、OfferShow 等平台上近期求职者的分享爆料，获取实时的一手数据。\n*   **行业报告**：关注互联网行业年度薪酬报告，了解后端岗位在市场中的分位值。\n\n### 3. 注意事项\n大厂薪资通常与**职级体系**、**工作地点**及**面试评级**强相关。在面试沟通中，建议您重点关注岗位的具体职级定位，以便更准确地评估薪资范围。\n\n希望这些建议能为您的求职规划提供有价值的参考！如有其他问题，欢迎随时咨询。",
+        "content": "您好！作为您的求职顾问，我非常理解您对薪资水平的关注，但基于目前的检索结果和分析数据，有一个更关键的信息需要优先与您同步。\n\n### 💰 关于岗位薪资\n经检索现有职位信息库，**目前未收录阿里巴巴后端岗位的具体薪资数值**。知识库中仅包含该岗位的硬性要求（如本科及以上学历、3 年以上 Java 开发经验），而某小公司的后端薪资（10k-20k）参考意义有限。通常大厂薪资属于保密信息，会根据职级体系（如 P 序列）、面试评级及您目前的薪资基数综合定薪。\n\n### 📊 人岗匹配度分析（重要）\n在分析您与该岗位的匹配情况时，系统给出的评估结果需要您重点关注：\n\n*   **匹配度评分：** 40 分\n*   **匹配结论：** 不匹配\n*   **现有优势：** 具备 CET-4 英语能力、熟练使用 Office Excel。\n*   **核心差距：**\n    1.  **经验年限不足：** 岗位硬性要求\"3 年以上 Java 开发经验”，而您目前缺乏相关年限证明。\n    2.  **后端经历缺失：** 简历中未见明确的后端开发经历，多为 Web 开发或设计工具使用经验。\n    3.  **关键技术栈缺失：** 缺少嵌入式技术、API 开发、Prompt Engineering 及 RAG 等岗位核心技能描述。\n\n### 🚀 针对性提升建议\n鉴于目前匹配度较低，直接投递可能通过率不高。建议您采取以下“曲线救国”策略：\n\n1.  **补齐核心硬技能**\n    *   **重点突破：** 针对 JD 中要求的 Java 后端经验，建议参与至少 1 个完整的后端项目（如 API 开发、数据库设计），确保能清晰描述技术栈。\n    *   **新兴技能：** 若岗位涉及 AI 结合（如 Prompt Engineering、RAG），可尝试学习相关基础概念并在简历中体现学习成果。\n\n2.  **优化简历呈现（经验迁移）**\n    *   **挖掘亮点：** 虽然缺乏直接后端经验，但可将过往的 Web 开发经历中与后端交集的部分（如数据库 CRUD、接口联调）放大描述。\n    *   **量化成果：** 使用数据证明能力，例如“优化接口响应速度提升 20%\"而非仅列出工具名称。\n\n3.  **调整求职策略**\n    *   建议先关注对年限要求较宽松（如 1-2 年）的中级后端岗位，或规模稍小的互联网公司积累核心后端经验，待满足\"3 年经验”硬性门槛后再冲刺大厂。\n\n匹配度低并不代表没有机会，而是指明了我们需要填补的“差距”。建议您先集中精力提升 Java 后端实战能力，如有需要，我可以协助您进一步修改简历以突出潜在优势。加油！",
         "data": null,
         "sources": null
       },
-      "_time": 115.17941212654114,
+      "_time": 139.6161608695984,
       "type": "done"
     }
   ],
-  "timestamp": "2026-04-30T17:21:54.455417"
+  "timestamp": "2026-04-30T19:32:17.172487",
+  "tool_execution_success_rate": 0.67,
+  "tool_correct_rate": 0.5
 }

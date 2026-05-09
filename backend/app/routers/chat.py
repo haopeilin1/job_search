@@ -8,13 +8,21 @@ from pydantic import BaseModel, Field
 logger = logging.getLogger(__name__)
 
 from app.core.llm_client import LLMClient, TIMEOUT_HEAVY, TIMEOUT_STANDARD, TIMEOUT_LIGHT
-from app.core.memory import SessionMemory, MemoryManager, DialogueTurn
+from app.core.memory import SessionMemory, MemoryManager, DialogueTurn, PendingClarification
 from app.core.db import load_session_meta, load_long_term_memory
 from app.core.config import settings
 from app.core.query_rewrite import QueryRewriter, QueryRewriteResult
 from app.core.intent_recognition import IntentRecognizer, IntentResult as NewIntentResult
 from app.core.planner import TaskPlanner
 from app.core.react_executor import ReActExecutor
+
+# 新体系（意图识别 + 规划）
+from app.core.llm_intent import LLMIntentRouter
+from app.core.llm_planner import TaskGraphPlanner
+from app.core.new_arch_adapter import (
+    multi_intent_result_to_intent_result,
+    convert_task_graph,
+)
 from app.services.ocr_service import OCRService, OCRResult
 from app.services.handlers import (
     ChatRequest,
@@ -652,15 +660,137 @@ async def _handle_llm_route_v2(
             "relevance_score": (request.eval_context or {}).get("relevance_score", 0),
         })
 
-    # ── ① 三层级联意图识别 ──
-    intent_recognizer = IntentRecognizer()
-    intent_result: NewIntentResult = await intent_recognizer.recognize(
-        rewrite_result=rewrite_result,
-        session=session,
+    # ── ① 新体系：多意图识别 ──
+    # 澄清状态机：若上轮触发澄清且本轮是 clarify 型追问，直接恢复意图
+    pc = session.pending_clarification
+    current_turn_id = len(session.working_memory.turns) + 1
+    # 触发条件：follow_up_type=clarify，或有pending_clarification且输入很短（补充缺失槽位）
+    is_clarify_follow_up = (
+        rewrite_result.follow_up_type == "clarify"
+        or (
+            pc
+            and not pc.is_expired(current_turn_id, max_gap=2)
+            and len(request.message) < 20
+        )
     )
+    if (
+        pc
+        and not pc.is_expired(current_turn_id, max_gap=2)
+        and is_clarify_follow_up
+    ):
+        logger.info(
+            f"[Chat-v2] 澄清状态恢复 | pending_intent={pc.pending_intent} | "
+            f"resolved_refs={rewrite_result.resolved_references} | "
+            f"rewritten={rewrite_result.rewritten_query}"
+        )
+        # 合并 QueryRewriter 解析出的槽位
+        merged_slots = dict(pc.resolved_slots)
+        merged_slots.update(rewrite_result.resolved_references or {})
+        # 如果 rewritten_query 中有更完整的信息，也尝试提取
+        if rewrite_result.rewritten_query and rewrite_result.rewritten_query != request.message:
+            merged_slots["search_keywords"] = rewrite_result.rewritten_query
+
+        # 从用户原始输入中直接提取实体（公司名/岗位名），补充缺失槽位
+        if pc.missing_slots:
+            from app.core.llm_intent import _load_kb_entities
+            kb_companies, kb_positions = _load_kb_entities()
+            msg = request.message or ""
+            # 按长度降序匹配，优先命中更长的实体（如 "字节跳动" 优先于 "字节"）
+            if "company" in pc.missing_slots and "company" not in merged_slots:
+                for c in sorted(kb_companies, key=len, reverse=True):
+                    if c in msg:
+                        merged_slots["company"] = c
+                        break
+            if "position" in pc.missing_slots and "position" not in merged_slots:
+                for p in sorted(kb_positions, key=len, reverse=True):
+                    if p in msg:
+                        merged_slots["position"] = p
+                        break
+
+        from app.core.llm_intent import MultiIntentResult, IntentCandidate, LLMIntentType, _create_rule_registry
+        from app.core.new_arch_adapter import map_intent_name_to_new
+        new_intent_name = map_intent_name_to_new(pc.pending_intent)
+        intent_type = LLMIntentType(new_intent_name) if new_intent_name else LLMIntentType.CHAT
+
+        # 当 pending_intent=chat（意图模糊）时，推断真实意图
+        if intent_type == LLMIntentType.CHAT and rewrite_result.rewritten_query:
+            # 有 pending_clarification 时，走完整意图识别流程，让校准器利用工作记忆推断
+            if pc and not pc.is_expired(current_turn_id, max_gap=2):
+                intent_router = LLMIntentRouter()
+                re_multi_result = await intent_router.route_multi(
+                    rewrite_result=rewrite_result,
+                    session=session,
+                    attachments=request.attachments or [],
+                    raw_message=request.message,
+                )
+                if re_multi_result.candidates:
+                    intent_type = re_multi_result.primary_intent or re_multi_result.candidates[0].intent_type
+                    for cand in re_multi_result.candidates:
+                        merged_slots.update(cand.slots or {})
+                    logger.info(f"[Chat-v2] 澄清后重新识别意图 | inferred={intent_type.value} | candidates={[c.intent_type.value for c in re_multi_result.candidates]}")
+            else:
+                # 无 pending_clarification 时：用规则匹配简单推断
+                registry = _create_rule_registry()
+                rule_matches = registry.classify_all(rewrite_result.rewritten_query, [])
+                non_miss = [r for r in rule_matches if r.intent is not None]
+                if non_miss:
+                    best = non_miss[0]
+                    intent_type = best.intent
+                    merged_slots.update(best.metadata or {})
+                    logger.info(f"[Chat-v2] 澄清状态推断意图 | inferred={intent_type.value} | rule={best.rule_name}")
+
+        restored_candidate = IntentCandidate(
+            intent_type=intent_type,
+            confidence=0.85,
+            reason=f"澄清状态恢复: 上轮缺失槽位 {pc.missing_slots}",
+            slots=merged_slots,
+            slot_sources={k: "clarification_recovery" for k in merged_slots.keys()},
+            missing_slots=[s for s in pc.missing_slots if s not in merged_slots],
+            needs_clarification=False,
+            source="clarification_recovery",
+            rule_agreement=True,
+        )
+        multi_result = MultiIntentResult(
+            candidates=[restored_candidate],
+            primary_intent=intent_type,
+            needs_clarification=False,
+            global_slots=merged_slots,
+            execution_topology=[[intent_type]],
+        )
+        # 如果仍有缺失槽位，判断是否真正需要再次澄清
+        # VERIFY: 有 company 或 position 之一即可执行；ASSESS: 必须 resume
+        if restored_candidate.missing_slots:
+            needs_clarify = True
+            if intent_type == LLMIntentType.VERIFY:
+                if merged_slots.get("company") or merged_slots.get("position"):
+                    needs_clarify = False
+            elif intent_type == LLMIntentType.ASSESS:
+                if merged_slots.get("resume_available"):
+                    needs_clarify = False
+            if needs_clarify:
+                multi_result.needs_clarification = True
+                multi_result.clarification_reason = (
+                    f"还需要补充以下信息：{', '.join(restored_candidate.missing_slots)}"
+                )
+    else:
+        # 过期或不存在：正常走完整意图识别
+        if pc and pc.is_expired(current_turn_id, max_gap=2):
+            logger.info(f"[Chat-v2] 澄清状态已过期，丢弃 | pending_intent={pc.pending_intent}")
+            session.pending_clarification = None
+
+        intent_router = LLMIntentRouter()
+        multi_result = await intent_router.route_multi(
+            rewrite_result=rewrite_result,
+            session=session,
+            attachments=request.attachments or [],
+            raw_message=request.message,
+        )
+
+    intent_result = multi_intent_result_to_intent_result(multi_result)
     logger.info(
-        f"[Chat-v2] 意图识别 | demands={[d.intent_type for d in intent_result.demands]} | "
-        f"complete={intent_result.is_complete} | clarify={intent_result.needs_clarification}"
+        f"[Chat-v2] 新体系意图识别 | candidates={[c.intent_type.value for c in multi_result.candidates]} | "
+        f"primary={multi_result.primary_intent.value if multi_result.primary_intent else 'None'} | "
+        f"clarify={multi_result.needs_clarification}"
     )
 
     # 埋点：intent_classified
@@ -684,8 +814,9 @@ async def _handle_llm_route_v2(
     if intent_result.needs_clarification:
         reply_text = intent_result.clarification_question or "抱歉，我没有完全理解您的意思，能再详细说明一下吗？"
         reply = ChatReply(text=reply_text)
+        turn_id = len(session.working_memory.turns) + 1
         turn = DialogueTurn(
-            turn_id=len(session.working_memory.turns) + 1,
+            turn_id=turn_id,
             user_message=request.message,
             assistant_reply=reply.text,
             intent=intent_result.demands[0].intent_type if intent_result.demands else "chat",
@@ -698,6 +829,21 @@ async def _handle_llm_route_v2(
             await mm.rotate_memory(session, turn)
         except Exception as e:
             logger.warning(f"[Chat-v2] 记忆轮转失败: {e}")
+
+        # 保存澄清状态机
+        primary_intent = intent_result.demands[0].intent_type if intent_result.demands else "chat"
+        session.pending_clarification = PendingClarification(
+            pending_intent=primary_intent,
+            missing_slots=intent_result.missing_entities or [],
+            clarification_question=reply_text,
+            expected_slot_types=intent_result.missing_entities or [],
+            created_turn_id=turn_id,
+            resolved_slots=dict(intent_result.resolved_entities or {}),
+        )
+        logger.info(
+            f"[Chat-v2] 澄清状态已保存 | intent={primary_intent} | "
+            f"missing={intent_result.missing_entities} | turn_id={turn_id}"
+        )
 
         memory_state = _build_memory_state(session)
         _emit_turn_completed(reply_text=reply_text, is_clarification=True)
@@ -737,19 +883,19 @@ async def _handle_llm_route_v2(
             summary_lines.append(f"- {title}: {content}")
         evidence_cache_summary = "\n".join(summary_lines)
 
-    planner = TaskPlanner()
-    graph = await planner.create_graph(
-        rewritten_query=rewrite_result.rewritten_query,
-        demands=[{"intent_type": d.intent_type, "entities": d.entities, "priority": d.priority} for d in intent_result.demands],
-        resolved_entities=intent_result.resolved_entities,
+    new_planner = TaskGraphPlanner()
+    new_graph = await new_planner.create_graph(
+        multi_result=multi_result,
+        session=session,
         resume_text=resume_text,
-        search_keywords=rewrite_result.search_keywords,
-        follow_up_type=rewrite_result.follow_up_type,
-        evidence_cache_summary=evidence_cache_summary,
+        rewrite_result=rewrite_result,
+        history_cache=[],
     )
+    graph = convert_task_graph(new_graph)
     logger.info(
-        f"[Chat-v2] Plan完成 | tasks={len(graph.tasks)} | "
-        f"groups={len(graph.compute_parallel_groups())}"
+        f"[Chat-v2] 新体系Plan完成 | tasks={len(new_graph.tasks)} | "
+        f"groups={len(new_graph.execution_strategy.parallel_groups)} | "
+        f"converted_tasks={len(graph.tasks)}"
     )
 
     # 埋点：plan_generated
@@ -887,6 +1033,16 @@ async def _handle_llm_route_v2(
     except Exception as e:
         logger.warning(f"[Chat-v2] 记忆轮转失败: {e}")
 
+    # 清理过期的澄清状态
+    if session.pending_clarification:
+        current_turn_id = len(session.working_memory.turns)
+        if session.pending_clarification.is_expired(current_turn_id, max_gap=2):
+            logger.info(
+                f"[Chat-v2] 澄清状态过期清理 | intent={session.pending_clarification.pending_intent} | "
+                f"created_turn={session.pending_clarification.created_turn_id} | current={current_turn_id}"
+            )
+            session.pending_clarification = None
+
     # ── ⑦ 构造返回 ──
     memory_state = _build_memory_state(session)
     _emit_turn_completed(reply_text=reply.text, has_error=(graph.global_status == "failed"), graph=graph)
@@ -946,22 +1102,144 @@ async def _handle_llm_route_v2_stream(
     """
     import time
 
-    # ── ① 意图识别 ──
+    # ── ① 新体系：多意图识别 ──
     yield _sse("status", {"step": "intent", "message": "正在识别您的意图..."})
-    intent_recognizer = IntentRecognizer()
-    intent_result = await intent_recognizer.recognize(
-        rewrite_result=rewrite_result,
-        session=session,
+    
+    # 澄清状态机恢复
+    pc = session.pending_clarification
+    current_turn_id = len(session.working_memory.turns) + 1
+    # 触发条件：follow_up_type=clarify，或有pending_clarification且输入很短（补充缺失槽位）
+    is_clarify_follow_up = (
+        rewrite_result.follow_up_type == "clarify"
+        or (
+            pc
+            and not pc.is_expired(current_turn_id, max_gap=2)
+            and len(request.message) < 20
+        )
     )
+    if (
+        pc
+        and not pc.is_expired(current_turn_id, max_gap=2)
+        and is_clarify_follow_up
+    ):
+        logger.info(f"[Chat-v2-Stream] 澄清状态恢复 | intent={pc.pending_intent}")
+        merged_slots = dict(pc.resolved_slots)
+        merged_slots.update(rewrite_result.resolved_references or {})
+        if rewrite_result.rewritten_query and rewrite_result.rewritten_query != request.message:
+            merged_slots["search_keywords"] = rewrite_result.rewritten_query
+
+        # 从用户原始输入中直接提取实体（公司名/岗位名），补充缺失槽位
+        if pc.missing_slots:
+            from app.core.llm_intent import _load_kb_entities
+            kb_companies, kb_positions = _load_kb_entities()
+            msg = request.message or ""
+            # 按长度降序匹配，优先命中更长的实体（如 "字节跳动" 优先于 "字节"）
+            if "company" in pc.missing_slots and "company" not in merged_slots:
+                for c in sorted(kb_companies, key=len, reverse=True):
+                    if c in msg:
+                        merged_slots["company"] = c
+                        break
+            if "position" in pc.missing_slots and "position" not in merged_slots:
+                for p in sorted(kb_positions, key=len, reverse=True):
+                    if p in msg:
+                        merged_slots["position"] = p
+                        break
+
+        from app.core.llm_intent import MultiIntentResult, IntentCandidate, LLMIntentType, _create_rule_registry
+        from app.core.new_arch_adapter import map_intent_name_to_new
+        new_intent_name = map_intent_name_to_new(pc.pending_intent)
+        intent_type = LLMIntentType(new_intent_name) if new_intent_name else LLMIntentType.CHAT
+
+        # 当 pending_intent=chat（意图模糊）时，推断真实意图
+        if intent_type == LLMIntentType.CHAT and rewrite_result.rewritten_query:
+            # 有 pending_clarification 时，走完整意图识别流程，让校准器利用工作记忆推断
+            if pc and not pc.is_expired(current_turn_id, max_gap=2):
+                intent_router = LLMIntentRouter()
+                re_multi_result = await intent_router.route_multi(
+                    rewrite_result=rewrite_result,
+                    session=session,
+                    attachments=request.attachments or [],
+                    raw_message=request.message,
+                )
+                if re_multi_result.candidates:
+                    intent_type = re_multi_result.primary_intent or re_multi_result.candidates[0].intent_type
+                    for cand in re_multi_result.candidates:
+                        merged_slots.update(cand.slots or {})
+                    logger.info(f"[Chat-v2-Stream] 澄清后重新识别意图 | inferred={intent_type.value} | candidates={[c.intent_type.value for c in re_multi_result.candidates]}")
+            else:
+                # 无 pending_clarification 时：用规则匹配简单推断
+                registry = _create_rule_registry()
+                rule_matches = registry.classify_all(rewrite_result.rewritten_query, [])
+                non_miss = [r for r in rule_matches if r.intent is not None]
+                if non_miss:
+                    best = non_miss[0]
+                    intent_type = best.intent
+                    merged_slots.update(best.metadata or {})
+                    logger.info(f"[Chat-v2-Stream] 澄清推断意图 | inferred={intent_type.value} | rule={best.rule_name}")
+        restored = IntentCandidate(
+            intent_type=intent_type,
+            confidence=0.85,
+            reason=f"澄清恢复: 缺失槽位 {pc.missing_slots}",
+            slots=merged_slots,
+            slot_sources={k: "clarification_recovery" for k in merged_slots.keys()},
+            missing_slots=[s for s in pc.missing_slots if s not in merged_slots],
+            needs_clarification=False,
+            source="clarification_recovery",
+            rule_agreement=True,
+        )
+        # 判断是否需要再次澄清：VERIFY 有 company 或 position 之一即可；ASSESS 必须 resume
+        needs_clarify = False
+        clarify_reason = None
+        if restored.missing_slots:
+            needs_clarify = True
+            if intent_type == LLMIntentType.VERIFY:
+                if merged_slots.get("company") or merged_slots.get("position"):
+                    needs_clarify = False
+            elif intent_type == LLMIntentType.ASSESS:
+                if merged_slots.get("resume_available"):
+                    needs_clarify = False
+            if needs_clarify:
+                clarify_reason = f"还需要补充：{', '.join(restored.missing_slots)}"
+        multi_result = MultiIntentResult(
+            candidates=[restored],
+            primary_intent=intent_type,
+            needs_clarification=needs_clarify,
+            clarification_reason=clarify_reason,
+            global_slots=merged_slots,
+            execution_topology=[[intent_type]],
+        )
+    else:
+        if pc and pc.is_expired(current_turn_id, max_gap=2):
+            session.pending_clarification = None
+        intent_router = LLMIntentRouter()
+        multi_result = await intent_router.route_multi(
+            rewrite_result=rewrite_result,
+            session=session,
+            attachments=request.attachments or [],
+            raw_message=request.message,
+        )
+
+    intent_result = multi_intent_result_to_intent_result(multi_result)
 
     # 澄清场景
     if intent_result.needs_clarification:
-        yield _sse("clarification", {"question": intent_result.clarification_question})
+        reply_text = intent_result.clarification_question or "抱歉，我没有完全理解您的意思，能再详细说明一下吗？"
+        yield _sse("clarification", {"question": reply_text})
+        # 保存澄清状态
+        turn_id = len(session.working_memory.turns) + 1
+        primary = intent_result.demands[0].intent_type if intent_result.demands else "chat"
+        session.pending_clarification = PendingClarification(
+            pending_intent=primary,
+            missing_slots=intent_result.missing_entities or [],
+            clarification_question=reply_text,
+            created_turn_id=turn_id,
+            resolved_slots=dict(intent_result.resolved_entities or {}),
+        )
         yield _sse("done", {
             "session_id": session_id,
-            "intent": intent_result.demands[0].intent_type if intent_result.demands else "chat",
+            "intent": primary,
             "is_clarification": True,
-            "reply": {"text": intent_result.clarification_question},
+            "reply": {"text": reply_text},
         })
         return
 
@@ -977,17 +1255,15 @@ async def _handle_llm_route_v2_stream(
             summary_lines.append(f"- {title}: {content}")
         evidence_cache_summary = "\n".join(summary_lines)
 
-    planner = TaskPlanner()
-    graph = await planner.create_graph(
-        rewritten_query=rewrite_result.rewritten_query,
-        demands=[{"intent_type": d.intent_type, "entities": d.entities, "priority": d.priority}
-                 for d in intent_result.demands],
-        resolved_entities=intent_result.resolved_entities,
+    new_planner = TaskGraphPlanner()
+    new_graph = await new_planner.create_graph(
+        multi_result=multi_result,
+        session=session,
         resume_text=resume_text,
-        search_keywords=rewrite_result.search_keywords,
-        follow_up_type=rewrite_result.follow_up_type,
-        evidence_cache_summary=evidence_cache_summary,
+        rewrite_result=rewrite_result,
+        history_cache=[],
     )
+    graph = convert_task_graph(new_graph)
 
     # ── ③ ReAct 执行 ──
     yield _sse("status", {"step": "execute", "message": "正在执行分析..."})
@@ -1131,6 +1407,15 @@ async def _handle_llm_route_v2_stream(
         await mm.rotate_memory(session, turn)
     except Exception as e:
         logger.warning(f"[Chat-v2-stream] 记忆轮转失败: {e}")
+
+    # 清理过期的澄清状态
+    if session.pending_clarification:
+        current_turn_id = len(session.working_memory.turns)
+        if session.pending_clarification.is_expired(current_turn_id, max_gap=2):
+            logger.info(
+                f"[Chat-v2-stream] 澄清状态过期清理 | intent={session.pending_clarification.pending_intent}"
+            )
+            session.pending_clarification = None
 
     memory_state = _build_memory_state(session)
     yield _sse("done", {

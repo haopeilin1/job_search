@@ -11,25 +11,26 @@
   "scenario": "有简历_技能导向探索",
   "status": "success",
   "error": null,
-  "ttfb": 0.006,
-  "total_latency": 46.29,
-  "event_count": 159,
+  "ttfb": 0.007,
+  "total_latency": 66.21,
+  "event_count": 242,
   "pred_intent": "match_assess",
   "pred_tools": [
     {
       "tool": "kb_retrieve",
       "status": "✅",
       "params": {
-        "query": "我的RAG和Embedding经验"
+        "query": "RAG和Embedding经验",
+        "top_k": 10
       },
       "result_preview": "{'chunks': [{'chunk_id': '51054437-3bd1-4da6-8f09-d5b5d5978de8_chunk_3', 'content': '【蚂蚁集团 · AI产品工程师（转正实习） 硬性要求】\\n技术直觉与体感：熟悉大模型基础原理，理解 RAG、Prompt Engineering 及 Agent 工作流与局限（如RAG机制、Context Window、模型幻觉等"
     },
     {
-      "tool": "match_analyze",
+      "tool": "global_rank",
       "status": "✅",
       "params": {
         "resume_text": "AI\n / \n157-xxxx-3421  |  chenyutong2027@163.com  |  \n  |  2027\n6\n2024.09  2027.06\n · \nAI\n· \nGPA\n3.4/4.0  |  \n2020.09  2024.06\n · \n · \n  |  \nWeb\n \n \n2025.03  2025.11\n  |  \n40\n\"\n\"\n\"\n\"\nFigma\nAI\nEmbedding\nJD\nAPI\nPrompt\n20\nPDF\n \n \nRAG\n2024.10  2025.02\n  |  \n80\nOCR\nWeb\n\"\n\"\n · \n2024.09  2025.06\n10\n · \n2022.03  2023.06\n2025.05    \n2024.11    \nAI\n2023.06    \n2022.12    \nFigma\nAxure\nXmind\n/\nPRD\nPrompt Engineering\nRAG\nEmbedding\nCET-4\n525\nOffice\nExcel",
-        "jd_text": [
+        "candidate_jds": [
           {
             "chunk_id": "51054437-3bd1-4da6-8f09-d5b5d5978de8_chunk_3",
             "content": "【蚂蚁集团 · AI产品工程师（转正实习） 硬性要求】\n技术直觉与体感：熟悉大模型基础原理，理解 RAG、Prompt Engineering 及 Agent 工作流与局限（如RAG机制、Context Window、模型幻觉等），能够与底层算法/工程团队同频对话，准确评估技术可行性",
@@ -42,31 +43,12 @@
               "section": "hard_requirements",
               "strategy": "semantic"
             },
-            "distance": 0.8426549434661865,
+            "distance": 0.9036413431167603,
             "bm25_score": 0.0,
             "vec_norm": 1.0,
             "bm25_norm": 0.0,
             "hybrid_score": 0.7,
-            "rerank_score": 0.1281
-          },
-          {
-            "chunk_id": "ac997d3f-9206-4414-9fac-16deb62ff88b_chunk_4",
-            "content": "【美团 · 搜索推荐AI PM 硬性要求】\n熟悉大模型基础原理，理解RAG、Prompt Engineering或Agent工作流",
-            "metadata": {
-              "company": "美团",
-              "index": 4,
-              "jd_id": "ac997d3f-9206-4414-9fac-16deb62ff88b",
-              "position": "搜索推荐AI PM",
-              "priority": "high",
-              "section": "hard_requirements",
-              "strategy": "semantic"
-            },
-            "distance": 1.03778874874115,
-            "bm25_score": 0.0,
-            "vec_norm": 0.2683158938819553,
-            "bm25_norm": 0.0,
-            "hybrid_score": 0.1878211257173687,
-            "rerank_score": 0.0818
+            "rerank_score": 0.2253
           },
           {
             "chunk_id": "ac9973c8-01be-4cd6-9a99-097873a59cf0_chunk_3",
@@ -80,68 +62,12 @@
               "section": "hard_requirements",
               "strategy": "semantic"
             },
-            "distance": 0.9429715871810913,
-            "bm25_score": 0.0,
-            "vec_norm": 0.623847371387678,
-            "bm25_norm": 0.0,
-            "hybrid_score": 0.4366931599713746,
-            "rerank_score": 0.0774
-          },
-          {
-            "chunk_id": "f46e2577-eca2-448d-a9a8-7fc14402179b_chunk_1",
-            "content": "【百度 · 大模型应用PM 岗位职责】\n1. 负责大模型应用的产品规划与设计。2. 深入理解行业需求，将业务经验抽象为大模型可执行的逻辑流与SOP。3. 模型精细化调教：编写结构化Prompt，配合RAG、Function Calling。4. 数据驱动进化：建立交互好感度与任务成功率双重指标。",
-            "metadata": {
-              "company": "百度",
-              "index": 1,
-              "jd_id": "f46e2577-eca2-448d-a9a8-7fc14402179b",
-              "position": "大模型应用PM",
-              "section": "responsibilities",
-              "strategy": "semantic"
-            },
-            "distance": null,
-            "bm25_score": 3.874569207577212,
-            "vec_norm": 0.0,
-            "bm25_norm": 0.6193247509261237,
-            "hybrid_score": 0.1857974252778371,
-            "rerank_score": 0.071
-          },
-          {
-            "chunk_id": "4dcb6702-c777-4279-b0e9-99e8edbd608f_chunk_3",
-            "content": "【蚂蚁集团 · AI产品经理 硬性要求】\n熟练掌握 Transformer、Token、RAG 等核心概念；对 ReAct、CoT、Multi-Agent 架构有实战理解；",
-            "metadata": {
-              "company": "蚂蚁集团",
-              "index": 3,
-              "jd_id": "4dcb6702-c777-4279-b0e9-99e8edbd608f",
-              "position": "AI产品经理",
-              "priority": "high",
-              "section": "hard_requirements",
-              "strategy": "semantic"
-            },
-            "distance": 0.8461588621139526,
-            "bm25_score": 0.0,
-            "vec_norm": 0.9868615200729136,
-            "bm25_norm": 0.0,
-            "hybrid_score": 0.6908030640510395,
-            "rerank_score": 0.0575
-          },
-          {
-            "chunk_id": "2af1570c-e34f-4fb9-8422-e08e3ac3b927_chunk_4",
-            "content": "【蚂蚁集团 · AI产品工程师（搜推方向） 硬性要求】\n熟悉大模型基础原理，理解 RAG、Prompt Engineering 及 Agent 工作流，具备成本评估意识与良好的合规风险判断力",
-            "metadata": {
-              "company": "蚂蚁集团",
-              "index": 4,
-              "jd_id": "2af1570c-e34f-4fb9-8422-e08e3ac3b927",
-              "position": "AI产品工程师（搜推方向）",
-              "priority": "high",
-              "section": "hard_requirements",
-              "strategy": "semantic"
-            },
-            "distance": 0.8493496775627136,
-            "bm25_score": 0.0,
-            "vec_norm": 0.9748970685719318,
-            "bm25_norm": 0.0,
-            "hybrid_score": 0.6824279480003522,
-            "rerank_score": 0.0388
+            "distance": 0.995721161365509,
+            "bm25_score": 2.7968968796869307,
+            "vec_norm": 0.6261156559953183,
+            "bm25_norm": 0.061063295825606184,
+            "hybrid_score": 0.4565999479444046,
+            "rerank_score": 0.1609
           },
           {
             "chunk_id": "ec233a37-20d0-4df8-a253-42a0d0d00b5b_chunk_8",
@@ -155,12 +81,68 @@
               "section": "soft_requirements",
               "strategy": "semantic"
             },
-            "distance": 0.9512835144996643,
+            "distance": 0.9811378717422485,
             "bm25_score": 0.0,
-            "vec_norm": 0.5926805261471082,
+            "vec_norm": 0.68533019157893,
             "bm25_norm": 0.0,
-            "hybrid_score": 0.4148763683029757,
-            "rerank_score": 0.0364
+            "hybrid_score": 0.479731134105251,
+            "rerank_score": 0.1426
+          },
+          {
+            "chunk_id": "4dcb6702-c777-4279-b0e9-99e8edbd608f_chunk_3",
+            "content": "【蚂蚁集团 · AI产品经理 硬性要求】\n熟练掌握 Transformer、Token、RAG 等核心概念；对 ReAct、CoT、Multi-Agent 架构有实战理解；",
+            "metadata": {
+              "company": "蚂蚁集团",
+              "index": 3,
+              "jd_id": "4dcb6702-c777-4279-b0e9-99e8edbd608f",
+              "position": "AI产品经理",
+              "priority": "high",
+              "section": "hard_requirements",
+              "strategy": "semantic"
+            },
+            "distance": 0.9062945246696472,
+            "bm25_score": 0.0,
+            "vec_norm": 0.9892269222149562,
+            "bm25_norm": 0.0,
+            "hybrid_score": 0.6924588455504693,
+            "rerank_score": 0.1362
+          },
+          {
+            "chunk_id": "f46e2577-eca2-448d-a9a8-7fc14402179b_chunk_1",
+            "content": "【百度 · 大模型应用PM 岗位职责】\n1. 负责大模型应用的产品规划与设计。2. 深入理解行业需求，将业务经验抽象为大模型可执行的逻辑流与SOP。3. 模型精细化调教：编写结构化Prompt，配合RAG、Function Calling。4. 数据驱动进化：建立交互好感度与任务成功率双重指标。",
+            "metadata": {
+              "company": "百度",
+              "index": 1,
+              "jd_id": "f46e2577-eca2-448d-a9a8-7fc14402179b",
+              "position": "大模型应用PM",
+              "section": "responsibilities",
+              "strategy": "semantic"
+            },
+            "distance": null,
+            "bm25_score": 3.1772391287485315,
+            "vec_norm": 0.0,
+            "bm25_norm": 0.7508477196158998,
+            "hybrid_score": 0.22525431588476993,
+            "rerank_score": 0.1263
+          },
+          {
+            "chunk_id": "2af1570c-e34f-4fb9-8422-e08e3ac3b927_chunk_4",
+            "content": "【蚂蚁集团 · AI产品工程师（搜推方向） 硬性要求】\n熟悉大模型基础原理，理解 RAG、Prompt Engineering 及 Agent 工作流，具备成本评估意识与良好的合规风险判断力",
+            "metadata": {
+              "company": "蚂蚁集团",
+              "index": 4,
+              "jd_id": "2af1570c-e34f-4fb9-8422-e08e3ac3b927",
+              "position": "AI产品工程师（搜推方向）",
+              "priority": "high",
+              "section": "hard_requirements",
+              "strategy": "semantic"
+            },
+            "distance": 0.9059241414070129,
+            "bm25_score": 0.0,
+            "vec_norm": 0.9907308402918386,
+            "bm25_norm": 0.0,
+            "hybrid_score": 0.6935115882042869,
+            "rerank_score": 0.1029
           },
           {
             "chunk_id": "f46e2577-eca2-448d-a9a8-7fc14402179b_chunk_4",
@@ -174,12 +156,12 @@
               "section": "hard_requirements",
               "strategy": "semantic"
             },
-            "distance": 0.9943520426750183,
-            "bm25_score": 0.0,
-            "vec_norm": 0.4311884797259393,
-            "bm25_norm": 0.0,
-            "hybrid_score": 0.3018319358081575,
-            "rerank_score": 0.0194
+            "distance": 1.036858320236206,
+            "bm25_score": 2.865647794917778,
+            "vec_norm": 0.4590807948161052,
+            "bm25_norm": 0.18574918219392414,
+            "hybrid_score": 0.37708131102945086,
+            "rerank_score": 0.0463
           },
           {
             "chunk_id": "4156a58f-e1d2-4d9c-bb69-2235f8aaad44_c6",
@@ -194,11 +176,30 @@
               "strategy": "semantic"
             },
             "distance": null,
-            "bm25_score": 4.29316387042387,
+            "bm25_score": 3.2101630352768837,
             "vec_norm": 0.0,
-            "bm25_norm": 0.9393577773720557,
-            "hybrid_score": 0.2818073332116167,
-            "rerank_score": 0.006
+            "bm25_norm": 0.8105581460794786,
+            "hybrid_score": 0.2431674438238436,
+            "rerank_score": 0.0081
+          },
+          {
+            "chunk_id": "2af1570c-e34f-4fb9-8422-e08e3ac3b927_chunk_7",
+            "content": "【蚂蚁集团 · AI产品工程师（搜推方向） 硬性要求】\n对新技术和新事物保持强烈好奇心，对业务发展的不确定性和快速变革具备开放心态",
+            "metadata": {
+              "company": "蚂蚁集团",
+              "index": 7,
+              "jd_id": "2af1570c-e34f-4fb9-8422-e08e3ac3b927",
+              "position": "AI产品工程师（搜推方向）",
+              "priority": "high",
+              "section": "hard_requirements",
+              "strategy": "semantic"
+            },
+            "distance": null,
+            "bm25_score": 3.1658265672208628,
+            "vec_norm": 0.0,
+            "bm25_norm": 0.7301500264283641,
+            "hybrid_score": 0.21904500792850923,
+            "rerank_score": 0.0013
           },
           {
             "chunk_id": "1983c425-982c-4116-8883-04eb0109edb3_chunk_1",
@@ -212,823 +213,1239 @@
               "strategy": "semantic"
             },
             "distance": null,
-            "bm25_score": 4.372482280205258,
+            "bm25_score": 3.31461993268058,
             "vec_norm": 0.0,
             "bm25_norm": 1.0,
             "hybrid_score": 0.3,
-            "rerank_score": 0.0015
+            "rerank_score": 0.0011
           }
-        ]
+        ],
+        "top_k": 5
       },
-      "result_preview": "{'score': 70, 'label': '基本匹配', 'advantages': ['RAG', 'Prompt Engineering'], 'weaknesses': ['候选人缺乏对大模型基础原理的深入理解，特别是Transformer、Token等核心概念。此外，缺乏与底层算法/工程团队同频对话的能力，以及模型精细化调教和数据驱动进化的能力。'], 'suggestions': ["
+      "result_preview": "{'rankings': [{'rank': 1, 'jd_id': '51054437-3bd1-4da6-8f09-d5b5d5978de8', 'company': '蚂蚁集团', 'position': 'AI产品工程师（转正实习）', 'match_score': 81, 'recommend_reason': '检索相关度较高（0.70）', 'key_match': ['检索召回']"
     }
   ],
   "tools_called": [
     "kb_retrieve",
-    "match_analyze"
+    "global_rank"
   ],
-  "reply": "您好！基于当前的市场需求检索与您的背景分析，您的技术积累在**大模型应用方向的产品岗位**上最具价值。以下是详细的匹配分析与建议：\n\n### 1. 核心岗位匹配\n您的技能组合高度契合以下两类职位：\n*   **AI 产品经理 / 大模型应用 PM**：如字节跳动、蚂蚁集团的相关岗位，明确要求熟练掌握 RAG 核心概念。\n*   **AI 产品工程师（搜推方向）**：如蚂蚁集团、美团的岗位，强调理解 RAG、Prompt Engineering 及 Agent 工作流。\n\n### 2. 市场竞争力分析\n根据匹配模型评估，您与当前头部大厂（蚂蚁、美团、字节、百度）相关岗位的匹配度为 **70 分（基本匹配）**。\n\n*   **✅ 核心优势**：\n    *   具备 **RAG** 实战经验，符合多数 JD 的硬性要求。\n    *   掌握 **Prompt Engineering**，能够参与模型精细化调教。\n*   **⚠️ 待补强项**：\n    *   **理论基础**：对 Transformer、Token 等大模型底层原理的理解深度不足。\n    *   **协作能力**：缺乏与底层算法/工程团队同频对话的经验，可能影响技术可行性评估。\n    *   **闭环能力**：在模型调教（Function Calling 配合）及数据驱动进化（指标建立）方面经验欠缺。\n\n### 3. 进阶建议\n为了将匹配度从“基本匹配”提升至“高度匹配”，建议您重点准备以下内容：\n\n1.  **深化原理认知**：系统补充 Transformer 架构及 Token 机制知识，确保能与算法团队无障碍沟通。\n2.  **完善技能树**：学习如何将结构化 Prompt 与 RAG、Function Calling 结合，提升解决复杂业务逻辑的能力。\n3.  **建立指标意识**：在简历或面试中展示如何通过“交互好感度”与“任务成功率”双重指标来驱动产品进化。\n4.  **关注非功能需求**：补充大模型应用中的成本评估意识与合规风险判断力，这是大厂非常看重的加分项。\n\n您的技术背景非常契合当前 AI 落地的热点方向，只需在理论深度与工程协作层面稍作补充，竞争力将显著提升。祝您求职顺利！",
-  "reply_length": 950,
+  "reply": "基于当前的招聘市场需求分析，您的 **RAG 和 Embedding 经验** 在 **大模型应用落地方向** 的岗位中价值最高，尤其是 **AI 产品工程师** 和 **AI 产品经理** 类别。\n\n以下是基于检索到的头部大厂职位描述（JD）所做的详细匹配分析与建议：\n\n### 1. 岗位匹配度分析\n根据检索结果，您的技能组合与以下岗位的核心要求高度契合：\n\n*   **🔴 高度匹配（硬性要求）**\n    *   **蚂蚁集团 - AI 产品工程师（转正实习/搜推方向）**\n        *   **匹配点**：JD 明确要求“熟悉大模型基础原理，理解 RAG、Prompt Engineering 及 Agent 工作流”，且需要能与算法团队同频对话。您的 Embedding 经验能帮助您更好地理解检索机制和技术可行性。\n    *   **字节跳动 - AI 产品经理**\n        *   **匹配点**：将“熟练掌握 Transformer、Token、RAG 等核心概念”列为硬性要求，您的经验可直接满足该门槛。\n    *   **百度 - 大模型应用 PM**\n        *   **匹配点**：岗位职责直接包含“配合 RAG、Function Calling\"进行模型精细化调教，需要深入理解技术逻辑。\n    *   **蚂蚁集团 - AI 产品经理**\n        *   **匹配点**：同样将 RAG 列为核心概念，并要求对 Multi-Agent 架构有实战理解。\n\n*   **🟡 中等匹配（加分项）**\n    *   **联想 - 产品经理-AI 方向**\n        *   **匹配点**：JD 中将“有深度学习、RAG、Prompt、知识库学习经历”列为软性要求/加分项。相比上述岗位，该技能在此处的权重略低，但仍具竞争力。\n\n### 2. 为什么您的经验最有价值？\n*   **技术落地核心**：检索结果显示，大厂在招聘 AI 应用类岗位时，**RAG（检索增强生成）** 已成为标配技能。而 **Embedding** 是 RAG 中实现语义检索的核心技术，懂 Embedding 意味着您能更深入地优化检索质量、处理数据切片及评估召回效果。\n*   **沟通壁垒降低**：蚂蚁集团等公司的 JD 特别提到需要“与底层算法/工程团队同频对话”。具备 Embedding 实战经验能让您在评估技术可行性、成本及合规风险时更具说服力。\n\n### 3. 求职建议\n根据系统匹配策略建议（识别到 2 个高度匹配岗位，3 个中等匹配岗位），建议您采取以下投递策略：\n\n1.  **优先投递**：**蚂蚁集团（AI 产品工程师）** 与 **字节跳动（AI 产品经理）**。这两个岗位对技术原理的要求最硬性，您的经验能最大化转化为面试优势。\n2.  **简历优化**：\n    *   **量化效果**：不要只写“熟悉 RAG\"，建议补充“通过优化 Embedding 模型/策略，将检索准确率提升了 X%\"或“解决了 Y 场景下的幻觉问题”。\n    *   **突出全流程**：在项目经历中体现从数据处理、Embedding 选型、检索策略到 Prompt 优化的完整闭环，呼应百度 JD 中的“模型精细化调教”要求。\n3.  **面试准备**：重点准备 RAG 的局限性（如 Context Window 限制、幻觉问题）及解决方案，这是蚂蚁集团等公司面试中的高频考点。\n\n您的技术栈非常符合当前 AI 应用落地的趋势，建议自信出击，重点突出技术在业务场景中的实际转化能力。",
+  "reply_length": 1522,
   "intent_match": false,
-  "tool_match_rate": 0.5,
+  "tool_match_rate": 1.0,
   "has_reply": true,
   "events": [
     {
       "step": "intent",
       "message": "正在识别您的意图...",
-      "_time": 0.0063784122467041016,
+      "_time": 0.006678104400634766,
       "type": "status"
     },
     {
       "step": "plan",
       "message": "正在规划任务...",
-      "_time": 1.4966068267822266,
+      "_time": 1.5811500549316406,
       "type": "status"
     },
     {
       "step": "execute",
       "message": "正在执行分析...",
-      "_time": 5.502738952636719,
+      "_time": 5.862363338470459,
       "type": "status"
     },
     {
       "step": "aggregate",
       "message": "正在生成回复...",
-      "_time": 8.749934673309326,
+      "_time": 6.348124265670776,
       "type": "status"
     },
     {
-      "text": "您好！",
-      "_time": 37.27697014808655,
+      "text": "基于",
+      "_time": 52.28920817375183,
       "type": "delta"
     },
     {
-      "text": "基于当前的市场需求检索",
-      "_time": 37.41633057594299,
+      "text": "当前的招聘市场需求分析",
+      "_time": 52.37518930435181,
       "type": "delta"
     },
     {
-      "text": "与",
-      "_time": 37.41974973678589,
+      "text": "，您的 **",
+      "_time": 52.37676692008972,
       "type": "delta"
     },
     {
-      "text": "您的背景分析，",
-      "_time": 37.508081674575806,
+      "text": "RAG 和",
+      "_time": 52.502439737319946,
       "type": "delta"
     },
     {
-      "text": "您的技术",
-      "_time": 37.51072907447815,
+      "text": " Embedding 经验",
+      "_time": 52.52524662017822,
       "type": "delta"
     },
     {
-      "text": "积累在**大",
-      "_time": 37.64712643623352,
+      "text": "** 在 **",
+      "_time": 52.645331621170044,
       "type": "delta"
     },
     {
-      "text": "模型应用方向",
-      "_time": 37.65085792541504,
+      "text": "大",
+      "_time": 52.648070096969604,
       "type": "delta"
     },
     {
-      "text": "的产品岗位**上",
-      "_time": 37.73911690711975,
+      "text": "模型应用落地方",
+      "_time": 52.73539686203003,
       "type": "delta"
     },
     {
-      "text": "最具价值。以下是",
-      "_time": 37.74199676513672,
+      "text": "向** 的",
+      "_time": 52.738080978393555,
       "type": "delta"
     },
     {
-      "text": "详细的匹配分析与建议",
-      "_time": 37.916199922561646,
+      "text": "岗位中价值最高",
+      "_time": 52.911588191986084,
       "type": "delta"
     },
     {
-      "text": "：\n\n### ",
-      "_time": 37.918946981430054,
+      "text": "，尤其是",
+      "_time": 52.91194272041321,
       "type": "delta"
     },
     {
-      "text": "1. 核心",
-      "_time": 38.02711629867554,
+      "text": " **AI 产品",
+      "_time": 52.98948693275452,
       "type": "delta"
     },
     {
-      "text": "岗位匹配\n",
-      "_time": 38.03000855445862,
+      "text": "工程师** 和",
+      "_time": 53.027377128601074,
       "type": "delta"
     },
     {
-      "text": "您的技能组合高度",
-      "_time": 38.154338359832764,
+      "text": " **AI 产品经理",
+      "_time": 53.159454584121704,
       "type": "delta"
     },
     {
-      "text": "契合以下",
-      "_time": 38.257075548172,
+      "text": "** 类别",
+      "_time": 53.16208028793335,
       "type": "delta"
     },
     {
-      "text": "两类职位：\n",
-      "_time": 38.260883808135986,
+      "text": "。\n\n以下是基于",
+      "_time": 53.25940680503845,
+      "type": "delta"
+    },
+    {
+      "text": "检索到的头部",
+      "_time": 53.26406455039978,
+      "type": "delta"
+    },
+    {
+      "text": "大厂职位描述（JD",
+      "_time": 53.41005516052246,
+      "type": "delta"
+    },
+    {
+      "text": "）所做的",
+      "_time": 53.413995027542114,
+      "type": "delta"
+    },
+    {
+      "text": "详细匹配分析与建议",
+      "_time": 53.49104332923889,
+      "type": "delta"
+    },
+    {
+      "text": "：\n\n###",
+      "_time": 53.49306654930115,
+      "type": "delta"
+    },
+    {
+      "text": " 1. ",
+      "_time": 53.61801815032959,
+      "type": "delta"
+    },
+    {
+      "text": "岗位匹配度分析",
+      "_time": 53.64505434036255,
+      "type": "delta"
+    },
+    {
+      "text": "\n根据检索结果",
+      "_time": 53.76222109794617,
+      "type": "delta"
+    },
+    {
+      "text": "，您的",
+      "_time": 53.76599049568176,
+      "type": "delta"
+    },
+    {
+      "text": "技能组合与以下",
+      "_time": 53.86987781524658,
+      "type": "delta"
+    },
+    {
+      "text": "岗位的核心",
+      "_time": 53.872788190841675,
+      "type": "delta"
+    },
+    {
+      "text": "要求高度契合：",
+      "_time": 54.00938034057617,
+      "type": "delta"
+    },
+    {
+      "text": "\n\n*   **",
+      "_time": 54.00958704948425,
+      "type": "delta"
+    },
+    {
+      "text": "🔴 ",
+      "_time": 54.120203256607056,
+      "type": "delta"
+    },
+    {
+      "text": "高度匹配（",
+      "_time": 54.1230411529541,
+      "type": "delta"
+    },
+    {
+      "text": "硬性要求）**\n",
+      "_time": 54.24700355529785,
+      "type": "delta"
+    },
+    {
+      "text": "    *  ",
+      "_time": 54.273890018463135,
+      "type": "delta"
+    },
+    {
+      "text": " **蚂蚁集团 -",
+      "_time": 54.372443437576294,
+      "type": "delta"
+    },
+    {
+      "text": " AI 产品工程师",
+      "_time": 54.37506723403931,
+      "type": "delta"
+    },
+    {
+      "text": "（转正实习/",
+      "_time": 54.51934218406677,
+      "type": "delta"
+    },
+    {
+      "text": "搜",
+      "_time": 54.52070879936218,
+      "type": "delta"
+    },
+    {
+      "text": "推方向）**\n",
+      "_time": 54.64137625694275,
+      "type": "delta"
+    },
+    {
+      "text": "        *   **",
+      "_time": 54.64164423942566,
+      "type": "delta"
+    },
+    {
+      "text": "匹配点**：",
+      "_time": 54.76409339904785,
+      "type": "delta"
+    },
+    {
+      "text": "JD ",
+      "_time": 54.80597805976868,
+      "type": "delta"
+    },
+    {
+      "text": "明确要求“熟悉大",
+      "_time": 54.88901114463806,
+      "type": "delta"
+    },
+    {
+      "text": "模型基础",
+      "_time": 54.89098930358887,
+      "type": "delta"
+    },
+    {
+      "text": "原理，理解 R",
+      "_time": 54.96914625167847,
+      "type": "delta"
+    },
+    {
+      "text": "AG、Prompt Engineering",
+      "_time": 55.00302314758301,
+      "type": "delta"
+    },
+    {
+      "text": " 及 Agent ",
+      "_time": 55.11223864555359,
+      "type": "delta"
+    },
+    {
+      "text": "工作流”，且",
+      "_time": 55.11702752113342,
+      "type": "delta"
+    },
+    {
+      "text": "需要能与算法团队",
+      "_time": 55.25590658187866,
+      "type": "delta"
+    },
+    {
+      "text": "同",
+      "_time": 55.2567503452301,
+      "type": "delta"
+    },
+    {
+      "text": "频对话。您的",
+      "_time": 55.3779661655426,
+      "type": "delta"
+    },
+    {
+      "text": " Embedding 经验",
+      "_time": 55.381940603256226,
+      "type": "delta"
+    },
+    {
+      "text": "能帮助您更好地理解检索",
+      "_time": 55.49123167991638,
+      "type": "delta"
+    },
+    {
+      "text": "机制和技术",
+      "_time": 55.51991415023804,
+      "type": "delta"
+    },
+    {
+      "text": "可行性。\n   ",
+      "_time": 55.59795665740967,
+      "type": "delta"
+    },
+    {
+      "text": " *   **字节",
+      "_time": 55.59991264343262,
+      "type": "delta"
+    },
+    {
+      "text": "跳动 - AI ",
+      "_time": 55.74220561981201,
+      "type": "delta"
+    },
+    {
+      "text": "产品经理**",
+      "_time": 55.77006006240845,
+      "type": "delta"
+    },
+    {
+      "text": "\n        *  ",
+      "_time": 55.850101470947266,
+      "type": "delta"
+    },
+    {
+      "text": " **匹配点**",
+      "_time": 55.852959632873535,
+      "type": "delta"
+    },
+    {
+      "text": "：将“熟练掌握",
+      "_time": 56.02394700050354,
+      "type": "delta"
+    },
+    {
+      "text": " Transformer、",
+      "_time": 56.02465534210205,
+      "type": "delta"
+    },
+    {
+      "text": "Token、RAG",
+      "_time": 56.121360301971436,
+      "type": "delta"
+    },
+    {
+      "text": " 等核心概念",
+      "_time": 56.14898324012756,
+      "type": "delta"
+    },
+    {
+      "text": "”列为硬性要求",
+      "_time": 56.2462797164917,
+      "type": "delta"
+    },
+    {
+      "text": "，您的",
+      "_time": 56.24984550476074,
+      "type": "delta"
+    },
+    {
+      "text": "经验可直接满足该",
+      "_time": 56.35410118103027,
+      "type": "delta"
+    },
+    {
+      "text": "门槛。\n   ",
+      "_time": 56.356929540634155,
+      "type": "delta"
+    },
+    {
+      "text": " *   **百度",
+      "_time": 56.527337074279785,
+      "type": "delta"
+    },
+    {
+      "text": " - 大模型",
+      "_time": 56.52760887145996,
+      "type": "delta"
+    },
+    {
+      "text": "应用 PM**\n",
+      "_time": 56.663217306137085,
+      "type": "delta"
+    },
+    {
+      "text": "        *   **",
+      "_time": 56.68088674545288,
+      "type": "delta"
+    },
+    {
+      "text": "匹配点**：",
+      "_time": 56.786123514175415,
+      "type": "delta"
+    },
+    {
+      "text": "岗位职责直接",
+      "_time": 56.82607436180115,
+      "type": "delta"
+    },
+    {
+      "text": "包含“配合 R",
+      "_time": 56.89387488365173,
+      "type": "delta"
+    },
+    {
+      "text": "AG",
+      "_time": 56.895861864089966,
+      "type": "delta"
+    },
+    {
+      "text": "、Function Calling\"",
+      "_time": 57.0198917388916,
+      "type": "delta"
+    },
+    {
+      "text": "进行模型精细化调",
+      "_time": 57.02381944656372,
+      "type": "delta"
+    },
+    {
+      "text": "教，需要深入",
+      "_time": 57.130096435546875,
+      "type": "delta"
+    },
+    {
+      "text": "理解技术",
+      "_time": 57.13386511802673,
+      "type": "delta"
+    },
+    {
+      "text": "逻辑。\n   ",
+      "_time": 57.267154932022095,
+      "type": "delta"
+    },
+    {
+      "text": " *  ",
+      "_time": 57.26855421066284,
+      "type": "delta"
+    },
+    {
+      "text": " **蚂蚁集团 -",
+      "_time": 57.34494233131409,
+      "type": "delta"
+    },
+    {
+      "text": " AI 产品经理**",
+      "_time": 57.34882402420044,
+      "type": "delta"
+    },
+    {
+      "text": "\n        *  ",
+      "_time": 57.52104878425598,
+      "type": "delta"
+    },
+    {
+      "text": " **匹配点**",
+      "_time": 57.525856256484985,
+      "type": "delta"
+    },
+    {
+      "text": "：同样将 R",
+      "_time": 57.633073568344116,
+      "type": "delta"
+    },
+    {
+      "text": "AG 列为",
+      "_time": 57.67183566093445,
+      "type": "delta"
+    },
+    {
+      "text": "核心概念，并要求",
+      "_time": 57.757000207901,
+      "type": "delta"
+    },
+    {
+      "text": "对 Multi",
+      "_time": 57.75879621505737,
+      "type": "delta"
+    },
+    {
+      "text": "-Agent 架构有",
+      "_time": 57.865809202194214,
+      "type": "delta"
+    },
+    {
+      "text": "实战理解。\n\n",
+      "_time": 57.89381504058838,
       "type": "delta"
     },
     {
       "text": "*   **",
-      "_time": 38.26468753814697,
+      "_time": 58.00882697105408,
       "type": "delta"
     },
     {
-      "text": "AI 产品经理 /",
-      "_time": 38.387285232543945,
+      "text": "🟡 中等",
+      "_time": 58.01378417015076,
+      "type": "delta"
+    },
+    {
+      "text": "匹配（加分项",
+      "_time": 58.154027223587036,
+      "type": "delta"
+    },
+    {
+      "text": "）**",
+      "_time": 58.154496908187866,
+      "type": "delta"
+    },
+    {
+      "text": "\n    *  ",
+      "_time": 58.24307632446289,
+      "type": "delta"
+    },
+    {
+      "text": " **联想 - ",
+      "_time": 58.279834270477295,
+      "type": "delta"
+    },
+    {
+      "text": "产品经理-AI ",
+      "_time": 58.386818647384644,
+      "type": "delta"
+    },
+    {
+      "text": "方向**\n       ",
+      "_time": 58.38880777359009,
+      "type": "delta"
+    },
+    {
+      "text": " *   **匹配",
+      "_time": 58.566155195236206,
+      "type": "delta"
+    },
+    {
+      "text": "点**：JD",
+      "_time": 58.5687940120697,
+      "type": "delta"
+    },
+    {
+      "text": " 中将“有",
+      "_time": 58.676851749420166,
+      "type": "delta"
+    },
+    {
+      "text": "深度学习、R",
+      "_time": 58.73377180099487,
+      "type": "delta"
+    },
+    {
+      "text": "AG、Prompt、",
+      "_time": 58.83016037940979,
+      "type": "delta"
+    },
+    {
+      "text": "知识库学习经历”",
+      "_time": 58.83283972740173,
+      "type": "delta"
+    },
+    {
+      "text": "列为软性要求",
+      "_time": 58.94601368904114,
+      "type": "delta"
+    },
+    {
+      "text": "/加分项。",
+      "_time": 58.948817014694214,
+      "type": "delta"
+    },
+    {
+      "text": "相比上述岗位，",
+      "_time": 59.092164278030396,
+      "type": "delta"
+    },
+    {
+      "text": "该",
+      "_time": 59.11766576766968,
+      "type": "delta"
+    },
+    {
+      "text": "技能在此处的权重",
+      "_time": 59.18081283569336,
+      "type": "delta"
+    },
+    {
+      "text": "略",
+      "_time": 59.18473482131958,
+      "type": "delta"
+    },
+    {
+      "text": "低，但仍具",
+      "_time": 59.27070760726929,
+      "type": "delta"
+    },
+    {
+      "text": "竞争力。\n\n###",
+      "_time": 59.272740840911865,
+      "type": "delta"
+    },
+    {
+      "text": " 2. ",
+      "_time": 59.41375017166138,
+      "type": "delta"
+    },
+    {
+      "text": "为什么您的经验最有",
+      "_time": 59.439769983291626,
+      "type": "delta"
+    },
+    {
+      "text": "价值？\n*",
+      "_time": 59.55773949623108,
+      "type": "delta"
+    },
+    {
+      "text": "   **技术",
+      "_time": 59.56069779396057,
+      "type": "delta"
+    },
+    {
+      "text": "落地核心**：",
+      "_time": 59.68692660331726,
+      "type": "delta"
+    },
+    {
+      "text": "检索",
+      "_time": 59.687299728393555,
+      "type": "delta"
+    },
+    {
+      "text": "结果显示，大厂在",
+      "_time": 59.88385629653931,
+      "type": "delta"
+    },
+    {
+      "text": "招聘",
+      "_time": 59.88656306266785,
+      "type": "delta"
+    },
+    {
+      "text": " AI 应用类",
+      "_time": 59.88946866989136,
+      "type": "delta"
+    },
+    {
+      "text": "岗位",
+      "_time": 59.89345908164978,
+      "type": "delta"
+    },
+    {
+      "text": "时，**R",
+      "_time": 59.953964710235596,
+      "type": "delta"
+    },
+    {
+      "text": "AG（",
+      "_time": 59.95554494857788,
+      "type": "delta"
+    },
+    {
+      "text": "检索增强生成）**",
+      "_time": 60.09796190261841,
+      "type": "delta"
+    },
+    {
+      "text": " 已成为",
+      "_time": 60.099714279174805,
+      "type": "delta"
+    },
+    {
+      "text": "标配技能。而",
+      "_time": 60.169721841812134,
+      "type": "delta"
+    },
+    {
+      "text": " **",
+      "_time": 60.17468523979187,
+      "type": "delta"
+    },
+    {
+      "text": "Embedding** ",
+      "_time": 60.259761333465576,
+      "type": "delta"
+    },
+    {
+      "text": "是 RAG ",
+      "_time": 60.29181265830994,
+      "type": "delta"
+    },
+    {
+      "text": "中实现语义检索",
+      "_time": 60.40377902984619,
+      "type": "delta"
+    },
+    {
+      "text": "的核心技术，",
+      "_time": 60.40666961669922,
+      "type": "delta"
+    },
+    {
+      "text": "懂 Embedding ",
+      "_time": 60.52963900566101,
+      "type": "delta"
+    },
+    {
+      "text": "意味着",
+      "_time": 60.555694580078125,
+      "type": "delta"
+    },
+    {
+      "text": "您能更深入地",
+      "_time": 60.62070393562317,
+      "type": "delta"
+    },
+    {
+      "text": "优化检索质量、",
+      "_time": 60.62267589569092,
+      "type": "delta"
+    },
+    {
+      "text": "处理数据切片及",
+      "_time": 60.76352667808533,
+      "type": "delta"
+    },
+    {
+      "text": "评估",
+      "_time": 60.80367159843445,
+      "type": "delta"
+    },
+    {
+      "text": "召回效果。\n",
+      "_time": 60.88496804237366,
+      "type": "delta"
+    },
+    {
+      "text": "*",
+      "_time": 60.88662123680115,
+      "type": "delta"
+    },
+    {
+      "text": "   **沟通壁垒",
+      "_time": 60.94464087486267,
+      "type": "delta"
+    },
+    {
+      "text": "降低",
+      "_time": 60.9466552734375,
+      "type": "delta"
+    },
+    {
+      "text": "**：蚂蚁集团",
+      "_time": 61.0350501537323,
+      "type": "delta"
+    },
+    {
+      "text": "等",
+      "_time": 61.03533911705017,
+      "type": "delta"
+    },
+    {
+      "text": "公司的 JD 特别",
+      "_time": 61.12404704093933,
+      "type": "delta"
+    },
+    {
+      "text": "提到",
+      "_time": 61.16082429885864,
+      "type": "delta"
+    },
+    {
+      "text": "需要“与底层",
+      "_time": 61.21468162536621,
+      "type": "delta"
+    },
+    {
+      "text": "算法",
+      "_time": 61.21766972541809,
+      "type": "delta"
+    },
+    {
+      "text": "/工程团队同",
+      "_time": 61.303656578063965,
+      "type": "delta"
+    },
+    {
+      "text": "频对话”。具备",
+      "_time": 61.307642221450806,
+      "type": "delta"
+    },
+    {
+      "text": " Embedding 实战",
+      "_time": 61.47793674468994,
+      "type": "delta"
+    },
+    {
+      "text": "经验能让",
+      "_time": 61.479339361190796,
+      "type": "delta"
+    },
+    {
+      "text": "您在评估技术可行性",
+      "_time": 61.55667495727539,
+      "type": "delta"
+    },
+    {
+      "text": "、",
+      "_time": 61.55725383758545,
+      "type": "delta"
+    },
+    {
+      "text": "成本及合规风险",
+      "_time": 61.6459538936615,
+      "type": "delta"
+    },
+    {
+      "text": "时更具",
+      "_time": 61.64763808250427,
+      "type": "delta"
+    },
+    {
+      "text": "说服力。\n\n###",
+      "_time": 61.79064917564392,
       "type": "delta"
     },
     {
       "text": " ",
-      "_time": 38.39079189300537,
+      "_time": 61.79262566566467,
       "type": "delta"
     },
     {
-      "text": "大模型应用 PM",
-      "_time": 38.5404269695282,
+      "text": "3. 求职",
+      "_time": 61.85063171386719,
       "type": "delta"
     },
     {
-      "text": "**：如",
-      "_time": 38.57498025894165,
+      "text": "建议",
+      "_time": 61.852601528167725,
       "type": "delta"
     },
     {
-      "text": "字节跳动、蚂蚁",
-      "_time": 38.601712226867676,
+      "text": "\n根据系统匹配",
+      "_time": 61.933842420578,
       "type": "delta"
     },
     {
-      "text": "集团的相关",
-      "_time": 38.606650590896606,
+      "text": "策略",
+      "_time": 61.93644714355469,
       "type": "delta"
     },
     {
-      "text": "岗位，明确要求熟练掌握",
-      "_time": 38.74710178375244,
+      "text": "建议（识别到",
+      "_time": 62.05782103538513,
       "type": "delta"
     },
     {
-      "text": " R",
-      "_time": 38.75080895423889,
+      "text": " 2 个",
+      "_time": 62.06063795089722,
       "type": "delta"
     },
     {
-      "text": "AG 核心概念",
-      "_time": 38.799840688705444,
+      "text": "高度匹配岗位，",
+      "_time": 62.16880464553833,
       "type": "delta"
     },
     {
-      "text": "。\n*",
-      "_time": 38.80375146865845,
+      "text": "3 个中等",
+      "_time": 62.170382022857666,
       "type": "delta"
     },
     {
-      "text": "   **AI ",
-      "_time": 38.927058935165405,
+      "text": "匹配岗位），建议您",
+      "_time": 62.31196069717407,
       "type": "delta"
     },
     {
-      "text": "产品工程师（",
-      "_time": 38.93088364601135,
+      "text": "采取",
+      "_time": 62.313498973846436,
       "type": "delta"
     },
     {
-      "text": "搜推方向）**",
-      "_time": 39.08202242851257,
+      "text": "以下投递策略：",
+      "_time": 62.43991160392761,
       "type": "delta"
     },
     {
-      "text": "：如",
-      "_time": 39.08484244346619,
+      "text": "\n\n1",
+      "_time": 62.44459581375122,
       "type": "delta"
     },
     {
-      "text": "蚂蚁集团、美",
-      "_time": 39.16205596923828,
+      "text": ".  **优先",
+      "_time": 62.51357340812683,
       "type": "delta"
     },
     {
-      "text": "团的岗位，强调",
-      "_time": 39.16476035118103,
+      "text": "投递**：**",
+      "_time": 62.515570402145386,
       "type": "delta"
     },
     {
-      "text": "理解 RAG、",
-      "_time": 39.30410671234131,
+      "text": "蚂蚁集团（AI",
+      "_time": 62.63465881347656,
       "type": "delta"
     },
     {
-      "text": "Prompt",
-      "_time": 39.33796739578247,
+      "text": " 产品工程师",
+      "_time": 62.66552925109863,
       "type": "delta"
     },
     {
-      "text": " Engineering 及 Agent",
-      "_time": 39.394163370132446,
+      "text": "）** 与 **",
+      "_time": 62.76456570625305,
       "type": "delta"
     },
     {
-      "text": " 工作流。",
-      "_time": 39.397552490234375,
+      "text": "字节跳动（",
+      "_time": 62.765236139297485,
       "type": "delta"
     },
     {
-      "text": "\n\n### 2",
-      "_time": 39.575950622558594,
+      "text": "AI 产品经理）**",
+      "_time": 62.88859844207764,
       "type": "delta"
     },
     {
-      "text": ". 市场竞争力",
-      "_time": 39.58312702178955,
+      "text": "。这两个岗位对",
+      "_time": 62.93455910682678,
       "type": "delta"
     },
     {
-      "text": "分析\n根据匹配",
-      "_time": 39.66391158103943,
+      "text": "技术原理的要求最",
+      "_time": 63.03279948234558,
+      "type": "delta"
+    },
+    {
+      "text": "硬性",
+      "_time": 63.03439140319824,
+      "type": "delta"
+    },
+    {
+      "text": "，您的经验能",
+      "_time": 63.12293457984924,
+      "type": "delta"
+    },
+    {
+      "text": "最大化转化为",
+      "_time": 63.12545347213745,
+      "type": "delta"
+    },
+    {
+      "text": "面试优势。\n",
+      "_time": 63.26049041748047,
+      "type": "delta"
+    },
+    {
+      "text": "2",
+      "_time": 63.28138041496277,
+      "type": "delta"
+    },
+    {
+      "text": ".  **简历",
+      "_time": 63.31963920593262,
+      "type": "delta"
+    },
+    {
+      "text": "优化**：\n",
+      "_time": 63.32221746444702,
+      "type": "delta"
+    },
+    {
+      "text": "    *   **",
+      "_time": 63.46486043930054,
+      "type": "delta"
+    },
+    {
+      "text": "量化效果",
+      "_time": 63.49152112007141,
+      "type": "delta"
+    },
+    {
+      "text": "**：不要只",
+      "_time": 63.57255458831787,
+      "type": "delta"
+    },
+    {
+      "text": "写“熟悉",
+      "_time": 63.57646346092224,
+      "type": "delta"
+    },
+    {
+      "text": " RAG\"，",
+      "_time": 63.74150562286377,
+      "type": "delta"
+    },
+    {
+      "text": "建议补充",
+      "_time": 63.74347805976868,
+      "type": "delta"
+    },
+    {
+      "text": "“通过优化 Embed",
+      "_time": 63.8334755897522,
+      "type": "delta"
+    },
+    {
+      "text": "ding ",
+      "_time": 63.83845901489258,
+      "type": "delta"
+    },
+    {
+      "text": "模型/策略，",
+      "_time": 63.913485288619995,
+      "type": "delta"
+    },
+    {
+      "text": "将",
+      "_time": 63.91546678543091,
+      "type": "delta"
+    },
+    {
+      "text": "检索准确率提升了 X",
+      "_time": 64.00450325012207,
+      "type": "delta"
+    },
+    {
+      "text": "%\"或“解决了",
+      "_time": 64.02941465377808,
+      "type": "delta"
+    },
+    {
+      "text": " Y 场景下的",
+      "_time": 64.14752554893494,
+      "type": "delta"
+    },
+    {
+      "text": "幻觉",
+      "_time": 64.15049338340759,
+      "type": "delta"
+    },
+    {
+      "text": "问题”。\n   ",
+      "_time": 64.23656439781189,
+      "type": "delta"
+    },
+    {
+      "text": " *   **突出",
+      "_time": 64.23813915252686,
+      "type": "delta"
+    },
+    {
+      "text": "全流程**：在",
+      "_time": 64.4127745628357,
+      "type": "delta"
+    },
+    {
+      "text": "项目",
+      "_time": 64.41650342941284,
+      "type": "delta"
+    },
+    {
+      "text": "经历中体现从",
+      "_time": 64.47268152236938,
+      "type": "delta"
+    },
+    {
+      "text": "数据处理",
+      "_time": 64.47414207458496,
+      "type": "delta"
+    },
+    {
+      "text": "、Embedding ",
+      "_time": 64.56064701080322,
+      "type": "delta"
+    },
+    {
+      "text": "选型、检索",
+      "_time": 64.5875096321106,
+      "type": "delta"
+    },
+    {
+      "text": "策略到 Prompt ",
+      "_time": 64.68948316574097,
+      "type": "delta"
+    },
+    {
+      "text": "优化的",
+      "_time": 64.69142580032349,
+      "type": "delta"
+    },
+    {
+      "text": "完整闭环，呼应",
+      "_time": 64.7805278301239,
+      "type": "delta"
+    },
+    {
+      "text": "百度",
+      "_time": 64.78448820114136,
+      "type": "delta"
+    },
+    {
+      "text": " JD 中的“",
+      "_time": 64.90050506591797,
       "type": "delta"
     },
     {
       "text": "模型",
-      "_time": 39.66766667366028,
+      "_time": 64.90447783470154,
       "type": "delta"
     },
     {
-      "text": "评估，您与",
-      "_time": 39.75684881210327,
+      "text": "精细化调教”",
+      "_time": 64.95837068557739,
       "type": "delta"
     },
     {
-      "text": "当前头部",
-      "_time": 39.7628173828125,
+      "text": "要求。\n3",
+      "_time": 64.96246361732483,
       "type": "delta"
     },
     {
-      "text": "大厂（蚂蚁、",
-      "_time": 39.895928382873535,
+      "text": ".  **面试",
+      "_time": 65.10345888137817,
       "type": "delta"
     },
     {
-      "text": "美团、字节",
-      "_time": 39.90080738067627,
+      "text": "准备**：重点",
+      "_time": 65.10644197463989,
       "type": "delta"
     },
     {
-      "text": "、百度）相关",
-      "_time": 39.99195623397827,
+      "text": "准备 RAG ",
+      "_time": 65.27945590019226,
       "type": "delta"
     },
     {
-      "text": "岗位的匹配度为",
-      "_time": 39.995789766311646,
+      "text": "的",
+      "_time": 65.28244400024414,
       "type": "delta"
     },
     {
-      "text": " **70 ",
-      "_time": 40.131990909576416,
+      "text": "局限性（如 Context",
+      "_time": 65.3374571800232,
       "type": "delta"
     },
     {
-      "text": "分（基本匹配",
-      "_time": 40.18782424926758,
+      "text": " Window ",
+      "_time": 65.33940815925598,
       "type": "delta"
     },
     {
-      "text": "）**。\n\n*",
-      "_time": 40.27682876586914,
+      "text": "限制、幻觉问题",
+      "_time": 65.47182774543762,
       "type": "delta"
     },
     {
-      "text": "   **✅",
-      "_time": 40.28250288963318,
+      "text": "）及",
+      "_time": 65.47422194480896,
       "type": "delta"
     },
     {
-      "text": " 核心优势**",
-      "_time": 40.40718054771423,
+      "text": "解决方案，这是蚂蚁",
+      "_time": 65.62477827072144,
       "type": "delta"
     },
     {
-      "text": "：\n",
-      "_time": 40.40974450111389,
+      "text": "集团等",
+      "_time": 65.62644791603088,
       "type": "delta"
     },
     {
-      "text": "    *   ",
-      "_time": 40.54794192314148,
+      "text": "公司面试中的高频",
+      "_time": 65.66043019294739,
       "type": "delta"
     },
     {
-      "text": "具备 **",
-      "_time": 40.551854372024536,
+      "text": "考点",
+      "_time": 65.66341090202332,
       "type": "delta"
     },
     {
-      "text": "RAG** ",
-      "_time": 40.62069535255432,
+      "text": "。\n\n您的技术",
+      "_time": 65.77733659744263,
       "type": "delta"
     },
     {
-      "text": "实战",
-      "_time": 40.625640869140625,
+      "text": "栈非常符合",
+      "_time": 65.78038358688354,
       "type": "delta"
     },
     {
-      "text": "经验，符合多数",
-      "_time": 40.70892524719238,
+      "text": "当前 AI 应用",
+      "_time": 65.8764796257019,
       "type": "delta"
     },
     {
-      "text": " JD",
-      "_time": 40.71562147140503,
+      "text": "落地的趋势",
+      "_time": 65.87835955619812,
       "type": "delta"
     },
     {
-      "text": " 的硬性要求",
-      "_time": 40.83286261558533,
+      "text": "，建议自信出击",
+      "_time": 66.02741861343384,
       "type": "delta"
     },
     {
-      "text": "。\n    *",
-      "_time": 40.836721658706665,
+      "text": "，重点突出技术在",
+      "_time": 66.03034019470215,
       "type": "delta"
     },
     {
-      "text": "   掌握 **",
-      "_time": 40.942959785461426,
+      "text": "业务场景中的实际",
+      "_time": 66.14740300178528,
       "type": "delta"
     },
     {
-      "text": "Prompt Engineering",
-      "_time": 40.97885060310364,
+      "text": "转化能力。",
+      "_time": 66.1893527507782,
       "type": "delta"
     },
     {
-      "text": "**，能够参与",
-      "_time": 41.05197048187256,
-      "type": "delta"
-    },
-    {
-      "text": "模型",
-      "_time": 41.05563807487488,
-      "type": "delta"
-    },
-    {
-      "text": "精细化调教。",
-      "_time": 41.141780376434326,
-      "type": "delta"
-    },
-    {
-      "text": "\n*   **",
-      "_time": 41.14886832237244,
-      "type": "delta"
-    },
-    {
-      "text": "⚠️",
-      "_time": 41.339292764663696,
-      "type": "delta"
-    },
-    {
-      "text": " 待",
-      "_time": 41.33933091163635,
-      "type": "delta"
-    },
-    {
-      "text": "补强项**",
-      "_time": 41.44037199020386,
-      "type": "delta"
-    },
-    {
-      "text": "：\n   ",
-      "_time": 41.44039845466614,
-      "type": "delta"
-    },
-    {
-      "text": " *   **理论基础",
-      "_time": 41.51918983459473,
-      "type": "delta"
-    },
-    {
-      "text": "**：对",
-      "_time": 41.52271866798401,
-      "type": "delta"
-    },
-    {
-      "text": " Transformer、Token ",
-      "_time": 41.68312215805054,
-      "type": "delta"
-    },
-    {
-      "text": "等大模型底层",
-      "_time": 41.68570947647095,
-      "type": "delta"
-    },
-    {
-      "text": "原理的理解深度不足",
-      "_time": 41.79907846450806,
-      "type": "delta"
-    },
-    {
-      "text": "。\n    *",
-      "_time": 41.801445960998535,
-      "type": "delta"
-    },
-    {
-      "text": "   **协作能力",
-      "_time": 41.918994426727295,
-      "type": "delta"
-    },
-    {
-      "text": "**：缺乏",
-      "_time": 41.92170238494873,
-      "type": "delta"
-    },
-    {
-      "text": "与底层算法/",
-      "_time": 42.04171872138977,
-      "type": "delta"
-    },
-    {
-      "text": "工程团队同频",
-      "_time": 42.07069110870361,
-      "type": "delta"
-    },
-    {
-      "text": "对话的经验，可能",
-      "_time": 42.18692636489868,
-      "type": "delta"
-    },
-    {
-      "text": "影响技术可行性评估",
-      "_time": 42.19269609451294,
-      "type": "delta"
-    },
-    {
-      "text": "。\n    *",
-      "_time": 42.33190941810608,
-      "type": "delta"
-    },
-    {
-      "text": "   **闭环",
-      "_time": 42.36180663108826,
-      "type": "delta"
-    },
-    {
-      "text": "能力**：在",
-      "_time": 42.45689630508423,
-      "type": "delta"
-    },
-    {
-      "text": "模型调",
-      "_time": 42.46158981323242,
-      "type": "delta"
-    },
-    {
-      "text": "教（Function Calling",
-      "_time": 42.59877014160156,
-      "type": "delta"
-    },
-    {
-      "text": " ",
-      "_time": 42.602423667907715,
-      "type": "delta"
-    },
-    {
-      "text": "配合）及数据",
-      "_time": 42.651756048202515,
-      "type": "delta"
-    },
-    {
-      "text": "驱动进化",
-      "_time": 42.65663957595825,
-      "type": "delta"
-    },
-    {
-      "text": "（指标建立）",
-      "_time": 42.760783433914185,
-      "type": "delta"
-    },
-    {
-      "text": "方面",
-      "_time": 42.76467204093933,
-      "type": "delta"
-    },
-    {
-      "text": "经验欠缺。\n\n",
-      "_time": 42.85275077819824,
-      "type": "delta"
-    },
-    {
-      "text": "### ",
-      "_time": 42.87955379486084,
-      "type": "delta"
-    },
-    {
-      "text": "3. 进阶",
-      "_time": 42.958773612976074,
-      "type": "delta"
-    },
-    {
-      "text": "建议\n为了将",
-      "_time": 42.96259570121765,
-      "type": "delta"
-    },
-    {
-      "text": "匹配度从“",
-      "_time": 43.10375618934631,
-      "type": "delta"
-    },
-    {
-      "text": "基本匹配”",
-      "_time": 43.107563734054565,
-      "type": "delta"
-    },
-    {
-      "text": "提升至“高度匹配",
-      "_time": 43.270883321762085,
-      "type": "delta"
-    },
-    {
-      "text": "”，建议您",
-      "_time": 43.27358889579773,
-      "type": "delta"
-    },
-    {
-      "text": "重点准备以下内容：",
-      "_time": 43.338868379592896,
-      "type": "delta"
-    },
-    {
-      "text": "\n\n",
-      "_time": 43.34178042411804,
-      "type": "delta"
-    },
-    {
-      "text": "1.  **",
-      "_time": 43.427690505981445,
-      "type": "delta"
-    },
-    {
-      "text": "深化原理",
-      "_time": 43.43063569068909,
-      "type": "delta"
-    },
-    {
-      "text": "认知**：系统",
-      "_time": 43.566792249679565,
-      "type": "delta"
-    },
-    {
-      "text": "补充",
-      "_time": 43.56963109970093,
-      "type": "delta"
-    },
-    {
-      "text": " Transformer 架构及",
-      "_time": 43.624608516693115,
-      "type": "delta"
-    },
-    {
-      "text": " Token 机制",
-      "_time": 43.655585050582886,
-      "type": "delta"
-    },
-    {
-      "text": "知识，确保能与",
-      "_time": 43.751792192459106,
-      "type": "delta"
-    },
-    {
-      "text": "算法团队无障碍",
-      "_time": 43.754640102386475,
-      "type": "delta"
-    },
-    {
-      "text": "沟通。\n2",
-      "_time": 43.875938415527344,
-      "type": "delta"
-    },
-    {
-      "text": ".  **完善",
-      "_time": 43.87941861152649,
-      "type": "delta"
-    },
-    {
-      "text": "技能树**：",
-      "_time": 44.060643911361694,
-      "type": "delta"
-    },
-    {
-      "text": "学习",
-      "_time": 44.063164949417114,
-      "type": "delta"
-    },
-    {
-      "text": "如何将结构化 Prompt ",
-      "_time": 44.11171531677246,
-      "type": "delta"
-    },
-    {
-      "text": "与 R",
-      "_time": 44.117568016052246,
-      "type": "delta"
-    },
-    {
-      "text": "AG、Function Calling",
-      "_time": 44.25481390953064,
-      "type": "delta"
-    },
-    {
-      "text": " 结合，提升",
-      "_time": 44.25849747657776,
-      "type": "delta"
-    },
-    {
-      "text": "解决复杂业务逻辑",
-      "_time": 44.36465406417847,
-      "type": "delta"
-    },
-    {
-      "text": "的能力。\n3",
-      "_time": 44.39157032966614,
-      "type": "delta"
-    },
-    {
-      "text": ".  **建立",
-      "_time": 44.507745027542114,
-      "type": "delta"
-    },
-    {
-      "text": "指标",
-      "_time": 44.51353049278259,
-      "type": "delta"
-    },
-    {
-      "text": "意识**：在",
-      "_time": 44.59866261482239,
-      "type": "delta"
-    },
-    {
-      "text": "简历",
-      "_time": 44.603543519973755,
-      "type": "delta"
-    },
-    {
-      "text": "或面试中展示",
-      "_time": 44.687737703323364,
-      "type": "delta"
-    },
-    {
-      "text": "如何通过",
-      "_time": 44.69150948524475,
-      "type": "delta"
-    },
-    {
-      "text": "“交互好感度",
-      "_time": 44.81065249443054,
-      "type": "delta"
-    },
-    {
-      "text": "”",
-      "_time": 44.815377950668335,
-      "type": "delta"
-    },
-    {
-      "text": "与“任务成功率",
-      "_time": 44.866021394729614,
-      "type": "delta"
-    },
-    {
-      "text": "”双重",
-      "_time": 44.871593952178955,
-      "type": "delta"
-    },
-    {
-      "text": "指标来驱动产品",
-      "_time": 44.97690153121948,
-      "type": "delta"
-    },
-    {
-      "text": "进化",
-      "_time": 44.97839117050171,
-      "type": "delta"
-    },
-    {
-      "text": "。\n4.",
-      "_time": 45.067898750305176,
-      "type": "delta"
-    },
-    {
-      "text": "  **关注",
-      "_time": 45.094852447509766,
-      "type": "delta"
-    },
-    {
-      "text": "非功能需求**",
-      "_time": 45.19182634353638,
-      "type": "delta"
-    },
-    {
-      "text": "：补充",
-      "_time": 45.19450855255127,
-      "type": "delta"
-    },
-    {
-      "text": "大模型应用中的",
-      "_time": 45.29990530014038,
-      "type": "delta"
-    },
-    {
-      "text": "成本评估意识与",
-      "_time": 45.30347442626953,
-      "type": "delta"
-    },
-    {
-      "text": "合规风险判断力",
-      "_time": 45.473703384399414,
-      "type": "delta"
-    },
-    {
-      "text": "，这是大厂非常",
-      "_time": 45.477455377578735,
-      "type": "delta"
-    },
-    {
-      "text": "看重的加分项",
-      "_time": 45.58879637718201,
-      "type": "delta"
-    },
-    {
-      "text": "。\n\n您的",
-      "_time": 45.590534687042236,
-      "type": "delta"
-    },
-    {
-      "text": "技术背景非常契合",
-      "_time": 45.741881132125854,
-      "type": "delta"
-    },
-    {
-      "text": "当前 AI",
-      "_time": 45.74554491043091,
-      "type": "delta"
-    },
-    {
-      "text": " 落地的热点",
-      "_time": 45.820801973342896,
-      "type": "delta"
-    },
-    {
-      "text": "方向",
-      "_time": 45.825517654418945,
-      "type": "delta"
-    },
-    {
-      "text": "，只需在理论",
-      "_time": 45.91138482093811,
-      "type": "delta"
-    },
-    {
-      "text": "深度与",
-      "_time": 45.91916298866272,
-      "type": "delta"
-    },
-    {
-      "text": "工程协作层面稍",
-      "_time": 46.056793451309204,
-      "type": "delta"
-    },
-    {
-      "text": "作补充，",
-      "_time": 46.06153750419617,
-      "type": "delta"
-    },
-    {
-      "text": "竞争力将显著提升。",
-      "_time": 46.14350175857544,
-      "type": "delta"
-    },
-    {
-      "text": "祝您",
-      "_time": 46.14739203453064,
-      "type": "delta"
-    },
-    {
-      "text": "求职顺利！",
-      "_time": 46.24678325653076,
-      "type": "delta"
-    },
-    {
-      "session_id": "eval_chen_09_1777540118280",
+      "session_id": "eval_chen_09_1777547893006",
       "intent": "match_assess",
       "route_meta": {
         "layer": "llm",
@@ -1053,16 +1470,17 @@
             "tool": "kb_retrieve",
             "status": "✅",
             "params": {
-              "query": "我的RAG和Embedding经验"
+              "query": "RAG和Embedding经验",
+              "top_k": 10
             },
             "result_preview": "{'chunks': [{'chunk_id': '51054437-3bd1-4da6-8f09-d5b5d5978de8_chunk_3', 'content': '【蚂蚁集团 · AI产品工程师（转正实习） 硬性要求】\\n技术直觉与体感：熟悉大模型基础原理，理解 RAG、Prompt Engineering 及 Agent 工作流与局限（如RAG机制、Context Window、模型幻觉等"
           },
           {
-            "tool": "match_analyze",
+            "tool": "global_rank",
             "status": "✅",
             "params": {
               "resume_text": "AI\n / \n157-xxxx-3421  |  chenyutong2027@163.com  |  \n  |  2027\n6\n2024.09  2027.06\n · \nAI\n· \nGPA\n3.4/4.0  |  \n2020.09  2024.06\n · \n · \n  |  \nWeb\n \n \n2025.03  2025.11\n  |  \n40\n\"\n\"\n\"\n\"\nFigma\nAI\nEmbedding\nJD\nAPI\nPrompt\n20\nPDF\n \n \nRAG\n2024.10  2025.02\n  |  \n80\nOCR\nWeb\n\"\n\"\n · \n2024.09  2025.06\n10\n · \n2022.03  2023.06\n2025.05    \n2024.11    \nAI\n2023.06    \n2022.12    \nFigma\nAxure\nXmind\n/\nPRD\nPrompt Engineering\nRAG\nEmbedding\nCET-4\n525\nOffice\nExcel",
-              "jd_text": [
+              "candidate_jds": [
                 {
                   "chunk_id": "51054437-3bd1-4da6-8f09-d5b5d5978de8_chunk_3",
                   "content": "【蚂蚁集团 · AI产品工程师（转正实习） 硬性要求】\n技术直觉与体感：熟悉大模型基础原理，理解 RAG、Prompt Engineering 及 Agent 工作流与局限（如RAG机制、Context Window、模型幻觉等），能够与底层算法/工程团队同频对话，准确评估技术可行性",
@@ -1075,31 +1493,12 @@
                     "section": "hard_requirements",
                     "strategy": "semantic"
                   },
-                  "distance": 0.8426549434661865,
+                  "distance": 0.9036413431167603,
                   "bm25_score": 0.0,
                   "vec_norm": 1.0,
                   "bm25_norm": 0.0,
                   "hybrid_score": 0.7,
-                  "rerank_score": 0.1281
-                },
-                {
-                  "chunk_id": "ac997d3f-9206-4414-9fac-16deb62ff88b_chunk_4",
-                  "content": "【美团 · 搜索推荐AI PM 硬性要求】\n熟悉大模型基础原理，理解RAG、Prompt Engineering或Agent工作流",
-                  "metadata": {
-                    "company": "美团",
-                    "index": 4,
-                    "jd_id": "ac997d3f-9206-4414-9fac-16deb62ff88b",
-                    "position": "搜索推荐AI PM",
-                    "priority": "high",
-                    "section": "hard_requirements",
-                    "strategy": "semantic"
-                  },
-                  "distance": 1.03778874874115,
-                  "bm25_score": 0.0,
-                  "vec_norm": 0.2683158938819553,
-                  "bm25_norm": 0.0,
-                  "hybrid_score": 0.1878211257173687,
-                  "rerank_score": 0.0818
+                  "rerank_score": 0.2253
                 },
                 {
                   "chunk_id": "ac9973c8-01be-4cd6-9a99-097873a59cf0_chunk_3",
@@ -1113,68 +1512,12 @@
                     "section": "hard_requirements",
                     "strategy": "semantic"
                   },
-                  "distance": 0.9429715871810913,
-                  "bm25_score": 0.0,
-                  "vec_norm": 0.623847371387678,
-                  "bm25_norm": 0.0,
-                  "hybrid_score": 0.4366931599713746,
-                  "rerank_score": 0.0774
-                },
-                {
-                  "chunk_id": "f46e2577-eca2-448d-a9a8-7fc14402179b_chunk_1",
-                  "content": "【百度 · 大模型应用PM 岗位职责】\n1. 负责大模型应用的产品规划与设计。2. 深入理解行业需求，将业务经验抽象为大模型可执行的逻辑流与SOP。3. 模型精细化调教：编写结构化Prompt，配合RAG、Function Calling。4. 数据驱动进化：建立交互好感度与任务成功率双重指标。",
-                  "metadata": {
-                    "company": "百度",
-                    "index": 1,
-                    "jd_id": "f46e2577-eca2-448d-a9a8-7fc14402179b",
-                    "position": "大模型应用PM",
-                    "section": "responsibilities",
-                    "strategy": "semantic"
-                  },
-                  "distance": null,
-                  "bm25_score": 3.874569207577212,
-                  "vec_norm": 0.0,
-                  "bm25_norm": 0.6193247509261237,
-                  "hybrid_score": 0.1857974252778371,
-                  "rerank_score": 0.071
-                },
-                {
-                  "chunk_id": "4dcb6702-c777-4279-b0e9-99e8edbd608f_chunk_3",
-                  "content": "【蚂蚁集团 · AI产品经理 硬性要求】\n熟练掌握 Transformer、Token、RAG 等核心概念；对 ReAct、CoT、Multi-Agent 架构有实战理解；",
-                  "metadata": {
-                    "company": "蚂蚁集团",
-                    "index": 3,
-                    "jd_id": "4dcb6702-c777-4279-b0e9-99e8edbd608f",
-                    "position": "AI产品经理",
-                    "priority": "high",
-                    "section": "hard_requirements",
-                    "strategy": "semantic"
-                  },
-                  "distance": 0.8461588621139526,
-                  "bm25_score": 0.0,
-                  "vec_norm": 0.9868615200729136,
-                  "bm25_norm": 0.0,
-                  "hybrid_score": 0.6908030640510395,
-                  "rerank_score": 0.0575
-                },
-                {
-                  "chunk_id": "2af1570c-e34f-4fb9-8422-e08e3ac3b927_chunk_4",
-                  "content": "【蚂蚁集团 · AI产品工程师（搜推方向） 硬性要求】\n熟悉大模型基础原理，理解 RAG、Prompt Engineering 及 Agent 工作流，具备成本评估意识与良好的合规风险判断力",
-                  "metadata": {
-                    "company": "蚂蚁集团",
-                    "index": 4,
-                    "jd_id": "2af1570c-e34f-4fb9-8422-e08e3ac3b927",
-                    "position": "AI产品工程师（搜推方向）",
-                    "priority": "high",
-                    "section": "hard_requirements",
-                    "strategy": "semantic"
-                  },
-                  "distance": 0.8493496775627136,
-                  "bm25_score": 0.0,
-                  "vec_norm": 0.9748970685719318,
-                  "bm25_norm": 0.0,
-                  "hybrid_score": 0.6824279480003522,
-                  "rerank_score": 0.0388
+                  "distance": 0.995721161365509,
+                  "bm25_score": 2.7968968796869307,
+                  "vec_norm": 0.6261156559953183,
+                  "bm25_norm": 0.061063295825606184,
+                  "hybrid_score": 0.4565999479444046,
+                  "rerank_score": 0.1609
                 },
                 {
                   "chunk_id": "ec233a37-20d0-4df8-a253-42a0d0d00b5b_chunk_8",
@@ -1188,12 +1531,68 @@
                     "section": "soft_requirements",
                     "strategy": "semantic"
                   },
-                  "distance": 0.9512835144996643,
+                  "distance": 0.9811378717422485,
                   "bm25_score": 0.0,
-                  "vec_norm": 0.5926805261471082,
+                  "vec_norm": 0.68533019157893,
                   "bm25_norm": 0.0,
-                  "hybrid_score": 0.4148763683029757,
-                  "rerank_score": 0.0364
+                  "hybrid_score": 0.479731134105251,
+                  "rerank_score": 0.1426
+                },
+                {
+                  "chunk_id": "4dcb6702-c777-4279-b0e9-99e8edbd608f_chunk_3",
+                  "content": "【蚂蚁集团 · AI产品经理 硬性要求】\n熟练掌握 Transformer、Token、RAG 等核心概念；对 ReAct、CoT、Multi-Agent 架构有实战理解；",
+                  "metadata": {
+                    "company": "蚂蚁集团",
+                    "index": 3,
+                    "jd_id": "4dcb6702-c777-4279-b0e9-99e8edbd608f",
+                    "position": "AI产品经理",
+                    "priority": "high",
+                    "section": "hard_requirements",
+                    "strategy": "semantic"
+                  },
+                  "distance": 0.9062945246696472,
+                  "bm25_score": 0.0,
+                  "vec_norm": 0.9892269222149562,
+                  "bm25_norm": 0.0,
+                  "hybrid_score": 0.6924588455504693,
+                  "rerank_score": 0.1362
+                },
+                {
+                  "chunk_id": "f46e2577-eca2-448d-a9a8-7fc14402179b_chunk_1",
+                  "content": "【百度 · 大模型应用PM 岗位职责】\n1. 负责大模型应用的产品规划与设计。2. 深入理解行业需求，将业务经验抽象为大模型可执行的逻辑流与SOP。3. 模型精细化调教：编写结构化Prompt，配合RAG、Function Calling。4. 数据驱动进化：建立交互好感度与任务成功率双重指标。",
+                  "metadata": {
+                    "company": "百度",
+                    "index": 1,
+                    "jd_id": "f46e2577-eca2-448d-a9a8-7fc14402179b",
+                    "position": "大模型应用PM",
+                    "section": "responsibilities",
+                    "strategy": "semantic"
+                  },
+                  "distance": null,
+                  "bm25_score": 3.1772391287485315,
+                  "vec_norm": 0.0,
+                  "bm25_norm": 0.7508477196158998,
+                  "hybrid_score": 0.22525431588476993,
+                  "rerank_score": 0.1263
+                },
+                {
+                  "chunk_id": "2af1570c-e34f-4fb9-8422-e08e3ac3b927_chunk_4",
+                  "content": "【蚂蚁集团 · AI产品工程师（搜推方向） 硬性要求】\n熟悉大模型基础原理，理解 RAG、Prompt Engineering 及 Agent 工作流，具备成本评估意识与良好的合规风险判断力",
+                  "metadata": {
+                    "company": "蚂蚁集团",
+                    "index": 4,
+                    "jd_id": "2af1570c-e34f-4fb9-8422-e08e3ac3b927",
+                    "position": "AI产品工程师（搜推方向）",
+                    "priority": "high",
+                    "section": "hard_requirements",
+                    "strategy": "semantic"
+                  },
+                  "distance": 0.9059241414070129,
+                  "bm25_score": 0.0,
+                  "vec_norm": 0.9907308402918386,
+                  "bm25_norm": 0.0,
+                  "hybrid_score": 0.6935115882042869,
+                  "rerank_score": 0.1029
                 },
                 {
                   "chunk_id": "f46e2577-eca2-448d-a9a8-7fc14402179b_chunk_4",
@@ -1207,12 +1606,12 @@
                     "section": "hard_requirements",
                     "strategy": "semantic"
                   },
-                  "distance": 0.9943520426750183,
-                  "bm25_score": 0.0,
-                  "vec_norm": 0.4311884797259393,
-                  "bm25_norm": 0.0,
-                  "hybrid_score": 0.3018319358081575,
-                  "rerank_score": 0.0194
+                  "distance": 1.036858320236206,
+                  "bm25_score": 2.865647794917778,
+                  "vec_norm": 0.4590807948161052,
+                  "bm25_norm": 0.18574918219392414,
+                  "hybrid_score": 0.37708131102945086,
+                  "rerank_score": 0.0463
                 },
                 {
                   "chunk_id": "4156a58f-e1d2-4d9c-bb69-2235f8aaad44_c6",
@@ -1227,11 +1626,30 @@
                     "strategy": "semantic"
                   },
                   "distance": null,
-                  "bm25_score": 4.29316387042387,
+                  "bm25_score": 3.2101630352768837,
                   "vec_norm": 0.0,
-                  "bm25_norm": 0.9393577773720557,
-                  "hybrid_score": 0.2818073332116167,
-                  "rerank_score": 0.006
+                  "bm25_norm": 0.8105581460794786,
+                  "hybrid_score": 0.2431674438238436,
+                  "rerank_score": 0.0081
+                },
+                {
+                  "chunk_id": "2af1570c-e34f-4fb9-8422-e08e3ac3b927_chunk_7",
+                  "content": "【蚂蚁集团 · AI产品工程师（搜推方向） 硬性要求】\n对新技术和新事物保持强烈好奇心，对业务发展的不确定性和快速变革具备开放心态",
+                  "metadata": {
+                    "company": "蚂蚁集团",
+                    "index": 7,
+                    "jd_id": "2af1570c-e34f-4fb9-8422-e08e3ac3b927",
+                    "position": "AI产品工程师（搜推方向）",
+                    "priority": "high",
+                    "section": "hard_requirements",
+                    "strategy": "semantic"
+                  },
+                  "distance": null,
+                  "bm25_score": 3.1658265672208628,
+                  "vec_norm": 0.0,
+                  "bm25_norm": 0.7301500264283641,
+                  "hybrid_score": 0.21904500792850923,
+                  "rerank_score": 0.0013
                 },
                 {
                   "chunk_id": "1983c425-982c-4116-8883-04eb0109edb3_chunk_1",
@@ -1245,15 +1663,16 @@
                     "strategy": "semantic"
                   },
                   "distance": null,
-                  "bm25_score": 4.372482280205258,
+                  "bm25_score": 3.31461993268058,
                   "vec_norm": 0.0,
                   "bm25_norm": 1.0,
                   "hybrid_score": 0.3,
-                  "rerank_score": 0.0015
+                  "rerank_score": 0.0011
                 }
-              ]
+              ],
+              "top_k": 5
             },
-            "result_preview": "{'score': 70, 'label': '基本匹配', 'advantages': ['RAG', 'Prompt Engineering'], 'weaknesses': ['候选人缺乏对大模型基础原理的深入理解，特别是Transformer、Token等核心概念。此外，缺乏与底层算法/工程团队同频对话的能力，以及模型精细化调教和数据驱动进化的能力。'], 'suggestions': ["
+            "result_preview": "{'rankings': [{'rank': 1, 'jd_id': '51054437-3bd1-4da6-8f09-d5b5d5978de8', 'company': '蚂蚁集团', 'position': 'AI产品工程师（转正实习）', 'match_score': 81, 'recommend_reason': '检索相关度较高（0.70）', 'key_match': ['检索召回']"
           }
         ],
         "kb_chunks_count": 3,
@@ -1267,13 +1686,15 @@
       },
       "reply": {
         "type": "text",
-        "content": "您好！基于当前的市场需求检索与您的背景分析，您的技术积累在**大模型应用方向的产品岗位**上最具价值。以下是详细的匹配分析与建议：\n\n### 1. 核心岗位匹配\n您的技能组合高度契合以下两类职位：\n*   **AI 产品经理 / 大模型应用 PM**：如字节跳动、蚂蚁集团的相关岗位，明确要求熟练掌握 RAG 核心概念。\n*   **AI 产品工程师（搜推方向）**：如蚂蚁集团、美团的岗位，强调理解 RAG、Prompt Engineering 及 Agent 工作流。\n\n### 2. 市场竞争力分析\n根据匹配模型评估，您与当前头部大厂（蚂蚁、美团、字节、百度）相关岗位的匹配度为 **70 分（基本匹配）**。\n\n*   **✅ 核心优势**：\n    *   具备 **RAG** 实战经验，符合多数 JD 的硬性要求。\n    *   掌握 **Prompt Engineering**，能够参与模型精细化调教。\n*   **⚠️ 待补强项**：\n    *   **理论基础**：对 Transformer、Token 等大模型底层原理的理解深度不足。\n    *   **协作能力**：缺乏与底层算法/工程团队同频对话的经验，可能影响技术可行性评估。\n    *   **闭环能力**：在模型调教（Function Calling 配合）及数据驱动进化（指标建立）方面经验欠缺。\n\n### 3. 进阶建议\n为了将匹配度从“基本匹配”提升至“高度匹配”，建议您重点准备以下内容：\n\n1.  **深化原理认知**：系统补充 Transformer 架构及 Token 机制知识，确保能与算法团队无障碍沟通。\n2.  **完善技能树**：学习如何将结构化 Prompt 与 RAG、Function Calling 结合，提升解决复杂业务逻辑的能力。\n3.  **建立指标意识**：在简历或面试中展示如何通过“交互好感度”与“任务成功率”双重指标来驱动产品进化。\n4.  **关注非功能需求**：补充大模型应用中的成本评估意识与合规风险判断力，这是大厂非常看重的加分项。\n\n您的技术背景非常契合当前 AI 落地的热点方向，只需在理论深度与工程协作层面稍作补充，竞争力将显著提升。祝您求职顺利！",
+        "content": "基于当前的招聘市场需求分析，您的 **RAG 和 Embedding 经验** 在 **大模型应用落地方向** 的岗位中价值最高，尤其是 **AI 产品工程师** 和 **AI 产品经理** 类别。\n\n以下是基于检索到的头部大厂职位描述（JD）所做的详细匹配分析与建议：\n\n### 1. 岗位匹配度分析\n根据检索结果，您的技能组合与以下岗位的核心要求高度契合：\n\n*   **🔴 高度匹配（硬性要求）**\n    *   **蚂蚁集团 - AI 产品工程师（转正实习/搜推方向）**\n        *   **匹配点**：JD 明确要求“熟悉大模型基础原理，理解 RAG、Prompt Engineering 及 Agent 工作流”，且需要能与算法团队同频对话。您的 Embedding 经验能帮助您更好地理解检索机制和技术可行性。\n    *   **字节跳动 - AI 产品经理**\n        *   **匹配点**：将“熟练掌握 Transformer、Token、RAG 等核心概念”列为硬性要求，您的经验可直接满足该门槛。\n    *   **百度 - 大模型应用 PM**\n        *   **匹配点**：岗位职责直接包含“配合 RAG、Function Calling\"进行模型精细化调教，需要深入理解技术逻辑。\n    *   **蚂蚁集团 - AI 产品经理**\n        *   **匹配点**：同样将 RAG 列为核心概念，并要求对 Multi-Agent 架构有实战理解。\n\n*   **🟡 中等匹配（加分项）**\n    *   **联想 - 产品经理-AI 方向**\n        *   **匹配点**：JD 中将“有深度学习、RAG、Prompt、知识库学习经历”列为软性要求/加分项。相比上述岗位，该技能在此处的权重略低，但仍具竞争力。\n\n### 2. 为什么您的经验最有价值？\n*   **技术落地核心**：检索结果显示，大厂在招聘 AI 应用类岗位时，**RAG（检索增强生成）** 已成为标配技能。而 **Embedding** 是 RAG 中实现语义检索的核心技术，懂 Embedding 意味着您能更深入地优化检索质量、处理数据切片及评估召回效果。\n*   **沟通壁垒降低**：蚂蚁集团等公司的 JD 特别提到需要“与底层算法/工程团队同频对话”。具备 Embedding 实战经验能让您在评估技术可行性、成本及合规风险时更具说服力。\n\n### 3. 求职建议\n根据系统匹配策略建议（识别到 2 个高度匹配岗位，3 个中等匹配岗位），建议您采取以下投递策略：\n\n1.  **优先投递**：**蚂蚁集团（AI 产品工程师）** 与 **字节跳动（AI 产品经理）**。这两个岗位对技术原理的要求最硬性，您的经验能最大化转化为面试优势。\n2.  **简历优化**：\n    *   **量化效果**：不要只写“熟悉 RAG\"，建议补充“通过优化 Embedding 模型/策略，将检索准确率提升了 X%\"或“解决了 Y 场景下的幻觉问题”。\n    *   **突出全流程**：在项目经历中体现从数据处理、Embedding 选型、检索策略到 Prompt 优化的完整闭环，呼应百度 JD 中的“模型精细化调教”要求。\n3.  **面试准备**：重点准备 RAG 的局限性（如 Context Window 限制、幻觉问题）及解决方案，这是蚂蚁集团等公司面试中的高频考点。\n\n您的技术栈非常符合当前 AI 应用落地的趋势，建议自信出击，重点突出技术在业务场景中的实际转化能力。",
         "data": null,
         "sources": null
       },
-      "_time": 46.29494571685791,
+      "_time": 66.21400928497314,
       "type": "done"
     }
   ],
-  "timestamp": "2026-04-30T17:08:38.280167"
+  "timestamp": "2026-04-30T19:18:13.006105",
+  "tool_execution_success_rate": 1.0,
+  "tool_correct_rate": 1.0
 }
