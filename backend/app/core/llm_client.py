@@ -120,18 +120,14 @@ class LLMClient:
             cfg = llm_config_store.core
         elif name == "planner":
             cfg = llm_config_store.planner
+        elif name == "rewrite":
+            cfg = llm_config_store.rewrite
         elif name == "memory":
             cfg = llm_config_store.memory
         elif name == "vision":
             cfg = llm_config_store.vision
         elif name == "judge":
-            # Judge 配置直接读取 settings，避免影响前端 API schema
-            from app.schemas.settings import LLMModelConfig
-            cfg = LLMModelConfig(
-                base_url=settings.JUDGE_BASE_URL or llm_config_store.chat.base_url,
-                api_key=settings.JUDGE_API_KEY or llm_config_store.chat.api_key,
-                model=settings.JUDGE_MODEL or llm_config_store.chat.model,
-            )
+            cfg = llm_config_store.judge
         else:
             logger.warning(f"[LLMClient] 未知配置层 '{name}'，fallback 到 chat")
             cfg = llm_config_store.chat

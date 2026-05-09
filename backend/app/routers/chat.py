@@ -793,6 +793,14 @@ async def _handle_llm_route_v2(
         f"clarify={multi_result.needs_clarification}"
     )
 
+    # 将意图识别解析的槽位同步到 session.global_slots，供 ReActExecutor 动态解析占位符使用
+    if multi_result.global_slots:
+        if not hasattr(session, "global_slots"):
+            session.global_slots = {}
+        for k, v in multi_result.global_slots.items():
+            if v is not None:
+                session.global_slots[k] = v
+
     # 埋点：intent_classified
     eval_ctx = request.eval_context or {}
     if tracker:
@@ -1220,6 +1228,14 @@ async def _handle_llm_route_v2_stream(
         )
 
     intent_result = multi_intent_result_to_intent_result(multi_result)
+
+    # 将意图识别解析的槽位同步到 session.global_slots，供 ReActExecutor 动态解析占位符使用
+    if multi_result.global_slots:
+        if not hasattr(session, "global_slots"):
+            session.global_slots = {}
+        for k, v in multi_result.global_slots.items():
+            if v is not None:
+                session.global_slots[k] = v
 
     # 澄清场景
     if intent_result.needs_clarification:

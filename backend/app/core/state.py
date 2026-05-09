@@ -22,9 +22,10 @@ from app.core.config import settings
 
 logger = logging.getLogger(__name__)
 
-# ---------- 辅助函数：为各层构建配置，未填写时 fallback 到 chat ----------
+
+# ---------- 辅助函数 ----------
 def _build_layer_config(base_url: str, api_key: str, model: str, fallback: LLMModelConfig) -> LLMModelConfig:
-    """构建分层模型配置，空值 fallback 到 chat 配置"""
+    """构建分层模型配置，空值 fallback 到传入的 fallback 配置"""
     return LLMModelConfig(
         base_url=base_url or fallback.base_url,
         api_key=api_key or fallback.api_key,
@@ -33,26 +34,89 @@ def _build_layer_config(base_url: str, api_key: str, model: str, fallback: LLMMo
 
 
 # ---------- LLM 配置（启动时从 .env 加载，运行时可通过 API 覆盖） ----------
+
+# 大模型池
+_large_cfg = LLMModelConfig(
+    base_url=settings.LARGE_BASE_URL,
+    api_key=settings.LARGE_API_KEY,
+    model=settings.LARGE_MODEL,
+)
+
+# 小模型池
+_small_cfg = LLMModelConfig(
+    base_url=settings.SMALL_BASE_URL,
+    api_key=settings.SMALL_API_KEY,
+    model=settings.SMALL_MODEL,
+)
+
+# chat 独立配置（custom 模式或旧版直接配置时用）
 _chat_cfg = LLMModelConfig(
     base_url=settings.CHAT_BASE_URL,
     api_key=settings.CHAT_API_KEY,
     model=settings.CHAT_MODEL,
 )
 
+
+def _resolve_layer(layer_name: str, custom_cfg: LLMModelConfig, fallback: LLMModelConfig) -> LLMModelConfig:
+    """
+    根据层级映射返回对应模型配置。
+
+    Args:
+        layer_name: settings 中的 *_LAYER 值，如 "large", "small", "custom"
+        custom_cfg: 该层独立配置（*_BASE_URL / *_API_KEY / *_MODEL）
+        fallback:   兜底配置（通常用 chat_cfg）
+    """
+    layer = layer_name.lower().strip()
+    if layer == "large":
+        return _large_cfg
+    if layer == "small":
+        return _small_cfg
+    if layer == "custom":
+        return _build_layer_config(custom_cfg.base_url, custom_cfg.api_key, custom_cfg.model, fallback)
+    # 非法值默认 fallback 到 large（避免空配置导致请求失败）
+    logger.warning(f"[LLMConfig] 未知层级映射 '{layer_name}'，fallback 到 large")
+    return _large_cfg
+
+
+# 构建各层配置：先确定 chat（作为其他层的 fallback），再依次构建
+_chat_resolved = _resolve_layer(settings.CHAT_LAYER, _chat_cfg, _chat_cfg)
+
 llm_config_store: LLMConfigSchema = LLMConfigSchema(
-    chat=_chat_cfg,
-    core=_build_layer_config(settings.CORE_BASE_URL, settings.CORE_API_KEY, settings.CORE_MODEL, _chat_cfg),
-    planner=_build_layer_config(settings.PLANNER_BASE_URL, settings.PLANNER_API_KEY, settings.PLANNER_MODEL, _chat_cfg),
-    memory=_build_layer_config(settings.MEMORY_BASE_URL, settings.MEMORY_API_KEY, settings.MEMORY_MODEL, _chat_cfg),
+    chat=_chat_resolved,
+    core=_resolve_layer(
+        settings.CORE_LAYER,
+        LLMModelConfig(base_url=settings.CORE_BASE_URL, api_key=settings.CORE_API_KEY, model=settings.CORE_MODEL),
+        _chat_resolved,
+    ),
+    planner=_resolve_layer(
+        settings.PLANNER_LAYER,
+        LLMModelConfig(base_url=settings.PLANNER_BASE_URL, api_key=settings.PLANNER_API_KEY, model=settings.PLANNER_MODEL),
+        _chat_resolved,
+    ),
+    rewrite=_resolve_layer(
+        settings.REWRITE_LAYER,
+        LLMModelConfig(base_url=settings.REWRITE_BASE_URL, api_key=settings.REWRITE_API_KEY, model=settings.REWRITE_MODEL),
+        _chat_resolved,
+    ),
+    memory=_resolve_layer(
+        settings.MEMORY_LAYER,
+        LLMModelConfig(base_url=settings.MEMORY_BASE_URL, api_key=settings.MEMORY_API_KEY, model=settings.MEMORY_MODEL),
+        _chat_resolved,
+    ),
     vision=LLMModelConfig(
         base_url=settings.VISION_BASE_URL,
         api_key=settings.VISION_API_KEY,
         model=settings.VISION_MODEL,
     ),
-    # Embedding 配置：若 .env 中填写了独立配置则使用，否则为 None（运行时 fallback 到 chat）
+    judge=_resolve_layer(
+        settings.JUDGE_LAYER,
+        LLMModelConfig(base_url=settings.JUDGE_BASE_URL, api_key=settings.JUDGE_API_KEY, model=settings.JUDGE_MODEL),
+        _chat_resolved,
+    ),
+    # Embedding 配置：若 .env 中填写了独立配置则使用，否则复用大模型池
     embedding=LLMModelConfig(
-        base_url=settings.EMBEDDING_BASE_URL or settings.CHAT_BASE_URL,
-        api_key=settings.EMBEDDING_API_KEY or settings.CHAT_API_KEY,
+        base_url=settings.EMBEDDING_BASE_URL or settings.LARGE_BASE_URL,
+        api_key=settings.EMBEDDING_API_KEY or settings.LARGE_API_KEY,
         model=settings.EMBEDDING_MODEL,
     ) if (settings.EMBEDDING_BASE_URL or settings.EMBEDDING_API_KEY) else None,
 )

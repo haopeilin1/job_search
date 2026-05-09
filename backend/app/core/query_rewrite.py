@@ -364,7 +364,7 @@ class QueryRewriter:
 请输出JSON。"""
 
         try:
-            llm = LLMClient.from_config("planner")
+            llm = LLMClient.from_config("rewrite")
             raw = await llm.generate(
                 prompt=user_prompt,
                 system=system_prompt,

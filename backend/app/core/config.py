@@ -21,57 +21,77 @@ class Settings(BaseSettings):
     # 当 AGENT_MODE="auto" 时，直接走哪条路（不再根据消息长度/关键词启发式判断）
     DEFAULT_AGENT_MODE: str = "rule"   # "rule" | "llm"
 
-    # ── LLM 分层配置（按功能难度/成本敏感度分模型） ──
-    # .env 作为启动默认值，用户界面可覆盖
-    # 通用参数：未单独配置时，各层默认复用 chat 的 base_url/api_key
+    # ═══════════════════════════════════════════════════════════
+    # LLM 双池 + 层级映射配置（国内模型推荐版）
+    # ═══════════════════════════════════════════════════════════
+    # 配置思路：
+    #   1. 先定义"大模型池"和"小模型池"（各一套 URL/KEY/MODEL）
+    #   2. 再通过 *_LAYER 决定各系统层级使用哪个池
+    #   3. 某层如需独立配置，设为 "custom" 并填写该层独立参数
     #
-    # 【本地模型兼容】支持 Ollama / vLLM / LM Studio 等本地部署：
-    #   BASE_URL = "http://localhost:11434/v1"  (Ollama)
-    #   API_KEY 留空（本地模型通常不需要）
-    #   MODEL    = "llama3.1" / "qwen2.5" / "deepseek-r1" 等
+    # 国内模型推荐：
+    #   大模型（强推理）：qwen-plus / deepseek-v3 / moonshot-v1-32k
+    #   小模型（轻量快）：qwen-turbo / glm-4-flash / 本地 qwen2.5:7b
+    #   多模态 Vision：qwen-vl-plus
+    #   Embedding：text-embedding-v4（DashScope）
     #
-    # 注意：本地模型能力可能不如云端大模型，建议：
-    #   - chat/core 层用 7B+ 模型
-    #   - planner/memory 层可用 3B-7B 小模型降低成本
-    #   - vision 层本地支持有限（如 llava），效果可能不如 GPT-4V
+    # 【本地模型兼容】Ollama / vLLM：
+    #   BASE_URL = "http://localhost:11434/v1"
+    #   API_KEY 留空
+    #   MODEL   = "qwen2.5:14b" / "deepseek-r1" 等
 
-    # Chat 模型 — 对话最终回复生成（Handler 回复、chat.py 最终回复）
-    CHAT_BASE_URL: str = "https://api.openai.com/v1"
+    # ── 大模型池（强推理任务）──
+    # 承担：最终对话回复、简历匹配分析、面试题生成、任务规划、意图兜底仲裁
+    LARGE_BASE_URL: str = "https://api.openai.com/v1"
+    LARGE_API_KEY: str = ""
+    LARGE_MODEL: str = "gpt-4o"
+
+    # ── 小模型池（轻量快速任务）──
+    # 承担：query改写、意图识别L2审核、记忆压缩、评测打分
+    SMALL_BASE_URL: str = "https://api.openai.com/v1"
+    SMALL_API_KEY: str = ""
+    SMALL_MODEL: str = "gpt-4o-mini"
+
+    # ── 层级映射（值填 large | small | custom）──
+    #   large  → 复用大模型池（LARGE_*）
+    #   small  → 复用小模型池（SMALL_*）
+    #   custom → 使用下方各层独立配置（*_BASE_URL / *_API_KEY / *_MODEL）
+    # 默认推荐：chat=large, core=large, planner=large, rewrite=small, memory=small, judge=small
+    CHAT_LAYER: str = "large"
+    CORE_LAYER: str = "large"
+    PLANNER_LAYER: str = "large"
+    REWRITE_LAYER: str = "small"
+    MEMORY_LAYER: str = "small"
+    JUDGE_LAYER: str = "small"
+
+    # ── 各层独立配置（仅当 *_LAYER="custom" 时生效）──
+    # 留空则 fallback 到 chat 的旧行为，保持向后兼容
+    CHAT_BASE_URL: str = ""
     CHAT_API_KEY: str = ""
-    CHAT_MODEL: str = "gpt-4o"
-
-    # Core 模型 — 核心业务分析（匹配分析、面试题生成、简历解析）
-    # 未配置时默认复用 CHAT_*，但建议配置为比 chat 更强的模型
+    CHAT_MODEL: str = ""
     CORE_BASE_URL: str = ""
     CORE_API_KEY: str = ""
     CORE_MODEL: str = ""
-
-    # Planner 模型 — 规划与推理（意图识别、query改写、plan生成、replan、澄清、检索决策）
-    # 可用中等能力模型，如 gpt-4o-mini，显著降低成本
     PLANNER_BASE_URL: str = ""
     PLANNER_API_KEY: str = ""
     PLANNER_MODEL: str = ""
-
-    # Memory 模型 — 记忆管理（压缩、长期记忆提取、话题切换检测）
-    # 可用 cheapest 模型，对质量要求最低
+    REWRITE_BASE_URL: str = ""
+    REWRITE_API_KEY: str = ""
+    REWRITE_MODEL: str = ""
     MEMORY_BASE_URL: str = ""
     MEMORY_API_KEY: str = ""
     MEMORY_MODEL: str = ""
-
-    # Judge 模型 — 评测用 LLM-as-judge（评估回复质量、任务完成度）
-    # 可用 cheapest 小模型，如 qwen-turbo / gpt-4o-mini / 本地 3B-7B
-    # 未配置时 fallback 到 MEMORY_MODEL → CHAT_MODEL
     JUDGE_BASE_URL: str = ""
     JUDGE_API_KEY: str = ""
     JUDGE_MODEL: str = ""
 
-    # Vision 模型 — 多模态（图片 OCR、JD 截图解析、简历图片解析）
+    # ── 特殊独立配置（不跟随大/小模型池）──
+    # Vision 多模态（图片OCR、JD截图解析、简历图片解析）
     VISION_BASE_URL: str = "https://api.openai.com/v1"
     VISION_API_KEY: str = ""
     VISION_MODEL: str = "gpt-4o"
 
-    # Embedding 模型（向量库向量化，默认复用 chat 的 base_url/api_key）
-    # 本地兼容：Ollama 支持 embedding，如 "nomic-embed-text" / "mxbai-embed-large"
+    # Embedding 向量模型（默认复用大模型的 base_url/api_key）
     EMBEDDING_BASE_URL: str = ""
     EMBEDDING_API_KEY: str = ""
     EMBEDDING_MODEL: str = "text-embedding-3-small"
