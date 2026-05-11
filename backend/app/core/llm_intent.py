@@ -1393,9 +1393,9 @@ class LLMFallbackClassifier:
         """大模型兜底裁决"""
         if self.llm is None:
             try:
-                self.llm = LLMClient.from_config("chat")
+                self.llm = LLMClient.from_config("core")
             except Exception as e:
-                logger.warning(f"[LLMFallbackClassifier] chat LLM 不可用，fallback: {e}")
+                logger.warning(f"[LLMFallbackClassifier] core LLM 不可用，fallback: {e}")
                 return self._fallback(rule_result, cal_result)
 
         working_history, compressed_history, long_term_profile = self._build_memory_context(session)
@@ -1500,9 +1500,9 @@ class LLMFallbackClassifier:
         """方案B：当意图完全模糊时，调用chat模型生成友好的澄清问题"""
         if self.llm is None:
             try:
-                self.llm = LLMClient.from_config("chat")
+                self.llm = LLMClient.from_config("core")
             except Exception as e:
-                logger.warning(f"[LLMFallbackClassifier] chat LLM 不可用，使用默认澄清: {e}")
+                logger.warning(f"[LLMFallbackClassifier] core LLM 不可用，使用默认澄清: {e}")
                 return "抱歉，我没有完全理解您的意思，能再详细说明一下吗？"
 
         working_history = ""

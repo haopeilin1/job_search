@@ -52,6 +52,11 @@ _llm_client_mod.TIMEOUT_LIGHT = TIMEOUT_LIGHT
 _llm_client_mod.TIMEOUT_STANDARD = TIMEOUT_STANDARD
 _llm_client_mod.TIMEOUT_HEAVY = TIMEOUT_HEAVY
 
+import httpx
+
+BASE_URL = "http://127.0.0.1:8001"
+CHAT_URL = f"{BASE_URL}/api/v1/chat"
+
 from app.core.memory import SessionMemory, DialogueTurn, WorkingMemory
 from app.core.query_rewrite import QueryRewriter, QueryRewriteResult
 from app.core.llm_intent import LLMIntentRouter
@@ -581,7 +586,7 @@ def compute_intent_strict_hit(result: TurnResult) -> Tuple[bool, str]:
     # 获取系统预测的意图集合
     predicted = set()
     for d in result.intent_result.get("demands", []):
-        it = d.get("intent_type", "")
+        it = d.get("intent_type") or d.get("intent") or ""
         # 统一映射为新体系名称
         rev = REVERSE_INTENT_MAP.get(it, it)
         predicted.add(rev)
@@ -661,10 +666,13 @@ async def run_single_case(
     resume_text: str,
     tracker: LLMTracker,
     session: Optional[SessionMemory] = None,
+    reset_session: bool = False,
 ) -> TurnResult:
     sid = case["session_id"]
     batch = sid.split("_")[1] if "_" in sid else "unknown"
     eval_ctx = case.get("eval_context", {})
+    # 多轮对话复用：若传了 session 对象，使用其 session_id 保持 HTTP session 一致
+    http_session_id = session.session_id if session else sid
     result = TurnResult(
         case_id=sid,
         batch=batch,
@@ -675,167 +683,115 @@ async def run_single_case(
         expected_tools=eval_ctx.get("expected_tools", []),
     )
 
-    if session is None:
-        session = SessionMemory(session_id=sid)
-    if resume_text and len(resume_text.strip()) > 50:
-        if not hasattr(session, "global_slots"):
-            session.global_slots = {}
-        session.global_slots["resume_available"] = True
-
     start_time = time.time()
     tracker.reset()
     result.resume_text = resume_text
     result.user_message = case.get("message", "")
 
-    # 注入模拟多轮上下文
-    injected_slots = eval_ctx.get("injected_history_slots")
-    if injected_slots and isinstance(injected_slots, dict):
-        if session.long_term is None:
-            from app.core.memory import LongTermMemory
-            session.long_term = LongTermMemory()
-        session.long_term.entities.update(injected_slots)
-    injected_cache = eval_ctx.get("injected_evidence_cache")
-    if injected_cache and isinstance(injected_cache, list):
-        session.evidence_cache = list(injected_cache)
-        session.evidence_cache_query = eval_ctx.get("injected_evidence_query", "")
-
     try:
-        # ── Step 0: Query Rewrite ──
-        t0 = time.time()
-        rewriter = QueryRewriter()
-        rw = await rewriter.rewrite(raw_query=case["message"], session=session)
+        # 1. 切换 active resume
+        resume_id = case.get("resume_id")
+        if resume_id:
+            import httpx
+            async with httpx.AsyncClient(timeout=30.0) as client:
+                resp = await client.put(f"{BASE_URL}/api/v1/resumes/{resume_id}/activate")
+                if resp.status_code != 200:
+                    logger.warning(f"[Eval] 切换 resume 失败: {resp.status_code}")
+
+        # 2. 调用全链路 HTTP API
+        merged_eval_ctx = dict(eval_ctx)
+        if reset_session:
+            merged_eval_ctx["reset_session"] = True
+        payload = {
+            "session_id": http_session_id,
+            "message": case["message"],
+            "eval_context": merged_eval_ctx,
+        }
+        import httpx
+        async with httpx.AsyncClient(timeout=600.0) as client:
+            resp = await client.post(
+                CHAT_URL,
+                json=payload,
+                headers={"Content-Type": "application/json"},
+            )
+            resp.raise_for_status()
+            data = resp.json()
+
+        result.e2e_latency_ms = (time.time() - start_time) * 1000
+
+        # 3. 从返回中提取信息
+        debug = data.get("debug_info", {})
+        route_meta = data.get("route_meta", {})
+        llm_agent = data.get("llm_agent", {})
+        is_clarification = data.get("is_clarification", False)
+        reply = data.get("reply", {})
+
+        # rewrite
+        result.rewrite_result = {
+            "rewritten_query": llm_agent.get("rewritten_query", ""),
+            "follow_up_type": llm_agent.get("follow_up_type", ""),
+            "search_keywords": llm_agent.get("search_keywords", ""),
+            "resolved_references": llm_agent.get("global_slots", {}),
+        }
         result.rewrite = ComponentResult(
             component="query_rewrite",
             success=True,
-            latency_ms=(time.time() - t0) * 1000,
-            output={"rewritten_query": rw.rewritten_query, "follow_up_type": rw.follow_up_type,
-                    "search_keywords": rw.search_keywords, "resolved_references": rw.resolved_references},
+            latency_ms=0,
+            output=result.rewrite_result,
         )
-        result.rewrite_result = result.rewrite.output
 
-        # ── Step 1: Intent Recognition ──
-        t1 = time.time()
-        intent_router = LLMIntentRouter()
-        multi_result = await intent_router.route_multi(
-            rewrite_result=rw,
-            session=session,
-            attachments=[],
-            raw_message=case["message"],
-        )
-        intent_result = multi_intent_result_to_intent_result(multi_result)
+        # intent
+        demands = route_meta.get("demands", [])
+        intent_debug = debug.get("intent", {})
+        result.intent_result = {
+            "demands": demands,
+            "needs_clarification": is_clarification,
+            "clarification_question": intent_debug.get("clarification_question", ""),
+            "missing_entities": intent_debug.get("missing_entities", []),
+            "resolved_entities": intent_debug.get("resolved_entities", {}),
+            "skipped_due_to_timeout": False,
+        }
         result.intent = ComponentResult(
             component="intent_recognition",
             success=True,
-            latency_ms=(time.time() - t1) * 1000,
-            output=_intent_result_to_dict(intent_result),
+            latency_ms=0,
+            output=result.intent_result,
         )
-        result.intent_result = result.intent.output
 
-        # ── 严格意图命中判定 ──
+        # 严格意图命中判定
         result.intent_strict_hit, result.intent_hit_reason = compute_intent_strict_hit(result)
 
         # 澄清场景
-        if intent_result.needs_clarification:
-            turn_id = len(session.working_memory.turns) + 1
-            turn = DialogueTurn(
-                turn_id=turn_id,
-                user_message=case["message"],
-                assistant_reply=intent_result.clarification_question or "抱歉，我没有完全理解您的意思，能再详细说明一下吗？",
-                intent=intent_result.demands[0].intent_type if intent_result.demands else "chat",
-                rewritten_query=rw.rewritten_query,
-                evidence_score=0.0,
-            )
-            session.working_memory.append(turn)
-            from app.core.memory import PendingClarification
-            primary = intent_result.demands[0].intent_type if intent_result.demands else "chat"
-            session.pending_clarification = PendingClarification(
-                pending_intent=primary,
-                missing_slots=intent_result.missing_entities or [],
-                clarification_question=intent_result.clarification_question or "",
-                expected_slot_types=intent_result.missing_entities or [],
-                created_turn_id=turn_id,
-                resolved_slots=dict(intent_result.resolved_entities or {}),
-            )
-            if intent_result.resolved_entities:
-                if not hasattr(session, "global_slots"):
-                    session.global_slots = {}
-                for k, v in intent_result.resolved_entities.items():
-                    if v is not None:
-                        session.global_slots[k] = v
-
-            # 工具判定（澄清场景无工具执行）
+        if is_clarification:
             result.tool_primary_hit = False
             result.tool_full_chain_hit = False
             result.tool_hit_reason = "澄清场景，未执行工具"
             result.tool_primary_tools = result.expected_tools
-
-            result.task_success = True  # 澄清也是正确行为
-            result.e2e_latency_ms = (time.time() - start_time) * 1000
+            result.task_success = True
             result.llm_summary = tracker.summary()
-
-            # ── 过程质量 Judge ──
             result.process_quality = await process_quality_judge(case, result)
             return result
 
-        # ── Step 2: Planner ──
-        t2 = time.time()
-        new_planner = TaskGraphPlanner()
-        new_graph = await new_planner.create_graph(
-            multi_result=multi_result,
-            session=session,
-            resume_text=resume_text,
-            rewrite_result=rw,
-            history_cache=[],
-        )
-        graph = convert_task_graph(new_graph)
-        result.planner = ComponentResult(
-            component="planner",
-            success=True,
-            latency_ms=(time.time() - t2) * 1000,
-            output={"task_count": len(graph.tasks), "parallel_groups": len(graph.compute_parallel_groups())},
-        )
-        result.task_graph = _task_graph_to_dict(graph)
+        # task_graph
+        task_graph_debug = debug.get("task_graph", {})
+        result.task_graph = task_graph_debug
 
-        # ── Step 3: Executor ──
-        t3 = time.time()
-        executor = ReActExecutor()
-        graph = await executor.execute(graph, session)
-        result.executor = ComponentResult(
-            component="executor",
-            success=True,
-            latency_ms=(time.time() - t3) * 1000,
-            output={"global_status": graph.global_status,
-                    "success_count": sum(1 for t in graph.tasks.values() if t.status == "success"),
-                    "failed_count": sum(1 for t in graph.tasks.values() if t.status == "failed"),
-                    "skipped_count": sum(1 for t in graph.tasks.values() if t.status == "skipped")},
-        )
-        result.task_graph = _task_graph_to_dict(graph)
-
+        # 工具执行信息
+        tasks = task_graph_debug.get("tasks", {})
         result.executed_tools = sorted(set(
-            t.tool_name for t in graph.tasks.values()
-            if t.tool_name and t.status == "success"
+            t.get("tool_name") for t in tasks.values()
+            if t.get("tool_name") and t.get("status") == "success"
         ))
         result.failed_tools = sorted(set(
-            t.tool_name for t in graph.tasks.values()
-            if t.tool_name and t.status == "failed"
+            t.get("tool_name") for t in tasks.values()
+            if t.get("tool_name") and t.get("status") == "failed"
         ))
-        if graph.global_status in ("needs_replan", "replanning"):
+
+        # replan
+        global_status = task_graph_debug.get("global_status", "")
+        if global_status in ("needs_replan", "replanning"):
             result.replan_count = 1
-
-        # KB 异常追踪
-        for t in graph.tasks.values():
-            if t.tool_name == "kb_retrieve" and t.status == "success":
-                try:
-                    res = t.result or {}
-                    chunks = res.get("chunks", []) if isinstance(res, dict) else []
-                    if not chunks:
-                        result.kb_empty = True
-                except Exception:
-                    pass
-            if t.tool_name == "external_search" and t.status == "success":
-                result.external_search_triggered = True
-
-        replan_reason = graph.replan_reason or ""
+        replan_reason = task_graph_debug.get("replan_reason", "")
         if "T1" in replan_reason or "hard_fail" in replan_reason:
             result.replan_t1 = True
         if "T2" in replan_reason or "retrieval_insufficient" in replan_reason:
@@ -843,23 +799,25 @@ async def run_single_case(
         if "T4" in replan_reason or "low_match" in replan_reason:
             result.replan_t4 = True
 
-        if result.intent_result:
-            result.intent_skipped = result.intent_result.get("skipped_due_to_timeout", False)
+        # KB 异常
+        for t in tasks.values():
+            if t.get("tool_name") == "kb_retrieve" and t.get("status") == "success":
+                try:
+                    res = t.get("result", {}) or {}
+                    chunks = res.get("chunks", []) if isinstance(res, dict) else []
+                    if not chunks:
+                        result.kb_empty = True
+                except Exception:
+                    pass
+            if t.get("tool_name") == "external_search" and t.get("status") == "success":
+                result.external_search_triggered = True
 
-        # 保存对话历史
-        turn = DialogueTurn(
-            turn_id=len(session.working_memory.turns) + 1,
-            user_message=case["message"],
-            assistant_reply="",
-            intent=intent_result.demands[0].intent_type if intent_result.demands else "chat",
-            rewritten_query=rw.rewritten_query,
-            evidence_score=0.0,
-        )
-        session.working_memory.append(turn)
+        # 工具命中判定
+        result.tool_primary_hit, result.tool_full_chain_hit, result.tool_primary_tools, result.tool_hit_reason =             compute_tool_hit(result, result.expected_tools)
 
-        # ── 严格工具命中判定 ──
-        result.tool_primary_hit, result.tool_full_chain_hit, result.tool_primary_tools, result.tool_hit_reason = \
-            compute_tool_hit(result, result.expected_tools)
+        # 最终回复
+        result.final_response = (reply.get("content") or reply.get("text", "")) if isinstance(reply, dict) else str(reply)
+        result.session_history = debug.get("session_history", [])
 
     except Exception as e:
         if is_token_exhausted_error(e):
@@ -867,77 +825,8 @@ async def run_single_case(
         result.has_exception = True
         result.exception_trace = traceback.format_exc()
 
-    # 保存完整中间信息
-    result.e2e_latency_ms = (time.time() - start_time) * 1000
+    # LLM-as-judge
     result.llm_summary = tracker.summary()
-    result.raw_llm_calls = [
-        {"model": c.model, "layer": c.layer, "method": c.method,
-         "prompt_tokens": c.prompt_tokens, "completion_tokens": c.completion_tokens,
-         "latency_ms": c.latency_ms, "success": c.success, "error": c.error,
-         "prompt_full": c.prompt_full, "system_prompt": c.system_prompt,
-         "raw_output": c.raw_output, "temperature": c.temperature,
-         "max_tokens": c.max_tokens, "timeout": c.timeout,
-         "call_timestamp": c.call_timestamp}
-        for c in tracker.calls
-    ]
-    if result.task_graph:
-        result.tool_executions_full = [
-            {"task_id": tid, "tool_name": t.get("tool_name"), "status": t.get("status"),
-             "result_full": t.get("result_full"), "observation_full": t.get("observation_full"),
-             "tool_input": t.get("tool_input"), "started_at": t.get("started_at"),
-             "finished_at": t.get("finished_at")}
-            for tid, t in result.task_graph.get("tasks", {}).items()
-            if t.get("tool_name")
-        ]
-    # ── 从 task_graph 提取最终回复 ──
-    final_reply = ""
-    if result.task_graph:
-        tasks = result.task_graph.get("tasks", {})
-        # 优先从 llm_reasoning 任务提取
-        for tid, t in tasks.items():
-            if t.get("task_type") == "llm_reasoning" and t.get("status") == "success" and t.get("result_full"):
-                try:
-                    res = eval(t["result_full"]) if isinstance(t["result_full"], str) else t["result_full"]
-                    if isinstance(res, dict) and "output" in res:
-                        final_reply = res["output"]
-                        break
-                except Exception:
-                    pass
-        # 其次从 aggregate 任务提取
-        if not final_reply:
-            for tid, t in tasks.items():
-                if t.get("task_type") == "aggregate" and t.get("status") == "success" and t.get("result_full"):
-                    try:
-                        res = eval(t["result_full"]) if isinstance(t["result_full"], str) else t["result_full"]
-                        if isinstance(res, dict) and "aggregation" in res:
-                            agg = res["aggregation"]
-                            if isinstance(agg, dict):
-                                for k, v in agg.items():
-                                    if isinstance(v, dict) and "answer" in v:
-                                        final_reply = v["answer"]
-                                        break
-                                    if isinstance(v, dict) and "output" in v:
-                                        final_reply = v["output"]
-                                        break
-                            if not final_reply:
-                                final_reply = json.dumps(agg, ensure_ascii=False)
-                            break
-                    except Exception:
-                        pass
-
-    # 更新 session history 中的 assistant_reply
-    turns = session.working_memory.turns if session.working_memory else []
-    if turns:
-        turns[-1].assistant_reply = final_reply
-    result.session_history = [
-        {"turn_id": turn.turn_id, "user_message": turn.user_message,
-         "assistant_reply": turn.assistant_reply, "intent": turn.intent,
-         "rewritten_query": turn.rewritten_query}
-        for turn in turns
-    ]
-    result.final_response = final_reply
-
-    # LLM-as-judge 评估
     if result.has_exception:
         result.task_success = False
         result.judge_result = {"resolved": False, "reason": "执行异常", "source": "rule"}
@@ -959,10 +848,11 @@ async def run_single_case(
             result.task_success = not result.has_exception and has_final_response
             result.judge_result["fallback"] = True
 
-    # ── 过程质量 Judge ──
+    # 过程质量 Judge
     result.process_quality = await process_quality_judge(case, result)
 
     return result
+
 
 
 # ═══════════════════════════════════════════════════════
@@ -1142,7 +1032,7 @@ async def run_stability_test(
 ) -> Dict[str, Any]:
     results: List[TurnResult] = []
     for i in range(n_runs):
-        r = await run_single_case(case, resume_text, tracker)
+        r = await run_single_case(case, resume_text, tracker, reset_session=True)
         results.append(r)
         await asyncio.sleep(0.5)
 
@@ -1314,9 +1204,13 @@ def load_resumes() -> dict:
         return json.load(f)
 
 
-def get_resume_for_case(case_id: str, resumes: dict) -> str:
-    mapping = resumes.get("session_resume_map", {})
-    resume_id = mapping.get(case_id, "eval_resume_ai")
+def get_resume_for_case(case: dict, resumes: dict) -> str:
+    # 优先使用 test_dataset.jsonl 中的 resume_id 字段
+    resume_id = case.get("resume_id")
+    if not resume_id:
+        # fallback：兼容旧版 session_resume_map
+        mapping = resumes.get("session_resume_map", {})
+        resume_id = mapping.get(case.get("session_id", ""), "")
     for r in resumes.get("resumes", []):
         if r.get("id") == resume_id:
             return r.get("text", "")
@@ -1348,32 +1242,35 @@ async def main():
     try:
         all_results: List[TurnResult] = []
         stability_results: List[Dict] = []
-        group_session_map: Dict[str, SessionMemory] = {}
+        group_session_map: Dict[str, str] = {}  # group -> session_id
 
         for i, case in enumerate(cases, 1):
             sid = case["session_id"]
             group = case.get("session_group")
-            resume_text = get_resume_for_case(sid, resumes)
+            resume_text = get_resume_for_case(case, resumes)
             group_tag = f"[{group}] " if group else ""
             print(f"\n[{i}/{len(cases)}] {group_tag}{sid}: {case['message'][:40]}...")
 
+            # 单轮始终重置；多轮第一轮重置，后续复用
+            reset_session = True
+            session = None
             if group:
                 if group in group_session_map:
-                    session = group_session_map[group]
-                    print(f"  (复用 SessionMemory: group={group})")
-                else:
+                    reset_session = False
+                    sid = group_session_map[group]
                     session = SessionMemory(session_id=sid)
-                    group_session_map[group] = session
-            else:
-                session = None
+                    print(f"  (复用 session: group={group} sid={sid})")
+                else:
+                    group_session_map[group] = sid
+                    session = SessionMemory(session_id=sid)
 
             try:
                 if args.stability > 1:
                     st = await run_stability_test(case, resume_text, tracker, args.stability)
                     stability_results.append(st)
-                    r = await run_single_case(case, resume_text, tracker, session)
+                    r = await run_single_case(case, resume_text, tracker, session, reset_session=reset_session)
                 else:
-                    r = await run_single_case(case, resume_text, tracker, session)
+                    r = await run_single_case(case, resume_text, tracker, session, reset_session=reset_session)
             except TokenExhaustedError as e:
                 print(f"\n  [!!] {e}")
                 print("  检测到 Token/配额/余额耗尽，测试已中断！")

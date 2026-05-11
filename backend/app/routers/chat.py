@@ -179,9 +179,33 @@ async def chat_endpoint(request: ChatRequest):
     - AGENT_MODE="rule" → 规则路线（完整 IntentRouter → Plan → 执行 → LLM 回复）
     - AGENT_MODE="llm"  → LLM 路线（Query 改写 → 直接 LLM 回复，其余模块待填充）
     """
+    # 评测模式：若请求重置 session，先删除已有 session
+    eval_ctx = request.eval_context or {}
+    if eval_ctx.get("reset_session") and request.session_id and request.session_id in _session_store:
+        del _session_store[request.session_id]
+        logger.info(f"[Chat] 评测模式重置 session | session_id={request.session_id}")
+
     # 1. 会话管理
+    # 评测模式：若请求重置 session，先删除已有 session
+    eval_ctx = request.eval_context or {}
+    if eval_ctx.get("reset_session") and request.session_id and request.session_id in _session_store:
+        del _session_store[request.session_id]
+        logger.info(f"[ChatStream] 评测模式重置 session | session_id={request.session_id}")
+
     session_id, session = _get_or_create_session(request.session_id, request.user_id)
     resume_text = _get_resume_text()
+
+    # 评测模式：注入模拟多轮上下文
+    injected_slots = eval_ctx.get("injected_history_slots")
+    if injected_slots and isinstance(injected_slots, dict):
+        if session.long_term is None:
+            from app.core.memory import LongTermMemory
+            session.long_term = LongTermMemory()
+        session.long_term.entities.update(injected_slots)
+    injected_cache = eval_ctx.get("injected_evidence_cache")
+    if injected_cache and isinstance(injected_cache, list):
+        session.evidence_cache = list(injected_cache)
+        session.evidence_cache_query = eval_ctx.get("injected_evidence_query", "")
 
     # 1.5 处理图片附件：OCR 提取文字后附加到 message
     message_with_ocr = request.message
@@ -660,6 +684,16 @@ async def _handle_llm_route_v2(
             "relevance_score": (request.eval_context or {}).get("relevance_score", 0),
         })
 
+    # ── 话题切换检测 ──
+    if session.working_memory.turns:
+        try:
+            mm = MemoryManager(llm_client=LLMClient.from_config("memory"))
+            is_shift = await mm.detect_topic_shift(rewrite_result.rewritten_query or request.message, session)
+            if is_shift:
+                logger.info(f"[Chat-v2] 检测到话题切换，已清除 evidence_cache | session={session_id}")
+        except Exception as e:
+            logger.warning(f"[Chat-v2] 话题切换检测失败: {e}")
+
     # ── ① 新体系：多意图识别 ──
     # 澄清状态机：若上轮触发澄清且本轮是 clarify 型追问，直接恢复意图
     pc = session.pending_clarification
@@ -1023,7 +1057,9 @@ async def _handle_llm_route_v2(
         logger.error(f"[Chat-v2] 所有聚合模型均失败: {last_error}")
         reply_text = "抱歉，我在处理您的请求时遇到了问题，请稍后重试。"
 
-    reply = ChatReply(text=reply_text.strip())
+    reply_text_stripped = reply_text.strip()
+    logger.info(f"[Chat-v2] 最终聚合回复 | length={len(reply_text_stripped)} | preview={reply_text_stripped[:100]}")
+    reply = ChatReply(type="text", content=reply_text_stripped)
 
     # ── ⑥ 保存对话历史 ──
     turn = DialogueTurn(
@@ -1055,7 +1091,59 @@ async def _handle_llm_route_v2(
     memory_state = _build_memory_state(session)
     _emit_turn_completed(reply_text=reply.text, has_error=(graph.global_status == "failed"), graph=graph)
 
-    return {
+    # 评测模式：附加详细 debug_info
+    debug_info = None
+    if request.eval_context:
+        debug_info = {
+            "task_graph": {
+                "tasks": {
+                    tid: {
+                        "task_id": task.task_id,
+                        "task_type": task.task_type,
+                        "tool_name": task.tool_name,
+                        "status": task.status,
+                        "parameters": task.parameters if hasattr(task, "parameters") else {},
+                        "resolved_params": task.resolved_params if hasattr(task, "resolved_params") else {},
+                        "result": task.result,
+                        "observation": task.observation,
+                    }
+                    for tid, task in graph.tasks.items()
+                },
+                "global_status": graph.global_status,
+                "replan_reason": graph.replan_reason,
+            },
+            "intent": {
+                "demands": [
+                    {"intent": d.intent_type, "entities": d.entities, "confidence": getattr(d, "confidence", 0.0)}
+                    for d in intent_result.demands
+                ],
+                "needs_clarification": intent_result.needs_clarification,
+                "clarification_question": intent_result.clarification_question,
+                "missing_entities": intent_result.missing_entities,
+                "resolved_entities": intent_result.resolved_entities,
+            },
+            "rewrite": {
+                "rewritten_query": rewrite_result.rewritten_query,
+                "search_keywords": rewrite_result.search_keywords,
+                "is_follow_up": rewrite_result.is_follow_up,
+                "follow_up_type": rewrite_result.follow_up_type,
+                "resolved_references": rewrite_result.resolved_references,
+            },
+            "evidence_cache": session.evidence_cache,
+            "evidence_cache_query": session.evidence_cache_query,
+            "session_history": [
+                {
+                    "turn_id": t.turn_id,
+                    "user_message": t.user_message,
+                    "assistant_reply": t.assistant_reply,
+                    "intent": t.intent,
+                    "rewritten_query": t.rewritten_query,
+                }
+                for t in session.working_memory.turns
+            ],
+        }
+
+    response = {
         "session_id": session_id,
         "intent": intent_result.demands[0].intent_type if intent_result.demands else "chat",
         "route_meta": {
@@ -1085,6 +1173,9 @@ async def _handle_llm_route_v2(
         "memory": memory_state,
         "reply": reply.model_dump(),
     }
+    if debug_info:
+        response["debug_info"] = debug_info
+    return response
 
 
 # ═══════════════════════════════════════════════════════════════════════════════
@@ -1110,9 +1201,19 @@ async def _handle_llm_route_v2_stream(
     """
     import time
 
+    # ── 话题切换检测 ──
+    if session.working_memory.turns:
+        try:
+            mm = MemoryManager(llm_client=LLMClient.from_config("memory"))
+            is_shift = await mm.detect_topic_shift(rewrite_result.rewritten_query or request.message, session)
+            if is_shift:
+                logger.info(f"[Chat-v2-Stream] 检测到话题切换，已清除 evidence_cache | session={session_id}")
+        except Exception as e:
+            logger.warning(f"[Chat-v2-Stream] 话题切换检测失败: {e}")
+
     # ── ① 新体系：多意图识别 ──
     yield _sse("status", {"step": "intent", "message": "正在识别您的意图..."})
-    
+
     # 澄清状态机恢复
     pc = session.pending_clarification
     current_turn_id = len(session.working_memory.turns) + 1
@@ -1465,6 +1566,19 @@ async def chat_stream_endpoint(request: ChatRequest):
     """
     session_id, session = _get_or_create_session(request.session_id, request.user_id)
     resume_text = _get_resume_text()
+
+    # 评测模式：注入模拟多轮上下文
+    eval_ctx = request.eval_context or {}
+    injected_slots = eval_ctx.get("injected_history_slots")
+    if injected_slots and isinstance(injected_slots, dict):
+        if session.long_term is None:
+            from app.core.memory import LongTermMemory
+            session.long_term = LongTermMemory()
+        session.long_term.entities.update(injected_slots)
+    injected_cache = eval_ctx.get("injected_evidence_cache")
+    if injected_cache and isinstance(injected_cache, list):
+        session.evidence_cache = list(injected_cache)
+        session.evidence_cache_query = eval_ctx.get("injected_evidence_query", "")
 
     # 处理图片附件
     message_with_ocr = request.message

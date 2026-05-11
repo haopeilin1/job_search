@@ -441,8 +441,8 @@ async def _match_analyze(resume_text: str, jd_text: str,
 
     try:
         from app.core.llm_client import LLMClient
-        # match_analyze 默认用 turbo（更快更便宜），质量对求职场景足够
-        llm = LLMClient.from_config("memory")
+        # match_analyze 走 core 层（deepseek），与其他分析任务统一
+        llm = LLMClient.from_config("core")
         t0 = time.time()
         raw = await llm.generate(
             prompt=user_prompt,
@@ -1683,7 +1683,7 @@ class QASynthesizeTool(BaseTool):
         user_prompt = f"【用户问题】\n{question}\n\n【检索证据】\n{evidence_text}\n\n请输出JSON："
 
         try:
-            llm = LLMClient.from_config("chat")
+            llm = LLMClient.from_config("core")
             raw = await llm.generate(prompt=user_prompt, system=system_prompt, temperature=0.3, max_tokens=1500, timeout=TIMEOUT_STANDARD)
             data = json.loads(raw.strip())
             return NewToolResult(success=True, data=data)
