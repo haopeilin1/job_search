@@ -51,8 +51,8 @@ def _get_async_client(base_url: str, timeout: float) -> httpx.AsyncClient:
     key = f"{base_url}:{timeout}"
     if key not in _async_client_pool:
         _async_client_pool[key] = httpx.AsyncClient(
-            timeout=httpx.Timeout(timeout, connect=10.0),
-            limits=httpx.Limits(max_keepalive_connections=5, max_connections=10),
+            timeout=httpx.Timeout(timeout, connect=10.0, pool=30.0),
+            limits=httpx.Limits(max_keepalive_connections=20, max_connections=50),
         )
     return _async_client_pool[key]
 

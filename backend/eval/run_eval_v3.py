@@ -27,8 +27,11 @@ import copy
 import json
 import sys
 import time
+import logging
 import traceback
 from collections import defaultdict
+
+logger = logging.getLogger(__name__)
 from dataclasses import dataclass, field, asdict
 from pathlib import Path
 from typing import Any, Dict, List, Optional, Set, Tuple
@@ -693,7 +696,7 @@ async def run_single_case(
         resume_id = case.get("resume_id")
         if resume_id:
             import httpx
-            async with httpx.AsyncClient(timeout=30.0) as client:
+            async with httpx.AsyncClient(timeout=30.0, trust_env=False) as client:
                 resp = await client.put(f"{BASE_URL}/api/v1/resumes/{resume_id}/activate")
                 if resp.status_code != 200:
                     logger.warning(f"[Eval] 切换 resume 失败: {resp.status_code}")
@@ -708,7 +711,7 @@ async def run_single_case(
             "eval_context": merged_eval_ctx,
         }
         import httpx
-        async with httpx.AsyncClient(timeout=600.0) as client:
+        async with httpx.AsyncClient(timeout=600.0, trust_env=False) as client:
             resp = await client.post(
                 CHAT_URL,
                 json=payload,
@@ -1191,7 +1194,8 @@ def load_dataset(batch: Optional[str] = None, case_id: Optional[str] = None) -> 
                 continue
             cases.append(json.loads(line))
     if case_id:
-        cases = [c for c in cases if c["session_id"] == case_id]
+        case_ids = [cid.strip() for cid in case_id.split(",")]
+        cases = [c for c in cases if c["session_id"] in case_ids]
     elif batch:
         batches = [b.strip().lower() for b in batch.split(",")]
         cases = [c for c in cases if any(c["session_id"].startswith(f"eval_{b}_") for b in batches)]
