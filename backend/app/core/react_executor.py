@@ -67,6 +67,8 @@ class Replanner:
             scores = [c.get("hybrid_score", 0) for c in chunks if isinstance(c, dict)]
             if scores and max(scores) < 0.3:
                 return "T2_low_relevance"
+            # 注：时效性查询的外部搜索已在 Planner 阶段处理（_inject_external_search_for_temporal）
+            # Replan 阶段不再重复触发，避免重复调用 API
 
         # T3: 检索结果不相关（轻量判断）
         # 注：T3的实现成本较高，需要额外LLM调用，当前版本暂不自动触发
@@ -100,6 +102,9 @@ class Replanner:
 
         if trigger == "T2_low_relevance":
             return Replanner._handle_low_relevance(graph, failed_task)
+
+        if trigger == "T2_temporal_query":
+            return Replanner._handle_insufficient_results(graph, failed_task)
 
         if trigger == "T4_low_match_score":
             return Replanner._handle_low_match(graph, failed_task)
@@ -318,6 +323,7 @@ class ReActExecutor:
                                     m = c.get("metadata", {})
                                     cc = m.get("company", "")
                                     cp = m.get("position", "")
+         
                                     if (not company or company in cc) and (not position or position in cp):
                                         filtered.append(c)
                             if filtered:
@@ -365,6 +371,22 @@ class ReActExecutor:
         """执行外部工具调用"""
         from app.core.tool_registry import ToolCall as RegistryToolCall
 
+        # kb_retrieve 拦截：如果 evidence_cache 中有外部搜索结果，优先复用
+        if task.tool_name == "kb_retrieve" and session and session.evidence_cache:
+            query = params.get("query", "")
+            # 轻量级判断：缓存 query 与当前 query 的 company/position 是否一致
+            cached_query = getattr(session, "evidence_cache_query", "")
+            # 如果缓存 query 和当前 query 共享相同的 company/position，认为缓存可用
+            # 更精确的做法是调用 evidence_relevance_check，但轻量判断已足够覆盖追问场景
+            is_same_topic = self._is_same_topic(query, cached_query)
+            if is_same_topic:
+                logger.info(f"[ReActExecutor] {task.task_id} kb_retrieve 复用 evidence_cache | query={query[:40]}... | cached={cached_query[:40]}...")
+                return {
+                    "success": True,
+                    "data": {"chunks": session.evidence_cache, "meta": {"source": "evidence_cache"}, "total": len(session.evidence_cache)},
+                    "observation": f"复用证据缓存 {len(session.evidence_cache)} 条",
+                }
+
         tool = self.registry.get(task.tool_name)
         if not tool:
             return {"success": False, "error": f"未知工具: {task.tool_name}"}
@@ -390,6 +412,21 @@ class ReActExecutor:
             "error": result.error,
             "observation": f"工具 {task.tool_name} 执行{'成功' if result.success else '失败'}",
         }
+
+    def _is_same_topic(self, query_a: str, query_b: str) -> bool:
+        """轻量级判断两个 query 是否指向同一话题（用于 evidence_cache 复用）"""
+        if not query_a or not query_b:
+            return False
+        # 简单策略：如果两个 query 共享至少一个常见公司名或岗位词，认为同一话题
+        # 实际可用 jieba 分词后比较，但这里用包含关系简化
+        a, b = query_a.lower(), query_b.lower()
+        # 提取可能的公司/职位（简单启发式：2-6字的连续中文字符）
+        import re
+        words_a = set(re.findall(r'[\u4e00-\u9fa5]{2,6}', a))
+        words_b = set(re.findall(r'[\u4e00-\u9fa5]{2,6}', b))
+        common = words_a & words_b
+        # 共享至少 2 个词（通常 company + position）认为同一话题
+        return len(common) >= 2
 
     async def _execute_llm_reasoning(self, task: TaskNode, params: Dict[str, Any]) -> Dict[str, Any]:
         """执行纯LLM推理"""
@@ -486,6 +523,12 @@ class ReActExecutor:
                 return session.global_slots.get(parts[1])
             return None
 
+        # intent_xxx.yyy → 同样映射到 session.global_slots
+        if parts[0].startswith("intent_") and len(parts) >= 2:
+            if session and hasattr(session, "global_slots"):
+                return session.global_slots.get(parts[1])
+            return None
+
         # evidence_cache → 从session获取上轮检索结果
         if parts[0] == "evidence_cache":
             if session and hasattr(session, "evidence_cache"):
@@ -495,5 +538,13 @@ class ReActExecutor:
         # session.xxx
         if parts[0] == "session" and len(parts) >= 2:
             return getattr(session, parts[1], None)
+
+        # 常用字段快捷映射（与 tool_registry 文档对齐）
+        if parts[0] == "rewritten_query" and len(parts) == 1:
+            return getattr(session, "rewritten_query", None) if session else None
+        if parts[0] == "search_keywords" and len(parts) == 1:
+            return getattr(session, "search_keywords", None) if session else None
+        if parts[0] == "source_preference" and len(parts) == 1:
+            return getattr(session, "source_preference", None) if session else None
 
         return None

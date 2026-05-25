@@ -28,6 +28,44 @@ logger = logging.getLogger(__name__)
 _SEARCH_CALL_COUNT = 0
 _TAVILY_MAX_FREE_CALLS = 950  # Tavily 免费额度 1000 次/月，留 50 次 buffer
 
+# 内容质量过滤配置
+_TAVILY_SCORE_THRESHOLD = 0.5   # Tavily score 低于此值丢弃
+_MIN_CONTENT_LENGTH = 50        # 内容太短丢弃
+_SEO_AD_KEYWORDS = ["优惠券", "点击领取", "限时", "抢购", "秒杀", "广告", "推广", " sponsored "]
+
+# 来源可信度分级
+_OFFICIAL_RECRUIT_DOMAINS = [
+    "jobs.bytedance.com", "careers.baidu.com", "talent.alibaba.com",
+    "hr.tencent.com", "campus.meituan.com", "jobs.xiaomi.com",
+]
+_MEDIUM_TRUST_DOMAINS = [
+    "news.cn", "xinhuanet.com", "36kr.com", "latepost.com", "zhihu.com",
+    "juejin.cn", "csdn.net", "nowcoder.com", "maimai.cn",
+]
+
+
+def _get_source_reliability(domain: str) -> str:
+    """根据域名判断来源可信度：high / medium / low"""
+    d = domain.lower()
+    for official in _OFFICIAL_RECRUIT_DOMAINS:
+        if official in d:
+            return "high"
+    for medium in _MEDIUM_TRUST_DOMAINS:
+        if medium in d:
+            return "medium"
+    return "low"
+
+
+def _is_low_quality_content(content: str) -> bool:
+    """判断内容是否为低质量（SEO广告、过短等）"""
+    if not content or len(content.strip()) < _MIN_CONTENT_LENGTH:
+        return True
+    content_lower = content.lower()
+    for kw in _SEO_AD_KEYWORDS:
+        if kw in content_lower:
+            return True
+    return False
+
 
 # ═══════════════════════════════════════════════════════
 # 1. Tavily Search（推荐，国内可访问）
@@ -69,14 +107,29 @@ async def tavily_search(query: str, count: int = None) -> List[Dict]:
         query = query[:max_len]
 
     try:
-        results = await _search_via_tavily_http(query, count)
+        raw_results = await _search_via_tavily_http(query, count)
     except Exception as e:
         logger.error(f"[Tavily] 搜索失败: {e}，返回空结果")
         return []
 
+    # 后置内容过滤
+    results = []
+    for r in raw_results:
+        if not isinstance(r, dict):
+            continue
+        score = r.get("metadata", {}).get("tavily_score", 0.0)
+        content = r.get("content", "")
+        if score < _TAVILY_SCORE_THRESHOLD:
+            logger.debug(f"[Tavily] 过滤低分结果 | score={score} < {_TAVILY_SCORE_THRESHOLD}")
+            continue
+        if _is_low_quality_content(content):
+            logger.debug(f"[Tavily] 过滤低质量内容 | content_len={len(content)}")
+            continue
+        results.append(r)
+
     _SEARCH_CALL_COUNT += 1
     logger.info(
-        f"[Tavily] 返回 {len(results)} 条结果 | "
+        f"[Tavily] 原始 {len(raw_results)} 条，过滤后 {len(results)} 条 | "
         f"query='{query[:40]}...' | 累计调用 {_SEARCH_CALL_COUNT} 次"
     )
     return results
@@ -113,18 +166,31 @@ async def _search_via_tavily_http(query: str, count: int) -> List[Dict]:
     return results
 
 
+def _clean_text(text: str) -> str:
+    """清理字符串中的非法 surrogate 字符"""
+    if not isinstance(text, str):
+        return str(text)
+    # 先编码为 utf-8 并忽略错误，再解码回来，可去除 surrogate
+    return text.encode("utf-8", "ignore").decode("utf-8")
+
+
 def _format_tavily_result(item: Dict) -> Dict:
     """将 Tavily 搜索结果格式化为与 JD chunk 兼容的格式"""
-    title = item.get("title", "")
+    title = _clean_text(item.get("title", ""))
     url = item.get("url", "")
     # Tavily 的 content 已经是网页内容提取/摘要，直接可用
-    content = item.get("content", "")
+    content = _clean_text(item.get("content", ""))
     score = item.get("score", 0.0)
 
     # 如果没有 content，用 title 兜底
     display_content = content if content else title
 
-    full_content = f"【来源：网络搜索】{title}\n{display_content}\n参考链接：{url}"
+    source_name = _extract_source_name(url)
+    from urllib.parse import urlparse
+    domain = urlparse(url).netloc.lower()
+    reliability = _get_source_reliability(domain)
+
+    full_content = f"【来源：{source_name}】{title}\n{display_content}\n参考链接：{url}"
 
     return {
         "chunk_id": f"tavily_{hash(url) & 0xFFFFFFFF}",
@@ -133,6 +199,8 @@ def _format_tavily_result(item: Dict) -> Dict:
             "source": "tavily_search",
             "url": url,
             "title": title,
+            "source_name": source_name,
+            "source_reliability": reliability,
             "company": _extract_company_from_text(title + " " + display_content),
             "position": "",
             "section": "external_search",
@@ -252,11 +320,16 @@ async def _search_via_brave_http(query: str, count: int) -> List[Dict]:
 
 def _format_brave_result(web_result: Dict) -> Dict:
     """将 Brave 搜索结果格式化为与 JD chunk 兼容的格式"""
-    title = web_result.get("title", "")
-    desc = web_result.get("description", "")
+    title = _clean_text(web_result.get("title", ""))
+    desc = _clean_text(web_result.get("description", ""))
     url = web_result.get("url", "")
 
-    content = f"【来源：网络搜索】{title}\n{desc}\n参考链接：{url}"
+    source_name = _extract_source_name(url)
+    from urllib.parse import urlparse
+    domain = urlparse(url).netloc.lower()
+    reliability = _get_source_reliability(domain)
+
+    content = f"【来源：{source_name}】{title}\n{desc}\n参考链接：{url}"
 
     return {
         "chunk_id": f"brave_{hash(url) & 0xFFFFFFFF}",
@@ -265,6 +338,8 @@ def _format_brave_result(web_result: Dict) -> Dict:
             "source": "brave_search",
             "url": url,
             "title": title,
+            "source_name": source_name,
+            "source_reliability": reliability,
             "company": _extract_company_from_text(title + " " + desc),
             "position": "",
             "section": "external_search",
@@ -275,6 +350,56 @@ def _format_brave_result(web_result: Dict) -> Dict:
         "hybrid_score": 0.5,
         "rerank_score": None,
     }
+
+
+# ── URL 域名 → 来源名称映射 ──
+_SOURCE_NAME_MAP = {
+    "news.cn": "新华网",
+    "xinhuanet.com": "新华网",
+    "sputniknews.cn": "俄罗斯卫星通讯社",
+    "people.com.cn": "人民网",
+    "cctv.com": "央视网",
+    "china.com": "中华网",
+    "qq.com": "腾讯网",
+    "163.com": "网易",
+    "sohu.com": "搜狐",
+    "sina.com.cn": "新浪",
+    "ifeng.com": "凤凰网",
+    "thepaper.cn": "澎湃新闻",
+    "guancha.cn": "观察者网",
+    "huanqiu.com": "环球网",
+    "bjnews.com.cn": "新京报",
+    "ce.cn": "中国经济网",
+    "cs.com.cn": "中证网",
+    "stcn.com": "证券时报",
+    "eastmoney.com": "东方财富网",
+    "36kr.com": "36氪",
+    "钛媒体": "tmtpost.com",
+    "latepost.com": "晚点LatePost",
+    "juejin.cn": "掘金",
+    "zhihu.com": "知乎",
+    "jianshu.com": "简书",
+    "csdn.net": "CSDN",
+    "github.com": "GitHub",
+    "stackoverflow.com": "Stack Overflow",
+}
+
+
+def _extract_source_name(url: str) -> str:
+    """从 URL 提取友好的来源名称"""
+    from urllib.parse import urlparse
+    domain = urlparse(url).netloc.lower()
+    if domain.startswith("www."):
+        domain = domain[4:]
+    # 精确匹配
+    if domain in _SOURCE_NAME_MAP:
+        return _SOURCE_NAME_MAP[domain]
+    # 后缀匹配
+    for key, name in _SOURCE_NAME_MAP.items():
+        if domain.endswith(key):
+            return name
+    # fallback: 返回域名主体
+    return domain
 
 
 def _extract_company_from_text(text: str) -> str:
@@ -344,6 +469,33 @@ class ExternalSearchTool:
         # 优先 Tavily，失败自动 fallback 到 Brave
         chunks = await tavily_search(query, count)
         source = "tavily_search" if chunks and chunks[0].get("metadata", {}).get("source") == "tavily_search" else "brave_search"
+
+        # ── 新增：用本地 CrossEncoder 对外部搜索结果做重排序 ──
+        if chunks:
+            try:
+                from app.core import reranker
+                ranked = await reranker.rerank(
+                    query=query,
+                    candidates=chunks,
+                    top_k=len(chunks),
+                    batch_size=settings.RERANKER_BATCH_SIZE,
+                    max_length=settings.RERANKER_MAX_LENGTH,
+                )
+                if ranked:
+                    reranked_chunks = []
+                    for orig_idx, score in ranked:
+                        chunk = chunks[orig_idx].copy()
+                        chunk["rerank_score"] = round(score, 4)
+                        # 用 rerank 分数覆盖固定的 hybrid_score，使外部结果在聚合时可排序
+                        chunk["hybrid_score"] = round(score, 4)
+                        reranked_chunks.append(chunk)
+                    chunks = reranked_chunks
+                    logger.info(
+                        f"[ExternalSearchTool] rerank 完成 | query='{query[:30]}...' "
+                        f"| best={ranked[0][1]:.4f} | kept={len(chunks)}"
+                    )
+            except Exception as e:
+                logger.warning(f"[ExternalSearchTool] rerank 失败，使用原始顺序: {e}")
 
         return {
             "success": True,

@@ -125,6 +125,7 @@ const App = () => {
     setMessages(prev => [...prev, { role: 'user', text }]);
     el.value = '';
     setInputValue('');
+    setMessages(prev => [...prev, { role: 'bot', type: 'typing' }]);
 
     try {
       const res = await apiChat.send({ message: text });
@@ -132,18 +133,24 @@ const App = () => {
       const routeMeta = res.route_meta;
       const botMsgBase = { role: 'bot', routeMeta };
       // 根据意图类型渲染不同内容
-      if (reply.type === 'match_report') {
-        setMessages(prev => [...prev, { ...botMsgBase, type: 'match_result', data: reply.data, text: reply.content }]);
-      } else if (reply.type === 'global_ranking') {
-        setMessages(prev => [...prev, { ...botMsgBase, type: 'global_ranking', data: reply.data, text: reply.content }]);
-      } else if (reply.type === 'rag_answer') {
-        setMessages(prev => [...prev, { ...botMsgBase, type: 'rag_answer', text: reply.content, sources: reply.sources }]);
-      } else {
-        setMessages(prev => [...prev, { ...botMsgBase, text: reply.content }]);
-      }
+      setMessages(prev => {
+        const filtered = prev.filter(m => m.type !== 'typing');
+        if (reply.type === 'match_report') {
+          return [...filtered, { ...botMsgBase, type: 'match_result', data: reply.data, text: reply.content }];
+        } else if (reply.type === 'global_ranking') {
+          return [...filtered, { ...botMsgBase, type: 'global_ranking', data: reply.data, text: reply.content }];
+        } else if (reply.type === 'rag_answer') {
+          return [...filtered, { ...botMsgBase, type: 'rag_answer', text: reply.content, sources: reply.sources }];
+        } else {
+          return [...filtered, { ...botMsgBase, text: reply.content }];
+        }
+      });
     } catch (err) {
       console.error(err);
-      setMessages(prev => [...prev, { role: 'bot', text: '❌ 网络错误，请稍后重试。' }]);
+      setMessages(prev => {
+        const filtered = prev.filter(m => m.type !== 'typing');
+        return [...filtered, { role: 'bot', text: '❌ 网络错误，请稍后重试。' }];
+      });
     }
   };
 

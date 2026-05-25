@@ -9,8 +9,9 @@ logger = logging.getLogger(__name__)
 
 from app.core.llm_client import LLMClient, TIMEOUT_HEAVY, TIMEOUT_STANDARD, TIMEOUT_LIGHT
 from app.core.memory import SessionMemory, MemoryManager, DialogueTurn, PendingClarification
-from app.core.db import load_session_meta, load_long_term_memory
+from app.core.db import load_session_meta, load_long_term_memory, delete_session_meta
 from app.core.config import settings
+from app.core.state import active_resume_id, resumes_db
 from app.core.query_rewrite import QueryRewriter, QueryRewriteResult
 from app.core.intent_recognition import IntentRecognizer, IntentResult as NewIntentResult
 from app.core.planner import TaskPlanner
@@ -179,21 +180,42 @@ async def chat_endpoint(request: ChatRequest):
     - AGENT_MODE="rule" → 规则路线（完整 IntentRouter → Plan → 执行 → LLM 回复）
     - AGENT_MODE="llm"  → LLM 路线（Query 改写 → 直接 LLM 回复，其余模块待填充）
     """
-    # 评测模式：若请求重置 session，先删除已有 session
+    # 评测模式：若请求重置 session，先删除已有 session（内存 + 数据库）
     eval_ctx = request.eval_context or {}
-    if eval_ctx.get("reset_session") and request.session_id and request.session_id in _session_store:
-        del _session_store[request.session_id]
+    if eval_ctx.get("reset_session") and request.session_id:
+        if request.session_id in _session_store:
+            del _session_store[request.session_id]
+        delete_session_meta(request.session_id)
         logger.info(f"[Chat] 评测模式重置 session | session_id={request.session_id}")
 
     # 1. 会话管理
-    # 评测模式：若请求重置 session，先删除已有 session
+    # 评测模式：若请求重置 session，先删除已有 session（内存 + 数据库）
     eval_ctx = request.eval_context or {}
-    if eval_ctx.get("reset_session") and request.session_id and request.session_id in _session_store:
-        del _session_store[request.session_id]
+    if eval_ctx.get("reset_session") and request.session_id:
+        if request.session_id in _session_store:
+            del _session_store[request.session_id]
+        delete_session_meta(request.session_id)
         logger.info(f"[ChatStream] 评测模式重置 session | session_id={request.session_id}")
 
     session_id, session = _get_or_create_session(request.session_id, request.user_id)
+
+    # 评测模式：支持 eval_context 直接指定 resume_id，避免依赖全局 active_resume_id
+    eval_resume_id = eval_ctx.get("resume_id")
+    if eval_resume_id and eval_resume_id in resumes_db:
+        import app.core.state as _state_module
+        _state_module.active_resume_id = eval_resume_id
+        logger.info(f"[Chat] 评测模式切换简历 | resume_id={eval_resume_id}")
+
     resume_text = _get_resume_text()
+
+    # 同步简历可用状态到 session.global_slots，供意图识别层 _check_clarification_need 使用
+    if not hasattr(session, "global_slots"):
+        session.global_slots = {}
+    has_resume = resume_text != "（用户尚未上传简历）"
+    session.global_slots["resume_available"] = has_resume
+    if has_resume:
+        session.global_slots["resume_text"] = resume_text
+    logger.info(f"[Chat] 简历状态同步 | active_resume_id={active_resume_id} | has_resume={has_resume} | session.global_slots={session.global_slots}")
 
     # 评测模式：注入模拟多轮上下文
     injected_slots = eval_ctx.get("injected_history_slots")
@@ -257,12 +279,55 @@ async def chat_endpoint(request: ChatRequest):
     logger.info(
         f"[Chat] Query改写 | original='{request.message[:30]}...' "
         f"| rewritten='{rewrite_result.rewritten_query[:40]}...' "
-        f"| follow_up={rewrite_result.is_follow_up}/{rewrite_result.follow_up_type}"
+        f"| follow_up={rewrite_result.is_follow_up}/{rewrite_result.follow_up_type} "
+        f"| source_pref={rewrite_result.source_preference}"
     )
+
+    # Step 1: 意图识别（基于改写后的 query，更好地处理多轮对话）
+    from app.core.llm_intent import LLMIntentRouter
+    llm_for_intent = LLMClient.from_config("chat")
+    intent_router = LLMIntentRouter(chat_llm=llm_for_intent)
+    multi_result = await intent_router.route_multi(
+        rewrite_result=rewrite_result,
+        session=session,
+        attachments=request.attachments or [],
+    )
+    logger.info(
+        f"[Chat] 意图识别 | primary={multi_result.primary_intent.value if multi_result.primary_intent else 'None'} "
+        f"| candidates={[c.intent_type.value for c in multi_result.candidates]}"
+    )
+
+    # ════════════════════════════════════════
+    # 评测模式：仅意图识别，掐断后续流程
+    # ════════════════════════════════════════
+    if eval_ctx.get("intent_only"):
+        # 将解析出的槽位同步到 session.global_slots，供多轮对话后续轮使用
+        for c in multi_result.candidates:
+            if c.slots.get("company"):
+                session.global_slots["company"] = c.slots["company"]
+            if c.slots.get("position"):
+                session.global_slots["position"] = c.slots["position"]
+        demands = []
+        for c in multi_result.candidates:
+            demands.append({
+                "intent_type": c.intent_type.value,
+                "confidence": c.confidence,
+                "slots": c.slots,
+            })
+        return {
+            "session_id": session_id,
+            "intent": multi_result.primary_intent.value if multi_result.primary_intent else "none",
+            "route_meta": {
+                "demands": demands,
+                "needs_clarification": multi_result.needs_clarification,
+            },
+            "is_clarification": multi_result.needs_clarification,
+            "reply": "[intent_only_eval]",
+        }
 
     if use_llm_agent:
         # ════════════════════════════════════════
-        # LLM 路线 v2（新架构：Query改写→意图识别→Plan→ReAct执行）
+        # LLM 路线 v2
         # ════════════════════════════════════════
         import time
         from app.core.telemetry import create_tracker
@@ -281,6 +346,7 @@ async def chat_endpoint(request: ChatRequest):
             session_id=session_id,
             message_with_ocr=message_with_ocr,
             rewrite_result=rewrite_result,
+            multi_result=multi_result,
             resume_text=resume_text,
             tracker=tracker,
             request_start_time=request_start_time,
@@ -300,211 +366,6 @@ async def chat_endpoint(request: ChatRequest):
 
 
 # ──────────────────────────── LLM 路线（独立，待填充） ────────────────────────────
-
-async def _execute_single_intent_tools(
-    intent: "LLMIntentType",
-    slots: dict,
-    request: "ChatRequest",
-    session: "SessionMemory",
-    rewrite_result: "QueryRewriteResult",
-    resume_text: str,
-    registry,
-) -> tuple[list, list]:
-    """执行单一意图的工具链，返回 (tool_results, tool_summary)"""
-    tool_results = []
-    tool_summary = []
-
-    if intent.value == "explore":
-        explore_top_k = slots.get("top_k", settings.EXPLORE_TOP_K)
-        explore_filters = slots.get("filters", {})
-        t1 = await registry.execute(ToolCall(
-            name="kb_retrieve",
-            params={
-                "query": slots.get("search_keywords") or rewrite_result.search_keywords or rewrite_result.rewritten_query,
-                "top_k": explore_top_k,
-                "filters": explore_filters,
-            },
-            task_id=0,
-        ))
-        tool_results.append(t1)
-        if t1.success and t1.data.get("chunks"):
-            tool_summary.append({"tool": "kb_retrieve", "chunks": len(t1.data.get("chunks", []))})
-            chunks = t1.data.get("chunks", [])
-            candidate_jds = []
-            seen = set()
-            for c in chunks:
-                meta = c.get("metadata", {})
-                key = f"{meta.get('company','')}#{meta.get('position','')}"
-                if key not in seen:
-                    seen.add(key)
-                    candidate_jds.append({
-                        "jd_id": c.get("id", ""),
-                        "company": meta.get("company", "未知"),
-                        "position": meta.get("position", "未知"),
-                        "chunks": [c],
-                        "salary": meta.get("salary", None),
-                    })
-            t2 = await registry.execute(ToolCall(
-                name="global_rank",
-                params={"resume_text": resume_text, "candidate_jds": candidate_jds[:10], "top_k": slots.get("top_k", settings.MATCH_TOP_K)},
-                task_id=1,
-            ))
-            tool_results.append(t2)
-            if t2.success:
-                tool_summary.append({"tool": "global_rank", "rankings": len(t2.data.get("rankings", []))})
-
-    elif intent.value == "assess":
-        user_jd = getattr(session, "user_provided_jd", None)
-        if user_jd:
-            t1 = await registry.execute(ToolCall(
-                name="match_analyze",
-                params={
-                    "resume_text": resume_text,
-                    "jd_source": slots.get("jd_source", "text"),
-                    "jd_data": {"full_text": user_jd},
-                    "company": slots.get("company"),
-                },
-                task_id=0,
-            ))
-            tool_results.append(t1)
-            tool_summary.append({"tool": "match_analyze", "source": "user_jd"})
-        else:
-            company = slots.get("company")
-            t1 = await registry.execute(ToolCall(
-                name="kb_retrieve",
-                params={
-                    "query": slots.get("search_keywords") or rewrite_result.search_keywords or rewrite_result.rewritten_query,
-                    "company": company,
-                    "top_k": settings.ASSESS_TOP_K,
-                },
-                task_id=0,
-            ))
-            tool_results.append(t1)
-            if t1.success and t1.data.get("chunks"):
-                tool_summary.append({"tool": "kb_retrieve", "chunks": len(t1.data.get("chunks", []))})
-                t2 = await registry.execute(ToolCall(
-                    name="match_analyze",
-                    params={
-                        "resume_text": resume_text,
-                        "jd_source": slots.get("jd_source", "kb"),
-                        "jd_data": {"chunks": t1.data.get("chunks", [])},
-                        "company": company,
-                        "attributes": slots.get("attributes", ["匹配度"]),
-                    },
-                    task_id=1,
-                ))
-                tool_results.append(t2)
-                if t2.success:
-                    tool_summary.append({"tool": "match_analyze", "score": t2.data.get("match_score")})
-
-    elif intent.value == "verify":
-        t1 = await registry.execute(ToolCall(
-            name="kb_retrieve",
-            params={"query": slots.get("search_keywords") or rewrite_result.search_keywords or rewrite_result.rewritten_query, "top_k": settings.VERIFY_TOP_K},
-            task_id=0,
-        ))
-        tool_results.append(t1)
-        if t1.success and t1.data.get("chunks"):
-            tool_summary.append({"tool": "kb_retrieve", "chunks": len(t1.data.get("chunks", []))})
-            t2 = await registry.execute(ToolCall(
-                name="qa_synthesize",
-                params={
-                    "question": request.message,
-                    "rewritten_question": rewrite_result.rewritten_query,
-                    "evidence_chunks": t1.data.get("chunks", []),
-                    "qa_type": slots.get("qa_type", "factual"),
-                    "attributes": slots.get("attributes", []),
-                },
-                task_id=1,
-            ))
-            tool_results.append(t2)
-            if t2.success:
-                tool_summary.append({"tool": "qa_synthesize", "confidence": t2.data.get("confidence")})
-
-    elif intent.value == "prepare":
-        t1 = await registry.execute(ToolCall(
-            name="interview_gen",
-            params={
-                "match_result": {
-                    "gaps": slots.get("gaps", ["待补充"]),
-                    "interview_focus": ["技术深度", "项目经验"],
-                    "jd_summary": rewrite_result.rewritten_query,
-                    "company": slots.get("company"),
-                    "position": slots.get("position"),
-                },
-                "count": slots.get("count", 5),
-                "difficulty": slots.get("difficulty", "mixed"),
-                "focus_area": slots.get("focus_area", "gap"),
-            },
-            task_id=0,
-        ))
-        tool_results.append(t1)
-        if t1.success:
-            tool_summary.append({"tool": "interview_gen", "questions": len(t1.data.get("questions", []))})
-
-    elif intent.value == "manage":
-        operation = slots.get("operation", "list_jds")
-        if operation == "upload_resume":
-            # 简历上传已迁移至「我的简历」页面，对话内不再处理
-            from app.core.tool_registry import ToolResult
-            t1 = ToolResult(
-                success=False,
-                error="简历上传请前往「我的简历」页面完成，支持 PDF / DOCX / TXT 格式。",
-                data={"redirect_tip": "请切换到底部「我的简历」标签上传"},
-            )
-            tool_results.append(t1)
-            tool_summary.append({"tool": "file_ops", "operation": "upload_resume", "status": "引导至简历页面"})
-        else:
-            t1 = await registry.execute(ToolCall(
-                name="file_ops",
-                params={
-                    "operation": operation,
-                    "file_data": slots.get("file_data"),
-                    "text_data": slots.get("text_data"),
-                    "target_id": slots.get("target_id"),
-                },
-                task_id=0,
-            ))
-            tool_results.append(t1)
-            tool_summary.append({"tool": "file_ops", "operation": operation})
-
-    elif intent.value == "chat":
-        t1 = await registry.execute(ToolCall(
-            name="general_chat",
-            params={"user_message": request.message, "chat_type": slots.get("general_type", "other"), "topic_hint": slots.get("topic_hint")},
-            task_id=0,
-        ))
-        tool_results.append(t1)
-        if t1.success:
-            tool_summary.append({"tool": "general_chat", "response_preview": t1.data.get("response", "")[:50]})
-
-    return tool_results, tool_summary
-
-
-def _format_tool_evidence(tool_results: list) -> str:
-    """将工具结果格式化为文本证据"""
-    tool_evidence = ""
-    for i, tr in enumerate(tool_results):
-        if not tr.success or not tr.data:
-            continue
-        if tr.data.get("chunks"):
-            tool_evidence += f"\n【检索结果 {i+1}】\n"
-            for c in tr.data.get("chunks", [])[:5]:
-                tool_evidence += f"- {c.get('content', '')[:200]}...\n"
-        if tr.data.get("rankings"):
-            tool_evidence += f"\n【排序结果】\n"
-            for r in tr.data.get("rankings", [])[:5]:
-                tool_evidence += f"{r.get('rank')}. {r.get('company')} · {r.get('position')} (匹配度{r.get('match_score')})\n"
-        if tr.data.get("answer"):
-            tool_evidence += f"\n【问答结果】\n{tr.data.get('answer')}\n"
-        if tr.data.get("questions"):
-            tool_evidence += f"\n【面试题】\n"
-            for q in tr.data.get("questions", [])[:5]:
-                tool_evidence += f"{q.get('id')}. [{q.get('category')}] {q.get('question')}\n"
-        if tr.data.get("response"):
-            tool_evidence += f"\n【对话回复】\n{tr.data.get('response')}\n"
-    return tool_evidence
-
 
 def _build_history_cache(session: SessionMemory) -> List[HistoryCacheEntry]:
     """
@@ -653,6 +514,7 @@ async def _handle_llm_route_v2(
     session_id: str,
     message_with_ocr: str,
     rewrite_result: QueryRewriteResult,
+    multi_result: "MultiIntentResult",
     resume_text: str,
     tracker: Any = None,
     request_start_time: float = 0.0,
@@ -694,11 +556,12 @@ async def _handle_llm_route_v2(
         except Exception as e:
             logger.warning(f"[Chat-v2] 话题切换检测失败: {e}")
 
-    # ── ① 新体系：多意图识别 ──
-    # 澄清状态机：若上轮触发澄清且本轮是 clarify 型追问，直接恢复意图
+    # ── ① 新体系：多意图识别已在入口完成，multi_result 从外部传入 ──
     pc = session.pending_clarification
     current_turn_id = len(session.working_memory.turns) + 1
-    # 触发条件：follow_up_type=clarify，或有pending_clarification且输入很短（补充缺失槽位）
+
+    # 澄清状态机：若上轮触发澄清且本轮是 clarify 型追问，覆盖 multi_result
+    # 触发条件：有pending_clarification且输入很短（补充缺失槽位），或rewrite_result标记为clarify
     is_clarify_follow_up = (
         rewrite_result.follow_up_type == "clarify"
         or (
@@ -717,9 +580,14 @@ async def _handle_llm_route_v2(
             f"resolved_refs={rewrite_result.resolved_references} | "
             f"rewritten={rewrite_result.rewritten_query}"
         )
-        # 合并 QueryRewriter 解析出的槽位
+        # 合并 QueryRewriter 解析出的槽位 + session 全局槽位继承
         merged_slots = dict(pc.resolved_slots)
         merged_slots.update(rewrite_result.resolved_references or {})
+        # slot 继承：从 session.global_slots 继承上轮已解析的槽位
+        if hasattr(session, "global_slots") and session.global_slots:
+            for k, v in session.global_slots.items():
+                if v is not None and k not in merged_slots and k not in ["resume_text", "resume_available", "search_keywords", "query", "rewritten_query"]:
+                    merged_slots[k] = v
         # 如果 rewritten_query 中有更完整的信息，也尝试提取
         if rewrite_result.rewritten_query and rewrite_result.rewritten_query != request.message:
             merged_slots["search_keywords"] = rewrite_result.rewritten_query
@@ -746,16 +614,17 @@ async def _handle_llm_route_v2(
         new_intent_name = map_intent_name_to_new(pc.pending_intent)
         intent_type = LLMIntentType(new_intent_name) if new_intent_name else LLMIntentType.CHAT
 
-        # 当 pending_intent=chat（意图模糊）时，推断真实意图
-        if intent_type == LLMIntentType.CHAT and rewrite_result.rewritten_query:
-            # 有 pending_clarification 时，走完整意图识别流程，让校准器利用工作记忆推断
+        # 当 pending_intent=chat（意图模糊）时，基于原始 query 重新推断真实意图
+        if intent_type == LLMIntentType.CHAT and request.message:
             if pc and not pc.is_expired(current_turn_id, max_gap=2):
-                intent_router = LLMIntentRouter()
+                llm_for_intent = LLMClient.from_config("chat")
+                intent_router = LLMIntentRouter(chat_llm=llm_for_intent)
+                rewriter = QueryRewriter()
+                re_rewrite = await rewriter.rewrite(raw_query=request.message, session=session)
                 re_multi_result = await intent_router.route_multi(
-                    rewrite_result=rewrite_result,
+                    rewrite_result=re_rewrite,
                     session=session,
                     attachments=request.attachments or [],
-                    raw_message=request.message,
                 )
                 if re_multi_result.candidates:
                     intent_type = re_multi_result.primary_intent or re_multi_result.candidates[0].intent_type
@@ -765,7 +634,7 @@ async def _handle_llm_route_v2(
             else:
                 # 无 pending_clarification 时：用规则匹配简单推断
                 registry = _create_rule_registry()
-                rule_matches = registry.classify_all(rewrite_result.rewritten_query, [])
+                rule_matches = registry.classify_all(request.message, [])
                 non_miss = [r for r in rule_matches if r.intent is not None]
                 if non_miss:
                     best = non_miss[0]
@@ -807,18 +676,10 @@ async def _handle_llm_route_v2(
                     f"还需要补充以下信息：{', '.join(restored_candidate.missing_slots)}"
                 )
     else:
-        # 过期或不存在：正常走完整意图识别
+        # 非 clarify 场景：直接使用传入的 multi_result（已在入口完成意图识别）
         if pc and pc.is_expired(current_turn_id, max_gap=2):
             logger.info(f"[Chat-v2] 澄清状态已过期，丢弃 | pending_intent={pc.pending_intent}")
             session.pending_clarification = None
-
-        intent_router = LLMIntentRouter()
-        multi_result = await intent_router.route_multi(
-            rewrite_result=rewrite_result,
-            session=session,
-            attachments=request.attachments or [],
-            raw_message=request.message,
-        )
 
     intent_result = multi_intent_result_to_intent_result(multi_result)
     logger.info(
@@ -828,12 +689,18 @@ async def _handle_llm_route_v2(
     )
 
     # 将意图识别解析的槽位同步到 session.global_slots，供 ReActExecutor 动态解析占位符使用
+    if not hasattr(session, "global_slots"):
+        session.global_slots = {}
     if multi_result.global_slots:
-        if not hasattr(session, "global_slots"):
-            session.global_slots = {}
         for k, v in multi_result.global_slots.items():
             if v is not None:
                 session.global_slots[k] = v
+    # 补充 search_keywords 和 rewritten_query（Planner 占位符需要）
+    if rewrite_result.search_keywords:
+        session.global_slots["search_keywords"] = rewrite_result.search_keywords
+    if rewrite_result.rewritten_query:
+        session.global_slots["query"] = rewrite_result.rewritten_query
+        session.global_slots["rewritten_query"] = rewrite_result.rewritten_query
 
     # 埋点：intent_classified
     eval_ctx = request.eval_context or {}
@@ -963,7 +830,7 @@ async def _handle_llm_route_v2(
 
     # Update evidence cache after execution
     for task in graph.tasks.values():
-        if task.tool_name == "kb_retrieve" and task.status == "success" and task.result:
+        if task.status == "success" and task.result:
             chunks = task.result.get("chunks", []) if isinstance(task.result, dict) else []
             if chunks:
                 session.evidence_cache = chunks[:settings.EVIDENCE_CACHE_MAX_SIZE]
@@ -1015,10 +882,13 @@ async def _handle_llm_route_v2(
     system_prompt = (
         "你是一位专业的求职顾问。请基于以下工具执行结果，给用户一个清晰、有帮助的回复。\n"
         "要求：\n"
-        "1. 直接回答用户的问题，不要重复用户的原话\n"
+        "1. 先直接回答用户的问题（是/否/有/没有），不要绕弯子，不要重复用户的原话\n"
         "2. 如果有匹配分析结果，给出具体的分数和建议\n"
         "3. 如果有检索结果，基于事实回答，不要编造\n"
-        "4. 语气友好、专业、结构化"
+        "4. 引用信息时必须标注来源，格式如：[来源：本地知识库-字节跳动] 或 [来源：外部搜索-新华网]\n"
+        "5. 如果涉及'最近''最新'等时效性问题，请明确说明信息的时间范围\n"
+        "6. 当本地知识库与外部搜索结果冲突时，请并列呈现两种说法并标注各自来源，不要替用户做判断\n"
+        "7. 语气友好、专业、结构化，但不要过度展开与问题无关的建议"
     )
 
     user_prompt = (
@@ -1193,6 +1063,7 @@ async def _handle_llm_route_v2_stream(
     session_id: str,
     message_with_ocr: str,
     rewrite_result: QueryRewriteResult,
+    multi_result: "MultiIntentResult",
     resume_text: str,
 ):
     """
@@ -1259,16 +1130,14 @@ async def _handle_llm_route_v2_stream(
         new_intent_name = map_intent_name_to_new(pc.pending_intent)
         intent_type = LLMIntentType(new_intent_name) if new_intent_name else LLMIntentType.CHAT
 
-        # 当 pending_intent=chat（意图模糊）时，推断真实意图
-        if intent_type == LLMIntentType.CHAT and rewrite_result.rewritten_query:
-            # 有 pending_clarification 时，走完整意图识别流程，让校准器利用工作记忆推断
+        # 当 pending_intent=chat（意图模糊）时，基于原始 query 重新推断真实意图
+        if intent_type == LLMIntentType.CHAT and request.message:
             if pc and not pc.is_expired(current_turn_id, max_gap=2):
-                intent_router = LLMIntentRouter()
+                intent_router = LLMIntentRouter(chat_llm=llm_for_intent)
                 re_multi_result = await intent_router.route_multi(
-                    rewrite_result=rewrite_result,
+                    raw_message=request.message,
                     session=session,
                     attachments=request.attachments or [],
-                    raw_message=request.message,
                 )
                 if re_multi_result.candidates:
                     intent_type = re_multi_result.primary_intent or re_multi_result.candidates[0].intent_type
@@ -1278,7 +1147,7 @@ async def _handle_llm_route_v2_stream(
             else:
                 # 无 pending_clarification 时：用规则匹配简单推断
                 registry = _create_rule_registry()
-                rule_matches = registry.classify_all(rewrite_result.rewritten_query, [])
+                rule_matches = registry.classify_all(request.message, [])
                 non_miss = [r for r in rule_matches if r.intent is not None]
                 if non_miss:
                     best = non_miss[0]
@@ -1318,25 +1187,25 @@ async def _handle_llm_route_v2_stream(
             execution_topology=[[intent_type]],
         )
     else:
+        # 非 clarify 场景：直接使用传入的 multi_result
         if pc and pc.is_expired(current_turn_id, max_gap=2):
             session.pending_clarification = None
-        intent_router = LLMIntentRouter()
-        multi_result = await intent_router.route_multi(
-            rewrite_result=rewrite_result,
-            session=session,
-            attachments=request.attachments or [],
-            raw_message=request.message,
-        )
 
     intent_result = multi_intent_result_to_intent_result(multi_result)
 
     # 将意图识别解析的槽位同步到 session.global_slots，供 ReActExecutor 动态解析占位符使用
+    if not hasattr(session, "global_slots"):
+        session.global_slots = {}
     if multi_result.global_slots:
-        if not hasattr(session, "global_slots"):
-            session.global_slots = {}
         for k, v in multi_result.global_slots.items():
             if v is not None:
                 session.global_slots[k] = v
+    # 补充 search_keywords 和 rewritten_query（Planner 占位符需要）
+    if rewrite_result.search_keywords:
+        session.global_slots["search_keywords"] = rewrite_result.search_keywords
+    if rewrite_result.rewritten_query:
+        session.global_slots["query"] = rewrite_result.rewritten_query
+        session.global_slots["rewritten_query"] = rewrite_result.rewritten_query
 
     # 澄清场景
     if intent_result.needs_clarification:
@@ -1389,7 +1258,7 @@ async def _handle_llm_route_v2_stream(
 
     # Update evidence cache
     for task in graph.tasks.values():
-        if task.tool_name == "kb_retrieve" and task.status == "success" and task.result:
+        if task.status == "success" and task.result:
             chunks = task.result.get("chunks", []) if isinstance(task.result, dict) else []
             if chunks:
                 session.evidence_cache = chunks[:settings.EVIDENCE_CACHE_MAX_SIZE]
@@ -1449,8 +1318,10 @@ async def _handle_llm_route_v2_stream(
                 chunks = result.get("chunks", [])
                 result["chunks"] = [
                     {
-                        "title": c.get("title", ""),
-                        "content": c.get("content", "")[:300],
+                        "title": c.get("metadata", {}).get("title", "") if isinstance(c, dict) else "",
+                        "content": c.get("content", "")[:300] if isinstance(c, dict) else "",
+                        "source_name": c.get("metadata", {}).get("source_name", "") if isinstance(c, dict) else "",
+                        "url": c.get("metadata", {}).get("url", "") if isinstance(c, dict) else "",
                     }
                     for c in chunks[:3]
                 ]
@@ -1464,10 +1335,12 @@ async def _handle_llm_route_v2_stream(
     system_prompt = (
         "你是一位专业的求职顾问。请基于以下工具执行结果，给用户一个清晰、有帮助的回复。\n"
         "要求：\n"
-        "1. 直接回答用户的问题，不要重复用户的原话\n"
+        "1. 先直接回答用户的问题（是/否/有/没有），不要绕弯子，不要重复用户的原话\n"
         "2. 如果有匹配分析结果，给出具体的分数和建议\n"
         "3. 如果有检索结果，基于事实回答，不要编造\n"
-        "4. 语气友好、专业、结构化"
+        "4. 引用信息时必须标注来源，格式如：[来源：本地知识库-字节跳动] 或 [来源：外部搜索-新华网]\n"
+        "5. 当本地知识库与外部搜索结果冲突时，请并列呈现两种说法并标注各自来源，不要替用户做判断\n"
+        "6. 语气友好、专业、结构化"
     )
     user_prompt = (
         f"【用户问题】\n{rewrite_result.rewritten_query}\n\n"
@@ -1567,6 +1440,14 @@ async def chat_stream_endpoint(request: ChatRequest):
     session_id, session = _get_or_create_session(request.session_id, request.user_id)
     resume_text = _get_resume_text()
 
+    # 同步简历可用状态到 session.global_slots，供意图识别层 _check_clarification_need 使用
+    if not hasattr(session, "global_slots"):
+        session.global_slots = {}
+    has_resume = resume_text != "（用户尚未上传简历）"
+    session.global_slots["resume_available"] = has_resume
+    if has_resume:
+        session.global_slots["resume_text"] = resume_text
+
     # 评测模式：注入模拟多轮上下文
     eval_ctx = request.eval_context or {}
     injected_slots = eval_ctx.get("injected_history_slots")
@@ -1600,9 +1481,31 @@ async def chat_stream_endpoint(request: ChatRequest):
         request.user_provided_jd = "\n\n".join(r.text for r in ocr_results)
         session.user_provided_jd = request.user_provided_jd
 
-    # Query 改写
+    # ════════════════════════════════════════
+    # Step 0: Query 改写（两条路线共用）
+    # ════════════════════════════════════════
     rewriter = QueryRewriter()
     rewrite_result = await rewriter.rewrite(raw_query=message_with_ocr, session=session)
+    logger.info(
+        f"[ChatStream] Query改写 | original='{request.message[:30]}...' "
+        f"| rewritten='{rewrite_result.rewritten_query[:40]}...' "
+        f"| follow_up={rewrite_result.is_follow_up}/{rewrite_result.follow_up_type} "
+        f"| source_pref={rewrite_result.source_preference}"
+    )
+
+    # Step 1: 意图识别（基于改写后的 query）
+    from app.core.llm_intent import LLMIntentRouter
+    llm_for_intent = LLMClient.from_config("chat")
+    intent_router = LLMIntentRouter(chat_llm=llm_for_intent)
+    multi_result = await intent_router.route_multi(
+        rewrite_result=rewrite_result,
+        session=session,
+        attachments=request.attachments or [],
+    )
+    logger.info(
+        f"[ChatStream] 意图识别 | primary={multi_result.primary_intent.value if multi_result.primary_intent else 'None'} "
+        f"| candidates={[c.intent_type.value for c in multi_result.candidates]}"
+    )
 
     agent_mode = settings.AGENT_MODE
     if agent_mode == "auto":
@@ -1629,6 +1532,7 @@ async def chat_stream_endpoint(request: ChatRequest):
             session_id=session_id,
             message_with_ocr=message_with_ocr,
             rewrite_result=rewrite_result,
+            multi_result=multi_result,
             resume_text=resume_text,
         ):
             yield event

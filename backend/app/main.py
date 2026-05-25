@@ -1,4 +1,8 @@
 import logging
+import os
+
+# Windows 终端默认 GBK，强制 UTF-8 避免日志中文乱码
+os.environ.setdefault("PYTHONIOENCODING", "utf-8")
 
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware

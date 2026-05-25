@@ -148,6 +148,9 @@ class TaskGraph:
                 return t
         return None
 
+    def add_task(self, task: TaskNode) -> None:
+        self.tasks.append(task)
+
     def get_tasks_by_status(self, status: str) -> List[TaskNode]:
         return [t for t in self.tasks if t.status == status]
 

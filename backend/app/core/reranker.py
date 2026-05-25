@@ -74,6 +74,33 @@ def _load_reranker(model_name: str = settings.RERANKER_MODEL):
 
         _reranker_model = model
         _reranker_tokenizer = tokenizer
+
+        # 4. 模型输出验证：用简单输入测试，确保分数在合理范围
+        try:
+            test_pairs = [("测试查询", "测试文档内容")]
+            test_inputs = tokenizer(
+                test_pairs,
+                padding=True,
+                truncation=True,
+                max_length=512,
+                return_tensors="pt",
+            )
+            with torch.no_grad():
+                test_outputs = model(**test_inputs)
+                test_logits = test_outputs.logits.view(-1).float()
+                if test_logits.min() < 0 or test_logits.max() > 1:
+                    test_logits = torch.sigmoid(test_logits)
+                test_score = test_logits[0].item()
+                if not (0.01 < test_score < 0.99):
+                    logger.warning(
+                        f"[Reranker] 模型验证输出异常: {test_score:.4f}，"
+                        f"可能加载了错误的模型权重或配置文件"
+                    )
+                else:
+                    logger.info(f"[Reranker] 模型验证通过 | 测试分数={test_score:.4f}")
+        except Exception as ve:
+            logger.warning(f"[Reranker] 模型验证失败: {ve}")
+
         logger.info(f"[Reranker] 模型加载完成: {model_name}")
         return model, tokenizer
 
@@ -125,18 +152,36 @@ async def rerank(query: str, candidates: List[dict],
                 inputs = {k: v.cuda() for k, v in inputs.items()}
 
             outputs = model(**inputs)
-            scores = outputs.logits.view(-1).float()
+
+            # 防御：检查 logits 形状，确保是单输出（num_labels=1）
+            if outputs.logits.shape[-1] != 1:
+                logger.warning(
+                    f"[Reranker] 模型输出维度异常: {outputs.logits.shape}，"
+                    f"期望最后一维为 1。将只取第一个标签的分数。"
+                )
+                scores = outputs.logits[:, 0].view(-1).float()
+            else:
+                scores = outputs.logits.view(-1).float()
+
             # 如果 logits 是 sigmoid 前输出，取 sigmoid 得到 [0,1] 概率
             if scores.min() < 0 or scores.max() > 1:
                 scores = torch.sigmoid(scores)
             all_scores.extend(scores.cpu().tolist())
 
-    # 3. 按分数排序
+    # 3. 防御：如果所有 score 都接近 0，打印警告
+    if all_scores and max(all_scores) < 0.001:
+        logger.warning(
+            f"[Reranker] 所有重排序分数接近 0，可能存在输入异常或模型问题 | "
+            f"query='{query[:30]}...' | candidates={len(candidates)}"
+        )
+
+    # 4. 按分数排序
     indexed_scores = list(enumerate(all_scores))
     indexed_scores.sort(key=lambda x: x[1], reverse=True)
 
+    best_score = indexed_scores[0][1] if indexed_scores else 0.0
     logger.info(
         f"[Reranker] 重排序完成 | candidates={len(candidates)} -> top={min(top_k, len(indexed_scores))} | "
-        f"best_score={indexed_scores[0][1]:.4f}"
+        f"best_score={best_score:.4f}"
     )
     return indexed_scores[:top_k]

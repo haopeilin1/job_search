@@ -319,20 +319,36 @@ async def _kb_retrieve_stub(query: str, company: Optional[str] = None,
                     batch_size=settings.RERANKER_BATCH_SIZE,
                     max_length=settings.RERANKER_MAX_LENGTH,
                 )
-                reranked_results = []
-                for orig_idx, score in ranked:
-                    item = top_results[orig_idx].copy()
-                    item["rerank_score"] = round(score, 4)
-                    reranked_results.append(item)
+                # 防御：如果 rerank 分数异常低，fallback 到 hybrid_score 排序
+                best_rerank_score = ranked[0][1] if ranked else 0.0
+                if best_rerank_score < 0.001 and len(ranked) > 0:
+                    logger.warning(
+                        f"[Tool:kb_retrieve] 重排序分数异常低({best_rerank_score:.4f})，"
+                        f"fallback 到 hybrid_score 排序"
+                    )
+                    reranked_results = sorted(
+                        top_results,
+                        key=lambda x: x.get("hybrid_score", 0),
+                        reverse=True,
+                    )
+                    for item in reranked_results:
+                        item["rerank_score"] = 0.0
+                else:
+                    reranked_results = []
+                    for orig_idx, score in ranked:
+                        item = top_results[orig_idx].copy()
+                        item["rerank_score"] = round(score, 4)
+                        reranked_results.append(item)
+
                 rerank_info = {
                     "enabled": True,
                     "candidates": len(top_results),
                     "output": len(reranked_results),
-                    "best_rerank_score": round(ranked[0][1], 4) if ranked else 0,
+                    "best_rerank_score": round(best_rerank_score, 4),
                 }
                 logger.info(
                     f"[Tool:kb_retrieve] 重排序完成 | candidates={len(top_results)} -> top={len(reranked_results)} | "
-                    f"best_rerank_score={ranked[0][1]:.4f}"
+                    f"best_rerank_score={best_rerank_score:.4f}"
                 )
             except Exception as e:
                 logger.warning(f"[Tool:kb_retrieve] 重排序失败，fallback 到混合分数: {e}")
@@ -1665,10 +1681,13 @@ class QASynthesizeTool(BaseTool):
 - temporal：时间相关问题
 - definition：定义/概念问题
 
-【约束】
-- 必须引用证据来源（用[1][2]等标注）
-- 证据不足时明确说明，不要编造
-- 回答简洁、结构化
+【回答要求】
+1. 先直接回答用户的问题（是/否/有/没有），不要绕弯子
+2. 如果是 temporal（时间相关）问题，必须明确说明证据的时间范围（如"根据2025年数据"）
+3. 再给出关键细节和证据支撑
+4. 必须引用证据来源（用[1][2]等标注）
+5. 证据不足时明确说明，不要编造
+6. 回答简洁、结构化，不要过度展开与问题无关的建议
 
 输出严格JSON：
 {{
@@ -1840,7 +1859,7 @@ def create_tool_registry():
     registry.register(KBRetrieveTool())
     registry.register(MatchAnalyzeTool())
     registry.register(GlobalRankTool())
-    registry.register(QASynthesizeTool())
+    # registry.register(QASynthesizeTool())  # 已废弃：VERIFY 意图直接走 aggregate + 最终 LLM 聚合
     registry.register(InterviewGenTool())
     registry.register(EvidenceRelevanceCheckTool())
     registry.register(FileOpsTool())

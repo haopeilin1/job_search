@@ -37,6 +37,7 @@ class QueryRewriteResult:
     is_follow_up: bool = False             # 是否追问
     follow_up_type: str = "none"           # none / expand / switch / clarify
     original_message: str = ""             # 保留原始消息
+    source_preference: str = "neutral"     # neutral / prefer_kb / prefer_external / prefer_realtime
 
 
 class QueryRewriter:
@@ -82,6 +83,7 @@ class QueryRewriter:
             result.follow_up_type = llm_result["follow_up_type"]
             result.resolved_references = llm_result["resolved_references"]
             result.rewritten_query = llm_result["rewritten_query"]
+            result.source_preference = llm_result.get("source_preference", "neutral")
         else:
             # 回退到规则-based
             result.is_follow_up, result.follow_up_type = self._detect_follow_up(
@@ -93,6 +95,8 @@ class QueryRewriter:
             result.rewritten_query = self._build_rewritten_query(
                 raw_query, result.resolved_references, history_slots, result.follow_up_type
             )
+            # 规则回退时推断 source_preference
+            result.source_preference = self._infer_source_preference(raw_query)
 
         # 4. 提取search_keywords
         result.search_keywords = self._extract_search_keywords(result.rewritten_query)
@@ -100,6 +104,7 @@ class QueryRewriter:
         logger.info(
             f"[QueryRewrite] '{raw_query[:30]}...' -> '{result.rewritten_query[:40]}...' "
             f"| follow_up={result.is_follow_up}/{result.follow_up_type} "
+            f"| source_pref={result.source_preference} "
             f"| refs={result.resolved_references}"
         )
         return result
@@ -301,6 +306,25 @@ class QueryRewriter:
 
         return query
 
+    def _infer_source_preference(self, raw_query: str) -> str:
+        """基于原始 query 推断信息来源偏好"""
+        # 时效性关键词 → prefer_realtime
+        temporal_kws = ["最近", "新的", "最新", "2025", "2026", "还招", "还在招", "还招聘", "还开放", "hc", "现在", "目前", "当下"]
+        if any(kw in raw_query for kw in temporal_kws):
+            return "prefer_realtime"
+
+        # 明确偏好外部搜索
+        external_kws = ["不是知识库", "网上", "外部", "外面", "网上查", "搜索"]
+        if any(kw in raw_query for kw in external_kws):
+            return "prefer_external"
+
+        # 明确偏好知识库
+        kb_kws = ["知识库", "文档中", "已有的", "系统里"]
+        if any(kw in raw_query for kw in kb_kws):
+            return "prefer_kb"
+
+        return "neutral"
+
     def _extract_search_keywords(self, rewritten_query: str) -> str:
         """从改写后的query中提取检索关键词"""
         # 简单实现：去掉常见疑问词和助词，保留核心名词
@@ -348,11 +372,18 @@ class QueryRewriter:
    重要原则：
    - 不要改变用户的原始意图
    - 不要补全用户没有提到的信息
+   - **保留时效性关键词**（"最近""新的""2025""最新""还招吗"等绝对不能删除！）
    - 不要把它变成疑问句（如"哪个岗位"），保持原意
    - 首轮对话中用户说"分析一下这个岗"，改写后应为"分析一下这个岗位"，不要变成"请具体分析一下哪个岗位"
 
+4. source_preference：用户是否暗示了信息来源偏好？
+   - "neutral"：无偏好（默认）
+   - "prefer_kb"：用户明确说"知识库里的""文档中的"
+   - "prefer_external"：用户明确说"不是知识库的""网上查的""外部的"
+   - "prefer_realtime"：用户问"最近""新的""最新""2025""还招吗"等时效性查询
+
 必须输出合法JSON，不要markdown代码块：
-{"follow_up_type": "...", "resolved_references": {...}, "rewritten_query": "..."}"""
+{"follow_up_type": "...", "resolved_references": {...}, "rewritten_query": "...", "source_preference": "neutral"}"""
 
         user_prompt = f"""最近对话历史：
 {history_context if history_context else "（无）"}
@@ -397,11 +428,17 @@ class QueryRewriter:
 
             is_follow_up = follow_up_type != "none"
 
+            # source_preference 校验
+            source_preference = parsed.get("source_preference", "neutral")
+            if source_preference not in ("neutral", "prefer_kb", "prefer_external", "prefer_realtime"):
+                source_preference = "neutral"
+
             return {
                 "is_follow_up": is_follow_up,
                 "follow_up_type": follow_up_type,
                 "resolved_references": resolved_references,
                 "rewritten_query": rewritten_query,
+                "source_preference": source_preference,
             }
         except Exception as e:
             logger.warning(f"[QueryRewrite] LLM 调用失败，回退到规则: {e}")

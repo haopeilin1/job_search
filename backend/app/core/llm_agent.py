@@ -309,11 +309,16 @@ class LLMAgentOrchestrator:
         # ── 6. 检索证据 ──
         if ctx.kb_chunks:
             import json
-            chunks_text = "\n---\n".join(
-                f"[来源: {c.get('metadata', {}).get('company', '未知')} - {c.get('metadata', {}).get('section', '未知')}]\n{c.get('content', '')[:500]}"
-                for c in ctx.kb_chunks
-            )
-            parts.append("【检索证据】\n" + chunks_text)
+            chunk_lines = []
+            for c in ctx.kb_chunks:
+                meta = c.get('metadata', {})
+                source_name = meta.get('source_name')
+                if source_name:
+                    source_label = source_name
+                else:
+                    source_label = f"{meta.get('company', '未知')} - {meta.get('section', '未知')}"
+                chunk_lines.append(f"[来源: {source_label}]\n{c.get('content', '')[:500]}")
+            parts.append("【检索证据】\n" + "\n---\n".join(chunk_lines))
 
         # ── 7. 简历 ──
         if ctx.resume_text:

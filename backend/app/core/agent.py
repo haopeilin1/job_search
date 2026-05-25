@@ -143,7 +143,7 @@ class AgentOrchestrator:
         context["search_keywords"] = search_keywords
 
         return AgentPlan(
-            rewritten_query=rewritten,
+            rewritten_query=final_rewritten,
             tools=tools,
             context=context,
         )
@@ -477,10 +477,16 @@ def build_llm_prompt(ctx: AgentContext, user_message: str) -> tuple[str, str]:
     parts.append(f"【改写后的问题】\n{ctx.rewritten_query}")
 
     if ctx.kb_chunks:
-        parts.append("【知识库检索结果】\n" + "\n---\n".join(
-            f"[来源: {c.get('metadata', {}).get('company', '未知')} - {c.get('metadata', {}).get('section', '未知')}]\n{c.get('content', '')[:500]}"
-            for c in ctx.kb_chunks
-        ))
+        chunk_lines = []
+        for c in ctx.kb_chunks:
+            meta = c.get('metadata', {})
+            source_name = meta.get('source_name')
+            if source_name:
+                source_label = source_name
+            else:
+                source_label = f"{meta.get('company', '未知')} - {meta.get('section', '未知')}"
+            chunk_lines.append(f"[来源: {source_label}]\n{c.get('content', '')[:500]}")
+        parts.append("【知识库检索结果】\n" + "\n---\n".join(chunk_lines))
 
     for idx, (tool, result) in enumerate(zip(ctx.selected_tools, ctx.tool_results)):
         if result.success and result.data:
@@ -613,7 +619,7 @@ class EnhancedAgentOrchestrator:
             user_message=message,
             assistant_reply="",  # 待LLM生成后回填
             intent=intent_result.intent.value,
-            rewritten_query=rewritten,
+            rewritten_query=final_rewritten,
             tool_calls=exec_result.tool_calls,
             tool_results=exec_result.tool_results,
             retrieved_chunks=ctx.kb_chunks,
@@ -893,20 +899,29 @@ class EnhancedAgentOrchestrator:
 
         return system, user
 
-    def _format_chunks(self, chunks):
-        return "\n---\n".join(
-            f"[来源: {c.get('metadata', {}).get('company', '未知')} - {c.get('metadata', {}).get('section', '未知')}]\n{c.get('content', '')[:500]}"
-            for c in chunks
-        )
-
     def _build_system_prompt(self, intent, session):
         """根据意图和长期记忆构建system prompt，并注入工具白名单约束"""
         base_prompts = {
-            IntentType.MATCH_SINGLE.value: "你是一位资深猎头顾问，擅长分析简历与岗位描述的匹配度。请基于下方的【检索信息】和【匹配分析结果】，给出专业、客观、有建设性的分析。如果提供了匹配分析数据，请直接引用其中的分数、优势和短板。",
-            IntentType.GLOBAL_MATCH.value: "你是一位资深猎头顾问。请基于下方的【检索信息】和【匹配分析结果】，按匹配度从高到低排序，给出投递策略建议。对每个岗位给出匹配分数和一句话推荐理由。",
-            IntentType.RAG_QA.value: "你是一位求职信息顾问。请基于下方的【知识库检索结果】，准确回答用户问题。如果检索结果中没有相关信息，请明确告知用户'知识库中暂无该信息'，不要编造。",
+            IntentType.MATCH_SINGLE.value: "你是一位资深猎头顾问，擅长分析简历与岗位描述的匹配度。请基于下方的【检索信息】和【匹配分析结果】，给出专业、客观、有建设性的分析。如果提供了匹配分析数据，请直接引用其中的分数、优势和短板。引用信息时必须标注来源，格式如：[来源：字节跳动招聘数据]。",
+            IntentType.GLOBAL_MATCH.value: "你是一位资深猎头顾问。请基于下方的【检索信息】和【匹配分析结果】，按匹配度从高到低排序，给出投递策略建议。对每个岗位给出匹配分数和一句话推荐理由。引用信息时必须标注来源。",
+            IntentType.RAG_QA.value: (
+                "你是一位求职信息顾问。请基于下方的检索证据，准确回答用户问题。\n"
+                "【回答要求】\n"
+                "1. 先直接回答用户的问题（是/否/有/没有），不要绕弯子\n"
+                "2. 引用信息时必须标注来源，格式如：[来源：本地知识库-字节跳动 | 可信度:high] 或 [来源：外部搜索-新华网 | 可信度:medium]\n"
+                "3. 涉及'最近''最新'等时效性问题时，请明确说明信息的时间范围\n"
+                "4. 如果检索结果中没有相关信息，请明确告知'暂无该信息'，不要编造\n"
+                "【来源优先级与冲突处理】\n"
+                "- 本地知识库（结构化JD数据）与外部搜索（网页片段）可能同时存在\n"
+                "- 来源可信度分级：high（官方招聘站/本地结构化数据）> medium（知名媒体/社区）> low（未分类网站）\n"
+                "- 当信息冲突时，优先采信高可信度来源的结论，但仍需并列呈现低可信度来源作为参考\n"
+                "- 不要替用户做最终判断，但要明确说明'官方招聘站/本地知识库的信息通常更可靠'\n"
+                "- 示例：根据本地知识库（可信度:high），该岗位要求3年经验[来源：本地知识库-字节跳动 | 可信度:high]；"
+                "而外部搜索显示今年也接受应届生[来源：外部搜索-牛客网 | 可信度:medium]。"
+                "两者存在差异，本地知识库的可信度更高，建议您以官方招聘渠道为准。"
+            ),
         }
-        base = base_prompts.get(intent, "你是「求职雷达」AI助手小橘🍊，一位专业的求职顾问。语气友好、专业、有温度。")
+        base = base_prompts.get(intent, "你是「求职雷达」AI助手小橘🍊，一位专业的求职顾问。语气友好、专业、有温度。引用信息时必须标注来源，格式如：[来源：字节跳动招聘数据]。先直接回答用户问题，不要过度展开无关建议。")
 
         # ── 注入工具白名单约束（Plan 模块生成）──
         tool_constraint = self.plan_generator.get_tool_constraint_prompt(intent)
@@ -916,3 +931,24 @@ class EnhancedAgentOrchestrator:
             base += f"\n用户关注行业：{session.long_term.preferences['行业']}，请优先推荐相关岗位。"
 
         return base
+
+    def _format_chunks(self, chunks):
+        lines = []
+        for c in chunks:
+            meta = c.get('metadata', {})
+            source = meta.get('source', '')
+            source_name = meta.get('source_name', '')
+            company = meta.get('company', '未知')
+            reliability = meta.get('source_reliability', '')
+
+            if source == 'tavily_search' or source == 'brave_search':
+                # 外部搜索
+                source_label = f"外部搜索-{source_name or '未知来源'}"
+                reliability_label = f"可信度:{reliability}" if reliability else "可信度:unknown"
+            else:
+                # 本地知识库（结构化数据默认可信度为 high）
+                source_label = f"本地知识库-{company}"
+                reliability_label = "可信度:high"
+
+            lines.append(f"[来源: {source_label} | {reliability_label}]\n{c.get('content', '')[:500]}")
+        return "\n---\n".join(lines)

@@ -1,0 +1,112 @@
+{
+  "case_id": "eval_wang_05",
+  "batch": "wang",
+  "message": "我从品牌设计转UI，能投AI产品岗吗",
+  "scenario": "有简历_单JD匹配_跨领域转型",
+  "gold_intents": [
+    "assess"
+  ],
+  "gold_slots": {
+    "position": "AI产品"
+  },
+  "expected_tools": [
+    "kb_retrieve",
+    "match_analyze"
+  ],
+  "task_success": true,
+  "has_exception": false,
+  "exception_trace": null,
+  "e2e_latency_ms": 9770.00379562378,
+  "rewrite": {
+    "component": "query_rewrite",
+    "success": true,
+    "latency_ms": 0,
+    "error": "",
+    "output": {
+      "rewritten_query": "我从品牌设计转UI，能投AI产品岗吗",
+      "follow_up_type": "none",
+      "search_keywords": "我从品牌设计转UI，能投AI产品岗",
+      "resolved_references": {
+        "position": "AI产品岗",
+        "attributes": [
+          "匹配度"
+        ],
+        "jd_source": "kb"
+      }
+    }
+  },
+  "intent": {
+    "component": "intent_recognition",
+    "success": true,
+    "latency_ms": 0,
+    "error": "",
+    "output": {
+      "demands": [],
+      "needs_clarification": true,
+      "clarification_question": "",
+      "missing_entities": [],
+      "resolved_entities": {},
+      "skipped_due_to_timeout": false
+    }
+  },
+  "planner": null,
+  "executor": null,
+  "rewrite_result": {
+    "rewritten_query": "我从品牌设计转UI，能投AI产品岗吗",
+    "follow_up_type": "none",
+    "search_keywords": "我从品牌设计转UI，能投AI产品岗",
+    "resolved_references": {
+      "position": "AI产品岗",
+      "attributes": [
+        "匹配度"
+      ],
+      "jd_source": "kb"
+    }
+  },
+  "intent_result": {
+    "demands": [],
+    "needs_clarification": true,
+    "clarification_question": "",
+    "missing_entities": [],
+    "resolved_entities": {},
+    "skipped_due_to_timeout": false
+  },
+  "task_graph": null,
+  "executed_tools": [],
+  "failed_tools": [],
+  "replan_count": 0,
+  "llm_summary": {
+    "total_calls": 0,
+    "success_calls": 0,
+    "fail_calls": 0,
+    "total_prompt_tokens": 0,
+    "total_completion_tokens": 0,
+    "total_tokens": 0,
+    "total_latency_ms": 0,
+    "avg_latency_ms": 0,
+    "estimated_cost_usd": 0.0,
+    "by_layer": {}
+  },
+  "intent_strict_hit": false,
+  "intent_hit_reason": "漏识: {'assess'}; 误识: {'clarification'}",
+  "tool_primary_hit": false,
+  "tool_primary_tools": [
+    "kb_retrieve",
+    "match_analyze"
+  ],
+  "tool_full_chain_hit": false,
+  "tool_hit_reason": "澄清场景，未执行工具",
+  "process_quality": {
+    "overall_match": false,
+    "match_rate": 0.0,
+    "details": {},
+    "error": "LLM API 错误 (403): {\"error\":{\"message\":\"The free tier of the model has been exhausted. If you wish to continue access the model on a paid basis, please disable the \\\"use free tier only\\\" mode in the management console.\",\"type\":\"AllocationQuota.FreeTierOnly\",\"param\":null,\"code\":\"AllocationQuota.FreeTierOnly\"},\"id\":\"chatcmpl-1c3891d6-9962-9d52-b7af-43cff228afc8\",\"request_id\":\"1c3891d6-9962-9d52-b7af-43cff228afc8\"}",
+    "raw": ""
+  },
+  "resume_text": "姓名：王设计师\nUI/UX设计师 | 4年互联网设计经验 | 品牌视觉背景\n电话：139-XXXX-5678 | 邮箱：wangdesign@email.com | 现居：上海\n作品集：wangdesign.portfolio.com\n\n教育背景：\n- XX美术学院（2015.09 - 2019.06）\n  视觉传达设计（本科）\n  主修课程：品牌设计、信息可视化、交互设计基础、版式设计、用户研究\n  在校荣誉：全国大学生广告艺术大赛省级一等奖\n\n职业背景：\n- XX传媒公司 品牌视觉设计师（2019.07 - 2021.06）\n  负责快消、教育行业品牌全案设计，积累扎实的视觉体系搭建与商业审美能力\n- XX互联网科技公司（C轮/在线教育）UI设计师（2021.07 - 至今）\n  从品牌设计跨领域转型至互联网UI/UX，快速补齐交互逻辑与产品思维，主导多条业务线界面设计\n\n专业技能：\n- 精通Figma组件化设计、Auto Layout及变量系统，能搭建可复用的设计规范与UI Kit\n- 擅长界面动效设计，熟练使用Principle、After Effects制作高保真交互Demo，提升评审效率\n- 具备品牌全案设计能力，熟悉Logo、VI、运营视觉体系搭建，能统筹产品视觉一致性\n- 了解前端基础（HTML/CSS），能与开发高效沟通，熟悉切图标注、SVG输出及设计走查流程\n- 掌握用户研究方法：竞品分析、用户访谈、可用性测试，能基于数据反馈迭代设计方案\n\n工作经历（项目经历）：\n1. 在线教育直播课堂改版（2023.06 - 2024.03）\n   - 作为UI主设，主导直播客户端从1.0到2.0的视觉重构，DAU 50W+，完课率提升12%\n   - 建立Figma组件库（300+组件），统一5条业务线设计语言，设计交付效率提升30%\n   - 针对低龄学段用户设计游戏化互动界面（连麦、答题红包），通过动效引导降低操作流失率\n\n2. 制定《移动端设计规范V2.0》\n   - 涵盖色彩、字体、间距、无障碍对比度标准（WCAG 2.1 AA级）\n\n3. 品牌跨界联名活动视觉（2022.09 - 2022.12）\n   - 结合前品牌设计经验，主导与知名IP联名运营活动的主视觉及H5传播设计\n   - 设计开屏动画、分享海报模板，活动期间新增用户8W+，分享率提升25%\n   - 输出动态品牌规范手册，帮助市场团队3天内完成20+城市线下物料延展\n\n4. B端教研后台系统优化（2022.02 - 2022.08）\n   - 负责教师端后台的信息架构重组，将核心备课路径从5步缩减至3步\n   - 设计数据可视化仪表盘，通过卡片层级与色彩语义降低教师数据读取成本\n\n自我评价：\n拥有品牌视觉+互联网UI的跨领域背景，既能把控产品视觉调性，也具备用户体验与业务目标平衡能力。习惯用组件化思维提升协作效率，注重设计落地的还原度与数据反馈。",
+  "raw_llm_calls": [],
+  "tool_executions_full": [],
+  "session_history": [],
+  "final_response": "",
+  "judge_result": {}
+}

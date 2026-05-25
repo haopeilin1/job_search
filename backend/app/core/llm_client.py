@@ -188,6 +188,8 @@ class LLMClient:
                 # Qwen3 系列模型将思考内容放在 reasoning 字段，content 可能为空
                 if not content and msg.get("reasoning"):
                     content = msg["reasoning"]
+                # 清理非法 surrogate 字符（Windows 环境下可能出现）
+                content = content.encode("utf-8", "surrogatepass").decode("utf-8", "replace")
                 if attempt > 0:
                     logger.info(
                         f"[LLMClient] 第 {attempt + 1} 次尝试成功 | model={self.model}"

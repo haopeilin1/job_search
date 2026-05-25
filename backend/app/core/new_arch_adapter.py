@@ -48,6 +48,34 @@ def map_intent_name_to_new(old_intent: str) -> str:
 # 2. MultiIntentResult → IntentResult 转换
 # ═══════════════════════════════════════════════════════
 
+def _build_clarification_question(multi: MultiIntentResult) -> str:
+    """根据多意图候选生成面向用户的澄清问题"""
+    if not multi.needs_clarification:
+        return ""
+
+    candidates = multi.candidates
+    if not candidates:
+        return "能再说得具体一点吗？"
+
+    # 收集候选意图类型
+    intent_types = set(c.intent_type.value for c in candidates)
+
+    # 根据意图组合生成针对性的澄清问题
+    if "verify" in intent_types and "explore" in intent_types:
+        return "你是想核实某个具体信息，还是想探索更多相关岗位？"
+    if "assess" in intent_types:
+        return "你想分析哪个岗位的匹配度呢？请提供公司名和岗位名。"
+    if "verify" in intent_types:
+        return "你想了解该公司的哪方面信息？"
+    if "explore" in intent_types:
+        return "你是想找某个具体岗位，还是了解某个公司的整体情况？"
+    if "prepare" in intent_types:
+        return "你想为哪个岗位的面试做准备呢？"
+
+    # 默认兜底
+    return "能再详细说说你的需求吗？比如是想查岗位、做匹配分析，还是准备面试？"
+
+
 def multi_intent_result_to_intent_result(multi: MultiIntentResult) -> IntentResult:
     """
     将 llm_intent.py 的 MultiIntentResult 转换为 intent_recognition.py 的 IntentResult。
@@ -73,12 +101,15 @@ def multi_intent_result_to_intent_result(multi: MultiIntentResult) -> IntentResu
     # 去重 missing_entities
     missing_entities = list(set(missing_entities))
 
+    # 生成面向用户的澄清问题，而非使用内部的 clarification_reason
+    clarification_question = _build_clarification_question(multi) if multi.needs_clarification else ""
+
     return IntentResult(
         demands=demands,
         resolved_entities=multi.global_slots or {},
         is_complete=not multi.needs_clarification,
         needs_clarification=multi.needs_clarification,
-        clarification_question=multi.clarification_reason or "",
+        clarification_question=clarification_question,
         missing_entities=missing_entities,
         raw_intent_text=", ".join(
             map_intent_name_to_old(c.intent_type.value) for c in multi.candidates
