@@ -76,6 +76,7 @@ class LLMClient:
         self.api_key = api_key or ""
         self.model = model or "gpt-4o"
         self.timeout = timeout
+        self.last_usage: Dict[str, int] = {}  # 保存最近一次调用的真实 token usage
 
     @classmethod
     def from_chat_config(cls) -> "LLMClient":
@@ -190,6 +191,8 @@ class LLMClient:
                     content = msg["reasoning"]
                 # 清理非法 surrogate 字符（Windows 环境下可能出现）
                 content = content.encode("utf-8", "surrogatepass").decode("utf-8", "replace")
+                # 保存真实 token usage
+                self.last_usage = data.get("usage", {})
                 if attempt > 0:
                     logger.info(
                         f"[LLMClient] 第 {attempt + 1} 次尝试成功 | model={self.model}"
@@ -365,6 +368,8 @@ class LLMClient:
                 resp.raise_for_status()
                 data = resp.json()
                 content = data["choices"][0]["message"]["content"]
+                # 保存真实 token usage
+                self.last_usage = data.get("usage", {})
                 if attempt > 0:
                     logger.info(
                         f"[LLMClient] vision 第 {attempt + 1} 次尝试成功 | model={self.model}"

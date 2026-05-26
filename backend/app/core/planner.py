@@ -57,6 +57,7 @@ class TaskGraph:
     tasks: Dict[str, TaskNode] = field(default_factory=dict)
     global_status: str = "pending"  # pending | running | success | failed | needs_replan
     replan_reason: str = ""  # 触发replan的原因
+    replan_count: int = 0  # replan 次数统计
     planner_thought: str = ""  # 规划思路（供调试）
     
     def get_ready_tasks(self) -> List[TaskNode]:

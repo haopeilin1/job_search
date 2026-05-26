@@ -25,6 +25,7 @@ from app.core.llm_client import LLMClient
 from app.core.memory import SessionMemory
 from app.core.tool_registry import TOOL_REGISTRY_META, ToolRegistry
 from app.core.config import settings
+from app.core.kb_entities import get_kb_entities_summary, _load_kb_entities
 from app.core.task_graph import (
     TaskGraph, TaskNode, TaskFallback, ExecutionStrategy, HistoryCacheEntry,
 )
@@ -112,8 +113,9 @@ kb_retrieve(query, top_k, company?, position?) → chunks[], meta, total
   成本: medium | 幂等: 是 | 可缓存: 是
 match_analyze(resume_text, jd_text, attributes?, company?, position?) → score, gaps[], suggestions[]
   成本: high | 幂等: 是 | 依赖: kb_retrieve.chunks 或附件文本
-# qa_synthesize 已废弃：VERIFY 意图直接由 aggregate + 最终 LLM 聚合生成回复，
-# 不再经过中间 qa_synthesize 层，避免二次发挥且减少一次 LLM 调用。
+qa_synthesize(question, evidence_chunks, qa_type?) → answer, citations[], confidence
+  成本: medium | 幂等: 是 | 依赖: kb_retrieve.chunks
+  用途: VERIFY 意图专用，基于检索证据回答事实性问题（薪资/要求/福利等），有 qa_synthesize 时跳过 aggregate 聚合
 interview_gen(match_result, count?, difficulty?, focus_area?, company?, position?) → questions[], rationale
   成本: medium | 幂等: 否 | 依赖: match_result（来自 match_analyze）
 global_rank(resume_text, candidate_jds, sort_by?) → ranked_list[], explanation
@@ -126,31 +128,14 @@ general_chat(user_message, chat_type?, user_profile?) → response
   成本: low
 """
 
-PLANNER_KB_SCHEMA = """
+PLANNER_KB_SCHEMA_BASE = """
 ### 5. 知识库覆盖范围与检索决策（关键）
-
-#### 知识库实际覆盖（共30条JD，294个文本片段）
-
-**覆盖的公司（13家，按出现频率排序）**：
-字节跳动、百度、阿里巴巴、蚂蚁集团、美团、快手、小米、滴滴、联想、淘天集团、vivo、ACG、某小公司
-
-**覆盖的岗位类型（以AI产品+后端为主）**：
-- AI产品经理（及各类变体：AI Agent产品经理、AI大模型产品经理、AI应用产品经理、搜索推荐AI PM等）
-- AI产品实习生（暑期实习、转正实习、日常实习等）
-- 后端开发 / Java后端
-- 大模型应用PM
-
-**明确不在知识库中的公司**：
-Meta、Google、Amazon、Microsoft、Apple 等海外公司；拼多多、京东、华为、网易、携程、贝壳、蔚来、理想、大疆、商汤、科大讯飞、360、B站、知乎、微博、OPPO、平安、招商银行 等部分国内公司（注：知识库持续扩充中，但当前版本未覆盖）
-
-**明确不在知识库中的岗位类型**：
-算法工程师、前端开发、数据分析师、运营、UI设计师、测试工程师、运维工程师、产品经理（非AI方向）、销售、市场、HR 等
 
 #### 检索决策原则（防止过度依赖外部检索）
 
 1. **先尝试 kb_retrieve**：只要用户提到的公司/岗位在知识库覆盖范围内，必须先调用 kb_retrieve。即使意图是 CHAT，若涉及具体岗位适配性问题，也应先检索JD要求。
 2. **kb_retrieve 结果不足时再 external_search**：当 kb_retrieve 返回 chunks < 2 或 hybrid_score < 0.3 时，再触发 external_search 作为补充。
-3. **明显不在库中的实体可直接 external_search**：用户提到 Meta/Google/海外公司，或明显不在库中的岗位（如算法工程师、前端开发），可在规划时直接加入 external_search，但仍建议先执行一次 kb_retrieve 确认（成本低，且避免知识库已更新）。
+3. **明显不在库中的实体可直接 external_search**：用户提到海外公司，或明显不在库中的岗位，可在规划时直接加入 external_search，但仍建议先执行一次 kb_retrieve 确认（成本低，且避免知识库已更新）。
 4. **严禁一刀切**：不要将所有查询都路由到 external_search。知识库对国内头部互联网公司的AI产品岗和后端岗覆盖较全，优先使用内部知识。
 5. **实时信息才用 external_search**：涉及"最新融资""最近裁员""组织架构变动""2026/2027年最新招聘"等时效性信息时，external_search 是必要的。静态JD信息优先使用 kb_retrieve。
 6. **时效性查询必须触发 external_search**：当查询包含"最新"、"最近"、"今年"、"还招吗"等时效性关键词时，必须在 Planner 阶段将 external_search 加入任务图（与 kb_retrieve 串行或并行均可，但 aggregate 必须依赖两者）。
@@ -510,10 +495,10 @@ class TaskGraphPlanner:
             )
         except Exception as e:
             logger.warning(f"[TaskGraphPlanner] LLM 规划失败: {e}，fallback 到规则")
-            return self._fallback_graph(multi_result, resume_text, history_cache or [])
+            return self._fallback_graph(multi_result, resume_text, history_cache or [], rewrite_result, session)
 
         # 解析
-        graph = self._parse_graph(raw, multi_result, history_cache or [], rewrite_result)
+        graph = self._parse_graph(raw, multi_result, history_cache or [], rewrite_result, session)
 
         # 后处理
         graph = self._post_process(graph, history_cache or [])
@@ -581,11 +566,30 @@ class TaskGraphPlanner:
 
     # ──────────────────────────── Prompt 构建 ────────────────────────────
 
+    def _build_kb_schema(self) -> str:
+        """动态构造知识库覆盖范围描述，从 jds.json 实时读取。"""
+        companies, positions, jd_count = get_kb_entities_summary()
+        # 过滤空字符串，取前50个避免 prompt 过长
+        companies = [c for c in companies if c][:50]
+        positions = [p for p in positions if p][:50]
+        return f"""
+#### 知识库实际覆盖（共{jd_count}条JD）
+
+**覆盖的公司（{len(companies)}家）**：
+{', '.join(companies)}
+
+**覆盖的岗位类型（{len(positions)}种）**：
+{chr(10).join('- ' + p for p in positions[:20])}
+
+**不在上述列表中的公司/岗位视为知识库未覆盖**。
+"""
+
     def _build_system_prompt(self) -> str:
         return (
             PLANNER_SYSTEM_PROMPT
             + PLANNER_TOOL_REGISTRY_DESC
-            + PLANNER_KB_SCHEMA
+            + self._build_kb_schema()
+            + PLANNER_KB_SCHEMA_BASE
             + PLANNER_RULES
             + PLANNER_OUTPUT_SCHEMA
         )
@@ -667,11 +671,12 @@ class TaskGraphPlanner:
         multi_result: MultiIntentResult,
         history_cache: List[HistoryCacheEntry],
         rewrite_result: Any = None,
+        session: Any = None,
     ) -> TaskGraph:
         """解析 LLM 输出为 TaskGraph"""
         text = raw.strip() if raw else ""
         if not text:
-            return self._fallback_graph(multi_result, "", history_cache)
+            return self._fallback_graph(multi_result, "", history_cache, rewrite_result, session)
 
         # 去除 markdown 代码块
         for marker in ["```json", "```"]:
@@ -688,9 +693,9 @@ class TaskGraphPlanner:
                     data = json.loads(text[start:end + 1])
                 except json.JSONDecodeError:
                     logger.warning("[TaskGraphPlanner] JSON 解析失败，fallback")
-                    return self._fallback_graph(multi_result, "", history_cache)
+                    return self._fallback_graph(multi_result, "", history_cache, rewrite_result, session)
             else:
-                return self._fallback_graph(multi_result, "", history_cache)
+                return self._fallback_graph(multi_result, "", history_cache, rewrite_result, session)
 
         planner_thought = data.get("planner_thought", "")
         tasks_raw = data.get("tasks", [])
@@ -812,7 +817,7 @@ class TaskGraphPlanner:
             return graph
 
         # 需要检索结果的工具列表
-        needs_retrieval = {"global_rank", "match_analyze"}  # qa_synthesize 已废弃
+        needs_retrieval = {"global_rank", "match_analyze", "qa_synthesize"}
         retrieval_consumers = [t for t in graph.tasks if t.tool_name in needs_retrieval]
         if not retrieval_consumers:
             return graph
@@ -863,8 +868,8 @@ class TaskGraphPlanner:
         return graph
 
     def _remove_deprecated_tools(self, graph: TaskGraph) -> TaskGraph:
-        """移除已废弃的工具任务（如 qa_synthesize）"""
-        deprecated_tools = {"qa_synthesize"}
+        """移除已废弃的工具任务（当前无废弃工具）"""
+        deprecated_tools = set()
         new_tasks: List[TaskNode] = []
         removed_ids: set = set()
 
@@ -1051,11 +1056,32 @@ class TaskGraphPlanner:
         multi_result: MultiIntentResult,
         resume_text: str,
         history_cache: List[HistoryCacheEntry],
+        rewrite_result: Any = None,
+        session: Any = None,
     ) -> TaskGraph:
-        """规则兜底：根据多意图候选直接映射到固定任务模板，支持多意图。"""
+        """规则兜底：根据多意图候选直接映射到固定任务模板，支持多意图。
+        
+        改进：
+        1. PREPARE 有 company/position 时，先 kb_retrieve 再生成面试题
+        2. 查询涉及不在知识库中的实体时，自动加入 external_search
+        3. expand/clarify 且 evidence_cache 可用时，利用 ReActExecutor 的 kb_retrieve 拦截复用
+        """
         tasks: List[TaskNode] = []
         gs = multi_result.global_slots or {}
         has_resume = bool(resume_text) and "尚未上传" not in resume_text
+
+        # 动态加载知识库实体列表，用于判断是否需要外部检索
+        kb_companies, kb_positions = _load_kb_entities()
+        kb_company_set = set(kb_companies)
+        kb_position_set = set(kb_positions)
+
+        def _entity_in_kb(company: str = None, position: str = None) -> bool:
+            """判断 company/position 是否至少有一个在知识库中。"""
+            if company and company in kb_company_set:
+                return True
+            if position and position in kb_position_set:
+                return True
+            return False
 
         def add_task(**kwargs) -> TaskNode:
             t = TaskNode(task_id=f"T{len(tasks)}", **kwargs)
@@ -1085,58 +1111,131 @@ class TaskGraphPlanner:
         for cand in multi_result.candidates:
             intent = cand.intent_type
             slots = cand.slots or {}
+            company = slots.get("company") or gs.get("company")
+            position = slots.get("position") or gs.get("position")
+            query = slots.get("search_keywords") or gs.get("search_keywords") or gs.get("query", "")
+
+            # 判断是否需要外部检索：不在库中 或 时效性 或 用户明确要求外部
+            is_temporal = _has_temporal_keywords(query)
+            source_pref = getattr(rewrite_result, "source_preference", "neutral") if rewrite_result else "neutral"
+            force_external = source_pref in ("prefer_external", "prefer_realtime")
+            entity_missing = not _entity_in_kb(company, position) if (company or position) else False
+            needs_external = is_temporal or force_external or entity_missing
 
             if intent == LLMIntentType.EXPLORE:
-                query = slots.get("search_keywords") or gs.get("search_keywords") or gs.get("query", "")
                 kb = get_or_create_kb(query, top_k=settings.EXPLORE_TOP_K)
+                es_task = None
+                if needs_external:
+                    es_task = add_task(
+                        task_type="tool_call", tool_name="external_search",
+                        description="补充外部搜索（实体不在知识库或时效性查询）",
+                        parameters={"query": query, "count": 5},
+                        dependencies=[kb.task_id],
+                        fallback=TaskFallback(action="skip", reason="外部搜索失败，继续使用本地库结果"),
+                    )
                 if has_resume:
+                    rank_deps = [kb.task_id]
+                    rank_params = {"resume_text": "{{global_slots.resume_text}}", "candidate_jds": f"{{{{{kb.task_id}.output.chunks}}}}"}
+                    if es_task:
+                        rank_deps.append(es_task.task_id)
+                        rank_params["external_chunks"] = f"{{{{{es_task.task_id}.output.chunks}}}}"
                     add_task(
                         task_type="tool_call", tool_name="global_rank",
                         description="全局匹配排序",
-                        parameters={"resume_text": "{{global_slots.resume_text}}", "candidate_jds": f"{{{{{kb.task_id}.output.chunks}}}}"},
-                        dependencies=[kb.task_id],
+                        parameters=rank_params,
+                        dependencies=rank_deps,
                         fallback=TaskFallback(action="skip", reason="排序失败，返回原始检索结果", default_params={"rankings": []}),
                     )
 
             elif intent == LLMIntentType.ASSESS:
-                query = slots.get("search_keywords") or gs.get("search_keywords") or gs.get("query", "")
-                company = slots.get("company") or gs.get("company")
                 kb = get_or_create_kb(query, company=company, top_k=settings.ASSESS_TOP_K)
+                es_task = None
+                if needs_external:
+                    es_task = add_task(
+                        task_type="tool_call", tool_name="external_search",
+                        description="补充外部搜索（实体不在知识库或时效性查询）",
+                        parameters={"query": query, "count": 5},
+                        dependencies=[kb.task_id],
+                        fallback=TaskFallback(action="skip", reason="外部搜索失败，继续使用本地库结果"),
+                    )
                 if has_resume:
+                    ma_deps = [kb.task_id]
+                    ma_params = {
+                        "resume_text": "{{global_slots.resume_text}}",
+                        "jd_text": f"{{{{{kb.task_id}.output.chunks}}}}",
+                        "company": company or "{{global_slots.company}}",
+                        "position": position,
+                    }
+                    if es_task:
+                        ma_deps.append(es_task.task_id)
+                        ma_params["external_jd_text"] = f"{{{{{es_task.task_id}.output.chunks}}}}"
                     ma = add_task(
                         task_type="tool_call", tool_name="match_analyze",
                         description="简历匹配分析",
-                        parameters={
-                            "resume_text": "{{global_slots.resume_text}}",
-                            "jd_text": f"{{{{{kb.task_id}.output.chunks}}}}",
-                            "company": company or "{{global_slots.company}}",
-                            "position": slots.get("position") or gs.get("position"),
-                        },
-                        dependencies=[kb.task_id],
+                        parameters=ma_params,
+                        dependencies=ma_deps,
                         fallback=TaskFallback(action="skip", reason="匹配分析失败", default_params={"score": 0, "gaps": ["分析失败"]}),
                     )
                     match_analyze_task = ma
 
             elif intent == LLMIntentType.VERIFY:
-                query = slots.get("search_keywords") or gs.get("search_keywords") or gs.get("query", "")
-                company = slots.get("company") or gs.get("company")
-                is_temporal = _has_temporal_keywords(query)
                 kb = get_or_create_kb(query, company=company, top_k=settings.VERIFY_TOP_K)
-                if is_temporal:
-                    add_task(
+                es_task = None
+                if needs_external:
+                    es_task = add_task(
                         task_type="tool_call", tool_name="external_search",
-                        description="补充外部搜索（时效性查询）",
+                        description="补充外部搜索（实体不在知识库或时效性查询）",
                         parameters={"query": query, "count": 5},
                         dependencies=[kb.task_id],
                         fallback=TaskFallback(action="skip", reason="外部搜索失败，继续使用本地库结果"),
                     )
+                qa_deps = [kb.task_id]
+                qa_params = {
+                    "question": query,
+                    "evidence_chunks": f"{{{{{kb.task_id}.output.chunks}}}}",
+                    "qa_type": slots.get("qa_type", "factual"),
+                }
+                if es_task:
+                    qa_deps.append(es_task.task_id)
+                    qa_params["external_evidence"] = f"{{{{{es_task.task_id}.output.chunks}}}}"
+                add_task(
+                    task_type="tool_call", tool_name="qa_synthesize",
+                    description="基于检索证据回答用户问题",
+                    parameters=qa_params,
+                    dependencies=qa_deps,
+                    fallback=TaskFallback(action="skip", reason="问答生成失败，将使用聚合回复兜底"),
+                )
 
             elif intent == LLMIntentType.PREPARE:
+                # PREPARE 有 company/position 时，先检索 JD，再生成面试题
+                kb = None
+                if company or position:
+                    kb = get_or_create_kb(query, company=company, top_k=settings.VERIFY_TOP_K)
                 deps = []
                 match_param = {"gaps": ["待补充"], "interview_focus": ["技术深度", "项目经验"]}
                 if match_analyze_task:
                     deps.append(match_analyze_task.task_id)
                     match_param = f"{{{{{match_analyze_task.task_id}.output}}}}"
+                elif kb and has_resume:
+                    # 独立 PREPARE：先 match_analyze，再 interview_gen
+                    ma = add_task(
+                        task_type="tool_call", tool_name="match_analyze",
+                        description="简历匹配分析（为面试准备）",
+                        parameters={
+                            "resume_text": "{{global_slots.resume_text}}",
+                            "jd_text": f"{{{{{kb.task_id}.output.chunks}}}}",
+                            "company": company or "{{global_slots.company}}",
+                            "position": position,
+                        },
+                        dependencies=[kb.task_id],
+                        fallback=TaskFallback(action="skip", reason="匹配分析失败", default_params={"score": 0, "gaps": ["分析失败"]}),
+                    )
+                    deps.append(ma.task_id)
+                    match_param = f"{{{{{ma.task_id}.output}}}}"
+                elif kb:
+                    # 有 JD 但无简历：把 JD 文本传给 interview_gen
+                    deps.append(kb.task_id)
+                    match_param = {"jd_text": f"{{{{{kb.task_id}.output.chunks}}}}", "company": company, "position": position}
                 add_task(
                     task_type="tool_call", tool_name="interview_gen",
                     description="生成面试题",
@@ -1166,19 +1265,22 @@ class TaskGraphPlanner:
                 )
 
         # aggregate：依赖所有任务，参数显式引用每个非检索任务的输出
-        all_task_ids = [t.task_id for t in tasks]
-        agg_params: Dict[str, Any] = {}
-        for t in tasks:
-            if t.tool_name and t.tool_name != "kb_retrieve":
-                agg_params[t.task_id] = f"{{{{{t.task_id}.output}}}}"
+        # 但如果存在 qa_synthesize，则跳过聚合（qa_synthesize 的结果直接作为回复）
+        has_qa = any(t.tool_name == "qa_synthesize" for t in tasks)
+        if not has_qa:
+            all_task_ids = [t.task_id for t in tasks]
+            agg_params: Dict[str, Any] = {}
+            for t in tasks:
+                if t.tool_name and t.tool_name != "kb_retrieve":
+                    agg_params[t.task_id] = f"{{{{{t.task_id}.output}}}}"
 
-        add_task(
-            task_type="aggregate",
-            description="聚合所有输出生成回复素材",
-            parameters=agg_params if agg_params else {"note": "无工具输出"},
-            dependencies=all_task_ids,
-            fallback=TaskFallback(action="abort", reason="聚合失败"),
-        )
+            add_task(
+                task_type="aggregate",
+                description="聚合所有输出生成回复素材",
+                parameters=agg_params if agg_params else {"note": "无工具输出"},
+                dependencies=all_task_ids,
+                fallback=TaskFallback(action="abort", reason="聚合失败"),
+            )
 
         graph = TaskGraph(
             planner_thought="规则 fallback：根据多意图候选映射到固定任务模板",

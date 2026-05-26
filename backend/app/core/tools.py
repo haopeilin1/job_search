@@ -1674,35 +1674,52 @@ class QASynthesizeTool(BaseTool):
             f"[{i+1}] {c.get('content', '')}" for i, c in enumerate(evidence_chunks[:10])
         )
 
-        system_prompt = f"""你是一位专业的求职顾问。基于以下检索到的证据，回答用户的问题。
+        system_prompt = f"""你是一位专业的求职顾问。基于以下检索到的证据（可能来自本地知识库或外部检索），回答用户的问题。
 问题类型：{qa_type}
 - factual：事实性问题
 - comparative：对比性问题
 - temporal：时间相关问题
 - definition：定义/概念问题
 
+【多源信息冲突检测——重要】
+检索到的证据可能来自不同来源（本地知识库、外部搜索、不同时间点的数据）。你必须：
+1. 主动检查证据之间是否存在矛盾（如薪资范围不一致、学历要求不同、经验年限冲突等）
+2. 如果发现冲突，必须在回答中**明确指出冲突点**，格式如："⚠️ 注意：不同来源的信息存在差异——"
+3. 基于常识提供1-2种可能的冲突原因，例如：
+   - "发布时间不同（知识库数据可能较早，外部搜索可能更新）"
+   - "针对的招聘身份不同（校招 vs 社招的薪资/要求可能有差异）"
+   - "岗位细分方向不同（同一公司不同团队的同一岗位名称，要求可能不同）"
+   - "信息来源权威性不同（官方JD vs 第三方平台的用户投稿）"
+4. **最终必须建议用户以官方JD为准**，格式如："以上信息仅供参考，具体请以该公司官方发布的JD为准。"
+
 【回答要求】
 1. 先直接回答用户的问题（是/否/有/没有），不要绕弯子
 2. 如果是 temporal（时间相关）问题，必须明确说明证据的时间范围（如"根据2025年数据"）
 3. 再给出关键细节和证据支撑
-4. 必须引用证据来源（用[1][2]等标注）
+4. 必须引用证据来源（用[1][2]等标注，标注格式：[来源类型-公司名-岗位名]）
 5. 证据不足时明确说明，不要编造
 6. 回答简洁、结构化，不要过度展开与问题无关的建议
+7. **遇到多源冲突时，必须执行【多源信息冲突检测】步骤，不可忽略**
 
 输出严格JSON：
 {{
-  "answer": "自然语言回答",
+  "answer": "自然语言回答（包含冲突检测说明，如有）",
   "citations": [
-    {{"index": 1, "source": "公司-岗位-板块", "quote": "引用的原文片段"}}
+    {{"index": 1, "source": "来源类型-公司-岗位", "quote": "引用的原文片段"}}
   ],
   "confidence": "high/medium/low",
+  "conflict_detected": true/false,
+  "conflict_details": "若存在冲突，描述冲突点及可能原因；若无冲突，填null",
   "insufficient_note": null
 }}"""
 
         user_prompt = f"【用户问题】\n{question}\n\n【检索证据】\n{evidence_text}\n\n请输出JSON："
 
         try:
-            llm = LLMClient.from_config("core")
+            # 使用 chat 模型（与最终聚合 LLM 复用同一配置），预留流式接口
+            llm = LLMClient.from_config("chat")
+            # TODO: 流式输出支持——当 API 端点升级为 StreamingResponse 时，
+            # 可将此处改为 llm.generate_stream()，并将生成器 yield 的内容直接返回给前端
             raw = await llm.generate(prompt=user_prompt, system=system_prompt, temperature=0.3, max_tokens=1500, timeout=TIMEOUT_STANDARD)
             data = json.loads(raw.strip())
             return NewToolResult(success=True, data=data)
@@ -1714,6 +1731,8 @@ class QASynthesizeTool(BaseTool):
                     "answer": f"基于检索到的 {len(evidence_chunks)} 条信息，我暂时无法给出准确回答。",
                     "citations": [],
                     "confidence": "low",
+                    "conflict_detected": False,
+                    "conflict_details": None,
                     "insufficient_note": str(e),
                 }
             )
@@ -1859,7 +1878,7 @@ def create_tool_registry():
     registry.register(KBRetrieveTool())
     registry.register(MatchAnalyzeTool())
     registry.register(GlobalRankTool())
-    # registry.register(QASynthesizeTool())  # 已废弃：VERIFY 意图直接走 aggregate + 最终 LLM 聚合
+    registry.register(QASynthesizeTool())  # VERIFY 意图问答直出（跳过聚合 LLM，延迟更低）
     registry.register(InterviewGenTool())
     registry.register(EvidenceRelevanceCheckTool())
     registry.register(FileOpsTool())

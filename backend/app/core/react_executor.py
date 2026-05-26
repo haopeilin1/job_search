@@ -247,6 +247,8 @@ class ReActExecutor:
                 replan_trigger = Replanner.should_replan(task, graph)
                 if replan_trigger:
                     logger.info(f"[ReActExecutor] {task.task_id} 触发Replan: {replan_trigger}")
+                    graph.replan_reason = replan_trigger
+                    graph.replan_count += 1
                     graph = await Replanner.replan(graph, replan_trigger, task)
                     needs_replan = True
 
@@ -331,6 +333,27 @@ class ReActExecutor:
                                 logger.info(f"[ReActExecutor] match_analyze jd_text 自动修正: {company}/{position} | 从 {len(chunks)} 个 chunk 中命中 {len(filtered)} 个")
                             else:
                                 logger.warning(f"[ReActExecutor] match_analyze 未找到 {company}/{position} 匹配的 chunk，保持原样")
+
+            # 对 global_rank 任务：若 candidate_jds 解析失败（空/无效占位符），从 T0 结果兜底填充
+            if task.tool_name == "global_rank":
+                candidate_jds = resolved_params.get("candidate_jds")
+                is_empty = (
+                    candidate_jds is None or
+                    candidate_jds == [] or
+                    candidate_jds == "" or
+                    (isinstance(candidate_jds, str) and "{{" in candidate_jds)
+                )
+                if is_empty:
+                    t0 = graph.get_task("T0")
+                    if t0 and t0.status == "success" and isinstance(t0.result, dict):
+                        chunks = t0.result.get("chunks", [])
+                        if chunks:
+                            resolved_params["candidate_jds"] = chunks
+                            logger.info(f"[ReActExecutor] global_rank candidate_jds 兜底填充 | 从 T0 获取 {len(chunks)} 个 chunks")
+                        else:
+                            logger.warning(f"[ReActExecutor] global_rank candidate_jds 兜底失败 | T0 chunks 为空")
+                    else:
+                        logger.warning(f"[ReActExecutor] global_rank candidate_jds 兜底失败 | T0 不可用 (status={getattr(t0, 'status', 'None')}, result_type={type(getattr(t0, 'result', None))})")
 
             task.resolved_params = resolved_params
 

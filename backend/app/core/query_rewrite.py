@@ -53,8 +53,8 @@ class QueryRewriter:
     _CLARIFY_WORDS = ["不对", "我说的是", "纠正", "不是", "错了", "应该是", "其实"]
     # 指代词
     _REFERENCES = ["那个", "这个", "它", "他", "那边", "刚才", "之前", "上一轮"]
-    # 通用职位词
-    _GENERIC_POSITIONS = ["岗位", "职位", "工作", "机会"]
+    # 通用职位词（含单字"岗"，解决"上面那个岗"类口语表达）
+    _GENERIC_POSITIONS = ["岗位", "职位", "工作", "机会", "岗"]
 
     def __init__(self):
         pass
@@ -77,7 +77,7 @@ class QueryRewriter:
         history_context = self._get_history_context(session)
 
         # 3. 优先尝试 LLM-based 改写
-        llm_result = await self._llm_rewrite(raw_query, history_context, history_slots)
+        llm_result = await self._llm_rewrite(raw_query, history_context, history_slots, session)
         if llm_result:
             result.is_follow_up = llm_result["is_follow_up"]
             result.follow_up_type = llm_result["follow_up_type"]
@@ -116,26 +116,38 @@ class QueryRewriter:
         return session.working_memory.get_recent_context(n=3, exclude_last=True)
 
     def _get_history_slots(self, session: SessionMemory) -> Dict[str, str]:
-        """获取上轮已确认的槽位状态"""
+        """获取上轮已确认的槽位状态（含从 evidence_cache 提取的岗位信息）"""
         if not session or not hasattr(session, "working_memory"):
             return {}
 
-        # 从working_memory获取最近一轮的global_slots
+        slots = {}
+
+        # 1. 从 working_memory 获取最近一轮的 global_slots
         turns = session.working_memory.turns if hasattr(session.working_memory, "turns") else []
-        if not turns:
-            return {}
+        if turns:
+            last_turn = turns[-1]
+            if hasattr(last_turn, "global_slots"):
+                slots.update({k: v for k, v in last_turn.global_slots.items() if v is not None})
 
-        # 取最近一轮的槽位（实际存储位置取决于memory实现）
-        last_turn = turns[-1]
-        # 如果turn对象有global_slots属性
-        if hasattr(last_turn, "global_slots"):
-            return {k: v for k, v in last_turn.global_slots.items() if v is not None}
+        # 2. 兜底：从 session.global_slots 获取
+        if hasattr(session, "global_slots") and session.global_slots:
+            for k, v in session.global_slots.items():
+                if v is not None:
+                    slots.setdefault(k, v)
 
-        # 兜底：从session的global_slots获取（如果存在）
-        if hasattr(session, "global_slots"):
-            return {k: v for k, v in session.global_slots.items() if v is not None}
+        # 3. 【关键】从 evidence_cache 提取 company/position（解决 explore→verify 多轮断层）
+        if hasattr(session, "evidence_cache") and session.evidence_cache:
+            for chunk in session.evidence_cache[:3]:  # 取 top3
+                meta = chunk.get("metadata", {}) if isinstance(chunk, dict) else {}
+                if meta.get("company") and "company" not in slots:
+                    slots["company"] = meta["company"]
+                if meta.get("position") and "position" not in slots:
+                    slots["position"] = meta["position"]
+                # 只要提取到一个有效的就继续，避免被低质量的覆盖
+                if "company" in slots and "position" in slots:
+                    break
 
-        return {}
+        return slots
 
     def _detect_follow_up(
         self, raw_query: str, history_slots: Dict[str, str]
@@ -345,17 +357,38 @@ class QueryRewriter:
                 return c
         return None
 
+    def _build_evidence_summary(self, session: SessionMemory) -> str:
+        """从 evidence_cache 构建上轮推荐岗位摘要，供 LLM 指代消解使用"""
+        if not hasattr(session, "evidence_cache") or not session.evidence_cache:
+            return "（无）"
+        seen = set()
+        lines = []
+        for chunk in session.evidence_cache[:5]:
+            meta = chunk.get("metadata", {}) if isinstance(chunk, dict) else {}
+            company = meta.get("company", "")
+            position = meta.get("position", "")
+            if company and position:
+                key = f"{company}-{position}"
+                if key not in seen:
+                    seen.add(key)
+                    lines.append(f"- {company} {position}")
+        return "\n".join(lines) if lines else "（无）"
+
     async def _llm_rewrite(
         self,
         raw_query: str,
         history_context: str,
         history_slots: Dict[str, str],
+        session: SessionMemory = None,
     ) -> Optional[Dict]:
         """
         使用 LLM 进行 follow-up 检测、指代消解和口语降噪。
         返回结构化结果，失败返回 None（由上层回退到规则）。
         """
         # 即使首轮对话也应走 LLM 改写（口语降噪），不跳过
+
+        # 构建上轮推荐岗位摘要，帮助 LLM 正确解析"那个岗"等指代
+        evidence_summary = self._build_evidence_summary(session) if session else "（无）"
 
         system_prompt = """你是对话理解助手。根据用户当前问题和最近对话历史，判断：
 1. follow_up_type：当前问题与历史的关系
@@ -366,6 +399,7 @@ class QueryRewriter:
 
 2. resolved_references：指代消解映射
    - 如果用户用"那个""这个""它""刚才"等指代历史中的实体，给出映射 {指代词: 具体实体}
+   - 特别重要：上轮系统推荐过具体岗位列表（见【上轮推荐岗位】），用户说"上面那个岗""这个职位"时必须映射到具体的公司+岗位名
    - 没有指代则返回空对象 {}
 
 3. rewritten_query：改写后的完整query（将指代替换为具体实体，去除口语冗余）
@@ -387,6 +421,9 @@ class QueryRewriter:
 
         user_prompt = f"""最近对话历史：
 {history_context if history_context else "（无）"}
+
+上轮推荐岗位（系统上轮回复中推荐的职位列表，供指代消解使用）：
+{evidence_summary}
 
 历史已确认槽位：{json.dumps(history_slots, ensure_ascii=False)}
 

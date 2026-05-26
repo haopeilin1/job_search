@@ -9,7 +9,7 @@ logger = logging.getLogger(__name__)
 
 from app.core.llm_client import LLMClient, TIMEOUT_HEAVY, TIMEOUT_STANDARD, TIMEOUT_LIGHT
 from app.core.memory import SessionMemory, MemoryManager, DialogueTurn, PendingClarification
-from app.core.db import load_session_meta, load_long_term_memory, delete_session_meta
+from app.core.db import load_session_meta, load_long_term_memory, delete_session_meta, delete_long_term_memory
 from app.core.config import settings
 from app.core.state import active_resume_id, resumes_db
 from app.core.query_rewrite import QueryRewriter, QueryRewriteResult
@@ -186,6 +186,7 @@ async def chat_endpoint(request: ChatRequest):
         if request.session_id in _session_store:
             del _session_store[request.session_id]
         delete_session_meta(request.session_id)
+        delete_long_term_memory(request.session_id)
         logger.info(f"[Chat] 评测模式重置 session | session_id={request.session_id}")
 
     # 1. 会话管理
@@ -195,6 +196,7 @@ async def chat_endpoint(request: ChatRequest):
         if request.session_id in _session_store:
             del _session_store[request.session_id]
         delete_session_meta(request.session_id)
+        delete_long_term_memory(request.session_id)
         logger.info(f"[ChatStream] 评测模式重置 session | session_id={request.session_id}")
 
     session_id, session = _get_or_create_session(request.session_id, request.user_id)
@@ -283,6 +285,14 @@ async def chat_endpoint(request: ChatRequest):
         f"| source_pref={rewrite_result.source_preference}"
     )
 
+    # 【关键】同步 QueryRewrite 结果到 session.global_slots，确保 route_multi 中的
+    # _merge_global_slots 能获取到最新 query（解决多轮对话中上下文引用检测失效）
+    if rewrite_result.search_keywords:
+        session.global_slots["search_keywords"] = rewrite_result.search_keywords
+    if rewrite_result.rewritten_query:
+        session.global_slots["query"] = rewrite_result.rewritten_query
+        session.global_slots["rewritten_query"] = rewrite_result.rewritten_query
+    
     # Step 1: 意图识别（基于改写后的 query，更好地处理多轮对话）
     from app.core.llm_intent import LLMIntentRouter
     llm_for_intent = LLMClient.from_config("chat")
@@ -472,20 +482,15 @@ async def _handle_rule_route(
         })
 
     memory_state = _build_memory_state(session)
-    return {
+    response = {
         "session_id": session_id,
         "intent": route_meta.intent.value,
-        "route_meta": route_meta.model_dump(),
         "agent_mode": "rule",
-        "agent": {
-            "rewritten_query": agent_ctx.rewritten_query,
-            "tools": tool_summary,
-            "kb_chunks_count": len(agent_ctx.kb_chunks),
-            "system_prompt_preview": agent_ctx.system_prompt[:200] if hasattr(agent_ctx, "system_prompt") else "",
-        },
-        "memory": memory_state,
         "reply": reply.model_dump(),
     }
+    # 旧路线暂无条件判断 eval_context，默认保留精简结构
+    # 如需测试旧路线，可在此展开 agent/memory 等字段
+    return response
 
 
 def _build_memory_state(session: SessionMemory) -> dict:
@@ -756,29 +761,65 @@ async def _handle_llm_route_v2(
 
         memory_state = _build_memory_state(session)
         _emit_turn_completed(reply_text=reply_text, is_clarification=True)
-        return {
+        response = {
             "session_id": session_id,
             "intent": intent_result.demands[0].intent_type if intent_result.demands else "chat",
-            "route_meta": {
-                "layer": "clarification",
-                "intent": intent_result.demands[0].intent_type if intent_result.demands else "chat",
-                "confidence": 0.0,
-                "missing_entities": intent_result.missing_entities,
-                "reason": intent_result.clarification_question,
-            },
-            "agent_mode": "llm",
             "is_clarification": True,
-            "llm_agent": {
-                "rewritten_query": rewrite_result.rewritten_query,
-                "search_keywords": rewrite_result.search_keywords,
-                "is_follow_up": rewrite_result.is_follow_up,
-                "follow_up_type": rewrite_result.follow_up_type,
-                "clarification_question": intent_result.clarification_question,
-                "global_slots": intent_result.resolved_entities,
-            },
-            "memory": memory_state,
             "reply": reply.model_dump(),
         }
+        # 评测模式：附加详细 debug_info（澄清场景也需要）
+        if request.eval_context:
+            response.update({
+                "route_meta": {
+                    "layer": "clarification",
+                    "intent": intent_result.demands[0].intent_type if intent_result.demands else "chat",
+                    "confidence": 0.0,
+                    "missing_entities": intent_result.missing_entities,
+                    "reason": intent_result.clarification_question,
+                },
+                "agent_mode": "llm",
+                "llm_agent": {
+                    "rewritten_query": rewrite_result.rewritten_query,
+                    "search_keywords": rewrite_result.search_keywords,
+                    "is_follow_up": rewrite_result.is_follow_up,
+                    "follow_up_type": rewrite_result.follow_up_type,
+                    "clarification_question": intent_result.clarification_question,
+                    "global_slots": intent_result.resolved_entities,
+                },
+                "memory": memory_state,
+            })
+            response["debug_info"] = {
+                "intent": {
+                    "demands": [
+                        {"intent": d.intent_type, "entities": d.entities, "confidence": getattr(d, "confidence", 0.0), "source": getattr(d, "source", "unknown")}
+                        for d in intent_result.demands
+                    ],
+                    "needs_clarification": intent_result.needs_clarification,
+                    "clarification_question": intent_result.clarification_question,
+                    "missing_entities": intent_result.missing_entities,
+                    "resolved_entities": intent_result.resolved_entities,
+                },
+                "rewrite": {
+                    "rewritten_query": rewrite_result.rewritten_query,
+                    "search_keywords": rewrite_result.search_keywords,
+                    "is_follow_up": rewrite_result.is_follow_up,
+                    "follow_up_type": rewrite_result.follow_up_type,
+                    "resolved_references": rewrite_result.resolved_references,
+                },
+                "session_history": [
+                    {
+                        "turn_id": t.turn_id,
+                        "user_message": t.user_message,
+                        "assistant_reply": t.assistant_reply,
+                        "intent": t.intent,
+                        "rewritten_query": t.rewritten_query,
+                    }
+                    for t in session.working_memory.turns
+                ],
+                "evidence_cache": session.evidence_cache,
+                "evidence_cache_query": session.evidence_cache_query,
+            }
+        return response
 
     # ── ③ Plan模块：动态生成任务图 ──
     # 构建 evidence_cache_summary
@@ -851,85 +892,148 @@ async def _handle_llm_route_v2(
             "executed_intents": [d.intent_type for d in intent_result.demands],
         })
 
-    # ── ⑤ LLM聚合：生成最终回复 ──
-    # 收集所有成功任务的输出
-    tool_outputs = []
-    tool_summary = []
+    # ── ⑤ 检查 qa_synthesize 直接回复（跳过聚合）──
+    qa_answer = None
+    qa_task = None
     for task in graph.tasks.values():
-        if task.tool_name and task.status in ("success", "failed"):
+        if task.tool_name == "qa_synthesize" and task.status == "success" and task.result:
+            # qa_synthesize 的 result 直接是 data dict（不是嵌套在 data 键下）
+            qa_answer = task.result.get("answer") if isinstance(task.result, dict) else None
+            qa_task = task
+            if qa_answer:
+                logger.info(f"[Chat-v2] qa_synthesize 直接回复 | length={len(qa_answer)} | preview={qa_answer[:100]}")
+                break
+
+    if qa_answer:
+        # qa_synthesize 已生成结构化回答，直接作为最终回复，跳过聚合 LLM
+        reply_text = qa_answer
+        reply = ChatReply(type="text", content=reply_text.strip())
+        logger.info(f"[Chat-v2] 最终回复（qa_synthesize 直出）| length={len(reply_text)} | preview={reply_text[:100]}")
+        # 初始化 response 构造需要的变量
+        tool_outputs = []
+        tool_summary = []
+        system_prompt = ""
+        if qa_task:
+            tool_outputs.append({
+                "task_id": qa_task.task_id,
+                "tool": qa_task.tool_name,
+                "description": qa_task.description,
+                "result": qa_task.result,
+            })
             result_preview = ""
-            if task.result:
-                if isinstance(task.result, dict):
-                    result_preview = str(task.result.get("data", task.result))[:200]
+            if qa_task.result:
+                if isinstance(qa_task.result, dict):
+                    result_preview = str(qa_task.result.get("data", qa_task.result))[:200]
                 else:
-                    result_preview = str(task.result)[:200]
-            elif task.observation:
-                result_preview = str(task.observation)[:200]
+                    result_preview = str(qa_task.result)[:200]
             tool_summary.append({
-                "tool": task.tool_name,
-                "status": "✅" if task.status == "success" else "❌",
-                "params": task.resolved_params if hasattr(task, "resolved_params") else task.parameters,
+                "tool": qa_task.tool_name,
+                "status": "✅",
+                "params": qa_task.resolved_params if hasattr(qa_task, "resolved_params") else qa_task.parameters,
                 "result_preview": result_preview,
             })
-        if task.status == "success" and task.result:
-            tool_outputs.append({
-                "task_id": task.task_id,
-                "tool": task.tool_name,
-                "description": task.description,
-                "result": task.result,
-            })
-
-    system_prompt = (
-        "你是一位专业的求职顾问。请基于以下工具执行结果，给用户一个清晰、有帮助的回复。\n"
-        "要求：\n"
-        "1. 先直接回答用户的问题（是/否/有/没有），不要绕弯子，不要重复用户的原话\n"
-        "2. 如果有匹配分析结果，给出具体的分数和建议\n"
-        "3. 如果有检索结果，基于事实回答，不要编造\n"
-        "4. 引用信息时必须标注来源，格式如：[来源：本地知识库-字节跳动] 或 [来源：外部搜索-新华网]\n"
-        "5. 如果涉及'最近''最新'等时效性问题，请明确说明信息的时间范围\n"
-        "6. 当本地知识库与外部搜索结果冲突时，请并列呈现两种说法并标注各自来源，不要替用户做判断\n"
-        "7. 语气友好、专业、结构化，但不要过度展开与问题无关的建议"
-    )
-
-    user_prompt = (
-        f"【用户问题】\n{rewrite_result.rewritten_query}\n\n"
-        f"【工具执行结果】\n{json.dumps(tool_outputs, ensure_ascii=False, default=str)[:3000]}\n\n"
-        f"请生成回复："
-    )
-
-    # 最终聚合：chat → core → planner → memory 模型降级
-    # 超时递减：主模型给 30s，fallback 模型各给 15s（服务已不稳定，快速尝试）
-    reply_text = ""
-    fallback_configs = [
-        ("chat", TIMEOUT_HEAVY),      # 30s
-        ("core", TIMEOUT_STANDARD),   # 20s
-        ("planner", TIMEOUT_LIGHT),   # 10s
-        ("memory", TIMEOUT_LIGHT),    # 10s
-    ]
-    last_error = None
-    for model_name, model_timeout in fallback_configs:
-        try:
-            llm = LLMClient.from_config(model_name)
-            reply_text = await llm.generate(
-                prompt=user_prompt,
-                system=system_prompt,
-                temperature=0.5,
-                max_tokens=1500,
-                timeout=model_timeout,
-            )
-            if model_name != "chat":
-                logger.info(f"[Chat-v2] 最终聚合使用降级模型: {model_name}")
-            break
-        except Exception as e:
-            last_error = e
-            logger.warning(f"[Chat-v2] 聚合模型 {model_name} 失败: {e}")
     else:
-        logger.error(f"[Chat-v2] 所有聚合模型均失败: {last_error}")
-        reply_text = "抱歉，我在处理您的请求时遇到了问题，请稍后重试。"
+        # ── ⑥ LLM聚合：生成最终回复 ──
+        # 收集所有成功任务的输出
+        tool_outputs = []
+        tool_summary = []
+        for task in graph.tasks.values():
+            if task.tool_name and task.status in ("success", "failed"):
+                result_preview = ""
+                if task.result:
+                    if isinstance(task.result, dict):
+                        result_preview = str(task.result.get("data", task.result))[:200]
+                    else:
+                        result_preview = str(task.result)[:200]
+                elif task.observation:
+                    result_preview = str(task.observation)[:200]
+                tool_summary.append({
+                    "tool": task.tool_name,
+                    "status": "✅" if task.status == "success" else "❌",
+                    "params": task.resolved_params if hasattr(task, "resolved_params") else task.parameters,
+                    "result_preview": result_preview,
+                })
+            if task.status == "success" and task.result:
+                tool_outputs.append({
+                    "task_id": task.task_id,
+                    "tool": task.tool_name,
+                    "description": task.description,
+                    "result": task.result,
+                })
 
-    reply_text_stripped = reply_text.strip()
-    logger.info(f"[Chat-v2] 最终聚合回复 | length={len(reply_text_stripped)} | preview={reply_text_stripped[:100]}")
-    reply = ChatReply(type="text", content=reply_text_stripped)
+        system_prompt = (
+            "你是一位专业的求职顾问。请基于以下工具执行结果，给用户一个清晰、有帮助的回复。\n"
+            "要求：\n"
+            "1. 先直接回答用户的问题（是/否/有/没有），不要绕弯子，不要重复用户的原话\n"
+            "2. 如果有匹配分析结果，给出具体的分数和建议\n"
+            "3. 如果有检索结果，基于事实回答，不要编造\n"
+            "4. 引用信息时必须标注来源，格式如：[来源：本地知识库-字节跳动] 或 [来源：外部搜索-新华网]\n"
+            "5. 如果涉及'最近''最新'等时效性问题，请明确说明信息的时间范围\n"
+            "6. 当本地知识库与外部搜索结果冲突时，请并列呈现两种说法并标注各自来源，不要替用户做判断\n"
+            "7. 语气友好、专业、结构化，但不要过度展开与问题无关的建议\n"
+            "8. 严格围绕用户当前问题回答，禁止发散到无关话题\n"
+            "9. 控制回复长度：优先给出核心结论（2-3句话），细节只在用户明确要求时才展开\n"
+            "10. 每个要点不超过2行，避免大段文字堆砌"
+        )
+
+        # 限制 tool_outputs 长度，避免 prompt 过长导致 LLM 响应慢
+        _truncated_outputs = []
+        for to in tool_outputs:
+            truncated = dict(to)
+            if "result" in truncated and truncated["result"]:
+                res = truncated["result"]
+                if isinstance(res, dict):
+                    # 对 result 中的长字段进行截断
+                    for k in list(res.keys()):
+                        v = res[k]
+                        if isinstance(v, str) and len(v) > 500:
+                            res[k] = v[:500] + "...[截断]"
+                        elif isinstance(v, list) and len(v) > 10:
+                            res[k] = v[:10] + [f"...共{len(v)}项，已截断"]
+                truncated["result"] = res
+            _truncated_outputs.append(truncated)
+
+        tool_outputs_json = json.dumps(_truncated_outputs, ensure_ascii=False, default=str)[:1500]
+
+        user_prompt = (
+            f"【用户问题】\n{rewrite_result.rewritten_query}\n\n"
+            f"【工具执行结果】\n{tool_outputs_json}\n\n"
+            f"请严格围绕用户问题生成简洁回复（控制在300字以内）："
+        )
+
+        # 最终聚合：chat → core → planner → memory 模型降级
+        # 超时递减：主模型给 30s，fallback 模型各给 15s（服务已不稳定，快速尝试）
+        reply_text = ""
+        fallback_configs = [
+            ("chat", TIMEOUT_HEAVY),      # 30s
+            ("core", TIMEOUT_STANDARD),   # 20s
+            ("planner", TIMEOUT_LIGHT),   # 10s
+            ("memory", TIMEOUT_LIGHT),    # 10s
+        ]
+        last_error = None
+        for model_name, model_timeout in fallback_configs:
+            try:
+                llm = LLMClient.from_config(model_name)
+                reply_text = await llm.generate(
+                    prompt=user_prompt,
+                    system=system_prompt,
+                    temperature=0.3,  # 降低温度，减少发散
+                    max_tokens=800,   # 限制输出长度
+                    timeout=model_timeout,
+                )
+                if model_name != "chat":
+                    logger.info(f"[Chat-v2] 最终聚合使用降级模型: {model_name}")
+                break
+            except Exception as e:
+                last_error = e
+                logger.warning(f"[Chat-v2] 聚合模型 {model_name} 失败: {e}")
+        else:
+            logger.error(f"[Chat-v2] 所有聚合模型均失败: {last_error}")
+            reply_text = "抱歉，我在处理您的请求时遇到了问题，请稍后重试。"
+
+        reply_text_stripped = reply_text.strip()
+        logger.info(f"[Chat-v2] 最终聚合回复 | length={len(reply_text_stripped)} | preview={reply_text_stripped[:100]}")
+        reply = ChatReply(type="text", content=reply_text_stripped)
 
     # ── ⑥ 保存对话历史 ──
     turn = DialogueTurn(
@@ -981,10 +1085,11 @@ async def _handle_llm_route_v2(
                 },
                 "global_status": graph.global_status,
                 "replan_reason": graph.replan_reason,
+                "replan_count": getattr(graph, "replan_count", 0),
             },
             "intent": {
                 "demands": [
-                    {"intent": d.intent_type, "entities": d.entities, "confidence": getattr(d, "confidence", 0.0)}
+                    {"intent": d.intent_type, "entities": d.entities, "confidence": getattr(d, "confidence", 0.0), "source": getattr(d, "source", "unknown")}
                     for d in intent_result.demands
                 ],
                 "needs_clarification": intent_result.needs_clarification,
@@ -1013,38 +1118,44 @@ async def _handle_llm_route_v2(
             ],
         }
 
+    # 基础响应（前端必须字段）
     response = {
         "session_id": session_id,
         "intent": intent_result.demands[0].intent_type if intent_result.demands else "chat",
-        "route_meta": {
-            "layer": "llm",
-            "intent": intent_result.demands[0].intent_type if intent_result.demands else "chat",
-            "confidence": intent_result.demands[0].confidence if intent_result.demands else 0.0,
-            "demands": [{"intent": d.intent_type, "entities": d.entities} for d in intent_result.demands],
-            "plan_tasks": len(graph.tasks),
-            "plan_errors": errors,
-        },
-        "agent_mode": "llm",
         "is_clarification": False,
-        "llm_agent": {
-            "rewritten_query": rewrite_result.rewritten_query,
-            "search_keywords": rewrite_result.search_keywords,
-            "is_follow_up": rewrite_result.is_follow_up,
-            "follow_up_type": rewrite_result.follow_up_type,
-            "global_slots": intent_result.resolved_entities,
-            "tool_outputs": [{"tool": o["tool"], "task_id": o["task_id"]} for o in tool_outputs],
-        },
-        "agent": {
-            "rewritten_query": rewrite_result.rewritten_query,
-            "tools": tool_summary,
-            "kb_chunks_count": len(tool_outputs),
-            "system_prompt_preview": system_prompt[:200] if system_prompt else "",
-        },
-        "memory": memory_state,
         "reply": reply.model_dump(),
     }
-    if debug_info:
-        response["debug_info"] = debug_info
+
+    # eval / 测试阶段才展开的中间态
+    if request.eval_context:
+        response.update({
+            "route_meta": {
+                "layer": "llm",
+                "intent": intent_result.demands[0].intent_type if intent_result.demands else "chat",
+                "confidence": intent_result.demands[0].confidence if intent_result.demands else 0.0,
+                "demands": [{"intent": d.intent_type, "entities": d.entities} for d in intent_result.demands],
+                "plan_tasks": len(graph.tasks),
+                "plan_errors": errors,
+            },
+            "agent_mode": "llm",
+            "llm_agent": {
+                "rewritten_query": rewrite_result.rewritten_query,
+                "search_keywords": rewrite_result.search_keywords,
+                "is_follow_up": rewrite_result.is_follow_up,
+                "follow_up_type": rewrite_result.follow_up_type,
+                "global_slots": intent_result.resolved_entities,
+                "tool_outputs": [{"tool": o["tool"], "task_id": o["task_id"]} for o in tool_outputs],
+            },
+            "agent": {
+                "rewritten_query": rewrite_result.rewritten_query,
+                "tools": tool_summary,
+                "kb_chunks_count": len(tool_outputs),
+                "system_prompt_preview": system_prompt[:200] if system_prompt else "",
+            },
+            "memory": memory_state,
+        })
+        if debug_info:
+            response["debug_info"] = debug_info
     return response
 
 

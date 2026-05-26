@@ -84,44 +84,10 @@ class RuleRegistry:
 
 
 # ═══════════════════════════════════════════════════════
-# 4. 知识库已知实体（可后续从数据库动态加载）
+# 4. 知识库已知实体（从公共模块动态加载）
 # ═══════════════════════════════════════════════════════
 
-KB_COMPANIES = [
-    "字节跳动", "字节", "ByteDance", "抖音",
-    "百度", "Baidu",
-    "阿里巴巴", "阿里", "Alibaba", "淘天", "蚂蚁", "蚂蚁金服",
-    "腾讯", "Tencent", "微信",
-    "美团", "Meituan",
-    "京东", "JD",
-    "快手", "Kuaishou",
-    "小红书", "Red",
-    "拼多多", "PDD",
-    "小米", "Xiaomi",
-    "华为", "Huawei",
-    "网易", "NetEase",
-    "滴滴", "Didi",
-    "携程", "Ctrip",
-    "贝壳", "Beike",
-    "蔚来", "NIO",
-    "理想", "LiAuto",
-    "大疆", "DJI",
-    "商汤", "SenseTime",
-    "科大讯飞", "讯飞",
-    "360", "奇安信",
-    "B站", "哔哩哔哩", "bilibili",
-    "知乎", "Zhihu",
-    "微博", "Weibo",
-    "OPPO", "VIVO",
-    "联想", "Lenovo",
-    "平安", "PingAn",
-    "招商银行", "招行",
-]
-
-KB_POSITIONS = [
-    "产品经理", "算法工程师", "后端开发", "前端开发",
-    "数据分析师", "运营", "设计师", "AI产品经理", "产品实习生"
-]
+from app.core.kb_entities import _load_kb_entities, KB_COMPANIES, KB_POSITIONS
 
 
 # ═══════════════════════════════════════════════════════
@@ -357,27 +323,6 @@ def rule_rag_company_overview(msg, attachments, ctx, kb_companies, kb_positions)
 # ═══════════════════════════════════════════════════════
 # 8. 规则分类器（使用注册表）
 # ═══════════════════════════════════════════════════════
-
-def _load_kb_entities() -> tuple[list[str], list[str]]:
-    """从 jds.json 动态加载公司名和岗位名，硬编码作为兜底"""
-    companies = set(KB_COMPANIES)
-    positions = set(KB_POSITIONS)
-    try:
-        from pathlib import Path
-        jds_file = Path(__file__).resolve().parent.parent.parent / "data" / "jds.json"
-        if jds_file.exists():
-            jds = json.loads(jds_file.read_text(encoding="utf-8"))
-            for jd in jds:
-                c = jd.get("company", "")
-                if c:
-                    companies.add(c)
-                p = jd.get("position", "") or jd.get("title", "")
-                if p:
-                    positions.add(p)
-    except Exception:
-        pass
-    return list(companies), list(positions)
-
 
 class RuleClassifier:
     """基于分层注册表的规则分类器"""

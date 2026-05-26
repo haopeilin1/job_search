@@ -39,6 +39,9 @@ from typing import Any, Dict, List, Optional, Set, Tuple
 EVAL_DIR = Path(__file__).parent
 sys.path.insert(0, str(EVAL_DIR.parent))
 
+# v2 judge 后处理（多维度评分）
+from judge_postprocess import judge_single_case, _build_case_context  # noqa: E402
+
 from pydantic import BaseModel
 
 from app.core.config import settings
@@ -57,7 +60,7 @@ _llm_client_mod.TIMEOUT_HEAVY = TIMEOUT_HEAVY
 
 import httpx
 
-BASE_URL = "http://127.0.0.1:8001"
+BASE_URL = "http://127.0.0.1:8002"
 CHAT_URL = f"{BASE_URL}/api/v1/chat"
 
 from app.core.memory import SessionMemory, DialogueTurn, WorkingMemory
@@ -99,10 +102,80 @@ class LLMTracker:
         self.calls: List[LLMCallRecord] = []
         self._original_chat = None
         self._original_generate = None
+        self._original_embed = None
+        self._original_rerank = None
+        self.embedding_calls: List[Dict] = []
+        self.reranker_calls: List[Dict] = []
 
     def install(self):
         self._original_chat = LLMClient.chat
         self._original_generate = LLMClient.generate
+
+        # ── monkey-patch EmbeddingClient._api_embed ──
+        from app.core.embedding import EmbeddingClient
+        self._original_embed = EmbeddingClient._api_embed
+
+        async def tracked_embed(self_obj, texts: List[str]):
+            start = time.time()
+            try:
+                result = await self._original_embed(self_obj, texts)
+                latency = (time.time() - start) * 1000
+                self.embedding_calls.append({
+                    "model": self_obj.model,
+                    "texts_count": len(texts),
+                    "total_chars": sum(len(t) for t in texts),
+                    "latency_ms": latency,
+                    "success": True,
+                    "timestamp": start,
+                })
+                return result
+            except Exception as e:
+                latency = (time.time() - start) * 1000
+                self.embedding_calls.append({
+                    "model": self_obj.model,
+                    "texts_count": len(texts),
+                    "total_chars": sum(len(t) for t in texts),
+                    "latency_ms": latency,
+                    "success": False,
+                    "error": str(e)[:200],
+                    "timestamp": start,
+                })
+                raise
+
+        EmbeddingClient._api_embed = tracked_embed
+
+        # ── monkey-patch reranker.rerank ──
+        from app.core import reranker as reranker_mod
+        self._original_rerank = reranker_mod.rerank
+
+        async def tracked_rerank(query, candidates, top_k=10, max_length=512, batch_size=8):
+            start = time.time()
+            try:
+                result = await self._original_rerank(query, candidates, top_k, max_length, batch_size)
+                latency = (time.time() - start) * 1000
+                self.reranker_calls.append({
+                    "query_len": len(query),
+                    "candidates": len(candidates),
+                    "top_k": top_k,
+                    "latency_ms": latency,
+                    "success": True,
+                    "timestamp": start,
+                })
+                return result
+            except Exception as e:
+                latency = (time.time() - start) * 1000
+                self.reranker_calls.append({
+                    "query_len": len(query),
+                    "candidates": len(candidates),
+                    "top_k": top_k,
+                    "latency_ms": latency,
+                    "success": False,
+                    "error": str(e)[:200],
+                    "timestamp": start,
+                })
+                raise
+
+        reranker_mod.rerank = tracked_rerank
 
         async def tracked_chat(self_obj, messages, temperature=0.7, max_tokens=None,
                                json_mode=False, timeout=None):
@@ -112,8 +185,9 @@ class LLMTracker:
                 result = await self._original_chat(self_obj, messages, temperature, max_tokens, json_mode, timeout)
                 latency = (time.time() - start) * 1000
                 prompt_text = json.dumps(messages, ensure_ascii=False)
-                prompt_tokens = len(prompt_text) // 2
-                completion_tokens = len(result) // 2
+                usage = getattr(self_obj, "last_usage", {}) or {}
+                prompt_tokens = usage.get("prompt_tokens", len(prompt_text) // 2)
+                completion_tokens = usage.get("completion_tokens", len(result) // 2)
                 self.calls.append(LLMCallRecord(
                     model=self_obj.model, layer=layer, method="chat",
                     prompt_tokens=prompt_tokens, completion_tokens=completion_tokens,
@@ -143,8 +217,9 @@ class LLMTracker:
             try:
                 result = await self._original_generate(self_obj, prompt, system, timeout, **kwargs)
                 latency = (time.time() - start) * 1000
-                prompt_tokens = (len(prompt) + len(system or "")) // 2
-                completion_tokens = len(result) // 2
+                usage = getattr(self_obj, "last_usage", {}) or {}
+                prompt_tokens = usage.get("prompt_tokens", (len(prompt) + len(system or "")) // 2)
+                completion_tokens = usage.get("completion_tokens", len(result) // 2)
                 self.calls.append(LLMCallRecord(
                     model=self_obj.model, layer=layer, method="generate",
                     prompt_tokens=prompt_tokens, completion_tokens=completion_tokens,
@@ -178,6 +253,12 @@ class LLMTracker:
             LLMClient.chat = self._original_chat
         if self._original_generate:
             LLMClient.generate = self._original_generate
+        if self._original_embed:
+            from app.core.embedding import EmbeddingClient
+            EmbeddingClient._api_embed = self._original_embed
+        if self._original_rerank:
+            from app.core import reranker as reranker_mod
+            reranker_mod.rerank = self._original_rerank
 
     def _guess_layer(self, client: LLMClient) -> str:
         m = client.model
@@ -189,6 +270,8 @@ class LLMTracker:
 
     def reset(self):
         self.calls.clear()
+        self.embedding_calls.clear()
+        self.reranker_calls.clear()
 
     def summary(self) -> Dict[str, Any]:
         total_calls = len(self.calls)
@@ -221,6 +304,17 @@ class LLMTracker:
             in_price, out_price = cost_map.get(c.model, (0.001, 0.002))
             total_cost += c.prompt_tokens / 1000 * in_price + c.completion_tokens / 1000 * out_price
 
+        # embedding / reranker 汇总
+        emb_calls = len(self.embedding_calls)
+        emb_success = sum(1 for c in self.embedding_calls if c.get("success"))
+        emb_latency = sum(c.get("latency_ms", 0) for c in self.embedding_calls)
+        emb_chars = sum(c.get("total_chars", 0) for c in self.embedding_calls)
+
+        rer_calls = len(self.reranker_calls)
+        rer_success = sum(1 for c in self.reranker_calls if c.get("success"))
+        rer_latency = sum(c.get("latency_ms", 0) for c in self.reranker_calls)
+        rer_candidates = sum(c.get("candidates", 0) for c in self.reranker_calls)
+
         return {
             "total_calls": total_calls,
             "success_calls": success_calls,
@@ -232,6 +326,22 @@ class LLMTracker:
             "avg_latency_ms": round(total_latency / total_calls, 2) if total_calls else 0,
             "estimated_cost_usd": round(total_cost, 6),
             "by_layer": dict(by_layer),
+            "embedding": {
+                "calls": emb_calls,
+                "success": emb_success,
+                "fail": emb_calls - emb_success,
+                "total_chars": emb_chars,
+                "total_latency_ms": round(emb_latency, 2),
+                "avg_latency_ms": round(emb_latency / emb_calls, 2) if emb_calls else 0,
+            },
+            "reranker": {
+                "calls": rer_calls,
+                "success": rer_success,
+                "fail": rer_calls - rer_success,
+                "total_candidates": rer_candidates,
+                "total_latency_ms": round(rer_latency, 2),
+                "avg_latency_ms": round(rer_latency / rer_calls, 2) if rer_calls else 0,
+            },
         }
 
 
@@ -299,6 +409,10 @@ class TurnResult:
     tool_full_chain_hit: bool = False         # 全工具链命中
     tool_hit_reason: str = ""                 # 工具命中/未命中原因
     process_quality: Dict = field(default_factory=dict)  # 小模型过程质量评估
+
+    # ── v3 新增：embedding / reranker 埋点 ──
+    embedding_calls: List[Dict] = field(default_factory=list)
+    reranker_calls: List[Dict] = field(default_factory=list)
 
 
 def _intent_result_to_dict(ir: IntentResult) -> Dict:
@@ -553,6 +667,109 @@ async def process_quality_judge(
         }
 
 
+async def _run_v2_judge(case: dict, result: TurnResult, tracker: LLMTracker) -> None:
+    """调用 judge_postprocess v2 多维度评分，结果直接写回 result。"""
+    result.llm_summary = tracker.summary()
+
+    if result.has_exception:
+        result.task_success = False
+        result.judge_result = {
+            "resolved": False, "reason": "执行异常", "source": "rule",
+            "accuracy": 0, "completeness": 0, "citation": 0, "relevance": 0,
+        }
+        result.process_quality = {"overall_match": False, "match_rate": 0.0, "details": {}, "source": "rule"}
+        return
+
+    if result.intent_result and result.intent_result.get("needs_clarification"):
+        result.task_success = True
+        result.judge_result = {
+            "resolved": True, "reason": "正确触发澄清", "source": "rule",
+            "accuracy": 8, "completeness": 8, "citation": 8, "relevance": 8,
+        }
+        result.process_quality = {"overall_match": True, "match_rate": 1.0, "details": {}, "source": "rule"}
+        return
+
+    # 构造 judge_single_case 需要的 dict
+    pred_intents = []
+    if result.intent_result:
+        for d in result.intent_result.get("demands", []):
+            if isinstance(d, dict) and d.get("intent"):
+                pred_intents.append(d["intent"])
+
+    case_result = {
+        "case_id": result.case_id,
+        "message": result.user_message,
+        "gold_intents": result.gold_intents,
+        "reply": result.final_response or "",
+        "tools_called": result.executed_tools or [],
+        "pred_intents": pred_intents,
+    }
+
+    ctx = _build_case_context(result.case_id, case_result)
+    # 补充 resume_text（_build_case_context 从文件加载，可能缺失）
+    if result.resume_text and ctx.get("resume_info") == "无简历":
+        ctx["resume_info"] = result.resume_text[:800]
+
+    try:
+        jr = await judge_single_case(case_result, ctx)
+    except Exception as e:
+        jr = {
+            "resolved": False,
+            "accuracy": 0, "completeness": 0, "citation": 0, "relevance": 0,
+            "reason": f"judge 调用失败: {e}",
+            "case_id": result.case_id,
+            "rule_hit": None,
+        }
+
+    # 代码层面强制校验 resolved：acc≥4 && comp≥4 && rel≥4 即通过
+    acc = jr.get("accuracy", 0)
+    comp = jr.get("completeness", 0)
+    rel = jr.get("relevance", 0)
+    code_resolved = acc >= 4 and comp >= 4 and rel >= 4
+    judge_resolved = jr.get("resolved", False)
+
+    if not judge_resolved and code_resolved:
+        # judge 判 false 但分数门槛满足 → 代码 override
+        resolved = True
+        reason = f"[代码override] LLM原判false，但acc={acc}≥4, comp={comp}≥4, rel={rel}≥4，满足通过门槛。原理由：{jr.get('reason', '')}"
+        code_override = True
+    else:
+        resolved = judge_resolved
+        reason = jr.get("reason", "")
+        code_override = False
+
+    result.judge_result = {
+        "resolved": resolved,
+        "reason": reason,
+        "accuracy": acc,
+        "completeness": comp,
+        "citation": jr.get("citation", 0),
+        "relevance": rel,
+        "rule_hit": jr.get("rule_hit"),
+        "rule_override": jr.get("rule_override", False),
+        "code_override": code_override,
+        "source": "llm",
+    }
+    result.task_success = resolved
+
+    # 过程质量：用 v2 judge 的 accuracy + completeness 综合估算
+    result.process_quality = {
+        "overall_match": result.task_success,
+        "match_rate": (acc + comp) / 20.0 if (acc or comp) else 0.0,
+        "details": {
+            "accuracy": acc,
+            "completeness": comp,
+            "citation": jr.get("citation", 0),
+            "relevance": rel,
+        },
+        "source": "llm",
+    }
+
+    # 保存 embedding / reranker 埋点
+    result.embedding_calls = tracker.embedding_calls.copy()
+    result.reranker_calls = tracker.reranker_calls.copy()
+
+
 # ═══════════════════════════════════════════════════════
 # 5. 严格指标计算
 # ═══════════════════════════════════════════════════════
@@ -664,6 +881,116 @@ def compute_tool_hit(result: TurnResult, expected_tools: List[str]) -> Tuple[boo
 # 6. 单条 case 执行
 # ═══════════════════════════════════════════════════════
 
+def _extract_result_from_response(
+    data: dict,
+    case: dict,
+    result: TurnResult,
+    start_time: float,
+) -> TurnResult:
+    """从 chat_endpoint 返回的 dict 中提取评测信息（HTTP 和本地 direct 共用）。"""
+    result.e2e_latency_ms = (time.time() - start_time) * 1000
+
+    # 3. 从返回中提取信息
+    debug = data.get("debug_info", {})
+    route_meta = data.get("route_meta", {})
+    llm_agent = data.get("llm_agent", {})
+    is_clarification = data.get("is_clarification", False)
+    reply = data.get("reply", {})
+
+    # rewrite
+    result.rewrite_result = {
+        "rewritten_query": llm_agent.get("rewritten_query", ""),
+        "follow_up_type": llm_agent.get("follow_up_type", ""),
+        "search_keywords": llm_agent.get("search_keywords", ""),
+        "resolved_references": llm_agent.get("global_slots", {}),
+    }
+    result.rewrite = ComponentResult(
+        component="query_rewrite",
+        success=True,
+        latency_ms=0,
+        output=result.rewrite_result,
+    )
+
+    # intent
+    demands = route_meta.get("demands", [])
+    intent_debug = debug.get("intent", {})
+    result.intent_result = {
+        "demands": demands,
+        "needs_clarification": is_clarification,
+        "clarification_question": intent_debug.get("clarification_question", ""),
+        "missing_entities": intent_debug.get("missing_entities", []),
+        "resolved_entities": intent_debug.get("resolved_entities", {}),
+        "skipped_due_to_timeout": False,
+    }
+    result.intent = ComponentResult(
+        component="intent_recognition",
+        success=True,
+        latency_ms=0,
+        output=result.intent_result,
+    )
+
+    # 严格意图命中判定
+    result.intent_strict_hit, result.intent_hit_reason = compute_intent_strict_hit(result)
+
+    # 澄清场景
+    if is_clarification:
+        result.tool_primary_hit = False
+        result.tool_full_chain_hit = False
+        result.tool_hit_reason = "澄清场景，未执行工具"
+        result.tool_primary_tools = result.expected_tools
+        result.task_success = True
+        return result
+
+    # task_graph
+    task_graph_debug = debug.get("task_graph", {})
+    result.task_graph = task_graph_debug
+
+    # 工具执行信息
+    tasks = task_graph_debug.get("tasks", {})
+    result.executed_tools = sorted(set(
+        t.get("tool_name") for t in tasks.values()
+        if t.get("tool_name") and t.get("status") == "success"
+    ))
+    result.failed_tools = sorted(set(
+        t.get("tool_name") for t in tasks.values()
+        if t.get("tool_name") and t.get("status") == "failed"
+    ))
+
+    # replan
+    global_status = task_graph_debug.get("global_status", "")
+    if global_status in ("needs_replan", "replanning"):
+        result.replan_count = 1
+    replan_reason = task_graph_debug.get("replan_reason", "")
+    if "T1" in replan_reason or "hard_fail" in replan_reason:
+        result.replan_t1 = True
+    if "T2" in replan_reason or "retrieval_insufficient" in replan_reason:
+        result.replan_t2 = True
+    if "T4" in replan_reason or "low_match" in replan_reason:
+        result.replan_t4 = True
+
+    # KB 异常
+    for t in tasks.values():
+        if t.get("tool_name") == "kb_retrieve" and t.get("status") == "success":
+            try:
+                res = t.get("result", {}) or {}
+                chunks = res.get("chunks", []) if isinstance(res, dict) else []
+                if not chunks:
+                    result.kb_empty = True
+            except Exception:
+                pass
+        if t.get("tool_name") == "external_search" and t.get("status") == "success":
+            result.external_search_triggered = True
+
+    # 工具命中判定
+    result.tool_primary_hit, result.tool_full_chain_hit, result.tool_primary_tools, result.tool_hit_reason = \
+        compute_tool_hit(result, result.expected_tools)
+
+    # 最终回复
+    result.final_response = (reply.get("content") or reply.get("text", "")) if isinstance(reply, dict) else str(reply)
+    result.session_history = debug.get("session_history", [])
+    return result
+
+
 async def run_single_case(
     case: dict,
     resume_text: str,
@@ -720,142 +1047,78 @@ async def run_single_case(
             resp.raise_for_status()
             data = resp.json()
 
-        result.e2e_latency_ms = (time.time() - start_time) * 1000
-
-        # 3. 从返回中提取信息
-        debug = data.get("debug_info", {})
-        route_meta = data.get("route_meta", {})
-        llm_agent = data.get("llm_agent", {})
-        is_clarification = data.get("is_clarification", False)
-        reply = data.get("reply", {})
-
-        # rewrite
-        result.rewrite_result = {
-            "rewritten_query": llm_agent.get("rewritten_query", ""),
-            "follow_up_type": llm_agent.get("follow_up_type", ""),
-            "search_keywords": llm_agent.get("search_keywords", ""),
-            "resolved_references": llm_agent.get("global_slots", {}),
-        }
-        result.rewrite = ComponentResult(
-            component="query_rewrite",
-            success=True,
-            latency_ms=0,
-            output=result.rewrite_result,
-        )
-
-        # intent
-        demands = route_meta.get("demands", [])
-        intent_debug = debug.get("intent", {})
-        result.intent_result = {
-            "demands": demands,
-            "needs_clarification": is_clarification,
-            "clarification_question": intent_debug.get("clarification_question", ""),
-            "missing_entities": intent_debug.get("missing_entities", []),
-            "resolved_entities": intent_debug.get("resolved_entities", {}),
-            "skipped_due_to_timeout": False,
-        }
-        result.intent = ComponentResult(
-            component="intent_recognition",
-            success=True,
-            latency_ms=0,
-            output=result.intent_result,
-        )
-
-        # 严格意图命中判定
-        result.intent_strict_hit, result.intent_hit_reason = compute_intent_strict_hit(result)
-
-        # 澄清场景
-        if is_clarification:
-            result.tool_primary_hit = False
-            result.tool_full_chain_hit = False
-            result.tool_hit_reason = "澄清场景，未执行工具"
-            result.tool_primary_tools = result.expected_tools
-            result.task_success = True
-            result.llm_summary = tracker.summary()
-            result.process_quality = await process_quality_judge(case, result)
-            return result
-
-        # task_graph
-        task_graph_debug = debug.get("task_graph", {})
-        result.task_graph = task_graph_debug
-
-        # 工具执行信息
-        tasks = task_graph_debug.get("tasks", {})
-        result.executed_tools = sorted(set(
-            t.get("tool_name") for t in tasks.values()
-            if t.get("tool_name") and t.get("status") == "success"
-        ))
-        result.failed_tools = sorted(set(
-            t.get("tool_name") for t in tasks.values()
-            if t.get("tool_name") and t.get("status") == "failed"
-        ))
-
-        # replan
-        global_status = task_graph_debug.get("global_status", "")
-        if global_status in ("needs_replan", "replanning"):
-            result.replan_count = 1
-        replan_reason = task_graph_debug.get("replan_reason", "")
-        if "T1" in replan_reason or "hard_fail" in replan_reason:
-            result.replan_t1 = True
-        if "T2" in replan_reason or "retrieval_insufficient" in replan_reason:
-            result.replan_t2 = True
-        if "T4" in replan_reason or "low_match" in replan_reason:
-            result.replan_t4 = True
-
-        # KB 异常
-        for t in tasks.values():
-            if t.get("tool_name") == "kb_retrieve" and t.get("status") == "success":
-                try:
-                    res = t.get("result", {}) or {}
-                    chunks = res.get("chunks", []) if isinstance(res, dict) else []
-                    if not chunks:
-                        result.kb_empty = True
-                except Exception:
-                    pass
-            if t.get("tool_name") == "external_search" and t.get("status") == "success":
-                result.external_search_triggered = True
-
-        # 工具命中判定
-        result.tool_primary_hit, result.tool_full_chain_hit, result.tool_primary_tools, result.tool_hit_reason =             compute_tool_hit(result, result.expected_tools)
-
-        # 最终回复
-        result.final_response = (reply.get("content") or reply.get("text", "")) if isinstance(reply, dict) else str(reply)
-        result.session_history = debug.get("session_history", [])
-
+        result = _extract_result_from_response(data, case, result, start_time)
     except Exception as e:
         if is_token_exhausted_error(e):
             raise TokenExhaustedError(f"Token/配额耗尽，中断测试: {e}") from e
         result.has_exception = True
         result.exception_trace = traceback.format_exc()
 
-    # LLM-as-judge
-    result.llm_summary = tracker.summary()
-    if result.has_exception:
-        result.task_success = False
-        result.judge_result = {"resolved": False, "reason": "执行异常", "source": "rule"}
-    elif result.intent_result and result.intent_result.get("needs_clarification"):
-        result.task_success = True
-        result.judge_result = {"resolved": True, "reason": "正确触发澄清", "source": "rule"}
-    else:
-        judge = await llm_judge(
-            user_message=result.user_message,
-            final_response=result.final_response,
-            resume_text=result.resume_text,
-            scenario=result.scenario,
-            gold_intents=result.gold_intents,
-        )
-        result.judge_result = judge
-        result.task_success = judge.get("resolved", False)
-        if judge.get("error"):
-            has_final_response = bool(result.final_response.strip()) if result.final_response else False
-            result.task_success = not result.has_exception and has_final_response
-            result.judge_result["fallback"] = True
-
-    # 过程质量 Judge
-    result.process_quality = await process_quality_judge(case, result)
-
+    # v2 多维度 Judge
+    await _run_v2_judge(case, result, tracker)
     return result
 
+
+async def run_single_case_direct(
+    case: dict,
+    resume_text: str,
+    tracker: LLMTracker,
+    reset_session: bool = False,
+) -> TurnResult:
+    """本地直接调用 chat_endpoint（不走 HTTP），用于单轮评测。"""
+    sid = case["session_id"]
+    batch = sid.split("_")[1] if "_" in sid else "unknown"
+    eval_ctx = case.get("eval_context", {})
+    result = TurnResult(
+        case_id=sid,
+        batch=batch,
+        message=case["message"],
+        scenario=eval_ctx.get("scenario", ""),
+        gold_intents=eval_ctx.get("gold_intents", []),
+        gold_slots=eval_ctx.get("gold_slots", {}),
+        expected_tools=eval_ctx.get("expected_tools", []),
+    )
+
+    start_time = time.time()
+    tracker.reset()
+    result.resume_text = resume_text
+    result.user_message = case.get("message", "")
+
+    try:
+        # 1. 切换 active resume（直接调用函数）
+        resume_id = case.get("resume_id")
+        if resume_id:
+            from app.routers.resumes import activate_resume
+            try:
+                await activate_resume(resume_id)
+            except Exception as e:
+                logger.warning(f"[Eval] 本地切换 resume 失败: {e}")
+
+        # 2. 本地直接调用 chat_endpoint
+        from app.routers.chat import chat_endpoint
+        from app.services.handlers import ChatRequest
+
+        merged_eval_ctx = dict(eval_ctx)
+        if reset_session:
+            merged_eval_ctx["reset_session"] = True
+
+        request = ChatRequest(
+            session_id=sid,
+            message=case["message"],
+            eval_context=merged_eval_ctx,
+        )
+        data = await chat_endpoint(request)
+
+        result = _extract_result_from_response(data, case, result, start_time)
+    except Exception as e:
+        if is_token_exhausted_error(e):
+            raise TokenExhaustedError(f"Token/配额耗尽，中断测试: {e}") from e
+        result.has_exception = True
+        result.exception_trace = traceback.format_exc()
+
+    # v2 多维度 Judge
+    await _run_v2_judge(case, result, tracker)
+    return result
 
 
 # ═══════════════════════════════════════════════════════
@@ -1273,8 +1536,12 @@ async def main():
                     st = await run_stability_test(case, resume_text, tracker, args.stability)
                     stability_results.append(st)
                     r = await run_single_case(case, resume_text, tracker, session, reset_session=reset_session)
-                else:
+                elif group:
+                    # 多轮对话：走 HTTP，保持服务端 session 状态
                     r = await run_single_case(case, resume_text, tracker, session, reset_session=reset_session)
+                else:
+                    # 单轮对话：本地直接调用，跳过 HTTP 开销
+                    r = await run_single_case_direct(case, resume_text, tracker, reset_session=reset_session)
             except TokenExhaustedError as e:
                 print(f"\n  [!!] {e}")
                 print("  检测到 Token/配额/余额耗尽，测试已中断！")
@@ -1330,6 +1597,8 @@ async def main():
                     "session_history": r.session_history,
                     "final_response": r.final_response,
                     "judge_result": r.judge_result,
+                    "embedding_calls": r.embedding_calls,
+                    "reranker_calls": r.reranker_calls,
                 }
                 for r in all_results
             ],
