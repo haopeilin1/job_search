@@ -698,6 +698,11 @@ INTENT_CALIBRATION_SYSTEM = """你是一位意图与槽位联合校准专家。�
    长期记忆：
    {long_term_profile}
 
+4. 【系统状态】
+   - resume_available: {resume_available}
+   - resume_text摘要: {resume_summary}
+   【重要】resume_available 反映系统是否已有用户简历，这是客观事实，**必须如实填入 slots**。如果 resume_available=true，则 ASSESS/EXPLORE 等意图的 slots 中 resume_available 必须设为 true，绝不能自行猜测为 false。
+
 【校准原则】
 1. 独立判断：规则结果仅供参考，三层记忆与规则冲突时以记忆为准
 2. 话题连贯优先：上轮ASSESS + 本轮追问"薪资呢" → VERIFY，同时company/position从工作记忆补全
@@ -906,6 +911,14 @@ class SmallModelCalibrator:
 
         system_prompt = f"{INTENT_CALIBRATION_SYSTEM}\n\n{INTENT_CALIBRATION_EXAMPLES}"
         rule_intent_str = rule_result.intent.value if rule_result.intent else "null"
+        # 构造简历状态摘要
+        resume_available = False
+        resume_summary = "无"
+        if session and hasattr(session, "global_slots") and session.global_slots:
+            resume_available = bool(session.global_slots.get("resume_available", False))
+            resume_text = session.global_slots.get("resume_text", "")
+            if resume_text and resume_text != "尚未上传简历":
+                resume_summary = resume_text[:200].replace("\n", " ") + "..." if len(resume_text) > 200 else resume_text.replace("\n", " ")
         system_prompt = system_prompt.format(
             rule_intent=rule_intent_str,
             rule_strength=rule_result.strength.value,
@@ -915,6 +928,8 @@ class SmallModelCalibrator:
             working_history=working_history,
             compressed_history=compressed_history,
             long_term_profile=long_term_profile,
+            resume_available="true" if resume_available else "false",
+            resume_summary=resume_summary,
         )
 
         try:
@@ -1133,6 +1148,14 @@ class SmallModelCalibrator:
         working_history, compressed_history, long_term_profile = self._build_memory_context(session)
         system_prompt = f"{INTENT_CALIBRATION_SYSTEM}\n\n{INTENT_CALIBRATION_EXAMPLES}"
         rule_intent_str = rule_result.intent.value if rule_result.intent else "null"
+        # 构造简历状态摘要
+        resume_available = False
+        resume_summary = "无"
+        if session and hasattr(session, "global_slots") and session.global_slots:
+            resume_available = bool(session.global_slots.get("resume_available", False))
+            resume_text = session.global_slots.get("resume_text", "")
+            if resume_text and resume_text != "尚未上传简历":
+                resume_summary = resume_text[:200].replace("\n", " ") + "..." if len(resume_text) > 200 else resume_text.replace("\n", " ")
         system_prompt = system_prompt.format(
             rule_intent=rule_intent_str,
             rule_strength=rule_result.strength.value,
@@ -1142,6 +1165,8 @@ class SmallModelCalibrator:
             working_history=working_history,
             compressed_history=compressed_history,
             long_term_profile=long_term_profile,
+            resume_available="true" if resume_available else "false",
+            resume_summary=resume_summary,
         )
 
         # ═══════════════════════════════════════════════════════
@@ -1379,6 +1404,11 @@ CHAT: general_type, topic_hint
    - 压缩记忆：{compressed_history}
    - 长期记忆：{long_term_profile}
 
+4. 【系统状态】
+   - resume_available: {resume_available}
+   - resume_text摘要: {resume_summary}
+   【重要】resume_available 反映系统是否已有用户简历，这是客观事实，**必须如实填入 slots**。如果 resume_available=true，则 ASSESS/EXPLORE 等意图的 slots 中 resume_available 必须设为 true，绝不能自行猜测为 false。
+
 【你的任务】
 1. 综合规则、小模型、三层记忆的所有信息，做出最终意图判断
 2. 尽可能从三层记忆中补全缺失槽位
@@ -1498,6 +1528,14 @@ class LLMFallbackClassifier:
         working_history, compressed_history, long_term_profile = self._build_memory_context(session)
 
         system_prompt = f"{LLM_FALLBACK_SYSTEM}\n\n{LLM_FALLBACK_EXAMPLES}"
+        # 构造简历状态摘要
+        resume_available = False
+        resume_summary = "无"
+        if session and hasattr(session, "global_slots") and session.global_slots:
+            resume_available = bool(session.global_slots.get("resume_available", False))
+            resume_text = session.global_slots.get("resume_text", "")
+            if resume_text and resume_text != "尚未上传简历":
+                resume_summary = resume_text[:200].replace("\n", " ") + "..." if len(resume_text) > 200 else resume_text.replace("\n", " ")
         system_prompt = system_prompt.format(
             rule_intent=rule_result.intent.value if rule_result.intent else "null",
             rule_strength=rule_result.strength.value,
@@ -1513,6 +1551,8 @@ class LLMFallbackClassifier:
             working_history=working_history,
             compressed_history=compressed_history,
             long_term_profile=long_term_profile,
+            resume_available="true" if resume_available else "false",
+            resume_summary=resume_summary,
         )
 
         try:

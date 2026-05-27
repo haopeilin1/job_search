@@ -668,33 +668,76 @@ async def process_quality_judge(
 
 
 async def _run_v2_judge(case: dict, result: TurnResult, tracker: LLMTracker) -> None:
-    """调用 judge_postprocess v2 多维度评分，结果直接写回 result。"""
+    """调用 judge_postprocess v3 多维度评分，结果直接写回 result。
+    
+    v3 变更：
+    - 评分从 4维0-10分 → 10维0-5分
+    - code_override 不覆盖 LLM 结论，双输出供人工参考
+    - 传入更丰富的过程信息
+    """
     result.llm_summary = tracker.summary()
+
+    default_scores = {
+        "intent_accuracy": 0, "slot_accuracy": 0, "tool_correctness": 0,
+        "tool_execution": 0, "response_accuracy": 0, "response_completeness": 0,
+        "citation_quality": 0, "coherence": 0, "tone": 0, "efficiency": 0,
+    }
 
     if result.has_exception:
         result.task_success = False
         result.judge_result = {
-            "resolved": False, "reason": "执行异常", "source": "rule",
-            "accuracy": 0, "completeness": 0, "citation": 0, "relevance": 0,
+            "llm_resolved": False,
+            "llm_reason": "执行异常",
+            "code_resolved": False,
+            "code_reason": "执行异常，code直接否决",
+            "resolved": False,
+            "reason": "执行异常",
+            "scores": default_scores,
+            "source": "rule",
         }
         result.process_quality = {"overall_match": False, "match_rate": 0.0, "details": {}, "source": "rule"}
         return
 
     if result.intent_result and result.intent_result.get("needs_clarification"):
-        result.task_success = True
-        result.judge_result = {
-            "resolved": True, "reason": "正确触发澄清", "source": "rule",
-            "accuracy": 8, "completeness": 8, "citation": 8, "relevance": 8,
-        }
-        result.process_quality = {"overall_match": True, "match_rate": 1.0, "details": {}, "source": "rule"}
-        return
+        # 只有当标注期望也是澄清时，才直接判定为正确触发澄清
+        gold_intents = result.gold_intents or []
+        if "clarification" in gold_intents:
+            result.task_success = True
+            result.judge_result = {
+                "llm_resolved": True,
+                "llm_reason": "正确触发澄清",
+                "code_resolved": True,
+                "code_reason": "gold_intents包含clarification，规则直接通过",
+                "resolved": True,
+                "reason": "正确触发澄清",
+                "scores": {**default_scores, "intent_accuracy": 5, "response_accuracy": 5, "response_completeness": 5},
+                "source": "rule",
+            }
+            result.process_quality = {"overall_match": True, "match_rate": 1.0, "details": {}, "source": "rule"}
+            return
+        # 否则继续走正常 judge 流程，由 LLM judge 评判澄清是否合理
 
-    # 构造 judge_single_case 需要的 dict
+    # 构造 judge_single_case 需要的 dict（传入更多过程信息）
     pred_intents = []
+    pred_slots = {}
     if result.intent_result:
         for d in result.intent_result.get("demands", []):
             if isinstance(d, dict) and d.get("intent"):
                 pred_intents.append(d["intent"])
+                if d.get("entities"):
+                    pred_slots.update(d["entities"])
+
+    # 构建工具调用详情
+    tool_details = []
+    if result.tool_executions_full:
+        for t in result.tool_executions_full:
+            if isinstance(t, dict):
+                tool_details.append({
+                    "tool": t.get("tool_name", ""),
+                    "status": t.get("status", ""),
+                    "input": str(t.get("input", ""))[:200],
+                    "output_preview": str(t.get("output", ""))[:300],
+                })
 
     case_result = {
         "case_id": result.case_id,
@@ -703,65 +746,90 @@ async def _run_v2_judge(case: dict, result: TurnResult, tracker: LLMTracker) -> 
         "reply": result.final_response or "",
         "tools_called": result.executed_tools or [],
         "pred_intents": pred_intents,
+        "pred_slots": pred_slots,
+        "tool_details": tool_details,
+        "failed_tools": result.failed_tools or [],
+        "replan_count": result.replan_count,
+        "replan_t1": result.replan_t1,
+        "replan_t2": result.replan_t2,
+        "replan_t4": result.replan_t4,
+        "external_search_triggered": result.external_search_triggered,
+        "kb_empty": result.kb_empty,
+        "session_history": result.session_history or [],
     }
 
     ctx = _build_case_context(result.case_id, case_result)
     # 补充 resume_text（_build_case_context 从文件加载，可能缺失）
     if result.resume_text and ctx.get("resume_info") == "无简历":
         ctx["resume_info"] = result.resume_text[:800]
+    # 补充过程信息到 ctx
+    ctx["tool_details"] = tool_details
+    ctx["replan_info"] = f"replan_count={result.replan_count}, T1={result.replan_t1}, T2={result.replan_t2}, T4={result.replan_t4}"
+    ctx["external_search"] = result.external_search_triggered
+    ctx["pred_slots"] = pred_slots
 
     try:
         jr = await judge_single_case(case_result, ctx)
     except Exception as e:
         jr = {
             "resolved": False,
-            "accuracy": 0, "completeness": 0, "citation": 0, "relevance": 0,
+            "scores": default_scores,
             "reason": f"judge 调用失败: {e}",
             "case_id": result.case_id,
             "rule_hit": None,
+            "veto": False,
         }
 
-    # 代码层面强制校验 resolved：acc≥4 && comp≥4 && rel≥4 即通过
-    acc = jr.get("accuracy", 0)
-    comp = jr.get("completeness", 0)
-    rel = jr.get("relevance", 0)
-    code_resolved = acc >= 4 and comp >= 4 and rel >= 4
+    scores = jr.get("scores", default_scores)
     judge_resolved = jr.get("resolved", False)
+    judge_reason = jr.get("reason", "")
 
-    if not judge_resolved and code_resolved:
-        # judge 判 false 但分数门槛满足 → 代码 override
-        resolved = True
-        reason = f"[代码override] LLM原判false，但acc={acc}≥4, comp={comp}≥4, rel={rel}≥4，满足通过门槛。原理由：{jr.get('reason', '')}"
-        code_override = True
+    # ── code 辅助判断（不覆盖 LLM，双输出）──
+    intent_acc = scores.get("intent_accuracy", 0)
+    resp_acc = scores.get("response_accuracy", 0)
+    resp_comp = scores.get("response_completeness", 0)
+
+    # 否决项检查
+    veto_reasons = []
+    if resp_acc <= 1:
+        veto_reasons.append("response_accuracy<=1: 严重编造或事实错误")
+    if jr.get("rule_hit") == "empty_reply":
+        veto_reasons.append("空回复或极短回复")
+    if jr.get("rule_hit") == "fake_no_resume":
+        veto_reasons.append("系统声称缺少简历但实际已传入")
+
+    # 关键维度是否及格
+    key_ok = intent_acc >= 3 and resp_acc >= 3 and resp_comp >= 3
+    code_pass = key_ok and len(veto_reasons) == 0
+
+    if veto_reasons:
+        code_reason = f"否决项: {'; '.join(veto_reasons)} | 关键维度: intent={intent_acc}, resp_acc={resp_acc}, resp_comp={resp_comp}"
     else:
-        resolved = judge_resolved
-        reason = jr.get("reason", "")
-        code_override = False
+        code_reason = f"关键维度全部≥3 (intent={intent_acc}, resp_acc={resp_acc}, resp_comp={resp_comp})，无否决项"
 
+    # 最终输出：保留 LLM 原始判断 + code 判断，默认用 LLM 的（人工可覆盖）
     result.judge_result = {
-        "resolved": resolved,
-        "reason": reason,
-        "accuracy": acc,
-        "completeness": comp,
-        "citation": jr.get("citation", 0),
-        "relevance": rel,
+        # LLM 原始判断（保留）
+        "llm_resolved": judge_resolved,
+        "llm_reason": judge_reason,
+        # Code 判断（新增）
+        "code_resolved": code_pass,
+        "code_reason": code_reason,
+        # 默认用 LLM 的结论（人工可覆盖）
+        "resolved": judge_resolved,
+        "reason": judge_reason,
+        "scores": scores,
         "rule_hit": jr.get("rule_hit"),
-        "rule_override": jr.get("rule_override", False),
-        "code_override": code_override,
+        "veto": jr.get("veto", False),
         "source": "llm",
     }
-    result.task_success = resolved
+    result.task_success = judge_resolved
 
-    # 过程质量：用 v2 judge 的 accuracy + completeness 综合估算
+    # 过程质量：用关键维度综合估算
     result.process_quality = {
         "overall_match": result.task_success,
-        "match_rate": (acc + comp) / 20.0 if (acc or comp) else 0.0,
-        "details": {
-            "accuracy": acc,
-            "completeness": comp,
-            "citation": jr.get("citation", 0),
-            "relevance": rel,
-        },
+        "match_rate": (intent_acc + resp_acc + resp_comp) / 15.0 if (intent_acc or resp_acc or resp_comp) else 0.0,
+        "details": scores,
         "source": "llm",
     }
 
