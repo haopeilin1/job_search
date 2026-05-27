@@ -1268,5 +1268,15 @@
   ],
   "timestamp": "2026-04-30T20:11:17.176817",
   "tool_execution_success_rate": 1.0,
-  "tool_correct_rate": 0.0
+  "tool_correct_rate": 0.0,
+  "tools_total_called": 2,
+  "tools_success_called": 2,
+  "judge_resolved": false,
+  "judge_accuracy": 3,
+  "judge_completeness": 6,
+  "judge_citation": 2,
+  "judge_relevance": 8,
+  "judge_reason": "意图识别错误：用户期望verify（验证是否有偏应用层岗位），系统误判为explore并调用了match_analyze，导致回复核心虽是肯定回答，但结构偏离了验证任务。accuracy因意图错误只能≤4，给3分。completeness：虽回答了用户核心问题（有），但额外提供了不必要的高阶分析和建议，对简单验证而言过度冗余，但未遗漏关键信息，给6分。citation：系统从知识库检索了岗位信息，但测试备注指出知识库无精确匹配JD，因此岗位详情可能为编造或无关引用，且未基于用户提供的JD进行引用，质量低，给2分。relevance：回复直接回应了用户问题，并举例说明，相关性高，给8分。由于accuracy<5，按照规则resolved必须为false，且整体上系统未以最简洁有效的方式完成用户请求。",
+  "judge_rule_hit": null,
+  "judge_rule_override": false
 }
