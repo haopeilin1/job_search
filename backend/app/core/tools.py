@@ -73,50 +73,7 @@ class ToolResult:
 
 
 # ═══════════════════════════════════════════════════════
-# 2. 工具定义（名称 + 描述 + 参数 schema）
-# ═══════════════════════════════════════════════════════
-
-TOOL_DEFINITIONS = {
-    "kb_retrieve": {
-        "name": "kb_retrieve",
-        "description": "从知识库中检索与查询相关的 JD chunks（混合召回：70%向量 + 30%BM25）。",
-        "parameters": {
-            "query": {"type": "string", "description": "检索查询文本", "required": True},
-            "company": {"type": "string", "description": "可选：按公司名过滤", "required": False},
-            "position": {"type": "string", "description": "可选：按岗位名过滤", "required": False},
-            "top_k": {"type": "integer", "description": "返回 top_k 个相关 chunk", "default": settings.RETRIEVAL_TOP_K},
-        },
-    },
-    "match_analyze": {
-        "name": "match_analyze",
-        "description": "分析简历与 JD 的匹配度。"
-                       "输入简历文本和 JD 文本，输出："
-                       "(1) 匹配分数 0-100；"
-                       "(2) 匹配等级（高度契合/基本匹配/略有差距/不匹配）；"
-                       "(3) 核心优势（简历中与 JD 对齐的 2-3 点）；"
-                       "(4) 潜在短板（相对 JD 不足的 1-2 点）；"
-                       "(5) 面试准备建议。",
-        "parameters": {
-            "resume_text": {"type": "string", "description": "用户简历文本", "required": True},
-            "jd_text": {"type": "string", "description": "岗位描述文本", "required": True},
-            "company": {"type": "string", "description": "可选：公司名称", "required": False},
-            "position": {"type": "string", "description": "可选：岗位名称", "required": False},
-        },
-    },
-    "interview_questions": {
-        "name": "interview_questions",
-        "description": "根据简历与 JD 的匹配结果，生成针对性面试题。",
-        "parameters": {
-            "match_result": {"type": "object", "description": "match_analyze 的输出结果", "required": True},
-            "company": {"type": "string", "description": "公司名称", "required": False},
-            "position": {"type": "string", "description": "岗位名称", "required": False},
-        },
-    },
-}
-
-
-# ═══════════════════════════════════════════════════════
-# 3. BM25 索引（全局单例，懒加载）
+# 2. BM25 索引（全局单例，懒加载）
 # ═══════════════════════════════════════════════════════
 
 _bm25_index = None
@@ -166,8 +123,14 @@ def _build_bm25_index():
 # 4. 混合召回实现（向量 + BM25，两路独立召回后融合）
 # ═══════════════════════════════════════════════════════
 
-async def _kb_retrieve_stub(query: str, company: Optional[str] = None,
-                            position: Optional[str] = None, top_k: int = None) -> ToolResult:
+async def _kb_retrieve_stub(
+    query: str,
+    company: Optional[str] = None,
+    position: Optional[str] = None,
+    top_k: int = None,          # 混合召回候选池大小（向后兼容）
+    pool_k: int = None,         # 混合召回候选池大小（新参数，优先）
+    rerank_k: int = None,       # 重排序后输出数量（新参数，优先）
+) -> ToolResult:
     """
     知识库混合召回工具（含 CrossEncoder 重排序）：
       1) 向量路独立召回 top-20
@@ -175,24 +138,43 @@ async def _kb_retrieve_stub(query: str, company: Optional[str] = None,
       3) 合并去重（chunk_id 为 key）
       4) 两路分数分别 min-max 归一化到 [0,1]
       5) 加权混合：hybrid = 0.70×vec_norm + 0.30×bm25_norm
-      6) 按 hybrid_score 降序，取 top-20 作为重排序候选池
-      7) CrossEncoder 重排序，输出 top-10
-    """
-    logger.info(f"[Tool:kb_retrieve] query='{query[:40]}...' company={company} position={position}")
+      6) 按 hybrid_score 降序，取 pool_k 作为重排序候选池
+      7) CrossEncoder 重排序，输出 rerank_k 条
 
-    # 防御：Planner 可能将 top_k 生成为字符串
-    if top_k is not None:
+    路由参数（意图级别调优）：
+      - explore:     pool_k=15, rerank_k=10（广度优先）
+      - assess:      pool_k=20, rerank_k=12（深度优先）
+      - verify:      pool_k=20, rerank_k=12（精确优先）
+      - prepare(JD): pool_k=20, rerank_k=12（同 assess）
+    """
+    logger.info(
+        f"[Tool:kb_retrieve] query='{query[:40]}...' company={company} position={position} "
+        f"top_k={top_k} pool_k={pool_k} rerank_k={rerank_k}"
+    )
+
+    # 防御：Planner 可能将参数生成为字符串
+    def _to_int(v, default):
+        if v is None:
+            return default
         try:
-            top_k = int(top_k)
+            return int(v)
         except (ValueError, TypeError):
-            top_k = None
+            return default
+
+    from app.core.config import settings
+
+    # pool_k 优先于 top_k（top_k 保持向后兼容）
+    effective_pool_k = _to_int(pool_k, None)
+    if effective_pool_k is None:
+        effective_pool_k = _to_int(top_k, settings.RETRIEVAL_TOP_K)
+
+    effective_rerank_k = _to_int(rerank_k, settings.RERANKER_TOP_K)
 
     try:
         import numpy as np
         import jieba
         from app.core.vector_store import VectorStore
         from app.core.embedding import EmbeddingClient
-        from app.core.config import settings
 
         # ── 1. 向量检索 top-20 ──
         vs = VectorStore()
@@ -303,8 +285,7 @@ async def _kb_retrieve_stub(query: str, company: Optional[str] = None,
 
         # ── 7. 排序取 top-k（作为重排序候选池）──
         items.sort(key=lambda x: x["hybrid_score"], reverse=True)
-        final_top_k = top_k if top_k is not None else settings.RETRIEVAL_TOP_K
-        top_results = items[:final_top_k]
+        top_results = items[:effective_pool_k]
 
         # ── 8. CrossEncoder 重排序 ──
         reranked_results = top_results
@@ -315,7 +296,7 @@ async def _kb_retrieve_stub(query: str, company: Optional[str] = None,
                 ranked = await reranker.rerank(
                     query=query,
                     candidates=top_results,
-                    top_k=settings.RERANKER_TOP_K,
+                    top_k=effective_rerank_k,
                     batch_size=settings.RERANKER_BATCH_SIZE,
                     max_length=settings.RERANKER_MAX_LENGTH,
                 )
@@ -372,6 +353,8 @@ async def _kb_retrieve_stub(query: str, company: Optional[str] = None,
                 "query": query,
                 "filters": filters,
                 "strategy": "hybrid(70%vec+30%bm25)+reranker",
+                "pool_k": effective_pool_k,
+                "rerank_k": effective_rerank_k,
                 "pool_size": total_pool,
                 "vec_only": vec_only,
                 "bm25_only": bm25_only,
@@ -475,6 +458,9 @@ async def _match_analyze(resume_text: str, jd_text: str,
         text = raw.strip()
         if text.startswith("```"):
             text = re.sub(r"^```json\s*|\s*```$", "", text).strip()
+        
+        # 清洗非法控制字符，避免 JSON 解析失败
+        text = _sanitize_control_chars(text)
 
         data = json.loads(text)
 
@@ -630,9 +616,18 @@ async def _evidence_relevance_check(query: str, evidence_chunks: List[Dict]) -> 
         )
 
 
-async def _interview_questions(match_result: dict,
+def _sanitize_control_chars(text: str) -> str:
+    """去除字符串中的非法 JSON 控制字符（保留 \t \n \r）"""
+    if not isinstance(text, str):
+        return text
+    # 允许 \t(9), \n(10), \r(13)，去除其他控制字符
+    return ''.join(ch for ch in text if ord(ch) >= 32 or ch in '\t\n\r')
+
+
+async def _interview_questions(match_result: dict = None,
                                  company: Optional[str] = None,
-                                 position: Optional[str] = None) -> ToolResult:
+                                 position: Optional[str] = None,
+                                 focus_area: Optional[str] = "gap") -> ToolResult:
     """
     面试题生成工具（LLM 驱动）。
 
@@ -640,35 +635,40 @@ async def _interview_questions(match_result: dict,
     """
     logger.info(f"[Tool:interview_questions] company={company} position={position}")
 
-    if not match_result or not isinstance(match_result, dict):
-        return ToolResult(success=False, error="match_result 为空或格式错误")
-
-    missing = match_result.get("missing_experience", "")
-    core_skills = match_result.get("core_skills", "")
-    covered = match_result.get("covered", [])
-    score = match_result.get("match_score", 0)
+    # 自适应：有 match_result 时基于匹配短板生成，没有时基于岗位信息生成
+    has_match = bool(match_result) and isinstance(match_result, dict)
+    
+    if has_match:
+        missing = _sanitize_control_chars(match_result.get("missing_experience", ""))
+        core_skills = _sanitize_control_chars(match_result.get("core_skills", ""))
+        covered = [_sanitize_control_chars(c) for c in match_result.get("covered", []) if isinstance(c, str)]
+        score = match_result.get("match_score", 0)
+    else:
+        missing = ""
+        core_skills = ""
+        covered = []
+        score = 0
 
     system_prompt = """# 角色定义
 你是一位资深技术面试官，拥有丰富的面试经验和深度的技术理解力。你擅长设计刁钻但有深度、能够真实考察候选人能力的面试题目。
 
 # 任务目标
-你的任务是根据候选人缺乏的经验和JD要求的核心能力，设计5道具有挑战性的模拟面试题，每道题都包含1-2个可能的追问方向。
+根据输入信息设计5道具有挑战性的模拟面试题，每道题都包含1-2个可能的追问方向。
 
-# 工作流上下文
-- **Input**：候选人缺乏的经验描述、JD要求的核心能力清单
-- **Process**：
-  1. 深入理解候选人的短板和职位的核心要求
-  2. 针对每个关键短板，设计1-2道深入追问的问题
-  3. 问题设计原则：
-     - 避免简单的概念性、记忆性问题
-     - 侧重考察实际应用能力、问题解决能力、系统设计能力
-     - 可以包含场景题、设计题、代码分析题、架构题、技术理解等多种形式
-     - 问题要有一定的深度和难度，能够区分优秀候选人和普通候选人
-  4. 每道面试题必须包含：
+# 输入信息说明
+- 如果提供了【候选人匹配分析结果】，请针对候选人的短板和JD要求设计深度面试题
+- 如果未提供匹配分析结果（仅有岗位/公司信息），请基于该领域通用的核心能力要求设计经典面试题
+- 如果什么都没有提供，请设计该领域最经典、最能区分候选人水平的5道面试题
+
+# 问题设计原则
+  1. 避免简单的概念性、记忆性问题
+  2. 侧重考察实际应用能力、问题解决能力、系统设计能力
+  3. 可以包含场景题、设计题、代码分析题、架构题、技术理解等多种形式
+  4. 问题要有一定的深度和难度，能够区分优秀候选人和普通候选人
+  5. 每道面试题必须包含：
      - **主体问题**：完整的面试题内容
      - **追问方向**：1-2个面试官可以进一步追问的方向（用「追问方向：」标识）
-  5. 确保生成5道高质量面试题，覆盖不同的能力维度
-- **Output**：结构化JSON对象，包含5道面试题的字符串数组
+  6. 确保生成5道高质量面试题，覆盖不同的能力维度
 
 # 约束与规则
 - 问题要具体、明确，避免过于抽象
@@ -692,7 +692,8 @@ async def _interview_questions(match_result: dict,
   ]
 }"""
 
-    user_prompt = f"""【候选人匹配分析结果】
+    if has_match:
+        user_prompt = f"""【候选人匹配分析结果】
 - 匹配分数：{score}/100
 - 已覆盖能力：{', '.join(covered) if covered else '无'}
 - 缺乏的经验：{missing or '（未明确）'}
@@ -701,6 +702,13 @@ async def _interview_questions(match_result: dict,
 { f"- 目标岗位：{position}" if position else "" }
 
 请基于以上信息生成 5 道针对性面试题，严格按 JSON 格式输出："""
+    else:
+        user_prompt = f"""【面试题生成请求】
+{ f"- 目标岗位：{position}" if position else "" }
+{ f"- 目标公司：{company}" if company else "" }
+{ f"- 关注点：{focus_area}" if focus_area else "" }
+
+未提供候选人匹配分析结果。请基于岗位领域通用的核心能力要求，生成 5 道经典且有深度的面试题，严格按 JSON 格式输出："""
 
     try:
         from app.core.llm_client import LLMClient
@@ -990,10 +998,15 @@ class InterviewGenTool(BaseTool):
                 match_result = {}
         if not isinstance(match_result, dict):
             match_result = {}
+        # 优先从 params 读取 position/company，如果没有再从 match_result 读取
+        company = params.get("company") or (match_result.get("company") if match_result else None)
+        position = params.get("position") or (match_result.get("position") if match_result else None)
+        focus_area = params.get("focus_area", "gap")
         result = await _interview_questions(
-            match_result=match_result,
-            company=match_result.get("company"),
-            position=match_result.get("position"),
+            match_result=match_result if match_result else None,
+            company=company,
+            position=position,
+            focus_area=focus_area,
         )
         return NewToolResult(
             success=result.success,
@@ -1350,9 +1363,25 @@ class GlobalRankTool(BaseTool):
         )
         return filtered
 
+    def _format_resume_summary(self, summary: dict) -> str:
+        """将 _extract_resume_summary 的结构化摘要格式化为 LLM 可读的文本。"""
+        lines = []
+        years = summary.get("years_of_experience", 0)
+        lines.append(f"工作年限：{'在校生/应届生' if years == 0 else f'{years} 年'}")
+        lines.append(f"学历：{summary.get('education', '未知')}")
+        lines.append(f"领域方向：{summary.get('domain', '未知')}")
+        hard = summary.get("hard_skills", [])
+        if hard:
+            lines.append(f"硬技能：{', '.join(hard[:20])}")
+        soft = summary.get("soft_skills", [])
+        if soft:
+            lines.append(f"软技能：{', '.join(soft[:10])}")
+        return "\n".join(lines)
+
     def _build_jd_summary(self, jd: dict, max_chars: int = 200) -> str:
-        """为单个 JD 构建结构化摘要文本"""
-        lines = [f"【{jd['company']} · {jd['position']}】"]
+        """为单个 JD 构建结构化摘要文本（包含 jd_id 供 LLM 精排原样返回）。"""
+        jd_id = jd.get("jd_id", "")
+        lines = [f"【ID: {jd_id} | {jd['company']} · {jd['position']}】"]
         sections = jd.get("sections", {})
 
         # 按优先级输出 section
@@ -1570,11 +1599,24 @@ class GlobalRankTool(BaseTool):
             jd_summaries.append(summary)
 
         system_prompt = """你是一位资深HR顾问。请将用户简历与以下多个JD进行对比分析，按匹配度排序并给出投递建议。
+
+【评分标准】match_score 必须为 0-100 的整数，按以下标准打分：
+- 80-100：高度匹配，技能/年限/学历/领域均契合，建议优先投递
+- 60-79：中等匹配，核心条件符合但有小幅差距，可作为备选
+- 40-59：勉强匹配，有明显短板但部分条件吻合，需谨慎评估
+- 0-39：匹配度低，核心条件不符，不建议投递
+
+【输出要求】
+1. 每个 ranking 必须包含 jd_id（直接从输入JD的 ID 字段原样复制，不可省略或修改）
+2. match_score 必须严格在 0-100 之间
+3. apply_priority 只能是：高、中、低
+
 输出严格JSON格式：
 {
   "rankings": [
     {
       "rank": 1,
+      "jd_id": "原样复制的ID",
       "company": "公司名",
       "position": "岗位名",
       "match_score": 85,
@@ -1587,8 +1629,9 @@ class GlobalRankTool(BaseTool):
   "strategy_advice": "整体投递策略建议"
 }"""
 
+        resume_summary_text = self._format_resume_summary(resume_summary)
         user_prompt = (
-            f"【用户简历】\n{resume_text[:1200]}...\n\n"
+            f"【用户简历摘要】\n{resume_summary_text}\n\n"
             f"【候选JD】（共{len(jd_summaries)}个，已粗筛）\n\n"
             + "\n\n---\n\n".join(jd_summaries)
             + "\n\n请输出JSON："
@@ -1604,10 +1647,34 @@ class GlobalRankTool(BaseTool):
                 timeout=TIMEOUT_HEAVY,
             )
             data = json.loads(raw.strip())
-            # 补充 jd_id（LLM 返回的 ranking 可能没有 jd_id）
-            for i, ranking in enumerate(data.get("rankings", [])):
-                if i < len(filtered_jds):
-                    ranking["jd_id"] = filtered_jds[i].get("jd_id", "")
+
+            # ═══════════════════════════════════════════════════════
+            # 校正 jd_id：LLM 可能遗漏、改错或重排顺序，需多重兜底
+            # ═══════════════════════════════════════════════════════
+            jd_lookup_by_id = {jd.get("jd_id", ""): jd for jd in filtered_jds}
+            jd_lookup_by_name = {
+                (jd.get("company", ""), jd.get("position", "")): jd
+                for jd in filtered_jds
+            }
+            for ranking in data.get("rankings", []):
+                jd_id = ranking.get("jd_id", "")
+                company = ranking.get("company", "")
+                position = ranking.get("position", "")
+                matched_jd = None
+                # 优先按 jd_id 精确匹配
+                if jd_id and jd_id in jd_lookup_by_id:
+                    matched_jd = jd_lookup_by_id[jd_id]
+                # 其次按 company + position 匹配
+                elif (company, position) in jd_lookup_by_name:
+                    matched_jd = jd_lookup_by_name[(company, position)]
+                if matched_jd:
+                    ranking["jd_id"] = matched_jd.get("jd_id", "")
+                else:
+                    logger.warning(
+                        f"[GlobalRankTool] LLM 返回的 ranking 无法匹配 jd_id: "
+                        f"jd_id={jd_id}, company={company}, position={position}"
+                    )
+
             # 注入粗筛元数据（供埋点使用）
             data["_coarse_filter_meta"] = {
                 "input_jds": len(aggregated_jds),
@@ -1880,7 +1947,10 @@ def create_tool_registry():
     registry.register(GlobalRankTool())
     registry.register(QASynthesizeTool())  # VERIFY 意图问答直出（跳过聚合 LLM，延迟更低）
     registry.register(InterviewGenTool())
-    registry.register(EvidenceRelevanceCheckTool())
+    # EvidenceRelevanceCheckTool 已从注册中移除，降级为内部工具
+    # 保留类定义供反思模块等内部逻辑调用
     registry.register(FileOpsTool())
     registry.register(GeneralChatTool())
+    from app.core.mcp_search import ExternalSearchTool
+    registry.register(ExternalSearchTool())
     return registry

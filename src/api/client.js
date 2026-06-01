@@ -1,4 +1,4 @@
-const BASE_URL = "http://localhost:8001";
+const BASE_URL = "http://localhost:8005";
 
 async function fetchJson(url, options = {}) {
   // 当 body 为 FormData 时，不手动设置 headers，让浏览器自动添加 Content-Type（含 boundary）

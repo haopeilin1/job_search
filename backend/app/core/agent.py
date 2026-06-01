@@ -17,7 +17,7 @@ from dataclasses import dataclass, field
 from app.core.intent import IntentResult, IntentType, RouteLayer
 from app.core.tools import (
     ToolCall, ToolResult,
-    execute_tool, TOOL_DEFINITIONS,
+    execute_tool,
 )
 from app.core.llm_client import LLMClient
 from app.core.config import settings

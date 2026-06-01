@@ -75,7 +75,7 @@ def _get_resume_text() -> str:
     # 优先使用原始文本
     raw = schema.get("meta", {}).get("raw_text", "") if schema.get("meta") else ""
     if raw:
-        return raw[:3000]  # 限制长度避免 token 过多
+        return raw  # 返回完整简历文本，避免截断导致匹配分析失真
     # 否则拼接结构化信息
     parts = []
     bi = schema.get("basic_info", {})

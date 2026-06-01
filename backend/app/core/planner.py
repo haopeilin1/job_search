@@ -50,6 +50,10 @@ class TaskNode:
     started_at: float = 0.0
     finished_at: float = 0.0
 
+    # fallback 策略（由 Planner 生成，Executor 执行时参考）
+    fallback: Optional[Dict[str, Any]] = None
+    retry_count: int = 0
+
 
 @dataclass
 class TaskGraph:
@@ -258,23 +262,6 @@ AVAILABLE_TOOLS = [
             "chat_type": "对话类型：career/industry/other",
         },
     },
-    {
-        "name": "evidence_relevance_check",
-        "description": "判断上轮检索的evidence_cache是否与当前问题强相关，避免重复检索",
-        "when_to_use": [
-            "follow_up_type为expand或clarify时",
-            "session中存在evidence_cache",
-            "需要判断是否可以复用上轮检索结果"
-        ],
-        "when_not_to_use": [
-            "follow_up_type为switch或none时",
-            "evidence_cache为空时"
-        ],
-        "parameters": {
-            "query": "当前用户query",
-            "evidence_chunks": "上轮检索的evidence_cache（已截断到前N条）",
-        },
-    },
 ]
 
 
@@ -427,7 +414,7 @@ class TaskPlanner:
                 evidence_cache_summary,
                 "",
                 "检索策略提示：",
-                "- expand/clarify → 优先判断evidence_cache是否可直接复用",
+                "- expand/clarify → 可直接规划 kb_retrieve，执行器会自动判断 evidence_cache 复用",
                 "- switch/none → 必须重新检索",
                 "",
             ])

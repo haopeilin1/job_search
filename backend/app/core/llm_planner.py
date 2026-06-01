@@ -419,9 +419,10 @@ Layer 1: prepare(0.88)                    ← 依赖ASSESS结果
 ## 任务类型说明
 
 - tool_call：调用外部工具（必须有 tool_name）
-- llm_reasoning：纯 LLM 推理步骤，不调用外部工具（如解析、摘要、格式转换）
 - aggregate：聚合上游任务输出，生成最终素材（不调用外部工具）
 - ask_user：中断执行，向用户提问（parameters 中可包含 question 和 options）
+
+【重要】禁止生成 llm_reasoning 类型任务。所有推理和分析都应通过 tool_call（调用具体工具）或 aggregate（聚合已有结果）完成。不要生成任何 tool_name 为空的纯 LLM 推理步骤。
 
 ## fallback.action 说明
 
@@ -520,10 +521,20 @@ class TaskGraphPlanner:
         graph: TaskGraph,
         failed_task: TaskNode,
         session: SessionMemory,
+        reflection_result: Optional[Dict] = None,
     ) -> TaskGraph:
         """
-        动态 replan：根据失败任务调整计划。
+        动态 replan：根据失败任务 + 反思结论调整计划。
+
+        两条路径：
+          1. 有 reflection_result → LLM 智能重规划
+          2. 无 reflection_result → 走 fallback 硬规则
         """
+        # ── 路径1：LLM 智能重规划（有反思结论时优先） ──
+        if reflection_result and reflection_result.get("suggested_action") == "replan_tools":
+            return await self._llm_replan(graph, failed_task, session, reflection_result)
+
+        # ── 路径2：fallback 硬规则 ──
         if failed_task.fallback:
             fb = failed_task.fallback
 
@@ -562,6 +573,120 @@ class TaskGraphPlanner:
         # 默认 abort
         self._cascade_abort(graph, failed_task)
         graph.global_status = "failed"
+        return graph
+
+    async def _llm_replan(
+        self,
+        graph: TaskGraph,
+        failed_task: TaskNode,
+        session: SessionMemory,
+        reflection_result: Dict,
+    ) -> TaskGraph:
+        """
+        LLM 智能重规划。
+
+        将反思结论传给规划LLM，让LLM决定需要新增/修改哪些任务。
+        LLM 只输出"调整指令"，不输出完整 graph，降低出错概率。
+        """
+        # 构建当前任务摘要
+        tasks_summary = []
+        for t in graph.tasks:
+            status = "✅" if t.status == "success" else "❌" if t.status == "failed" else "⏳"
+            tasks_summary.append(
+                f"{status} {t.task_id} | {t.tool_name or t.task_type} | deps={t.dependencies}"
+            )
+
+        system_prompt = (
+            "你是任务调整助手。原始任务图执行失败，反思模块检测到问题。"
+            "请判断需要如何调整任务图，输出严格JSON格式："
+            "\n"
+            "{\n"
+            '  "adjustment": "add_tasks" | "retry" | "skip" | "abort",\n'
+            '  "new_tasks": [                    // adjustment=add_tasks 时填写\n'
+            '    {\n'
+            '      "task_id": "T99",\n'
+            '      "task_type": "tool_call",\n'
+            '      "tool_name": "kb_retrieve" | "external_search" | "qa_synthesize" | "general_chat",\n'
+            '      "description": "...",\n'
+            '      "parameters": {"query": "..."},\n'
+            '      "dependencies": ["T0"]\n'
+            '    }\n'
+            '  ],\n'
+            '  "reason": "简要理由"\n'
+            "}\n"
+            "\n"
+            "规则：\n"
+            "- 如果只是信息缺失（如缺少薪资信息），adjustment=add_tasks，补充检索任务\n"
+            "- 如果是临时错误，adjustment=retry\n"
+            "- 如果是非核心任务失败，adjustment=skip\n"
+            "- 如果无法修复，adjustment=abort\n"
+            "- 不要输出 markdown 代码块"
+        )
+
+        user_prompt = (
+            f"【失败任务】{failed_task.task_id} | {failed_task.tool_name or failed_task.task_type}\n"
+            f"【反思结论】{reflection_result.get('reason', '')}\n"
+            f"【缺失信息】{', '.join(reflection_result.get('missing_info', []))}\n"
+            f"【当前任务图】\n" + "\n".join(tasks_summary[:15]) + "\n"
+            "\n请输出调整指令JSON："
+        )
+
+        try:
+            llm = self.llm or LLMClient.from_config("planner")
+            raw = await llm.generate(
+                prompt=user_prompt,
+                system=system_prompt,
+                max_tokens=800,
+                temperature=0.2,
+            )
+
+            text = raw.strip()
+            if text.startswith("```"):
+                text = text.strip("`").replace("json", "").strip()
+
+            data = json.loads(text)
+            adjustment = data.get("adjustment", "abort")
+
+            if adjustment == "add_tasks":
+                for t_raw in data.get("new_tasks", []):
+                    new_task = TaskNode(
+                        task_id=t_raw.get("task_id", f"T{len(graph.tasks)}"),
+                        task_type=t_raw.get("task_type", "tool_call"),
+                        tool_name=t_raw.get("tool_name"),
+                        description=t_raw.get("description", ""),
+                        parameters=t_raw.get("parameters", {}),
+                        dependencies=t_raw.get("dependencies", []),
+                    )
+                    graph.add_task(new_task)
+                    logger.info(f"[TaskGraphPlanner] LLM Replan: 新增任务 {new_task.task_id} | {new_task.tool_name}")
+
+                # 将失败任务重置为 pending，让它和新增任务一起重新执行
+                failed_task.status = "pending"
+                failed_task.observation = ""
+                graph.global_status = "pending"
+                logger.info(f"[TaskGraphPlanner] LLM Replan: 重置失败任务 {failed_task.task_id} 为 pending")
+
+            elif adjustment == "retry":
+                failed_task.status = "pending"
+                failed_task.observation = ""
+                logger.info(f"[TaskGraphPlanner] LLM Replan: 重试 {failed_task.task_id}")
+
+            elif adjustment == "skip":
+                failed_task.status = "skipped"
+                self._apply_skip_impact(graph, failed_task)
+                logger.info(f"[TaskGraphPlanner] LLM Replan: 跳过 {failed_task.task_id}")
+
+            else:  # abort
+                self._cascade_abort(graph, failed_task)
+                graph.global_status = "failed"
+                logger.info(f"[TaskGraphPlanner] LLM Replan: 中止 {failed_task.task_id}")
+
+        except Exception as e:
+            logger.error(f"[TaskGraphPlanner] LLM Replan 失败: {e}")
+            # fallback 到 abort
+            self._cascade_abort(graph, failed_task)
+            graph.global_status = "failed"
+
         return graph
 
     # ──────────────────────────── Prompt 构建 ────────────────────────────
@@ -1064,7 +1189,7 @@ class TaskGraphPlanner:
         改进：
         1. PREPARE 有 company/position 时，先 kb_retrieve 再生成面试题
         2. 查询涉及不在知识库中的实体时，自动加入 external_search
-        3. expand/clarify 且 evidence_cache 可用时，利用 ReActExecutor 的 kb_retrieve 拦截复用
+        3. expand/clarify 且 evidence_cache 可用时，利用 PlanExecutor 的 kb_retrieve 拦截复用
         """
         tasks: List[TaskNode] = []
         gs = multi_result.global_slots or {}
@@ -1092,14 +1217,28 @@ class TaskGraphPlanner:
         # kb_retrieve 去重池：key = (query, company, top_k)
         kb_tasks: Dict[str, TaskNode] = {}
 
-        def get_or_create_kb(query: str, company: str = None, top_k: int = 10) -> TaskNode:
-            key = f"{query}#{company}#{top_k}"
+        def get_or_create_kb(
+            query: str,
+            company: str = None,
+            top_k: int = None,
+            pool_k: int = None,
+            rerank_k: int = None,
+        ) -> TaskNode:
+            key = f"{query}#{company}#{pool_k}#{rerank_k}"
             if key in kb_tasks:
                 return kb_tasks[key]
+            params = {"query": query, "company": company}
+            if pool_k is not None:
+                params["pool_k"] = pool_k
+            if rerank_k is not None:
+                params["rerank_k"] = rerank_k
+            # 向后兼容：如果旧系统只认 top_k，也带上
+            if top_k is not None and pool_k is None:
+                params["top_k"] = top_k
             kb = add_task(
                 task_type="tool_call", tool_name="kb_retrieve",
                 description=f"检索: {query[:30]}...",
-                parameters={"query": query, "company": company, "top_k": top_k},
+                parameters=params,
                 fallback=TaskFallback(action="ask_user", reason="未找到相关信息"),
             )
             kb_tasks[key] = kb
@@ -1123,7 +1262,11 @@ class TaskGraphPlanner:
             needs_external = is_temporal or force_external or entity_missing
 
             if intent == LLMIntentType.EXPLORE:
-                kb = get_or_create_kb(query, top_k=settings.EXPLORE_TOP_K)
+                kb = get_or_create_kb(
+                    query,
+                    pool_k=settings.EXPLORE_POOL_K,
+                    rerank_k=settings.EXPLORE_RERANK_K,
+                )
                 es_task = None
                 if needs_external:
                     es_task = add_task(
@@ -1148,7 +1291,12 @@ class TaskGraphPlanner:
                     )
 
             elif intent == LLMIntentType.ASSESS:
-                kb = get_or_create_kb(query, company=company, top_k=settings.ASSESS_TOP_K)
+                kb = get_or_create_kb(
+                    query,
+                    company=company,
+                    pool_k=settings.ASSESS_POOL_K,
+                    rerank_k=settings.ASSESS_RERANK_K,
+                )
                 es_task = None
                 if needs_external:
                     es_task = add_task(
@@ -1179,7 +1327,12 @@ class TaskGraphPlanner:
                     match_analyze_task = ma
 
             elif intent == LLMIntentType.VERIFY:
-                kb = get_or_create_kb(query, company=company, top_k=settings.VERIFY_TOP_K)
+                kb = get_or_create_kb(
+                    query,
+                    company=company,
+                    pool_k=settings.VERIFY_POOL_K,
+                    rerank_k=settings.VERIFY_RERANK_K,
+                )
                 es_task = None
                 if needs_external:
                     es_task = add_task(
@@ -1210,7 +1363,12 @@ class TaskGraphPlanner:
                 # PREPARE 有 company/position 时，先检索 JD，再生成面试题
                 kb = None
                 if company or position:
-                    kb = get_or_create_kb(query, company=company, top_k=settings.VERIFY_TOP_K)
+                    kb = get_or_create_kb(
+                        query,
+                        company=company,
+                        pool_k=settings.PREPARE_POOL_K,
+                        rerank_k=settings.PREPARE_RERANK_K,
+                    )
                 deps = []
                 match_param = {"gaps": ["待补充"], "interview_focus": ["技术深度", "项目经验"]}
                 if match_analyze_task:

@@ -18,9 +18,10 @@ Tavily 注册: https://tavily.com/
 
 import json
 import logging
-from typing import Dict, List, Optional
+from typing import Dict, List, Optional, Any
 
 from app.core.config import settings
+from app.core.tool_registry import BaseTool, ToolResult as NewToolResult
 
 logger = logging.getLogger(__name__)
 
@@ -421,8 +422,8 @@ def _extract_company_from_text(text: str) -> str:
 # 3. ExternalSearchTool 封装（供 ToolRegistry / ReAct 执行器调用）
 # ═══════════════════════════════════════════════════════
 
-class ExternalSearchTool:
-    """外部搜索工具（供 react_executor 直接调用）"""
+class ExternalSearchTool(BaseTool):
+    """外部搜索工具（通过Tavily/Brave搜索网络实时信息）"""
 
     @property
     def name(self) -> str:
@@ -455,22 +456,42 @@ class ExternalSearchTool:
             "required": ["query"],
         }
 
-    async def execute(self, params: Dict) -> Dict:
+    @property
+    def output_schema(self) -> Dict:
+        return {
+            "type": "object",
+            "properties": {
+                "success": {"type": "boolean"},
+                "chunks": {"type": "array", "items": {"type": "object"}},
+                "query": {"type": "string"},
+                "source": {"type": "string"},
+            },
+        }
+
+    @property
+    def cost_level(self) -> str:
+        return "medium"
+
+    @property
+    def avg_latency_ms(self) -> int:
+        return 1500
+
+    async def execute(self, params: Dict[str, Any]) -> NewToolResult:
         query = params.get("query", "")
         count = params.get("count", settings.TAVILY_MAX_RESULTS)
 
         if not query:
-            return {
-                "success": False,
-                "error": "query 为空",
-                "data": {"chunks": []},
-            }
+            return NewToolResult(
+                success=False,
+                error="query 为空",
+                data={"chunks": []},
+            )
 
         # 优先 Tavily，失败自动 fallback 到 Brave
         chunks = await tavily_search(query, count)
         source = "tavily_search" if chunks and chunks[0].get("metadata", {}).get("source") == "tavily_search" else "brave_search"
 
-        # ── 新增：用本地 CrossEncoder 对外部搜索结果做重排序 ──
+        # ── 用本地 CrossEncoder 对外部搜索结果做重排序 ──
         if chunks:
             try:
                 from app.core import reranker
@@ -497,12 +518,11 @@ class ExternalSearchTool:
             except Exception as e:
                 logger.warning(f"[ExternalSearchTool] rerank 失败，使用原始顺序: {e}")
 
-        return {
-            "success": True,
-            "data": {
+        return NewToolResult(
+            success=True,
+            data={
                 "chunks": chunks,
                 "query": query,
                 "source": source,
             },
-            "observation": f"外部搜索（{source}）返回 {len(chunks)} 条结果",
-        }
+        )

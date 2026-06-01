@@ -23,9 +23,9 @@ import re
 import time
 from typing import Any, Dict, List, Optional
 
+from app.core.config import settings
 from app.core.llm_client import LLMClient, TIMEOUT_STANDARD
 from app.core.memory import SessionMemory
-from app.core.mcp_search import ExternalSearchTool
 from app.core.planner import TaskGraph, TaskNode
 from app.core.tool_registry import ToolRegistry, create_tool_registry
 
@@ -74,14 +74,7 @@ class Replanner:
         # 注：T3的实现成本较高，需要额外LLM调用，当前版本暂不自动触发
         # 可在未来版本中通过轻量模型判断结果相关性
 
-        # T4: 业务规则触发
-        if task.tool_name == "match_analyze" and task.status == "success":
-            result_data = task.result if isinstance(task.result, dict) else {}
-            score = result_data.get("match_score", 0)
-            if score < 50:
-                # 匹配度过低，可能需要补充建议或推荐其他岗位
-                return "T4_low_match_score"
-
+        # T4: 已移除 — match_analyze 输出已包含完整建议，不需要额外 replan
         # T5: 预留扩展
         return None
 
@@ -105,9 +98,6 @@ class Replanner:
 
         if trigger == "T2_temporal_query":
             return Replanner._handle_insufficient_results(graph, failed_task)
-
-        if trigger == "T4_low_match_score":
-            return Replanner._handle_low_match(graph, failed_task)
 
         return graph
 
@@ -164,32 +154,12 @@ class Replanner:
         """处理检索结果相关度过低：同样插入外部搜索"""
         return Replanner._handle_insufficient_results(graph, task)
 
-    @staticmethod
-    def _handle_low_match(graph: TaskGraph, task: TaskNode) -> TaskGraph:
-        """处理匹配度过低：插入建议生成任务"""
-        new_task_id = f"T{len(graph.tasks)}"
-        new_task = TaskNode(
-            task_id=new_task_id,
-            task_type="llm_reasoning",
-            tool_name=None,
-            description="基于低匹配度结果生成提升建议",
-            parameters={
-                "system_prompt": "你是一位职业顾问。用户与目标岗位匹配度较低，请给出针对性的提升建议。",
-                "prompt": "{{T_match.output}}",  # 由执行器动态解析
-            },
-            dependencies=[task.task_id],
-            is_critical=False,
-        )
-        graph.add_task(new_task)
-        logger.info(f"[Replan] 插入建议生成任务 {new_task_id}")
-        return graph
-
 
 # ═══════════════════════════════════════════════════════
 # 2. 执行器核心类
 # ═══════════════════════════════════════════════════════
 
-class ReActExecutor:
+class PlanExecutor:
     """
     ReAct执行器。
     
@@ -206,14 +176,13 @@ class ReActExecutor:
 
     def __init__(self, tool_registry: Optional[ToolRegistry] = None):
         self.registry = tool_registry or create_tool_registry()
-        self.external_search = ExternalSearchTool()
         self.llm = None
 
     async def execute(self, graph: TaskGraph, session: SessionMemory) -> TaskGraph:
         """
         执行TaskGraph直到完成。
         """
-        logger.info(f"[ReActExecutor] 开始执行 | tasks={len(graph.tasks)}")
+        logger.info(f"[PlanExecutor] 开始执行 | tasks={len(graph.tasks)}")
         graph.global_status = "running"
 
         iteration = 0
@@ -225,11 +194,11 @@ class ReActExecutor:
             if not ready:
                 pending = [t.task_id for t in graph.tasks.values() if t.status == "pending"]
                 if pending:
-                    logger.warning(f"[ReActExecutor] 死锁检测 | pending={pending}")
+                    logger.warning(f"[PlanExecutor] 死锁检测 | pending={pending}")
                 break
 
             # 2. 执行本批任务（并行）
-            logger.info(f"[ReActExecutor] 第{iteration}轮 | ready={len(ready)} | tasks={[t.task_id for t in ready]}")
+            logger.info(f"[PlanExecutor] 第{iteration}轮 | ready={len(ready)} | tasks={[t.task_id for t in ready]}")
             results = await asyncio.gather(
                 *[self._execute_single(t, graph, session) for t in ready],
                 return_exceptions=True,
@@ -239,14 +208,14 @@ class ReActExecutor:
             needs_replan = False
             for task, result in zip(ready, results):
                 if isinstance(result, Exception):
-                    logger.error(f"[ReActExecutor] {task.task_id} 异常: {result}")
+                    logger.error(f"[PlanExecutor] {task.task_id} 异常: {result}")
                     task.status = "failed"
                     task.observation = f"执行异常: {result}"
 
                 # 判断是否需要Replan
                 replan_trigger = Replanner.should_replan(task, graph)
                 if replan_trigger:
-                    logger.info(f"[ReActExecutor] {task.task_id} 触发Replan: {replan_trigger}")
+                    logger.info(f"[PlanExecutor] {task.task_id} 触发Replan: {replan_trigger}")
                     graph.replan_reason = replan_trigger
                     graph.replan_count += 1
                     graph = await Replanner.replan(graph, replan_trigger, task)
@@ -254,7 +223,7 @@ class ReActExecutor:
 
             # 4. 检查全局状态
             if graph.global_status in ("needs_clarification", "failed"):
-                logger.info(f"[ReActExecutor] 全局状态={graph.global_status}，提前退出")
+                logger.info(f"[PlanExecutor] 全局状态={graph.global_status}，提前退出")
                 break
 
             # 如果有Replan插入了新任务，继续循环
@@ -284,7 +253,7 @@ class ReActExecutor:
             graph.global_status = "success" if success > 0 else "failed"
 
         logger.info(
-            f"[ReActExecutor] 执行完成 | total={len(graph.tasks)} | "
+            f"[PlanExecutor] 执行完成 | total={len(graph.tasks)} | "
             f"success={success} | failed={failed} | skipped={skipped} | "
             f"status={graph.global_status}"
         )
@@ -329,10 +298,10 @@ class ReActExecutor:
                                     if (not company or company in cc) and (not position or position in cp):
                                         filtered.append(c)
                             if filtered:
-                                resolved_params["jd_text"] = filtered[0]
-                                logger.info(f"[ReActExecutor] match_analyze jd_text 自动修正: {company}/{position} | 从 {len(chunks)} 个 chunk 中命中 {len(filtered)} 个")
+                                resolved_params["jd_text"] = filtered
+                                logger.info(f"[PlanExecutor] match_analyze jd_text 自动修正: {company}/{position} | 从 {len(chunks)} 个 chunk 中命中 {len(filtered)} 个")
                             else:
-                                logger.warning(f"[ReActExecutor] match_analyze 未找到 {company}/{position} 匹配的 chunk，保持原样")
+                                logger.warning(f"[PlanExecutor] match_analyze 未找到 {company}/{position} 匹配的 chunk，保持原样")
 
             # 对 global_rank 任务：若 candidate_jds 解析失败（空/无效占位符），从 T0 结果兜底填充
             if task.tool_name == "global_rank":
@@ -349,19 +318,16 @@ class ReActExecutor:
                         chunks = t0.result.get("chunks", [])
                         if chunks:
                             resolved_params["candidate_jds"] = chunks
-                            logger.info(f"[ReActExecutor] global_rank candidate_jds 兜底填充 | 从 T0 获取 {len(chunks)} 个 chunks")
+                            logger.info(f"[PlanExecutor] global_rank candidate_jds 兜底填充 | 从 T0 获取 {len(chunks)} 个 chunks")
                         else:
-                            logger.warning(f"[ReActExecutor] global_rank candidate_jds 兜底失败 | T0 chunks 为空")
+                            logger.warning(f"[PlanExecutor] global_rank candidate_jds 兜底失败 | T0 chunks 为空")
                     else:
-                        logger.warning(f"[ReActExecutor] global_rank candidate_jds 兜底失败 | T0 不可用 (status={getattr(t0, 'status', 'None')}, result_type={type(getattr(t0, 'result', None))})")
+                        logger.warning(f"[PlanExecutor] global_rank candidate_jds 兜底失败 | T0 不可用 (status={getattr(t0, 'status', 'None')}, result_type={type(getattr(t0, 'result', None))})")
 
             task.resolved_params = resolved_params
 
             # 2. 按任务类型执行
             if task.task_type == "tool_call":
-                if task.tool_name == "external_search":
-                    result = await self.external_search.execute(resolved_params)
-                else:
                     result = await self._execute_tool_call(task, resolved_params, session)
             elif task.task_type == "llm_reasoning":
                 result = await self._execute_llm_reasoning(task, resolved_params)
@@ -383,10 +349,10 @@ class ReActExecutor:
         except Exception as e:
             task.status = "failed"
             task.observation = f"执行异常: {e}"
-            logger.error(f"[ReActExecutor] {task.task_id} 异常: {e}")
+            logger.error(f"[PlanExecutor] {task.task_id} 异常: {e}")
 
         task.finished_at = time.time()
-        logger.info(f"[ReActExecutor] {task.task_id} {task.status} | tool={task.tool_name} | obs={task.observation[:60]}...")
+        logger.info(f"[PlanExecutor] {task.task_id} {task.status} | tool={task.tool_name} | obs={task.observation[:60]}...")
 
     async def _execute_tool_call(
         self, task: TaskNode, params: Dict[str, Any], session: SessionMemory
@@ -394,21 +360,59 @@ class ReActExecutor:
         """执行外部工具调用"""
         from app.core.tool_registry import ToolCall as RegistryToolCall
 
-        # kb_retrieve 拦截：如果 evidence_cache 中有外部搜索结果，优先复用
+        # kb_retrieve 拦截：如果 evidence_cache 中有搜索结果，用 rerank 判断是否复用
         if task.tool_name == "kb_retrieve" and session and session.evidence_cache:
             query = params.get("query", "")
-            # 轻量级判断：缓存 query 与当前 query 的 company/position 是否一致
             cached_query = getattr(session, "evidence_cache_query", "")
-            # 如果缓存 query 和当前 query 共享相同的 company/position，认为缓存可用
-            # 更精确的做法是调用 evidence_relevance_check，但轻量判断已足够覆盖追问场景
-            is_same_topic = self._is_same_topic(query, cached_query)
-            if is_same_topic:
-                logger.info(f"[ReActExecutor] {task.task_id} kb_retrieve 复用 evidence_cache | query={query[:40]}... | cached={cached_query[:40]}...")
-                return {
-                    "success": True,
-                    "data": {"chunks": session.evidence_cache, "meta": {"source": "evidence_cache"}, "total": len(session.evidence_cache)},
-                    "observation": f"复用证据缓存 {len(session.evidence_cache)} 条",
-                }
+            try:
+                from app.core import reranker
+                ranked = await reranker.rerank(
+                    query=query,
+                    candidates=session.evidence_cache,
+                    top_k=1,
+                    batch_size=8,
+                    max_length=512,
+                )
+                if ranked:
+                    best_score = ranked[0][1]
+                    reuse_threshold = getattr(settings, "EVIDENCE_CACHE_RERANK_REUSE", 0.6)
+                    merge_threshold = getattr(settings, "EVIDENCE_CACHE_RERANK_MERGE", 0.3)
+                    if best_score >= reuse_threshold:
+                        logger.info(f"[PlanExecutor] {task.task_id} kb_retrieve 复用 evidence_cache | query={query[:40]}... | best_rerank_score={best_score:.4f}")
+                        return {
+                            "success": True,
+                            "data": {"chunks": session.evidence_cache, "meta": {"source": "evidence_cache", "rerank_score": round(best_score, 4)}, "total": len(session.evidence_cache)},
+                            "observation": f"复用证据缓存 {len(session.evidence_cache)} 条（rerank_score={best_score:.4f}）",
+                        }
+                    elif best_score >= merge_threshold:
+                        # 有一定相关性，增量检索：合并原query和新query
+                        merged_query = f"{cached_query} {query}" if cached_query else query
+                        params["query"] = merged_query
+                        logger.info(f"[PlanExecutor] {task.task_id} kb_retrieve 增量检索 | query={query[:40]}... | best_rerank_score={best_score:.4f} | merged_query={merged_query[:60]}...")
+                    else:
+                        # 相关性低，清空缓存重新检索
+                        logger.info(f"[PlanExecutor] {task.task_id} kb_retrieve 清空缓存重新检索 | query={query[:40]}... | best_rerank_score={best_score:.4f}")
+                        session.evidence_cache = []
+                else:
+                    # rerank 无结果，fallback 到字符串匹配
+                    is_same_topic = self._is_same_topic(query, cached_query)
+                    if is_same_topic:
+                        logger.info(f"[PlanExecutor] {task.task_id} kb_retrieve 复用 evidence_cache（_is_same_topic fallback）")
+                        return {
+                            "success": True,
+                            "data": {"chunks": session.evidence_cache, "meta": {"source": "evidence_cache"}, "total": len(session.evidence_cache)},
+                            "observation": f"复用证据缓存 {len(session.evidence_cache)} 条",
+                        }
+            except Exception as e:
+                logger.warning(f"[PlanExecutor] rerank 证据复用判断失败，fallback 到字符串匹配: {e}")
+                is_same_topic = self._is_same_topic(query, cached_query)
+                if is_same_topic:
+                    logger.info(f"[PlanExecutor] {task.task_id} kb_retrieve 复用 evidence_cache（_is_same_topic fallback）")
+                    return {
+                        "success": True,
+                        "data": {"chunks": session.evidence_cache, "meta": {"source": "evidence_cache"}, "total": len(session.evidence_cache)},
+                        "observation": f"复用证据缓存 {len(session.evidence_cache)} 条",
+                    }
 
         tool = self.registry.get(task.tool_name)
         if not tool:

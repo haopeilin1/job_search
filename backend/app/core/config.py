@@ -15,7 +15,7 @@ class Settings(BaseSettings):
 
     # ── Agent 路线配置 ──
     # "rule"  = 固定走规则路线（PlanGenerator + PlanExecutor）
-    # "llm"   = 固定走 LLM Agent 路线（LLMPlanner + ReActExecutor）
+    # "llm"   = 固定走 LLM Agent 路线（LLMPlanner + PlanExecutor）
     # "auto"  = 读取 DEFAULT_AGENT_MODE 配置直接决定，不再做启发式判断
     AGENT_MODE: str = "llm"
     # 当 AGENT_MODE="auto" 时，直接走哪条路（不再根据消息长度/关键词启发式判断）
@@ -117,8 +117,34 @@ class Settings(BaseSettings):
     COARSE_FILTER_MIN_POOL: int = 8            # 粗筛最小保留池
     GLOBAL_RANK_LLM_THRESHOLD: int = 8         # 聚合后JD数≤此值时跳过LLM精排，使用模板输出
 
-    # ── 各意图默认检索数量 ──
-    EXPLORE_TOP_K: int = 15
+    # ═══════════════════════════════════════════════════════
+    # 意图路由 RAG 配置（基于消融实验结果调优）
+    # ═══════════════════════════════════════════════════════
+    # 实验结论（hybrid_73：70%向量+30%BM25 + CrossEncoder reranker）：
+    #   - explore/skill_explore:  k15-10 更优（MRR 0.65/0.77）→ 广度优先，rerank 10 条
+    #   - assess/single_jd:       k25-15 显著更优（MRR 0.815 vs 0.537）→ 深度优先
+    #   - verify:                 k25-15 完美（MRR 1.0）→ 精确优先
+    #   - prepare(有JD):          同 assess
+    #   - prepare(无JD)/chat/manage: 不调用 kb_retrieve
+    #
+    # 路由参数说明：
+    #   *_POOL_K  = 混合召回候选池大小（向量top20 + BM25 top20 → 融合后取前N）
+    #   *_RERANK_K = CrossEncoder 重排序后最终输出数量
+    #
+    # ⚠️ 生产规则：严禁使用单路检索（vector-only/bm25-only），
+    #    reranker 在候选池过小时会崩溃，必须用 hybrid 融合保证候选池充足。
+    #
+    EXPLORE_POOL_K: int = 15
+    EXPLORE_RERANK_K: int = 10
+    ASSESS_POOL_K: int = 20
+    ASSESS_RERANK_K: int = 12
+    VERIFY_POOL_K: int = 20
+    VERIFY_RERANK_K: int = 12
+    PREPARE_POOL_K: int = 20
+    PREPARE_RERANK_K: int = 12
+
+    # ── 旧版兼容（保留但不再扩展）──
+    EXPLORE_TOP_K: int = 15          # = EXPLORE_POOL_K，兼容旧代码
     MATCH_TOP_K: int = 5
     VERIFY_TOP_K: int = 10
     ASSESS_TOP_K: int = 5
@@ -136,7 +162,17 @@ class Settings(BaseSettings):
     # ── Evidence Cache 配置（多轮对话证据复用） ──
     EVIDENCE_CACHE_ENABLED: bool = True           # 是否启用 evidence_cache 复用
     EVIDENCE_CACHE_MAX_SIZE: int = 5              # 每轮保留的 chunk 数量（用于复用判断）
-    EVIDENCE_CACHE_RELEVANCE_THRESHOLD: float = 0.6  # 相关性判定阈值（0-1）
+
+    # 证据复用 rerank 阈值（由 PlanExecutor + Reflection 模块共用）
+    EVIDENCE_CACHE_RERANK_REUSE: float = 0.6      # >= 此值：直接复用缓存
+    EVIDENCE_CACHE_RERANK_MERGE: float = 0.3      # >= 此值且 < REUSE：增量检索（合并 query）
+    # < MERGE：清空缓存，重新检索
+
+    # ── Reflection 反思模块配置 ──
+    REFLECTION_ENABLED: bool = True               # 是否启用执行后反思
+    REFLECTION_RETRIEVAL_MIN_CHUNKS: int = 2      # 检索结果少于此数视为不足
+    REFLECTION_RETRIEVAL_MIN_SCORE: float = 0.3   # 检索最高分低于此值视为质量低
+    REFLECTION_CONFLICT_CHECK_ENABLED: bool = True  # 是否启用跨工具冲突检测
 
     # ── MCP / 外部搜索配置 ──
     # Brave Search（已弃用，国内不可访问）

@@ -52,7 +52,7 @@ from app.core.new_arch_adapter import multi_intent_result_to_intent_result, conv
 # 保留旧类型导入用于类型注解和兼容性
 from app.core.intent_recognition import IntentResult
 from app.core.planner import TaskGraph, TaskNode
-from app.core.react_executor import ReActExecutor
+from app.core.plan_executor import PlanExecutor
 from app.core.state import llm_config_store
 
 # ──────────────────────────── 全局 Token/API 追踪器 ────────────────────────────
@@ -595,7 +595,7 @@ async def run_single_case(
 
         # ── Step 3: ReAct Executor ──
         t3 = time.time()
-        executor = ReActExecutor()
+        executor = PlanExecutor()
         graph = await executor.execute(graph, session)
         result.executor = ComponentResult(
             component="executor",

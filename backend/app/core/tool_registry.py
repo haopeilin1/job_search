@@ -340,15 +340,25 @@ INTERVIEW_GEN_INPUT_SCHEMA = {
     "type": "object",
     "properties": {
         "match_result": {
-            "type": "object",
-            "description": "上游match_analyze的输出",
+            "type": ["object", "null"],
+            "description": "上游match_analyze的输出（如有）。若提供，基于匹配短板生成针对性面试题；若不提供，基于岗位信息生成通用面试题。",
             "properties": {
                 "gaps": {"type": "array", "items": {"type": "string"}},
                 "interview_focus": {"type": "array", "items": {"type": "string"}},
                 "jd_summary": {"type": "string"},
                 "dimensions": {"type": "array"}
             },
-            "required": ["gaps", "interview_focus", "jd_summary"]
+            "default": None
+        },
+        "position": {
+            "type": ["string", "null"],
+            "description": "目标岗位名称（当match_result未提供时使用）",
+            "default": None
+        },
+        "company": {
+            "type": ["string", "null"],
+            "description": "目标公司名称（当match_result未提供时使用）",
+            "default": None
         },
         "difficulty": {
             "type": "string",
@@ -363,7 +373,7 @@ INTERVIEW_GEN_INPUT_SCHEMA = {
             "default": "gap"
         }
     },
-    "required": ["match_result"]
+    "required": []
 }
 
 INTERVIEW_GEN_OUTPUT_SCHEMA = {
@@ -506,6 +516,33 @@ EVIDENCE_RELEVANCE_CHECK_OUTPUT_SCHEMA = {
     "required": ["success", "relevant", "confidence"]
 }
 
+# ── Tool 9: external_search ──
+EXTERNAL_SEARCH_INPUT_SCHEMA = {
+    "type": "object",
+    "properties": {
+        "query": {
+            "type": "string",
+            "description": "搜索关键词，优先使用 search_keywords 或 rewritten_query",
+        },
+        "count": {
+            "type": "integer",
+            "default": 5,
+            "description": "返回结果数量，默认 5 条",
+        },
+    },
+    "required": ["query"],
+}
+
+EXTERNAL_SEARCH_OUTPUT_SCHEMA = {
+    "type": "object",
+    "properties": {
+        "success": {"type": "boolean"},
+        "chunks": {"type": "array", "items": {"type": "object"}},
+        "query": {"type": "string"},
+        "source": {"type": "string"},
+    },
+}
+
 
 # 工具元信息总表（供 Planner 查询）
 TOOL_REGISTRY_META = {
@@ -572,14 +609,16 @@ TOOL_REGISTRY_META = {
         "required_slots": ["user_message"],
         "optional_slots": ["chat_type", "user_profile"]
     },
-    "evidence_relevance_check": {
-        "description": "证据相关性检查：判断缓存证据是否与用户查询相关。",
-        "input_schema": EVIDENCE_RELEVANCE_CHECK_INPUT_SCHEMA,
-        "output_schema": EVIDENCE_RELEVANCE_CHECK_OUTPUT_SCHEMA,
-        "cost_level": "low",
-        "avg_latency_ms": 300,
-        "required_slots": ["query", "evidence_chunks"],
-        "optional_slots": []
+    # evidence_relevance_check 已从注册中移除，降级为内部工具
+    # Schema 定义保留（EVIDENCE_RELEVANCE_CHECK_INPUT_SCHEMA / OUTPUT_SCHEMA）供内部调用参考
+    "external_search": {
+        "description": "外部搜索：通过Tavily/Brave搜索网络实时信息，输出与kb_retrieve兼容的chunk格式。用于知识库未覆盖或时效性查询。",
+        "input_schema": EXTERNAL_SEARCH_INPUT_SCHEMA,
+        "output_schema": EXTERNAL_SEARCH_OUTPUT_SCHEMA,
+        "cost_level": "medium",
+        "avg_latency_ms": 1500,
+        "required_slots": ["query"],
+        "optional_slots": ["count"],
     }
 }
 

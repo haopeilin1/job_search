@@ -170,10 +170,17 @@ class TaskGraph:
     def get_downstream_tasks(self, task_id: str) -> List[TaskNode]:
         """获取指定任务的所有下游任务（直接+间接）"""
         direct = [t for t in self.tasks if task_id in t.dependencies]
-        all_downstream = set(direct)
+        all_downstream = []
+        seen_ids = set()
         for d in direct:
-            all_downstream.update(self.get_downstream_tasks(d.task_id))
-        return list(all_downstream)
+            if d.task_id not in seen_ids:
+                seen_ids.add(d.task_id)
+                all_downstream.append(d)
+            for sub in self.get_downstream_tasks(d.task_id):
+                if sub.task_id not in seen_ids:
+                    seen_ids.add(sub.task_id)
+                    all_downstream.append(sub)
+        return all_downstream
 
     def get_upstream_tasks(self, task_id: str) -> List[TaskNode]:
         """获取指定任务的所有上游任务（直接+间接）"""
@@ -181,11 +188,18 @@ class TaskGraph:
         if not task:
             return []
         direct = [self.get_task(dep) for dep in task.dependencies if self.get_task(dep)]
-        all_upstream = set(direct)
+        all_upstream = []
+        seen_ids = set()
         for u in direct:
+            if u and u.task_id not in seen_ids:
+                seen_ids.add(u.task_id)
+                all_upstream.append(u)
             if u:
-                all_upstream.update(self.get_upstream_tasks(u.task_id))
-        return list(all_upstream)
+                for sub in self.get_upstream_tasks(u.task_id):
+                    if sub.task_id not in seen_ids:
+                        seen_ids.add(sub.task_id)
+                        all_upstream.append(sub)
+        return all_upstream
 
     def check_circular_dependencies(self) -> Optional[List[str]]:
         """检查循环依赖，返回循环路径或 None"""

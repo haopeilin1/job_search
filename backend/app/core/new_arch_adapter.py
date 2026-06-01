@@ -6,7 +6,7 @@
 2. MultiIntentResult → IntentResult 转换
 3. task_graph.TaskGraph → planner.TaskGraph 转换
 
-目标：让 chat.py 在不改变 ReActExecutor / 评测脚本的前提下接入新体系
+目标：让 chat.py 在不改变 PlanExecutor / 评测脚本的前提下接入新体系
 """
 
 import logging
@@ -39,9 +39,13 @@ def map_intent_name_to_old(llm_intent: str) -> str:
     return LLM_TO_OLD_INTENT_MAP.get(llm_intent, llm_intent)
 
 
-def map_intent_name_to_new(old_intent: str) -> str:
-    """旧体系意图名 → 新体系意图名"""
-    return OLD_TO_LLM_INTENT_MAP.get(old_intent, old_intent)
+def map_intent_name_to_new(old_intent: str) -> Optional[str]:
+    """旧体系意图名 → 新体系意图名。同时兼容新体系名称直接传入。未知值返回 None，避免 LLMIntentType ValueError"""
+    # 已经是新体系名称，直接返回
+    if old_intent in LLM_TO_OLD_INTENT_MAP:
+        return old_intent
+    # 旧体系名称，查映射表
+    return OLD_TO_LLM_INTENT_MAP.get(old_intent)
 
 
 # ═══════════════════════════════════════════════════════
@@ -128,9 +132,9 @@ def convert_task_graph(new_graph: "NewTaskGraph") -> "OldTaskGraph":
     注意：
     - resolved_params 在旧体系中由 planner._fill_static_slots 预填充，
       新体系中不存在该步骤，因此转换后 resolved_params 为空，
-      由 ReActExecutor 在运行时通过 _resolve_dynamic_params 动态解析。
+      由 PlanExecutor 在运行时通过 _resolve_dynamic_params 动态解析。
     - fallback / params_hash / reused_from_history 等新字段在旧体系中不存储，
-      因此会丢失（ReActExecutor 不依赖它们）。
+      因此会丢失（PlanExecutor 不依赖它们）。
     """
     from app.core.planner import TaskGraph as OldTaskGraph, TaskNode as OldTaskNode
 
@@ -144,6 +148,8 @@ def convert_task_graph(new_graph: "NewTaskGraph") -> "OldTaskGraph":
             parameters=t.parameters,
             dependencies=t.dependencies,
             # resolved_params 留空，由执行器运行时填充
+            fallback=t.fallback.__dict__ if t.fallback else None,
+            retry_count=t.retry_count,
         )
         old_graph.add_task(old_task)
 

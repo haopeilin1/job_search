@@ -1,5 +1,5 @@
 """
-LLM Agent 协调器 —— 整合 LLMIntentRecognizer → Clarification → LLMPlanner → ReActExecutor
+LLM Agent 协调器 —— 整合 LLMIntentRecognizer → Clarification → LLMPlanner → PlanExecutor
 
 这是 LLM Agent 路线的核心入口，与规则路线的 EnhancedAgentOrchestrator 平行。
 
@@ -7,7 +7,7 @@ LLM Agent 协调器 —— 整合 LLMIntentRecognizer → Clarification → LLMP
 1. 接收用户消息，调用 LLMIntentRecognizer 进行语义级意图识别
 2. 根据置信度决定：澄清 or 继续
 3. 调用 LLMPlanner 生成任务计划（CoT 拆解）
-4. 调用 ReActExecutor 循环执行（执行+观察+调整）
+4. 调用 PlanExecutor 执行（拓扑执行+动态调整）
 5. 组装 AgentContext，供回复生成使用
 6. 记忆轮转（复用 MemoryManager）
 """
@@ -22,7 +22,7 @@ from app.core.memory import SessionMemory, DialogueTurn, MemoryManager
 from app.core.intent import IntentResult
 from app.core.clarification import ClarificationEngine, ClarificationResult
 from app.core.llm_planner import LLMPlanner, TaskPlan
-from app.core.react_executor import ReActExecutor
+from app.core.plan_executor import PlanExecutor
 from app.core.tools import ToolCall, ToolResult
 
 logger = logging.getLogger(__name__)
@@ -73,7 +73,7 @@ class LLMAgentOrchestrator:
        - < 0.7 → ClarificationEngine.analyze() → 返回澄清问题
        - >= 0.7 → 继续
     3. LLMPlanner.create_plan() → 生成任务计划
-    4. ReActExecutor.execute() → 循环执行+调整
+    4. PlanExecutor.execute() → 拓扑执行+动态调整
     5. 组装 LLMAgentContext → 构造 prompt → 回复生成
     6. MemoryManager.rotate_memory() → 记忆轮转
     """
@@ -82,7 +82,7 @@ class LLMAgentOrchestrator:
         self.llm = LLMClient.from_config("planner")
         self.clarification = ClarificationEngine(llm_client=self.llm)
         self.planner = LLMPlanner(llm_client=self.llm)
-        self.executor = ReActExecutor(planner=self.planner)
+        self.executor = PlanExecutor(planner=self.planner)
         self.memory_manager = MemoryManager(llm_client=self.llm)
 
     async def run(

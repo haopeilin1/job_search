@@ -41,7 +41,7 @@
                                       │
                                       ▼
 ┌─────────────────────────────────────────────────────────────────────────────┐
-│  Step 3: ReActExecutor（任务执行引擎）                                        │
+│  Step 3: PlanExecutor（任务执行引擎）                                         │
 │  ┌─────────────────────────────────────────────────────────────────────┐   │
 │  │ while 还有未完成任务:                                               │   │
 │  │   1. 获取所有依赖已就绪的任务（ready tasks）                        │   │
@@ -179,31 +179,28 @@ class LLMIntentType(Enum):
     CHAT = "chat"          # 通用对话（兜底）
 ```
 
-#### ② 小模型校准器（SmallModelCalibrator）
-
-**模型**：`qwen2.5:14b` @ Ollama（本地，keep_alive=1h）
+#### ② 规则直接采信（IntentCandidate 生成）
 
 **触发条件**：
-- `STRONG` 规则命中 → **跳过校准**（fast path，节省 25-40s）
-- `WEAK` 规则命中 → 触发校准
-- 规则全 MISS → 若 clarify 场景，创建虚拟 CHAT 候选后触发校准
+- `STRONG` / `WEAK` 规则命中 → 直接生成 `IntentCandidate`，跳过小模型校准
+- 规则全 MISS → 创建虚拟 CHAT 候选（strength=MISS），直接进入大模型兜底
 
-**校准流程**：
-1. 构建三层记忆上下文（工作记忆 + 压缩记忆 + 长期记忆）
-2. 拼接 `INTENT_CALIBRATION_SYSTEM` + `INTENT_CALIBRATION_EXAMPLES` prompt
-3. 调用 Ollama 生成 JSON：意图判断 + 槽位抽取 + 置信度
-4. 解析结果生成 `IntentCandidate`
+**转换流程**（`_direct_rule_candidate`）：
+1. 根据规则强度设置 confidence（STRONG=0.88，WEAK=0.75，MISS=0.55）
+2. 推断 missing_slots（ASSESS/VERIFY 需 company+position；EXPLORE 需 search_keywords）
+3. 注入指代消解结果（`_inject_resolved_references`）：从 QueryRewriter 的 `resolved_references` 和 `evidence_cache` 补全 company/position
+4. 重新计算 missing_slots（注入后可能不再缺失）
 
-**⚠️ 当前问题**：Ollama 本地模型在冷启动/大 prompt 时容易 ReadTimeout（默认 timeout=300s，但实际受模型加载影响）
+> **设计决策**：小模型校准层（`SmallModelCalibrator`）已于 2026-05 正式删除。实验数据显示 qwen3.5-27b 84% 推翻规则且 100% 推为 CHAT，去掉后准确率仅降 2.2%（77.8%→75.6%），速度提升 40%。
 
 #### ③ 大模型仲裁/兜底（LLMFallbackClassifier）
 
-**模型**：与 chat 层相同（默认 `qwen3.5-plus` @ DashScope）
+**模型**：与 chat 层相同（默认 `deepseek-v4-flash` @ DashScope）
 
 **触发条件**：
-- 校准器返回空列表（规则全 MISS 且校准失败）
+- 规则全 MISS（无有效候选）
 - 多意图冲突需消解
-- 置信度 < 0.5 的候选需过滤
+- 置信度 < 0.7 的候选需过滤
 
 **仲裁流程**（`arbitrate`）：
 1. 过滤低置信度候选（< 0.5）
@@ -318,9 +315,9 @@ class TaskGraph:
 
 ---
 
-### 2.5 执行层 (`app/core/react_executor.py`)
+### 2.5 执行层 (`app/core/plan_executor.py`)
 
-**核心类**：`ReActExecutor` + `Replanner`
+**核心类**：`PlanExecutor` + `Replanner`
 
 **执行循环**（`execute` 方法）：
 
@@ -397,7 +394,7 @@ while iteration < MAX_STEPS(10):
 | `external_search` | 外部搜索补充（Serper/Google） | 无 | medium |
 | `file_ops` | 简历上传/解析/管理 | 无 | low |
 | `general_chat` | 通用对话兜底 | 无 | low |
-| `evidence_relevance_check` | 证据相关性检查 | 无 | low |
+| `evidence_relevance_check` | ~~证据相关性检查~~（已降级为内部工具，由 Executor rerank + Reflection 模块替代） | 无 | low |
 
 **kb_retrieve 召回策略**：
 1. 向量检索（ChromaDB + `text-embedding-v4` @ DashScope）
@@ -607,8 +604,8 @@ fallback_configs = [
          │                                          │
          ▼                                          ▼
 ┌──────────────────┐                       ┌──────────────────┐
-│ ReActExecutor    │◄─────────────────────►│ ReActExecutor    │
-│ (react_executor) │   共用执行引擎         │ (react_executor) │
+│ PlanExecutor     │◄─────────────────────►│ PlanExecutor     │
+│ (plan_executor)  │   共用执行引擎         │ (plan_executor)  │
 └────────┬─────────┘                       └────────┬─────────┘
          │                                          │
          └──────────────────┬───────────────────────┘

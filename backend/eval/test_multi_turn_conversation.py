@@ -63,7 +63,7 @@ from app.core.query_rewrite import QueryRewriter, QueryRewriteResult
 from app.core.llm_intent import LLMIntentRouter, LLMIntentType
 from app.core.llm_planner import TaskGraphPlanner
 from app.core.new_arch_adapter import convert_task_graph, multi_intent_result_to_intent_result
-from app.core.react_executor import ReActExecutor
+from app.core.plan_executor import PlanExecutor
 from app.core.task_graph import TaskGraph as NewTaskGraph
 from app.services.handlers import ChatRequest, ChatReply, _get_resume_text
 from app.routers.chat import _get_or_create_session, _build_memory_state
@@ -388,8 +388,8 @@ class MultiTurnTester:
         # ========================================
         # Step 4: ReAct 执行
         # ========================================
-        _print_subsection("Step 4: ReAct 执行 (ReActExecutor)")
-        executor = ReActExecutor()
+        _print_subsection("Step 4: 任务图执行 (PlanExecutor)")
+        executor = PlanExecutor()
         graph = await executor.execute(graph, self.session)
 
         print(f"\n    执行状态: {graph.global_status}")

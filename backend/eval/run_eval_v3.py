@@ -70,7 +70,7 @@ from app.core.llm_planner import TaskGraphPlanner
 from app.core.new_arch_adapter import multi_intent_result_to_intent_result, convert_task_graph
 from app.core.intent_recognition import IntentResult
 from app.core.planner import TaskGraph, TaskNode
-from app.core.react_executor import ReActExecutor
+from app.core.plan_executor import PlanExecutor
 from app.core.state import llm_config_store
 
 
@@ -401,6 +401,9 @@ class TurnResult:
     judge_result: Dict = field(default_factory=dict)
     user_message: str = ""
 
+    session_id: str = ""
+    turn_id: int = 0
+
     # ── v3 新增：严格判定结果 ──
     intent_strict_hit: bool = False           # 意图严格命中（多意图全部命中）
     intent_hit_reason: str = ""               # 意图命中/未命中原因
@@ -413,6 +416,9 @@ class TurnResult:
     # ── v3 新增：embedding / reranker 埋点 ──
     embedding_calls: List[Dict] = field(default_factory=list)
     reranker_calls: List[Dict] = field(default_factory=list)
+
+    # ── 反思模块埋点 ──
+    reflection_result: Dict = field(default_factory=dict)
 
 
 def _intent_result_to_dict(ir: IntentResult) -> Dict:
@@ -681,6 +687,7 @@ async def _run_v2_judge(case: dict, result: TurnResult, tracker: LLMTracker) -> 
         "intent_accuracy": 0, "slot_accuracy": 0, "tool_correctness": 0,
         "tool_execution": 0, "response_accuracy": 0, "response_completeness": 0,
         "citation_quality": 0, "coherence": 0, "tone": 0, "efficiency": 0,
+        "faithfulness": 0, "answer_relevance": 0,
     }
 
     if result.has_exception:
@@ -694,6 +701,7 @@ async def _run_v2_judge(case: dict, result: TurnResult, tracker: LLMTracker) -> 
             "reason": "执行异常",
             "scores": default_scores,
             "source": "rule",
+            "needs_rag": "kb_retrieve" in result.expected_tools,
         }
         result.process_quality = {"overall_match": False, "match_rate": 0.0, "details": {}, "source": "rule"}
         return
@@ -748,6 +756,7 @@ async def _run_v2_judge(case: dict, result: TurnResult, tracker: LLMTracker) -> 
         "pred_intents": pred_intents,
         "pred_slots": pred_slots,
         "tool_details": tool_details,
+        "tool_executions_full": result.tool_executions_full or [],
         "failed_tools": result.failed_tools or [],
         "replan_count": result.replan_count,
         "replan_t1": result.replan_t1,
@@ -822,6 +831,8 @@ async def _run_v2_judge(case: dict, result: TurnResult, tracker: LLMTracker) -> 
         "rule_hit": jr.get("rule_hit"),
         "veto": jr.get("veto", False),
         "source": "llm",
+        "judge_prompt": jr.get("judge_prompt", ""),
+        "raw_output": jr.get("raw_output", ""),
     }
     result.task_success = judge_resolved
 
@@ -957,9 +968,13 @@ def _extract_result_from_response(
 ) -> TurnResult:
     """从 chat_endpoint 返回的 dict 中提取评测信息（HTTP 和本地 direct 共用）。"""
     result.e2e_latency_ms = (time.time() - start_time) * 1000
+    result.session_id = data.get("session_id", result.case_id)
 
     # 3. 从返回中提取信息
     debug = data.get("debug_info", {})
+    session_history = debug.get("session_history", [])
+    result.turn_id = session_history[-1].get("turn_id", 0) if session_history else 0
+
     route_meta = data.get("route_meta", {})
     llm_agent = data.get("llm_agent", {})
     is_clarification = data.get("is_clarification", False)
@@ -1023,6 +1038,20 @@ def _extract_result_from_response(
         t.get("tool_name") for t in tasks.values()
         if t.get("tool_name") and t.get("status") == "failed"
     ))
+    # 【修复】提取完整工具执行记录到 tool_executions_full
+    result.tool_executions_full = [
+        {
+            "task_id": tid,
+            "tool_name": t.get("tool_name"),
+            "status": t.get("status"),
+            "input": t.get("input"),
+            "output": t.get("output"),
+            "latency_ms": t.get("latency_ms"),
+            "error": t.get("error"),
+        }
+        for tid, t in tasks.items()
+        if t.get("tool_name")
+    ]
 
     # replan
     global_status = task_graph_debug.get("global_status", "")
@@ -1056,6 +1085,10 @@ def _extract_result_from_response(
     # 最终回复
     result.final_response = (reply.get("content") or reply.get("text", "")) if isinstance(reply, dict) else str(reply)
     result.session_history = debug.get("session_history", [])
+
+    # 反思模块结果
+    result.reflection_result = debug.get("reflection_result", {})
+
     return result
 
 
@@ -1079,6 +1112,8 @@ async def run_single_case(
         gold_intents=eval_ctx.get("gold_intents", []),
         gold_slots=eval_ctx.get("gold_slots", {}),
         expected_tools=eval_ctx.get("expected_tools", []),
+        session_id=sid,
+        turn_id=eval_ctx.get("turn_id", 0),
     )
 
     start_time = time.time()
@@ -1145,6 +1180,8 @@ async def run_single_case_direct(
         gold_intents=eval_ctx.get("gold_intents", []),
         gold_slots=eval_ctx.get("gold_slots", {}),
         expected_tools=eval_ctx.get("expected_tools", []),
+        session_id=sid,
+        turn_id=eval_ctx.get("turn_id", 0),
     )
 
     start_time = time.time()
@@ -1184,24 +1221,86 @@ async def run_single_case_direct(
         result.has_exception = True
         result.exception_trace = traceback.format_exc()
 
+    # 注入 LLM 调用追踪记录
+    _inject_tracker_data(result, tracker)
+
     # v2 多维度 Judge
     await _run_v2_judge(case, result, tracker)
     return result
+
+
+def _inject_tracker_data(result: TurnResult, tracker: LLMTracker):
+    """将 LLMTracker 的调用记录注入到 TurnResult"""
+    llm_calls = []
+    for c in tracker.calls:
+        llm_calls.append({
+            "model": c.model,
+            "layer": c.layer,
+            "method": c.method,
+            "prompt_tokens": c.prompt_tokens,
+            "completion_tokens": c.completion_tokens,
+            "latency_ms": c.latency_ms,
+            "success": c.success,
+            "error": c.error,
+            "prompt_preview": c.prompt_full[:2000] if c.prompt_full else "",
+            "system_preview": c.system_prompt[:500] if c.system_prompt else "",
+            "output_preview": c.raw_output[:2000] if c.raw_output else "",
+            "temperature": c.temperature,
+            "max_tokens": c.max_tokens,
+            "timestamp": c.call_timestamp,
+        })
+    for c in tracker.embedding_calls:
+        llm_calls.append({
+            "model": c.get("model", "embedding"),
+            "layer": "embedding",
+            "method": "embed",
+            "prompt_tokens": 0,
+            "completion_tokens": 0,
+            "latency_ms": c.get("latency_ms", 0),
+            "success": c.get("success", False),
+            "error": c.get("error", ""),
+            "prompt_preview": f"texts_count={c.get('texts_count')}, total_chars={c.get('total_chars')}",
+            "timestamp": c.get("timestamp", 0),
+        })
+    for c in tracker.reranker_calls:
+        llm_calls.append({
+            "model": "reranker",
+            "layer": "reranker",
+            "method": "rerank",
+            "prompt_tokens": 0,
+            "completion_tokens": 0,
+            "latency_ms": c.get("latency_ms", 0),
+            "success": c.get("success", False),
+            "error": c.get("error", ""),
+            "prompt_preview": f"candidates={c.get('candidates')}, top_k={c.get('top_k')}",
+            "timestamp": c.get("timestamp", 0),
+        })
+    result.raw_llm_calls = llm_calls
 
 
 # ═══════════════════════════════════════════════════════
 # 7. 指标汇总
 # ═══════════════════════════════════════════════════════
 
+def _is_clarification_case(r: TurnResult) -> bool:
+    """判断是否为标注了 clarification 的特殊边界用例"""
+    return "clarification" in (r.gold_intents or [])
+
+
 def compute_metrics(results: List[TurnResult]) -> Dict[str, Any]:
     total = len(results)
     if total == 0:
         return {}
 
-    success_count = sum(1 for r in results if r.task_success)
+    # ── 分离常规用例与 clarification 边界用例 ──
+    normal_results = [r for r in results if not _is_clarification_case(r)]
+    clarification_results = [r for r in results if _is_clarification_case(r)]
+    normal_total = len(normal_results)
+    clarification_total = len(clarification_results)
+
+    # ── 常规用例指标（不含 clarification）──
+    success_count = sum(1 for r in normal_results if r.task_success)
     exception_count = sum(1 for r in results if r.has_exception)
-    clarification_count = sum(1 for r in results
-                               if r.intent_result and r.intent_result.get("needs_clarification"))
     latencies = [r.e2e_latency_ms for r in results]
     latencies_sorted = sorted(latencies)
 
@@ -1209,13 +1308,12 @@ def compute_metrics(results: List[TurnResult]) -> Dict[str, Any]:
     total_llm_calls = sum(s.get("total_calls", 0) for s in all_llm)
     total_tokens = sum(s.get("total_tokens", 0) for s in all_llm)
     total_cost = sum(s.get("estimated_cost_usd", 0) for s in all_llm)
-    total_tool_calls = sum(len(r.executed_tools) for r in results)
+    total_tool_calls = sum(len(r.executed_tools) for r in normal_results)
 
-    # ── 严格意图命中指标 ──
+    # ── 严格意图命中指标（仅常规用例参与 rate 计算，但按意图类型仍统计全部）──
     intent_strict_hits = sum(1 for r in results if r.intent_strict_hit)
-    intent_strict_rate = intent_strict_hits / total if total else 0.0
+    intent_strict_rate_normal = sum(1 for r in normal_results if r.intent_strict_hit) / normal_total if normal_total else 0.0
 
-    # 按意图类型统计
     intent_by_gold = defaultdict(lambda: {"total": 0, "hit": 0})
     for r in results:
         for g in r.gold_intents:
@@ -1223,15 +1321,14 @@ def compute_metrics(results: List[TurnResult]) -> Dict[str, Any]:
             if r.intent_strict_hit:
                 intent_by_gold[g]["hit"] += 1
 
-    # ── 工具调用指标 ──
-    tool_primary_hits = sum(1 for r in results if r.tool_primary_hit)
-    tool_full_chain_hits = sum(1 for r in results if r.tool_full_chain_hit)
-    tool_primary_rate = tool_primary_hits / total if total else 0.0
-    tool_full_chain_rate = tool_full_chain_hits / total if total else 0.0
+    # ── 工具调用指标（仅常规用例）──
+    tool_primary_hits = sum(1 for r in normal_results if r.tool_primary_hit)
+    tool_full_chain_hits = sum(1 for r in normal_results if r.tool_full_chain_hit)
+    tool_primary_rate = tool_primary_hits / normal_total if normal_total else 0.0
+    tool_full_chain_rate = tool_full_chain_hits / normal_total if normal_total else 0.0
 
-    # 按工具类型统计
     tool_by_expected = defaultdict(lambda: {"total": 0, "primary_hit": 0, "full_hit": 0})
-    for r in results:
+    for r in normal_results:
         for t in r.expected_tools:
             tool_by_expected[t]["total"] += 1
             if r.tool_primary_hit:
@@ -1239,15 +1336,15 @@ def compute_metrics(results: List[TurnResult]) -> Dict[str, Any]:
             if r.tool_full_chain_hit:
                 tool_by_expected[t]["full_hit"] += 1
 
-    # ── 过程质量指标 ──
-    process_quality_ok = sum(1 for r in results if r.process_quality.get("overall_match", False))
-    process_quality_rate = process_quality_ok / total if total else 0.0
-    avg_match_rate = sum(r.process_quality.get("match_rate", 0.0) for r in results) / total if total else 0.0
+    # ── 过程质量指标（仅常规用例）──
+    process_quality_ok = sum(1 for r in normal_results if r.process_quality.get("overall_match", False))
+    process_quality_rate = process_quality_ok / normal_total if normal_total else 0.0
+    avg_match_rate = sum(r.process_quality.get("match_rate", 0.0) for r in normal_results) / normal_total if normal_total else 0.0
 
-    # ── 工具执行成功率 ──
+    # ── 工具执行成功率（仅常规用例，clarification 无 task_graph）──
     tool_exec_total = 0
     tool_exec_success = 0
-    for r in results:
+    for r in normal_results:
         if r.task_graph:
             for t in r.task_graph.get("tasks", {}).values():
                 if t.get("tool_name"):
@@ -1256,36 +1353,55 @@ def compute_metrics(results: List[TurnResult]) -> Dict[str, Any]:
                         tool_exec_success += 1
     tool_exec_rate = tool_exec_success / tool_exec_total if tool_exec_total else 0.0
 
-    # ── 规划合理性 ──
-    valid_plans = sum(1 for r in results if r.task_graph and r.task_graph.get("global_status") != "failed")
+    # ── 规划合理性（仅常规用例）──
+    valid_plans = sum(1 for r in normal_results if r.task_graph and r.task_graph.get("global_status") != "failed")
 
-    # ── KB 异常 ──
-    kb_empty_count = sum(1 for r in results if r.kb_empty)
-    ext_search_count = sum(1 for r in results if r.external_search_triggered)
-    replan_t1_count = sum(1 for r in results if r.replan_t1)
-    replan_t2_count = sum(1 for r in results if r.replan_t2)
-    replan_t4_count = sum(1 for r in results if r.replan_t4)
-    intent_skip_count = sum(1 for r in results if r.intent_skipped)
+    # ── KB 异常（全部统计，但 rate 基于常规用例）──
+    kb_empty_count = sum(1 for r in normal_results if r.kb_empty)
+    ext_search_count = sum(1 for r in normal_results if r.external_search_triggered)
+    replan_t1_count = sum(1 for r in normal_results if r.replan_t1)
+    replan_t2_count = sum(1 for r in normal_results if r.replan_t2)
+    replan_t4_count = sum(1 for r in normal_results if r.replan_t4)
+    intent_skip_count = sum(1 for r in normal_results if r.intent_skipped)
+
+    # ── clarification 边界用例单独统计 ──
+    clarification_stats = {
+        "total": clarification_total,
+        "correct_trigger": 0,   # gold=clarification 且系统触发
+        "missed_trigger": 0,    # gold=clarification 但系统未触发
+        "false_trigger": 0,     # gold≠clarification 但系统触发（从全部结果中统计）
+    }
+    for r in clarification_results:
+        if r.intent_result and r.intent_result.get("needs_clarification"):
+            clarification_stats["correct_trigger"] += 1
+        else:
+            clarification_stats["missed_trigger"] += 1
+    # 误触发：从全部结果中找 gold 不含 clarification 但系统触发的
+    for r in results:
+        if not _is_clarification_case(r):
+            if r.intent_result and r.intent_result.get("needs_clarification"):
+                clarification_stats["false_trigger"] += 1
 
     return {
         "outcome": {
             "total_cases": total,
-            "task_success_rate": round(success_count / total, 4),
+            "normal_cases": normal_total,
+            "clarification_cases": clarification_total,
+            "task_success_rate": round(success_count / normal_total, 4) if normal_total else 0.0,
             "exception_rate": round(exception_count / total, 4),
-            "clarification_rate": round(clarification_count / total, 4),
             "avg_latency_ms": round(sum(latencies) / total, 2),
             "p50_latency_ms": latencies_sorted[len(latencies_sorted) // 2] if latencies_sorted else 0,
             "p99_latency_ms": latencies_sorted[int(len(latencies_sorted) * 0.99)] if latencies_sorted else 0,
             "total_tool_calls": total_tool_calls,
-            "avg_tool_calls_per_case": round(total_tool_calls / total, 2),
+            "avg_tool_calls_per_case": round(total_tool_calls / normal_total, 2) if normal_total else 0.0,
             "total_llm_api_calls": total_llm_calls,
             "total_tokens": total_tokens,
             "estimated_total_cost_usd": round(total_cost, 6),
             "avg_cost_per_case_usd": round(total_cost / total, 6) if total else 0,
         },
         "intent": {
-            "strict_hit_count": intent_strict_hits,
-            "strict_hit_rate": round(intent_strict_rate, 4),
+            "strict_hit_count": sum(1 for r in normal_results if r.intent_strict_hit),
+            "strict_hit_rate": round(intent_strict_rate_normal, 4),
             "by_intent_type": {
                 k: {"total": v["total"], "hit": v["hit"], "rate": round(v["hit"] / v["total"], 4) if v["total"] else 0}
                 for k, v in sorted(intent_by_gold.items())
@@ -1310,12 +1426,12 @@ def compute_metrics(results: List[TurnResult]) -> Dict[str, Any]:
             "avg_match_rate": round(avg_match_rate, 4),
         },
         "kb_anomaly": {
-            "kb_empty_rate": round(kb_empty_count / total, 4),
-            "external_search_trigger_rate": round(ext_search_count / total, 4),
-            "replan_t1_rate": round(replan_t1_count / total, 4),
-            "replan_t2_rate": round(replan_t2_count / total, 4),
-            "replan_t4_rate": round(replan_t4_count / total, 4),
-            "intent_timeout_skip_rate": round(intent_skip_count / total, 4),
+            "kb_empty_rate": round(kb_empty_count / normal_total, 4) if normal_total else 0.0,
+            "external_search_trigger_rate": round(ext_search_count / normal_total, 4) if normal_total else 0.0,
+            "replan_t1_rate": round(replan_t1_count / normal_total, 4) if normal_total else 0.0,
+            "replan_t2_rate": round(replan_t2_count / normal_total, 4) if normal_total else 0.0,
+            "replan_t4_rate": round(replan_t4_count / normal_total, 4) if normal_total else 0.0,
+            "intent_timeout_skip_rate": round(intent_skip_count / normal_total, 4) if normal_total else 0.0,
         },
         "latency": {
             "query_rewrite_avg_ms": round(
@@ -1325,12 +1441,13 @@ def compute_metrics(results: List[TurnResult]) -> Dict[str, Any]:
                 sum(r.intent.latency_ms for r in results if r.intent) /
                 max(1, sum(1 for r in results if r.intent)), 2),
             "planner_avg_ms": round(
-                sum(r.planner.latency_ms for r in results if r.planner) /
-                max(1, sum(1 for r in results if r.planner)), 2),
+                sum(r.planner.latency_ms for r in normal_results if r.planner) /
+                max(1, sum(1 for r in normal_results if r.planner)), 2),
             "executor_avg_ms": round(
-                sum(r.executor.latency_ms for r in results if r.executor) /
-                max(1, sum(1 for r in results if r.executor)), 2),
+                sum(r.executor.latency_ms for r in normal_results if r.executor) /
+                max(1, sum(1 for r in normal_results if r.executor)), 2),
         },
+        "clarification": clarification_stats,
         "batch": _compute_batch_metrics(results),
     }
 
@@ -1339,19 +1456,31 @@ def _compute_batch_metrics(results: List[TurnResult]) -> Dict[str, Dict]:
     by_batch = defaultdict(list)
     for r in results:
         by_batch[r.batch].append(r)
-    return {
-        batch: {
+    metrics = {}
+    for batch, rs in sorted(by_batch.items()):
+        normal_rs = [r for r in rs if not _is_clarification_case(r)]
+        clar_rs = [r for r in rs if _is_clarification_case(r)]
+        normal_total = len(normal_rs)
+        metrics[batch] = {
             "total": len(rs),
-            "success": sum(1 for r in rs if r.task_success),
-            "success_rate": round(sum(1 for r in rs if r.task_success) / len(rs), 4) if rs else 0,
-            "intent_strict_hit": sum(1 for r in rs if r.intent_strict_hit),
-            "intent_strict_rate": round(sum(1 for r in rs if r.intent_strict_hit) / len(rs), 4) if rs else 0,
-            "tool_primary_hit": sum(1 for r in rs if r.tool_primary_hit),
-            "tool_primary_rate": round(sum(1 for r in rs if r.tool_primary_hit) / len(rs), 4) if rs else 0,
+            "normal_cases": normal_total,
+            "clarification_cases": len(clar_rs),
+            "success": sum(1 for r in normal_rs if r.task_success),
+            "success_rate": round(sum(1 for r in normal_rs if r.task_success) / normal_total, 4) if normal_total else 0,
+            "intent_strict_hit": sum(1 for r in normal_rs if r.intent_strict_hit),
+            "intent_strict_rate": round(sum(1 for r in normal_rs if r.intent_strict_hit) / normal_total, 4) if normal_total else 0,
+            "tool_primary_hit": sum(1 for r in normal_rs if r.tool_primary_hit),
+            "tool_primary_rate": round(sum(1 for r in normal_rs if r.tool_primary_hit) / normal_total, 4) if normal_total else 0,
             "avg_latency_ms": round(sum(r.e2e_latency_ms for r in rs) / len(rs), 2) if rs else 0,
         }
-        for batch, rs in sorted(by_batch.items())
-    }
+        # 批次内的 clarification 统计
+        if clar_rs:
+            metrics[batch]["clarification"] = {
+                "total": len(clar_rs),
+                "correct_trigger": sum(1 for r in clar_rs if r.intent_result and r.intent_result.get("needs_clarification")),
+                "missed_trigger": sum(1 for r in clar_rs if not (r.intent_result and r.intent_result.get("needs_clarification"))),
+            }
+    return metrics
 
 
 # ═══════════════════════════════════════════════════════
@@ -1427,23 +1556,36 @@ def print_report(metrics: Dict, results: Optional[List[TurnResult]] = None, stab
     print("=" * 70)
 
     out = metrics.get("outcome", {})
+    normal_total = out.get("normal_cases", 0)
+    clar_total = out.get("clarification_cases", 0)
+    total_cases = out.get("total_cases", 0)
+
     print(f"\n【结果指标】")
-    print(f"  总用例数:          {out.get('total_cases', 0)}")
-    print(f"  任务成功率:        {out.get('task_success_rate', 0) * 100:.2f}%")
+    print(f"  总用例数:          {total_cases} (常规={normal_total}, 澄清边界={clar_total})")
+    print(f"  任务成功率:        {out.get('task_success_rate', 0) * 100:.2f}% (仅常规用例)")
     print(f"  异常率:            {out.get('exception_rate', 0) * 100:.2f}%")
-    print(f"  澄清触发率:        {out.get('clarification_rate', 0) * 100:.2f}%")
     print(f"  平均延迟:          {out.get('avg_latency_ms', 0):.0f} ms")
     print(f"  P99 延迟:          {out.get('p99_latency_ms', 0):.0f} ms")
-    print(f"  总工具调用:        {out.get('total_tool_calls', 0)}")
-    print(f"  每例平均工具调用:  {out.get('avg_tool_calls_per_case', 0):.2f}")
+    print(f"  总工具调用:        {out.get('total_tool_calls', 0)} (仅常规用例)")
+    print(f"  每例平均工具调用:  {out.get('avg_tool_calls_per_case', 0):.2f} (仅常规用例)")
     print(f"  总 LLM API 调用:   {out.get('total_llm_api_calls', 0)}")
     print(f"  总 Token 消耗:     {out.get('total_tokens', 0):,}")
     print(f"  预估总成本:        ${out.get('estimated_total_cost_usd', 0):.6f}")
     print(f"  每例平均成本:      ${out.get('avg_cost_per_case_usd', 0):.6f}")
 
+    # ── clarification 边界用例单独统计 ──
+    clar = metrics.get("clarification", {})
+    if clar.get("total", 0) > 0:
+        print(f"\n【澄清边界用例统计（单独说明）】")
+        print(f"  总数:              {clar.get('total', 0)}")
+        print(f"  正确触发:          {clar.get('correct_trigger', 0)} (gold=clarification 且系统触发)")
+        print(f"  漏触发:            {clar.get('missed_trigger', 0)} (gold=clarification 但系统未触发)")
+        print(f"  误触发:            {clar.get('false_trigger', 0)} (gold≠clarification 但系统触发)")
+        print(f"  识别准确率:        {clar.get('correct_trigger', 0) / clar.get('total', 1) * 100:.1f}%")
+
     intent = metrics.get("intent", {})
     print(f"\n【意图识别指标（严格判定）】")
-    print(f"  严格命中数:        {intent.get('strict_hit_count', 0)}/{out.get('total_cases', 0)}")
+    print(f"  严格命中数:        {intent.get('strict_hit_count', 0)}/{normal_total} (仅常规用例)")
     print(f"  严格命中率:        {intent.get('strict_hit_rate', 0) * 100:.2f}%")
     print(f"  （规则：多意图必须全部命中，澄清场景按预期判断）")
     for itype, im in sorted(intent.get("by_intent_type", {}).items()):
@@ -1451,10 +1593,10 @@ def print_report(metrics: Dict, results: Optional[List[TurnResult]] = None, stab
 
     tool = metrics.get("tool", {})
     print(f"\n【工具调用指标】")
-    print(f"  主要工具命中数:    {tool.get('primary_hit_count', 0)}/{out.get('total_cases', 0)}")
+    print(f"  主要工具命中数:    {tool.get('primary_hit_count', 0)}/{normal_total} (仅常规用例)")
     print(f"  主要工具命中率:    {tool.get('primary_hit_rate', 0) * 100:.2f}%")
     print(f"  （规则：命中至少一个主要工具即算正确，考虑 kb 覆盖动态调整）")
-    print(f"  全工具链命中数:    {tool.get('full_chain_hit_count', 0)}/{out.get('total_cases', 0)}")
+    print(f"  全工具链命中数:    {tool.get('full_chain_hit_count', 0)}/{normal_total} (仅常规用例)")
     print(f"  全工具链命中率:    {tool.get('full_chain_hit_rate', 0) * 100:.2f}%")
     print(f"  （辅助指标：所有主要工具都被执行）")
     for ttype, tm in sorted(tool.get("by_tool_type", {}).items()):
@@ -1463,7 +1605,7 @@ def print_report(metrics: Dict, results: Optional[List[TurnResult]] = None, stab
 
     pq = metrics.get("process_quality", {})
     print(f"\n【过程质量评估（小模型比对）】")
-    print(f"  整体符合数:        {pq.get('overall_match_count', 0)}/{out.get('total_cases', 0)}")
+    print(f"  整体符合数:        {pq.get('overall_match_count', 0)}/{normal_total} (仅常规用例)")
     print(f"  整体符合率:        {pq.get('overall_match_rate', 0) * 100:.2f}%")
     print(f"  平均符合率:        {pq.get('avg_match_rate', 0) * 100:.2f}%")
 
@@ -1515,8 +1657,9 @@ def print_report(metrics: Dict, results: Optional[List[TurnResult]] = None, stab
 # 10. 数据加载
 # ═══════════════════════════════════════════════════════
 
-def load_dataset(batch: Optional[str] = None, case_id: Optional[str] = None) -> List[dict]:
-    dataset_file = EVAL_DIR / "test_dataset.jsonl"
+def load_dataset(batch: Optional[str] = None, case_id: Optional[str] = None, dataset_file: Optional[Path] = None) -> List[dict]:
+    if dataset_file is None:
+        dataset_file = EVAL_DIR / "test_dataset.jsonl"
     cases = []
     with open(dataset_file, "r", encoding="utf-8") as f:
         for line in f:
@@ -1563,9 +1706,11 @@ async def main():
     parser.add_argument("--stability", type=int, default=0, help="稳定性测试：每条跑 N 次")
     parser.add_argument("--output", default=None, help="输出 JSON 报告路径")
     parser.add_argument("--workers", type=int, default=1, help="并发数（默认1）")
+    parser.add_argument("--dataset", default=None, help="指定数据集文件路径（默认 test_dataset.jsonl）")
     args = parser.parse_args()
 
-    cases = load_dataset(batch=args.batch, case_id=args.case)
+    dataset_path = Path(args.dataset) if args.dataset else None
+    cases = load_dataset(batch=args.batch, case_id=args.case, dataset_file=dataset_path)
     resumes = load_resumes()
 
     print(f"\n加载 {len(cases)} 条测试用例")
@@ -1622,6 +1767,54 @@ async def main():
             tool_hit = " T" if r.tool_primary_hit else " t"
             print(f"  {status} success={r.task_success}{exc} intent_strict={r.intent_strict_hit} tool_primary={r.tool_primary_hit} lat={r.e2e_latency_ms:.0f}ms")
 
+            # 【关键】每跑完一条就追加保存，防止超时丢失
+            case_record = {
+                "case_id": r.case_id,
+                "batch": r.batch,
+                "session_id": r.session_id,
+                "turn_id": r.turn_id,
+                "message": r.message,
+                "scenario": r.scenario,
+                "gold_intents": r.gold_intents,
+                "gold_slots": r.gold_slots,
+                "expected_tools": r.expected_tools,
+                "task_success": r.task_success,
+                "has_exception": r.has_exception,
+                "exception_trace": r.exception_trace if r.has_exception else None,
+                "e2e_latency_ms": r.e2e_latency_ms,
+                "rewrite": asdict(r.rewrite) if r.rewrite else None,
+                "intent": asdict(r.intent) if r.intent else None,
+                "planner": asdict(r.planner) if r.planner else None,
+                "executor": asdict(r.executor) if r.executor else None,
+                "rewrite_result": r.rewrite_result,
+                "intent_result": r.intent_result,
+                "task_graph": r.task_graph,
+                "executed_tools": r.executed_tools,
+                "failed_tools": r.failed_tools,
+                "replan_count": r.replan_count,
+                "llm_summary": r.llm_summary,
+                "intent_strict_hit": r.intent_strict_hit,
+                "intent_hit_reason": r.intent_hit_reason,
+                "tool_primary_hit": r.tool_primary_hit,
+                "tool_primary_tools": r.tool_primary_tools,
+                "tool_full_chain_hit": r.tool_full_chain_hit,
+                "tool_hit_reason": r.tool_hit_reason,
+                "process_quality": r.process_quality,
+                "resume_text": r.resume_text,
+                "raw_llm_calls": r.raw_llm_calls,
+                "tool_executions_full": r.tool_executions_full,
+                "session_history": r.session_history,
+                "final_response": r.final_response,
+                "judge_result": r.judge_result,
+                "embedding_calls": r.embedding_calls,
+                "reranker_calls": r.reranker_calls,
+            }
+            # 追加写入 cases.jsonl（断点续跑的关键）
+            cases_jsonl_path = (Path(args.output).parent / "cases.jsonl") if args.output else (EVAL_DIR / f"v3_eval_cases_{int(time.time())}.jsonl")
+            cases_jsonl_path.parent.mkdir(parents=True, exist_ok=True)
+            with open(cases_jsonl_path, "a", encoding="utf-8") as f:
+                f.write(json.dumps(case_record, ensure_ascii=False) + "\n")
+
         metrics = compute_metrics(all_results)
         print_report(metrics, all_results, stability_results if args.stability > 1 else None)
 
@@ -1631,6 +1824,8 @@ async def main():
                 {
                     "case_id": r.case_id,
                     "batch": r.batch,
+                    "session_id": r.session_id,
+                    "turn_id": r.turn_id,
                     "message": r.message,
                     "scenario": r.scenario,
                     "gold_intents": r.gold_intents,
@@ -1651,7 +1846,6 @@ async def main():
                     "failed_tools": r.failed_tools,
                     "replan_count": r.replan_count,
                     "llm_summary": r.llm_summary,
-                    # v3 新增
                     "intent_strict_hit": r.intent_strict_hit,
                     "intent_hit_reason": r.intent_hit_reason,
                     "tool_primary_hit": r.tool_primary_hit,
@@ -1680,11 +1874,13 @@ async def main():
             with open(out_path, "w", encoding="utf-8") as f:
                 json.dump(output_data, f, ensure_ascii=False, indent=2)
             print(f"\n报告已保存: {out_path}")
+            print(f"逐条结果已追加: {cases_jsonl_path}")
         else:
             default_out = EVAL_DIR / f"v3_eval_report_{int(time.time())}.json"
             with open(default_out, "w", encoding="utf-8") as f:
                 json.dump(output_data, f, ensure_ascii=False, indent=2)
             print(f"\n报告已保存: {default_out}")
+            print(f"逐条结果已追加: {cases_jsonl_path}")
 
     finally:
         tracker.uninstall()

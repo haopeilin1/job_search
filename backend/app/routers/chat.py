@@ -15,7 +15,7 @@ from app.core.state import active_resume_id, resumes_db
 from app.core.query_rewrite import QueryRewriter, QueryRewriteResult
 from app.core.intent_recognition import IntentRecognizer, IntentResult as NewIntentResult
 from app.core.planner import TaskPlanner
-from app.core.react_executor import ReActExecutor
+from app.core.plan_executor import PlanExecutor
 
 # 新体系（意图识别 + 规划）
 from app.core.llm_intent import LLMIntentRouter
@@ -213,7 +213,7 @@ async def chat_endpoint(request: ChatRequest):
     # 同步简历可用状态到 session.global_slots，供意图识别层 _check_clarification_need 使用
     if not hasattr(session, "global_slots"):
         session.global_slots = {}
-    has_resume = resume_text != "（用户尚未上传简历）"
+    has_resume = bool(resume_text) and "尚未上传" not in resume_text
     session.global_slots["resume_available"] = has_resume
     if has_resume:
         session.global_slots["resume_text"] = resume_text
@@ -486,7 +486,7 @@ async def _handle_rule_route(
         "session_id": session_id,
         "intent": route_meta.intent.value,
         "agent_mode": "rule",
-        "reply": reply.model_dump(),
+        "reply": reply.text,
     }
     # 旧路线暂无条件判断 eval_context，默认保留精简结构
     # 如需测试旧路线，可在此展开 agent/memory 等字段
@@ -616,8 +616,12 @@ async def _handle_llm_route_v2(
 
         from app.core.llm_intent import MultiIntentResult, IntentCandidate, LLMIntentType, _create_rule_registry
         from app.core.new_arch_adapter import map_intent_name_to_new
-        new_intent_name = map_intent_name_to_new(pc.pending_intent)
-        intent_type = LLMIntentType(new_intent_name) if new_intent_name else LLMIntentType.CHAT
+        try:
+            new_intent_name = map_intent_name_to_new(pc.pending_intent)
+            intent_type = LLMIntentType(new_intent_name) if new_intent_name else LLMIntentType.CHAT
+        except (ValueError, TypeError):
+            logger.warning(f"[Chat-v2] pending_intent 恢复失败: {pc.pending_intent}，fallback 到 CHAT")
+            intent_type = LLMIntentType.CHAT
 
         # 当 pending_intent=chat（意图模糊）时，基于原始 query 重新推断真实意图
         if intent_type == LLMIntentType.CHAT and request.message:
@@ -647,39 +651,49 @@ async def _handle_llm_route_v2(
                     merged_slots.update(best.metadata or {})
                     logger.info(f"[Chat-v2] 澄清状态推断意图 | inferred={intent_type.value} | rule={best.rule_name}")
 
-        restored_candidate = IntentCandidate(
-            intent_type=intent_type,
-            confidence=0.85,
-            reason=f"澄清状态恢复: 上轮缺失槽位 {pc.missing_slots}",
-            slots=merged_slots,
-            slot_sources={k: "clarification_recovery" for k in merged_slots.keys()},
-            missing_slots=[s for s in pc.missing_slots if s not in merged_slots],
-            needs_clarification=False,
-            source="clarification_recovery",
-            rule_agreement=True,
-        )
-        multi_result = MultiIntentResult(
-            candidates=[restored_candidate],
-            primary_intent=intent_type,
-            needs_clarification=False,
-            global_slots=merged_slots,
-            execution_topology=[[intent_type]],
-        )
-        # 如果仍有缺失槽位，判断是否真正需要再次澄清
-        # VERIFY: 有 company 或 position 之一即可执行；ASSESS: 必须 resume
-        if restored_candidate.missing_slots:
-            needs_clarify = True
-            if intent_type == LLMIntentType.VERIFY:
-                if merged_slots.get("company") or merged_slots.get("position"):
-                    needs_clarify = False
-            elif intent_type == LLMIntentType.ASSESS:
-                if merged_slots.get("resume_available"):
-                    needs_clarify = False
-            if needs_clarify:
-                multi_result.needs_clarification = True
-                multi_result.clarification_reason = (
-                    f"还需要补充以下信息：{', '.join(restored_candidate.missing_slots)}"
-                )
+        # 新增：如果识别为 CHAT 且没有补全任何缺失槽位，放弃澄清恢复
+        abandon_clarification = False
+        if intent_type == LLMIntentType.CHAT:
+            still_missing = [s for s in pc.missing_slots if s not in merged_slots]
+            if still_missing == pc.missing_slots:
+                logger.info("[Chat-v2] 用户未补充缺失槽位，放弃澄清恢复，走正常流程")
+                session.pending_clarification = None
+                abandon_clarification = True
+
+        if not abandon_clarification:
+            restored_candidate = IntentCandidate(
+                intent_type=intent_type,
+                confidence=0.85,
+                reason=f"澄清状态恢复: 上轮缺失槽位 {pc.missing_slots}",
+                slots=merged_slots,
+                slot_sources={k: "clarification_recovery" for k in merged_slots.keys()},
+                missing_slots=[s for s in pc.missing_slots if s not in merged_slots],
+                needs_clarification=False,
+                source="clarification_recovery",
+                rule_agreement=True,
+            )
+            multi_result = MultiIntentResult(
+                candidates=[restored_candidate],
+                primary_intent=intent_type,
+                needs_clarification=False,
+                global_slots=merged_slots,
+                execution_topology=[[intent_type]],
+            )
+            # 如果仍有缺失槽位，判断是否真正需要再次澄清
+            # VERIFY: 有 company 或 position 之一即可执行；ASSESS: 必须 resume
+            if restored_candidate.missing_slots:
+                needs_clarify = True
+                if intent_type == LLMIntentType.VERIFY:
+                    if merged_slots.get("company") or merged_slots.get("position"):
+                        needs_clarify = False
+                elif intent_type == LLMIntentType.ASSESS:
+                    if merged_slots.get("resume_available"):
+                        needs_clarify = False
+                if needs_clarify:
+                    multi_result.needs_clarification = True
+                    multi_result.clarification_reason = (
+                        f"还需要补充以下信息：{', '.join(restored_candidate.missing_slots)}"
+                    )
     else:
         # 非 clarify 场景：直接使用传入的 multi_result（已在入口完成意图识别）
         if pc and pc.is_expired(current_turn_id, max_gap=2):
@@ -693,7 +707,7 @@ async def _handle_llm_route_v2(
         f"clarify={multi_result.needs_clarification}"
     )
 
-    # 将意图识别解析的槽位同步到 session.global_slots，供 ReActExecutor 动态解析占位符使用
+    # 将意图识别解析的槽位同步到 session.global_slots，供 PlanExecutor 动态解析占位符使用
     if not hasattr(session, "global_slots"):
         session.global_slots = {}
     if multi_result.global_slots:
@@ -765,7 +779,7 @@ async def _handle_llm_route_v2(
             "session_id": session_id,
             "intent": intent_result.demands[0].intent_type if intent_result.demands else "chat",
             "is_clarification": True,
-            "reply": reply.model_dump(),
+            "reply": reply.text,
         }
         # 评测模式：附加详细 debug_info（澄清场景也需要）
         if request.eval_context:
@@ -841,6 +855,10 @@ async def _handle_llm_route_v2(
         rewrite_result=rewrite_result,
         history_cache=[],
     )
+    # 保存原始完整 graph（含 fallback），供 replan 使用
+    _raw_new_graph = new_graph
+    _raw_new_planner = new_planner
+
     graph = convert_task_graph(new_graph)
     logger.info(
         f"[Chat-v2] 新体系Plan完成 | tasks={len(new_graph.tasks)} | "
@@ -862,7 +880,7 @@ async def _handle_llm_route_v2(
         })
 
     # ── ④ ReAct执行器：执行任务图 ──
-    executor = ReActExecutor()
+    executor = PlanExecutor()
     graph = await executor.execute(graph, session)
     logger.info(
         f"[Chat-v2] ReAct执行完成 | status={graph.global_status} | "
@@ -878,6 +896,136 @@ async def _handle_llm_route_v2(
                 session.evidence_cache_query = rewrite_result.rewritten_query
                 break
 
+    # ── ④b 反思模块：执行后质量检查 ──
+    reflection_result = None
+    try:
+        from app.core.reflection import AgentReflector
+        reflection_result = await AgentReflector.reflect(
+            graph=graph,
+            session=session,
+            user_query=rewrite_result.rewritten_query,
+        )
+        # 将反思结果附加到 graph，供后续链路使用
+        graph.reflection_result = reflection_result
+        logger.info(
+            f"[Chat-v2] Reflection | action={reflection_result.suggested_action} | "
+            f"complete={reflection_result.is_complete} | conflict={reflection_result.has_conflict}"
+        )
+
+        # re_retrieve 建议：真正触发补充检索（external_search），然后降级为 note_uncertainty
+        if reflection_result.suggested_action == "re_retrieve":
+            try:
+                from app.core.mcp_search import ExternalSearchTool
+                search_tool = ExternalSearchTool()
+                search_params = {"query": rewrite_result.rewritten_query, "count": 5}
+                search_result = await search_tool.execute(search_params)
+                if search_result.success and search_result.data.get("chunks"):
+                    chunks = search_result.data.get("chunks", [])
+                    # 将补充检索结果保存到 graph 上下文，供聚合使用
+                    if not hasattr(graph, "supplemental_search"):
+                        graph.supplemental_search = []
+                    graph.supplemental_search.append({
+                        "tool": "external_search",
+                        "query": rewrite_result.rewritten_query,
+                        "chunks": chunks,
+                        "source": "reflection_re_retrieve",
+                    })
+                    reflection_result.suggested_action = "note_uncertainty"
+                    logger.info(f"[Chat-v2] Reflection re_retrieve 触发补充检索成功 | chunks={len(chunks)}")
+                else:
+                    reflection_result.suggested_action = "note_uncertainty"
+                    logger.info("[Chat-v2] Reflection re_retrieve 补充检索无结果，降级为 note_uncertainty")
+            except Exception as e2:
+                logger.warning(f"[Chat-v2] Reflection re_retrieve 补充检索失败: {e2}")
+                reflection_result.suggested_action = "note_uncertainty"
+
+    except Exception as e:
+        logger.warning(f"[Chat-v2] Reflection 模块执行失败: {e}")
+
+    # ── ④c Planner Replan： reflection 建议 replan_tools 时调用 ──
+    if (
+        reflection_result
+        and reflection_result.suggested_action == "replan_tools"
+        and '_raw_new_graph' in locals()
+        and '_raw_new_planner' in locals()
+    ):
+        failed_tasks_old = [t for t in graph.tasks.values() if t.status == "failed"]
+        if failed_tasks_old:
+            # 优先使用 reflection 的问题定位（problematic_task）
+            target_task_id = reflection_result.problematic_task if reflection_result else ""
+            if not target_task_id:
+                target_task_id = failed_tasks_old[0].task_id
+
+            # 在原始完整 graph 中找到对应的失败任务
+            failed_task_new = None
+            for t in _raw_new_graph.tasks:
+                if t.task_id == target_task_id:
+                    failed_task_new = t
+                    break
+
+            # 如果 problematic_task 指向的任务不在 new_graph 中，fallback 到第一个失败任务
+            if not failed_task_new:
+                for t in _raw_new_graph.tasks:
+                    if t.task_id == failed_tasks_old[0].task_id:
+                        failed_task_new = t
+                        break
+
+            if failed_task_new and failed_task_new.fallback:
+                logger.info(
+                    f"[Chat-v2] 调用 TaskGraphPlanner.replan() | "
+                    f"task={failed_task_new.task_id} | fallback_action={failed_task_new.fallback.action}"
+                )
+                try:
+                    # 将反思结果转为 dict 传给规划LLM
+                    reflection_dict = {
+                        "is_complete": reflection_result.is_complete,
+                        "has_conflict": reflection_result.has_conflict,
+                        "missing_info": reflection_result.missing_info,
+                        "suggested_action": reflection_result.suggested_action,
+                        "problematic_task": reflection_result.problematic_task,
+                        "confidence": reflection_result.confidence,
+                        "reason": reflection_result.reason,
+                    }
+                    _raw_new_graph = await _raw_new_planner.replan(
+                        _raw_new_graph, failed_task_new, session, reflection_result=reflection_dict
+                    )
+                    # 重新转换并执行
+                    graph = convert_task_graph(_raw_new_graph)
+                    executor = PlanExecutor()
+                    graph = await executor.execute(graph, session)
+                    logger.info(f"[Chat-v2] Replan 后重新执行完成 | status={graph.global_status}")
+
+                    # 重新更新 evidence cache
+                    for task in graph.tasks.values():
+                        if task.status == "success" and task.result:
+                            chunks = task.result.get("chunks", []) if isinstance(task.result, dict) else []
+                            if chunks:
+                                session.evidence_cache = chunks[:settings.EVIDENCE_CACHE_MAX_SIZE]
+                                session.evidence_cache_query = rewrite_result.rewritten_query
+                                break
+
+                    # 重新反思（限制一次，避免无限循环）
+                    try:
+                        reflection_result = await AgentReflector.reflect(
+                            graph=graph,
+                            session=session,
+                            user_query=rewrite_result.rewritten_query,
+                        )
+                        graph.reflection_result = reflection_result
+                        logger.info(
+                            f"[Chat-v2] Replan 后重新反思 | action={reflection_result.suggested_action}"
+                        )
+                    except Exception as e2:
+                        logger.warning(f"[Chat-v2] Replan 后重新反思失败: {e2}")
+
+                except Exception as e:
+                    logger.error(f"[Chat-v2] TaskGraphPlanner.replan() 执行失败: {e}")
+            else:
+                logger.warning(
+                    f"[Chat-v2] 无法 replan：任务 {failed_task_old.task_id} "
+                    f"在原始 graph 中无 fallback 策略"
+                )
+
     # 埋点：task_graph_executed
     if tracker:
         tracker.track("task_graph_executed", {
@@ -892,46 +1040,51 @@ async def _handle_llm_route_v2(
             "executed_intents": [d.intent_type for d in intent_result.demands],
         })
 
-    # ── ⑤ 检查 qa_synthesize 直接回复（跳过聚合）──
+    # ── ⑤ 判断是否满足直出条件（单意图场景）──
+    demands = intent_result.demands if intent_result else []
+    is_single_verify = len(demands) == 1 and demands[0].intent_type == "verify"
+    is_single_chat = len(demands) == 1 and demands[0].intent_type == "chat"
+
+    # 收集 qa_synthesize / general_chat 结果（用于直出判断）
     qa_answer = None
     qa_task = None
     for task in graph.tasks.values():
         if task.tool_name == "qa_synthesize" and task.status == "success" and task.result:
-            # qa_synthesize 的 result 直接是 data dict（不是嵌套在 data 键下）
             qa_answer = task.result.get("answer") if isinstance(task.result, dict) else None
             qa_task = task
-            if qa_answer:
-                logger.info(f"[Chat-v2] qa_synthesize 直接回复 | length={len(qa_answer)} | preview={qa_answer[:100]}")
-                break
+            break
 
-    if qa_answer:
-        # qa_synthesize 已生成结构化回答，直接作为最终回复，跳过聚合 LLM
+    general_chat_response = None
+    general_chat_task = None
+    for task in graph.tasks.values():
+        if task.tool_name == "general_chat" and task.status == "success" and task.result:
+            result_data = task.result.get("data", {}) if isinstance(task.result, dict) else {}
+            general_chat_response = result_data.get("response", "")
+            general_chat_task = task
+            break
+
+    # 条件1：纯 verify + qa_synthesize 成功 → 直出（知识库属性查询直接回答）
+    if is_single_verify and qa_answer:
         reply_text = qa_answer
         reply = ChatReply(type="text", content=reply_text.strip())
-        logger.info(f"[Chat-v2] 最终回复（qa_synthesize 直出）| length={len(reply_text)} | preview={reply_text[:100]}")
-        # 初始化 response 构造需要的变量
+        logger.info(f"[Chat-v2] 最终回复（qa_synthesize 直出）| length={len(reply_text)} | intent=verify")
+        # 直出场景仍需构造 debug 需要的变量
         tool_outputs = []
         tool_summary = []
         system_prompt = ""
-        if qa_task:
-            tool_outputs.append({
-                "task_id": qa_task.task_id,
-                "tool": qa_task.tool_name,
-                "description": qa_task.description,
-                "result": qa_task.result,
-            })
-            result_preview = ""
-            if qa_task.result:
-                if isinstance(qa_task.result, dict):
-                    result_preview = str(qa_task.result.get("data", qa_task.result))[:200]
-                else:
-                    result_preview = str(qa_task.result)[:200]
-            tool_summary.append({
-                "tool": qa_task.tool_name,
-                "status": "✅",
-                "params": qa_task.resolved_params if hasattr(qa_task, "resolved_params") else qa_task.parameters,
-                "result_preview": result_preview,
-            })
+        user_prompt = ""
+
+    # 条件2：纯 chat + general_chat 成功 → 直出（闲聊直接回答）
+    elif is_single_chat and general_chat_response:
+        reply_text = general_chat_response
+        reply = ChatReply(type="text", content=reply_text.strip())
+        logger.info(f"[Chat-v2] 最终回复（general_chat 直出）| length={len(reply_text)} | intent=chat")
+        tool_outputs = []
+        tool_summary = []
+        system_prompt = ""
+        user_prompt = ""
+
+    # 其他情况（多意图、assess、explore、prepare 等）→ 走聚合 LLM
     else:
         # ── ⑥ LLM聚合：生成最终回复 ──
         # 收集所有成功任务的输出
@@ -961,82 +1114,156 @@ async def _handle_llm_route_v2(
                     "result": task.result,
                 })
 
-        system_prompt = (
-            "你是一位专业的求职顾问。请基于以下工具执行结果，给用户一个清晰、有帮助的回复。\n"
-            "要求：\n"
-            "1. 先直接回答用户的问题（是/否/有/没有），不要绕弯子，不要重复用户的原话\n"
-            "2. 如果有匹配分析结果，给出具体的分数和建议\n"
-            "3. 如果有检索结果，基于事实回答，不要编造\n"
-            "4. 引用信息时必须标注来源，格式如：[来源：本地知识库-字节跳动] 或 [来源：外部搜索-新华网]\n"
-            "5. 如果涉及'最近''最新'等时效性问题，请明确说明信息的时间范围\n"
-            "6. 当本地知识库与外部搜索结果冲突时，请并列呈现两种说法并标注各自来源，不要替用户做判断\n"
-            "7. 语气友好、专业、结构化，但不要过度展开与问题无关的建议\n"
-            "8. 严格围绕用户当前问题回答，禁止发散到无关话题\n"
-            "9. 控制回复长度：优先给出核心结论（2-3句话），细节只在用户明确要求时才展开\n"
-            "10. 每个要点不超过2行，避免大段文字堆砌\n"
-            "11. 【语气要求】你的语气应该像一位有5年经验的求职顾问在和朋友聊天：专业但有亲和力，自然不机械。"
-            "避免模板化的开场白（如'根据您的问题，我将从以下几个方面进行分析'），适当使用口语化过渡。"
-            "回复要有'人味'，让用户感觉是在和真人顾问对话，而不是在读说明书。"
-        )
+    # 将 reflection 触发的补充检索结果合并到 tool_outputs
+    if hasattr(graph, "supplemental_search") and graph.supplemental_search:
+        for sup in graph.supplemental_search:
+            tool_outputs.append({
+                "task_id": "T_supplemental",
+                "tool": sup["tool"],
+                "description": f"补充检索（由reflection触发）: {sup['query']}",
+                "result": {"chunks": sup["chunks"], "source": sup["source"]},
+            })
+            tool_summary.append({
+                "tool": sup["tool"],
+                "status": "✅",
+                "params": {"query": sup["query"]},
+                "result_preview": f"补充检索结果: {len(sup['chunks'])}条",
+            })
+        logger.info(f"[Chat-v2] 聚合LLM纳入补充检索结果 | count={len(graph.supplemental_search)}")
 
-        # 限制 tool_outputs 长度，避免 prompt 过长导致 LLM 响应慢
-        _truncated_outputs = []
-        for to in tool_outputs:
-            truncated = dict(to)
-            if "result" in truncated and truncated["result"]:
-                res = truncated["result"]
-                if isinstance(res, dict):
-                    # 对 result 中的长字段进行截断
-                    for k in list(res.keys()):
-                        v = res[k]
-                        if isinstance(v, str) and len(v) > 500:
-                            res[k] = v[:500] + "...[截断]"
-                        elif isinstance(v, list) and len(v) > 10:
-                            res[k] = v[:10] + [f"...共{len(v)}项，已截断"]
-                truncated["result"] = res
-            _truncated_outputs.append(truncated)
+    # 根据反思结果动态调整 system_prompt
+    # 【注意】reflection 是 Agent 内部机制，其判断结果（如信息是否完整）不应直接暴露给用户。
+    # 如果 re_retrieve 成功补充了检索，直接基于补充后的结果生成回复即可，不需要告诉用户"信息不完整"。
+    # 只有来源冲突是需要用户知道的，才暴露给聚合LLM。
+    reflection_notes = ""
+    if reflection_result and reflection_result.has_conflict:
+        reflection_notes += "\n【重要：来源冲突提示】检测到本地知识库与外部搜索结果存在潜在冲突，请务必并列呈现不同说法并标注来源，建议用户以官方信息为准。\n"
 
-        tool_outputs_json = json.dumps(_truncated_outputs, ensure_ascii=False, default=str)[:1500]
+    # 根据所有意图类型，确定必含字段要求（多意图场景需合并所有约束）
+    primary_intent = intent_result.demands[0].intent_type if intent_result.demands else "chat"
+    all_intents = [d.intent_type for d in intent_result.demands] if intent_result.demands else ["chat"]
+    intent_field_map = {
+        "assess": "①匹配分数（如'65分'）②匹配标签（如'略有差距'）③优势分析 ④差距分析 ⑤提升建议",
+        "verify": "①查询属性的具体值（如'薪资30-60k'）②信息来源标注",
+        "explore": "①推荐岗位列表（至少3个，含公司和岗位名）②推荐理由（匹配点）",
+        "prepare": "①面试题列表（题目+考察点）②准备建议",
+        "chat": "友好回复",
+        "manage": "说明操作结果",
+    }
+    intent_required_parts = []
+    for intent in set(all_intents):
+        part = intent_field_map.get(intent)
+        if part:
+            intent_required_parts.append(f"[{intent}] {part}")
+    intent_required_fields = "\n".join(intent_required_parts) if intent_required_parts else ""
+    if intent_required_fields:
+        intent_required_fields += "\n不得遗漏任何工具输出的关键数据（分数、标签、题目、推荐列表等）。"
 
-        user_prompt = (
-            f"【用户问题】\n{rewrite_result.rewritten_query}\n\n"
-            f"【工具执行结果】\n{tool_outputs_json}\n\n"
-            f"请严格围绕用户问题生成简洁回复（控制在300字以内）："
-        )
+    system_prompt = (
+        "你是一位专业的求职顾问。请基于以下工具执行结果，给用户一个清晰、有帮助的回复。\n"
+        "\n"
+        "【核心原则】\n"
+        "1. 先直接回答用户的问题，不要绕弯子，不要重复用户的原话\n"
+        "2. 基于工具输出的事实回复，不要编造\n"
+        "3. 引用信息时必须标注来源，格式如：[来源：本地知识库-字节跳动] 或 [来源：外部搜索-新华网]\n"
+        "4. 如果涉及'最近''最新'等时效性问题，请明确说明信息的时间范围\n"
+        "5. 当本地知识库与外部搜索结果冲突时，请并列呈现两种说法并标注各自来源，不要替用户做判断\n"
+        "6. 严格围绕用户当前问题回答，禁止发散到无关话题\n"
+        "7. 【信息冲突自检】生成回复前，主动检查工具结果中是否存在来源冲突。"
+        "如果存在冲突，必须在回复中明确指出冲突点，分析1-2条可能原因，并建议用户以官方JD为准。\n"
+        "8. 【语气要求】像一位有5年经验的求职顾问在和朋友聊天：专业但有亲和力，自然不机械。"
+        "避免模板化开场白，适当使用口语化过渡。\n"
+        "\n"
+        "【强制性要求——不得遗漏】\n"
+        + intent_required_fields + "\n"
+        "\n"
+        "【关键兜底】无论回复多长，工具输出中的关键数据（如分数、排名、具体数值、属性值）必须全部保留并呈现给用户。"
+        "不要因为追求简洁而删除具体数据。用户问匹配度，就必须给出分数；用户问薪资，就必须给出具体数字范围。"
+        + reflection_notes
+    )
 
-        # 最终聚合：chat → core → planner → memory 模型降级
-        # 超时递减：主模型给 30s，fallback 模型各给 15s（服务已不稳定，快速尝试）
-        reply_text = ""
-        fallback_configs = [
-            ("chat", TIMEOUT_HEAVY),      # 30s
-            ("core", TIMEOUT_STANDARD),   # 20s
-            ("planner", TIMEOUT_LIGHT),   # 10s
-            ("memory", TIMEOUT_LIGHT),    # 10s
-        ]
-        last_error = None
-        for model_name, model_timeout in fallback_configs:
-            try:
-                llm = LLMClient.from_config(model_name)
-                reply_text = await llm.generate(
-                    prompt=user_prompt,
-                    system=system_prompt,
-                    temperature=0.3,  # 降低温度，减少发散
-                    max_tokens=800,   # 限制输出长度
-                    timeout=model_timeout,
-                )
-                if model_name != "chat":
-                    logger.info(f"[Chat-v2] 最终聚合使用降级模型: {model_name}")
-                break
-            except Exception as e:
-                last_error = e
-                logger.warning(f"[Chat-v2] 聚合模型 {model_name} 失败: {e}")
-        else:
-            logger.error(f"[Chat-v2] 所有聚合模型均失败: {last_error}")
-            reply_text = "抱歉，我在处理您的请求时遇到了问题，请稍后重试。"
+    # 限制 tool_outputs 长度，避免 prompt 过长导致 LLM 响应慢
+    _truncated_outputs = []
+    for to in tool_outputs:
+        truncated = dict(to)
+        if "result" in truncated and truncated["result"]:
+            res = truncated["result"]
+            if isinstance(res, dict):
+                # 对 kb_retrieve / external_search 的 chunks 做清洗：只保留 content，删除内部元数据
+                if "chunks" in res and isinstance(res["chunks"], list):
+                    cleaned_chunks = []
+                    for c in res["chunks"]:
+                        if isinstance(c, dict):
+                            # 只保留 content 和少量关键元数据
+                            cleaned = {
+                                "content": c.get("content", ""),
+                                "来源": c.get("metadata", {}).get("company", "本地知识库"),
+                            }
+                            cleaned_chunks.append(cleaned)
+                        else:
+                            cleaned_chunks.append(c)
+                    res = dict(res)
+                    res["chunks"] = cleaned_chunks[:5]  # 最多保留5条
+                    if len(res["chunks"]) > 5:
+                        res["chunks_note"] = f"共{len(res['chunks'])}条，已截断"
+                # 对 result 中的长字段进行截断
+                for k in list(res.keys()):
+                    v = res[k]
+                    if isinstance(v, str) and len(v) > 500:
+                        res[k] = v[:500] + "...[截断]"
+                    elif isinstance(v, list) and len(v) > 10:
+                        res[k] = v[:10] + [f"...共{len(v)}项，已截断"]
+            truncated["result"] = res
+        _truncated_outputs.append(truncated)
 
-        reply_text_stripped = reply_text.strip()
-        logger.info(f"[Chat-v2] 最终聚合回复 | length={len(reply_text_stripped)} | preview={reply_text_stripped[:100]}")
-        reply = ChatReply(type="text", content=reply_text_stripped)
+    # 调整 tool_outputs 顺序：把 match_analyze 放在最前面，确保聚合LLM优先看到
+    _truncated_outputs.sort(key=lambda x: 0 if x.get("tool") == "match_analyze" else 1)
+
+    tool_outputs_json = json.dumps(_truncated_outputs, ensure_ascii=False, default=str)[:1500]
+
+    user_prompt = (
+        f"【用户问题】\n{rewrite_result.rewritten_query}\n\n"
+        f"【用户意图】{primary_intent}\n\n"
+        f"【工具执行结果】\n{tool_outputs_json}\n\n"
+        f"请基于用户意图和工具执行结果生成回复。注意：\n"
+        f"1. 必须保留工具输出中的所有关键数据（分数、数值、属性值等），不得遗漏。\n"
+        f"2. 如果工具结果中包含 match_analyze 的输出，请优先基于 match_analyze 的 score、label、advantages、weaknesses 来回答匹配度问题，不要忽略这些结构化结论。\n"
+        f'3. 不要告诉用户"信息不完整"或"缺少数据"——如果工具已经执行了，就基于已有工具结果回答。'
+    )
+
+    # 最终聚合：chat → core → planner → memory 模型降级
+    # 超时递减：主模型给 30s，fallback 模型各给 15s（服务已不稳定，快速尝试）
+    reply_text = ""
+    fallback_configs = [
+        ("chat", TIMEOUT_HEAVY),      # 30s
+        ("core", TIMEOUT_STANDARD),   # 20s
+        ("planner", TIMEOUT_LIGHT),   # 10s
+        ("memory", TIMEOUT_LIGHT),    # 10s
+    ]
+    last_error = None
+    for model_name, model_timeout in fallback_configs:
+        try:
+            llm = LLMClient.from_config(model_name)
+            reply_text = await llm.generate(
+                prompt=user_prompt,
+                system=system_prompt,
+                temperature=0.3,  # 降低温度，减少发散
+                max_tokens=2500,  # 多意图场景需要足够长度，避免截断
+                timeout=model_timeout,
+            )
+            if model_name != "chat":
+                logger.info(f"[Chat-v2] 最终聚合使用降级模型: {model_name}")
+            break
+        except Exception as e:
+            last_error = e
+            logger.warning(f"[Chat-v2] 聚合模型 {model_name} 失败: {e}")
+    else:
+        logger.error(f"[Chat-v2] 所有聚合模型均失败: {last_error}")
+        reply_text = "抱歉，我在处理您的请求时遇到了问题，请稍后重试。"
+
+    reply_text_stripped = reply_text.strip()
+    logger.info(f"[Chat-v2] 最终聚合回复 | length={len(reply_text_stripped)} | preview={reply_text_stripped[:100]}")
+    reply = ChatReply(type="text", content=reply_text_stripped)
 
     # ── ⑥ 保存对话历史 ──
     turn = DialogueTurn(
@@ -1109,6 +1336,15 @@ async def _handle_llm_route_v2(
             },
             "evidence_cache": session.evidence_cache,
             "evidence_cache_query": session.evidence_cache_query,
+            "reflection_result": {
+                "is_complete": reflection_result.is_complete,
+                "has_conflict": reflection_result.has_conflict,
+                "missing_info": reflection_result.missing_info,
+                "suggested_action": reflection_result.suggested_action,
+                "problematic_task": reflection_result.problematic_task,
+                "confidence": reflection_result.confidence,
+                "reason": reflection_result.reason,
+            } if reflection_result else {},
             "session_history": [
                 {
                     "turn_id": t.turn_id,
@@ -1119,6 +1355,10 @@ async def _handle_llm_route_v2(
                 }
                 for t in session.working_memory.turns
             ],
+            "final_aggregation_prompt": {
+                "system_prompt": system_prompt,
+                "user_prompt": user_prompt,
+            },
         }
 
     # 基础响应（前端必须字段）
@@ -1126,7 +1366,7 @@ async def _handle_llm_route_v2(
         "session_id": session_id,
         "intent": intent_result.demands[0].intent_type if intent_result.demands else "chat",
         "is_clarification": False,
-        "reply": reply.model_dump(),
+        "reply": reply.text,
     }
 
     # eval / 测试阶段才展开的中间态
@@ -1241,8 +1481,12 @@ async def _handle_llm_route_v2_stream(
 
         from app.core.llm_intent import MultiIntentResult, IntentCandidate, LLMIntentType, _create_rule_registry
         from app.core.new_arch_adapter import map_intent_name_to_new
-        new_intent_name = map_intent_name_to_new(pc.pending_intent)
-        intent_type = LLMIntentType(new_intent_name) if new_intent_name else LLMIntentType.CHAT
+        try:
+            new_intent_name = map_intent_name_to_new(pc.pending_intent)
+            intent_type = LLMIntentType(new_intent_name) if new_intent_name else LLMIntentType.CHAT
+        except (ValueError, TypeError):
+            logger.warning(f"[Chat-v2-Stream] pending_intent 恢复失败: {pc.pending_intent}，fallback 到 CHAT")
+            intent_type = LLMIntentType.CHAT
 
         # 当 pending_intent=chat（意图模糊）时，基于原始 query 重新推断真实意图
         if intent_type == LLMIntentType.CHAT and request.message:
@@ -1268,38 +1512,49 @@ async def _handle_llm_route_v2_stream(
                     intent_type = best.intent
                     merged_slots.update(best.metadata or {})
                     logger.info(f"[Chat-v2-Stream] 澄清推断意图 | inferred={intent_type.value} | rule={best.rule_name}")
-        restored = IntentCandidate(
-            intent_type=intent_type,
-            confidence=0.85,
-            reason=f"澄清恢复: 缺失槽位 {pc.missing_slots}",
-            slots=merged_slots,
-            slot_sources={k: "clarification_recovery" for k in merged_slots.keys()},
-            missing_slots=[s for s in pc.missing_slots if s not in merged_slots],
-            needs_clarification=False,
-            source="clarification_recovery",
-            rule_agreement=True,
-        )
-        # 判断是否需要再次澄清：VERIFY 有 company 或 position 之一即可；ASSESS 必须 resume
-        needs_clarify = False
-        clarify_reason = None
-        if restored.missing_slots:
-            needs_clarify = True
-            if intent_type == LLMIntentType.VERIFY:
-                if merged_slots.get("company") or merged_slots.get("position"):
-                    needs_clarify = False
-            elif intent_type == LLMIntentType.ASSESS:
-                if merged_slots.get("resume_available"):
-                    needs_clarify = False
-            if needs_clarify:
-                clarify_reason = f"还需要补充：{', '.join(restored.missing_slots)}"
-        multi_result = MultiIntentResult(
-            candidates=[restored],
-            primary_intent=intent_type,
-            needs_clarification=needs_clarify,
-            clarification_reason=clarify_reason,
-            global_slots=merged_slots,
-            execution_topology=[[intent_type]],
-        )
+
+        # 新增：如果识别为 CHAT 且没有补全任何缺失槽位，放弃澄清恢复
+        abandon_clarification = False
+        if intent_type == LLMIntentType.CHAT:
+            still_missing = [s for s in pc.missing_slots if s not in merged_slots]
+            if still_missing == pc.missing_slots:
+                logger.info("[Chat-v2-Stream] 用户未补充缺失槽位，放弃澄清恢复，走正常流程")
+                session.pending_clarification = None
+                abandon_clarification = True
+
+        if not abandon_clarification:
+            restored = IntentCandidate(
+                intent_type=intent_type,
+                confidence=0.85,
+                reason=f"澄清恢复: 缺失槽位 {pc.missing_slots}",
+                slots=merged_slots,
+                slot_sources={k: "clarification_recovery" for k in merged_slots.keys()},
+                missing_slots=[s for s in pc.missing_slots if s not in merged_slots],
+                needs_clarification=False,
+                source="clarification_recovery",
+                rule_agreement=True,
+            )
+            # 判断是否需要再次澄清：VERIFY 有 company 或 position 之一即可；ASSESS 必须 resume
+            needs_clarify = False
+            clarify_reason = None
+            if restored.missing_slots:
+                needs_clarify = True
+                if intent_type == LLMIntentType.VERIFY:
+                    if merged_slots.get("company") or merged_slots.get("position"):
+                        needs_clarify = False
+                elif intent_type == LLMIntentType.ASSESS:
+                    if merged_slots.get("resume_available"):
+                        needs_clarify = False
+                if needs_clarify:
+                    clarify_reason = f"还需要补充：{', '.join(restored.missing_slots)}"
+            multi_result = MultiIntentResult(
+                candidates=[restored],
+                primary_intent=intent_type,
+                needs_clarification=needs_clarify,
+                clarification_reason=clarify_reason,
+                global_slots=merged_slots,
+                execution_topology=[[intent_type]],
+            )
     else:
         # 非 clarify 场景：直接使用传入的 multi_result
         if pc and pc.is_expired(current_turn_id, max_gap=2):
@@ -1307,7 +1562,7 @@ async def _handle_llm_route_v2_stream(
 
     intent_result = multi_intent_result_to_intent_result(multi_result)
 
-    # 将意图识别解析的槽位同步到 session.global_slots，供 ReActExecutor 动态解析占位符使用
+    # 将意图识别解析的槽位同步到 session.global_slots，供 PlanExecutor 动态解析占位符使用
     if not hasattr(session, "global_slots"):
         session.global_slots = {}
     if multi_result.global_slots:
@@ -1367,7 +1622,7 @@ async def _handle_llm_route_v2_stream(
 
     # ── ③ ReAct 执行 ──
     yield _sse("status", {"step": "execute", "message": "正在执行分析..."})
-    executor = ReActExecutor()
+    executor = PlanExecutor()
     graph = await executor.execute(graph, session)
 
     # Update evidence cache
@@ -1422,8 +1677,11 @@ async def _handle_llm_route_v2_stream(
                     {
                         "company": r.get("company", ""),
                         "position": r.get("position", ""),
-                        "score": r.get("score", 0),
-                        "reason": r.get("reason", "")[:200],
+                        "match_score": r.get("match_score", 0),
+                        "recommend_reason": r.get("recommend_reason", "")[:200],
+                        "key_match": r.get("key_match", [])[:3],
+                        "key_gap": r.get("key_gap", [])[:3],
+                        "apply_priority": r.get("apply_priority", ""),
                     }
                     for r in rankings[:5]
                 ]
@@ -1479,7 +1737,7 @@ async def _handle_llm_route_v2_stream(
                 prompt=user_prompt,
                 system=system_prompt,
                 temperature=0.5,
-                max_tokens=1500,
+                max_tokens=2500,
                 timeout=model_timeout,
             ):
                 reply_text += token
@@ -1541,7 +1799,7 @@ async def _handle_llm_route_v2_stream(
             "system_prompt_preview": system_prompt[:200] if system_prompt else "",
         },
         "memory": memory_state,
-        "reply": reply.model_dump(),
+        "reply": reply.text,
     })
 
 
@@ -1557,7 +1815,7 @@ async def chat_stream_endpoint(request: ChatRequest):
     # 同步简历可用状态到 session.global_slots，供意图识别层 _check_clarification_need 使用
     if not hasattr(session, "global_slots"):
         session.global_slots = {}
-    has_resume = resume_text != "（用户尚未上传简历）"
+    has_resume = bool(resume_text) and "尚未上传" not in resume_text
     session.global_slots["resume_available"] = has_resume
     if has_resume:
         session.global_slots["resume_text"] = resume_text
