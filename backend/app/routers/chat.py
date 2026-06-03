@@ -7,7 +7,7 @@ from pydantic import BaseModel, Field
 
 logger = logging.getLogger(__name__)
 
-from app.core.llm_client import LLMClient, TIMEOUT_HEAVY, TIMEOUT_STANDARD, TIMEOUT_LIGHT
+from app.core.llm_client import LLMClient, TIMEOUT_HEAVY, TIMEOUT_STANDARD, TIMEOUT_LIGHT, _llm_usage_ctx
 from app.core.memory import SessionMemory, MemoryManager, DialogueTurn, PendingClarification
 from app.core.db import load_session_meta, load_long_term_memory, delete_session_meta, delete_long_term_memory
 from app.core.config import settings
@@ -1816,6 +1816,7 @@ async def _handle_llm_route_v2_stream(
                     {
                         "chunk_id": c.get("chunk_id", ""),
                         "content": c.get("content", "")[:300],
+                        "source": f"{c.get('metadata', {}).get('company', '未知公司')}-{c.get('metadata', {}).get('position', '未知岗位')}",
                         "metadata": {
                             "company": c.get("metadata", {}).get("company", ""),
                             "position": c.get("metadata", {}).get("position", ""),
@@ -1863,7 +1864,9 @@ async def _handle_llm_route_v2_stream(
         "1. 先直接回答用户的问题（是/否/有/没有），不要绕弯子，不要重复用户的原话\n"
         "2. 如果有匹配分析结果，给出具体的分数和建议\n"
         "3. 如果有检索结果，基于事实回答，不要编造\n"
-        "4. 引用信息时必须标注来源，格式如：[来源：本地知识库-字节跳动] 或 [来源：外部搜索-新华网]\n"
+        "4. 【强制】引用信息时必须标注来源。每个引用的事实后面都要跟 [来源：公司名-岗位名] 格式。"
+        "   kb_retrieve 结果的 chunks 中带有 'source' 字段（如'字节跳动-AI产品经理'），请直接使用。"
+        "   external_search 结果带有 'source_name' 字段，也请直接使用。\n"
         "5. 当本地知识库与外部搜索结果冲突时，请并列呈现两种说法并标注各自来源，不要替用户做判断\n"
         "6. 语气友好、专业、结构化"
     )
@@ -2023,60 +2026,77 @@ async def chat_stream_endpoint(request: ChatRequest):
         request.user_provided_jd = "\n\n".join(r.text for r in ocr_results)
         session.user_provided_jd = request.user_provided_jd
 
-    # ════════════════════════════════════════
-    # Step 0: Query 改写（两条路线共用）
-    # ════════════════════════════════════════
-    rewriter = QueryRewriter()
-    rewrite_result = await rewriter.rewrite(raw_query=message_with_ocr, session=session)
-    logger.info(
-        f"[ChatStream] Query改写 | original='{request.message[:30]}...' "
-        f"| rewritten='{rewrite_result.rewritten_query[:40]}...' "
-        f"| follow_up={rewrite_result.is_follow_up}/{rewrite_result.follow_up_type} "
-        f"| source_pref={rewrite_result.source_preference}"
-    )
-
-    # Step 1: 意图识别（基于改写后的 query）
-    from app.core.llm_intent import LLMIntentRouter
-    llm_for_intent = LLMClient.from_config("chat")
-    intent_router = LLMIntentRouter(chat_llm=llm_for_intent)
-    multi_result = await intent_router.route_multi(
-        rewrite_result=rewrite_result,
-        session=session,
-        attachments=request.attachments or [],
-    )
-    logger.info(
-        f"[ChatStream] 意图识别 | primary={multi_result.primary_intent.value if multi_result.primary_intent else 'None'} "
-        f"| candidates={[c.intent_type.value for c in multi_result.candidates]}"
-    )
-
-    agent_mode = settings.AGENT_MODE
-    if agent_mode == "auto":
-        effective_mode = settings.DEFAULT_AGENT_MODE
-    else:
-        effective_mode = agent_mode
-    use_llm_agent = effective_mode == "llm"
-
     async def event_generator():
-        if not use_llm_agent:
-            # 规则路线暂不支持流式，直接返回结果
-            result = await _handle_rule_route(
-                request=request, session=session, session_id=session_id,
-                message_with_ocr=message_with_ocr, rewrite_result=rewrite_result,
-                resume_text=resume_text,
-            )
-            yield _sse("done", result)
-            return
+        # 初始化请求级真实 token 累积器（覆盖 event_generator 内所有 LLM 调用）
+        usage_accum = {"prompt_tokens": 0, "completion_tokens": 0, "total_tokens": 0}
+        ctx_token = _llm_usage_ctx.set(usage_accum)
 
-        # v2 流式路线
-        async for event in _handle_llm_route_v2_stream(
-            request=request,
-            session=session,
-            session_id=session_id,
-            message_with_ocr=message_with_ocr,
-            rewrite_result=rewrite_result,
-            multi_result=multi_result,
-            resume_text=resume_text,
-        ):
-            yield event
+        try:
+            # ════════════════════════════════════════
+            # Step 0: Query 改写（两条路线共用）
+            # ════════════════════════════════════════
+            rewriter = QueryRewriter()
+            rewrite_result = await rewriter.rewrite(raw_query=message_with_ocr, session=session)
+            logger.info(
+                f"[ChatStream] Query改写 | original='{request.message[:30]}...' "
+                f"| rewritten='{rewrite_result.rewritten_query[:40]}...' "
+                f"| follow_up={rewrite_result.is_follow_up}/{rewrite_result.follow_up_type} "
+                f"| source_pref={rewrite_result.source_preference}"
+            )
+
+            # Step 1: 意图识别（基于改写后的 query）
+            from app.core.llm_intent import LLMIntentRouter
+            llm_for_intent = LLMClient.from_config("chat")
+            intent_router = LLMIntentRouter(chat_llm=llm_for_intent)
+            multi_result = await intent_router.route_multi(
+                rewrite_result=rewrite_result,
+                session=session,
+                attachments=request.attachments or [],
+            )
+            logger.info(
+                f"[ChatStream] 意图识别 | primary={multi_result.primary_intent.value if multi_result.primary_intent else 'None'} "
+                f"| candidates={[c.intent_type.value for c in multi_result.candidates]}"
+            )
+
+            agent_mode = settings.AGENT_MODE
+            if agent_mode == "auto":
+                effective_mode = settings.DEFAULT_AGENT_MODE
+            else:
+                effective_mode = agent_mode
+            use_llm_agent = effective_mode == "llm"
+
+            if not use_llm_agent:
+                # 规则路线暂不支持流式，直接返回结果
+                result = await _handle_rule_route(
+                    request=request, session=session, session_id=session_id,
+                    message_with_ocr=message_with_ocr, rewrite_result=rewrite_result,
+                    resume_text=resume_text,
+                )
+                result["usage"] = usage_accum
+                yield _sse("done", result)
+                return
+
+            # v2 流式路线
+            async for event in _handle_llm_route_v2_stream(
+                request=request,
+                session=session,
+                session_id=session_id,
+                message_with_ocr=message_with_ocr,
+                rewrite_result=rewrite_result,
+                multi_result=multi_result,
+                resume_text=resume_text,
+            ):
+                # 拦截 done 事件，注入真实 token usage
+                if event.startswith("event: done"):
+                    lines = event.strip().split("\n")
+                    for line in lines:
+                        if line.startswith("data: "):
+                            data = json.loads(line[6:])
+                            data["usage"] = usage_accum
+                            event = _sse("done", data)
+                            break
+                yield event
+        finally:
+            _llm_usage_ctx.reset(ctx_token)
 
     return StreamingResponse(event_generator(), media_type="text/event-stream")

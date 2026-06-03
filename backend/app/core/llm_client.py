@@ -11,6 +11,7 @@ OpenAI 兼容 LLM 客户端
 """
 
 import asyncio
+import contextvars
 import json
 import logging
 from typing import Dict, Optional
@@ -19,6 +20,12 @@ import httpx
 
 from app.core.config import settings
 from app.core.state import llm_config_store
+
+# 全局 contextvar：用于在同一条请求链路中累积真实 LLM token 消耗
+# 在 chat.py 的 endpoint 入口处 set，所有 LLMClient 调用自动累加
+_llm_usage_ctx: contextvars.ContextVar[Optional[Dict[str, int]]] = contextvars.ContextVar(
+    "llm_usage", default=None
+)
 
 logger = logging.getLogger(__name__)
 
@@ -193,6 +200,12 @@ class LLMClient:
                 content = content.encode("utf-8", "surrogatepass").decode("utf-8", "replace")
                 # 保存真实 token usage
                 self.last_usage = data.get("usage", {})
+                # 累加到请求级 contextvar（如果已设置）
+                accum = _llm_usage_ctx.get()
+                if accum is not None:
+                    for k, v in self.last_usage.items():
+                        if isinstance(v, int):
+                            accum[k] = accum.get(k, 0) + v
                 if attempt > 0:
                     logger.info(
                         f"[LLMClient] 第 {attempt + 1} 次尝试成功 | model={self.model}"
@@ -292,12 +305,15 @@ class LLMClient:
             "messages": messages,
             "temperature": temperature,
             "stream": True,
+            "stream_options": {"include_usage": True},
         }
         if max_tokens is not None:
             payload["max_tokens"] = max_tokens
         # Ollama 本地模型：设置 keep_alive 避免 5 分钟卸载
         if "localhost" in self.base_url or "127.0.0.1" in self.base_url:
             payload["keep_alive"] = "1h"
+            # Ollama 可能不支持 stream_options，移除以避免报错
+            payload.pop("stream_options", None)
 
         effective_timeout = timeout if timeout is not None else self.timeout
         client = _get_async_client(self.base_url, effective_timeout)
@@ -313,6 +329,15 @@ class LLMClient:
                 if line.startswith("data: "):
                     try:
                         data = json.loads(line[6:])
+                        # 累加流式 usage（如果 API 在最后一个 chunk 返回）
+                        usage = data.get("usage")
+                        if usage:
+                            self.last_usage = usage
+                            accum = _llm_usage_ctx.get()
+                            if accum is not None:
+                                for k, v in usage.items():
+                                    if isinstance(v, int):
+                                        accum[k] = accum.get(k, 0) + v
                         delta = data.get("choices", [{}])[0].get("delta", {})
                         content = delta.get("content", "")
                         if content:
@@ -370,6 +395,12 @@ class LLMClient:
                 content = data["choices"][0]["message"]["content"]
                 # 保存真实 token usage
                 self.last_usage = data.get("usage", {})
+                # 累加到请求级 contextvar（如果已设置）
+                accum = _llm_usage_ctx.get()
+                if accum is not None:
+                    for k, v in self.last_usage.items():
+                        if isinstance(v, int):
+                            accum[k] = accum.get(k, 0) + v
                 if attempt > 0:
                     logger.info(
                         f"[LLMClient] vision 第 {attempt + 1} 次尝试成功 | model={self.model}"

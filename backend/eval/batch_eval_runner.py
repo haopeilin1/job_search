@@ -46,6 +46,7 @@ INTENT_ALIASES = {
     "assess": "assess",
     "prepare": "prepare",
     "verify": "verify",
+    "attribute_verify": "verify",   # 新体系 verify 的旧体系别名
     "clarification": "clarification",
     "chat": "chat",
 }
@@ -162,6 +163,12 @@ async def run_single_case(case: dict, run_dir: Path, session: aiohttp.ClientSess
         # 提取 done 事件
         done_events = [e for e in events if e.get("type") == "done"]
         done_event = done_events[0] if done_events else {}
+
+        # 真实 LLM token 消耗（从后端通过 SSE done 事件上报）
+        usage = done_event.get("usage", {})
+        result["prompt_tokens"] = usage.get("prompt_tokens", 0)
+        result["completion_tokens"] = usage.get("completion_tokens", 0)
+        result["total_tokens"] = usage.get("total_tokens", 0)
 
         # 预测意图
         pred_intent = done_event.get("intent")
@@ -283,6 +290,11 @@ def compute_metrics(results: List[dict], exclude_special: bool = False) -> dict:
         else:
             scenario_stats[sc]["error"] += 1
 
+    # 真实 token 消耗汇总
+    prompt_tokens_list = [r.get("prompt_tokens", 0) for r in success_results]
+    completion_tokens_list = [r.get("completion_tokens", 0) for r in success_results]
+    total_tokens_list = [r.get("total_tokens", 0) for r in success_results]
+
     metrics = {
         "total_cases": total,
         "success_cases": len(success_results),
@@ -299,6 +311,13 @@ def compute_metrics(results: List[dict], exclude_special: bool = False) -> dict:
         "median_total_latency_sec": round(sorted(latencies)[len(latencies)//2], 2) if latencies else 0,
         "max_total_latency_sec": round(max(latencies), 2) if latencies else 0,
         "min_total_latency_sec": round(min(ttfs), 2) if ttfs else 0,
+        # 真实 LLM token 消耗（基于 API 返回的 usage 字段）
+        "total_prompt_tokens": sum(prompt_tokens_list),
+        "total_completion_tokens": sum(completion_tokens_list),
+        "total_tokens": sum(total_tokens_list),
+        "avg_prompt_tokens": round(sum(prompt_tokens_list) / len(prompt_tokens_list), 1) if prompt_tokens_list else 0,
+        "avg_completion_tokens": round(sum(completion_tokens_list) / len(completion_tokens_list), 1) if completion_tokens_list else 0,
+        "avg_total_tokens": round(sum(total_tokens_list) / len(total_tokens_list), 1) if total_tokens_list else 0,
         "intent_breakdown": {k: dict(v) for k, v in intent_stats.items()},
         "scenario_breakdown": {k: dict(v) for k, v in scenario_stats.items()},
         "errors": [{"case_id": r["case_id"], "error": r["error"]} for r in error_results],
@@ -447,6 +466,8 @@ async def run_single_round(cases: List[dict], run_idx: int) -> dict:
     print(f"  平均总延迟: {metrics['avg_total_latency_sec']}s")
     print(f"  中位总延迟: {metrics['median_total_latency_sec']}s")
     print(f"  最大延迟: {metrics['max_total_latency_sec']}s")
+    print(f"  真实 Token 消耗(平均): prompt={metrics['avg_prompt_tokens']} | completion={metrics['avg_completion_tokens']} | total={metrics['avg_total_tokens']}")
+    print(f"  真实 Token 消耗(总计): prompt={metrics['total_prompt_tokens']} | completion={metrics['total_completion_tokens']} | total={metrics['total_tokens']}")
     if metrics['errors']:
         print(f"  错误列表:")
         for e in metrics['errors'][:5]:

@@ -460,7 +460,7 @@ def rule_l2_attr_verify(msg, attachments, ctx, kb_companies, kb_positions):
         "薪资多少", "工资多少", "月薪", "年薪", "待遇如何", "待遇怎么样",
         # 要求类 — 必须是"询问要求"的表达
         "要求什么", "有什么要求", "需要什么", "门槛是什么", "条件是什么",
-        "要求是什么", "具体要求",
+        "要求是什么", "具体要求", "有要求吗", "有要求",
         "学历要求", "经验要求", "技能要求", "硬性要求", "软性要求",
         "要求多高", "要求高吗", "要求严吗", "要求严格吗",
         # 福利/工作条件类
@@ -710,7 +710,9 @@ def rule_l3_existence_verify(msg, attachments, ctx, kb_companies, kb_positions):
     # 必须包含 '有'/'有没有'/'存在' 且包含疑问词，才认定为存在性询问
     QUESTION_MARKERS = ["吗", "么", "没", "不"]
     has_question = any(q in msg for q in QUESTION_MARKERS)
-    if has_company and has_exist and has_question:
+    # 补充：'有...岗吗' 也是存在性询问（如"百度有Java后端岗吗"）
+    has_job_existence = bool(re.search(r'有\w+岗吗', msg))
+    if has_company and (has_exist or has_job_existence) and has_question:
         slots = _extract_basic_slots(msg, LLMIntentType.VERIFY, kb_companies, kb_positions)
         return LLMRuleResult(
             intent=LLMIntentType.VERIFY, strength=RuleStrength.WEAK,
@@ -1466,6 +1468,32 @@ class LLMFallbackClassifier:
                 continue
             if not has_company and not has_position and not has_context_ref:
                 return True, "您想了解哪个公司的什么信息？请提供公司名称。"
+
+        # ASSESS / PREPARE 缺少 company 和 position 时也需要澄清
+        for intent_type in (LLMIntentType.ASSESS, LLMIntentType.PREPARE):
+            typed_candidates = [c for c in candidates if c.intent_type == intent_type]
+            for tc in typed_candidates:
+                has_company = bool(tc.slots.get("company") or global_slots.get("company"))
+                has_position = bool(tc.slots.get("position") or global_slots.get("position"))
+                search_kw = tc.slots.get("search_keywords", "") or global_slots.get("search_keywords", "")
+                has_context_ref = any(ref in search_kw for ref in ["上面", "那个", "这个", "刚才", "之前"])
+                # 上下文引用尝试补全
+                if has_context_ref and (not has_company or not has_position):
+                    if session and hasattr(session, "evidence_cache") and session.evidence_cache:
+                        for chunk in session.evidence_cache[:3]:
+                            meta = chunk.get("metadata", {}) if isinstance(chunk, dict) else {}
+                            if not has_company and meta.get("company"):
+                                tc.slots["company"] = meta["company"]
+                                has_company = True
+                            if not has_position and meta.get("position"):
+                                tc.slots["position"] = meta["position"]
+                                has_position = True
+                            if has_company and has_position:
+                                break
+                if not has_company and not has_position and not has_context_ref:
+                    intent_name = "分析匹配度" if intent_type == LLMIntentType.ASSESS else "准备面试"
+                    return True, f"您想{intent_name}的是哪个公司、哪个岗位？请提供具体信息。"
+
         if len(candidates) > 3:
             return True, "检测到多个意图，请确认优先级"
         return False, None
