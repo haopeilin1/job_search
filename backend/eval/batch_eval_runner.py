@@ -205,8 +205,12 @@ async def run_single_case(case: dict, run_dir: Path, session: aiohttp.ClientSess
         else:
             result["tool_correct_rate"] = 1.0
 
-        # 回复
-        reply = done_event.get("reply", {}).get("content", "") if isinstance(done_event.get("reply"), dict) else str(done_event.get("reply", ""))
+        # 回复（兼容 dict 的 "text" 和 "content" 两种格式）
+        raw_reply = done_event.get("reply", "")
+        if isinstance(raw_reply, dict):
+            reply = raw_reply.get("text") or raw_reply.get("content", "")
+        else:
+            reply = str(raw_reply)
         result["reply"] = reply
         result["reply_length"] = len(reply)
         result["has_reply"] = len(reply) > 50
