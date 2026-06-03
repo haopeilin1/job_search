@@ -1,0 +1,725 @@
+{
+  "meta": {
+    "test_time": "2026-06-02 19:16-19:25",
+    "total_cases": 58,
+    "valid_cases": 53,
+    "special_cases_excluded": [
+      "eval_gen_06",
+      "eval_li_14",
+      "eval_gen_03",
+      "eval_chen_13",
+      "eval_gen_02"
+    ],
+    "backend": "http://127.0.0.1:8001 (SSE HTTP)",
+    "test_script": "batch_eval_runner.py v3.5"
+  },
+  "core_metrics": {
+    "success_rate": 1.0,
+    "intent_match_rate": 0.623,
+    "avg_tool_match_rate": 0.692,
+    "full_tool_match_rate": 0.585,
+    "reply_completion_rate": 0.906,
+    "judge_resolved_rate": 0.882
+  },
+  "latency": {
+    "avg_ttfb_sec": 1.2,
+    "avg_total_sec": 67.92,
+    "median_total_sec": 67.85,
+    "max_total_sec": 137.61,
+    "min_total_sec": 14.15
+  },
+  "tool_execution": {
+    "total_tool_calls": 126,
+    "total_tool_success": 122,
+    "overall_success_rate": 0.968,
+    "tools": {
+      "kb_retrieve": {
+        "count": 50,
+        "success": 49,
+        "rate": 0.98
+      },
+      "match_analyze": {
+        "count": 36,
+        "success": 36,
+        "rate": 1.0
+      },
+      "global_rank": {
+        "count": 18,
+        "success": 18,
+        "rate": 1.0
+      },
+      "external_search": {
+        "count": 10,
+        "success": 10,
+        "rate": 1.0
+      },
+      "interview_gen": {
+        "count": 5,
+        "success": 4,
+        "rate": 0.8
+      },
+      "general_chat": {
+        "count": 4,
+        "success": 4,
+        "rate": 1.0
+      },
+      "qa_synthesize": {
+        "count": 3,
+        "success": 1,
+        "rate": 0.333
+      }
+    }
+  },
+  "rag_metrics": {
+    "rag_case_count": 47,
+    "rag_success_rate": 1.0,
+    "rag_judge_resolved_rate": 1.0,
+    "note": "RAG忠实性和答案相关性当前无自动评分，仅提供judge通过率和工具调用成功率作为参考",
+    "rag_case_details": [
+      {
+        "case_id": "eval_chen_01",
+        "message": "帮我看看有什么适合我的AI产品实习岗",
+        "tools": [
+          "kb_retrieve",
+          "global_rank"
+        ],
+        "judge_resolved": true,
+        "has_citation": false,
+        "reply_length": 1200
+      },
+      {
+        "case_id": "eval_chen_02",
+        "message": "字节跳动的AI产品经理我够格吗",
+        "tools": [
+          "kb_retrieve",
+          "match_analyze"
+        ],
+        "judge_resolved": true,
+        "has_citation": false,
+        "reply_length": 1471
+      },
+      {
+        "case_id": "eval_chen_03",
+        "message": "百度的AI产品实习生要求什么学历",
+        "tools": [
+          "kb_retrieve",
+          "match_analyze",
+          "qa_synthesize",
+          "external_search"
+        ],
+        "judge_resolved": true,
+        "has_citation": false,
+        "reply_length": 1011
+      },
+      {
+        "case_id": "eval_chen_04",
+        "message": "面字节AI产品经理要准备什么",
+        "tools": [
+          "kb_retrieve",
+          "match_analyze",
+          "interview_gen",
+          "external_search"
+        ],
+        "judge_resolved": true,
+        "has_citation": false,
+        "reply_length": 1529
+      },
+      {
+        "case_id": "eval_chen_05",
+        "message": "阿里巴巴的AI Agent产品经理匹配吗",
+        "tools": [
+          "kb_retrieve",
+          "match_analyze"
+        ],
+        "judge_resolved": true,
+        "has_citation": false,
+        "reply_length": 943
+      },
+      {
+        "case_id": "eval_chen_07",
+        "message": "帮我筛几个能投的，再重点看看字节那个AI产品经理",
+        "tools": [
+          "kb_retrieve",
+          "match_analyze",
+          "global_rank"
+        ],
+        "judge_resolved": true,
+        "has_citation": false,
+        "reply_length": 1332
+      },
+      {
+        "case_id": "eval_chen_08",
+        "message": "小米AI培训方向产品实习生我匹配不",
+        "tools": [
+          "kb_retrieve",
+          "match_analyze"
+        ],
+        "judge_resolved": true,
+        "has_citation": false,
+        "reply_length": 1142
+      },
+      {
+        "case_id": "eval_chen_09",
+        "message": "我的RAG和Embedding经验对哪个岗最有用",
+        "tools": [
+          "kb_retrieve",
+          "global_rank"
+        ],
+        "judge_resolved": true,
+        "has_citation": false,
+        "reply_length": 1407
+      },
+      {
+        "case_id": "eval_chen_10",
+        "message": "蚂蚁集团AI产品经理需要什么技能",
+        "tools": [
+          "kb_retrieve",
+          "match_analyze"
+        ],
+        "judge_resolved": true,
+        "has_citation": false,
+        "reply_length": 1700
+      },
+      {
+        "case_id": "eval_chen_11",
+        "message": "先帮我挑几个能投的岗，再告诉我要准备什么面试题",
+        "tools": [
+          "kb_retrieve",
+          "global_rank",
+          "match_analyze",
+          "interview_gen"
+        ],
+        "judge_resolved": true,
+        "has_citation": false,
+        "reply_length": 1454
+      },
+      {
+        "case_id": "eval_chen_12",
+        "message": "快手搜索推荐AI PM我能去吗",
+        "tools": [
+          "kb_retrieve",
+          "match_analyze",
+          "external_search"
+        ],
+        "judge_resolved": true,
+        "has_citation": false,
+        "reply_length": 1145
+      },
+      {
+        "case_id": "eval_chen_13",
+        "message": "分析一下这个岗",
+        "tools": [
+          "kb_retrieve",
+          "match_analyze"
+        ],
+        "judge_resolved": true,
+        "has_citation": false,
+        "reply_length": 1191
+      },
+      {
+        "case_id": "eval_chen_14",
+        "message": "蚂蚁集团AI产品经理",
+        "tools": [
+          "kb_retrieve",
+          "match_analyze",
+          "external_search"
+        ],
+        "judge_resolved": true,
+        "has_citation": false,
+        "reply_length": 1142
+      },
+      {
+        "case_id": "eval_chen_15",
+        "message": "没有工作经验能投产品岗吗",
+        "tools": [
+          "kb_retrieve",
+          "match_analyze"
+        ],
+        "judge_resolved": true,
+        "has_citation": false,
+        "reply_length": 1105
+      },
+      {
+        "case_id": "eval_chen_16",
+        "message": "把所有AI产品岗都给我分析一遍",
+        "tools": [
+          "kb_retrieve",
+          "global_rank"
+        ],
+        "judge_resolved": true,
+        "has_citation": false,
+        "reply_length": 1420
+      },
+      {
+        "case_id": "eval_chen_17",
+        "message": "我比较看重Prompt Engineering的应用场景，有合适的岗吗",
+        "tools": [
+          "kb_retrieve",
+          "global_rank"
+        ],
+        "judge_resolved": true,
+        "has_citation": false,
+        "reply_length": 1156
+      },
+      {
+        "case_id": "eval_chen_18",
+        "message": "百度大模型应用PM和快手搜索推荐AI PM哪个更适合我",
+        "tools": [
+          "kb_retrieve",
+          "match_analyze",
+          "kb_retrieve",
+          "match_analyze"
+        ],
+        "judge_resolved": true,
+        "has_citation": false,
+        "reply_length": 1468
+      },
+      {
+        "case_id": "eval_li_01",
+        "message": "帮我看看有什么Java后端岗",
+        "tools": [
+          "kb_retrieve",
+          "global_rank",
+          "match_analyze"
+        ],
+        "judge_resolved": true,
+        "has_citation": false,
+        "reply_length": 1000
+      },
+      {
+        "case_id": "eval_li_02",
+        "message": "阿里巴巴后端开发我匹配吗",
+        "tools": [
+          "kb_retrieve",
+          "match_analyze",
+          "external_search"
+        ],
+        "judge_resolved": true,
+        "has_citation": false,
+        "reply_length": 1074
+      },
+      {
+        "case_id": "eval_li_03",
+        "message": "阿里后端岗工资开多少",
+        "tools": [
+          "kb_retrieve",
+          "match_analyze",
+          "external_search",
+          "qa_synthesize"
+        ],
+        "judge_resolved": true,
+        "has_citation": false,
+        "reply_length": 1211
+      },
+      {
+        "case_id": "eval_li_04",
+        "message": "Java后端面试一般问什么",
+        "tools": [
+          "kb_retrieve",
+          "interview_gen"
+        ],
+        "judge_resolved": true,
+        "has_citation": false,
+        "reply_length": 911
+      },
+      {
+        "case_id": "eval_li_05",
+        "message": "我有3年Spring Boot和高并发经验，能投哪些",
+        "tools": [
+          "kb_retrieve",
+          "global_rank"
+        ],
+        "judge_resolved": true,
+        "has_citation": false,
+        "reply_length": 689
+      },
+      {
+        "case_id": "eval_li_06",
+        "message": "阿里后端要求几年经验",
+        "tools": [
+          "kb_retrieve",
+          "match_analyze",
+          "qa_synthesize"
+        ],
+        "judge_resolved": true,
+        "has_citation": false,
+        "reply_length": 893
+      },
+      {
+        "case_id": "eval_li_07",
+        "message": "帮我筛几个岗，重点看看阿里那个后端开发",
+        "tools": [
+          "kb_retrieve",
+          "match_analyze",
+          "global_rank"
+        ],
+        "judge_resolved": true,
+        "has_citation": false,
+        "reply_length": 1101
+      },
+      {
+        "case_id": "eval_li_08",
+        "message": "字节AI产品经理我能转行去吗",
+        "tools": [
+          "kb_retrieve",
+          "match_analyze",
+          "external_search"
+        ],
+        "judge_resolved": true,
+        "has_citation": false,
+        "reply_length": 1209
+      },
+      {
+        "case_id": "eval_li_09",
+        "message": "我的MySQL分库分表经验对哪个岗最有价值",
+        "tools": [
+          "kb_retrieve",
+          "global_rank"
+        ],
+        "judge_resolved": true,
+        "has_citation": false,
+        "reply_length": 953
+      },
+      {
+        "case_id": "eval_li_10",
+        "message": "后端岗面试要准备什么",
+        "tools": [
+          "kb_retrieve",
+          "match_analyze",
+          "interview_gen"
+        ],
+        "judge_resolved": true,
+        "has_citation": false,
+        "reply_length": 1194
+      },
+      {
+        "case_id": "eval_li_11",
+        "message": "上面那个岗具体要求是什么",
+        "tools": [
+          "kb_retrieve",
+          "match_analyze"
+        ],
+        "judge_resolved": true,
+        "has_citation": false,
+        "reply_length": 1077
+      },
+      {
+        "case_id": "eval_li_12",
+        "message": "帮我推几个技术岗，顺便说下薪资和要求",
+        "tools": [
+          "kb_retrieve",
+          "match_analyze",
+          "external_search"
+        ],
+        "judge_resolved": true,
+        "has_citation": false,
+        "reply_length": 1327
+      },
+      {
+        "case_id": "eval_li_15",
+        "message": "阿里巴巴后端开发",
+        "tools": [
+          "kb_retrieve",
+          "match_analyze"
+        ],
+        "judge_resolved": true,
+        "has_citation": false,
+        "reply_length": 938
+      },
+      {
+        "case_id": "eval_li_16",
+        "message": "百度有Java后端岗吗",
+        "tools": [
+          "kb_retrieve",
+          "match_analyze"
+        ],
+        "judge_resolved": true,
+        "has_citation": false,
+        "reply_length": 612
+      },
+      {
+        "case_id": "eval_wang_01",
+        "message": "帮我看看有什么设计岗",
+        "tools": [
+          "kb_retrieve",
+          "global_rank"
+        ],
+        "judge_resolved": true,
+        "has_citation": false,
+        "reply_length": 1273
+      },
+      {
+        "case_id": "eval_wang_02",
+        "message": "有UI设计相关的岗位吗",
+        "tools": [
+          "kb_retrieve",
+          "global_rank"
+        ],
+        "judge_resolved": true,
+        "has_citation": false,
+        "reply_length": 893
+      },
+      {
+        "case_id": "eval_wang_06",
+        "message": "帮我看看有没有需要互联网设计经验的岗",
+        "tools": [
+          "kb_retrieve",
+          "match_analyze"
+        ],
+        "judge_resolved": true,
+        "has_citation": false,
+        "reply_length": 1040
+      },
+      {
+        "case_id": "eval_wang_08",
+        "message": "设计岗面试一般问什么",
+        "tools": [
+          "kb_retrieve",
+          "match_analyze",
+          "interview_gen"
+        ],
+        "judge_resolved": true,
+        "has_citation": false,
+        "reply_length": 1324
+      },
+      {
+        "case_id": "eval_wang_09",
+        "message": "我比较看重组件化和设计规范，有合适的岗吗",
+        "tools": [
+          "kb_retrieve",
+          "global_rank"
+        ],
+        "judge_resolved": true,
+        "has_citation": false,
+        "reply_length": 1133
+      },
+      {
+        "case_id": "eval_wang_10",
+        "message": "快手搜索推荐AI PM我匹配吗",
+        "tools": [
+          "kb_retrieve",
+          "match_analyze",
+          "external_search"
+        ],
+        "judge_resolved": true,
+        "has_citation": false,
+        "reply_length": 789
+      },
+      {
+        "case_id": "eval_wang_11",
+        "message": "帮我筛几个岗，再看看哪个需要设计经验",
+        "tools": [
+          "kb_retrieve",
+          "match_analyze",
+          "global_rank",
+          "kb_retrieve",
+          "match_analyze"
+        ],
+        "judge_resolved": true,
+        "has_citation": false,
+        "reply_length": 1322
+      },
+      {
+        "case_id": "eval_wang_12",
+        "message": "我的4年互联网设计经验对产品岗有帮助吗",
+        "tools": [
+          "kb_retrieve",
+          "match_analyze",
+          "external_search"
+        ],
+        "judge_resolved": true,
+        "has_citation": false,
+        "reply_length": 1128
+      },
+      {
+        "case_id": "eval_sup_01",
+        "message": "Meta和Google在国内有AI产品岗吗",
+        "tools": [
+          "kb_retrieve",
+          "match_analyze",
+          "kb_retrieve",
+          "match_analyze"
+        ],
+        "judge_resolved": true,
+        "has_citation": false,
+        "reply_length": 816
+      },
+      {
+        "case_id": "eval_sup_02",
+        "message": "对了，我更喜欢做AI应用而不是底层算法",
+        "tools": [
+          "general_chat",
+          "kb_retrieve",
+          "match_analyze",
+          "global_rank"
+        ],
+        "judge_resolved": true,
+        "has_citation": false,
+        "reply_length": 1387
+      },
+      {
+        "case_id": "eval_sup_03",
+        "message": "那刚才推荐的岗里，有偏应用层的吗",
+        "tools": [
+          "kb_retrieve",
+          "match_analyze"
+        ],
+        "judge_resolved": true,
+        "has_citation": false,
+        "reply_length": 1014
+      },
+      {
+        "case_id": "eval_sup_04",
+        "message": "帮我看看所有互联网大厂的AI产品岗",
+        "tools": [
+          "kb_retrieve",
+          "global_rank"
+        ],
+        "judge_resolved": true,
+        "has_citation": false,
+        "reply_length": 1259
+      },
+      {
+        "case_id": "eval_sup_05",
+        "message": "帮我看看有什么Java后端岗",
+        "tools": [
+          "kb_retrieve",
+          "match_analyze"
+        ],
+        "judge_resolved": true,
+        "has_citation": false,
+        "reply_length": 1017
+      },
+      {
+        "case_id": "eval_chen_19",
+        "message": "帮我推荐几个适合我的AI产品实习岗",
+        "tools": [
+          "kb_retrieve",
+          "global_rank"
+        ],
+        "judge_resolved": null,
+        "has_citation": true,
+        "reply_length": 1393
+      },
+      {
+        "case_id": "eval_wang_03",
+        "message": "我的Figma组件化经验能投哪个岗",
+        "tools": [
+          "kb_retrieve",
+          "global_rank"
+        ],
+        "judge_resolved": null,
+        "has_citation": true,
+        "reply_length": 1329
+      },
+      {
+        "case_id": "eval_wang_05",
+        "message": "我从品牌设计转UI，能投AI产品岗吗",
+        "tools": [
+          "kb_retrieve"
+        ],
+        "judge_resolved": null,
+        "has_citation": false,
+        "reply_length": 467
+      }
+    ],
+    "cases_with_citation": 2,
+    "cases_without_citation": 45
+  },
+  "intent_breakdown": {
+    "explore": {
+      "total": 22,
+      "match": 16,
+      "success": 22
+    },
+    "assess": {
+      "total": 13,
+      "match": 13,
+      "success": 13
+    },
+    "verify": {
+      "total": 15,
+      "match": 2,
+      "success": 15
+    },
+    "prepare": {
+      "total": 6,
+      "match": 5,
+      "success": 6
+    },
+    "chat": {
+      "total": 3,
+      "match": 2,
+      "success": 3
+    },
+    "manage": {
+      "total": 1,
+      "match": 0,
+      "success": 1
+    }
+  },
+  "judge_summary": {
+    "total_judged": 51,
+    "resolved_true": 45,
+    "resolved_false": 6
+  },
+  "clarification_cases": {
+    "total": 4,
+    "correctly_triggered": 0
+  },
+  "boundary_cases": {
+    "total": 2,
+    "handled": 2
+  },
+  "token_consumption": {
+    "total_input_tokens": 1058538,
+    "total_output_tokens": 1129266,
+    "total_tokens": 2187804,
+    "total_cost_usd": 3.2632,
+    "avg_cost_per_case_usd": 0.0563,
+    "tool_breakdown": {
+      "kb_retrieve": {
+        "count": 311,
+        "input_tokens": 10372,
+        "output_tokens": 889613,
+        "cost_usd": 1.7896
+      },
+      "match_analyze": {
+        "count": 226,
+        "input_tokens": 583651,
+        "output_tokens": 106877,
+        "cost_usd": 0.7974
+      },
+      "global_rank": {
+        "count": 106,
+        "input_tokens": 402041,
+        "output_tokens": 100123,
+        "cost_usd": 0.5575
+      },
+      "interview_gen": {
+        "count": 41,
+        "input_tokens": 38125,
+        "output_tokens": 23310,
+        "cost_usd": 0.083
+      },
+      "general_chat": {
+        "count": 25,
+        "input_tokens": 862,
+        "output_tokens": 7060,
+        "cost_usd": 0.015
+      },
+      "qa_synthesize": {
+        "count": 12,
+        "input_tokens": 22575,
+        "output_tokens": 2205,
+        "cost_usd": 0.0202
+      },
+      "evidence_relevance_check": {
+        "count": 5,
+        "input_tokens": 912,
+        "output_tokens": 78,
+        "cost_usd": 0.0005
+      }
+    }
+  }
+}

@@ -70,9 +70,9 @@ class Replanner:
             # 注：时效性查询的外部搜索已在 Planner 阶段处理（_inject_external_search_for_temporal）
             # Replan 阶段不再重复触发，避免重复调用 API
 
-        # T3: 检索结果不相关（轻量判断）
-        # 注：T3的实现成本较高，需要额外LLM调用，当前版本暂不自动触发
-        # 可在未来版本中通过轻量模型判断结果相关性
+        # T3: 检索结果语义不相关
+        # 注：T3 由 Reflection 模块的 LLM 在 execute() 完成后判断（semantic_relevance），
+        # 不在此处硬规则触发。Reflection 输出 replan_tools 时，由 Planner._llm_replan 处理。
 
         # T4: 已移除 — match_analyze 输出已包含完整建议，不需要额外 replan
         # T5: 预留扩展
@@ -171,19 +171,29 @@ class PlanExecutor:
     """
 
     MAX_STEPS = 10  # 防止无限循环（含Replan扩展）
+    MAX_REPLAN = 3   # 执行器内部硬规则 replan 上限
     RETRY_MAX = 3
     RETRY_BACKOFF_BASE = 1.0  # 秒
 
-    def __init__(self, tool_registry: Optional[ToolRegistry] = None):
+    def __init__(self, tool_registry: Optional[ToolRegistry] = None, checkpoint_callback=None):
         self.registry = tool_registry or create_tool_registry()
         self.llm = None
+        self.checkpoint_callback = checkpoint_callback  # 新增：关键任务执行后的即时检查回调
 
     async def execute(self, graph: TaskGraph, session: SessionMemory) -> TaskGraph:
         """
         执行TaskGraph直到完成。
+        
+        新增：支持 checkpoint_callback 在关键任务执行后立即检查。
+        如果回调返回 replan_tools，执行器会设置 global_status="paused_for_replan" 并提前退出，
+        让外层调用者决定是否需要 LLM replan。
         """
-        logger.info(f"[PlanExecutor] 开始执行 | tasks={len(graph.tasks)}")
+        logger.info(f"[PlanExecutor] 开始执行 | tasks={len(graph.tasks)} | checkpoint={'有' if self.checkpoint_callback else '无'}")
         graph.global_status = "running"
+        
+        # 清除上轮的 checkpoint 结果
+        if hasattr(graph, "checkpoint_result"):
+            delattr(graph, "checkpoint_result")
 
         iteration = 0
         while iteration < self.MAX_STEPS:
@@ -215,6 +225,9 @@ class PlanExecutor:
                 # 判断是否需要Replan
                 replan_trigger = Replanner.should_replan(task, graph)
                 if replan_trigger:
+                    if graph.replan_count >= self.MAX_REPLAN:
+                        logger.warning(f"[PlanExecutor] {task.task_id} 触发Replan({replan_trigger})，但已达上限 {self.MAX_REPLAN}，跳过")
+                        continue
                     logger.info(f"[PlanExecutor] {task.task_id} 触发Replan: {replan_trigger}")
                     graph.replan_reason = replan_trigger
                     graph.replan_count += 1
@@ -225,6 +238,11 @@ class PlanExecutor:
             if graph.global_status in ("needs_clarification", "failed"):
                 logger.info(f"[PlanExecutor] 全局状态={graph.global_status}，提前退出")
                 break
+            
+            # 【新增】检查是否触发了检查点暂停（IMMEDIATE 模式）
+            if graph.global_status == "paused_for_replan":
+                logger.info(f"[PlanExecutor] 检查点触发暂停，提前退出执行器 | reason={getattr(graph, 'checkpoint_result', None).reason[:60] if getattr(graph, 'checkpoint_result', None) else 'unknown'}")
+                return graph
 
             # 如果有Replan插入了新任务，继续循环
             if needs_replan:
@@ -346,6 +364,33 @@ class PlanExecutor:
                 task.result = result.get("data") if isinstance(result, dict) else None
                 task.observation = result.get("error", "执行失败") if isinstance(result, dict) else str(result)
 
+            # 4. 【新增】检索类任务执行成功后，立即进行语义匹配硬规则检查
+            # 如果不匹配，标记为失败，避免下游高成本任务（match_analyze/qa_synthesize）基于错误结果执行
+            if task.status == "success" and task.tool_name in ("kb_retrieve", "external_search"):
+                if not self._check_semantic_match(task, session):
+                    suggested_query = self._build_suggested_query(task, session)
+                    task.status = "failed"
+                    task.observation = f"SEMANTIC_MISMATCH|检索结果与用户意图不符|suggested_query={suggested_query}"
+                    logger.warning(
+                        f"[PlanExecutor] {task.task_id} 语义不匹配，标记为失败以避免下游无效执行 | "
+                        f"suggested_query={suggested_query}"
+                    )
+            
+            # 5. 【新增】调用检查点回调（IMMEDIATE 模式：关键任务执行后立即检查）
+            if task.status == "success" and self.checkpoint_callback:
+                try:
+                    cp_result = await self.checkpoint_callback(task, graph, session)
+                    if cp_result and getattr(cp_result, "suggested_action", None) == "replan_tools":
+                        graph.global_status = "paused_for_replan"
+                        graph.checkpoint_result = cp_result
+                        logger.info(
+                            f"[PlanExecutor] {task.task_id} 检查点触发暂停 | "
+                            f"reason={cp_result.reason[:80]}"
+                        )
+                        return
+                except Exception as e:
+                    logger.warning(f"[PlanExecutor] 检查点回调异常: {e}")
+
         except Exception as e:
             task.status = "failed"
             task.observation = f"执行异常: {e}"
@@ -353,6 +398,78 @@ class PlanExecutor:
 
         task.finished_at = time.time()
         logger.info(f"[PlanExecutor] {task.task_id} {task.status} | tool={task.tool_name} | obs={task.observation[:60]}...")
+
+    def _check_semantic_match(self, task: TaskNode, session: SessionMemory) -> bool:
+        """
+        硬规则快速检查检索结果的语义匹配度（0 LLM 成本）。
+
+        检查逻辑：
+        - 从 session.global_slots 获取用户意图中的 company/position
+        - 检查检索结果 chunks 的 metadata 是否包含这些实体
+        - 如果公司匹配但岗位不匹配 → 通过（可能是职位名变体）
+        - 如果公司完全不匹配 → 失败（如用户问字节，返回百度）
+        - 如果意图识别未解析出 company/position → 跳过检查（无法判断）
+        """
+        if not task.result or not isinstance(task.result, dict):
+            return True
+        chunks = task.result.get("chunks", [])
+        if not chunks:
+            return True
+
+        target_company = ""
+        target_position = ""
+        if session and hasattr(session, "global_slots"):
+            target_company = session.global_slots.get("company", "")
+            target_position = session.global_slots.get("position", "")
+
+        # 如果意图识别没解析出实体，跳过检查
+        if not target_company and not target_position:
+            return True
+
+        # 检查前3条 chunk 的 metadata
+        for c in chunks[:3]:
+            if not isinstance(c, dict):
+                continue
+            meta = c.get("metadata", {})
+            chunk_company = meta.get("company", "")
+            chunk_position = meta.get("position", "")
+
+            company_match = not target_company or target_company in chunk_company
+            position_match = not target_position or target_position in chunk_position
+
+            # 公司和岗位都匹配 → 通过
+            if company_match and position_match:
+                return True
+
+        # 放宽：只要公司匹配就通过（position 可能是变体，如"算法工程师"vs"算法岗"）
+        if target_company:
+            for c in chunks[:3]:
+                if not isinstance(c, dict):
+                    continue
+                meta = c.get("metadata", {})
+                if target_company in meta.get("company", ""):
+                    return True
+
+        logger.warning(
+            f"[PlanExecutor] 语义不匹配检查失败 | target_company={target_company} "
+            f"target_position={target_position} | "
+            f"chunks_meta={[(c.get('metadata',{}).get('company','?'), c.get('metadata',{}).get('position','?')) for c in chunks[:3] if isinstance(c,dict)]}"
+        )
+        return False
+
+    def _build_suggested_query(self, task: TaskNode, session: SessionMemory) -> str:
+        """基于 session 中的目标实体构建建议的新检索 query。"""
+        parts = []
+        if session and hasattr(session, "global_slots"):
+            company = session.global_slots.get("company", "")
+            position = session.global_slots.get("position", "")
+            if company:
+                parts.append(company)
+            if position:
+                parts.append(position)
+        if not parts and task.resolved_params:
+            parts.append(str(task.resolved_params.get("query", "")))
+        return " ".join(parts)
 
     async def _execute_tool_call(
         self, task: TaskNode, params: Dict[str, Any], session: SessionMemory

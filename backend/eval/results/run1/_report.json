@@ -1,47 +1,49 @@
 {
-  "total_cases": 55,
-  "success_cases": 52,
-  "error_cases": 3,
-  "success_rate": 0.945,
-  "intent_match_rate": 0.635,
-  "avg_tool_match_rate": 0.753,
-  "full_tool_match_rate": 0.654,
-  "reply_completion_rate": 0.904,
-  "avg_ttfb_sec": 0.01,
-  "avg_total_latency_sec": 69.66,
+  "total_cases": 53,
+  "success_cases": 53,
+  "error_cases": 0,
+  "success_rate": 1.0,
+  "intent_match_rate": 0.623,
+  "avg_tool_match_rate": 0.692,
+  "full_tool_match_rate": 0.585,
+  "tool_execution_success_rate": 0.849,
+  "tool_correct_rate": 0.664,
+  "reply_completion_rate": 0.906,
+  "avg_ttfb_sec": 1.2,
+  "avg_total_latency_sec": 67.92,
   "median_total_latency_sec": 67.85,
-  "max_total_latency_sec": 146.67,
+  "max_total_latency_sec": 137.61,
   "min_total_latency_sec": 0.01,
   "intent_breakdown": {
     "explore": {
-      "total": 20,
-      "match": 14,
-      "success": 20
+      "total": 22,
+      "match": 16,
+      "success": 22
     },
     "assess": {
-      "total": 12,
-      "match": 12,
-      "success": 12
+      "total": 13,
+      "match": 13,
+      "success": 13
     },
     "verify": {
-      "total": 13,
+      "total": 15,
       "match": 2,
-      "success": 13
+      "success": 15
     },
     "prepare": {
       "total": 6,
       "match": 5,
       "success": 6
     },
-    "clarification": {
-      "total": 2,
-      "match": 0,
-      "success": 2
-    },
     "chat": {
-      "total": 6,
-      "match": 5,
-      "success": 6
+      "total": 3,
+      "match": 2,
+      "success": 3
+    },
+    "manage": {
+      "total": 1,
+      "match": 0,
+      "success": 1
     }
   },
   "scenario_breakdown": {
@@ -101,11 +103,6 @@
       "error": 0
     },
     "有简历_单JD匹配_快手": {
-      "total": 2,
-      "success": 2,
-      "error": 0
-    },
-    "边界_意图模糊需澄清": {
       "total": 2,
       "success": 2,
       "error": 0
@@ -175,11 +172,6 @@
       "success": 2,
       "error": 0
     },
-    "通用咨询_自我评估": {
-      "total": 1,
-      "success": 1,
-      "error": 0
-    },
     "边界_知识库无命中": {
       "total": 1,
       "success": 1,
@@ -194,21 +186,6 @@
       "total": 1,
       "success": 1,
       "error": 0
-    },
-    "有简历_技能导向探索_Figma": {
-      "total": 1,
-      "success": 0,
-      "error": 1
-    },
-    "属性查询_泛化": {
-      "total": 1,
-      "success": 0,
-      "error": 1
-    },
-    "有简历_单JD匹配_跨领域转型": {
-      "total": 1,
-      "success": 0,
-      "error": 1
     },
     "有简历_探索_设计经验": {
       "total": 1,
@@ -226,16 +203,6 @@
       "error": 0
     },
     "问候语_功能介绍": {
-      "total": 1,
-      "success": 1,
-      "error": 0
-    },
-    "边界_无意义输入": {
-      "total": 1,
-      "success": 1,
-      "error": 0
-    },
-    "边界_空消息": {
       "total": 1,
       "success": 1,
       "error": 0
@@ -269,21 +236,55 @@
       "total": 1,
       "success": 1,
       "error": 0
+    },
+    "简历管理_列表查询": {
+      "total": 1,
+      "success": 1,
+      "error": 0
+    },
+    "多轮_岗位推荐_第一轮": {
+      "total": 1,
+      "success": 1,
+      "error": 0
+    },
+    "多轮_第二轮澄清_指代不清": {
+      "total": 1,
+      "success": 1,
+      "error": 0
+    },
+    "有简历_技能导向探索_Figma": {
+      "total": 1,
+      "success": 1,
+      "error": 0
+    },
+    "属性查询_泛化": {
+      "total": 1,
+      "success": 1,
+      "error": 0
+    },
+    "有简历_单JD匹配_跨领域转型": {
+      "total": 1,
+      "success": 1,
+      "error": 0
     }
   },
-  "errors": [
-    {
-      "case_id": "eval_wang_03",
-      "error": "TimeoutError: "
-    },
-    {
-      "case_id": "eval_wang_04",
-      "error": "TimeoutError: "
-    },
-    {
-      "case_id": "eval_wang_05",
-      "error": "TimeoutError: "
-    }
+  "errors": [],
+  "clarification_cases": [
+    "eval_gen_06",
+    "eval_li_14",
+    "eval_gen_03",
+    "eval_chen_13"
   ],
-  "timestamp": "2026-04-30T15:53:00.812239"
+  "boundary_cases": [
+    "eval_gen_02",
+    "eval_gen_03"
+  ],
+  "excluded_cases": [
+    "eval_gen_02",
+    "eval_li_14",
+    "eval_gen_03",
+    "eval_gen_06",
+    "eval_chen_13"
+  ],
+  "timestamp": "2026-06-02T19:25:14.373161"
 }

@@ -92,7 +92,17 @@ def _build_case_context(case_id: str, case_result: dict) -> dict:
     if resume_id and resume_id in resumes:
         r = resumes[resume_id]
         ps = r.get("parsed_schema", {})
-        resume_info = f"姓名：{ps.get('name', '未知')} | 经验：{ps.get('total_years', '未知')}年 | 技能：{', '.join(ps.get('skills', [])[:5])}"
+        skills = ps.get('skills', [])
+        if isinstance(skills, dict):
+            # skills 可能是 {'technical': [...], 'business': [...], 'soft': [...]} 的结构
+            skill_list = []
+            for v in skills.values():
+                if isinstance(v, list):
+                    skill_list.extend(v)
+            skills = skill_list
+        elif not isinstance(skills, list):
+            skills = []
+        resume_info = f"姓名：{ps.get('name', '未知')} | 经验：{ps.get('total_years', '未知')}年 | 技能：{', '.join(skills[:5])}"
 
     gold_slots = eval_ctx.get("gold_slots", {})
 

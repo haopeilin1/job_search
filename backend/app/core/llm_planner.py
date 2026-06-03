@@ -138,7 +138,7 @@ PLANNER_KB_SCHEMA_BASE = """
 3. **明显不在库中的实体可直接 external_search**：用户提到海外公司，或明显不在库中的岗位，可在规划时直接加入 external_search，但仍建议先执行一次 kb_retrieve 确认（成本低，且避免知识库已更新）。
 4. **严禁一刀切**：不要将所有查询都路由到 external_search。知识库对国内头部互联网公司的AI产品岗和后端岗覆盖较全，优先使用内部知识。
 5. **实时信息才用 external_search**：涉及"最新融资""最近裁员""组织架构变动""2026/2027年最新招聘"等时效性信息时，external_search 是必要的。静态JD信息优先使用 kb_retrieve。
-6. **时效性查询必须触发 external_search**：当查询包含"最新"、"最近"、"今年"、"还招吗"等时效性关键词时，必须在 Planner 阶段将 external_search 加入任务图（与 kb_retrieve 串行或并行均可，但 aggregate 必须依赖两者）。
+6. **【强制】时效性查询必须触发 external_search**：当查询包含"最新"、"最近"、"今年"、"还招吗"、"近期"、"目前"、"当下"、"刚刚"、"今天"、"昨天"、"上周"、"本月"、"2024"、"2025"、"2026"、"2027"等时效性关键词时，**必须在 Planner 阶段将 external_search 加入任务图**。这是强制要求，不可省略。即使意图是 CHAT，只要涉及时效性信息（如"Meta最近在国内有岗吗"），也必须注入 external_search 来获取最新信息。
 """
 
 PLANNER_RULES = """
@@ -519,7 +519,7 @@ class TaskGraphPlanner:
     async def replan(
         self,
         graph: TaskGraph,
-        failed_task: TaskNode,
+        failed_task: Optional[TaskNode],
         session: SessionMemory,
         reflection_result: Optional[Dict] = None,
     ) -> TaskGraph:
@@ -535,7 +535,7 @@ class TaskGraphPlanner:
             return await self._llm_replan(graph, failed_task, session, reflection_result)
 
         # ── 路径2：fallback 硬规则 ──
-        if failed_task.fallback:
+        if failed_task and failed_task.fallback:
             fb = failed_task.fallback
 
             if fb.action == "retry" and failed_task.retry_count < fb.max_retries:
@@ -570,15 +570,16 @@ class TaskGraphPlanner:
                 logger.info(f"[TaskGraphPlanner] Replan: 中止 {failed_task.task_id} 及下游")
                 return graph
 
-        # 默认 abort
-        self._cascade_abort(graph, failed_task)
-        graph.global_status = "failed"
+        # 默认 abort（或如果没有 failed_task 但有 reflection，已在 _llm_replan 处理）
+        if failed_task:
+            self._cascade_abort(graph, failed_task)
+            graph.global_status = "failed"
         return graph
 
     async def _llm_replan(
         self,
         graph: TaskGraph,
-        failed_task: TaskNode,
+        failed_task: Optional[TaskNode],
         session: SessionMemory,
         reflection_result: Dict,
     ) -> TaskGraph:
@@ -587,6 +588,10 @@ class TaskGraphPlanner:
 
         将反思结论传给规划LLM，让LLM决定需要新增/修改哪些任务。
         LLM 只输出"调整指令"，不输出完整 graph，降低出错概率。
+
+        支持场景：
+        - 失败任务存在：retry / skip / abort
+        - 无失败任务（如语义不相关）：add_tasks 插入新检索任务
         """
         # 构建当前任务摘要
         tasks_summary = []
@@ -596,8 +601,13 @@ class TaskGraphPlanner:
                 f"{status} {t.task_id} | {t.tool_name or t.task_type} | deps={t.dependencies}"
             )
 
+        # 提取 reflection 中的语义相关性信息
+        semantic = reflection_result.get("semantic_relevance", {})
+        source_conflict = reflection_result.get("source_conflict_analysis", {})
+        new_query_hint = semantic.get("suggested_new_query", "") if isinstance(semantic, dict) else ""
+
         system_prompt = (
-            "你是任务调整助手。原始任务图执行失败，反思模块检测到问题。"
+            "你是任务调整助手。原始任务图执行后发现问题，反思模块给出以下结论。"
             "请判断需要如何调整任务图，输出严格JSON格式："
             "\n"
             "{\n"
@@ -617,16 +627,33 @@ class TaskGraphPlanner:
             "\n"
             "规则：\n"
             "- 如果只是信息缺失（如缺少薪资信息），adjustment=add_tasks，补充检索任务\n"
+            "- 如果是语义不相关（检索结果与用户需求不匹配），adjustment=add_tasks，使用修正后的 query 生成新的检索任务\n"
+            "  - 如果反思结论提供了 suggested_new_query，优先使用它作为新检索任务的 query\n"
+            "  - 新检索任务应依赖原检索任务（或与其并行，视场景而定）\n"
+            "- 如果是来源冲突严重需验证，adjustment=add_tasks，生成针对性验证检索任务（如用更精确的 query 查官网）\n"
             "- 如果是临时错误，adjustment=retry\n"
             "- 如果是非核心任务失败，adjustment=skip\n"
             "- 如果无法修复，adjustment=abort\n"
             "- 不要输出 markdown 代码块"
         )
 
+        failed_task_desc = "无（工具执行成功但结果质量不达标）"
+        if failed_task:
+            failed_task_desc = f"{failed_task.task_id} | {failed_task.tool_name or failed_task.task_type}"
+
         user_prompt = (
-            f"【失败任务】{failed_task.task_id} | {failed_task.tool_name or failed_task.task_type}\n"
+            f"【失败任务】{failed_task_desc}\n"
             f"【反思结论】{reflection_result.get('reason', '')}\n"
             f"【缺失信息】{', '.join(reflection_result.get('missing_info', []))}\n"
+        )
+        if new_query_hint:
+            user_prompt += f"【建议新检索Query】{new_query_hint}\n"
+        if source_conflict and isinstance(source_conflict, dict) and source_conflict.get("has_conflict"):
+            user_prompt += (
+                f"【来源冲突分析】severity={source_conflict.get('severity','?')} | "
+                f"analysis={source_conflict.get('analysis','')[:100]}...\n"
+            )
+        user_prompt += (
             f"【当前任务图】\n" + "\n".join(tasks_summary[:15]) + "\n"
             "\n请输出调整指令JSON："
         )
@@ -636,7 +663,7 @@ class TaskGraphPlanner:
             raw = await llm.generate(
                 prompt=user_prompt,
                 system=system_prompt,
-                max_tokens=800,
+                max_tokens=1000,
                 temperature=0.2,
             )
 
@@ -649,42 +676,57 @@ class TaskGraphPlanner:
 
             if adjustment == "add_tasks":
                 for t_raw in data.get("new_tasks", []):
+                    params = t_raw.get("parameters", {})
+                    # 注入 reflection 建议的新 query（如果 LLM 没给）
+                    if new_query_hint and not params.get("query"):
+                        params["query"] = new_query_hint
+
                     new_task = TaskNode(
                         task_id=t_raw.get("task_id", f"T{len(graph.tasks)}"),
                         task_type=t_raw.get("task_type", "tool_call"),
                         tool_name=t_raw.get("tool_name"),
                         description=t_raw.get("description", ""),
-                        parameters=t_raw.get("parameters", {}),
+                        parameters=params,
                         dependencies=t_raw.get("dependencies", []),
                     )
                     graph.add_task(new_task)
-                    logger.info(f"[TaskGraphPlanner] LLM Replan: 新增任务 {new_task.task_id} | {new_task.tool_name}")
+                    logger.info(f"[TaskGraphPlanner] LLM Replan: 新增任务 {new_task.task_id} | {new_task.tool_name} | query={params.get('query','')[:40]}")
 
-                # 将失败任务重置为 pending，让它和新增任务一起重新执行
-                failed_task.status = "pending"
-                failed_task.observation = ""
+                # 将失败任务重置为 pending（如果存在且是失败状态）
+                if failed_task and failed_task.status == "failed":
+                    failed_task.status = "pending"
+                    failed_task.observation = ""
+                    logger.info(f"[TaskGraphPlanner] LLM Replan: 重置失败任务 {failed_task.task_id} 为 pending")
+
                 graph.global_status = "pending"
-                logger.info(f"[TaskGraphPlanner] LLM Replan: 重置失败任务 {failed_task.task_id} 为 pending")
 
             elif adjustment == "retry":
-                failed_task.status = "pending"
-                failed_task.observation = ""
-                logger.info(f"[TaskGraphPlanner] LLM Replan: 重试 {failed_task.task_id}")
+                if failed_task:
+                    failed_task.status = "pending"
+                    failed_task.observation = ""
+                    logger.info(f"[TaskGraphPlanner] LLM Replan: 重试 {failed_task.task_id}")
+                else:
+                    logger.warning("[TaskGraphPlanner] LLM Replan: retry 但无 failed_task，忽略")
 
             elif adjustment == "skip":
-                failed_task.status = "skipped"
-                self._apply_skip_impact(graph, failed_task)
-                logger.info(f"[TaskGraphPlanner] LLM Replan: 跳过 {failed_task.task_id}")
+                if failed_task:
+                    failed_task.status = "skipped"
+                    self._apply_skip_impact(graph, failed_task)
+                    logger.info(f"[TaskGraphPlanner] LLM Replan: 跳过 {failed_task.task_id}")
+                else:
+                    logger.warning("[TaskGraphPlanner] LLM Replan: skip 但无 failed_task，忽略")
 
             else:  # abort
-                self._cascade_abort(graph, failed_task)
+                if failed_task:
+                    self._cascade_abort(graph, failed_task)
                 graph.global_status = "failed"
-                logger.info(f"[TaskGraphPlanner] LLM Replan: 中止 {failed_task.task_id}")
+                logger.info(f"[TaskGraphPlanner] LLM Replan: 中止")
 
         except Exception as e:
             logger.error(f"[TaskGraphPlanner] LLM Replan 失败: {e}")
             # fallback 到 abort
-            self._cascade_abort(graph, failed_task)
+            if failed_task:
+                self._cascade_abort(graph, failed_task)
             graph.global_status = "failed"
 
         return graph
@@ -926,6 +968,24 @@ class TaskGraphPlanner:
 
         # 6. 移除已废弃的工具任务（如 qa_synthesize）
         graph = self._remove_deprecated_tools(graph)
+
+        # 6.5 直出任务存在时，移除冗余的 aggregate 任务
+        # qa_synthesize / general_chat 的结果可直接作为最终回复，无需再走聚合 LLM
+        has_direct_output = any(
+            t.tool_name in ("qa_synthesize", "general_chat")
+            for t in graph.tasks
+        )
+        if has_direct_output:
+            removed_agg = [t.task_id for t in graph.tasks if t.task_type == "aggregate"]
+            if removed_agg:
+                graph.tasks = [t for t in graph.tasks if t.task_type != "aggregate"]
+                # 清理其他任务对 aggregate 的依赖
+                for t in graph.tasks:
+                    t.dependencies = [d for d in t.dependencies if d not in removed_agg]
+                logger.info(f"[TaskGraphPlanner] 直出任务存在，移除冗余 aggregate: {removed_agg}")
+                # 重新计算执行策略
+                graph.execution_strategy.parallel_groups = graph.compute_parallel_groups()
+                graph.execution_strategy.critical_path = graph.compute_critical_path()
 
         # 7. 涉及时效性查询时，自动注入 external_search
         graph = self._inject_external_search_for_temporal(graph)

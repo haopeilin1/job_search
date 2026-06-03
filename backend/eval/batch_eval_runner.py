@@ -31,6 +31,11 @@ STREAM_URL = f"{BASE_URL}/api/v1/chat/stream"
 DATASET_PATH = Path(__file__).resolve().parent / "test_dataset.jsonl"
 RESULTS_DIR = Path(__file__).resolve().parent / "results"
 
+# 特殊 case 定义
+CLARIFICATION_CASES = {"eval_chen_13", "eval_li_14", "eval_gen_03", "eval_gen_06"}
+BOUNDARY_CASES = {"eval_gen_02", "eval_gen_03"}
+SPECIAL_CASES = CLARIFICATION_CASES | BOUNDARY_CASES
+
 # 意图别名映射
 INTENT_ALIASES = {
     "position_explore": "explore",
@@ -54,16 +59,37 @@ def _normalize_intents(intents: List[str]) -> List[str]:
     return sorted(set(_normalize_intent(i) for i in intents))
 
 
+# 全局 session_group 映射（跨 case 复用 session）
+_session_group_map: Dict[str, str] = {}
+
+
 async def run_single_case(case: dict, run_dir: Path, session: aiohttp.ClientSession) -> dict:
     """
     对单条 case 发送 SSE 流式请求，保存完整过程，返回评测结果。
+    支持 session_group 复用 session（多轮对话）。
     """
+    global _session_group_map
     case_id = case["session_id"]
     message = case["message"]
     resume_id = case.get("resume_id", "")
     gold_ctx = case.get("eval_context", {})
     gold_intents = _normalize_intents(gold_ctx.get("gold_intents", []))
     expected_tools = gold_ctx.get("expected_tools", [])
+    session_group = case.get("session_group")
+
+    # 确定 session_id 和是否重置
+    if session_group:
+        if session_group not in _session_group_map:
+            _session_group_map[session_group] = f"batch_{session_group}_{int(time.time()*1000)}"
+            reset_session = True
+            print(f"  -> 新 session_group: {session_group}, sid={_session_group_map[session_group]}")
+        else:
+            reset_session = False
+            print(f"  -> 复用 session_group: {session_group}, sid={_session_group_map[session_group]}")
+        sid = _session_group_map[session_group]
+    else:
+        sid = f"{case_id}_{int(time.time()*1000)}"
+        reset_session = True
 
     result = {
         "case_id": case_id,
@@ -94,9 +120,12 @@ async def run_single_case(case: dict, run_dir: Path, session: aiohttp.ClientSess
 
     payload = {
         "message": message,
-        "session_id": f"{case_id}_{int(t0*1000)}",
-        "resume_id": resume_id,
+        "session_id": sid,
         "stream": True,
+        "eval_context": {
+            "resume_id": resume_id,
+            "reset_session": reset_session,
+        },
     }
 
     try:
@@ -191,15 +220,25 @@ async def run_single_case(case: dict, run_dir: Path, session: aiohttp.ClientSess
     return result
 
 
-def compute_metrics(results: List[dict]) -> dict:
-    """计算本轮全部评测指标"""
-    total = len(results)
-    success_results = [r for r in results if r["status"] == "success"]
-    error_results = [r for r in results if r["status"] == "error"]
+def compute_metrics(results: List[dict], exclude_special: bool = False) -> dict:
+    """计算本轮全部评测指标
+    
+    Args:
+        exclude_special: 是否排除 clarification 和边界 case
+    """
+    if exclude_special:
+        filtered = [r for r in results if r["case_id"] not in SPECIAL_CASES]
+    else:
+        filtered = results
+    
+    total = len(filtered)
+    success_results = [r for r in filtered if r["status"] == "success"]
+    error_results = [r for r in filtered if r["status"] == "error"]
 
-    # 意图匹配
-    intent_match_count = sum(1 for r in success_results if r["intent_match"])
-    intent_match_rate = round(intent_match_count / len(success_results), 3) if success_results else 0
+    # 意图匹配（仅对非 clarification case 统计）
+    intent_eval_results = [r for r in success_results if r["case_id"] not in CLARIFICATION_CASES]
+    intent_match_count = sum(1 for r in intent_eval_results if r["intent_match"])
+    intent_match_rate = round(intent_match_count / len(intent_eval_results), 3) if intent_eval_results else 0
 
     # 工具匹配
     tool_match_rates = [r["tool_match_rate"] for r in success_results]
@@ -208,11 +247,11 @@ def compute_metrics(results: List[dict]) -> dict:
     full_tool_match_rate = round(full_tool_match / len(success_results), 3) if success_results else 0
 
     # 工具执行成功率
-    tool_exec_rates = [r.get("tool_execution_success_rate", 0) for r in all_results]
+    tool_exec_rates = [r.get("tool_execution_success_rate", 0) for r in filtered]
     avg_tool_exec_success = round(sum(tool_exec_rates) / len(tool_exec_rates), 3) if tool_exec_rates else 0
 
     # 工具调用正确率
-    tool_correct_rates = [r.get("tool_correct_rate", 0) for r in all_results]
+    tool_correct_rates = [r.get("tool_correct_rate", 0) for r in filtered]
     avg_tool_correct = round(sum(tool_correct_rates) / len(tool_correct_rates), 3) if tool_correct_rates else 0
 
     # 回复完成
@@ -223,9 +262,11 @@ def compute_metrics(results: List[dict]) -> dict:
     ttfs = [r["ttfb"] for r in success_results if r["ttfb"] is not None]
     latencies = [r["total_latency"] for r in success_results if r["total_latency"] is not None]
 
-    # 按意图统计
+    # 按意图统计（排除 clarification）
     intent_stats = defaultdict(lambda: {"total": 0, "match": 0, "success": 0})
     for r in success_results:
+        if r["case_id"] in CLARIFICATION_CASES:
+            continue
         for intent in r.get("gold_intents", []):
             intent_stats[intent]["total"] += 1
             intent_stats[intent]["success"] += 1
@@ -234,7 +275,7 @@ def compute_metrics(results: List[dict]) -> dict:
 
     # 按场景统计
     scenario_stats = defaultdict(lambda: {"total": 0, "success": 0, "error": 0})
-    for r in results:
+    for r in filtered:
         sc = r.get("scenario", "unknown")
         scenario_stats[sc]["total"] += 1
         if r["status"] == "success":
@@ -246,7 +287,7 @@ def compute_metrics(results: List[dict]) -> dict:
         "total_cases": total,
         "success_cases": len(success_results),
         "error_cases": len(error_results),
-        "success_rate": round(len(success_results) / total, 3),
+        "success_rate": round(len(success_results) / total, 3) if total else 0,
         "intent_match_rate": intent_match_rate,
         "avg_tool_match_rate": avg_tool_match,
         "full_tool_match_rate": full_tool_match_rate,
@@ -261,25 +302,59 @@ def compute_metrics(results: List[dict]) -> dict:
         "intent_breakdown": {k: dict(v) for k, v in intent_stats.items()},
         "scenario_breakdown": {k: dict(v) for k, v in scenario_stats.items()},
         "errors": [{"case_id": r["case_id"], "error": r["error"]} for r in error_results],
+        "clarification_cases": list(CLARIFICATION_CASES),
+        "boundary_cases": list(BOUNDARY_CASES),
+        "excluded_cases": list(SPECIAL_CASES) if exclude_special else [],
         "timestamp": datetime.now().isoformat(),
     }
     return metrics
 
 
 async def run_single_round(cases: List[dict], run_idx: int) -> dict:
-    """运行一轮评测"""
+    """运行一轮评测（支持断点重续）"""
     run_dir = RESULTS_DIR / f"run{run_idx}"
     run_dir.mkdir(parents=True, exist_ok=True)
 
+    # 断点重续：检查已完成的 case（成功的才跳过，失败的需重试）
+    completed_ids = set()
+    failed_ids = set()
+    for fpath in run_dir.glob("eval_*.json"):
+        case_id = fpath.stem
+        try:
+            with open(fpath, "r", encoding="utf-8") as f:
+                data = json.load(f)
+            if data.get("status") == "success":
+                completed_ids.add(case_id)
+            else:
+                failed_ids.add(case_id)
+        except Exception:
+            pass
+    
+    # 加载已有成功结果
+    results = []
+    for case in cases:
+        case_id = case["session_id"]
+        case_file = run_dir / f"{case_id}.json"
+        if case_file.exists() and case_id in completed_ids:
+            try:
+                with open(case_file, "r", encoding="utf-8") as f:
+                    results.append(json.load(f))
+            except Exception:
+                pass
+
+    pending_cases = [c for c in cases if c["session_id"] not in completed_ids]
+    
     print(f"\n{'='*70}")
-    print(f"【第 {run_idx} 轮评测开始】 用例数: {len(cases)}")
+    print(f"【第 {run_idx} 轮评测开始】 用例数: {len(cases)} | 已完成: {len(results)} | 待执行: {len(pending_cases)}")
     print(f"{'='*70}")
 
-    results = []
-    async with aiohttp.ClientSession() as session:
-        for idx, case in enumerate(cases, 1):
+    # 增加超时：单条给足 10 分钟，防止不必要的 API 重试
+    timeout = aiohttp.ClientTimeout(total=600, connect=30)
+    async with aiohttp.ClientSession(timeout=timeout) as session:
+        for idx, case in enumerate(pending_cases, 1):
             case_id = case["session_id"]
-            print(f"\n[{idx}/{len(cases)}] 测试: {case_id} | {case['message'][:50]}...")
+            global_idx = len(results) + idx
+            print(f"\n[{global_idx}/{len(cases)}] 测试: {case_id} | {case['message'][:50]}...")
 
             result = await run_single_case(case, run_dir, session)
             results.append(result)
@@ -294,33 +369,74 @@ async def run_single_round(cases: List[dict], run_idx: int) -> dict:
             if result["error"]:
                 print(f"  ⚠️  error: {result['error'][:100]}")
 
-            # 每 5 条保存一次中间进度
-            if idx % 5 == 0:
-                progress = {
-                    "run": run_idx,
-                    "completed": idx,
-                    "total": len(cases),
-                    "timestamp": datetime.now().isoformat(),
-                }
-                with open(run_dir / "_progress.json", "w", encoding="utf-8") as f:
-                    json.dump(progress, f, ensure_ascii=False, indent=2)
+            # 每 1 条保存一次中间进度（立即保存，防超时丢失）
+            progress = {
+                "run": run_idx,
+                "completed": global_idx,
+                "total": len(cases),
+                "timestamp": datetime.now().isoformat(),
+            }
+            with open(run_dir / "_progress.json", "w", encoding="utf-8") as f:
+                json.dump(progress, f, ensure_ascii=False, indent=2)
 
-    # 计算指标
-    metrics = compute_metrics(results)
+    # 计算指标（全量）
+    metrics_all = compute_metrics(results, exclude_special=False)
+    # 计算指标（排除特殊 case）
+    metrics = compute_metrics(results, exclude_special=True)
 
     # 保存完整结果
     with open(run_dir / "_all_results.json", "w", encoding="utf-8") as f:
         json.dump(results, f, ensure_ascii=False, indent=2)
 
-    # 保存报告
+    # 保存报告（排除特殊 case 版本）
     with open(run_dir / "_report.json", "w", encoding="utf-8") as f:
         json.dump(metrics, f, ensure_ascii=False, indent=2)
+
+    # 保存全量报告
+    with open(run_dir / "_report_all.json", "w", encoding="utf-8") as f:
+        json.dump(metrics_all, f, ensure_ascii=False, indent=2)
+
+    # 保存澄清 case 专项报告
+    clarification_results = [r for r in results if r["case_id"] in CLARIFICATION_CASES]
+    with open(run_dir / "_clarification_report.json", "w", encoding="utf-8") as f:
+        json.dump({
+            "total": len(clarification_results),
+            "cases": [
+                {
+                    "case_id": r["case_id"],
+                    "message": r["message"],
+                    "pred_intent": r.get("pred_intent"),
+                    "clarification_triggered": r.get("pred_intent") == "clarification",
+                    "status": r["status"],
+                }
+                for r in clarification_results
+            ],
+            "timestamp": datetime.now().isoformat(),
+        }, f, ensure_ascii=False, indent=2)
+
+    # 保存边界 case 专项报告
+    boundary_results = [r for r in results if r["case_id"] in BOUNDARY_CASES]
+    with open(run_dir / "_boundary_report.json", "w", encoding="utf-8") as f:
+        json.dump({
+            "total": len(boundary_results),
+            "cases": [
+                {
+                    "case_id": r["case_id"],
+                    "message": r["message"],
+                    "pred_intent": r.get("pred_intent"),
+                    "status": r["status"],
+                    "reply_preview": r.get("reply", "")[:200],
+                }
+                for r in boundary_results
+            ],
+            "timestamp": datetime.now().isoformat(),
+        }, f, ensure_ascii=False, indent=2)
 
     # 打印报告
     print(f"\n{'='*70}")
     print(f"【第 {run_idx} 轮评测完成】")
     print(f"{'='*70}")
-    print(f"  总用例: {metrics['total_cases']}")
+    print(f"  总用例: {metrics_all['total_cases']} (排除特殊后: {metrics['total_cases']})")
     print(f"  成功: {metrics['success_cases']} ({metrics['success_rate']})")
     print(f"  失败: {metrics['error_cases']}")
     print(f"  意图匹配率: {metrics['intent_match_rate']}")
@@ -383,7 +499,8 @@ async def main(runs: int = 3, start_run: int = 1):
         values = [m[key] for m in all_round_metrics]
         avg = round(sum(values) / len(values), 3)
         std = round((sum((v - avg) ** 2 for v in values) / len(values)) ** 0.5, 4) if len(values) > 1 else 0
-        print(f"  {key}: round1={values[0]} round2={values[1]} round3={values[2]} | avg={avg} std={std}")
+        round_strs = " ".join([f"round{i+1}={v}" for i, v in enumerate(values)])
+        print(f"  {key}: {round_strs} | avg={avg} std={std}")
 
     # 保存汇总
     summary = {

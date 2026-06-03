@@ -84,10 +84,11 @@ __pycache__/
 *.pid
 backend/*.pid
 
-# 评测结果目录
+# 评测结果目录（保留最近两周的 run1，排除旧结果）
 eval_runs/
 backend/eval_runs/
-backend/eval/results/
+backend/eval/results/run2/
+backend/eval/results/run3/
 backend/eval/v3_*.json
 backend/eval/v3_*.log
 backend/eval/debug_*.txt
@@ -115,4 +116,13 @@ frontend.pid
 
 # nohup 输出
 nohup.out
+
+# 大压缩包
+local_eval_pack.tar.gz
+models_pack.tar.gz
+
+# 旧评测结果
+backend/eval/results/run0/
+backend/eval/batch_results/
+backend/eval/batch_results_v2/
 

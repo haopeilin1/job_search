@@ -141,12 +141,12 @@ async def stream_chat(
     """
     payload = {
         "message": message,
-        "resume_id": resume_id,
         "session_id": session_id,
         "stream": True,
+        "eval_context": {
+            "resume_id": resume_id,  # 放入 eval_context，供后端正确切换简历
+        },
     }
-    if session_group:
-        payload["session_group"] = session_group
     
     t0 = time.time()
     ttfb = None

@@ -217,7 +217,8 @@ async def chat_endpoint(request: ChatRequest):
     session.global_slots["resume_available"] = has_resume
     if has_resume:
         session.global_slots["resume_text"] = resume_text
-    logger.info(f"[Chat] 简历状态同步 | active_resume_id={active_resume_id} | has_resume={has_resume} | session.global_slots={session.global_slots}")
+    import app.core.state as _state_module_for_log
+    logger.info(f"[Chat] 简历状态同步 | active_resume_id={_state_module_for_log.active_resume_id} | has_resume={has_resume} | session.global_slots={session.global_slots}")
 
     # 评测模式：注入模拟多轮上下文
     injected_slots = eval_ctx.get("injected_history_slots")
@@ -466,6 +467,9 @@ async def _handle_rule_route(
             handler = RULE_HANDLERS.get(route_meta.intent, handle_general)
             reply = await handler(request, route_meta)
 
+    # 从执行结果同步关键槽位（解决 explore→verify 多轮指代断层）
+    _sync_slots_from_evidence(session, source="kb_chunks")
+
     # 回填记忆
     if session.working_memory.turns:
         session.working_memory.turns[-1].assistant_reply = reply.text
@@ -507,6 +511,42 @@ def _build_memory_state(session: SessionMemory) -> dict:
             "preferences": session.long_term.preferences,
         }
     return state
+
+
+def _sync_slots_from_evidence(session: SessionMemory, source: str = "evidence_cache"):
+    """
+    从 evidence_cache 或 kb_chunks 中提取 company/position，同步到 session.global_slots。
+    解决 explore→verify 多轮对话中 "这个岗"/"上面那个岗" 的指代断层问题。
+    """
+    chunks = []
+    if source == "evidence_cache" and hasattr(session, "evidence_cache"):
+        chunks = session.evidence_cache
+    elif source == "kb_chunks" and session.working_memory.turns:
+        chunks = session.working_memory.turns[-1].retrieved_chunks
+
+    if not chunks:
+        return
+
+    extracted = {}
+    for chunk in chunks[:3]:  # 取 top3
+        if not isinstance(chunk, dict):
+            continue
+        meta = chunk.get("metadata", {}) or {}
+        company = meta.get("company")
+        position = meta.get("position")
+        if company and "company" not in extracted:
+            extracted["company"] = company
+        if position and "position" not in extracted:
+            extracted["position"] = position
+        if "company" in extracted and "position" in extracted:
+            break
+
+    if extracted:
+        if not hasattr(session, "global_slots"):
+            session.global_slots = {}
+        for k, v in extracted.items():
+            session.global_slots[k] = v
+        logger.info(f"[Chat] 从 evidence 同步槽位到 global_slots | {extracted} | source={source}")
 
 
 # ═══════════════════════════════════════════════════════
@@ -879,101 +919,204 @@ async def _handle_llm_route_v2(
             "has_missing_dep": any("依赖不存在" in str(e) for e in errors),
         })
 
-    # ── ④ ReAct执行器：执行任务图 ──
-    executor = PlanExecutor()
-    graph = await executor.execute(graph, session)
-    logger.info(
-        f"[Chat-v2] ReAct执行完成 | status={graph.global_status} | "
-        f"tasks={[t.task_id + ':' + t.status for t in graph.tasks.values()]}"
-    )
+    # ── ④ ReAct执行器 + 反思 + Replan 循环（最多3轮）──
+    # 【新增】定义 IMMEDIATE 检查点回调：关键任务执行后立即检查
+    async def _immediate_checkpoint(task, graph, session):
+        """IMMEDIATE 模式：在 kb_retrieve/external_search 执行后立即进行硬规则语义检查"""
+        if task.tool_name not in ("kb_retrieve", "external_search"):
+            return None
+        
+        # 使用 PlanExecutor 内置的语义检查逻辑
+        from app.core.reflection import ReflectionResult, SemanticRelevanceResult
+        
+        target_company = ""
+        target_position = ""
+        if session and hasattr(session, "global_slots"):
+            target_company = session.global_slots.get("company", "")
+            target_position = session.global_slots.get("position", "")
+        
+        if not target_company and not target_position:
+            return None  # 无法判断，跳过
+        
+        if not task.result or not isinstance(task.result, dict):
+            return None
+        chunks = task.result.get("chunks", [])
+        if not chunks:
+            return None
+        
+        # 检查前3条 chunk 的 metadata
+        for c in chunks[:3]:
+            if not isinstance(c, dict):
+                continue
+            meta = c.get("metadata", {})
+            chunk_company = meta.get("company", "")
+            chunk_position = meta.get("position", "")
+            company_match = not target_company or target_company in chunk_company
+            position_match = not target_position or target_position in chunk_position
+            if company_match and position_match:
+                return None  # 匹配通过
+        
+        # 放宽：只要公司匹配就通过
+        if target_company:
+            for c in chunks[:3]:
+                if not isinstance(c, dict):
+                    continue
+                meta = c.get("metadata", {})
+                if target_company in meta.get("company", ""):
+                    return None
+        
+        # 语义不匹配，构造 ReflectionResult 触发 replan
+        suggested_query = " ".join(filter(None, [target_company, target_position])) or ""
+        logger.warning(
+            f"[Chat-v2] IMMEDIATE 检查点拦截 | task={task.task_id} | "
+            f"target={target_company}/{target_position} | suggested_query={suggested_query}"
+        )
+        return ReflectionResult(
+            suggested_action="replan_tools",
+            reason="语义不匹配：检索结果与用户意图不符（IMMEDIATE 检查点）",
+            problematic_task=task.task_id,
+            semantic_relevance=SemanticRelevanceResult(
+                is_relevant=False,
+                issue="检索结果与用户意图中的公司/岗位不匹配",
+                suggested_new_query=suggested_query,
+            ),
+        )
 
-    # Update evidence cache after execution
-    for task in graph.tasks.values():
-        if task.status == "success" and task.result:
-            chunks = task.result.get("chunks", []) if isinstance(task.result, dict) else []
-            if chunks:
-                session.evidence_cache = chunks[:settings.EVIDENCE_CACHE_MAX_SIZE]
-                session.evidence_cache_query = rewrite_result.rewritten_query
+    MAX_REPLAN_ROUNDS = 3
+    reflection_result = None
+
+    for replan_round in range(MAX_REPLAN_ROUNDS):
+        # 执行（传入 IMMEDIATE 检查点回调）
+        executor = PlanExecutor(checkpoint_callback=_immediate_checkpoint)
+        graph = await executor.execute(graph, session)
+        logger.info(
+            f"[Chat-v2] ReAct执行完成 第{replan_round+1}轮 | status={graph.global_status} | "
+            f"tasks={[t.task_id + ':' + t.status for t in graph.tasks.values()]}"
+        )
+
+        # 判断触发模式：IMMEDIATE（检查点暂停） vs POST_EXEC（正常执行完）
+        checkpoint_result = getattr(graph, 'checkpoint_result', None)
+        
+        if graph.global_status == "paused_for_replan" and checkpoint_result:
+            # ═══════════════════════════════════════════════════════
+            # 模式A：IMMEDIATE（关键任务执行后立即触发）
+            # ═══════════════════════════════════════════════════════
+            reflection_result = checkpoint_result
+            logger.info(
+                f"[Chat-v2] 第{replan_round+1}轮 IMMEDIATE 检查点触发 | "
+                f"action={reflection_result.suggested_action} | "
+                f"reason={reflection_result.reason[:80]}"
+            )
+            # 不更新 evidence_cache（检索结果不匹配，不应缓存）
+            # 不调用 POST_EXEC Reflection LLM（检查点已确定问题）
+            
+        else:
+            # ═══════════════════════════════════════════════════════
+            # 模式B：POST_EXEC（全部执行完成后触发）
+            # ═══════════════════════════════════════════════════════
+            # Update evidence cache after execution
+            for task in graph.tasks.values():
+                if task.status == "success" and task.result:
+                    chunks = task.result.get("chunks", []) if isinstance(task.result, dict) else []
+                    if chunks:
+                        session.evidence_cache = chunks[:settings.EVIDENCE_CACHE_MAX_SIZE]
+                        session.evidence_cache_query = rewrite_result.rewritten_query
+                        break
+
+            # 从 evidence_cache 同步关键槽位到 global_slots（解决 explore→verify 多轮指代断层）
+            _sync_slots_from_evidence(session, source="evidence_cache")
+
+            # ── POST_EXEC 反思模块：执行后全局质量检查 ──
+            try:
+                from app.core.reflection import AgentReflector
+                reflection_result = await AgentReflector.reflect(
+                    graph=graph,
+                    session=session,
+                    user_query=rewrite_result.rewritten_query,
+                )
+                graph.reflection_result = reflection_result
+                logger.info(
+                    f"[Chat-v2] POST_EXEC Reflection 第{replan_round+1}轮 | "
+                    f"action={reflection_result.suggested_action} | "
+                    f"complete={reflection_result.is_complete} | conflict={reflection_result.has_conflict}"
+                )
+
+                # re_retrieve 建议：直接补充检索
+                if reflection_result.suggested_action == "re_retrieve":
+                    try:
+                        from app.core.mcp_search import ExternalSearchTool
+                        search_tool = ExternalSearchTool()
+                        search_params = {"query": rewrite_result.rewritten_query, "count": 5}
+                        search_result = await search_tool.execute(search_params)
+                        if search_result.success and search_result.data.get("chunks"):
+                            chunks = search_result.data.get("chunks", [])
+                            if not hasattr(graph, "supplemental_search"):
+                                graph.supplemental_search = []
+                            graph.supplemental_search.append({
+                                "tool": "external_search",
+                                "query": rewrite_result.rewritten_query,
+                                "chunks": chunks,
+                                "source": "reflection_re_retrieve",
+                            })
+                            reflection_result.suggested_action = "note_uncertainty"
+                            logger.info(f"[Chat-v2] Reflection re_retrieve 触发补充检索成功 | chunks={len(chunks)}")
+                        else:
+                            reflection_result.suggested_action = "note_uncertainty"
+                            logger.info("[Chat-v2] Reflection re_retrieve 补充检索无结果，降级为 note_uncertainty")
+                    except Exception as e2:
+                        logger.warning(f"[Chat-v2] Reflection re_retrieve 补充检索失败: {e2}")
+                        reflection_result.suggested_action = "note_uncertainty"
+
+            except Exception as e:
+                logger.warning(f"[Chat-v2] Reflection 模块执行失败: {e}")
+                break  # 反思失败，不再循环
+
+            # POST_EXEC 模式下，如果不需要 replan，直接退出循环
+            if not (reflection_result and reflection_result.suggested_action == "replan_tools"):
                 break
 
-    # ── ④b 反思模块：执行后质量检查 ──
-    reflection_result = None
-    try:
-        from app.core.reflection import AgentReflector
-        reflection_result = await AgentReflector.reflect(
-            graph=graph,
-            session=session,
-            user_query=rewrite_result.rewritten_query,
-        )
-        # 将反思结果附加到 graph，供后续链路使用
-        graph.reflection_result = reflection_result
-        logger.info(
-            f"[Chat-v2] Reflection | action={reflection_result.suggested_action} | "
-            f"complete={reflection_result.is_complete} | conflict={reflection_result.has_conflict}"
-        )
+        # 共同的 replan 逻辑（IMMEDIATE 和 POST_EXEC 共用）
+        if not (reflection_result and reflection_result.suggested_action == "replan_tools"):
+            break  # 不需要 replan，退出循环
 
-        # re_retrieve 建议：真正触发补充检索（external_search），然后降级为 note_uncertainty
-        if reflection_result.suggested_action == "re_retrieve":
-            try:
-                from app.core.mcp_search import ExternalSearchTool
-                search_tool = ExternalSearchTool()
-                search_params = {"query": rewrite_result.rewritten_query, "count": 5}
-                search_result = await search_tool.execute(search_params)
-                if search_result.success and search_result.data.get("chunks"):
-                    chunks = search_result.data.get("chunks", [])
-                    # 将补充检索结果保存到 graph 上下文，供聚合使用
-                    if not hasattr(graph, "supplemental_search"):
-                        graph.supplemental_search = []
-                    graph.supplemental_search.append({
-                        "tool": "external_search",
-                        "query": rewrite_result.rewritten_query,
-                        "chunks": chunks,
-                        "source": "reflection_re_retrieve",
-                    })
-                    reflection_result.suggested_action = "note_uncertainty"
-                    logger.info(f"[Chat-v2] Reflection re_retrieve 触发补充检索成功 | chunks={len(chunks)}")
-                else:
-                    reflection_result.suggested_action = "note_uncertainty"
-                    logger.info("[Chat-v2] Reflection re_retrieve 补充检索无结果，降级为 note_uncertainty")
-            except Exception as e2:
-                logger.warning(f"[Chat-v2] Reflection re_retrieve 补充检索失败: {e2}")
-                reflection_result.suggested_action = "note_uncertainty"
+        # ── Planner Replan ──
+        if '_raw_new_graph' in locals() and '_raw_new_planner' in locals():
+            failed_tasks_old = [t for t in graph.tasks.values() if t.status == "failed"]
+            target_task_id = reflection_result.problematic_task or ""
 
-    except Exception as e:
-        logger.warning(f"[Chat-v2] Reflection 模块执行失败: {e}")
-
-    # ── ④c Planner Replan： reflection 建议 replan_tools 时调用 ──
-    if (
-        reflection_result
-        and reflection_result.suggested_action == "replan_tools"
-        and '_raw_new_graph' in locals()
-        and '_raw_new_planner' in locals()
-    ):
-        failed_tasks_old = [t for t in graph.tasks.values() if t.status == "failed"]
-        if failed_tasks_old:
-            # 优先使用 reflection 的问题定位（problematic_task）
-            target_task_id = reflection_result.problematic_task if reflection_result else ""
-            if not target_task_id:
-                target_task_id = failed_tasks_old[0].task_id
-
-            # 在原始完整 graph 中找到对应的失败任务
+            # 在原始完整 graph 中找到对应任务
             failed_task_new = None
-            for t in _raw_new_graph.tasks:
-                if t.task_id == target_task_id:
-                    failed_task_new = t
-                    break
+            if target_task_id:
+                for t in _raw_new_graph.tasks:
+                    if t.task_id == target_task_id:
+                        failed_task_new = t
+                        break
 
-            # 如果 problematic_task 指向的任务不在 new_graph 中，fallback 到第一个失败任务
-            if not failed_task_new:
+            # 场景A：有失败任务但 problematic_task 没命中，fallback 到第一个失败任务
+            if not failed_task_new and failed_tasks_old:
                 for t in _raw_new_graph.tasks:
                     if t.task_id == failed_tasks_old[0].task_id:
                         failed_task_new = t
                         break
 
-            if failed_task_new and failed_task_new.fallback:
+            # 场景B：无失败任务（如语义不相关、来源冲突），用 problematic_task 或第一个任务
+            if not failed_task_new and not failed_tasks_old:
+                for t in _raw_new_graph.tasks:
+                    if t.task_id == target_task_id:
+                        failed_task_new = t
+                        break
+                if not failed_task_new and _raw_new_graph.tasks:
+                    failed_task_new = _raw_new_graph.tasks[0]
+                if failed_task_new:
+                    # 人为标记为 failed，以便 replan 处理
+                    failed_task_new.status = "failed"
+                    failed_task_new.observation = f"质量不达标: {reflection_result.reason[:120]}"
+
+            if failed_task_new:
+                fb_action = getattr(failed_task_new.fallback, 'action', 'abort') if failed_task_new.fallback else 'abort'
                 logger.info(
-                    f"[Chat-v2] 调用 TaskGraphPlanner.replan() | "
-                    f"task={failed_task_new.task_id} | fallback_action={failed_task_new.fallback.action}"
+                    f"[Chat-v2] 调用 TaskGraphPlanner.replan() 第{replan_round+1}轮 | "
+                    f"task={failed_task_new.task_id} | fallback_action={fb_action}"
                 )
                 try:
                     # 将反思结果转为 dict 传给规划LLM
@@ -985,46 +1128,34 @@ async def _handle_llm_route_v2(
                         "problematic_task": reflection_result.problematic_task,
                         "confidence": reflection_result.confidence,
                         "reason": reflection_result.reason,
+                        "semantic_relevance": reflection_result.semantic_relevance.__dict__ if reflection_result.semantic_relevance else {},
+                        "source_conflict_analysis": reflection_result.source_conflict_analysis.__dict__ if reflection_result.source_conflict_analysis else {},
                     }
                     _raw_new_graph = await _raw_new_planner.replan(
                         _raw_new_graph, failed_task_new, session, reflection_result=reflection_dict
                     )
-                    # 重新转换并执行
+                    # 重新转换
                     graph = convert_task_graph(_raw_new_graph)
-                    executor = PlanExecutor()
-                    graph = await executor.execute(graph, session)
-                    logger.info(f"[Chat-v2] Replan 后重新执行完成 | status={graph.global_status}")
-
-                    # 重新更新 evidence cache
-                    for task in graph.tasks.values():
-                        if task.status == "success" and task.result:
-                            chunks = task.result.get("chunks", []) if isinstance(task.result, dict) else []
-                            if chunks:
-                                session.evidence_cache = chunks[:settings.EVIDENCE_CACHE_MAX_SIZE]
-                                session.evidence_cache_query = rewrite_result.rewritten_query
-                                break
-
-                    # 重新反思（限制一次，避免无限循环）
-                    try:
-                        reflection_result = await AgentReflector.reflect(
-                            graph=graph,
-                            session=session,
-                            user_query=rewrite_result.rewritten_query,
-                        )
-                        graph.reflection_result = reflection_result
-                        logger.info(
-                            f"[Chat-v2] Replan 后重新反思 | action={reflection_result.suggested_action}"
-                        )
-                    except Exception as e2:
-                        logger.warning(f"[Chat-v2] Replan 后重新反思失败: {e2}")
+                    logger.info(f"[Chat-v2] Replan 第{replan_round+1}轮完成，进入下一轮执行")
+                    continue  # 进入下一轮执行
 
                 except Exception as e:
-                    logger.error(f"[Chat-v2] TaskGraphPlanner.replan() 执行失败: {e}")
+                    logger.error(f"[Chat-v2] TaskGraphPlanner.replan() 第{replan_round+1}轮执行失败: {e}")
+                    break
             else:
                 logger.warning(
-                    f"[Chat-v2] 无法 replan：任务 {failed_task_old.task_id} "
-                    f"在原始 graph 中无 fallback 策略"
+                    f"[Chat-v2] 无法 replan 第{replan_round+1}轮：找不到对应任务"
                 )
+                break
+        else:
+            logger.warning("[Chat-v2] 无法 replan：原始 graph/planner 不可用")
+            break
+
+    # 达到最大 replan 次数后的降级处理
+    if replan_round >= MAX_REPLAN_ROUNDS - 1 and reflection_result and reflection_result.suggested_action == "replan_tools":
+        logger.warning("[Chat-v2] 达到最大 Replan 次数(3轮)，停止重试并降级")
+        reflection_result.suggested_action = "note_uncertainty"
+        reflection_result.reason += "（已达最大重规划次数，结果可能存在不确定性）"
 
     # 埋点：task_graph_executed
     if tracker:
@@ -1134,10 +1265,25 @@ async def _handle_llm_route_v2(
     # 根据反思结果动态调整 system_prompt
     # 【注意】reflection 是 Agent 内部机制，其判断结果（如信息是否完整）不应直接暴露给用户。
     # 如果 re_retrieve 成功补充了检索，直接基于补充后的结果生成回复即可，不需要告诉用户"信息不完整"。
-    # 只有来源冲突是需要用户知道的，才暴露给聚合LLM。
+    # 只有来源冲突和检索相关性问题是需要聚合LLM知道的，才暴露给聚合LLM。
     reflection_notes = ""
-    if reflection_result and reflection_result.has_conflict:
-        reflection_notes += "\n【重要：来源冲突提示】检测到本地知识库与外部搜索结果存在潜在冲突，请务必并列呈现不同说法并标注来源，建议用户以官方信息为准。\n"
+    if reflection_result:
+        # 1. 来源冲突详细分析（优先使用 LLM 的深度分析）
+        if reflection_result.source_conflict_analysis and reflection_result.source_conflict_analysis.has_conflict:
+            sc = reflection_result.source_conflict_analysis
+            reflection_notes += f"\n【重要：来源冲突提示】{sc.analysis}\n"
+            reflection_notes += f"【给回复的建议】{sc.recommendation}\n"
+            reflection_notes += "请务必在回复中：①并列呈现两种说法并标注各自来源；②分析1-2条可能的原因（如信息时效性差异、数据来源口径不同等）；③建议用户以官方JD为准。\n"
+        # 2. 语义相关性警告（replan 未修复或达到上限时）
+        elif reflection_result.semantic_relevance and not reflection_result.semantic_relevance.is_relevant:
+            sr = reflection_result.semantic_relevance
+            reflection_notes += f"\n【重要：检索相关性警告】{sr.issue}。当前检索结果可能与用户真实意图不匹配。"
+            if sr.suggested_new_query:
+                reflection_notes += f"建议的检索方向：{sr.suggested_new_query}。"
+            reflection_notes += "请在回复中谨慎表述：如果已有结果确实无法回答用户问题，请诚实说明并建议用户补充更明确的信息。\n"
+        # 3. 通用冲突标记（向后兼容，当没有详细分析时兜底）
+        elif reflection_result.has_conflict:
+            reflection_notes += "\n【重要：来源冲突提示】检测到本地知识库与外部搜索结果存在潜在冲突，请务必并列呈现不同说法并标注来源，建议用户以官方信息为准。\n"
 
     # 根据所有意图类型，确定必含字段要求（多意图场景需合并所有约束）
     primary_intent = intent_result.demands[0].intent_type if intent_result.demands else "chat"
@@ -1164,14 +1310,15 @@ async def _handle_llm_route_v2(
         "\n"
         "【核心原则】\n"
         "1. 先直接回答用户的问题，不要绕弯子，不要重复用户的原话\n"
-        "2. 基于工具输出的事实回复，不要编造\n"
+        "2. 基于工具输出的事实回复，绝对不要编造任何信息\n"
         "3. 引用信息时必须标注来源，格式如：[来源：本地知识库-字节跳动] 或 [来源：外部搜索-新华网]\n"
-        "4. 如果涉及'最近''最新'等时效性问题，请明确说明信息的时间范围\n"
-        "5. 当本地知识库与外部搜索结果冲突时，请并列呈现两种说法并标注各自来源，不要替用户做判断\n"
-        "6. 严格围绕用户当前问题回答，禁止发散到无关话题\n"
-        "7. 【信息冲突自检】生成回复前，主动检查工具结果中是否存在来源冲突。"
+        "4. 【引用真实性校验】生成回复前，必须检查每一条引用是否真实存在于工具输出中。如果工具输出中没有该信息，禁止在回复中提及，更禁止虚构来源。\n"
+        "5. 如果涉及'最近''最新'等时效性问题，请明确说明信息的时间范围\n"
+        "6. 当本地知识库与外部搜索结果冲突时，请并列呈现两种说法并标注各自来源，不要替用户做判断\n"
+        "7. 严格围绕用户当前问题回答，禁止发散到无关话题\n"
+        "8. 【信息冲突自检】生成回复前，主动检查工具结果中是否存在来源冲突。"
         "如果存在冲突，必须在回复中明确指出冲突点，分析1-2条可能原因，并建议用户以官方JD为准。\n"
-        "8. 【语气要求】像一位有5年经验的求职顾问在和朋友聊天：专业但有亲和力，自然不机械。"
+        "9. 【语气要求】像一位有5年经验的求职顾问在和朋友聊天：专业但有亲和力，自然不机械。"
         "避免模板化开场白，适当使用口语化过渡。\n"
         "\n"
         "【强制性要求——不得遗漏】\n"
@@ -1179,6 +1326,7 @@ async def _handle_llm_route_v2(
         "\n"
         "【关键兜底】无论回复多长，工具输出中的关键数据（如分数、排名、具体数值、属性值）必须全部保留并呈现给用户。"
         "不要因为追求简洁而删除具体数据。用户问匹配度，就必须给出分数；用户问薪资，就必须给出具体数字范围。"
+        "【绝对禁止】不得捏造不存在的技能、经历、项目或分数。如果工具输出中没有某项信息，明确告知用户'现有信息中未提及'。"
         + reflection_notes
     )
 
@@ -1219,7 +1367,7 @@ async def _handle_llm_route_v2(
     # 调整 tool_outputs 顺序：把 match_analyze 放在最前面，确保聚合LLM优先看到
     _truncated_outputs.sort(key=lambda x: 0 if x.get("tool") == "match_analyze" else 1)
 
-    tool_outputs_json = json.dumps(_truncated_outputs, ensure_ascii=False, default=str)[:1500]
+    tool_outputs_json = json.dumps(_truncated_outputs, ensure_ascii=False, default=str)[:4000]
 
     user_prompt = (
         f"【用户问题】\n{rewrite_result.rewritten_query}\n\n"
@@ -1344,6 +1492,8 @@ async def _handle_llm_route_v2(
                 "problematic_task": reflection_result.problematic_task,
                 "confidence": reflection_result.confidence,
                 "reason": reflection_result.reason,
+                "semantic_relevance": reflection_result.semantic_relevance.__dict__ if reflection_result.semantic_relevance else {},
+                "source_conflict_analysis": reflection_result.source_conflict_analysis.__dict__ if reflection_result.source_conflict_analysis else {},
             } if reflection_result else {},
             "session_history": [
                 {
@@ -1634,6 +1784,9 @@ async def _handle_llm_route_v2_stream(
                 session.evidence_cache_query = rewrite_result.rewritten_query
                 break
 
+    # 从 evidence_cache 同步关键槽位到 global_slots（解决 explore→verify 多轮指代断层）
+    _sync_slots_from_evidence(session, source="evidence_cache")
+
     # ── ④ 收集工具输出 ──
     tool_outputs = []
     tool_summary = []
@@ -1809,7 +1962,26 @@ async def chat_stream_endpoint(request: ChatRequest):
     v2 路线 SSE 流式对话入口。
     返回 text/event-stream，事件类型：status / delta / clarification / done
     """
+    # 评测模式：注入模拟多轮上下文
+    eval_ctx = request.eval_context or {}
+
+    # 评测模式：支持 reset_session 清除 session 和长期记忆
+    if eval_ctx.get("reset_session") and request.session_id:
+        if request.session_id in _session_store:
+            del _session_store[request.session_id]
+        delete_session_meta(request.session_id)
+        delete_long_term_memory(request.session_id)
+        logger.info(f"[ChatStream] 评测模式重置 session | session_id={request.session_id}")
+
     session_id, session = _get_or_create_session(request.session_id, request.user_id)
+
+    # 评测模式：支持 eval_context 直接指定 resume_id（必须在 _get_resume_text 之前）
+    eval_resume_id = eval_ctx.get("resume_id")
+    if eval_resume_id and eval_resume_id in resumes_db:
+        import app.core.state as _state_module
+        _state_module.active_resume_id = eval_resume_id
+        logger.info(f"[ChatStream] 评测模式切换简历 | resume_id={eval_resume_id}")
+
     resume_text = _get_resume_text()
 
     # 同步简历可用状态到 session.global_slots，供意图识别层 _check_clarification_need 使用
@@ -1820,8 +1992,6 @@ async def chat_stream_endpoint(request: ChatRequest):
     if has_resume:
         session.global_slots["resume_text"] = resume_text
 
-    # 评测模式：注入模拟多轮上下文
-    eval_ctx = request.eval_context or {}
     injected_slots = eval_ctx.get("injected_history_slots")
     if injected_slots and isinstance(injected_slots, dict):
         if session.long_term is None:
