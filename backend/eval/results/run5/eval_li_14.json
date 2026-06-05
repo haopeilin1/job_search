@@ -1,0 +1,1560 @@
+{
+  "case_id": "eval_li_14",
+  "message": "分析这个Java岗",
+  "gold_intents": [
+    "clarification"
+  ],
+  "expected_tools": [],
+  "scenario": "边界_意图模糊需澄清",
+  "eval_context": {
+    "gold_intents": [
+      "clarification"
+    ],
+    "gold_slots": {},
+    "relevance_score": 0,
+    "expected_tools": [],
+    "scenario": "边界_意图模糊需澄清",
+    "notes": "无上下文时'这个岗'无法解析"
+  },
+  "resume_id": "e30c8b27-cfce-4918-8810-832e3ab5087c",
+  "status": "success",
+  "error": null,
+  "ttfb": 0.008,
+  "total_latency": 135.66,
+  "event_count": 79,
+  "pred_intent": "attribute_verify",
+  "pred_intents": [
+    "attribute_verify"
+  ],
+  "pred_tools": [
+    {
+      "tool": "kb_retrieve",
+      "status": "✅",
+      "params": {
+        "query": "分析Java岗位",
+        "top_k": 3,
+        "position": "Java"
+      },
+      "result_preview": "{'chunks': [{'chunk_id': '45bd2600-af57-45fe-a96e-c6cae6838c7a_chunk_0', 'content': '公司：某小公司，岗位：Java后端，地点：成都，薪资：10k-20k', 'metadata': {'category': '技术', 'company': '某小公司', 'domain': '传统', 'index': 0, "
+    },
+    {
+      "tool": "qa_synthesize",
+      "status": "✅",
+      "params": {
+        "question": "分析Java岗位的综合情况",
+        "evidence_chunks": [
+          {
+            "chunk_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a_chunk_0",
+            "content": "公司：某小公司，岗位：Java后端，地点：成都，薪资：10k-20k",
+            "metadata": {
+              "category": "技术",
+              "company": "某小公司",
+              "domain": "传统",
+              "index": 0,
+              "jd_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a",
+              "max_years": 3,
+              "min_education": "大专",
+              "min_years": 1,
+              "position": "Java后端",
+              "section": "basic_info",
+              "strategy": "semantic"
+            },
+            "distance": null,
+            "bm25_score": 6.351890493211124,
+            "vec_norm": 0.0,
+            "bm25_norm": 1.0,
+            "hybrid_score": 0.3,
+            "rerank_score": 0.4946
+          },
+          {
+            "chunk_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a_chunk_2",
+            "content": "【某小公司 · Java后端 硬性要求】\n1年以上Java开发经验",
+            "metadata": {
+              "company": "某小公司",
+              "index": 2,
+              "jd_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a",
+              "position": "Java后端",
+              "priority": "high",
+              "section": "hard_requirements",
+              "strategy": "semantic"
+            },
+            "distance": null,
+            "bm25_score": 5.92937912887755,
+            "vec_norm": 0.0,
+            "bm25_norm": 0.9018842052874801,
+            "hybrid_score": 0.27056526158624405,
+            "rerank_score": 0.1919
+          },
+          {
+            "chunk_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a_chunk_6",
+            "content": "【某小公司 · Java后端 关键词】\nJava, Spring Boot, MySQL, ERP, 后端",
+            "metadata": {
+              "company": "某小公司",
+              "index": 6,
+              "jd_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a",
+              "position": "Java后端",
+              "section": "keywords",
+              "strategy": "semantic"
+            },
+            "distance": null,
+            "bm25_score": 5.494377308876329,
+            "vec_norm": 0.0,
+            "bm25_norm": 0.8008678708792155,
+            "hybrid_score": 0.24026036126376465,
+            "rerank_score": 0.0022
+          }
+        ],
+        "qa_type": "factual"
+      },
+      "result_preview": "{'answer': '基于现有证据，仅能分析“某小公司”在成都的 Java 后端岗位情况，无法代表 Java 岗位的整体市场综合情况。该岗位薪资范围为 10k-20k [1]，硬性要求 1 年以上 Java 开发经验 [2]，技术栈涉及 Java、Spring Boot、MySQL 及 ERP 系统 [3]。各来源信息一致，未发现冲突。以上信息仅供参考，具体请以该公司官方发布的 JD 为准。',"
+    }
+  ],
+  "tools_called": [
+    "kb_retrieve",
+    "qa_synthesize"
+  ],
+  "kb_chunks": [
+    {
+      "chunk_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a_chunk_0",
+      "content": "公司：某小公司，岗位：Java后端，地点：成都，薪资：10k-20k",
+      "metadata": {
+        "category": "技术",
+        "company": "某小公司",
+        "domain": "传统",
+        "index": 0,
+        "jd_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a",
+        "max_years": 3,
+        "min_education": "大专",
+        "min_years": 1,
+        "position": "Java后端",
+        "section": "basic_info",
+        "strategy": "semantic"
+      },
+      "distance": null,
+      "bm25_score": 6.351890493211124,
+      "vec_norm": 0.0,
+      "bm25_norm": 1.0,
+      "hybrid_score": 0.3,
+      "rerank_score": 0.4946
+    },
+    {
+      "chunk_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a_chunk_2",
+      "content": "【某小公司 · Java后端 硬性要求】\n1年以上Java开发经验",
+      "metadata": {
+        "company": "某小公司",
+        "index": 2,
+        "jd_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a",
+        "position": "Java后端",
+        "priority": "high",
+        "section": "hard_requirements",
+        "strategy": "semantic"
+      },
+      "distance": null,
+      "bm25_score": 5.92937912887755,
+      "vec_norm": 0.0,
+      "bm25_norm": 0.9018842052874801,
+      "hybrid_score": 0.27056526158624405,
+      "rerank_score": 0.1919
+    },
+    {
+      "chunk_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a_chunk_6",
+      "content": "【某小公司 · Java后端 关键词】\nJava, Spring Boot, MySQL, ERP, 后端",
+      "metadata": {
+        "company": "某小公司",
+        "index": 6,
+        "jd_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a",
+        "position": "Java后端",
+        "section": "keywords",
+        "strategy": "semantic"
+      },
+      "distance": null,
+      "bm25_score": 5.494377308876329,
+      "vec_norm": 0.0,
+      "bm25_norm": 0.8008678708792155,
+      "hybrid_score": 0.24026036126376465,
+      "rerank_score": 0.0022
+    }
+  ],
+  "tool_executions_full": [
+    {
+      "tool_name": "kb_retrieve",
+      "task_id": "T0",
+      "status": "success",
+      "output": {
+        "chunks": [
+          {
+            "chunk_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a_chunk_0",
+            "content": "公司：某小公司，岗位：Java后端，地点：成都，薪资：10k-20k",
+            "source": "某小公司-Java后端",
+            "metadata": {
+              "company": "某小公司",
+              "position": "Java后端"
+            }
+          },
+          {
+            "chunk_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a_chunk_2",
+            "content": "【某小公司 · Java后端 硬性要求】\n1年以上Java开发经验",
+            "source": "某小公司-Java后端",
+            "metadata": {
+              "company": "某小公司",
+              "position": "Java后端"
+            }
+          },
+          {
+            "chunk_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a_chunk_6",
+            "content": "【某小公司 · Java后端 关键词】\nJava, Spring Boot, MySQL, ERP, 后端",
+            "source": "某小公司-Java后端",
+            "metadata": {
+              "company": "某小公司",
+              "position": "Java后端"
+            }
+          }
+        ],
+        "query": "分析Java岗位",
+        "filters": {
+          "position": "Java"
+        },
+        "strategy": "hybrid(70%vec+30%bm25)+reranker",
+        "pool_k": 3,
+        "rerank_k": 10,
+        "pool_size": 20,
+        "vec_only": 0,
+        "bm25_only": 20,
+        "both": 0,
+        "rerank": {
+          "enabled": true,
+          "candidates": 3,
+          "output": 3,
+          "best_rerank_score": 0.4946
+        }
+      }
+    },
+    {
+      "tool_name": "qa_synthesize",
+      "task_id": "T1",
+      "status": "success",
+      "output": {
+        "answer": "基于现有证据，仅能分析“某小公司”在成都的 Java 后端岗位情况，无法代表 Java 岗位的整体市场综合情况。该岗位薪资范围为 10k-20k [1]，硬性要求 1 年以上 Java 开发经验 [2]，技术栈涉及 Java、Spring Boot、MySQL 及 ERP 系统 [3]。各来源信息一致，未发现冲突。以上信息仅供参考，具体请以该公司官方发布的 JD 为准。",
+        "citations": [
+          {
+            "index": 1,
+            "source": "检索证据 - 某小公司 - Java 后端",
+            "quote": "公司：某小公司，岗位：Java 后端，地点：成都，薪资：10k-20k"
+          },
+          {
+            "index": 2,
+            "source": "检索证据 - 某小公司 - Java 后端",
+            "quote": "1 年以上 Java 开发经验"
+          },
+          {
+            "index": 3,
+            "source": "检索证据 - 某小公司 - Java 后端",
+            "quote": "Java, Spring Boot, MySQL, ERP, 后端"
+          }
+        ],
+        "confidence": "medium",
+        "conflict_detected": false,
+        "conflict_details": null,
+        "insufficient_note": "证据仅覆盖单一小公司的特定岗位，无法反映 Java 岗位全市场的综合情况（如不同规模公司、不同城市、不同经验级别的差异）。"
+      }
+    }
+  ],
+  "debug_info": {
+    "task_graph": {
+      "tasks": {
+        "T0": {
+          "task_id": "T0",
+          "task_type": "tool_call",
+          "tool_name": "kb_retrieve",
+          "status": "success",
+          "parameters": {
+            "query": "分析Java岗位",
+            "top_k": 3,
+            "position": "{{intent_verify.position}}"
+          },
+          "resolved_params": {
+            "query": "分析Java岗位",
+            "top_k": 3,
+            "position": "Java"
+          },
+          "result": {
+            "chunks": [
+              {
+                "chunk_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a_chunk_0",
+                "content": "公司：某小公司，岗位：Java后端，地点：成都，薪资：10k-20k",
+                "metadata": {
+                  "category": "技术",
+                  "company": "某小公司",
+                  "domain": "传统",
+                  "index": 0,
+                  "jd_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a",
+                  "max_years": 3,
+                  "min_education": "大专",
+                  "min_years": 1,
+                  "position": "Java后端",
+                  "section": "basic_info",
+                  "strategy": "semantic"
+                },
+                "distance": null,
+                "bm25_score": 6.351890493211124,
+                "vec_norm": 0.0,
+                "bm25_norm": 1.0,
+                "hybrid_score": 0.3,
+                "rerank_score": 0.4946
+              },
+              {
+                "chunk_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a_chunk_2",
+                "content": "【某小公司 · Java后端 硬性要求】\n1年以上Java开发经验",
+                "metadata": {
+                  "company": "某小公司",
+                  "index": 2,
+                  "jd_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a",
+                  "position": "Java后端",
+                  "priority": "high",
+                  "section": "hard_requirements",
+                  "strategy": "semantic"
+                },
+                "distance": null,
+                "bm25_score": 5.92937912887755,
+                "vec_norm": 0.0,
+                "bm25_norm": 0.9018842052874801,
+                "hybrid_score": 0.27056526158624405,
+                "rerank_score": 0.1919
+              },
+              {
+                "chunk_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a_chunk_6",
+                "content": "【某小公司 · Java后端 关键词】\nJava, Spring Boot, MySQL, ERP, 后端",
+                "metadata": {
+                  "company": "某小公司",
+                  "index": 6,
+                  "jd_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a",
+                  "position": "Java后端",
+                  "section": "keywords",
+                  "strategy": "semantic"
+                },
+                "distance": null,
+                "bm25_score": 5.494377308876329,
+                "vec_norm": 0.0,
+                "bm25_norm": 0.8008678708792155,
+                "hybrid_score": 0.24026036126376465,
+                "rerank_score": 0.0022
+              }
+            ],
+            "query": "分析Java岗位",
+            "filters": {
+              "position": "Java"
+            },
+            "strategy": "hybrid(70%vec+30%bm25)+reranker",
+            "pool_k": 3,
+            "rerank_k": 10,
+            "pool_size": 20,
+            "vec_only": 0,
+            "bm25_only": 20,
+            "both": 0,
+            "rerank": {
+              "enabled": true,
+              "candidates": 3,
+              "output": 3,
+              "best_rerank_score": 0.4946
+            }
+          },
+          "observation": "工具 kb_retrieve 执行成功"
+        },
+        "T1": {
+          "task_id": "T1",
+          "task_type": "tool_call",
+          "tool_name": "qa_synthesize",
+          "status": "success",
+          "parameters": {
+            "question": "分析Java岗位的综合情况",
+            "evidence_chunks": "{{T0.output.chunks}}",
+            "qa_type": "factual"
+          },
+          "resolved_params": {
+            "question": "分析Java岗位的综合情况",
+            "evidence_chunks": [
+              {
+                "chunk_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a_chunk_0",
+                "content": "公司：某小公司，岗位：Java后端，地点：成都，薪资：10k-20k",
+                "metadata": {
+                  "category": "技术",
+                  "company": "某小公司",
+                  "domain": "传统",
+                  "index": 0,
+                  "jd_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a",
+                  "max_years": 3,
+                  "min_education": "大专",
+                  "min_years": 1,
+                  "position": "Java后端",
+                  "section": "basic_info",
+                  "strategy": "semantic"
+                },
+                "distance": null,
+                "bm25_score": 6.351890493211124,
+                "vec_norm": 0.0,
+                "bm25_norm": 1.0,
+                "hybrid_score": 0.3,
+                "rerank_score": 0.4946
+              },
+              {
+                "chunk_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a_chunk_2",
+                "content": "【某小公司 · Java后端 硬性要求】\n1年以上Java开发经验",
+                "metadata": {
+                  "company": "某小公司",
+                  "index": 2,
+                  "jd_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a",
+                  "position": "Java后端",
+                  "priority": "high",
+                  "section": "hard_requirements",
+                  "strategy": "semantic"
+                },
+                "distance": null,
+                "bm25_score": 5.92937912887755,
+                "vec_norm": 0.0,
+                "bm25_norm": 0.9018842052874801,
+                "hybrid_score": 0.27056526158624405,
+                "rerank_score": 0.1919
+              },
+              {
+                "chunk_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a_chunk_6",
+                "content": "【某小公司 · Java后端 关键词】\nJava, Spring Boot, MySQL, ERP, 后端",
+                "metadata": {
+                  "company": "某小公司",
+                  "index": 6,
+                  "jd_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a",
+                  "position": "Java后端",
+                  "section": "keywords",
+                  "strategy": "semantic"
+                },
+                "distance": null,
+                "bm25_score": 5.494377308876329,
+                "vec_norm": 0.0,
+                "bm25_norm": 0.8008678708792155,
+                "hybrid_score": 0.24026036126376465,
+                "rerank_score": 0.0022
+              }
+            ],
+            "qa_type": "factual"
+          },
+          "result": {
+            "answer": "基于现有证据，仅能分析“某小公司”在成都的 Java 后端岗位情况，无法代表 Java 岗位的整体市场综合情况。该岗位薪资范围为 10k-20k [1]，硬性要求 1 年以上 Java 开发经验 [2]，技术栈涉及 Java、Spring Boot、MySQL 及 ERP 系统 [3]。各来源信息一致，未发现冲突。以上信息仅供参考，具体请以该公司官方发布的 JD 为准。",
+            "citations": [
+              {
+                "index": 1,
+                "source": "检索证据 - 某小公司 - Java 后端",
+                "quote": "公司：某小公司，岗位：Java 后端，地点：成都，薪资：10k-20k"
+              },
+              {
+                "index": 2,
+                "source": "检索证据 - 某小公司 - Java 后端",
+                "quote": "1 年以上 Java 开发经验"
+              },
+              {
+                "index": 3,
+                "source": "检索证据 - 某小公司 - Java 后端",
+                "quote": "Java, Spring Boot, MySQL, ERP, 后端"
+              }
+            ],
+            "confidence": "medium",
+            "conflict_detected": false,
+            "conflict_details": null,
+            "insufficient_note": "证据仅覆盖单一小公司的特定岗位，无法反映 Java 岗位全市场的综合情况（如不同规模公司、不同城市、不同经验级别的差异）。"
+          },
+          "observation": "工具 qa_synthesize 执行成功"
+        }
+      },
+      "global_status": "success",
+      "replan_reason": "",
+      "replan_count": 0
+    },
+    "intent": {
+      "demands": [
+        {
+          "intent": "attribute_verify",
+          "entities": {
+            "position": "Java",
+            "attributes": [
+              "综合情况"
+            ]
+          },
+          "confidence": 0.75
+        }
+      ],
+      "needs_clarification": false,
+      "clarification_question": ""
+    },
+    "rewrite": {
+      "rewritten_query": "分析Java岗位",
+      "search_keywords": "分析Java岗位",
+      "is_follow_up": false,
+      "follow_up_type": "none",
+      "resolved_references": {}
+    },
+    "evidence_cache": [
+      {
+        "chunk_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a_chunk_0",
+        "content": "公司：某小公司，岗位：Java后端，地点：成都，薪资：10k-20k",
+        "metadata": {
+          "category": "技术",
+          "company": "某小公司",
+          "domain": "传统",
+          "index": 0,
+          "jd_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a",
+          "max_years": 3,
+          "min_education": "大专",
+          "min_years": 1,
+          "position": "Java后端",
+          "section": "basic_info",
+          "strategy": "semantic"
+        },
+        "distance": null,
+        "bm25_score": 6.351890493211124,
+        "vec_norm": 0.0,
+        "bm25_norm": 1.0,
+        "hybrid_score": 0.3,
+        "rerank_score": 0.4946
+      },
+      {
+        "chunk_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a_chunk_2",
+        "content": "【某小公司 · Java后端 硬性要求】\n1年以上Java开发经验",
+        "metadata": {
+          "company": "某小公司",
+          "index": 2,
+          "jd_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a",
+          "position": "Java后端",
+          "priority": "high",
+          "section": "hard_requirements",
+          "strategy": "semantic"
+        },
+        "distance": null,
+        "bm25_score": 5.92937912887755,
+        "vec_norm": 0.0,
+        "bm25_norm": 0.9018842052874801,
+        "hybrid_score": 0.27056526158624405,
+        "rerank_score": 0.1919
+      },
+      {
+        "chunk_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a_chunk_6",
+        "content": "【某小公司 · Java后端 关键词】\nJava, Spring Boot, MySQL, ERP, 后端",
+        "metadata": {
+          "company": "某小公司",
+          "index": 6,
+          "jd_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a",
+          "position": "Java后端",
+          "section": "keywords",
+          "strategy": "semantic"
+        },
+        "distance": null,
+        "bm25_score": 5.494377308876329,
+        "vec_norm": 0.0,
+        "bm25_norm": 0.8008678708792155,
+        "hybrid_score": 0.24026036126376465,
+        "rerank_score": 0.0022
+      }
+    ],
+    "evidence_cache_query": "分析Java岗位",
+    "tool_outputs": [
+      {
+        "task_id": "T0",
+        "tool": "kb_retrieve",
+        "description": "检索Java岗位相关JD",
+        "result": {
+          "chunks": [
+            {
+              "chunk_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a_chunk_0",
+              "content": "公司：某小公司，岗位：Java后端，地点：成都，薪资：10k-20k",
+              "source": "某小公司-Java后端",
+              "metadata": {
+                "company": "某小公司",
+                "position": "Java后端"
+              }
+            },
+            {
+              "chunk_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a_chunk_2",
+              "content": "【某小公司 · Java后端 硬性要求】\n1年以上Java开发经验",
+              "source": "某小公司-Java后端",
+              "metadata": {
+                "company": "某小公司",
+                "position": "Java后端"
+              }
+            },
+            {
+              "chunk_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a_chunk_6",
+              "content": "【某小公司 · Java后端 关键词】\nJava, Spring Boot, MySQL, ERP, 后端",
+              "source": "某小公司-Java后端",
+              "metadata": {
+                "company": "某小公司",
+                "position": "Java后端"
+              }
+            }
+          ],
+          "query": "分析Java岗位",
+          "filters": {
+            "position": "Java"
+          },
+          "strategy": "hybrid(70%vec+30%bm25)+reranker",
+          "pool_k": 3,
+          "rerank_k": 10,
+          "pool_size": 20,
+          "vec_only": 0,
+          "bm25_only": 20,
+          "both": 0,
+          "rerank": {
+            "enabled": true,
+            "candidates": 3,
+            "output": 3,
+            "best_rerank_score": 0.4946
+          }
+        }
+      },
+      {
+        "task_id": "T1",
+        "tool": "qa_synthesize",
+        "description": "基于检索结果分析Java岗位综合情况",
+        "result": {
+          "answer": "基于现有证据，仅能分析“某小公司”在成都的 Java 后端岗位情况，无法代表 Java 岗位的整体市场综合情况。该岗位薪资范围为 10k-20k [1]，硬性要求 1 年以上 Java 开发经验 [2]，技术栈涉及 Java、Spring Boot、MySQL 及 ERP 系统 [3]。各来源信息一致，未发现冲突。以上信息仅供参考，具体请以该公司官方发布的 JD 为准。",
+          "citations": [
+            {
+              "index": 1,
+              "source": "检索证据 - 某小公司 - Java 后端",
+              "quote": "公司：某小公司，岗位：Java 后端，地点：成都，薪资：10k-20k"
+            },
+            {
+              "index": 2,
+              "source": "检索证据 - 某小公司 - Java 后端",
+              "quote": "1 年以上 Java 开发经验"
+            },
+            {
+              "index": 3,
+              "source": "检索证据 - 某小公司 - Java 后端",
+              "quote": "Java, Spring Boot, MySQL, ERP, 后端"
+            }
+          ],
+          "confidence": "medium",
+          "conflict_detected": false,
+          "conflict_details": null,
+          "insufficient_note": "证据仅覆盖单一小公司的特定岗位，无法反映 Java 岗位全市场的综合情况（如不同规模公司、不同城市、不同经验级别的差异）。"
+        }
+      }
+    ],
+    "final_aggregation_prompt": {
+      "system_prompt": "你是一位专业的求职顾问。请基于以下工具执行结果，给用户一个清晰、有帮助的回复。\n要求：\n1. 先直接回答用户的问题（是/否/有/没有），不要绕弯子，不要重复用户的原话\n2. 如果有匹配分析结果，给出具体的分数和建议\n3. 如果有检索结果，基于事实回答，不要编造\n4. 【强制】引用信息时必须标注来源。每个引用的事实后面都要跟 [来源：公司名-岗位名] 格式。   kb_retrieve 结果的 chunks 中带有 'source' 字段（如'字节跳动-AI产品经理'），请直接使用。   external_search 结果带有 'source_name' 字段，也请直接使用。\n5. 当本地知识库与外部搜索结果冲突时，请并列呈现两种说法并标注各自来源，不要替用户做判断\n6. 语气友好、专业、结构化",
+      "user_prompt": "【用户问题】\n分析Java岗位\n\n【工具执行结果】\n[{\"task_id\": \"T0\", \"tool\": \"kb_retrieve\", \"description\": \"检索Java岗位相关JD\", \"result\": {\"chunks\": [{\"chunk_id\": \"45bd2600-af57-45fe-a96e-c6cae6838c7a_chunk_0\", \"content\": \"公司：某小公司，岗位：Java后端，地点：成都，薪资：10k-20k\", \"source\": \"某小公司-Java后端\", \"metadata\": {\"company\": \"某小公司\", \"position\": \"Java后端\"}}, {\"chunk_id\": \"45bd2600-af57-45fe-a96e-c6cae6838c7a_chunk_2\", \"content\": \"【某小公司 · Java后端 硬性要求】\\n1年以上Java开发经验\", \"source\": \"某小公司-Java后端\", \"metadata\": {\"company\": \"某小公司\", \"position\": \"Java后端\"}}, {\"chunk_id\": \"45bd2600-af57-45fe-a96e-c6cae6838c7a_chunk_6\", \"content\": \"【某小公司 · Java后端 关键词】\\nJava, Spring Boot, MySQL, ERP, 后端\", \"source\": \"某小公司-Java后端\", \"metadata\": {\"company\": \"某小公司\", \"position\": \"Java后端\"}}], \"query\": \"分析Java岗位\", \"filters\": {\"position\": \"Java\"}, \"strategy\": \"hybrid(70%vec+30%bm25)+reranker\", \"pool_k\": 3, \"rerank_k\": 10, \"pool_size\": 20, \"vec_only\": 0, \"bm25_only\": 20, \"both\": 0, \"rerank\": {\"enabled\": true, \"candidates\": 3, \"output\": 3, \"best_rerank_score\": 0.4946}}}, {\"task_id\": \"T1\", \"tool\": \"qa_synthesize\", \"description\": \"基于检索结果分析Java岗位综合情况\", \"result\": {\"answer\": \"基于现有证据，仅能分析“某小公司”在成都的 Java 后端岗位情况，无法代表 Java 岗位的整体市场综合情况。该岗位薪资范围为 10k-20k [1]，硬性要求 1 年以上 Java 开发经验 [2]，技术栈涉及 Java、Spring Boot、MySQL 及 ERP 系统 [3]。各来源信息一致，未发现冲突。以上信息仅供参考，具体请以该公司官方发布的 JD 为准。\", \"citations\": [{\"index\": 1, \"source\": \"检索证据 - 某小公司 - Java 后端\", \"quote\": \"公司：某小公司，岗位：Java 后端，地点：成都，薪资：10k-20k\"}, {\"index\": 2, \"source\": \"检索证据 - 某小公司 - Java 后端\", \"quote\": \"1 年以上 Java 开发经验\"}, {\"index\": 3, \"source\": \"检索证据 - 某小公司 - Java 后端\", \"quote\": \"Java, Spring Boot, MySQL, ERP, 后端\"}], \"confidence\": \"medium\", \"conflict_detected\": false, \"conflict_details\": null, \"insufficient_note\": \"证据仅覆盖单一小公司的特定岗位，无法反映 Java 岗位全市场的综合情况（如不同规模公司、不同城市、不同经验级别的差异）。\"}}]\n\n请生成回复："
+    }
+  },
+  "reply": "有相关岗位数据。\n\n基于现有检索结果，目前仅能针对特定样本进行分析，无法代表 Java 岗位的整体市场情况。具体分析如下：\n\n1. **薪资与地点**\n   该岗位工作地点位于成都，薪资范围为 10k-20k [来源：某小公司-Java 后端]。\n\n2. **经验要求**\n   硬性要求具备 1 年以上 Java 开发经验 [来源：某小公司-Java 后端]。\n\n3. **技术栈关键词**\n   核心技能涉及 Java、Spring Boot、MySQL、ERP 系统及后端开发 [来源：某小公司-Java 后端]。\n\n**求职建议**\n- 重点复习 Spring Boot 和 MySQL 相关知识点，这是该样本岗位的核心需求 [来源：某小公司-Java 后端]。\n- 若有 ERP 系统相关项目经验，建议在简历中突出展示 [来源：某小公司-Java 后端]。\n\n**数据说明**\n当前证据仅覆盖单一小公司的特定岗位，无法反映 Java 岗位全市场的综合情况（如不同规模公司、不同城市、不同经验级别的差异） [来源：某小公司-Java 后端]。具体信息请以官方发布的 JD 为准。",
+  "reply_length": 493,
+  "intent_match": false,
+  "tool_match_rate": 1.0,
+  "has_reply": true,
+  "events": [
+    {
+      "step": "intent",
+      "message": "正在识别您的意图...",
+      "_time": 11.653854131698608,
+      "type": "status"
+    },
+    {
+      "step": "plan",
+      "message": "正在规划任务...",
+      "_time": 11.653893947601318,
+      "type": "status"
+    },
+    {
+      "step": "execute",
+      "message": "正在执行分析...",
+      "_time": 29.047160387039185,
+      "type": "status"
+    },
+    {
+      "step": "aggregate",
+      "message": "正在生成回复...",
+      "_time": 84.86117744445801,
+      "type": "status"
+    },
+    {
+      "text": "有",
+      "_time": 130.76532077789307,
+      "type": "delta"
+    },
+    {
+      "text": "相关岗位数据。",
+      "_time": 130.84938716888428,
+      "type": "delta"
+    },
+    {
+      "text": "\n\n基于",
+      "_time": 130.85325527191162,
+      "type": "delta"
+    },
+    {
+      "text": "现有检索结果，",
+      "_time": 130.9575068950653,
+      "type": "delta"
+    },
+    {
+      "text": "目前",
+      "_time": 130.96232390403748,
+      "type": "delta"
+    },
+    {
+      "text": "仅能针对特定",
+      "_time": 131.04746985435486,
+      "type": "delta"
+    },
+    {
+      "text": "样本进行分析，",
+      "_time": 131.07917284965515,
+      "type": "delta"
+    },
+    {
+      "text": "无法代表 Java ",
+      "_time": 131.17446851730347,
+      "type": "delta"
+    },
+    {
+      "text": "岗位的整体市场",
+      "_time": 131.17926836013794,
+      "type": "delta"
+    },
+    {
+      "text": "情况。具体分析如下",
+      "_time": 131.3342010974884,
+      "type": "delta"
+    },
+    {
+      "text": "：\n\n1",
+      "_time": 131.33902502059937,
+      "type": "delta"
+    },
+    {
+      "text": ". **薪资与",
+      "_time": 131.42656064033508,
+      "type": "delta"
+    },
+    {
+      "text": "地点**\n  ",
+      "_time": 131.43127942085266,
+      "type": "delta"
+    },
+    {
+      "text": " 该岗位工作地点",
+      "_time": 131.56861114501953,
+      "type": "delta"
+    },
+    {
+      "text": "位于成都，薪资",
+      "_time": 131.61163902282715,
+      "type": "delta"
+    },
+    {
+      "text": "范围为 10",
+      "_time": 131.71152329444885,
+      "type": "delta"
+    },
+    {
+      "text": "k",
+      "_time": 131.7162504196167,
+      "type": "delta"
+    },
+    {
+      "text": "-20k",
+      "_time": 131.80352878570557,
+      "type": "delta"
+    },
+    {
+      "text": " [来源：某",
+      "_time": 131.8072748184204,
+      "type": "delta"
+    },
+    {
+      "text": "小公司-Java",
+      "_time": 131.94944834709167,
+      "type": "delta"
+    },
+    {
+      "text": " 后端]。",
+      "_time": 131.97531247138977,
+      "type": "delta"
+    },
+    {
+      "text": "\n\n2. **",
+      "_time": 132.0914545059204,
+      "type": "delta"
+    },
+    {
+      "text": "经验要求**\n",
+      "_time": 132.09620070457458,
+      "type": "delta"
+    },
+    {
+      "text": "   硬性要求",
+      "_time": 132.23558020591736,
+      "type": "delta"
+    },
+    {
+      "text": "具备 1 ",
+      "_time": 132.2403280735016,
+      "type": "delta"
+    },
+    {
+      "text": "年以上 Java 开发",
+      "_time": 132.40937423706055,
+      "type": "delta"
+    },
+    {
+      "text": "经验 [来源：",
+      "_time": 132.41396760940552,
+      "type": "delta"
+    },
+    {
+      "text": "某小公司-J",
+      "_time": 132.5235071182251,
+      "type": "delta"
+    },
+    {
+      "text": "ava 后端]",
+      "_time": 132.55733561515808,
+      "type": "delta"
+    },
+    {
+      "text": "。\n\n3.",
+      "_time": 132.66743302345276,
+      "type": "delta"
+    },
+    {
+      "text": " **技术栈关键词",
+      "_time": 132.6741931438446,
+      "type": "delta"
+    },
+    {
+      "text": "**\n   ",
+      "_time": 132.81035614013672,
+      "type": "delta"
+    },
+    {
+      "text": "核心技能涉及 Java",
+      "_time": 132.84325432777405,
+      "type": "delta"
+    },
+    {
+      "text": "、Spring Boot、",
+      "_time": 132.95546555519104,
+      "type": "delta"
+    },
+    {
+      "text": "MySQL、ERP ",
+      "_time": 132.9603214263916,
+      "type": "delta"
+    },
+    {
+      "text": "系统及后端开发 [",
+      "_time": 133.13446521759033,
+      "type": "delta"
+    },
+    {
+      "text": "来源：某",
+      "_time": 133.13921236991882,
+      "type": "delta"
+    },
+    {
+      "text": "小公司-Java",
+      "_time": 133.2264542579651,
+      "type": "delta"
+    },
+    {
+      "text": " 后端]。",
+      "_time": 133.23114800453186,
+      "type": "delta"
+    },
+    {
+      "text": "\n\n**求职建议",
+      "_time": 133.37039375305176,
+      "type": "delta"
+    },
+    {
+      "text": "**\n-",
+      "_time": 133.4083173274994,
+      "type": "delta"
+    },
+    {
+      "text": " 重点复习 Spring",
+      "_time": 133.49541997909546,
+      "type": "delta"
+    },
+    {
+      "text": " Boot 和 MySQL",
+      "_time": 133.49812507629395,
+      "type": "delta"
+    },
+    {
+      "text": " 相关知识点，",
+      "_time": 133.67145490646362,
+      "type": "delta"
+    },
+    {
+      "text": "这是",
+      "_time": 133.6772050857544,
+      "type": "delta"
+    },
+    {
+      "text": "该样本岗位的核心",
+      "_time": 133.7312672138214,
+      "type": "delta"
+    },
+    {
+      "text": "需求 [来源",
+      "_time": 133.73510479927063,
+      "type": "delta"
+    },
+    {
+      "text": "：某小公司",
+      "_time": 133.85655760765076,
+      "type": "delta"
+    },
+    {
+      "text": "-Java 后端",
+      "_time": 133.89219689369202,
+      "type": "delta"
+    },
+    {
+      "text": "]。\n-",
+      "_time": 134.00029587745667,
+      "type": "delta"
+    },
+    {
+      "text": " 若有 ERP ",
+      "_time": 134.00407886505127,
+      "type": "delta"
+    },
+    {
+      "text": "系统相关项目经验",
+      "_time": 134.14575481414795,
+      "type": "delta"
+    },
+    {
+      "text": "，建议在",
+      "_time": 134.15135979652405,
+      "type": "delta"
+    },
+    {
+      "text": "简历中突出展示",
+      "_time": 134.29124331474304,
+      "type": "delta"
+    },
+    {
+      "text": " [来源：某",
+      "_time": 134.2951648235321,
+      "type": "delta"
+    },
+    {
+      "text": "小公司-Java",
+      "_time": 134.39405012130737,
+      "type": "delta"
+    },
+    {
+      "text": " 后端]。",
+      "_time": 134.39782738685608,
+      "type": "delta"
+    },
+    {
+      "text": "\n\n**数据说明",
+      "_time": 134.571359872818,
+      "type": "delta"
+    },
+    {
+      "text": "**\n当前",
+      "_time": 134.57624292373657,
+      "type": "delta"
+    },
+    {
+      "text": "证据仅覆盖单一",
+      "_time": 134.66630339622498,
+      "type": "delta"
+    },
+    {
+      "text": "小",
+      "_time": 134.67025876045227,
+      "type": "delta"
+    },
+    {
+      "text": "公司的特定岗位，",
+      "_time": 134.75648093223572,
+      "type": "delta"
+    },
+    {
+      "text": "无法反映 Java ",
+      "_time": 134.7914822101593,
+      "type": "delta"
+    },
+    {
+      "text": "岗位全市场的综合",
+      "_time": 134.90840196609497,
+      "type": "delta"
+    },
+    {
+      "text": "情况（如不同",
+      "_time": 134.91296291351318,
+      "type": "delta"
+    },
+    {
+      "text": "规模公司、不同",
+      "_time": 135.04441618919373,
+      "type": "delta"
+    },
+    {
+      "text": "城市、不同经验",
+      "_time": 135.07898998260498,
+      "type": "delta"
+    },
+    {
+      "text": "级别的差异） [",
+      "_time": 135.18829083442688,
+      "type": "delta"
+    },
+    {
+      "text": "来源：某小",
+      "_time": 135.1929337978363,
+      "type": "delta"
+    },
+    {
+      "text": "公司-Java ",
+      "_time": 135.33231902122498,
+      "type": "delta"
+    },
+    {
+      "text": "后端]。具体",
+      "_time": 135.33603596687317,
+      "type": "delta"
+    },
+    {
+      "text": "信息请以官方发布的",
+      "_time": 135.51032090187073,
+      "type": "delta"
+    },
+    {
+      "text": " JD 为准",
+      "_time": 135.5140302181244,
+      "type": "delta"
+    },
+    {
+      "text": "。",
+      "_time": 135.6086368560791,
+      "type": "delta"
+    },
+    {
+      "session_id": "batch_li_m2_1780563445462",
+      "intent": "attribute_verify",
+      "route_meta": {
+        "layer": "llm",
+        "intent": "attribute_verify",
+        "confidence": 0.75,
+        "demands": [
+          {
+            "intent": "attribute_verify",
+            "entities": {
+              "position": "Java",
+              "attributes": [
+                "综合情况"
+              ]
+            }
+          }
+        ],
+        "plan_tasks": 2
+      },
+      "agent_mode": "llm",
+      "is_clarification": false,
+      "agent": {
+        "rewritten_query": "分析Java岗位",
+        "tools": [
+          {
+            "tool": "kb_retrieve",
+            "status": "✅",
+            "params": {
+              "query": "分析Java岗位",
+              "top_k": 3,
+              "position": "Java"
+            },
+            "result_preview": "{'chunks': [{'chunk_id': '45bd2600-af57-45fe-a96e-c6cae6838c7a_chunk_0', 'content': '公司：某小公司，岗位：Java后端，地点：成都，薪资：10k-20k', 'metadata': {'category': '技术', 'company': '某小公司', 'domain': '传统', 'index': 0, "
+          },
+          {
+            "tool": "qa_synthesize",
+            "status": "✅",
+            "params": {
+              "question": "分析Java岗位的综合情况",
+              "evidence_chunks": [
+                {
+                  "chunk_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a_chunk_0",
+                  "content": "公司：某小公司，岗位：Java后端，地点：成都，薪资：10k-20k",
+                  "metadata": {
+                    "category": "技术",
+                    "company": "某小公司",
+                    "domain": "传统",
+                    "index": 0,
+                    "jd_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a",
+                    "max_years": 3,
+                    "min_education": "大专",
+                    "min_years": 1,
+                    "position": "Java后端",
+                    "section": "basic_info",
+                    "strategy": "semantic"
+                  },
+                  "distance": null,
+                  "bm25_score": 6.351890493211124,
+                  "vec_norm": 0.0,
+                  "bm25_norm": 1.0,
+                  "hybrid_score": 0.3,
+                  "rerank_score": 0.4946
+                },
+                {
+                  "chunk_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a_chunk_2",
+                  "content": "【某小公司 · Java后端 硬性要求】\n1年以上Java开发经验",
+                  "metadata": {
+                    "company": "某小公司",
+                    "index": 2,
+                    "jd_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a",
+                    "position": "Java后端",
+                    "priority": "high",
+                    "section": "hard_requirements",
+                    "strategy": "semantic"
+                  },
+                  "distance": null,
+                  "bm25_score": 5.92937912887755,
+                  "vec_norm": 0.0,
+                  "bm25_norm": 0.9018842052874801,
+                  "hybrid_score": 0.27056526158624405,
+                  "rerank_score": 0.1919
+                },
+                {
+                  "chunk_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a_chunk_6",
+                  "content": "【某小公司 · Java后端 关键词】\nJava, Spring Boot, MySQL, ERP, 后端",
+                  "metadata": {
+                    "company": "某小公司",
+                    "index": 6,
+                    "jd_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a",
+                    "position": "Java后端",
+                    "section": "keywords",
+                    "strategy": "semantic"
+                  },
+                  "distance": null,
+                  "bm25_score": 5.494377308876329,
+                  "vec_norm": 0.0,
+                  "bm25_norm": 0.8008678708792155,
+                  "hybrid_score": 0.24026036126376465,
+                  "rerank_score": 0.0022
+                }
+              ],
+              "qa_type": "factual"
+            },
+            "result_preview": "{'answer': '基于现有证据，仅能分析“某小公司”在成都的 Java 后端岗位情况，无法代表 Java 岗位的整体市场综合情况。该岗位薪资范围为 10k-20k [1]，硬性要求 1 年以上 Java 开发经验 [2]，技术栈涉及 Java、Spring Boot、MySQL 及 ERP 系统 [3]。各来源信息一致，未发现冲突。以上信息仅供参考，具体请以该公司官方发布的 JD 为准。',"
+          }
+        ],
+        "kb_chunks_count": 2,
+        "system_prompt_preview": "你是一位专业的求职顾问。请基于以下工具执行结果，给用户一个清晰、有帮助的回复。\n要求：\n1. 先直接回答用户的问题（是/否/有/没有），不要绕弯子，不要重复用户的原话\n2. 如果有匹配分析结果，给出具体的分数和建议\n3. 如果有检索结果，基于事实回答，不要编造\n4. 【强制】引用信息时必须标注来源。每个引用的事实后面都要跟 [来源：公司名-岗位名] 格式。   kb_retrieve 结果的 ch"
+      },
+      "memory": {
+        "working_turns": 1,
+        "compressed_blocks": 0,
+        "current_topic": "general",
+        "evidence_cache_size": 3
+      },
+      "reply": "有相关岗位数据。\n\n基于现有检索结果，目前仅能针对特定样本进行分析，无法代表 Java 岗位的整体市场情况。具体分析如下：\n\n1. **薪资与地点**\n   该岗位工作地点位于成都，薪资范围为 10k-20k [来源：某小公司-Java 后端]。\n\n2. **经验要求**\n   硬性要求具备 1 年以上 Java 开发经验 [来源：某小公司-Java 后端]。\n\n3. **技术栈关键词**\n   核心技能涉及 Java、Spring Boot、MySQL、ERP 系统及后端开发 [来源：某小公司-Java 后端]。\n\n**求职建议**\n- 重点复习 Spring Boot 和 MySQL 相关知识点，这是该样本岗位的核心需求 [来源：某小公司-Java 后端]。\n- 若有 ERP 系统相关项目经验，建议在简历中突出展示 [来源：某小公司-Java 后端]。\n\n**数据说明**\n当前证据仅覆盖单一小公司的特定岗位，无法反映 Java 岗位全市场的综合情况（如不同规模公司、不同城市、不同经验级别的差异） [来源：某小公司-Java 后端]。具体信息请以官方发布的 JD 为准。",
+      "debug_info": {
+        "task_graph": {
+          "tasks": {
+            "T0": {
+              "task_id": "T0",
+              "task_type": "tool_call",
+              "tool_name": "kb_retrieve",
+              "status": "success",
+              "parameters": {
+                "query": "分析Java岗位",
+                "top_k": 3,
+                "position": "{{intent_verify.position}}"
+              },
+              "resolved_params": {
+                "query": "分析Java岗位",
+                "top_k": 3,
+                "position": "Java"
+              },
+              "result": {
+                "chunks": [
+                  {
+                    "chunk_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a_chunk_0",
+                    "content": "公司：某小公司，岗位：Java后端，地点：成都，薪资：10k-20k",
+                    "metadata": {
+                      "category": "技术",
+                      "company": "某小公司",
+                      "domain": "传统",
+                      "index": 0,
+                      "jd_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a",
+                      "max_years": 3,
+                      "min_education": "大专",
+                      "min_years": 1,
+                      "position": "Java后端",
+                      "section": "basic_info",
+                      "strategy": "semantic"
+                    },
+                    "distance": null,
+                    "bm25_score": 6.351890493211124,
+                    "vec_norm": 0.0,
+                    "bm25_norm": 1.0,
+                    "hybrid_score": 0.3,
+                    "rerank_score": 0.4946
+                  },
+                  {
+                    "chunk_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a_chunk_2",
+                    "content": "【某小公司 · Java后端 硬性要求】\n1年以上Java开发经验",
+                    "metadata": {
+                      "company": "某小公司",
+                      "index": 2,
+                      "jd_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a",
+                      "position": "Java后端",
+                      "priority": "high",
+                      "section": "hard_requirements",
+                      "strategy": "semantic"
+                    },
+                    "distance": null,
+                    "bm25_score": 5.92937912887755,
+                    "vec_norm": 0.0,
+                    "bm25_norm": 0.9018842052874801,
+                    "hybrid_score": 0.27056526158624405,
+                    "rerank_score": 0.1919
+                  },
+                  {
+                    "chunk_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a_chunk_6",
+                    "content": "【某小公司 · Java后端 关键词】\nJava, Spring Boot, MySQL, ERP, 后端",
+                    "metadata": {
+                      "company": "某小公司",
+                      "index": 6,
+                      "jd_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a",
+                      "position": "Java后端",
+                      "section": "keywords",
+                      "strategy": "semantic"
+                    },
+                    "distance": null,
+                    "bm25_score": 5.494377308876329,
+                    "vec_norm": 0.0,
+                    "bm25_norm": 0.8008678708792155,
+                    "hybrid_score": 0.24026036126376465,
+                    "rerank_score": 0.0022
+                  }
+                ],
+                "query": "分析Java岗位",
+                "filters": {
+                  "position": "Java"
+                },
+                "strategy": "hybrid(70%vec+30%bm25)+reranker",
+                "pool_k": 3,
+                "rerank_k": 10,
+                "pool_size": 20,
+                "vec_only": 0,
+                "bm25_only": 20,
+                "both": 0,
+                "rerank": {
+                  "enabled": true,
+                  "candidates": 3,
+                  "output": 3,
+                  "best_rerank_score": 0.4946
+                }
+              },
+              "observation": "工具 kb_retrieve 执行成功"
+            },
+            "T1": {
+              "task_id": "T1",
+              "task_type": "tool_call",
+              "tool_name": "qa_synthesize",
+              "status": "success",
+              "parameters": {
+                "question": "分析Java岗位的综合情况",
+                "evidence_chunks": "{{T0.output.chunks}}",
+                "qa_type": "factual"
+              },
+              "resolved_params": {
+                "question": "分析Java岗位的综合情况",
+                "evidence_chunks": [
+                  {
+                    "chunk_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a_chunk_0",
+                    "content": "公司：某小公司，岗位：Java后端，地点：成都，薪资：10k-20k",
+                    "metadata": {
+                      "category": "技术",
+                      "company": "某小公司",
+                      "domain": "传统",
+                      "index": 0,
+                      "jd_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a",
+                      "max_years": 3,
+                      "min_education": "大专",
+                      "min_years": 1,
+                      "position": "Java后端",
+                      "section": "basic_info",
+                      "strategy": "semantic"
+                    },
+                    "distance": null,
+                    "bm25_score": 6.351890493211124,
+                    "vec_norm": 0.0,
+                    "bm25_norm": 1.0,
+                    "hybrid_score": 0.3,
+                    "rerank_score": 0.4946
+                  },
+                  {
+                    "chunk_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a_chunk_2",
+                    "content": "【某小公司 · Java后端 硬性要求】\n1年以上Java开发经验",
+                    "metadata": {
+                      "company": "某小公司",
+                      "index": 2,
+                      "jd_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a",
+                      "position": "Java后端",
+                      "priority": "high",
+                      "section": "hard_requirements",
+                      "strategy": "semantic"
+                    },
+                    "distance": null,
+                    "bm25_score": 5.92937912887755,
+                    "vec_norm": 0.0,
+                    "bm25_norm": 0.9018842052874801,
+                    "hybrid_score": 0.27056526158624405,
+                    "rerank_score": 0.1919
+                  },
+                  {
+                    "chunk_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a_chunk_6",
+                    "content": "【某小公司 · Java后端 关键词】\nJava, Spring Boot, MySQL, ERP, 后端",
+                    "metadata": {
+                      "company": "某小公司",
+                      "index": 6,
+                      "jd_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a",
+                      "position": "Java后端",
+                      "section": "keywords",
+                      "strategy": "semantic"
+                    },
+                    "distance": null,
+                    "bm25_score": 5.494377308876329,
+                    "vec_norm": 0.0,
+                    "bm25_norm": 0.8008678708792155,
+                    "hybrid_score": 0.24026036126376465,
+                    "rerank_score": 0.0022
+                  }
+                ],
+                "qa_type": "factual"
+              },
+              "result": {
+                "answer": "基于现有证据，仅能分析“某小公司”在成都的 Java 后端岗位情况，无法代表 Java 岗位的整体市场综合情况。该岗位薪资范围为 10k-20k [1]，硬性要求 1 年以上 Java 开发经验 [2]，技术栈涉及 Java、Spring Boot、MySQL 及 ERP 系统 [3]。各来源信息一致，未发现冲突。以上信息仅供参考，具体请以该公司官方发布的 JD 为准。",
+                "citations": [
+                  {
+                    "index": 1,
+                    "source": "检索证据 - 某小公司 - Java 后端",
+                    "quote": "公司：某小公司，岗位：Java 后端，地点：成都，薪资：10k-20k"
+                  },
+                  {
+                    "index": 2,
+                    "source": "检索证据 - 某小公司 - Java 后端",
+                    "quote": "1 年以上 Java 开发经验"
+                  },
+                  {
+                    "index": 3,
+                    "source": "检索证据 - 某小公司 - Java 后端",
+                    "quote": "Java, Spring Boot, MySQL, ERP, 后端"
+                  }
+                ],
+                "confidence": "medium",
+                "conflict_detected": false,
+                "conflict_details": null,
+                "insufficient_note": "证据仅覆盖单一小公司的特定岗位，无法反映 Java 岗位全市场的综合情况（如不同规模公司、不同城市、不同经验级别的差异）。"
+              },
+              "observation": "工具 qa_synthesize 执行成功"
+            }
+          },
+          "global_status": "success",
+          "replan_reason": "",
+          "replan_count": 0
+        },
+        "intent": {
+          "demands": [
+            {
+              "intent": "attribute_verify",
+              "entities": {
+                "position": "Java",
+                "attributes": [
+                  "综合情况"
+                ]
+              },
+              "confidence": 0.75
+            }
+          ],
+          "needs_clarification": false,
+          "clarification_question": ""
+        },
+        "rewrite": {
+          "rewritten_query": "分析Java岗位",
+          "search_keywords": "分析Java岗位",
+          "is_follow_up": false,
+          "follow_up_type": "none",
+          "resolved_references": {}
+        },
+        "evidence_cache": [
+          {
+            "chunk_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a_chunk_0",
+            "content": "公司：某小公司，岗位：Java后端，地点：成都，薪资：10k-20k",
+            "metadata": {
+              "category": "技术",
+              "company": "某小公司",
+              "domain": "传统",
+              "index": 0,
+              "jd_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a",
+              "max_years": 3,
+              "min_education": "大专",
+              "min_years": 1,
+              "position": "Java后端",
+              "section": "basic_info",
+              "strategy": "semantic"
+            },
+            "distance": null,
+            "bm25_score": 6.351890493211124,
+            "vec_norm": 0.0,
+            "bm25_norm": 1.0,
+            "hybrid_score": 0.3,
+            "rerank_score": 0.4946
+          },
+          {
+            "chunk_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a_chunk_2",
+            "content": "【某小公司 · Java后端 硬性要求】\n1年以上Java开发经验",
+            "metadata": {
+              "company": "某小公司",
+              "index": 2,
+              "jd_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a",
+              "position": "Java后端",
+              "priority": "high",
+              "section": "hard_requirements",
+              "strategy": "semantic"
+            },
+            "distance": null,
+            "bm25_score": 5.92937912887755,
+            "vec_norm": 0.0,
+            "bm25_norm": 0.9018842052874801,
+            "hybrid_score": 0.27056526158624405,
+            "rerank_score": 0.1919
+          },
+          {
+            "chunk_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a_chunk_6",
+            "content": "【某小公司 · Java后端 关键词】\nJava, Spring Boot, MySQL, ERP, 后端",
+            "metadata": {
+              "company": "某小公司",
+              "index": 6,
+              "jd_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a",
+              "position": "Java后端",
+              "section": "keywords",
+              "strategy": "semantic"
+            },
+            "distance": null,
+            "bm25_score": 5.494377308876329,
+            "vec_norm": 0.0,
+            "bm25_norm": 0.8008678708792155,
+            "hybrid_score": 0.24026036126376465,
+            "rerank_score": 0.0022
+          }
+        ],
+        "evidence_cache_query": "分析Java岗位",
+        "tool_outputs": [
+          {
+            "task_id": "T0",
+            "tool": "kb_retrieve",
+            "description": "检索Java岗位相关JD",
+            "result": {
+              "chunks": [
+                {
+                  "chunk_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a_chunk_0",
+                  "content": "公司：某小公司，岗位：Java后端，地点：成都，薪资：10k-20k",
+                  "source": "某小公司-Java后端",
+                  "metadata": {
+                    "company": "某小公司",
+                    "position": "Java后端"
+                  }
+                },
+                {
+                  "chunk_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a_chunk_2",
+                  "content": "【某小公司 · Java后端 硬性要求】\n1年以上Java开发经验",
+                  "source": "某小公司-Java后端",
+                  "metadata": {
+                    "company": "某小公司",
+                    "position": "Java后端"
+                  }
+                },
+                {
+                  "chunk_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a_chunk_6",
+                  "content": "【某小公司 · Java后端 关键词】\nJava, Spring Boot, MySQL, ERP, 后端",
+                  "source": "某小公司-Java后端",
+                  "metadata": {
+                    "company": "某小公司",
+                    "position": "Java后端"
+                  }
+                }
+              ],
+              "query": "分析Java岗位",
+              "filters": {
+                "position": "Java"
+              },
+              "strategy": "hybrid(70%vec+30%bm25)+reranker",
+              "pool_k": 3,
+              "rerank_k": 10,
+              "pool_size": 20,
+              "vec_only": 0,
+              "bm25_only": 20,
+              "both": 0,
+              "rerank": {
+                "enabled": true,
+                "candidates": 3,
+                "output": 3,
+                "best_rerank_score": 0.4946
+              }
+            }
+          },
+          {
+            "task_id": "T1",
+            "tool": "qa_synthesize",
+            "description": "基于检索结果分析Java岗位综合情况",
+            "result": {
+              "answer": "基于现有证据，仅能分析“某小公司”在成都的 Java 后端岗位情况，无法代表 Java 岗位的整体市场综合情况。该岗位薪资范围为 10k-20k [1]，硬性要求 1 年以上 Java 开发经验 [2]，技术栈涉及 Java、Spring Boot、MySQL 及 ERP 系统 [3]。各来源信息一致，未发现冲突。以上信息仅供参考，具体请以该公司官方发布的 JD 为准。",
+              "citations": [
+                {
+                  "index": 1,
+                  "source": "检索证据 - 某小公司 - Java 后端",
+                  "quote": "公司：某小公司，岗位：Java 后端，地点：成都，薪资：10k-20k"
+                },
+                {
+                  "index": 2,
+                  "source": "检索证据 - 某小公司 - Java 后端",
+                  "quote": "1 年以上 Java 开发经验"
+                },
+                {
+                  "index": 3,
+                  "source": "检索证据 - 某小公司 - Java 后端",
+                  "quote": "Java, Spring Boot, MySQL, ERP, 后端"
+                }
+              ],
+              "confidence": "medium",
+              "conflict_detected": false,
+              "conflict_details": null,
+              "insufficient_note": "证据仅覆盖单一小公司的特定岗位，无法反映 Java 岗位全市场的综合情况（如不同规模公司、不同城市、不同经验级别的差异）。"
+            }
+          }
+        ],
+        "final_aggregation_prompt": {
+          "system_prompt": "你是一位专业的求职顾问。请基于以下工具执行结果，给用户一个清晰、有帮助的回复。\n要求：\n1. 先直接回答用户的问题（是/否/有/没有），不要绕弯子，不要重复用户的原话\n2. 如果有匹配分析结果，给出具体的分数和建议\n3. 如果有检索结果，基于事实回答，不要编造\n4. 【强制】引用信息时必须标注来源。每个引用的事实后面都要跟 [来源：公司名-岗位名] 格式。   kb_retrieve 结果的 chunks 中带有 'source' 字段（如'字节跳动-AI产品经理'），请直接使用。   external_search 结果带有 'source_name' 字段，也请直接使用。\n5. 当本地知识库与外部搜索结果冲突时，请并列呈现两种说法并标注各自来源，不要替用户做判断\n6. 语气友好、专业、结构化",
+          "user_prompt": "【用户问题】\n分析Java岗位\n\n【工具执行结果】\n[{\"task_id\": \"T0\", \"tool\": \"kb_retrieve\", \"description\": \"检索Java岗位相关JD\", \"result\": {\"chunks\": [{\"chunk_id\": \"45bd2600-af57-45fe-a96e-c6cae6838c7a_chunk_0\", \"content\": \"公司：某小公司，岗位：Java后端，地点：成都，薪资：10k-20k\", \"source\": \"某小公司-Java后端\", \"metadata\": {\"company\": \"某小公司\", \"position\": \"Java后端\"}}, {\"chunk_id\": \"45bd2600-af57-45fe-a96e-c6cae6838c7a_chunk_2\", \"content\": \"【某小公司 · Java后端 硬性要求】\\n1年以上Java开发经验\", \"source\": \"某小公司-Java后端\", \"metadata\": {\"company\": \"某小公司\", \"position\": \"Java后端\"}}, {\"chunk_id\": \"45bd2600-af57-45fe-a96e-c6cae6838c7a_chunk_6\", \"content\": \"【某小公司 · Java后端 关键词】\\nJava, Spring Boot, MySQL, ERP, 后端\", \"source\": \"某小公司-Java后端\", \"metadata\": {\"company\": \"某小公司\", \"position\": \"Java后端\"}}], \"query\": \"分析Java岗位\", \"filters\": {\"position\": \"Java\"}, \"strategy\": \"hybrid(70%vec+30%bm25)+reranker\", \"pool_k\": 3, \"rerank_k\": 10, \"pool_size\": 20, \"vec_only\": 0, \"bm25_only\": 20, \"both\": 0, \"rerank\": {\"enabled\": true, \"candidates\": 3, \"output\": 3, \"best_rerank_score\": 0.4946}}}, {\"task_id\": \"T1\", \"tool\": \"qa_synthesize\", \"description\": \"基于检索结果分析Java岗位综合情况\", \"result\": {\"answer\": \"基于现有证据，仅能分析“某小公司”在成都的 Java 后端岗位情况，无法代表 Java 岗位的整体市场综合情况。该岗位薪资范围为 10k-20k [1]，硬性要求 1 年以上 Java 开发经验 [2]，技术栈涉及 Java、Spring Boot、MySQL 及 ERP 系统 [3]。各来源信息一致，未发现冲突。以上信息仅供参考，具体请以该公司官方发布的 JD 为准。\", \"citations\": [{\"index\": 1, \"source\": \"检索证据 - 某小公司 - Java 后端\", \"quote\": \"公司：某小公司，岗位：Java 后端，地点：成都，薪资：10k-20k\"}, {\"index\": 2, \"source\": \"检索证据 - 某小公司 - Java 后端\", \"quote\": \"1 年以上 Java 开发经验\"}, {\"index\": 3, \"source\": \"检索证据 - 某小公司 - Java 后端\", \"quote\": \"Java, Spring Boot, MySQL, ERP, 后端\"}], \"confidence\": \"medium\", \"conflict_detected\": false, \"conflict_details\": null, \"insufficient_note\": \"证据仅覆盖单一小公司的特定岗位，无法反映 Java 岗位全市场的综合情况（如不同规模公司、不同城市、不同经验级别的差异）。\"}}]\n\n请生成回复："
+        }
+      },
+      "usage": {
+        "prompt_tokens": 7883,
+        "completion_tokens": 8437,
+        "total_tokens": 16320
+      },
+      "_time": 135.659362077713,
+      "type": "done"
+    }
+  ],
+  "timestamp": "2026-06-04T16:57:25.462050",
+  "prompt_tokens": 7883,
+  "completion_tokens": 8437,
+  "total_tokens": 16320,
+  "tool_execution_success_rate": 1.0,
+  "tool_correct_rate": 1.0
+}

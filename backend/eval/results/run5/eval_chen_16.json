@@ -1,0 +1,1213 @@
+{
+  "case_id": "eval_chen_16",
+  "message": "把所有AI产品岗都给我分析一遍",
+  "gold_intents": [
+    "explore"
+  ],
+  "expected_tools": [
+    "kb_retrieve",
+    "global_rank"
+  ],
+  "scenario": "压力测试_大范围探索",
+  "eval_context": {
+    "gold_intents": [
+      "explore"
+    ],
+    "gold_slots": {},
+    "relevance_score": 0,
+    "expected_tools": [
+      "kb_retrieve",
+      "global_rank"
+    ],
+    "scenario": "压力测试_大范围探索",
+    "notes": "期望粗筛层有效过滤，LLM只处理top5-8个"
+  },
+  "resume_id": "cc50dcfb-aeba-41a3-989a-9e485aa2fc3f",
+  "status": "success",
+  "error": null,
+  "ttfb": 0.009,
+  "total_latency": 75.89,
+  "event_count": 62,
+  "pred_intent": "position_explore",
+  "pred_intents": [
+    "position_explore"
+  ],
+  "pred_tools": [
+    {
+      "tool": "kb_retrieve",
+      "status": "❌",
+      "params": {
+        "query": "AI产品",
+        "top_k": 10
+      },
+      "result_preview": "{'chunks': [{'chunk_id': '2af1570c-e34f-4fb9-8422-e08e3ac3b927_chunk_5', 'content': '【蚂蚁集团 · AI产品工程师（搜推方向） 硬性要求】\\n具备 AI 原生交互天赋，能够将复杂业务需求精准转化为 Agent 可执行的任务逻辑；擅长通过指令编排约束模型推理路径，实现人机协同的高效执行', 'metadata': "
+    }
+  ],
+  "tools_called": [
+    "kb_retrieve"
+  ],
+  "kb_chunks": [],
+  "tool_executions_full": [
+    {
+      "tool_name": "kb_retrieve",
+      "task_id": "T0",
+      "status": "failed",
+      "output": {
+        "chunks": [
+          {
+            "chunk_id": "2af1570c-e34f-4fb9-8422-e08e3ac3b927_chunk_5",
+            "content": "【蚂蚁集团 · AI产品工程师（搜推方向） 硬性要求】\n具备 AI 原生交互天赋，能够将复杂业务需求精准转化为 Agent 可执行的任务逻辑；擅长通过指令编排约束模型推理路径，实现人机协同的高效执行",
+            "metadata": {
+              "company": "蚂蚁集团",
+              "index": 5,
+              "jd_id": "2af1570c-e34f-4fb9-8422-e08e3ac3b927",
+              "position": "AI产品工程师（搜推方向）",
+              "priority": "high",
+              "section": "hard_requirements",
+              "strategy": "semantic"
+            },
+            "distance": 0.7820732593536377,
+            "bm25_score": 0.0,
+            "vec_norm": 0.9515369041045463,
+            "bm25_norm": 0.0,
+            "hybrid_score": 0.6660758328731824,
+            "rerank_score": 0.997
+          },
+          {
+            "chunk_id": "1983c425-982c-4116-8883-04eb0109edb3_chunk_1",
+            "content": "【vivo · AI产品经理-27届暑期实习 岗位职责】\n人工智能将改变我们的生活方式。我们致力于通过精准挖掘用户需求和情感，让A更好地与用户产生“化学反应”。你将与团队一起，通过A为全球各地5亿+中的每一位用户提供便利和温暖的产品体验。\n这里有海量的用户群，等待着你创造的惊喜。\n这里有最顶尖的AI工程师，有机会实现你天马行空的想法。\n这里有最专业的团队，等待你的加入，伴你一起成长。\n\n作为一名Al产品经理，你将和我们一起:\n1、基于市场需求，深入了解用户需求和行为，制定AI产品规划和定义，设计产品方案，推动人工智能技术在vivo产品中的应用;2、分析产品的数据和用户反馈，为产品改进和优化提供数据支持。利用A技术分析大数据，挖掘用户需求和行为，为产品的改进和优化提供支持;3、协调各部门，与AI工程师、数据科学家等团队成员密切合作，推动人工智能产品的开发和创新;4、与团队协作，负贵产品的用户体验和用户研究，了解用户的需求和反馈，为产品的改进和优化提供用户体验和用户研究的支持。推动人工智能技术与用户体验的深度融合 \n5、参与并探索包括不限于:将大模型餐能对话、AIGC、语音语义、图像视觉等行业最前沿技术应用于小V助手、输入法、相册、jovi语音等各个平台。",
+            "metadata": {
+              "company": "vivo",
+              "index": 1,
+              "jd_id": "1983c425-982c-4116-8883-04eb0109edb3",
+              "position": "AI产品经理-27届暑期实习",
+              "section": "responsibilities",
+              "strategy": "semantic"
+            },
+            "distance": 0.8398083448410034,
+            "bm25_score": 0.0,
+            "vec_norm": 0.39438960979201176,
+            "bm25_norm": 0.0,
+            "hybrid_score": 0.2760727268544082,
+            "rerank_score": 0.9959
+          },
+          {
+            "chunk_id": "6226ff8a-27b8-4d56-9cb9-e194c0578739_chunk_1",
+            "content": "【阿里巴巴 · AI产品经理 岗位职责】\n深入理解业务场景，通过用户调研、行业分析及研究挖掘AI落地的创新机会；\n负责AI应用/平台的方案设计，包括核心功能定义、工作流（Workflow）编排及Prompt设计，输出高质量的产品路线图；\n与算法工程师、后端开发紧密协作，将大模型能力（LLM、多模态、Agent、RAG等）转化为可规模化的产品功能；\n建立产品评估体系，利用数据工具（SQL/Python）监控指标波动，根据数据反馈和用户原声持续优化算法表现与用户体验。",
+            "metadata": {
+              "company": "阿里巴巴",
+              "index": 1,
+              "jd_id": "6226ff8a-27b8-4d56-9cb9-e194c0578739",
+              "position": "AI产品经理",
+              "section": "responsibilities",
+              "strategy": "semantic"
+            },
+            "distance": 0.8147624731063843,
+            "bm25_score": 0.0,
+            "vec_norm": 0.6360838855144487,
+            "bm25_norm": 0.0,
+            "hybrid_score": 0.44525871986011406,
+            "rerank_score": 0.993
+          },
+          {
+            "chunk_id": "94df2ae7-baa3-418d-be25-1974b64a5b06_chunk_4",
+            "content": "【百度 · AI能力产品实习生 硬性要求】\n对AI产品有热情，有AI策略产品相关实习经验",
+            "metadata": {
+              "company": "百度",
+              "index": 4,
+              "jd_id": "94df2ae7-baa3-418d-be25-1974b64a5b06",
+              "position": "AI能力产品实习生",
+              "priority": "high",
+              "section": "hard_requirements",
+              "strategy": "semantic"
+            },
+            "distance": null,
+            "bm25_score": 3.9213408191069967,
+            "vec_norm": 0.0,
+            "bm25_norm": 1.0,
+            "hybrid_score": 0.3,
+            "rerank_score": 0.9835
+          },
+          {
+            "chunk_id": "d8f1f630-f372-467a-b0a0-5a68a6db4ffd_chunk_5",
+            "content": "【百度 · AI应用-产品经理 硬性要求】\n对AI产品、大模型应用有热情，愿意学习并将AI能力落地到HR产品中",
+            "metadata": {
+              "company": "百度",
+              "index": 5,
+              "jd_id": "d8f1f630-f372-467a-b0a0-5a68a6db4ffd",
+              "position": "AI应用-产品经理",
+              "priority": "high",
+              "section": "hard_requirements",
+              "strategy": "semantic"
+            },
+            "distance": 0.8525511026382446,
+            "bm25_score": 3.7549080562116277,
+            "vec_norm": 0.27142117614577577,
+            "bm25_norm": 0.7609920794631153,
+            "hybrid_score": 0.41829244714097763,
+            "rerank_score": 0.9814
+          },
+          {
+            "chunk_id": "4dcb6702-c777-4279-b0e9-99e8edbd608f_chunk_2",
+            "content": "【蚂蚁集团 · AI产品经理 硬性要求】\n本科及以上，兼具 C 端 AIGC 敏锐度与 B 端 SaaS/RPA 逻辑功底。",
+            "metadata": {
+              "company": "蚂蚁集团",
+              "index": 2,
+              "jd_id": "4dcb6702-c777-4279-b0e9-99e8edbd608f",
+              "position": "AI产品经理",
+              "priority": "high",
+              "section": "hard_requirements",
+              "strategy": "semantic"
+            },
+            "distance": 0.8468611240386963,
+            "bm25_score": 0.0,
+            "vec_norm": 0.3263298361862691,
+            "bm25_norm": 0.0,
+            "hybrid_score": 0.22843088533038836,
+            "rerank_score": 0.9765
+          },
+          {
+            "chunk_id": "c6ac33c8-1c91-49f7-b4b0-f205a6c92b91_chunk_9",
+            "content": "【vivo · AI应用-产品经理 关键词】\nAI应用, 产品经理, 手机用户, 办公, 生活, 娱乐, 痛点调研, Prompt评估, AI技能, 算法工程师, 数据分析, 评测集, 大模型, RAG, Agent, PRD, 策略文档, 实习生",
+            "metadata": {
+              "company": "vivo",
+              "index": 9,
+              "jd_id": "c6ac33c8-1c91-49f7-b4b0-f205a6c92b91",
+              "position": "AI应用-产品经理",
+              "section": "keywords",
+              "strategy": "semantic"
+            },
+            "distance": 0.7770512104034424,
+            "bm25_score": 0.0,
+            "vec_norm": 1.0,
+            "bm25_norm": 0.0,
+            "hybrid_score": 0.7,
+            "rerank_score": 0.9708
+          },
+          {
+            "chunk_id": "4dcb6702-c777-4279-b0e9-99e8edbd608f_chunk_8",
+            "content": "【蚂蚁集团 · AI产品经理 关键词】\nAI产品经理, Agent, Planning, Reflection, Memory, LUI, 工作流, Human-in-the-loop, Prompt, RAG, Function Calling, 向量数据库, A/B测试, LLM, Transformer, LangChain, Dify, Coze, LangGraph, SaaS, RPA",
+            "metadata": {
+              "company": "蚂蚁集团",
+              "index": 8,
+              "jd_id": "4dcb6702-c777-4279-b0e9-99e8edbd608f",
+              "position": "AI产品经理",
+              "section": "keywords",
+              "strategy": "semantic"
+            },
+            "distance": 0.8106369972229004,
+            "bm25_score": 0.0,
+            "vec_norm": 0.6758949935578871,
+            "bm25_norm": 0.0,
+            "hybrid_score": 0.47312649549052094,
+            "rerank_score": 0.9704
+          },
+          {
+            "chunk_id": "52a150f9-cff3-49d2-a2df-d514081eed9e_chunk_7",
+            "content": "【小米 · AI产品实习生 软性要求/加分项】\n熟悉AI领域或有AI产品实习经验优先",
+            "metadata": {
+              "company": "小米",
+              "index": 7,
+              "jd_id": "52a150f9-cff3-49d2-a2df-d514081eed9e",
+              "position": "AI产品实习生",
+              "priority": "medium",
+              "section": "soft_requirements",
+              "strategy": "semantic"
+            },
+            "distance": null,
+            "bm25_score": 3.7281628694885764,
+            "vec_norm": 0.0,
+            "bm25_norm": 0.722584308349769,
+            "hybrid_score": 0.2167752925049307,
+            "rerank_score": 0.9256
+          },
+          {
+            "chunk_id": "c6ac33c8-1c91-49f7-b4b0-f205a6c92b91_chunk_6",
+            "content": "【vivo · AI应用-产品经理 软性要求/加分项】\n对AI技术有强烈的好奇心，了解大模型基本原理(RAG、Agent架构等)，不畏惧技术底层的复杂性",
+            "metadata": {
+              "company": "vivo",
+              "index": 6,
+              "jd_id": "c6ac33c8-1c91-49f7-b4b0-f205a6c92b91",
+              "position": "AI应用-产品经理",
+              "priority": "medium",
+              "section": "soft_requirements",
+              "strategy": "semantic"
+            },
+            "distance": 0.8157848119735718,
+            "bm25_score": 0.0,
+            "vec_norm": 0.6262182495858641,
+            "bm25_norm": 0.0,
+            "hybrid_score": 0.43835277471010486,
+            "rerank_score": 0.8549
+          }
+        ],
+        "query": "AI产品",
+        "filters": {},
+        "strategy": "hybrid(70%vec+30%bm25)+reranker",
+        "pool_k": 10,
+        "rerank_k": 10,
+        "pool_size": 34,
+        "vec_only": 14,
+        "bm25_only": 16,
+        "both": 4,
+        "rerank": {
+          "enabled": true,
+          "candidates": 10,
+          "output": 10,
+          "best_rerank_score": 0.997
+        }
+      }
+    },
+    {
+      "tool_name": "global_rank",
+      "task_id": "T1",
+      "status": "failed",
+      "output": null
+    }
+  ],
+  "debug_info": {
+    "task_graph": {
+      "tasks": {
+        "T0": {
+          "task_id": "T0",
+          "task_type": "tool_call",
+          "tool_name": "kb_retrieve",
+          "status": "failed",
+          "parameters": {
+            "query": "AI产品",
+            "top_k": 10
+          },
+          "resolved_params": {
+            "query": "AI产品",
+            "top_k": 10
+          },
+          "result": {
+            "chunks": [
+              {
+                "chunk_id": "2af1570c-e34f-4fb9-8422-e08e3ac3b927_chunk_5",
+                "content": "【蚂蚁集团 · AI产品工程师（搜推方向） 硬性要求】\n具备 AI 原生交互天赋，能够将复杂业务需求精准转化为 Agent 可执行的任务逻辑；擅长通过指令编排约束模型推理路径，实现人机协同的高效执行",
+                "metadata": {
+                  "company": "蚂蚁集团",
+                  "index": 5,
+                  "jd_id": "2af1570c-e34f-4fb9-8422-e08e3ac3b927",
+                  "position": "AI产品工程师（搜推方向）",
+                  "priority": "high",
+                  "section": "hard_requirements",
+                  "strategy": "semantic"
+                },
+                "distance": 0.7820732593536377,
+                "bm25_score": 0.0,
+                "vec_norm": 0.9515369041045463,
+                "bm25_norm": 0.0,
+                "hybrid_score": 0.6660758328731824,
+                "rerank_score": 0.997
+              },
+              {
+                "chunk_id": "1983c425-982c-4116-8883-04eb0109edb3_chunk_1",
+                "content": "【vivo · AI产品经理-27届暑期实习 岗位职责】\n人工智能将改变我们的生活方式。我们致力于通过精准挖掘用户需求和情感，让A更好地与用户产生“化学反应”。你将与团队一起，通过A为全球各地5亿+中的每一位用户提供便利和温暖的产品体验。\n这里有海量的用户群，等待着你创造的惊喜。\n这里有最顶尖的AI工程师，有机会实现你天马行空的想法。\n这里有最专业的团队，等待你的加入，伴你一起成长。\n\n作为一名Al产品经理，你将和我们一起:\n1、基于市场需求，深入了解用户需求和行为，制定AI产品规划和定义，设计产品方案，推动人工智能技术在vivo产品中的应用;2、分析产品的数据和用户反馈，为产品改进和优化提供数据支持。利用A技术分析大数据，挖掘用户需求和行为，为产品的改进和优化提供支持;3、协调各部门，与AI工程师、数据科学家等团队成员密切合作，推动人工智能产品的开发和创新;4、与团队协作，负贵产品的用户体验和用户研究，了解用户的需求和反馈，为产品的改进和优化提供用户体验和用户研究的支持。推动人工智能技术与用户体验的深度融合 \n5、参与并探索包括不限于:将大模型餐能对话、AIGC、语音语义、图像视觉等行业最前沿技术应用于小V助手、输入法、相册、jovi语音等各个平台。",
+                "metadata": {
+                  "company": "vivo",
+                  "index": 1,
+                  "jd_id": "1983c425-982c-4116-8883-04eb0109edb3",
+                  "position": "AI产品经理-27届暑期实习",
+                  "section": "responsibilities",
+                  "strategy": "semantic"
+                },
+                "distance": 0.8398083448410034,
+                "bm25_score": 0.0,
+                "vec_norm": 0.39438960979201176,
+                "bm25_norm": 0.0,
+                "hybrid_score": 0.2760727268544082,
+                "rerank_score": 0.9959
+              },
+              {
+                "chunk_id": "6226ff8a-27b8-4d56-9cb9-e194c0578739_chunk_1",
+                "content": "【阿里巴巴 · AI产品经理 岗位职责】\n深入理解业务场景，通过用户调研、行业分析及研究挖掘AI落地的创新机会；\n负责AI应用/平台的方案设计，包括核心功能定义、工作流（Workflow）编排及Prompt设计，输出高质量的产品路线图；\n与算法工程师、后端开发紧密协作，将大模型能力（LLM、多模态、Agent、RAG等）转化为可规模化的产品功能；\n建立产品评估体系，利用数据工具（SQL/Python）监控指标波动，根据数据反馈和用户原声持续优化算法表现与用户体验。",
+                "metadata": {
+                  "company": "阿里巴巴",
+                  "index": 1,
+                  "jd_id": "6226ff8a-27b8-4d56-9cb9-e194c0578739",
+                  "position": "AI产品经理",
+                  "section": "responsibilities",
+                  "strategy": "semantic"
+                },
+                "distance": 0.8147624731063843,
+                "bm25_score": 0.0,
+                "vec_norm": 0.6360838855144487,
+                "bm25_norm": 0.0,
+                "hybrid_score": 0.44525871986011406,
+                "rerank_score": 0.993
+              },
+              {
+                "chunk_id": "94df2ae7-baa3-418d-be25-1974b64a5b06_chunk_4",
+                "content": "【百度 · AI能力产品实习生 硬性要求】\n对AI产品有热情，有AI策略产品相关实习经验",
+                "metadata": {
+                  "company": "百度",
+                  "index": 4,
+                  "jd_id": "94df2ae7-baa3-418d-be25-1974b64a5b06",
+                  "position": "AI能力产品实习生",
+                  "priority": "high",
+                  "section": "hard_requirements",
+                  "strategy": "semantic"
+                },
+                "distance": null,
+                "bm25_score": 3.9213408191069967,
+                "vec_norm": 0.0,
+                "bm25_norm": 1.0,
+                "hybrid_score": 0.3,
+                "rerank_score": 0.9835
+              },
+              {
+                "chunk_id": "d8f1f630-f372-467a-b0a0-5a68a6db4ffd_chunk_5",
+                "content": "【百度 · AI应用-产品经理 硬性要求】\n对AI产品、大模型应用有热情，愿意学习并将AI能力落地到HR产品中",
+                "metadata": {
+                  "company": "百度",
+                  "index": 5,
+                  "jd_id": "d8f1f630-f372-467a-b0a0-5a68a6db4ffd",
+                  "position": "AI应用-产品经理",
+                  "priority": "high",
+                  "section": "hard_requirements",
+                  "strategy": "semantic"
+                },
+                "distance": 0.8525511026382446,
+                "bm25_score": 3.7549080562116277,
+                "vec_norm": 0.27142117614577577,
+                "bm25_norm": 0.7609920794631153,
+                "hybrid_score": 0.41829244714097763,
+                "rerank_score": 0.9814
+              },
+              {
+                "chunk_id": "4dcb6702-c777-4279-b0e9-99e8edbd608f_chunk_2",
+                "content": "【蚂蚁集团 · AI产品经理 硬性要求】\n本科及以上，兼具 C 端 AIGC 敏锐度与 B 端 SaaS/RPA 逻辑功底。",
+                "metadata": {
+                  "company": "蚂蚁集团",
+                  "index": 2,
+                  "jd_id": "4dcb6702-c777-4279-b0e9-99e8edbd608f",
+                  "position": "AI产品经理",
+                  "priority": "high",
+                  "section": "hard_requirements",
+                  "strategy": "semantic"
+                },
+                "distance": 0.8468611240386963,
+                "bm25_score": 0.0,
+                "vec_norm": 0.3263298361862691,
+                "bm25_norm": 0.0,
+                "hybrid_score": 0.22843088533038836,
+                "rerank_score": 0.9765
+              },
+              {
+                "chunk_id": "c6ac33c8-1c91-49f7-b4b0-f205a6c92b91_chunk_9",
+                "content": "【vivo · AI应用-产品经理 关键词】\nAI应用, 产品经理, 手机用户, 办公, 生活, 娱乐, 痛点调研, Prompt评估, AI技能, 算法工程师, 数据分析, 评测集, 大模型, RAG, Agent, PRD, 策略文档, 实习生",
+                "metadata": {
+                  "company": "vivo",
+                  "index": 9,
+                  "jd_id": "c6ac33c8-1c91-49f7-b4b0-f205a6c92b91",
+                  "position": "AI应用-产品经理",
+                  "section": "keywords",
+                  "strategy": "semantic"
+                },
+                "distance": 0.7770512104034424,
+                "bm25_score": 0.0,
+                "vec_norm": 1.0,
+                "bm25_norm": 0.0,
+                "hybrid_score": 0.7,
+                "rerank_score": 0.9708
+              },
+              {
+                "chunk_id": "4dcb6702-c777-4279-b0e9-99e8edbd608f_chunk_8",
+                "content": "【蚂蚁集团 · AI产品经理 关键词】\nAI产品经理, Agent, Planning, Reflection, Memory, LUI, 工作流, Human-in-the-loop, Prompt, RAG, Function Calling, 向量数据库, A/B测试, LLM, Transformer, LangChain, Dify, Coze, LangGraph, SaaS, RPA",
+                "metadata": {
+                  "company": "蚂蚁集团",
+                  "index": 8,
+                  "jd_id": "4dcb6702-c777-4279-b0e9-99e8edbd608f",
+                  "position": "AI产品经理",
+                  "section": "keywords",
+                  "strategy": "semantic"
+                },
+                "distance": 0.8106369972229004,
+                "bm25_score": 0.0,
+                "vec_norm": 0.6758949935578871,
+                "bm25_norm": 0.0,
+                "hybrid_score": 0.47312649549052094,
+                "rerank_score": 0.9704
+              },
+              {
+                "chunk_id": "52a150f9-cff3-49d2-a2df-d514081eed9e_chunk_7",
+                "content": "【小米 · AI产品实习生 软性要求/加分项】\n熟悉AI领域或有AI产品实习经验优先",
+                "metadata": {
+                  "company": "小米",
+                  "index": 7,
+                  "jd_id": "52a150f9-cff3-49d2-a2df-d514081eed9e",
+                  "position": "AI产品实习生",
+                  "priority": "medium",
+                  "section": "soft_requirements",
+                  "strategy": "semantic"
+                },
+                "distance": null,
+                "bm25_score": 3.7281628694885764,
+                "vec_norm": 0.0,
+                "bm25_norm": 0.722584308349769,
+                "hybrid_score": 0.2167752925049307,
+                "rerank_score": 0.9256
+              },
+              {
+                "chunk_id": "c6ac33c8-1c91-49f7-b4b0-f205a6c92b91_chunk_6",
+                "content": "【vivo · AI应用-产品经理 软性要求/加分项】\n对AI技术有强烈的好奇心，了解大模型基本原理(RAG、Agent架构等)，不畏惧技术底层的复杂性",
+                "metadata": {
+                  "company": "vivo",
+                  "index": 6,
+                  "jd_id": "c6ac33c8-1c91-49f7-b4b0-f205a6c92b91",
+                  "position": "AI应用-产品经理",
+                  "priority": "medium",
+                  "section": "soft_requirements",
+                  "strategy": "semantic"
+                },
+                "distance": 0.8157848119735718,
+                "bm25_score": 0.0,
+                "vec_norm": 0.6262182495858641,
+                "bm25_norm": 0.0,
+                "hybrid_score": 0.43835277471010486,
+                "rerank_score": 0.8549
+              }
+            ],
+            "query": "AI产品",
+            "filters": {},
+            "strategy": "hybrid(70%vec+30%bm25)+reranker",
+            "pool_k": 10,
+            "rerank_k": 10,
+            "pool_size": 34,
+            "vec_only": 14,
+            "bm25_only": 16,
+            "both": 4,
+            "rerank": {
+              "enabled": true,
+              "candidates": 10,
+              "output": 10,
+              "best_rerank_score": 0.997
+            }
+          },
+          "observation": "SEMANTIC_MISMATCH|检索结果与用户意图不符|suggested_query=AI产品岗"
+        },
+        "T1": {
+          "task_id": "T1",
+          "task_type": "tool_call",
+          "tool_name": "global_rank",
+          "status": "skipped",
+          "parameters": {
+            "resume_text": "{{global_slots.resume_text}}",
+            "candidate_jds": "{{T0.output.chunks}}",
+            "sort_by": "match_score"
+          },
+          "resolved_params": {},
+          "result": null,
+          "observation": "执行器退出时未执行"
+        },
+        "T2": {
+          "task_id": "T2",
+          "task_type": "aggregate",
+          "tool_name": null,
+          "status": "skipped",
+          "parameters": {
+            "explore_result": "{{T1.output}}"
+          },
+          "resolved_params": {},
+          "result": null,
+          "observation": "执行器退出时未执行"
+        }
+      },
+      "global_status": "failed",
+      "replan_reason": "T1_tool_failed",
+      "replan_count": 1
+    },
+    "intent": {
+      "demands": [
+        {
+          "intent": "position_explore",
+          "entities": {
+            "position": "AI产品岗",
+            "search_keywords": "分析所有AI产品岗位",
+            "sort_by": "match_score",
+            "top_k": 5
+          },
+          "confidence": 0.75
+        }
+      ],
+      "needs_clarification": false,
+      "clarification_question": ""
+    },
+    "rewrite": {
+      "rewritten_query": "分析所有AI产品岗位",
+      "search_keywords": "分析所有AI产品岗位",
+      "is_follow_up": false,
+      "follow_up_type": "none",
+      "resolved_references": {}
+    },
+    "evidence_cache": [],
+    "evidence_cache_query": "",
+    "tool_outputs": [],
+    "final_aggregation_prompt": {
+      "system_prompt": "你是一位专业的求职顾问。请基于以下工具执行结果，给用户一个清晰、有帮助的回复。\n要求：\n1. 先直接回答用户的问题（是/否/有/没有），不要绕弯子，不要重复用户的原话\n2. 如果有匹配分析结果，给出具体的分数和建议\n3. 如果有检索结果，基于事实回答，不要编造\n4. 【强制】引用信息时必须标注来源。每个引用的事实后面都要跟 [来源：公司名-岗位名] 格式。   kb_retrieve 结果的 chunks 中带有 'source' 字段（如'字节跳动-AI产品经理'），请直接使用。   external_search 结果带有 'source_name' 字段，也请直接使用。\n5. 当本地知识库与外部搜索结果冲突时，请并列呈现两种说法并标注各自来源，不要替用户做判断\n6. 语气友好、专业、结构化",
+      "user_prompt": "【用户问题】\n分析所有AI产品岗位\n\n【工具执行结果】\n[]\n\n请生成回复："
+    }
+  },
+  "reply": "没有\n\n当前工具未检索到具体的 AI 产品岗位数据，无法基于系统结果为您提供针对性的岗位分析或匹配评分。\n\n作为求职顾问，建议您通过以下方式缩小范围，以便获取更有效的信息：\n\n1.  **明确目标公司**：AI 产品岗位在不同公司（如大厂、初创企业）的职责差异较大，指定公司可提高检索精度。\n2.  **细化业务方向**：AI 领域涵盖大模型应用、AI 基础设施、智能硬件等多个方向，明确方向有助于匹配具体技能要求。\n3.  **补充职级信息**：不同职级（如初级、专家、总监）对候选人的期望截然不同。\n\n如果您能提供具体的**公司名称**、**工作地点**或**期望职级**，我可以再次为您尝试检索更详细的岗位信息与分析建议。",
+  "reply_length": 314,
+  "intent_match": true,
+  "tool_match_rate": 0.5,
+  "has_reply": true,
+  "events": [
+    {
+      "step": "intent",
+      "message": "正在识别您的意图...",
+      "_time": 7.342691898345947,
+      "type": "status"
+    },
+    {
+      "step": "plan",
+      "message": "正在规划任务...",
+      "_time": 7.3427183628082275,
+      "type": "status"
+    },
+    {
+      "step": "execute",
+      "message": "正在执行分析...",
+      "_time": 22.985470294952393,
+      "type": "status"
+    },
+    {
+      "step": "aggregate",
+      "message": "正在生成回复...",
+      "_time": 23.435344219207764,
+      "type": "status"
+    },
+    {
+      "text": "没有",
+      "_time": 72.74546504020691,
+      "type": "delta"
+    },
+    {
+      "text": "\n\n",
+      "_time": 72.75033521652222,
+      "type": "delta"
+    },
+    {
+      "text": "当前工具未检索",
+      "_time": 72.83949041366577,
+      "type": "delta"
+    },
+    {
+      "text": "到具体的",
+      "_time": 72.84113454818726,
+      "type": "delta"
+    },
+    {
+      "text": " AI 产品岗位",
+      "_time": 72.9424695968628,
+      "type": "delta"
+    },
+    {
+      "text": "数据，无法基于",
+      "_time": 72.9734320640564,
+      "type": "delta"
+    },
+    {
+      "text": "系统结果为您提供针对性的",
+      "_time": 73.08861088752747,
+      "type": "delta"
+    },
+    {
+      "text": "岗位分析或",
+      "_time": 73.0913257598877,
+      "type": "delta"
+    },
+    {
+      "text": "匹配评分。\n\n",
+      "_time": 73.21265363693237,
+      "type": "delta"
+    },
+    {
+      "text": "作为求职",
+      "_time": 73.21530199050903,
+      "type": "delta"
+    },
+    {
+      "text": "顾问，建议您通过",
+      "_time": 73.35660362243652,
+      "type": "delta"
+    },
+    {
+      "text": "以下方式",
+      "_time": 73.36022782325745,
+      "type": "delta"
+    },
+    {
+      "text": "缩小范围，以便",
+      "_time": 73.41140723228455,
+      "type": "delta"
+    },
+    {
+      "text": "获取更有效的",
+      "_time": 73.41440868377686,
+      "type": "delta"
+    },
+    {
+      "text": "信息：\n\n1",
+      "_time": 73.53669881820679,
+      "type": "delta"
+    },
+    {
+      "text": ". ",
+      "_time": 73.56814789772034,
+      "type": "delta"
+    },
+    {
+      "text": " **明确目标公司",
+      "_time": 73.64519000053406,
+      "type": "delta"
+    },
+    {
+      "text": "**：AI",
+      "_time": 73.64794707298279,
+      "type": "delta"
+    },
+    {
+      "text": " 产品岗位在不同",
+      "_time": 73.7712676525116,
+      "type": "delta"
+    },
+    {
+      "text": "公司",
+      "_time": 73.77490711212158,
+      "type": "delta"
+    },
+    {
+      "text": "（如大厂、",
+      "_time": 73.89129042625427,
+      "type": "delta"
+    },
+    {
+      "text": "初创企业",
+      "_time": 73.89494395256042,
+      "type": "delta"
+    },
+    {
+      "text": "）的职责差异较大",
+      "_time": 73.97048139572144,
+      "type": "delta"
+    },
+    {
+      "text": "，指定",
+      "_time": 73.97205018997192,
+      "type": "delta"
+    },
+    {
+      "text": "公司可提高检索精度",
+      "_time": 74.07640671730042,
+      "type": "delta"
+    },
+    {
+      "text": "。\n2",
+      "_time": 74.07939743995667,
+      "type": "delta"
+    },
+    {
+      "text": ".  **细化",
+      "_time": 74.23902940750122,
+      "type": "delta"
+    },
+    {
+      "text": "业务",
+      "_time": 74.24625635147095,
+      "type": "delta"
+    },
+    {
+      "text": "方向**：AI",
+      "_time": 74.29456233978271,
+      "type": "delta"
+    },
+    {
+      "text": " 领域",
+      "_time": 74.29734468460083,
+      "type": "delta"
+    },
+    {
+      "text": "涵盖大模型应用",
+      "_time": 74.4032666683197,
+      "type": "delta"
+    },
+    {
+      "text": "、AI",
+      "_time": 74.40525102615356,
+      "type": "delta"
+    },
+    {
+      "text": " 基础设施、智能",
+      "_time": 74.55147743225098,
+      "type": "delta"
+    },
+    {
+      "text": "硬件",
+      "_time": 74.554208278656,
+      "type": "delta"
+    },
+    {
+      "text": "等多个方向，明确",
+      "_time": 74.5991747379303,
+      "type": "delta"
+    },
+    {
+      "text": "方向",
+      "_time": 74.60514736175537,
+      "type": "delta"
+    },
+    {
+      "text": "有助于匹配具体技能",
+      "_time": 74.68845510482788,
+      "type": "delta"
+    },
+    {
+      "text": "要求。\n3",
+      "_time": 74.71920251846313,
+      "type": "delta"
+    },
+    {
+      "text": ".  **补充",
+      "_time": 74.83450508117676,
+      "type": "delta"
+    },
+    {
+      "text": "职级",
+      "_time": 74.8349301815033,
+      "type": "delta"
+    },
+    {
+      "text": "信息**：不同",
+      "_time": 74.95351243019104,
+      "type": "delta"
+    },
+    {
+      "text": "职级（如",
+      "_time": 74.95626282691956,
+      "type": "delta"
+    },
+    {
+      "text": "初级、专家、",
+      "_time": 75.08447933197021,
+      "type": "delta"
+    },
+    {
+      "text": "总监",
+      "_time": 75.08605241775513,
+      "type": "delta"
+    },
+    {
+      "text": "）对候选人的",
+      "_time": 75.20762944221497,
+      "type": "delta"
+    },
+    {
+      "text": "期望",
+      "_time": 75.21121501922607,
+      "type": "delta"
+    },
+    {
+      "text": "截然不同。\n\n如果您",
+      "_time": 75.26630520820618,
+      "type": "delta"
+    },
+    {
+      "text": "能提供",
+      "_time": 75.27015113830566,
+      "type": "delta"
+    },
+    {
+      "text": "具体的**公司名称**",
+      "_time": 75.38336730003357,
+      "type": "delta"
+    },
+    {
+      "text": "、**",
+      "_time": 75.38619899749756,
+      "type": "delta"
+    },
+    {
+      "text": "工作地点**或**",
+      "_time": 75.46534895896912,
+      "type": "delta"
+    },
+    {
+      "text": "期望职级**",
+      "_time": 75.46815037727356,
+      "type": "delta"
+    },
+    {
+      "text": "，我可以再次为您",
+      "_time": 75.60931062698364,
+      "type": "delta"
+    },
+    {
+      "text": "尝试检索更",
+      "_time": 75.64828634262085,
+      "type": "delta"
+    },
+    {
+      "text": "详细的岗位信息与分析",
+      "_time": 75.73449945449829,
+      "type": "delta"
+    },
+    {
+      "text": "建议",
+      "_time": 75.73718285560608,
+      "type": "delta"
+    },
+    {
+      "text": "。",
+      "_time": 75.82525396347046,
+      "type": "delta"
+    },
+    {
+      "session_id": "eval_chen_16_1780562065096",
+      "intent": "position_explore",
+      "route_meta": {
+        "layer": "llm",
+        "intent": "position_explore",
+        "confidence": 0.75,
+        "demands": [
+          {
+            "intent": "position_explore",
+            "entities": {
+              "position": "AI产品岗",
+              "search_keywords": "分析所有AI产品岗位",
+              "sort_by": "match_score",
+              "top_k": 5
+            }
+          }
+        ],
+        "plan_tasks": 3
+      },
+      "agent_mode": "llm",
+      "is_clarification": false,
+      "agent": {
+        "rewritten_query": "分析所有AI产品岗位",
+        "tools": [
+          {
+            "tool": "kb_retrieve",
+            "status": "❌",
+            "params": {
+              "query": "AI产品",
+              "top_k": 10
+            },
+            "result_preview": "{'chunks': [{'chunk_id': '2af1570c-e34f-4fb9-8422-e08e3ac3b927_chunk_5', 'content': '【蚂蚁集团 · AI产品工程师（搜推方向） 硬性要求】\\n具备 AI 原生交互天赋，能够将复杂业务需求精准转化为 Agent 可执行的任务逻辑；擅长通过指令编排约束模型推理路径，实现人机协同的高效执行', 'metadata': "
+          }
+        ],
+        "kb_chunks_count": 0,
+        "system_prompt_preview": "你是一位专业的求职顾问。请基于以下工具执行结果，给用户一个清晰、有帮助的回复。\n要求：\n1. 先直接回答用户的问题（是/否/有/没有），不要绕弯子，不要重复用户的原话\n2. 如果有匹配分析结果，给出具体的分数和建议\n3. 如果有检索结果，基于事实回答，不要编造\n4. 【强制】引用信息时必须标注来源。每个引用的事实后面都要跟 [来源：公司名-岗位名] 格式。   kb_retrieve 结果的 ch"
+      },
+      "memory": {
+        "working_turns": 1,
+        "compressed_blocks": 0,
+        "current_topic": "general",
+        "evidence_cache_size": 0
+      },
+      "reply": "没有\n\n当前工具未检索到具体的 AI 产品岗位数据，无法基于系统结果为您提供针对性的岗位分析或匹配评分。\n\n作为求职顾问，建议您通过以下方式缩小范围，以便获取更有效的信息：\n\n1.  **明确目标公司**：AI 产品岗位在不同公司（如大厂、初创企业）的职责差异较大，指定公司可提高检索精度。\n2.  **细化业务方向**：AI 领域涵盖大模型应用、AI 基础设施、智能硬件等多个方向，明确方向有助于匹配具体技能要求。\n3.  **补充职级信息**：不同职级（如初级、专家、总监）对候选人的期望截然不同。\n\n如果您能提供具体的**公司名称**、**工作地点**或**期望职级**，我可以再次为您尝试检索更详细的岗位信息与分析建议。",
+      "debug_info": {
+        "task_graph": {
+          "tasks": {
+            "T0": {
+              "task_id": "T0",
+              "task_type": "tool_call",
+              "tool_name": "kb_retrieve",
+              "status": "failed",
+              "parameters": {
+                "query": "AI产品",
+                "top_k": 10
+              },
+              "resolved_params": {
+                "query": "AI产品",
+                "top_k": 10
+              },
+              "result": {
+                "chunks": [
+                  {
+                    "chunk_id": "2af1570c-e34f-4fb9-8422-e08e3ac3b927_chunk_5",
+                    "content": "【蚂蚁集团 · AI产品工程师（搜推方向） 硬性要求】\n具备 AI 原生交互天赋，能够将复杂业务需求精准转化为 Agent 可执行的任务逻辑；擅长通过指令编排约束模型推理路径，实现人机协同的高效执行",
+                    "metadata": {
+                      "company": "蚂蚁集团",
+                      "index": 5,
+                      "jd_id": "2af1570c-e34f-4fb9-8422-e08e3ac3b927",
+                      "position": "AI产品工程师（搜推方向）",
+                      "priority": "high",
+                      "section": "hard_requirements",
+                      "strategy": "semantic"
+                    },
+                    "distance": 0.7820732593536377,
+                    "bm25_score": 0.0,
+                    "vec_norm": 0.9515369041045463,
+                    "bm25_norm": 0.0,
+                    "hybrid_score": 0.6660758328731824,
+                    "rerank_score": 0.997
+                  },
+                  {
+                    "chunk_id": "1983c425-982c-4116-8883-04eb0109edb3_chunk_1",
+                    "content": "【vivo · AI产品经理-27届暑期实习 岗位职责】\n人工智能将改变我们的生活方式。我们致力于通过精准挖掘用户需求和情感，让A更好地与用户产生“化学反应”。你将与团队一起，通过A为全球各地5亿+中的每一位用户提供便利和温暖的产品体验。\n这里有海量的用户群，等待着你创造的惊喜。\n这里有最顶尖的AI工程师，有机会实现你天马行空的想法。\n这里有最专业的团队，等待你的加入，伴你一起成长。\n\n作为一名Al产品经理，你将和我们一起:\n1、基于市场需求，深入了解用户需求和行为，制定AI产品规划和定义，设计产品方案，推动人工智能技术在vivo产品中的应用;2、分析产品的数据和用户反馈，为产品改进和优化提供数据支持。利用A技术分析大数据，挖掘用户需求和行为，为产品的改进和优化提供支持;3、协调各部门，与AI工程师、数据科学家等团队成员密切合作，推动人工智能产品的开发和创新;4、与团队协作，负贵产品的用户体验和用户研究，了解用户的需求和反馈，为产品的改进和优化提供用户体验和用户研究的支持。推动人工智能技术与用户体验的深度融合 \n5、参与并探索包括不限于:将大模型餐能对话、AIGC、语音语义、图像视觉等行业最前沿技术应用于小V助手、输入法、相册、jovi语音等各个平台。",
+                    "metadata": {
+                      "company": "vivo",
+                      "index": 1,
+                      "jd_id": "1983c425-982c-4116-8883-04eb0109edb3",
+                      "position": "AI产品经理-27届暑期实习",
+                      "section": "responsibilities",
+                      "strategy": "semantic"
+                    },
+                    "distance": 0.8398083448410034,
+                    "bm25_score": 0.0,
+                    "vec_norm": 0.39438960979201176,
+                    "bm25_norm": 0.0,
+                    "hybrid_score": 0.2760727268544082,
+                    "rerank_score": 0.9959
+                  },
+                  {
+                    "chunk_id": "6226ff8a-27b8-4d56-9cb9-e194c0578739_chunk_1",
+                    "content": "【阿里巴巴 · AI产品经理 岗位职责】\n深入理解业务场景，通过用户调研、行业分析及研究挖掘AI落地的创新机会；\n负责AI应用/平台的方案设计，包括核心功能定义、工作流（Workflow）编排及Prompt设计，输出高质量的产品路线图；\n与算法工程师、后端开发紧密协作，将大模型能力（LLM、多模态、Agent、RAG等）转化为可规模化的产品功能；\n建立产品评估体系，利用数据工具（SQL/Python）监控指标波动，根据数据反馈和用户原声持续优化算法表现与用户体验。",
+                    "metadata": {
+                      "company": "阿里巴巴",
+                      "index": 1,
+                      "jd_id": "6226ff8a-27b8-4d56-9cb9-e194c0578739",
+                      "position": "AI产品经理",
+                      "section": "responsibilities",
+                      "strategy": "semantic"
+                    },
+                    "distance": 0.8147624731063843,
+                    "bm25_score": 0.0,
+                    "vec_norm": 0.6360838855144487,
+                    "bm25_norm": 0.0,
+                    "hybrid_score": 0.44525871986011406,
+                    "rerank_score": 0.993
+                  },
+                  {
+                    "chunk_id": "94df2ae7-baa3-418d-be25-1974b64a5b06_chunk_4",
+                    "content": "【百度 · AI能力产品实习生 硬性要求】\n对AI产品有热情，有AI策略产品相关实习经验",
+                    "metadata": {
+                      "company": "百度",
+                      "index": 4,
+                      "jd_id": "94df2ae7-baa3-418d-be25-1974b64a5b06",
+                      "position": "AI能力产品实习生",
+                      "priority": "high",
+                      "section": "hard_requirements",
+                      "strategy": "semantic"
+                    },
+                    "distance": null,
+                    "bm25_score": 3.9213408191069967,
+                    "vec_norm": 0.0,
+                    "bm25_norm": 1.0,
+                    "hybrid_score": 0.3,
+                    "rerank_score": 0.9835
+                  },
+                  {
+                    "chunk_id": "d8f1f630-f372-467a-b0a0-5a68a6db4ffd_chunk_5",
+                    "content": "【百度 · AI应用-产品经理 硬性要求】\n对AI产品、大模型应用有热情，愿意学习并将AI能力落地到HR产品中",
+                    "metadata": {
+                      "company": "百度",
+                      "index": 5,
+                      "jd_id": "d8f1f630-f372-467a-b0a0-5a68a6db4ffd",
+                      "position": "AI应用-产品经理",
+                      "priority": "high",
+                      "section": "hard_requirements",
+                      "strategy": "semantic"
+                    },
+                    "distance": 0.8525511026382446,
+                    "bm25_score": 3.7549080562116277,
+                    "vec_norm": 0.27142117614577577,
+                    "bm25_norm": 0.7609920794631153,
+                    "hybrid_score": 0.41829244714097763,
+                    "rerank_score": 0.9814
+                  },
+                  {
+                    "chunk_id": "4dcb6702-c777-4279-b0e9-99e8edbd608f_chunk_2",
+                    "content": "【蚂蚁集团 · AI产品经理 硬性要求】\n本科及以上，兼具 C 端 AIGC 敏锐度与 B 端 SaaS/RPA 逻辑功底。",
+                    "metadata": {
+                      "company": "蚂蚁集团",
+                      "index": 2,
+                      "jd_id": "4dcb6702-c777-4279-b0e9-99e8edbd608f",
+                      "position": "AI产品经理",
+                      "priority": "high",
+                      "section": "hard_requirements",
+                      "strategy": "semantic"
+                    },
+                    "distance": 0.8468611240386963,
+                    "bm25_score": 0.0,
+                    "vec_norm": 0.3263298361862691,
+                    "bm25_norm": 0.0,
+                    "hybrid_score": 0.22843088533038836,
+                    "rerank_score": 0.9765
+                  },
+                  {
+                    "chunk_id": "c6ac33c8-1c91-49f7-b4b0-f205a6c92b91_chunk_9",
+                    "content": "【vivo · AI应用-产品经理 关键词】\nAI应用, 产品经理, 手机用户, 办公, 生活, 娱乐, 痛点调研, Prompt评估, AI技能, 算法工程师, 数据分析, 评测集, 大模型, RAG, Agent, PRD, 策略文档, 实习生",
+                    "metadata": {
+                      "company": "vivo",
+                      "index": 9,
+                      "jd_id": "c6ac33c8-1c91-49f7-b4b0-f205a6c92b91",
+                      "position": "AI应用-产品经理",
+                      "section": "keywords",
+                      "strategy": "semantic"
+                    },
+                    "distance": 0.7770512104034424,
+                    "bm25_score": 0.0,
+                    "vec_norm": 1.0,
+                    "bm25_norm": 0.0,
+                    "hybrid_score": 0.7,
+                    "rerank_score": 0.9708
+                  },
+                  {
+                    "chunk_id": "4dcb6702-c777-4279-b0e9-99e8edbd608f_chunk_8",
+                    "content": "【蚂蚁集团 · AI产品经理 关键词】\nAI产品经理, Agent, Planning, Reflection, Memory, LUI, 工作流, Human-in-the-loop, Prompt, RAG, Function Calling, 向量数据库, A/B测试, LLM, Transformer, LangChain, Dify, Coze, LangGraph, SaaS, RPA",
+                    "metadata": {
+                      "company": "蚂蚁集团",
+                      "index": 8,
+                      "jd_id": "4dcb6702-c777-4279-b0e9-99e8edbd608f",
+                      "position": "AI产品经理",
+                      "section": "keywords",
+                      "strategy": "semantic"
+                    },
+                    "distance": 0.8106369972229004,
+                    "bm25_score": 0.0,
+                    "vec_norm": 0.6758949935578871,
+                    "bm25_norm": 0.0,
+                    "hybrid_score": 0.47312649549052094,
+                    "rerank_score": 0.9704
+                  },
+                  {
+                    "chunk_id": "52a150f9-cff3-49d2-a2df-d514081eed9e_chunk_7",
+                    "content": "【小米 · AI产品实习生 软性要求/加分项】\n熟悉AI领域或有AI产品实习经验优先",
+                    "metadata": {
+                      "company": "小米",
+                      "index": 7,
+                      "jd_id": "52a150f9-cff3-49d2-a2df-d514081eed9e",
+                      "position": "AI产品实习生",
+                      "priority": "medium",
+                      "section": "soft_requirements",
+                      "strategy": "semantic"
+                    },
+                    "distance": null,
+                    "bm25_score": 3.7281628694885764,
+                    "vec_norm": 0.0,
+                    "bm25_norm": 0.722584308349769,
+                    "hybrid_score": 0.2167752925049307,
+                    "rerank_score": 0.9256
+                  },
+                  {
+                    "chunk_id": "c6ac33c8-1c91-49f7-b4b0-f205a6c92b91_chunk_6",
+                    "content": "【vivo · AI应用-产品经理 软性要求/加分项】\n对AI技术有强烈的好奇心，了解大模型基本原理(RAG、Agent架构等)，不畏惧技术底层的复杂性",
+                    "metadata": {
+                      "company": "vivo",
+                      "index": 6,
+                      "jd_id": "c6ac33c8-1c91-49f7-b4b0-f205a6c92b91",
+                      "position": "AI应用-产品经理",
+                      "priority": "medium",
+                      "section": "soft_requirements",
+                      "strategy": "semantic"
+                    },
+                    "distance": 0.8157848119735718,
+                    "bm25_score": 0.0,
+                    "vec_norm": 0.6262182495858641,
+                    "bm25_norm": 0.0,
+                    "hybrid_score": 0.43835277471010486,
+                    "rerank_score": 0.8549
+                  }
+                ],
+                "query": "AI产品",
+                "filters": {},
+                "strategy": "hybrid(70%vec+30%bm25)+reranker",
+                "pool_k": 10,
+                "rerank_k": 10,
+                "pool_size": 34,
+                "vec_only": 14,
+                "bm25_only": 16,
+                "both": 4,
+                "rerank": {
+                  "enabled": true,
+                  "candidates": 10,
+                  "output": 10,
+                  "best_rerank_score": 0.997
+                }
+              },
+              "observation": "SEMANTIC_MISMATCH|检索结果与用户意图不符|suggested_query=AI产品岗"
+            },
+            "T1": {
+              "task_id": "T1",
+              "task_type": "tool_call",
+              "tool_name": "global_rank",
+              "status": "skipped",
+              "parameters": {
+                "resume_text": "{{global_slots.resume_text}}",
+                "candidate_jds": "{{T0.output.chunks}}",
+                "sort_by": "match_score"
+              },
+              "resolved_params": {},
+              "result": null,
+              "observation": "执行器退出时未执行"
+            },
+            "T2": {
+              "task_id": "T2",
+              "task_type": "aggregate",
+              "tool_name": null,
+              "status": "skipped",
+              "parameters": {
+                "explore_result": "{{T1.output}}"
+              },
+              "resolved_params": {},
+              "result": null,
+              "observation": "执行器退出时未执行"
+            }
+          },
+          "global_status": "failed",
+          "replan_reason": "T1_tool_failed",
+          "replan_count": 1
+        },
+        "intent": {
+          "demands": [
+            {
+              "intent": "position_explore",
+              "entities": {
+                "position": "AI产品岗",
+                "search_keywords": "分析所有AI产品岗位",
+                "sort_by": "match_score",
+                "top_k": 5
+              },
+              "confidence": 0.75
+            }
+          ],
+          "needs_clarification": false,
+          "clarification_question": ""
+        },
+        "rewrite": {
+          "rewritten_query": "分析所有AI产品岗位",
+          "search_keywords": "分析所有AI产品岗位",
+          "is_follow_up": false,
+          "follow_up_type": "none",
+          "resolved_references": {}
+        },
+        "evidence_cache": [],
+        "evidence_cache_query": "",
+        "tool_outputs": [],
+        "final_aggregation_prompt": {
+          "system_prompt": "你是一位专业的求职顾问。请基于以下工具执行结果，给用户一个清晰、有帮助的回复。\n要求：\n1. 先直接回答用户的问题（是/否/有/没有），不要绕弯子，不要重复用户的原话\n2. 如果有匹配分析结果，给出具体的分数和建议\n3. 如果有检索结果，基于事实回答，不要编造\n4. 【强制】引用信息时必须标注来源。每个引用的事实后面都要跟 [来源：公司名-岗位名] 格式。   kb_retrieve 结果的 chunks 中带有 'source' 字段（如'字节跳动-AI产品经理'），请直接使用。   external_search 结果带有 'source_name' 字段，也请直接使用。\n5. 当本地知识库与外部搜索结果冲突时，请并列呈现两种说法并标注各自来源，不要替用户做判断\n6. 语气友好、专业、结构化",
+          "user_prompt": "【用户问题】\n分析所有AI产品岗位\n\n【工具执行结果】\n[]\n\n请生成回复："
+        }
+      },
+      "usage": {
+        "prompt_tokens": 6643,
+        "completion_tokens": 5047,
+        "total_tokens": 11690
+      },
+      "_time": 75.8885145187378,
+      "type": "done"
+    }
+  ],
+  "timestamp": "2026-06-04T16:34:25.096241",
+  "prompt_tokens": 6643,
+  "completion_tokens": 5047,
+  "total_tokens": 11690,
+  "tool_execution_success_rate": 0.0,
+  "tool_correct_rate": 0.0
+}

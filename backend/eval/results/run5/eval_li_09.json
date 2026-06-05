@@ -1,0 +1,2441 @@
+{
+  "case_id": "eval_li_09",
+  "message": "我的MySQL分库分表经验对哪个岗最有价值",
+  "gold_intents": [
+    "explore"
+  ],
+  "expected_tools": [
+    "kb_retrieve",
+    "global_rank"
+  ],
+  "scenario": "有简历_技能导向探索_数据库",
+  "eval_context": {
+    "gold_intents": [
+      "explore"
+    ],
+    "gold_slots": {},
+    "relevance_score": 0,
+    "expected_tools": [
+      "kb_retrieve",
+      "global_rank"
+    ],
+    "scenario": "有简历_技能导向探索_数据库",
+    "notes": "期望阿里后端（要求分库分表）排名靠前"
+  },
+  "resume_id": "e30c8b27-cfce-4918-8810-832e3ab5087c",
+  "status": "success",
+  "error": null,
+  "ttfb": 0.01,
+  "total_latency": 105.17,
+  "event_count": 158,
+  "pred_intent": "position_explore",
+  "pred_intents": [
+    "position_explore"
+  ],
+  "pred_tools": [
+    {
+      "tool": "kb_retrieve",
+      "status": "✅",
+      "params": {
+        "query": "我的MySQL分库分表经验对哪个岗位最有价值",
+        "top_k": 5
+      },
+      "result_preview": "{'chunks': [{'chunk_id': '45bd2600-af57-45fe-a96e-c6cae6838c7a_chunk_3', 'content': '【某小公司 · Java后端 硬性要求】\\n熟悉Spring Boot、MySQL', 'metadata': {'company': '某小公司', 'index': 3, 'jd_id': '45bd2600-af57-45f"
+    },
+    {
+      "tool": "global_rank",
+      "status": "✅",
+      "params": {
+        "resume_text": "姓名：李工程师\n电话：138-XXXX-1234 | 邮箱：lixx_dev@email.com | 现居：北京\nJava后端开发工程师 | 3年经验 | 本科\n\n教育背景\n2018.09 - 2022.06  XX理工大学  计算机科学与技术（本科）\n主修课程：数据结构与算法、操作系统、计算机网络、数据库原理、软件工程\n在校荣誉：校级优秀毕业设计（基于微服务的校园二手交易平台）\n\n专业技能\n熟练掌握Java核心技术，熟悉JVM内存模型、GC机制及常见调优手段\n精通Spring Boot、Spring Cloud微服务生态，熟悉Nacos、Gateway、Sentinel、Seata等组件\n熟悉MySQL索引优化、事务机制、分库分表策略，具备SQL调优及慢查询治理经验\n了解Redis缓存设计、Kafka消息队列，熟悉Docker容器化部署及Jenkins CI/CD流程\n掌握Git版本控制，熟悉Linux日常运维及日志排查\n\n工作经历\n2022.07 - 至今  XX科技有限公司（B轮 / 企业服务 SaaS）  Java后端工程师\n\nSaaS供应链管理平台（2023.03 - 至今）\n负责订单中心、库存中心核心模块设计与开发，采用Spring Cloud Alibaba微服务架构，支撑日均10W+订单处理\n主导MySQL分库分表方案设计（ShardingSphere），解决单表数据量过亿导致的查询性能瓶颈，接口响应时间从800ms降至120ms\n设计多级缓存策略（Redis + Caffeine本地缓存），热点数据命中率提升至95%，降低数据库负载40%\n基于Seata AT模式实现分布式事务，保障订单与库存数据一致性，线上运行半年零资损事故\n\n企业权限中台重构（2022.09 - 2023.02）\n参与RBAC权限中台从单体到微服务的拆分重构，负责鉴权服务、菜单路由模块开发\n引入Gateway统一鉴权过滤器，对接OAuth2.0 + JWT认证体系，支持多租户隔离\n编写核心接口单元测试（Unit + Mockito），模块测试覆盖率从45%提升至82%\n\n自我评价\n具备扎实的计算机基础与3年企业级后端开发经验，擅长高并发场景下的系统设计与性能优化。注重代码质量与工程规范，具备良好的团队协作与跨部门沟通能力。",
+        "candidate_jds": [
+          {
+            "chunk_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a_chunk_3",
+            "content": "【某小公司 · Java后端 硬性要求】\n熟悉Spring Boot、MySQL",
+            "metadata": {
+              "company": "某小公司",
+              "index": 3,
+              "jd_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a",
+              "position": "Java后端",
+              "priority": "high",
+              "section": "hard_requirements",
+              "strategy": "semantic"
+            },
+            "distance": 0.9260567426681519,
+            "bm25_score": 5.6826035007547935,
+            "vec_norm": 0.7914053135571077,
+            "bm25_norm": 1.0,
+            "hybrid_score": 0.8539837194899753,
+            "rerank_score": 0.2621
+          },
+          {
+            "chunk_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8_chunk_3",
+            "content": "【阿里巴巴 · 后端开发 硬性要求】\n精通Spring Boot、MySQL、Redis、Kafka",
+            "metadata": {
+              "company": "阿里巴巴",
+              "index": 3,
+              "jd_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8",
+              "position": "后端开发",
+              "priority": "high",
+              "section": "hard_requirements",
+              "strategy": "semantic"
+            },
+            "distance": 1.0118402242660522,
+            "bm25_score": 5.291262545310161,
+            "vec_norm": 0.37451256088100837,
+            "bm25_norm": 0.854510046920772,
+            "hybrid_score": 0.5185118066929375,
+            "rerank_score": 0.0628
+          },
+          {
+            "chunk_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a_chunk_1",
+            "content": "【某小公司 · Java后端 岗位职责】\n1. 负责传统企业内部管理系统的设计与开发。2. 数据库CRUD操作与报表开发。3. 系统日常维护与bug修复。",
+            "metadata": {
+              "company": "某小公司",
+              "index": 1,
+              "jd_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a",
+              "position": "Java后端",
+              "section": "responsibilities",
+              "strategy": "semantic"
+            },
+            "distance": 0.8831344842910767,
+            "bm25_score": 0.0,
+            "vec_norm": 1.0,
+            "bm25_norm": 0.0,
+            "hybrid_score": 0.7,
+            "rerank_score": 0.0164
+          },
+          {
+            "chunk_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a_chunk_6",
+            "content": "【某小公司 · Java后端 关键词】\nJava, Spring Boot, MySQL, ERP, 后端",
+            "metadata": {
+              "company": "某小公司",
+              "index": 6,
+              "jd_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a",
+              "position": "Java后端",
+              "section": "keywords",
+              "strategy": "semantic"
+            },
+            "distance": 0.961388349533081,
+            "bm25_score": 5.058998882365832,
+            "vec_norm": 0.6196998690120519,
+            "bm25_norm": 0.7681607166152169,
+            "hybrid_score": 0.6642381232930014,
+            "rerank_score": 0.0033
+          },
+          {
+            "chunk_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8_chunk_8",
+            "content": "【阿里巴巴 · 后端开发 关键词】\nJava, Spring Boot, MySQL, Redis, Kafka, 微服务, 电商",
+            "metadata": {
+              "company": "阿里巴巴",
+              "index": 8,
+              "jd_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8",
+              "position": "后端开发",
+              "section": "keywords",
+              "strategy": "semantic"
+            },
+            "distance": 1.027114987373352,
+            "bm25_score": 4.650706836428156,
+            "vec_norm": 0.30027987738925555,
+            "bm25_norm": 0.6163688078470613,
+            "hybrid_score": 0.39510655652659726,
+            "rerank_score": 0.0008
+          }
+        ],
+        "sort_by": "match_score"
+      },
+      "result_preview": "{'rankings': [{'rank': 1, 'jd_id': '9cde8355-dcc0-434e-97c4-67dfc5dae5b8', 'company': '阿里巴巴', 'position': '后端开发', 'match_score': 86, 'recommend_reason': '技能匹配：kafka, spring boot, redis', 'key_match': "
+    }
+  ],
+  "tools_called": [
+    "kb_retrieve",
+    "global_rank"
+  ],
+  "kb_chunks": [
+    {
+      "chunk_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a_chunk_3",
+      "content": "【某小公司 · Java后端 硬性要求】\n熟悉Spring Boot、MySQL",
+      "metadata": {
+        "company": "某小公司",
+        "index": 3,
+        "jd_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a",
+        "position": "Java后端",
+        "priority": "high",
+        "section": "hard_requirements",
+        "strategy": "semantic"
+      },
+      "distance": 0.9260567426681519,
+      "bm25_score": 5.6826035007547935,
+      "vec_norm": 0.7914053135571077,
+      "bm25_norm": 1.0,
+      "hybrid_score": 0.8539837194899753,
+      "rerank_score": 0.2621
+    },
+    {
+      "chunk_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8_chunk_3",
+      "content": "【阿里巴巴 · 后端开发 硬性要求】\n精通Spring Boot、MySQL、Redis、Kafka",
+      "metadata": {
+        "company": "阿里巴巴",
+        "index": 3,
+        "jd_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8",
+        "position": "后端开发",
+        "priority": "high",
+        "section": "hard_requirements",
+        "strategy": "semantic"
+      },
+      "distance": 1.0118402242660522,
+      "bm25_score": 5.291262545310161,
+      "vec_norm": 0.37451256088100837,
+      "bm25_norm": 0.854510046920772,
+      "hybrid_score": 0.5185118066929375,
+      "rerank_score": 0.0628
+    },
+    {
+      "chunk_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a_chunk_1",
+      "content": "【某小公司 · Java后端 岗位职责】\n1. 负责传统企业内部管理系统的设计与开发。2. 数据库CRUD操作与报表开发。3. 系统日常维护与bug修复。",
+      "metadata": {
+        "company": "某小公司",
+        "index": 1,
+        "jd_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a",
+        "position": "Java后端",
+        "section": "responsibilities",
+        "strategy": "semantic"
+      },
+      "distance": 0.8831344842910767,
+      "bm25_score": 0.0,
+      "vec_norm": 1.0,
+      "bm25_norm": 0.0,
+      "hybrid_score": 0.7,
+      "rerank_score": 0.0164
+    },
+    {
+      "chunk_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a_chunk_6",
+      "content": "【某小公司 · Java后端 关键词】\nJava, Spring Boot, MySQL, ERP, 后端",
+      "metadata": {
+        "company": "某小公司",
+        "index": 6,
+        "jd_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a",
+        "position": "Java后端",
+        "section": "keywords",
+        "strategy": "semantic"
+      },
+      "distance": 0.961388349533081,
+      "bm25_score": 5.058998882365832,
+      "vec_norm": 0.6196998690120519,
+      "bm25_norm": 0.7681607166152169,
+      "hybrid_score": 0.6642381232930014,
+      "rerank_score": 0.0033
+    },
+    {
+      "chunk_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8_chunk_8",
+      "content": "【阿里巴巴 · 后端开发 关键词】\nJava, Spring Boot, MySQL, Redis, Kafka, 微服务, 电商",
+      "metadata": {
+        "company": "阿里巴巴",
+        "index": 8,
+        "jd_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8",
+        "position": "后端开发",
+        "section": "keywords",
+        "strategy": "semantic"
+      },
+      "distance": 1.027114987373352,
+      "bm25_score": 4.650706836428156,
+      "vec_norm": 0.30027987738925555,
+      "bm25_norm": 0.6163688078470613,
+      "hybrid_score": 0.39510655652659726,
+      "rerank_score": 0.0008
+    }
+  ],
+  "tool_executions_full": [
+    {
+      "tool_name": "kb_retrieve",
+      "task_id": "T0",
+      "status": "success",
+      "output": {
+        "chunks": [
+          {
+            "chunk_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a_chunk_3",
+            "content": "【某小公司 · Java后端 硬性要求】\n熟悉Spring Boot、MySQL",
+            "source": "某小公司-Java后端",
+            "metadata": {
+              "company": "某小公司",
+              "position": "Java后端"
+            }
+          },
+          {
+            "chunk_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8_chunk_3",
+            "content": "【阿里巴巴 · 后端开发 硬性要求】\n精通Spring Boot、MySQL、Redis、Kafka",
+            "source": "阿里巴巴-后端开发",
+            "metadata": {
+              "company": "阿里巴巴",
+              "position": "后端开发"
+            }
+          },
+          {
+            "chunk_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a_chunk_1",
+            "content": "【某小公司 · Java后端 岗位职责】\n1. 负责传统企业内部管理系统的设计与开发。2. 数据库CRUD操作与报表开发。3. 系统日常维护与bug修复。",
+            "source": "某小公司-Java后端",
+            "metadata": {
+              "company": "某小公司",
+              "position": "Java后端"
+            }
+          },
+          {
+            "chunk_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a_chunk_6",
+            "content": "【某小公司 · Java后端 关键词】\nJava, Spring Boot, MySQL, ERP, 后端",
+            "source": "某小公司-Java后端",
+            "metadata": {
+              "company": "某小公司",
+              "position": "Java后端"
+            }
+          },
+          {
+            "chunk_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8_chunk_8",
+            "content": "【阿里巴巴 · 后端开发 关键词】\nJava, Spring Boot, MySQL, Redis, Kafka, 微服务, 电商",
+            "source": "阿里巴巴-后端开发",
+            "metadata": {
+              "company": "阿里巴巴",
+              "position": "后端开发"
+            }
+          }
+        ],
+        "query": "我的MySQL分库分表经验对哪个岗位最有价值",
+        "filters": {},
+        "strategy": "hybrid(70%vec+30%bm25)+reranker",
+        "pool_k": 5,
+        "rerank_k": 10,
+        "pool_size": 32,
+        "vec_only": 13,
+        "bm25_only": 13,
+        "both": 6,
+        "rerank": {
+          "enabled": true,
+          "candidates": 5,
+          "output": 5,
+          "best_rerank_score": 0.2621
+        }
+      }
+    },
+    {
+      "tool_name": "global_rank",
+      "task_id": "T1",
+      "status": "success",
+      "output": {
+        "rankings": [
+          {
+            "company": "阿里巴巴",
+            "position": "后端开发",
+            "match_score": 86,
+            "recommend_reason": "技能匹配：kafka, spring boot, redis",
+            "key_match": [
+              "技能交集：kafka, spring boot, redis"
+            ],
+            "key_gap": [
+              "需进一步了解详细匹配情况"
+            ],
+            "apply_priority": "高"
+          },
+          {
+            "company": "某小公司",
+            "position": "Java后端",
+            "match_score": 88,
+            "recommend_reason": "技能匹配：spring boot, mysql",
+            "key_match": [
+              "技能交集：spring boot, mysql"
+            ],
+            "key_gap": [
+              "需进一步了解详细匹配情况"
+            ],
+            "apply_priority": "高"
+          }
+        ],
+        "strategy_advice": "共识别 2 个高度匹配岗位，建议优先投递；另有 0 个中等匹配岗位可作为备选。",
+        "_template_mode": true,
+        "_coarse_filter_meta": {
+          "input_jds": 2,
+          "output_jds": 2,
+          "filter_ratio": 0.0
+        }
+      }
+    },
+    {
+      "tool_name": null,
+      "task_id": "T2",
+      "status": "success",
+      "output": {
+        "aggregation": {
+          "ranked_list": "{{T1.output.ranked_list}}",
+          "explanation": "{{T1.output.explanation}}",
+          "retrieval_meta": "{{T0.output.meta}}"
+        }
+      }
+    }
+  ],
+  "debug_info": {
+    "task_graph": {
+      "tasks": {
+        "T0": {
+          "task_id": "T0",
+          "task_type": "tool_call",
+          "tool_name": "kb_retrieve",
+          "status": "success",
+          "parameters": {
+            "query": "{{intent_explore.search_keywords}}",
+            "top_k": "{{intent_explore.top_k}}"
+          },
+          "resolved_params": {
+            "query": "我的MySQL分库分表经验对哪个岗位最有价值",
+            "top_k": 5
+          },
+          "result": {
+            "chunks": [
+              {
+                "chunk_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a_chunk_3",
+                "content": "【某小公司 · Java后端 硬性要求】\n熟悉Spring Boot、MySQL",
+                "metadata": {
+                  "company": "某小公司",
+                  "index": 3,
+                  "jd_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a",
+                  "position": "Java后端",
+                  "priority": "high",
+                  "section": "hard_requirements",
+                  "strategy": "semantic"
+                },
+                "distance": 0.9260567426681519,
+                "bm25_score": 5.6826035007547935,
+                "vec_norm": 0.7914053135571077,
+                "bm25_norm": 1.0,
+                "hybrid_score": 0.8539837194899753,
+                "rerank_score": 0.2621
+              },
+              {
+                "chunk_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8_chunk_3",
+                "content": "【阿里巴巴 · 后端开发 硬性要求】\n精通Spring Boot、MySQL、Redis、Kafka",
+                "metadata": {
+                  "company": "阿里巴巴",
+                  "index": 3,
+                  "jd_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8",
+                  "position": "后端开发",
+                  "priority": "high",
+                  "section": "hard_requirements",
+                  "strategy": "semantic"
+                },
+                "distance": 1.0118402242660522,
+                "bm25_score": 5.291262545310161,
+                "vec_norm": 0.37451256088100837,
+                "bm25_norm": 0.854510046920772,
+                "hybrid_score": 0.5185118066929375,
+                "rerank_score": 0.0628
+              },
+              {
+                "chunk_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a_chunk_1",
+                "content": "【某小公司 · Java后端 岗位职责】\n1. 负责传统企业内部管理系统的设计与开发。2. 数据库CRUD操作与报表开发。3. 系统日常维护与bug修复。",
+                "metadata": {
+                  "company": "某小公司",
+                  "index": 1,
+                  "jd_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a",
+                  "position": "Java后端",
+                  "section": "responsibilities",
+                  "strategy": "semantic"
+                },
+                "distance": 0.8831344842910767,
+                "bm25_score": 0.0,
+                "vec_norm": 1.0,
+                "bm25_norm": 0.0,
+                "hybrid_score": 0.7,
+                "rerank_score": 0.0164
+              },
+              {
+                "chunk_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a_chunk_6",
+                "content": "【某小公司 · Java后端 关键词】\nJava, Spring Boot, MySQL, ERP, 后端",
+                "metadata": {
+                  "company": "某小公司",
+                  "index": 6,
+                  "jd_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a",
+                  "position": "Java后端",
+                  "section": "keywords",
+                  "strategy": "semantic"
+                },
+                "distance": 0.961388349533081,
+                "bm25_score": 5.058998882365832,
+                "vec_norm": 0.6196998690120519,
+                "bm25_norm": 0.7681607166152169,
+                "hybrid_score": 0.6642381232930014,
+                "rerank_score": 0.0033
+              },
+              {
+                "chunk_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8_chunk_8",
+                "content": "【阿里巴巴 · 后端开发 关键词】\nJava, Spring Boot, MySQL, Redis, Kafka, 微服务, 电商",
+                "metadata": {
+                  "company": "阿里巴巴",
+                  "index": 8,
+                  "jd_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8",
+                  "position": "后端开发",
+                  "section": "keywords",
+                  "strategy": "semantic"
+                },
+                "distance": 1.027114987373352,
+                "bm25_score": 4.650706836428156,
+                "vec_norm": 0.30027987738925555,
+                "bm25_norm": 0.6163688078470613,
+                "hybrid_score": 0.39510655652659726,
+                "rerank_score": 0.0008
+              }
+            ],
+            "query": "我的MySQL分库分表经验对哪个岗位最有价值",
+            "filters": {},
+            "strategy": "hybrid(70%vec+30%bm25)+reranker",
+            "pool_k": 5,
+            "rerank_k": 10,
+            "pool_size": 32,
+            "vec_only": 13,
+            "bm25_only": 13,
+            "both": 6,
+            "rerank": {
+              "enabled": true,
+              "candidates": 5,
+              "output": 5,
+              "best_rerank_score": 0.2621
+            }
+          },
+          "observation": "工具 kb_retrieve 执行成功"
+        },
+        "T1": {
+          "task_id": "T1",
+          "task_type": "tool_call",
+          "tool_name": "global_rank",
+          "status": "success",
+          "parameters": {
+            "resume_text": "{{global_slots.resume_text}}",
+            "candidate_jds": "{{T0.output.chunks}}",
+            "sort_by": "{{intent_explore.sort_by}}"
+          },
+          "resolved_params": {
+            "resume_text": "姓名：李工程师\n电话：138-XXXX-1234 | 邮箱：lixx_dev@email.com | 现居：北京\nJava后端开发工程师 | 3年经验 | 本科\n\n教育背景\n2018.09 - 2022.06  XX理工大学  计算机科学与技术（本科）\n主修课程：数据结构与算法、操作系统、计算机网络、数据库原理、软件工程\n在校荣誉：校级优秀毕业设计（基于微服务的校园二手交易平台）\n\n专业技能\n熟练掌握Java核心技术，熟悉JVM内存模型、GC机制及常见调优手段\n精通Spring Boot、Spring Cloud微服务生态，熟悉Nacos、Gateway、Sentinel、Seata等组件\n熟悉MySQL索引优化、事务机制、分库分表策略，具备SQL调优及慢查询治理经验\n了解Redis缓存设计、Kafka消息队列，熟悉Docker容器化部署及Jenkins CI/CD流程\n掌握Git版本控制，熟悉Linux日常运维及日志排查\n\n工作经历\n2022.07 - 至今  XX科技有限公司（B轮 / 企业服务 SaaS）  Java后端工程师\n\nSaaS供应链管理平台（2023.03 - 至今）\n负责订单中心、库存中心核心模块设计与开发，采用Spring Cloud Alibaba微服务架构，支撑日均10W+订单处理\n主导MySQL分库分表方案设计（ShardingSphere），解决单表数据量过亿导致的查询性能瓶颈，接口响应时间从800ms降至120ms\n设计多级缓存策略（Redis + Caffeine本地缓存），热点数据命中率提升至95%，降低数据库负载40%\n基于Seata AT模式实现分布式事务，保障订单与库存数据一致性，线上运行半年零资损事故\n\n企业权限中台重构（2022.09 - 2023.02）\n参与RBAC权限中台从单体到微服务的拆分重构，负责鉴权服务、菜单路由模块开发\n引入Gateway统一鉴权过滤器，对接OAuth2.0 + JWT认证体系，支持多租户隔离\n编写核心接口单元测试（Unit + Mockito），模块测试覆盖率从45%提升至82%\n\n自我评价\n具备扎实的计算机基础与3年企业级后端开发经验，擅长高并发场景下的系统设计与性能优化。注重代码质量与工程规范，具备良好的团队协作与跨部门沟通能力。",
+            "candidate_jds": [
+              {
+                "chunk_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a_chunk_3",
+                "content": "【某小公司 · Java后端 硬性要求】\n熟悉Spring Boot、MySQL",
+                "metadata": {
+                  "company": "某小公司",
+                  "index": 3,
+                  "jd_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a",
+                  "position": "Java后端",
+                  "priority": "high",
+                  "section": "hard_requirements",
+                  "strategy": "semantic"
+                },
+                "distance": 0.9260567426681519,
+                "bm25_score": 5.6826035007547935,
+                "vec_norm": 0.7914053135571077,
+                "bm25_norm": 1.0,
+                "hybrid_score": 0.8539837194899753,
+                "rerank_score": 0.2621
+              },
+              {
+                "chunk_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8_chunk_3",
+                "content": "【阿里巴巴 · 后端开发 硬性要求】\n精通Spring Boot、MySQL、Redis、Kafka",
+                "metadata": {
+                  "company": "阿里巴巴",
+                  "index": 3,
+                  "jd_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8",
+                  "position": "后端开发",
+                  "priority": "high",
+                  "section": "hard_requirements",
+                  "strategy": "semantic"
+                },
+                "distance": 1.0118402242660522,
+                "bm25_score": 5.291262545310161,
+                "vec_norm": 0.37451256088100837,
+                "bm25_norm": 0.854510046920772,
+                "hybrid_score": 0.5185118066929375,
+                "rerank_score": 0.0628
+              },
+              {
+                "chunk_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a_chunk_1",
+                "content": "【某小公司 · Java后端 岗位职责】\n1. 负责传统企业内部管理系统的设计与开发。2. 数据库CRUD操作与报表开发。3. 系统日常维护与bug修复。",
+                "metadata": {
+                  "company": "某小公司",
+                  "index": 1,
+                  "jd_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a",
+                  "position": "Java后端",
+                  "section": "responsibilities",
+                  "strategy": "semantic"
+                },
+                "distance": 0.8831344842910767,
+                "bm25_score": 0.0,
+                "vec_norm": 1.0,
+                "bm25_norm": 0.0,
+                "hybrid_score": 0.7,
+                "rerank_score": 0.0164
+              },
+              {
+                "chunk_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a_chunk_6",
+                "content": "【某小公司 · Java后端 关键词】\nJava, Spring Boot, MySQL, ERP, 后端",
+                "metadata": {
+                  "company": "某小公司",
+                  "index": 6,
+                  "jd_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a",
+                  "position": "Java后端",
+                  "section": "keywords",
+                  "strategy": "semantic"
+                },
+                "distance": 0.961388349533081,
+                "bm25_score": 5.058998882365832,
+                "vec_norm": 0.6196998690120519,
+                "bm25_norm": 0.7681607166152169,
+                "hybrid_score": 0.6642381232930014,
+                "rerank_score": 0.0033
+              },
+              {
+                "chunk_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8_chunk_8",
+                "content": "【阿里巴巴 · 后端开发 关键词】\nJava, Spring Boot, MySQL, Redis, Kafka, 微服务, 电商",
+                "metadata": {
+                  "company": "阿里巴巴",
+                  "index": 8,
+                  "jd_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8",
+                  "position": "后端开发",
+                  "section": "keywords",
+                  "strategy": "semantic"
+                },
+                "distance": 1.027114987373352,
+                "bm25_score": 4.650706836428156,
+                "vec_norm": 0.30027987738925555,
+                "bm25_norm": 0.6163688078470613,
+                "hybrid_score": 0.39510655652659726,
+                "rerank_score": 0.0008
+              }
+            ],
+            "sort_by": "match_score"
+          },
+          "result": {
+            "rankings": [
+              {
+                "rank": 1,
+                "jd_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8",
+                "company": "阿里巴巴",
+                "position": "后端开发",
+                "match_score": 86,
+                "recommend_reason": "技能匹配：kafka, spring boot, redis",
+                "key_match": [
+                  "技能交集：kafka, spring boot, redis"
+                ],
+                "key_gap": [
+                  "需进一步了解详细匹配情况"
+                ],
+                "apply_priority": "高"
+              },
+              {
+                "rank": 2,
+                "jd_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a",
+                "company": "某小公司",
+                "position": "Java后端",
+                "match_score": 88,
+                "recommend_reason": "技能匹配：spring boot, mysql",
+                "key_match": [
+                  "技能交集：spring boot, mysql"
+                ],
+                "key_gap": [
+                  "需进一步了解详细匹配情况"
+                ],
+                "apply_priority": "高"
+              }
+            ],
+            "strategy_advice": "共识别 2 个高度匹配岗位，建议优先投递；另有 0 个中等匹配岗位可作为备选。",
+            "_template_mode": true,
+            "_coarse_filter_meta": {
+              "input_jds": 2,
+              "output_jds": 2,
+              "filter_ratio": 0.0
+            }
+          },
+          "observation": "工具 global_rank 执行成功"
+        },
+        "T2": {
+          "task_id": "T2",
+          "task_type": "aggregate",
+          "tool_name": null,
+          "status": "success",
+          "parameters": {
+            "ranked_list": "{{T1.output.ranked_list}}",
+            "explanation": "{{T1.output.explanation}}",
+            "retrieval_meta": "{{T0.output.meta}}"
+          },
+          "resolved_params": {
+            "ranked_list": "{{T1.output.ranked_list}}",
+            "explanation": "{{T1.output.explanation}}",
+            "retrieval_meta": "{{T0.output.meta}}"
+          },
+          "result": {
+            "aggregation": {
+              "ranked_list": "{{T1.output.ranked_list}}",
+              "explanation": "{{T1.output.explanation}}",
+              "retrieval_meta": "{{T0.output.meta}}"
+            }
+          },
+          "observation": "聚合完成"
+        }
+      },
+      "global_status": "success",
+      "replan_reason": "",
+      "replan_count": 0
+    },
+    "intent": {
+      "demands": [
+        {
+          "intent": "position_explore",
+          "entities": {
+            "search_keywords": "我的MySQL分库分表经验对哪个岗位最有价值",
+            "sort_by": "match_score",
+            "top_k": 5
+          },
+          "confidence": 0.88
+        }
+      ],
+      "needs_clarification": false,
+      "clarification_question": ""
+    },
+    "rewrite": {
+      "rewritten_query": "我的MySQL分库分表经验对哪个岗位最有价值",
+      "search_keywords": "我的MySQL分库分表经验对哪个岗位最有价值",
+      "is_follow_up": false,
+      "follow_up_type": "none",
+      "resolved_references": {}
+    },
+    "evidence_cache": [
+      {
+        "chunk_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a_chunk_3",
+        "content": "【某小公司 · Java后端 硬性要求】\n熟悉Spring Boot、MySQL",
+        "metadata": {
+          "company": "某小公司",
+          "index": 3,
+          "jd_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a",
+          "position": "Java后端",
+          "priority": "high",
+          "section": "hard_requirements",
+          "strategy": "semantic"
+        },
+        "distance": 0.9260567426681519,
+        "bm25_score": 5.6826035007547935,
+        "vec_norm": 0.7914053135571077,
+        "bm25_norm": 1.0,
+        "hybrid_score": 0.8539837194899753,
+        "rerank_score": 0.2621
+      },
+      {
+        "chunk_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8_chunk_3",
+        "content": "【阿里巴巴 · 后端开发 硬性要求】\n精通Spring Boot、MySQL、Redis、Kafka",
+        "metadata": {
+          "company": "阿里巴巴",
+          "index": 3,
+          "jd_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8",
+          "position": "后端开发",
+          "priority": "high",
+          "section": "hard_requirements",
+          "strategy": "semantic"
+        },
+        "distance": 1.0118402242660522,
+        "bm25_score": 5.291262545310161,
+        "vec_norm": 0.37451256088100837,
+        "bm25_norm": 0.854510046920772,
+        "hybrid_score": 0.5185118066929375,
+        "rerank_score": 0.0628
+      },
+      {
+        "chunk_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a_chunk_1",
+        "content": "【某小公司 · Java后端 岗位职责】\n1. 负责传统企业内部管理系统的设计与开发。2. 数据库CRUD操作与报表开发。3. 系统日常维护与bug修复。",
+        "metadata": {
+          "company": "某小公司",
+          "index": 1,
+          "jd_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a",
+          "position": "Java后端",
+          "section": "responsibilities",
+          "strategy": "semantic"
+        },
+        "distance": 0.8831344842910767,
+        "bm25_score": 0.0,
+        "vec_norm": 1.0,
+        "bm25_norm": 0.0,
+        "hybrid_score": 0.7,
+        "rerank_score": 0.0164
+      },
+      {
+        "chunk_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a_chunk_6",
+        "content": "【某小公司 · Java后端 关键词】\nJava, Spring Boot, MySQL, ERP, 后端",
+        "metadata": {
+          "company": "某小公司",
+          "index": 6,
+          "jd_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a",
+          "position": "Java后端",
+          "section": "keywords",
+          "strategy": "semantic"
+        },
+        "distance": 0.961388349533081,
+        "bm25_score": 5.058998882365832,
+        "vec_norm": 0.6196998690120519,
+        "bm25_norm": 0.7681607166152169,
+        "hybrid_score": 0.6642381232930014,
+        "rerank_score": 0.0033
+      },
+      {
+        "chunk_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8_chunk_8",
+        "content": "【阿里巴巴 · 后端开发 关键词】\nJava, Spring Boot, MySQL, Redis, Kafka, 微服务, 电商",
+        "metadata": {
+          "company": "阿里巴巴",
+          "index": 8,
+          "jd_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8",
+          "position": "后端开发",
+          "section": "keywords",
+          "strategy": "semantic"
+        },
+        "distance": 1.027114987373352,
+        "bm25_score": 4.650706836428156,
+        "vec_norm": 0.30027987738925555,
+        "bm25_norm": 0.6163688078470613,
+        "hybrid_score": 0.39510655652659726,
+        "rerank_score": 0.0008
+      }
+    ],
+    "evidence_cache_query": "我的MySQL分库分表经验对哪个岗位最有价值",
+    "tool_outputs": [
+      {
+        "task_id": "T0",
+        "tool": "kb_retrieve",
+        "description": "检索与MySQL分库分表经验相关的JD",
+        "result": {
+          "chunks": [
+            {
+              "chunk_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a_chunk_3",
+              "content": "【某小公司 · Java后端 硬性要求】\n熟悉Spring Boot、MySQL",
+              "source": "某小公司-Java后端",
+              "metadata": {
+                "company": "某小公司",
+                "position": "Java后端"
+              }
+            },
+            {
+              "chunk_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8_chunk_3",
+              "content": "【阿里巴巴 · 后端开发 硬性要求】\n精通Spring Boot、MySQL、Redis、Kafka",
+              "source": "阿里巴巴-后端开发",
+              "metadata": {
+                "company": "阿里巴巴",
+                "position": "后端开发"
+              }
+            },
+            {
+              "chunk_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a_chunk_1",
+              "content": "【某小公司 · Java后端 岗位职责】\n1. 负责传统企业内部管理系统的设计与开发。2. 数据库CRUD操作与报表开发。3. 系统日常维护与bug修复。",
+              "source": "某小公司-Java后端",
+              "metadata": {
+                "company": "某小公司",
+                "position": "Java后端"
+              }
+            },
+            {
+              "chunk_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a_chunk_6",
+              "content": "【某小公司 · Java后端 关键词】\nJava, Spring Boot, MySQL, ERP, 后端",
+              "source": "某小公司-Java后端",
+              "metadata": {
+                "company": "某小公司",
+                "position": "Java后端"
+              }
+            },
+            {
+              "chunk_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8_chunk_8",
+              "content": "【阿里巴巴 · 后端开发 关键词】\nJava, Spring Boot, MySQL, Redis, Kafka, 微服务, 电商",
+              "source": "阿里巴巴-后端开发",
+              "metadata": {
+                "company": "阿里巴巴",
+                "position": "后端开发"
+              }
+            }
+          ],
+          "query": "我的MySQL分库分表经验对哪个岗位最有价值",
+          "filters": {},
+          "strategy": "hybrid(70%vec+30%bm25)+reranker",
+          "pool_k": 5,
+          "rerank_k": 10,
+          "pool_size": 32,
+          "vec_only": 13,
+          "bm25_only": 13,
+          "both": 6,
+          "rerank": {
+            "enabled": true,
+            "candidates": 5,
+            "output": 5,
+            "best_rerank_score": 0.2621
+          }
+        }
+      },
+      {
+        "task_id": "T1",
+        "tool": "global_rank",
+        "description": "基于简历和检索到的候选JD进行全局排名",
+        "result": {
+          "rankings": [
+            {
+              "company": "阿里巴巴",
+              "position": "后端开发",
+              "match_score": 86,
+              "recommend_reason": "技能匹配：kafka, spring boot, redis",
+              "key_match": [
+                "技能交集：kafka, spring boot, redis"
+              ],
+              "key_gap": [
+                "需进一步了解详细匹配情况"
+              ],
+              "apply_priority": "高"
+            },
+            {
+              "company": "某小公司",
+              "position": "Java后端",
+              "match_score": 88,
+              "recommend_reason": "技能匹配：spring boot, mysql",
+              "key_match": [
+                "技能交集：spring boot, mysql"
+              ],
+              "key_gap": [
+                "需进一步了解详细匹配情况"
+              ],
+              "apply_priority": "高"
+            }
+          ],
+          "strategy_advice": "共识别 2 个高度匹配岗位，建议优先投递；另有 0 个中等匹配岗位可作为备选。",
+          "_template_mode": true,
+          "_coarse_filter_meta": {
+            "input_jds": 2,
+            "output_jds": 2,
+            "filter_ratio": 0.0
+          }
+        }
+      },
+      {
+        "task_id": "T2",
+        "tool": null,
+        "description": "聚合排名结果和检索元信息，生成最终回复素材",
+        "result": {
+          "aggregation": {
+            "ranked_list": "{{T1.output.ranked_list}}",
+            "explanation": "{{T1.output.explanation}}",
+            "retrieval_meta": "{{T0.output.meta}}"
+          }
+        }
+      }
+    ],
+    "final_aggregation_prompt": {
+      "system_prompt": "你是一位专业的求职顾问。请基于以下工具执行结果，给用户一个清晰、有帮助的回复。\n要求：\n1. 先直接回答用户的问题（是/否/有/没有），不要绕弯子，不要重复用户的原话\n2. 如果有匹配分析结果，给出具体的分数和建议\n3. 如果有检索结果，基于事实回答，不要编造\n4. 【强制】引用信息时必须标注来源。每个引用的事实后面都要跟 [来源：公司名-岗位名] 格式。   kb_retrieve 结果的 chunks 中带有 'source' 字段（如'字节跳动-AI产品经理'），请直接使用。   external_search 结果带有 'source_name' 字段，也请直接使用。\n5. 当本地知识库与外部搜索结果冲突时，请并列呈现两种说法并标注各自来源，不要替用户做判断\n6. 语气友好、专业、结构化",
+      "user_prompt": "【用户问题】\n我的MySQL分库分表经验对哪个岗位最有价值\n\n【工具执行结果】\n[{\"task_id\": \"T0\", \"tool\": \"kb_retrieve\", \"description\": \"检索与MySQL分库分表经验相关的JD\", \"result\": {\"chunks\": [{\"chunk_id\": \"45bd2600-af57-45fe-a96e-c6cae6838c7a_chunk_3\", \"content\": \"【某小公司 · Java后端 硬性要求】\\n熟悉Spring Boot、MySQL\", \"source\": \"某小公司-Java后端\", \"metadata\": {\"company\": \"某小公司\", \"position\": \"Java后端\"}}, {\"chunk_id\": \"9cde8355-dcc0-434e-97c4-67dfc5dae5b8_chunk_3\", \"content\": \"【阿里巴巴 · 后端开发 硬性要求】\\n精通Spring Boot、MySQL、Redis、Kafka\", \"source\": \"阿里巴巴-后端开发\", \"metadata\": {\"company\": \"阿里巴巴\", \"position\": \"后端开发\"}}, {\"chunk_id\": \"45bd2600-af57-45fe-a96e-c6cae6838c7a_chunk_1\", \"content\": \"【某小公司 · Java后端 岗位职责】\\n1. 负责传统企业内部管理系统的设计与开发。2. 数据库CRUD操作与报表开发。3. 系统日常维护与bug修复。\", \"source\": \"某小公司-Java后端\", \"metadata\": {\"company\": \"某小公司\", \"position\": \"Java后端\"}}, {\"chunk_id\": \"45bd2600-af57-45fe-a96e-c6cae6838c7a_chunk_6\", \"content\": \"【某小公司 · Java后端 关键词】\\nJava, Spring Boot, MySQL, ERP, 后端\", \"source\": \"某小公司-Java后端\", \"metadata\": {\"company\": \"某小公司\", \"position\": \"Java后端\"}}, {\"chunk_id\": \"9cde8355-dcc0-434e-97c4-67dfc5dae5b8_chunk_8\", \"content\": \"【阿里巴巴 · 后端开发 关键词】\\nJava, Spring Boot, MySQL, Redis, Kafka, 微服务, 电商\", \"source\": \"阿里巴巴-后端开发\", \"metadata\": {\"company\": \"阿里巴巴\", \"position\": \"后端开发\"}}], \"query\": \"我的MySQL分库分表经验对哪个岗位最有价值\", \"filters\": {}, \"strategy\": \"hybrid(70%vec+30%bm25)+reranker\", \"pool_k\": 5, \"rerank_k\": 10, \"pool_size\": 32, \"vec_only\": 13, \"bm25_only\": 13, \"both\": 6, \"rerank\": {\"enabled\": true, \"candidates\": 5, \"output\": 5, \"best_rerank_score\": 0.2621}}}, {\"task_id\": \"T1\", \"tool\": \"global_rank\", \"description\": \"基于简历和检索到的候选JD进行全局排名\", \"result\": {\"rankings\": [{\"company\": \"阿里巴巴\", \"position\": \"后端开发\", \"match_score\": 86, \"recommend_reason\": \"技能匹配：kafka, spring boot, redis\", \"key_match\": [\"技能交集：kafka, spring boot, redis\"], \"key_gap\": [\"需进一步了解详细匹配情况\"], \"apply_priority\": \"高\"}, {\"company\": \"某小公司\", \"position\": \"Java后端\", \"match_score\": 88, \"recommend_reason\": \"技能匹配：spring boot, mysql\", \"key_match\": [\"技能交集：spring boot, mysql\"], \"key_gap\": [\"需进一步了解详细匹配情况\"], \"apply_priority\": \"高\"}], \"strategy_advice\": \"共识别 2 个高度匹配岗位，建议优先投递；另有 0 个中等匹配岗位可作为备选。\", \"_template_mode\": true, \"_coarse_filter_meta\": {\"input_jds\": 2, \"output_jds\": 2, \"filter_ratio\": 0.0}}}, {\"task_id\": \"T2\", \"tool\": null, \"description\": \"聚合排名结果和检索元信息，生成最终回复素材\", \"result\": {\"aggregation\": {\"ranked_list\": \"{{T1.output.ranked_list}}\", \"explanation\": \"{{T1.output.explanation}}\", \"retrieval_meta\": \"{{T0.output.meta}}\"}}}]\n\n请生成回复："
+    }
+  },
+  "reply": "基于匹配分析，目前综合匹配度最高的是“某小公司-Java 后端”岗位，但结合业务场景，“阿里巴巴 - 后端开发”岗位可能更能发挥您分库分表经验的技术价值。\n\n以下是具体的匹配分数与岗位分析：\n\n### 1. 匹配度评分\n*   **某小公司-Java 后端**：匹配分 **88 分**，建议优先级“高” [来源：某小公司-Java 后端]。\n*   **阿里巴巴 - 后端开发**：匹配分 **86 分**，建议优先级“高” [来源：阿里巴巴 - 后端开发]。\n\n### 2. 岗位内容与技能价值分析\n虽然某小公司的综合匹配分略高，但两个岗位的业务场景对 MySQL 经验的深度要求可能存在差异：\n\n*   **某小公司-Java 后端**\n    *   **核心要求**：熟悉 Spring Boot、MySQL [来源：某小公司-Java 后端]。\n    *   **工作内容**：负责传统企业内部管理系统的设计与开发，侧重数据库 CRUD 操作与报表开发 [来源：某小公司-Java 后端]。\n    *   **经验价值**：业务场景偏向传统内部管理，可能较少涉及高并发场景，分库分表经验在此处的实际应用机会可能有限。\n\n*   **阿里巴巴 - 后端开发**\n    *   **核心要求**：精通 Spring Boot、MySQL、Redis、Kafka [来源：阿里巴巴 - 后端开发]。\n    *   **工作内容**：涉及微服务架构与电商业务场景 [来源：阿里巴巴 - 后端开发]。\n    *   **经验价值**：电商与微服务场景通常伴随高并发与海量数据，您的分库分表经验在此类架构中通常具有更高的技术落地价值和必要性。\n\n### 3. 顾问建议\n*   **若追求高匹配度与入职成功率**：建议优先投递 **某小公司-Java 后端**，您的技能栈与该岗位硬性要求高度重合 [来源：某小公司-Java 后端]。\n*   **若追求技术成长与经验复用**：建议重点考虑 **阿里巴巴 - 后端开发**，虽然匹配分略低，但其微服务与电商关键词暗示了更复杂的数据架构需求，更能体现分库分表经验的优势 [来源：阿里巴巴 - 后端开发]。\n\n建议您根据当前的求职重心（稳offer 还是 求发展）进行选择，两个岗位均为高优先级推荐。",
+  "reply_length": 978,
+  "intent_match": true,
+  "tool_match_rate": 1.0,
+  "has_reply": true,
+  "events": [
+    {
+      "step": "intent",
+      "message": "正在识别您的意图...",
+      "_time": 6.5692126750946045,
+      "type": "status"
+    },
+    {
+      "step": "plan",
+      "message": "正在规划任务...",
+      "_time": 6.569265604019165,
+      "type": "status"
+    },
+    {
+      "step": "execute",
+      "message": "正在执行分析...",
+      "_time": 20.944661378860474,
+      "type": "status"
+    },
+    {
+      "step": "aggregate",
+      "message": "正在生成回复...",
+      "_time": 21.304898262023926,
+      "type": "status"
+    },
+    {
+      "text": "基于匹配分析",
+      "_time": 95.66513848304749,
+      "type": "delta"
+    },
+    {
+      "text": "，目前",
+      "_time": 95.67054963111877,
+      "type": "delta"
+    },
+    {
+      "text": "综合匹配度最高",
+      "_time": 95.77453422546387,
+      "type": "delta"
+    },
+    {
+      "text": "的是“某",
+      "_time": 95.77761650085449,
+      "type": "delta"
+    },
+    {
+      "text": "小公司-Java",
+      "_time": 95.89990949630737,
+      "type": "delta"
+    },
+    {
+      "text": " 后端”岗位",
+      "_time": 95.93778991699219,
+      "type": "delta"
+    },
+    {
+      "text": "，但结合业务",
+      "_time": 96.04392695426941,
+      "type": "delta"
+    },
+    {
+      "text": "场景，“",
+      "_time": 96.0485486984253,
+      "type": "delta"
+    },
+    {
+      "text": "阿里巴巴 - 后端",
+      "_time": 96.15088891983032,
+      "type": "delta"
+    },
+    {
+      "text": "开发”岗位可能",
+      "_time": 96.18895888328552,
+      "type": "delta"
+    },
+    {
+      "text": "更能发挥您分",
+      "_time": 96.29491329193115,
+      "type": "delta"
+    },
+    {
+      "text": "库分表",
+      "_time": 96.29951167106628,
+      "type": "delta"
+    },
+    {
+      "text": "经验的技术价值。",
+      "_time": 96.42278575897217,
+      "type": "delta"
+    },
+    {
+      "text": "\n\n以下是",
+      "_time": 96.42653441429138,
+      "type": "delta"
+    },
+    {
+      "text": "具体的匹配分数与",
+      "_time": 96.56294178962708,
+      "type": "delta"
+    },
+    {
+      "text": "岗位",
+      "_time": 96.56561589241028,
+      "type": "delta"
+    },
+    {
+      "text": "分析：\n\n###",
+      "_time": 96.62097454071045,
+      "type": "delta"
+    },
+    {
+      "text": " 1",
+      "_time": 96.6245641708374,
+      "type": "delta"
+    },
+    {
+      "text": ". 匹配度",
+      "_time": 96.72677707672119,
+      "type": "delta"
+    },
+    {
+      "text": "评分\n*  ",
+      "_time": 96.72948145866394,
+      "type": "delta"
+    },
+    {
+      "text": " **某小公司",
+      "_time": 96.90780758857727,
+      "type": "delta"
+    },
+    {
+      "text": "-Java 后端",
+      "_time": 96.9115571975708,
+      "type": "delta"
+    },
+    {
+      "text": "**：匹配分",
+      "_time": 97.01580166816711,
+      "type": "delta"
+    },
+    {
+      "text": " **88 ",
+      "_time": 97.01849508285522,
+      "type": "delta"
+    },
+    {
+      "text": "分**，建议",
+      "_time": 97.15881657600403,
+      "type": "delta"
+    },
+    {
+      "text": "优先级",
+      "_time": 97.16355490684509,
+      "type": "delta"
+    },
+    {
+      "text": "“高” [",
+      "_time": 97.2809317111969,
+      "type": "delta"
+    },
+    {
+      "text": "来源：某",
+      "_time": 97.28652048110962,
+      "type": "delta"
+    },
+    {
+      "text": "小公司-Java",
+      "_time": 97.37676048278809,
+      "type": "delta"
+    },
+    {
+      "text": " 后端]。",
+      "_time": 97.38054132461548,
+      "type": "delta"
+    },
+    {
+      "text": "\n*   **",
+      "_time": 97.51783442497253,
+      "type": "delta"
+    },
+    {
+      "text": "阿里巴巴 - ",
+      "_time": 97.5487847328186,
+      "type": "delta"
+    },
+    {
+      "text": "后端开发**：",
+      "_time": 97.64587712287903,
+      "type": "delta"
+    },
+    {
+      "text": "匹配分",
+      "_time": 97.64957737922668,
+      "type": "delta"
+    },
+    {
+      "text": " **86 ",
+      "_time": 97.75833201408386,
+      "type": "delta"
+    },
+    {
+      "text": "分**，建议",
+      "_time": 97.76054620742798,
+      "type": "delta"
+    },
+    {
+      "text": "优先级“高”",
+      "_time": 97.92669534683228,
+      "type": "delta"
+    },
+    {
+      "text": " [来源：阿里巴巴",
+      "_time": 97.93132543563843,
+      "type": "delta"
+    },
+    {
+      "text": " - 后端开发",
+      "_time": 98.11074876785278,
+      "type": "delta"
+    },
+    {
+      "text": "]。\n\n###",
+      "_time": 98.11440873146057,
+      "type": "delta"
+    },
+    {
+      "text": " 2. ",
+      "_time": 98.21983623504639,
+      "type": "delta"
+    },
+    {
+      "text": "岗位内容与技能价值",
+      "_time": 98.2255790233612,
+      "type": "delta"
+    },
+    {
+      "text": "分析\n虽然某",
+      "_time": 98.32853245735168,
+      "type": "delta"
+    },
+    {
+      "text": "小公司的综合",
+      "_time": 98.33254957199097,
+      "type": "delta"
+    },
+    {
+      "text": "匹配分略高",
+      "_time": 98.45567536354065,
+      "type": "delta"
+    },
+    {
+      "text": "，但",
+      "_time": 98.46059942245483,
+      "type": "delta"
+    },
+    {
+      "text": "两个岗位的业务场景",
+      "_time": 98.59878754615784,
+      "type": "delta"
+    },
+    {
+      "text": "对 MySQL ",
+      "_time": 98.60247659683228,
+      "type": "delta"
+    },
+    {
+      "text": "经验的深度要求可能存在",
+      "_time": 98.68978381156921,
+      "type": "delta"
+    },
+    {
+      "text": "差异：\n\n*",
+      "_time": 98.72875952720642,
+      "type": "delta"
+    },
+    {
+      "text": "   **某小",
+      "_time": 98.83190751075745,
+      "type": "delta"
+    },
+    {
+      "text": "公司-Java ",
+      "_time": 98.83658647537231,
+      "type": "delta"
+    },
+    {
+      "text": "后端**\n   ",
+      "_time": 98.97781777381897,
+      "type": "delta"
+    },
+    {
+      "text": " *   **核心",
+      "_time": 99.00769448280334,
+      "type": "delta"
+    },
+    {
+      "text": "要求**：熟悉",
+      "_time": 99.122713804245,
+      "type": "delta"
+    },
+    {
+      "text": " Spring Boot、MySQL",
+      "_time": 99.12544107437134,
+      "type": "delta"
+    },
+    {
+      "text": " [来源：某",
+      "_time": 99.30074667930603,
+      "type": "delta"
+    },
+    {
+      "text": "小公司-Java",
+      "_time": 99.30948901176453,
+      "type": "delta"
+    },
+    {
+      "text": " 后端]。",
+      "_time": 99.41174077987671,
+      "type": "delta"
+    },
+    {
+      "text": "\n   ",
+      "_time": 99.41626453399658,
+      "type": "delta"
+    },
+    {
+      "text": " *   **工作内容",
+      "_time": 99.55141544342041,
+      "type": "delta"
+    },
+    {
+      "text": "**：负责传统",
+      "_time": 99.55514430999756,
+      "type": "delta"
+    },
+    {
+      "text": "企业内部管理系统的设计与",
+      "_time": 99.6626489162445,
+      "type": "delta"
+    },
+    {
+      "text": "开发，侧重",
+      "_time": 99.66632318496704,
+      "type": "delta"
+    },
+    {
+      "text": "数据库 CRUD 操作",
+      "_time": 99.82304453849792,
+      "type": "delta"
+    },
+    {
+      "text": "与报表开发 [",
+      "_time": 99.82535767555237,
+      "type": "delta"
+    },
+    {
+      "text": "来源：某小",
+      "_time": 99.93264865875244,
+      "type": "delta"
+    },
+    {
+      "text": "公司-Java ",
+      "_time": 99.93639016151428,
+      "type": "delta"
+    },
+    {
+      "text": "后端]。\n",
+      "_time": 100.11147356033325,
+      "type": "delta"
+    },
+    {
+      "text": "    *   **",
+      "_time": 100.11523008346558,
+      "type": "delta"
+    },
+    {
+      "text": "经验价值**：",
+      "_time": 100.22072052955627,
+      "type": "delta"
+    },
+    {
+      "text": "业务",
+      "_time": 100.22540831565857,
+      "type": "delta"
+    },
+    {
+      "text": "场景偏向传统内部管理",
+      "_time": 100.34461116790771,
+      "type": "delta"
+    },
+    {
+      "text": "，可能较少",
+      "_time": 100.34941554069519,
+      "type": "delta"
+    },
+    {
+      "text": "涉及高并发场景",
+      "_time": 100.4346604347229,
+      "type": "delta"
+    },
+    {
+      "text": "，分",
+      "_time": 100.43740582466125,
+      "type": "delta"
+    },
+    {
+      "text": "库分表经验",
+      "_time": 100.54452443122864,
+      "type": "delta"
+    },
+    {
+      "text": "在此",
+      "_time": 100.54936623573303,
+      "type": "delta"
+    },
+    {
+      "text": "处的实际应用机会可能",
+      "_time": 100.67054104804993,
+      "type": "delta"
+    },
+    {
+      "text": "有限。\n\n",
+      "_time": 100.67635154724121,
+      "type": "delta"
+    },
+    {
+      "text": "*   **阿里巴巴",
+      "_time": 100.76166200637817,
+      "type": "delta"
+    },
+    {
+      "text": " - 后端开发",
+      "_time": 100.76546573638916,
+      "type": "delta"
+    },
+    {
+      "text": "**\n    *",
+      "_time": 100.93961882591248,
+      "type": "delta"
+    },
+    {
+      "text": "   **核心要求",
+      "_time": 100.94447994232178,
+      "type": "delta"
+    },
+    {
+      "text": "**：精通 Spring",
+      "_time": 101.04753732681274,
+      "type": "delta"
+    },
+    {
+      "text": " Boot、MySQL、",
+      "_time": 101.08057379722595,
+      "type": "delta"
+    },
+    {
+      "text": "Redis、Kafka",
+      "_time": 101.1904993057251,
+      "type": "delta"
+    },
+    {
+      "text": " [来源：阿里巴巴",
+      "_time": 101.19441151618958,
+      "type": "delta"
+    },
+    {
+      "text": " - 后端开发",
+      "_time": 101.39664435386658,
+      "type": "delta"
+    },
+    {
+      "text": "]。\n   ",
+      "_time": 101.4013569355011,
+      "type": "delta"
+    },
+    {
+      "text": " *   **工作内容",
+      "_time": 101.47855353355408,
+      "type": "delta"
+    },
+    {
+      "text": "**：涉及微",
+      "_time": 101.48027992248535,
+      "type": "delta"
+    },
+    {
+      "text": "服务架构与电商",
+      "_time": 101.66351699829102,
+      "type": "delta"
+    },
+    {
+      "text": "业务场景",
+      "_time": 101.66819977760315,
+      "type": "delta"
+    },
+    {
+      "text": " [来源：阿里巴巴",
+      "_time": 101.73112654685974,
+      "type": "delta"
+    },
+    {
+      "text": " - 后端开发",
+      "_time": 101.73484206199646,
+      "type": "delta"
+    },
+    {
+      "text": "]。\n   ",
+      "_time": 101.87550830841064,
+      "type": "delta"
+    },
+    {
+      "text": " *   **经验",
+      "_time": 101.91148042678833,
+      "type": "delta"
+    },
+    {
+      "text": "价值**：电商",
+      "_time": 102.33339405059814,
+      "type": "delta"
+    },
+    {
+      "text": "与微服务",
+      "_time": 102.3372642993927,
+      "type": "delta"
+    },
+    {
+      "text": "场景通常伴随高",
+      "_time": 102.34127712249756,
+      "type": "delta"
+    },
+    {
+      "text": "并发",
+      "_time": 102.34523439407349,
+      "type": "delta"
+    },
+    {
+      "text": "与海量数据，",
+      "_time": 102.35015654563904,
+      "type": "delta"
+    },
+    {
+      "text": "您的分",
+      "_time": 102.35520648956299,
+      "type": "delta"
+    },
+    {
+      "text": "库分表经验",
+      "_time": 102.35901832580566,
+      "type": "delta"
+    },
+    {
+      "text": "在此类架构中",
+      "_time": 102.36315846443176,
+      "type": "delta"
+    },
+    {
+      "text": "通常具有更高的技术",
+      "_time": 102.48717594146729,
+      "type": "delta"
+    },
+    {
+      "text": "落地",
+      "_time": 102.49182653427124,
+      "type": "delta"
+    },
+    {
+      "text": "价值和必要性。\n\n",
+      "_time": 102.63258457183838,
+      "type": "delta"
+    },
+    {
+      "text": "### ",
+      "_time": 102.66546440124512,
+      "type": "delta"
+    },
+    {
+      "text": "3. 顾问",
+      "_time": 102.68553471565247,
+      "type": "delta"
+    },
+    {
+      "text": "建议\n*",
+      "_time": 102.68820428848267,
+      "type": "delta"
+    },
+    {
+      "text": "   **若追求",
+      "_time": 102.80968308448792,
+      "type": "delta"
+    },
+    {
+      "text": "高匹配度",
+      "_time": 102.85145664215088,
+      "type": "delta"
+    },
+    {
+      "text": "与入职成功率**",
+      "_time": 102.9375364780426,
+      "type": "delta"
+    },
+    {
+      "text": "：建议优先",
+      "_time": 102.94210243225098,
+      "type": "delta"
+    },
+    {
+      "text": "投递 **某小",
+      "_time": 103.06351637840271,
+      "type": "delta"
+    },
+    {
+      "text": "公司-J",
+      "_time": 103.06722569465637,
+      "type": "delta"
+    },
+    {
+      "text": "ava 后端**",
+      "_time": 103.21046233177185,
+      "type": "delta"
+    },
+    {
+      "text": "，您的技能栈",
+      "_time": 103.21530747413635,
+      "type": "delta"
+    },
+    {
+      "text": "与该岗位硬性要求",
+      "_time": 103.31651902198792,
+      "type": "delta"
+    },
+    {
+      "text": "高度重合 [",
+      "_time": 103.32024025917053,
+      "type": "delta"
+    },
+    {
+      "text": "来源：某小",
+      "_time": 103.4704442024231,
+      "type": "delta"
+    },
+    {
+      "text": "公司-Java ",
+      "_time": 103.47515034675598,
+      "type": "delta"
+    },
+    {
+      "text": "后端]。\n",
+      "_time": 103.58552312850952,
+      "type": "delta"
+    },
+    {
+      "text": "*   **若",
+      "_time": 103.59006214141846,
+      "type": "delta"
+    },
+    {
+      "text": "追求技术成长与",
+      "_time": 103.72947406768799,
+      "type": "delta"
+    },
+    {
+      "text": "经验",
+      "_time": 103.73401379585266,
+      "type": "delta"
+    },
+    {
+      "text": "复用**：建议",
+      "_time": 103.85040926933289,
+      "type": "delta"
+    },
+    {
+      "text": "重点",
+      "_time": 103.85434412956238,
+      "type": "delta"
+    },
+    {
+      "text": "考虑 **阿里巴巴 -",
+      "_time": 103.91287422180176,
+      "type": "delta"
+    },
+    {
+      "text": " 后端开发**",
+      "_time": 103.91323900222778,
+      "type": "delta"
+    },
+    {
+      "text": "，虽然匹配分",
+      "_time": 104.09041833877563,
+      "type": "delta"
+    },
+    {
+      "text": "略低",
+      "_time": 104.0941092967987,
+      "type": "delta"
+    },
+    {
+      "text": "，但其微服务",
+      "_time": 104.16153192520142,
+      "type": "delta"
+    },
+    {
+      "text": "与电商关键词",
+      "_time": 104.16829037666321,
+      "type": "delta"
+    },
+    {
+      "text": "暗示了更复杂",
+      "_time": 104.28943157196045,
+      "type": "delta"
+    },
+    {
+      "text": "的数据",
+      "_time": 104.29336500167847,
+      "type": "delta"
+    },
+    {
+      "text": "架构需求，更能",
+      "_time": 104.40950441360474,
+      "type": "delta"
+    },
+    {
+      "text": "体现分",
+      "_time": 104.41200184822083,
+      "type": "delta"
+    },
+    {
+      "text": "库分表经验",
+      "_time": 104.48742961883545,
+      "type": "delta"
+    },
+    {
+      "text": "的优势",
+      "_time": 104.49250507354736,
+      "type": "delta"
+    },
+    {
+      "text": " [来源：阿里巴巴",
+      "_time": 104.5774028301239,
+      "type": "delta"
+    },
+    {
+      "text": " - 后端开发",
+      "_time": 104.58124446868896,
+      "type": "delta"
+    },
+    {
+      "text": "]。\n\n建议您",
+      "_time": 104.74945449829102,
+      "type": "delta"
+    },
+    {
+      "text": "根据",
+      "_time": 104.7531144618988,
+      "type": "delta"
+    },
+    {
+      "text": "当前的求职重心（",
+      "_time": 104.80946445465088,
+      "type": "delta"
+    },
+    {
+      "text": "稳",
+      "_time": 104.81325936317444,
+      "type": "delta"
+    },
+    {
+      "text": "offer 还是 ",
+      "_time": 104.89927935600281,
+      "type": "delta"
+    },
+    {
+      "text": "求发展）",
+      "_time": 104.95825409889221,
+      "type": "delta"
+    },
+    {
+      "text": "进行选择，两个岗位",
+      "_time": 105.02547669410706,
+      "type": "delta"
+    },
+    {
+      "text": "均为",
+      "_time": 105.0301775932312,
+      "type": "delta"
+    },
+    {
+      "text": "高优先级推荐。",
+      "_time": 105.11752033233643,
+      "type": "delta"
+    },
+    {
+      "session_id": "eval_li_09_1780563021385",
+      "intent": "position_explore",
+      "route_meta": {
+        "layer": "llm",
+        "intent": "position_explore",
+        "confidence": 0.88,
+        "demands": [
+          {
+            "intent": "position_explore",
+            "entities": {
+              "search_keywords": "我的MySQL分库分表经验对哪个岗位最有价值",
+              "sort_by": "match_score",
+              "top_k": 5
+            }
+          }
+        ],
+        "plan_tasks": 3
+      },
+      "agent_mode": "llm",
+      "is_clarification": false,
+      "agent": {
+        "rewritten_query": "我的MySQL分库分表经验对哪个岗位最有价值",
+        "tools": [
+          {
+            "tool": "kb_retrieve",
+            "status": "✅",
+            "params": {
+              "query": "我的MySQL分库分表经验对哪个岗位最有价值",
+              "top_k": 5
+            },
+            "result_preview": "{'chunks': [{'chunk_id': '45bd2600-af57-45fe-a96e-c6cae6838c7a_chunk_3', 'content': '【某小公司 · Java后端 硬性要求】\\n熟悉Spring Boot、MySQL', 'metadata': {'company': '某小公司', 'index': 3, 'jd_id': '45bd2600-af57-45f"
+          },
+          {
+            "tool": "global_rank",
+            "status": "✅",
+            "params": {
+              "resume_text": "姓名：李工程师\n电话：138-XXXX-1234 | 邮箱：lixx_dev@email.com | 现居：北京\nJava后端开发工程师 | 3年经验 | 本科\n\n教育背景\n2018.09 - 2022.06  XX理工大学  计算机科学与技术（本科）\n主修课程：数据结构与算法、操作系统、计算机网络、数据库原理、软件工程\n在校荣誉：校级优秀毕业设计（基于微服务的校园二手交易平台）\n\n专业技能\n熟练掌握Java核心技术，熟悉JVM内存模型、GC机制及常见调优手段\n精通Spring Boot、Spring Cloud微服务生态，熟悉Nacos、Gateway、Sentinel、Seata等组件\n熟悉MySQL索引优化、事务机制、分库分表策略，具备SQL调优及慢查询治理经验\n了解Redis缓存设计、Kafka消息队列，熟悉Docker容器化部署及Jenkins CI/CD流程\n掌握Git版本控制，熟悉Linux日常运维及日志排查\n\n工作经历\n2022.07 - 至今  XX科技有限公司（B轮 / 企业服务 SaaS）  Java后端工程师\n\nSaaS供应链管理平台（2023.03 - 至今）\n负责订单中心、库存中心核心模块设计与开发，采用Spring Cloud Alibaba微服务架构，支撑日均10W+订单处理\n主导MySQL分库分表方案设计（ShardingSphere），解决单表数据量过亿导致的查询性能瓶颈，接口响应时间从800ms降至120ms\n设计多级缓存策略（Redis + Caffeine本地缓存），热点数据命中率提升至95%，降低数据库负载40%\n基于Seata AT模式实现分布式事务，保障订单与库存数据一致性，线上运行半年零资损事故\n\n企业权限中台重构（2022.09 - 2023.02）\n参与RBAC权限中台从单体到微服务的拆分重构，负责鉴权服务、菜单路由模块开发\n引入Gateway统一鉴权过滤器，对接OAuth2.0 + JWT认证体系，支持多租户隔离\n编写核心接口单元测试（Unit + Mockito），模块测试覆盖率从45%提升至82%\n\n自我评价\n具备扎实的计算机基础与3年企业级后端开发经验，擅长高并发场景下的系统设计与性能优化。注重代码质量与工程规范，具备良好的团队协作与跨部门沟通能力。",
+              "candidate_jds": [
+                {
+                  "chunk_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a_chunk_3",
+                  "content": "【某小公司 · Java后端 硬性要求】\n熟悉Spring Boot、MySQL",
+                  "metadata": {
+                    "company": "某小公司",
+                    "index": 3,
+                    "jd_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a",
+                    "position": "Java后端",
+                    "priority": "high",
+                    "section": "hard_requirements",
+                    "strategy": "semantic"
+                  },
+                  "distance": 0.9260567426681519,
+                  "bm25_score": 5.6826035007547935,
+                  "vec_norm": 0.7914053135571077,
+                  "bm25_norm": 1.0,
+                  "hybrid_score": 0.8539837194899753,
+                  "rerank_score": 0.2621
+                },
+                {
+                  "chunk_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8_chunk_3",
+                  "content": "【阿里巴巴 · 后端开发 硬性要求】\n精通Spring Boot、MySQL、Redis、Kafka",
+                  "metadata": {
+                    "company": "阿里巴巴",
+                    "index": 3,
+                    "jd_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8",
+                    "position": "后端开发",
+                    "priority": "high",
+                    "section": "hard_requirements",
+                    "strategy": "semantic"
+                  },
+                  "distance": 1.0118402242660522,
+                  "bm25_score": 5.291262545310161,
+                  "vec_norm": 0.37451256088100837,
+                  "bm25_norm": 0.854510046920772,
+                  "hybrid_score": 0.5185118066929375,
+                  "rerank_score": 0.0628
+                },
+                {
+                  "chunk_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a_chunk_1",
+                  "content": "【某小公司 · Java后端 岗位职责】\n1. 负责传统企业内部管理系统的设计与开发。2. 数据库CRUD操作与报表开发。3. 系统日常维护与bug修复。",
+                  "metadata": {
+                    "company": "某小公司",
+                    "index": 1,
+                    "jd_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a",
+                    "position": "Java后端",
+                    "section": "responsibilities",
+                    "strategy": "semantic"
+                  },
+                  "distance": 0.8831344842910767,
+                  "bm25_score": 0.0,
+                  "vec_norm": 1.0,
+                  "bm25_norm": 0.0,
+                  "hybrid_score": 0.7,
+                  "rerank_score": 0.0164
+                },
+                {
+                  "chunk_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a_chunk_6",
+                  "content": "【某小公司 · Java后端 关键词】\nJava, Spring Boot, MySQL, ERP, 后端",
+                  "metadata": {
+                    "company": "某小公司",
+                    "index": 6,
+                    "jd_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a",
+                    "position": "Java后端",
+                    "section": "keywords",
+                    "strategy": "semantic"
+                  },
+                  "distance": 0.961388349533081,
+                  "bm25_score": 5.058998882365832,
+                  "vec_norm": 0.6196998690120519,
+                  "bm25_norm": 0.7681607166152169,
+                  "hybrid_score": 0.6642381232930014,
+                  "rerank_score": 0.0033
+                },
+                {
+                  "chunk_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8_chunk_8",
+                  "content": "【阿里巴巴 · 后端开发 关键词】\nJava, Spring Boot, MySQL, Redis, Kafka, 微服务, 电商",
+                  "metadata": {
+                    "company": "阿里巴巴",
+                    "index": 8,
+                    "jd_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8",
+                    "position": "后端开发",
+                    "section": "keywords",
+                    "strategy": "semantic"
+                  },
+                  "distance": 1.027114987373352,
+                  "bm25_score": 4.650706836428156,
+                  "vec_norm": 0.30027987738925555,
+                  "bm25_norm": 0.6163688078470613,
+                  "hybrid_score": 0.39510655652659726,
+                  "rerank_score": 0.0008
+                }
+              ],
+              "sort_by": "match_score"
+            },
+            "result_preview": "{'rankings': [{'rank': 1, 'jd_id': '9cde8355-dcc0-434e-97c4-67dfc5dae5b8', 'company': '阿里巴巴', 'position': '后端开发', 'match_score': 86, 'recommend_reason': '技能匹配：kafka, spring boot, redis', 'key_match': "
+          }
+        ],
+        "kb_chunks_count": 3,
+        "system_prompt_preview": "你是一位专业的求职顾问。请基于以下工具执行结果，给用户一个清晰、有帮助的回复。\n要求：\n1. 先直接回答用户的问题（是/否/有/没有），不要绕弯子，不要重复用户的原话\n2. 如果有匹配分析结果，给出具体的分数和建议\n3. 如果有检索结果，基于事实回答，不要编造\n4. 【强制】引用信息时必须标注来源。每个引用的事实后面都要跟 [来源：公司名-岗位名] 格式。   kb_retrieve 结果的 ch"
+      },
+      "memory": {
+        "working_turns": 1,
+        "compressed_blocks": 0,
+        "current_topic": "general",
+        "evidence_cache_size": 5
+      },
+      "reply": "基于匹配分析，目前综合匹配度最高的是“某小公司-Java 后端”岗位，但结合业务场景，“阿里巴巴 - 后端开发”岗位可能更能发挥您分库分表经验的技术价值。\n\n以下是具体的匹配分数与岗位分析：\n\n### 1. 匹配度评分\n*   **某小公司-Java 后端**：匹配分 **88 分**，建议优先级“高” [来源：某小公司-Java 后端]。\n*   **阿里巴巴 - 后端开发**：匹配分 **86 分**，建议优先级“高” [来源：阿里巴巴 - 后端开发]。\n\n### 2. 岗位内容与技能价值分析\n虽然某小公司的综合匹配分略高，但两个岗位的业务场景对 MySQL 经验的深度要求可能存在差异：\n\n*   **某小公司-Java 后端**\n    *   **核心要求**：熟悉 Spring Boot、MySQL [来源：某小公司-Java 后端]。\n    *   **工作内容**：负责传统企业内部管理系统的设计与开发，侧重数据库 CRUD 操作与报表开发 [来源：某小公司-Java 后端]。\n    *   **经验价值**：业务场景偏向传统内部管理，可能较少涉及高并发场景，分库分表经验在此处的实际应用机会可能有限。\n\n*   **阿里巴巴 - 后端开发**\n    *   **核心要求**：精通 Spring Boot、MySQL、Redis、Kafka [来源：阿里巴巴 - 后端开发]。\n    *   **工作内容**：涉及微服务架构与电商业务场景 [来源：阿里巴巴 - 后端开发]。\n    *   **经验价值**：电商与微服务场景通常伴随高并发与海量数据，您的分库分表经验在此类架构中通常具有更高的技术落地价值和必要性。\n\n### 3. 顾问建议\n*   **若追求高匹配度与入职成功率**：建议优先投递 **某小公司-Java 后端**，您的技能栈与该岗位硬性要求高度重合 [来源：某小公司-Java 后端]。\n*   **若追求技术成长与经验复用**：建议重点考虑 **阿里巴巴 - 后端开发**，虽然匹配分略低，但其微服务与电商关键词暗示了更复杂的数据架构需求，更能体现分库分表经验的优势 [来源：阿里巴巴 - 后端开发]。\n\n建议您根据当前的求职重心（稳offer 还是 求发展）进行选择，两个岗位均为高优先级推荐。",
+      "debug_info": {
+        "task_graph": {
+          "tasks": {
+            "T0": {
+              "task_id": "T0",
+              "task_type": "tool_call",
+              "tool_name": "kb_retrieve",
+              "status": "success",
+              "parameters": {
+                "query": "{{intent_explore.search_keywords}}",
+                "top_k": "{{intent_explore.top_k}}"
+              },
+              "resolved_params": {
+                "query": "我的MySQL分库分表经验对哪个岗位最有价值",
+                "top_k": 5
+              },
+              "result": {
+                "chunks": [
+                  {
+                    "chunk_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a_chunk_3",
+                    "content": "【某小公司 · Java后端 硬性要求】\n熟悉Spring Boot、MySQL",
+                    "metadata": {
+                      "company": "某小公司",
+                      "index": 3,
+                      "jd_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a",
+                      "position": "Java后端",
+                      "priority": "high",
+                      "section": "hard_requirements",
+                      "strategy": "semantic"
+                    },
+                    "distance": 0.9260567426681519,
+                    "bm25_score": 5.6826035007547935,
+                    "vec_norm": 0.7914053135571077,
+                    "bm25_norm": 1.0,
+                    "hybrid_score": 0.8539837194899753,
+                    "rerank_score": 0.2621
+                  },
+                  {
+                    "chunk_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8_chunk_3",
+                    "content": "【阿里巴巴 · 后端开发 硬性要求】\n精通Spring Boot、MySQL、Redis、Kafka",
+                    "metadata": {
+                      "company": "阿里巴巴",
+                      "index": 3,
+                      "jd_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8",
+                      "position": "后端开发",
+                      "priority": "high",
+                      "section": "hard_requirements",
+                      "strategy": "semantic"
+                    },
+                    "distance": 1.0118402242660522,
+                    "bm25_score": 5.291262545310161,
+                    "vec_norm": 0.37451256088100837,
+                    "bm25_norm": 0.854510046920772,
+                    "hybrid_score": 0.5185118066929375,
+                    "rerank_score": 0.0628
+                  },
+                  {
+                    "chunk_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a_chunk_1",
+                    "content": "【某小公司 · Java后端 岗位职责】\n1. 负责传统企业内部管理系统的设计与开发。2. 数据库CRUD操作与报表开发。3. 系统日常维护与bug修复。",
+                    "metadata": {
+                      "company": "某小公司",
+                      "index": 1,
+                      "jd_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a",
+                      "position": "Java后端",
+                      "section": "responsibilities",
+                      "strategy": "semantic"
+                    },
+                    "distance": 0.8831344842910767,
+                    "bm25_score": 0.0,
+                    "vec_norm": 1.0,
+                    "bm25_norm": 0.0,
+                    "hybrid_score": 0.7,
+                    "rerank_score": 0.0164
+                  },
+                  {
+                    "chunk_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a_chunk_6",
+                    "content": "【某小公司 · Java后端 关键词】\nJava, Spring Boot, MySQL, ERP, 后端",
+                    "metadata": {
+                      "company": "某小公司",
+                      "index": 6,
+                      "jd_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a",
+                      "position": "Java后端",
+                      "section": "keywords",
+                      "strategy": "semantic"
+                    },
+                    "distance": 0.961388349533081,
+                    "bm25_score": 5.058998882365832,
+                    "vec_norm": 0.6196998690120519,
+                    "bm25_norm": 0.7681607166152169,
+                    "hybrid_score": 0.6642381232930014,
+                    "rerank_score": 0.0033
+                  },
+                  {
+                    "chunk_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8_chunk_8",
+                    "content": "【阿里巴巴 · 后端开发 关键词】\nJava, Spring Boot, MySQL, Redis, Kafka, 微服务, 电商",
+                    "metadata": {
+                      "company": "阿里巴巴",
+                      "index": 8,
+                      "jd_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8",
+                      "position": "后端开发",
+                      "section": "keywords",
+                      "strategy": "semantic"
+                    },
+                    "distance": 1.027114987373352,
+                    "bm25_score": 4.650706836428156,
+                    "vec_norm": 0.30027987738925555,
+                    "bm25_norm": 0.6163688078470613,
+                    "hybrid_score": 0.39510655652659726,
+                    "rerank_score": 0.0008
+                  }
+                ],
+                "query": "我的MySQL分库分表经验对哪个岗位最有价值",
+                "filters": {},
+                "strategy": "hybrid(70%vec+30%bm25)+reranker",
+                "pool_k": 5,
+                "rerank_k": 10,
+                "pool_size": 32,
+                "vec_only": 13,
+                "bm25_only": 13,
+                "both": 6,
+                "rerank": {
+                  "enabled": true,
+                  "candidates": 5,
+                  "output": 5,
+                  "best_rerank_score": 0.2621
+                }
+              },
+              "observation": "工具 kb_retrieve 执行成功"
+            },
+            "T1": {
+              "task_id": "T1",
+              "task_type": "tool_call",
+              "tool_name": "global_rank",
+              "status": "success",
+              "parameters": {
+                "resume_text": "{{global_slots.resume_text}}",
+                "candidate_jds": "{{T0.output.chunks}}",
+                "sort_by": "{{intent_explore.sort_by}}"
+              },
+              "resolved_params": {
+                "resume_text": "姓名：李工程师\n电话：138-XXXX-1234 | 邮箱：lixx_dev@email.com | 现居：北京\nJava后端开发工程师 | 3年经验 | 本科\n\n教育背景\n2018.09 - 2022.06  XX理工大学  计算机科学与技术（本科）\n主修课程：数据结构与算法、操作系统、计算机网络、数据库原理、软件工程\n在校荣誉：校级优秀毕业设计（基于微服务的校园二手交易平台）\n\n专业技能\n熟练掌握Java核心技术，熟悉JVM内存模型、GC机制及常见调优手段\n精通Spring Boot、Spring Cloud微服务生态，熟悉Nacos、Gateway、Sentinel、Seata等组件\n熟悉MySQL索引优化、事务机制、分库分表策略，具备SQL调优及慢查询治理经验\n了解Redis缓存设计、Kafka消息队列，熟悉Docker容器化部署及Jenkins CI/CD流程\n掌握Git版本控制，熟悉Linux日常运维及日志排查\n\n工作经历\n2022.07 - 至今  XX科技有限公司（B轮 / 企业服务 SaaS）  Java后端工程师\n\nSaaS供应链管理平台（2023.03 - 至今）\n负责订单中心、库存中心核心模块设计与开发，采用Spring Cloud Alibaba微服务架构，支撑日均10W+订单处理\n主导MySQL分库分表方案设计（ShardingSphere），解决单表数据量过亿导致的查询性能瓶颈，接口响应时间从800ms降至120ms\n设计多级缓存策略（Redis + Caffeine本地缓存），热点数据命中率提升至95%，降低数据库负载40%\n基于Seata AT模式实现分布式事务，保障订单与库存数据一致性，线上运行半年零资损事故\n\n企业权限中台重构（2022.09 - 2023.02）\n参与RBAC权限中台从单体到微服务的拆分重构，负责鉴权服务、菜单路由模块开发\n引入Gateway统一鉴权过滤器，对接OAuth2.0 + JWT认证体系，支持多租户隔离\n编写核心接口单元测试（Unit + Mockito），模块测试覆盖率从45%提升至82%\n\n自我评价\n具备扎实的计算机基础与3年企业级后端开发经验，擅长高并发场景下的系统设计与性能优化。注重代码质量与工程规范，具备良好的团队协作与跨部门沟通能力。",
+                "candidate_jds": [
+                  {
+                    "chunk_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a_chunk_3",
+                    "content": "【某小公司 · Java后端 硬性要求】\n熟悉Spring Boot、MySQL",
+                    "metadata": {
+                      "company": "某小公司",
+                      "index": 3,
+                      "jd_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a",
+                      "position": "Java后端",
+                      "priority": "high",
+                      "section": "hard_requirements",
+                      "strategy": "semantic"
+                    },
+                    "distance": 0.9260567426681519,
+                    "bm25_score": 5.6826035007547935,
+                    "vec_norm": 0.7914053135571077,
+                    "bm25_norm": 1.0,
+                    "hybrid_score": 0.8539837194899753,
+                    "rerank_score": 0.2621
+                  },
+                  {
+                    "chunk_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8_chunk_3",
+                    "content": "【阿里巴巴 · 后端开发 硬性要求】\n精通Spring Boot、MySQL、Redis、Kafka",
+                    "metadata": {
+                      "company": "阿里巴巴",
+                      "index": 3,
+                      "jd_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8",
+                      "position": "后端开发",
+                      "priority": "high",
+                      "section": "hard_requirements",
+                      "strategy": "semantic"
+                    },
+                    "distance": 1.0118402242660522,
+                    "bm25_score": 5.291262545310161,
+                    "vec_norm": 0.37451256088100837,
+                    "bm25_norm": 0.854510046920772,
+                    "hybrid_score": 0.5185118066929375,
+                    "rerank_score": 0.0628
+                  },
+                  {
+                    "chunk_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a_chunk_1",
+                    "content": "【某小公司 · Java后端 岗位职责】\n1. 负责传统企业内部管理系统的设计与开发。2. 数据库CRUD操作与报表开发。3. 系统日常维护与bug修复。",
+                    "metadata": {
+                      "company": "某小公司",
+                      "index": 1,
+                      "jd_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a",
+                      "position": "Java后端",
+                      "section": "responsibilities",
+                      "strategy": "semantic"
+                    },
+                    "distance": 0.8831344842910767,
+                    "bm25_score": 0.0,
+                    "vec_norm": 1.0,
+                    "bm25_norm": 0.0,
+                    "hybrid_score": 0.7,
+                    "rerank_score": 0.0164
+                  },
+                  {
+                    "chunk_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a_chunk_6",
+                    "content": "【某小公司 · Java后端 关键词】\nJava, Spring Boot, MySQL, ERP, 后端",
+                    "metadata": {
+                      "company": "某小公司",
+                      "index": 6,
+                      "jd_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a",
+                      "position": "Java后端",
+                      "section": "keywords",
+                      "strategy": "semantic"
+                    },
+                    "distance": 0.961388349533081,
+                    "bm25_score": 5.058998882365832,
+                    "vec_norm": 0.6196998690120519,
+                    "bm25_norm": 0.7681607166152169,
+                    "hybrid_score": 0.6642381232930014,
+                    "rerank_score": 0.0033
+                  },
+                  {
+                    "chunk_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8_chunk_8",
+                    "content": "【阿里巴巴 · 后端开发 关键词】\nJava, Spring Boot, MySQL, Redis, Kafka, 微服务, 电商",
+                    "metadata": {
+                      "company": "阿里巴巴",
+                      "index": 8,
+                      "jd_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8",
+                      "position": "后端开发",
+                      "section": "keywords",
+                      "strategy": "semantic"
+                    },
+                    "distance": 1.027114987373352,
+                    "bm25_score": 4.650706836428156,
+                    "vec_norm": 0.30027987738925555,
+                    "bm25_norm": 0.6163688078470613,
+                    "hybrid_score": 0.39510655652659726,
+                    "rerank_score": 0.0008
+                  }
+                ],
+                "sort_by": "match_score"
+              },
+              "result": {
+                "rankings": [
+                  {
+                    "rank": 1,
+                    "jd_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8",
+                    "company": "阿里巴巴",
+                    "position": "后端开发",
+                    "match_score": 86,
+                    "recommend_reason": "技能匹配：kafka, spring boot, redis",
+                    "key_match": [
+                      "技能交集：kafka, spring boot, redis"
+                    ],
+                    "key_gap": [
+                      "需进一步了解详细匹配情况"
+                    ],
+                    "apply_priority": "高"
+                  },
+                  {
+                    "rank": 2,
+                    "jd_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a",
+                    "company": "某小公司",
+                    "position": "Java后端",
+                    "match_score": 88,
+                    "recommend_reason": "技能匹配：spring boot, mysql",
+                    "key_match": [
+                      "技能交集：spring boot, mysql"
+                    ],
+                    "key_gap": [
+                      "需进一步了解详细匹配情况"
+                    ],
+                    "apply_priority": "高"
+                  }
+                ],
+                "strategy_advice": "共识别 2 个高度匹配岗位，建议优先投递；另有 0 个中等匹配岗位可作为备选。",
+                "_template_mode": true,
+                "_coarse_filter_meta": {
+                  "input_jds": 2,
+                  "output_jds": 2,
+                  "filter_ratio": 0.0
+                }
+              },
+              "observation": "工具 global_rank 执行成功"
+            },
+            "T2": {
+              "task_id": "T2",
+              "task_type": "aggregate",
+              "tool_name": null,
+              "status": "success",
+              "parameters": {
+                "ranked_list": "{{T1.output.ranked_list}}",
+                "explanation": "{{T1.output.explanation}}",
+                "retrieval_meta": "{{T0.output.meta}}"
+              },
+              "resolved_params": {
+                "ranked_list": "{{T1.output.ranked_list}}",
+                "explanation": "{{T1.output.explanation}}",
+                "retrieval_meta": "{{T0.output.meta}}"
+              },
+              "result": {
+                "aggregation": {
+                  "ranked_list": "{{T1.output.ranked_list}}",
+                  "explanation": "{{T1.output.explanation}}",
+                  "retrieval_meta": "{{T0.output.meta}}"
+                }
+              },
+              "observation": "聚合完成"
+            }
+          },
+          "global_status": "success",
+          "replan_reason": "",
+          "replan_count": 0
+        },
+        "intent": {
+          "demands": [
+            {
+              "intent": "position_explore",
+              "entities": {
+                "search_keywords": "我的MySQL分库分表经验对哪个岗位最有价值",
+                "sort_by": "match_score",
+                "top_k": 5
+              },
+              "confidence": 0.88
+            }
+          ],
+          "needs_clarification": false,
+          "clarification_question": ""
+        },
+        "rewrite": {
+          "rewritten_query": "我的MySQL分库分表经验对哪个岗位最有价值",
+          "search_keywords": "我的MySQL分库分表经验对哪个岗位最有价值",
+          "is_follow_up": false,
+          "follow_up_type": "none",
+          "resolved_references": {}
+        },
+        "evidence_cache": [
+          {
+            "chunk_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a_chunk_3",
+            "content": "【某小公司 · Java后端 硬性要求】\n熟悉Spring Boot、MySQL",
+            "metadata": {
+              "company": "某小公司",
+              "index": 3,
+              "jd_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a",
+              "position": "Java后端",
+              "priority": "high",
+              "section": "hard_requirements",
+              "strategy": "semantic"
+            },
+            "distance": 0.9260567426681519,
+            "bm25_score": 5.6826035007547935,
+            "vec_norm": 0.7914053135571077,
+            "bm25_norm": 1.0,
+            "hybrid_score": 0.8539837194899753,
+            "rerank_score": 0.2621
+          },
+          {
+            "chunk_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8_chunk_3",
+            "content": "【阿里巴巴 · 后端开发 硬性要求】\n精通Spring Boot、MySQL、Redis、Kafka",
+            "metadata": {
+              "company": "阿里巴巴",
+              "index": 3,
+              "jd_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8",
+              "position": "后端开发",
+              "priority": "high",
+              "section": "hard_requirements",
+              "strategy": "semantic"
+            },
+            "distance": 1.0118402242660522,
+            "bm25_score": 5.291262545310161,
+            "vec_norm": 0.37451256088100837,
+            "bm25_norm": 0.854510046920772,
+            "hybrid_score": 0.5185118066929375,
+            "rerank_score": 0.0628
+          },
+          {
+            "chunk_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a_chunk_1",
+            "content": "【某小公司 · Java后端 岗位职责】\n1. 负责传统企业内部管理系统的设计与开发。2. 数据库CRUD操作与报表开发。3. 系统日常维护与bug修复。",
+            "metadata": {
+              "company": "某小公司",
+              "index": 1,
+              "jd_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a",
+              "position": "Java后端",
+              "section": "responsibilities",
+              "strategy": "semantic"
+            },
+            "distance": 0.8831344842910767,
+            "bm25_score": 0.0,
+            "vec_norm": 1.0,
+            "bm25_norm": 0.0,
+            "hybrid_score": 0.7,
+            "rerank_score": 0.0164
+          },
+          {
+            "chunk_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a_chunk_6",
+            "content": "【某小公司 · Java后端 关键词】\nJava, Spring Boot, MySQL, ERP, 后端",
+            "metadata": {
+              "company": "某小公司",
+              "index": 6,
+              "jd_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a",
+              "position": "Java后端",
+              "section": "keywords",
+              "strategy": "semantic"
+            },
+            "distance": 0.961388349533081,
+            "bm25_score": 5.058998882365832,
+            "vec_norm": 0.6196998690120519,
+            "bm25_norm": 0.7681607166152169,
+            "hybrid_score": 0.6642381232930014,
+            "rerank_score": 0.0033
+          },
+          {
+            "chunk_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8_chunk_8",
+            "content": "【阿里巴巴 · 后端开发 关键词】\nJava, Spring Boot, MySQL, Redis, Kafka, 微服务, 电商",
+            "metadata": {
+              "company": "阿里巴巴",
+              "index": 8,
+              "jd_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8",
+              "position": "后端开发",
+              "section": "keywords",
+              "strategy": "semantic"
+            },
+            "distance": 1.027114987373352,
+            "bm25_score": 4.650706836428156,
+            "vec_norm": 0.30027987738925555,
+            "bm25_norm": 0.6163688078470613,
+            "hybrid_score": 0.39510655652659726,
+            "rerank_score": 0.0008
+          }
+        ],
+        "evidence_cache_query": "我的MySQL分库分表经验对哪个岗位最有价值",
+        "tool_outputs": [
+          {
+            "task_id": "T0",
+            "tool": "kb_retrieve",
+            "description": "检索与MySQL分库分表经验相关的JD",
+            "result": {
+              "chunks": [
+                {
+                  "chunk_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a_chunk_3",
+                  "content": "【某小公司 · Java后端 硬性要求】\n熟悉Spring Boot、MySQL",
+                  "source": "某小公司-Java后端",
+                  "metadata": {
+                    "company": "某小公司",
+                    "position": "Java后端"
+                  }
+                },
+                {
+                  "chunk_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8_chunk_3",
+                  "content": "【阿里巴巴 · 后端开发 硬性要求】\n精通Spring Boot、MySQL、Redis、Kafka",
+                  "source": "阿里巴巴-后端开发",
+                  "metadata": {
+                    "company": "阿里巴巴",
+                    "position": "后端开发"
+                  }
+                },
+                {
+                  "chunk_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a_chunk_1",
+                  "content": "【某小公司 · Java后端 岗位职责】\n1. 负责传统企业内部管理系统的设计与开发。2. 数据库CRUD操作与报表开发。3. 系统日常维护与bug修复。",
+                  "source": "某小公司-Java后端",
+                  "metadata": {
+                    "company": "某小公司",
+                    "position": "Java后端"
+                  }
+                },
+                {
+                  "chunk_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a_chunk_6",
+                  "content": "【某小公司 · Java后端 关键词】\nJava, Spring Boot, MySQL, ERP, 后端",
+                  "source": "某小公司-Java后端",
+                  "metadata": {
+                    "company": "某小公司",
+                    "position": "Java后端"
+                  }
+                },
+                {
+                  "chunk_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8_chunk_8",
+                  "content": "【阿里巴巴 · 后端开发 关键词】\nJava, Spring Boot, MySQL, Redis, Kafka, 微服务, 电商",
+                  "source": "阿里巴巴-后端开发",
+                  "metadata": {
+                    "company": "阿里巴巴",
+                    "position": "后端开发"
+                  }
+                }
+              ],
+              "query": "我的MySQL分库分表经验对哪个岗位最有价值",
+              "filters": {},
+              "strategy": "hybrid(70%vec+30%bm25)+reranker",
+              "pool_k": 5,
+              "rerank_k": 10,
+              "pool_size": 32,
+              "vec_only": 13,
+              "bm25_only": 13,
+              "both": 6,
+              "rerank": {
+                "enabled": true,
+                "candidates": 5,
+                "output": 5,
+                "best_rerank_score": 0.2621
+              }
+            }
+          },
+          {
+            "task_id": "T1",
+            "tool": "global_rank",
+            "description": "基于简历和检索到的候选JD进行全局排名",
+            "result": {
+              "rankings": [
+                {
+                  "company": "阿里巴巴",
+                  "position": "后端开发",
+                  "match_score": 86,
+                  "recommend_reason": "技能匹配：kafka, spring boot, redis",
+                  "key_match": [
+                    "技能交集：kafka, spring boot, redis"
+                  ],
+                  "key_gap": [
+                    "需进一步了解详细匹配情况"
+                  ],
+                  "apply_priority": "高"
+                },
+                {
+                  "company": "某小公司",
+                  "position": "Java后端",
+                  "match_score": 88,
+                  "recommend_reason": "技能匹配：spring boot, mysql",
+                  "key_match": [
+                    "技能交集：spring boot, mysql"
+                  ],
+                  "key_gap": [
+                    "需进一步了解详细匹配情况"
+                  ],
+                  "apply_priority": "高"
+                }
+              ],
+              "strategy_advice": "共识别 2 个高度匹配岗位，建议优先投递；另有 0 个中等匹配岗位可作为备选。",
+              "_template_mode": true,
+              "_coarse_filter_meta": {
+                "input_jds": 2,
+                "output_jds": 2,
+                "filter_ratio": 0.0
+              }
+            }
+          },
+          {
+            "task_id": "T2",
+            "tool": null,
+            "description": "聚合排名结果和检索元信息，生成最终回复素材",
+            "result": {
+              "aggregation": {
+                "ranked_list": "{{T1.output.ranked_list}}",
+                "explanation": "{{T1.output.explanation}}",
+                "retrieval_meta": "{{T0.output.meta}}"
+              }
+            }
+          }
+        ],
+        "final_aggregation_prompt": {
+          "system_prompt": "你是一位专业的求职顾问。请基于以下工具执行结果，给用户一个清晰、有帮助的回复。\n要求：\n1. 先直接回答用户的问题（是/否/有/没有），不要绕弯子，不要重复用户的原话\n2. 如果有匹配分析结果，给出具体的分数和建议\n3. 如果有检索结果，基于事实回答，不要编造\n4. 【强制】引用信息时必须标注来源。每个引用的事实后面都要跟 [来源：公司名-岗位名] 格式。   kb_retrieve 结果的 chunks 中带有 'source' 字段（如'字节跳动-AI产品经理'），请直接使用。   external_search 结果带有 'source_name' 字段，也请直接使用。\n5. 当本地知识库与外部搜索结果冲突时，请并列呈现两种说法并标注各自来源，不要替用户做判断\n6. 语气友好、专业、结构化",
+          "user_prompt": "【用户问题】\n我的MySQL分库分表经验对哪个岗位最有价值\n\n【工具执行结果】\n[{\"task_id\": \"T0\", \"tool\": \"kb_retrieve\", \"description\": \"检索与MySQL分库分表经验相关的JD\", \"result\": {\"chunks\": [{\"chunk_id\": \"45bd2600-af57-45fe-a96e-c6cae6838c7a_chunk_3\", \"content\": \"【某小公司 · Java后端 硬性要求】\\n熟悉Spring Boot、MySQL\", \"source\": \"某小公司-Java后端\", \"metadata\": {\"company\": \"某小公司\", \"position\": \"Java后端\"}}, {\"chunk_id\": \"9cde8355-dcc0-434e-97c4-67dfc5dae5b8_chunk_3\", \"content\": \"【阿里巴巴 · 后端开发 硬性要求】\\n精通Spring Boot、MySQL、Redis、Kafka\", \"source\": \"阿里巴巴-后端开发\", \"metadata\": {\"company\": \"阿里巴巴\", \"position\": \"后端开发\"}}, {\"chunk_id\": \"45bd2600-af57-45fe-a96e-c6cae6838c7a_chunk_1\", \"content\": \"【某小公司 · Java后端 岗位职责】\\n1. 负责传统企业内部管理系统的设计与开发。2. 数据库CRUD操作与报表开发。3. 系统日常维护与bug修复。\", \"source\": \"某小公司-Java后端\", \"metadata\": {\"company\": \"某小公司\", \"position\": \"Java后端\"}}, {\"chunk_id\": \"45bd2600-af57-45fe-a96e-c6cae6838c7a_chunk_6\", \"content\": \"【某小公司 · Java后端 关键词】\\nJava, Spring Boot, MySQL, ERP, 后端\", \"source\": \"某小公司-Java后端\", \"metadata\": {\"company\": \"某小公司\", \"position\": \"Java后端\"}}, {\"chunk_id\": \"9cde8355-dcc0-434e-97c4-67dfc5dae5b8_chunk_8\", \"content\": \"【阿里巴巴 · 后端开发 关键词】\\nJava, Spring Boot, MySQL, Redis, Kafka, 微服务, 电商\", \"source\": \"阿里巴巴-后端开发\", \"metadata\": {\"company\": \"阿里巴巴\", \"position\": \"后端开发\"}}], \"query\": \"我的MySQL分库分表经验对哪个岗位最有价值\", \"filters\": {}, \"strategy\": \"hybrid(70%vec+30%bm25)+reranker\", \"pool_k\": 5, \"rerank_k\": 10, \"pool_size\": 32, \"vec_only\": 13, \"bm25_only\": 13, \"both\": 6, \"rerank\": {\"enabled\": true, \"candidates\": 5, \"output\": 5, \"best_rerank_score\": 0.2621}}}, {\"task_id\": \"T1\", \"tool\": \"global_rank\", \"description\": \"基于简历和检索到的候选JD进行全局排名\", \"result\": {\"rankings\": [{\"company\": \"阿里巴巴\", \"position\": \"后端开发\", \"match_score\": 86, \"recommend_reason\": \"技能匹配：kafka, spring boot, redis\", \"key_match\": [\"技能交集：kafka, spring boot, redis\"], \"key_gap\": [\"需进一步了解详细匹配情况\"], \"apply_priority\": \"高\"}, {\"company\": \"某小公司\", \"position\": \"Java后端\", \"match_score\": 88, \"recommend_reason\": \"技能匹配：spring boot, mysql\", \"key_match\": [\"技能交集：spring boot, mysql\"], \"key_gap\": [\"需进一步了解详细匹配情况\"], \"apply_priority\": \"高\"}], \"strategy_advice\": \"共识别 2 个高度匹配岗位，建议优先投递；另有 0 个中等匹配岗位可作为备选。\", \"_template_mode\": true, \"_coarse_filter_meta\": {\"input_jds\": 2, \"output_jds\": 2, \"filter_ratio\": 0.0}}}, {\"task_id\": \"T2\", \"tool\": null, \"description\": \"聚合排名结果和检索元信息，生成最终回复素材\", \"result\": {\"aggregation\": {\"ranked_list\": \"{{T1.output.ranked_list}}\", \"explanation\": \"{{T1.output.explanation}}\", \"retrieval_meta\": \"{{T0.output.meta}}\"}}}]\n\n请生成回复："
+        }
+      },
+      "usage": {
+        "prompt_tokens": 7324,
+        "completion_tokens": 6051,
+        "total_tokens": 13375
+      },
+      "_time": 105.16816544532776,
+      "type": "done"
+    }
+  ],
+  "timestamp": "2026-06-04T16:50:21.385070",
+  "prompt_tokens": 7324,
+  "completion_tokens": 6051,
+  "total_tokens": 13375,
+  "tool_execution_success_rate": 1.0,
+  "tool_correct_rate": 1.0
+}

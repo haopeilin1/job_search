@@ -1,0 +1,2633 @@
+{
+  "case_id": "eval_li_10",
+  "message": "后端岗面试要准备什么",
+  "gold_intents": [
+    "prepare"
+  ],
+  "expected_tools": [
+    "interview_gen"
+  ],
+  "scenario": "面试准备_泛化",
+  "eval_context": {
+    "gold_intents": [
+      "prepare"
+    ],
+    "gold_slots": {
+      "position": "后端"
+    },
+    "relevance_score": 0,
+    "expected_tools": [
+      "interview_gen"
+    ],
+    "scenario": "面试准备_泛化",
+    "notes": "期望生成Java后端相关面试题"
+  },
+  "resume_id": "e30c8b27-cfce-4918-8810-832e3ab5087c",
+  "status": "success",
+  "error": null,
+  "ttfb": 0.011,
+  "total_latency": 129.41,
+  "event_count": 201,
+  "pred_intent": "interview_prepare",
+  "pred_intents": [
+    "interview_prepare"
+  ],
+  "pred_tools": [
+    {
+      "tool": "kb_retrieve",
+      "status": "✅",
+      "params": {
+        "query": "后端",
+        "top_k": 3,
+        "company": null,
+        "position": null
+      },
+      "result_preview": "{'chunks': [{'chunk_id': '9cde8355-dcc0-434e-97c4-67dfc5dae5b8_chunk_4', 'content': '【阿里巴巴 · 后端开发 硬性要求】\\n熟悉分布式系统设计与微服务架构', 'metadata': {'company': '阿里巴巴', 'index': 4, 'jd_id': '9cde8355-dcc0-434e-97c4"
+    },
+    {
+      "tool": "match_analyze",
+      "status": "✅",
+      "params": {
+        "resume_text": "姓名：李工程师\n电话：138-XXXX-1234 | 邮箱：lixx_dev@email.com | 现居：北京\nJava后端开发工程师 | 3年经验 | 本科\n\n教育背景\n2018.09 - 2022.06  XX理工大学  计算机科学与技术（本科）\n主修课程：数据结构与算法、操作系统、计算机网络、数据库原理、软件工程\n在校荣誉：校级优秀毕业设计（基于微服务的校园二手交易平台）\n\n专业技能\n熟练掌握Java核心技术，熟悉JVM内存模型、GC机制及常见调优手段\n精通Spring Boot、Spring Cloud微服务生态，熟悉Nacos、Gateway、Sentinel、Seata等组件\n熟悉MySQL索引优化、事务机制、分库分表策略，具备SQL调优及慢查询治理经验\n了解Redis缓存设计、Kafka消息队列，熟悉Docker容器化部署及Jenkins CI/CD流程\n掌握Git版本控制，熟悉Linux日常运维及日志排查\n\n工作经历\n2022.07 - 至今  XX科技有限公司（B轮 / 企业服务 SaaS）  Java后端工程师\n\nSaaS供应链管理平台（2023.03 - 至今）\n负责订单中心、库存中心核心模块设计与开发，采用Spring Cloud Alibaba微服务架构，支撑日均10W+订单处理\n主导MySQL分库分表方案设计（ShardingSphere），解决单表数据量过亿导致的查询性能瓶颈，接口响应时间从800ms降至120ms\n设计多级缓存策略（Redis + Caffeine本地缓存），热点数据命中率提升至95%，降低数据库负载40%\n基于Seata AT模式实现分布式事务，保障订单与库存数据一致性，线上运行半年零资损事故\n\n企业权限中台重构（2022.09 - 2023.02）\n参与RBAC权限中台从单体到微服务的拆分重构，负责鉴权服务、菜单路由模块开发\n引入Gateway统一鉴权过滤器，对接OAuth2.0 + JWT认证体系，支持多租户隔离\n编写核心接口单元测试（Unit + Mockito），模块测试覆盖率从45%提升至82%\n\n自我评价\n具备扎实的计算机基础与3年企业级后端开发经验，擅长高并发场景下的系统设计与性能优化。注重代码质量与工程规范，具备良好的团队协作与跨部门沟通能力。",
+        "jd_text": [
+          {
+            "chunk_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8_chunk_4",
+            "content": "【阿里巴巴 · 后端开发 硬性要求】\n熟悉分布式系统设计与微服务架构",
+            "metadata": {
+              "company": "阿里巴巴",
+              "index": 4,
+              "jd_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8",
+              "position": "后端开发",
+              "priority": "high",
+              "section": "hard_requirements",
+              "strategy": "semantic"
+            },
+            "distance": 0.7060721516609192,
+            "bm25_score": 7.371000565719068,
+            "vec_norm": 1.0,
+            "bm25_norm": 0.9334534385756298,
+            "hybrid_score": 0.9800360315726888,
+            "rerank_score": 0.9091
+          },
+          {
+            "chunk_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a_chunk_6",
+            "content": "【某小公司 · Java后端 关键词】\nJava, Spring Boot, MySQL, ERP, 后端",
+            "metadata": {
+              "company": "某小公司",
+              "index": 6,
+              "jd_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a",
+              "position": "Java后端",
+              "section": "keywords",
+              "strategy": "semantic"
+            },
+            "distance": 0.7356441617012024,
+            "bm25_score": 7.128334154399703,
+            "vec_norm": 0.9300361470129888,
+            "bm25_norm": 0.897030831040145,
+            "hybrid_score": 0.9201345522211356,
+            "rerank_score": 0.896
+          },
+          {
+            "chunk_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8_chunk_3",
+            "content": "【阿里巴巴 · 后端开发 硬性要求】\n精通Spring Boot、MySQL、Redis、Kafka",
+            "metadata": {
+              "company": "阿里巴巴",
+              "index": 3,
+              "jd_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8",
+              "position": "后端开发",
+              "priority": "high",
+              "section": "hard_requirements",
+              "strategy": "semantic"
+            },
+            "distance": 0.7226032018661499,
+            "bm25_score": 7.455603054806691,
+            "vec_norm": 0.9608895044772348,
+            "bm25_norm": 0.9461517071155979,
+            "hybrid_score": 0.9564681652687437,
+            "rerank_score": 0.8857
+          }
+        ],
+        "company": null,
+        "position": "后端",
+        "attributes": null
+      },
+      "result_preview": "{'score': 78, 'label': '基本匹配', 'advantages': ['Java', 'Spring Boot', 'MySQL', 'Redis', '分布式系统设计与微服务架构', '微服务架构', '后端开发'], 'weaknesses': ['候选人缺乏对Kafka消息队列的精通经验（仅停留在了解层面），不满足阿里巴巴后端JD中“精通Kafka”的硬性要求；另外，小"
+    },
+    {
+      "tool": "interview_gen",
+      "status": "✅",
+      "params": {
+        "match_result": {
+          "score": 78,
+          "label": "基本匹配",
+          "advantages": [
+            "Java",
+            "Spring Boot",
+            "MySQL",
+            "Redis",
+            "分布式系统设计与微服务架构",
+            "微服务架构",
+            "后端开发"
+          ],
+          "weaknesses": [
+            "候选人缺乏对Kafka消息队列的精通经验（仅停留在了解层面），不满足阿里巴巴后端JD中“精通Kafka”的硬性要求；另外，小公司JD要求“ERP”关键词，候选人虽有SaaS供应链管理平台经验，但未明确涉及ERP领域，匹配度有限。"
+          ],
+          "suggestions": [
+            "核心能力要求: 分布式系统设计能力、微服务架构（Spring Cloud）、精通Spring Boot、MySQL数据库优化（含分库分表）、Redis缓存设计、Kafka消息队列精通、ERP业务理解、后端开发综合能力"
+          ],
+          "match_score": 78,
+          "covered": [
+            "Java",
+            "Spring Boot",
+            "MySQL",
+            "Redis",
+            "分布式系统设计与微服务架构",
+            "微服务架构",
+            "后端开发"
+          ],
+          "missing_experience": "候选人缺乏对Kafka消息队列的精通经验（仅停留在了解层面），不满足阿里巴巴后端JD中“精通Kafka”的硬性要求；另外，小公司JD要求“ERP”关键词，候选人虽有SaaS供应链管理平台经验，但未明确涉及ERP领域，匹配度有限。",
+          "core_skills": "分布式系统设计能力、微服务架构（Spring Cloud）、精通Spring Boot、MySQL数据库优化（含分库分表）、Redis缓存设计、Kafka消息队列精通、ERP业务理解、后端开发综合能力",
+          "company": null,
+          "position": "后端"
+        },
+        "count": 5,
+        "difficulty": "mixed"
+      },
+      "result_preview": "{'questions': ['在Kafka中，要保证消息的严格顺序性和恰好一次语义，同时要求高吞吐，你会如何设计和配置？请详细说明生产者、消费者以及Broker端的参数设置和实现方案。追问方向：1）如果系统需要跨分区保证顺序，但又有大量消息需要负载均衡，你如何权衡？2）你如何处理消费端幂等性设计，确保即使重复消费也不会产生业务异常？', '假设我们要设计一个跨多个微服务的订单创建流程，涉及库存扣"
+    }
+  ],
+  "tools_called": [
+    "kb_retrieve",
+    "match_analyze",
+    "interview_gen"
+  ],
+  "kb_chunks": [
+    {
+      "chunk_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8_chunk_4",
+      "content": "【阿里巴巴 · 后端开发 硬性要求】\n熟悉分布式系统设计与微服务架构",
+      "metadata": {
+        "company": "阿里巴巴",
+        "index": 4,
+        "jd_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8",
+        "position": "后端开发",
+        "priority": "high",
+        "section": "hard_requirements",
+        "strategy": "semantic"
+      },
+      "distance": 0.7060721516609192,
+      "bm25_score": 7.371000565719068,
+      "vec_norm": 1.0,
+      "bm25_norm": 0.9334534385756298,
+      "hybrid_score": 0.9800360315726888,
+      "rerank_score": 0.9091
+    },
+    {
+      "chunk_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a_chunk_6",
+      "content": "【某小公司 · Java后端 关键词】\nJava, Spring Boot, MySQL, ERP, 后端",
+      "metadata": {
+        "company": "某小公司",
+        "index": 6,
+        "jd_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a",
+        "position": "Java后端",
+        "section": "keywords",
+        "strategy": "semantic"
+      },
+      "distance": 0.7356441617012024,
+      "bm25_score": 7.128334154399703,
+      "vec_norm": 0.9300361470129888,
+      "bm25_norm": 0.897030831040145,
+      "hybrid_score": 0.9201345522211356,
+      "rerank_score": 0.896
+    },
+    {
+      "chunk_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8_chunk_3",
+      "content": "【阿里巴巴 · 后端开发 硬性要求】\n精通Spring Boot、MySQL、Redis、Kafka",
+      "metadata": {
+        "company": "阿里巴巴",
+        "index": 3,
+        "jd_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8",
+        "position": "后端开发",
+        "priority": "high",
+        "section": "hard_requirements",
+        "strategy": "semantic"
+      },
+      "distance": 0.7226032018661499,
+      "bm25_score": 7.455603054806691,
+      "vec_norm": 0.9608895044772348,
+      "bm25_norm": 0.9461517071155979,
+      "hybrid_score": 0.9564681652687437,
+      "rerank_score": 0.8857
+    }
+  ],
+  "tool_executions_full": [
+    {
+      "tool_name": "kb_retrieve",
+      "task_id": "T0",
+      "status": "success",
+      "output": {
+        "chunks": [
+          {
+            "chunk_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8_chunk_4",
+            "content": "【阿里巴巴 · 后端开发 硬性要求】\n熟悉分布式系统设计与微服务架构",
+            "source": "阿里巴巴-后端开发",
+            "metadata": {
+              "company": "阿里巴巴",
+              "position": "后端开发"
+            }
+          },
+          {
+            "chunk_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a_chunk_6",
+            "content": "【某小公司 · Java后端 关键词】\nJava, Spring Boot, MySQL, ERP, 后端",
+            "source": "某小公司-Java后端",
+            "metadata": {
+              "company": "某小公司",
+              "position": "Java后端"
+            }
+          },
+          {
+            "chunk_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8_chunk_3",
+            "content": "【阿里巴巴 · 后端开发 硬性要求】\n精通Spring Boot、MySQL、Redis、Kafka",
+            "source": "阿里巴巴-后端开发",
+            "metadata": {
+              "company": "阿里巴巴",
+              "position": "后端开发"
+            }
+          }
+        ],
+        "query": "后端",
+        "filters": {},
+        "strategy": "hybrid(70%vec+30%bm25)+reranker",
+        "pool_k": 3,
+        "rerank_k": 10,
+        "pool_size": 25,
+        "vec_only": 10,
+        "bm25_only": 5,
+        "both": 10,
+        "rerank": {
+          "enabled": true,
+          "candidates": 3,
+          "output": 3,
+          "best_rerank_score": 0.9091
+        }
+      }
+    },
+    {
+      "tool_name": "match_analyze",
+      "task_id": "T1",
+      "status": "success",
+      "output": {
+        "score": 78,
+        "label": "基本匹配",
+        "advantages": [
+          "Java",
+          "Spring Boot",
+          "MySQL",
+          "Redis",
+          "分布式系统设计与微服务架构",
+          "微服务架构",
+          "后端开发"
+        ],
+        "weaknesses": [
+          "候选人缺乏对Kafka消息队列的精通经验（仅停留在了解层面），不满足阿里巴巴后端JD中“精通Kafka”的硬性要求；另外，小公司JD要求“ERP”关键词，候选人虽有SaaS供应链管理平台经验，但未明确涉及ERP领域，匹配度有限。"
+        ],
+        "suggestions": [
+          "核心能力要求: 分布式系统设计能力、微服务架构（Spring Cloud）、精通Spring Boot、MySQL数据库优化（含分库分表）、Redis缓存设计、Kafka消息队列精通、ERP业务理解、后端开发综合能力"
+        ],
+        "match_score": 78,
+        "covered": [
+          "Java",
+          "Spring Boot",
+          "MySQL",
+          "Redis",
+          "分布式系统设计与微服务架构",
+          "微服务架构",
+          "后端开发"
+        ],
+        "missing_experience": "候选人缺乏对Kafka消息队列的精通经验（仅停留在了解层面），不满足阿里巴巴后端JD中“精通Kafka”的硬性要求；另外，小公司JD要求“ERP”关键词，候选人虽有SaaS供应链管理平台经验，但未明确涉及ERP领域，匹配度有限。",
+        "core_skills": "分布式系统设计能力、微服务架构（Spring Cloud）、精通Spring Boot、MySQL数据库优化（含分库分表）、Redis缓存设计、Kafka消息队列精通、ERP业务理解、后端开发综合能力",
+        "company": null,
+        "position": "后端"
+      }
+    },
+    {
+      "tool_name": "interview_gen",
+      "task_id": "T2",
+      "status": "success",
+      "output": {
+        "questions": [
+          "在Kafka中，要保证消息的严格顺序性和恰好一次语义，同时要求高吞吐，你会如何设计和配置？请详细说明生产者、消费者以及Broker端的参数设置和实现方案。追问方向：1）如果系统需要跨分区保证顺序，但又有大量消息需要负载均衡，你如何权衡？2）你如何处理消费端幂等性设计，确保即使重复消费也不会产生业务异常？",
+          "假设我们要设计一个跨多个微服务的订单创建流程，涉及库存扣减、积分增加、物流下单，要求最终一致性和高可用。你会如何选择合适的分布式事务方案？如果基于Kafka实现异步确保型方案，请画出流程图并说明Kafka在其中的角色、分区策略、以及如何处理消息积压和失败重试。追问方向：1）如果其中一个下游服务（如积分服务）处理失败，你如何设计补偿事务或回滚机制？2）如果Kafka集群出现脑裂或日志丢失，如何保证数据不丢且最终一致？",
+          "在ERP系统的订单模块中，订单表数据量预计达到数十亿，需要支持按用户ID、时间范围、订单状态等多维度查询。请设计分库分表方案，包括分片键选择、路由策略、以及如何解决跨分片查询（如统计全平台订单数量）？追问方向：1）如果业务突然需要增加按商家ID维度查询，你如何在不影响现有数据的情况下支持新维度？2）如何设计全局唯一ID生成器，且保证分片后的数据迁移平滑？",
+          "高并发场景下，ERP系统的商品库存查询接口面临巨大压力，热点商品频繁读取DB导致性能瓶颈。请设计一个基于Redis的多级缓存方案（本地缓存+Redis），并详细说明如何保证缓存与数据库的数据一致性（特别是写操作时），以及如何应对缓存击穿、穿透和雪崩。追问方向：1）如果库存数据由多个服务同时更新，如何避免缓存并发写导致的脏数据？2）你如何评估缓存容量，并设计缓存淘汰策略以兼顾热点数据和冷数据？",
+          "请针对ERP系统中的采购入库业务流程（从采购订单生成、到货验收、入库上架、库存更新），设计一个事件驱动的微服务架构。你需要明确各服务职责、服务间通信方式（是否使用Kafka）、以及如何处理分布式事务（如库存更新与采购单状态变更的一致性）。追问方向：1）如果采购订单需要支持分批到货，你如何设计数据库模型和流程状态机？2）如何利用Kafka消息的offset和Consumer Group实现不同服务对同一事件的不同消费速率要求？"
+        ],
+        "focus_areas": [
+          "短板深挖：候选人缺乏对Kafka消息队列的精通经验（仅停留在了解层面），不满足阿里巴巴后端JD中“精通Kafka”的硬性要求；另外，小公司JD要求“ERP”关键词，候选人虽有SaaS供应链管理平台经验，但未明确",
+          "核心能力：分布式系统设计能力、微服务架构（Spring Cloud）、精通Spring Boot、MySQL数据库优化（含分库分表）、Redis缓存设计、Kafka消息队列精通、ERP业务理解、后端开发综合能力"
+        ],
+        "question_count": 5,
+        "company": null,
+        "position": "后端"
+      }
+    },
+    {
+      "tool_name": null,
+      "task_id": "T3",
+      "status": "success",
+      "output": {
+        "aggregation": {
+          "prepare": {
+            "questions": [
+              "在Kafka中，要保证消息的严格顺序性和恰好一次语义，同时要求高吞吐，你会如何设计和配置？请详细说明生产者、消费者以及Broker端的参数设置和实现方案。追问方向：1）如果系统需要跨分区保证顺序，但又有大量消息需要负载均衡，你如何权衡？2）你如何处理消费端幂等性设计，确保即使重复消费也不会产生业务异常？",
+              "假设我们要设计一个跨多个微服务的订单创建流程，涉及库存扣减、积分增加、物流下单，要求最终一致性和高可用。你会如何选择合适的分布式事务方案？如果基于Kafka实现异步确保型方案，请画出流程图并说明Kafka在其中的角色、分区策略、以及如何处理消息积压和失败重试。追问方向：1）如果其中一个下游服务（如积分服务）处理失败，你如何设计补偿事务或回滚机制？2）如果Kafka集群出现脑裂或日志丢失，如何保证数据不丢且最终一致？",
+              "在ERP系统的订单模块中，订单表数据量预计达到数十亿，需要支持按用户ID、时间范围、订单状态等多维度查询。请设计分库分表方案，包括分片键选择、路由策略、以及如何解决跨分片查询（如统计全平台订单数量）？追问方向：1）如果业务突然需要增加按商家ID维度查询，你如何在不影响现有数据的情况下支持新维度？2）如何设计全局唯一ID生成器，且保证分片后的数据迁移平滑？",
+              "高并发场景下，ERP系统的商品库存查询接口面临巨大压力，热点商品频繁读取DB导致性能瓶颈。请设计一个基于Redis的多级缓存方案（本地缓存+Redis），并详细说明如何保证缓存与数据库的数据一致性（特别是写操作时），以及如何应对缓存击穿、穿透和雪崩。追问方向：1）如果库存数据由多个服务同时更新，如何避免缓存并发写导致的脏数据？2）你如何评估缓存容量，并设计缓存淘汰策略以兼顾热点数据和冷数据？",
+              "请针对ERP系统中的采购入库业务流程（从采购订单生成、到货验收、入库上架、库存更新），设计一个事件驱动的微服务架构。你需要明确各服务职责、服务间通信方式（是否使用Kafka）、以及如何处理分布式事务（如库存更新与采购单状态变更的一致性）。追问方向：1）如果采购订单需要支持分批到货，你如何设计数据库模型和流程状态机？2）如何利用Kafka消息的offset和Consumer Group实现不同服务对同一事件的不同消费速率要求？"
+            ],
+            "focus_areas": [
+              "短板深挖：候选人缺乏对Kafka消息队列的精通经验（仅停留在了解层面），不满足阿里巴巴后端JD中“精通Kafka”的硬性要求；另外，小公司JD要求“ERP”关键词，候选人虽有SaaS供应链管理平台经验，但未明确",
+              "核心能力：分布式系统设计能力、微服务架构（Spring Cloud）、精通Spring Boot、MySQL数据库优化（含分库分表）、Redis缓存设计、Kafka消息队列精通、ERP业务理解、后端开发综合能力"
+            ],
+            "question_count": 5,
+            "company": null,
+            "position": "后端"
+          }
+        }
+      }
+    }
+  ],
+  "debug_info": {
+    "task_graph": {
+      "tasks": {
+        "T0": {
+          "task_id": "T0",
+          "task_type": "tool_call",
+          "tool_name": "kb_retrieve",
+          "status": "success",
+          "parameters": {
+            "query": "后端",
+            "top_k": 3,
+            "company": null,
+            "position": null
+          },
+          "resolved_params": {
+            "query": "后端",
+            "top_k": 3,
+            "company": null,
+            "position": null
+          },
+          "result": {
+            "chunks": [
+              {
+                "chunk_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8_chunk_4",
+                "content": "【阿里巴巴 · 后端开发 硬性要求】\n熟悉分布式系统设计与微服务架构",
+                "metadata": {
+                  "company": "阿里巴巴",
+                  "index": 4,
+                  "jd_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8",
+                  "position": "后端开发",
+                  "priority": "high",
+                  "section": "hard_requirements",
+                  "strategy": "semantic"
+                },
+                "distance": 0.7060721516609192,
+                "bm25_score": 7.371000565719068,
+                "vec_norm": 1.0,
+                "bm25_norm": 0.9334534385756298,
+                "hybrid_score": 0.9800360315726888,
+                "rerank_score": 0.9091
+              },
+              {
+                "chunk_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a_chunk_6",
+                "content": "【某小公司 · Java后端 关键词】\nJava, Spring Boot, MySQL, ERP, 后端",
+                "metadata": {
+                  "company": "某小公司",
+                  "index": 6,
+                  "jd_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a",
+                  "position": "Java后端",
+                  "section": "keywords",
+                  "strategy": "semantic"
+                },
+                "distance": 0.7356441617012024,
+                "bm25_score": 7.128334154399703,
+                "vec_norm": 0.9300361470129888,
+                "bm25_norm": 0.897030831040145,
+                "hybrid_score": 0.9201345522211356,
+                "rerank_score": 0.896
+              },
+              {
+                "chunk_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8_chunk_3",
+                "content": "【阿里巴巴 · 后端开发 硬性要求】\n精通Spring Boot、MySQL、Redis、Kafka",
+                "metadata": {
+                  "company": "阿里巴巴",
+                  "index": 3,
+                  "jd_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8",
+                  "position": "后端开发",
+                  "priority": "high",
+                  "section": "hard_requirements",
+                  "strategy": "semantic"
+                },
+                "distance": 0.7226032018661499,
+                "bm25_score": 7.455603054806691,
+                "vec_norm": 0.9608895044772348,
+                "bm25_norm": 0.9461517071155979,
+                "hybrid_score": 0.9564681652687437,
+                "rerank_score": 0.8857
+              }
+            ],
+            "query": "后端",
+            "filters": {},
+            "strategy": "hybrid(70%vec+30%bm25)+reranker",
+            "pool_k": 3,
+            "rerank_k": 10,
+            "pool_size": 25,
+            "vec_only": 10,
+            "bm25_only": 5,
+            "both": 10,
+            "rerank": {
+              "enabled": true,
+              "candidates": 3,
+              "output": 3,
+              "best_rerank_score": 0.9091
+            }
+          },
+          "observation": "工具 kb_retrieve 执行成功"
+        },
+        "T1": {
+          "task_id": "T1",
+          "task_type": "tool_call",
+          "tool_name": "match_analyze",
+          "status": "success",
+          "parameters": {
+            "resume_text": "{{global_slots.resume_text}}",
+            "jd_text": "{{T0.output.chunks}}",
+            "company": null,
+            "position": "{{intent_prepare.position}}",
+            "attributes": null
+          },
+          "resolved_params": {
+            "resume_text": "姓名：李工程师\n电话：138-XXXX-1234 | 邮箱：lixx_dev@email.com | 现居：北京\nJava后端开发工程师 | 3年经验 | 本科\n\n教育背景\n2018.09 - 2022.06  XX理工大学  计算机科学与技术（本科）\n主修课程：数据结构与算法、操作系统、计算机网络、数据库原理、软件工程\n在校荣誉：校级优秀毕业设计（基于微服务的校园二手交易平台）\n\n专业技能\n熟练掌握Java核心技术，熟悉JVM内存模型、GC机制及常见调优手段\n精通Spring Boot、Spring Cloud微服务生态，熟悉Nacos、Gateway、Sentinel、Seata等组件\n熟悉MySQL索引优化、事务机制、分库分表策略，具备SQL调优及慢查询治理经验\n了解Redis缓存设计、Kafka消息队列，熟悉Docker容器化部署及Jenkins CI/CD流程\n掌握Git版本控制，熟悉Linux日常运维及日志排查\n\n工作经历\n2022.07 - 至今  XX科技有限公司（B轮 / 企业服务 SaaS）  Java后端工程师\n\nSaaS供应链管理平台（2023.03 - 至今）\n负责订单中心、库存中心核心模块设计与开发，采用Spring Cloud Alibaba微服务架构，支撑日均10W+订单处理\n主导MySQL分库分表方案设计（ShardingSphere），解决单表数据量过亿导致的查询性能瓶颈，接口响应时间从800ms降至120ms\n设计多级缓存策略（Redis + Caffeine本地缓存），热点数据命中率提升至95%，降低数据库负载40%\n基于Seata AT模式实现分布式事务，保障订单与库存数据一致性，线上运行半年零资损事故\n\n企业权限中台重构（2022.09 - 2023.02）\n参与RBAC权限中台从单体到微服务的拆分重构，负责鉴权服务、菜单路由模块开发\n引入Gateway统一鉴权过滤器，对接OAuth2.0 + JWT认证体系，支持多租户隔离\n编写核心接口单元测试（Unit + Mockito），模块测试覆盖率从45%提升至82%\n\n自我评价\n具备扎实的计算机基础与3年企业级后端开发经验，擅长高并发场景下的系统设计与性能优化。注重代码质量与工程规范，具备良好的团队协作与跨部门沟通能力。",
+            "jd_text": [
+              {
+                "chunk_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8_chunk_4",
+                "content": "【阿里巴巴 · 后端开发 硬性要求】\n熟悉分布式系统设计与微服务架构",
+                "metadata": {
+                  "company": "阿里巴巴",
+                  "index": 4,
+                  "jd_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8",
+                  "position": "后端开发",
+                  "priority": "high",
+                  "section": "hard_requirements",
+                  "strategy": "semantic"
+                },
+                "distance": 0.7060721516609192,
+                "bm25_score": 7.371000565719068,
+                "vec_norm": 1.0,
+                "bm25_norm": 0.9334534385756298,
+                "hybrid_score": 0.9800360315726888,
+                "rerank_score": 0.9091
+              },
+              {
+                "chunk_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a_chunk_6",
+                "content": "【某小公司 · Java后端 关键词】\nJava, Spring Boot, MySQL, ERP, 后端",
+                "metadata": {
+                  "company": "某小公司",
+                  "index": 6,
+                  "jd_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a",
+                  "position": "Java后端",
+                  "section": "keywords",
+                  "strategy": "semantic"
+                },
+                "distance": 0.7356441617012024,
+                "bm25_score": 7.128334154399703,
+                "vec_norm": 0.9300361470129888,
+                "bm25_norm": 0.897030831040145,
+                "hybrid_score": 0.9201345522211356,
+                "rerank_score": 0.896
+              },
+              {
+                "chunk_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8_chunk_3",
+                "content": "【阿里巴巴 · 后端开发 硬性要求】\n精通Spring Boot、MySQL、Redis、Kafka",
+                "metadata": {
+                  "company": "阿里巴巴",
+                  "index": 3,
+                  "jd_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8",
+                  "position": "后端开发",
+                  "priority": "high",
+                  "section": "hard_requirements",
+                  "strategy": "semantic"
+                },
+                "distance": 0.7226032018661499,
+                "bm25_score": 7.455603054806691,
+                "vec_norm": 0.9608895044772348,
+                "bm25_norm": 0.9461517071155979,
+                "hybrid_score": 0.9564681652687437,
+                "rerank_score": 0.8857
+              }
+            ],
+            "company": null,
+            "position": "后端",
+            "attributes": null
+          },
+          "result": {
+            "score": 78,
+            "label": "基本匹配",
+            "advantages": [
+              "Java",
+              "Spring Boot",
+              "MySQL",
+              "Redis",
+              "分布式系统设计与微服务架构",
+              "微服务架构",
+              "后端开发"
+            ],
+            "weaknesses": [
+              "候选人缺乏对Kafka消息队列的精通经验（仅停留在了解层面），不满足阿里巴巴后端JD中“精通Kafka”的硬性要求；另外，小公司JD要求“ERP”关键词，候选人虽有SaaS供应链管理平台经验，但未明确涉及ERP领域，匹配度有限。"
+            ],
+            "suggestions": [
+              "核心能力要求: 分布式系统设计能力、微服务架构（Spring Cloud）、精通Spring Boot、MySQL数据库优化（含分库分表）、Redis缓存设计、Kafka消息队列精通、ERP业务理解、后端开发综合能力"
+            ],
+            "match_score": 78,
+            "covered": [
+              "Java",
+              "Spring Boot",
+              "MySQL",
+              "Redis",
+              "分布式系统设计与微服务架构",
+              "微服务架构",
+              "后端开发"
+            ],
+            "missing_experience": "候选人缺乏对Kafka消息队列的精通经验（仅停留在了解层面），不满足阿里巴巴后端JD中“精通Kafka”的硬性要求；另外，小公司JD要求“ERP”关键词，候选人虽有SaaS供应链管理平台经验，但未明确涉及ERP领域，匹配度有限。",
+            "core_skills": "分布式系统设计能力、微服务架构（Spring Cloud）、精通Spring Boot、MySQL数据库优化（含分库分表）、Redis缓存设计、Kafka消息队列精通、ERP业务理解、后端开发综合能力",
+            "company": null,
+            "position": "后端"
+          },
+          "observation": "工具 match_analyze 执行成功"
+        },
+        "T2": {
+          "task_id": "T2",
+          "task_type": "tool_call",
+          "tool_name": "interview_gen",
+          "status": "success",
+          "parameters": {
+            "match_result": "{{T1.output}}",
+            "count": 5,
+            "difficulty": "mixed"
+          },
+          "resolved_params": {
+            "match_result": {
+              "score": 78,
+              "label": "基本匹配",
+              "advantages": [
+                "Java",
+                "Spring Boot",
+                "MySQL",
+                "Redis",
+                "分布式系统设计与微服务架构",
+                "微服务架构",
+                "后端开发"
+              ],
+              "weaknesses": [
+                "候选人缺乏对Kafka消息队列的精通经验（仅停留在了解层面），不满足阿里巴巴后端JD中“精通Kafka”的硬性要求；另外，小公司JD要求“ERP”关键词，候选人虽有SaaS供应链管理平台经验，但未明确涉及ERP领域，匹配度有限。"
+              ],
+              "suggestions": [
+                "核心能力要求: 分布式系统设计能力、微服务架构（Spring Cloud）、精通Spring Boot、MySQL数据库优化（含分库分表）、Redis缓存设计、Kafka消息队列精通、ERP业务理解、后端开发综合能力"
+              ],
+              "match_score": 78,
+              "covered": [
+                "Java",
+                "Spring Boot",
+                "MySQL",
+                "Redis",
+                "分布式系统设计与微服务架构",
+                "微服务架构",
+                "后端开发"
+              ],
+              "missing_experience": "候选人缺乏对Kafka消息队列的精通经验（仅停留在了解层面），不满足阿里巴巴后端JD中“精通Kafka”的硬性要求；另外，小公司JD要求“ERP”关键词，候选人虽有SaaS供应链管理平台经验，但未明确涉及ERP领域，匹配度有限。",
+              "core_skills": "分布式系统设计能力、微服务架构（Spring Cloud）、精通Spring Boot、MySQL数据库优化（含分库分表）、Redis缓存设计、Kafka消息队列精通、ERP业务理解、后端开发综合能力",
+              "company": null,
+              "position": "后端"
+            },
+            "count": 5,
+            "difficulty": "mixed"
+          },
+          "result": {
+            "questions": [
+              "在Kafka中，要保证消息的严格顺序性和恰好一次语义，同时要求高吞吐，你会如何设计和配置？请详细说明生产者、消费者以及Broker端的参数设置和实现方案。追问方向：1）如果系统需要跨分区保证顺序，但又有大量消息需要负载均衡，你如何权衡？2）你如何处理消费端幂等性设计，确保即使重复消费也不会产生业务异常？",
+              "假设我们要设计一个跨多个微服务的订单创建流程，涉及库存扣减、积分增加、物流下单，要求最终一致性和高可用。你会如何选择合适的分布式事务方案？如果基于Kafka实现异步确保型方案，请画出流程图并说明Kafka在其中的角色、分区策略、以及如何处理消息积压和失败重试。追问方向：1）如果其中一个下游服务（如积分服务）处理失败，你如何设计补偿事务或回滚机制？2）如果Kafka集群出现脑裂或日志丢失，如何保证数据不丢且最终一致？",
+              "在ERP系统的订单模块中，订单表数据量预计达到数十亿，需要支持按用户ID、时间范围、订单状态等多维度查询。请设计分库分表方案，包括分片键选择、路由策略、以及如何解决跨分片查询（如统计全平台订单数量）？追问方向：1）如果业务突然需要增加按商家ID维度查询，你如何在不影响现有数据的情况下支持新维度？2）如何设计全局唯一ID生成器，且保证分片后的数据迁移平滑？",
+              "高并发场景下，ERP系统的商品库存查询接口面临巨大压力，热点商品频繁读取DB导致性能瓶颈。请设计一个基于Redis的多级缓存方案（本地缓存+Redis），并详细说明如何保证缓存与数据库的数据一致性（特别是写操作时），以及如何应对缓存击穿、穿透和雪崩。追问方向：1）如果库存数据由多个服务同时更新，如何避免缓存并发写导致的脏数据？2）你如何评估缓存容量，并设计缓存淘汰策略以兼顾热点数据和冷数据？",
+              "请针对ERP系统中的采购入库业务流程（从采购订单生成、到货验收、入库上架、库存更新），设计一个事件驱动的微服务架构。你需要明确各服务职责、服务间通信方式（是否使用Kafka）、以及如何处理分布式事务（如库存更新与采购单状态变更的一致性）。追问方向：1）如果采购订单需要支持分批到货，你如何设计数据库模型和流程状态机？2）如何利用Kafka消息的offset和Consumer Group实现不同服务对同一事件的不同消费速率要求？"
+            ],
+            "focus_areas": [
+              "短板深挖：候选人缺乏对Kafka消息队列的精通经验（仅停留在了解层面），不满足阿里巴巴后端JD中“精通Kafka”的硬性要求；另外，小公司JD要求“ERP”关键词，候选人虽有SaaS供应链管理平台经验，但未明确",
+              "核心能力：分布式系统设计能力、微服务架构（Spring Cloud）、精通Spring Boot、MySQL数据库优化（含分库分表）、Redis缓存设计、Kafka消息队列精通、ERP业务理解、后端开发综合能力"
+            ],
+            "question_count": 5,
+            "company": null,
+            "position": "后端"
+          },
+          "observation": "工具 interview_gen 执行成功"
+        },
+        "T3": {
+          "task_id": "T3",
+          "task_type": "aggregate",
+          "tool_name": null,
+          "status": "success",
+          "parameters": {
+            "prepare": "{{T2.output}}"
+          },
+          "resolved_params": {
+            "prepare": {
+              "questions": [
+                "在Kafka中，要保证消息的严格顺序性和恰好一次语义，同时要求高吞吐，你会如何设计和配置？请详细说明生产者、消费者以及Broker端的参数设置和实现方案。追问方向：1）如果系统需要跨分区保证顺序，但又有大量消息需要负载均衡，你如何权衡？2）你如何处理消费端幂等性设计，确保即使重复消费也不会产生业务异常？",
+                "假设我们要设计一个跨多个微服务的订单创建流程，涉及库存扣减、积分增加、物流下单，要求最终一致性和高可用。你会如何选择合适的分布式事务方案？如果基于Kafka实现异步确保型方案，请画出流程图并说明Kafka在其中的角色、分区策略、以及如何处理消息积压和失败重试。追问方向：1）如果其中一个下游服务（如积分服务）处理失败，你如何设计补偿事务或回滚机制？2）如果Kafka集群出现脑裂或日志丢失，如何保证数据不丢且最终一致？",
+                "在ERP系统的订单模块中，订单表数据量预计达到数十亿，需要支持按用户ID、时间范围、订单状态等多维度查询。请设计分库分表方案，包括分片键选择、路由策略、以及如何解决跨分片查询（如统计全平台订单数量）？追问方向：1）如果业务突然需要增加按商家ID维度查询，你如何在不影响现有数据的情况下支持新维度？2）如何设计全局唯一ID生成器，且保证分片后的数据迁移平滑？",
+                "高并发场景下，ERP系统的商品库存查询接口面临巨大压力，热点商品频繁读取DB导致性能瓶颈。请设计一个基于Redis的多级缓存方案（本地缓存+Redis），并详细说明如何保证缓存与数据库的数据一致性（特别是写操作时），以及如何应对缓存击穿、穿透和雪崩。追问方向：1）如果库存数据由多个服务同时更新，如何避免缓存并发写导致的脏数据？2）你如何评估缓存容量，并设计缓存淘汰策略以兼顾热点数据和冷数据？",
+                "请针对ERP系统中的采购入库业务流程（从采购订单生成、到货验收、入库上架、库存更新），设计一个事件驱动的微服务架构。你需要明确各服务职责、服务间通信方式（是否使用Kafka）、以及如何处理分布式事务（如库存更新与采购单状态变更的一致性）。追问方向：1）如果采购订单需要支持分批到货，你如何设计数据库模型和流程状态机？2）如何利用Kafka消息的offset和Consumer Group实现不同服务对同一事件的不同消费速率要求？"
+              ],
+              "focus_areas": [
+                "短板深挖：候选人缺乏对Kafka消息队列的精通经验（仅停留在了解层面），不满足阿里巴巴后端JD中“精通Kafka”的硬性要求；另外，小公司JD要求“ERP”关键词，候选人虽有SaaS供应链管理平台经验，但未明确",
+                "核心能力：分布式系统设计能力、微服务架构（Spring Cloud）、精通Spring Boot、MySQL数据库优化（含分库分表）、Redis缓存设计、Kafka消息队列精通、ERP业务理解、后端开发综合能力"
+              ],
+              "question_count": 5,
+              "company": null,
+              "position": "后端"
+            }
+          },
+          "result": {
+            "aggregation": {
+              "prepare": {
+                "questions": [
+                  "在Kafka中，要保证消息的严格顺序性和恰好一次语义，同时要求高吞吐，你会如何设计和配置？请详细说明生产者、消费者以及Broker端的参数设置和实现方案。追问方向：1）如果系统需要跨分区保证顺序，但又有大量消息需要负载均衡，你如何权衡？2）你如何处理消费端幂等性设计，确保即使重复消费也不会产生业务异常？",
+                  "假设我们要设计一个跨多个微服务的订单创建流程，涉及库存扣减、积分增加、物流下单，要求最终一致性和高可用。你会如何选择合适的分布式事务方案？如果基于Kafka实现异步确保型方案，请画出流程图并说明Kafka在其中的角色、分区策略、以及如何处理消息积压和失败重试。追问方向：1）如果其中一个下游服务（如积分服务）处理失败，你如何设计补偿事务或回滚机制？2）如果Kafka集群出现脑裂或日志丢失，如何保证数据不丢且最终一致？",
+                  "在ERP系统的订单模块中，订单表数据量预计达到数十亿，需要支持按用户ID、时间范围、订单状态等多维度查询。请设计分库分表方案，包括分片键选择、路由策略、以及如何解决跨分片查询（如统计全平台订单数量）？追问方向：1）如果业务突然需要增加按商家ID维度查询，你如何在不影响现有数据的情况下支持新维度？2）如何设计全局唯一ID生成器，且保证分片后的数据迁移平滑？",
+                  "高并发场景下，ERP系统的商品库存查询接口面临巨大压力，热点商品频繁读取DB导致性能瓶颈。请设计一个基于Redis的多级缓存方案（本地缓存+Redis），并详细说明如何保证缓存与数据库的数据一致性（特别是写操作时），以及如何应对缓存击穿、穿透和雪崩。追问方向：1）如果库存数据由多个服务同时更新，如何避免缓存并发写导致的脏数据？2）你如何评估缓存容量，并设计缓存淘汰策略以兼顾热点数据和冷数据？",
+                  "请针对ERP系统中的采购入库业务流程（从采购订单生成、到货验收、入库上架、库存更新），设计一个事件驱动的微服务架构。你需要明确各服务职责、服务间通信方式（是否使用Kafka）、以及如何处理分布式事务（如库存更新与采购单状态变更的一致性）。追问方向：1）如果采购订单需要支持分批到货，你如何设计数据库模型和流程状态机？2）如何利用Kafka消息的offset和Consumer Group实现不同服务对同一事件的不同消费速率要求？"
+                ],
+                "focus_areas": [
+                  "短板深挖：候选人缺乏对Kafka消息队列的精通经验（仅停留在了解层面），不满足阿里巴巴后端JD中“精通Kafka”的硬性要求；另外，小公司JD要求“ERP”关键词，候选人虽有SaaS供应链管理平台经验，但未明确",
+                  "核心能力：分布式系统设计能力、微服务架构（Spring Cloud）、精通Spring Boot、MySQL数据库优化（含分库分表）、Redis缓存设计、Kafka消息队列精通、ERP业务理解、后端开发综合能力"
+                ],
+                "question_count": 5,
+                "company": null,
+                "position": "后端"
+              }
+            }
+          },
+          "observation": "聚合完成"
+        }
+      },
+      "global_status": "success",
+      "replan_reason": "",
+      "replan_count": 0
+    },
+    "intent": {
+      "demands": [
+        {
+          "intent": "interview_prepare",
+          "entities": {
+            "position": "后端"
+          },
+          "confidence": 0.88
+        }
+      ],
+      "needs_clarification": false,
+      "clarification_question": ""
+    },
+    "rewrite": {
+      "rewritten_query": "后端岗面试要准备什么",
+      "search_keywords": "后端岗面试要准备什么",
+      "is_follow_up": false,
+      "follow_up_type": "none",
+      "resolved_references": {}
+    },
+    "evidence_cache": [
+      {
+        "chunk_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8_chunk_4",
+        "content": "【阿里巴巴 · 后端开发 硬性要求】\n熟悉分布式系统设计与微服务架构",
+        "metadata": {
+          "company": "阿里巴巴",
+          "index": 4,
+          "jd_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8",
+          "position": "后端开发",
+          "priority": "high",
+          "section": "hard_requirements",
+          "strategy": "semantic"
+        },
+        "distance": 0.7060721516609192,
+        "bm25_score": 7.371000565719068,
+        "vec_norm": 1.0,
+        "bm25_norm": 0.9334534385756298,
+        "hybrid_score": 0.9800360315726888,
+        "rerank_score": 0.9091
+      },
+      {
+        "chunk_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a_chunk_6",
+        "content": "【某小公司 · Java后端 关键词】\nJava, Spring Boot, MySQL, ERP, 后端",
+        "metadata": {
+          "company": "某小公司",
+          "index": 6,
+          "jd_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a",
+          "position": "Java后端",
+          "section": "keywords",
+          "strategy": "semantic"
+        },
+        "distance": 0.7356441617012024,
+        "bm25_score": 7.128334154399703,
+        "vec_norm": 0.9300361470129888,
+        "bm25_norm": 0.897030831040145,
+        "hybrid_score": 0.9201345522211356,
+        "rerank_score": 0.896
+      },
+      {
+        "chunk_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8_chunk_3",
+        "content": "【阿里巴巴 · 后端开发 硬性要求】\n精通Spring Boot、MySQL、Redis、Kafka",
+        "metadata": {
+          "company": "阿里巴巴",
+          "index": 3,
+          "jd_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8",
+          "position": "后端开发",
+          "priority": "high",
+          "section": "hard_requirements",
+          "strategy": "semantic"
+        },
+        "distance": 0.7226032018661499,
+        "bm25_score": 7.455603054806691,
+        "vec_norm": 0.9608895044772348,
+        "bm25_norm": 0.9461517071155979,
+        "hybrid_score": 0.9564681652687437,
+        "rerank_score": 0.8857
+      }
+    ],
+    "evidence_cache_query": "后端岗面试要准备什么",
+    "tool_outputs": [
+      {
+        "task_id": "T0",
+        "tool": "kb_retrieve",
+        "description": "检索后端岗位通用JD（用户未指定公司）",
+        "result": {
+          "chunks": [
+            {
+              "chunk_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8_chunk_4",
+              "content": "【阿里巴巴 · 后端开发 硬性要求】\n熟悉分布式系统设计与微服务架构",
+              "source": "阿里巴巴-后端开发",
+              "metadata": {
+                "company": "阿里巴巴",
+                "position": "后端开发"
+              }
+            },
+            {
+              "chunk_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a_chunk_6",
+              "content": "【某小公司 · Java后端 关键词】\nJava, Spring Boot, MySQL, ERP, 后端",
+              "source": "某小公司-Java后端",
+              "metadata": {
+                "company": "某小公司",
+                "position": "Java后端"
+              }
+            },
+            {
+              "chunk_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8_chunk_3",
+              "content": "【阿里巴巴 · 后端开发 硬性要求】\n精通Spring Boot、MySQL、Redis、Kafka",
+              "source": "阿里巴巴-后端开发",
+              "metadata": {
+                "company": "阿里巴巴",
+                "position": "后端开发"
+              }
+            }
+          ],
+          "query": "后端",
+          "filters": {},
+          "strategy": "hybrid(70%vec+30%bm25)+reranker",
+          "pool_k": 3,
+          "rerank_k": 10,
+          "pool_size": 25,
+          "vec_only": 10,
+          "bm25_only": 5,
+          "both": 10,
+          "rerank": {
+            "enabled": true,
+            "candidates": 3,
+            "output": 3,
+            "best_rerank_score": 0.9091
+          }
+        }
+      },
+      {
+        "task_id": "T1",
+        "tool": "match_analyze",
+        "description": "分析简历与后端JD的匹配度（为面试题生成提供依据）",
+        "result": {
+          "score": 78,
+          "label": "基本匹配",
+          "advantages": [
+            "Java",
+            "Spring Boot",
+            "MySQL",
+            "Redis",
+            "分布式系统设计与微服务架构",
+            "微服务架构",
+            "后端开发"
+          ],
+          "weaknesses": [
+            "候选人缺乏对Kafka消息队列的精通经验（仅停留在了解层面），不满足阿里巴巴后端JD中“精通Kafka”的硬性要求；另外，小公司JD要求“ERP”关键词，候选人虽有SaaS供应链管理平台经验，但未明确涉及ERP领域，匹配度有限。"
+          ],
+          "suggestions": [
+            "核心能力要求: 分布式系统设计能力、微服务架构（Spring Cloud）、精通Spring Boot、MySQL数据库优化（含分库分表）、Redis缓存设计、Kafka消息队列精通、ERP业务理解、后端开发综合能力"
+          ],
+          "match_score": 78,
+          "covered": [
+            "Java",
+            "Spring Boot",
+            "MySQL",
+            "Redis",
+            "分布式系统设计与微服务架构",
+            "微服务架构",
+            "后端开发"
+          ],
+          "missing_experience": "候选人缺乏对Kafka消息队列的精通经验（仅停留在了解层面），不满足阿里巴巴后端JD中“精通Kafka”的硬性要求；另外，小公司JD要求“ERP”关键词，候选人虽有SaaS供应链管理平台经验，但未明确涉及ERP领域，匹配度有限。",
+          "core_skills": "分布式系统设计能力、微服务架构（Spring Cloud）、精通Spring Boot、MySQL数据库优化（含分库分表）、Redis缓存设计、Kafka消息队列精通、ERP业务理解、后端开发综合能力",
+          "company": null,
+          "position": "后端"
+        }
+      },
+      {
+        "task_id": "T2",
+        "tool": "interview_gen",
+        "description": "基于匹配短板生成后端岗面试题（默认5题，混合难度）",
+        "result": {
+          "questions": [
+            "在Kafka中，要保证消息的严格顺序性和恰好一次语义，同时要求高吞吐，你会如何设计和配置？请详细说明生产者、消费者以及Broker端的参数设置和实现方案。追问方向：1）如果系统需要跨分区保证顺序，但又有大量消息需要负载均衡，你如何权衡？2）你如何处理消费端幂等性设计，确保即使重复消费也不会产生业务异常？",
+            "假设我们要设计一个跨多个微服务的订单创建流程，涉及库存扣减、积分增加、物流下单，要求最终一致性和高可用。你会如何选择合适的分布式事务方案？如果基于Kafka实现异步确保型方案，请画出流程图并说明Kafka在其中的角色、分区策略、以及如何处理消息积压和失败重试。追问方向：1）如果其中一个下游服务（如积分服务）处理失败，你如何设计补偿事务或回滚机制？2）如果Kafka集群出现脑裂或日志丢失，如何保证数据不丢且最终一致？",
+            "在ERP系统的订单模块中，订单表数据量预计达到数十亿，需要支持按用户ID、时间范围、订单状态等多维度查询。请设计分库分表方案，包括分片键选择、路由策略、以及如何解决跨分片查询（如统计全平台订单数量）？追问方向：1）如果业务突然需要增加按商家ID维度查询，你如何在不影响现有数据的情况下支持新维度？2）如何设计全局唯一ID生成器，且保证分片后的数据迁移平滑？",
+            "高并发场景下，ERP系统的商品库存查询接口面临巨大压力，热点商品频繁读取DB导致性能瓶颈。请设计一个基于Redis的多级缓存方案（本地缓存+Redis），并详细说明如何保证缓存与数据库的数据一致性（特别是写操作时），以及如何应对缓存击穿、穿透和雪崩。追问方向：1）如果库存数据由多个服务同时更新，如何避免缓存并发写导致的脏数据？2）你如何评估缓存容量，并设计缓存淘汰策略以兼顾热点数据和冷数据？",
+            "请针对ERP系统中的采购入库业务流程（从采购订单生成、到货验收、入库上架、库存更新），设计一个事件驱动的微服务架构。你需要明确各服务职责、服务间通信方式（是否使用Kafka）、以及如何处理分布式事务（如库存更新与采购单状态变更的一致性）。追问方向：1）如果采购订单需要支持分批到货，你如何设计数据库模型和流程状态机？2）如何利用Kafka消息的offset和Consumer Group实现不同服务对同一事件的不同消费速率要求？"
+          ],
+          "focus_areas": [
+            "短板深挖：候选人缺乏对Kafka消息队列的精通经验（仅停留在了解层面），不满足阿里巴巴后端JD中“精通Kafka”的硬性要求；另外，小公司JD要求“ERP”关键词，候选人虽有SaaS供应链管理平台经验，但未明确",
+            "核心能力：分布式系统设计能力、微服务架构（Spring Cloud）、精通Spring Boot、MySQL数据库优化（含分库分表）、Redis缓存设计、Kafka消息队列精通、ERP业务理解、后端开发综合能力"
+          ],
+          "question_count": 5,
+          "company": null,
+          "position": "后端"
+        }
+      },
+      {
+        "task_id": "T3",
+        "tool": null,
+        "description": "聚合面试题结果，生成最终回复素材",
+        "result": {
+          "aggregation": {
+            "prepare": {
+              "questions": [
+                "在Kafka中，要保证消息的严格顺序性和恰好一次语义，同时要求高吞吐，你会如何设计和配置？请详细说明生产者、消费者以及Broker端的参数设置和实现方案。追问方向：1）如果系统需要跨分区保证顺序，但又有大量消息需要负载均衡，你如何权衡？2）你如何处理消费端幂等性设计，确保即使重复消费也不会产生业务异常？",
+                "假设我们要设计一个跨多个微服务的订单创建流程，涉及库存扣减、积分增加、物流下单，要求最终一致性和高可用。你会如何选择合适的分布式事务方案？如果基于Kafka实现异步确保型方案，请画出流程图并说明Kafka在其中的角色、分区策略、以及如何处理消息积压和失败重试。追问方向：1）如果其中一个下游服务（如积分服务）处理失败，你如何设计补偿事务或回滚机制？2）如果Kafka集群出现脑裂或日志丢失，如何保证数据不丢且最终一致？",
+                "在ERP系统的订单模块中，订单表数据量预计达到数十亿，需要支持按用户ID、时间范围、订单状态等多维度查询。请设计分库分表方案，包括分片键选择、路由策略、以及如何解决跨分片查询（如统计全平台订单数量）？追问方向：1）如果业务突然需要增加按商家ID维度查询，你如何在不影响现有数据的情况下支持新维度？2）如何设计全局唯一ID生成器，且保证分片后的数据迁移平滑？",
+                "高并发场景下，ERP系统的商品库存查询接口面临巨大压力，热点商品频繁读取DB导致性能瓶颈。请设计一个基于Redis的多级缓存方案（本地缓存+Redis），并详细说明如何保证缓存与数据库的数据一致性（特别是写操作时），以及如何应对缓存击穿、穿透和雪崩。追问方向：1）如果库存数据由多个服务同时更新，如何避免缓存并发写导致的脏数据？2）你如何评估缓存容量，并设计缓存淘汰策略以兼顾热点数据和冷数据？",
+                "请针对ERP系统中的采购入库业务流程（从采购订单生成、到货验收、入库上架、库存更新），设计一个事件驱动的微服务架构。你需要明确各服务职责、服务间通信方式（是否使用Kafka）、以及如何处理分布式事务（如库存更新与采购单状态变更的一致性）。追问方向：1）如果采购订单需要支持分批到货，你如何设计数据库模型和流程状态机？2）如何利用Kafka消息的offset和Consumer Group实现不同服务对同一事件的不同消费速率要求？"
+              ],
+              "focus_areas": [
+                "短板深挖：候选人缺乏对Kafka消息队列的精通经验（仅停留在了解层面），不满足阿里巴巴后端JD中“精通Kafka”的硬性要求；另外，小公司JD要求“ERP”关键词，候选人虽有SaaS供应链管理平台经验，但未明确",
+                "核心能力：分布式系统设计能力、微服务架构（Spring Cloud）、精通Spring Boot、MySQL数据库优化（含分库分表）、Redis缓存设计、Kafka消息队列精通、ERP业务理解、后端开发综合能力"
+              ],
+              "question_count": 5,
+              "company": null,
+              "position": "后端"
+            }
+          }
+        }
+      }
+    ],
+    "final_aggregation_prompt": {
+      "system_prompt": "你是一位专业的求职顾问。请基于以下工具执行结果，给用户一个清晰、有帮助的回复。\n要求：\n1. 先直接回答用户的问题（是/否/有/没有），不要绕弯子，不要重复用户的原话\n2. 如果有匹配分析结果，给出具体的分数和建议\n3. 如果有检索结果，基于事实回答，不要编造\n4. 【强制】引用信息时必须标注来源。每个引用的事实后面都要跟 [来源：公司名-岗位名] 格式。   kb_retrieve 结果的 chunks 中带有 'source' 字段（如'字节跳动-AI产品经理'），请直接使用。   external_search 结果带有 'source_name' 字段，也请直接使用。\n5. 当本地知识库与外部搜索结果冲突时，请并列呈现两种说法并标注各自来源，不要替用户做判断\n6. 语气友好、专业、结构化",
+      "user_prompt": "【用户问题】\n后端岗面试要准备什么\n\n【工具执行结果】\n[{\"task_id\": \"T0\", \"tool\": \"kb_retrieve\", \"description\": \"检索后端岗位通用JD（用户未指定公司）\", \"result\": {\"chunks\": [{\"chunk_id\": \"9cde8355-dcc0-434e-97c4-67dfc5dae5b8_chunk_4\", \"content\": \"【阿里巴巴 · 后端开发 硬性要求】\\n熟悉分布式系统设计与微服务架构\", \"source\": \"阿里巴巴-后端开发\", \"metadata\": {\"company\": \"阿里巴巴\", \"position\": \"后端开发\"}}, {\"chunk_id\": \"45bd2600-af57-45fe-a96e-c6cae6838c7a_chunk_6\", \"content\": \"【某小公司 · Java后端 关键词】\\nJava, Spring Boot, MySQL, ERP, 后端\", \"source\": \"某小公司-Java后端\", \"metadata\": {\"company\": \"某小公司\", \"position\": \"Java后端\"}}, {\"chunk_id\": \"9cde8355-dcc0-434e-97c4-67dfc5dae5b8_chunk_3\", \"content\": \"【阿里巴巴 · 后端开发 硬性要求】\\n精通Spring Boot、MySQL、Redis、Kafka\", \"source\": \"阿里巴巴-后端开发\", \"metadata\": {\"company\": \"阿里巴巴\", \"position\": \"后端开发\"}}], \"query\": \"后端\", \"filters\": {}, \"strategy\": \"hybrid(70%vec+30%bm25)+reranker\", \"pool_k\": 3, \"rerank_k\": 10, \"pool_size\": 25, \"vec_only\": 10, \"bm25_only\": 5, \"both\": 10, \"rerank\": {\"enabled\": true, \"candidates\": 3, \"output\": 3, \"best_rerank_score\": 0.9091}}}, {\"task_id\": \"T1\", \"tool\": \"match_analyze\", \"description\": \"分析简历与后端JD的匹配度（为面试题生成提供依据）\", \"result\": {\"score\": 78, \"label\": \"基本匹配\", \"advantages\": [\"Java\", \"Spring Boot\", \"MySQL\", \"Redis\", \"分布式系统设计与微服务架构\", \"微服务架构\", \"后端开发\"], \"weaknesses\": [\"候选人缺乏对Kafka消息队列的精通经验（仅停留在了解层面），不满足阿里巴巴后端JD中“精通Kafka”的硬性要求；另外，小公司JD要求“ERP”关键词，候选人虽有SaaS供应链管理平台经验，但未明确涉及ERP领域，匹配度有限。\"], \"suggestions\": [\"核心能力要求: 分布式系统设计能力、微服务架构（Spring Cloud）、精通Spring Boot、MySQL数据库优化（含分库分表）、Redis缓存设计、Kafka消息队列精通、ERP业务理解、后端开发综合能力\"], \"match_score\": 78, \"covered\": [\"Java\", \"Spring Boot\", \"MySQL\", \"Redis\", \"分布式系统设计与微服务架构\", \"微服务架构\", \"后端开发\"], \"missing_experience\": \"候选人缺乏对Kafka消息队列的精通经验（仅停留在了解层面），不满足阿里巴巴后端JD中“精通Kafka”的硬性要求；另外，小公司JD要求“ERP”关键词，候选人虽有SaaS供应链管理平台经验，但未明确涉及ERP领域，匹配度有限。\", \"core_skills\": \"分布式系统设计能力、微服务架构（Spring Cloud）、精通Spring Boot、MySQL数据库优化（含分库分表）、Redis缓存设计、Kafka消息队列精通、ERP业务理解、后端开发综合能力\", \"company\": null, \"position\": \"后端\"}}, {\"task_id\": \"T2\", \"tool\": \"interview_gen\", \"description\": \"基于匹配短板生成后端岗面试题（默认5题，混合难度）\", \"result\": {\"questions\": [\"在Kafka中，要保证消息的严格顺序性和恰好一次语义，同时要求高吞吐，你会如何设计和配置？请详细说明生产者、消费者以及Broker端的参数设置和实现方案。追问方向：1）如果系统需要跨分区保证顺序，但又有大量消息需要负载均衡，你如何权衡？2）你如何处理消费端幂等性设计，确保即使重复消费也不会产生业务异常？\", \"假设我们要设计一个跨多个微服务的订单创建流程，涉及库存扣减、积分增加、物流下单，要求最终一致性和高可用。你会如何选择合适的分布式事务方案？如果基于Kafka实现异步确保型方案，请画出流程图并说明Kafka在其中的角色、分区策略、以及如何处理消息积压和失败重试。追问方向：1）如果其中一个下游服务（如积分服务）处理失败，你如何设计补偿事务或回滚机制？2）如果Kafka集群出现脑裂或日志丢失，如何保证数据不丢且最终一致？\", \"在ERP系统的订单模块中，订单表数据量预计达到数十亿，需要支持按用户ID、时间范围、订单状态等多维度查询。请设计分库分表方案，包括分片键选择、路由策略、以及如何解决跨分片查询（如统计全平台订单数量）？追问方向：1）如果业务突然需要增加按商家ID维度查询，你如何在不影响现有数据的情况下支持新维度？2）如何设计全局唯一ID生成器，且保证分片后的数据迁移平滑？\", \"高并发场景下，ERP系统的商品库存查询接口面临巨大压力，热点商品频繁读取DB导致性能瓶颈。请设计一个基于Redis的多级缓存方案（本地缓存+Redis），并详细说明如何保证缓存与数据库的数据一致性（特别是写操作时），以及如何应对缓存击穿、穿透和雪崩。追问方向：1）如果库存数据由多个服务同时更新，如何避免缓存并发写导致的脏数据？2）你如何评估缓存容量，并设计缓存淘汰策略以兼顾热点数据和冷数据？\", \"请针对ERP系统中的采购入库业务流程（从采购订单生成、到货验收、入库上架、库存更新），设计一个事件驱动的微服务架构。你需要明确各服务职责、服务间通信方式（是否使用Kafka）、以及如何处理分布式事务（如库存更新与采购单状态变更的一致性）。追问方向：1）如果采购订单需要支持分批到货，你如何设计数据库模型和流程状态机？2）如何利用Kafka消息的offset和Consumer Group实现不同服务对同一事件的不同消费速率要求？\"], \"focus_areas\": [\"短板深挖：候选人缺乏对Kafka消息队列的精通经验（仅停留在了解层面），不满足阿里巴巴后端JD中“精通K\n\n请生成回复："
+    }
+  },
+  "reply": "有具体的准备方向，核心在于中间件精通度、分布式架构能力及业务场景设计。\n\n### 1. 简历匹配度分析\n基于您的背景与后端岗位要求的匹配分析，当前综合匹配度为 **78 分（基本匹配）**。\n*   **优势领域**：Java、Spring Boot、MySQL、Redis、分布式系统设计与微服务架构 [来源：match_analyze]。\n*   **待提升短板**：\n    *   **Kafka 消息队列**：目前仅停留在了解层面，未满足部分大厂 JD 中“精通 Kafka\"的硬性要求 [来源：阿里巴巴 - 后端开发]。\n    *   **ERP 业务理解**：虽有 SaaS 供应链经验，但未明确涉及 ERP 领域关键词，匹配度有限 [来源：某小公司-Java 后端]。\n\n### 2. 核心技能准备清单\n根据检索到的岗位通用要求，您需要重点复习以下技术栈：\n*   **架构设计**：熟悉分布式系统设计与微服务架构 [来源：阿里巴巴 - 后端开发]。\n*   **中间件精通**：精通 Spring Boot、MySQL、Redis、Kafka [来源：阿里巴巴 - 后端开发]。\n*   **业务关键词**：部分岗位特别关注 Java、Spring Boot、MySQL 及 ERP 系统经验 [来源：某小公司-Java 后端]。\n\n### 3. 针对性面试题预测\n基于您的匹配短板，建议重点准备以下 5 道高频率面试题：\n1.  **Kafka 高阶设计**：如何保证消息严格顺序性和恰好一次语义？请说明生产者、消费者及 Broker 端的参数配置，以及跨分区顺序与负载均衡的权衡方案。\n2.  **分布式事务方案**：设计跨微服务的订单创建流程（库存、积分、物流），如何基于 Kafka 实现异步确保型方案？请说明分区策略及消息积压处理。\n3.  **数据库分库分表**：针对数十亿级订单表，如何设计分片键、路由策略及跨分片查询方案？如何支持新增查询维度而不影响现有数据？\n4.  **Redis 缓存架构**：高并发下如何设计多级缓存（本地+Redis）？请详述缓存一致性保证方案，以及应对击穿、穿透、雪崩的策略。\n5.  **事件驱动架构**：针对 ERP 采购入库流程，如何设计微服务职责及通信方式？如何利用 Kafka Offset 实现不同服务的不同消费速率要求？\n\n### 4. 备考建议\n*   **深化中间件原理**：重点补齐 Kafka 精通经验，深入理解消息队列的底层机制及生产环境调优。\n*   **强化业务场景映射**：将现有的 SaaS 供应链经验向 ERP 业务领域靠拢，明确阐述在订单、库存等模块的具体实践。\n*   **核心能力闭环**：系统性复习分布式系统设计能力、微服务架构（Spring Cloud）、MySQL 数据库优化（含分库分表）及 Redis 缓存设计 [来源：match_analyze]。",
+  "reply_length": 1232,
+  "intent_match": true,
+  "tool_match_rate": 1.0,
+  "has_reply": true,
+  "events": [
+    {
+      "step": "intent",
+      "message": "正在识别您的意图...",
+      "_time": 5.711949110031128,
+      "type": "status"
+    },
+    {
+      "step": "plan",
+      "message": "正在规划任务...",
+      "_time": 5.711994171142578,
+      "type": "status"
+    },
+    {
+      "step": "execute",
+      "message": "正在执行分析...",
+      "_time": 31.65107822418213,
+      "type": "status"
+    },
+    {
+      "step": "aggregate",
+      "message": "正在生成回复...",
+      "_time": 52.51399230957031,
+      "type": "status"
+    },
+    {
+      "text": "有具体的准备方向",
+      "_time": 117.64748406410217,
+      "type": "delta"
+    },
+    {
+      "text": "，核心",
+      "_time": 117.65208625793457,
+      "type": "delta"
+    },
+    {
+      "text": "在于中间件精通",
+      "_time": 117.75747680664062,
+      "type": "delta"
+    },
+    {
+      "text": "度",
+      "_time": 117.76200914382935,
+      "type": "delta"
+    },
+    {
+      "text": "、分布式架构能力及",
+      "_time": 117.84733867645264,
+      "type": "delta"
+    },
+    {
+      "text": "业务场景设计。",
+      "_time": 117.87719464302063,
+      "type": "delta"
+    },
+    {
+      "text": "\n\n### 1",
+      "_time": 117.99034094810486,
+      "type": "delta"
+    },
+    {
+      "text": ". ",
+      "_time": 117.99498128890991,
+      "type": "delta"
+    },
+    {
+      "text": "简历匹配度分析",
+      "_time": 118.10049414634705,
+      "type": "delta"
+    },
+    {
+      "text": "\n基于",
+      "_time": 118.10392904281616,
+      "type": "delta"
+    },
+    {
+      "text": "您的背景与后端",
+      "_time": 118.24240756034851,
+      "type": "delta"
+    },
+    {
+      "text": "岗位要求的",
+      "_time": 118.24601173400879,
+      "type": "delta"
+    },
+    {
+      "text": "匹配分析，当前",
+      "_time": 118.31538343429565,
+      "type": "delta"
+    },
+    {
+      "text": "综合",
+      "_time": 118.31920671463013,
+      "type": "delta"
+    },
+    {
+      "text": "匹配度为 **",
+      "_time": 118.50251245498657,
+      "type": "delta"
+    },
+    {
+      "text": "78 分",
+      "_time": 118.50613117218018,
+      "type": "delta"
+    },
+    {
+      "text": "（基本匹配）**",
+      "_time": 118.5834891796112,
+      "type": "delta"
+    },
+    {
+      "text": "。\n*  ",
+      "_time": 118.58714556694031,
+      "type": "delta"
+    },
+    {
+      "text": " **优势领域**",
+      "_time": 118.69339394569397,
+      "type": "delta"
+    },
+    {
+      "text": "：Java、",
+      "_time": 118.69701480865479,
+      "type": "delta"
+    },
+    {
+      "text": "Spring Boot、MySQL",
+      "_time": 118.8584086894989,
+      "type": "delta"
+    },
+    {
+      "text": "、Redis、分布式",
+      "_time": 118.86208701133728,
+      "type": "delta"
+    },
+    {
+      "text": "系统设计与微服务",
+      "_time": 118.96250915527344,
+      "type": "delta"
+    },
+    {
+      "text": "架构 [来源：",
+      "_time": 119.00840544700623,
+      "type": "delta"
+    },
+    {
+      "text": "match_analyze]",
+      "_time": 119.10633969306946,
+      "type": "delta"
+    },
+    {
+      "text": "。",
+      "_time": 119.112149477005,
+      "type": "delta"
+    },
+    {
+      "text": "\n*   **",
+      "_time": 119.19639706611633,
+      "type": "delta"
+    },
+    {
+      "text": "待提升短板",
+      "_time": 119.23230123519897,
+      "type": "delta"
+    },
+    {
+      "text": "**：\n   ",
+      "_time": 119.32143092155457,
+      "type": "delta"
+    },
+    {
+      "text": " *   **K",
+      "_time": 119.3271107673645,
+      "type": "delta"
+    },
+    {
+      "text": "afka 消息队列",
+      "_time": 119.51042175292969,
+      "type": "delta"
+    },
+    {
+      "text": "**：目前",
+      "_time": 119.51417279243469,
+      "type": "delta"
+    },
+    {
+      "text": "仅停留在了解层面",
+      "_time": 119.59451794624329,
+      "type": "delta"
+    },
+    {
+      "text": "，未",
+      "_time": 119.59812498092651,
+      "type": "delta"
+    },
+    {
+      "text": "满足部分大厂 JD",
+      "_time": 119.75208139419556,
+      "type": "delta"
+    },
+    {
+      "text": " 中“精通",
+      "_time": 119.75290393829346,
+      "type": "delta"
+    },
+    {
+      "text": " Kafka\"的硬性",
+      "_time": 119.90114879608154,
+      "type": "delta"
+    },
+    {
+      "text": "要求 [来源",
+      "_time": 119.90369653701782,
+      "type": "delta"
+    },
+    {
+      "text": "：阿里巴巴 - ",
+      "_time": 119.97039937973022,
+      "type": "delta"
+    },
+    {
+      "text": "后端开发]。",
+      "_time": 119.9739305973053,
+      "type": "delta"
+    },
+    {
+      "text": "\n    *  ",
+      "_time": 120.15242862701416,
+      "type": "delta"
+    },
+    {
+      "text": " **ERP",
+      "_time": 120.1569344997406,
+      "type": "delta"
+    },
+    {
+      "text": " 业务理解**",
+      "_time": 120.22523903846741,
+      "type": "delta"
+    },
+    {
+      "text": "：虽有",
+      "_time": 120.23008179664612,
+      "type": "delta"
+    },
+    {
+      "text": " SaaS 供应链",
+      "_time": 120.33125853538513,
+      "type": "delta"
+    },
+    {
+      "text": "经验",
+      "_time": 120.37225770950317,
+      "type": "delta"
+    },
+    {
+      "text": "，但未明确涉及",
+      "_time": 120.42219281196594,
+      "type": "delta"
+    },
+    {
+      "text": " ERP 领域关键词",
+      "_time": 120.42386221885681,
+      "type": "delta"
+    },
+    {
+      "text": "，匹配度有限",
+      "_time": 120.56519341468811,
+      "type": "delta"
+    },
+    {
+      "text": " [来源：某",
+      "_time": 120.5951292514801,
+      "type": "delta"
+    },
+    {
+      "text": "小公司-Java",
+      "_time": 120.70934915542603,
+      "type": "delta"
+    },
+    {
+      "text": " 后端]。",
+      "_time": 120.71492576599121,
+      "type": "delta"
+    },
+    {
+      "text": "\n\n### 2",
+      "_time": 120.8532886505127,
+      "type": "delta"
+    },
+    {
+      "text": ". 核心技能",
+      "_time": 120.85992550849915,
+      "type": "delta"
+    },
+    {
+      "text": "准备清单\n根据",
+      "_time": 121.02716326713562,
+      "type": "delta"
+    },
+    {
+      "text": "检索",
+      "_time": 121.02984642982483,
+      "type": "delta"
+    },
+    {
+      "text": "到的岗位通用要求",
+      "_time": 121.08699536323547,
+      "type": "delta"
+    },
+    {
+      "text": "，您需要",
+      "_time": 121.09406304359436,
+      "type": "delta"
+    },
+    {
+      "text": "重点复习以下技术",
+      "_time": 121.19527292251587,
+      "type": "delta"
+    },
+    {
+      "text": "栈：",
+      "_time": 121.19999575614929,
+      "type": "delta"
+    },
+    {
+      "text": "\n*   **",
+      "_time": 121.33935451507568,
+      "type": "delta"
+    },
+    {
+      "text": "架构设计",
+      "_time": 121.34511160850525,
+      "type": "delta"
+    },
+    {
+      "text": "**：熟悉分布式",
+      "_time": 121.4091579914093,
+      "type": "delta"
+    },
+    {
+      "text": "系统设计与微服务",
+      "_time": 121.41374444961548,
+      "type": "delta"
+    },
+    {
+      "text": "架构 [来源：",
+      "_time": 121.59541130065918,
+      "type": "delta"
+    },
+    {
+      "text": "阿里巴巴 - 后端",
+      "_time": 121.59785056114197,
+      "type": "delta"
+    },
+    {
+      "text": "开发]。\n",
+      "_time": 121.69953417778015,
+      "type": "delta"
+    },
+    {
+      "text": "*   **中间",
+      "_time": 121.70297980308533,
+      "type": "delta"
+    },
+    {
+      "text": "件精通**：",
+      "_time": 121.84382152557373,
+      "type": "delta"
+    },
+    {
+      "text": "精通 Spring",
+      "_time": 121.87548470497131,
+      "type": "delta"
+    },
+    {
+      "text": " Boot、MySQL、",
+      "_time": 121.95021033287048,
+      "type": "delta"
+    },
+    {
+      "text": "Redis、Kafka",
+      "_time": 121.97903037071228,
+      "type": "delta"
+    },
+    {
+      "text": " [来源：阿里巴巴",
+      "_time": 122.09629011154175,
+      "type": "delta"
+    },
+    {
+      "text": " - 后端开发",
+      "_time": 122.10131096839905,
+      "type": "delta"
+    },
+    {
+      "text": "]。\n*",
+      "_time": 122.24027276039124,
+      "type": "delta"
+    },
+    {
+      "text": "   **业务关键词",
+      "_time": 122.27419090270996,
+      "type": "delta"
+    },
+    {
+      "text": "**：部分岗位",
+      "_time": 122.38115119934082,
+      "type": "delta"
+    },
+    {
+      "text": "特别",
+      "_time": 122.38402009010315,
+      "type": "delta"
+    },
+    {
+      "text": "关注 Java、Spring",
+      "_time": 122.47225189208984,
+      "type": "delta"
+    },
+    {
+      "text": " Boot、MySQL",
+      "_time": 122.50500392913818,
+      "type": "delta"
+    },
+    {
+      "text": " 及 ERP ",
+      "_time": 122.59829330444336,
+      "type": "delta"
+    },
+    {
+      "text": "系统",
+      "_time": 122.60287737846375,
+      "type": "delta"
+    },
+    {
+      "text": "经验 [来源：",
+      "_time": 122.68920230865479,
+      "type": "delta"
+    },
+    {
+      "text": "某小公司-J",
+      "_time": 122.69391131401062,
+      "type": "delta"
+    },
+    {
+      "text": "ava 后端]",
+      "_time": 122.86695551872253,
+      "type": "delta"
+    },
+    {
+      "text": "。\n\n### ",
+      "_time": 122.86870408058167,
+      "type": "delta"
+    },
+    {
+      "text": "3. 针对性",
+      "_time": 122.98028111457825,
+      "type": "delta"
+    },
+    {
+      "text": "面试题预测\n",
+      "_time": 122.99093794822693,
+      "type": "delta"
+    },
+    {
+      "text": "基于您的匹配短板",
+      "_time": 123.13204860687256,
+      "type": "delta"
+    },
+    {
+      "text": "，建议重点",
+      "_time": 123.13494038581848,
+      "type": "delta"
+    },
+    {
+      "text": "准备以下 5",
+      "_time": 123.2272732257843,
+      "type": "delta"
+    },
+    {
+      "text": " 道",
+      "_time": 123.22990536689758,
+      "type": "delta"
+    },
+    {
+      "text": "高频率面试题：",
+      "_time": 123.34208536148071,
+      "type": "delta"
+    },
+    {
+      "text": "\n1. ",
+      "_time": 123.34690642356873,
+      "type": "delta"
+    },
+    {
+      "text": " **Kafka ",
+      "_time": 123.5263078212738,
+      "type": "delta"
+    },
+    {
+      "text": "高阶设计**：",
+      "_time": 123.5309739112854,
+      "type": "delta"
+    },
+    {
+      "text": "如何保证消息严格",
+      "_time": 123.62336993217468,
+      "type": "delta"
+    },
+    {
+      "text": "顺序",
+      "_time": 123.62683010101318,
+      "type": "delta"
+    },
+    {
+      "text": "性和恰好一次语义",
+      "_time": 123.7162663936615,
+      "type": "delta"
+    },
+    {
+      "text": "？",
+      "_time": 123.75107073783875,
+      "type": "delta"
+    },
+    {
+      "text": "请说明生产者、",
+      "_time": 123.80626106262207,
+      "type": "delta"
+    },
+    {
+      "text": "消费者及",
+      "_time": 123.81085562705994,
+      "type": "delta"
+    },
+    {
+      "text": " Broker 端的参数",
+      "_time": 123.91321659088135,
+      "type": "delta"
+    },
+    {
+      "text": "配置，",
+      "_time": 123.91691184043884,
+      "type": "delta"
+    },
+    {
+      "text": "以及跨分区顺序",
+      "_time": 124.06625890731812,
+      "type": "delta"
+    },
+    {
+      "text": "与负载均衡的权衡",
+      "_time": 124.07183051109314,
+      "type": "delta"
+    },
+    {
+      "text": "方案。\n2",
+      "_time": 124.16622972488403,
+      "type": "delta"
+    },
+    {
+      "text": ". ",
+      "_time": 124.16890406608582,
+      "type": "delta"
+    },
+    {
+      "text": " **分布式事务方案",
+      "_time": 124.27111959457397,
+      "type": "delta"
+    },
+    {
+      "text": "**：设计",
+      "_time": 124.30291438102722,
+      "type": "delta"
+    },
+    {
+      "text": "跨微服务的订单",
+      "_time": 124.39689064025879,
+      "type": "delta"
+    },
+    {
+      "text": "创建流程（",
+      "_time": 124.39950895309448,
+      "type": "delta"
+    },
+    {
+      "text": "库存、积分、",
+      "_time": 124.5262496471405,
+      "type": "delta"
+    },
+    {
+      "text": "物流），如何",
+      "_time": 124.52989363670349,
+      "type": "delta"
+    },
+    {
+      "text": "基于 Kafka 实现",
+      "_time": 124.68420839309692,
+      "type": "delta"
+    },
+    {
+      "text": "异步确保型",
+      "_time": 124.68981766700745,
+      "type": "delta"
+    },
+    {
+      "text": "方案？请说明",
+      "_time": 124.77730965614319,
+      "type": "delta"
+    },
+    {
+      "text": "分区",
+      "_time": 124.77989506721497,
+      "type": "delta"
+    },
+    {
+      "text": "策略及消息积压",
+      "_time": 124.86517643928528,
+      "type": "delta"
+    },
+    {
+      "text": "处理",
+      "_time": 124.90710163116455,
+      "type": "delta"
+    },
+    {
+      "text": "。\n3.",
+      "_time": 124.95518970489502,
+      "type": "delta"
+    },
+    {
+      "text": "  **数据库分",
+      "_time": 124.96224546432495,
+      "type": "delta"
+    },
+    {
+      "text": "库分表**",
+      "_time": 125.10108304023743,
+      "type": "delta"
+    },
+    {
+      "text": "：针对数十",
+      "_time": 125.1035966873169,
+      "type": "delta"
+    },
+    {
+      "text": "亿级订单表",
+      "_time": 125.22530055046082,
+      "type": "delta"
+    },
+    {
+      "text": "，如何",
+      "_time": 125.26914286613464,
+      "type": "delta"
+    },
+    {
+      "text": "设计分片键",
+      "_time": 125.335116147995,
+      "type": "delta"
+    },
+    {
+      "text": "、路由策略及",
+      "_time": 125.33873867988586,
+      "type": "delta"
+    },
+    {
+      "text": "跨分片查询",
+      "_time": 125.47915029525757,
+      "type": "delta"
+    },
+    {
+      "text": "方案？如何",
+      "_time": 125.48281979560852,
+      "type": "delta"
+    },
+    {
+      "text": "支持新增查询维度",
+      "_time": 125.6082079410553,
+      "type": "delta"
+    },
+    {
+      "text": "而不",
+      "_time": 125.64210748672485,
+      "type": "delta"
+    },
+    {
+      "text": "影响现有数据？",
+      "_time": 125.74218606948853,
+      "type": "delta"
+    },
+    {
+      "text": "\n4. ",
+      "_time": 125.74485349655151,
+      "type": "delta"
+    },
+    {
+      "text": " **Redis 缓存",
+      "_time": 125.83881521224976,
+      "type": "delta"
+    },
+    {
+      "text": "架构",
+      "_time": 125.84261083602905,
+      "type": "delta"
+    },
+    {
+      "text": "**：高并发",
+      "_time": 125.96024107933044,
+      "type": "delta"
+    },
+    {
+      "text": "下",
+      "_time": 125.96376466751099,
+      "type": "delta"
+    },
+    {
+      "text": "如何设计多级缓存",
+      "_time": 126.01803588867188,
+      "type": "delta"
+    },
+    {
+      "text": "（",
+      "_time": 126.02076530456543,
+      "type": "delta"
+    },
+    {
+      "text": "本地+Redis）",
+      "_time": 126.11115550994873,
+      "type": "delta"
+    },
+    {
+      "text": "？",
+      "_time": 126.11702919006348,
+      "type": "delta"
+    },
+    {
+      "text": "请详述缓存",
+      "_time": 126.19909381866455,
+      "type": "delta"
+    },
+    {
+      "text": "一致性保证",
+      "_time": 126.23330044746399,
+      "type": "delta"
+    },
+    {
+      "text": "方案，以及应对",
+      "_time": 126.30611848831177,
+      "type": "delta"
+    },
+    {
+      "text": "击穿",
+      "_time": 126.30980634689331,
+      "type": "delta"
+    },
+    {
+      "text": "、穿透、雪",
+      "_time": 126.39714407920837,
+      "type": "delta"
+    },
+    {
+      "text": "崩的策略。",
+      "_time": 126.39976525306702,
+      "type": "delta"
+    },
+    {
+      "text": "\n5. ",
+      "_time": 126.52399682998657,
+      "type": "delta"
+    },
+    {
+      "text": " **事件驱动架构",
+      "_time": 126.55882239341736,
+      "type": "delta"
+    },
+    {
+      "text": "**：针对 ERP",
+      "_time": 126.66804313659668,
+      "type": "delta"
+    },
+    {
+      "text": " 采购入库",
+      "_time": 126.67378568649292,
+      "type": "delta"
+    },
+    {
+      "text": "流程，如何设计",
+      "_time": 126.79315376281738,
+      "type": "delta"
+    },
+    {
+      "text": "微",
+      "_time": 126.79577565193176,
+      "type": "delta"
+    },
+    {
+      "text": "服务职责及通信",
+      "_time": 127.0119559764862,
+      "type": "delta"
+    },
+    {
+      "text": "方式？",
+      "_time": 127.01575708389282,
+      "type": "delta"
+    },
+    {
+      "text": "如何利用 Kafka Offset ",
+      "_time": 127.02078700065613,
+      "type": "delta"
+    },
+    {
+      "text": "实现不同服务的",
+      "_time": 127.04875445365906,
+      "type": "delta"
+    },
+    {
+      "text": "不同消费速率要求",
+      "_time": 127.11694955825806,
+      "type": "delta"
+    },
+    {
+      "text": "？",
+      "_time": 127.12158489227295,
+      "type": "delta"
+    },
+    {
+      "text": "\n\n### 4",
+      "_time": 127.20684242248535,
+      "type": "delta"
+    },
+    {
+      "text": ". 备考建议",
+      "_time": 127.21056008338928,
+      "type": "delta"
+    },
+    {
+      "text": "\n*   **",
+      "_time": 127.34898519515991,
+      "type": "delta"
+    },
+    {
+      "text": "深化中间",
+      "_time": 127.38779592514038,
+      "type": "delta"
+    },
+    {
+      "text": "件原理**：",
+      "_time": 127.45709919929504,
+      "type": "delta"
+    },
+    {
+      "text": "重点补齐",
+      "_time": 127.46266031265259,
+      "type": "delta"
+    },
+    {
+      "text": " Kafka 精通经验",
+      "_time": 127.5670690536499,
+      "type": "delta"
+    },
+    {
+      "text": "，深入",
+      "_time": 127.56876158714294,
+      "type": "delta"
+    },
+    {
+      "text": "理解消息队列的",
+      "_time": 127.70003724098206,
+      "type": "delta"
+    },
+    {
+      "text": "底层机制及",
+      "_time": 127.70573306083679,
+      "type": "delta"
+    },
+    {
+      "text": "生产环境调优",
+      "_time": 127.79870080947876,
+      "type": "delta"
+    },
+    {
+      "text": "。",
+      "_time": 127.80350089073181,
+      "type": "delta"
+    },
+    {
+      "text": "\n*   **",
+      "_time": 127.89197039604187,
+      "type": "delta"
+    },
+    {
+      "text": "强化业务场景映射",
+      "_time": 127.92589163780212,
+      "type": "delta"
+    },
+    {
+      "text": "**：将现有的",
+      "_time": 128.03595566749573,
+      "type": "delta"
+    },
+    {
+      "text": " SaaS 供应链",
+      "_time": 128.04073190689087,
+      "type": "delta"
+    },
+    {
+      "text": "经验向 ERP ",
+      "_time": 128.17792749404907,
+      "type": "delta"
+    },
+    {
+      "text": "业务领域",
+      "_time": 128.18269228935242,
+      "type": "delta"
+    },
+    {
+      "text": "靠拢，明确阐述",
+      "_time": 128.32521867752075,
+      "type": "delta"
+    },
+    {
+      "text": "在订单",
+      "_time": 128.33180713653564,
+      "type": "delta"
+    },
+    {
+      "text": "、库存等模块",
+      "_time": 128.39398884773254,
+      "type": "delta"
+    },
+    {
+      "text": "的具体",
+      "_time": 128.3976604938507,
+      "type": "delta"
+    },
+    {
+      "text": "实践。\n*",
+      "_time": 128.48388409614563,
+      "type": "delta"
+    },
+    {
+      "text": "  ",
+      "_time": 128.48850274085999,
+      "type": "delta"
+    },
+    {
+      "text": " **核心能力闭环",
+      "_time": 128.61796283721924,
+      "type": "delta"
+    },
+    {
+      "text": "**：系统性",
+      "_time": 128.62263226509094,
+      "type": "delta"
+    },
+    {
+      "text": "复习分布式系统设计能力",
+      "_time": 128.70194101333618,
+      "type": "delta"
+    },
+    {
+      "text": "、微服务架构",
+      "_time": 128.7047324180603,
+      "type": "delta"
+    },
+    {
+      "text": "（Spring Cloud）、",
+      "_time": 128.87322163581848,
+      "type": "delta"
+    },
+    {
+      "text": "MySQL 数据库优化",
+      "_time": 128.87780618667603,
+      "type": "delta"
+    },
+    {
+      "text": "（含分库",
+      "_time": 128.99084186553955,
+      "type": "delta"
+    },
+    {
+      "text": "分表）",
+      "_time": 129.02510976791382,
+      "type": "delta"
+    },
+    {
+      "text": "及 Redis 缓存",
+      "_time": 129.114919424057,
+      "type": "delta"
+    },
+    {
+      "text": "设计 [",
+      "_time": 129.1185531616211,
+      "type": "delta"
+    },
+    {
+      "text": "来源：match_an",
+      "_time": 129.2210807800293,
+      "type": "delta"
+    },
+    {
+      "text": "alyze]。",
+      "_time": 129.25778460502625,
+      "type": "delta"
+    },
+    {
+      "session_id": "eval_li_10_1780649048049",
+      "intent": "interview_prepare",
+      "route_meta": {
+        "layer": "llm",
+        "intent": "interview_prepare",
+        "confidence": 0.88,
+        "demands": [
+          {
+            "intent": "interview_prepare",
+            "entities": {
+              "position": "后端"
+            }
+          }
+        ],
+        "plan_tasks": 4
+      },
+      "agent_mode": "llm",
+      "is_clarification": false,
+      "agent": {
+        "rewritten_query": "后端岗面试要准备什么",
+        "tools": [
+          {
+            "tool": "kb_retrieve",
+            "status": "✅",
+            "params": {
+              "query": "后端",
+              "top_k": 3,
+              "company": null,
+              "position": null
+            },
+            "result_preview": "{'chunks': [{'chunk_id': '9cde8355-dcc0-434e-97c4-67dfc5dae5b8_chunk_4', 'content': '【阿里巴巴 · 后端开发 硬性要求】\\n熟悉分布式系统设计与微服务架构', 'metadata': {'company': '阿里巴巴', 'index': 4, 'jd_id': '9cde8355-dcc0-434e-97c4"
+          },
+          {
+            "tool": "match_analyze",
+            "status": "✅",
+            "params": {
+              "resume_text": "姓名：李工程师\n电话：138-XXXX-1234 | 邮箱：lixx_dev@email.com | 现居：北京\nJava后端开发工程师 | 3年经验 | 本科\n\n教育背景\n2018.09 - 2022.06  XX理工大学  计算机科学与技术（本科）\n主修课程：数据结构与算法、操作系统、计算机网络、数据库原理、软件工程\n在校荣誉：校级优秀毕业设计（基于微服务的校园二手交易平台）\n\n专业技能\n熟练掌握Java核心技术，熟悉JVM内存模型、GC机制及常见调优手段\n精通Spring Boot、Spring Cloud微服务生态，熟悉Nacos、Gateway、Sentinel、Seata等组件\n熟悉MySQL索引优化、事务机制、分库分表策略，具备SQL调优及慢查询治理经验\n了解Redis缓存设计、Kafka消息队列，熟悉Docker容器化部署及Jenkins CI/CD流程\n掌握Git版本控制，熟悉Linux日常运维及日志排查\n\n工作经历\n2022.07 - 至今  XX科技有限公司（B轮 / 企业服务 SaaS）  Java后端工程师\n\nSaaS供应链管理平台（2023.03 - 至今）\n负责订单中心、库存中心核心模块设计与开发，采用Spring Cloud Alibaba微服务架构，支撑日均10W+订单处理\n主导MySQL分库分表方案设计（ShardingSphere），解决单表数据量过亿导致的查询性能瓶颈，接口响应时间从800ms降至120ms\n设计多级缓存策略（Redis + Caffeine本地缓存），热点数据命中率提升至95%，降低数据库负载40%\n基于Seata AT模式实现分布式事务，保障订单与库存数据一致性，线上运行半年零资损事故\n\n企业权限中台重构（2022.09 - 2023.02）\n参与RBAC权限中台从单体到微服务的拆分重构，负责鉴权服务、菜单路由模块开发\n引入Gateway统一鉴权过滤器，对接OAuth2.0 + JWT认证体系，支持多租户隔离\n编写核心接口单元测试（Unit + Mockito），模块测试覆盖率从45%提升至82%\n\n自我评价\n具备扎实的计算机基础与3年企业级后端开发经验，擅长高并发场景下的系统设计与性能优化。注重代码质量与工程规范，具备良好的团队协作与跨部门沟通能力。",
+              "jd_text": [
+                {
+                  "chunk_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8_chunk_4",
+                  "content": "【阿里巴巴 · 后端开发 硬性要求】\n熟悉分布式系统设计与微服务架构",
+                  "metadata": {
+                    "company": "阿里巴巴",
+                    "index": 4,
+                    "jd_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8",
+                    "position": "后端开发",
+                    "priority": "high",
+                    "section": "hard_requirements",
+                    "strategy": "semantic"
+                  },
+                  "distance": 0.7060721516609192,
+                  "bm25_score": 7.371000565719068,
+                  "vec_norm": 1.0,
+                  "bm25_norm": 0.9334534385756298,
+                  "hybrid_score": 0.9800360315726888,
+                  "rerank_score": 0.9091
+                },
+                {
+                  "chunk_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a_chunk_6",
+                  "content": "【某小公司 · Java后端 关键词】\nJava, Spring Boot, MySQL, ERP, 后端",
+                  "metadata": {
+                    "company": "某小公司",
+                    "index": 6,
+                    "jd_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a",
+                    "position": "Java后端",
+                    "section": "keywords",
+                    "strategy": "semantic"
+                  },
+                  "distance": 0.7356441617012024,
+                  "bm25_score": 7.128334154399703,
+                  "vec_norm": 0.9300361470129888,
+                  "bm25_norm": 0.897030831040145,
+                  "hybrid_score": 0.9201345522211356,
+                  "rerank_score": 0.896
+                },
+                {
+                  "chunk_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8_chunk_3",
+                  "content": "【阿里巴巴 · 后端开发 硬性要求】\n精通Spring Boot、MySQL、Redis、Kafka",
+                  "metadata": {
+                    "company": "阿里巴巴",
+                    "index": 3,
+                    "jd_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8",
+                    "position": "后端开发",
+                    "priority": "high",
+                    "section": "hard_requirements",
+                    "strategy": "semantic"
+                  },
+                  "distance": 0.7226032018661499,
+                  "bm25_score": 7.455603054806691,
+                  "vec_norm": 0.9608895044772348,
+                  "bm25_norm": 0.9461517071155979,
+                  "hybrid_score": 0.9564681652687437,
+                  "rerank_score": 0.8857
+                }
+              ],
+              "company": null,
+              "position": "后端",
+              "attributes": null
+            },
+            "result_preview": "{'score': 78, 'label': '基本匹配', 'advantages': ['Java', 'Spring Boot', 'MySQL', 'Redis', '分布式系统设计与微服务架构', '微服务架构', '后端开发'], 'weaknesses': ['候选人缺乏对Kafka消息队列的精通经验（仅停留在了解层面），不满足阿里巴巴后端JD中“精通Kafka”的硬性要求；另外，小"
+          },
+          {
+            "tool": "interview_gen",
+            "status": "✅",
+            "params": {
+              "match_result": {
+                "score": 78,
+                "label": "基本匹配",
+                "advantages": [
+                  "Java",
+                  "Spring Boot",
+                  "MySQL",
+                  "Redis",
+                  "分布式系统设计与微服务架构",
+                  "微服务架构",
+                  "后端开发"
+                ],
+                "weaknesses": [
+                  "候选人缺乏对Kafka消息队列的精通经验（仅停留在了解层面），不满足阿里巴巴后端JD中“精通Kafka”的硬性要求；另外，小公司JD要求“ERP”关键词，候选人虽有SaaS供应链管理平台经验，但未明确涉及ERP领域，匹配度有限。"
+                ],
+                "suggestions": [
+                  "核心能力要求: 分布式系统设计能力、微服务架构（Spring Cloud）、精通Spring Boot、MySQL数据库优化（含分库分表）、Redis缓存设计、Kafka消息队列精通、ERP业务理解、后端开发综合能力"
+                ],
+                "match_score": 78,
+                "covered": [
+                  "Java",
+                  "Spring Boot",
+                  "MySQL",
+                  "Redis",
+                  "分布式系统设计与微服务架构",
+                  "微服务架构",
+                  "后端开发"
+                ],
+                "missing_experience": "候选人缺乏对Kafka消息队列的精通经验（仅停留在了解层面），不满足阿里巴巴后端JD中“精通Kafka”的硬性要求；另外，小公司JD要求“ERP”关键词，候选人虽有SaaS供应链管理平台经验，但未明确涉及ERP领域，匹配度有限。",
+                "core_skills": "分布式系统设计能力、微服务架构（Spring Cloud）、精通Spring Boot、MySQL数据库优化（含分库分表）、Redis缓存设计、Kafka消息队列精通、ERP业务理解、后端开发综合能力",
+                "company": null,
+                "position": "后端"
+              },
+              "count": 5,
+              "difficulty": "mixed"
+            },
+            "result_preview": "{'questions': ['在Kafka中，要保证消息的严格顺序性和恰好一次语义，同时要求高吞吐，你会如何设计和配置？请详细说明生产者、消费者以及Broker端的参数设置和实现方案。追问方向：1）如果系统需要跨分区保证顺序，但又有大量消息需要负载均衡，你如何权衡？2）你如何处理消费端幂等性设计，确保即使重复消费也不会产生业务异常？', '假设我们要设计一个跨多个微服务的订单创建流程，涉及库存扣"
+          }
+        ],
+        "kb_chunks_count": 4,
+        "system_prompt_preview": "你是一位专业的求职顾问。请基于以下工具执行结果，给用户一个清晰、有帮助的回复。\n要求：\n1. 先直接回答用户的问题（是/否/有/没有），不要绕弯子，不要重复用户的原话\n2. 如果有匹配分析结果，给出具体的分数和建议\n3. 如果有检索结果，基于事实回答，不要编造\n4. 【强制】引用信息时必须标注来源。每个引用的事实后面都要跟 [来源：公司名-岗位名] 格式。   kb_retrieve 结果的 ch"
+      },
+      "memory": {
+        "working_turns": 1,
+        "compressed_blocks": 0,
+        "current_topic": "general",
+        "evidence_cache_size": 3
+      },
+      "reply": "有具体的准备方向，核心在于中间件精通度、分布式架构能力及业务场景设计。\n\n### 1. 简历匹配度分析\n基于您的背景与后端岗位要求的匹配分析，当前综合匹配度为 **78 分（基本匹配）**。\n*   **优势领域**：Java、Spring Boot、MySQL、Redis、分布式系统设计与微服务架构 [来源：match_analyze]。\n*   **待提升短板**：\n    *   **Kafka 消息队列**：目前仅停留在了解层面，未满足部分大厂 JD 中“精通 Kafka\"的硬性要求 [来源：阿里巴巴 - 后端开发]。\n    *   **ERP 业务理解**：虽有 SaaS 供应链经验，但未明确涉及 ERP 领域关键词，匹配度有限 [来源：某小公司-Java 后端]。\n\n### 2. 核心技能准备清单\n根据检索到的岗位通用要求，您需要重点复习以下技术栈：\n*   **架构设计**：熟悉分布式系统设计与微服务架构 [来源：阿里巴巴 - 后端开发]。\n*   **中间件精通**：精通 Spring Boot、MySQL、Redis、Kafka [来源：阿里巴巴 - 后端开发]。\n*   **业务关键词**：部分岗位特别关注 Java、Spring Boot、MySQL 及 ERP 系统经验 [来源：某小公司-Java 后端]。\n\n### 3. 针对性面试题预测\n基于您的匹配短板，建议重点准备以下 5 道高频率面试题：\n1.  **Kafka 高阶设计**：如何保证消息严格顺序性和恰好一次语义？请说明生产者、消费者及 Broker 端的参数配置，以及跨分区顺序与负载均衡的权衡方案。\n2.  **分布式事务方案**：设计跨微服务的订单创建流程（库存、积分、物流），如何基于 Kafka 实现异步确保型方案？请说明分区策略及消息积压处理。\n3.  **数据库分库分表**：针对数十亿级订单表，如何设计分片键、路由策略及跨分片查询方案？如何支持新增查询维度而不影响现有数据？\n4.  **Redis 缓存架构**：高并发下如何设计多级缓存（本地+Redis）？请详述缓存一致性保证方案，以及应对击穿、穿透、雪崩的策略。\n5.  **事件驱动架构**：针对 ERP 采购入库流程，如何设计微服务职责及通信方式？如何利用 Kafka Offset 实现不同服务的不同消费速率要求？\n\n### 4. 备考建议\n*   **深化中间件原理**：重点补齐 Kafka 精通经验，深入理解消息队列的底层机制及生产环境调优。\n*   **强化业务场景映射**：将现有的 SaaS 供应链经验向 ERP 业务领域靠拢，明确阐述在订单、库存等模块的具体实践。\n*   **核心能力闭环**：系统性复习分布式系统设计能力、微服务架构（Spring Cloud）、MySQL 数据库优化（含分库分表）及 Redis 缓存设计 [来源：match_analyze]。",
+      "debug_info": {
+        "task_graph": {
+          "tasks": {
+            "T0": {
+              "task_id": "T0",
+              "task_type": "tool_call",
+              "tool_name": "kb_retrieve",
+              "status": "success",
+              "parameters": {
+                "query": "后端",
+                "top_k": 3,
+                "company": null,
+                "position": null
+              },
+              "resolved_params": {
+                "query": "后端",
+                "top_k": 3,
+                "company": null,
+                "position": null
+              },
+              "result": {
+                "chunks": [
+                  {
+                    "chunk_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8_chunk_4",
+                    "content": "【阿里巴巴 · 后端开发 硬性要求】\n熟悉分布式系统设计与微服务架构",
+                    "metadata": {
+                      "company": "阿里巴巴",
+                      "index": 4,
+                      "jd_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8",
+                      "position": "后端开发",
+                      "priority": "high",
+                      "section": "hard_requirements",
+                      "strategy": "semantic"
+                    },
+                    "distance": 0.7060721516609192,
+                    "bm25_score": 7.371000565719068,
+                    "vec_norm": 1.0,
+                    "bm25_norm": 0.9334534385756298,
+                    "hybrid_score": 0.9800360315726888,
+                    "rerank_score": 0.9091
+                  },
+                  {
+                    "chunk_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a_chunk_6",
+                    "content": "【某小公司 · Java后端 关键词】\nJava, Spring Boot, MySQL, ERP, 后端",
+                    "metadata": {
+                      "company": "某小公司",
+                      "index": 6,
+                      "jd_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a",
+                      "position": "Java后端",
+                      "section": "keywords",
+                      "strategy": "semantic"
+                    },
+                    "distance": 0.7356441617012024,
+                    "bm25_score": 7.128334154399703,
+                    "vec_norm": 0.9300361470129888,
+                    "bm25_norm": 0.897030831040145,
+                    "hybrid_score": 0.9201345522211356,
+                    "rerank_score": 0.896
+                  },
+                  {
+                    "chunk_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8_chunk_3",
+                    "content": "【阿里巴巴 · 后端开发 硬性要求】\n精通Spring Boot、MySQL、Redis、Kafka",
+                    "metadata": {
+                      "company": "阿里巴巴",
+                      "index": 3,
+                      "jd_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8",
+                      "position": "后端开发",
+                      "priority": "high",
+                      "section": "hard_requirements",
+                      "strategy": "semantic"
+                    },
+                    "distance": 0.7226032018661499,
+                    "bm25_score": 7.455603054806691,
+                    "vec_norm": 0.9608895044772348,
+                    "bm25_norm": 0.9461517071155979,
+                    "hybrid_score": 0.9564681652687437,
+                    "rerank_score": 0.8857
+                  }
+                ],
+                "query": "后端",
+                "filters": {},
+                "strategy": "hybrid(70%vec+30%bm25)+reranker",
+                "pool_k": 3,
+                "rerank_k": 10,
+                "pool_size": 25,
+                "vec_only": 10,
+                "bm25_only": 5,
+                "both": 10,
+                "rerank": {
+                  "enabled": true,
+                  "candidates": 3,
+                  "output": 3,
+                  "best_rerank_score": 0.9091
+                }
+              },
+              "observation": "工具 kb_retrieve 执行成功"
+            },
+            "T1": {
+              "task_id": "T1",
+              "task_type": "tool_call",
+              "tool_name": "match_analyze",
+              "status": "success",
+              "parameters": {
+                "resume_text": "{{global_slots.resume_text}}",
+                "jd_text": "{{T0.output.chunks}}",
+                "company": null,
+                "position": "{{intent_prepare.position}}",
+                "attributes": null
+              },
+              "resolved_params": {
+                "resume_text": "姓名：李工程师\n电话：138-XXXX-1234 | 邮箱：lixx_dev@email.com | 现居：北京\nJava后端开发工程师 | 3年经验 | 本科\n\n教育背景\n2018.09 - 2022.06  XX理工大学  计算机科学与技术（本科）\n主修课程：数据结构与算法、操作系统、计算机网络、数据库原理、软件工程\n在校荣誉：校级优秀毕业设计（基于微服务的校园二手交易平台）\n\n专业技能\n熟练掌握Java核心技术，熟悉JVM内存模型、GC机制及常见调优手段\n精通Spring Boot、Spring Cloud微服务生态，熟悉Nacos、Gateway、Sentinel、Seata等组件\n熟悉MySQL索引优化、事务机制、分库分表策略，具备SQL调优及慢查询治理经验\n了解Redis缓存设计、Kafka消息队列，熟悉Docker容器化部署及Jenkins CI/CD流程\n掌握Git版本控制，熟悉Linux日常运维及日志排查\n\n工作经历\n2022.07 - 至今  XX科技有限公司（B轮 / 企业服务 SaaS）  Java后端工程师\n\nSaaS供应链管理平台（2023.03 - 至今）\n负责订单中心、库存中心核心模块设计与开发，采用Spring Cloud Alibaba微服务架构，支撑日均10W+订单处理\n主导MySQL分库分表方案设计（ShardingSphere），解决单表数据量过亿导致的查询性能瓶颈，接口响应时间从800ms降至120ms\n设计多级缓存策略（Redis + Caffeine本地缓存），热点数据命中率提升至95%，降低数据库负载40%\n基于Seata AT模式实现分布式事务，保障订单与库存数据一致性，线上运行半年零资损事故\n\n企业权限中台重构（2022.09 - 2023.02）\n参与RBAC权限中台从单体到微服务的拆分重构，负责鉴权服务、菜单路由模块开发\n引入Gateway统一鉴权过滤器，对接OAuth2.0 + JWT认证体系，支持多租户隔离\n编写核心接口单元测试（Unit + Mockito），模块测试覆盖率从45%提升至82%\n\n自我评价\n具备扎实的计算机基础与3年企业级后端开发经验，擅长高并发场景下的系统设计与性能优化。注重代码质量与工程规范，具备良好的团队协作与跨部门沟通能力。",
+                "jd_text": [
+                  {
+                    "chunk_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8_chunk_4",
+                    "content": "【阿里巴巴 · 后端开发 硬性要求】\n熟悉分布式系统设计与微服务架构",
+                    "metadata": {
+                      "company": "阿里巴巴",
+                      "index": 4,
+                      "jd_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8",
+                      "position": "后端开发",
+                      "priority": "high",
+                      "section": "hard_requirements",
+                      "strategy": "semantic"
+                    },
+                    "distance": 0.7060721516609192,
+                    "bm25_score": 7.371000565719068,
+                    "vec_norm": 1.0,
+                    "bm25_norm": 0.9334534385756298,
+                    "hybrid_score": 0.9800360315726888,
+                    "rerank_score": 0.9091
+                  },
+                  {
+                    "chunk_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a_chunk_6",
+                    "content": "【某小公司 · Java后端 关键词】\nJava, Spring Boot, MySQL, ERP, 后端",
+                    "metadata": {
+                      "company": "某小公司",
+                      "index": 6,
+                      "jd_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a",
+                      "position": "Java后端",
+                      "section": "keywords",
+                      "strategy": "semantic"
+                    },
+                    "distance": 0.7356441617012024,
+                    "bm25_score": 7.128334154399703,
+                    "vec_norm": 0.9300361470129888,
+                    "bm25_norm": 0.897030831040145,
+                    "hybrid_score": 0.9201345522211356,
+                    "rerank_score": 0.896
+                  },
+                  {
+                    "chunk_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8_chunk_3",
+                    "content": "【阿里巴巴 · 后端开发 硬性要求】\n精通Spring Boot、MySQL、Redis、Kafka",
+                    "metadata": {
+                      "company": "阿里巴巴",
+                      "index": 3,
+                      "jd_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8",
+                      "position": "后端开发",
+                      "priority": "high",
+                      "section": "hard_requirements",
+                      "strategy": "semantic"
+                    },
+                    "distance": 0.7226032018661499,
+                    "bm25_score": 7.455603054806691,
+                    "vec_norm": 0.9608895044772348,
+                    "bm25_norm": 0.9461517071155979,
+                    "hybrid_score": 0.9564681652687437,
+                    "rerank_score": 0.8857
+                  }
+                ],
+                "company": null,
+                "position": "后端",
+                "attributes": null
+              },
+              "result": {
+                "score": 78,
+                "label": "基本匹配",
+                "advantages": [
+                  "Java",
+                  "Spring Boot",
+                  "MySQL",
+                  "Redis",
+                  "分布式系统设计与微服务架构",
+                  "微服务架构",
+                  "后端开发"
+                ],
+                "weaknesses": [
+                  "候选人缺乏对Kafka消息队列的精通经验（仅停留在了解层面），不满足阿里巴巴后端JD中“精通Kafka”的硬性要求；另外，小公司JD要求“ERP”关键词，候选人虽有SaaS供应链管理平台经验，但未明确涉及ERP领域，匹配度有限。"
+                ],
+                "suggestions": [
+                  "核心能力要求: 分布式系统设计能力、微服务架构（Spring Cloud）、精通Spring Boot、MySQL数据库优化（含分库分表）、Redis缓存设计、Kafka消息队列精通、ERP业务理解、后端开发综合能力"
+                ],
+                "match_score": 78,
+                "covered": [
+                  "Java",
+                  "Spring Boot",
+                  "MySQL",
+                  "Redis",
+                  "分布式系统设计与微服务架构",
+                  "微服务架构",
+                  "后端开发"
+                ],
+                "missing_experience": "候选人缺乏对Kafka消息队列的精通经验（仅停留在了解层面），不满足阿里巴巴后端JD中“精通Kafka”的硬性要求；另外，小公司JD要求“ERP”关键词，候选人虽有SaaS供应链管理平台经验，但未明确涉及ERP领域，匹配度有限。",
+                "core_skills": "分布式系统设计能力、微服务架构（Spring Cloud）、精通Spring Boot、MySQL数据库优化（含分库分表）、Redis缓存设计、Kafka消息队列精通、ERP业务理解、后端开发综合能力",
+                "company": null,
+                "position": "后端"
+              },
+              "observation": "工具 match_analyze 执行成功"
+            },
+            "T2": {
+              "task_id": "T2",
+              "task_type": "tool_call",
+              "tool_name": "interview_gen",
+              "status": "success",
+              "parameters": {
+                "match_result": "{{T1.output}}",
+                "count": 5,
+                "difficulty": "mixed"
+              },
+              "resolved_params": {
+                "match_result": {
+                  "score": 78,
+                  "label": "基本匹配",
+                  "advantages": [
+                    "Java",
+                    "Spring Boot",
+                    "MySQL",
+                    "Redis",
+                    "分布式系统设计与微服务架构",
+                    "微服务架构",
+                    "后端开发"
+                  ],
+                  "weaknesses": [
+                    "候选人缺乏对Kafka消息队列的精通经验（仅停留在了解层面），不满足阿里巴巴后端JD中“精通Kafka”的硬性要求；另外，小公司JD要求“ERP”关键词，候选人虽有SaaS供应链管理平台经验，但未明确涉及ERP领域，匹配度有限。"
+                  ],
+                  "suggestions": [
+                    "核心能力要求: 分布式系统设计能力、微服务架构（Spring Cloud）、精通Spring Boot、MySQL数据库优化（含分库分表）、Redis缓存设计、Kafka消息队列精通、ERP业务理解、后端开发综合能力"
+                  ],
+                  "match_score": 78,
+                  "covered": [
+                    "Java",
+                    "Spring Boot",
+                    "MySQL",
+                    "Redis",
+                    "分布式系统设计与微服务架构",
+                    "微服务架构",
+                    "后端开发"
+                  ],
+                  "missing_experience": "候选人缺乏对Kafka消息队列的精通经验（仅停留在了解层面），不满足阿里巴巴后端JD中“精通Kafka”的硬性要求；另外，小公司JD要求“ERP”关键词，候选人虽有SaaS供应链管理平台经验，但未明确涉及ERP领域，匹配度有限。",
+                  "core_skills": "分布式系统设计能力、微服务架构（Spring Cloud）、精通Spring Boot、MySQL数据库优化（含分库分表）、Redis缓存设计、Kafka消息队列精通、ERP业务理解、后端开发综合能力",
+                  "company": null,
+                  "position": "后端"
+                },
+                "count": 5,
+                "difficulty": "mixed"
+              },
+              "result": {
+                "questions": [
+                  "在Kafka中，要保证消息的严格顺序性和恰好一次语义，同时要求高吞吐，你会如何设计和配置？请详细说明生产者、消费者以及Broker端的参数设置和实现方案。追问方向：1）如果系统需要跨分区保证顺序，但又有大量消息需要负载均衡，你如何权衡？2）你如何处理消费端幂等性设计，确保即使重复消费也不会产生业务异常？",
+                  "假设我们要设计一个跨多个微服务的订单创建流程，涉及库存扣减、积分增加、物流下单，要求最终一致性和高可用。你会如何选择合适的分布式事务方案？如果基于Kafka实现异步确保型方案，请画出流程图并说明Kafka在其中的角色、分区策略、以及如何处理消息积压和失败重试。追问方向：1）如果其中一个下游服务（如积分服务）处理失败，你如何设计补偿事务或回滚机制？2）如果Kafka集群出现脑裂或日志丢失，如何保证数据不丢且最终一致？",
+                  "在ERP系统的订单模块中，订单表数据量预计达到数十亿，需要支持按用户ID、时间范围、订单状态等多维度查询。请设计分库分表方案，包括分片键选择、路由策略、以及如何解决跨分片查询（如统计全平台订单数量）？追问方向：1）如果业务突然需要增加按商家ID维度查询，你如何在不影响现有数据的情况下支持新维度？2）如何设计全局唯一ID生成器，且保证分片后的数据迁移平滑？",
+                  "高并发场景下，ERP系统的商品库存查询接口面临巨大压力，热点商品频繁读取DB导致性能瓶颈。请设计一个基于Redis的多级缓存方案（本地缓存+Redis），并详细说明如何保证缓存与数据库的数据一致性（特别是写操作时），以及如何应对缓存击穿、穿透和雪崩。追问方向：1）如果库存数据由多个服务同时更新，如何避免缓存并发写导致的脏数据？2）你如何评估缓存容量，并设计缓存淘汰策略以兼顾热点数据和冷数据？",
+                  "请针对ERP系统中的采购入库业务流程（从采购订单生成、到货验收、入库上架、库存更新），设计一个事件驱动的微服务架构。你需要明确各服务职责、服务间通信方式（是否使用Kafka）、以及如何处理分布式事务（如库存更新与采购单状态变更的一致性）。追问方向：1）如果采购订单需要支持分批到货，你如何设计数据库模型和流程状态机？2）如何利用Kafka消息的offset和Consumer Group实现不同服务对同一事件的不同消费速率要求？"
+                ],
+                "focus_areas": [
+                  "短板深挖：候选人缺乏对Kafka消息队列的精通经验（仅停留在了解层面），不满足阿里巴巴后端JD中“精通Kafka”的硬性要求；另外，小公司JD要求“ERP”关键词，候选人虽有SaaS供应链管理平台经验，但未明确",
+                  "核心能力：分布式系统设计能力、微服务架构（Spring Cloud）、精通Spring Boot、MySQL数据库优化（含分库分表）、Redis缓存设计、Kafka消息队列精通、ERP业务理解、后端开发综合能力"
+                ],
+                "question_count": 5,
+                "company": null,
+                "position": "后端"
+              },
+              "observation": "工具 interview_gen 执行成功"
+            },
+            "T3": {
+              "task_id": "T3",
+              "task_type": "aggregate",
+              "tool_name": null,
+              "status": "success",
+              "parameters": {
+                "prepare": "{{T2.output}}"
+              },
+              "resolved_params": {
+                "prepare": {
+                  "questions": [
+                    "在Kafka中，要保证消息的严格顺序性和恰好一次语义，同时要求高吞吐，你会如何设计和配置？请详细说明生产者、消费者以及Broker端的参数设置和实现方案。追问方向：1）如果系统需要跨分区保证顺序，但又有大量消息需要负载均衡，你如何权衡？2）你如何处理消费端幂等性设计，确保即使重复消费也不会产生业务异常？",
+                    "假设我们要设计一个跨多个微服务的订单创建流程，涉及库存扣减、积分增加、物流下单，要求最终一致性和高可用。你会如何选择合适的分布式事务方案？如果基于Kafka实现异步确保型方案，请画出流程图并说明Kafka在其中的角色、分区策略、以及如何处理消息积压和失败重试。追问方向：1）如果其中一个下游服务（如积分服务）处理失败，你如何设计补偿事务或回滚机制？2）如果Kafka集群出现脑裂或日志丢失，如何保证数据不丢且最终一致？",
+                    "在ERP系统的订单模块中，订单表数据量预计达到数十亿，需要支持按用户ID、时间范围、订单状态等多维度查询。请设计分库分表方案，包括分片键选择、路由策略、以及如何解决跨分片查询（如统计全平台订单数量）？追问方向：1）如果业务突然需要增加按商家ID维度查询，你如何在不影响现有数据的情况下支持新维度？2）如何设计全局唯一ID生成器，且保证分片后的数据迁移平滑？",
+                    "高并发场景下，ERP系统的商品库存查询接口面临巨大压力，热点商品频繁读取DB导致性能瓶颈。请设计一个基于Redis的多级缓存方案（本地缓存+Redis），并详细说明如何保证缓存与数据库的数据一致性（特别是写操作时），以及如何应对缓存击穿、穿透和雪崩。追问方向：1）如果库存数据由多个服务同时更新，如何避免缓存并发写导致的脏数据？2）你如何评估缓存容量，并设计缓存淘汰策略以兼顾热点数据和冷数据？",
+                    "请针对ERP系统中的采购入库业务流程（从采购订单生成、到货验收、入库上架、库存更新），设计一个事件驱动的微服务架构。你需要明确各服务职责、服务间通信方式（是否使用Kafka）、以及如何处理分布式事务（如库存更新与采购单状态变更的一致性）。追问方向：1）如果采购订单需要支持分批到货，你如何设计数据库模型和流程状态机？2）如何利用Kafka消息的offset和Consumer Group实现不同服务对同一事件的不同消费速率要求？"
+                  ],
+                  "focus_areas": [
+                    "短板深挖：候选人缺乏对Kafka消息队列的精通经验（仅停留在了解层面），不满足阿里巴巴后端JD中“精通Kafka”的硬性要求；另外，小公司JD要求“ERP”关键词，候选人虽有SaaS供应链管理平台经验，但未明确",
+                    "核心能力：分布式系统设计能力、微服务架构（Spring Cloud）、精通Spring Boot、MySQL数据库优化（含分库分表）、Redis缓存设计、Kafka消息队列精通、ERP业务理解、后端开发综合能力"
+                  ],
+                  "question_count": 5,
+                  "company": null,
+                  "position": "后端"
+                }
+              },
+              "result": {
+                "aggregation": {
+                  "prepare": {
+                    "questions": [
+                      "在Kafka中，要保证消息的严格顺序性和恰好一次语义，同时要求高吞吐，你会如何设计和配置？请详细说明生产者、消费者以及Broker端的参数设置和实现方案。追问方向：1）如果系统需要跨分区保证顺序，但又有大量消息需要负载均衡，你如何权衡？2）你如何处理消费端幂等性设计，确保即使重复消费也不会产生业务异常？",
+                      "假设我们要设计一个跨多个微服务的订单创建流程，涉及库存扣减、积分增加、物流下单，要求最终一致性和高可用。你会如何选择合适的分布式事务方案？如果基于Kafka实现异步确保型方案，请画出流程图并说明Kafka在其中的角色、分区策略、以及如何处理消息积压和失败重试。追问方向：1）如果其中一个下游服务（如积分服务）处理失败，你如何设计补偿事务或回滚机制？2）如果Kafka集群出现脑裂或日志丢失，如何保证数据不丢且最终一致？",
+                      "在ERP系统的订单模块中，订单表数据量预计达到数十亿，需要支持按用户ID、时间范围、订单状态等多维度查询。请设计分库分表方案，包括分片键选择、路由策略、以及如何解决跨分片查询（如统计全平台订单数量）？追问方向：1）如果业务突然需要增加按商家ID维度查询，你如何在不影响现有数据的情况下支持新维度？2）如何设计全局唯一ID生成器，且保证分片后的数据迁移平滑？",
+                      "高并发场景下，ERP系统的商品库存查询接口面临巨大压力，热点商品频繁读取DB导致性能瓶颈。请设计一个基于Redis的多级缓存方案（本地缓存+Redis），并详细说明如何保证缓存与数据库的数据一致性（特别是写操作时），以及如何应对缓存击穿、穿透和雪崩。追问方向：1）如果库存数据由多个服务同时更新，如何避免缓存并发写导致的脏数据？2）你如何评估缓存容量，并设计缓存淘汰策略以兼顾热点数据和冷数据？",
+                      "请针对ERP系统中的采购入库业务流程（从采购订单生成、到货验收、入库上架、库存更新），设计一个事件驱动的微服务架构。你需要明确各服务职责、服务间通信方式（是否使用Kafka）、以及如何处理分布式事务（如库存更新与采购单状态变更的一致性）。追问方向：1）如果采购订单需要支持分批到货，你如何设计数据库模型和流程状态机？2）如何利用Kafka消息的offset和Consumer Group实现不同服务对同一事件的不同消费速率要求？"
+                    ],
+                    "focus_areas": [
+                      "短板深挖：候选人缺乏对Kafka消息队列的精通经验（仅停留在了解层面），不满足阿里巴巴后端JD中“精通Kafka”的硬性要求；另外，小公司JD要求“ERP”关键词，候选人虽有SaaS供应链管理平台经验，但未明确",
+                      "核心能力：分布式系统设计能力、微服务架构（Spring Cloud）、精通Spring Boot、MySQL数据库优化（含分库分表）、Redis缓存设计、Kafka消息队列精通、ERP业务理解、后端开发综合能力"
+                    ],
+                    "question_count": 5,
+                    "company": null,
+                    "position": "后端"
+                  }
+                }
+              },
+              "observation": "聚合完成"
+            }
+          },
+          "global_status": "success",
+          "replan_reason": "",
+          "replan_count": 0
+        },
+        "intent": {
+          "demands": [
+            {
+              "intent": "interview_prepare",
+              "entities": {
+                "position": "后端"
+              },
+              "confidence": 0.88
+            }
+          ],
+          "needs_clarification": false,
+          "clarification_question": ""
+        },
+        "rewrite": {
+          "rewritten_query": "后端岗面试要准备什么",
+          "search_keywords": "后端岗面试要准备什么",
+          "is_follow_up": false,
+          "follow_up_type": "none",
+          "resolved_references": {}
+        },
+        "evidence_cache": [
+          {
+            "chunk_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8_chunk_4",
+            "content": "【阿里巴巴 · 后端开发 硬性要求】\n熟悉分布式系统设计与微服务架构",
+            "metadata": {
+              "company": "阿里巴巴",
+              "index": 4,
+              "jd_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8",
+              "position": "后端开发",
+              "priority": "high",
+              "section": "hard_requirements",
+              "strategy": "semantic"
+            },
+            "distance": 0.7060721516609192,
+            "bm25_score": 7.371000565719068,
+            "vec_norm": 1.0,
+            "bm25_norm": 0.9334534385756298,
+            "hybrid_score": 0.9800360315726888,
+            "rerank_score": 0.9091
+          },
+          {
+            "chunk_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a_chunk_6",
+            "content": "【某小公司 · Java后端 关键词】\nJava, Spring Boot, MySQL, ERP, 后端",
+            "metadata": {
+              "company": "某小公司",
+              "index": 6,
+              "jd_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a",
+              "position": "Java后端",
+              "section": "keywords",
+              "strategy": "semantic"
+            },
+            "distance": 0.7356441617012024,
+            "bm25_score": 7.128334154399703,
+            "vec_norm": 0.9300361470129888,
+            "bm25_norm": 0.897030831040145,
+            "hybrid_score": 0.9201345522211356,
+            "rerank_score": 0.896
+          },
+          {
+            "chunk_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8_chunk_3",
+            "content": "【阿里巴巴 · 后端开发 硬性要求】\n精通Spring Boot、MySQL、Redis、Kafka",
+            "metadata": {
+              "company": "阿里巴巴",
+              "index": 3,
+              "jd_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8",
+              "position": "后端开发",
+              "priority": "high",
+              "section": "hard_requirements",
+              "strategy": "semantic"
+            },
+            "distance": 0.7226032018661499,
+            "bm25_score": 7.455603054806691,
+            "vec_norm": 0.9608895044772348,
+            "bm25_norm": 0.9461517071155979,
+            "hybrid_score": 0.9564681652687437,
+            "rerank_score": 0.8857
+          }
+        ],
+        "evidence_cache_query": "后端岗面试要准备什么",
+        "tool_outputs": [
+          {
+            "task_id": "T0",
+            "tool": "kb_retrieve",
+            "description": "检索后端岗位通用JD（用户未指定公司）",
+            "result": {
+              "chunks": [
+                {
+                  "chunk_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8_chunk_4",
+                  "content": "【阿里巴巴 · 后端开发 硬性要求】\n熟悉分布式系统设计与微服务架构",
+                  "source": "阿里巴巴-后端开发",
+                  "metadata": {
+                    "company": "阿里巴巴",
+                    "position": "后端开发"
+                  }
+                },
+                {
+                  "chunk_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a_chunk_6",
+                  "content": "【某小公司 · Java后端 关键词】\nJava, Spring Boot, MySQL, ERP, 后端",
+                  "source": "某小公司-Java后端",
+                  "metadata": {
+                    "company": "某小公司",
+                    "position": "Java后端"
+                  }
+                },
+                {
+                  "chunk_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8_chunk_3",
+                  "content": "【阿里巴巴 · 后端开发 硬性要求】\n精通Spring Boot、MySQL、Redis、Kafka",
+                  "source": "阿里巴巴-后端开发",
+                  "metadata": {
+                    "company": "阿里巴巴",
+                    "position": "后端开发"
+                  }
+                }
+              ],
+              "query": "后端",
+              "filters": {},
+              "strategy": "hybrid(70%vec+30%bm25)+reranker",
+              "pool_k": 3,
+              "rerank_k": 10,
+              "pool_size": 25,
+              "vec_only": 10,
+              "bm25_only": 5,
+              "both": 10,
+              "rerank": {
+                "enabled": true,
+                "candidates": 3,
+                "output": 3,
+                "best_rerank_score": 0.9091
+              }
+            }
+          },
+          {
+            "task_id": "T1",
+            "tool": "match_analyze",
+            "description": "分析简历与后端JD的匹配度（为面试题生成提供依据）",
+            "result": {
+              "score": 78,
+              "label": "基本匹配",
+              "advantages": [
+                "Java",
+                "Spring Boot",
+                "MySQL",
+                "Redis",
+                "分布式系统设计与微服务架构",
+                "微服务架构",
+                "后端开发"
+              ],
+              "weaknesses": [
+                "候选人缺乏对Kafka消息队列的精通经验（仅停留在了解层面），不满足阿里巴巴后端JD中“精通Kafka”的硬性要求；另外，小公司JD要求“ERP”关键词，候选人虽有SaaS供应链管理平台经验，但未明确涉及ERP领域，匹配度有限。"
+              ],
+              "suggestions": [
+                "核心能力要求: 分布式系统设计能力、微服务架构（Spring Cloud）、精通Spring Boot、MySQL数据库优化（含分库分表）、Redis缓存设计、Kafka消息队列精通、ERP业务理解、后端开发综合能力"
+              ],
+              "match_score": 78,
+              "covered": [
+                "Java",
+                "Spring Boot",
+                "MySQL",
+                "Redis",
+                "分布式系统设计与微服务架构",
+                "微服务架构",
+                "后端开发"
+              ],
+              "missing_experience": "候选人缺乏对Kafka消息队列的精通经验（仅停留在了解层面），不满足阿里巴巴后端JD中“精通Kafka”的硬性要求；另外，小公司JD要求“ERP”关键词，候选人虽有SaaS供应链管理平台经验，但未明确涉及ERP领域，匹配度有限。",
+              "core_skills": "分布式系统设计能力、微服务架构（Spring Cloud）、精通Spring Boot、MySQL数据库优化（含分库分表）、Redis缓存设计、Kafka消息队列精通、ERP业务理解、后端开发综合能力",
+              "company": null,
+              "position": "后端"
+            }
+          },
+          {
+            "task_id": "T2",
+            "tool": "interview_gen",
+            "description": "基于匹配短板生成后端岗面试题（默认5题，混合难度）",
+            "result": {
+              "questions": [
+                "在Kafka中，要保证消息的严格顺序性和恰好一次语义，同时要求高吞吐，你会如何设计和配置？请详细说明生产者、消费者以及Broker端的参数设置和实现方案。追问方向：1）如果系统需要跨分区保证顺序，但又有大量消息需要负载均衡，你如何权衡？2）你如何处理消费端幂等性设计，确保即使重复消费也不会产生业务异常？",
+                "假设我们要设计一个跨多个微服务的订单创建流程，涉及库存扣减、积分增加、物流下单，要求最终一致性和高可用。你会如何选择合适的分布式事务方案？如果基于Kafka实现异步确保型方案，请画出流程图并说明Kafka在其中的角色、分区策略、以及如何处理消息积压和失败重试。追问方向：1）如果其中一个下游服务（如积分服务）处理失败，你如何设计补偿事务或回滚机制？2）如果Kafka集群出现脑裂或日志丢失，如何保证数据不丢且最终一致？",
+                "在ERP系统的订单模块中，订单表数据量预计达到数十亿，需要支持按用户ID、时间范围、订单状态等多维度查询。请设计分库分表方案，包括分片键选择、路由策略、以及如何解决跨分片查询（如统计全平台订单数量）？追问方向：1）如果业务突然需要增加按商家ID维度查询，你如何在不影响现有数据的情况下支持新维度？2）如何设计全局唯一ID生成器，且保证分片后的数据迁移平滑？",
+                "高并发场景下，ERP系统的商品库存查询接口面临巨大压力，热点商品频繁读取DB导致性能瓶颈。请设计一个基于Redis的多级缓存方案（本地缓存+Redis），并详细说明如何保证缓存与数据库的数据一致性（特别是写操作时），以及如何应对缓存击穿、穿透和雪崩。追问方向：1）如果库存数据由多个服务同时更新，如何避免缓存并发写导致的脏数据？2）你如何评估缓存容量，并设计缓存淘汰策略以兼顾热点数据和冷数据？",
+                "请针对ERP系统中的采购入库业务流程（从采购订单生成、到货验收、入库上架、库存更新），设计一个事件驱动的微服务架构。你需要明确各服务职责、服务间通信方式（是否使用Kafka）、以及如何处理分布式事务（如库存更新与采购单状态变更的一致性）。追问方向：1）如果采购订单需要支持分批到货，你如何设计数据库模型和流程状态机？2）如何利用Kafka消息的offset和Consumer Group实现不同服务对同一事件的不同消费速率要求？"
+              ],
+              "focus_areas": [
+                "短板深挖：候选人缺乏对Kafka消息队列的精通经验（仅停留在了解层面），不满足阿里巴巴后端JD中“精通Kafka”的硬性要求；另外，小公司JD要求“ERP”关键词，候选人虽有SaaS供应链管理平台经验，但未明确",
+                "核心能力：分布式系统设计能力、微服务架构（Spring Cloud）、精通Spring Boot、MySQL数据库优化（含分库分表）、Redis缓存设计、Kafka消息队列精通、ERP业务理解、后端开发综合能力"
+              ],
+              "question_count": 5,
+              "company": null,
+              "position": "后端"
+            }
+          },
+          {
+            "task_id": "T3",
+            "tool": null,
+            "description": "聚合面试题结果，生成最终回复素材",
+            "result": {
+              "aggregation": {
+                "prepare": {
+                  "questions": [
+                    "在Kafka中，要保证消息的严格顺序性和恰好一次语义，同时要求高吞吐，你会如何设计和配置？请详细说明生产者、消费者以及Broker端的参数设置和实现方案。追问方向：1）如果系统需要跨分区保证顺序，但又有大量消息需要负载均衡，你如何权衡？2）你如何处理消费端幂等性设计，确保即使重复消费也不会产生业务异常？",
+                    "假设我们要设计一个跨多个微服务的订单创建流程，涉及库存扣减、积分增加、物流下单，要求最终一致性和高可用。你会如何选择合适的分布式事务方案？如果基于Kafka实现异步确保型方案，请画出流程图并说明Kafka在其中的角色、分区策略、以及如何处理消息积压和失败重试。追问方向：1）如果其中一个下游服务（如积分服务）处理失败，你如何设计补偿事务或回滚机制？2）如果Kafka集群出现脑裂或日志丢失，如何保证数据不丢且最终一致？",
+                    "在ERP系统的订单模块中，订单表数据量预计达到数十亿，需要支持按用户ID、时间范围、订单状态等多维度查询。请设计分库分表方案，包括分片键选择、路由策略、以及如何解决跨分片查询（如统计全平台订单数量）？追问方向：1）如果业务突然需要增加按商家ID维度查询，你如何在不影响现有数据的情况下支持新维度？2）如何设计全局唯一ID生成器，且保证分片后的数据迁移平滑？",
+                    "高并发场景下，ERP系统的商品库存查询接口面临巨大压力，热点商品频繁读取DB导致性能瓶颈。请设计一个基于Redis的多级缓存方案（本地缓存+Redis），并详细说明如何保证缓存与数据库的数据一致性（特别是写操作时），以及如何应对缓存击穿、穿透和雪崩。追问方向：1）如果库存数据由多个服务同时更新，如何避免缓存并发写导致的脏数据？2）你如何评估缓存容量，并设计缓存淘汰策略以兼顾热点数据和冷数据？",
+                    "请针对ERP系统中的采购入库业务流程（从采购订单生成、到货验收、入库上架、库存更新），设计一个事件驱动的微服务架构。你需要明确各服务职责、服务间通信方式（是否使用Kafka）、以及如何处理分布式事务（如库存更新与采购单状态变更的一致性）。追问方向：1）如果采购订单需要支持分批到货，你如何设计数据库模型和流程状态机？2）如何利用Kafka消息的offset和Consumer Group实现不同服务对同一事件的不同消费速率要求？"
+                  ],
+                  "focus_areas": [
+                    "短板深挖：候选人缺乏对Kafka消息队列的精通经验（仅停留在了解层面），不满足阿里巴巴后端JD中“精通Kafka”的硬性要求；另外，小公司JD要求“ERP”关键词，候选人虽有SaaS供应链管理平台经验，但未明确",
+                    "核心能力：分布式系统设计能力、微服务架构（Spring Cloud）、精通Spring Boot、MySQL数据库优化（含分库分表）、Redis缓存设计、Kafka消息队列精通、ERP业务理解、后端开发综合能力"
+                  ],
+                  "question_count": 5,
+                  "company": null,
+                  "position": "后端"
+                }
+              }
+            }
+          }
+        ],
+        "final_aggregation_prompt": {
+          "system_prompt": "你是一位专业的求职顾问。请基于以下工具执行结果，给用户一个清晰、有帮助的回复。\n要求：\n1. 先直接回答用户的问题（是/否/有/没有），不要绕弯子，不要重复用户的原话\n2. 如果有匹配分析结果，给出具体的分数和建议\n3. 如果有检索结果，基于事实回答，不要编造\n4. 【强制】引用信息时必须标注来源。每个引用的事实后面都要跟 [来源：公司名-岗位名] 格式。   kb_retrieve 结果的 chunks 中带有 'source' 字段（如'字节跳动-AI产品经理'），请直接使用。   external_search 结果带有 'source_name' 字段，也请直接使用。\n5. 当本地知识库与外部搜索结果冲突时，请并列呈现两种说法并标注各自来源，不要替用户做判断\n6. 语气友好、专业、结构化",
+          "user_prompt": "【用户问题】\n后端岗面试要准备什么\n\n【工具执行结果】\n[{\"task_id\": \"T0\", \"tool\": \"kb_retrieve\", \"description\": \"检索后端岗位通用JD（用户未指定公司）\", \"result\": {\"chunks\": [{\"chunk_id\": \"9cde8355-dcc0-434e-97c4-67dfc5dae5b8_chunk_4\", \"content\": \"【阿里巴巴 · 后端开发 硬性要求】\\n熟悉分布式系统设计与微服务架构\", \"source\": \"阿里巴巴-后端开发\", \"metadata\": {\"company\": \"阿里巴巴\", \"position\": \"后端开发\"}}, {\"chunk_id\": \"45bd2600-af57-45fe-a96e-c6cae6838c7a_chunk_6\", \"content\": \"【某小公司 · Java后端 关键词】\\nJava, Spring Boot, MySQL, ERP, 后端\", \"source\": \"某小公司-Java后端\", \"metadata\": {\"company\": \"某小公司\", \"position\": \"Java后端\"}}, {\"chunk_id\": \"9cde8355-dcc0-434e-97c4-67dfc5dae5b8_chunk_3\", \"content\": \"【阿里巴巴 · 后端开发 硬性要求】\\n精通Spring Boot、MySQL、Redis、Kafka\", \"source\": \"阿里巴巴-后端开发\", \"metadata\": {\"company\": \"阿里巴巴\", \"position\": \"后端开发\"}}], \"query\": \"后端\", \"filters\": {}, \"strategy\": \"hybrid(70%vec+30%bm25)+reranker\", \"pool_k\": 3, \"rerank_k\": 10, \"pool_size\": 25, \"vec_only\": 10, \"bm25_only\": 5, \"both\": 10, \"rerank\": {\"enabled\": true, \"candidates\": 3, \"output\": 3, \"best_rerank_score\": 0.9091}}}, {\"task_id\": \"T1\", \"tool\": \"match_analyze\", \"description\": \"分析简历与后端JD的匹配度（为面试题生成提供依据）\", \"result\": {\"score\": 78, \"label\": \"基本匹配\", \"advantages\": [\"Java\", \"Spring Boot\", \"MySQL\", \"Redis\", \"分布式系统设计与微服务架构\", \"微服务架构\", \"后端开发\"], \"weaknesses\": [\"候选人缺乏对Kafka消息队列的精通经验（仅停留在了解层面），不满足阿里巴巴后端JD中“精通Kafka”的硬性要求；另外，小公司JD要求“ERP”关键词，候选人虽有SaaS供应链管理平台经验，但未明确涉及ERP领域，匹配度有限。\"], \"suggestions\": [\"核心能力要求: 分布式系统设计能力、微服务架构（Spring Cloud）、精通Spring Boot、MySQL数据库优化（含分库分表）、Redis缓存设计、Kafka消息队列精通、ERP业务理解、后端开发综合能力\"], \"match_score\": 78, \"covered\": [\"Java\", \"Spring Boot\", \"MySQL\", \"Redis\", \"分布式系统设计与微服务架构\", \"微服务架构\", \"后端开发\"], \"missing_experience\": \"候选人缺乏对Kafka消息队列的精通经验（仅停留在了解层面），不满足阿里巴巴后端JD中“精通Kafka”的硬性要求；另外，小公司JD要求“ERP”关键词，候选人虽有SaaS供应链管理平台经验，但未明确涉及ERP领域，匹配度有限。\", \"core_skills\": \"分布式系统设计能力、微服务架构（Spring Cloud）、精通Spring Boot、MySQL数据库优化（含分库分表）、Redis缓存设计、Kafka消息队列精通、ERP业务理解、后端开发综合能力\", \"company\": null, \"position\": \"后端\"}}, {\"task_id\": \"T2\", \"tool\": \"interview_gen\", \"description\": \"基于匹配短板生成后端岗面试题（默认5题，混合难度）\", \"result\": {\"questions\": [\"在Kafka中，要保证消息的严格顺序性和恰好一次语义，同时要求高吞吐，你会如何设计和配置？请详细说明生产者、消费者以及Broker端的参数设置和实现方案。追问方向：1）如果系统需要跨分区保证顺序，但又有大量消息需要负载均衡，你如何权衡？2）你如何处理消费端幂等性设计，确保即使重复消费也不会产生业务异常？\", \"假设我们要设计一个跨多个微服务的订单创建流程，涉及库存扣减、积分增加、物流下单，要求最终一致性和高可用。你会如何选择合适的分布式事务方案？如果基于Kafka实现异步确保型方案，请画出流程图并说明Kafka在其中的角色、分区策略、以及如何处理消息积压和失败重试。追问方向：1）如果其中一个下游服务（如积分服务）处理失败，你如何设计补偿事务或回滚机制？2）如果Kafka集群出现脑裂或日志丢失，如何保证数据不丢且最终一致？\", \"在ERP系统的订单模块中，订单表数据量预计达到数十亿，需要支持按用户ID、时间范围、订单状态等多维度查询。请设计分库分表方案，包括分片键选择、路由策略、以及如何解决跨分片查询（如统计全平台订单数量）？追问方向：1）如果业务突然需要增加按商家ID维度查询，你如何在不影响现有数据的情况下支持新维度？2）如何设计全局唯一ID生成器，且保证分片后的数据迁移平滑？\", \"高并发场景下，ERP系统的商品库存查询接口面临巨大压力，热点商品频繁读取DB导致性能瓶颈。请设计一个基于Redis的多级缓存方案（本地缓存+Redis），并详细说明如何保证缓存与数据库的数据一致性（特别是写操作时），以及如何应对缓存击穿、穿透和雪崩。追问方向：1）如果库存数据由多个服务同时更新，如何避免缓存并发写导致的脏数据？2）你如何评估缓存容量，并设计缓存淘汰策略以兼顾热点数据和冷数据？\", \"请针对ERP系统中的采购入库业务流程（从采购订单生成、到货验收、入库上架、库存更新），设计一个事件驱动的微服务架构。你需要明确各服务职责、服务间通信方式（是否使用Kafka）、以及如何处理分布式事务（如库存更新与采购单状态变更的一致性）。追问方向：1）如果采购订单需要支持分批到货，你如何设计数据库模型和流程状态机？2）如何利用Kafka消息的offset和Consumer Group实现不同服务对同一事件的不同消费速率要求？\"], \"focus_areas\": [\"短板深挖：候选人缺乏对Kafka消息队列的精通经验（仅停留在了解层面），不满足阿里巴巴后端JD中“精通K\n\n请生成回复："
+        }
+      },
+      "usage": {
+        "prompt_tokens": 9580,
+        "completion_tokens": 8301,
+        "total_tokens": 17881
+      },
+      "_time": 129.4102053642273,
+      "type": "done"
+    }
+  ],
+  "timestamp": "2026-06-05T16:44:08.049731",
+  "prompt_tokens": 9580,
+  "completion_tokens": 8301,
+  "total_tokens": 17881,
+  "tool_execution_success_rate": 1.0,
+  "tool_correct_rate": 1.0
+}

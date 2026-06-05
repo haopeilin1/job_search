@@ -1,0 +1,50 @@
+{
+  "case_id": "eval_sup_03",
+  "message": "那刚才推荐的岗里，有偏应用层的吗",
+  "gold_intents": [
+    "verify"
+  ],
+  "expected_tools": [
+    "kb_retrieve",
+    "qa_synthesize"
+  ],
+  "scenario": "记忆_偏好引用",
+  "eval_context": {
+    "gold_intents": [
+      "verify"
+    ],
+    "gold_slots": {
+      "attributes": [
+        "方向"
+      ]
+    },
+    "relevance_score": 0,
+    "expected_tools": [
+      "kb_retrieve",
+      "qa_synthesize"
+    ],
+    "scenario": "记忆_偏好引用",
+    "notes": "第一轮chat无检索，evidence_cache为空，第二轮需重新kb_retrieve",
+    "follow_up_type": "expand"
+  },
+  "resume_id": "cc50dcfb-aeba-41a3-989a-9e485aa2fc3f",
+  "status": "error",
+  "error": "ClientPayloadError: Response payload is not completed: <TransferEncodingError: 400, message='Not enough data to satisfy transfer length header.'>",
+  "ttfb": 0.003,
+  "total_latency": 53.61,
+  "event_count": 0,
+  "pred_intent": null,
+  "pred_intents": [],
+  "pred_tools": [],
+  "tools_called": [],
+  "kb_chunks": [],
+  "tool_executions_full": [],
+  "debug_info": {},
+  "reply": "",
+  "reply_length": 0,
+  "intent_match": false,
+  "tool_match_rate": 0.0,
+  "has_reply": false,
+  "events": [],
+  "timestamp": "2026-06-04T17:24:43.956586"
+}

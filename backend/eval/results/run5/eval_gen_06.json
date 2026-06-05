@@ -1,0 +1,73 @@
+{
+  "case_id": "eval_gen_06",
+  "message": "那个公司的技能要求",
+  "gold_intents": [
+    "clarification"
+  ],
+  "expected_tools": [],
+  "scenario": "边界_VERIFY缺少company触发澄清",
+  "eval_context": {
+    "gold_intents": [
+      "clarification"
+    ],
+    "gold_slots": {},
+    "relevance_score": 0,
+    "expected_tools": [],
+    "scenario": "边界_VERIFY缺少company触发澄清",
+    "notes": "无明确公司名，VERIFY缺少必填槽位，应触发澄清"
+  },
+  "resume_id": "cc50dcfb-aeba-41a3-989a-9e485aa2fc3f",
+  "status": "success",
+  "error": null,
+  "ttfb": 0.01,
+  "total_latency": 12.51,
+  "event_count": 3,
+  "pred_intent": "attribute_verify",
+  "pred_intents": [
+    "attribute_verify"
+  ],
+  "pred_tools": [],
+  "tools_called": [],
+  "kb_chunks": [],
+  "tool_executions_full": [],
+  "debug_info": {},
+  "reply": "你想了解该公司的哪方面信息？",
+  "reply_length": 14,
+  "intent_match": false,
+  "tool_match_rate": 1.0,
+  "has_reply": false,
+  "events": [
+    {
+      "step": "intent",
+      "message": "正在识别您的意图...",
+      "_time": 12.511669635772705,
+      "type": "status"
+    },
+    {
+      "question": "你想了解该公司的哪方面信息？",
+      "_time": 12.511710405349731,
+      "type": "clarification"
+    },
+    {
+      "session_id": "eval_gen_06_1780565343933",
+      "intent": "attribute_verify",
+      "is_clarification": true,
+      "reply": {
+        "text": "你想了解该公司的哪方面信息？"
+      },
+      "usage": {
+        "prompt_tokens": 1488,
+        "completion_tokens": 533,
+        "total_tokens": 2021
+      },
+      "_time": 12.51176118850708,
+      "type": "done"
+    }
+  ],
+  "timestamp": "2026-06-04T17:29:03.933794",
+  "prompt_tokens": 1488,
+  "completion_tokens": 533,
+  "total_tokens": 2021,
+  "tool_execution_success_rate": 0.0,
+  "tool_correct_rate": 1.0
+}

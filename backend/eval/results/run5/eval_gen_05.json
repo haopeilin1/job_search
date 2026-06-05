@@ -1,0 +1,371 @@
+{
+  "case_id": "eval_gen_05",
+  "message": "帮我列出已上传的简历",
+  "gold_intents": [
+    "manage"
+  ],
+  "expected_tools": [
+    "file_ops"
+  ],
+  "scenario": "简历管理_列表查询",
+  "eval_context": {
+    "gold_intents": [
+      "manage"
+    ],
+    "gold_slots": {
+      "operation": "list_resumes"
+    },
+    "relevance_score": 0,
+    "expected_tools": [
+      "file_ops"
+    ],
+    "scenario": "简历管理_列表查询",
+    "notes": "测试manage意图识别，期望调用file_ops list_resumes"
+  },
+  "resume_id": "cc50dcfb-aeba-41a3-989a-9e485aa2fc3f",
+  "status": "success",
+  "error": null,
+  "ttfb": 0.01,
+  "total_latency": 44.71,
+  "event_count": 27,
+  "pred_intent": "resume_manage",
+  "pred_intents": [
+    "resume_manage"
+  ],
+  "pred_tools": [
+    {
+      "tool": "file_ops",
+      "status": "❌",
+      "params": {
+        "operation": "list"
+      },
+      "result_preview": "未知操作: list"
+    }
+  ],
+  "tools_called": [
+    "file_ops"
+  ],
+  "kb_chunks": [],
+  "tool_executions_full": [
+    {
+      "tool_name": "file_ops",
+      "task_id": "T0",
+      "status": "failed",
+      "output": {}
+    }
+  ],
+  "debug_info": {
+    "task_graph": {
+      "tasks": {
+        "T0": {
+          "task_id": "T0",
+          "task_type": "tool_call",
+          "tool_name": "file_ops",
+          "status": "failed",
+          "parameters": {
+            "operation": "list"
+          },
+          "resolved_params": {
+            "operation": "list"
+          },
+          "result": {},
+          "observation": "未知操作: list"
+        },
+        "T1": {
+          "task_id": "T1",
+          "task_type": "aggregate",
+          "tool_name": null,
+          "status": "skipped",
+          "parameters": {
+            "file_list": "{{T0.output.files}}"
+          },
+          "resolved_params": {},
+          "result": null,
+          "observation": "执行器退出时未执行"
+        }
+      },
+      "global_status": "failed",
+      "replan_reason": "T1_tool_failed",
+      "replan_count": 1
+    },
+    "intent": {
+      "demands": [
+        {
+          "intent": "resume_manage",
+          "entities": {},
+          "confidence": 0.88
+        }
+      ],
+      "needs_clarification": false,
+      "clarification_question": ""
+    },
+    "rewrite": {
+      "rewritten_query": "列出已上传的简历",
+      "search_keywords": "列出已上传的简历",
+      "is_follow_up": false,
+      "follow_up_type": "none",
+      "resolved_references": {}
+    },
+    "evidence_cache": [],
+    "evidence_cache_query": "",
+    "tool_outputs": [],
+    "final_aggregation_prompt": {
+      "system_prompt": "你是一位专业的求职顾问。请基于以下工具执行结果，给用户一个清晰、有帮助的回复。\n要求：\n1. 先直接回答用户的问题（是/否/有/没有），不要绕弯子，不要重复用户的原话\n2. 如果有匹配分析结果，给出具体的分数和建议\n3. 如果有检索结果，基于事实回答，不要编造\n4. 【强制】引用信息时必须标注来源。每个引用的事实后面都要跟 [来源：公司名-岗位名] 格式。   kb_retrieve 结果的 chunks 中带有 'source' 字段（如'字节跳动-AI产品经理'），请直接使用。   external_search 结果带有 'source_name' 字段，也请直接使用。\n5. 当本地知识库与外部搜索结果冲突时，请并列呈现两种说法并标注各自来源，不要替用户做判断\n6. 语气友好、专业、结构化",
+      "user_prompt": "【用户问题】\n列出已上传的简历\n\n【工具执行结果】\n[]\n\n请生成回复："
+    }
+  },
+  "reply": "没有。\n\n当前系统未检索到您已上传的简历文件。\n\n为了给您提供更专业的求职支持，建议您：\n1. **上传简历**：请将您的最新简历文件上传至系统。\n2. **获取分析**：上传后，我可以为您提供简历优化建议或岗位匹配度分析。\n\n随时准备为您提供帮助。",
+  "reply_length": 125,
+  "intent_match": false,
+  "tool_match_rate": 1.0,
+  "has_reply": true,
+  "events": [
+    {
+      "step": "intent",
+      "message": "正在识别您的意图...",
+      "_time": 5.79086446762085,
+      "type": "status"
+    },
+    {
+      "step": "plan",
+      "message": "正在规划任务...",
+      "_time": 5.790888786315918,
+      "type": "status"
+    },
+    {
+      "step": "execute",
+      "message": "正在执行分析...",
+      "_time": 15.729092836380005,
+      "type": "status"
+    },
+    {
+      "step": "aggregate",
+      "message": "正在生成回复...",
+      "_time": 15.731193542480469,
+      "type": "status"
+    },
+    {
+      "text": "没有。",
+      "_time": 43.4797682762146,
+      "type": "delta"
+    },
+    {
+      "text": "\n\n当前系统未",
+      "_time": 43.48239731788635,
+      "type": "delta"
+    },
+    {
+      "text": "检索到您已上传",
+      "_time": 43.59560537338257,
+      "type": "delta"
+    },
+    {
+      "text": "的",
+      "_time": 43.59928750991821,
+      "type": "delta"
+    },
+    {
+      "text": "简历文件。\n\n",
+      "_time": 43.7077362537384,
+      "type": "delta"
+    },
+    {
+      "text": "为了给您",
+      "_time": 43.710224866867065,
+      "type": "delta"
+    },
+    {
+      "text": "提供更专业的求职支持",
+      "_time": 43.85954523086548,
+      "type": "delta"
+    },
+    {
+      "text": "，建议您：\n",
+      "_time": 43.862208127975464,
+      "type": "delta"
+    },
+    {
+      "text": "1. **上传",
+      "_time": 43.93656253814697,
+      "type": "delta"
+    },
+    {
+      "text": "简历**：请将",
+      "_time": 43.9393572807312,
+      "type": "delta"
+    },
+    {
+      "text": "您的最新简历文件",
+      "_time": 44.07446599006653,
+      "type": "delta"
+    },
+    {
+      "text": "上传",
+      "_time": 44.07716774940491,
+      "type": "delta"
+    },
+    {
+      "text": "至系统。\n",
+      "_time": 44.15753483772278,
+      "type": "delta"
+    },
+    {
+      "text": "2. **获取",
+      "_time": 44.160130739212036,
+      "type": "delta"
+    },
+    {
+      "text": "分析**：上传",
+      "_time": 44.261608839035034,
+      "type": "delta"
+    },
+    {
+      "text": "后",
+      "_time": 44.26318311691284,
+      "type": "delta"
+    },
+    {
+      "text": "，我可以为您提供简历",
+      "_time": 44.40654802322388,
+      "type": "delta"
+    },
+    {
+      "text": "优化建议",
+      "_time": 44.40927481651306,
+      "type": "delta"
+    },
+    {
+      "text": "或岗位匹配度",
+      "_time": 44.49212121963501,
+      "type": "delta"
+    },
+    {
+      "text": "分析。",
+      "_time": 44.49633741378784,
+      "type": "delta"
+    },
+    {
+      "text": "\n\n随时准备为您提供",
+      "_time": 44.63232064247131,
+      "type": "delta"
+    },
+    {
+      "text": "帮助。",
+      "_time": 44.63536715507507,
+      "type": "delta"
+    },
+    {
+      "session_id": "eval_gen_05_1780565299217",
+      "intent": "resume_manage",
+      "route_meta": {
+        "layer": "llm",
+        "intent": "resume_manage",
+        "confidence": 0.88,
+        "demands": [
+          {
+            "intent": "resume_manage",
+            "entities": {}
+          }
+        ],
+        "plan_tasks": 2
+      },
+      "agent_mode": "llm",
+      "is_clarification": false,
+      "agent": {
+        "rewritten_query": "列出已上传的简历",
+        "tools": [
+          {
+            "tool": "file_ops",
+            "status": "❌",
+            "params": {
+              "operation": "list"
+            },
+            "result_preview": "未知操作: list"
+          }
+        ],
+        "kb_chunks_count": 0,
+        "system_prompt_preview": "你是一位专业的求职顾问。请基于以下工具执行结果，给用户一个清晰、有帮助的回复。\n要求：\n1. 先直接回答用户的问题（是/否/有/没有），不要绕弯子，不要重复用户的原话\n2. 如果有匹配分析结果，给出具体的分数和建议\n3. 如果有检索结果，基于事实回答，不要编造\n4. 【强制】引用信息时必须标注来源。每个引用的事实后面都要跟 [来源：公司名-岗位名] 格式。   kb_retrieve 结果的 ch"
+      },
+      "memory": {
+        "working_turns": 1,
+        "compressed_blocks": 0,
+        "current_topic": "general",
+        "evidence_cache_size": 0
+      },
+      "reply": "没有。\n\n当前系统未检索到您已上传的简历文件。\n\n为了给您提供更专业的求职支持，建议您：\n1. **上传简历**：请将您的最新简历文件上传至系统。\n2. **获取分析**：上传后，我可以为您提供简历优化建议或岗位匹配度分析。\n\n随时准备为您提供帮助。",
+      "debug_info": {
+        "task_graph": {
+          "tasks": {
+            "T0": {
+              "task_id": "T0",
+              "task_type": "tool_call",
+              "tool_name": "file_ops",
+              "status": "failed",
+              "parameters": {
+                "operation": "list"
+              },
+              "resolved_params": {
+                "operation": "list"
+              },
+              "result": {},
+              "observation": "未知操作: list"
+            },
+            "T1": {
+              "task_id": "T1",
+              "task_type": "aggregate",
+              "tool_name": null,
+              "status": "skipped",
+              "parameters": {
+                "file_list": "{{T0.output.files}}"
+              },
+              "resolved_params": {},
+              "result": null,
+              "observation": "执行器退出时未执行"
+            }
+          },
+          "global_status": "failed",
+          "replan_reason": "T1_tool_failed",
+          "replan_count": 1
+        },
+        "intent": {
+          "demands": [
+            {
+              "intent": "resume_manage",
+              "entities": {},
+              "confidence": 0.88
+            }
+          ],
+          "needs_clarification": false,
+          "clarification_question": ""
+        },
+        "rewrite": {
+          "rewritten_query": "列出已上传的简历",
+          "search_keywords": "列出已上传的简历",
+          "is_follow_up": false,
+          "follow_up_type": "none",
+          "resolved_references": {}
+        },
+        "evidence_cache": [],
+        "evidence_cache_query": "",
+        "tool_outputs": [],
+        "final_aggregation_prompt": {
+          "system_prompt": "你是一位专业的求职顾问。请基于以下工具执行结果，给用户一个清晰、有帮助的回复。\n要求：\n1. 先直接回答用户的问题（是/否/有/没有），不要绕弯子，不要重复用户的原话\n2. 如果有匹配分析结果，给出具体的分数和建议\n3. 如果有检索结果，基于事实回答，不要编造\n4. 【强制】引用信息时必须标注来源。每个引用的事实后面都要跟 [来源：公司名-岗位名] 格式。   kb_retrieve 结果的 chunks 中带有 'source' 字段（如'字节跳动-AI产品经理'），请直接使用。   external_search 结果带有 'source_name' 字段，也请直接使用。\n5. 当本地知识库与外部搜索结果冲突时，请并列呈现两种说法并标注各自来源，不要替用户做判断\n6. 语气友好、专业、结构化",
+          "user_prompt": "【用户问题】\n列出已上传的简历\n\n【工具执行结果】\n[]\n\n请生成回复："
+        }
+      },
+      "usage": {
+        "prompt_tokens": 6586,
+        "completion_tokens": 2521,
+        "total_tokens": 9107
+      },
+      "_time": 44.713714838027954,
+      "type": "done"
+    }
+  ],
+  "timestamp": "2026-06-04T17:28:19.217548",
+  "prompt_tokens": 6586,
+  "completion_tokens": 2521,
+  "total_tokens": 9107,
+  "tool_execution_success_rate": 0.0,
+  "tool_correct_rate": 0.0
+}

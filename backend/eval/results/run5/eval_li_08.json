@@ -1,0 +1,3580 @@
+{
+  "case_id": "eval_li_08",
+  "message": "字节AI产品经理我能转行去吗",
+  "gold_intents": [
+    "assess"
+  ],
+  "expected_tools": [
+    "kb_retrieve",
+    "match_analyze"
+  ],
+  "scenario": "有简历_单JD匹配_跨领域低匹配",
+  "eval_context": {
+    "gold_intents": [
+      "assess"
+    ],
+    "gold_slots": {
+      "company": "字节跳动",
+      "position": "AI产品经理"
+    },
+    "relevance_score": 0,
+    "expected_tools": [
+      "kb_retrieve",
+      "match_analyze"
+    ],
+    "scenario": "有简历_单JD匹配_跨领域低匹配",
+    "notes": "Java后端转AI产品，期望匹配分析指出技能差距"
+  },
+  "resume_id": "e30c8b27-cfce-4918-8810-832e3ab5087c",
+  "status": "success",
+  "error": null,
+  "ttfb": 0.011,
+  "total_latency": 82.98,
+  "event_count": 212,
+  "pred_intent": "match_assess",
+  "pred_intents": [
+    "match_assess"
+  ],
+  "pred_tools": [
+    {
+      "tool": "kb_retrieve",
+      "status": "✅",
+      "params": {
+        "query": "字节AI产品经理我能转行去",
+        "top_k": 5,
+        "company": "字节跳动",
+        "position": "AI产品经理"
+      },
+      "result_preview": "{'chunks': [{'chunk_id': 'ac9973c8-01be-4cd6-9a99-097873a59cf0_chunk_1', 'content': '【字节跳动 · AI产品经理 岗位职责】\\n1. 定义Agent框架：设计Planning、Reflection、Memory策略。2. 重塑LUI交互：探索意图驱动的流式UI与动态组件生成。3. 编排超级工作流：深入客服、数据、"
+    },
+    {
+      "tool": "match_analyze",
+      "status": "✅",
+      "params": {
+        "resume_text": "姓名：李工程师\n电话：138-XXXX-1234 | 邮箱：lixx_dev@email.com | 现居：北京\nJava后端开发工程师 | 3年经验 | 本科\n\n教育背景\n2018.09 - 2022.06  XX理工大学  计算机科学与技术（本科）\n主修课程：数据结构与算法、操作系统、计算机网络、数据库原理、软件工程\n在校荣誉：校级优秀毕业设计（基于微服务的校园二手交易平台）\n\n专业技能\n熟练掌握Java核心技术，熟悉JVM内存模型、GC机制及常见调优手段\n精通Spring Boot、Spring Cloud微服务生态，熟悉Nacos、Gateway、Sentinel、Seata等组件\n熟悉MySQL索引优化、事务机制、分库分表策略，具备SQL调优及慢查询治理经验\n了解Redis缓存设计、Kafka消息队列，熟悉Docker容器化部署及Jenkins CI/CD流程\n掌握Git版本控制，熟悉Linux日常运维及日志排查\n\n工作经历\n2022.07 - 至今  XX科技有限公司（B轮 / 企业服务 SaaS）  Java后端工程师\n\nSaaS供应链管理平台（2023.03 - 至今）\n负责订单中心、库存中心核心模块设计与开发，采用Spring Cloud Alibaba微服务架构，支撑日均10W+订单处理\n主导MySQL分库分表方案设计（ShardingSphere），解决单表数据量过亿导致的查询性能瓶颈，接口响应时间从800ms降至120ms\n设计多级缓存策略（Redis + Caffeine本地缓存），热点数据命中率提升至95%，降低数据库负载40%\n基于Seata AT模式实现分布式事务，保障订单与库存数据一致性，线上运行半年零资损事故\n\n企业权限中台重构（2022.09 - 2023.02）\n参与RBAC权限中台从单体到微服务的拆分重构，负责鉴权服务、菜单路由模块开发\n引入Gateway统一鉴权过滤器，对接OAuth2.0 + JWT认证体系，支持多租户隔离\n编写核心接口单元测试（Unit + Mockito），模块测试覆盖率从45%提升至82%\n\n自我评价\n具备扎实的计算机基础与3年企业级后端开发经验，擅长高并发场景下的系统设计与性能优化。注重代码质量与工程规范，具备良好的团队协作与跨部门沟通能力。",
+        "jd_text": [
+          {
+            "chunk_id": "ac9973c8-01be-4cd6-9a99-097873a59cf0_chunk_1",
+            "content": "【字节跳动 · AI产品经理 岗位职责】\n1. 定义Agent框架：设计Planning、Reflection、Memory策略。2. 重塑LUI交互：探索意图驱动的流式UI与动态组件生成。3. 编排超级工作流：深入客服、数据、ERP等实战场景。4. 模型精细化调教：编写结构化Prompt，配合RAG、Function Calling。5. 数据驱动进化：建立交互好感度与任务成功率双重指标。",
+            "metadata": {
+              "company": "字节跳动",
+              "index": 1,
+              "jd_id": "ac9973c8-01be-4cd6-9a99-097873a59cf0",
+              "position": "AI产品经理",
+              "section": "responsibilities",
+              "strategy": "semantic"
+            },
+            "distance": 0.6308419704437256,
+            "bm25_score": 0.0,
+            "vec_norm": 0.8046238571028173,
+            "bm25_norm": 0.0,
+            "hybrid_score": 0.563236699971972,
+            "rerank_score": 0.9655
+          },
+          {
+            "chunk_id": "ac9973c8-01be-4cd6-9a99-097873a59cf0_chunk_2",
+            "content": "【字节跳动 · AI产品经理 硬性要求】\n本科及以上学历，兼具C端AIGC敏锐度与B端SaaS/RPA逻辑功底",
+            "metadata": {
+              "company": "字节跳动",
+              "index": 2,
+              "jd_id": "ac9973c8-01be-4cd6-9a99-097873a59cf0",
+              "position": "AI产品经理",
+              "priority": "high",
+              "section": "hard_requirements",
+              "strategy": "semantic"
+            },
+            "distance": 0.6293243765830994,
+            "bm25_score": 7.4989908346122895,
+            "vec_norm": 0.8174818765102908,
+            "bm25_norm": 0.6807984224549152,
+            "hybrid_score": 0.7764768402936781,
+            "rerank_score": 0.9214
+          },
+          {
+            "chunk_id": "ac9973c8-01be-4cd6-9a99-097873a59cf0_chunk_5",
+            "content": "【字节跳动 · AI产品经理 硬性要求】\n具备极强的逻辑拆解力，能像指挥交响乐一样控制模型输出",
+            "metadata": {
+              "company": "字节跳动",
+              "index": 5,
+              "jd_id": "ac9973c8-01be-4cd6-9a99-097873a59cf0",
+              "position": "AI产品经理",
+              "priority": "high",
+              "section": "hard_requirements",
+              "strategy": "semantic"
+            },
+            "distance": 0.6077823042869568,
+            "bm25_score": 7.905991239503383,
+            "vec_norm": 1.0,
+            "bm25_norm": 0.7732498238597335,
+            "hybrid_score": 0.93197494715792,
+            "rerank_score": 0.9191
+          },
+          {
+            "chunk_id": "ac9973c8-01be-4cd6-9a99-097873a59cf0_chunk_8",
+            "content": "【字节跳动 · AI产品经理 关键词】\nPython, PyTorch, LangChain, RAG, Agent, 产品经理, AI",
+            "metadata": {
+              "company": "字节跳动",
+              "index": 8,
+              "jd_id": "ac9973c8-01be-4cd6-9a99-097873a59cf0",
+              "position": "AI产品经理",
+              "section": "keywords",
+              "strategy": "semantic"
+            },
+            "distance": 0.6703348755836487,
+            "bm25_score": 8.904217465346242,
+            "vec_norm": 0.4700148724979989,
+            "bm25_norm": 1.0,
+            "hybrid_score": 0.6290104107485992,
+            "rerank_score": 0.8666
+          },
+          {
+            "chunk_id": "ac9973c8-01be-4cd6-9a99-097873a59cf0_chunk_3",
+            "content": "【字节跳动 · AI产品经理 硬性要求】\n熟练掌握Transformer、Token、RAG等核心概念",
+            "metadata": {
+              "company": "字节跳动",
+              "index": 3,
+              "jd_id": "ac9973c8-01be-4cd6-9a99-097873a59cf0",
+              "position": "AI产品经理",
+              "priority": "high",
+              "section": "hard_requirements",
+              "strategy": "semantic"
+            },
+            "distance": 0.6491163969039917,
+            "bm25_score": 8.359706126378912,
+            "vec_norm": 0.6497913052700154,
+            "bm25_norm": 0.8763125644019587,
+            "hybrid_score": 0.7177476830095983,
+            "rerank_score": 0.8238
+          }
+        ],
+        "company": "字节跳动",
+        "position": "AI产品经理",
+        "attributes": [
+          "匹配度"
+        ]
+      },
+      "result_preview": "{'score': 10, 'label': '不匹配', 'advantages': ['B端SaaS系统开发经验（供应链管理平台）', '数据库优化能力（分库分表、慢查询治理）', '微服务架构经验（Spring Cloud Alibaba）', '分布式事务处理经验', '良好的逻辑分析能力（可从代码设计体现）'], 'weaknesses': ['候选人缺乏AI产品经理相关经验，具体包括："
+    }
+  ],
+  "tools_called": [
+    "kb_retrieve",
+    "match_analyze"
+  ],
+  "kb_chunks": [
+    {
+      "chunk_id": "ac9973c8-01be-4cd6-9a99-097873a59cf0_chunk_1",
+      "content": "【字节跳动 · AI产品经理 岗位职责】\n1. 定义Agent框架：设计Planning、Reflection、Memory策略。2. 重塑LUI交互：探索意图驱动的流式UI与动态组件生成。3. 编排超级工作流：深入客服、数据、ERP等实战场景。4. 模型精细化调教：编写结构化Prompt，配合RAG、Function Calling。5. 数据驱动进化：建立交互好感度与任务成功率双重指标。",
+      "metadata": {
+        "company": "字节跳动",
+        "index": 1,
+        "jd_id": "ac9973c8-01be-4cd6-9a99-097873a59cf0",
+        "position": "AI产品经理",
+        "section": "responsibilities",
+        "strategy": "semantic"
+      },
+      "distance": 0.6308419704437256,
+      "bm25_score": 0.0,
+      "vec_norm": 0.8046238571028173,
+      "bm25_norm": 0.0,
+      "hybrid_score": 0.563236699971972,
+      "rerank_score": 0.9655
+    },
+    {
+      "chunk_id": "ac9973c8-01be-4cd6-9a99-097873a59cf0_chunk_2",
+      "content": "【字节跳动 · AI产品经理 硬性要求】\n本科及以上学历，兼具C端AIGC敏锐度与B端SaaS/RPA逻辑功底",
+      "metadata": {
+        "company": "字节跳动",
+        "index": 2,
+        "jd_id": "ac9973c8-01be-4cd6-9a99-097873a59cf0",
+        "position": "AI产品经理",
+        "priority": "high",
+        "section": "hard_requirements",
+        "strategy": "semantic"
+      },
+      "distance": 0.6293243765830994,
+      "bm25_score": 7.4989908346122895,
+      "vec_norm": 0.8174818765102908,
+      "bm25_norm": 0.6807984224549152,
+      "hybrid_score": 0.7764768402936781,
+      "rerank_score": 0.9214
+    },
+    {
+      "chunk_id": "ac9973c8-01be-4cd6-9a99-097873a59cf0_chunk_5",
+      "content": "【字节跳动 · AI产品经理 硬性要求】\n具备极强的逻辑拆解力，能像指挥交响乐一样控制模型输出",
+      "metadata": {
+        "company": "字节跳动",
+        "index": 5,
+        "jd_id": "ac9973c8-01be-4cd6-9a99-097873a59cf0",
+        "position": "AI产品经理",
+        "priority": "high",
+        "section": "hard_requirements",
+        "strategy": "semantic"
+      },
+      "distance": 0.6077823042869568,
+      "bm25_score": 7.905991239503383,
+      "vec_norm": 1.0,
+      "bm25_norm": 0.7732498238597335,
+      "hybrid_score": 0.93197494715792,
+      "rerank_score": 0.9191
+    },
+    {
+      "chunk_id": "ac9973c8-01be-4cd6-9a99-097873a59cf0_chunk_8",
+      "content": "【字节跳动 · AI产品经理 关键词】\nPython, PyTorch, LangChain, RAG, Agent, 产品经理, AI",
+      "metadata": {
+        "company": "字节跳动",
+        "index": 8,
+        "jd_id": "ac9973c8-01be-4cd6-9a99-097873a59cf0",
+        "position": "AI产品经理",
+        "section": "keywords",
+        "strategy": "semantic"
+      },
+      "distance": 0.6703348755836487,
+      "bm25_score": 8.904217465346242,
+      "vec_norm": 0.4700148724979989,
+      "bm25_norm": 1.0,
+      "hybrid_score": 0.6290104107485992,
+      "rerank_score": 0.8666
+    },
+    {
+      "chunk_id": "ac9973c8-01be-4cd6-9a99-097873a59cf0_chunk_3",
+      "content": "【字节跳动 · AI产品经理 硬性要求】\n熟练掌握Transformer、Token、RAG等核心概念",
+      "metadata": {
+        "company": "字节跳动",
+        "index": 3,
+        "jd_id": "ac9973c8-01be-4cd6-9a99-097873a59cf0",
+        "position": "AI产品经理",
+        "priority": "high",
+        "section": "hard_requirements",
+        "strategy": "semantic"
+      },
+      "distance": 0.6491163969039917,
+      "bm25_score": 8.359706126378912,
+      "vec_norm": 0.6497913052700154,
+      "bm25_norm": 0.8763125644019587,
+      "hybrid_score": 0.7177476830095983,
+      "rerank_score": 0.8238
+    }
+  ],
+  "tool_executions_full": [
+    {
+      "tool_name": "kb_retrieve",
+      "task_id": "T0",
+      "status": "success",
+      "output": {
+        "chunks": [
+          {
+            "chunk_id": "ac9973c8-01be-4cd6-9a99-097873a59cf0_chunk_1",
+            "content": "【字节跳动 · AI产品经理 岗位职责】\n1. 定义Agent框架：设计Planning、Reflection、Memory策略。2. 重塑LUI交互：探索意图驱动的流式UI与动态组件生成。3. 编排超级工作流：深入客服、数据、ERP等实战场景。4. 模型精细化调教：编写结构化Prompt，配合RAG、Function Calling。5. 数据驱动进化：建立交互好感度与任务成功率双重指标。",
+            "source": "字节跳动-AI产品经理",
+            "metadata": {
+              "company": "字节跳动",
+              "position": "AI产品经理"
+            }
+          },
+          {
+            "chunk_id": "ac9973c8-01be-4cd6-9a99-097873a59cf0_chunk_2",
+            "content": "【字节跳动 · AI产品经理 硬性要求】\n本科及以上学历，兼具C端AIGC敏锐度与B端SaaS/RPA逻辑功底",
+            "source": "字节跳动-AI产品经理",
+            "metadata": {
+              "company": "字节跳动",
+              "position": "AI产品经理"
+            }
+          },
+          {
+            "chunk_id": "ac9973c8-01be-4cd6-9a99-097873a59cf0_chunk_5",
+            "content": "【字节跳动 · AI产品经理 硬性要求】\n具备极强的逻辑拆解力，能像指挥交响乐一样控制模型输出",
+            "source": "字节跳动-AI产品经理",
+            "metadata": {
+              "company": "字节跳动",
+              "position": "AI产品经理"
+            }
+          },
+          {
+            "chunk_id": "ac9973c8-01be-4cd6-9a99-097873a59cf0_chunk_8",
+            "content": "【字节跳动 · AI产品经理 关键词】\nPython, PyTorch, LangChain, RAG, Agent, 产品经理, AI",
+            "source": "字节跳动-AI产品经理",
+            "metadata": {
+              "company": "字节跳动",
+              "position": "AI产品经理"
+            }
+          },
+          {
+            "chunk_id": "ac9973c8-01be-4cd6-9a99-097873a59cf0_chunk_3",
+            "content": "【字节跳动 · AI产品经理 硬性要求】\n熟练掌握Transformer、Token、RAG等核心概念",
+            "source": "字节跳动-AI产品经理",
+            "metadata": {
+              "company": "字节跳动",
+              "position": "AI产品经理"
+            }
+          }
+        ],
+        "query": "字节AI产品经理我能转行去",
+        "filters": {
+          "company": "字节跳动",
+          "position": "AI产品经理"
+        },
+        "strategy": "hybrid(70%vec+30%bm25)+reranker",
+        "pool_k": 5,
+        "rerank_k": 10,
+        "pool_size": 21,
+        "vec_only": 1,
+        "bm25_only": 12,
+        "both": 8,
+        "rerank": {
+          "enabled": true,
+          "candidates": 5,
+          "output": 5,
+          "best_rerank_score": 0.9655
+        }
+      }
+    },
+    {
+      "tool_name": "match_analyze",
+      "task_id": "T1",
+      "status": "success",
+      "output": {
+        "score": 10,
+        "label": "不匹配",
+        "advantages": [
+          "B端SaaS系统开发经验（供应链管理平台）",
+          "数据库优化能力（分库分表、慢查询治理）",
+          "微服务架构经验（Spring Cloud Alibaba）",
+          "分布式事务处理经验",
+          "良好的逻辑分析能力（可从代码设计体现）"
+        ],
+        "weaknesses": [
+          "候选人缺乏AI产品经理相关经验，具体包括：①未涉及Agent框架（Planning/Reflection/Memory）设计；②无LUI交互及动态UI设计经验；③无超级工作流编排（客服、数据、ERP场景）经验；④无模型调教、Prompt编写、RAG、Function Calling等AI产品核心技能；⑤不掌握Python、PyTorch、LangChain等AI技术栈；⑥对Transformer、Token等核心概念缺乏认知；⑦无产品经理角色经验，缺乏用户需求分析、指标建立（如交互好感度、任务成功率）等产品能力；⑧缺乏C端AIGC产品敏锐度。"
+        ],
+        "suggestions": [
+          "核心能力要求: AI产品经理核心能力：①Agent框架设计（Planning、Reflection、Memory策略）；②LUI交互设计（意图驱动的流式UI、动态组件生成）；③超级工作流编排（客服、数据、ERP场景）；④模型调教（结构化Prompt编写、RAG、Function Calling）；⑤数据驱动指标（交互好感度、任务成功率）；⑥硬性技能：Python、PyTorch、LangChain、RAG、Agent、Transformer、Token等AI知识；⑦逻辑拆解力与跨领域视野（C端AIGC敏锐度 + B端SaaS/RPA逻辑功底）"
+        ],
+        "match_score": 10,
+        "covered": [
+          "B端SaaS系统开发经验（供应链管理平台）",
+          "数据库优化能力（分库分表、慢查询治理）",
+          "微服务架构经验（Spring Cloud Alibaba）",
+          "分布式事务处理经验",
+          "良好的逻辑分析能力（可从代码设计体现）"
+        ],
+        "missing_experience": "候选人缺乏AI产品经理相关经验，具体包括：①未涉及Agent框架（Planning/Reflection/Memory）设计；②无LUI交互及动态UI设计经验；③无超级工作流编排（客服、数据、ERP场景）经验；④无模型调教、Prompt编写、RAG、Function Calling等AI产品核心技能；⑤不掌握Python、PyTorch、LangChain等AI技术栈；⑥对Transformer、Token等核心概念缺乏认知；⑦无产品经理角色经验，缺乏用户需求分析、指标建立（如交互好感度、任务成功率）等产品能力；⑧缺乏C端AIGC产品敏锐度。",
+        "core_skills": "AI产品经理核心能力：①Agent框架设计（Planning、Reflection、Memory策略）；②LUI交互设计（意图驱动的流式UI、动态组件生成）；③超级工作流编排（客服、数据、ERP场景）；④模型调教（结构化Prompt编写、RAG、Function Calling）；⑤数据驱动指标（交互好感度、任务成功率）；⑥硬性技能：Python、PyTorch、LangChain、RAG、Agent、Transformer、Token等AI知识；⑦逻辑拆解力与跨领域视野（C端AIGC敏锐度 + B端SaaS/RPA逻辑功底）",
+        "company": "字节跳动",
+        "position": "AI产品经理"
+      }
+    },
+    {
+      "tool_name": null,
+      "task_id": "T2",
+      "status": "success",
+      "output": {
+        "aggregation": {
+          "assess": {
+            "score": 10,
+            "label": "不匹配",
+            "advantages": [
+              "B端SaaS系统开发经验（供应链管理平台）",
+              "数据库优化能力（分库分表、慢查询治理）",
+              "微服务架构经验（Spring Cloud Alibaba）",
+              "分布式事务处理经验",
+              "良好的逻辑分析能力（可从代码设计体现）"
+            ],
+            "weaknesses": [
+              "候选人缺乏AI产品经理相关经验，具体包括：①未涉及Agent框架（Planning/Reflection/Memory）设计；②无LUI交互及动态UI设计经验；③无超级工作流编排（客服、数据、ERP场景）经验；④无模型调教、Prompt编写、RAG、Function Calling等AI产品核心技能；⑤不掌握Python、PyTorch、LangChain等AI技术栈；⑥对Transformer、Token等核心概念缺乏认知；⑦无产品经理角色经验，缺乏用户需求分析、指标建立（如交互好感度、任务成功率）等产品能力；⑧缺乏C端AIGC产品敏锐度。"
+            ],
+            "suggestions": [
+              "核心能力要求: AI产品经理核心能力：①Agent框架设计（Planning、Reflection、Memory策略）；②LUI交互设计（意图驱动的流式UI、动态组件生成）；③超级工作流编排（客服、数据、ERP场景）；④模型调教（结构化Prompt编写、RAG、Function Calling）；⑤数据驱动指标（交互好感度、任务成功率）；⑥硬性技能：Python、PyTorch、LangChain、RAG、Agent、Transformer、Token等AI知识；⑦逻辑拆解力与跨领域视野（C端AIGC敏锐度 + B端SaaS/RPA逻辑功底）"
+            ],
+            "match_score": 10,
+            "covered": [
+              "B端SaaS系统开发经验（供应链管理平台）",
+              "数据库优化能力（分库分表、慢查询治理）",
+              "微服务架构经验（Spring Cloud Alibaba）",
+              "分布式事务处理经验",
+              "良好的逻辑分析能力（可从代码设计体现）"
+            ],
+            "missing_experience": "候选人缺乏AI产品经理相关经验，具体包括：①未涉及Agent框架（Planning/Reflection/Memory）设计；②无LUI交互及动态UI设计经验；③无超级工作流编排（客服、数据、ERP场景）经验；④无模型调教、Prompt编写、RAG、Function Calling等AI产品核心技能；⑤不掌握Python、PyTorch、LangChain等AI技术栈；⑥对Transformer、Token等核心概念缺乏认知；⑦无产品经理角色经验，缺乏用户需求分析、指标建立（如交互好感度、任务成功率）等产品能力；⑧缺乏C端AIGC产品敏锐度。",
+            "core_skills": "AI产品经理核心能力：①Agent框架设计（Planning、Reflection、Memory策略）；②LUI交互设计（意图驱动的流式UI、动态组件生成）；③超级工作流编排（客服、数据、ERP场景）；④模型调教（结构化Prompt编写、RAG、Function Calling）；⑤数据驱动指标（交互好感度、任务成功率）；⑥硬性技能：Python、PyTorch、LangChain、RAG、Agent、Transformer、Token等AI知识；⑦逻辑拆解力与跨领域视野（C端AIGC敏锐度 + B端SaaS/RPA逻辑功底）",
+            "company": "字节跳动",
+            "position": "AI产品经理"
+          },
+          "jd_chunks": [
+            {
+              "chunk_id": "ac9973c8-01be-4cd6-9a99-097873a59cf0_chunk_1",
+              "content": "【字节跳动 · AI产品经理 岗位职责】\n1. 定义Agent框架：设计Planning、Reflection、Memory策略。2. 重塑LUI交互：探索意图驱动的流式UI与动态组件生成。3. 编排超级工作流：深入客服、数据、ERP等实战场景。4. 模型精细化调教：编写结构化Prompt，配合RAG、Function Calling。5. 数据驱动进化：建立交互好感度与任务成功率双重指标。",
+              "metadata": {
+                "company": "字节跳动",
+                "index": 1,
+                "jd_id": "ac9973c8-01be-4cd6-9a99-097873a59cf0",
+                "position": "AI产品经理",
+                "section": "responsibilities",
+                "strategy": "semantic"
+              },
+              "distance": 0.6308419704437256,
+              "bm25_score": 0.0,
+              "vec_norm": 0.8046238571028173,
+              "bm25_norm": 0.0,
+              "hybrid_score": 0.563236699971972,
+              "rerank_score": 0.9655
+            },
+            {
+              "chunk_id": "ac9973c8-01be-4cd6-9a99-097873a59cf0_chunk_2",
+              "content": "【字节跳动 · AI产品经理 硬性要求】\n本科及以上学历，兼具C端AIGC敏锐度与B端SaaS/RPA逻辑功底",
+              "metadata": {
+                "company": "字节跳动",
+                "index": 2,
+                "jd_id": "ac9973c8-01be-4cd6-9a99-097873a59cf0",
+                "position": "AI产品经理",
+                "priority": "high",
+                "section": "hard_requirements",
+                "strategy": "semantic"
+              },
+              "distance": 0.6293243765830994,
+              "bm25_score": 7.4989908346122895,
+              "vec_norm": 0.8174818765102908,
+              "bm25_norm": 0.6807984224549152,
+              "hybrid_score": 0.7764768402936781,
+              "rerank_score": 0.9214
+            },
+            {
+              "chunk_id": "ac9973c8-01be-4cd6-9a99-097873a59cf0_chunk_5",
+              "content": "【字节跳动 · AI产品经理 硬性要求】\n具备极强的逻辑拆解力，能像指挥交响乐一样控制模型输出",
+              "metadata": {
+                "company": "字节跳动",
+                "index": 5,
+                "jd_id": "ac9973c8-01be-4cd6-9a99-097873a59cf0",
+                "position": "AI产品经理",
+                "priority": "high",
+                "section": "hard_requirements",
+                "strategy": "semantic"
+              },
+              "distance": 0.6077823042869568,
+              "bm25_score": 7.905991239503383,
+              "vec_norm": 1.0,
+              "bm25_norm": 0.7732498238597335,
+              "hybrid_score": 0.93197494715792,
+              "rerank_score": 0.9191
+            },
+            {
+              "chunk_id": "ac9973c8-01be-4cd6-9a99-097873a59cf0_chunk_8",
+              "content": "【字节跳动 · AI产品经理 关键词】\nPython, PyTorch, LangChain, RAG, Agent, 产品经理, AI",
+              "metadata": {
+                "company": "字节跳动",
+                "index": 8,
+                "jd_id": "ac9973c8-01be-4cd6-9a99-097873a59cf0",
+                "position": "AI产品经理",
+                "section": "keywords",
+                "strategy": "semantic"
+              },
+              "distance": 0.6703348755836487,
+              "bm25_score": 8.904217465346242,
+              "vec_norm": 0.4700148724979989,
+              "bm25_norm": 1.0,
+              "hybrid_score": 0.6290104107485992,
+              "rerank_score": 0.8666
+            },
+            {
+              "chunk_id": "ac9973c8-01be-4cd6-9a99-097873a59cf0_chunk_3",
+              "content": "【字节跳动 · AI产品经理 硬性要求】\n熟练掌握Transformer、Token、RAG等核心概念",
+              "metadata": {
+                "company": "字节跳动",
+                "index": 3,
+                "jd_id": "ac9973c8-01be-4cd6-9a99-097873a59cf0",
+                "position": "AI产品经理",
+                "priority": "high",
+                "section": "hard_requirements",
+                "strategy": "semantic"
+              },
+              "distance": 0.6491163969039917,
+              "bm25_score": 8.359706126378912,
+              "vec_norm": 0.6497913052700154,
+              "bm25_norm": 0.8763125644019587,
+              "hybrid_score": 0.7177476830095983,
+              "rerank_score": 0.8238
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "debug_info": {
+    "task_graph": {
+      "tasks": {
+        "T0": {
+          "task_id": "T0",
+          "task_type": "tool_call",
+          "tool_name": "kb_retrieve",
+          "status": "success",
+          "parameters": {
+            "query": "{{global_slots.search_keywords}}",
+            "top_k": 5,
+            "company": "字节跳动",
+            "position": "AI产品经理"
+          },
+          "resolved_params": {
+            "query": "字节AI产品经理我能转行去",
+            "top_k": 5,
+            "company": "字节跳动",
+            "position": "AI产品经理"
+          },
+          "result": {
+            "chunks": [
+              {
+                "chunk_id": "ac9973c8-01be-4cd6-9a99-097873a59cf0_chunk_1",
+                "content": "【字节跳动 · AI产品经理 岗位职责】\n1. 定义Agent框架：设计Planning、Reflection、Memory策略。2. 重塑LUI交互：探索意图驱动的流式UI与动态组件生成。3. 编排超级工作流：深入客服、数据、ERP等实战场景。4. 模型精细化调教：编写结构化Prompt，配合RAG、Function Calling。5. 数据驱动进化：建立交互好感度与任务成功率双重指标。",
+                "metadata": {
+                  "company": "字节跳动",
+                  "index": 1,
+                  "jd_id": "ac9973c8-01be-4cd6-9a99-097873a59cf0",
+                  "position": "AI产品经理",
+                  "section": "responsibilities",
+                  "strategy": "semantic"
+                },
+                "distance": 0.6308419704437256,
+                "bm25_score": 0.0,
+                "vec_norm": 0.8046238571028173,
+                "bm25_norm": 0.0,
+                "hybrid_score": 0.563236699971972,
+                "rerank_score": 0.9655
+              },
+              {
+                "chunk_id": "ac9973c8-01be-4cd6-9a99-097873a59cf0_chunk_2",
+                "content": "【字节跳动 · AI产品经理 硬性要求】\n本科及以上学历，兼具C端AIGC敏锐度与B端SaaS/RPA逻辑功底",
+                "metadata": {
+                  "company": "字节跳动",
+                  "index": 2,
+                  "jd_id": "ac9973c8-01be-4cd6-9a99-097873a59cf0",
+                  "position": "AI产品经理",
+                  "priority": "high",
+                  "section": "hard_requirements",
+                  "strategy": "semantic"
+                },
+                "distance": 0.6293243765830994,
+                "bm25_score": 7.4989908346122895,
+                "vec_norm": 0.8174818765102908,
+                "bm25_norm": 0.6807984224549152,
+                "hybrid_score": 0.7764768402936781,
+                "rerank_score": 0.9214
+              },
+              {
+                "chunk_id": "ac9973c8-01be-4cd6-9a99-097873a59cf0_chunk_5",
+                "content": "【字节跳动 · AI产品经理 硬性要求】\n具备极强的逻辑拆解力，能像指挥交响乐一样控制模型输出",
+                "metadata": {
+                  "company": "字节跳动",
+                  "index": 5,
+                  "jd_id": "ac9973c8-01be-4cd6-9a99-097873a59cf0",
+                  "position": "AI产品经理",
+                  "priority": "high",
+                  "section": "hard_requirements",
+                  "strategy": "semantic"
+                },
+                "distance": 0.6077823042869568,
+                "bm25_score": 7.905991239503383,
+                "vec_norm": 1.0,
+                "bm25_norm": 0.7732498238597335,
+                "hybrid_score": 0.93197494715792,
+                "rerank_score": 0.9191
+              },
+              {
+                "chunk_id": "ac9973c8-01be-4cd6-9a99-097873a59cf0_chunk_8",
+                "content": "【字节跳动 · AI产品经理 关键词】\nPython, PyTorch, LangChain, RAG, Agent, 产品经理, AI",
+                "metadata": {
+                  "company": "字节跳动",
+                  "index": 8,
+                  "jd_id": "ac9973c8-01be-4cd6-9a99-097873a59cf0",
+                  "position": "AI产品经理",
+                  "section": "keywords",
+                  "strategy": "semantic"
+                },
+                "distance": 0.6703348755836487,
+                "bm25_score": 8.904217465346242,
+                "vec_norm": 0.4700148724979989,
+                "bm25_norm": 1.0,
+                "hybrid_score": 0.6290104107485992,
+                "rerank_score": 0.8666
+              },
+              {
+                "chunk_id": "ac9973c8-01be-4cd6-9a99-097873a59cf0_chunk_3",
+                "content": "【字节跳动 · AI产品经理 硬性要求】\n熟练掌握Transformer、Token、RAG等核心概念",
+                "metadata": {
+                  "company": "字节跳动",
+                  "index": 3,
+                  "jd_id": "ac9973c8-01be-4cd6-9a99-097873a59cf0",
+                  "position": "AI产品经理",
+                  "priority": "high",
+                  "section": "hard_requirements",
+                  "strategy": "semantic"
+                },
+                "distance": 0.6491163969039917,
+                "bm25_score": 8.359706126378912,
+                "vec_norm": 0.6497913052700154,
+                "bm25_norm": 0.8763125644019587,
+                "hybrid_score": 0.7177476830095983,
+                "rerank_score": 0.8238
+              }
+            ],
+            "query": "字节AI产品经理我能转行去",
+            "filters": {
+              "company": "字节跳动",
+              "position": "AI产品经理"
+            },
+            "strategy": "hybrid(70%vec+30%bm25)+reranker",
+            "pool_k": 5,
+            "rerank_k": 10,
+            "pool_size": 21,
+            "vec_only": 1,
+            "bm25_only": 12,
+            "both": 8,
+            "rerank": {
+              "enabled": true,
+              "candidates": 5,
+              "output": 5,
+              "best_rerank_score": 0.9655
+            }
+          },
+          "observation": "工具 kb_retrieve 执行成功"
+        },
+        "T1": {
+          "task_id": "T1",
+          "task_type": "tool_call",
+          "tool_name": "match_analyze",
+          "status": "success",
+          "parameters": {
+            "resume_text": "{{global_slots.resume_text}}",
+            "jd_text": "{{T0.output.chunks}}",
+            "company": "字节跳动",
+            "position": "AI产品经理",
+            "attributes": [
+              "匹配度"
+            ]
+          },
+          "resolved_params": {
+            "resume_text": "姓名：李工程师\n电话：138-XXXX-1234 | 邮箱：lixx_dev@email.com | 现居：北京\nJava后端开发工程师 | 3年经验 | 本科\n\n教育背景\n2018.09 - 2022.06  XX理工大学  计算机科学与技术（本科）\n主修课程：数据结构与算法、操作系统、计算机网络、数据库原理、软件工程\n在校荣誉：校级优秀毕业设计（基于微服务的校园二手交易平台）\n\n专业技能\n熟练掌握Java核心技术，熟悉JVM内存模型、GC机制及常见调优手段\n精通Spring Boot、Spring Cloud微服务生态，熟悉Nacos、Gateway、Sentinel、Seata等组件\n熟悉MySQL索引优化、事务机制、分库分表策略，具备SQL调优及慢查询治理经验\n了解Redis缓存设计、Kafka消息队列，熟悉Docker容器化部署及Jenkins CI/CD流程\n掌握Git版本控制，熟悉Linux日常运维及日志排查\n\n工作经历\n2022.07 - 至今  XX科技有限公司（B轮 / 企业服务 SaaS）  Java后端工程师\n\nSaaS供应链管理平台（2023.03 - 至今）\n负责订单中心、库存中心核心模块设计与开发，采用Spring Cloud Alibaba微服务架构，支撑日均10W+订单处理\n主导MySQL分库分表方案设计（ShardingSphere），解决单表数据量过亿导致的查询性能瓶颈，接口响应时间从800ms降至120ms\n设计多级缓存策略（Redis + Caffeine本地缓存），热点数据命中率提升至95%，降低数据库负载40%\n基于Seata AT模式实现分布式事务，保障订单与库存数据一致性，线上运行半年零资损事故\n\n企业权限中台重构（2022.09 - 2023.02）\n参与RBAC权限中台从单体到微服务的拆分重构，负责鉴权服务、菜单路由模块开发\n引入Gateway统一鉴权过滤器，对接OAuth2.0 + JWT认证体系，支持多租户隔离\n编写核心接口单元测试（Unit + Mockito），模块测试覆盖率从45%提升至82%\n\n自我评价\n具备扎实的计算机基础与3年企业级后端开发经验，擅长高并发场景下的系统设计与性能优化。注重代码质量与工程规范，具备良好的团队协作与跨部门沟通能力。",
+            "jd_text": [
+              {
+                "chunk_id": "ac9973c8-01be-4cd6-9a99-097873a59cf0_chunk_1",
+                "content": "【字节跳动 · AI产品经理 岗位职责】\n1. 定义Agent框架：设计Planning、Reflection、Memory策略。2. 重塑LUI交互：探索意图驱动的流式UI与动态组件生成。3. 编排超级工作流：深入客服、数据、ERP等实战场景。4. 模型精细化调教：编写结构化Prompt，配合RAG、Function Calling。5. 数据驱动进化：建立交互好感度与任务成功率双重指标。",
+                "metadata": {
+                  "company": "字节跳动",
+                  "index": 1,
+                  "jd_id": "ac9973c8-01be-4cd6-9a99-097873a59cf0",
+                  "position": "AI产品经理",
+                  "section": "responsibilities",
+                  "strategy": "semantic"
+                },
+                "distance": 0.6308419704437256,
+                "bm25_score": 0.0,
+                "vec_norm": 0.8046238571028173,
+                "bm25_norm": 0.0,
+                "hybrid_score": 0.563236699971972,
+                "rerank_score": 0.9655
+              },
+              {
+                "chunk_id": "ac9973c8-01be-4cd6-9a99-097873a59cf0_chunk_2",
+                "content": "【字节跳动 · AI产品经理 硬性要求】\n本科及以上学历，兼具C端AIGC敏锐度与B端SaaS/RPA逻辑功底",
+                "metadata": {
+                  "company": "字节跳动",
+                  "index": 2,
+                  "jd_id": "ac9973c8-01be-4cd6-9a99-097873a59cf0",
+                  "position": "AI产品经理",
+                  "priority": "high",
+                  "section": "hard_requirements",
+                  "strategy": "semantic"
+                },
+                "distance": 0.6293243765830994,
+                "bm25_score": 7.4989908346122895,
+                "vec_norm": 0.8174818765102908,
+                "bm25_norm": 0.6807984224549152,
+                "hybrid_score": 0.7764768402936781,
+                "rerank_score": 0.9214
+              },
+              {
+                "chunk_id": "ac9973c8-01be-4cd6-9a99-097873a59cf0_chunk_5",
+                "content": "【字节跳动 · AI产品经理 硬性要求】\n具备极强的逻辑拆解力，能像指挥交响乐一样控制模型输出",
+                "metadata": {
+                  "company": "字节跳动",
+                  "index": 5,
+                  "jd_id": "ac9973c8-01be-4cd6-9a99-097873a59cf0",
+                  "position": "AI产品经理",
+                  "priority": "high",
+                  "section": "hard_requirements",
+                  "strategy": "semantic"
+                },
+                "distance": 0.6077823042869568,
+                "bm25_score": 7.905991239503383,
+                "vec_norm": 1.0,
+                "bm25_norm": 0.7732498238597335,
+                "hybrid_score": 0.93197494715792,
+                "rerank_score": 0.9191
+              },
+              {
+                "chunk_id": "ac9973c8-01be-4cd6-9a99-097873a59cf0_chunk_8",
+                "content": "【字节跳动 · AI产品经理 关键词】\nPython, PyTorch, LangChain, RAG, Agent, 产品经理, AI",
+                "metadata": {
+                  "company": "字节跳动",
+                  "index": 8,
+                  "jd_id": "ac9973c8-01be-4cd6-9a99-097873a59cf0",
+                  "position": "AI产品经理",
+                  "section": "keywords",
+                  "strategy": "semantic"
+                },
+                "distance": 0.6703348755836487,
+                "bm25_score": 8.904217465346242,
+                "vec_norm": 0.4700148724979989,
+                "bm25_norm": 1.0,
+                "hybrid_score": 0.6290104107485992,
+                "rerank_score": 0.8666
+              },
+              {
+                "chunk_id": "ac9973c8-01be-4cd6-9a99-097873a59cf0_chunk_3",
+                "content": "【字节跳动 · AI产品经理 硬性要求】\n熟练掌握Transformer、Token、RAG等核心概念",
+                "metadata": {
+                  "company": "字节跳动",
+                  "index": 3,
+                  "jd_id": "ac9973c8-01be-4cd6-9a99-097873a59cf0",
+                  "position": "AI产品经理",
+                  "priority": "high",
+                  "section": "hard_requirements",
+                  "strategy": "semantic"
+                },
+                "distance": 0.6491163969039917,
+                "bm25_score": 8.359706126378912,
+                "vec_norm": 0.6497913052700154,
+                "bm25_norm": 0.8763125644019587,
+                "hybrid_score": 0.7177476830095983,
+                "rerank_score": 0.8238
+              }
+            ],
+            "company": "字节跳动",
+            "position": "AI产品经理",
+            "attributes": [
+              "匹配度"
+            ]
+          },
+          "result": {
+            "score": 10,
+            "label": "不匹配",
+            "advantages": [
+              "B端SaaS系统开发经验（供应链管理平台）",
+              "数据库优化能力（分库分表、慢查询治理）",
+              "微服务架构经验（Spring Cloud Alibaba）",
+              "分布式事务处理经验",
+              "良好的逻辑分析能力（可从代码设计体现）"
+            ],
+            "weaknesses": [
+              "候选人缺乏AI产品经理相关经验，具体包括：①未涉及Agent框架（Planning/Reflection/Memory）设计；②无LUI交互及动态UI设计经验；③无超级工作流编排（客服、数据、ERP场景）经验；④无模型调教、Prompt编写、RAG、Function Calling等AI产品核心技能；⑤不掌握Python、PyTorch、LangChain等AI技术栈；⑥对Transformer、Token等核心概念缺乏认知；⑦无产品经理角色经验，缺乏用户需求分析、指标建立（如交互好感度、任务成功率）等产品能力；⑧缺乏C端AIGC产品敏锐度。"
+            ],
+            "suggestions": [
+              "核心能力要求: AI产品经理核心能力：①Agent框架设计（Planning、Reflection、Memory策略）；②LUI交互设计（意图驱动的流式UI、动态组件生成）；③超级工作流编排（客服、数据、ERP场景）；④模型调教（结构化Prompt编写、RAG、Function Calling）；⑤数据驱动指标（交互好感度、任务成功率）；⑥硬性技能：Python、PyTorch、LangChain、RAG、Agent、Transformer、Token等AI知识；⑦逻辑拆解力与跨领域视野（C端AIGC敏锐度 + B端SaaS/RPA逻辑功底）"
+            ],
+            "match_score": 10,
+            "covered": [
+              "B端SaaS系统开发经验（供应链管理平台）",
+              "数据库优化能力（分库分表、慢查询治理）",
+              "微服务架构经验（Spring Cloud Alibaba）",
+              "分布式事务处理经验",
+              "良好的逻辑分析能力（可从代码设计体现）"
+            ],
+            "missing_experience": "候选人缺乏AI产品经理相关经验，具体包括：①未涉及Agent框架（Planning/Reflection/Memory）设计；②无LUI交互及动态UI设计经验；③无超级工作流编排（客服、数据、ERP场景）经验；④无模型调教、Prompt编写、RAG、Function Calling等AI产品核心技能；⑤不掌握Python、PyTorch、LangChain等AI技术栈；⑥对Transformer、Token等核心概念缺乏认知；⑦无产品经理角色经验，缺乏用户需求分析、指标建立（如交互好感度、任务成功率）等产品能力；⑧缺乏C端AIGC产品敏锐度。",
+            "core_skills": "AI产品经理核心能力：①Agent框架设计（Planning、Reflection、Memory策略）；②LUI交互设计（意图驱动的流式UI、动态组件生成）；③超级工作流编排（客服、数据、ERP场景）；④模型调教（结构化Prompt编写、RAG、Function Calling）；⑤数据驱动指标（交互好感度、任务成功率）；⑥硬性技能：Python、PyTorch、LangChain、RAG、Agent、Transformer、Token等AI知识；⑦逻辑拆解力与跨领域视野（C端AIGC敏锐度 + B端SaaS/RPA逻辑功底）",
+            "company": "字节跳动",
+            "position": "AI产品经理"
+          },
+          "observation": "工具 match_analyze 执行成功"
+        },
+        "T2": {
+          "task_id": "T2",
+          "task_type": "aggregate",
+          "tool_name": null,
+          "status": "success",
+          "parameters": {
+            "assess": "{{T1.output}}",
+            "jd_chunks": "{{T0.output.chunks}}"
+          },
+          "resolved_params": {
+            "assess": {
+              "score": 10,
+              "label": "不匹配",
+              "advantages": [
+                "B端SaaS系统开发经验（供应链管理平台）",
+                "数据库优化能力（分库分表、慢查询治理）",
+                "微服务架构经验（Spring Cloud Alibaba）",
+                "分布式事务处理经验",
+                "良好的逻辑分析能力（可从代码设计体现）"
+              ],
+              "weaknesses": [
+                "候选人缺乏AI产品经理相关经验，具体包括：①未涉及Agent框架（Planning/Reflection/Memory）设计；②无LUI交互及动态UI设计经验；③无超级工作流编排（客服、数据、ERP场景）经验；④无模型调教、Prompt编写、RAG、Function Calling等AI产品核心技能；⑤不掌握Python、PyTorch、LangChain等AI技术栈；⑥对Transformer、Token等核心概念缺乏认知；⑦无产品经理角色经验，缺乏用户需求分析、指标建立（如交互好感度、任务成功率）等产品能力；⑧缺乏C端AIGC产品敏锐度。"
+              ],
+              "suggestions": [
+                "核心能力要求: AI产品经理核心能力：①Agent框架设计（Planning、Reflection、Memory策略）；②LUI交互设计（意图驱动的流式UI、动态组件生成）；③超级工作流编排（客服、数据、ERP场景）；④模型调教（结构化Prompt编写、RAG、Function Calling）；⑤数据驱动指标（交互好感度、任务成功率）；⑥硬性技能：Python、PyTorch、LangChain、RAG、Agent、Transformer、Token等AI知识；⑦逻辑拆解力与跨领域视野（C端AIGC敏锐度 + B端SaaS/RPA逻辑功底）"
+              ],
+              "match_score": 10,
+              "covered": [
+                "B端SaaS系统开发经验（供应链管理平台）",
+                "数据库优化能力（分库分表、慢查询治理）",
+                "微服务架构经验（Spring Cloud Alibaba）",
+                "分布式事务处理经验",
+                "良好的逻辑分析能力（可从代码设计体现）"
+              ],
+              "missing_experience": "候选人缺乏AI产品经理相关经验，具体包括：①未涉及Agent框架（Planning/Reflection/Memory）设计；②无LUI交互及动态UI设计经验；③无超级工作流编排（客服、数据、ERP场景）经验；④无模型调教、Prompt编写、RAG、Function Calling等AI产品核心技能；⑤不掌握Python、PyTorch、LangChain等AI技术栈；⑥对Transformer、Token等核心概念缺乏认知；⑦无产品经理角色经验，缺乏用户需求分析、指标建立（如交互好感度、任务成功率）等产品能力；⑧缺乏C端AIGC产品敏锐度。",
+              "core_skills": "AI产品经理核心能力：①Agent框架设计（Planning、Reflection、Memory策略）；②LUI交互设计（意图驱动的流式UI、动态组件生成）；③超级工作流编排（客服、数据、ERP场景）；④模型调教（结构化Prompt编写、RAG、Function Calling）；⑤数据驱动指标（交互好感度、任务成功率）；⑥硬性技能：Python、PyTorch、LangChain、RAG、Agent、Transformer、Token等AI知识；⑦逻辑拆解力与跨领域视野（C端AIGC敏锐度 + B端SaaS/RPA逻辑功底）",
+              "company": "字节跳动",
+              "position": "AI产品经理"
+            },
+            "jd_chunks": [
+              {
+                "chunk_id": "ac9973c8-01be-4cd6-9a99-097873a59cf0_chunk_1",
+                "content": "【字节跳动 · AI产品经理 岗位职责】\n1. 定义Agent框架：设计Planning、Reflection、Memory策略。2. 重塑LUI交互：探索意图驱动的流式UI与动态组件生成。3. 编排超级工作流：深入客服、数据、ERP等实战场景。4. 模型精细化调教：编写结构化Prompt，配合RAG、Function Calling。5. 数据驱动进化：建立交互好感度与任务成功率双重指标。",
+                "metadata": {
+                  "company": "字节跳动",
+                  "index": 1,
+                  "jd_id": "ac9973c8-01be-4cd6-9a99-097873a59cf0",
+                  "position": "AI产品经理",
+                  "section": "responsibilities",
+                  "strategy": "semantic"
+                },
+                "distance": 0.6308419704437256,
+                "bm25_score": 0.0,
+                "vec_norm": 0.8046238571028173,
+                "bm25_norm": 0.0,
+                "hybrid_score": 0.563236699971972,
+                "rerank_score": 0.9655
+              },
+              {
+                "chunk_id": "ac9973c8-01be-4cd6-9a99-097873a59cf0_chunk_2",
+                "content": "【字节跳动 · AI产品经理 硬性要求】\n本科及以上学历，兼具C端AIGC敏锐度与B端SaaS/RPA逻辑功底",
+                "metadata": {
+                  "company": "字节跳动",
+                  "index": 2,
+                  "jd_id": "ac9973c8-01be-4cd6-9a99-097873a59cf0",
+                  "position": "AI产品经理",
+                  "priority": "high",
+                  "section": "hard_requirements",
+                  "strategy": "semantic"
+                },
+                "distance": 0.6293243765830994,
+                "bm25_score": 7.4989908346122895,
+                "vec_norm": 0.8174818765102908,
+                "bm25_norm": 0.6807984224549152,
+                "hybrid_score": 0.7764768402936781,
+                "rerank_score": 0.9214
+              },
+              {
+                "chunk_id": "ac9973c8-01be-4cd6-9a99-097873a59cf0_chunk_5",
+                "content": "【字节跳动 · AI产品经理 硬性要求】\n具备极强的逻辑拆解力，能像指挥交响乐一样控制模型输出",
+                "metadata": {
+                  "company": "字节跳动",
+                  "index": 5,
+                  "jd_id": "ac9973c8-01be-4cd6-9a99-097873a59cf0",
+                  "position": "AI产品经理",
+                  "priority": "high",
+                  "section": "hard_requirements",
+                  "strategy": "semantic"
+                },
+                "distance": 0.6077823042869568,
+                "bm25_score": 7.905991239503383,
+                "vec_norm": 1.0,
+                "bm25_norm": 0.7732498238597335,
+                "hybrid_score": 0.93197494715792,
+                "rerank_score": 0.9191
+              },
+              {
+                "chunk_id": "ac9973c8-01be-4cd6-9a99-097873a59cf0_chunk_8",
+                "content": "【字节跳动 · AI产品经理 关键词】\nPython, PyTorch, LangChain, RAG, Agent, 产品经理, AI",
+                "metadata": {
+                  "company": "字节跳动",
+                  "index": 8,
+                  "jd_id": "ac9973c8-01be-4cd6-9a99-097873a59cf0",
+                  "position": "AI产品经理",
+                  "section": "keywords",
+                  "strategy": "semantic"
+                },
+                "distance": 0.6703348755836487,
+                "bm25_score": 8.904217465346242,
+                "vec_norm": 0.4700148724979989,
+                "bm25_norm": 1.0,
+                "hybrid_score": 0.6290104107485992,
+                "rerank_score": 0.8666
+              },
+              {
+                "chunk_id": "ac9973c8-01be-4cd6-9a99-097873a59cf0_chunk_3",
+                "content": "【字节跳动 · AI产品经理 硬性要求】\n熟练掌握Transformer、Token、RAG等核心概念",
+                "metadata": {
+                  "company": "字节跳动",
+                  "index": 3,
+                  "jd_id": "ac9973c8-01be-4cd6-9a99-097873a59cf0",
+                  "position": "AI产品经理",
+                  "priority": "high",
+                  "section": "hard_requirements",
+                  "strategy": "semantic"
+                },
+                "distance": 0.6491163969039917,
+                "bm25_score": 8.359706126378912,
+                "vec_norm": 0.6497913052700154,
+                "bm25_norm": 0.8763125644019587,
+                "hybrid_score": 0.7177476830095983,
+                "rerank_score": 0.8238
+              }
+            ]
+          },
+          "result": {
+            "aggregation": {
+              "assess": {
+                "score": 10,
+                "label": "不匹配",
+                "advantages": [
+                  "B端SaaS系统开发经验（供应链管理平台）",
+                  "数据库优化能力（分库分表、慢查询治理）",
+                  "微服务架构经验（Spring Cloud Alibaba）",
+                  "分布式事务处理经验",
+                  "良好的逻辑分析能力（可从代码设计体现）"
+                ],
+                "weaknesses": [
+                  "候选人缺乏AI产品经理相关经验，具体包括：①未涉及Agent框架（Planning/Reflection/Memory）设计；②无LUI交互及动态UI设计经验；③无超级工作流编排（客服、数据、ERP场景）经验；④无模型调教、Prompt编写、RAG、Function Calling等AI产品核心技能；⑤不掌握Python、PyTorch、LangChain等AI技术栈；⑥对Transformer、Token等核心概念缺乏认知；⑦无产品经理角色经验，缺乏用户需求分析、指标建立（如交互好感度、任务成功率）等产品能力；⑧缺乏C端AIGC产品敏锐度。"
+                ],
+                "suggestions": [
+                  "核心能力要求: AI产品经理核心能力：①Agent框架设计（Planning、Reflection、Memory策略）；②LUI交互设计（意图驱动的流式UI、动态组件生成）；③超级工作流编排（客服、数据、ERP场景）；④模型调教（结构化Prompt编写、RAG、Function Calling）；⑤数据驱动指标（交互好感度、任务成功率）；⑥硬性技能：Python、PyTorch、LangChain、RAG、Agent、Transformer、Token等AI知识；⑦逻辑拆解力与跨领域视野（C端AIGC敏锐度 + B端SaaS/RPA逻辑功底）"
+                ],
+                "match_score": 10,
+                "covered": [
+                  "B端SaaS系统开发经验（供应链管理平台）",
+                  "数据库优化能力（分库分表、慢查询治理）",
+                  "微服务架构经验（Spring Cloud Alibaba）",
+                  "分布式事务处理经验",
+                  "良好的逻辑分析能力（可从代码设计体现）"
+                ],
+                "missing_experience": "候选人缺乏AI产品经理相关经验，具体包括：①未涉及Agent框架（Planning/Reflection/Memory）设计；②无LUI交互及动态UI设计经验；③无超级工作流编排（客服、数据、ERP场景）经验；④无模型调教、Prompt编写、RAG、Function Calling等AI产品核心技能；⑤不掌握Python、PyTorch、LangChain等AI技术栈；⑥对Transformer、Token等核心概念缺乏认知；⑦无产品经理角色经验，缺乏用户需求分析、指标建立（如交互好感度、任务成功率）等产品能力；⑧缺乏C端AIGC产品敏锐度。",
+                "core_skills": "AI产品经理核心能力：①Agent框架设计（Planning、Reflection、Memory策略）；②LUI交互设计（意图驱动的流式UI、动态组件生成）；③超级工作流编排（客服、数据、ERP场景）；④模型调教（结构化Prompt编写、RAG、Function Calling）；⑤数据驱动指标（交互好感度、任务成功率）；⑥硬性技能：Python、PyTorch、LangChain、RAG、Agent、Transformer、Token等AI知识；⑦逻辑拆解力与跨领域视野（C端AIGC敏锐度 + B端SaaS/RPA逻辑功底）",
+                "company": "字节跳动",
+                "position": "AI产品经理"
+              },
+              "jd_chunks": [
+                {
+                  "chunk_id": "ac9973c8-01be-4cd6-9a99-097873a59cf0_chunk_1",
+                  "content": "【字节跳动 · AI产品经理 岗位职责】\n1. 定义Agent框架：设计Planning、Reflection、Memory策略。2. 重塑LUI交互：探索意图驱动的流式UI与动态组件生成。3. 编排超级工作流：深入客服、数据、ERP等实战场景。4. 模型精细化调教：编写结构化Prompt，配合RAG、Function Calling。5. 数据驱动进化：建立交互好感度与任务成功率双重指标。",
+                  "metadata": {
+                    "company": "字节跳动",
+                    "index": 1,
+                    "jd_id": "ac9973c8-01be-4cd6-9a99-097873a59cf0",
+                    "position": "AI产品经理",
+                    "section": "responsibilities",
+                    "strategy": "semantic"
+                  },
+                  "distance": 0.6308419704437256,
+                  "bm25_score": 0.0,
+                  "vec_norm": 0.8046238571028173,
+                  "bm25_norm": 0.0,
+                  "hybrid_score": 0.563236699971972,
+                  "rerank_score": 0.9655
+                },
+                {
+                  "chunk_id": "ac9973c8-01be-4cd6-9a99-097873a59cf0_chunk_2",
+                  "content": "【字节跳动 · AI产品经理 硬性要求】\n本科及以上学历，兼具C端AIGC敏锐度与B端SaaS/RPA逻辑功底",
+                  "metadata": {
+                    "company": "字节跳动",
+                    "index": 2,
+                    "jd_id": "ac9973c8-01be-4cd6-9a99-097873a59cf0",
+                    "position": "AI产品经理",
+                    "priority": "high",
+                    "section": "hard_requirements",
+                    "strategy": "semantic"
+                  },
+                  "distance": 0.6293243765830994,
+                  "bm25_score": 7.4989908346122895,
+                  "vec_norm": 0.8174818765102908,
+                  "bm25_norm": 0.6807984224549152,
+                  "hybrid_score": 0.7764768402936781,
+                  "rerank_score": 0.9214
+                },
+                {
+                  "chunk_id": "ac9973c8-01be-4cd6-9a99-097873a59cf0_chunk_5",
+                  "content": "【字节跳动 · AI产品经理 硬性要求】\n具备极强的逻辑拆解力，能像指挥交响乐一样控制模型输出",
+                  "metadata": {
+                    "company": "字节跳动",
+                    "index": 5,
+                    "jd_id": "ac9973c8-01be-4cd6-9a99-097873a59cf0",
+                    "position": "AI产品经理",
+                    "priority": "high",
+                    "section": "hard_requirements",
+                    "strategy": "semantic"
+                  },
+                  "distance": 0.6077823042869568,
+                  "bm25_score": 7.905991239503383,
+                  "vec_norm": 1.0,
+                  "bm25_norm": 0.7732498238597335,
+                  "hybrid_score": 0.93197494715792,
+                  "rerank_score": 0.9191
+                },
+                {
+                  "chunk_id": "ac9973c8-01be-4cd6-9a99-097873a59cf0_chunk_8",
+                  "content": "【字节跳动 · AI产品经理 关键词】\nPython, PyTorch, LangChain, RAG, Agent, 产品经理, AI",
+                  "metadata": {
+                    "company": "字节跳动",
+                    "index": 8,
+                    "jd_id": "ac9973c8-01be-4cd6-9a99-097873a59cf0",
+                    "position": "AI产品经理",
+                    "section": "keywords",
+                    "strategy": "semantic"
+                  },
+                  "distance": 0.6703348755836487,
+                  "bm25_score": 8.904217465346242,
+                  "vec_norm": 0.4700148724979989,
+                  "bm25_norm": 1.0,
+                  "hybrid_score": 0.6290104107485992,
+                  "rerank_score": 0.8666
+                },
+                {
+                  "chunk_id": "ac9973c8-01be-4cd6-9a99-097873a59cf0_chunk_3",
+                  "content": "【字节跳动 · AI产品经理 硬性要求】\n熟练掌握Transformer、Token、RAG等核心概念",
+                  "metadata": {
+                    "company": "字节跳动",
+                    "index": 3,
+                    "jd_id": "ac9973c8-01be-4cd6-9a99-097873a59cf0",
+                    "position": "AI产品经理",
+                    "priority": "high",
+                    "section": "hard_requirements",
+                    "strategy": "semantic"
+                  },
+                  "distance": 0.6491163969039917,
+                  "bm25_score": 8.359706126378912,
+                  "vec_norm": 0.6497913052700154,
+                  "bm25_norm": 0.8763125644019587,
+                  "hybrid_score": 0.7177476830095983,
+                  "rerank_score": 0.8238
+                }
+              ]
+            }
+          },
+          "observation": "聚合完成"
+        }
+      },
+      "global_status": "success",
+      "replan_reason": "",
+      "replan_count": 0
+    },
+    "intent": {
+      "demands": [
+        {
+          "intent": "match_assess",
+          "entities": {
+            "company": "字节",
+            "position": "AI产品经理",
+            "attributes": [
+              "匹配度"
+            ],
+            "jd_source": "kb"
+          },
+          "confidence": 0.75
+        }
+      ],
+      "needs_clarification": false,
+      "clarification_question": ""
+    },
+    "rewrite": {
+      "rewritten_query": "字节AI产品经理我能转行去吗",
+      "search_keywords": "字节AI产品经理我能转行去",
+      "is_follow_up": false,
+      "follow_up_type": "none",
+      "resolved_references": {}
+    },
+    "evidence_cache": [
+      {
+        "chunk_id": "ac9973c8-01be-4cd6-9a99-097873a59cf0_chunk_1",
+        "content": "【字节跳动 · AI产品经理 岗位职责】\n1. 定义Agent框架：设计Planning、Reflection、Memory策略。2. 重塑LUI交互：探索意图驱动的流式UI与动态组件生成。3. 编排超级工作流：深入客服、数据、ERP等实战场景。4. 模型精细化调教：编写结构化Prompt，配合RAG、Function Calling。5. 数据驱动进化：建立交互好感度与任务成功率双重指标。",
+        "metadata": {
+          "company": "字节跳动",
+          "index": 1,
+          "jd_id": "ac9973c8-01be-4cd6-9a99-097873a59cf0",
+          "position": "AI产品经理",
+          "section": "responsibilities",
+          "strategy": "semantic"
+        },
+        "distance": 0.6308419704437256,
+        "bm25_score": 0.0,
+        "vec_norm": 0.8046238571028173,
+        "bm25_norm": 0.0,
+        "hybrid_score": 0.563236699971972,
+        "rerank_score": 0.9655
+      },
+      {
+        "chunk_id": "ac9973c8-01be-4cd6-9a99-097873a59cf0_chunk_2",
+        "content": "【字节跳动 · AI产品经理 硬性要求】\n本科及以上学历，兼具C端AIGC敏锐度与B端SaaS/RPA逻辑功底",
+        "metadata": {
+          "company": "字节跳动",
+          "index": 2,
+          "jd_id": "ac9973c8-01be-4cd6-9a99-097873a59cf0",
+          "position": "AI产品经理",
+          "priority": "high",
+          "section": "hard_requirements",
+          "strategy": "semantic"
+        },
+        "distance": 0.6293243765830994,
+        "bm25_score": 7.4989908346122895,
+        "vec_norm": 0.8174818765102908,
+        "bm25_norm": 0.6807984224549152,
+        "hybrid_score": 0.7764768402936781,
+        "rerank_score": 0.9214
+      },
+      {
+        "chunk_id": "ac9973c8-01be-4cd6-9a99-097873a59cf0_chunk_5",
+        "content": "【字节跳动 · AI产品经理 硬性要求】\n具备极强的逻辑拆解力，能像指挥交响乐一样控制模型输出",
+        "metadata": {
+          "company": "字节跳动",
+          "index": 5,
+          "jd_id": "ac9973c8-01be-4cd6-9a99-097873a59cf0",
+          "position": "AI产品经理",
+          "priority": "high",
+          "section": "hard_requirements",
+          "strategy": "semantic"
+        },
+        "distance": 0.6077823042869568,
+        "bm25_score": 7.905991239503383,
+        "vec_norm": 1.0,
+        "bm25_norm": 0.7732498238597335,
+        "hybrid_score": 0.93197494715792,
+        "rerank_score": 0.9191
+      },
+      {
+        "chunk_id": "ac9973c8-01be-4cd6-9a99-097873a59cf0_chunk_8",
+        "content": "【字节跳动 · AI产品经理 关键词】\nPython, PyTorch, LangChain, RAG, Agent, 产品经理, AI",
+        "metadata": {
+          "company": "字节跳动",
+          "index": 8,
+          "jd_id": "ac9973c8-01be-4cd6-9a99-097873a59cf0",
+          "position": "AI产品经理",
+          "section": "keywords",
+          "strategy": "semantic"
+        },
+        "distance": 0.6703348755836487,
+        "bm25_score": 8.904217465346242,
+        "vec_norm": 0.4700148724979989,
+        "bm25_norm": 1.0,
+        "hybrid_score": 0.6290104107485992,
+        "rerank_score": 0.8666
+      },
+      {
+        "chunk_id": "ac9973c8-01be-4cd6-9a99-097873a59cf0_chunk_3",
+        "content": "【字节跳动 · AI产品经理 硬性要求】\n熟练掌握Transformer、Token、RAG等核心概念",
+        "metadata": {
+          "company": "字节跳动",
+          "index": 3,
+          "jd_id": "ac9973c8-01be-4cd6-9a99-097873a59cf0",
+          "position": "AI产品经理",
+          "priority": "high",
+          "section": "hard_requirements",
+          "strategy": "semantic"
+        },
+        "distance": 0.6491163969039917,
+        "bm25_score": 8.359706126378912,
+        "vec_norm": 0.6497913052700154,
+        "bm25_norm": 0.8763125644019587,
+        "hybrid_score": 0.7177476830095983,
+        "rerank_score": 0.8238
+      }
+    ],
+    "evidence_cache_query": "字节AI产品经理我能转行去吗",
+    "tool_outputs": [
+      {
+        "task_id": "T0",
+        "tool": "kb_retrieve",
+        "description": "检索字节AI产品经理JD",
+        "result": {
+          "chunks": [
+            {
+              "chunk_id": "ac9973c8-01be-4cd6-9a99-097873a59cf0_chunk_1",
+              "content": "【字节跳动 · AI产品经理 岗位职责】\n1. 定义Agent框架：设计Planning、Reflection、Memory策略。2. 重塑LUI交互：探索意图驱动的流式UI与动态组件生成。3. 编排超级工作流：深入客服、数据、ERP等实战场景。4. 模型精细化调教：编写结构化Prompt，配合RAG、Function Calling。5. 数据驱动进化：建立交互好感度与任务成功率双重指标。",
+              "source": "字节跳动-AI产品经理",
+              "metadata": {
+                "company": "字节跳动",
+                "position": "AI产品经理"
+              }
+            },
+            {
+              "chunk_id": "ac9973c8-01be-4cd6-9a99-097873a59cf0_chunk_2",
+              "content": "【字节跳动 · AI产品经理 硬性要求】\n本科及以上学历，兼具C端AIGC敏锐度与B端SaaS/RPA逻辑功底",
+              "source": "字节跳动-AI产品经理",
+              "metadata": {
+                "company": "字节跳动",
+                "position": "AI产品经理"
+              }
+            },
+            {
+              "chunk_id": "ac9973c8-01be-4cd6-9a99-097873a59cf0_chunk_5",
+              "content": "【字节跳动 · AI产品经理 硬性要求】\n具备极强的逻辑拆解力，能像指挥交响乐一样控制模型输出",
+              "source": "字节跳动-AI产品经理",
+              "metadata": {
+                "company": "字节跳动",
+                "position": "AI产品经理"
+              }
+            },
+            {
+              "chunk_id": "ac9973c8-01be-4cd6-9a99-097873a59cf0_chunk_8",
+              "content": "【字节跳动 · AI产品经理 关键词】\nPython, PyTorch, LangChain, RAG, Agent, 产品经理, AI",
+              "source": "字节跳动-AI产品经理",
+              "metadata": {
+                "company": "字节跳动",
+                "position": "AI产品经理"
+              }
+            },
+            {
+              "chunk_id": "ac9973c8-01be-4cd6-9a99-097873a59cf0_chunk_3",
+              "content": "【字节跳动 · AI产品经理 硬性要求】\n熟练掌握Transformer、Token、RAG等核心概念",
+              "source": "字节跳动-AI产品经理",
+              "metadata": {
+                "company": "字节跳动",
+                "position": "AI产品经理"
+              }
+            }
+          ],
+          "query": "字节AI产品经理我能转行去",
+          "filters": {
+            "company": "字节跳动",
+            "position": "AI产品经理"
+          },
+          "strategy": "hybrid(70%vec+30%bm25)+reranker",
+          "pool_k": 5,
+          "rerank_k": 10,
+          "pool_size": 21,
+          "vec_only": 1,
+          "bm25_only": 12,
+          "both": 8,
+          "rerank": {
+            "enabled": true,
+            "candidates": 5,
+            "output": 5,
+            "best_rerank_score": 0.9655
+          }
+        }
+      },
+      {
+        "task_id": "T1",
+        "tool": "match_analyze",
+        "description": "分析简历与字节AI产品经理JD的匹配度",
+        "result": {
+          "score": 10,
+          "label": "不匹配",
+          "advantages": [
+            "B端SaaS系统开发经验（供应链管理平台）",
+            "数据库优化能力（分库分表、慢查询治理）",
+            "微服务架构经验（Spring Cloud Alibaba）",
+            "分布式事务处理经验",
+            "良好的逻辑分析能力（可从代码设计体现）"
+          ],
+          "weaknesses": [
+            "候选人缺乏AI产品经理相关经验，具体包括：①未涉及Agent框架（Planning/Reflection/Memory）设计；②无LUI交互及动态UI设计经验；③无超级工作流编排（客服、数据、ERP场景）经验；④无模型调教、Prompt编写、RAG、Function Calling等AI产品核心技能；⑤不掌握Python、PyTorch、LangChain等AI技术栈；⑥对Transformer、Token等核心概念缺乏认知；⑦无产品经理角色经验，缺乏用户需求分析、指标建立（如交互好感度、任务成功率）等产品能力；⑧缺乏C端AIGC产品敏锐度。"
+          ],
+          "suggestions": [
+            "核心能力要求: AI产品经理核心能力：①Agent框架设计（Planning、Reflection、Memory策略）；②LUI交互设计（意图驱动的流式UI、动态组件生成）；③超级工作流编排（客服、数据、ERP场景）；④模型调教（结构化Prompt编写、RAG、Function Calling）；⑤数据驱动指标（交互好感度、任务成功率）；⑥硬性技能：Python、PyTorch、LangChain、RAG、Agent、Transformer、Token等AI知识；⑦逻辑拆解力与跨领域视野（C端AIGC敏锐度 + B端SaaS/RPA逻辑功底）"
+          ],
+          "match_score": 10,
+          "covered": [
+            "B端SaaS系统开发经验（供应链管理平台）",
+            "数据库优化能力（分库分表、慢查询治理）",
+            "微服务架构经验（Spring Cloud Alibaba）",
+            "分布式事务处理经验",
+            "良好的逻辑分析能力（可从代码设计体现）"
+          ],
+          "missing_experience": "候选人缺乏AI产品经理相关经验，具体包括：①未涉及Agent框架（Planning/Reflection/Memory）设计；②无LUI交互及动态UI设计经验；③无超级工作流编排（客服、数据、ERP场景）经验；④无模型调教、Prompt编写、RAG、Function Calling等AI产品核心技能；⑤不掌握Python、PyTorch、LangChain等AI技术栈；⑥对Transformer、Token等核心概念缺乏认知；⑦无产品经理角色经验，缺乏用户需求分析、指标建立（如交互好感度、任务成功率）等产品能力；⑧缺乏C端AIGC产品敏锐度。",
+          "core_skills": "AI产品经理核心能力：①Agent框架设计（Planning、Reflection、Memory策略）；②LUI交互设计（意图驱动的流式UI、动态组件生成）；③超级工作流编排（客服、数据、ERP场景）；④模型调教（结构化Prompt编写、RAG、Function Calling）；⑤数据驱动指标（交互好感度、任务成功率）；⑥硬性技能：Python、PyTorch、LangChain、RAG、Agent、Transformer、Token等AI知识；⑦逻辑拆解力与跨领域视野（C端AIGC敏锐度 + B端SaaS/RPA逻辑功底）",
+          "company": "字节跳动",
+          "position": "AI产品经理"
+        }
+      },
+      {
+        "task_id": "T2",
+        "tool": null,
+        "description": "聚合检索与匹配结果，生成最终回复素材",
+        "result": {
+          "aggregation": {
+            "assess": {
+              "score": 10,
+              "label": "不匹配",
+              "advantages": [
+                "B端SaaS系统开发经验（供应链管理平台）",
+                "数据库优化能力（分库分表、慢查询治理）",
+                "微服务架构经验（Spring Cloud Alibaba）",
+                "分布式事务处理经验",
+                "良好的逻辑分析能力（可从代码设计体现）"
+              ],
+              "weaknesses": [
+                "候选人缺乏AI产品经理相关经验，具体包括：①未涉及Agent框架（Planning/Reflection/Memory）设计；②无LUI交互及动态UI设计经验；③无超级工作流编排（客服、数据、ERP场景）经验；④无模型调教、Prompt编写、RAG、Function Calling等AI产品核心技能；⑤不掌握Python、PyTorch、LangChain等AI技术栈；⑥对Transformer、Token等核心概念缺乏认知；⑦无产品经理角色经验，缺乏用户需求分析、指标建立（如交互好感度、任务成功率）等产品能力；⑧缺乏C端AIGC产品敏锐度。"
+              ],
+              "suggestions": [
+                "核心能力要求: AI产品经理核心能力：①Agent框架设计（Planning、Reflection、Memory策略）；②LUI交互设计（意图驱动的流式UI、动态组件生成）；③超级工作流编排（客服、数据、ERP场景）；④模型调教（结构化Prompt编写、RAG、Function Calling）；⑤数据驱动指标（交互好感度、任务成功率）；⑥硬性技能：Python、PyTorch、LangChain、RAG、Agent、Transformer、Token等AI知识；⑦逻辑拆解力与跨领域视野（C端AIGC敏锐度 + B端SaaS/RPA逻辑功底）"
+              ],
+              "match_score": 10,
+              "covered": [
+                "B端SaaS系统开发经验（供应链管理平台）",
+                "数据库优化能力（分库分表、慢查询治理）",
+                "微服务架构经验（Spring Cloud Alibaba）",
+                "分布式事务处理经验",
+                "良好的逻辑分析能力（可从代码设计体现）"
+              ],
+              "missing_experience": "候选人缺乏AI产品经理相关经验，具体包括：①未涉及Agent框架（Planning/Reflection/Memory）设计；②无LUI交互及动态UI设计经验；③无超级工作流编排（客服、数据、ERP场景）经验；④无模型调教、Prompt编写、RAG、Function Calling等AI产品核心技能；⑤不掌握Python、PyTorch、LangChain等AI技术栈；⑥对Transformer、Token等核心概念缺乏认知；⑦无产品经理角色经验，缺乏用户需求分析、指标建立（如交互好感度、任务成功率）等产品能力；⑧缺乏C端AIGC产品敏锐度。",
+              "core_skills": "AI产品经理核心能力：①Agent框架设计（Planning、Reflection、Memory策略）；②LUI交互设计（意图驱动的流式UI、动态组件生成）；③超级工作流编排（客服、数据、ERP场景）；④模型调教（结构化Prompt编写、RAG、Function Calling）；⑤数据驱动指标（交互好感度、任务成功率）；⑥硬性技能：Python、PyTorch、LangChain、RAG、Agent、Transformer、Token等AI知识；⑦逻辑拆解力与跨领域视野（C端AIGC敏锐度 + B端SaaS/RPA逻辑功底）",
+              "company": "字节跳动",
+              "position": "AI产品经理"
+            },
+            "jd_chunks": [
+              {
+                "chunk_id": "ac9973c8-01be-4cd6-9a99-097873a59cf0_chunk_1",
+                "content": "【字节跳动 · AI产品经理 岗位职责】\n1. 定义Agent框架：设计Planning、Reflection、Memory策略。2. 重塑LUI交互：探索意图驱动的流式UI与动态组件生成。3. 编排超级工作流：深入客服、数据、ERP等实战场景。4. 模型精细化调教：编写结构化Prompt，配合RAG、Function Calling。5. 数据驱动进化：建立交互好感度与任务成功率双重指标。",
+                "metadata": {
+                  "company": "字节跳动",
+                  "index": 1,
+                  "jd_id": "ac9973c8-01be-4cd6-9a99-097873a59cf0",
+                  "position": "AI产品经理",
+                  "section": "responsibilities",
+                  "strategy": "semantic"
+                },
+                "distance": 0.6308419704437256,
+                "bm25_score": 0.0,
+                "vec_norm": 0.8046238571028173,
+                "bm25_norm": 0.0,
+                "hybrid_score": 0.563236699971972,
+                "rerank_score": 0.9655
+              },
+              {
+                "chunk_id": "ac9973c8-01be-4cd6-9a99-097873a59cf0_chunk_2",
+                "content": "【字节跳动 · AI产品经理 硬性要求】\n本科及以上学历，兼具C端AIGC敏锐度与B端SaaS/RPA逻辑功底",
+                "metadata": {
+                  "company": "字节跳动",
+                  "index": 2,
+                  "jd_id": "ac9973c8-01be-4cd6-9a99-097873a59cf0",
+                  "position": "AI产品经理",
+                  "priority": "high",
+                  "section": "hard_requirements",
+                  "strategy": "semantic"
+                },
+                "distance": 0.6293243765830994,
+                "bm25_score": 7.4989908346122895,
+                "vec_norm": 0.8174818765102908,
+                "bm25_norm": 0.6807984224549152,
+                "hybrid_score": 0.7764768402936781,
+                "rerank_score": 0.9214
+              },
+              {
+                "chunk_id": "ac9973c8-01be-4cd6-9a99-097873a59cf0_chunk_5",
+                "content": "【字节跳动 · AI产品经理 硬性要求】\n具备极强的逻辑拆解力，能像指挥交响乐一样控制模型输出",
+                "metadata": {
+                  "company": "字节跳动",
+                  "index": 5,
+                  "jd_id": "ac9973c8-01be-4cd6-9a99-097873a59cf0",
+                  "position": "AI产品经理",
+                  "priority": "high",
+                  "section": "hard_requirements",
+                  "strategy": "semantic"
+                },
+                "distance": 0.6077823042869568,
+                "bm25_score": 7.905991239503383,
+                "vec_norm": 1.0,
+                "bm25_norm": 0.7732498238597335,
+                "hybrid_score": 0.93197494715792,
+                "rerank_score": 0.9191
+              },
+              {
+                "chunk_id": "ac9973c8-01be-4cd6-9a99-097873a59cf0_chunk_8",
+                "content": "【字节跳动 · AI产品经理 关键词】\nPython, PyTorch, LangChain, RAG, Agent, 产品经理, AI",
+                "metadata": {
+                  "company": "字节跳动",
+                  "index": 8,
+                  "jd_id": "ac9973c8-01be-4cd6-9a99-097873a59cf0",
+                  "position": "AI产品经理",
+                  "section": "keywords",
+                  "strategy": "semantic"
+                },
+                "distance": 0.6703348755836487,
+                "bm25_score": 8.904217465346242,
+                "vec_norm": 0.4700148724979989,
+                "bm25_norm": 1.0,
+                "hybrid_score": 0.6290104107485992,
+                "rerank_score": 0.8666
+              },
+              {
+                "chunk_id": "ac9973c8-01be-4cd6-9a99-097873a59cf0_chunk_3",
+                "content": "【字节跳动 · AI产品经理 硬性要求】\n熟练掌握Transformer、Token、RAG等核心概念",
+                "metadata": {
+                  "company": "字节跳动",
+                  "index": 3,
+                  "jd_id": "ac9973c8-01be-4cd6-9a99-097873a59cf0",
+                  "position": "AI产品经理",
+                  "priority": "high",
+                  "section": "hard_requirements",
+                  "strategy": "semantic"
+                },
+                "distance": 0.6491163969039917,
+                "bm25_score": 8.359706126378912,
+                "vec_norm": 0.6497913052700154,
+                "bm25_norm": 0.8763125644019587,
+                "hybrid_score": 0.7177476830095983,
+                "rerank_score": 0.8238
+              }
+            ]
+          }
+        }
+      }
+    ],
+    "final_aggregation_prompt": {
+      "system_prompt": "你是一位专业的求职顾问。请基于以下工具执行结果，给用户一个清晰、有帮助的回复。\n要求：\n1. 先直接回答用户的问题（是/否/有/没有），不要绕弯子，不要重复用户的原话\n2. 如果有匹配分析结果，给出具体的分数和建议\n3. 如果有检索结果，基于事实回答，不要编造\n4. 【强制】引用信息时必须标注来源。每个引用的事实后面都要跟 [来源：公司名-岗位名] 格式。   kb_retrieve 结果的 chunks 中带有 'source' 字段（如'字节跳动-AI产品经理'），请直接使用。   external_search 结果带有 'source_name' 字段，也请直接使用。\n5. 当本地知识库与外部搜索结果冲突时，请并列呈现两种说法并标注各自来源，不要替用户做判断\n6. 语气友好、专业、结构化",
+      "user_prompt": "【用户问题】\n字节AI产品经理我能转行去吗\n\n【工具执行结果】\n[{\"task_id\": \"T0\", \"tool\": \"kb_retrieve\", \"description\": \"检索字节AI产品经理JD\", \"result\": {\"chunks\": [{\"chunk_id\": \"ac9973c8-01be-4cd6-9a99-097873a59cf0_chunk_1\", \"content\": \"【字节跳动 · AI产品经理 岗位职责】\\n1. 定义Agent框架：设计Planning、Reflection、Memory策略。2. 重塑LUI交互：探索意图驱动的流式UI与动态组件生成。3. 编排超级工作流：深入客服、数据、ERP等实战场景。4. 模型精细化调教：编写结构化Prompt，配合RAG、Function Calling。5. 数据驱动进化：建立交互好感度与任务成功率双重指标。\", \"source\": \"字节跳动-AI产品经理\", \"metadata\": {\"company\": \"字节跳动\", \"position\": \"AI产品经理\"}}, {\"chunk_id\": \"ac9973c8-01be-4cd6-9a99-097873a59cf0_chunk_2\", \"content\": \"【字节跳动 · AI产品经理 硬性要求】\\n本科及以上学历，兼具C端AIGC敏锐度与B端SaaS/RPA逻辑功底\", \"source\": \"字节跳动-AI产品经理\", \"metadata\": {\"company\": \"字节跳动\", \"position\": \"AI产品经理\"}}, {\"chunk_id\": \"ac9973c8-01be-4cd6-9a99-097873a59cf0_chunk_5\", \"content\": \"【字节跳动 · AI产品经理 硬性要求】\\n具备极强的逻辑拆解力，能像指挥交响乐一样控制模型输出\", \"source\": \"字节跳动-AI产品经理\", \"metadata\": {\"company\": \"字节跳动\", \"position\": \"AI产品经理\"}}, {\"chunk_id\": \"ac9973c8-01be-4cd6-9a99-097873a59cf0_chunk_8\", \"content\": \"【字节跳动 · AI产品经理 关键词】\\nPython, PyTorch, LangChain, RAG, Agent, 产品经理, AI\", \"source\": \"字节跳动-AI产品经理\", \"metadata\": {\"company\": \"字节跳动\", \"position\": \"AI产品经理\"}}, {\"chunk_id\": \"ac9973c8-01be-4cd6-9a99-097873a59cf0_chunk_3\", \"content\": \"【字节跳动 · AI产品经理 硬性要求】\\n熟练掌握Transformer、Token、RAG等核心概念\", \"source\": \"字节跳动-AI产品经理\", \"metadata\": {\"company\": \"字节跳动\", \"position\": \"AI产品经理\"}}], \"query\": \"字节AI产品经理我能转行去\", \"filters\": {\"company\": \"字节跳动\", \"position\": \"AI产品经理\"}, \"strategy\": \"hybrid(70%vec+30%bm25)+reranker\", \"pool_k\": 5, \"rerank_k\": 10, \"pool_size\": 21, \"vec_only\": 1, \"bm25_only\": 12, \"both\": 8, \"rerank\": {\"enabled\": true, \"candidates\": 5, \"output\": 5, \"best_rerank_score\": 0.9655}}}, {\"task_id\": \"T1\", \"tool\": \"match_analyze\", \"description\": \"分析简历与字节AI产品经理JD的匹配度\", \"result\": {\"score\": 10, \"label\": \"不匹配\", \"advantages\": [\"B端SaaS系统开发经验（供应链管理平台）\", \"数据库优化能力（分库分表、慢查询治理）\", \"微服务架构经验（Spring Cloud Alibaba）\", \"分布式事务处理经验\", \"良好的逻辑分析能力（可从代码设计体现）\"], \"weaknesses\": [\"候选人缺乏AI产品经理相关经验，具体包括：①未涉及Agent框架（Planning/Reflection/Memory）设计；②无LUI交互及动态UI设计经验；③无超级工作流编排（客服、数据、ERP场景）经验；④无模型调教、Prompt编写、RAG、Function Calling等AI产品核心技能；⑤不掌握Python、PyTorch、LangChain等AI技术栈；⑥对Transformer、Token等核心概念缺乏认知；⑦无产品经理角色经验，缺乏用户需求分析、指标建立（如交互好感度、任务成功率）等产品能力；⑧缺乏C端AIGC产品敏锐度。\"], \"suggestions\": [\"核心能力要求: AI产品经理核心能力：①Agent框架设计（Planning、Reflection、Memory策略）；②LUI交互设计（意图驱动的流式UI、动态组件生成）；③超级工作流编排（客服、数据、ERP场景）；④模型调教（结构化Prompt编写、RAG、Function Calling）；⑤数据驱动指标（交互好感度、任务成功率）；⑥硬性技能：Python、PyTorch、LangChain、RAG、Agent、Transformer、Token等AI知识；⑦逻辑拆解力与跨领域视野（C端AIGC敏锐度 + B端SaaS/RPA逻辑功底）\"], \"match_score\": 10, \"covered\": [\"B端SaaS系统开发经验（供应链管理平台）\", \"数据库优化能力（分库分表、慢查询治理）\", \"微服务架构经验（Spring Cloud Alibaba）\", \"分布式事务处理经验\", \"良好的逻辑分析能力（可从代码设计体现）\"], \"missing_experience\": \"候选人缺乏AI产品经理相关经验，具体包括：①未涉及Agent框架（Planning/Reflection/Memory）设计；②无LUI交互及动态UI设计经验；③无超级工作流编排（客服、数据、ERP场景）经验；④无模型调教、Prompt编写、RAG、Function Calling等AI产品核心技能；⑤不掌握Python、PyTorch、LangChain等AI技术栈；⑥对Transformer、Token等核心概念缺乏认知；⑦无产品经理角色经验，缺乏用户需求分析、指标建立（如交互好感度、任务成功率）等产品能力；⑧缺乏C端AIGC产品敏锐度。\", \"core_skills\": \"AI产品经理核心能力：①Agent框架设计（Planning、Reflection、Memory策略）；②LUI交互设计（意图驱动的流式UI、动态组件生成）；③超级\n\n请生成回复："
+    }
+  },
+  "reply": "否，目前匹配度较低。\n\n基于您的简历与岗位要求的匹配分析，具体评估如下：\n\n### 1. 匹配度分析\n*   **匹配分数**：10 分（标签：不匹配）\n*   **您的优势**：\n    *   具备 B 端 SaaS 系统开发经验（供应链管理平台）\n    *   拥有数据库优化能力（分库分表、慢查询治理）\n    *   熟悉微服务架构（Spring Cloud Alibaba）及分布式事务处理\n    *   具备良好的逻辑分析能力\n*   **主要差距**：\n    *   缺乏 AI 产品经理核心经验，包括 Agent 框架设计、LUI 交互及动态 UI 设计 [来源：字节跳动-AI产品经理]\n    *   无超级工作流编排（客服、数据、ERP 场景）经验 [来源：字节跳动-AI产品经理]\n    *   未掌握模型调教、Prompt 编写、RAG、Function Calling 等 AI 产品核心技能 [来源：字节跳动-AI产品经理]\n    *   不熟悉 Python、PyTorch、LangChain 等 AI 技术栈 [来源：字节跳动-AI产品经理]\n    *   对 Transformer、Token 等核心概念缺乏认知 [来源：字节跳动-AI产品经理]\n    *   无产品经理角色经验，缺乏用户需求分析及指标建立能力 [来源：字节跳动-AI产品经理]\n\n### 2. 岗位硬性要求\n该岗位对候选人的具体要求如下：\n*   **学历要求**：本科及以上学历 [来源：字节跳动-AI产品经理]\n*   **核心能力**：兼具 C 端 AIGC 敏锐度与 B 端 SaaS/RPA 逻辑功底 [来源：字节跳动-AI产品经理]\n*   **技能栈**：熟练掌握 Python, PyTorch, LangChain, RAG, Agent 等技术 [来源：字节跳动-AI产品经理]\n*   **逻辑思维**：具备极强的逻辑拆解力，能像指挥交响乐一样控制模型输出 [来源：字节跳动-AI产品经理]\n*   **职责范围**：需负责定义 Agent 框架、重塑 LUI 交互、编排超级工作流及模型精细化调教 [来源：字节跳动-AI产品经理]\n\n### 3. 转行建议\n若希望未来达成转行目标，建议重点补充以下核心能力：\n1.  **补充 AI 技术知识**：学习 Python、PyTorch、LangChain 及 Transformer、Token 等核心概念 [来源：字节跳动-AI产品经理]\n2.  **积累产品实战经验**：尝试参与 Agent 框架设计（Planning、Reflection、Memory 策略）及 LUI 交互设计 [来源：字节跳动-AI产品经理]\n3.  **提升模型调教能力**：学习结构化 Prompt 编写、RAG 及 Function Calling 技术 [来源：字节跳动-AI产品经理]\n4.  **培养数据驱动思维**：建立交互好感度与任务成功率双重指标的分析能力 [来源：字节跳动-AI产品经理]\n5.  **增强跨领域视野**：同时提升 C 端 AIGC 产品敏锐度与 B 端 SaaS/RPA 逻辑功底 [来源：字节跳动-AI产品经理]\n\n建议您先在当前技术岗位上积累与 AI 相关的项目经验，或尝试内部转岗，待核心技能匹配度提升后再寻求外部机会。",
+  "reply_length": 1421,
+  "intent_match": true,
+  "tool_match_rate": 1.0,
+  "has_reply": true,
+  "events": [
+    {
+      "step": "intent",
+      "message": "正在识别您的意图...",
+      "_time": 4.576723098754883,
+      "type": "status"
+    },
+    {
+      "step": "plan",
+      "message": "正在规划任务...",
+      "_time": 4.576765060424805,
+      "type": "status"
+    },
+    {
+      "step": "execute",
+      "message": "正在执行分析...",
+      "_time": 16.893460512161255,
+      "type": "status"
+    },
+    {
+      "step": "aggregate",
+      "message": "正在生成回复...",
+      "_time": 24.687814235687256,
+      "type": "status"
+    },
+    {
+      "text": "否，",
+      "_time": 69.81119012832642,
+      "type": "delta"
+    },
+    {
+      "text": "目前匹配",
+      "_time": 69.8136796951294,
+      "type": "delta"
+    },
+    {
+      "text": "度较低。\n\n",
+      "_time": 69.9190583229065,
+      "type": "delta"
+    },
+    {
+      "text": "基于您的简历与",
+      "_time": 69.92377305030823,
+      "type": "delta"
+    },
+    {
+      "text": "岗位要求的匹配分析",
+      "_time": 70.06206607818604,
+      "type": "delta"
+    },
+    {
+      "text": "，具体",
+      "_time": 70.09611773490906,
+      "type": "delta"
+    },
+    {
+      "text": "评估如下：\n\n",
+      "_time": 70.16996192932129,
+      "type": "delta"
+    },
+    {
+      "text": "###",
+      "_time": 70.17256736755371,
+      "type": "delta"
+    },
+    {
+      "text": " 1. ",
+      "_time": 70.30503439903259,
+      "type": "delta"
+    },
+    {
+      "text": "匹配度分析\n",
+      "_time": 70.307687997818,
+      "type": "delta"
+    },
+    {
+      "text": "*   **匹配",
+      "_time": 70.40398788452148,
+      "type": "delta"
+    },
+    {
+      "text": "分数**：1",
+      "_time": 70.45897889137268,
+      "type": "delta"
+    },
+    {
+      "text": "0 分（",
+      "_time": 70.54893827438354,
+      "type": "delta"
+    },
+    {
+      "text": "标签：不匹配",
+      "_time": 70.55269145965576,
+      "type": "delta"
+    },
+    {
+      "text": "）\n*  ",
+      "_time": 70.69106435775757,
+      "type": "delta"
+    },
+    {
+      "text": " **您的优势**",
+      "_time": 70.69361519813538,
+      "type": "delta"
+    },
+    {
+      "text": "：\n    *",
+      "_time": 70.87170052528381,
+      "type": "delta"
+    },
+    {
+      "text": "   具备 B",
+      "_time": 70.87658190727234,
+      "type": "delta"
+    },
+    {
+      "text": " 端 SaaS",
+      "_time": 70.98300909996033,
+      "type": "delta"
+    },
+    {
+      "text": " 系统开发经验",
+      "_time": 70.98569512367249,
+      "type": "delta"
+    },
+    {
+      "text": "（供应链管理平台）",
+      "_time": 71.16205215454102,
+      "type": "delta"
+    },
+    {
+      "text": "\n    *  ",
+      "_time": 71.1653995513916,
+      "type": "delta"
+    },
+    {
+      "text": " 拥有数据库优化",
+      "_time": 71.26987600326538,
+      "type": "delta"
+    },
+    {
+      "text": "能力（分库",
+      "_time": 71.27251434326172,
+      "type": "delta"
+    },
+    {
+      "text": "分表、慢",
+      "_time": 71.44687175750732,
+      "type": "delta"
+    },
+    {
+      "text": "查询治理）\n",
+      "_time": 71.44847631454468,
+      "type": "delta"
+    },
+    {
+      "text": "    *   ",
+      "_time": 71.55482482910156,
+      "type": "delta"
+    },
+    {
+      "text": "熟悉微服务架构",
+      "_time": 71.55635619163513,
+      "type": "delta"
+    },
+    {
+      "text": "（Spring Cloud Alibaba",
+      "_time": 71.73388147354126,
+      "type": "delta"
+    },
+    {
+      "text": "）及分布式事务",
+      "_time": 71.73674368858337,
+      "type": "delta"
+    },
+    {
+      "text": "处理\n    *",
+      "_time": 71.84292387962341,
+      "type": "delta"
+    },
+    {
+      "text": "   具备良好的",
+      "_time": 71.88292336463928,
+      "type": "delta"
+    },
+    {
+      "text": "逻辑分析能力\n",
+      "_time": 71.97069096565247,
+      "type": "delta"
+    },
+    {
+      "text": "*  ",
+      "_time": 71.97103500366211,
+      "type": "delta"
+    },
+    {
+      "text": " **主要差距**",
+      "_time": 72.07787537574768,
+      "type": "delta"
+    },
+    {
+      "text": "：\n    *",
+      "_time": 72.11180925369263,
+      "type": "delta"
+    },
+    {
+      "text": "   缺乏 AI",
+      "_time": 72.22386837005615,
+      "type": "delta"
+    },
+    {
+      "text": " 产品经理核心经验",
+      "_time": 72.2265453338623,
+      "type": "delta"
+    },
+    {
+      "text": "，包括 Agent ",
+      "_time": 72.36787343025208,
+      "type": "delta"
+    },
+    {
+      "text": "框架设计",
+      "_time": 72.39884877204895,
+      "type": "delta"
+    },
+    {
+      "text": "、LUI ",
+      "_time": 72.47568011283875,
+      "type": "delta"
+    },
+    {
+      "text": "交互及动态 UI",
+      "_time": 72.47721767425537,
+      "type": "delta"
+    },
+    {
+      "text": " 设计 [来源",
+      "_time": 72.61877393722534,
+      "type": "delta"
+    },
+    {
+      "text": "：字节跳动",
+      "_time": 72.6214165687561,
+      "type": "delta"
+    },
+    {
+      "text": "-AI产品经理]",
+      "_time": 72.77487468719482,
+      "type": "delta"
+    },
+    {
+      "text": "\n    *  ",
+      "_time": 72.77754926681519,
+      "type": "delta"
+    },
+    {
+      "text": " 无超级工作",
+      "_time": 72.88891983032227,
+      "type": "delta"
+    },
+    {
+      "text": "流编排（",
+      "_time": 72.89154028892517,
+      "type": "delta"
+    },
+    {
+      "text": "客服、数据、",
+      "_time": 73.04883980751038,
+      "type": "delta"
+    },
+    {
+      "text": "ERP 场景）",
+      "_time": 73.05152201652527,
+      "type": "delta"
+    },
+    {
+      "text": "经验 [来源：",
+      "_time": 73.15881180763245,
+      "type": "delta"
+    },
+    {
+      "text": "字节跳动",
+      "_time": 73.16145277023315,
+      "type": "delta"
+    },
+    {
+      "text": "-AI产品经理]",
+      "_time": 73.27079129219055,
+      "type": "delta"
+    },
+    {
+      "text": "\n    *  ",
+      "_time": 73.30176568031311,
+      "type": "delta"
+    },
+    {
+      "text": " 未掌握模型",
+      "_time": 73.41072607040405,
+      "type": "delta"
+    },
+    {
+      "text": "调教、Prompt",
+      "_time": 73.41439652442932,
+      "type": "delta"
+    },
+    {
+      "text": " 编写、R",
+      "_time": 73.55478525161743,
+      "type": "delta"
+    },
+    {
+      "text": "AG、Function Calling",
+      "_time": 73.59574007987976,
+      "type": "delta"
+    },
+    {
+      "text": " 等 AI ",
+      "_time": 73.697674036026,
+      "type": "delta"
+    },
+    {
+      "text": "产品",
+      "_time": 73.70040535926819,
+      "type": "delta"
+    },
+    {
+      "text": "核心技能 [来源",
+      "_time": 73.78675508499146,
+      "type": "delta"
+    },
+    {
+      "text": "：字节跳动",
+      "_time": 73.82258439064026,
+      "type": "delta"
+    },
+    {
+      "text": "-AI产品经理]",
+      "_time": 73.91549444198608,
+      "type": "delta"
+    },
+    {
+      "text": "\n    *  ",
+      "_time": 73.91930055618286,
+      "type": "delta"
+    },
+    {
+      "text": " 不熟悉 Python、",
+      "_time": 74.10178089141846,
+      "type": "delta"
+    },
+    {
+      "text": "PyT",
+      "_time": 74.10359001159668,
+      "type": "delta"
+    },
+    {
+      "text": "orch、LangChain",
+      "_time": 74.16663002967834,
+      "type": "delta"
+    },
+    {
+      "text": " 等",
+      "_time": 74.17050361633301,
+      "type": "delta"
+    },
+    {
+      "text": " AI 技术栈",
+      "_time": 74.27657103538513,
+      "type": "delta"
+    },
+    {
+      "text": " [来源：字节",
+      "_time": 74.31365013122559,
+      "type": "delta"
+    },
+    {
+      "text": "跳动-AI产品经理",
+      "_time": 74.41884160041809,
+      "type": "delta"
+    },
+    {
+      "text": "]\n    *",
+      "_time": 74.4214174747467,
+      "type": "delta"
+    },
+    {
+      "text": "   对 Transformer",
+      "_time": 74.59770584106445,
+      "type": "delta"
+    },
+    {
+      "text": "、Token 等",
+      "_time": 74.60019421577454,
+      "type": "delta"
+    },
+    {
+      "text": "核心概念缺乏认知",
+      "_time": 74.70764207839966,
+      "type": "delta"
+    },
+    {
+      "text": " [来源：字节",
+      "_time": 74.74267745018005,
+      "type": "delta"
+    },
+    {
+      "text": "跳动-AI产品经理",
+      "_time": 74.85254454612732,
+      "type": "delta"
+    },
+    {
+      "text": "]\n    *",
+      "_time": 74.8552348613739,
+      "type": "delta"
+    },
+    {
+      "text": "   无产品经理",
+      "_time": 75.00767683982849,
+      "type": "delta"
+    },
+    {
+      "text": "角色经验，",
+      "_time": 75.01137328147888,
+      "type": "delta"
+    },
+    {
+      "text": "缺乏用户需求分析及指标",
+      "_time": 75.15060019493103,
+      "type": "delta"
+    },
+    {
+      "text": "建立能力",
+      "_time": 75.15329170227051,
+      "type": "delta"
+    },
+    {
+      "text": " [来源：字节",
+      "_time": 75.22855758666992,
+      "type": "delta"
+    },
+    {
+      "text": "跳动",
+      "_time": 75.23321628570557,
+      "type": "delta"
+    },
+    {
+      "text": "-AI产品经理]",
+      "_time": 75.35256552696228,
+      "type": "delta"
+    },
+    {
+      "text": "\n\n### ",
+      "_time": 75.35530209541321,
+      "type": "delta"
+    },
+    {
+      "text": "2. 岗位",
+      "_time": 75.4445333480835,
+      "type": "delta"
+    },
+    {
+      "text": "硬性要求\n该",
+      "_time": 75.4514000415802,
+      "type": "delta"
+    },
+    {
+      "text": "岗位对候选人的",
+      "_time": 75.58768010139465,
+      "type": "delta"
+    },
+    {
+      "text": "具体要求",
+      "_time": 75.58909392356873,
+      "type": "delta"
+    },
+    {
+      "text": "如下：\n*",
+      "_time": 75.71966004371643,
+      "type": "delta"
+    },
+    {
+      "text": "   **学历要求",
+      "_time": 75.72339367866516,
+      "type": "delta"
+    },
+    {
+      "text": "**：本科及以上学历 [",
+      "_time": 75.8066771030426,
+      "type": "delta"
+    },
+    {
+      "text": "来源：字节跳动",
+      "_time": 75.83356595039368,
+      "type": "delta"
+    },
+    {
+      "text": "-AI产品经理]",
+      "_time": 75.95276832580566,
+      "type": "delta"
+    },
+    {
+      "text": "\n*",
+      "_time": 75.95349526405334,
+      "type": "delta"
+    },
+    {
+      "text": "   **核心能力",
+      "_time": 76.05754041671753,
+      "type": "delta"
+    },
+    {
+      "text": "**：兼具",
+      "_time": 76.06182956695557,
+      "type": "delta"
+    },
+    {
+      "text": " C 端 A",
+      "_time": 76.22182440757751,
+      "type": "delta"
+    },
+    {
+      "text": "IGC 敏锐",
+      "_time": 76.22313046455383,
+      "type": "delta"
+    },
+    {
+      "text": "度与 B ",
+      "_time": 76.32456803321838,
+      "type": "delta"
+    },
+    {
+      "text": "端 SaaS/R",
+      "_time": 76.32733917236328,
+      "type": "delta"
+    },
+    {
+      "text": "PA 逻辑功底",
+      "_time": 76.47371101379395,
+      "type": "delta"
+    },
+    {
+      "text": " [来源：字节",
+      "_time": 76.50547623634338,
+      "type": "delta"
+    },
+    {
+      "text": "跳动-AI产品经理",
+      "_time": 76.61364459991455,
+      "type": "delta"
+    },
+    {
+      "text": "]\n*",
+      "_time": 76.61394333839417,
+      "type": "delta"
+    },
+    {
+      "text": "   **技能栈",
+      "_time": 76.74145936965942,
+      "type": "delta"
+    },
+    {
+      "text": "**：熟练掌握",
+      "_time": 76.77853035926819,
+      "type": "delta"
+    },
+    {
+      "text": " Python, PyT",
+      "_time": 76.86657166481018,
+      "type": "delta"
+    },
+    {
+      "text": "orch,",
+      "_time": 76.86692190170288,
+      "type": "delta"
+    },
+    {
+      "text": " LangChain, R",
+      "_time": 77.01254773139954,
+      "type": "delta"
+    },
+    {
+      "text": "AG, Agent",
+      "_time": 77.01629948616028,
+      "type": "delta"
+    },
+    {
+      "text": " 等技术 [来源",
+      "_time": 77.10170435905457,
+      "type": "delta"
+    },
+    {
+      "text": "：字节",
+      "_time": 77.10440015792847,
+      "type": "delta"
+    },
+    {
+      "text": "跳动-AI产品经理",
+      "_time": 77.2365837097168,
+      "type": "delta"
+    },
+    {
+      "text": "]\n*",
+      "_time": 77.23927283287048,
+      "type": "delta"
+    },
+    {
+      "text": "   **逻辑思维**",
+      "_time": 77.33444476127625,
+      "type": "delta"
+    },
+    {
+      "text": "：具备极强的",
+      "_time": 77.3372015953064,
+      "type": "delta"
+    },
+    {
+      "text": "逻辑拆解力，",
+      "_time": 77.46054887771606,
+      "type": "delta"
+    },
+    {
+      "text": "能像指挥交响",
+      "_time": 77.49855899810791,
+      "type": "delta"
+    },
+    {
+      "text": "乐一样控制模型",
+      "_time": 77.6045732498169,
+      "type": "delta"
+    },
+    {
+      "text": "输出 [来源：",
+      "_time": 77.60727095603943,
+      "type": "delta"
+    },
+    {
+      "text": "字节跳动-AI",
+      "_time": 77.74862837791443,
+      "type": "delta"
+    },
+    {
+      "text": "产品经理]\n*",
+      "_time": 77.78754043579102,
+      "type": "delta"
+    },
+    {
+      "text": "   **职责范围",
+      "_time": 77.89153981208801,
+      "type": "delta"
+    },
+    {
+      "text": "**：需",
+      "_time": 77.89406132698059,
+      "type": "delta"
+    },
+    {
+      "text": "负责定义 Agent ",
+      "_time": 78.0195734500885,
+      "type": "delta"
+    },
+    {
+      "text": "框架",
+      "_time": 78.02118849754333,
+      "type": "delta"
+    },
+    {
+      "text": "、重塑 LUI",
+      "_time": 78.13840985298157,
+      "type": "delta"
+    },
+    {
+      "text": " 交互、编排",
+      "_time": 78.14117741584778,
+      "type": "delta"
+    },
+    {
+      "text": "超级工作流及",
+      "_time": 78.25366687774658,
+      "type": "delta"
+    },
+    {
+      "text": "模型精细化调教",
+      "_time": 78.25423049926758,
+      "type": "delta"
+    },
+    {
+      "text": " [来源：字节",
+      "_time": 78.43457078933716,
+      "type": "delta"
+    },
+    {
+      "text": "跳动-AI产品经理",
+      "_time": 78.43818616867065,
+      "type": "delta"
+    },
+    {
+      "text": "]\n\n### ",
+      "_time": 78.54043221473694,
+      "type": "delta"
+    },
+    {
+      "text": "3. 转",
+      "_time": 78.54425954818726,
+      "type": "delta"
+    },
+    {
+      "text": "行建议\n若",
+      "_time": 78.69030356407166,
+      "type": "delta"
+    },
+    {
+      "text": "希望",
+      "_time": 78.71329092979431,
+      "type": "delta"
+    },
+    {
+      "text": "未来达成转行",
+      "_time": 78.80732536315918,
+      "type": "delta"
+    },
+    {
+      "text": "目标，建议",
+      "_time": 78.8101327419281,
+      "type": "delta"
+    },
+    {
+      "text": "重点补充以下核心",
+      "_time": 78.90059304237366,
+      "type": "delta"
+    },
+    {
+      "text": "能力：\n1",
+      "_time": 78.90441584587097,
+      "type": "delta"
+    },
+    {
+      "text": ".  **补充",
+      "_time": 79.04430866241455,
+      "type": "delta"
+    },
+    {
+      "text": " AI 技术",
+      "_time": 79.08332848548889,
+      "type": "delta"
+    },
+    {
+      "text": "知识**：学习",
+      "_time": 79.17141008377075,
+      "type": "delta"
+    },
+    {
+      "text": " Python",
+      "_time": 79.17408990859985,
+      "type": "delta"
+    },
+    {
+      "text": "、PyTorch",
+      "_time": 79.26029539108276,
+      "type": "delta"
+    },
+    {
+      "text": "、LangChain ",
+      "_time": 79.29627752304077,
+      "type": "delta"
+    },
+    {
+      "text": "及 Transformer、Token",
+      "_time": 79.47910261154175,
+      "type": "delta"
+    },
+    {
+      "text": " 等",
+      "_time": 79.48074126243591,
+      "type": "delta"
+    },
+    {
+      "text": "核心概念 [来源",
+      "_time": 79.55538868904114,
+      "type": "delta"
+    },
+    {
+      "text": "：字节跳动-A",
+      "_time": 79.55911803245544,
+      "type": "delta"
+    },
+    {
+      "text": "I产品经理]\n",
+      "_time": 79.65727162361145,
+      "type": "delta"
+    },
+    {
+      "text": "2.  **",
+      "_time": 79.65783429145813,
+      "type": "delta"
+    },
+    {
+      "text": "积累产品实战经验",
+      "_time": 79.84444046020508,
+      "type": "delta"
+    },
+    {
+      "text": "**：尝试",
+      "_time": 79.8447961807251,
+      "type": "delta"
+    },
+    {
+      "text": "参与 Agent 框架",
+      "_time": 79.92644476890564,
+      "type": "delta"
+    },
+    {
+      "text": "设计",
+      "_time": 79.9301688671112,
+      "type": "delta"
+    },
+    {
+      "text": "（Planning、Reflection",
+      "_time": 80.06131219863892,
+      "type": "delta"
+    },
+    {
+      "text": "、Memory ",
+      "_time": 80.06422734260559,
+      "type": "delta"
+    },
+    {
+      "text": "策略）及 L",
+      "_time": 80.14234924316406,
+      "type": "delta"
+    },
+    {
+      "text": "UI 交互",
+      "_time": 80.1812846660614,
+      "type": "delta"
+    },
+    {
+      "text": "设计 [来源：",
+      "_time": 80.26836705207825,
+      "type": "delta"
+    },
+    {
+      "text": "字节跳动-AI",
+      "_time": 80.27112174034119,
+      "type": "delta"
+    },
+    {
+      "text": "产品经理]\n3",
+      "_time": 80.41442441940308,
+      "type": "delta"
+    },
+    {
+      "text": ".  **提升",
+      "_time": 80.41480898857117,
+      "type": "delta"
+    },
+    {
+      "text": "模型调教能力",
+      "_time": 80.59639310836792,
+      "type": "delta"
+    },
+    {
+      "text": "**",
+      "_time": 80.59794211387634,
+      "type": "delta"
+    },
+    {
+      "text": "：学习结构化 Prompt",
+      "_time": 80.64532256126404,
+      "type": "delta"
+    },
+    {
+      "text": " 编写",
+      "_time": 80.64797115325928,
+      "type": "delta"
+    },
+    {
+      "text": "、RAG ",
+      "_time": 80.7533483505249,
+      "type": "delta"
+    },
+    {
+      "text": "及 Function",
+      "_time": 80.78440451622009,
+      "type": "delta"
+    },
+    {
+      "text": " Calling 技术 [",
+      "_time": 80.86229062080383,
+      "type": "delta"
+    },
+    {
+      "text": "来源：字节",
+      "_time": 80.86817383766174,
+      "type": "delta"
+    },
+    {
+      "text": "跳动-AI产品经理",
+      "_time": 81.0193862915039,
+      "type": "delta"
+    },
+    {
+      "text": "]\n4",
+      "_time": 81.02195310592651,
+      "type": "delta"
+    },
+    {
+      "text": ".  **培养",
+      "_time": 81.11536908149719,
+      "type": "delta"
+    },
+    {
+      "text": "数据",
+      "_time": 81.11796045303345,
+      "type": "delta"
+    },
+    {
+      "text": "驱动思维**：",
+      "_time": 81.20326447486877,
+      "type": "delta"
+    },
+    {
+      "text": "建立交互",
+      "_time": 81.2060718536377,
+      "type": "delta"
+    },
+    {
+      "text": "好感度与任务",
+      "_time": 81.3432879447937,
+      "type": "delta"
+    },
+    {
+      "text": "成功率双重指标的分析",
+      "_time": 81.3469626903534,
+      "type": "delta"
+    },
+    {
+      "text": "能力 [来源：",
+      "_time": 81.45532536506653,
+      "type": "delta"
+    },
+    {
+      "text": "字节跳动-AI",
+      "_time": 81.45784902572632,
+      "type": "delta"
+    },
+    {
+      "text": "产品经理]\n5",
+      "_time": 81.6343264579773,
+      "type": "delta"
+    },
+    {
+      "text": ".  **增强",
+      "_time": 81.63690090179443,
+      "type": "delta"
+    },
+    {
+      "text": "跨领域视野**",
+      "_time": 81.74420928955078,
+      "type": "delta"
+    },
+    {
+      "text": "：",
+      "_time": 81.74693608283997,
+      "type": "delta"
+    },
+    {
+      "text": "同时提升 C ",
+      "_time": 81.83423185348511,
+      "type": "delta"
+    },
+    {
+      "text": "端 AIGC",
+      "_time": 81.87732934951782,
+      "type": "delta"
+    },
+    {
+      "text": " 产品敏锐度",
+      "_time": 81.9792549610138,
+      "type": "delta"
+    },
+    {
+      "text": "与 B 端",
+      "_time": 81.98167324066162,
+      "type": "delta"
+    },
+    {
+      "text": " SaaS/RPA",
+      "_time": 82.1222882270813,
+      "type": "delta"
+    },
+    {
+      "text": " 逻辑功底 [",
+      "_time": 82.15113830566406,
+      "type": "delta"
+    },
+    {
+      "text": "来源：字节跳动",
+      "_time": 82.26634383201599,
+      "type": "delta"
+    },
+    {
+      "text": "-AI产品经理]",
+      "_time": 82.26892757415771,
+      "type": "delta"
+    },
+    {
+      "text": "\n\n建议您先在当前",
+      "_time": 82.40928912162781,
+      "type": "delta"
+    },
+    {
+      "text": "技术",
+      "_time": 82.41188502311707,
+      "type": "delta"
+    },
+    {
+      "text": "岗位上积累与 AI",
+      "_time": 82.53813767433167,
+      "type": "delta"
+    },
+    {
+      "text": " 相关",
+      "_time": 82.54105710983276,
+      "type": "delta"
+    },
+    {
+      "text": "的项目经验，或",
+      "_time": 82.6061179637909,
+      "type": "delta"
+    },
+    {
+      "text": "尝试",
+      "_time": 82.61071300506592,
+      "type": "delta"
+    },
+    {
+      "text": "内部转岗，",
+      "_time": 82.69829964637756,
+      "type": "delta"
+    },
+    {
+      "text": "待核心",
+      "_time": 82.70196557044983,
+      "type": "delta"
+    },
+    {
+      "text": "技能匹配度提升",
+      "_time": 82.84429788589478,
+      "type": "delta"
+    },
+    {
+      "text": "后再寻求",
+      "_time": 82.84898352622986,
+      "type": "delta"
+    },
+    {
+      "text": "外部机会。",
+      "_time": 82.93730401992798,
+      "type": "delta"
+    },
+    {
+      "session_id": "eval_li_08_1780562938389",
+      "intent": "match_assess",
+      "route_meta": {
+        "layer": "llm",
+        "intent": "match_assess",
+        "confidence": 0.75,
+        "demands": [
+          {
+            "intent": "match_assess",
+            "entities": {
+              "company": "字节",
+              "position": "AI产品经理",
+              "attributes": [
+                "匹配度"
+              ],
+              "jd_source": "kb"
+            }
+          }
+        ],
+        "plan_tasks": 3
+      },
+      "agent_mode": "llm",
+      "is_clarification": false,
+      "agent": {
+        "rewritten_query": "字节AI产品经理我能转行去吗",
+        "tools": [
+          {
+            "tool": "kb_retrieve",
+            "status": "✅",
+            "params": {
+              "query": "字节AI产品经理我能转行去",
+              "top_k": 5,
+              "company": "字节跳动",
+              "position": "AI产品经理"
+            },
+            "result_preview": "{'chunks': [{'chunk_id': 'ac9973c8-01be-4cd6-9a99-097873a59cf0_chunk_1', 'content': '【字节跳动 · AI产品经理 岗位职责】\\n1. 定义Agent框架：设计Planning、Reflection、Memory策略。2. 重塑LUI交互：探索意图驱动的流式UI与动态组件生成。3. 编排超级工作流：深入客服、数据、"
+          },
+          {
+            "tool": "match_analyze",
+            "status": "✅",
+            "params": {
+              "resume_text": "姓名：李工程师\n电话：138-XXXX-1234 | 邮箱：lixx_dev@email.com | 现居：北京\nJava后端开发工程师 | 3年经验 | 本科\n\n教育背景\n2018.09 - 2022.06  XX理工大学  计算机科学与技术（本科）\n主修课程：数据结构与算法、操作系统、计算机网络、数据库原理、软件工程\n在校荣誉：校级优秀毕业设计（基于微服务的校园二手交易平台）\n\n专业技能\n熟练掌握Java核心技术，熟悉JVM内存模型、GC机制及常见调优手段\n精通Spring Boot、Spring Cloud微服务生态，熟悉Nacos、Gateway、Sentinel、Seata等组件\n熟悉MySQL索引优化、事务机制、分库分表策略，具备SQL调优及慢查询治理经验\n了解Redis缓存设计、Kafka消息队列，熟悉Docker容器化部署及Jenkins CI/CD流程\n掌握Git版本控制，熟悉Linux日常运维及日志排查\n\n工作经历\n2022.07 - 至今  XX科技有限公司（B轮 / 企业服务 SaaS）  Java后端工程师\n\nSaaS供应链管理平台（2023.03 - 至今）\n负责订单中心、库存中心核心模块设计与开发，采用Spring Cloud Alibaba微服务架构，支撑日均10W+订单处理\n主导MySQL分库分表方案设计（ShardingSphere），解决单表数据量过亿导致的查询性能瓶颈，接口响应时间从800ms降至120ms\n设计多级缓存策略（Redis + Caffeine本地缓存），热点数据命中率提升至95%，降低数据库负载40%\n基于Seata AT模式实现分布式事务，保障订单与库存数据一致性，线上运行半年零资损事故\n\n企业权限中台重构（2022.09 - 2023.02）\n参与RBAC权限中台从单体到微服务的拆分重构，负责鉴权服务、菜单路由模块开发\n引入Gateway统一鉴权过滤器，对接OAuth2.0 + JWT认证体系，支持多租户隔离\n编写核心接口单元测试（Unit + Mockito），模块测试覆盖率从45%提升至82%\n\n自我评价\n具备扎实的计算机基础与3年企业级后端开发经验，擅长高并发场景下的系统设计与性能优化。注重代码质量与工程规范，具备良好的团队协作与跨部门沟通能力。",
+              "jd_text": [
+                {
+                  "chunk_id": "ac9973c8-01be-4cd6-9a99-097873a59cf0_chunk_1",
+                  "content": "【字节跳动 · AI产品经理 岗位职责】\n1. 定义Agent框架：设计Planning、Reflection、Memory策略。2. 重塑LUI交互：探索意图驱动的流式UI与动态组件生成。3. 编排超级工作流：深入客服、数据、ERP等实战场景。4. 模型精细化调教：编写结构化Prompt，配合RAG、Function Calling。5. 数据驱动进化：建立交互好感度与任务成功率双重指标。",
+                  "metadata": {
+                    "company": "字节跳动",
+                    "index": 1,
+                    "jd_id": "ac9973c8-01be-4cd6-9a99-097873a59cf0",
+                    "position": "AI产品经理",
+                    "section": "responsibilities",
+                    "strategy": "semantic"
+                  },
+                  "distance": 0.6308419704437256,
+                  "bm25_score": 0.0,
+                  "vec_norm": 0.8046238571028173,
+                  "bm25_norm": 0.0,
+                  "hybrid_score": 0.563236699971972,
+                  "rerank_score": 0.9655
+                },
+                {
+                  "chunk_id": "ac9973c8-01be-4cd6-9a99-097873a59cf0_chunk_2",
+                  "content": "【字节跳动 · AI产品经理 硬性要求】\n本科及以上学历，兼具C端AIGC敏锐度与B端SaaS/RPA逻辑功底",
+                  "metadata": {
+                    "company": "字节跳动",
+                    "index": 2,
+                    "jd_id": "ac9973c8-01be-4cd6-9a99-097873a59cf0",
+                    "position": "AI产品经理",
+                    "priority": "high",
+                    "section": "hard_requirements",
+                    "strategy": "semantic"
+                  },
+                  "distance": 0.6293243765830994,
+                  "bm25_score": 7.4989908346122895,
+                  "vec_norm": 0.8174818765102908,
+                  "bm25_norm": 0.6807984224549152,
+                  "hybrid_score": 0.7764768402936781,
+                  "rerank_score": 0.9214
+                },
+                {
+                  "chunk_id": "ac9973c8-01be-4cd6-9a99-097873a59cf0_chunk_5",
+                  "content": "【字节跳动 · AI产品经理 硬性要求】\n具备极强的逻辑拆解力，能像指挥交响乐一样控制模型输出",
+                  "metadata": {
+                    "company": "字节跳动",
+                    "index": 5,
+                    "jd_id": "ac9973c8-01be-4cd6-9a99-097873a59cf0",
+                    "position": "AI产品经理",
+                    "priority": "high",
+                    "section": "hard_requirements",
+                    "strategy": "semantic"
+                  },
+                  "distance": 0.6077823042869568,
+                  "bm25_score": 7.905991239503383,
+                  "vec_norm": 1.0,
+                  "bm25_norm": 0.7732498238597335,
+                  "hybrid_score": 0.93197494715792,
+                  "rerank_score": 0.9191
+                },
+                {
+                  "chunk_id": "ac9973c8-01be-4cd6-9a99-097873a59cf0_chunk_8",
+                  "content": "【字节跳动 · AI产品经理 关键词】\nPython, PyTorch, LangChain, RAG, Agent, 产品经理, AI",
+                  "metadata": {
+                    "company": "字节跳动",
+                    "index": 8,
+                    "jd_id": "ac9973c8-01be-4cd6-9a99-097873a59cf0",
+                    "position": "AI产品经理",
+                    "section": "keywords",
+                    "strategy": "semantic"
+                  },
+                  "distance": 0.6703348755836487,
+                  "bm25_score": 8.904217465346242,
+                  "vec_norm": 0.4700148724979989,
+                  "bm25_norm": 1.0,
+                  "hybrid_score": 0.6290104107485992,
+                  "rerank_score": 0.8666
+                },
+                {
+                  "chunk_id": "ac9973c8-01be-4cd6-9a99-097873a59cf0_chunk_3",
+                  "content": "【字节跳动 · AI产品经理 硬性要求】\n熟练掌握Transformer、Token、RAG等核心概念",
+                  "metadata": {
+                    "company": "字节跳动",
+                    "index": 3,
+                    "jd_id": "ac9973c8-01be-4cd6-9a99-097873a59cf0",
+                    "position": "AI产品经理",
+                    "priority": "high",
+                    "section": "hard_requirements",
+                    "strategy": "semantic"
+                  },
+                  "distance": 0.6491163969039917,
+                  "bm25_score": 8.359706126378912,
+                  "vec_norm": 0.6497913052700154,
+                  "bm25_norm": 0.8763125644019587,
+                  "hybrid_score": 0.7177476830095983,
+                  "rerank_score": 0.8238
+                }
+              ],
+              "company": "字节跳动",
+              "position": "AI产品经理",
+              "attributes": [
+                "匹配度"
+              ]
+            },
+            "result_preview": "{'score': 10, 'label': '不匹配', 'advantages': ['B端SaaS系统开发经验（供应链管理平台）', '数据库优化能力（分库分表、慢查询治理）', '微服务架构经验（Spring Cloud Alibaba）', '分布式事务处理经验', '良好的逻辑分析能力（可从代码设计体现）'], 'weaknesses': ['候选人缺乏AI产品经理相关经验，具体包括："
+          }
+        ],
+        "kb_chunks_count": 3,
+        "system_prompt_preview": "你是一位专业的求职顾问。请基于以下工具执行结果，给用户一个清晰、有帮助的回复。\n要求：\n1. 先直接回答用户的问题（是/否/有/没有），不要绕弯子，不要重复用户的原话\n2. 如果有匹配分析结果，给出具体的分数和建议\n3. 如果有检索结果，基于事实回答，不要编造\n4. 【强制】引用信息时必须标注来源。每个引用的事实后面都要跟 [来源：公司名-岗位名] 格式。   kb_retrieve 结果的 ch"
+      },
+      "memory": {
+        "working_turns": 1,
+        "compressed_blocks": 0,
+        "current_topic": "general",
+        "evidence_cache_size": 5
+      },
+      "reply": "否，目前匹配度较低。\n\n基于您的简历与岗位要求的匹配分析，具体评估如下：\n\n### 1. 匹配度分析\n*   **匹配分数**：10 分（标签：不匹配）\n*   **您的优势**：\n    *   具备 B 端 SaaS 系统开发经验（供应链管理平台）\n    *   拥有数据库优化能力（分库分表、慢查询治理）\n    *   熟悉微服务架构（Spring Cloud Alibaba）及分布式事务处理\n    *   具备良好的逻辑分析能力\n*   **主要差距**：\n    *   缺乏 AI 产品经理核心经验，包括 Agent 框架设计、LUI 交互及动态 UI 设计 [来源：字节跳动-AI产品经理]\n    *   无超级工作流编排（客服、数据、ERP 场景）经验 [来源：字节跳动-AI产品经理]\n    *   未掌握模型调教、Prompt 编写、RAG、Function Calling 等 AI 产品核心技能 [来源：字节跳动-AI产品经理]\n    *   不熟悉 Python、PyTorch、LangChain 等 AI 技术栈 [来源：字节跳动-AI产品经理]\n    *   对 Transformer、Token 等核心概念缺乏认知 [来源：字节跳动-AI产品经理]\n    *   无产品经理角色经验，缺乏用户需求分析及指标建立能力 [来源：字节跳动-AI产品经理]\n\n### 2. 岗位硬性要求\n该岗位对候选人的具体要求如下：\n*   **学历要求**：本科及以上学历 [来源：字节跳动-AI产品经理]\n*   **核心能力**：兼具 C 端 AIGC 敏锐度与 B 端 SaaS/RPA 逻辑功底 [来源：字节跳动-AI产品经理]\n*   **技能栈**：熟练掌握 Python, PyTorch, LangChain, RAG, Agent 等技术 [来源：字节跳动-AI产品经理]\n*   **逻辑思维**：具备极强的逻辑拆解力，能像指挥交响乐一样控制模型输出 [来源：字节跳动-AI产品经理]\n*   **职责范围**：需负责定义 Agent 框架、重塑 LUI 交互、编排超级工作流及模型精细化调教 [来源：字节跳动-AI产品经理]\n\n### 3. 转行建议\n若希望未来达成转行目标，建议重点补充以下核心能力：\n1.  **补充 AI 技术知识**：学习 Python、PyTorch、LangChain 及 Transformer、Token 等核心概念 [来源：字节跳动-AI产品经理]\n2.  **积累产品实战经验**：尝试参与 Agent 框架设计（Planning、Reflection、Memory 策略）及 LUI 交互设计 [来源：字节跳动-AI产品经理]\n3.  **提升模型调教能力**：学习结构化 Prompt 编写、RAG 及 Function Calling 技术 [来源：字节跳动-AI产品经理]\n4.  **培养数据驱动思维**：建立交互好感度与任务成功率双重指标的分析能力 [来源：字节跳动-AI产品经理]\n5.  **增强跨领域视野**：同时提升 C 端 AIGC 产品敏锐度与 B 端 SaaS/RPA 逻辑功底 [来源：字节跳动-AI产品经理]\n\n建议您先在当前技术岗位上积累与 AI 相关的项目经验，或尝试内部转岗，待核心技能匹配度提升后再寻求外部机会。",
+      "debug_info": {
+        "task_graph": {
+          "tasks": {
+            "T0": {
+              "task_id": "T0",
+              "task_type": "tool_call",
+              "tool_name": "kb_retrieve",
+              "status": "success",
+              "parameters": {
+                "query": "{{global_slots.search_keywords}}",
+                "top_k": 5,
+                "company": "字节跳动",
+                "position": "AI产品经理"
+              },
+              "resolved_params": {
+                "query": "字节AI产品经理我能转行去",
+                "top_k": 5,
+                "company": "字节跳动",
+                "position": "AI产品经理"
+              },
+              "result": {
+                "chunks": [
+                  {
+                    "chunk_id": "ac9973c8-01be-4cd6-9a99-097873a59cf0_chunk_1",
+                    "content": "【字节跳动 · AI产品经理 岗位职责】\n1. 定义Agent框架：设计Planning、Reflection、Memory策略。2. 重塑LUI交互：探索意图驱动的流式UI与动态组件生成。3. 编排超级工作流：深入客服、数据、ERP等实战场景。4. 模型精细化调教：编写结构化Prompt，配合RAG、Function Calling。5. 数据驱动进化：建立交互好感度与任务成功率双重指标。",
+                    "metadata": {
+                      "company": "字节跳动",
+                      "index": 1,
+                      "jd_id": "ac9973c8-01be-4cd6-9a99-097873a59cf0",
+                      "position": "AI产品经理",
+                      "section": "responsibilities",
+                      "strategy": "semantic"
+                    },
+                    "distance": 0.6308419704437256,
+                    "bm25_score": 0.0,
+                    "vec_norm": 0.8046238571028173,
+                    "bm25_norm": 0.0,
+                    "hybrid_score": 0.563236699971972,
+                    "rerank_score": 0.9655
+                  },
+                  {
+                    "chunk_id": "ac9973c8-01be-4cd6-9a99-097873a59cf0_chunk_2",
+                    "content": "【字节跳动 · AI产品经理 硬性要求】\n本科及以上学历，兼具C端AIGC敏锐度与B端SaaS/RPA逻辑功底",
+                    "metadata": {
+                      "company": "字节跳动",
+                      "index": 2,
+                      "jd_id": "ac9973c8-01be-4cd6-9a99-097873a59cf0",
+                      "position": "AI产品经理",
+                      "priority": "high",
+                      "section": "hard_requirements",
+                      "strategy": "semantic"
+                    },
+                    "distance": 0.6293243765830994,
+                    "bm25_score": 7.4989908346122895,
+                    "vec_norm": 0.8174818765102908,
+                    "bm25_norm": 0.6807984224549152,
+                    "hybrid_score": 0.7764768402936781,
+                    "rerank_score": 0.9214
+                  },
+                  {
+                    "chunk_id": "ac9973c8-01be-4cd6-9a99-097873a59cf0_chunk_5",
+                    "content": "【字节跳动 · AI产品经理 硬性要求】\n具备极强的逻辑拆解力，能像指挥交响乐一样控制模型输出",
+                    "metadata": {
+                      "company": "字节跳动",
+                      "index": 5,
+                      "jd_id": "ac9973c8-01be-4cd6-9a99-097873a59cf0",
+                      "position": "AI产品经理",
+                      "priority": "high",
+                      "section": "hard_requirements",
+                      "strategy": "semantic"
+                    },
+                    "distance": 0.6077823042869568,
+                    "bm25_score": 7.905991239503383,
+                    "vec_norm": 1.0,
+                    "bm25_norm": 0.7732498238597335,
+                    "hybrid_score": 0.93197494715792,
+                    "rerank_score": 0.9191
+                  },
+                  {
+                    "chunk_id": "ac9973c8-01be-4cd6-9a99-097873a59cf0_chunk_8",
+                    "content": "【字节跳动 · AI产品经理 关键词】\nPython, PyTorch, LangChain, RAG, Agent, 产品经理, AI",
+                    "metadata": {
+                      "company": "字节跳动",
+                      "index": 8,
+                      "jd_id": "ac9973c8-01be-4cd6-9a99-097873a59cf0",
+                      "position": "AI产品经理",
+                      "section": "keywords",
+                      "strategy": "semantic"
+                    },
+                    "distance": 0.6703348755836487,
+                    "bm25_score": 8.904217465346242,
+                    "vec_norm": 0.4700148724979989,
+                    "bm25_norm": 1.0,
+                    "hybrid_score": 0.6290104107485992,
+                    "rerank_score": 0.8666
+                  },
+                  {
+                    "chunk_id": "ac9973c8-01be-4cd6-9a99-097873a59cf0_chunk_3",
+                    "content": "【字节跳动 · AI产品经理 硬性要求】\n熟练掌握Transformer、Token、RAG等核心概念",
+                    "metadata": {
+                      "company": "字节跳动",
+                      "index": 3,
+                      "jd_id": "ac9973c8-01be-4cd6-9a99-097873a59cf0",
+                      "position": "AI产品经理",
+                      "priority": "high",
+                      "section": "hard_requirements",
+                      "strategy": "semantic"
+                    },
+                    "distance": 0.6491163969039917,
+                    "bm25_score": 8.359706126378912,
+                    "vec_norm": 0.6497913052700154,
+                    "bm25_norm": 0.8763125644019587,
+                    "hybrid_score": 0.7177476830095983,
+                    "rerank_score": 0.8238
+                  }
+                ],
+                "query": "字节AI产品经理我能转行去",
+                "filters": {
+                  "company": "字节跳动",
+                  "position": "AI产品经理"
+                },
+                "strategy": "hybrid(70%vec+30%bm25)+reranker",
+                "pool_k": 5,
+                "rerank_k": 10,
+                "pool_size": 21,
+                "vec_only": 1,
+                "bm25_only": 12,
+                "both": 8,
+                "rerank": {
+                  "enabled": true,
+                  "candidates": 5,
+                  "output": 5,
+                  "best_rerank_score": 0.9655
+                }
+              },
+              "observation": "工具 kb_retrieve 执行成功"
+            },
+            "T1": {
+              "task_id": "T1",
+              "task_type": "tool_call",
+              "tool_name": "match_analyze",
+              "status": "success",
+              "parameters": {
+                "resume_text": "{{global_slots.resume_text}}",
+                "jd_text": "{{T0.output.chunks}}",
+                "company": "字节跳动",
+                "position": "AI产品经理",
+                "attributes": [
+                  "匹配度"
+                ]
+              },
+              "resolved_params": {
+                "resume_text": "姓名：李工程师\n电话：138-XXXX-1234 | 邮箱：lixx_dev@email.com | 现居：北京\nJava后端开发工程师 | 3年经验 | 本科\n\n教育背景\n2018.09 - 2022.06  XX理工大学  计算机科学与技术（本科）\n主修课程：数据结构与算法、操作系统、计算机网络、数据库原理、软件工程\n在校荣誉：校级优秀毕业设计（基于微服务的校园二手交易平台）\n\n专业技能\n熟练掌握Java核心技术，熟悉JVM内存模型、GC机制及常见调优手段\n精通Spring Boot、Spring Cloud微服务生态，熟悉Nacos、Gateway、Sentinel、Seata等组件\n熟悉MySQL索引优化、事务机制、分库分表策略，具备SQL调优及慢查询治理经验\n了解Redis缓存设计、Kafka消息队列，熟悉Docker容器化部署及Jenkins CI/CD流程\n掌握Git版本控制，熟悉Linux日常运维及日志排查\n\n工作经历\n2022.07 - 至今  XX科技有限公司（B轮 / 企业服务 SaaS）  Java后端工程师\n\nSaaS供应链管理平台（2023.03 - 至今）\n负责订单中心、库存中心核心模块设计与开发，采用Spring Cloud Alibaba微服务架构，支撑日均10W+订单处理\n主导MySQL分库分表方案设计（ShardingSphere），解决单表数据量过亿导致的查询性能瓶颈，接口响应时间从800ms降至120ms\n设计多级缓存策略（Redis + Caffeine本地缓存），热点数据命中率提升至95%，降低数据库负载40%\n基于Seata AT模式实现分布式事务，保障订单与库存数据一致性，线上运行半年零资损事故\n\n企业权限中台重构（2022.09 - 2023.02）\n参与RBAC权限中台从单体到微服务的拆分重构，负责鉴权服务、菜单路由模块开发\n引入Gateway统一鉴权过滤器，对接OAuth2.0 + JWT认证体系，支持多租户隔离\n编写核心接口单元测试（Unit + Mockito），模块测试覆盖率从45%提升至82%\n\n自我评价\n具备扎实的计算机基础与3年企业级后端开发经验，擅长高并发场景下的系统设计与性能优化。注重代码质量与工程规范，具备良好的团队协作与跨部门沟通能力。",
+                "jd_text": [
+                  {
+                    "chunk_id": "ac9973c8-01be-4cd6-9a99-097873a59cf0_chunk_1",
+                    "content": "【字节跳动 · AI产品经理 岗位职责】\n1. 定义Agent框架：设计Planning、Reflection、Memory策略。2. 重塑LUI交互：探索意图驱动的流式UI与动态组件生成。3. 编排超级工作流：深入客服、数据、ERP等实战场景。4. 模型精细化调教：编写结构化Prompt，配合RAG、Function Calling。5. 数据驱动进化：建立交互好感度与任务成功率双重指标。",
+                    "metadata": {
+                      "company": "字节跳动",
+                      "index": 1,
+                      "jd_id": "ac9973c8-01be-4cd6-9a99-097873a59cf0",
+                      "position": "AI产品经理",
+                      "section": "responsibilities",
+                      "strategy": "semantic"
+                    },
+                    "distance": 0.6308419704437256,
+                    "bm25_score": 0.0,
+                    "vec_norm": 0.8046238571028173,
+                    "bm25_norm": 0.0,
+                    "hybrid_score": 0.563236699971972,
+                    "rerank_score": 0.9655
+                  },
+                  {
+                    "chunk_id": "ac9973c8-01be-4cd6-9a99-097873a59cf0_chunk_2",
+                    "content": "【字节跳动 · AI产品经理 硬性要求】\n本科及以上学历，兼具C端AIGC敏锐度与B端SaaS/RPA逻辑功底",
+                    "metadata": {
+                      "company": "字节跳动",
+                      "index": 2,
+                      "jd_id": "ac9973c8-01be-4cd6-9a99-097873a59cf0",
+                      "position": "AI产品经理",
+                      "priority": "high",
+                      "section": "hard_requirements",
+                      "strategy": "semantic"
+                    },
+                    "distance": 0.6293243765830994,
+                    "bm25_score": 7.4989908346122895,
+                    "vec_norm": 0.8174818765102908,
+                    "bm25_norm": 0.6807984224549152,
+                    "hybrid_score": 0.7764768402936781,
+                    "rerank_score": 0.9214
+                  },
+                  {
+                    "chunk_id": "ac9973c8-01be-4cd6-9a99-097873a59cf0_chunk_5",
+                    "content": "【字节跳动 · AI产品经理 硬性要求】\n具备极强的逻辑拆解力，能像指挥交响乐一样控制模型输出",
+                    "metadata": {
+                      "company": "字节跳动",
+                      "index": 5,
+                      "jd_id": "ac9973c8-01be-4cd6-9a99-097873a59cf0",
+                      "position": "AI产品经理",
+                      "priority": "high",
+                      "section": "hard_requirements",
+                      "strategy": "semantic"
+                    },
+                    "distance": 0.6077823042869568,
+                    "bm25_score": 7.905991239503383,
+                    "vec_norm": 1.0,
+                    "bm25_norm": 0.7732498238597335,
+                    "hybrid_score": 0.93197494715792,
+                    "rerank_score": 0.9191
+                  },
+                  {
+                    "chunk_id": "ac9973c8-01be-4cd6-9a99-097873a59cf0_chunk_8",
+                    "content": "【字节跳动 · AI产品经理 关键词】\nPython, PyTorch, LangChain, RAG, Agent, 产品经理, AI",
+                    "metadata": {
+                      "company": "字节跳动",
+                      "index": 8,
+                      "jd_id": "ac9973c8-01be-4cd6-9a99-097873a59cf0",
+                      "position": "AI产品经理",
+                      "section": "keywords",
+                      "strategy": "semantic"
+                    },
+                    "distance": 0.6703348755836487,
+                    "bm25_score": 8.904217465346242,
+                    "vec_norm": 0.4700148724979989,
+                    "bm25_norm": 1.0,
+                    "hybrid_score": 0.6290104107485992,
+                    "rerank_score": 0.8666
+                  },
+                  {
+                    "chunk_id": "ac9973c8-01be-4cd6-9a99-097873a59cf0_chunk_3",
+                    "content": "【字节跳动 · AI产品经理 硬性要求】\n熟练掌握Transformer、Token、RAG等核心概念",
+                    "metadata": {
+                      "company": "字节跳动",
+                      "index": 3,
+                      "jd_id": "ac9973c8-01be-4cd6-9a99-097873a59cf0",
+                      "position": "AI产品经理",
+                      "priority": "high",
+                      "section": "hard_requirements",
+                      "strategy": "semantic"
+                    },
+                    "distance": 0.6491163969039917,
+                    "bm25_score": 8.359706126378912,
+                    "vec_norm": 0.6497913052700154,
+                    "bm25_norm": 0.8763125644019587,
+                    "hybrid_score": 0.7177476830095983,
+                    "rerank_score": 0.8238
+                  }
+                ],
+                "company": "字节跳动",
+                "position": "AI产品经理",
+                "attributes": [
+                  "匹配度"
+                ]
+              },
+              "result": {
+                "score": 10,
+                "label": "不匹配",
+                "advantages": [
+                  "B端SaaS系统开发经验（供应链管理平台）",
+                  "数据库优化能力（分库分表、慢查询治理）",
+                  "微服务架构经验（Spring Cloud Alibaba）",
+                  "分布式事务处理经验",
+                  "良好的逻辑分析能力（可从代码设计体现）"
+                ],
+                "weaknesses": [
+                  "候选人缺乏AI产品经理相关经验，具体包括：①未涉及Agent框架（Planning/Reflection/Memory）设计；②无LUI交互及动态UI设计经验；③无超级工作流编排（客服、数据、ERP场景）经验；④无模型调教、Prompt编写、RAG、Function Calling等AI产品核心技能；⑤不掌握Python、PyTorch、LangChain等AI技术栈；⑥对Transformer、Token等核心概念缺乏认知；⑦无产品经理角色经验，缺乏用户需求分析、指标建立（如交互好感度、任务成功率）等产品能力；⑧缺乏C端AIGC产品敏锐度。"
+                ],
+                "suggestions": [
+                  "核心能力要求: AI产品经理核心能力：①Agent框架设计（Planning、Reflection、Memory策略）；②LUI交互设计（意图驱动的流式UI、动态组件生成）；③超级工作流编排（客服、数据、ERP场景）；④模型调教（结构化Prompt编写、RAG、Function Calling）；⑤数据驱动指标（交互好感度、任务成功率）；⑥硬性技能：Python、PyTorch、LangChain、RAG、Agent、Transformer、Token等AI知识；⑦逻辑拆解力与跨领域视野（C端AIGC敏锐度 + B端SaaS/RPA逻辑功底）"
+                ],
+                "match_score": 10,
+                "covered": [
+                  "B端SaaS系统开发经验（供应链管理平台）",
+                  "数据库优化能力（分库分表、慢查询治理）",
+                  "微服务架构经验（Spring Cloud Alibaba）",
+                  "分布式事务处理经验",
+                  "良好的逻辑分析能力（可从代码设计体现）"
+                ],
+                "missing_experience": "候选人缺乏AI产品经理相关经验，具体包括：①未涉及Agent框架（Planning/Reflection/Memory）设计；②无LUI交互及动态UI设计经验；③无超级工作流编排（客服、数据、ERP场景）经验；④无模型调教、Prompt编写、RAG、Function Calling等AI产品核心技能；⑤不掌握Python、PyTorch、LangChain等AI技术栈；⑥对Transformer、Token等核心概念缺乏认知；⑦无产品经理角色经验，缺乏用户需求分析、指标建立（如交互好感度、任务成功率）等产品能力；⑧缺乏C端AIGC产品敏锐度。",
+                "core_skills": "AI产品经理核心能力：①Agent框架设计（Planning、Reflection、Memory策略）；②LUI交互设计（意图驱动的流式UI、动态组件生成）；③超级工作流编排（客服、数据、ERP场景）；④模型调教（结构化Prompt编写、RAG、Function Calling）；⑤数据驱动指标（交互好感度、任务成功率）；⑥硬性技能：Python、PyTorch、LangChain、RAG、Agent、Transformer、Token等AI知识；⑦逻辑拆解力与跨领域视野（C端AIGC敏锐度 + B端SaaS/RPA逻辑功底）",
+                "company": "字节跳动",
+                "position": "AI产品经理"
+              },
+              "observation": "工具 match_analyze 执行成功"
+            },
+            "T2": {
+              "task_id": "T2",
+              "task_type": "aggregate",
+              "tool_name": null,
+              "status": "success",
+              "parameters": {
+                "assess": "{{T1.output}}",
+                "jd_chunks": "{{T0.output.chunks}}"
+              },
+              "resolved_params": {
+                "assess": {
+                  "score": 10,
+                  "label": "不匹配",
+                  "advantages": [
+                    "B端SaaS系统开发经验（供应链管理平台）",
+                    "数据库优化能力（分库分表、慢查询治理）",
+                    "微服务架构经验（Spring Cloud Alibaba）",
+                    "分布式事务处理经验",
+                    "良好的逻辑分析能力（可从代码设计体现）"
+                  ],
+                  "weaknesses": [
+                    "候选人缺乏AI产品经理相关经验，具体包括：①未涉及Agent框架（Planning/Reflection/Memory）设计；②无LUI交互及动态UI设计经验；③无超级工作流编排（客服、数据、ERP场景）经验；④无模型调教、Prompt编写、RAG、Function Calling等AI产品核心技能；⑤不掌握Python、PyTorch、LangChain等AI技术栈；⑥对Transformer、Token等核心概念缺乏认知；⑦无产品经理角色经验，缺乏用户需求分析、指标建立（如交互好感度、任务成功率）等产品能力；⑧缺乏C端AIGC产品敏锐度。"
+                  ],
+                  "suggestions": [
+                    "核心能力要求: AI产品经理核心能力：①Agent框架设计（Planning、Reflection、Memory策略）；②LUI交互设计（意图驱动的流式UI、动态组件生成）；③超级工作流编排（客服、数据、ERP场景）；④模型调教（结构化Prompt编写、RAG、Function Calling）；⑤数据驱动指标（交互好感度、任务成功率）；⑥硬性技能：Python、PyTorch、LangChain、RAG、Agent、Transformer、Token等AI知识；⑦逻辑拆解力与跨领域视野（C端AIGC敏锐度 + B端SaaS/RPA逻辑功底）"
+                  ],
+                  "match_score": 10,
+                  "covered": [
+                    "B端SaaS系统开发经验（供应链管理平台）",
+                    "数据库优化能力（分库分表、慢查询治理）",
+                    "微服务架构经验（Spring Cloud Alibaba）",
+                    "分布式事务处理经验",
+                    "良好的逻辑分析能力（可从代码设计体现）"
+                  ],
+                  "missing_experience": "候选人缺乏AI产品经理相关经验，具体包括：①未涉及Agent框架（Planning/Reflection/Memory）设计；②无LUI交互及动态UI设计经验；③无超级工作流编排（客服、数据、ERP场景）经验；④无模型调教、Prompt编写、RAG、Function Calling等AI产品核心技能；⑤不掌握Python、PyTorch、LangChain等AI技术栈；⑥对Transformer、Token等核心概念缺乏认知；⑦无产品经理角色经验，缺乏用户需求分析、指标建立（如交互好感度、任务成功率）等产品能力；⑧缺乏C端AIGC产品敏锐度。",
+                  "core_skills": "AI产品经理核心能力：①Agent框架设计（Planning、Reflection、Memory策略）；②LUI交互设计（意图驱动的流式UI、动态组件生成）；③超级工作流编排（客服、数据、ERP场景）；④模型调教（结构化Prompt编写、RAG、Function Calling）；⑤数据驱动指标（交互好感度、任务成功率）；⑥硬性技能：Python、PyTorch、LangChain、RAG、Agent、Transformer、Token等AI知识；⑦逻辑拆解力与跨领域视野（C端AIGC敏锐度 + B端SaaS/RPA逻辑功底）",
+                  "company": "字节跳动",
+                  "position": "AI产品经理"
+                },
+                "jd_chunks": [
+                  {
+                    "chunk_id": "ac9973c8-01be-4cd6-9a99-097873a59cf0_chunk_1",
+                    "content": "【字节跳动 · AI产品经理 岗位职责】\n1. 定义Agent框架：设计Planning、Reflection、Memory策略。2. 重塑LUI交互：探索意图驱动的流式UI与动态组件生成。3. 编排超级工作流：深入客服、数据、ERP等实战场景。4. 模型精细化调教：编写结构化Prompt，配合RAG、Function Calling。5. 数据驱动进化：建立交互好感度与任务成功率双重指标。",
+                    "metadata": {
+                      "company": "字节跳动",
+                      "index": 1,
+                      "jd_id": "ac9973c8-01be-4cd6-9a99-097873a59cf0",
+                      "position": "AI产品经理",
+                      "section": "responsibilities",
+                      "strategy": "semantic"
+                    },
+                    "distance": 0.6308419704437256,
+                    "bm25_score": 0.0,
+                    "vec_norm": 0.8046238571028173,
+                    "bm25_norm": 0.0,
+                    "hybrid_score": 0.563236699971972,
+                    "rerank_score": 0.9655
+                  },
+                  {
+                    "chunk_id": "ac9973c8-01be-4cd6-9a99-097873a59cf0_chunk_2",
+                    "content": "【字节跳动 · AI产品经理 硬性要求】\n本科及以上学历，兼具C端AIGC敏锐度与B端SaaS/RPA逻辑功底",
+                    "metadata": {
+                      "company": "字节跳动",
+                      "index": 2,
+                      "jd_id": "ac9973c8-01be-4cd6-9a99-097873a59cf0",
+                      "position": "AI产品经理",
+                      "priority": "high",
+                      "section": "hard_requirements",
+                      "strategy": "semantic"
+                    },
+                    "distance": 0.6293243765830994,
+                    "bm25_score": 7.4989908346122895,
+                    "vec_norm": 0.8174818765102908,
+                    "bm25_norm": 0.6807984224549152,
+                    "hybrid_score": 0.7764768402936781,
+                    "rerank_score": 0.9214
+                  },
+                  {
+                    "chunk_id": "ac9973c8-01be-4cd6-9a99-097873a59cf0_chunk_5",
+                    "content": "【字节跳动 · AI产品经理 硬性要求】\n具备极强的逻辑拆解力，能像指挥交响乐一样控制模型输出",
+                    "metadata": {
+                      "company": "字节跳动",
+                      "index": 5,
+                      "jd_id": "ac9973c8-01be-4cd6-9a99-097873a59cf0",
+                      "position": "AI产品经理",
+                      "priority": "high",
+                      "section": "hard_requirements",
+                      "strategy": "semantic"
+                    },
+                    "distance": 0.6077823042869568,
+                    "bm25_score": 7.905991239503383,
+                    "vec_norm": 1.0,
+                    "bm25_norm": 0.7732498238597335,
+                    "hybrid_score": 0.93197494715792,
+                    "rerank_score": 0.9191
+                  },
+                  {
+                    "chunk_id": "ac9973c8-01be-4cd6-9a99-097873a59cf0_chunk_8",
+                    "content": "【字节跳动 · AI产品经理 关键词】\nPython, PyTorch, LangChain, RAG, Agent, 产品经理, AI",
+                    "metadata": {
+                      "company": "字节跳动",
+                      "index": 8,
+                      "jd_id": "ac9973c8-01be-4cd6-9a99-097873a59cf0",
+                      "position": "AI产品经理",
+                      "section": "keywords",
+                      "strategy": "semantic"
+                    },
+                    "distance": 0.6703348755836487,
+                    "bm25_score": 8.904217465346242,
+                    "vec_norm": 0.4700148724979989,
+                    "bm25_norm": 1.0,
+                    "hybrid_score": 0.6290104107485992,
+                    "rerank_score": 0.8666
+                  },
+                  {
+                    "chunk_id": "ac9973c8-01be-4cd6-9a99-097873a59cf0_chunk_3",
+                    "content": "【字节跳动 · AI产品经理 硬性要求】\n熟练掌握Transformer、Token、RAG等核心概念",
+                    "metadata": {
+                      "company": "字节跳动",
+                      "index": 3,
+                      "jd_id": "ac9973c8-01be-4cd6-9a99-097873a59cf0",
+                      "position": "AI产品经理",
+                      "priority": "high",
+                      "section": "hard_requirements",
+                      "strategy": "semantic"
+                    },
+                    "distance": 0.6491163969039917,
+                    "bm25_score": 8.359706126378912,
+                    "vec_norm": 0.6497913052700154,
+                    "bm25_norm": 0.8763125644019587,
+                    "hybrid_score": 0.7177476830095983,
+                    "rerank_score": 0.8238
+                  }
+                ]
+              },
+              "result": {
+                "aggregation": {
+                  "assess": {
+                    "score": 10,
+                    "label": "不匹配",
+                    "advantages": [
+                      "B端SaaS系统开发经验（供应链管理平台）",
+                      "数据库优化能力（分库分表、慢查询治理）",
+                      "微服务架构经验（Spring Cloud Alibaba）",
+                      "分布式事务处理经验",
+                      "良好的逻辑分析能力（可从代码设计体现）"
+                    ],
+                    "weaknesses": [
+                      "候选人缺乏AI产品经理相关经验，具体包括：①未涉及Agent框架（Planning/Reflection/Memory）设计；②无LUI交互及动态UI设计经验；③无超级工作流编排（客服、数据、ERP场景）经验；④无模型调教、Prompt编写、RAG、Function Calling等AI产品核心技能；⑤不掌握Python、PyTorch、LangChain等AI技术栈；⑥对Transformer、Token等核心概念缺乏认知；⑦无产品经理角色经验，缺乏用户需求分析、指标建立（如交互好感度、任务成功率）等产品能力；⑧缺乏C端AIGC产品敏锐度。"
+                    ],
+                    "suggestions": [
+                      "核心能力要求: AI产品经理核心能力：①Agent框架设计（Planning、Reflection、Memory策略）；②LUI交互设计（意图驱动的流式UI、动态组件生成）；③超级工作流编排（客服、数据、ERP场景）；④模型调教（结构化Prompt编写、RAG、Function Calling）；⑤数据驱动指标（交互好感度、任务成功率）；⑥硬性技能：Python、PyTorch、LangChain、RAG、Agent、Transformer、Token等AI知识；⑦逻辑拆解力与跨领域视野（C端AIGC敏锐度 + B端SaaS/RPA逻辑功底）"
+                    ],
+                    "match_score": 10,
+                    "covered": [
+                      "B端SaaS系统开发经验（供应链管理平台）",
+                      "数据库优化能力（分库分表、慢查询治理）",
+                      "微服务架构经验（Spring Cloud Alibaba）",
+                      "分布式事务处理经验",
+                      "良好的逻辑分析能力（可从代码设计体现）"
+                    ],
+                    "missing_experience": "候选人缺乏AI产品经理相关经验，具体包括：①未涉及Agent框架（Planning/Reflection/Memory）设计；②无LUI交互及动态UI设计经验；③无超级工作流编排（客服、数据、ERP场景）经验；④无模型调教、Prompt编写、RAG、Function Calling等AI产品核心技能；⑤不掌握Python、PyTorch、LangChain等AI技术栈；⑥对Transformer、Token等核心概念缺乏认知；⑦无产品经理角色经验，缺乏用户需求分析、指标建立（如交互好感度、任务成功率）等产品能力；⑧缺乏C端AIGC产品敏锐度。",
+                    "core_skills": "AI产品经理核心能力：①Agent框架设计（Planning、Reflection、Memory策略）；②LUI交互设计（意图驱动的流式UI、动态组件生成）；③超级工作流编排（客服、数据、ERP场景）；④模型调教（结构化Prompt编写、RAG、Function Calling）；⑤数据驱动指标（交互好感度、任务成功率）；⑥硬性技能：Python、PyTorch、LangChain、RAG、Agent、Transformer、Token等AI知识；⑦逻辑拆解力与跨领域视野（C端AIGC敏锐度 + B端SaaS/RPA逻辑功底）",
+                    "company": "字节跳动",
+                    "position": "AI产品经理"
+                  },
+                  "jd_chunks": [
+                    {
+                      "chunk_id": "ac9973c8-01be-4cd6-9a99-097873a59cf0_chunk_1",
+                      "content": "【字节跳动 · AI产品经理 岗位职责】\n1. 定义Agent框架：设计Planning、Reflection、Memory策略。2. 重塑LUI交互：探索意图驱动的流式UI与动态组件生成。3. 编排超级工作流：深入客服、数据、ERP等实战场景。4. 模型精细化调教：编写结构化Prompt，配合RAG、Function Calling。5. 数据驱动进化：建立交互好感度与任务成功率双重指标。",
+                      "metadata": {
+                        "company": "字节跳动",
+                        "index": 1,
+                        "jd_id": "ac9973c8-01be-4cd6-9a99-097873a59cf0",
+                        "position": "AI产品经理",
+                        "section": "responsibilities",
+                        "strategy": "semantic"
+                      },
+                      "distance": 0.6308419704437256,
+                      "bm25_score": 0.0,
+                      "vec_norm": 0.8046238571028173,
+                      "bm25_norm": 0.0,
+                      "hybrid_score": 0.563236699971972,
+                      "rerank_score": 0.9655
+                    },
+                    {
+                      "chunk_id": "ac9973c8-01be-4cd6-9a99-097873a59cf0_chunk_2",
+                      "content": "【字节跳动 · AI产品经理 硬性要求】\n本科及以上学历，兼具C端AIGC敏锐度与B端SaaS/RPA逻辑功底",
+                      "metadata": {
+                        "company": "字节跳动",
+                        "index": 2,
+                        "jd_id": "ac9973c8-01be-4cd6-9a99-097873a59cf0",
+                        "position": "AI产品经理",
+                        "priority": "high",
+                        "section": "hard_requirements",
+                        "strategy": "semantic"
+                      },
+                      "distance": 0.6293243765830994,
+                      "bm25_score": 7.4989908346122895,
+                      "vec_norm": 0.8174818765102908,
+                      "bm25_norm": 0.6807984224549152,
+                      "hybrid_score": 0.7764768402936781,
+                      "rerank_score": 0.9214
+                    },
+                    {
+                      "chunk_id": "ac9973c8-01be-4cd6-9a99-097873a59cf0_chunk_5",
+                      "content": "【字节跳动 · AI产品经理 硬性要求】\n具备极强的逻辑拆解力，能像指挥交响乐一样控制模型输出",
+                      "metadata": {
+                        "company": "字节跳动",
+                        "index": 5,
+                        "jd_id": "ac9973c8-01be-4cd6-9a99-097873a59cf0",
+                        "position": "AI产品经理",
+                        "priority": "high",
+                        "section": "hard_requirements",
+                        "strategy": "semantic"
+                      },
+                      "distance": 0.6077823042869568,
+                      "bm25_score": 7.905991239503383,
+                      "vec_norm": 1.0,
+                      "bm25_norm": 0.7732498238597335,
+                      "hybrid_score": 0.93197494715792,
+                      "rerank_score": 0.9191
+                    },
+                    {
+                      "chunk_id": "ac9973c8-01be-4cd6-9a99-097873a59cf0_chunk_8",
+                      "content": "【字节跳动 · AI产品经理 关键词】\nPython, PyTorch, LangChain, RAG, Agent, 产品经理, AI",
+                      "metadata": {
+                        "company": "字节跳动",
+                        "index": 8,
+                        "jd_id": "ac9973c8-01be-4cd6-9a99-097873a59cf0",
+                        "position": "AI产品经理",
+                        "section": "keywords",
+                        "strategy": "semantic"
+                      },
+                      "distance": 0.6703348755836487,
+                      "bm25_score": 8.904217465346242,
+                      "vec_norm": 0.4700148724979989,
+                      "bm25_norm": 1.0,
+                      "hybrid_score": 0.6290104107485992,
+                      "rerank_score": 0.8666
+                    },
+                    {
+                      "chunk_id": "ac9973c8-01be-4cd6-9a99-097873a59cf0_chunk_3",
+                      "content": "【字节跳动 · AI产品经理 硬性要求】\n熟练掌握Transformer、Token、RAG等核心概念",
+                      "metadata": {
+                        "company": "字节跳动",
+                        "index": 3,
+                        "jd_id": "ac9973c8-01be-4cd6-9a99-097873a59cf0",
+                        "position": "AI产品经理",
+                        "priority": "high",
+                        "section": "hard_requirements",
+                        "strategy": "semantic"
+                      },
+                      "distance": 0.6491163969039917,
+                      "bm25_score": 8.359706126378912,
+                      "vec_norm": 0.6497913052700154,
+                      "bm25_norm": 0.8763125644019587,
+                      "hybrid_score": 0.7177476830095983,
+                      "rerank_score": 0.8238
+                    }
+                  ]
+                }
+              },
+              "observation": "聚合完成"
+            }
+          },
+          "global_status": "success",
+          "replan_reason": "",
+          "replan_count": 0
+        },
+        "intent": {
+          "demands": [
+            {
+              "intent": "match_assess",
+              "entities": {
+                "company": "字节",
+                "position": "AI产品经理",
+                "attributes": [
+                  "匹配度"
+                ],
+                "jd_source": "kb"
+              },
+              "confidence": 0.75
+            }
+          ],
+          "needs_clarification": false,
+          "clarification_question": ""
+        },
+        "rewrite": {
+          "rewritten_query": "字节AI产品经理我能转行去吗",
+          "search_keywords": "字节AI产品经理我能转行去",
+          "is_follow_up": false,
+          "follow_up_type": "none",
+          "resolved_references": {}
+        },
+        "evidence_cache": [
+          {
+            "chunk_id": "ac9973c8-01be-4cd6-9a99-097873a59cf0_chunk_1",
+            "content": "【字节跳动 · AI产品经理 岗位职责】\n1. 定义Agent框架：设计Planning、Reflection、Memory策略。2. 重塑LUI交互：探索意图驱动的流式UI与动态组件生成。3. 编排超级工作流：深入客服、数据、ERP等实战场景。4. 模型精细化调教：编写结构化Prompt，配合RAG、Function Calling。5. 数据驱动进化：建立交互好感度与任务成功率双重指标。",
+            "metadata": {
+              "company": "字节跳动",
+              "index": 1,
+              "jd_id": "ac9973c8-01be-4cd6-9a99-097873a59cf0",
+              "position": "AI产品经理",
+              "section": "responsibilities",
+              "strategy": "semantic"
+            },
+            "distance": 0.6308419704437256,
+            "bm25_score": 0.0,
+            "vec_norm": 0.8046238571028173,
+            "bm25_norm": 0.0,
+            "hybrid_score": 0.563236699971972,
+            "rerank_score": 0.9655
+          },
+          {
+            "chunk_id": "ac9973c8-01be-4cd6-9a99-097873a59cf0_chunk_2",
+            "content": "【字节跳动 · AI产品经理 硬性要求】\n本科及以上学历，兼具C端AIGC敏锐度与B端SaaS/RPA逻辑功底",
+            "metadata": {
+              "company": "字节跳动",
+              "index": 2,
+              "jd_id": "ac9973c8-01be-4cd6-9a99-097873a59cf0",
+              "position": "AI产品经理",
+              "priority": "high",
+              "section": "hard_requirements",
+              "strategy": "semantic"
+            },
+            "distance": 0.6293243765830994,
+            "bm25_score": 7.4989908346122895,
+            "vec_norm": 0.8174818765102908,
+            "bm25_norm": 0.6807984224549152,
+            "hybrid_score": 0.7764768402936781,
+            "rerank_score": 0.9214
+          },
+          {
+            "chunk_id": "ac9973c8-01be-4cd6-9a99-097873a59cf0_chunk_5",
+            "content": "【字节跳动 · AI产品经理 硬性要求】\n具备极强的逻辑拆解力，能像指挥交响乐一样控制模型输出",
+            "metadata": {
+              "company": "字节跳动",
+              "index": 5,
+              "jd_id": "ac9973c8-01be-4cd6-9a99-097873a59cf0",
+              "position": "AI产品经理",
+              "priority": "high",
+              "section": "hard_requirements",
+              "strategy": "semantic"
+            },
+            "distance": 0.6077823042869568,
+            "bm25_score": 7.905991239503383,
+            "vec_norm": 1.0,
+            "bm25_norm": 0.7732498238597335,
+            "hybrid_score": 0.93197494715792,
+            "rerank_score": 0.9191
+          },
+          {
+            "chunk_id": "ac9973c8-01be-4cd6-9a99-097873a59cf0_chunk_8",
+            "content": "【字节跳动 · AI产品经理 关键词】\nPython, PyTorch, LangChain, RAG, Agent, 产品经理, AI",
+            "metadata": {
+              "company": "字节跳动",
+              "index": 8,
+              "jd_id": "ac9973c8-01be-4cd6-9a99-097873a59cf0",
+              "position": "AI产品经理",
+              "section": "keywords",
+              "strategy": "semantic"
+            },
+            "distance": 0.6703348755836487,
+            "bm25_score": 8.904217465346242,
+            "vec_norm": 0.4700148724979989,
+            "bm25_norm": 1.0,
+            "hybrid_score": 0.6290104107485992,
+            "rerank_score": 0.8666
+          },
+          {
+            "chunk_id": "ac9973c8-01be-4cd6-9a99-097873a59cf0_chunk_3",
+            "content": "【字节跳动 · AI产品经理 硬性要求】\n熟练掌握Transformer、Token、RAG等核心概念",
+            "metadata": {
+              "company": "字节跳动",
+              "index": 3,
+              "jd_id": "ac9973c8-01be-4cd6-9a99-097873a59cf0",
+              "position": "AI产品经理",
+              "priority": "high",
+              "section": "hard_requirements",
+              "strategy": "semantic"
+            },
+            "distance": 0.6491163969039917,
+            "bm25_score": 8.359706126378912,
+            "vec_norm": 0.6497913052700154,
+            "bm25_norm": 0.8763125644019587,
+            "hybrid_score": 0.7177476830095983,
+            "rerank_score": 0.8238
+          }
+        ],
+        "evidence_cache_query": "字节AI产品经理我能转行去吗",
+        "tool_outputs": [
+          {
+            "task_id": "T0",
+            "tool": "kb_retrieve",
+            "description": "检索字节AI产品经理JD",
+            "result": {
+              "chunks": [
+                {
+                  "chunk_id": "ac9973c8-01be-4cd6-9a99-097873a59cf0_chunk_1",
+                  "content": "【字节跳动 · AI产品经理 岗位职责】\n1. 定义Agent框架：设计Planning、Reflection、Memory策略。2. 重塑LUI交互：探索意图驱动的流式UI与动态组件生成。3. 编排超级工作流：深入客服、数据、ERP等实战场景。4. 模型精细化调教：编写结构化Prompt，配合RAG、Function Calling。5. 数据驱动进化：建立交互好感度与任务成功率双重指标。",
+                  "source": "字节跳动-AI产品经理",
+                  "metadata": {
+                    "company": "字节跳动",
+                    "position": "AI产品经理"
+                  }
+                },
+                {
+                  "chunk_id": "ac9973c8-01be-4cd6-9a99-097873a59cf0_chunk_2",
+                  "content": "【字节跳动 · AI产品经理 硬性要求】\n本科及以上学历，兼具C端AIGC敏锐度与B端SaaS/RPA逻辑功底",
+                  "source": "字节跳动-AI产品经理",
+                  "metadata": {
+                    "company": "字节跳动",
+                    "position": "AI产品经理"
+                  }
+                },
+                {
+                  "chunk_id": "ac9973c8-01be-4cd6-9a99-097873a59cf0_chunk_5",
+                  "content": "【字节跳动 · AI产品经理 硬性要求】\n具备极强的逻辑拆解力，能像指挥交响乐一样控制模型输出",
+                  "source": "字节跳动-AI产品经理",
+                  "metadata": {
+                    "company": "字节跳动",
+                    "position": "AI产品经理"
+                  }
+                },
+                {
+                  "chunk_id": "ac9973c8-01be-4cd6-9a99-097873a59cf0_chunk_8",
+                  "content": "【字节跳动 · AI产品经理 关键词】\nPython, PyTorch, LangChain, RAG, Agent, 产品经理, AI",
+                  "source": "字节跳动-AI产品经理",
+                  "metadata": {
+                    "company": "字节跳动",
+                    "position": "AI产品经理"
+                  }
+                },
+                {
+                  "chunk_id": "ac9973c8-01be-4cd6-9a99-097873a59cf0_chunk_3",
+                  "content": "【字节跳动 · AI产品经理 硬性要求】\n熟练掌握Transformer、Token、RAG等核心概念",
+                  "source": "字节跳动-AI产品经理",
+                  "metadata": {
+                    "company": "字节跳动",
+                    "position": "AI产品经理"
+                  }
+                }
+              ],
+              "query": "字节AI产品经理我能转行去",
+              "filters": {
+                "company": "字节跳动",
+                "position": "AI产品经理"
+              },
+              "strategy": "hybrid(70%vec+30%bm25)+reranker",
+              "pool_k": 5,
+              "rerank_k": 10,
+              "pool_size": 21,
+              "vec_only": 1,
+              "bm25_only": 12,
+              "both": 8,
+              "rerank": {
+                "enabled": true,
+                "candidates": 5,
+                "output": 5,
+                "best_rerank_score": 0.9655
+              }
+            }
+          },
+          {
+            "task_id": "T1",
+            "tool": "match_analyze",
+            "description": "分析简历与字节AI产品经理JD的匹配度",
+            "result": {
+              "score": 10,
+              "label": "不匹配",
+              "advantages": [
+                "B端SaaS系统开发经验（供应链管理平台）",
+                "数据库优化能力（分库分表、慢查询治理）",
+                "微服务架构经验（Spring Cloud Alibaba）",
+                "分布式事务处理经验",
+                "良好的逻辑分析能力（可从代码设计体现）"
+              ],
+              "weaknesses": [
+                "候选人缺乏AI产品经理相关经验，具体包括：①未涉及Agent框架（Planning/Reflection/Memory）设计；②无LUI交互及动态UI设计经验；③无超级工作流编排（客服、数据、ERP场景）经验；④无模型调教、Prompt编写、RAG、Function Calling等AI产品核心技能；⑤不掌握Python、PyTorch、LangChain等AI技术栈；⑥对Transformer、Token等核心概念缺乏认知；⑦无产品经理角色经验，缺乏用户需求分析、指标建立（如交互好感度、任务成功率）等产品能力；⑧缺乏C端AIGC产品敏锐度。"
+              ],
+              "suggestions": [
+                "核心能力要求: AI产品经理核心能力：①Agent框架设计（Planning、Reflection、Memory策略）；②LUI交互设计（意图驱动的流式UI、动态组件生成）；③超级工作流编排（客服、数据、ERP场景）；④模型调教（结构化Prompt编写、RAG、Function Calling）；⑤数据驱动指标（交互好感度、任务成功率）；⑥硬性技能：Python、PyTorch、LangChain、RAG、Agent、Transformer、Token等AI知识；⑦逻辑拆解力与跨领域视野（C端AIGC敏锐度 + B端SaaS/RPA逻辑功底）"
+              ],
+              "match_score": 10,
+              "covered": [
+                "B端SaaS系统开发经验（供应链管理平台）",
+                "数据库优化能力（分库分表、慢查询治理）",
+                "微服务架构经验（Spring Cloud Alibaba）",
+                "分布式事务处理经验",
+                "良好的逻辑分析能力（可从代码设计体现）"
+              ],
+              "missing_experience": "候选人缺乏AI产品经理相关经验，具体包括：①未涉及Agent框架（Planning/Reflection/Memory）设计；②无LUI交互及动态UI设计经验；③无超级工作流编排（客服、数据、ERP场景）经验；④无模型调教、Prompt编写、RAG、Function Calling等AI产品核心技能；⑤不掌握Python、PyTorch、LangChain等AI技术栈；⑥对Transformer、Token等核心概念缺乏认知；⑦无产品经理角色经验，缺乏用户需求分析、指标建立（如交互好感度、任务成功率）等产品能力；⑧缺乏C端AIGC产品敏锐度。",
+              "core_skills": "AI产品经理核心能力：①Agent框架设计（Planning、Reflection、Memory策略）；②LUI交互设计（意图驱动的流式UI、动态组件生成）；③超级工作流编排（客服、数据、ERP场景）；④模型调教（结构化Prompt编写、RAG、Function Calling）；⑤数据驱动指标（交互好感度、任务成功率）；⑥硬性技能：Python、PyTorch、LangChain、RAG、Agent、Transformer、Token等AI知识；⑦逻辑拆解力与跨领域视野（C端AIGC敏锐度 + B端SaaS/RPA逻辑功底）",
+              "company": "字节跳动",
+              "position": "AI产品经理"
+            }
+          },
+          {
+            "task_id": "T2",
+            "tool": null,
+            "description": "聚合检索与匹配结果，生成最终回复素材",
+            "result": {
+              "aggregation": {
+                "assess": {
+                  "score": 10,
+                  "label": "不匹配",
+                  "advantages": [
+                    "B端SaaS系统开发经验（供应链管理平台）",
+                    "数据库优化能力（分库分表、慢查询治理）",
+                    "微服务架构经验（Spring Cloud Alibaba）",
+                    "分布式事务处理经验",
+                    "良好的逻辑分析能力（可从代码设计体现）"
+                  ],
+                  "weaknesses": [
+                    "候选人缺乏AI产品经理相关经验，具体包括：①未涉及Agent框架（Planning/Reflection/Memory）设计；②无LUI交互及动态UI设计经验；③无超级工作流编排（客服、数据、ERP场景）经验；④无模型调教、Prompt编写、RAG、Function Calling等AI产品核心技能；⑤不掌握Python、PyTorch、LangChain等AI技术栈；⑥对Transformer、Token等核心概念缺乏认知；⑦无产品经理角色经验，缺乏用户需求分析、指标建立（如交互好感度、任务成功率）等产品能力；⑧缺乏C端AIGC产品敏锐度。"
+                  ],
+                  "suggestions": [
+                    "核心能力要求: AI产品经理核心能力：①Agent框架设计（Planning、Reflection、Memory策略）；②LUI交互设计（意图驱动的流式UI、动态组件生成）；③超级工作流编排（客服、数据、ERP场景）；④模型调教（结构化Prompt编写、RAG、Function Calling）；⑤数据驱动指标（交互好感度、任务成功率）；⑥硬性技能：Python、PyTorch、LangChain、RAG、Agent、Transformer、Token等AI知识；⑦逻辑拆解力与跨领域视野（C端AIGC敏锐度 + B端SaaS/RPA逻辑功底）"
+                  ],
+                  "match_score": 10,
+                  "covered": [
+                    "B端SaaS系统开发经验（供应链管理平台）",
+                    "数据库优化能力（分库分表、慢查询治理）",
+                    "微服务架构经验（Spring Cloud Alibaba）",
+                    "分布式事务处理经验",
+                    "良好的逻辑分析能力（可从代码设计体现）"
+                  ],
+                  "missing_experience": "候选人缺乏AI产品经理相关经验，具体包括：①未涉及Agent框架（Planning/Reflection/Memory）设计；②无LUI交互及动态UI设计经验；③无超级工作流编排（客服、数据、ERP场景）经验；④无模型调教、Prompt编写、RAG、Function Calling等AI产品核心技能；⑤不掌握Python、PyTorch、LangChain等AI技术栈；⑥对Transformer、Token等核心概念缺乏认知；⑦无产品经理角色经验，缺乏用户需求分析、指标建立（如交互好感度、任务成功率）等产品能力；⑧缺乏C端AIGC产品敏锐度。",
+                  "core_skills": "AI产品经理核心能力：①Agent框架设计（Planning、Reflection、Memory策略）；②LUI交互设计（意图驱动的流式UI、动态组件生成）；③超级工作流编排（客服、数据、ERP场景）；④模型调教（结构化Prompt编写、RAG、Function Calling）；⑤数据驱动指标（交互好感度、任务成功率）；⑥硬性技能：Python、PyTorch、LangChain、RAG、Agent、Transformer、Token等AI知识；⑦逻辑拆解力与跨领域视野（C端AIGC敏锐度 + B端SaaS/RPA逻辑功底）",
+                  "company": "字节跳动",
+                  "position": "AI产品经理"
+                },
+                "jd_chunks": [
+                  {
+                    "chunk_id": "ac9973c8-01be-4cd6-9a99-097873a59cf0_chunk_1",
+                    "content": "【字节跳动 · AI产品经理 岗位职责】\n1. 定义Agent框架：设计Planning、Reflection、Memory策略。2. 重塑LUI交互：探索意图驱动的流式UI与动态组件生成。3. 编排超级工作流：深入客服、数据、ERP等实战场景。4. 模型精细化调教：编写结构化Prompt，配合RAG、Function Calling。5. 数据驱动进化：建立交互好感度与任务成功率双重指标。",
+                    "metadata": {
+                      "company": "字节跳动",
+                      "index": 1,
+                      "jd_id": "ac9973c8-01be-4cd6-9a99-097873a59cf0",
+                      "position": "AI产品经理",
+                      "section": "responsibilities",
+                      "strategy": "semantic"
+                    },
+                    "distance": 0.6308419704437256,
+                    "bm25_score": 0.0,
+                    "vec_norm": 0.8046238571028173,
+                    "bm25_norm": 0.0,
+                    "hybrid_score": 0.563236699971972,
+                    "rerank_score": 0.9655
+                  },
+                  {
+                    "chunk_id": "ac9973c8-01be-4cd6-9a99-097873a59cf0_chunk_2",
+                    "content": "【字节跳动 · AI产品经理 硬性要求】\n本科及以上学历，兼具C端AIGC敏锐度与B端SaaS/RPA逻辑功底",
+                    "metadata": {
+                      "company": "字节跳动",
+                      "index": 2,
+                      "jd_id": "ac9973c8-01be-4cd6-9a99-097873a59cf0",
+                      "position": "AI产品经理",
+                      "priority": "high",
+                      "section": "hard_requirements",
+                      "strategy": "semantic"
+                    },
+                    "distance": 0.6293243765830994,
+                    "bm25_score": 7.4989908346122895,
+                    "vec_norm": 0.8174818765102908,
+                    "bm25_norm": 0.6807984224549152,
+                    "hybrid_score": 0.7764768402936781,
+                    "rerank_score": 0.9214
+                  },
+                  {
+                    "chunk_id": "ac9973c8-01be-4cd6-9a99-097873a59cf0_chunk_5",
+                    "content": "【字节跳动 · AI产品经理 硬性要求】\n具备极强的逻辑拆解力，能像指挥交响乐一样控制模型输出",
+                    "metadata": {
+                      "company": "字节跳动",
+                      "index": 5,
+                      "jd_id": "ac9973c8-01be-4cd6-9a99-097873a59cf0",
+                      "position": "AI产品经理",
+                      "priority": "high",
+                      "section": "hard_requirements",
+                      "strategy": "semantic"
+                    },
+                    "distance": 0.6077823042869568,
+                    "bm25_score": 7.905991239503383,
+                    "vec_norm": 1.0,
+                    "bm25_norm": 0.7732498238597335,
+                    "hybrid_score": 0.93197494715792,
+                    "rerank_score": 0.9191
+                  },
+                  {
+                    "chunk_id": "ac9973c8-01be-4cd6-9a99-097873a59cf0_chunk_8",
+                    "content": "【字节跳动 · AI产品经理 关键词】\nPython, PyTorch, LangChain, RAG, Agent, 产品经理, AI",
+                    "metadata": {
+                      "company": "字节跳动",
+                      "index": 8,
+                      "jd_id": "ac9973c8-01be-4cd6-9a99-097873a59cf0",
+                      "position": "AI产品经理",
+                      "section": "keywords",
+                      "strategy": "semantic"
+                    },
+                    "distance": 0.6703348755836487,
+                    "bm25_score": 8.904217465346242,
+                    "vec_norm": 0.4700148724979989,
+                    "bm25_norm": 1.0,
+                    "hybrid_score": 0.6290104107485992,
+                    "rerank_score": 0.8666
+                  },
+                  {
+                    "chunk_id": "ac9973c8-01be-4cd6-9a99-097873a59cf0_chunk_3",
+                    "content": "【字节跳动 · AI产品经理 硬性要求】\n熟练掌握Transformer、Token、RAG等核心概念",
+                    "metadata": {
+                      "company": "字节跳动",
+                      "index": 3,
+                      "jd_id": "ac9973c8-01be-4cd6-9a99-097873a59cf0",
+                      "position": "AI产品经理",
+                      "priority": "high",
+                      "section": "hard_requirements",
+                      "strategy": "semantic"
+                    },
+                    "distance": 0.6491163969039917,
+                    "bm25_score": 8.359706126378912,
+                    "vec_norm": 0.6497913052700154,
+                    "bm25_norm": 0.8763125644019587,
+                    "hybrid_score": 0.7177476830095983,
+                    "rerank_score": 0.8238
+                  }
+                ]
+              }
+            }
+          }
+        ],
+        "final_aggregation_prompt": {
+          "system_prompt": "你是一位专业的求职顾问。请基于以下工具执行结果，给用户一个清晰、有帮助的回复。\n要求：\n1. 先直接回答用户的问题（是/否/有/没有），不要绕弯子，不要重复用户的原话\n2. 如果有匹配分析结果，给出具体的分数和建议\n3. 如果有检索结果，基于事实回答，不要编造\n4. 【强制】引用信息时必须标注来源。每个引用的事实后面都要跟 [来源：公司名-岗位名] 格式。   kb_retrieve 结果的 chunks 中带有 'source' 字段（如'字节跳动-AI产品经理'），请直接使用。   external_search 结果带有 'source_name' 字段，也请直接使用。\n5. 当本地知识库与外部搜索结果冲突时，请并列呈现两种说法并标注各自来源，不要替用户做判断\n6. 语气友好、专业、结构化",
+          "user_prompt": "【用户问题】\n字节AI产品经理我能转行去吗\n\n【工具执行结果】\n[{\"task_id\": \"T0\", \"tool\": \"kb_retrieve\", \"description\": \"检索字节AI产品经理JD\", \"result\": {\"chunks\": [{\"chunk_id\": \"ac9973c8-01be-4cd6-9a99-097873a59cf0_chunk_1\", \"content\": \"【字节跳动 · AI产品经理 岗位职责】\\n1. 定义Agent框架：设计Planning、Reflection、Memory策略。2. 重塑LUI交互：探索意图驱动的流式UI与动态组件生成。3. 编排超级工作流：深入客服、数据、ERP等实战场景。4. 模型精细化调教：编写结构化Prompt，配合RAG、Function Calling。5. 数据驱动进化：建立交互好感度与任务成功率双重指标。\", \"source\": \"字节跳动-AI产品经理\", \"metadata\": {\"company\": \"字节跳动\", \"position\": \"AI产品经理\"}}, {\"chunk_id\": \"ac9973c8-01be-4cd6-9a99-097873a59cf0_chunk_2\", \"content\": \"【字节跳动 · AI产品经理 硬性要求】\\n本科及以上学历，兼具C端AIGC敏锐度与B端SaaS/RPA逻辑功底\", \"source\": \"字节跳动-AI产品经理\", \"metadata\": {\"company\": \"字节跳动\", \"position\": \"AI产品经理\"}}, {\"chunk_id\": \"ac9973c8-01be-4cd6-9a99-097873a59cf0_chunk_5\", \"content\": \"【字节跳动 · AI产品经理 硬性要求】\\n具备极强的逻辑拆解力，能像指挥交响乐一样控制模型输出\", \"source\": \"字节跳动-AI产品经理\", \"metadata\": {\"company\": \"字节跳动\", \"position\": \"AI产品经理\"}}, {\"chunk_id\": \"ac9973c8-01be-4cd6-9a99-097873a59cf0_chunk_8\", \"content\": \"【字节跳动 · AI产品经理 关键词】\\nPython, PyTorch, LangChain, RAG, Agent, 产品经理, AI\", \"source\": \"字节跳动-AI产品经理\", \"metadata\": {\"company\": \"字节跳动\", \"position\": \"AI产品经理\"}}, {\"chunk_id\": \"ac9973c8-01be-4cd6-9a99-097873a59cf0_chunk_3\", \"content\": \"【字节跳动 · AI产品经理 硬性要求】\\n熟练掌握Transformer、Token、RAG等核心概念\", \"source\": \"字节跳动-AI产品经理\", \"metadata\": {\"company\": \"字节跳动\", \"position\": \"AI产品经理\"}}], \"query\": \"字节AI产品经理我能转行去\", \"filters\": {\"company\": \"字节跳动\", \"position\": \"AI产品经理\"}, \"strategy\": \"hybrid(70%vec+30%bm25)+reranker\", \"pool_k\": 5, \"rerank_k\": 10, \"pool_size\": 21, \"vec_only\": 1, \"bm25_only\": 12, \"both\": 8, \"rerank\": {\"enabled\": true, \"candidates\": 5, \"output\": 5, \"best_rerank_score\": 0.9655}}}, {\"task_id\": \"T1\", \"tool\": \"match_analyze\", \"description\": \"分析简历与字节AI产品经理JD的匹配度\", \"result\": {\"score\": 10, \"label\": \"不匹配\", \"advantages\": [\"B端SaaS系统开发经验（供应链管理平台）\", \"数据库优化能力（分库分表、慢查询治理）\", \"微服务架构经验（Spring Cloud Alibaba）\", \"分布式事务处理经验\", \"良好的逻辑分析能力（可从代码设计体现）\"], \"weaknesses\": [\"候选人缺乏AI产品经理相关经验，具体包括：①未涉及Agent框架（Planning/Reflection/Memory）设计；②无LUI交互及动态UI设计经验；③无超级工作流编排（客服、数据、ERP场景）经验；④无模型调教、Prompt编写、RAG、Function Calling等AI产品核心技能；⑤不掌握Python、PyTorch、LangChain等AI技术栈；⑥对Transformer、Token等核心概念缺乏认知；⑦无产品经理角色经验，缺乏用户需求分析、指标建立（如交互好感度、任务成功率）等产品能力；⑧缺乏C端AIGC产品敏锐度。\"], \"suggestions\": [\"核心能力要求: AI产品经理核心能力：①Agent框架设计（Planning、Reflection、Memory策略）；②LUI交互设计（意图驱动的流式UI、动态组件生成）；③超级工作流编排（客服、数据、ERP场景）；④模型调教（结构化Prompt编写、RAG、Function Calling）；⑤数据驱动指标（交互好感度、任务成功率）；⑥硬性技能：Python、PyTorch、LangChain、RAG、Agent、Transformer、Token等AI知识；⑦逻辑拆解力与跨领域视野（C端AIGC敏锐度 + B端SaaS/RPA逻辑功底）\"], \"match_score\": 10, \"covered\": [\"B端SaaS系统开发经验（供应链管理平台）\", \"数据库优化能力（分库分表、慢查询治理）\", \"微服务架构经验（Spring Cloud Alibaba）\", \"分布式事务处理经验\", \"良好的逻辑分析能力（可从代码设计体现）\"], \"missing_experience\": \"候选人缺乏AI产品经理相关经验，具体包括：①未涉及Agent框架（Planning/Reflection/Memory）设计；②无LUI交互及动态UI设计经验；③无超级工作流编排（客服、数据、ERP场景）经验；④无模型调教、Prompt编写、RAG、Function Calling等AI产品核心技能；⑤不掌握Python、PyTorch、LangChain等AI技术栈；⑥对Transformer、Token等核心概念缺乏认知；⑦无产品经理角色经验，缺乏用户需求分析、指标建立（如交互好感度、任务成功率）等产品能力；⑧缺乏C端AIGC产品敏锐度。\", \"core_skills\": \"AI产品经理核心能力：①Agent框架设计（Planning、Reflection、Memory策略）；②LUI交互设计（意图驱动的流式UI、动态组件生成）；③超级\n\n请生成回复："
+        }
+      },
+      "usage": {
+        "prompt_tokens": 9015,
+        "completion_tokens": 5654,
+        "total_tokens": 14669
+      },
+      "_time": 82.9799063205719,
+      "type": "done"
+    }
+  ],
+  "timestamp": "2026-06-04T16:48:58.389875",
+  "prompt_tokens": 9015,
+  "completion_tokens": 5654,
+  "total_tokens": 14669,
+  "tool_execution_success_rate": 1.0,
+  "tool_correct_rate": 1.0
+}

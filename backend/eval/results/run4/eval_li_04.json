@@ -1,0 +1,1879 @@
+{
+  "case_id": "eval_li_04",
+  "message": "Java后端面试一般问什么",
+  "gold_intents": [
+    "prepare"
+  ],
+  "expected_tools": [
+    "interview_gen"
+  ],
+  "scenario": "面试准备_泛化岗位",
+  "status": "success",
+  "error": null,
+  "ttfb": 0.01,
+  "total_latency": 107.19,
+  "event_count": 296,
+  "pred_intent": "interview_prepare",
+  "pred_tools": [
+    {
+      "tool": "kb_retrieve",
+      "status": "✅",
+      "params": {
+        "query": "{{rewritten_query}}",
+        "top_k": 5,
+        "position": "Java后端"
+      },
+      "result_preview": "{'chunks': [{'chunk_id': '45bd2600-af57-45fe-a96e-c6cae6838c7a_chunk_3', 'content': '【某小公司 · Java后端 硬性要求】\\n熟悉Spring Boot、MySQL', 'metadata': {'company': '某小公司', 'index': 3, 'jd_id': '45bd2600-af57-45f"
+    },
+    {
+      "tool": "match_analyze",
+      "status": "✅",
+      "params": {
+        "resume_text": "姓名：李工程师\n电话：138-XXXX-1234 | 邮箱：lixx_dev@email.com | 现居：北京\nJava后端开发工程师 | 3年经验 | 本科\n\n教育背景\n2018.09 - 2022.06  XX理工大学  计算机科学与技术（本科）\n主修课程：数据结构与算法、操作系统、计算机网络、数据库原理、软件工程\n在校荣誉：校级优秀毕业设计（基于微服务的校园二手交易平台）\n\n专业技能\n熟练掌握Java核心技术，熟悉JVM内存模型、GC机制及常见调优手段\n精通Spring Boot、Spring Cloud微服务生态，熟悉Nacos、Gateway、Sentinel、Seata等组件\n熟悉MySQL索引优化、事务机制、分库分表策略，具备SQL调优及慢查询治理经验\n了解Redis缓存设计、Kafka消息队列，熟悉Docker容器化部署及Jenkins CI/CD流程\n掌握Git版本控制，熟悉Linux日常运维及日志排查\n\n工作经历\n2022.07 - 至今  XX科技有限公司（B轮 / 企业服务 SaaS）  Java后端工程师\n\nSaaS供应链管理平台（2023.03 - 至今）\n负责订单中心、库存中心核心模块设计与开发，采用Spring Cloud Alibaba微服务架构，支撑日均10W+订单处理\n主导MySQL分库分表方案设计（ShardingSphere），解决单表数据量过亿导致的查询性能瓶颈，接口响应时间从800ms降至120ms\n设计多级缓存策略（Redis + Caffeine本地缓存），热点数据命中率提升至95%，降低数据库负载40%\n基于Seata AT模式实现分布式事务，保障订单与库存数据一致性，线上运行半年零资损事故\n\n企业权限中台重构（2022.09 - 2023.02）\n参与RBAC权限中台从单体到微服务的拆分重构，负责鉴权服务、菜单路由模块开发\n引入Gateway统一鉴权过滤器，对接OAuth2.0 + JWT认证体系，支持多租户隔离\n编写核心接口单元测试（Unit + Mockito），模块测试覆盖率从45%提升至82%\n\n自我评价\n具备扎实的计算机基础与3年企业级后端开发经验，擅长高并发场景下的系统设计与性能优化。注重代码质量与工程规范，具备良好的团队协作与跨部门沟通能力。",
+        "jd_text": [
+          {
+            "chunk_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a_chunk_3",
+            "content": "【某小公司 · Java后端 硬性要求】\n熟悉Spring Boot、MySQL",
+            "metadata": {
+              "company": "某小公司",
+              "index": 3,
+              "jd_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a",
+              "position": "Java后端",
+              "priority": "high",
+              "section": "hard_requirements",
+              "strategy": "semantic"
+            },
+            "distance": 1.5081043243408203,
+            "bm25_score": 0.0,
+            "vec_norm": 0.565601121487946,
+            "bm25_norm": 0.0,
+            "hybrid_score": 0.39592078504156214,
+            "rerank_score": 0.0073
+          },
+          {
+            "chunk_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a_chunk_5",
+            "content": "【某小公司 · Java后端 软性要求/加分项】\n有ERP系统开发经验优先",
+            "metadata": {
+              "company": "某小公司",
+              "index": 5,
+              "jd_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a",
+              "position": "Java后端",
+              "priority": "medium",
+              "section": "soft_requirements",
+              "strategy": "semantic"
+            },
+            "distance": 1.4740089178085327,
+            "bm25_score": 0.0,
+            "vec_norm": 1.0,
+            "bm25_norm": 0.0,
+            "hybrid_score": 0.7,
+            "rerank_score": 0.0049
+          },
+          {
+            "chunk_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a_chunk_1",
+            "content": "【某小公司 · Java后端 岗位职责】\n1. 负责传统企业内部管理系统的设计与开发。2. 数据库CRUD操作与报表开发。3. 系统日常维护与bug修复。",
+            "metadata": {
+              "company": "某小公司",
+              "index": 1,
+              "jd_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a",
+              "position": "Java后端",
+              "section": "responsibilities",
+              "strategy": "semantic"
+            },
+            "distance": 1.4837836027145386,
+            "bm25_score": 0.0,
+            "vec_norm": 0.8754638060421226,
+            "bm25_norm": 0.0,
+            "hybrid_score": 0.6128246642294858,
+            "rerank_score": 0.0001
+          },
+          {
+            "chunk_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a_chunk_6",
+            "content": "【某小公司 · Java后端 关键词】\nJava, Spring Boot, MySQL, ERP, 后端",
+            "metadata": {
+              "company": "某小公司",
+              "index": 6,
+              "jd_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a",
+              "position": "Java后端",
+              "section": "keywords",
+              "strategy": "semantic"
+            },
+            "distance": 1.5287089347839355,
+            "bm25_score": 0.0,
+            "vec_norm": 0.3030842437322584,
+            "bm25_norm": 0.0,
+            "hybrid_score": 0.21215897061258088,
+            "rerank_score": 0.0001
+          },
+          {
+            "chunk_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a_chunk_0",
+            "content": "公司：某小公司，岗位：Java后端，地点：成都，薪资：10k-20k",
+            "metadata": {
+              "category": "技术",
+              "company": "某小公司",
+              "domain": "传统",
+              "index": 0,
+              "jd_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a",
+              "max_years": 3,
+              "min_education": "大专",
+              "min_years": 1,
+              "position": "Java后端",
+              "section": "basic_info",
+              "strategy": "semantic"
+            },
+            "distance": 1.5112426280975342,
+            "bm25_score": 0.0,
+            "vec_norm": 0.5256169778451454,
+            "bm25_norm": 0.0,
+            "hybrid_score": 0.36793188449160175,
+            "rerank_score": 0.0
+          }
+        ],
+        "position": "Java后端"
+      },
+      "result_preview": "{'score': 93, 'label': '高度契合', 'advantages': ['Java核心技术与JVM调优', 'Spring Boot', 'MySQL索引优化、事务、分库分表、SQL调优', '后端开发经验（3年）', '企业级系统设计与开发', '数据库CRUD操作', '系统日常维护与bug修复（熟悉Linux运维及日志排查）'], 'weaknesses': ['候选人缺"
+    },
+    {
+      "tool": "interview_gen",
+      "status": "✅",
+      "params": {
+        "match_result": {
+          "score": 93,
+          "label": "高度契合",
+          "advantages": [
+            "Java核心技术与JVM调优",
+            "Spring Boot",
+            "MySQL索引优化、事务、分库分表、SQL调优",
+            "后端开发经验（3年）",
+            "企业级系统设计与开发",
+            "数据库CRUD操作",
+            "系统日常维护与bug修复（熟悉Linux运维及日志排查）"
+          ],
+          "weaknesses": [
+            "候选人缺乏ERP系统的直接开发经验（简历中为SaaS供应链管理平台，非传统ERP），且未提及报表开发经验。"
+          ],
+          "suggestions": [
+            "核心能力要求: Java后端开发, Spring Boot, MySQL, ERP系统开发（优先）, 数据库CRUD, 系统维护, 报表开发"
+          ],
+          "match_score": 93,
+          "covered": [
+            "Java核心技术与JVM调优",
+            "Spring Boot",
+            "MySQL索引优化、事务、分库分表、SQL调优",
+            "后端开发经验（3年）",
+            "企业级系统设计与开发",
+            "数据库CRUD操作",
+            "系统日常维护与bug修复（熟悉Linux运维及日志排查）"
+          ],
+          "missing_experience": "候选人缺乏ERP系统的直接开发经验（简历中为SaaS供应链管理平台，非传统ERP），且未提及报表开发经验。",
+          "core_skills": "Java后端开发, Spring Boot, MySQL, ERP系统开发（优先）, 数据库CRUD, 系统维护, 报表开发",
+          "company": null,
+          "position": "Java后端"
+        },
+        "count": 5,
+        "difficulty": "mixed",
+        "position": "Java后端"
+      },
+      "result_preview": "{'questions': ['你之前做的是SaaS供应链管理平台，而ERP系统在财务、生产计划、库存等模块上有更深的业务逻辑。如果让你设计一个ERP中的销售订单处理流程，你会如何设计数据模型和状态机？请结合你熟悉的供应链经验谈谈差异。追问方向：1）如何处理订单冲正或退货场景下数据一致性问题？2）如果订单状态很多（如待审核、已审核、部分发货、已完成等），你会采用什么设计模式来管理状态流转？', '"
+    }
+  ],
+  "tools_called": [
+    "kb_retrieve",
+    "match_analyze",
+    "interview_gen"
+  ],
+  "reply": "有常见的考察方向和具体题目。基于检索到的岗位信息和匹配分析结果，Java 后端面试通常围绕核心技术栈、业务场景设计及系统优化能力展开。以下是具体的考察内容、匹配度分析及备考建议：\n\n### 1. 岗位匹配度分析\n根据简历与岗位要求的匹配分析，当前匹配度为 **93 分**，属于 **高度契合** [来源：某小公司-Java后端]。\n*   **优势项**：Java 核心技术与 JVM 调优、Spring Boot 框架、MySQL 索引优化及事务处理、3 年后端开发经验、企业级系统设计与数据库 CRUD 操作 [来源：某小公司-Java后端]。\n*   **待提升项**：缺乏 ERP 系统的直接开发经验（现有经验为 SaaS 供应链管理平台），且未提及报表开发经验 [来源：某小公司-Java后端]。\n\n### 2. 核心考察内容\n基于岗位硬性要求与职责，面试重点通常包含以下领域：\n*   **技术栈基础**：熟悉 Spring Boot 框架与 MySQL 数据库是硬性要求 [来源：某小公司-Java后端]。\n*   **业务开发能力**：负责传统企业内部管理系统的设计与开发，涉及数据库 CRUD 操作与报表开发 [来源：某小公司-Java后端]。\n*   **系统维护**：包含系统日常维护与 bug 修复，通常考察 Linux 运维及日志排查能力 [来源：某小公司-Java后端]。\n*   **加分项**：有 ERP 系统开发经验优先 [来源：某小公司-Java后端]。\n\n### 3. 模拟面试题目\n针对上述核心要求及匹配短板，以下是可能遇到的具体面试题目：\n\n*   **业务场景设计（ERP 方向）**\n    *   **题目**：如果让你设计一个 ERP 中的销售订单处理流程，你会如何设计数据模型和状态机？如何处理订单冲正或退货场景下的数据一致性问题？ [来源：某小公司-Java后端]\n    *   **追问**：如果订单状态很多（如待审核、已审核、部分发货等），你会采用什么设计模式来管理状态流转？ [来源：某小公司-Java后端]\n*   **报表系统与性能优化**\n    *   **题目**：假设需要从 MySQL 千万级订单表中，按天、省份、产品类别统计销售额并生成一张报表（T+1），你会如何设计？性能瓶颈在哪里？ [来源：某小公司-Java后端]\n    *   **追问**：如果实时性要求更高（如每 5 分钟更新），你会怎么改？如何避免报表查询对线上业务数据库的影响？ [来源：某小公司-Java后端]\n*   **数据库调优**\n    *   **题目**：请举一个实际遇到的复杂 SQL 慢查询案例，详细说明如何通过执行计划（EXPLAIN）定位问题并优化。 [来源：某小公司-Java后端]\n    *   **追问**：如果加了索引后查询仍然慢，接下来会怎么排查？请解释索引下推和 MRR 优化的适用场景。 [来源：某小公司-Java后端]\n*   **JVM 与线上排查**\n    *   **题目**：是否有做过线上系统内存泄漏排查的经验？请描述一个遇到的 GC 问题，如何通过 jstat、jmap 等工具定位，最终代码层面是如何解决的？ [来源：某小公司-Java后端]\n    *   **追问**：如果老年代频繁 Full GC，但堆内存使用率并不高，可能是什么原因？如何处理堆外内存（Direct Buffer）泄漏问题？ [来源：某小公司-Java后端]\n*   **高并发场景**\n    *   **题目**：在库存扣减高频且容易超卖的关键场景下，假设单商品库存 1000，有大量并发请求，要求扣减后库存不为负，你会如何设计？ [来源：某小公司-Java后端]\n\n### 4. 备考建议\n*   **核心能力准备**：重点复习 Java 后端开发、Spring Boot、MySQL、数据库 CRUD 及系统维护技能 [来源：某小公司-Java后端]。\n*   **短板补充**：虽然缺乏 ERP 直接经验，但可结合现有的 SaaS 供应链管理经验，准备关于财务、生产计划、库存等模块业务逻辑的迁移思考 [来源：某小公司-Java后端]。\n*   **专项突破**：针对简历中未提及的报表开发经验，建议提前准备关于大数据量统计、T+1 报表设计及读写分离方案的回答思路 [来源：某小公司-Java后端]。",
+  "reply_length": 1847,
+  "intent_match": true,
+  "tool_match_rate": 1.0,
+  "has_reply": true,
+  "events": [
+    {
+      "step": "intent",
+      "message": "正在识别您的意图...",
+      "_time": 4.256755113601685,
+      "type": "status"
+    },
+    {
+      "step": "plan",
+      "message": "正在规划任务...",
+      "_time": 4.256777048110962,
+      "type": "status"
+    },
+    {
+      "step": "execute",
+      "message": "正在执行分析...",
+      "_time": 20.245513916015625,
+      "type": "status"
+    },
+    {
+      "step": "aggregate",
+      "message": "正在生成回复...",
+      "_time": 33.24534058570862,
+      "type": "status"
+    },
+    {
+      "text": "有常见的考察方向和",
+      "_time": 89.24332571029663,
+      "type": "delta"
+    },
+    {
+      "text": "具体题目。基于",
+      "_time": 89.24686217308044,
+      "type": "delta"
+    },
+    {
+      "text": "检索到的岗位信息和",
+      "_time": 89.31810545921326,
+      "type": "delta"
+    },
+    {
+      "text": "匹配分析结果",
+      "_time": 89.35496139526367,
+      "type": "delta"
+    },
+    {
+      "text": "，Java 后端",
+      "_time": 89.44403076171875,
+      "type": "delta"
+    },
+    {
+      "text": "面试通常",
+      "_time": 89.44690823554993,
+      "type": "delta"
+    },
+    {
+      "text": "围绕核心技术栈、",
+      "_time": 89.55300688743591,
+      "type": "delta"
+    },
+    {
+      "text": "业务场景设计及",
+      "_time": 89.55490279197693,
+      "type": "delta"
+    },
+    {
+      "text": "系统优化能力展开",
+      "_time": 89.71417784690857,
+      "type": "delta"
+    },
+    {
+      "text": "。以下是",
+      "_time": 89.71788835525513,
+      "type": "delta"
+    },
+    {
+      "text": "具体的考察内容、",
+      "_time": 89.78596901893616,
+      "type": "delta"
+    },
+    {
+      "text": "匹配",
+      "_time": 89.78862118721008,
+      "type": "delta"
+    },
+    {
+      "text": "度分析及备考建议",
+      "_time": 89.87497997283936,
+      "type": "delta"
+    },
+    {
+      "text": "：\n\n###",
+      "_time": 89.90785431861877,
+      "type": "delta"
+    },
+    {
+      "text": " 1. ",
+      "_time": 90.00201272964478,
+      "type": "delta"
+    },
+    {
+      "text": "岗位匹配度分析",
+      "_time": 90.00250792503357,
+      "type": "delta"
+    },
+    {
+      "text": "\n根据简历与",
+      "_time": 90.14600825309753,
+      "type": "delta"
+    },
+    {
+      "text": "岗位",
+      "_time": 90.14852118492126,
+      "type": "delta"
+    },
+    {
+      "text": "要求的匹配分析，",
+      "_time": 90.26810717582703,
+      "type": "delta"
+    },
+    {
+      "text": "当前匹配度",
+      "_time": 90.27392673492432,
+      "type": "delta"
+    },
+    {
+      "text": "为 **93",
+      "_time": 90.36309266090393,
+      "type": "delta"
+    },
+    {
+      "text": " 分**",
+      "_time": 90.36594104766846,
+      "type": "delta"
+    },
+    {
+      "text": "，属于 **高度",
+      "_time": 90.48808479309082,
+      "type": "delta"
+    },
+    {
+      "text": "契合**",
+      "_time": 90.49176359176636,
+      "type": "delta"
+    },
+    {
+      "text": " [来源：某",
+      "_time": 90.63408923149109,
+      "type": "delta"
+    },
+    {
+      "text": "小公司-Java",
+      "_time": 90.63766074180603,
+      "type": "delta"
+    },
+    {
+      "text": "后端]。\n",
+      "_time": 90.73885107040405,
+      "type": "delta"
+    },
+    {
+      "text": "*",
+      "_time": 90.7415668964386,
+      "type": "delta"
+    },
+    {
+      "text": "   **优势项",
+      "_time": 90.82997512817383,
+      "type": "delta"
+    },
+    {
+      "text": "**：Java ",
+      "_time": 90.86704277992249,
+      "type": "delta"
+    },
+    {
+      "text": "核心技术与 JVM ",
+      "_time": 90.97402477264404,
+      "type": "delta"
+    },
+    {
+      "text": "调优、",
+      "_time": 90.97662830352783,
+      "type": "delta"
+    },
+    {
+      "text": "Spring Boot 框架",
+      "_time": 91.12697863578796,
+      "type": "delta"
+    },
+    {
+      "text": "、MySQL ",
+      "_time": 91.12962865829468,
+      "type": "delta"
+    },
+    {
+      "text": "索引优化及事务",
+      "_time": 91.22812056541443,
+      "type": "delta"
+    },
+    {
+      "text": "处理",
+      "_time": 91.22850513458252,
+      "type": "delta"
+    },
+    {
+      "text": "、3 年后",
+      "_time": 91.31592226028442,
+      "type": "delta"
+    },
+    {
+      "text": "端",
+      "_time": 91.31758260726929,
+      "type": "delta"
+    },
+    {
+      "text": "开发经验、企业",
+      "_time": 91.44096946716309,
+      "type": "delta"
+    },
+    {
+      "text": "级系统设计与数据库",
+      "_time": 91.44475817680359,
+      "type": "delta"
+    },
+    {
+      "text": " CRUD 操作 [",
+      "_time": 91.55096101760864,
+      "type": "delta"
+    },
+    {
+      "text": "来源：某小",
+      "_time": 91.55254888534546,
+      "type": "delta"
+    },
+    {
+      "text": "公司-Java后端",
+      "_time": 91.7309901714325,
+      "type": "delta"
+    },
+    {
+      "text": "]。\n*",
+      "_time": 91.7337338924408,
+      "type": "delta"
+    },
+    {
+      "text": "   **待提升",
+      "_time": 91.83799767494202,
+      "type": "delta"
+    },
+    {
+      "text": "项**：缺乏",
+      "_time": 91.84174346923828,
+      "type": "delta"
+    },
+    {
+      "text": " ERP 系统的直接",
+      "_time": 92.01392555236816,
+      "type": "delta"
+    },
+    {
+      "text": "开发经验（现有",
+      "_time": 92.0165650844574,
+      "type": "delta"
+    },
+    {
+      "text": "经验为 SaaS",
+      "_time": 92.12704825401306,
+      "type": "delta"
+    },
+    {
+      "text": " 供应链管理平台），",
+      "_time": 92.13069891929626,
+      "type": "delta"
+    },
+    {
+      "text": "且未提及报表",
+      "_time": 92.30495619773865,
+      "type": "delta"
+    },
+    {
+      "text": "开发经验 [来源",
+      "_time": 92.30767059326172,
+      "type": "delta"
+    },
+    {
+      "text": "：某小公司",
+      "_time": 92.41200017929077,
+      "type": "delta"
+    },
+    {
+      "text": "-Java后端",
+      "_time": 92.41562604904175,
+      "type": "delta"
+    },
+    {
+      "text": "]。\n\n###",
+      "_time": 92.54083442687988,
+      "type": "delta"
+    },
+    {
+      "text": " 2. ",
+      "_time": 92.57477068901062,
+      "type": "delta"
+    },
+    {
+      "text": "核心考察内容\n",
+      "_time": 92.68482279777527,
+      "type": "delta"
+    },
+    {
+      "text": "基于",
+      "_time": 92.68533849716187,
+      "type": "delta"
+    },
+    {
+      "text": "岗位硬性要求与",
+      "_time": 92.77393817901611,
+      "type": "delta"
+    },
+    {
+      "text": "职责",
+      "_time": 92.77872347831726,
+      "type": "delta"
+    },
+    {
+      "text": "，面试重点通常",
+      "_time": 92.86472535133362,
+      "type": "delta"
+    },
+    {
+      "text": "包含",
+      "_time": 92.899653673172,
+      "type": "delta"
+    },
+    {
+      "text": "以下领域：\n",
+      "_time": 92.95390462875366,
+      "type": "delta"
+    },
+    {
+      "text": "*",
+      "_time": 92.95538663864136,
+      "type": "delta"
+    },
+    {
+      "text": "   **技术栈",
+      "_time": 93.04390954971313,
+      "type": "delta"
+    },
+    {
+      "text": "基础",
+      "_time": 93.04529070854187,
+      "type": "delta"
+    },
+    {
+      "text": "**：熟悉 Spring",
+      "_time": 93.13297867774963,
+      "type": "delta"
+    },
+    {
+      "text": " Boot ",
+      "_time": 93.22083353996277,
+      "type": "delta"
+    },
+    {
+      "text": "框架与 MySQL ",
+      "_time": 93.23972368240356,
+      "type": "delta"
+    },
+    {
+      "text": "数据库是",
+      "_time": 93.24276733398438,
+      "type": "delta"
+    },
+    {
+      "text": "硬性要求 [来源",
+      "_time": 93.4038507938385,
+      "type": "delta"
+    },
+    {
+      "text": "：某小公司",
+      "_time": 93.40537595748901,
+      "type": "delta"
+    },
+    {
+      "text": "-Java后端]",
+      "_time": 93.49593663215637,
+      "type": "delta"
+    },
+    {
+      "text": "。\n*",
+      "_time": 93.49864506721497,
+      "type": "delta"
+    },
+    {
+      "text": "   **业务开发",
+      "_time": 93.62079048156738,
+      "type": "delta"
+    },
+    {
+      "text": "能力**：负责",
+      "_time": 93.62263655662537,
+      "type": "delta"
+    },
+    {
+      "text": "传统企业内部管理系统的设计",
+      "_time": 93.79191064834595,
+      "type": "delta"
+    },
+    {
+      "text": "与开发，涉及",
+      "_time": 93.79569625854492,
+      "type": "delta"
+    },
+    {
+      "text": "数据库 CRUD 操作",
+      "_time": 93.90982866287231,
+      "type": "delta"
+    },
+    {
+      "text": "与报表开发 [",
+      "_time": 93.94490790367126,
+      "type": "delta"
+    },
+    {
+      "text": "来源：某小",
+      "_time": 94.04990315437317,
+      "type": "delta"
+    },
+    {
+      "text": "公司-Java后端",
+      "_time": 94.0536949634552,
+      "type": "delta"
+    },
+    {
+      "text": "]。\n*",
+      "_time": 94.19691681861877,
+      "type": "delta"
+    },
+    {
+      "text": "   **系统",
+      "_time": 94.23278856277466,
+      "type": "delta"
+    },
+    {
+      "text": "维护**：包含",
+      "_time": 94.32392358779907,
+      "type": "delta"
+    },
+    {
+      "text": "系统日常维护与",
+      "_time": 94.32545351982117,
+      "type": "delta"
+    },
+    {
+      "text": " bug 修复，",
+      "_time": 94.46592164039612,
+      "type": "delta"
+    },
+    {
+      "text": "通常",
+      "_time": 94.46750092506409,
+      "type": "delta"
+    },
+    {
+      "text": "考察 Linux 运维",
+      "_time": 94.59286570549011,
+      "type": "delta"
+    },
+    {
+      "text": "及",
+      "_time": 94.59429860115051,
+      "type": "delta"
+    },
+    {
+      "text": "日志排查能力 [",
+      "_time": 94.64572930335999,
+      "type": "delta"
+    },
+    {
+      "text": "来源：某小",
+      "_time": 94.64752078056335,
+      "type": "delta"
+    },
+    {
+      "text": "公司-Java后端",
+      "_time": 94.78878116607666,
+      "type": "delta"
+    },
+    {
+      "text": "]。\n*",
+      "_time": 94.82168745994568,
+      "type": "delta"
+    },
+    {
+      "text": "   **加分项",
+      "_time": 94.9337899684906,
+      "type": "delta"
+    },
+    {
+      "text": "**：有",
+      "_time": 94.93957233428955,
+      "type": "delta"
+    },
+    {
+      "text": " ERP 系统开发",
+      "_time": 95.05984354019165,
+      "type": "delta"
+    },
+    {
+      "text": "经验优先 [来源",
+      "_time": 95.0925965309143,
+      "type": "delta"
+    },
+    {
+      "text": "：某小公司",
+      "_time": 95.20465230941772,
+      "type": "delta"
+    },
+    {
+      "text": "-Java后端",
+      "_time": 95.20521831512451,
+      "type": "delta"
+    },
+    {
+      "text": "]。\n\n###",
+      "_time": 95.33000683784485,
+      "type": "delta"
+    },
+    {
+      "text": " 3. ",
+      "_time": 95.3325457572937,
+      "type": "delta"
+    },
+    {
+      "text": "模拟面试题目\n",
+      "_time": 95.5128583908081,
+      "type": "delta"
+    },
+    {
+      "text": "针对上述核心",
+      "_time": 95.5155758857727,
+      "type": "delta"
+    },
+    {
+      "text": "要求及匹配短板",
+      "_time": 95.59975552558899,
+      "type": "delta"
+    },
+    {
+      "text": "，以下是",
+      "_time": 95.60230159759521,
+      "type": "delta"
+    },
+    {
+      "text": "可能遇到的具体面试",
+      "_time": 95.70758175849915,
+      "type": "delta"
+    },
+    {
+      "text": "题目",
+      "_time": 95.74262499809265,
+      "type": "delta"
+    },
+    {
+      "text": "：\n\n*  ",
+      "_time": 95.79911756515503,
+      "type": "delta"
+    },
+    {
+      "text": " **",
+      "_time": 95.79915833473206,
+      "type": "delta"
+    },
+    {
+      "text": "业务场景设计（",
+      "_time": 95.88779497146606,
+      "type": "delta"
+    },
+    {
+      "text": "ERP 方向",
+      "_time": 95.89055514335632,
+      "type": "delta"
+    },
+    {
+      "text": "）**\n    *",
+      "_time": 96.04786467552185,
+      "type": "delta"
+    },
+    {
+      "text": "   **",
+      "_time": 96.05149531364441,
+      "type": "delta"
+    },
+    {
+      "text": "题目**：如果",
+      "_time": 96.12268328666687,
+      "type": "delta"
+    },
+    {
+      "text": "让你设计一个",
+      "_time": 96.12656497955322,
+      "type": "delta"
+    },
+    {
+      "text": " ERP 中的销售",
+      "_time": 96.2478256225586,
+      "type": "delta"
+    },
+    {
+      "text": "订单处理流程，",
+      "_time": 96.27777028083801,
+      "type": "delta"
+    },
+    {
+      "text": "你会如何设计数据",
+      "_time": 96.39262270927429,
+      "type": "delta"
+    },
+    {
+      "text": "模型和状态机",
+      "_time": 96.3974859714508,
+      "type": "delta"
+    },
+    {
+      "text": "？如何处理订单冲",
+      "_time": 96.53542923927307,
+      "type": "delta"
+    },
+    {
+      "text": "正或",
+      "_time": 96.53920269012451,
+      "type": "delta"
+    },
+    {
+      "text": "退货场景下的数据",
+      "_time": 96.68182444572449,
+      "type": "delta"
+    },
+    {
+      "text": "一致性问题？ [",
+      "_time": 96.68430471420288,
+      "type": "delta"
+    },
+    {
+      "text": "来源：某小",
+      "_time": 96.78959250450134,
+      "type": "delta"
+    },
+    {
+      "text": "公司-Java后端",
+      "_time": 96.79226493835449,
+      "type": "delta"
+    },
+    {
+      "text": "]\n    *",
+      "_time": 96.96077966690063,
+      "type": "delta"
+    },
+    {
+      "text": "   **",
+      "_time": 96.96254277229309,
+      "type": "delta"
+    },
+    {
+      "text": "追问**：如果",
+      "_time": 97.04061913490295,
+      "type": "delta"
+    },
+    {
+      "text": "订单状态很多（",
+      "_time": 97.04135513305664,
+      "type": "delta"
+    },
+    {
+      "text": "如待审核、",
+      "_time": 97.21365809440613,
+      "type": "delta"
+    },
+    {
+      "text": "已审核、部分",
+      "_time": 97.21645379066467,
+      "type": "delta"
+    },
+    {
+      "text": "发货等），你会",
+      "_time": 97.32659435272217,
+      "type": "delta"
+    },
+    {
+      "text": "采用什么设计模式",
+      "_time": 97.33048820495605,
+      "type": "delta"
+    },
+    {
+      "text": "来管理状态流转",
+      "_time": 97.47255158424377,
+      "type": "delta"
+    },
+    {
+      "text": "？ [",
+      "_time": 97.50247168540955,
+      "type": "delta"
+    },
+    {
+      "text": "来源：某小",
+      "_time": 97.5795590877533,
+      "type": "delta"
+    },
+    {
+      "text": "公司-Java后端",
+      "_time": 97.58223128318787,
+      "type": "delta"
+    },
+    {
+      "text": "]\n*  ",
+      "_time": 97.7237319946289,
+      "type": "delta"
+    },
+    {
+      "text": " **报表",
+      "_time": 97.72630143165588,
+      "type": "delta"
+    },
+    {
+      "text": "系统与性能优化**",
+      "_time": 97.86271333694458,
+      "type": "delta"
+    },
+    {
+      "text": "\n    *",
+      "_time": 97.86541938781738,
+      "type": "delta"
+    },
+    {
+      "text": "   **题目**",
+      "_time": 97.95870208740234,
+      "type": "delta"
+    },
+    {
+      "text": "：假设需要从 MySQL",
+      "_time": 97.99150252342224,
+      "type": "delta"
+    },
+    {
+      "text": " 千万级订单",
+      "_time": 98.10277247428894,
+      "type": "delta"
+    },
+    {
+      "text": "表中，",
+      "_time": 98.10630941390991,
+      "type": "delta"
+    },
+    {
+      "text": "按天、省份",
+      "_time": 98.2097680568695,
+      "type": "delta"
+    },
+    {
+      "text": "、产品类别统计",
+      "_time": 98.21345543861389,
+      "type": "delta"
+    },
+    {
+      "text": "销售额并生成一张",
+      "_time": 98.38865613937378,
+      "type": "delta"
+    },
+    {
+      "text": "报表（T+",
+      "_time": 98.39131832122803,
+      "type": "delta"
+    },
+    {
+      "text": "1），你会如何",
+      "_time": 98.50052428245544,
+      "type": "delta"
+    },
+    {
+      "text": "设计？",
+      "_time": 98.5034875869751,
+      "type": "delta"
+    },
+    {
+      "text": "性能瓶颈在哪里？",
+      "_time": 98.60640716552734,
+      "type": "delta"
+    },
+    {
+      "text": " [来源：某",
+      "_time": 98.6093909740448,
+      "type": "delta"
+    },
+    {
+      "text": "小公司-Java",
+      "_time": 98.78473114967346,
+      "type": "delta"
+    },
+    {
+      "text": "后端",
+      "_time": 98.78830456733704,
+      "type": "delta"
+    },
+    {
+      "text": "]\n    *",
+      "_time": 98.84058237075806,
+      "type": "delta"
+    },
+    {
+      "text": "   **追问**",
+      "_time": 98.84224128723145,
+      "type": "delta"
+    },
+    {
+      "text": "：如果实时性",
+      "_time": 99.03021574020386,
+      "type": "delta"
+    },
+    {
+      "text": "要求更高",
+      "_time": 99.03306674957275,
+      "type": "delta"
+    },
+    {
+      "text": "（如每 ",
+      "_time": 99.09953260421753,
+      "type": "delta"
+    },
+    {
+      "text": "5 分钟更新",
+      "_time": 99.10010886192322,
+      "type": "delta"
+    },
+    {
+      "text": "），你会怎么改",
+      "_time": 99.23560643196106,
+      "type": "delta"
+    },
+    {
+      "text": "？如何避免报表",
+      "_time": 99.23945569992065,
+      "type": "delta"
+    },
+    {
+      "text": "查询对线上业务",
+      "_time": 99.41963410377502,
+      "type": "delta"
+    },
+    {
+      "text": "数据库的影响？ [",
+      "_time": 99.42234921455383,
+      "type": "delta"
+    },
+    {
+      "text": "来源：某小",
+      "_time": 99.5275411605835,
+      "type": "delta"
+    },
+    {
+      "text": "公司-Java后端",
+      "_time": 99.5322949886322,
+      "type": "delta"
+    },
+    {
+      "text": "]\n*  ",
+      "_time": 99.70162510871887,
+      "type": "delta"
+    },
+    {
+      "text": " **数据库",
+      "_time": 99.70328855514526,
+      "type": "delta"
+    },
+    {
+      "text": "调优**\n",
+      "_time": 99.77450752258301,
+      "type": "delta"
+    },
+    {
+      "text": "   ",
+      "_time": 99.77706813812256,
+      "type": "delta"
+    },
+    {
+      "text": " *   **题目",
+      "_time": 99.86448979377747,
+      "type": "delta"
+    },
+    {
+      "text": "**",
+      "_time": 99.86823678016663,
+      "type": "delta"
+    },
+    {
+      "text": "：请举一个",
+      "_time": 99.98867321014404,
+      "type": "delta"
+    },
+    {
+      "text": "实际遇到的复杂 SQL",
+      "_time": 99.99005270004272,
+      "type": "delta"
+    },
+    {
+      "text": " 慢查询案例",
+      "_time": 100.09968566894531,
+      "type": "delta"
+    },
+    {
+      "text": "，详细说明",
+      "_time": 100.10107803344727,
+      "type": "delta"
+    },
+    {
+      "text": "如何通过执行计划（",
+      "_time": 100.2506320476532,
+      "type": "delta"
+    },
+    {
+      "text": "EXPLAIN）定位",
+      "_time": 100.2531898021698,
+      "type": "delta"
+    },
+    {
+      "text": "问题并优化。",
+      "_time": 100.35244083404541,
+      "type": "delta"
+    },
+    {
+      "text": " [来源：",
+      "_time": 100.35428214073181,
+      "type": "delta"
+    },
+    {
+      "text": "某小公司-J",
+      "_time": 100.51251912117004,
+      "type": "delta"
+    },
+    {
+      "text": "ava后端",
+      "_time": 100.51532626152039,
+      "type": "delta"
+    },
+    {
+      "text": "]\n    *",
+      "_time": 100.58541059494019,
+      "type": "delta"
+    },
+    {
+      "text": "   **追问",
+      "_time": 100.58827829360962,
+      "type": "delta"
+    },
+    {
+      "text": "**：如果加了",
+      "_time": 100.7114839553833,
+      "type": "delta"
+    },
+    {
+      "text": "索引",
+      "_time": 100.74438047409058,
+      "type": "delta"
+    },
+    {
+      "text": "后查询仍然慢",
+      "_time": 100.8014874458313,
+      "type": "delta"
+    },
+    {
+      "text": "，接下来",
+      "_time": 100.80437183380127,
+      "type": "delta"
+    },
+    {
+      "text": "会怎么排查？",
+      "_time": 100.90839576721191,
+      "type": "delta"
+    },
+    {
+      "text": "请解释索引下",
+      "_time": 100.91132521629333,
+      "type": "delta"
+    },
+    {
+      "text": "推和 MRR",
+      "_time": 101.05367541313171,
+      "type": "delta"
+    },
+    {
+      "text": " 优化的适用场景",
+      "_time": 101.08568978309631,
+      "type": "delta"
+    },
+    {
+      "text": "。 [来源：",
+      "_time": 101.19839024543762,
+      "type": "delta"
+    },
+    {
+      "text": "某小公司-J",
+      "_time": 101.20199990272522,
+      "type": "delta"
+    },
+    {
+      "text": "ava后端]\n",
+      "_time": 101.34046864509583,
+      "type": "delta"
+    },
+    {
+      "text": "*  ",
+      "_time": 101.3442063331604,
+      "type": "delta"
+    },
+    {
+      "text": " **JVM ",
+      "_time": 101.48359560966492,
+      "type": "delta"
+    },
+    {
+      "text": "与线上",
+      "_time": 101.48513388633728,
+      "type": "delta"
+    },
+    {
+      "text": "排查**\n   ",
+      "_time": 101.56045246124268,
+      "type": "delta"
+    },
+    {
+      "text": " *   **题目",
+      "_time": 101.5634253025055,
+      "type": "delta"
+    },
+    {
+      "text": "**：是否有做过",
+      "_time": 101.73156571388245,
+      "type": "delta"
+    },
+    {
+      "text": "线上系统内存",
+      "_time": 101.73426914215088,
+      "type": "delta"
+    },
+    {
+      "text": "泄漏排查的经验？",
+      "_time": 101.82844352722168,
+      "type": "delta"
+    },
+    {
+      "text": "请",
+      "_time": 101.8312497138977,
+      "type": "delta"
+    },
+    {
+      "text": "描述一个遇到的 GC",
+      "_time": 101.91927242279053,
+      "type": "delta"
+    },
+    {
+      "text": " 问题，",
+      "_time": 101.96532082557678,
+      "type": "delta"
+    },
+    {
+      "text": "如何通过 jstat、",
+      "_time": 102.0453462600708,
+      "type": "delta"
+    },
+    {
+      "text": "jmap 等",
+      "_time": 102.04827404022217,
+      "type": "delta"
+    },
+    {
+      "text": "工具定位，最终",
+      "_time": 102.188392162323,
+      "type": "delta"
+    },
+    {
+      "text": "代码层面是如何",
+      "_time": 102.22024178504944,
+      "type": "delta"
+    },
+    {
+      "text": "解决的？ [来源",
+      "_time": 102.31423234939575,
+      "type": "delta"
+    },
+    {
+      "text": "：某小",
+      "_time": 102.31579947471619,
+      "type": "delta"
+    },
+    {
+      "text": "公司-Java后端",
+      "_time": 102.43844413757324,
+      "type": "delta"
+    },
+    {
+      "text": "]\n   ",
+      "_time": 102.44115805625916,
+      "type": "delta"
+    },
+    {
+      "text": " *   **追问",
+      "_time": 102.59849715232849,
+      "type": "delta"
+    },
+    {
+      "text": "**",
+      "_time": 102.60007309913635,
+      "type": "delta"
+    },
+    {
+      "text": "：如果老年代",
+      "_time": 102.65537929534912,
+      "type": "delta"
+    },
+    {
+      "text": "频繁 Full GC，",
+      "_time": 102.65826749801636,
+      "type": "delta"
+    },
+    {
+      "text": "但堆内存使用",
+      "_time": 102.83742427825928,
+      "type": "delta"
+    },
+    {
+      "text": "率并不高，可能",
+      "_time": 102.84018683433533,
+      "type": "delta"
+    },
+    {
+      "text": "是什么原因？如何处理堆",
+      "_time": 102.94540166854858,
+      "type": "delta"
+    },
+    {
+      "text": "外内存（",
+      "_time": 102.94729685783386,
+      "type": "delta"
+    },
+    {
+      "text": "Direct Buffer）泄漏",
+      "_time": 103.10231757164001,
+      "type": "delta"
+    },
+    {
+      "text": "问题？ [来源",
+      "_time": 103.10419487953186,
+      "type": "delta"
+    },
+    {
+      "text": "：某小公司",
+      "_time": 103.21337008476257,
+      "type": "delta"
+    },
+    {
+      "text": "-Java后端",
+      "_time": 103.21506237983704,
+      "type": "delta"
+    },
+    {
+      "text": "]\n*  ",
+      "_time": 103.3723566532135,
+      "type": "delta"
+    },
+    {
+      "text": " **高",
+      "_time": 103.37396287918091,
+      "type": "delta"
+    },
+    {
+      "text": "并发场景**\n",
+      "_time": 103.44846320152283,
+      "type": "delta"
+    },
+    {
+      "text": "    *  ",
+      "_time": 103.44891929626465,
+      "type": "delta"
+    },
+    {
+      "text": " **题目**：",
+      "_time": 103.60830974578857,
+      "type": "delta"
+    },
+    {
+      "text": "在库存",
+      "_time": 103.61116766929626,
+      "type": "delta"
+    },
+    {
+      "text": "扣减高频且",
+      "_time": 103.68211722373962,
+      "type": "delta"
+    },
+    {
+      "text": "容易超卖",
+      "_time": 103.68614268302917,
+      "type": "delta"
+    },
+    {
+      "text": "的关键场景下，",
+      "_time": 103.8093945980072,
+      "type": "delta"
+    },
+    {
+      "text": "假设单商品",
+      "_time": 103.83620381355286,
+      "type": "delta"
+    },
+    {
+      "text": "库存 10",
+      "_time": 103.93425941467285,
+      "type": "delta"
+    },
+    {
+      "text": "00，有大量",
+      "_time": 103.9661762714386,
+      "type": "delta"
+    },
+    {
+      "text": "并发请求，要求",
+      "_time": 104.07825088500977,
+      "type": "delta"
+    },
+    {
+      "text": "扣减后库存",
+      "_time": 104.07999587059021,
+      "type": "delta"
+    },
+    {
+      "text": "不为负，你会",
+      "_time": 104.22227478027344,
+      "type": "delta"
+    },
+    {
+      "text": "如何设计？ [",
+      "_time": 104.25936818122864,
+      "type": "delta"
+    },
+    {
+      "text": "来源：某小",
+      "_time": 104.36639499664307,
+      "type": "delta"
+    },
+    {
+      "text": "公司-Java后端",
+      "_time": 104.3691201210022,
+      "type": "delta"
+    },
+    {
+      "text": "]\n\n### ",
+      "_time": 104.51034569740295,
+      "type": "delta"
+    },
+    {
+      "text": "4. 备考",
+      "_time": 104.51415657997131,
+      "type": "delta"
+    },
+    {
+      "text": "建议\n*  ",
+      "_time": 104.68544101715088,
+      "type": "delta"
+    },
+    {
+      "text": " **核心能力准备",
+      "_time": 104.6891815662384,
+      "type": "delta"
+    },
+    {
+      "text": "**：重点复习",
+      "_time": 104.8013870716095,
+      "type": "delta"
+    },
+    {
+      "text": " Java 后端",
+      "_time": 104.8070981502533,
+      "type": "delta"
+    },
+    {
+      "text": "开发、Spring Boot",
+      "_time": 104.95944786071777,
+      "type": "delta"
+    },
+    {
+      "text": "、MySQL、",
+      "_time": 104.96213936805725,
+      "type": "delta"
+    },
+    {
+      "text": "数据库 CRUD 及",
+      "_time": 105.05140209197998,
+      "type": "delta"
+    },
+    {
+      "text": "系统维护技能",
+      "_time": 105.09333992004395,
+      "type": "delta"
+    },
+    {
+      "text": " [来源：某",
+      "_time": 105.17738604545593,
+      "type": "delta"
+    },
+    {
+      "text": "小公司-Java",
+      "_time": 105.18008208274841,
+      "type": "delta"
+    },
+    {
+      "text": "后端]。\n",
+      "_time": 105.3331789970398,
+      "type": "delta"
+    },
+    {
+      "text": "*",
+      "_time": 105.336106300354,
+      "type": "delta"
+    },
+    {
+      "text": "   **短板补充",
+      "_time": 105.44411015510559,
+      "type": "delta"
+    },
+    {
+      "text": "**：虽然",
+      "_time": 105.4470603466034,
+      "type": "delta"
+    },
+    {
+      "text": "缺乏 ERP 直接",
+      "_time": 105.53711009025574,
+      "type": "delta"
+    },
+    {
+      "text": "经验，但",
+      "_time": 105.54211378097534,
+      "type": "delta"
+    },
+    {
+      "text": "可结合现有的 S",
+      "_time": 105.66299057006836,
+      "type": "delta"
+    },
+    {
+      "text": "aaS 供应链",
+      "_time": 105.698965549469,
+      "type": "delta"
+    },
+    {
+      "text": "管理经验，准备关于",
+      "_time": 105.7883448600769,
+      "type": "delta"
+    },
+    {
+      "text": "财务",
+      "_time": 105.79110264778137,
+      "type": "delta"
+    },
+    {
+      "text": "、生产计划、",
+      "_time": 105.87817025184631,
+      "type": "delta"
+    },
+    {
+      "text": "库存等",
+      "_time": 105.88006258010864,
+      "type": "delta"
+    },
+    {
+      "text": "模块业务逻辑的",
+      "_time": 106.0141773223877,
+      "type": "delta"
+    },
+    {
+      "text": "迁移思考",
+      "_time": 106.01471781730652,
+      "type": "delta"
+    },
+    {
+      "text": " [来源：某",
+      "_time": 106.09521698951721,
+      "type": "delta"
+    },
+    {
+      "text": "小",
+      "_time": 106.09587287902832,
+      "type": "delta"
+    },
+    {
+      "text": "公司-Java后端",
+      "_time": 106.182363986969,
+      "type": "delta"
+    },
+    {
+      "text": "]。\n*",
+      "_time": 106.1837809085846,
+      "type": "delta"
+    },
+    {
+      "text": "   **专项突破",
+      "_time": 106.35839653015137,
+      "type": "delta"
+    },
+    {
+      "text": "**：针对简历",
+      "_time": 106.36105489730835,
+      "type": "delta"
+    },
+    {
+      "text": "中未提及的",
+      "_time": 106.47034192085266,
+      "type": "delta"
+    },
+    {
+      "text": "报表开发经验，",
+      "_time": 106.47516059875488,
+      "type": "delta"
+    },
+    {
+      "text": "建议提前准备关于",
+      "_time": 106.65124249458313,
+      "type": "delta"
+    },
+    {
+      "text": "大数据",
+      "_time": 106.6549003124237,
+      "type": "delta"
+    },
+    {
+      "text": "量统计、T",
+      "_time": 106.70635151863098,
+      "type": "delta"
+    },
+    {
+      "text": "+",
+      "_time": 106.70806860923767,
+      "type": "delta"
+    },
+    {
+      "text": "1 报表设计及",
+      "_time": 106.79721069335938,
+      "type": "delta"
+    },
+    {
+      "text": "读写",
+      "_time": 106.79876399040222,
+      "type": "delta"
+    },
+    {
+      "text": "分离方案的回答思路",
+      "_time": 106.88726925849915,
+      "type": "delta"
+    },
+    {
+      "text": " [来源：",
+      "_time": 106.91708469390869,
+      "type": "delta"
+    },
+    {
+      "text": "某小公司-J",
+      "_time": 107.01105690002441,
+      "type": "delta"
+    },
+    {
+      "text": "ava后端",
+      "_time": 107.01502680778503,
+      "type": "delta"
+    },
+    {
+      "text": "]。",
+      "_time": 107.12404417991638,
+      "type": "delta"
+    },
+    {
+      "session_id": "eval_li_04_1780477906251",
+      "intent": "interview_prepare",
+      "route_meta": {
+        "layer": "llm",
+        "intent": "interview_prepare",
+        "confidence": 0.88,
+        "demands": [
+          {
+            "intent": "interview_prepare",
+            "entities": {
+              "position": "Java后端"
+            }
+          }
+        ],
+        "plan_tasks": 4
+      },
+      "agent_mode": "llm",
+      "is_clarification": false,
+      "agent": {
+        "rewritten_query": "Java后端面试一般问什么",
+        "tools": [
+          {
+            "tool": "kb_retrieve",
+            "status": "✅",
+            "params": {
+              "query": "{{rewritten_query}}",
+              "top_k": 5,
+              "position": "Java后端"
+            },
+            "result_preview": "{'chunks': [{'chunk_id': '45bd2600-af57-45fe-a96e-c6cae6838c7a_chunk_3', 'content': '【某小公司 · Java后端 硬性要求】\\n熟悉Spring Boot、MySQL', 'metadata': {'company': '某小公司', 'index': 3, 'jd_id': '45bd2600-af57-45f"
+          },
+          {
+            "tool": "match_analyze",
+            "status": "✅",
+            "params": {
+              "resume_text": "姓名：李工程师\n电话：138-XXXX-1234 | 邮箱：lixx_dev@email.com | 现居：北京\nJava后端开发工程师 | 3年经验 | 本科\n\n教育背景\n2018.09 - 2022.06  XX理工大学  计算机科学与技术（本科）\n主修课程：数据结构与算法、操作系统、计算机网络、数据库原理、软件工程\n在校荣誉：校级优秀毕业设计（基于微服务的校园二手交易平台）\n\n专业技能\n熟练掌握Java核心技术，熟悉JVM内存模型、GC机制及常见调优手段\n精通Spring Boot、Spring Cloud微服务生态，熟悉Nacos、Gateway、Sentinel、Seata等组件\n熟悉MySQL索引优化、事务机制、分库分表策略，具备SQL调优及慢查询治理经验\n了解Redis缓存设计、Kafka消息队列，熟悉Docker容器化部署及Jenkins CI/CD流程\n掌握Git版本控制，熟悉Linux日常运维及日志排查\n\n工作经历\n2022.07 - 至今  XX科技有限公司（B轮 / 企业服务 SaaS）  Java后端工程师\n\nSaaS供应链管理平台（2023.03 - 至今）\n负责订单中心、库存中心核心模块设计与开发，采用Spring Cloud Alibaba微服务架构，支撑日均10W+订单处理\n主导MySQL分库分表方案设计（ShardingSphere），解决单表数据量过亿导致的查询性能瓶颈，接口响应时间从800ms降至120ms\n设计多级缓存策略（Redis + Caffeine本地缓存），热点数据命中率提升至95%，降低数据库负载40%\n基于Seata AT模式实现分布式事务，保障订单与库存数据一致性，线上运行半年零资损事故\n\n企业权限中台重构（2022.09 - 2023.02）\n参与RBAC权限中台从单体到微服务的拆分重构，负责鉴权服务、菜单路由模块开发\n引入Gateway统一鉴权过滤器，对接OAuth2.0 + JWT认证体系，支持多租户隔离\n编写核心接口单元测试（Unit + Mockito），模块测试覆盖率从45%提升至82%\n\n自我评价\n具备扎实的计算机基础与3年企业级后端开发经验，擅长高并发场景下的系统设计与性能优化。注重代码质量与工程规范，具备良好的团队协作与跨部门沟通能力。",
+              "jd_text": [
+                {
+                  "chunk_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a_chunk_3",
+                  "content": "【某小公司 · Java后端 硬性要求】\n熟悉Spring Boot、MySQL",
+                  "metadata": {
+                    "company": "某小公司",
+                    "index": 3,
+                    "jd_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a",
+                    "position": "Java后端",
+                    "priority": "high",
+                    "section": "hard_requirements",
+                    "strategy": "semantic"
+                  },
+                  "distance": 1.5081043243408203,
+                  "bm25_score": 0.0,
+                  "vec_norm": 0.565601121487946,
+                  "bm25_norm": 0.0,
+                  "hybrid_score": 0.39592078504156214,
+                  "rerank_score": 0.0073
+                },
+                {
+                  "chunk_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a_chunk_5",
+                  "content": "【某小公司 · Java后端 软性要求/加分项】\n有ERP系统开发经验优先",
+                  "metadata": {
+                    "company": "某小公司",
+                    "index": 5,
+                    "jd_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a",
+                    "position": "Java后端",
+                    "priority": "medium",
+                    "section": "soft_requirements",
+                    "strategy": "semantic"
+                  },
+                  "distance": 1.4740089178085327,
+                  "bm25_score": 0.0,
+                  "vec_norm": 1.0,
+                  "bm25_norm": 0.0,
+                  "hybrid_score": 0.7,
+                  "rerank_score": 0.0049
+                },
+                {
+                  "chunk_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a_chunk_1",
+                  "content": "【某小公司 · Java后端 岗位职责】\n1. 负责传统企业内部管理系统的设计与开发。2. 数据库CRUD操作与报表开发。3. 系统日常维护与bug修复。",
+                  "metadata": {
+                    "company": "某小公司",
+                    "index": 1,
+                    "jd_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a",
+                    "position": "Java后端",
+                    "section": "responsibilities",
+                    "strategy": "semantic"
+                  },
+                  "distance": 1.4837836027145386,
+                  "bm25_score": 0.0,
+                  "vec_norm": 0.8754638060421226,
+                  "bm25_norm": 0.0,
+                  "hybrid_score": 0.6128246642294858,
+                  "rerank_score": 0.0001
+                },
+                {
+                  "chunk_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a_chunk_6",
+                  "content": "【某小公司 · Java后端 关键词】\nJava, Spring Boot, MySQL, ERP, 后端",
+                  "metadata": {
+                    "company": "某小公司",
+                    "index": 6,
+                    "jd_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a",
+                    "position": "Java后端",
+                    "section": "keywords",
+                    "strategy": "semantic"
+                  },
+                  "distance": 1.5287089347839355,
+                  "bm25_score": 0.0,
+                  "vec_norm": 0.3030842437322584,
+                  "bm25_norm": 0.0,
+                  "hybrid_score": 0.21215897061258088,
+                  "rerank_score": 0.0001
+                },
+                {
+                  "chunk_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a_chunk_0",
+                  "content": "公司：某小公司，岗位：Java后端，地点：成都，薪资：10k-20k",
+                  "metadata": {
+                    "category": "技术",
+                    "company": "某小公司",
+                    "domain": "传统",
+                    "index": 0,
+                    "jd_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a",
+                    "max_years": 3,
+                    "min_education": "大专",
+                    "min_years": 1,
+                    "position": "Java后端",
+                    "section": "basic_info",
+                    "strategy": "semantic"
+                  },
+                  "distance": 1.5112426280975342,
+                  "bm25_score": 0.0,
+                  "vec_norm": 0.5256169778451454,
+                  "bm25_norm": 0.0,
+                  "hybrid_score": 0.36793188449160175,
+                  "rerank_score": 0.0
+                }
+              ],
+              "position": "Java后端"
+            },
+            "result_preview": "{'score': 93, 'label': '高度契合', 'advantages': ['Java核心技术与JVM调优', 'Spring Boot', 'MySQL索引优化、事务、分库分表、SQL调优', '后端开发经验（3年）', '企业级系统设计与开发', '数据库CRUD操作', '系统日常维护与bug修复（熟悉Linux运维及日志排查）'], 'weaknesses': ['候选人缺"
+          },
+          {
+            "tool": "interview_gen",
+            "status": "✅",
+            "params": {
+              "match_result": {
+                "score": 93,
+                "label": "高度契合",
+                "advantages": [
+                  "Java核心技术与JVM调优",
+                  "Spring Boot",
+                  "MySQL索引优化、事务、分库分表、SQL调优",
+                  "后端开发经验（3年）",
+                  "企业级系统设计与开发",
+                  "数据库CRUD操作",
+                  "系统日常维护与bug修复（熟悉Linux运维及日志排查）"
+                ],
+                "weaknesses": [
+                  "候选人缺乏ERP系统的直接开发经验（简历中为SaaS供应链管理平台，非传统ERP），且未提及报表开发经验。"
+                ],
+                "suggestions": [
+                  "核心能力要求: Java后端开发, Spring Boot, MySQL, ERP系统开发（优先）, 数据库CRUD, 系统维护, 报表开发"
+                ],
+                "match_score": 93,
+                "covered": [
+                  "Java核心技术与JVM调优",
+                  "Spring Boot",
+                  "MySQL索引优化、事务、分库分表、SQL调优",
+                  "后端开发经验（3年）",
+                  "企业级系统设计与开发",
+                  "数据库CRUD操作",
+                  "系统日常维护与bug修复（熟悉Linux运维及日志排查）"
+                ],
+                "missing_experience": "候选人缺乏ERP系统的直接开发经验（简历中为SaaS供应链管理平台，非传统ERP），且未提及报表开发经验。",
+                "core_skills": "Java后端开发, Spring Boot, MySQL, ERP系统开发（优先）, 数据库CRUD, 系统维护, 报表开发",
+                "company": null,
+                "position": "Java后端"
+              },
+              "count": 5,
+              "difficulty": "mixed",
+              "position": "Java后端"
+            },
+            "result_preview": "{'questions': ['你之前做的是SaaS供应链管理平台，而ERP系统在财务、生产计划、库存等模块上有更深的业务逻辑。如果让你设计一个ERP中的销售订单处理流程，你会如何设计数据模型和状态机？请结合你熟悉的供应链经验谈谈差异。追问方向：1）如何处理订单冲正或退货场景下数据一致性问题？2）如果订单状态很多（如待审核、已审核、部分发货、已完成等），你会采用什么设计模式来管理状态流转？', '"
+          }
+        ],
+        "kb_chunks_count": 4,
+        "system_prompt_preview": "你是一位专业的求职顾问。请基于以下工具执行结果，给用户一个清晰、有帮助的回复。\n要求：\n1. 先直接回答用户的问题（是/否/有/没有），不要绕弯子，不要重复用户的原话\n2. 如果有匹配分析结果，给出具体的分数和建议\n3. 如果有检索结果，基于事实回答，不要编造\n4. 【强制】引用信息时必须标注来源。每个引用的事实后面都要跟 [来源：公司名-岗位名] 格式。   kb_retrieve 结果的 ch"
+      },
+      "memory": {
+        "working_turns": 1,
+        "compressed_blocks": 0,
+        "current_topic": "general",
+        "evidence_cache_size": 5
+      },
+      "reply": "有常见的考察方向和具体题目。基于检索到的岗位信息和匹配分析结果，Java 后端面试通常围绕核心技术栈、业务场景设计及系统优化能力展开。以下是具体的考察内容、匹配度分析及备考建议：\n\n### 1. 岗位匹配度分析\n根据简历与岗位要求的匹配分析，当前匹配度为 **93 分**，属于 **高度契合** [来源：某小公司-Java后端]。\n*   **优势项**：Java 核心技术与 JVM 调优、Spring Boot 框架、MySQL 索引优化及事务处理、3 年后端开发经验、企业级系统设计与数据库 CRUD 操作 [来源：某小公司-Java后端]。\n*   **待提升项**：缺乏 ERP 系统的直接开发经验（现有经验为 SaaS 供应链管理平台），且未提及报表开发经验 [来源：某小公司-Java后端]。\n\n### 2. 核心考察内容\n基于岗位硬性要求与职责，面试重点通常包含以下领域：\n*   **技术栈基础**：熟悉 Spring Boot 框架与 MySQL 数据库是硬性要求 [来源：某小公司-Java后端]。\n*   **业务开发能力**：负责传统企业内部管理系统的设计与开发，涉及数据库 CRUD 操作与报表开发 [来源：某小公司-Java后端]。\n*   **系统维护**：包含系统日常维护与 bug 修复，通常考察 Linux 运维及日志排查能力 [来源：某小公司-Java后端]。\n*   **加分项**：有 ERP 系统开发经验优先 [来源：某小公司-Java后端]。\n\n### 3. 模拟面试题目\n针对上述核心要求及匹配短板，以下是可能遇到的具体面试题目：\n\n*   **业务场景设计（ERP 方向）**\n    *   **题目**：如果让你设计一个 ERP 中的销售订单处理流程，你会如何设计数据模型和状态机？如何处理订单冲正或退货场景下的数据一致性问题？ [来源：某小公司-Java后端]\n    *   **追问**：如果订单状态很多（如待审核、已审核、部分发货等），你会采用什么设计模式来管理状态流转？ [来源：某小公司-Java后端]\n*   **报表系统与性能优化**\n    *   **题目**：假设需要从 MySQL 千万级订单表中，按天、省份、产品类别统计销售额并生成一张报表（T+1），你会如何设计？性能瓶颈在哪里？ [来源：某小公司-Java后端]\n    *   **追问**：如果实时性要求更高（如每 5 分钟更新），你会怎么改？如何避免报表查询对线上业务数据库的影响？ [来源：某小公司-Java后端]\n*   **数据库调优**\n    *   **题目**：请举一个实际遇到的复杂 SQL 慢查询案例，详细说明如何通过执行计划（EXPLAIN）定位问题并优化。 [来源：某小公司-Java后端]\n    *   **追问**：如果加了索引后查询仍然慢，接下来会怎么排查？请解释索引下推和 MRR 优化的适用场景。 [来源：某小公司-Java后端]\n*   **JVM 与线上排查**\n    *   **题目**：是否有做过线上系统内存泄漏排查的经验？请描述一个遇到的 GC 问题，如何通过 jstat、jmap 等工具定位，最终代码层面是如何解决的？ [来源：某小公司-Java后端]\n    *   **追问**：如果老年代频繁 Full GC，但堆内存使用率并不高，可能是什么原因？如何处理堆外内存（Direct Buffer）泄漏问题？ [来源：某小公司-Java后端]\n*   **高并发场景**\n    *   **题目**：在库存扣减高频且容易超卖的关键场景下，假设单商品库存 1000，有大量并发请求，要求扣减后库存不为负，你会如何设计？ [来源：某小公司-Java后端]\n\n### 4. 备考建议\n*   **核心能力准备**：重点复习 Java 后端开发、Spring Boot、MySQL、数据库 CRUD 及系统维护技能 [来源：某小公司-Java后端]。\n*   **短板补充**：虽然缺乏 ERP 直接经验，但可结合现有的 SaaS 供应链管理经验，准备关于财务、生产计划、库存等模块业务逻辑的迁移思考 [来源：某小公司-Java后端]。\n*   **专项突破**：针对简历中未提及的报表开发经验，建议提前准备关于大数据量统计、T+1 报表设计及读写分离方案的回答思路 [来源：某小公司-Java后端]。",
+      "usage": {
+        "prompt_tokens": 9633,
+        "completion_tokens": 7340,
+        "total_tokens": 16973
+      },
+      "_time": 107.1883442401886,
+      "type": "done"
+    }
+  ],
+  "timestamp": "2026-06-03T17:11:46.251103",
+  "prompt_tokens": 9633,
+  "completion_tokens": 7340,
+  "total_tokens": 16973,
+  "tool_execution_success_rate": 1.0,
+  "tool_correct_rate": 1.0
+}

@@ -1,0 +1,1097 @@
+{
+  "case_id": "eval_wang_10",
+  "message": "美团搜索推荐AI PM我匹配吗",
+  "gold_intents": [
+    "assess"
+  ],
+  "expected_tools": [
+    "kb_retrieve",
+    "match_analyze"
+  ],
+  "scenario": "有简历_单JD匹配_美团",
+  "status": "success",
+  "error": null,
+  "ttfb": 0.01,
+  "total_latency": 92.5,
+  "event_count": 156,
+  "pred_intent": "match_assess",
+  "pred_tools": [
+    {
+      "tool": "kb_retrieve",
+      "status": "✅",
+      "params": {
+        "query": "美团搜索推荐AI PM",
+        "company": "美团",
+        "top_k": 5
+      },
+      "result_preview": "{'chunks': [{'chunk_id': 'ac997d3f-9206-4414-9fac-16deb62ff88b_chunk_7', 'content': '【美团 · 搜索推荐AI PM 关键词】\\n搜索推荐, AI, Agent, Prompt, RAG, 多模态, 产品经理', 'metadata': {'company': '美团', 'index': 7, 'jd_id': "
+    },
+    {
+      "tool": "match_analyze",
+      "status": "✅",
+      "params": {
+        "resume_text": "姓名：王设计师\n电话：139-XXXX-5678 | 邮箱：wangdesign@email.com | 现居：上海\n作品集：wangdesign.portfolio.com\nUI/UX设计师 | 4年互联网设计经验 | 品牌视觉背景\n\n教育背景\n2015.09 - 2019.06  XX美术学院  视觉传达设计（本科）\n主修课程：品牌设计、信息可视化、交互设计基础、版式设计、用户研究\n在校荣誉：全国大学生广告艺术大赛省级一等奖\n\n职业背景\n2019.07 - 2021.06  XX传媒公司  品牌视觉设计师（2年）\n负责快消、教育行业品牌全案设计，积累扎实的视觉体系搭建与商业审美能力\n\n2021.07 - 至今  XX互联网科技公司（C轮 / 在线教育）  UI设计师（4年）\n从品牌设计跨领域转型至互联网UI/UX，快速补齐交互逻辑与产品思维，主导多条业务线界面设计\n\n专业技能\n精通Figma组件化设计、Auto Layout及变量系统，能搭建可复用的设计规范与UI Kit\n擅长界面动效设计，熟练使用Principle、After Effects制作高保真交互Demo，提升评审效率\n具备品牌全案设计能力，熟悉Logo、VI、运营视觉体系搭建，能统筹产品视觉一致性\n了解前端基础（HTML/CSS），能与开发高效沟通，熟悉切图标注、SVG输出及设计走查流程\n掌握用户研究方法：竞品分析、用户访谈、可用性测试，能基于数据反馈迭代设计方案\n\n工作经历\n在线教育直播课堂改版（2023.06 - 2024.03）\n作为UI主设，主导直播客户端从1.0到2.0的视觉重构，DAU 50W+，完课率提升12%\n建立Figma组件库（300+组件），统一5条业务线设计语言，设计交付效率提升30%\n针对低龄学段用户设计游戏化互动界面（连麦、答题红包），通过动效引导降低操作流失率\n\n制定《移动端设计规范V2.0》，涵盖色彩、字体、间距、无障碍对比度标准（WCAG 2.1 AA级）\n\n品牌跨界联名活动视觉（2022.09 - 2022.12）\n结合前品牌设计经验，主导与知名IP联名运营活动的主视觉及H5传播设计\n设计开屏动画、分享海报模板，活动期间新增用户8W+，分享率提升25%\n输出动态品牌规范手册，帮助市场团队3天内完成20+城市线下物料延展\n\nB端教研后台系统优化（2022.02 - 2022.08）\n负责教师端后台的信息架构重组，将核心备课路径从5步缩减至3步\n设计数据可视化仪表盘，通过卡片层级与色彩语义降低教师数据读取成本\n\n自我评价\n拥有品牌视觉+互联网UI的跨领域背景，既能把控产品视觉调性，也具备用户体验与业务目标平衡能力。习惯用组件化思维提升协作效率，注重设计落地的还原度与数据反馈。",
+        "jd_text": [
+          {
+            "chunk_id": "ac997d3f-9206-4414-9fac-16deb62ff88b_chunk_7",
+            "content": "【美团 · 搜索推荐AI PM 关键词】\n搜索推荐, AI, Agent, Prompt, RAG, 多模态, 产品经理",
+            "metadata": {
+              "company": "美团",
+              "index": 7,
+              "jd_id": "ac997d3f-9206-4414-9fac-16deb62ff88b",
+              "position": "搜索推荐AI PM",
+              "section": "keywords",
+              "strategy": "semantic"
+            },
+            "distance": 0.33080387115478516,
+            "bm25_score": 19.582750345787538,
+            "vec_norm": 0.9584475651386153,
+            "bm25_norm": 0.9639995500426723,
+            "hybrid_score": 0.9601131606098323,
+            "rerank_score": 0.9996
+          },
+          {
+            "chunk_id": "ac997d3f-9206-4414-9fac-16deb62ff88b_chunk_1",
+            "content": "【美团 · 搜索推荐AI PM 岗位职责】\n1. 负责搜索推荐全链路的产品演进。2. 利用Agent工作流、意图编程与自动化评估技术，重构从海量供给到亿级用户决策的完整分发链路。3. 智能诊断与进化体系：主导生成式策略的Benchmark建设。4. 全链路用户体验重塑：深入洞察用户在搜索推荐场景中的行为路径。",
+            "metadata": {
+              "company": "美团",
+              "index": 1,
+              "jd_id": "ac997d3f-9206-4414-9fac-16deb62ff88b",
+              "position": "搜索推荐AI PM",
+              "section": "responsibilities",
+              "strategy": "semantic"
+            },
+            "distance": 0.32996320724487305,
+            "bm25_score": 14.621998352545779,
+            "vec_norm": 0.9636905494315949,
+            "bm25_norm": 0.626969374072545,
+            "hybrid_score": 0.8626741968238799,
+            "rerank_score": 0.9996
+          },
+          {
+            "chunk_id": "ac997d3f-9206-4414-9fac-16deb62ff88b_chunk_4",
+            "content": "【美团 · 搜索推荐AI PM 硬性要求】\n熟悉大模型基础原理，理解RAG、Prompt Engineering或Agent工作流",
+            "metadata": {
+              "company": "美团",
+              "index": 4,
+              "jd_id": "ac997d3f-9206-4414-9fac-16deb62ff88b",
+              "position": "搜索推荐AI PM",
+              "priority": "high",
+              "section": "hard_requirements",
+              "strategy": "semantic"
+            },
+            "distance": 0.3665100932121277,
+            "bm25_score": 17.5544162604891,
+            "vec_norm": 0.7357579037876696,
+            "bm25_norm": 0.8261958874879527,
+            "hybrid_score": 0.7628892988977545,
+            "rerank_score": 0.9992
+          },
+          {
+            "chunk_id": "ac997d3f-9206-4414-9fac-16deb62ff88b_chunk_6",
+            "content": "【美团 · 搜索推荐AI PM 软性要求/加分项】\n有搜索/推荐/内容分发领域实战经验者优先",
+            "metadata": {
+              "company": "美团",
+              "index": 6,
+              "jd_id": "ac997d3f-9206-4414-9fac-16deb62ff88b",
+              "position": "搜索推荐AI PM",
+              "priority": "medium",
+              "section": "soft_requirements",
+              "strategy": "semantic"
+            },
+            "distance": 0.3928016126155853,
+            "bm25_score": 19.770989696415462,
+            "vec_norm": 0.5717850941480727,
+            "bm25_norm": 0.9767884057550849,
+            "hybrid_score": 0.6932860876301763,
+            "rerank_score": 0.9992
+          },
+          {
+            "chunk_id": "ac997d3f-9206-4414-9fac-16deb62ff88b_chunk_5",
+            "content": "【美团 · 搜索推荐AI PM 硬性要求】\n具备AI原生交互天赋，能将复杂业务需求精准转化为Agent可执行的任务逻辑",
+            "metadata": {
+              "company": "美团",
+              "index": 5,
+              "jd_id": "ac997d3f-9206-4414-9fac-16deb62ff88b",
+              "position": "搜索推荐AI PM",
+              "priority": "high",
+              "section": "hard_requirements",
+              "strategy": "semantic"
+            },
+            "distance": 0.32414132356643677,
+            "bm25_score": 17.237678063811604,
+            "vec_norm": 1.0,
+            "bm25_norm": 0.8046769060294747,
+            "hybrid_score": 0.9414030718088424,
+            "rerank_score": 0.9991
+          }
+        ],
+        "company": "美团",
+        "position": "搜索推荐AI PM",
+        "attributes": [
+          "匹配度"
+        ]
+      },
+      "result_preview": "{'score': 3, 'label': '不匹配', 'advantages': [], 'weaknesses': ['候选人完全缺乏搜索推荐AI产品经理所需的任何经验与技能：无搜索推荐领域实战经验，无大模型基础原理（RAG、Prompt Engineering、Agent工作流）相关知识，无产品经理岗位经历，无AI原生交互或Agent任务逻辑设计能力。候选人背景为UI/UX设计师，专注于界"
+    }
+  ],
+  "tools_called": [
+    "kb_retrieve",
+    "match_analyze"
+  ],
+  "reply": "不匹配。\n\n当前匹配分数为 **3 分**。\n\n### 岗位核心要求\n根据检索到的职位信息，该岗位的核心硬性要求与职责包括：\n1.  **职责范围**：负责搜索推荐全链路的产品演进，利用 Agent 工作流、意图编程与自动化评估技术重构分发链路 [来源：美团 - 搜索推荐 AI PM]。\n2.  **技术基础**：熟悉大模型基础原理，理解 RAG、Prompt Engineering 或 Agent 工作流 [来源：美团 - 搜索推荐 AI PM]。\n3.  **能力素质**：具备 AI 原生交互天赋，能将复杂业务需求精准转化为 Agent 可执行的任务逻辑 [来源：美团 - 搜索推荐 AI PM]。\n4.  **经验偏好**：有搜索/推荐/内容分发领域实战经验者优先 [来源：美团 - 搜索推荐 AI PM]。\n\n### 主要差距分析\n匹配分析显示，您目前的背景与该岗位核心职责存在显著差异：\n*   **职能背景不符**：您目前的背景为 UI/UX 设计师，专注于界面视觉设计与交互体验，而该岗位核心职责是搜索推荐全链路演进、Agent 工作流构建及 Benchmark 建设 [来源：美团 - 搜索推荐 AI PM]。\n*   **技能缺失**：缺乏搜索推荐领域实战经验，无大模型基础原理（RAG、Prompt Engineering、Agent 工作流）相关知识，无产品经理岗位经历 [来源：美团 - 搜索推荐 AI PM]。\n*   **核心能力缺口**：暂无 AI 原生交互或 Agent 任务逻辑设计能力，难以将复杂业务需求转化为 Agent 可执行的任务逻辑 [来源：美团 - 搜索推荐 AI PM]。\n\n### 提升建议\n若您希望未来尝试此类岗位，建议从以下方向进行准备：\n1.  **技术知识补充**：系统学习大模型基础原理，重点掌握 RAG、Prompt Engineering 及 Agent 工作流相关知识 [来源：美团 - 搜索推荐 AI PM]。\n2.  **领域经验积累**：争取参与搜索、推荐或内容分发领域的项目实战，积累相关业务经验 [来源：美团 - 搜索推荐 AI PM]。\n3.  **思维能力转型**：培养 AI 原生交互天赋，练习将复杂业务需求转化为 Agent 可执行任务逻辑的能力 [来源：美团 - 搜索推荐 AI PM]。\n4.  **角色转换**：考虑先转型至产品经理岗位，再逐步向 AI 产品经理方向演进。",
+  "reply_length": 1034,
+  "intent_match": true,
+  "tool_match_rate": 1.0,
+  "has_reply": true,
+  "events": [
+    {
+      "step": "intent",
+      "message": "正在识别您的意图...",
+      "_time": 11.125859022140503,
+      "type": "status"
+    },
+    {
+      "step": "plan",
+      "message": "正在规划任务...",
+      "_time": 11.125898122787476,
+      "type": "status"
+    },
+    {
+      "step": "execute",
+      "message": "正在执行分析...",
+      "_time": 22.274938344955444,
+      "type": "status"
+    },
+    {
+      "step": "aggregate",
+      "message": "正在生成回复...",
+      "_time": 28.58014440536499,
+      "type": "status"
+    },
+    {
+      "text": "不匹配。\n\n",
+      "_time": 82.81079983711243,
+      "type": "delta"
+    },
+    {
+      "text": "当前匹配分数为",
+      "_time": 82.950838804245,
+      "type": "delta"
+    },
+    {
+      "text": " **3 ",
+      "_time": 82.95373749732971,
+      "type": "delta"
+    },
+    {
+      "text": "分**。\n\n###",
+      "_time": 83.08176112174988,
+      "type": "delta"
+    },
+    {
+      "text": " 岗位核心要求",
+      "_time": 83.1080207824707,
+      "type": "delta"
+    },
+    {
+      "text": "\n根据检索到的",
+      "_time": 83.22091794013977,
+      "type": "delta"
+    },
+    {
+      "text": "职位信息，该",
+      "_time": 83.22563600540161,
+      "type": "delta"
+    },
+    {
+      "text": "岗位的核心硬性要求",
+      "_time": 83.36397743225098,
+      "type": "delta"
+    },
+    {
+      "text": "与",
+      "_time": 83.36670899391174,
+      "type": "delta"
+    },
+    {
+      "text": "职责包括：\n",
+      "_time": 83.48284935951233,
+      "type": "delta"
+    },
+    {
+      "text": "1",
+      "_time": 83.48867845535278,
+      "type": "delta"
+    },
+    {
+      "text": ".  **职责",
+      "_time": 83.54269790649414,
+      "type": "delta"
+    },
+    {
+      "text": "范围",
+      "_time": 83.5476713180542,
+      "type": "delta"
+    },
+    {
+      "text": "**：负责搜索",
+      "_time": 83.63583183288574,
+      "type": "delta"
+    },
+    {
+      "text": "推荐全链路的产品",
+      "_time": 83.6376805305481,
+      "type": "delta"
+    },
+    {
+      "text": "演进，利用 Agent",
+      "_time": 83.81386947631836,
+      "type": "delta"
+    },
+    {
+      "text": " 工作",
+      "_time": 83.8166663646698,
+      "type": "delta"
+    },
+    {
+      "text": "流、意图编程",
+      "_time": 83.8866925239563,
+      "type": "delta"
+    },
+    {
+      "text": "与自动化评估技术",
+      "_time": 83.89066314697266,
+      "type": "delta"
+    },
+    {
+      "text": "重构分发链路 [",
+      "_time": 84.06466174125671,
+      "type": "delta"
+    },
+    {
+      "text": "来源：美团 -",
+      "_time": 84.06756138801575,
+      "type": "delta"
+    },
+    {
+      "text": " 搜索推荐 AI",
+      "_time": 84.1748538017273,
+      "type": "delta"
+    },
+    {
+      "text": " PM]。\n",
+      "_time": 84.17863821983337,
+      "type": "delta"
+    },
+    {
+      "text": "2.  **",
+      "_time": 84.35289573669434,
+      "type": "delta"
+    },
+    {
+      "text": "技术基础",
+      "_time": 84.35568714141846,
+      "type": "delta"
+    },
+    {
+      "text": "**：熟悉大",
+      "_time": 84.42782425880432,
+      "type": "delta"
+    },
+    {
+      "text": "模型基础原理，",
+      "_time": 84.431636095047,
+      "type": "delta"
+    },
+    {
+      "text": "理解 RAG、",
+      "_time": 84.57188034057617,
+      "type": "delta"
+    },
+    {
+      "text": "Prompt Engineering ",
+      "_time": 84.60683465003967,
+      "type": "delta"
+    },
+    {
+      "text": "或 Agent 工作",
+      "_time": 84.69670391082764,
+      "type": "delta"
+    },
+    {
+      "text": "流 [来源：",
+      "_time": 84.73871231079102,
+      "type": "delta"
+    },
+    {
+      "text": "美团 - 搜索",
+      "_time": 84.8418562412262,
+      "type": "delta"
+    },
+    {
+      "text": "推荐 AI PM]",
+      "_time": 84.84664011001587,
+      "type": "delta"
+    },
+    {
+      "text": "。\n3.",
+      "_time": 84.98364329338074,
+      "type": "delta"
+    },
+    {
+      "text": "  **能力素质",
+      "_time": 84.98962593078613,
+      "type": "delta"
+    },
+    {
+      "text": "**：具备 AI",
+      "_time": 85.1736900806427,
+      "type": "delta"
+    },
+    {
+      "text": " 原生交互天赋",
+      "_time": 85.17761254310608,
+      "type": "delta"
+    },
+    {
+      "text": "，能将复杂业务",
+      "_time": 85.27191638946533,
+      "type": "delta"
+    },
+    {
+      "text": "需求精准转化为 Agent",
+      "_time": 85.31269025802612,
+      "type": "delta"
+    },
+    {
+      "text": " 可执行的任务",
+      "_time": 85.41983532905579,
+      "type": "delta"
+    },
+    {
+      "text": "逻辑 [来源：",
+      "_time": 85.42445731163025,
+      "type": "delta"
+    },
+    {
+      "text": "美团 - 搜索",
+      "_time": 85.56346154212952,
+      "type": "delta"
+    },
+    {
+      "text": "推荐 AI PM]",
+      "_time": 85.59767961502075,
+      "type": "delta"
+    },
+    {
+      "text": "。\n4.",
+      "_time": 85.70663666725159,
+      "type": "delta"
+    },
+    {
+      "text": "  **经验偏好",
+      "_time": 85.71249008178711,
+      "type": "delta"
+    },
+    {
+      "text": "**：有搜索",
+      "_time": 85.84984803199768,
+      "type": "delta"
+    },
+    {
+      "text": "/推荐/内容",
+      "_time": 85.85255241394043,
+      "type": "delta"
+    },
+    {
+      "text": "分发领域实战经验者优先",
+      "_time": 86.02769446372986,
+      "type": "delta"
+    },
+    {
+      "text": " [来源：美团",
+      "_time": 86.03153586387634,
+      "type": "delta"
+    },
+    {
+      "text": " - 搜索推荐",
+      "_time": 86.13772773742676,
+      "type": "delta"
+    },
+    {
+      "text": " AI PM]。",
+      "_time": 86.1635320186615,
+      "type": "delta"
+    },
+    {
+      "text": "\n\n### 主要",
+      "_time": 86.28288197517395,
+      "type": "delta"
+    },
+    {
+      "text": "差距分析\n匹配",
+      "_time": 86.2875964641571,
+      "type": "delta"
+    },
+    {
+      "text": "分析显示，您",
+      "_time": 86.426762342453,
+      "type": "delta"
+    },
+    {
+      "text": "目前的背景",
+      "_time": 86.43052864074707,
+      "type": "delta"
+    },
+    {
+      "text": "与该岗位核心职责",
+      "_time": 86.57264614105225,
+      "type": "delta"
+    },
+    {
+      "text": "存在显著",
+      "_time": 86.57630228996277,
+      "type": "delta"
+    },
+    {
+      "text": "差异：\n*",
+      "_time": 86.64180827140808,
+      "type": "delta"
+    },
+    {
+      "text": "   **职能",
+      "_time": 86.64744782447815,
+      "type": "delta"
+    },
+    {
+      "text": "背景不符**：",
+      "_time": 86.7667875289917,
+      "type": "delta"
+    },
+    {
+      "text": "您目前的",
+      "_time": 86.80579543113708,
+      "type": "delta"
+    },
+    {
+      "text": "背景为 UI/",
+      "_time": 86.87267780303955,
+      "type": "delta"
+    },
+    {
+      "text": "UX 设计师，",
+      "_time": 86.87654066085815,
+      "type": "delta"
+    },
+    {
+      "text": "专注于界面视觉设计与",
+      "_time": 87.02258849143982,
+      "type": "delta"
+    },
+    {
+      "text": "交互体验，而",
+      "_time": 87.06047129631042,
+      "type": "delta"
+    },
+    {
+      "text": "该岗位核心职责",
+      "_time": 87.16268992424011,
+      "type": "delta"
+    },
+    {
+      "text": "是",
+      "_time": 87.16649174690247,
+      "type": "delta"
+    },
+    {
+      "text": "搜索推荐全链路",
+      "_time": 87.25252342224121,
+      "type": "delta"
+    },
+    {
+      "text": "演进、Agent ",
+      "_time": 87.257483959198,
+      "type": "delta"
+    },
+    {
+      "text": "工作流构建及",
+      "_time": 87.43476581573486,
+      "type": "delta"
+    },
+    {
+      "text": " Benchmark ",
+      "_time": 87.43746447563171,
+      "type": "delta"
+    },
+    {
+      "text": "建设 [来源：",
+      "_time": 87.50436425209045,
+      "type": "delta"
+    },
+    {
+      "text": "美团 - 搜索",
+      "_time": 87.5092306137085,
+      "type": "delta"
+    },
+    {
+      "text": "推荐 AI PM]",
+      "_time": 87.67463254928589,
+      "type": "delta"
+    },
+    {
+      "text": "。\n*",
+      "_time": 87.67737555503845,
+      "type": "delta"
+    },
+    {
+      "text": "   **技能缺失",
+      "_time": 87.7736885547638,
+      "type": "delta"
+    },
+    {
+      "text": "**：缺乏",
+      "_time": 87.77739310264587,
+      "type": "delta"
+    },
+    {
+      "text": "搜索推荐领域实战",
+      "_time": 87.94151306152344,
+      "type": "delta"
+    },
+    {
+      "text": "经验，无",
+      "_time": 87.94528341293335,
+      "type": "delta"
+    },
+    {
+      "text": "大模型基础原理",
+      "_time": 88.02659463882446,
+      "type": "delta"
+    },
+    {
+      "text": "（RAG、",
+      "_time": 88.0302665233612,
+      "type": "delta"
+    },
+    {
+      "text": "Prompt Engineering、Agent",
+      "_time": 88.20862483978271,
+      "type": "delta"
+    },
+    {
+      "text": " 工作流）",
+      "_time": 88.21231627464294,
+      "type": "delta"
+    },
+    {
+      "text": "相关知识，无产品经理",
+      "_time": 88.31468844413757,
+      "type": "delta"
+    },
+    {
+      "text": "岗位经历 [",
+      "_time": 88.34756064414978,
+      "type": "delta"
+    },
+    {
+      "text": "来源：美团 -",
+      "_time": 88.44065284729004,
+      "type": "delta"
+    },
+    {
+      "text": " 搜索推荐 AI",
+      "_time": 88.44538950920105,
+      "type": "delta"
+    },
+    {
+      "text": " PM]。\n",
+      "_time": 88.58469009399414,
+      "type": "delta"
+    },
+    {
+      "text": "*",
+      "_time": 88.5895254611969,
+      "type": "delta"
+    },
+    {
+      "text": "   **核心能力",
+      "_time": 88.70779085159302,
+      "type": "delta"
+    },
+    {
+      "text": "缺口",
+      "_time": 88.71227288246155,
+      "type": "delta"
+    },
+    {
+      "text": "**：暂无 AI",
+      "_time": 88.7656569480896,
+      "type": "delta"
+    },
+    {
+      "text": " 原生交互",
+      "_time": 88.7682900428772,
+      "type": "delta"
+    },
+    {
+      "text": "或 Agent 任务",
+      "_time": 88.90966129302979,
+      "type": "delta"
+    },
+    {
+      "text": "逻辑设计能力，",
+      "_time": 88.93155527114868,
+      "type": "delta"
+    },
+    {
+      "text": "难以将复杂业务",
+      "_time": 89.03440833091736,
+      "type": "delta"
+    },
+    {
+      "text": "需求转化为 Agent",
+      "_time": 89.03944325447083,
+      "type": "delta"
+    },
+    {
+      "text": " 可执行的任务",
+      "_time": 89.161616563797,
+      "type": "delta"
+    },
+    {
+      "text": "逻辑 [来源：",
+      "_time": 89.19334149360657,
+      "type": "delta"
+    },
+    {
+      "text": "美团 - 搜索",
+      "_time": 89.30362439155579,
+      "type": "delta"
+    },
+    {
+      "text": "推荐 AI PM]",
+      "_time": 89.3082525730133,
+      "type": "delta"
+    },
+    {
+      "text": "。\n\n### ",
+      "_time": 89.4475531578064,
+      "type": "delta"
+    },
+    {
+      "text": "提升建议\n若您",
+      "_time": 89.48850893974304,
+      "type": "delta"
+    },
+    {
+      "text": "希望未来尝试此类",
+      "_time": 89.596435546875,
+      "type": "delta"
+    },
+    {
+      "text": "岗位，建议",
+      "_time": 89.60131788253784,
+      "type": "delta"
+    },
+    {
+      "text": "从以下方向进行",
+      "_time": 89.71652460098267,
+      "type": "delta"
+    },
+    {
+      "text": "准备",
+      "_time": 89.72028875350952,
+      "type": "delta"
+    },
+    {
+      "text": "：\n1.",
+      "_time": 89.83658647537231,
+      "type": "delta"
+    },
+    {
+      "text": "  **技术",
+      "_time": 89.83920955657959,
+      "type": "delta"
+    },
+    {
+      "text": "知识补充**：",
+      "_time": 89.93551969528198,
+      "type": "delta"
+    },
+    {
+      "text": "系统",
+      "_time": 89.93911576271057,
+      "type": "delta"
+    },
+    {
+      "text": "学习大模型基础",
+      "_time": 90.03446507453918,
+      "type": "delta"
+    },
+    {
+      "text": "原理，重点",
+      "_time": 90.03927445411682,
+      "type": "delta"
+    },
+    {
+      "text": "掌握 RAG、",
+      "_time": 90.1845338344574,
+      "type": "delta"
+    },
+    {
+      "text": "Prompt Engineering ",
+      "_time": 90.19128274917603,
+      "type": "delta"
+    },
+    {
+      "text": "及 Agent 工作",
+      "_time": 90.31566762924194,
+      "type": "delta"
+    },
+    {
+      "text": "流相关知识",
+      "_time": 90.31828260421753,
+      "type": "delta"
+    },
+    {
+      "text": " [来源：美团",
+      "_time": 90.38442492485046,
+      "type": "delta"
+    },
+    {
+      "text": " - 搜索推荐",
+      "_time": 90.3892092704773,
+      "type": "delta"
+    },
+    {
+      "text": " AI PM]。",
+      "_time": 90.57061004638672,
+      "type": "delta"
+    },
+    {
+      "text": "\n2. ",
+      "_time": 90.57424783706665,
+      "type": "delta"
+    },
+    {
+      "text": " **领域经验积累",
+      "_time": 90.67243695259094,
+      "type": "delta"
+    },
+    {
+      "text": "**：",
+      "_time": 90.67528772354126,
+      "type": "delta"
+    },
+    {
+      "text": "争取参与搜索、",
+      "_time": 90.78149843215942,
+      "type": "delta"
+    },
+    {
+      "text": "推荐或内容分发",
+      "_time": 90.9344482421875,
+      "type": "delta"
+    },
+    {
+      "text": "领域的项目实战，",
+      "_time": 90.93634963035583,
+      "type": "delta"
+    },
+    {
+      "text": "积累相关业务",
+      "_time": 90.94021272659302,
+      "type": "delta"
+    },
+    {
+      "text": "经验 [来源：",
+      "_time": 91.03235149383545,
+      "type": "delta"
+    },
+    {
+      "text": "美团 - 搜索",
+      "_time": 91.06539034843445,
+      "type": "delta"
+    },
+    {
+      "text": "推荐 AI PM]",
+      "_time": 91.17836856842041,
+      "type": "delta"
+    },
+    {
+      "text": "。\n3.",
+      "_time": 91.18324398994446,
+      "type": "delta"
+    },
+    {
+      "text": "  **思维能力转型",
+      "_time": 91.32028484344482,
+      "type": "delta"
+    },
+    {
+      "text": "**：培养",
+      "_time": 91.32633137702942,
+      "type": "delta"
+    },
+    {
+      "text": " AI 原生交互",
+      "_time": 91.47755789756775,
+      "type": "delta"
+    },
+    {
+      "text": "天赋",
+      "_time": 91.48215126991272,
+      "type": "delta"
+    },
+    {
+      "text": "，练习将复杂",
+      "_time": 91.53939723968506,
+      "type": "delta"
+    },
+    {
+      "text": "业务需求",
+      "_time": 91.5442202091217,
+      "type": "delta"
+    },
+    {
+      "text": "转化为 Agent 可",
+      "_time": 91.64542078971863,
+      "type": "delta"
+    },
+    {
+      "text": "执行",
+      "_time": 91.67523264884949,
+      "type": "delta"
+    },
+    {
+      "text": "任务逻辑的能力 [",
+      "_time": 91.73230981826782,
+      "type": "delta"
+    },
+    {
+      "text": "来源：美团 -",
+      "_time": 91.73817586898804,
+      "type": "delta"
+    },
+    {
+      "text": " 搜索推荐 AI",
+      "_time": 91.87837719917297,
+      "type": "delta"
+    },
+    {
+      "text": " PM]。\n",
+      "_time": 91.91614866256714,
+      "type": "delta"
+    },
+    {
+      "text": "4.  **",
+      "_time": 92.02419185638428,
+      "type": "delta"
+    },
+    {
+      "text": "角色转换",
+      "_time": 92.02913498878479,
+      "type": "delta"
+    },
+    {
+      "text": "**：考虑先",
+      "_time": 92.13138675689697,
+      "type": "delta"
+    },
+    {
+      "text": "转型",
+      "_time": 92.13520550727844,
+      "type": "delta"
+    },
+    {
+      "text": "至产品经理岗位，",
+      "_time": 92.22233200073242,
+      "type": "delta"
+    },
+    {
+      "text": "再逐步",
+      "_time": 92.25127983093262,
+      "type": "delta"
+    },
+    {
+      "text": "向 AI 产品经理",
+      "_time": 92.32929992675781,
+      "type": "delta"
+    },
+    {
+      "text": "方向演进。",
+      "_time": 92.33513975143433,
+      "type": "delta"
+    },
+    {
+      "session_id": "eval_wang_10_1780479834470",
+      "intent": "match_assess",
+      "route_meta": {
+        "layer": "llm",
+        "intent": "match_assess",
+        "confidence": 0.75,
+        "demands": [
+          {
+            "intent": "match_assess",
+            "entities": {
+              "company": "美团",
+              "attributes": [
+                "匹配度"
+              ],
+              "jd_source": "kb"
+            }
+          }
+        ],
+        "plan_tasks": 3
+      },
+      "agent_mode": "llm",
+      "is_clarification": false,
+      "agent": {
+        "rewritten_query": "美团搜索推荐AI PM我匹配吗",
+        "tools": [
+          {
+            "tool": "kb_retrieve",
+            "status": "✅",
+            "params": {
+              "query": "美团搜索推荐AI PM",
+              "company": "美团",
+              "top_k": 5
+            },
+            "result_preview": "{'chunks': [{'chunk_id': 'ac997d3f-9206-4414-9fac-16deb62ff88b_chunk_7', 'content': '【美团 · 搜索推荐AI PM 关键词】\\n搜索推荐, AI, Agent, Prompt, RAG, 多模态, 产品经理', 'metadata': {'company': '美团', 'index': 7, 'jd_id': "
+          },
+          {
+            "tool": "match_analyze",
+            "status": "✅",
+            "params": {
+              "resume_text": "姓名：王设计师\n电话：139-XXXX-5678 | 邮箱：wangdesign@email.com | 现居：上海\n作品集：wangdesign.portfolio.com\nUI/UX设计师 | 4年互联网设计经验 | 品牌视觉背景\n\n教育背景\n2015.09 - 2019.06  XX美术学院  视觉传达设计（本科）\n主修课程：品牌设计、信息可视化、交互设计基础、版式设计、用户研究\n在校荣誉：全国大学生广告艺术大赛省级一等奖\n\n职业背景\n2019.07 - 2021.06  XX传媒公司  品牌视觉设计师（2年）\n负责快消、教育行业品牌全案设计，积累扎实的视觉体系搭建与商业审美能力\n\n2021.07 - 至今  XX互联网科技公司（C轮 / 在线教育）  UI设计师（4年）\n从品牌设计跨领域转型至互联网UI/UX，快速补齐交互逻辑与产品思维，主导多条业务线界面设计\n\n专业技能\n精通Figma组件化设计、Auto Layout及变量系统，能搭建可复用的设计规范与UI Kit\n擅长界面动效设计，熟练使用Principle、After Effects制作高保真交互Demo，提升评审效率\n具备品牌全案设计能力，熟悉Logo、VI、运营视觉体系搭建，能统筹产品视觉一致性\n了解前端基础（HTML/CSS），能与开发高效沟通，熟悉切图标注、SVG输出及设计走查流程\n掌握用户研究方法：竞品分析、用户访谈、可用性测试，能基于数据反馈迭代设计方案\n\n工作经历\n在线教育直播课堂改版（2023.06 - 2024.03）\n作为UI主设，主导直播客户端从1.0到2.0的视觉重构，DAU 50W+，完课率提升12%\n建立Figma组件库（300+组件），统一5条业务线设计语言，设计交付效率提升30%\n针对低龄学段用户设计游戏化互动界面（连麦、答题红包），通过动效引导降低操作流失率\n\n制定《移动端设计规范V2.0》，涵盖色彩、字体、间距、无障碍对比度标准（WCAG 2.1 AA级）\n\n品牌跨界联名活动视觉（2022.09 - 2022.12）\n结合前品牌设计经验，主导与知名IP联名运营活动的主视觉及H5传播设计\n设计开屏动画、分享海报模板，活动期间新增用户8W+，分享率提升25%\n输出动态品牌规范手册，帮助市场团队3天内完成20+城市线下物料延展\n\nB端教研后台系统优化（2022.02 - 2022.08）\n负责教师端后台的信息架构重组，将核心备课路径从5步缩减至3步\n设计数据可视化仪表盘，通过卡片层级与色彩语义降低教师数据读取成本\n\n自我评价\n拥有品牌视觉+互联网UI的跨领域背景，既能把控产品视觉调性，也具备用户体验与业务目标平衡能力。习惯用组件化思维提升协作效率，注重设计落地的还原度与数据反馈。",
+              "jd_text": [
+                {
+                  "chunk_id": "ac997d3f-9206-4414-9fac-16deb62ff88b_chunk_7",
+                  "content": "【美团 · 搜索推荐AI PM 关键词】\n搜索推荐, AI, Agent, Prompt, RAG, 多模态, 产品经理",
+                  "metadata": {
+                    "company": "美团",
+                    "index": 7,
+                    "jd_id": "ac997d3f-9206-4414-9fac-16deb62ff88b",
+                    "position": "搜索推荐AI PM",
+                    "section": "keywords",
+                    "strategy": "semantic"
+                  },
+                  "distance": 0.33080387115478516,
+                  "bm25_score": 19.582750345787538,
+                  "vec_norm": 0.9584475651386153,
+                  "bm25_norm": 0.9639995500426723,
+                  "hybrid_score": 0.9601131606098323,
+                  "rerank_score": 0.9996
+                },
+                {
+                  "chunk_id": "ac997d3f-9206-4414-9fac-16deb62ff88b_chunk_1",
+                  "content": "【美团 · 搜索推荐AI PM 岗位职责】\n1. 负责搜索推荐全链路的产品演进。2. 利用Agent工作流、意图编程与自动化评估技术，重构从海量供给到亿级用户决策的完整分发链路。3. 智能诊断与进化体系：主导生成式策略的Benchmark建设。4. 全链路用户体验重塑：深入洞察用户在搜索推荐场景中的行为路径。",
+                  "metadata": {
+                    "company": "美团",
+                    "index": 1,
+                    "jd_id": "ac997d3f-9206-4414-9fac-16deb62ff88b",
+                    "position": "搜索推荐AI PM",
+                    "section": "responsibilities",
+                    "strategy": "semantic"
+                  },
+                  "distance": 0.32996320724487305,
+                  "bm25_score": 14.621998352545779,
+                  "vec_norm": 0.9636905494315949,
+                  "bm25_norm": 0.626969374072545,
+                  "hybrid_score": 0.8626741968238799,
+                  "rerank_score": 0.9996
+                },
+                {
+                  "chunk_id": "ac997d3f-9206-4414-9fac-16deb62ff88b_chunk_4",
+                  "content": "【美团 · 搜索推荐AI PM 硬性要求】\n熟悉大模型基础原理，理解RAG、Prompt Engineering或Agent工作流",
+                  "metadata": {
+                    "company": "美团",
+                    "index": 4,
+                    "jd_id": "ac997d3f-9206-4414-9fac-16deb62ff88b",
+                    "position": "搜索推荐AI PM",
+                    "priority": "high",
+                    "section": "hard_requirements",
+                    "strategy": "semantic"
+                  },
+                  "distance": 0.3665100932121277,
+                  "bm25_score": 17.5544162604891,
+                  "vec_norm": 0.7357579037876696,
+                  "bm25_norm": 0.8261958874879527,
+                  "hybrid_score": 0.7628892988977545,
+                  "rerank_score": 0.9992
+                },
+                {
+                  "chunk_id": "ac997d3f-9206-4414-9fac-16deb62ff88b_chunk_6",
+                  "content": "【美团 · 搜索推荐AI PM 软性要求/加分项】\n有搜索/推荐/内容分发领域实战经验者优先",
+                  "metadata": {
+                    "company": "美团",
+                    "index": 6,
+                    "jd_id": "ac997d3f-9206-4414-9fac-16deb62ff88b",
+                    "position": "搜索推荐AI PM",
+                    "priority": "medium",
+                    "section": "soft_requirements",
+                    "strategy": "semantic"
+                  },
+                  "distance": 0.3928016126155853,
+                  "bm25_score": 19.770989696415462,
+                  "vec_norm": 0.5717850941480727,
+                  "bm25_norm": 0.9767884057550849,
+                  "hybrid_score": 0.6932860876301763,
+                  "rerank_score": 0.9992
+                },
+                {
+                  "chunk_id": "ac997d3f-9206-4414-9fac-16deb62ff88b_chunk_5",
+                  "content": "【美团 · 搜索推荐AI PM 硬性要求】\n具备AI原生交互天赋，能将复杂业务需求精准转化为Agent可执行的任务逻辑",
+                  "metadata": {
+                    "company": "美团",
+                    "index": 5,
+                    "jd_id": "ac997d3f-9206-4414-9fac-16deb62ff88b",
+                    "position": "搜索推荐AI PM",
+                    "priority": "high",
+                    "section": "hard_requirements",
+                    "strategy": "semantic"
+                  },
+                  "distance": 0.32414132356643677,
+                  "bm25_score": 17.237678063811604,
+                  "vec_norm": 1.0,
+                  "bm25_norm": 0.8046769060294747,
+                  "hybrid_score": 0.9414030718088424,
+                  "rerank_score": 0.9991
+                }
+              ],
+              "company": "美团",
+              "position": "搜索推荐AI PM",
+              "attributes": [
+                "匹配度"
+              ]
+            },
+            "result_preview": "{'score': 3, 'label': '不匹配', 'advantages': [], 'weaknesses': ['候选人完全缺乏搜索推荐AI产品经理所需的任何经验与技能：无搜索推荐领域实战经验，无大模型基础原理（RAG、Prompt Engineering、Agent工作流）相关知识，无产品经理岗位经历，无AI原生交互或Agent任务逻辑设计能力。候选人背景为UI/UX设计师，专注于界"
+          }
+        ],
+        "kb_chunks_count": 3,
+        "system_prompt_preview": "你是一位专业的求职顾问。请基于以下工具执行结果，给用户一个清晰、有帮助的回复。\n要求：\n1. 先直接回答用户的问题（是/否/有/没有），不要绕弯子，不要重复用户的原话\n2. 如果有匹配分析结果，给出具体的分数和建议\n3. 如果有检索结果，基于事实回答，不要编造\n4. 【强制】引用信息时必须标注来源。每个引用的事实后面都要跟 [来源：公司名-岗位名] 格式。   kb_retrieve 结果的 ch"
+      },
+      "memory": {
+        "working_turns": 1,
+        "compressed_blocks": 0,
+        "current_topic": "general",
+        "evidence_cache_size": 5
+      },
+      "reply": "不匹配。\n\n当前匹配分数为 **3 分**。\n\n### 岗位核心要求\n根据检索到的职位信息，该岗位的核心硬性要求与职责包括：\n1.  **职责范围**：负责搜索推荐全链路的产品演进，利用 Agent 工作流、意图编程与自动化评估技术重构分发链路 [来源：美团 - 搜索推荐 AI PM]。\n2.  **技术基础**：熟悉大模型基础原理，理解 RAG、Prompt Engineering 或 Agent 工作流 [来源：美团 - 搜索推荐 AI PM]。\n3.  **能力素质**：具备 AI 原生交互天赋，能将复杂业务需求精准转化为 Agent 可执行的任务逻辑 [来源：美团 - 搜索推荐 AI PM]。\n4.  **经验偏好**：有搜索/推荐/内容分发领域实战经验者优先 [来源：美团 - 搜索推荐 AI PM]。\n\n### 主要差距分析\n匹配分析显示，您目前的背景与该岗位核心职责存在显著差异：\n*   **职能背景不符**：您目前的背景为 UI/UX 设计师，专注于界面视觉设计与交互体验，而该岗位核心职责是搜索推荐全链路演进、Agent 工作流构建及 Benchmark 建设 [来源：美团 - 搜索推荐 AI PM]。\n*   **技能缺失**：缺乏搜索推荐领域实战经验，无大模型基础原理（RAG、Prompt Engineering、Agent 工作流）相关知识，无产品经理岗位经历 [来源：美团 - 搜索推荐 AI PM]。\n*   **核心能力缺口**：暂无 AI 原生交互或 Agent 任务逻辑设计能力，难以将复杂业务需求转化为 Agent 可执行的任务逻辑 [来源：美团 - 搜索推荐 AI PM]。\n\n### 提升建议\n若您希望未来尝试此类岗位，建议从以下方向进行准备：\n1.  **技术知识补充**：系统学习大模型基础原理，重点掌握 RAG、Prompt Engineering 及 Agent 工作流相关知识 [来源：美团 - 搜索推荐 AI PM]。\n2.  **领域经验积累**：争取参与搜索、推荐或内容分发领域的项目实战，积累相关业务经验 [来源：美团 - 搜索推荐 AI PM]。\n3.  **思维能力转型**：培养 AI 原生交互天赋，练习将复杂业务需求转化为 Agent 可执行任务逻辑的能力 [来源：美团 - 搜索推荐 AI PM]。\n4.  **角色转换**：考虑先转型至产品经理岗位，再逐步向 AI 产品经理方向演进。",
+      "usage": {
+        "prompt_tokens": 9301,
+        "completion_tokens": 5656,
+        "total_tokens": 14957
+      },
+      "_time": 92.50036025047302,
+      "type": "done"
+    }
+  ],
+  "timestamp": "2026-06-03T17:43:54.470882",
+  "prompt_tokens": 9301,
+  "completion_tokens": 5656,
+  "total_tokens": 14957,
+  "tool_execution_success_rate": 1.0,
+  "tool_correct_rate": 1.0
+}

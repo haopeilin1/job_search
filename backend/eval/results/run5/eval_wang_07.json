@@ -1,0 +1,2035 @@
+{
+  "case_id": "eval_wang_07",
+  "message": "上面那个岗需要Figma吗",
+  "gold_intents": [
+    "verify"
+  ],
+  "expected_tools": [
+    "qa_synthesize"
+  ],
+  "scenario": "多轮_属性查询_上下文引用",
+  "eval_context": {
+    "gold_intents": [
+      "verify"
+    ],
+    "gold_slots": {
+      "attributes": [
+        "技能"
+      ]
+    },
+    "relevance_score": 0,
+    "expected_tools": [
+      "qa_synthesize"
+    ],
+    "scenario": "多轮_属性查询_上下文引用",
+    "notes": "引用上一轮岗位，应复用kb_retrieve证据",
+    "follow_up_type": "expand"
+  },
+  "resume_id": "6c55e5ca-64a6-4ea8-9344-1d7b729f789a",
+  "status": "success",
+  "error": null,
+  "ttfb": 0.005,
+  "total_latency": 93.68,
+  "event_count": 66,
+  "pred_intent": "general_chat",
+  "pred_intents": [
+    "general_chat"
+  ],
+  "pred_tools": [
+    {
+      "tool": "kb_retrieve",
+      "status": "✅",
+      "params": {
+        "query": "小米 AI 培训方向产品实习生需要 Figma",
+        "company": "小米",
+        "position": "AI培训方向产品实习生",
+        "top_k": 5
+      },
+      "result_preview": "{'chunks': [{'chunk_id': 'bbbe5988-01f4-447f-a9e2-6715c006d33c_chunk_7', 'content': '【小米 · AI培训方向产品实习生 软性要求/加分项】\\n有互联网产品实习经验者优先', 'metadata': {'company': '小米', 'index': 7, 'jd_id': 'bbbe5988-01f4-447f"
+    }
+  ],
+  "tools_called": [
+    "kb_retrieve"
+  ],
+  "kb_chunks": [
+    {
+      "chunk_id": "bbbe5988-01f4-447f-a9e2-6715c006d33c_chunk_7",
+      "content": "【小米 · AI培训方向产品实习生 软性要求/加分项】\n有互联网产品实习经验者优先",
+      "metadata": {
+        "company": "小米",
+        "index": 7,
+        "jd_id": "bbbe5988-01f4-447f-a9e2-6715c006d33c",
+        "position": "AI培训方向产品实习生",
+        "priority": "medium",
+        "section": "soft_requirements",
+        "strategy": "semantic"
+      },
+      "distance": 0.8297469615936279,
+      "bm25_score": 18.71811747862835,
+      "vec_norm": 0.6383037340799178,
+      "bm25_norm": 1.0,
+      "hybrid_score": 0.7468126138559424,
+      "rerank_score": 0.6642
+    },
+    {
+      "chunk_id": "042ee372-b79c-4ee5-a8d6-0865b3e2dde6_chunk_7",
+      "content": "【小米 · AI培训方向产品实习生-2027届 软性要求/加分项】\n有互联网产品实习经验者优先",
+      "metadata": {
+        "company": "小米",
+        "index": 7,
+        "jd_id": "042ee372-b79c-4ee5-a8d6-0865b3e2dde6",
+        "position": "AI培训方向产品实习生-2027届",
+        "priority": "medium",
+        "section": "soft_requirements",
+        "strategy": "semantic"
+      },
+      "distance": 0.8520232331431252,
+      "bm25_score": 18.11511838709609,
+      "vec_norm": 0.3458698950766498,
+      "bm25_norm": 0.9619550908349772,
+      "hybrid_score": 0.530695453804148,
+      "rerank_score": 0.6324
+    },
+    {
+      "chunk_id": "1983c425-982c-4116-8883-04eb0109edb3_chunk_6",
+      "content": "【vivo · AI产品经理-27届暑期实习 软性要求/加分项】\n人工智能、互联网等相关行业实习或项目经验者优先考虑。",
+      "metadata": {
+        "company": "vivo",
+        "index": 6,
+        "jd_id": "1983c425-982c-4116-8883-04eb0109edb3",
+        "position": "AI产品经理-27届暑期实习",
+        "priority": "medium",
+        "section": "soft_requirements",
+        "strategy": "semantic"
+      },
+      "distance": 0.8285217881202698,
+      "bm25_score": 16.68203260553901,
+      "vec_norm": 0.6543873134824671,
+      "bm25_norm": 0.8715376770268043,
+      "hybrid_score": 0.7195324225457682,
+      "rerank_score": 0.0591
+    },
+    {
+      "chunk_id": "f0427344-e282-48e4-8074-bcc9419cf414_chunk_6",
+      "content": "【淘天集团 · AI大模型产品经理 软性要求/加分项】\n如不方便外部体验，也可附工作流、prompt说明、输入和输出的效果示意来展示",
+      "metadata": {
+        "company": "淘天集团",
+        "index": 6,
+        "jd_id": "f0427344-e282-48e4-8074-bcc9419cf414",
+        "position": "AI大模型产品经理",
+        "priority": "medium",
+        "section": "soft_requirements",
+        "strategy": "semantic"
+      },
+      "distance": 0.810418128028932,
+      "bm25_score": 0.0,
+      "vec_norm": 0.8920448051662421,
+      "bm25_norm": 0.0,
+      "hybrid_score": 0.6244313636163694,
+      "rerank_score": 0.026
+    },
+    {
+      "chunk_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a_chunk_1",
+      "content": "【某小公司 · Java后端 岗位职责】\n1. 负责传统企业内部管理系统的设计与开发。2. 数据库CRUD操作与报表开发。3. 系统日常维护与bug修复。",
+      "metadata": {
+        "company": "某小公司",
+        "index": 1,
+        "jd_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a",
+        "position": "Java后端",
+        "section": "responsibilities",
+        "strategy": "semantic"
+      },
+      "distance": 0.8021945953369141,
+      "bm25_score": 3.319411220584821,
+      "vec_norm": 1.0,
+      "bm25_norm": 0.02845229939323872,
+      "hybrid_score": 0.7085356898179715,
+      "rerank_score": 0.0165
+    }
+  ],
+  "tool_executions_full": [
+    {
+      "tool_name": "kb_retrieve",
+      "task_id": "T0",
+      "status": "success",
+      "output": {
+        "chunks": [
+          {
+            "chunk_id": "bbbe5988-01f4-447f-a9e2-6715c006d33c_chunk_7",
+            "content": "【小米 · AI培训方向产品实习生 软性要求/加分项】\n有互联网产品实习经验者优先",
+            "source": "小米-AI培训方向产品实习生",
+            "metadata": {
+              "company": "小米",
+              "position": "AI培训方向产品实习生"
+            }
+          },
+          {
+            "chunk_id": "042ee372-b79c-4ee5-a8d6-0865b3e2dde6_chunk_7",
+            "content": "【小米 · AI培训方向产品实习生-2027届 软性要求/加分项】\n有互联网产品实习经验者优先",
+            "source": "小米-AI培训方向产品实习生-2027届",
+            "metadata": {
+              "company": "小米",
+              "position": "AI培训方向产品实习生-2027届"
+            }
+          },
+          {
+            "chunk_id": "1983c425-982c-4116-8883-04eb0109edb3_chunk_6",
+            "content": "【vivo · AI产品经理-27届暑期实习 软性要求/加分项】\n人工智能、互联网等相关行业实习或项目经验者优先考虑。",
+            "source": "vivo-AI产品经理-27届暑期实习",
+            "metadata": {
+              "company": "vivo",
+              "position": "AI产品经理-27届暑期实习"
+            }
+          },
+          {
+            "chunk_id": "f0427344-e282-48e4-8074-bcc9419cf414_chunk_6",
+            "content": "【淘天集团 · AI大模型产品经理 软性要求/加分项】\n如不方便外部体验，也可附工作流、prompt说明、输入和输出的效果示意来展示",
+            "source": "淘天集团-AI大模型产品经理",
+            "metadata": {
+              "company": "淘天集团",
+              "position": "AI大模型产品经理"
+            }
+          },
+          {
+            "chunk_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a_chunk_1",
+            "content": "【某小公司 · Java后端 岗位职责】\n1. 负责传统企业内部管理系统的设计与开发。2. 数据库CRUD操作与报表开发。3. 系统日常维护与bug修复。",
+            "source": "某小公司-Java后端",
+            "metadata": {
+              "company": "某小公司",
+              "position": "Java后端"
+            }
+          }
+        ],
+        "meta": {
+          "source": "evidence_cache",
+          "rerank_score": 0.9985
+        },
+        "total": 5
+      }
+    },
+    {
+      "tool_name": null,
+      "task_id": "T1",
+      "status": "success",
+      "output": {
+        "aggregation": {
+          "retrieved_chunks": [
+            {
+              "chunk_id": "bbbe5988-01f4-447f-a9e2-6715c006d33c_chunk_7",
+              "content": "【小米 · AI培训方向产品实习生 软性要求/加分项】\n有互联网产品实习经验者优先",
+              "metadata": {
+                "company": "小米",
+                "index": 7,
+                "jd_id": "bbbe5988-01f4-447f-a9e2-6715c006d33c",
+                "position": "AI培训方向产品实习生",
+                "priority": "medium",
+                "section": "soft_requirements",
+                "strategy": "semantic"
+              },
+              "distance": 0.8297469615936279,
+              "bm25_score": 18.71811747862835,
+              "vec_norm": 0.6383037340799178,
+              "bm25_norm": 1.0,
+              "hybrid_score": 0.7468126138559424,
+              "rerank_score": 0.6642
+            },
+            {
+              "chunk_id": "042ee372-b79c-4ee5-a8d6-0865b3e2dde6_chunk_7",
+              "content": "【小米 · AI培训方向产品实习生-2027届 软性要求/加分项】\n有互联网产品实习经验者优先",
+              "metadata": {
+                "company": "小米",
+                "index": 7,
+                "jd_id": "042ee372-b79c-4ee5-a8d6-0865b3e2dde6",
+                "position": "AI培训方向产品实习生-2027届",
+                "priority": "medium",
+                "section": "soft_requirements",
+                "strategy": "semantic"
+              },
+              "distance": 0.8520232331431252,
+              "bm25_score": 18.11511838709609,
+              "vec_norm": 0.3458698950766498,
+              "bm25_norm": 0.9619550908349772,
+              "hybrid_score": 0.530695453804148,
+              "rerank_score": 0.6324
+            },
+            {
+              "chunk_id": "1983c425-982c-4116-8883-04eb0109edb3_chunk_6",
+              "content": "【vivo · AI产品经理-27届暑期实习 软性要求/加分项】\n人工智能、互联网等相关行业实习或项目经验者优先考虑。",
+              "metadata": {
+                "company": "vivo",
+                "index": 6,
+                "jd_id": "1983c425-982c-4116-8883-04eb0109edb3",
+                "position": "AI产品经理-27届暑期实习",
+                "priority": "medium",
+                "section": "soft_requirements",
+                "strategy": "semantic"
+              },
+              "distance": 0.8285217881202698,
+              "bm25_score": 16.68203260553901,
+              "vec_norm": 0.6543873134824671,
+              "bm25_norm": 0.8715376770268043,
+              "hybrid_score": 0.7195324225457682,
+              "rerank_score": 0.0591
+            },
+            {
+              "chunk_id": "f0427344-e282-48e4-8074-bcc9419cf414_chunk_6",
+              "content": "【淘天集团 · AI大模型产品经理 软性要求/加分项】\n如不方便外部体验，也可附工作流、prompt说明、输入和输出的效果示意来展示",
+              "metadata": {
+                "company": "淘天集团",
+                "index": 6,
+                "jd_id": "f0427344-e282-48e4-8074-bcc9419cf414",
+                "position": "AI大模型产品经理",
+                "priority": "medium",
+                "section": "soft_requirements",
+                "strategy": "semantic"
+              },
+              "distance": 0.810418128028932,
+              "bm25_score": 0.0,
+              "vec_norm": 0.8920448051662421,
+              "bm25_norm": 0.0,
+              "hybrid_score": 0.6244313636163694,
+              "rerank_score": 0.026
+            },
+            {
+              "chunk_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a_chunk_1",
+              "content": "【某小公司 · Java后端 岗位职责】\n1. 负责传统企业内部管理系统的设计与开发。2. 数据库CRUD操作与报表开发。3. 系统日常维护与bug修复。",
+              "metadata": {
+                "company": "某小公司",
+                "index": 1,
+                "jd_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a",
+                "position": "Java后端",
+                "section": "responsibilities",
+                "strategy": "semantic"
+              },
+              "distance": 0.8021945953369141,
+              "bm25_score": 3.319411220584821,
+              "vec_norm": 1.0,
+              "bm25_norm": 0.02845229939323872,
+              "hybrid_score": 0.7085356898179715,
+              "rerank_score": 0.0165
+            }
+          ],
+          "query_info": {
+            "company": "小米",
+            "position": "AI培训方向产品实习生",
+            "skill": "Figma"
+          }
+        }
+      }
+    }
+  ],
+  "debug_info": {
+    "task_graph": {
+      "tasks": {
+        "T0": {
+          "task_id": "T0",
+          "task_type": "tool_call",
+          "tool_name": "kb_retrieve",
+          "status": "success",
+          "parameters": {
+            "query": "{{global_slots.search_keywords}}",
+            "company": "{{global_slots.company}}",
+            "position": "{{global_slots.position}}",
+            "top_k": 5
+          },
+          "resolved_params": {
+            "query": "小米 AI 培训方向产品实习生需要 Figma",
+            "company": "小米",
+            "position": "AI培训方向产品实习生",
+            "top_k": 5
+          },
+          "result": {
+            "chunks": [
+              {
+                "chunk_id": "bbbe5988-01f4-447f-a9e2-6715c006d33c_chunk_7",
+                "content": "【小米 · AI培训方向产品实习生 软性要求/加分项】\n有互联网产品实习经验者优先",
+                "metadata": {
+                  "company": "小米",
+                  "index": 7,
+                  "jd_id": "bbbe5988-01f4-447f-a9e2-6715c006d33c",
+                  "position": "AI培训方向产品实习生",
+                  "priority": "medium",
+                  "section": "soft_requirements",
+                  "strategy": "semantic"
+                },
+                "distance": 0.8297469615936279,
+                "bm25_score": 18.71811747862835,
+                "vec_norm": 0.6383037340799178,
+                "bm25_norm": 1.0,
+                "hybrid_score": 0.7468126138559424,
+                "rerank_score": 0.6642
+              },
+              {
+                "chunk_id": "042ee372-b79c-4ee5-a8d6-0865b3e2dde6_chunk_7",
+                "content": "【小米 · AI培训方向产品实习生-2027届 软性要求/加分项】\n有互联网产品实习经验者优先",
+                "metadata": {
+                  "company": "小米",
+                  "index": 7,
+                  "jd_id": "042ee372-b79c-4ee5-a8d6-0865b3e2dde6",
+                  "position": "AI培训方向产品实习生-2027届",
+                  "priority": "medium",
+                  "section": "soft_requirements",
+                  "strategy": "semantic"
+                },
+                "distance": 0.8520232331431252,
+                "bm25_score": 18.11511838709609,
+                "vec_norm": 0.3458698950766498,
+                "bm25_norm": 0.9619550908349772,
+                "hybrid_score": 0.530695453804148,
+                "rerank_score": 0.6324
+              },
+              {
+                "chunk_id": "1983c425-982c-4116-8883-04eb0109edb3_chunk_6",
+                "content": "【vivo · AI产品经理-27届暑期实习 软性要求/加分项】\n人工智能、互联网等相关行业实习或项目经验者优先考虑。",
+                "metadata": {
+                  "company": "vivo",
+                  "index": 6,
+                  "jd_id": "1983c425-982c-4116-8883-04eb0109edb3",
+                  "position": "AI产品经理-27届暑期实习",
+                  "priority": "medium",
+                  "section": "soft_requirements",
+                  "strategy": "semantic"
+                },
+                "distance": 0.8285217881202698,
+                "bm25_score": 16.68203260553901,
+                "vec_norm": 0.6543873134824671,
+                "bm25_norm": 0.8715376770268043,
+                "hybrid_score": 0.7195324225457682,
+                "rerank_score": 0.0591
+              },
+              {
+                "chunk_id": "f0427344-e282-48e4-8074-bcc9419cf414_chunk_6",
+                "content": "【淘天集团 · AI大模型产品经理 软性要求/加分项】\n如不方便外部体验，也可附工作流、prompt说明、输入和输出的效果示意来展示",
+                "metadata": {
+                  "company": "淘天集团",
+                  "index": 6,
+                  "jd_id": "f0427344-e282-48e4-8074-bcc9419cf414",
+                  "position": "AI大模型产品经理",
+                  "priority": "medium",
+                  "section": "soft_requirements",
+                  "strategy": "semantic"
+                },
+                "distance": 0.810418128028932,
+                "bm25_score": 0.0,
+                "vec_norm": 0.8920448051662421,
+                "bm25_norm": 0.0,
+                "hybrid_score": 0.6244313636163694,
+                "rerank_score": 0.026
+              },
+              {
+                "chunk_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a_chunk_1",
+                "content": "【某小公司 · Java后端 岗位职责】\n1. 负责传统企业内部管理系统的设计与开发。2. 数据库CRUD操作与报表开发。3. 系统日常维护与bug修复。",
+                "metadata": {
+                  "company": "某小公司",
+                  "index": 1,
+                  "jd_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a",
+                  "position": "Java后端",
+                  "section": "responsibilities",
+                  "strategy": "semantic"
+                },
+                "distance": 0.8021945953369141,
+                "bm25_score": 3.319411220584821,
+                "vec_norm": 1.0,
+                "bm25_norm": 0.02845229939323872,
+                "hybrid_score": 0.7085356898179715,
+                "rerank_score": 0.0165
+              }
+            ],
+            "meta": {
+              "source": "evidence_cache",
+              "rerank_score": 0.9985
+            },
+            "total": 5
+          },
+          "observation": "复用证据缓存 5 条（rerank_score=0.9985）"
+        },
+        "T1": {
+          "task_id": "T1",
+          "task_type": "aggregate",
+          "tool_name": null,
+          "status": "success",
+          "parameters": {
+            "retrieved_chunks": "{{T0.output.chunks}}",
+            "query_info": {
+              "company": "小米",
+              "position": "AI培训方向产品实习生",
+              "skill": "Figma"
+            }
+          },
+          "resolved_params": {
+            "retrieved_chunks": [
+              {
+                "chunk_id": "bbbe5988-01f4-447f-a9e2-6715c006d33c_chunk_7",
+                "content": "【小米 · AI培训方向产品实习生 软性要求/加分项】\n有互联网产品实习经验者优先",
+                "metadata": {
+                  "company": "小米",
+                  "index": 7,
+                  "jd_id": "bbbe5988-01f4-447f-a9e2-6715c006d33c",
+                  "position": "AI培训方向产品实习生",
+                  "priority": "medium",
+                  "section": "soft_requirements",
+                  "strategy": "semantic"
+                },
+                "distance": 0.8297469615936279,
+                "bm25_score": 18.71811747862835,
+                "vec_norm": 0.6383037340799178,
+                "bm25_norm": 1.0,
+                "hybrid_score": 0.7468126138559424,
+                "rerank_score": 0.6642
+              },
+              {
+                "chunk_id": "042ee372-b79c-4ee5-a8d6-0865b3e2dde6_chunk_7",
+                "content": "【小米 · AI培训方向产品实习生-2027届 软性要求/加分项】\n有互联网产品实习经验者优先",
+                "metadata": {
+                  "company": "小米",
+                  "index": 7,
+                  "jd_id": "042ee372-b79c-4ee5-a8d6-0865b3e2dde6",
+                  "position": "AI培训方向产品实习生-2027届",
+                  "priority": "medium",
+                  "section": "soft_requirements",
+                  "strategy": "semantic"
+                },
+                "distance": 0.8520232331431252,
+                "bm25_score": 18.11511838709609,
+                "vec_norm": 0.3458698950766498,
+                "bm25_norm": 0.9619550908349772,
+                "hybrid_score": 0.530695453804148,
+                "rerank_score": 0.6324
+              },
+              {
+                "chunk_id": "1983c425-982c-4116-8883-04eb0109edb3_chunk_6",
+                "content": "【vivo · AI产品经理-27届暑期实习 软性要求/加分项】\n人工智能、互联网等相关行业实习或项目经验者优先考虑。",
+                "metadata": {
+                  "company": "vivo",
+                  "index": 6,
+                  "jd_id": "1983c425-982c-4116-8883-04eb0109edb3",
+                  "position": "AI产品经理-27届暑期实习",
+                  "priority": "medium",
+                  "section": "soft_requirements",
+                  "strategy": "semantic"
+                },
+                "distance": 0.8285217881202698,
+                "bm25_score": 16.68203260553901,
+                "vec_norm": 0.6543873134824671,
+                "bm25_norm": 0.8715376770268043,
+                "hybrid_score": 0.7195324225457682,
+                "rerank_score": 0.0591
+              },
+              {
+                "chunk_id": "f0427344-e282-48e4-8074-bcc9419cf414_chunk_6",
+                "content": "【淘天集团 · AI大模型产品经理 软性要求/加分项】\n如不方便外部体验，也可附工作流、prompt说明、输入和输出的效果示意来展示",
+                "metadata": {
+                  "company": "淘天集团",
+                  "index": 6,
+                  "jd_id": "f0427344-e282-48e4-8074-bcc9419cf414",
+                  "position": "AI大模型产品经理",
+                  "priority": "medium",
+                  "section": "soft_requirements",
+                  "strategy": "semantic"
+                },
+                "distance": 0.810418128028932,
+                "bm25_score": 0.0,
+                "vec_norm": 0.8920448051662421,
+                "bm25_norm": 0.0,
+                "hybrid_score": 0.6244313636163694,
+                "rerank_score": 0.026
+              },
+              {
+                "chunk_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a_chunk_1",
+                "content": "【某小公司 · Java后端 岗位职责】\n1. 负责传统企业内部管理系统的设计与开发。2. 数据库CRUD操作与报表开发。3. 系统日常维护与bug修复。",
+                "metadata": {
+                  "company": "某小公司",
+                  "index": 1,
+                  "jd_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a",
+                  "position": "Java后端",
+                  "section": "responsibilities",
+                  "strategy": "semantic"
+                },
+                "distance": 0.8021945953369141,
+                "bm25_score": 3.319411220584821,
+                "vec_norm": 1.0,
+                "bm25_norm": 0.02845229939323872,
+                "hybrid_score": 0.7085356898179715,
+                "rerank_score": 0.0165
+              }
+            ],
+            "query_info": {
+              "company": "小米",
+              "position": "AI培训方向产品实习生",
+              "skill": "Figma"
+            }
+          },
+          "result": {
+            "aggregation": {
+              "retrieved_chunks": [
+                {
+                  "chunk_id": "bbbe5988-01f4-447f-a9e2-6715c006d33c_chunk_7",
+                  "content": "【小米 · AI培训方向产品实习生 软性要求/加分项】\n有互联网产品实习经验者优先",
+                  "metadata": {
+                    "company": "小米",
+                    "index": 7,
+                    "jd_id": "bbbe5988-01f4-447f-a9e2-6715c006d33c",
+                    "position": "AI培训方向产品实习生",
+                    "priority": "medium",
+                    "section": "soft_requirements",
+                    "strategy": "semantic"
+                  },
+                  "distance": 0.8297469615936279,
+                  "bm25_score": 18.71811747862835,
+                  "vec_norm": 0.6383037340799178,
+                  "bm25_norm": 1.0,
+                  "hybrid_score": 0.7468126138559424,
+                  "rerank_score": 0.6642
+                },
+                {
+                  "chunk_id": "042ee372-b79c-4ee5-a8d6-0865b3e2dde6_chunk_7",
+                  "content": "【小米 · AI培训方向产品实习生-2027届 软性要求/加分项】\n有互联网产品实习经验者优先",
+                  "metadata": {
+                    "company": "小米",
+                    "index": 7,
+                    "jd_id": "042ee372-b79c-4ee5-a8d6-0865b3e2dde6",
+                    "position": "AI培训方向产品实习生-2027届",
+                    "priority": "medium",
+                    "section": "soft_requirements",
+                    "strategy": "semantic"
+                  },
+                  "distance": 0.8520232331431252,
+                  "bm25_score": 18.11511838709609,
+                  "vec_norm": 0.3458698950766498,
+                  "bm25_norm": 0.9619550908349772,
+                  "hybrid_score": 0.530695453804148,
+                  "rerank_score": 0.6324
+                },
+                {
+                  "chunk_id": "1983c425-982c-4116-8883-04eb0109edb3_chunk_6",
+                  "content": "【vivo · AI产品经理-27届暑期实习 软性要求/加分项】\n人工智能、互联网等相关行业实习或项目经验者优先考虑。",
+                  "metadata": {
+                    "company": "vivo",
+                    "index": 6,
+                    "jd_id": "1983c425-982c-4116-8883-04eb0109edb3",
+                    "position": "AI产品经理-27届暑期实习",
+                    "priority": "medium",
+                    "section": "soft_requirements",
+                    "strategy": "semantic"
+                  },
+                  "distance": 0.8285217881202698,
+                  "bm25_score": 16.68203260553901,
+                  "vec_norm": 0.6543873134824671,
+                  "bm25_norm": 0.8715376770268043,
+                  "hybrid_score": 0.7195324225457682,
+                  "rerank_score": 0.0591
+                },
+                {
+                  "chunk_id": "f0427344-e282-48e4-8074-bcc9419cf414_chunk_6",
+                  "content": "【淘天集团 · AI大模型产品经理 软性要求/加分项】\n如不方便外部体验，也可附工作流、prompt说明、输入和输出的效果示意来展示",
+                  "metadata": {
+                    "company": "淘天集团",
+                    "index": 6,
+                    "jd_id": "f0427344-e282-48e4-8074-bcc9419cf414",
+                    "position": "AI大模型产品经理",
+                    "priority": "medium",
+                    "section": "soft_requirements",
+                    "strategy": "semantic"
+                  },
+                  "distance": 0.810418128028932,
+                  "bm25_score": 0.0,
+                  "vec_norm": 0.8920448051662421,
+                  "bm25_norm": 0.0,
+                  "hybrid_score": 0.6244313636163694,
+                  "rerank_score": 0.026
+                },
+                {
+                  "chunk_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a_chunk_1",
+                  "content": "【某小公司 · Java后端 岗位职责】\n1. 负责传统企业内部管理系统的设计与开发。2. 数据库CRUD操作与报表开发。3. 系统日常维护与bug修复。",
+                  "metadata": {
+                    "company": "某小公司",
+                    "index": 1,
+                    "jd_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a",
+                    "position": "Java后端",
+                    "section": "responsibilities",
+                    "strategy": "semantic"
+                  },
+                  "distance": 0.8021945953369141,
+                  "bm25_score": 3.319411220584821,
+                  "vec_norm": 1.0,
+                  "bm25_norm": 0.02845229939323872,
+                  "hybrid_score": 0.7085356898179715,
+                  "rerank_score": 0.0165
+                }
+              ],
+              "query_info": {
+                "company": "小米",
+                "position": "AI培训方向产品实习生",
+                "skill": "Figma"
+              }
+            }
+          },
+          "observation": "聚合完成"
+        }
+      },
+      "global_status": "success",
+      "replan_reason": "",
+      "replan_count": 0
+    },
+    "intent": {
+      "demands": [
+        {
+          "intent": "general_chat",
+          "entities": {
+            "company": "小米",
+            "position": "AI 培训方向产品实习生",
+            "attributes": [
+              "技能要求",
+              "Figma"
+            ],
+            "qa_type": "requirements",
+            "search_keywords": "小米 AI 培训方向产品实习生 Figma 技能要求",
+            "resume_available": true
+          },
+          "confidence": 0.92
+        }
+      ],
+      "needs_clarification": false,
+      "clarification_question": ""
+    },
+    "rewrite": {
+      "rewritten_query": "小米 AI 培训方向产品实习生需要 Figma 吗",
+      "search_keywords": "小米 AI 培训方向产品实习生需要 Figma",
+      "is_follow_up": false,
+      "follow_up_type": "none",
+      "resolved_references": {
+        "上面那个岗": "小米 AI 培训方向产品实习生"
+      }
+    },
+    "evidence_cache": [
+      {
+        "chunk_id": "bbbe5988-01f4-447f-a9e2-6715c006d33c_chunk_7",
+        "content": "【小米 · AI培训方向产品实习生 软性要求/加分项】\n有互联网产品实习经验者优先",
+        "metadata": {
+          "company": "小米",
+          "index": 7,
+          "jd_id": "bbbe5988-01f4-447f-a9e2-6715c006d33c",
+          "position": "AI培训方向产品实习生",
+          "priority": "medium",
+          "section": "soft_requirements",
+          "strategy": "semantic"
+        },
+        "distance": 0.8297469615936279,
+        "bm25_score": 18.71811747862835,
+        "vec_norm": 0.6383037340799178,
+        "bm25_norm": 1.0,
+        "hybrid_score": 0.7468126138559424,
+        "rerank_score": 0.6642
+      },
+      {
+        "chunk_id": "042ee372-b79c-4ee5-a8d6-0865b3e2dde6_chunk_7",
+        "content": "【小米 · AI培训方向产品实习生-2027届 软性要求/加分项】\n有互联网产品实习经验者优先",
+        "metadata": {
+          "company": "小米",
+          "index": 7,
+          "jd_id": "042ee372-b79c-4ee5-a8d6-0865b3e2dde6",
+          "position": "AI培训方向产品实习生-2027届",
+          "priority": "medium",
+          "section": "soft_requirements",
+          "strategy": "semantic"
+        },
+        "distance": 0.8520232331431252,
+        "bm25_score": 18.11511838709609,
+        "vec_norm": 0.3458698950766498,
+        "bm25_norm": 0.9619550908349772,
+        "hybrid_score": 0.530695453804148,
+        "rerank_score": 0.6324
+      },
+      {
+        "chunk_id": "1983c425-982c-4116-8883-04eb0109edb3_chunk_6",
+        "content": "【vivo · AI产品经理-27届暑期实习 软性要求/加分项】\n人工智能、互联网等相关行业实习或项目经验者优先考虑。",
+        "metadata": {
+          "company": "vivo",
+          "index": 6,
+          "jd_id": "1983c425-982c-4116-8883-04eb0109edb3",
+          "position": "AI产品经理-27届暑期实习",
+          "priority": "medium",
+          "section": "soft_requirements",
+          "strategy": "semantic"
+        },
+        "distance": 0.8285217881202698,
+        "bm25_score": 16.68203260553901,
+        "vec_norm": 0.6543873134824671,
+        "bm25_norm": 0.8715376770268043,
+        "hybrid_score": 0.7195324225457682,
+        "rerank_score": 0.0591
+      },
+      {
+        "chunk_id": "f0427344-e282-48e4-8074-bcc9419cf414_chunk_6",
+        "content": "【淘天集团 · AI大模型产品经理 软性要求/加分项】\n如不方便外部体验，也可附工作流、prompt说明、输入和输出的效果示意来展示",
+        "metadata": {
+          "company": "淘天集团",
+          "index": 6,
+          "jd_id": "f0427344-e282-48e4-8074-bcc9419cf414",
+          "position": "AI大模型产品经理",
+          "priority": "medium",
+          "section": "soft_requirements",
+          "strategy": "semantic"
+        },
+        "distance": 0.810418128028932,
+        "bm25_score": 0.0,
+        "vec_norm": 0.8920448051662421,
+        "bm25_norm": 0.0,
+        "hybrid_score": 0.6244313636163694,
+        "rerank_score": 0.026
+      },
+      {
+        "chunk_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a_chunk_1",
+        "content": "【某小公司 · Java后端 岗位职责】\n1. 负责传统企业内部管理系统的设计与开发。2. 数据库CRUD操作与报表开发。3. 系统日常维护与bug修复。",
+        "metadata": {
+          "company": "某小公司",
+          "index": 1,
+          "jd_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a",
+          "position": "Java后端",
+          "section": "responsibilities",
+          "strategy": "semantic"
+        },
+        "distance": 0.8021945953369141,
+        "bm25_score": 3.319411220584821,
+        "vec_norm": 1.0,
+        "bm25_norm": 0.02845229939323872,
+        "hybrid_score": 0.7085356898179715,
+        "rerank_score": 0.0165
+      }
+    ],
+    "evidence_cache_query": "小米 AI 培训方向产品实习生需要 Figma 吗",
+    "tool_outputs": [
+      {
+        "task_id": "T0",
+        "tool": "kb_retrieve",
+        "description": "检索小米AI培训方向产品实习生JD中关于Figma技能要求的信息",
+        "result": {
+          "chunks": [
+            {
+              "chunk_id": "bbbe5988-01f4-447f-a9e2-6715c006d33c_chunk_7",
+              "content": "【小米 · AI培训方向产品实习生 软性要求/加分项】\n有互联网产品实习经验者优先",
+              "source": "小米-AI培训方向产品实习生",
+              "metadata": {
+                "company": "小米",
+                "position": "AI培训方向产品实习生"
+              }
+            },
+            {
+              "chunk_id": "042ee372-b79c-4ee5-a8d6-0865b3e2dde6_chunk_7",
+              "content": "【小米 · AI培训方向产品实习生-2027届 软性要求/加分项】\n有互联网产品实习经验者优先",
+              "source": "小米-AI培训方向产品实习生-2027届",
+              "metadata": {
+                "company": "小米",
+                "position": "AI培训方向产品实习生-2027届"
+              }
+            },
+            {
+              "chunk_id": "1983c425-982c-4116-8883-04eb0109edb3_chunk_6",
+              "content": "【vivo · AI产品经理-27届暑期实习 软性要求/加分项】\n人工智能、互联网等相关行业实习或项目经验者优先考虑。",
+              "source": "vivo-AI产品经理-27届暑期实习",
+              "metadata": {
+                "company": "vivo",
+                "position": "AI产品经理-27届暑期实习"
+              }
+            },
+            {
+              "chunk_id": "f0427344-e282-48e4-8074-bcc9419cf414_chunk_6",
+              "content": "【淘天集团 · AI大模型产品经理 软性要求/加分项】\n如不方便外部体验，也可附工作流、prompt说明、输入和输出的效果示意来展示",
+              "source": "淘天集团-AI大模型产品经理",
+              "metadata": {
+                "company": "淘天集团",
+                "position": "AI大模型产品经理"
+              }
+            },
+            {
+              "chunk_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a_chunk_1",
+              "content": "【某小公司 · Java后端 岗位职责】\n1. 负责传统企业内部管理系统的设计与开发。2. 数据库CRUD操作与报表开发。3. 系统日常维护与bug修复。",
+              "source": "某小公司-Java后端",
+              "metadata": {
+                "company": "某小公司",
+                "position": "Java后端"
+              }
+            }
+          ],
+          "meta": {
+            "source": "evidence_cache",
+            "rerank_score": 0.9985
+          },
+          "total": 5
+        }
+      },
+      {
+        "task_id": "T1",
+        "tool": null,
+        "description": "聚合检索结果，准备生成回复",
+        "result": {
+          "aggregation": {
+            "retrieved_chunks": [
+              {
+                "chunk_id": "bbbe5988-01f4-447f-a9e2-6715c006d33c_chunk_7",
+                "content": "【小米 · AI培训方向产品实习生 软性要求/加分项】\n有互联网产品实习经验者优先",
+                "metadata": {
+                  "company": "小米",
+                  "index": 7,
+                  "jd_id": "bbbe5988-01f4-447f-a9e2-6715c006d33c",
+                  "position": "AI培训方向产品实习生",
+                  "priority": "medium",
+                  "section": "soft_requirements",
+                  "strategy": "semantic"
+                },
+                "distance": 0.8297469615936279,
+                "bm25_score": 18.71811747862835,
+                "vec_norm": 0.6383037340799178,
+                "bm25_norm": 1.0,
+                "hybrid_score": 0.7468126138559424,
+                "rerank_score": 0.6642
+              },
+              {
+                "chunk_id": "042ee372-b79c-4ee5-a8d6-0865b3e2dde6_chunk_7",
+                "content": "【小米 · AI培训方向产品实习生-2027届 软性要求/加分项】\n有互联网产品实习经验者优先",
+                "metadata": {
+                  "company": "小米",
+                  "index": 7,
+                  "jd_id": "042ee372-b79c-4ee5-a8d6-0865b3e2dde6",
+                  "position": "AI培训方向产品实习生-2027届",
+                  "priority": "medium",
+                  "section": "soft_requirements",
+                  "strategy": "semantic"
+                },
+                "distance": 0.8520232331431252,
+                "bm25_score": 18.11511838709609,
+                "vec_norm": 0.3458698950766498,
+                "bm25_norm": 0.9619550908349772,
+                "hybrid_score": 0.530695453804148,
+                "rerank_score": 0.6324
+              },
+              {
+                "chunk_id": "1983c425-982c-4116-8883-04eb0109edb3_chunk_6",
+                "content": "【vivo · AI产品经理-27届暑期实习 软性要求/加分项】\n人工智能、互联网等相关行业实习或项目经验者优先考虑。",
+                "metadata": {
+                  "company": "vivo",
+                  "index": 6,
+                  "jd_id": "1983c425-982c-4116-8883-04eb0109edb3",
+                  "position": "AI产品经理-27届暑期实习",
+                  "priority": "medium",
+                  "section": "soft_requirements",
+                  "strategy": "semantic"
+                },
+                "distance": 0.8285217881202698,
+                "bm25_score": 16.68203260553901,
+                "vec_norm": 0.6543873134824671,
+                "bm25_norm": 0.8715376770268043,
+                "hybrid_score": 0.7195324225457682,
+                "rerank_score": 0.0591
+              },
+              {
+                "chunk_id": "f0427344-e282-48e4-8074-bcc9419cf414_chunk_6",
+                "content": "【淘天集团 · AI大模型产品经理 软性要求/加分项】\n如不方便外部体验，也可附工作流、prompt说明、输入和输出的效果示意来展示",
+                "metadata": {
+                  "company": "淘天集团",
+                  "index": 6,
+                  "jd_id": "f0427344-e282-48e4-8074-bcc9419cf414",
+                  "position": "AI大模型产品经理",
+                  "priority": "medium",
+                  "section": "soft_requirements",
+                  "strategy": "semantic"
+                },
+                "distance": 0.810418128028932,
+                "bm25_score": 0.0,
+                "vec_norm": 0.8920448051662421,
+                "bm25_norm": 0.0,
+                "hybrid_score": 0.6244313636163694,
+                "rerank_score": 0.026
+              },
+              {
+                "chunk_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a_chunk_1",
+                "content": "【某小公司 · Java后端 岗位职责】\n1. 负责传统企业内部管理系统的设计与开发。2. 数据库CRUD操作与报表开发。3. 系统日常维护与bug修复。",
+                "metadata": {
+                  "company": "某小公司",
+                  "index": 1,
+                  "jd_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a",
+                  "position": "Java后端",
+                  "section": "responsibilities",
+                  "strategy": "semantic"
+                },
+                "distance": 0.8021945953369141,
+                "bm25_score": 3.319411220584821,
+                "vec_norm": 1.0,
+                "bm25_norm": 0.02845229939323872,
+                "hybrid_score": 0.7085356898179715,
+                "rerank_score": 0.0165
+              }
+            ],
+            "query_info": {
+              "company": "小米",
+              "position": "AI培训方向产品实习生",
+              "skill": "Figma"
+            }
+          }
+        }
+      }
+    ],
+    "final_aggregation_prompt": {
+      "system_prompt": "你是一位专业的求职顾问。请基于以下工具执行结果，给用户一个清晰、有帮助的回复。\n要求：\n1. 先直接回答用户的问题（是/否/有/没有），不要绕弯子，不要重复用户的原话\n2. 如果有匹配分析结果，给出具体的分数和建议\n3. 如果有检索结果，基于事实回答，不要编造\n4. 【强制】引用信息时必须标注来源。每个引用的事实后面都要跟 [来源：公司名-岗位名] 格式。   kb_retrieve 结果的 chunks 中带有 'source' 字段（如'字节跳动-AI产品经理'），请直接使用。   external_search 结果带有 'source_name' 字段，也请直接使用。\n5. 当本地知识库与外部搜索结果冲突时，请并列呈现两种说法并标注各自来源，不要替用户做判断\n6. 语气友好、专业、结构化",
+      "user_prompt": "【用户问题】\n小米 AI 培训方向产品实习生需要 Figma 吗\n\n【工具执行结果】\n[{\"task_id\": \"T0\", \"tool\": \"kb_retrieve\", \"description\": \"检索小米AI培训方向产品实习生JD中关于Figma技能要求的信息\", \"result\": {\"chunks\": [{\"chunk_id\": \"bbbe5988-01f4-447f-a9e2-6715c006d33c_chunk_7\", \"content\": \"【小米 · AI培训方向产品实习生 软性要求/加分项】\\n有互联网产品实习经验者优先\", \"source\": \"小米-AI培训方向产品实习生\", \"metadata\": {\"company\": \"小米\", \"position\": \"AI培训方向产品实习生\"}}, {\"chunk_id\": \"042ee372-b79c-4ee5-a8d6-0865b3e2dde6_chunk_7\", \"content\": \"【小米 · AI培训方向产品实习生-2027届 软性要求/加分项】\\n有互联网产品实习经验者优先\", \"source\": \"小米-AI培训方向产品实习生-2027届\", \"metadata\": {\"company\": \"小米\", \"position\": \"AI培训方向产品实习生-2027届\"}}, {\"chunk_id\": \"1983c425-982c-4116-8883-04eb0109edb3_chunk_6\", \"content\": \"【vivo · AI产品经理-27届暑期实习 软性要求/加分项】\\n人工智能、互联网等相关行业实习或项目经验者优先考虑。\", \"source\": \"vivo-AI产品经理-27届暑期实习\", \"metadata\": {\"company\": \"vivo\", \"position\": \"AI产品经理-27届暑期实习\"}}, {\"chunk_id\": \"f0427344-e282-48e4-8074-bcc9419cf414_chunk_6\", \"content\": \"【淘天集团 · AI大模型产品经理 软性要求/加分项】\\n如不方便外部体验，也可附工作流、prompt说明、输入和输出的效果示意来展示\", \"source\": \"淘天集团-AI大模型产品经理\", \"metadata\": {\"company\": \"淘天集团\", \"position\": \"AI大模型产品经理\"}}, {\"chunk_id\": \"45bd2600-af57-45fe-a96e-c6cae6838c7a_chunk_1\", \"content\": \"【某小公司 · Java后端 岗位职责】\\n1. 负责传统企业内部管理系统的设计与开发。2. 数据库CRUD操作与报表开发。3. 系统日常维护与bug修复。\", \"source\": \"某小公司-Java后端\", \"metadata\": {\"company\": \"某小公司\", \"position\": \"Java后端\"}}], \"meta\": {\"source\": \"evidence_cache\", \"rerank_score\": 0.9985}, \"total\": 5}}, {\"task_id\": \"T1\", \"tool\": null, \"description\": \"聚合检索结果，准备生成回复\", \"result\": {\"aggregation\": {\"retrieved_chunks\": [{\"chunk_id\": \"bbbe5988-01f4-447f-a9e2-6715c006d33c_chunk_7\", \"content\": \"【小米 · AI培训方向产品实习生 软性要求/加分项】\\n有互联网产品实习经验者优先\", \"metadata\": {\"company\": \"小米\", \"index\": 7, \"jd_id\": \"bbbe5988-01f4-447f-a9e2-6715c006d33c\", \"position\": \"AI培训方向产品实习生\", \"priority\": \"medium\", \"section\": \"soft_requirements\", \"strategy\": \"semantic\"}, \"distance\": 0.8297469615936279, \"bm25_score\": 18.71811747862835, \"vec_norm\": 0.6383037340799178, \"bm25_norm\": 1.0, \"hybrid_score\": 0.7468126138559424, \"rerank_score\": 0.6642}, {\"chunk_id\": \"042ee372-b79c-4ee5-a8d6-0865b3e2dde6_chunk_7\", \"content\": \"【小米 · AI培训方向产品实习生-2027届 软性要求/加分项】\\n有互联网产品实习经验者优先\", \"metadata\": {\"company\": \"小米\", \"index\": 7, \"jd_id\": \"042ee372-b79c-4ee5-a8d6-0865b3e2dde6\", \"position\": \"AI培训方向产品实习生-2027届\", \"priority\": \"medium\", \"section\": \"soft_requirements\", \"strategy\": \"semantic\"}, \"distance\": 0.8520232331431252, \"bm25_score\": 18.11511838709609, \"vec_norm\": 0.3458698950766498, \"bm25_norm\": 0.9619550908349772, \"hybrid_score\": 0.530695453804148, \"rerank_score\": 0.6324}, {\"chunk_id\": \"1983c425-982c-4116-8883-04eb0109edb3_chunk_6\", \"content\": \"【vivo · AI产品经理-27届暑期实习 软性要求/加分项】\\n人工智能、互联网等相关行业实习或项目经验者优先考虑。\", \"metadata\": {\"company\": \"vivo\", \"index\": 6, \"jd_id\": \"1983c425-982c-4116-8883-04eb0109edb3\", \"position\": \"AI产品经理-27届暑期实习\", \"priority\": \"medium\", \"section\": \"soft_requirements\", \"strategy\": \"semantic\"}, \"distance\": 0.8285217881202698, \"bm25_score\": 16.68203260553901, \"vec_norm\": 0.6543873134824671, \"bm25_norm\": 0.8715376770268043, \"hybrid_score\": 0.7195324225457682, \"rerank_score\": 0.0591}, {\"chunk_id\": \"f0427344-e282-48e4-\n\n请生成回复："
+    }
+  },
+  "reply": "基于现有检索结果：**没有**明确要求。\n\n在当前检索到的职位描述（JD）片段中，未提及 Figma 技能要求，主要强调的是实习经历。具体匹配信息如下：\n\n1.  **软性要求/加分项**：有互联网产品实习经验者优先 [来源：小米-AI 培训方向产品实习生]\n2.  **2027 届软性要求/加分项**：有互联网产品实习经验者优先 [来源：小米-AI 培训方向产品实习生 -2027 届]\n\n**求职建议：**\n1.  **优先满足明确条件**：建议重点准备互联网产品实习经历相关的证明材料，这是 JD 中明确提到的加分项 [来源：小米-AI 培训方向产品实习生]。\n2.  **技能准备策略**：虽然检索结果未强制要求 Figma，但作为产品实习生，若已掌握该工具可将其作为辅助技能展示，核心精力应放在突出实习经验和产品思维上。",
+  "reply_length": 366,
+  "intent_match": false,
+  "tool_match_rate": 0.0,
+  "has_reply": true,
+  "events": [
+    {
+      "step": "intent",
+      "message": "正在识别您的意图...",
+      "_time": 29.957136631011963,
+      "type": "status"
+    },
+    {
+      "step": "plan",
+      "message": "正在规划任务...",
+      "_time": 29.9571795463562,
+      "type": "status"
+    },
+    {
+      "step": "execute",
+      "message": "正在执行分析...",
+      "_time": 36.15766358375549,
+      "type": "status"
+    },
+    {
+      "step": "aggregate",
+      "message": "正在生成回复...",
+      "_time": 36.190171241760254,
+      "type": "status"
+    },
+    {
+      "text": "基于现有",
+      "_time": 90.72366547584534,
+      "type": "delta"
+    },
+    {
+      "text": "检索结果：**没有",
+      "_time": 90.80559754371643,
+      "type": "delta"
+    },
+    {
+      "text": "**",
+      "_time": 90.80824995040894,
+      "type": "delta"
+    },
+    {
+      "text": "明确要求。\n\n在当前",
+      "_time": 90.94062376022339,
+      "type": "delta"
+    },
+    {
+      "text": "检索到的职位描述",
+      "_time": 90.98062896728516,
+      "type": "delta"
+    },
+    {
+      "text": "（JD）片段",
+      "_time": 91.02275371551514,
+      "type": "delta"
+    },
+    {
+      "text": "中，未",
+      "_time": 91.02530312538147,
+      "type": "delta"
+    },
+    {
+      "text": "提及 Figma ",
+      "_time": 91.11268663406372,
+      "type": "delta"
+    },
+    {
+      "text": "技能要求",
+      "_time": 91.1164026260376,
+      "type": "delta"
+    },
+    {
+      "text": "，主要强调的是实习",
+      "_time": 91.22454476356506,
+      "type": "delta"
+    },
+    {
+      "text": "经历",
+      "_time": 91.22948336601257,
+      "type": "delta"
+    },
+    {
+      "text": "。具体匹配信息",
+      "_time": 91.27861547470093,
+      "type": "delta"
+    },
+    {
+      "text": "如下：",
+      "_time": 91.28345012664795,
+      "type": "delta"
+    },
+    {
+      "text": "\n\n1. ",
+      "_time": 91.36257815361023,
+      "type": "delta"
+    },
+    {
+      "text": " **软性要求",
+      "_time": 91.36635327339172,
+      "type": "delta"
+    },
+    {
+      "text": "/加分项**",
+      "_time": 91.48953223228455,
+      "type": "delta"
+    },
+    {
+      "text": "：有互联网产品",
+      "_time": 91.49345755577087,
+      "type": "delta"
+    },
+    {
+      "text": "实习经验者优先 [来源",
+      "_time": 91.54242396354675,
+      "type": "delta"
+    },
+    {
+      "text": "：小米-AI",
+      "_time": 91.54631972312927,
+      "type": "delta"
+    },
+    {
+      "text": " 培训方向产品",
+      "_time": 91.6615297794342,
+      "type": "delta"
+    },
+    {
+      "text": "实习生]\n2",
+      "_time": 91.66440176963806,
+      "type": "delta"
+    },
+    {
+      "text": ".  **2",
+      "_time": 91.7184636592865,
+      "type": "delta"
+    },
+    {
+      "text": "027 ",
+      "_time": 91.72132086753845,
+      "type": "delta"
+    },
+    {
+      "text": "届软性要求",
+      "_time": 91.80857014656067,
+      "type": "delta"
+    },
+    {
+      "text": "/加分项**",
+      "_time": 91.88778972625732,
+      "type": "delta"
+    },
+    {
+      "text": "：有互联网产品",
+      "_time": 91.89126229286194,
+      "type": "delta"
+    },
+    {
+      "text": "实习经验者优先 [来源",
+      "_time": 91.89522194862366,
+      "type": "delta"
+    },
+    {
+      "text": "：小米-AI",
+      "_time": 91.97564244270325,
+      "type": "delta"
+    },
+    {
+      "text": " 培训方向产品",
+      "_time": 92.01240396499634,
+      "type": "delta"
+    },
+    {
+      "text": "实习生 -20",
+      "_time": 92.06141066551208,
+      "type": "delta"
+    },
+    {
+      "text": "27 届",
+      "_time": 92.06535840034485,
+      "type": "delta"
+    },
+    {
+      "text": "]\n\n**求职",
+      "_time": 92.18971228599548,
+      "type": "delta"
+    },
+    {
+      "text": "建议：**\n1",
+      "_time": 92.19434261322021,
+      "type": "delta"
+    },
+    {
+      "text": ".  **优先",
+      "_time": 92.30663228034973,
+      "type": "delta"
+    },
+    {
+      "text": "满足",
+      "_time": 92.31039237976074,
+      "type": "delta"
+    },
+    {
+      "text": "明确条件**：",
+      "_time": 92.40770363807678,
+      "type": "delta"
+    },
+    {
+      "text": "建议",
+      "_time": 92.40931534767151,
+      "type": "delta"
+    },
+    {
+      "text": "重点准备互联网产品",
+      "_time": 92.49466347694397,
+      "type": "delta"
+    },
+    {
+      "text": "实习经历",
+      "_time": 92.4963219165802,
+      "type": "delta"
+    },
+    {
+      "text": "相关的证明材料，这是",
+      "_time": 92.6104383468628,
+      "type": "delta"
+    },
+    {
+      "text": " JD 中明确",
+      "_time": 92.6153621673584,
+      "type": "delta"
+    },
+    {
+      "text": "提到的加分项 [",
+      "_time": 92.6734368801117,
+      "type": "delta"
+    },
+    {
+      "text": "来源：小米-A",
+      "_time": 92.70439553260803,
+      "type": "delta"
+    },
+    {
+      "text": "I 培训方向",
+      "_time": 92.75945281982422,
+      "type": "delta"
+    },
+    {
+      "text": "产品实习生]。",
+      "_time": 92.76331043243408,
+      "type": "delta"
+    },
+    {
+      "text": "\n2. ",
+      "_time": 92.84647679328918,
+      "type": "delta"
+    },
+    {
+      "text": " **技能",
+      "_time": 92.85137009620667,
+      "type": "delta"
+    },
+    {
+      "text": "准备策略**：",
+      "_time": 92.96240186691284,
+      "type": "delta"
+    },
+    {
+      "text": "虽然检索",
+      "_time": 92.96710920333862,
+      "type": "delta"
+    },
+    {
+      "text": "结果未强制要求",
+      "_time": 93.01742219924927,
+      "type": "delta"
+    },
+    {
+      "text": " Figma，",
+      "_time": 93.02015852928162,
+      "type": "delta"
+    },
+    {
+      "text": "但作为产品实习生",
+      "_time": 93.10669207572937,
+      "type": "delta"
+    },
+    {
+      "text": "，若",
+      "_time": 93.1124153137207,
+      "type": "delta"
+    },
+    {
+      "text": "已掌握该工具",
+      "_time": 93.2277307510376,
+      "type": "delta"
+    },
+    {
+      "text": "可",
+      "_time": 93.23040723800659,
+      "type": "delta"
+    },
+    {
+      "text": "将其作为辅助技能",
+      "_time": 93.31868195533752,
+      "type": "delta"
+    },
+    {
+      "text": "展示，核心",
+      "_time": 93.32337594032288,
+      "type": "delta"
+    },
+    {
+      "text": "精力应放在突出",
+      "_time": 93.40359807014465,
+      "type": "delta"
+    },
+    {
+      "text": "实习",
+      "_time": 93.40831851959229,
+      "type": "delta"
+    },
+    {
+      "text": "经验和产品思维上",
+      "_time": 93.61247730255127,
+      "type": "delta"
+    },
+    {
+      "text": "。",
+      "_time": 93.61523675918579,
+      "type": "delta"
+    },
+    {
+      "session_id": "batch_wang_m1_1780564164494",
+      "intent": "general_chat",
+      "route_meta": {
+        "layer": "llm",
+        "intent": "general_chat",
+        "confidence": 0.92,
+        "demands": [
+          {
+            "intent": "general_chat",
+            "entities": {
+              "company": "小米",
+              "position": "AI 培训方向产品实习生",
+              "attributes": [
+                "技能要求",
+                "Figma"
+              ],
+              "qa_type": "requirements",
+              "search_keywords": "小米 AI 培训方向产品实习生 Figma 技能要求",
+              "resume_available": true
+            }
+          }
+        ],
+        "plan_tasks": 2
+      },
+      "agent_mode": "llm",
+      "is_clarification": false,
+      "agent": {
+        "rewritten_query": "小米 AI 培训方向产品实习生需要 Figma 吗",
+        "tools": [
+          {
+            "tool": "kb_retrieve",
+            "status": "✅",
+            "params": {
+              "query": "小米 AI 培训方向产品实习生需要 Figma",
+              "company": "小米",
+              "position": "AI培训方向产品实习生",
+              "top_k": 5
+            },
+            "result_preview": "{'chunks': [{'chunk_id': 'bbbe5988-01f4-447f-a9e2-6715c006d33c_chunk_7', 'content': '【小米 · AI培训方向产品实习生 软性要求/加分项】\\n有互联网产品实习经验者优先', 'metadata': {'company': '小米', 'index': 7, 'jd_id': 'bbbe5988-01f4-447f"
+          }
+        ],
+        "kb_chunks_count": 2,
+        "system_prompt_preview": "你是一位专业的求职顾问。请基于以下工具执行结果，给用户一个清晰、有帮助的回复。\n要求：\n1. 先直接回答用户的问题（是/否/有/没有），不要绕弯子，不要重复用户的原话\n2. 如果有匹配分析结果，给出具体的分数和建议\n3. 如果有检索结果，基于事实回答，不要编造\n4. 【强制】引用信息时必须标注来源。每个引用的事实后面都要跟 [来源：公司名-岗位名] 格式。   kb_retrieve 结果的 ch"
+      },
+      "memory": {
+        "working_turns": 2,
+        "compressed_blocks": 0,
+        "current_topic": "general",
+        "evidence_cache_size": 5
+      },
+      "reply": "基于现有检索结果：**没有**明确要求。\n\n在当前检索到的职位描述（JD）片段中，未提及 Figma 技能要求，主要强调的是实习经历。具体匹配信息如下：\n\n1.  **软性要求/加分项**：有互联网产品实习经验者优先 [来源：小米-AI 培训方向产品实习生]\n2.  **2027 届软性要求/加分项**：有互联网产品实习经验者优先 [来源：小米-AI 培训方向产品实习生 -2027 届]\n\n**求职建议：**\n1.  **优先满足明确条件**：建议重点准备互联网产品实习经历相关的证明材料，这是 JD 中明确提到的加分项 [来源：小米-AI 培训方向产品实习生]。\n2.  **技能准备策略**：虽然检索结果未强制要求 Figma，但作为产品实习生，若已掌握该工具可将其作为辅助技能展示，核心精力应放在突出实习经验和产品思维上。",
+      "debug_info": {
+        "task_graph": {
+          "tasks": {
+            "T0": {
+              "task_id": "T0",
+              "task_type": "tool_call",
+              "tool_name": "kb_retrieve",
+              "status": "success",
+              "parameters": {
+                "query": "{{global_slots.search_keywords}}",
+                "company": "{{global_slots.company}}",
+                "position": "{{global_slots.position}}",
+                "top_k": 5
+              },
+              "resolved_params": {
+                "query": "小米 AI 培训方向产品实习生需要 Figma",
+                "company": "小米",
+                "position": "AI培训方向产品实习生",
+                "top_k": 5
+              },
+              "result": {
+                "chunks": [
+                  {
+                    "chunk_id": "bbbe5988-01f4-447f-a9e2-6715c006d33c_chunk_7",
+                    "content": "【小米 · AI培训方向产品实习生 软性要求/加分项】\n有互联网产品实习经验者优先",
+                    "metadata": {
+                      "company": "小米",
+                      "index": 7,
+                      "jd_id": "bbbe5988-01f4-447f-a9e2-6715c006d33c",
+                      "position": "AI培训方向产品实习生",
+                      "priority": "medium",
+                      "section": "soft_requirements",
+                      "strategy": "semantic"
+                    },
+                    "distance": 0.8297469615936279,
+                    "bm25_score": 18.71811747862835,
+                    "vec_norm": 0.6383037340799178,
+                    "bm25_norm": 1.0,
+                    "hybrid_score": 0.7468126138559424,
+                    "rerank_score": 0.6642
+                  },
+                  {
+                    "chunk_id": "042ee372-b79c-4ee5-a8d6-0865b3e2dde6_chunk_7",
+                    "content": "【小米 · AI培训方向产品实习生-2027届 软性要求/加分项】\n有互联网产品实习经验者优先",
+                    "metadata": {
+                      "company": "小米",
+                      "index": 7,
+                      "jd_id": "042ee372-b79c-4ee5-a8d6-0865b3e2dde6",
+                      "position": "AI培训方向产品实习生-2027届",
+                      "priority": "medium",
+                      "section": "soft_requirements",
+                      "strategy": "semantic"
+                    },
+                    "distance": 0.8520232331431252,
+                    "bm25_score": 18.11511838709609,
+                    "vec_norm": 0.3458698950766498,
+                    "bm25_norm": 0.9619550908349772,
+                    "hybrid_score": 0.530695453804148,
+                    "rerank_score": 0.6324
+                  },
+                  {
+                    "chunk_id": "1983c425-982c-4116-8883-04eb0109edb3_chunk_6",
+                    "content": "【vivo · AI产品经理-27届暑期实习 软性要求/加分项】\n人工智能、互联网等相关行业实习或项目经验者优先考虑。",
+                    "metadata": {
+                      "company": "vivo",
+                      "index": 6,
+                      "jd_id": "1983c425-982c-4116-8883-04eb0109edb3",
+                      "position": "AI产品经理-27届暑期实习",
+                      "priority": "medium",
+                      "section": "soft_requirements",
+                      "strategy": "semantic"
+                    },
+                    "distance": 0.8285217881202698,
+                    "bm25_score": 16.68203260553901,
+                    "vec_norm": 0.6543873134824671,
+                    "bm25_norm": 0.8715376770268043,
+                    "hybrid_score": 0.7195324225457682,
+                    "rerank_score": 0.0591
+                  },
+                  {
+                    "chunk_id": "f0427344-e282-48e4-8074-bcc9419cf414_chunk_6",
+                    "content": "【淘天集团 · AI大模型产品经理 软性要求/加分项】\n如不方便外部体验，也可附工作流、prompt说明、输入和输出的效果示意来展示",
+                    "metadata": {
+                      "company": "淘天集团",
+                      "index": 6,
+                      "jd_id": "f0427344-e282-48e4-8074-bcc9419cf414",
+                      "position": "AI大模型产品经理",
+                      "priority": "medium",
+                      "section": "soft_requirements",
+                      "strategy": "semantic"
+                    },
+                    "distance": 0.810418128028932,
+                    "bm25_score": 0.0,
+                    "vec_norm": 0.8920448051662421,
+                    "bm25_norm": 0.0,
+                    "hybrid_score": 0.6244313636163694,
+                    "rerank_score": 0.026
+                  },
+                  {
+                    "chunk_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a_chunk_1",
+                    "content": "【某小公司 · Java后端 岗位职责】\n1. 负责传统企业内部管理系统的设计与开发。2. 数据库CRUD操作与报表开发。3. 系统日常维护与bug修复。",
+                    "metadata": {
+                      "company": "某小公司",
+                      "index": 1,
+                      "jd_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a",
+                      "position": "Java后端",
+                      "section": "responsibilities",
+                      "strategy": "semantic"
+                    },
+                    "distance": 0.8021945953369141,
+                    "bm25_score": 3.319411220584821,
+                    "vec_norm": 1.0,
+                    "bm25_norm": 0.02845229939323872,
+                    "hybrid_score": 0.7085356898179715,
+                    "rerank_score": 0.0165
+                  }
+                ],
+                "meta": {
+                  "source": "evidence_cache",
+                  "rerank_score": 0.9985
+                },
+                "total": 5
+              },
+              "observation": "复用证据缓存 5 条（rerank_score=0.9985）"
+            },
+            "T1": {
+              "task_id": "T1",
+              "task_type": "aggregate",
+              "tool_name": null,
+              "status": "success",
+              "parameters": {
+                "retrieved_chunks": "{{T0.output.chunks}}",
+                "query_info": {
+                  "company": "小米",
+                  "position": "AI培训方向产品实习生",
+                  "skill": "Figma"
+                }
+              },
+              "resolved_params": {
+                "retrieved_chunks": [
+                  {
+                    "chunk_id": "bbbe5988-01f4-447f-a9e2-6715c006d33c_chunk_7",
+                    "content": "【小米 · AI培训方向产品实习生 软性要求/加分项】\n有互联网产品实习经验者优先",
+                    "metadata": {
+                      "company": "小米",
+                      "index": 7,
+                      "jd_id": "bbbe5988-01f4-447f-a9e2-6715c006d33c",
+                      "position": "AI培训方向产品实习生",
+                      "priority": "medium",
+                      "section": "soft_requirements",
+                      "strategy": "semantic"
+                    },
+                    "distance": 0.8297469615936279,
+                    "bm25_score": 18.71811747862835,
+                    "vec_norm": 0.6383037340799178,
+                    "bm25_norm": 1.0,
+                    "hybrid_score": 0.7468126138559424,
+                    "rerank_score": 0.6642
+                  },
+                  {
+                    "chunk_id": "042ee372-b79c-4ee5-a8d6-0865b3e2dde6_chunk_7",
+                    "content": "【小米 · AI培训方向产品实习生-2027届 软性要求/加分项】\n有互联网产品实习经验者优先",
+                    "metadata": {
+                      "company": "小米",
+                      "index": 7,
+                      "jd_id": "042ee372-b79c-4ee5-a8d6-0865b3e2dde6",
+                      "position": "AI培训方向产品实习生-2027届",
+                      "priority": "medium",
+                      "section": "soft_requirements",
+                      "strategy": "semantic"
+                    },
+                    "distance": 0.8520232331431252,
+                    "bm25_score": 18.11511838709609,
+                    "vec_norm": 0.3458698950766498,
+                    "bm25_norm": 0.9619550908349772,
+                    "hybrid_score": 0.530695453804148,
+                    "rerank_score": 0.6324
+                  },
+                  {
+                    "chunk_id": "1983c425-982c-4116-8883-04eb0109edb3_chunk_6",
+                    "content": "【vivo · AI产品经理-27届暑期实习 软性要求/加分项】\n人工智能、互联网等相关行业实习或项目经验者优先考虑。",
+                    "metadata": {
+                      "company": "vivo",
+                      "index": 6,
+                      "jd_id": "1983c425-982c-4116-8883-04eb0109edb3",
+                      "position": "AI产品经理-27届暑期实习",
+                      "priority": "medium",
+                      "section": "soft_requirements",
+                      "strategy": "semantic"
+                    },
+                    "distance": 0.8285217881202698,
+                    "bm25_score": 16.68203260553901,
+                    "vec_norm": 0.6543873134824671,
+                    "bm25_norm": 0.8715376770268043,
+                    "hybrid_score": 0.7195324225457682,
+                    "rerank_score": 0.0591
+                  },
+                  {
+                    "chunk_id": "f0427344-e282-48e4-8074-bcc9419cf414_chunk_6",
+                    "content": "【淘天集团 · AI大模型产品经理 软性要求/加分项】\n如不方便外部体验，也可附工作流、prompt说明、输入和输出的效果示意来展示",
+                    "metadata": {
+                      "company": "淘天集团",
+                      "index": 6,
+                      "jd_id": "f0427344-e282-48e4-8074-bcc9419cf414",
+                      "position": "AI大模型产品经理",
+                      "priority": "medium",
+                      "section": "soft_requirements",
+                      "strategy": "semantic"
+                    },
+                    "distance": 0.810418128028932,
+                    "bm25_score": 0.0,
+                    "vec_norm": 0.8920448051662421,
+                    "bm25_norm": 0.0,
+                    "hybrid_score": 0.6244313636163694,
+                    "rerank_score": 0.026
+                  },
+                  {
+                    "chunk_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a_chunk_1",
+                    "content": "【某小公司 · Java后端 岗位职责】\n1. 负责传统企业内部管理系统的设计与开发。2. 数据库CRUD操作与报表开发。3. 系统日常维护与bug修复。",
+                    "metadata": {
+                      "company": "某小公司",
+                      "index": 1,
+                      "jd_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a",
+                      "position": "Java后端",
+                      "section": "responsibilities",
+                      "strategy": "semantic"
+                    },
+                    "distance": 0.8021945953369141,
+                    "bm25_score": 3.319411220584821,
+                    "vec_norm": 1.0,
+                    "bm25_norm": 0.02845229939323872,
+                    "hybrid_score": 0.7085356898179715,
+                    "rerank_score": 0.0165
+                  }
+                ],
+                "query_info": {
+                  "company": "小米",
+                  "position": "AI培训方向产品实习生",
+                  "skill": "Figma"
+                }
+              },
+              "result": {
+                "aggregation": {
+                  "retrieved_chunks": [
+                    {
+                      "chunk_id": "bbbe5988-01f4-447f-a9e2-6715c006d33c_chunk_7",
+                      "content": "【小米 · AI培训方向产品实习生 软性要求/加分项】\n有互联网产品实习经验者优先",
+                      "metadata": {
+                        "company": "小米",
+                        "index": 7,
+                        "jd_id": "bbbe5988-01f4-447f-a9e2-6715c006d33c",
+                        "position": "AI培训方向产品实习生",
+                        "priority": "medium",
+                        "section": "soft_requirements",
+                        "strategy": "semantic"
+                      },
+                      "distance": 0.8297469615936279,
+                      "bm25_score": 18.71811747862835,
+                      "vec_norm": 0.6383037340799178,
+                      "bm25_norm": 1.0,
+                      "hybrid_score": 0.7468126138559424,
+                      "rerank_score": 0.6642
+                    },
+                    {
+                      "chunk_id": "042ee372-b79c-4ee5-a8d6-0865b3e2dde6_chunk_7",
+                      "content": "【小米 · AI培训方向产品实习生-2027届 软性要求/加分项】\n有互联网产品实习经验者优先",
+                      "metadata": {
+                        "company": "小米",
+                        "index": 7,
+                        "jd_id": "042ee372-b79c-4ee5-a8d6-0865b3e2dde6",
+                        "position": "AI培训方向产品实习生-2027届",
+                        "priority": "medium",
+                        "section": "soft_requirements",
+                        "strategy": "semantic"
+                      },
+                      "distance": 0.8520232331431252,
+                      "bm25_score": 18.11511838709609,
+                      "vec_norm": 0.3458698950766498,
+                      "bm25_norm": 0.9619550908349772,
+                      "hybrid_score": 0.530695453804148,
+                      "rerank_score": 0.6324
+                    },
+                    {
+                      "chunk_id": "1983c425-982c-4116-8883-04eb0109edb3_chunk_6",
+                      "content": "【vivo · AI产品经理-27届暑期实习 软性要求/加分项】\n人工智能、互联网等相关行业实习或项目经验者优先考虑。",
+                      "metadata": {
+                        "company": "vivo",
+                        "index": 6,
+                        "jd_id": "1983c425-982c-4116-8883-04eb0109edb3",
+                        "position": "AI产品经理-27届暑期实习",
+                        "priority": "medium",
+                        "section": "soft_requirements",
+                        "strategy": "semantic"
+                      },
+                      "distance": 0.8285217881202698,
+                      "bm25_score": 16.68203260553901,
+                      "vec_norm": 0.6543873134824671,
+                      "bm25_norm": 0.8715376770268043,
+                      "hybrid_score": 0.7195324225457682,
+                      "rerank_score": 0.0591
+                    },
+                    {
+                      "chunk_id": "f0427344-e282-48e4-8074-bcc9419cf414_chunk_6",
+                      "content": "【淘天集团 · AI大模型产品经理 软性要求/加分项】\n如不方便外部体验，也可附工作流、prompt说明、输入和输出的效果示意来展示",
+                      "metadata": {
+                        "company": "淘天集团",
+                        "index": 6,
+                        "jd_id": "f0427344-e282-48e4-8074-bcc9419cf414",
+                        "position": "AI大模型产品经理",
+                        "priority": "medium",
+                        "section": "soft_requirements",
+                        "strategy": "semantic"
+                      },
+                      "distance": 0.810418128028932,
+                      "bm25_score": 0.0,
+                      "vec_norm": 0.8920448051662421,
+                      "bm25_norm": 0.0,
+                      "hybrid_score": 0.6244313636163694,
+                      "rerank_score": 0.026
+                    },
+                    {
+                      "chunk_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a_chunk_1",
+                      "content": "【某小公司 · Java后端 岗位职责】\n1. 负责传统企业内部管理系统的设计与开发。2. 数据库CRUD操作与报表开发。3. 系统日常维护与bug修复。",
+                      "metadata": {
+                        "company": "某小公司",
+                        "index": 1,
+                        "jd_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a",
+                        "position": "Java后端",
+                        "section": "responsibilities",
+                        "strategy": "semantic"
+                      },
+                      "distance": 0.8021945953369141,
+                      "bm25_score": 3.319411220584821,
+                      "vec_norm": 1.0,
+                      "bm25_norm": 0.02845229939323872,
+                      "hybrid_score": 0.7085356898179715,
+                      "rerank_score": 0.0165
+                    }
+                  ],
+                  "query_info": {
+                    "company": "小米",
+                    "position": "AI培训方向产品实习生",
+                    "skill": "Figma"
+                  }
+                }
+              },
+              "observation": "聚合完成"
+            }
+          },
+          "global_status": "success",
+          "replan_reason": "",
+          "replan_count": 0
+        },
+        "intent": {
+          "demands": [
+            {
+              "intent": "general_chat",
+              "entities": {
+                "company": "小米",
+                "position": "AI 培训方向产品实习生",
+                "attributes": [
+                  "技能要求",
+                  "Figma"
+                ],
+                "qa_type": "requirements",
+                "search_keywords": "小米 AI 培训方向产品实习生 Figma 技能要求",
+                "resume_available": true
+              },
+              "confidence": 0.92
+            }
+          ],
+          "needs_clarification": false,
+          "clarification_question": ""
+        },
+        "rewrite": {
+          "rewritten_query": "小米 AI 培训方向产品实习生需要 Figma 吗",
+          "search_keywords": "小米 AI 培训方向产品实习生需要 Figma",
+          "is_follow_up": false,
+          "follow_up_type": "none",
+          "resolved_references": {
+            "上面那个岗": "小米 AI 培训方向产品实习生"
+          }
+        },
+        "evidence_cache": [
+          {
+            "chunk_id": "bbbe5988-01f4-447f-a9e2-6715c006d33c_chunk_7",
+            "content": "【小米 · AI培训方向产品实习生 软性要求/加分项】\n有互联网产品实习经验者优先",
+            "metadata": {
+              "company": "小米",
+              "index": 7,
+              "jd_id": "bbbe5988-01f4-447f-a9e2-6715c006d33c",
+              "position": "AI培训方向产品实习生",
+              "priority": "medium",
+              "section": "soft_requirements",
+              "strategy": "semantic"
+            },
+            "distance": 0.8297469615936279,
+            "bm25_score": 18.71811747862835,
+            "vec_norm": 0.6383037340799178,
+            "bm25_norm": 1.0,
+            "hybrid_score": 0.7468126138559424,
+            "rerank_score": 0.6642
+          },
+          {
+            "chunk_id": "042ee372-b79c-4ee5-a8d6-0865b3e2dde6_chunk_7",
+            "content": "【小米 · AI培训方向产品实习生-2027届 软性要求/加分项】\n有互联网产品实习经验者优先",
+            "metadata": {
+              "company": "小米",
+              "index": 7,
+              "jd_id": "042ee372-b79c-4ee5-a8d6-0865b3e2dde6",
+              "position": "AI培训方向产品实习生-2027届",
+              "priority": "medium",
+              "section": "soft_requirements",
+              "strategy": "semantic"
+            },
+            "distance": 0.8520232331431252,
+            "bm25_score": 18.11511838709609,
+            "vec_norm": 0.3458698950766498,
+            "bm25_norm": 0.9619550908349772,
+            "hybrid_score": 0.530695453804148,
+            "rerank_score": 0.6324
+          },
+          {
+            "chunk_id": "1983c425-982c-4116-8883-04eb0109edb3_chunk_6",
+            "content": "【vivo · AI产品经理-27届暑期实习 软性要求/加分项】\n人工智能、互联网等相关行业实习或项目经验者优先考虑。",
+            "metadata": {
+              "company": "vivo",
+              "index": 6,
+              "jd_id": "1983c425-982c-4116-8883-04eb0109edb3",
+              "position": "AI产品经理-27届暑期实习",
+              "priority": "medium",
+              "section": "soft_requirements",
+              "strategy": "semantic"
+            },
+            "distance": 0.8285217881202698,
+            "bm25_score": 16.68203260553901,
+            "vec_norm": 0.6543873134824671,
+            "bm25_norm": 0.8715376770268043,
+            "hybrid_score": 0.7195324225457682,
+            "rerank_score": 0.0591
+          },
+          {
+            "chunk_id": "f0427344-e282-48e4-8074-bcc9419cf414_chunk_6",
+            "content": "【淘天集团 · AI大模型产品经理 软性要求/加分项】\n如不方便外部体验，也可附工作流、prompt说明、输入和输出的效果示意来展示",
+            "metadata": {
+              "company": "淘天集团",
+              "index": 6,
+              "jd_id": "f0427344-e282-48e4-8074-bcc9419cf414",
+              "position": "AI大模型产品经理",
+              "priority": "medium",
+              "section": "soft_requirements",
+              "strategy": "semantic"
+            },
+            "distance": 0.810418128028932,
+            "bm25_score": 0.0,
+            "vec_norm": 0.8920448051662421,
+            "bm25_norm": 0.0,
+            "hybrid_score": 0.6244313636163694,
+            "rerank_score": 0.026
+          },
+          {
+            "chunk_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a_chunk_1",
+            "content": "【某小公司 · Java后端 岗位职责】\n1. 负责传统企业内部管理系统的设计与开发。2. 数据库CRUD操作与报表开发。3. 系统日常维护与bug修复。",
+            "metadata": {
+              "company": "某小公司",
+              "index": 1,
+              "jd_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a",
+              "position": "Java后端",
+              "section": "responsibilities",
+              "strategy": "semantic"
+            },
+            "distance": 0.8021945953369141,
+            "bm25_score": 3.319411220584821,
+            "vec_norm": 1.0,
+            "bm25_norm": 0.02845229939323872,
+            "hybrid_score": 0.7085356898179715,
+            "rerank_score": 0.0165
+          }
+        ],
+        "evidence_cache_query": "小米 AI 培训方向产品实习生需要 Figma 吗",
+        "tool_outputs": [
+          {
+            "task_id": "T0",
+            "tool": "kb_retrieve",
+            "description": "检索小米AI培训方向产品实习生JD中关于Figma技能要求的信息",
+            "result": {
+              "chunks": [
+                {
+                  "chunk_id": "bbbe5988-01f4-447f-a9e2-6715c006d33c_chunk_7",
+                  "content": "【小米 · AI培训方向产品实习生 软性要求/加分项】\n有互联网产品实习经验者优先",
+                  "source": "小米-AI培训方向产品实习生",
+                  "metadata": {
+                    "company": "小米",
+                    "position": "AI培训方向产品实习生"
+                  }
+                },
+                {
+                  "chunk_id": "042ee372-b79c-4ee5-a8d6-0865b3e2dde6_chunk_7",
+                  "content": "【小米 · AI培训方向产品实习生-2027届 软性要求/加分项】\n有互联网产品实习经验者优先",
+                  "source": "小米-AI培训方向产品实习生-2027届",
+                  "metadata": {
+                    "company": "小米",
+                    "position": "AI培训方向产品实习生-2027届"
+                  }
+                },
+                {
+                  "chunk_id": "1983c425-982c-4116-8883-04eb0109edb3_chunk_6",
+                  "content": "【vivo · AI产品经理-27届暑期实习 软性要求/加分项】\n人工智能、互联网等相关行业实习或项目经验者优先考虑。",
+                  "source": "vivo-AI产品经理-27届暑期实习",
+                  "metadata": {
+                    "company": "vivo",
+                    "position": "AI产品经理-27届暑期实习"
+                  }
+                },
+                {
+                  "chunk_id": "f0427344-e282-48e4-8074-bcc9419cf414_chunk_6",
+                  "content": "【淘天集团 · AI大模型产品经理 软性要求/加分项】\n如不方便外部体验，也可附工作流、prompt说明、输入和输出的效果示意来展示",
+                  "source": "淘天集团-AI大模型产品经理",
+                  "metadata": {
+                    "company": "淘天集团",
+                    "position": "AI大模型产品经理"
+                  }
+                },
+                {
+                  "chunk_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a_chunk_1",
+                  "content": "【某小公司 · Java后端 岗位职责】\n1. 负责传统企业内部管理系统的设计与开发。2. 数据库CRUD操作与报表开发。3. 系统日常维护与bug修复。",
+                  "source": "某小公司-Java后端",
+                  "metadata": {
+                    "company": "某小公司",
+                    "position": "Java后端"
+                  }
+                }
+              ],
+              "meta": {
+                "source": "evidence_cache",
+                "rerank_score": 0.9985
+              },
+              "total": 5
+            }
+          },
+          {
+            "task_id": "T1",
+            "tool": null,
+            "description": "聚合检索结果，准备生成回复",
+            "result": {
+              "aggregation": {
+                "retrieved_chunks": [
+                  {
+                    "chunk_id": "bbbe5988-01f4-447f-a9e2-6715c006d33c_chunk_7",
+                    "content": "【小米 · AI培训方向产品实习生 软性要求/加分项】\n有互联网产品实习经验者优先",
+                    "metadata": {
+                      "company": "小米",
+                      "index": 7,
+                      "jd_id": "bbbe5988-01f4-447f-a9e2-6715c006d33c",
+                      "position": "AI培训方向产品实习生",
+                      "priority": "medium",
+                      "section": "soft_requirements",
+                      "strategy": "semantic"
+                    },
+                    "distance": 0.8297469615936279,
+                    "bm25_score": 18.71811747862835,
+                    "vec_norm": 0.6383037340799178,
+                    "bm25_norm": 1.0,
+                    "hybrid_score": 0.7468126138559424,
+                    "rerank_score": 0.6642
+                  },
+                  {
+                    "chunk_id": "042ee372-b79c-4ee5-a8d6-0865b3e2dde6_chunk_7",
+                    "content": "【小米 · AI培训方向产品实习生-2027届 软性要求/加分项】\n有互联网产品实习经验者优先",
+                    "metadata": {
+                      "company": "小米",
+                      "index": 7,
+                      "jd_id": "042ee372-b79c-4ee5-a8d6-0865b3e2dde6",
+                      "position": "AI培训方向产品实习生-2027届",
+                      "priority": "medium",
+                      "section": "soft_requirements",
+                      "strategy": "semantic"
+                    },
+                    "distance": 0.8520232331431252,
+                    "bm25_score": 18.11511838709609,
+                    "vec_norm": 0.3458698950766498,
+                    "bm25_norm": 0.9619550908349772,
+                    "hybrid_score": 0.530695453804148,
+                    "rerank_score": 0.6324
+                  },
+                  {
+                    "chunk_id": "1983c425-982c-4116-8883-04eb0109edb3_chunk_6",
+                    "content": "【vivo · AI产品经理-27届暑期实习 软性要求/加分项】\n人工智能、互联网等相关行业实习或项目经验者优先考虑。",
+                    "metadata": {
+                      "company": "vivo",
+                      "index": 6,
+                      "jd_id": "1983c425-982c-4116-8883-04eb0109edb3",
+                      "position": "AI产品经理-27届暑期实习",
+                      "priority": "medium",
+                      "section": "soft_requirements",
+                      "strategy": "semantic"
+                    },
+                    "distance": 0.8285217881202698,
+                    "bm25_score": 16.68203260553901,
+                    "vec_norm": 0.6543873134824671,
+                    "bm25_norm": 0.8715376770268043,
+                    "hybrid_score": 0.7195324225457682,
+                    "rerank_score": 0.0591
+                  },
+                  {
+                    "chunk_id": "f0427344-e282-48e4-8074-bcc9419cf414_chunk_6",
+                    "content": "【淘天集团 · AI大模型产品经理 软性要求/加分项】\n如不方便外部体验，也可附工作流、prompt说明、输入和输出的效果示意来展示",
+                    "metadata": {
+                      "company": "淘天集团",
+                      "index": 6,
+                      "jd_id": "f0427344-e282-48e4-8074-bcc9419cf414",
+                      "position": "AI大模型产品经理",
+                      "priority": "medium",
+                      "section": "soft_requirements",
+                      "strategy": "semantic"
+                    },
+                    "distance": 0.810418128028932,
+                    "bm25_score": 0.0,
+                    "vec_norm": 0.8920448051662421,
+                    "bm25_norm": 0.0,
+                    "hybrid_score": 0.6244313636163694,
+                    "rerank_score": 0.026
+                  },
+                  {
+                    "chunk_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a_chunk_1",
+                    "content": "【某小公司 · Java后端 岗位职责】\n1. 负责传统企业内部管理系统的设计与开发。2. 数据库CRUD操作与报表开发。3. 系统日常维护与bug修复。",
+                    "metadata": {
+                      "company": "某小公司",
+                      "index": 1,
+                      "jd_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a",
+                      "position": "Java后端",
+                      "section": "responsibilities",
+                      "strategy": "semantic"
+                    },
+                    "distance": 0.8021945953369141,
+                    "bm25_score": 3.319411220584821,
+                    "vec_norm": 1.0,
+                    "bm25_norm": 0.02845229939323872,
+                    "hybrid_score": 0.7085356898179715,
+                    "rerank_score": 0.0165
+                  }
+                ],
+                "query_info": {
+                  "company": "小米",
+                  "position": "AI培训方向产品实习生",
+                  "skill": "Figma"
+                }
+              }
+            }
+          }
+        ],
+        "final_aggregation_prompt": {
+          "system_prompt": "你是一位专业的求职顾问。请基于以下工具执行结果，给用户一个清晰、有帮助的回复。\n要求：\n1. 先直接回答用户的问题（是/否/有/没有），不要绕弯子，不要重复用户的原话\n2. 如果有匹配分析结果，给出具体的分数和建议\n3. 如果有检索结果，基于事实回答，不要编造\n4. 【强制】引用信息时必须标注来源。每个引用的事实后面都要跟 [来源：公司名-岗位名] 格式。   kb_retrieve 结果的 chunks 中带有 'source' 字段（如'字节跳动-AI产品经理'），请直接使用。   external_search 结果带有 'source_name' 字段，也请直接使用。\n5. 当本地知识库与外部搜索结果冲突时，请并列呈现两种说法并标注各自来源，不要替用户做判断\n6. 语气友好、专业、结构化",
+          "user_prompt": "【用户问题】\n小米 AI 培训方向产品实习生需要 Figma 吗\n\n【工具执行结果】\n[{\"task_id\": \"T0\", \"tool\": \"kb_retrieve\", \"description\": \"检索小米AI培训方向产品实习生JD中关于Figma技能要求的信息\", \"result\": {\"chunks\": [{\"chunk_id\": \"bbbe5988-01f4-447f-a9e2-6715c006d33c_chunk_7\", \"content\": \"【小米 · AI培训方向产品实习生 软性要求/加分项】\\n有互联网产品实习经验者优先\", \"source\": \"小米-AI培训方向产品实习生\", \"metadata\": {\"company\": \"小米\", \"position\": \"AI培训方向产品实习生\"}}, {\"chunk_id\": \"042ee372-b79c-4ee5-a8d6-0865b3e2dde6_chunk_7\", \"content\": \"【小米 · AI培训方向产品实习生-2027届 软性要求/加分项】\\n有互联网产品实习经验者优先\", \"source\": \"小米-AI培训方向产品实习生-2027届\", \"metadata\": {\"company\": \"小米\", \"position\": \"AI培训方向产品实习生-2027届\"}}, {\"chunk_id\": \"1983c425-982c-4116-8883-04eb0109edb3_chunk_6\", \"content\": \"【vivo · AI产品经理-27届暑期实习 软性要求/加分项】\\n人工智能、互联网等相关行业实习或项目经验者优先考虑。\", \"source\": \"vivo-AI产品经理-27届暑期实习\", \"metadata\": {\"company\": \"vivo\", \"position\": \"AI产品经理-27届暑期实习\"}}, {\"chunk_id\": \"f0427344-e282-48e4-8074-bcc9419cf414_chunk_6\", \"content\": \"【淘天集团 · AI大模型产品经理 软性要求/加分项】\\n如不方便外部体验，也可附工作流、prompt说明、输入和输出的效果示意来展示\", \"source\": \"淘天集团-AI大模型产品经理\", \"metadata\": {\"company\": \"淘天集团\", \"position\": \"AI大模型产品经理\"}}, {\"chunk_id\": \"45bd2600-af57-45fe-a96e-c6cae6838c7a_chunk_1\", \"content\": \"【某小公司 · Java后端 岗位职责】\\n1. 负责传统企业内部管理系统的设计与开发。2. 数据库CRUD操作与报表开发。3. 系统日常维护与bug修复。\", \"source\": \"某小公司-Java后端\", \"metadata\": {\"company\": \"某小公司\", \"position\": \"Java后端\"}}], \"meta\": {\"source\": \"evidence_cache\", \"rerank_score\": 0.9985}, \"total\": 5}}, {\"task_id\": \"T1\", \"tool\": null, \"description\": \"聚合检索结果，准备生成回复\", \"result\": {\"aggregation\": {\"retrieved_chunks\": [{\"chunk_id\": \"bbbe5988-01f4-447f-a9e2-6715c006d33c_chunk_7\", \"content\": \"【小米 · AI培训方向产品实习生 软性要求/加分项】\\n有互联网产品实习经验者优先\", \"metadata\": {\"company\": \"小米\", \"index\": 7, \"jd_id\": \"bbbe5988-01f4-447f-a9e2-6715c006d33c\", \"position\": \"AI培训方向产品实习生\", \"priority\": \"medium\", \"section\": \"soft_requirements\", \"strategy\": \"semantic\"}, \"distance\": 0.8297469615936279, \"bm25_score\": 18.71811747862835, \"vec_norm\": 0.6383037340799178, \"bm25_norm\": 1.0, \"hybrid_score\": 0.7468126138559424, \"rerank_score\": 0.6642}, {\"chunk_id\": \"042ee372-b79c-4ee5-a8d6-0865b3e2dde6_chunk_7\", \"content\": \"【小米 · AI培训方向产品实习生-2027届 软性要求/加分项】\\n有互联网产品实习经验者优先\", \"metadata\": {\"company\": \"小米\", \"index\": 7, \"jd_id\": \"042ee372-b79c-4ee5-a8d6-0865b3e2dde6\", \"position\": \"AI培训方向产品实习生-2027届\", \"priority\": \"medium\", \"section\": \"soft_requirements\", \"strategy\": \"semantic\"}, \"distance\": 0.8520232331431252, \"bm25_score\": 18.11511838709609, \"vec_norm\": 0.3458698950766498, \"bm25_norm\": 0.9619550908349772, \"hybrid_score\": 0.530695453804148, \"rerank_score\": 0.6324}, {\"chunk_id\": \"1983c425-982c-4116-8883-04eb0109edb3_chunk_6\", \"content\": \"【vivo · AI产品经理-27届暑期实习 软性要求/加分项】\\n人工智能、互联网等相关行业实习或项目经验者优先考虑。\", \"metadata\": {\"company\": \"vivo\", \"index\": 6, \"jd_id\": \"1983c425-982c-4116-8883-04eb0109edb3\", \"position\": \"AI产品经理-27届暑期实习\", \"priority\": \"medium\", \"section\": \"soft_requirements\", \"strategy\": \"semantic\"}, \"distance\": 0.8285217881202698, \"bm25_score\": 16.68203260553901, \"vec_norm\": 0.6543873134824671, \"bm25_norm\": 0.8715376770268043, \"hybrid_score\": 0.7195324225457682, \"rerank_score\": 0.0591}, {\"chunk_id\": \"f0427344-e282-48e4-\n\n请生成回复："
+        }
+      },
+      "usage": {
+        "prompt_tokens": 13315,
+        "completion_tokens": 5394,
+        "total_tokens": 18709
+      },
+      "_time": 93.68064618110657,
+      "type": "done"
+    }
+  ],
+  "timestamp": "2026-06-04T17:10:39.970573",
+  "prompt_tokens": 13315,
+  "completion_tokens": 5394,
+  "total_tokens": 18709,
+  "tool_execution_success_rate": 1.0,
+  "tool_correct_rate": 0.0
+}

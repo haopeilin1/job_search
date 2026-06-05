@@ -1936,7 +1936,7 @@ async def _handle_llm_route_v2_stream(
             session.pending_clarification = None
 
     memory_state = _build_memory_state(session)
-    yield _sse("done", {
+    done_payload = {
         "session_id": session_id,
         "intent": intent_result.demands[0].intent_type if intent_result.demands else "chat",
         "route_meta": {
@@ -1956,7 +1956,71 @@ async def _handle_llm_route_v2_stream(
         },
         "memory": memory_state,
         "reply": reply.text,
-    })
+    }
+
+    # ════════════════════════════════════════
+    # 评测模式：附加完整 debug_info（供 Judge / 评测脚本使用）
+    # ════════════════════════════════════════
+    if request.eval_context:
+        # 收集完整的 kb_chunks（不截断、不精简）
+        full_kb_chunks = []
+        for task in graph.tasks.values():
+            if task.tool_name in ("kb_retrieve", "external_search") and task.status == "success" and task.result:
+                if isinstance(task.result, dict):
+                    full_kb_chunks.extend(task.result.get("chunks", []))
+
+        done_payload["debug_info"] = {
+            "task_graph": {
+                "tasks": {
+                    tid: {
+                        "task_id": task.task_id,
+                        "task_type": task.task_type,
+                        "tool_name": task.tool_name,
+                        "status": task.status,
+                        "parameters": task.parameters if hasattr(task, "parameters") else {},
+                        "resolved_params": task.resolved_params if hasattr(task, "resolved_params") else {},
+                        "result": task.result,
+                        "observation": task.observation,
+                    }
+                    for tid, task in graph.tasks.items()
+                },
+                "global_status": graph.global_status,
+                "replan_reason": graph.replan_reason,
+                "replan_count": getattr(graph, "replan_count", 0),
+            },
+            "intent": {
+                "demands": [
+                    {"intent": d.intent_type, "entities": d.entities, "confidence": getattr(d, "confidence", 0.0)}
+                    for d in intent_result.demands
+                ],
+                "needs_clarification": intent_result.needs_clarification,
+                "clarification_question": intent_result.clarification_question,
+            },
+            "rewrite": {
+                "rewritten_query": rewrite_result.rewritten_query,
+                "search_keywords": rewrite_result.search_keywords,
+                "is_follow_up": rewrite_result.is_follow_up,
+                "follow_up_type": rewrite_result.follow_up_type,
+                "resolved_references": rewrite_result.resolved_references,
+            },
+            "evidence_cache": full_kb_chunks,
+            "evidence_cache_query": session.evidence_cache_query,
+            "tool_outputs": [
+                {
+                    "task_id": o["task_id"],
+                    "tool": o["tool"],
+                    "description": o.get("description", ""),
+                    "result": o["result"],
+                }
+                for o in tool_outputs
+            ],
+            "final_aggregation_prompt": {
+                "system_prompt": system_prompt,
+                "user_prompt": user_prompt,
+            },
+        }
+
+    yield _sse("done", done_payload)
 
 
 @api_router.post("/chat/stream")

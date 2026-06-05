@@ -1,0 +1,566 @@
+{
+  "case_id": "eval_li_14",
+  "message": "分析这个Java岗",
+  "gold_intents": [
+    "clarification"
+  ],
+  "expected_tools": [],
+  "scenario": "边界_意图模糊需澄清",
+  "status": "success",
+  "error": null,
+  "ttfb": 0.016,
+  "total_latency": 84.6,
+  "event_count": 86,
+  "pred_intent": "attribute_verify",
+  "pred_tools": [
+    {
+      "tool": "kb_retrieve",
+      "status": "✅",
+      "params": {
+        "query": "{{search_keywords}}",
+        "top_k": 5,
+        "position": "Java"
+      },
+      "result_preview": "{'chunks': [], 'query': '{{search_keywords}}', 'filters': {'position': 'Java'}, 'strategy': 'hybrid(70%vec+30%bm25)+reranker', 'pool_k': 5, 'rerank_k': 10, 'pool_size': 0, 'vec_only': 0, 'bm25_only': "
+    },
+    {
+      "tool": "qa_synthesize",
+      "status": "✅",
+      "params": {
+        "question": "分析这个Java岗位，概括岗位要求、职责和综合情况",
+        "evidence_chunks": [],
+        "qa_type": "analysis"
+      },
+      "result_preview": "{'answer': '抱歉，知识库中没有找到相关信息。', 'citations': [], 'confidence': 'low', 'insufficient_note': '未检索到相关证据'}"
+    },
+    {
+      "tool": "external_search",
+      "status": "✅",
+      "params": {
+        "query": "{{search_keywords}}",
+        "count": 5
+      },
+      "result_preview": "{'chunks': [], 'query': '{{search_keywords}}', 'source': 'brave_search'}"
+    }
+  ],
+  "tools_called": [
+    "kb_retrieve",
+    "qa_synthesize",
+    "external_search"
+  ],
+  "reply": "没有检索到该岗位的具体信息。\n\n目前无法针对“这个”Java 岗位进行定制化分析，因为系统内部知识库与外部搜索均未找到相关的岗位描述（JD）内容。具体情况如下：\n\n1.  **内部知识库检索**：未匹配到任何 Java 岗位的详细记录 [来源：系统知识库 -Java 岗位检索]。\n2.  **外部搜索补充**：通过网络检索也未获取到该特定岗位的公开信息 [来源：brave_search- 外部搜索]。\n\n**建议与下一步行动：**\n\n*   **提供岗位描述**：请您直接粘贴该岗位的具体 JD（职位描述）文本，我可以为您进行详细的匹配度分析和面试建议。\n*   **通用 Java 岗位分析维度**：在缺乏具体 JD 的情况下，您可以参考以下通用维度自行评估：\n    *   **技术栈匹配**：关注是否要求 Spring Boot、Cloud、Microservices 等主流框架。\n    *   **业务场景**：确认是高并发、大数据处理还是企业级应用开发。\n    *   **职级要求**：对比 JD 中的年限要求与您的实际项目经验。\n\n如果您能补充具体的岗位信息，我将很乐意为您提供更精准的评分和建议。",
+  "reply_length": 512,
+  "intent_match": false,
+  "tool_match_rate": 1.0,
+  "has_reply": true,
+  "events": [
+    {
+      "step": "intent",
+      "message": "正在识别您的意图...",
+      "_time": 14.948673486709595,
+      "type": "status"
+    },
+    {
+      "step": "plan",
+      "message": "正在规划任务...",
+      "_time": 14.9487144947052,
+      "type": "status"
+    },
+    {
+      "step": "execute",
+      "message": "正在执行分析...",
+      "_time": 28.87023663520813,
+      "type": "status"
+    },
+    {
+      "step": "aggregate",
+      "message": "正在生成回复...",
+      "_time": 30.608489990234375,
+      "type": "status"
+    },
+    {
+      "text": "没有检索",
+      "_time": 79.13852882385254,
+      "type": "delta"
+    },
+    {
+      "text": "到该",
+      "_time": 79.14103388786316,
+      "type": "delta"
+    },
+    {
+      "text": "岗位的具体信息。",
+      "_time": 79.2573037147522,
+      "type": "delta"
+    },
+    {
+      "text": "\n\n目前无法针对",
+      "_time": 79.261159658432,
+      "type": "delta"
+    },
+    {
+      "text": "“这个”Java",
+      "_time": 79.41033625602722,
+      "type": "delta"
+    },
+    {
+      "text": " 岗位进行",
+      "_time": 79.41197156906128,
+      "type": "delta"
+    },
+    {
+      "text": "定制化分析，因为",
+      "_time": 79.48925971984863,
+      "type": "delta"
+    },
+    {
+      "text": "系统",
+      "_time": 79.49307870864868,
+      "type": "delta"
+    },
+    {
+      "text": "内部知识库与外部",
+      "_time": 79.6593747138977,
+      "type": "delta"
+    },
+    {
+      "text": "搜索均未",
+      "_time": 79.6618595123291,
+      "type": "delta"
+    },
+    {
+      "text": "找到相关的岗位描述",
+      "_time": 79.81935358047485,
+      "type": "delta"
+    },
+    {
+      "text": "（JD）内容",
+      "_time": 79.82217836380005,
+      "type": "delta"
+    },
+    {
+      "text": "。具体情况如下：",
+      "_time": 79.89917159080505,
+      "type": "delta"
+    },
+    {
+      "text": "\n\n1",
+      "_time": 79.90111637115479,
+      "type": "delta"
+    },
+    {
+      "text": ".  **内部",
+      "_time": 80.04743123054504,
+      "type": "delta"
+    },
+    {
+      "text": "知识库",
+      "_time": 80.0486707687378,
+      "type": "delta"
+    },
+    {
+      "text": "检索**：未",
+      "_time": 80.1272644996643,
+      "type": "delta"
+    },
+    {
+      "text": "匹配到任何",
+      "_time": 80.13095879554749,
+      "type": "delta"
+    },
+    {
+      "text": " Java 岗位的详细",
+      "_time": 80.23400115966797,
+      "type": "delta"
+    },
+    {
+      "text": "记录 [",
+      "_time": 80.23772406578064,
+      "type": "delta"
+    },
+    {
+      "text": "来源：系统知识库",
+      "_time": 80.47033548355103,
+      "type": "delta"
+    },
+    {
+      "text": " -Java",
+      "_time": 80.47084450721741,
+      "type": "delta"
+    },
+    {
+      "text": " 岗位检索]",
+      "_time": 80.52223777770996,
+      "type": "delta"
+    },
+    {
+      "text": "。\n",
+      "_time": 80.52601861953735,
+      "type": "delta"
+    },
+    {
+      "text": "2.  **",
+      "_time": 80.63814234733582,
+      "type": "delta"
+    },
+    {
+      "text": "外部搜索",
+      "_time": 80.67725372314453,
+      "type": "delta"
+    },
+    {
+      "text": "补充**：通过网络",
+      "_time": 80.76225876808167,
+      "type": "delta"
+    },
+    {
+      "text": "检索也未获取",
+      "_time": 80.76504588127136,
+      "type": "delta"
+    },
+    {
+      "text": "到该特定岗位的",
+      "_time": 80.88021111488342,
+      "type": "delta"
+    },
+    {
+      "text": "公开",
+      "_time": 80.88303780555725,
+      "type": "delta"
+    },
+    {
+      "text": "信息 [来源：",
+      "_time": 81.03524470329285,
+      "type": "delta"
+    },
+    {
+      "text": "br",
+      "_time": 81.0380232334137,
+      "type": "delta"
+    },
+    {
+      "text": "ave_search- ",
+      "_time": 81.15920829772949,
+      "type": "delta"
+    },
+    {
+      "text": "外部搜索]",
+      "_time": 81.16400504112244,
+      "type": "delta"
+    },
+    {
+      "text": "。\n\n**建议",
+      "_time": 81.30931234359741,
+      "type": "delta"
+    },
+    {
+      "text": "与下一步",
+      "_time": 81.35105919837952,
+      "type": "delta"
+    },
+    {
+      "text": "行动：**\n\n*",
+      "_time": 81.42621326446533,
+      "type": "delta"
+    },
+    {
+      "text": "   **提供",
+      "_time": 81.42886877059937,
+      "type": "delta"
+    },
+    {
+      "text": "岗位描述**：",
+      "_time": 81.58723855018616,
+      "type": "delta"
+    },
+    {
+      "text": "请您",
+      "_time": 81.58893656730652,
+      "type": "delta"
+    },
+    {
+      "text": "直接粘贴该岗位",
+      "_time": 81.72439122200012,
+      "type": "delta"
+    },
+    {
+      "text": "的具体 JD（",
+      "_time": 81.72806167602539,
+      "type": "delta"
+    },
+    {
+      "text": "职位描述）文本，",
+      "_time": 81.81407403945923,
+      "type": "delta"
+    },
+    {
+      "text": "我可以",
+      "_time": 81.8169891834259,
+      "type": "delta"
+    },
+    {
+      "text": "为您进行详细的匹配",
+      "_time": 81.9470841884613,
+      "type": "delta"
+    },
+    {
+      "text": "度分析和",
+      "_time": 81.95097422599792,
+      "type": "delta"
+    },
+    {
+      "text": "面试建议。\n",
+      "_time": 82.08624839782715,
+      "type": "delta"
+    },
+    {
+      "text": "*",
+      "_time": 82.0909378528595,
+      "type": "delta"
+    },
+    {
+      "text": "   **通用 Java",
+      "_time": 82.19411754608154,
+      "type": "delta"
+    },
+    {
+      "text": " 岗位分析维度",
+      "_time": 82.22935461997986,
+      "type": "delta"
+    },
+    {
+      "text": "**：在缺乏",
+      "_time": 82.2972002029419,
+      "type": "delta"
+    },
+    {
+      "text": "具体 JD",
+      "_time": 82.30199646949768,
+      "type": "delta"
+    },
+    {
+      "text": " 的情况下，您可以",
+      "_time": 82.4141354560852,
+      "type": "delta"
+    },
+    {
+      "text": "参考以下通用维度",
+      "_time": 82.41811323165894,
+      "type": "delta"
+    },
+    {
+      "text": "自行评估：\n",
+      "_time": 82.5574300289154,
+      "type": "delta"
+    },
+    {
+      "text": "   ",
+      "_time": 82.55890679359436,
+      "type": "delta"
+    },
+    {
+      "text": " *   **技术",
+      "_time": 82.62901782989502,
+      "type": "delta"
+    },
+    {
+      "text": "栈匹配",
+      "_time": 82.63386487960815,
+      "type": "delta"
+    },
+    {
+      "text": "**：关注是否",
+      "_time": 82.80619764328003,
+      "type": "delta"
+    },
+    {
+      "text": "要求 Spring",
+      "_time": 82.83895707130432,
+      "type": "delta"
+    },
+    {
+      "text": " Boot、Cloud、",
+      "_time": 82.96705722808838,
+      "type": "delta"
+    },
+    {
+      "text": "Micro",
+      "_time": 82.96984934806824,
+      "type": "delta"
+    },
+    {
+      "text": "services 等主流",
+      "_time": 83.17923259735107,
+      "type": "delta"
+    },
+    {
+      "text": "框架。\n   ",
+      "_time": 83.18297147750854,
+      "type": "delta"
+    },
+    {
+      "text": " *   **业务",
+      "_time": 83.26213574409485,
+      "type": "delta"
+    },
+    {
+      "text": "场景**：确认",
+      "_time": 83.26492738723755,
+      "type": "delta"
+    },
+    {
+      "text": "是高并发、大数据",
+      "_time": 83.46210980415344,
+      "type": "delta"
+    },
+    {
+      "text": "处理还是",
+      "_time": 83.4639585018158,
+      "type": "delta"
+    },
+    {
+      "text": "企业级应用开发",
+      "_time": 83.58315920829773,
+      "type": "delta"
+    },
+    {
+      "text": "。\n   ",
+      "_time": 83.58494734764099,
+      "type": "delta"
+    },
+    {
+      "text": " *   **职",
+      "_time": 83.7041985988617,
+      "type": "delta"
+    },
+    {
+      "text": "级要求**：",
+      "_time": 83.7647340297699,
+      "type": "delta"
+    },
+    {
+      "text": "对比 JD 中的",
+      "_time": 83.86905312538147,
+      "type": "delta"
+    },
+    {
+      "text": "年限要求",
+      "_time": 83.87392067909241,
+      "type": "delta"
+    },
+    {
+      "text": "与您的实际项目",
+      "_time": 84.13298654556274,
+      "type": "delta"
+    },
+    {
+      "text": "经验。",
+      "_time": 84.1358757019043,
+      "type": "delta"
+    },
+    {
+      "text": "\n\n如果您能补充",
+      "_time": 84.30713558197021,
+      "type": "delta"
+    },
+    {
+      "text": "具体的岗位",
+      "_time": 84.31085705757141,
+      "type": "delta"
+    },
+    {
+      "text": "信息，我将很",
+      "_time": 84.38691282272339,
+      "type": "delta"
+    },
+    {
+      "text": "乐意为您提供更",
+      "_time": 84.39085817337036,
+      "type": "delta"
+    },
+    {
+      "text": "精准的评分和建议。",
+      "_time": 84.54611873626709,
+      "type": "delta"
+    },
+    {
+      "session_id": "batch_li_m2_1780478781826",
+      "intent": "attribute_verify",
+      "route_meta": {
+        "layer": "llm",
+        "intent": "attribute_verify",
+        "confidence": 0.75,
+        "demands": [
+          {
+            "intent": "attribute_verify",
+            "entities": {
+              "position": "Java",
+              "attributes": [
+                "综合情况"
+              ]
+            }
+          }
+        ],
+        "plan_tasks": 3
+      },
+      "agent_mode": "llm",
+      "is_clarification": false,
+      "agent": {
+        "rewritten_query": "分析这个Java岗位",
+        "tools": [
+          {
+            "tool": "kb_retrieve",
+            "status": "✅",
+            "params": {
+              "query": "{{search_keywords}}",
+              "top_k": 5,
+              "position": "Java"
+            },
+            "result_preview": "{'chunks': [], 'query': '{{search_keywords}}', 'filters': {'position': 'Java'}, 'strategy': 'hybrid(70%vec+30%bm25)+reranker', 'pool_k': 5, 'rerank_k': 10, 'pool_size': 0, 'vec_only': 0, 'bm25_only': "
+          },
+          {
+            "tool": "qa_synthesize",
+            "status": "✅",
+            "params": {
+              "question": "分析这个Java岗位，概括岗位要求、职责和综合情况",
+              "evidence_chunks": [],
+              "qa_type": "analysis"
+            },
+            "result_preview": "{'answer': '抱歉，知识库中没有找到相关信息。', 'citations': [], 'confidence': 'low', 'insufficient_note': '未检索到相关证据'}"
+          },
+          {
+            "tool": "external_search",
+            "status": "✅",
+            "params": {
+              "query": "{{search_keywords}}",
+              "count": 5
+            },
+            "result_preview": "{'chunks': [], 'query': '{{search_keywords}}', 'source': 'brave_search'}"
+          }
+        ],
+        "kb_chunks_count": 3,
+        "system_prompt_preview": "你是一位专业的求职顾问。请基于以下工具执行结果，给用户一个清晰、有帮助的回复。\n要求：\n1. 先直接回答用户的问题（是/否/有/没有），不要绕弯子，不要重复用户的原话\n2. 如果有匹配分析结果，给出具体的分数和建议\n3. 如果有检索结果，基于事实回答，不要编造\n4. 【强制】引用信息时必须标注来源。每个引用的事实后面都要跟 [来源：公司名-岗位名] 格式。   kb_retrieve 结果的 ch"
+      },
+      "memory": {
+        "working_turns": 1,
+        "compressed_blocks": 0,
+        "current_topic": "general",
+        "evidence_cache_size": 0
+      },
+      "reply": "没有检索到该岗位的具体信息。\n\n目前无法针对“这个”Java 岗位进行定制化分析，因为系统内部知识库与外部搜索均未找到相关的岗位描述（JD）内容。具体情况如下：\n\n1.  **内部知识库检索**：未匹配到任何 Java 岗位的详细记录 [来源：系统知识库 -Java 岗位检索]。\n2.  **外部搜索补充**：通过网络检索也未获取到该特定岗位的公开信息 [来源：brave_search- 外部搜索]。\n\n**建议与下一步行动：**\n\n*   **提供岗位描述**：请您直接粘贴该岗位的具体 JD（职位描述）文本，我可以为您进行详细的匹配度分析和面试建议。\n*   **通用 Java 岗位分析维度**：在缺乏具体 JD 的情况下，您可以参考以下通用维度自行评估：\n    *   **技术栈匹配**：关注是否要求 Spring Boot、Cloud、Microservices 等主流框架。\n    *   **业务场景**：确认是高并发、大数据处理还是企业级应用开发。\n    *   **职级要求**：对比 JD 中的年限要求与您的实际项目经验。\n\n如果您能补充具体的岗位信息，我将很乐意为您提供更精准的评分和建议。",
+      "usage": {
+        "prompt_tokens": 6540,
+        "completion_tokens": 4779,
+        "total_tokens": 11319
+      },
+      "_time": 84.60328435897827,
+      "type": "done"
+    }
+  ],
+  "timestamp": "2026-06-03T17:26:21.826411",
+  "prompt_tokens": 6540,
+  "completion_tokens": 4779,
+  "total_tokens": 11319,
+  "tool_execution_success_rate": 1.0,
+  "tool_correct_rate": 1.0
+}

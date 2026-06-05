@@ -1,0 +1,1796 @@
+{
+  "case_id": "eval_sup_01",
+  "message": "Meta和Google在国内有AI产品岗吗",
+  "gold_intents": [
+    "chat"
+  ],
+  "expected_tools": [],
+  "scenario": "边界_外部搜索触发",
+  "eval_context": {
+    "gold_intents": [
+      "chat"
+    ],
+    "gold_slots": {
+      "search_keywords": "Meta Google AI产品岗"
+    },
+    "relevance_score": 0,
+    "expected_tools": [],
+    "scenario": "边界_外部搜索触发",
+    "notes": "Meta/Google均不在JD库(23条)，含时效性/外部实体应触发external_search(Tavily)"
+  },
+  "resume_id": "cc50dcfb-aeba-41a3-989a-9e485aa2fc3f",
+  "status": "success",
+  "error": null,
+  "ttfb": 0.007,
+  "total_latency": 156.44,
+  "event_count": 145,
+  "pred_intent": "general_chat",
+  "pred_intents": [
+    "general_chat"
+  ],
+  "pred_tools": [
+    {
+      "tool": "kb_retrieve",
+      "status": "✅",
+      "params": {
+        "query": "Meta和Google在国内有AI产品岗",
+        "top_k": 5
+      },
+      "result_preview": "{'chunks': [{'chunk_id': 'ac9973c8-01be-4cd6-9a99-097873a59cf0_chunk_0', 'content': '公司：字节跳动，岗位：AI产品经理，地点：北京，薪资：30k-60k', 'metadata': {'category': '产品', 'company': '字节跳动', 'domain': 'AI', 'index': 0, "
+    },
+    {
+      "tool": "general_chat",
+      "status": "✅",
+      "params": {
+        "user_message": "Meta和Google在国内有AI产品岗",
+        "chat_type": "general"
+      },
+      "result_preview": "{'response': '你好！这是一个非常实际的问题。简短的回答是：**目前几乎没有任何面向中国大陆市场的 AI 产品岗**。\\n\\n以下是详细现状分析与求职建议：\\n\\n### 1. 现状澄清\\n*   **Google：** 在国内设有办公室（北京、上海等），但业务主要集中在**广告销售、云企业服务及部分研发**。由于合规与业务策略，核心 AI 产品（如 Gemini）未在国内上线，因此*"
+    }
+  ],
+  "tools_called": [
+    "kb_retrieve",
+    "general_chat"
+  ],
+  "kb_chunks": [
+    {
+      "chunk_id": "ac9973c8-01be-4cd6-9a99-097873a59cf0_chunk_0",
+      "content": "公司：字节跳动，岗位：AI产品经理，地点：北京，薪资：30k-60k",
+      "metadata": {
+        "category": "产品",
+        "company": "字节跳动",
+        "domain": "AI",
+        "index": 0,
+        "jd_id": "ac9973c8-01be-4cd6-9a99-097873a59cf0",
+        "max_years": 5,
+        "min_education": "本科",
+        "min_years": 3,
+        "position": "AI产品经理",
+        "section": "basic_info",
+        "strategy": "semantic"
+      },
+      "distance": 0.6411482095718384,
+      "bm25_score": 0.0,
+      "vec_norm": 1.0,
+      "bm25_norm": 0.0,
+      "hybrid_score": 0.7,
+      "rerank_score": 0.5994
+    },
+    {
+      "chunk_id": "2af1570c-e34f-4fb9-8422-e08e3ac3b927_chunk_0",
+      "content": "公司：蚂蚁集团，岗位：AI产品工程师（搜推方向），地点：杭州，薪资：薪资面议",
+      "metadata": {
+        "company": "蚂蚁集团",
+        "index": 0,
+        "jd_id": "2af1570c-e34f-4fb9-8422-e08e3ac3b927",
+        "position": "AI产品工程师（搜推方向）",
+        "section": "basic_info",
+        "strategy": "semantic"
+      },
+      "distance": 0.6427180171012878,
+      "bm25_score": 0.0,
+      "vec_norm": 0.9785936698644355,
+      "bm25_norm": 0.0,
+      "hybrid_score": 0.6850155689051048,
+      "rerank_score": 0.5502
+    },
+    {
+      "chunk_id": "d8f1f630-f372-467a-b0a0-5a68a6db4ffd_chunk_0",
+      "content": "公司：百度，岗位：AI应用-产品经理，地点：北京市，薪资：薪资面议",
+      "metadata": {
+        "company": "百度",
+        "index": 0,
+        "jd_id": "d8f1f630-f372-467a-b0a0-5a68a6db4ffd",
+        "position": "AI应用-产品经理",
+        "section": "basic_info",
+        "strategy": "semantic"
+      },
+      "distance": 0.6523223519325256,
+      "bm25_score": 0.0,
+      "vec_norm": 0.8476263007614987,
+      "bm25_norm": 0.0,
+      "hybrid_score": 0.593338410533049,
+      "rerank_score": 0.5459
+    },
+    {
+      "chunk_id": "4dcb6702-c777-4279-b0e9-99e8edbd608f_chunk_0",
+      "content": "公司：蚂蚁集团，岗位：AI产品经理，地点：上海,杭州，薪资：薪资面议",
+      "metadata": {
+        "company": "蚂蚁集团",
+        "index": 0,
+        "jd_id": "4dcb6702-c777-4279-b0e9-99e8edbd608f",
+        "position": "AI产品经理",
+        "section": "basic_info",
+        "strategy": "semantic"
+      },
+      "distance": 0.6521114706993103,
+      "bm25_score": 0.0,
+      "vec_norm": 0.8505019356485255,
+      "bm25_norm": 0.0,
+      "hybrid_score": 0.5953513549539678,
+      "rerank_score": 0.4638
+    },
+    {
+      "chunk_id": "22fa0d11-9483-4b94-bb38-c3c90676fd9b_chunk_1",
+      "content": "【百度 · AI产品实习生 岗位职责】\n协助进行AI产品相关的市场趋势分析，包括竞争对手产品分析、用户需求调研等。参与用户访谈、问卷调查，收集并分析用户反馈，为产品优化提供数据支持跟进AI产品开发进度，与研发、设计、测试等团队紧密合作，确保项目按时交付参与产品测试，收集并反馈测试结果，协助解决开发过程中遇到的问题",
+      "metadata": {
+        "company": "百度",
+        "index": 1,
+        "jd_id": "22fa0d11-9483-4b94-bb38-c3c90676fd9b",
+        "position": "AI产品实习生",
+        "section": "responsibilities",
+        "strategy": "semantic"
+      },
+      "distance": 0.6675371527671814,
+      "bm25_score": 0.0,
+      "vec_norm": 0.6401530637540771,
+      "bm25_norm": 0.0,
+      "hybrid_score": 0.44810714462785395,
+      "rerank_score": 0.4219
+    }
+  ],
+  "tool_executions_full": [
+    {
+      "tool_name": "kb_retrieve",
+      "task_id": "T0",
+      "status": "success",
+      "output": {
+        "chunks": [
+          {
+            "chunk_id": "ac9973c8-01be-4cd6-9a99-097873a59cf0_chunk_0",
+            "content": "公司：字节跳动，岗位：AI产品经理，地点：北京，薪资：30k-60k",
+            "source": "字节跳动-AI产品经理",
+            "metadata": {
+              "company": "字节跳动",
+              "position": "AI产品经理"
+            }
+          },
+          {
+            "chunk_id": "2af1570c-e34f-4fb9-8422-e08e3ac3b927_chunk_0",
+            "content": "公司：蚂蚁集团，岗位：AI产品工程师（搜推方向），地点：杭州，薪资：薪资面议",
+            "source": "蚂蚁集团-AI产品工程师（搜推方向）",
+            "metadata": {
+              "company": "蚂蚁集团",
+              "position": "AI产品工程师（搜推方向）"
+            }
+          },
+          {
+            "chunk_id": "d8f1f630-f372-467a-b0a0-5a68a6db4ffd_chunk_0",
+            "content": "公司：百度，岗位：AI应用-产品经理，地点：北京市，薪资：薪资面议",
+            "source": "百度-AI应用-产品经理",
+            "metadata": {
+              "company": "百度",
+              "position": "AI应用-产品经理"
+            }
+          },
+          {
+            "chunk_id": "4dcb6702-c777-4279-b0e9-99e8edbd608f_chunk_0",
+            "content": "公司：蚂蚁集团，岗位：AI产品经理，地点：上海,杭州，薪资：薪资面议",
+            "source": "蚂蚁集团-AI产品经理",
+            "metadata": {
+              "company": "蚂蚁集团",
+              "position": "AI产品经理"
+            }
+          },
+          {
+            "chunk_id": "22fa0d11-9483-4b94-bb38-c3c90676fd9b_chunk_1",
+            "content": "【百度 · AI产品实习生 岗位职责】\n协助进行AI产品相关的市场趋势分析，包括竞争对手产品分析、用户需求调研等。参与用户访谈、问卷调查，收集并分析用户反馈，为产品优化提供数据支持跟进AI产品开发进度，与研发、设计、测试等团队紧密合作，确保项目按时交付参与产品测试，收集并反馈测试结果，协助解决开发过程中遇到的问题",
+            "source": "百度-AI产品实习生",
+            "metadata": {
+              "company": "百度",
+              "position": "AI产品实习生"
+            }
+          }
+        ],
+        "query": "Meta和Google在国内有AI产品岗",
+        "filters": {},
+        "strategy": "hybrid(70%vec+30%bm25)+reranker",
+        "pool_k": 5,
+        "rerank_k": 10,
+        "pool_size": 39,
+        "vec_only": 20,
+        "bm25_only": 19,
+        "both": 0,
+        "rerank": {
+          "enabled": true,
+          "candidates": 5,
+          "output": 5,
+          "best_rerank_score": 0.5994
+        }
+      }
+    },
+    {
+      "tool_name": "general_chat",
+      "task_id": "T1",
+      "status": "success",
+      "output": {
+        "response": "你好！这是一个非常实际的问题。简短的回答是：**目前几乎没有任何面向中国大陆市场的 AI 产品岗**。\n\n以下是详细现状分析与求职建议：\n\n### 1. 现状澄清\n*   **Google：** 在国内设有办公室（北京、上海等），但业务主要集中在**广告销售、云企业服务及部分研发**。由于合规与业务策略，核心 AI 产品（如 Gemini）未在国内上线，因此**面向国内用户的 AI 产品经理岗位极少甚至没有**。\n*   **Meta：** 目前**没有正式的中国大陆办公室**，核心业务未在国内运营，因此**基本不存在国内直聘的产品岗**。\n\n### 2. 可行路径与替代方案\n如果你目标是顶级大厂的 AI 产品岗，可以考虑以下方向：\n*   **出海/海外岗位：** 关注 Meta/Google 在新加坡、美国等地的总部岗位（需具备语言能力及签证条件）。\n*   **国内大厂 AI 岗：** 百度（文心一言）、阿里（通义）、腾讯（混元）、字节（豆包）等均有成熟的 AI 产品线。\n*   **AI 独角兽：** 如月之暗面、智谱 AI、MiniMax 等，发展迅速且核心岗位多。\n*   **外企研发岗：** 如果技术背景强，可关注微软亚洲研究院（MSRA）或 Google 国内的研发工程师岗位（非产品岗）。\n\n### 3. 行动建议（结构化）\n1.  **技能聚焦：** 深入学习 LLM 应用落地、Prompt Engineering 及 AI 伦理合规知识，这是国内 AI 产品岗的核心竞争力。\n2.  **作品集准备：** 尝试利用开源模型搭建一个 AI 应用 Demo，或在 Kaggle/开源社区贡献案例，弥补大厂光环的缺失。\n3.  **网络拓展：** 多参加国内 AI 行业峰会（如 WAIC），在 LinkedIn 上关注国内 AI 实验室负责人，获取内推机会。\n\n如有具体的简历修改或公司选择问题，欢迎随时问我！",
+        "suggested_topics": [
+          "分析一下我的简历匹配度",
+          "推荐几家适合我的公司",
+          "生成一些面试题"
+        ]
+      }
+    }
+  ],
+  "debug_info": {
+    "task_graph": {
+      "tasks": {
+        "T0": {
+          "task_id": "T0",
+          "task_type": "tool_call",
+          "tool_name": "kb_retrieve",
+          "status": "success",
+          "parameters": {
+            "query": "{{global_slots.search_keywords}}",
+            "top_k": 5
+          },
+          "resolved_params": {
+            "query": "Meta和Google在国内有AI产品岗",
+            "top_k": 5
+          },
+          "result": {
+            "chunks": [
+              {
+                "chunk_id": "ac9973c8-01be-4cd6-9a99-097873a59cf0_chunk_0",
+                "content": "公司：字节跳动，岗位：AI产品经理，地点：北京，薪资：30k-60k",
+                "metadata": {
+                  "category": "产品",
+                  "company": "字节跳动",
+                  "domain": "AI",
+                  "index": 0,
+                  "jd_id": "ac9973c8-01be-4cd6-9a99-097873a59cf0",
+                  "max_years": 5,
+                  "min_education": "本科",
+                  "min_years": 3,
+                  "position": "AI产品经理",
+                  "section": "basic_info",
+                  "strategy": "semantic"
+                },
+                "distance": 0.6411482095718384,
+                "bm25_score": 0.0,
+                "vec_norm": 1.0,
+                "bm25_norm": 0.0,
+                "hybrid_score": 0.7,
+                "rerank_score": 0.5994
+              },
+              {
+                "chunk_id": "2af1570c-e34f-4fb9-8422-e08e3ac3b927_chunk_0",
+                "content": "公司：蚂蚁集团，岗位：AI产品工程师（搜推方向），地点：杭州，薪资：薪资面议",
+                "metadata": {
+                  "company": "蚂蚁集团",
+                  "index": 0,
+                  "jd_id": "2af1570c-e34f-4fb9-8422-e08e3ac3b927",
+                  "position": "AI产品工程师（搜推方向）",
+                  "section": "basic_info",
+                  "strategy": "semantic"
+                },
+                "distance": 0.6427180171012878,
+                "bm25_score": 0.0,
+                "vec_norm": 0.9785936698644355,
+                "bm25_norm": 0.0,
+                "hybrid_score": 0.6850155689051048,
+                "rerank_score": 0.5502
+              },
+              {
+                "chunk_id": "d8f1f630-f372-467a-b0a0-5a68a6db4ffd_chunk_0",
+                "content": "公司：百度，岗位：AI应用-产品经理，地点：北京市，薪资：薪资面议",
+                "metadata": {
+                  "company": "百度",
+                  "index": 0,
+                  "jd_id": "d8f1f630-f372-467a-b0a0-5a68a6db4ffd",
+                  "position": "AI应用-产品经理",
+                  "section": "basic_info",
+                  "strategy": "semantic"
+                },
+                "distance": 0.6523223519325256,
+                "bm25_score": 0.0,
+                "vec_norm": 0.8476263007614987,
+                "bm25_norm": 0.0,
+                "hybrid_score": 0.593338410533049,
+                "rerank_score": 0.5459
+              },
+              {
+                "chunk_id": "4dcb6702-c777-4279-b0e9-99e8edbd608f_chunk_0",
+                "content": "公司：蚂蚁集团，岗位：AI产品经理，地点：上海,杭州，薪资：薪资面议",
+                "metadata": {
+                  "company": "蚂蚁集团",
+                  "index": 0,
+                  "jd_id": "4dcb6702-c777-4279-b0e9-99e8edbd608f",
+                  "position": "AI产品经理",
+                  "section": "basic_info",
+                  "strategy": "semantic"
+                },
+                "distance": 0.6521114706993103,
+                "bm25_score": 0.0,
+                "vec_norm": 0.8505019356485255,
+                "bm25_norm": 0.0,
+                "hybrid_score": 0.5953513549539678,
+                "rerank_score": 0.4638
+              },
+              {
+                "chunk_id": "22fa0d11-9483-4b94-bb38-c3c90676fd9b_chunk_1",
+                "content": "【百度 · AI产品实习生 岗位职责】\n协助进行AI产品相关的市场趋势分析，包括竞争对手产品分析、用户需求调研等。参与用户访谈、问卷调查，收集并分析用户反馈，为产品优化提供数据支持跟进AI产品开发进度，与研发、设计、测试等团队紧密合作，确保项目按时交付参与产品测试，收集并反馈测试结果，协助解决开发过程中遇到的问题",
+                "metadata": {
+                  "company": "百度",
+                  "index": 1,
+                  "jd_id": "22fa0d11-9483-4b94-bb38-c3c90676fd9b",
+                  "position": "AI产品实习生",
+                  "section": "responsibilities",
+                  "strategy": "semantic"
+                },
+                "distance": 0.6675371527671814,
+                "bm25_score": 0.0,
+                "vec_norm": 0.6401530637540771,
+                "bm25_norm": 0.0,
+                "hybrid_score": 0.44810714462785395,
+                "rerank_score": 0.4219
+              }
+            ],
+            "query": "Meta和Google在国内有AI产品岗",
+            "filters": {},
+            "strategy": "hybrid(70%vec+30%bm25)+reranker",
+            "pool_k": 5,
+            "rerank_k": 10,
+            "pool_size": 39,
+            "vec_only": 20,
+            "bm25_only": 19,
+            "both": 0,
+            "rerank": {
+              "enabled": true,
+              "candidates": 5,
+              "output": 5,
+              "best_rerank_score": 0.5994
+            }
+          },
+          "observation": "工具 kb_retrieve 执行成功"
+        },
+        "T1": {
+          "task_id": "T1",
+          "task_type": "tool_call",
+          "tool_name": "general_chat",
+          "status": "success",
+          "parameters": {
+            "user_message": "{{global_slots.search_keywords}}",
+            "chat_type": "general"
+          },
+          "resolved_params": {
+            "user_message": "Meta和Google在国内有AI产品岗",
+            "chat_type": "general"
+          },
+          "result": {
+            "response": "你好！这是一个非常实际的问题。简短的回答是：**目前几乎没有任何面向中国大陆市场的 AI 产品岗**。\n\n以下是详细现状分析与求职建议：\n\n### 1. 现状澄清\n*   **Google：** 在国内设有办公室（北京、上海等），但业务主要集中在**广告销售、云企业服务及部分研发**。由于合规与业务策略，核心 AI 产品（如 Gemini）未在国内上线，因此**面向国内用户的 AI 产品经理岗位极少甚至没有**。\n*   **Meta：** 目前**没有正式的中国大陆办公室**，核心业务未在国内运营，因此**基本不存在国内直聘的产品岗**。\n\n### 2. 可行路径与替代方案\n如果你目标是顶级大厂的 AI 产品岗，可以考虑以下方向：\n*   **出海/海外岗位：** 关注 Meta/Google 在新加坡、美国等地的总部岗位（需具备语言能力及签证条件）。\n*   **国内大厂 AI 岗：** 百度（文心一言）、阿里（通义）、腾讯（混元）、字节（豆包）等均有成熟的 AI 产品线。\n*   **AI 独角兽：** 如月之暗面、智谱 AI、MiniMax 等，发展迅速且核心岗位多。\n*   **外企研发岗：** 如果技术背景强，可关注微软亚洲研究院（MSRA）或 Google 国内的研发工程师岗位（非产品岗）。\n\n### 3. 行动建议（结构化）\n1.  **技能聚焦：** 深入学习 LLM 应用落地、Prompt Engineering 及 AI 伦理合规知识，这是国内 AI 产品岗的核心竞争力。\n2.  **作品集准备：** 尝试利用开源模型搭建一个 AI 应用 Demo，或在 Kaggle/开源社区贡献案例，弥补大厂光环的缺失。\n3.  **网络拓展：** 多参加国内 AI 行业峰会（如 WAIC），在 LinkedIn 上关注国内 AI 实验室负责人，获取内推机会。\n\n如有具体的简历修改或公司选择问题，欢迎随时问我！",
+            "suggested_topics": [
+              "分析一下我的简历匹配度",
+              "推荐几家适合我的公司",
+              "生成一些面试题"
+            ]
+          },
+          "observation": "工具 general_chat 执行成功"
+        }
+      },
+      "global_status": "success",
+      "replan_reason": "",
+      "replan_count": 0
+    },
+    "intent": {
+      "demands": [
+        {
+          "intent": "general_chat",
+          "entities": {
+            "resume_available": true,
+            "filters": {
+              "company": [
+                "Meta",
+                "Google"
+              ],
+              "position": "AI 产品岗"
+            },
+            "sort_by": "match_score",
+            "top_k": 5,
+            "search_keywords": "Meta Google AI 产品岗"
+          },
+          "confidence": 0.82
+        }
+      ],
+      "needs_clarification": false,
+      "clarification_question": ""
+    },
+    "rewrite": {
+      "rewritten_query": "Meta和Google在国内有AI产品岗吗",
+      "search_keywords": "Meta和Google在国内有AI产品岗",
+      "is_follow_up": false,
+      "follow_up_type": "none",
+      "resolved_references": {}
+    },
+    "evidence_cache": [
+      {
+        "chunk_id": "ac9973c8-01be-4cd6-9a99-097873a59cf0_chunk_0",
+        "content": "公司：字节跳动，岗位：AI产品经理，地点：北京，薪资：30k-60k",
+        "metadata": {
+          "category": "产品",
+          "company": "字节跳动",
+          "domain": "AI",
+          "index": 0,
+          "jd_id": "ac9973c8-01be-4cd6-9a99-097873a59cf0",
+          "max_years": 5,
+          "min_education": "本科",
+          "min_years": 3,
+          "position": "AI产品经理",
+          "section": "basic_info",
+          "strategy": "semantic"
+        },
+        "distance": 0.6411482095718384,
+        "bm25_score": 0.0,
+        "vec_norm": 1.0,
+        "bm25_norm": 0.0,
+        "hybrid_score": 0.7,
+        "rerank_score": 0.5994
+      },
+      {
+        "chunk_id": "2af1570c-e34f-4fb9-8422-e08e3ac3b927_chunk_0",
+        "content": "公司：蚂蚁集团，岗位：AI产品工程师（搜推方向），地点：杭州，薪资：薪资面议",
+        "metadata": {
+          "company": "蚂蚁集团",
+          "index": 0,
+          "jd_id": "2af1570c-e34f-4fb9-8422-e08e3ac3b927",
+          "position": "AI产品工程师（搜推方向）",
+          "section": "basic_info",
+          "strategy": "semantic"
+        },
+        "distance": 0.6427180171012878,
+        "bm25_score": 0.0,
+        "vec_norm": 0.9785936698644355,
+        "bm25_norm": 0.0,
+        "hybrid_score": 0.6850155689051048,
+        "rerank_score": 0.5502
+      },
+      {
+        "chunk_id": "d8f1f630-f372-467a-b0a0-5a68a6db4ffd_chunk_0",
+        "content": "公司：百度，岗位：AI应用-产品经理，地点：北京市，薪资：薪资面议",
+        "metadata": {
+          "company": "百度",
+          "index": 0,
+          "jd_id": "d8f1f630-f372-467a-b0a0-5a68a6db4ffd",
+          "position": "AI应用-产品经理",
+          "section": "basic_info",
+          "strategy": "semantic"
+        },
+        "distance": 0.6523223519325256,
+        "bm25_score": 0.0,
+        "vec_norm": 0.8476263007614987,
+        "bm25_norm": 0.0,
+        "hybrid_score": 0.593338410533049,
+        "rerank_score": 0.5459
+      },
+      {
+        "chunk_id": "4dcb6702-c777-4279-b0e9-99e8edbd608f_chunk_0",
+        "content": "公司：蚂蚁集团，岗位：AI产品经理，地点：上海,杭州，薪资：薪资面议",
+        "metadata": {
+          "company": "蚂蚁集团",
+          "index": 0,
+          "jd_id": "4dcb6702-c777-4279-b0e9-99e8edbd608f",
+          "position": "AI产品经理",
+          "section": "basic_info",
+          "strategy": "semantic"
+        },
+        "distance": 0.6521114706993103,
+        "bm25_score": 0.0,
+        "vec_norm": 0.8505019356485255,
+        "bm25_norm": 0.0,
+        "hybrid_score": 0.5953513549539678,
+        "rerank_score": 0.4638
+      },
+      {
+        "chunk_id": "22fa0d11-9483-4b94-bb38-c3c90676fd9b_chunk_1",
+        "content": "【百度 · AI产品实习生 岗位职责】\n协助进行AI产品相关的市场趋势分析，包括竞争对手产品分析、用户需求调研等。参与用户访谈、问卷调查，收集并分析用户反馈，为产品优化提供数据支持跟进AI产品开发进度，与研发、设计、测试等团队紧密合作，确保项目按时交付参与产品测试，收集并反馈测试结果，协助解决开发过程中遇到的问题",
+        "metadata": {
+          "company": "百度",
+          "index": 1,
+          "jd_id": "22fa0d11-9483-4b94-bb38-c3c90676fd9b",
+          "position": "AI产品实习生",
+          "section": "responsibilities",
+          "strategy": "semantic"
+        },
+        "distance": 0.6675371527671814,
+        "bm25_score": 0.0,
+        "vec_norm": 0.6401530637540771,
+        "bm25_norm": 0.0,
+        "hybrid_score": 0.44810714462785395,
+        "rerank_score": 0.4219
+      }
+    ],
+    "evidence_cache_query": "Meta和Google在国内有AI产品岗吗",
+    "tool_outputs": [
+      {
+        "task_id": "T0",
+        "tool": "kb_retrieve",
+        "description": "尝试检索Meta和Google的AI产品岗JD（知识库可能不覆盖）",
+        "result": {
+          "chunks": [
+            {
+              "chunk_id": "ac9973c8-01be-4cd6-9a99-097873a59cf0_chunk_0",
+              "content": "公司：字节跳动，岗位：AI产品经理，地点：北京，薪资：30k-60k",
+              "source": "字节跳动-AI产品经理",
+              "metadata": {
+                "company": "字节跳动",
+                "position": "AI产品经理"
+              }
+            },
+            {
+              "chunk_id": "2af1570c-e34f-4fb9-8422-e08e3ac3b927_chunk_0",
+              "content": "公司：蚂蚁集团，岗位：AI产品工程师（搜推方向），地点：杭州，薪资：薪资面议",
+              "source": "蚂蚁集团-AI产品工程师（搜推方向）",
+              "metadata": {
+                "company": "蚂蚁集团",
+                "position": "AI产品工程师（搜推方向）"
+              }
+            },
+            {
+              "chunk_id": "d8f1f630-f372-467a-b0a0-5a68a6db4ffd_chunk_0",
+              "content": "公司：百度，岗位：AI应用-产品经理，地点：北京市，薪资：薪资面议",
+              "source": "百度-AI应用-产品经理",
+              "metadata": {
+                "company": "百度",
+                "position": "AI应用-产品经理"
+              }
+            },
+            {
+              "chunk_id": "4dcb6702-c777-4279-b0e9-99e8edbd608f_chunk_0",
+              "content": "公司：蚂蚁集团，岗位：AI产品经理，地点：上海,杭州，薪资：薪资面议",
+              "source": "蚂蚁集团-AI产品经理",
+              "metadata": {
+                "company": "蚂蚁集团",
+                "position": "AI产品经理"
+              }
+            },
+            {
+              "chunk_id": "22fa0d11-9483-4b94-bb38-c3c90676fd9b_chunk_1",
+              "content": "【百度 · AI产品实习生 岗位职责】\n协助进行AI产品相关的市场趋势分析，包括竞争对手产品分析、用户需求调研等。参与用户访谈、问卷调查，收集并分析用户反馈，为产品优化提供数据支持跟进AI产品开发进度，与研发、设计、测试等团队紧密合作，确保项目按时交付参与产品测试，收集并反馈测试结果，协助解决开发过程中遇到的问题",
+              "source": "百度-AI产品实习生",
+              "metadata": {
+                "company": "百度",
+                "position": "AI产品实习生"
+              }
+            }
+          ],
+          "query": "Meta和Google在国内有AI产品岗",
+          "filters": {},
+          "strategy": "hybrid(70%vec+30%bm25)+reranker",
+          "pool_k": 5,
+          "rerank_k": 10,
+          "pool_size": 39,
+          "vec_only": 20,
+          "bm25_only": 19,
+          "both": 0,
+          "rerank": {
+            "enabled": true,
+            "candidates": 5,
+            "output": 5,
+            "best_rerank_score": 0.5994
+          }
+        }
+      },
+      {
+        "task_id": "T1",
+        "tool": "general_chat",
+        "description": "直接回答用户关于Meta和Google在国内AI产品岗的问题",
+        "result": {
+          "response": "你好！这是一个非常实际的问题。简短的回答是：**目前几乎没有任何面向中国大陆市场的 AI 产品岗**。\n\n以下是详细现状分析与求职建议：\n\n### 1. 现状澄清\n*   **Google：** 在国内设有办公室（北京、上海等），但业务主要集中在**广告销售、云企业服务及部分研发**。由于合规与业务策略，核心 AI 产品（如 Gemini）未在国内上线，因此**面向国内用户的 AI 产品经理岗位极少甚至没有**。\n*   **Meta：** 目前**没有正式的中国大陆办公室**，核心业务未在国内运营，因此**基本不存在国内直聘的产品岗**。\n\n### 2. 可行路径与替代方案\n如果你目标是顶级大厂的 AI 产品岗，可以考虑以下方向：\n*   **出海/海外岗位：** 关注 Meta/Google 在新加坡、美国等地的总部岗位（需具备语言能力及签证条件）。\n*   **国内大厂 AI 岗：** 百度（文心一言）、阿里（通义）、腾讯（混元）、字节（豆包）等均有成熟的 AI 产品线。\n*   **AI 独角兽：** 如月之暗面、智谱 AI、MiniMax 等，发展迅速且核心岗位多。\n*   **外企研发岗：** 如果技术背景强，可关注微软亚洲研究院（MSRA）或 Google 国内的研发工程师岗位（非产品岗）。\n\n### 3. 行动建议（结构化）\n1.  **技能聚焦：** 深入学习 LLM 应用落地、Prompt Engineering 及 AI 伦理合规知识，这是国内 AI 产品岗的核心竞争力。\n2.  **作品集准备：** 尝试利用开源模型搭建一个 AI 应用 Demo，或在 Kaggle/开源社区贡献案例，弥补大厂光环的缺失。\n3.  **网络拓展：** 多参加国内 AI 行业峰会（如 WAIC），在 LinkedIn 上关注国内 AI 实验室负责人，获取内推机会。\n\n如有具体的简历修改或公司选择问题，欢迎随时问我！",
+          "suggested_topics": [
+            "分析一下我的简历匹配度",
+            "推荐几家适合我的公司",
+            "生成一些面试题"
+          ]
+        }
+      }
+    ],
+    "final_aggregation_prompt": {
+      "system_prompt": "你是一位专业的求职顾问。请基于以下工具执行结果，给用户一个清晰、有帮助的回复。\n要求：\n1. 先直接回答用户的问题（是/否/有/没有），不要绕弯子，不要重复用户的原话\n2. 如果有匹配分析结果，给出具体的分数和建议\n3. 如果有检索结果，基于事实回答，不要编造\n4. 【强制】引用信息时必须标注来源。每个引用的事实后面都要跟 [来源：公司名-岗位名] 格式。   kb_retrieve 结果的 chunks 中带有 'source' 字段（如'字节跳动-AI产品经理'），请直接使用。   external_search 结果带有 'source_name' 字段，也请直接使用。\n5. 当本地知识库与外部搜索结果冲突时，请并列呈现两种说法并标注各自来源，不要替用户做判断\n6. 语气友好、专业、结构化",
+      "user_prompt": "【用户问题】\nMeta和Google在国内有AI产品岗吗\n\n【工具执行结果】\n[{\"task_id\": \"T0\", \"tool\": \"kb_retrieve\", \"description\": \"尝试检索Meta和Google的AI产品岗JD（知识库可能不覆盖）\", \"result\": {\"chunks\": [{\"chunk_id\": \"ac9973c8-01be-4cd6-9a99-097873a59cf0_chunk_0\", \"content\": \"公司：字节跳动，岗位：AI产品经理，地点：北京，薪资：30k-60k\", \"source\": \"字节跳动-AI产品经理\", \"metadata\": {\"company\": \"字节跳动\", \"position\": \"AI产品经理\"}}, {\"chunk_id\": \"2af1570c-e34f-4fb9-8422-e08e3ac3b927_chunk_0\", \"content\": \"公司：蚂蚁集团，岗位：AI产品工程师（搜推方向），地点：杭州，薪资：薪资面议\", \"source\": \"蚂蚁集团-AI产品工程师（搜推方向）\", \"metadata\": {\"company\": \"蚂蚁集团\", \"position\": \"AI产品工程师（搜推方向）\"}}, {\"chunk_id\": \"d8f1f630-f372-467a-b0a0-5a68a6db4ffd_chunk_0\", \"content\": \"公司：百度，岗位：AI应用-产品经理，地点：北京市，薪资：薪资面议\", \"source\": \"百度-AI应用-产品经理\", \"metadata\": {\"company\": \"百度\", \"position\": \"AI应用-产品经理\"}}, {\"chunk_id\": \"4dcb6702-c777-4279-b0e9-99e8edbd608f_chunk_0\", \"content\": \"公司：蚂蚁集团，岗位：AI产品经理，地点：上海,杭州，薪资：薪资面议\", \"source\": \"蚂蚁集团-AI产品经理\", \"metadata\": {\"company\": \"蚂蚁集团\", \"position\": \"AI产品经理\"}}, {\"chunk_id\": \"22fa0d11-9483-4b94-bb38-c3c90676fd9b_chunk_1\", \"content\": \"【百度 · AI产品实习生 岗位职责】\\n协助进行AI产品相关的市场趋势分析，包括竞争对手产品分析、用户需求调研等。参与用户访谈、问卷调查，收集并分析用户反馈，为产品优化提供数据支持跟进AI产品开发进度，与研发、设计、测试等团队紧密合作，确保项目按时交付参与产品测试，收集并反馈测试结果，协助解决开发过程中遇到的问题\", \"source\": \"百度-AI产品实习生\", \"metadata\": {\"company\": \"百度\", \"position\": \"AI产品实习生\"}}], \"query\": \"Meta和Google在国内有AI产品岗\", \"filters\": {}, \"strategy\": \"hybrid(70%vec+30%bm25)+reranker\", \"pool_k\": 5, \"rerank_k\": 10, \"pool_size\": 39, \"vec_only\": 20, \"bm25_only\": 19, \"both\": 0, \"rerank\": {\"enabled\": true, \"candidates\": 5, \"output\": 5, \"best_rerank_score\": 0.5994}}}, {\"task_id\": \"T1\", \"tool\": \"general_chat\", \"description\": \"直接回答用户关于Meta和Google在国内AI产品岗的问题\", \"result\": {\"response\": \"你好！这是一个非常实际的问题。简短的回答是：**目前几乎没有任何面向中国大陆市场的 AI 产品岗**。\\n\\n以下是详细现状分析与求职建议：\\n\\n### 1. 现状澄清\\n*   **Google：** 在国内设有办公室（北京、上海等），但业务主要集中在**广告销售、云企业服务及部分研发**。由于合规与业务策略，核心 AI 产品（如 Gemini）未在国内上线，因此**面向国内用户的 AI 产品经理岗位极少甚至没有**。\\n*   **Meta：** 目前**没有正式的中国大陆办公室**，核心业务未在国内运营，因此**基本不存在国内直聘的产品岗**。\\n\\n### 2. 可行路径与替代方案\\n如果你目标是顶级大厂的 AI 产品岗，可以考虑以下方向：\\n*   **出海/海外岗位：** 关注 Meta/Google 在新加坡、美国等地的总部岗位（需具备语言能力及签证条件）。\\n*   **国内大厂 AI 岗：** 百度（文心一言）、阿里（通义）、腾讯（混元）、字节（豆包）等均有成熟的 AI 产品线。\\n*   **AI 独角兽：** 如月之暗面、智谱 AI、MiniMax 等，发展迅速且核心岗位多。\\n*   **外企研发岗：** 如果技术背景强，可关注微软亚洲研究院（MSRA）或 Google 国内的研发工程师岗位（非产品岗）。\\n\\n### 3. 行动建议（结构化）\\n1.  **技能聚焦：** 深入学习 LLM 应用落地、Prompt Engineering 及 AI 伦理合规知识，这是国内 AI 产品岗的核心竞争力。\\n2.  **作品集准备：** 尝试利用开源模型搭建一个 AI 应用 Demo，或在 Kaggle/开源社区贡献案例，弥补大厂光环的缺失。\\n3.  **网络拓展：** 多参加国内 AI 行业峰会（如 WAIC），在 LinkedIn 上关注国内 AI 实验室负责人，获取内推机会。\\n\\n如有具体的简历修改或公司选择问题，欢迎随时问我！\", \"suggested_topics\": [\"分析一下我的简历匹配度\", \"推荐几家适合我的公司\", \"生成一些面试题\"]}}]\n\n请生成回复："
+    }
+  },
+  "reply": "没有。\n\n目前 Meta 和 Google 在中国大陆几乎没有面向本地市场的 AI 产品岗位。以下是基于检索结果和市场现状的详细分析及替代建议：\n\n### 1. 外企现状分析\n*   **Google：** 在国内设有办公室（北京、上海等），但业务主要集中在广告销售、云企业服务及部分研发。由于合规与业务策略，核心 AI 产品（如 Gemini）未在国内上线，因此面向国内用户的 AI 产品经理岗位极少甚至没有。\n*   **Meta：** 目前没有正式的中国大陆办公室，核心业务未在国内运营，因此基本不存在国内直聘的产品岗。\n\n### 2. 国内大厂 AI 产品岗机会\n虽然外企机会有限，但国内头部互联网公司在 AI 领域均有成熟布局，以下是知识库中检索到的具体岗位信息：\n\n*   **字节跳动：** 设有 AI 产品经理岗位，地点在北京，薪资范围约 30k-60k [来源：字节跳动-AI 产品经理]。\n*   **百度：** 设有 AI 应用 - 产品经理岗位，地点在北京市 [来源：百度-AI 应用 - 产品经理]；同时也招聘 AI 产品实习生，职责涉及市场趋势分析及用户调研 [来源：百度-AI 产品实习生]。\n*   **蚂蚁集团：** 设有 AI 产品经理岗位，地点在上海或杭州 [来源：蚂蚁集团-AI 产品经理]；另有 AI 产品工程师（搜推方向）岗位，地点在杭州 [来源：蚂蚁集团-AI 产品工程师（搜推方向）]。\n\n### 3. 求职行动建议\n如果您目标是顶级大厂的 AI 产品岗，可以考虑以下方向：\n*   **转向国内大厂：** 关注百度（文心一言）、阿里（通义）、腾讯（混元）、字节（豆包）等均有成熟的 AI 产品线。\n*   **关注 AI 独角兽：** 如月之暗面、智谱 AI、MiniMax 等，发展迅速且核心岗位多。\n*   **出海/海外岗位：** 若具备语言能力及签证条件，可关注 Meta/Google 在新加坡、美国等地的总部岗位。\n*   **技能与作品：** 深入学习 LLM 应用落地、Prompt Engineering 及 AI 伦理合规知识；尝试利用开源模型搭建一个 AI 应用 Demo，弥补大厂光环的缺失。\n\n如有具体的简历修改或公司选择问题，欢迎随时问我！",
+  "reply_length": 959,
+  "intent_match": true,
+  "tool_match_rate": 1.0,
+  "has_reply": true,
+  "events": [
+    {
+      "step": "intent",
+      "message": "正在识别您的意图...",
+      "_time": 30.38845467567444,
+      "type": "status"
+    },
+    {
+      "step": "plan",
+      "message": "正在规划任务...",
+      "_time": 30.388493299484253,
+      "type": "status"
+    },
+    {
+      "step": "execute",
+      "message": "正在执行分析...",
+      "_time": 54.60675358772278,
+      "type": "status"
+    },
+    {
+      "step": "aggregate",
+      "message": "正在生成回复...",
+      "_time": 86.7166154384613,
+      "type": "status"
+    },
+    {
+      "text": "没有。",
+      "_time": 147.34292101860046,
+      "type": "delta"
+    },
+    {
+      "text": "\n\n目前 Meta ",
+      "_time": 147.34640264511108,
+      "type": "delta"
+    },
+    {
+      "text": "和 Google 在中国",
+      "_time": 147.4858009815216,
+      "type": "delta"
+    },
+    {
+      "text": "大陆几乎没有面向本地",
+      "_time": 147.52464485168457,
+      "type": "delta"
+    },
+    {
+      "text": "市场的 AI 产品",
+      "_time": 147.63174152374268,
+      "type": "delta"
+    },
+    {
+      "text": "岗位",
+      "_time": 147.6364471912384,
+      "type": "delta"
+    },
+    {
+      "text": "。以下是基于检索",
+      "_time": 147.73659348487854,
+      "type": "delta"
+    },
+    {
+      "text": "结果和市场",
+      "_time": 147.73945784568787,
+      "type": "delta"
+    },
+    {
+      "text": "现状的详细分析及替代",
+      "_time": 147.86167979240417,
+      "type": "delta"
+    },
+    {
+      "text": "建议",
+      "_time": 147.86746430397034,
+      "type": "delta"
+    },
+    {
+      "text": "：\n\n### ",
+      "_time": 147.93249440193176,
+      "type": "delta"
+    },
+    {
+      "text": "1. 外企",
+      "_time": 147.9373278617859,
+      "type": "delta"
+    },
+    {
+      "text": "现状分析\n*",
+      "_time": 148.06330370903015,
+      "type": "delta"
+    },
+    {
+      "text": "   **Google",
+      "_time": 148.1215305328369,
+      "type": "delta"
+    },
+    {
+      "text": "：** 在国内设有",
+      "_time": 148.1896195411682,
+      "type": "delta"
+    },
+    {
+      "text": "办公室（",
+      "_time": 148.1933948993683,
+      "type": "delta"
+    },
+    {
+      "text": "北京、上海等",
+      "_time": 148.29678511619568,
+      "type": "delta"
+    },
+    {
+      "text": "），但业务主要集中在",
+      "_time": 148.32952857017517,
+      "type": "delta"
+    },
+    {
+      "text": "广告销售、云",
+      "_time": 148.4398672580719,
+      "type": "delta"
+    },
+    {
+      "text": "企业服务",
+      "_time": 148.446674823761,
+      "type": "delta"
+    },
+    {
+      "text": "及部分研发。由于",
+      "_time": 148.5315718650818,
+      "type": "delta"
+    },
+    {
+      "text": "合规与业务策略",
+      "_time": 148.56261348724365,
+      "type": "delta"
+    },
+    {
+      "text": "，核心 AI ",
+      "_time": 148.6776247024536,
+      "type": "delta"
+    },
+    {
+      "text": "产品（如 Gemini",
+      "_time": 148.6813201904297,
+      "type": "delta"
+    },
+    {
+      "text": "）未在国内上线",
+      "_time": 148.81967520713806,
+      "type": "delta"
+    },
+    {
+      "text": "，因此面向",
+      "_time": 148.8586049079895,
+      "type": "delta"
+    },
+    {
+      "text": "国内用户的 AI ",
+      "_time": 148.94463682174683,
+      "type": "delta"
+    },
+    {
+      "text": "产品经理岗位极少甚至",
+      "_time": 148.9471616744995,
+      "type": "delta"
+    },
+    {
+      "text": "没有。\n*",
+      "_time": 149.10366678237915,
+      "type": "delta"
+    },
+    {
+      "text": "   **Meta：**",
+      "_time": 149.13263750076294,
+      "type": "delta"
+    },
+    {
+      "text": " 目前没有正式",
+      "_time": 149.233540058136,
+      "type": "delta"
+    },
+    {
+      "text": "的中国大陆办公室，",
+      "_time": 149.23826503753662,
+      "type": "delta"
+    },
+    {
+      "text": "核心业务未在国内",
+      "_time": 149.4165768623352,
+      "type": "delta"
+    },
+    {
+      "text": "运营，因此基本",
+      "_time": 149.41936874389648,
+      "type": "delta"
+    },
+    {
+      "text": "不存在国内直聘",
+      "_time": 149.52104687690735,
+      "type": "delta"
+    },
+    {
+      "text": "的产品岗。\n\n",
+      "_time": 149.52603006362915,
+      "type": "delta"
+    },
+    {
+      "text": "### 2.",
+      "_time": 149.70565629005432,
+      "type": "delta"
+    },
+    {
+      "text": " 国内大厂",
+      "_time": 149.7084677219391,
+      "type": "delta"
+    },
+    {
+      "text": " AI 产品岗",
+      "_time": 149.78954553604126,
+      "type": "delta"
+    },
+    {
+      "text": "机会\n虽然外企",
+      "_time": 149.79320549964905,
+      "type": "delta"
+    },
+    {
+      "text": "机会有限，但",
+      "_time": 149.93412041664124,
+      "type": "delta"
+    },
+    {
+      "text": "国内",
+      "_time": 149.93760514259338,
+      "type": "delta"
+    },
+    {
+      "text": "头部互联网公司在 AI",
+      "_time": 150.05369019508362,
+      "type": "delta"
+    },
+    {
+      "text": " 领域",
+      "_time": 150.0562207698822,
+      "type": "delta"
+    },
+    {
+      "text": "均有成熟布局，",
+      "_time": 150.13334703445435,
+      "type": "delta"
+    },
+    {
+      "text": "以下是知识库",
+      "_time": 150.13713955879211,
+      "type": "delta"
+    },
+    {
+      "text": "中检索到的具体",
+      "_time": 150.28457069396973,
+      "type": "delta"
+    },
+    {
+      "text": "岗位信息",
+      "_time": 150.28710651397705,
+      "type": "delta"
+    },
+    {
+      "text": "：\n\n*  ",
+      "_time": 150.3494210243225,
+      "type": "delta"
+    },
+    {
+      "text": " **字节跳动：**",
+      "_time": 150.35318970680237,
+      "type": "delta"
+    },
+    {
+      "text": " 设有 AI ",
+      "_time": 150.49270582199097,
+      "type": "delta"
+    },
+    {
+      "text": "产品经理岗位，地点",
+      "_time": 150.52530908584595,
+      "type": "delta"
+    },
+    {
+      "text": "在北京，薪资范围",
+      "_time": 150.636483669281,
+      "type": "delta"
+    },
+    {
+      "text": "约",
+      "_time": 150.6412501335144,
+      "type": "delta"
+    },
+    {
+      "text": " 30k",
+      "_time": 150.72654628753662,
+      "type": "delta"
+    },
+    {
+      "text": "-60k",
+      "_time": 150.73117518424988,
+      "type": "delta"
+    },
+    {
+      "text": " [来源：字节",
+      "_time": 150.90057468414307,
+      "type": "delta"
+    },
+    {
+      "text": "跳动-AI ",
+      "_time": 150.90320348739624,
+      "type": "delta"
+    },
+    {
+      "text": "产品经理]。\n",
+      "_time": 151.0156214237213,
+      "type": "delta"
+    },
+    {
+      "text": "*   **百度",
+      "_time": 151.02137231826782,
+      "type": "delta"
+    },
+    {
+      "text": "：** 设有 AI",
+      "_time": 151.18655514717102,
+      "type": "delta"
+    },
+    {
+      "text": " 应用 - ",
+      "_time": 151.1922619342804,
+      "type": "delta"
+    },
+    {
+      "text": "产品经理岗位，地点",
+      "_time": 151.3025188446045,
+      "type": "delta"
+    },
+    {
+      "text": "在北京市 [来源",
+      "_time": 151.30626893043518,
+      "type": "delta"
+    },
+    {
+      "text": "：百度-AI",
+      "_time": 151.48148679733276,
+      "type": "delta"
+    },
+    {
+      "text": " 应用 - ",
+      "_time": 151.4861307144165,
+      "type": "delta"
+    },
+    {
+      "text": "产品经理]；同时也",
+      "_time": 151.59451746940613,
+      "type": "delta"
+    },
+    {
+      "text": "招聘",
+      "_time": 151.59718108177185,
+      "type": "delta"
+    },
+    {
+      "text": " AI 产品实习生",
+      "_time": 151.68442940711975,
+      "type": "delta"
+    },
+    {
+      "text": "，职责",
+      "_time": 151.7123703956604,
+      "type": "delta"
+    },
+    {
+      "text": "涉及市场趋势分析及",
+      "_time": 151.7884738445282,
+      "type": "delta"
+    },
+    {
+      "text": "用户调研",
+      "_time": 151.79105377197266,
+      "type": "delta"
+    },
+    {
+      "text": " [来源：百度",
+      "_time": 151.89747977256775,
+      "type": "delta"
+    },
+    {
+      "text": "-AI 产品",
+      "_time": 151.9010727405548,
+      "type": "delta"
+    },
+    {
+      "text": "实习生]。\n",
+      "_time": 152.06849265098572,
+      "type": "delta"
+    },
+    {
+      "text": "*   **蚂蚁",
+      "_time": 152.07316255569458,
+      "type": "delta"
+    },
+    {
+      "text": "集团：** 设有",
+      "_time": 152.18835520744324,
+      "type": "delta"
+    },
+    {
+      "text": " AI 产品经理岗位",
+      "_time": 152.19042229652405,
+      "type": "delta"
+    },
+    {
+      "text": "，地点在上海或",
+      "_time": 152.36148500442505,
+      "type": "delta"
+    },
+    {
+      "text": "杭州 [来源：",
+      "_time": 152.36523723602295,
+      "type": "delta"
+    },
+    {
+      "text": "蚂蚁集团-AI",
+      "_time": 152.47173857688904,
+      "type": "delta"
+    },
+    {
+      "text": " 产品经理]；",
+      "_time": 152.4775149822235,
+      "type": "delta"
+    },
+    {
+      "text": "另有 AI 产品",
+      "_time": 152.6585602760315,
+      "type": "delta"
+    },
+    {
+      "text": "工程师（搜推",
+      "_time": 152.6633586883545,
+      "type": "delta"
+    },
+    {
+      "text": "方向）岗位，",
+      "_time": 152.76144671440125,
+      "type": "delta"
+    },
+    {
+      "text": "地点在杭州 [来源",
+      "_time": 152.76623463630676,
+      "type": "delta"
+    },
+    {
+      "text": "：蚂蚁集团-A",
+      "_time": 152.9705331325531,
+      "type": "delta"
+    },
+    {
+      "text": "I 产品工程师",
+      "_time": 152.97670650482178,
+      "type": "delta"
+    },
+    {
+      "text": "（搜推方向",
+      "_time": 153.04837083816528,
+      "type": "delta"
+    },
+    {
+      "text": "）]。\n\n",
+      "_time": 153.0541570186615,
+      "type": "delta"
+    },
+    {
+      "text": "### 3.",
+      "_time": 153.1915681362152,
+      "type": "delta"
+    },
+    {
+      "text": " 求职行动",
+      "_time": 153.2255597114563,
+      "type": "delta"
+    },
+    {
+      "text": "建议\n如果您目标是",
+      "_time": 153.32023072242737,
+      "type": "delta"
+    },
+    {
+      "text": "顶级大厂的 AI",
+      "_time": 153.3220226764679,
+      "type": "delta"
+    },
+    {
+      "text": " 产品岗，",
+      "_time": 153.46449494361877,
+      "type": "delta"
+    },
+    {
+      "text": "可以考虑以下方向：",
+      "_time": 153.49762415885925,
+      "type": "delta"
+    },
+    {
+      "text": "\n*   **",
+      "_time": 153.61032104492188,
+      "type": "delta"
+    },
+    {
+      "text": "转向",
+      "_time": 153.6119327545166,
+      "type": "delta"
+    },
+    {
+      "text": "国内大厂：** ",
+      "_time": 153.69738245010376,
+      "type": "delta"
+    },
+    {
+      "text": "关注百度（",
+      "_time": 153.70110869407654,
+      "type": "delta"
+    },
+    {
+      "text": "文心一言）、",
+      "_time": 153.8254837989807,
+      "type": "delta"
+    },
+    {
+      "text": "阿里（通义",
+      "_time": 153.85338306427002,
+      "type": "delta"
+    },
+    {
+      "text": "）、腾讯（混",
+      "_time": 153.97738814353943,
+      "type": "delta"
+    },
+    {
+      "text": "元）、字节（",
+      "_time": 153.98333501815796,
+      "type": "delta"
+    },
+    {
+      "text": "豆包）等",
+      "_time": 154.11038756370544,
+      "type": "delta"
+    },
+    {
+      "text": "均有成熟的 AI ",
+      "_time": 154.1140320301056,
+      "type": "delta"
+    },
+    {
+      "text": "产品线。\n*",
+      "_time": 154.28806734085083,
+      "type": "delta"
+    },
+    {
+      "text": "   **关注 AI",
+      "_time": 154.2910566329956,
+      "type": "delta"
+    },
+    {
+      "text": " 独角兽：** ",
+      "_time": 154.39931750297546,
+      "type": "delta"
+    },
+    {
+      "text": "如月之暗",
+      "_time": 154.40403532981873,
+      "type": "delta"
+    },
+    {
+      "text": "面、智谱",
+      "_time": 154.5793318748474,
+      "type": "delta"
+    },
+    {
+      "text": " AI、MiniMax",
+      "_time": 154.58302068710327,
+      "type": "delta"
+    },
+    {
+      "text": " 等，发展",
+      "_time": 154.68735337257385,
+      "type": "delta"
+    },
+    {
+      "text": "迅速且核心岗位",
+      "_time": 154.69005155563354,
+      "type": "delta"
+    },
+    {
+      "text": "多。\n*",
+      "_time": 154.8313271999359,
+      "type": "delta"
+    },
+    {
+      "text": "   **出海/",
+      "_time": 154.87520384788513,
+      "type": "delta"
+    },
+    {
+      "text": "海外岗位：** ",
+      "_time": 154.97319388389587,
+      "type": "delta"
+    },
+    {
+      "text": "若具备",
+      "_time": 154.97696566581726,
+      "type": "delta"
+    },
+    {
+      "text": "语言能力及签证条件",
+      "_time": 155.08229637145996,
+      "type": "delta"
+    },
+    {
+      "text": "，可",
+      "_time": 155.08695578575134,
+      "type": "delta"
+    },
+    {
+      "text": "关注 Meta/Google",
+      "_time": 155.22420048713684,
+      "type": "delta"
+    },
+    {
+      "text": " 在新加坡",
+      "_time": 155.22994661331177,
+      "type": "delta"
+    },
+    {
+      "text": "、美国等地的总部",
+      "_time": 155.36128330230713,
+      "type": "delta"
+    },
+    {
+      "text": "岗位。\n*",
+      "_time": 155.36595344543457,
+      "type": "delta"
+    },
+    {
+      "text": "   **技能与",
+      "_time": 155.48056626319885,
+      "type": "delta"
+    },
+    {
+      "text": "作品：** 深入学习",
+      "_time": 155.485356092453,
+      "type": "delta"
+    },
+    {
+      "text": " LLM 应用",
+      "_time": 155.6232259273529,
+      "type": "delta"
+    },
+    {
+      "text": "落地、Prompt Engineering",
+      "_time": 155.65223813056946,
+      "type": "delta"
+    },
+    {
+      "text": " 及 AI ",
+      "_time": 155.76624250411987,
+      "type": "delta"
+    },
+    {
+      "text": "伦理合规知识；",
+      "_time": 155.76889872550964,
+      "type": "delta"
+    },
+    {
+      "text": "尝试利用开源模型",
+      "_time": 155.9633002281189,
+      "type": "delta"
+    },
+    {
+      "text": "搭建一个",
+      "_time": 155.96712589263916,
+      "type": "delta"
+    },
+    {
+      "text": " AI 应用 Demo",
+      "_time": 156.01693058013916,
+      "type": "delta"
+    },
+    {
+      "text": "，弥补",
+      "_time": 156.02181673049927,
+      "type": "delta"
+    },
+    {
+      "text": "大厂光环的缺失",
+      "_time": 156.1551957130432,
+      "type": "delta"
+    },
+    {
+      "text": "。\n\n如有",
+      "_time": 156.15782833099365,
+      "type": "delta"
+    },
+    {
+      "text": "具体的简历修改或",
+      "_time": 156.25315260887146,
+      "type": "delta"
+    },
+    {
+      "text": "公司选择问题",
+      "_time": 156.25682401657104,
+      "type": "delta"
+    },
+    {
+      "text": "，欢迎随时问我",
+      "_time": 156.37817406654358,
+      "type": "delta"
+    },
+    {
+      "text": "！",
+      "_time": 156.38282942771912,
+      "type": "delta"
+    },
+    {
+      "session_id": "eval_sup_01_1780564892058",
+      "intent": "general_chat",
+      "route_meta": {
+        "layer": "llm",
+        "intent": "general_chat",
+        "confidence": 0.82,
+        "demands": [
+          {
+            "intent": "general_chat",
+            "entities": {
+              "resume_available": true,
+              "filters": {
+                "company": [
+                  "Meta",
+                  "Google"
+                ],
+                "position": "AI 产品岗"
+              },
+              "sort_by": "match_score",
+              "top_k": 5,
+              "search_keywords": "Meta Google AI 产品岗"
+            }
+          }
+        ],
+        "plan_tasks": 2
+      },
+      "agent_mode": "llm",
+      "is_clarification": false,
+      "agent": {
+        "rewritten_query": "Meta和Google在国内有AI产品岗吗",
+        "tools": [
+          {
+            "tool": "kb_retrieve",
+            "status": "✅",
+            "params": {
+              "query": "Meta和Google在国内有AI产品岗",
+              "top_k": 5
+            },
+            "result_preview": "{'chunks': [{'chunk_id': 'ac9973c8-01be-4cd6-9a99-097873a59cf0_chunk_0', 'content': '公司：字节跳动，岗位：AI产品经理，地点：北京，薪资：30k-60k', 'metadata': {'category': '产品', 'company': '字节跳动', 'domain': 'AI', 'index': 0, "
+          },
+          {
+            "tool": "general_chat",
+            "status": "✅",
+            "params": {
+              "user_message": "Meta和Google在国内有AI产品岗",
+              "chat_type": "general"
+            },
+            "result_preview": "{'response': '你好！这是一个非常实际的问题。简短的回答是：**目前几乎没有任何面向中国大陆市场的 AI 产品岗**。\\n\\n以下是详细现状分析与求职建议：\\n\\n### 1. 现状澄清\\n*   **Google：** 在国内设有办公室（北京、上海等），但业务主要集中在**广告销售、云企业服务及部分研发**。由于合规与业务策略，核心 AI 产品（如 Gemini）未在国内上线，因此*"
+          }
+        ],
+        "kb_chunks_count": 2,
+        "system_prompt_preview": "你是一位专业的求职顾问。请基于以下工具执行结果，给用户一个清晰、有帮助的回复。\n要求：\n1. 先直接回答用户的问题（是/否/有/没有），不要绕弯子，不要重复用户的原话\n2. 如果有匹配分析结果，给出具体的分数和建议\n3. 如果有检索结果，基于事实回答，不要编造\n4. 【强制】引用信息时必须标注来源。每个引用的事实后面都要跟 [来源：公司名-岗位名] 格式。   kb_retrieve 结果的 ch"
+      },
+      "memory": {
+        "working_turns": 1,
+        "compressed_blocks": 0,
+        "current_topic": "general",
+        "evidence_cache_size": 5
+      },
+      "reply": "没有。\n\n目前 Meta 和 Google 在中国大陆几乎没有面向本地市场的 AI 产品岗位。以下是基于检索结果和市场现状的详细分析及替代建议：\n\n### 1. 外企现状分析\n*   **Google：** 在国内设有办公室（北京、上海等），但业务主要集中在广告销售、云企业服务及部分研发。由于合规与业务策略，核心 AI 产品（如 Gemini）未在国内上线，因此面向国内用户的 AI 产品经理岗位极少甚至没有。\n*   **Meta：** 目前没有正式的中国大陆办公室，核心业务未在国内运营，因此基本不存在国内直聘的产品岗。\n\n### 2. 国内大厂 AI 产品岗机会\n虽然外企机会有限，但国内头部互联网公司在 AI 领域均有成熟布局，以下是知识库中检索到的具体岗位信息：\n\n*   **字节跳动：** 设有 AI 产品经理岗位，地点在北京，薪资范围约 30k-60k [来源：字节跳动-AI 产品经理]。\n*   **百度：** 设有 AI 应用 - 产品经理岗位，地点在北京市 [来源：百度-AI 应用 - 产品经理]；同时也招聘 AI 产品实习生，职责涉及市场趋势分析及用户调研 [来源：百度-AI 产品实习生]。\n*   **蚂蚁集团：** 设有 AI 产品经理岗位，地点在上海或杭州 [来源：蚂蚁集团-AI 产品经理]；另有 AI 产品工程师（搜推方向）岗位，地点在杭州 [来源：蚂蚁集团-AI 产品工程师（搜推方向）]。\n\n### 3. 求职行动建议\n如果您目标是顶级大厂的 AI 产品岗，可以考虑以下方向：\n*   **转向国内大厂：** 关注百度（文心一言）、阿里（通义）、腾讯（混元）、字节（豆包）等均有成熟的 AI 产品线。\n*   **关注 AI 独角兽：** 如月之暗面、智谱 AI、MiniMax 等，发展迅速且核心岗位多。\n*   **出海/海外岗位：** 若具备语言能力及签证条件，可关注 Meta/Google 在新加坡、美国等地的总部岗位。\n*   **技能与作品：** 深入学习 LLM 应用落地、Prompt Engineering 及 AI 伦理合规知识；尝试利用开源模型搭建一个 AI 应用 Demo，弥补大厂光环的缺失。\n\n如有具体的简历修改或公司选择问题，欢迎随时问我！",
+      "debug_info": {
+        "task_graph": {
+          "tasks": {
+            "T0": {
+              "task_id": "T0",
+              "task_type": "tool_call",
+              "tool_name": "kb_retrieve",
+              "status": "success",
+              "parameters": {
+                "query": "{{global_slots.search_keywords}}",
+                "top_k": 5
+              },
+              "resolved_params": {
+                "query": "Meta和Google在国内有AI产品岗",
+                "top_k": 5
+              },
+              "result": {
+                "chunks": [
+                  {
+                    "chunk_id": "ac9973c8-01be-4cd6-9a99-097873a59cf0_chunk_0",
+                    "content": "公司：字节跳动，岗位：AI产品经理，地点：北京，薪资：30k-60k",
+                    "metadata": {
+                      "category": "产品",
+                      "company": "字节跳动",
+                      "domain": "AI",
+                      "index": 0,
+                      "jd_id": "ac9973c8-01be-4cd6-9a99-097873a59cf0",
+                      "max_years": 5,
+                      "min_education": "本科",
+                      "min_years": 3,
+                      "position": "AI产品经理",
+                      "section": "basic_info",
+                      "strategy": "semantic"
+                    },
+                    "distance": 0.6411482095718384,
+                    "bm25_score": 0.0,
+                    "vec_norm": 1.0,
+                    "bm25_norm": 0.0,
+                    "hybrid_score": 0.7,
+                    "rerank_score": 0.5994
+                  },
+                  {
+                    "chunk_id": "2af1570c-e34f-4fb9-8422-e08e3ac3b927_chunk_0",
+                    "content": "公司：蚂蚁集团，岗位：AI产品工程师（搜推方向），地点：杭州，薪资：薪资面议",
+                    "metadata": {
+                      "company": "蚂蚁集团",
+                      "index": 0,
+                      "jd_id": "2af1570c-e34f-4fb9-8422-e08e3ac3b927",
+                      "position": "AI产品工程师（搜推方向）",
+                      "section": "basic_info",
+                      "strategy": "semantic"
+                    },
+                    "distance": 0.6427180171012878,
+                    "bm25_score": 0.0,
+                    "vec_norm": 0.9785936698644355,
+                    "bm25_norm": 0.0,
+                    "hybrid_score": 0.6850155689051048,
+                    "rerank_score": 0.5502
+                  },
+                  {
+                    "chunk_id": "d8f1f630-f372-467a-b0a0-5a68a6db4ffd_chunk_0",
+                    "content": "公司：百度，岗位：AI应用-产品经理，地点：北京市，薪资：薪资面议",
+                    "metadata": {
+                      "company": "百度",
+                      "index": 0,
+                      "jd_id": "d8f1f630-f372-467a-b0a0-5a68a6db4ffd",
+                      "position": "AI应用-产品经理",
+                      "section": "basic_info",
+                      "strategy": "semantic"
+                    },
+                    "distance": 0.6523223519325256,
+                    "bm25_score": 0.0,
+                    "vec_norm": 0.8476263007614987,
+                    "bm25_norm": 0.0,
+                    "hybrid_score": 0.593338410533049,
+                    "rerank_score": 0.5459
+                  },
+                  {
+                    "chunk_id": "4dcb6702-c777-4279-b0e9-99e8edbd608f_chunk_0",
+                    "content": "公司：蚂蚁集团，岗位：AI产品经理，地点：上海,杭州，薪资：薪资面议",
+                    "metadata": {
+                      "company": "蚂蚁集团",
+                      "index": 0,
+                      "jd_id": "4dcb6702-c777-4279-b0e9-99e8edbd608f",
+                      "position": "AI产品经理",
+                      "section": "basic_info",
+                      "strategy": "semantic"
+                    },
+                    "distance": 0.6521114706993103,
+                    "bm25_score": 0.0,
+                    "vec_norm": 0.8505019356485255,
+                    "bm25_norm": 0.0,
+                    "hybrid_score": 0.5953513549539678,
+                    "rerank_score": 0.4638
+                  },
+                  {
+                    "chunk_id": "22fa0d11-9483-4b94-bb38-c3c90676fd9b_chunk_1",
+                    "content": "【百度 · AI产品实习生 岗位职责】\n协助进行AI产品相关的市场趋势分析，包括竞争对手产品分析、用户需求调研等。参与用户访谈、问卷调查，收集并分析用户反馈，为产品优化提供数据支持跟进AI产品开发进度，与研发、设计、测试等团队紧密合作，确保项目按时交付参与产品测试，收集并反馈测试结果，协助解决开发过程中遇到的问题",
+                    "metadata": {
+                      "company": "百度",
+                      "index": 1,
+                      "jd_id": "22fa0d11-9483-4b94-bb38-c3c90676fd9b",
+                      "position": "AI产品实习生",
+                      "section": "responsibilities",
+                      "strategy": "semantic"
+                    },
+                    "distance": 0.6675371527671814,
+                    "bm25_score": 0.0,
+                    "vec_norm": 0.6401530637540771,
+                    "bm25_norm": 0.0,
+                    "hybrid_score": 0.44810714462785395,
+                    "rerank_score": 0.4219
+                  }
+                ],
+                "query": "Meta和Google在国内有AI产品岗",
+                "filters": {},
+                "strategy": "hybrid(70%vec+30%bm25)+reranker",
+                "pool_k": 5,
+                "rerank_k": 10,
+                "pool_size": 39,
+                "vec_only": 20,
+                "bm25_only": 19,
+                "both": 0,
+                "rerank": {
+                  "enabled": true,
+                  "candidates": 5,
+                  "output": 5,
+                  "best_rerank_score": 0.5994
+                }
+              },
+              "observation": "工具 kb_retrieve 执行成功"
+            },
+            "T1": {
+              "task_id": "T1",
+              "task_type": "tool_call",
+              "tool_name": "general_chat",
+              "status": "success",
+              "parameters": {
+                "user_message": "{{global_slots.search_keywords}}",
+                "chat_type": "general"
+              },
+              "resolved_params": {
+                "user_message": "Meta和Google在国内有AI产品岗",
+                "chat_type": "general"
+              },
+              "result": {
+                "response": "你好！这是一个非常实际的问题。简短的回答是：**目前几乎没有任何面向中国大陆市场的 AI 产品岗**。\n\n以下是详细现状分析与求职建议：\n\n### 1. 现状澄清\n*   **Google：** 在国内设有办公室（北京、上海等），但业务主要集中在**广告销售、云企业服务及部分研发**。由于合规与业务策略，核心 AI 产品（如 Gemini）未在国内上线，因此**面向国内用户的 AI 产品经理岗位极少甚至没有**。\n*   **Meta：** 目前**没有正式的中国大陆办公室**，核心业务未在国内运营，因此**基本不存在国内直聘的产品岗**。\n\n### 2. 可行路径与替代方案\n如果你目标是顶级大厂的 AI 产品岗，可以考虑以下方向：\n*   **出海/海外岗位：** 关注 Meta/Google 在新加坡、美国等地的总部岗位（需具备语言能力及签证条件）。\n*   **国内大厂 AI 岗：** 百度（文心一言）、阿里（通义）、腾讯（混元）、字节（豆包）等均有成熟的 AI 产品线。\n*   **AI 独角兽：** 如月之暗面、智谱 AI、MiniMax 等，发展迅速且核心岗位多。\n*   **外企研发岗：** 如果技术背景强，可关注微软亚洲研究院（MSRA）或 Google 国内的研发工程师岗位（非产品岗）。\n\n### 3. 行动建议（结构化）\n1.  **技能聚焦：** 深入学习 LLM 应用落地、Prompt Engineering 及 AI 伦理合规知识，这是国内 AI 产品岗的核心竞争力。\n2.  **作品集准备：** 尝试利用开源模型搭建一个 AI 应用 Demo，或在 Kaggle/开源社区贡献案例，弥补大厂光环的缺失。\n3.  **网络拓展：** 多参加国内 AI 行业峰会（如 WAIC），在 LinkedIn 上关注国内 AI 实验室负责人，获取内推机会。\n\n如有具体的简历修改或公司选择问题，欢迎随时问我！",
+                "suggested_topics": [
+                  "分析一下我的简历匹配度",
+                  "推荐几家适合我的公司",
+                  "生成一些面试题"
+                ]
+              },
+              "observation": "工具 general_chat 执行成功"
+            }
+          },
+          "global_status": "success",
+          "replan_reason": "",
+          "replan_count": 0
+        },
+        "intent": {
+          "demands": [
+            {
+              "intent": "general_chat",
+              "entities": {
+                "resume_available": true,
+                "filters": {
+                  "company": [
+                    "Meta",
+                    "Google"
+                  ],
+                  "position": "AI 产品岗"
+                },
+                "sort_by": "match_score",
+                "top_k": 5,
+                "search_keywords": "Meta Google AI 产品岗"
+              },
+              "confidence": 0.82
+            }
+          ],
+          "needs_clarification": false,
+          "clarification_question": ""
+        },
+        "rewrite": {
+          "rewritten_query": "Meta和Google在国内有AI产品岗吗",
+          "search_keywords": "Meta和Google在国内有AI产品岗",
+          "is_follow_up": false,
+          "follow_up_type": "none",
+          "resolved_references": {}
+        },
+        "evidence_cache": [
+          {
+            "chunk_id": "ac9973c8-01be-4cd6-9a99-097873a59cf0_chunk_0",
+            "content": "公司：字节跳动，岗位：AI产品经理，地点：北京，薪资：30k-60k",
+            "metadata": {
+              "category": "产品",
+              "company": "字节跳动",
+              "domain": "AI",
+              "index": 0,
+              "jd_id": "ac9973c8-01be-4cd6-9a99-097873a59cf0",
+              "max_years": 5,
+              "min_education": "本科",
+              "min_years": 3,
+              "position": "AI产品经理",
+              "section": "basic_info",
+              "strategy": "semantic"
+            },
+            "distance": 0.6411482095718384,
+            "bm25_score": 0.0,
+            "vec_norm": 1.0,
+            "bm25_norm": 0.0,
+            "hybrid_score": 0.7,
+            "rerank_score": 0.5994
+          },
+          {
+            "chunk_id": "2af1570c-e34f-4fb9-8422-e08e3ac3b927_chunk_0",
+            "content": "公司：蚂蚁集团，岗位：AI产品工程师（搜推方向），地点：杭州，薪资：薪资面议",
+            "metadata": {
+              "company": "蚂蚁集团",
+              "index": 0,
+              "jd_id": "2af1570c-e34f-4fb9-8422-e08e3ac3b927",
+              "position": "AI产品工程师（搜推方向）",
+              "section": "basic_info",
+              "strategy": "semantic"
+            },
+            "distance": 0.6427180171012878,
+            "bm25_score": 0.0,
+            "vec_norm": 0.9785936698644355,
+            "bm25_norm": 0.0,
+            "hybrid_score": 0.6850155689051048,
+            "rerank_score": 0.5502
+          },
+          {
+            "chunk_id": "d8f1f630-f372-467a-b0a0-5a68a6db4ffd_chunk_0",
+            "content": "公司：百度，岗位：AI应用-产品经理，地点：北京市，薪资：薪资面议",
+            "metadata": {
+              "company": "百度",
+              "index": 0,
+              "jd_id": "d8f1f630-f372-467a-b0a0-5a68a6db4ffd",
+              "position": "AI应用-产品经理",
+              "section": "basic_info",
+              "strategy": "semantic"
+            },
+            "distance": 0.6523223519325256,
+            "bm25_score": 0.0,
+            "vec_norm": 0.8476263007614987,
+            "bm25_norm": 0.0,
+            "hybrid_score": 0.593338410533049,
+            "rerank_score": 0.5459
+          },
+          {
+            "chunk_id": "4dcb6702-c777-4279-b0e9-99e8edbd608f_chunk_0",
+            "content": "公司：蚂蚁集团，岗位：AI产品经理，地点：上海,杭州，薪资：薪资面议",
+            "metadata": {
+              "company": "蚂蚁集团",
+              "index": 0,
+              "jd_id": "4dcb6702-c777-4279-b0e9-99e8edbd608f",
+              "position": "AI产品经理",
+              "section": "basic_info",
+              "strategy": "semantic"
+            },
+            "distance": 0.6521114706993103,
+            "bm25_score": 0.0,
+            "vec_norm": 0.8505019356485255,
+            "bm25_norm": 0.0,
+            "hybrid_score": 0.5953513549539678,
+            "rerank_score": 0.4638
+          },
+          {
+            "chunk_id": "22fa0d11-9483-4b94-bb38-c3c90676fd9b_chunk_1",
+            "content": "【百度 · AI产品实习生 岗位职责】\n协助进行AI产品相关的市场趋势分析，包括竞争对手产品分析、用户需求调研等。参与用户访谈、问卷调查，收集并分析用户反馈，为产品优化提供数据支持跟进AI产品开发进度，与研发、设计、测试等团队紧密合作，确保项目按时交付参与产品测试，收集并反馈测试结果，协助解决开发过程中遇到的问题",
+            "metadata": {
+              "company": "百度",
+              "index": 1,
+              "jd_id": "22fa0d11-9483-4b94-bb38-c3c90676fd9b",
+              "position": "AI产品实习生",
+              "section": "responsibilities",
+              "strategy": "semantic"
+            },
+            "distance": 0.6675371527671814,
+            "bm25_score": 0.0,
+            "vec_norm": 0.6401530637540771,
+            "bm25_norm": 0.0,
+            "hybrid_score": 0.44810714462785395,
+            "rerank_score": 0.4219
+          }
+        ],
+        "evidence_cache_query": "Meta和Google在国内有AI产品岗吗",
+        "tool_outputs": [
+          {
+            "task_id": "T0",
+            "tool": "kb_retrieve",
+            "description": "尝试检索Meta和Google的AI产品岗JD（知识库可能不覆盖）",
+            "result": {
+              "chunks": [
+                {
+                  "chunk_id": "ac9973c8-01be-4cd6-9a99-097873a59cf0_chunk_0",
+                  "content": "公司：字节跳动，岗位：AI产品经理，地点：北京，薪资：30k-60k",
+                  "source": "字节跳动-AI产品经理",
+                  "metadata": {
+                    "company": "字节跳动",
+                    "position": "AI产品经理"
+                  }
+                },
+                {
+                  "chunk_id": "2af1570c-e34f-4fb9-8422-e08e3ac3b927_chunk_0",
+                  "content": "公司：蚂蚁集团，岗位：AI产品工程师（搜推方向），地点：杭州，薪资：薪资面议",
+                  "source": "蚂蚁集团-AI产品工程师（搜推方向）",
+                  "metadata": {
+                    "company": "蚂蚁集团",
+                    "position": "AI产品工程师（搜推方向）"
+                  }
+                },
+                {
+                  "chunk_id": "d8f1f630-f372-467a-b0a0-5a68a6db4ffd_chunk_0",
+                  "content": "公司：百度，岗位：AI应用-产品经理，地点：北京市，薪资：薪资面议",
+                  "source": "百度-AI应用-产品经理",
+                  "metadata": {
+                    "company": "百度",
+                    "position": "AI应用-产品经理"
+                  }
+                },
+                {
+                  "chunk_id": "4dcb6702-c777-4279-b0e9-99e8edbd608f_chunk_0",
+                  "content": "公司：蚂蚁集团，岗位：AI产品经理，地点：上海,杭州，薪资：薪资面议",
+                  "source": "蚂蚁集团-AI产品经理",
+                  "metadata": {
+                    "company": "蚂蚁集团",
+                    "position": "AI产品经理"
+                  }
+                },
+                {
+                  "chunk_id": "22fa0d11-9483-4b94-bb38-c3c90676fd9b_chunk_1",
+                  "content": "【百度 · AI产品实习生 岗位职责】\n协助进行AI产品相关的市场趋势分析，包括竞争对手产品分析、用户需求调研等。参与用户访谈、问卷调查，收集并分析用户反馈，为产品优化提供数据支持跟进AI产品开发进度，与研发、设计、测试等团队紧密合作，确保项目按时交付参与产品测试，收集并反馈测试结果，协助解决开发过程中遇到的问题",
+                  "source": "百度-AI产品实习生",
+                  "metadata": {
+                    "company": "百度",
+                    "position": "AI产品实习生"
+                  }
+                }
+              ],
+              "query": "Meta和Google在国内有AI产品岗",
+              "filters": {},
+              "strategy": "hybrid(70%vec+30%bm25)+reranker",
+              "pool_k": 5,
+              "rerank_k": 10,
+              "pool_size": 39,
+              "vec_only": 20,
+              "bm25_only": 19,
+              "both": 0,
+              "rerank": {
+                "enabled": true,
+                "candidates": 5,
+                "output": 5,
+                "best_rerank_score": 0.5994
+              }
+            }
+          },
+          {
+            "task_id": "T1",
+            "tool": "general_chat",
+            "description": "直接回答用户关于Meta和Google在国内AI产品岗的问题",
+            "result": {
+              "response": "你好！这是一个非常实际的问题。简短的回答是：**目前几乎没有任何面向中国大陆市场的 AI 产品岗**。\n\n以下是详细现状分析与求职建议：\n\n### 1. 现状澄清\n*   **Google：** 在国内设有办公室（北京、上海等），但业务主要集中在**广告销售、云企业服务及部分研发**。由于合规与业务策略，核心 AI 产品（如 Gemini）未在国内上线，因此**面向国内用户的 AI 产品经理岗位极少甚至没有**。\n*   **Meta：** 目前**没有正式的中国大陆办公室**，核心业务未在国内运营，因此**基本不存在国内直聘的产品岗**。\n\n### 2. 可行路径与替代方案\n如果你目标是顶级大厂的 AI 产品岗，可以考虑以下方向：\n*   **出海/海外岗位：** 关注 Meta/Google 在新加坡、美国等地的总部岗位（需具备语言能力及签证条件）。\n*   **国内大厂 AI 岗：** 百度（文心一言）、阿里（通义）、腾讯（混元）、字节（豆包）等均有成熟的 AI 产品线。\n*   **AI 独角兽：** 如月之暗面、智谱 AI、MiniMax 等，发展迅速且核心岗位多。\n*   **外企研发岗：** 如果技术背景强，可关注微软亚洲研究院（MSRA）或 Google 国内的研发工程师岗位（非产品岗）。\n\n### 3. 行动建议（结构化）\n1.  **技能聚焦：** 深入学习 LLM 应用落地、Prompt Engineering 及 AI 伦理合规知识，这是国内 AI 产品岗的核心竞争力。\n2.  **作品集准备：** 尝试利用开源模型搭建一个 AI 应用 Demo，或在 Kaggle/开源社区贡献案例，弥补大厂光环的缺失。\n3.  **网络拓展：** 多参加国内 AI 行业峰会（如 WAIC），在 LinkedIn 上关注国内 AI 实验室负责人，获取内推机会。\n\n如有具体的简历修改或公司选择问题，欢迎随时问我！",
+              "suggested_topics": [
+                "分析一下我的简历匹配度",
+                "推荐几家适合我的公司",
+                "生成一些面试题"
+              ]
+            }
+          }
+        ],
+        "final_aggregation_prompt": {
+          "system_prompt": "你是一位专业的求职顾问。请基于以下工具执行结果，给用户一个清晰、有帮助的回复。\n要求：\n1. 先直接回答用户的问题（是/否/有/没有），不要绕弯子，不要重复用户的原话\n2. 如果有匹配分析结果，给出具体的分数和建议\n3. 如果有检索结果，基于事实回答，不要编造\n4. 【强制】引用信息时必须标注来源。每个引用的事实后面都要跟 [来源：公司名-岗位名] 格式。   kb_retrieve 结果的 chunks 中带有 'source' 字段（如'字节跳动-AI产品经理'），请直接使用。   external_search 结果带有 'source_name' 字段，也请直接使用。\n5. 当本地知识库与外部搜索结果冲突时，请并列呈现两种说法并标注各自来源，不要替用户做判断\n6. 语气友好、专业、结构化",
+          "user_prompt": "【用户问题】\nMeta和Google在国内有AI产品岗吗\n\n【工具执行结果】\n[{\"task_id\": \"T0\", \"tool\": \"kb_retrieve\", \"description\": \"尝试检索Meta和Google的AI产品岗JD（知识库可能不覆盖）\", \"result\": {\"chunks\": [{\"chunk_id\": \"ac9973c8-01be-4cd6-9a99-097873a59cf0_chunk_0\", \"content\": \"公司：字节跳动，岗位：AI产品经理，地点：北京，薪资：30k-60k\", \"source\": \"字节跳动-AI产品经理\", \"metadata\": {\"company\": \"字节跳动\", \"position\": \"AI产品经理\"}}, {\"chunk_id\": \"2af1570c-e34f-4fb9-8422-e08e3ac3b927_chunk_0\", \"content\": \"公司：蚂蚁集团，岗位：AI产品工程师（搜推方向），地点：杭州，薪资：薪资面议\", \"source\": \"蚂蚁集团-AI产品工程师（搜推方向）\", \"metadata\": {\"company\": \"蚂蚁集团\", \"position\": \"AI产品工程师（搜推方向）\"}}, {\"chunk_id\": \"d8f1f630-f372-467a-b0a0-5a68a6db4ffd_chunk_0\", \"content\": \"公司：百度，岗位：AI应用-产品经理，地点：北京市，薪资：薪资面议\", \"source\": \"百度-AI应用-产品经理\", \"metadata\": {\"company\": \"百度\", \"position\": \"AI应用-产品经理\"}}, {\"chunk_id\": \"4dcb6702-c777-4279-b0e9-99e8edbd608f_chunk_0\", \"content\": \"公司：蚂蚁集团，岗位：AI产品经理，地点：上海,杭州，薪资：薪资面议\", \"source\": \"蚂蚁集团-AI产品经理\", \"metadata\": {\"company\": \"蚂蚁集团\", \"position\": \"AI产品经理\"}}, {\"chunk_id\": \"22fa0d11-9483-4b94-bb38-c3c90676fd9b_chunk_1\", \"content\": \"【百度 · AI产品实习生 岗位职责】\\n协助进行AI产品相关的市场趋势分析，包括竞争对手产品分析、用户需求调研等。参与用户访谈、问卷调查，收集并分析用户反馈，为产品优化提供数据支持跟进AI产品开发进度，与研发、设计、测试等团队紧密合作，确保项目按时交付参与产品测试，收集并反馈测试结果，协助解决开发过程中遇到的问题\", \"source\": \"百度-AI产品实习生\", \"metadata\": {\"company\": \"百度\", \"position\": \"AI产品实习生\"}}], \"query\": \"Meta和Google在国内有AI产品岗\", \"filters\": {}, \"strategy\": \"hybrid(70%vec+30%bm25)+reranker\", \"pool_k\": 5, \"rerank_k\": 10, \"pool_size\": 39, \"vec_only\": 20, \"bm25_only\": 19, \"both\": 0, \"rerank\": {\"enabled\": true, \"candidates\": 5, \"output\": 5, \"best_rerank_score\": 0.5994}}}, {\"task_id\": \"T1\", \"tool\": \"general_chat\", \"description\": \"直接回答用户关于Meta和Google在国内AI产品岗的问题\", \"result\": {\"response\": \"你好！这是一个非常实际的问题。简短的回答是：**目前几乎没有任何面向中国大陆市场的 AI 产品岗**。\\n\\n以下是详细现状分析与求职建议：\\n\\n### 1. 现状澄清\\n*   **Google：** 在国内设有办公室（北京、上海等），但业务主要集中在**广告销售、云企业服务及部分研发**。由于合规与业务策略，核心 AI 产品（如 Gemini）未在国内上线，因此**面向国内用户的 AI 产品经理岗位极少甚至没有**。\\n*   **Meta：** 目前**没有正式的中国大陆办公室**，核心业务未在国内运营，因此**基本不存在国内直聘的产品岗**。\\n\\n### 2. 可行路径与替代方案\\n如果你目标是顶级大厂的 AI 产品岗，可以考虑以下方向：\\n*   **出海/海外岗位：** 关注 Meta/Google 在新加坡、美国等地的总部岗位（需具备语言能力及签证条件）。\\n*   **国内大厂 AI 岗：** 百度（文心一言）、阿里（通义）、腾讯（混元）、字节（豆包）等均有成熟的 AI 产品线。\\n*   **AI 独角兽：** 如月之暗面、智谱 AI、MiniMax 等，发展迅速且核心岗位多。\\n*   **外企研发岗：** 如果技术背景强，可关注微软亚洲研究院（MSRA）或 Google 国内的研发工程师岗位（非产品岗）。\\n\\n### 3. 行动建议（结构化）\\n1.  **技能聚焦：** 深入学习 LLM 应用落地、Prompt Engineering 及 AI 伦理合规知识，这是国内 AI 产品岗的核心竞争力。\\n2.  **作品集准备：** 尝试利用开源模型搭建一个 AI 应用 Demo，或在 Kaggle/开源社区贡献案例，弥补大厂光环的缺失。\\n3.  **网络拓展：** 多参加国内 AI 行业峰会（如 WAIC），在 LinkedIn 上关注国内 AI 实验室负责人，获取内推机会。\\n\\n如有具体的简历修改或公司选择问题，欢迎随时问我！\", \"suggested_topics\": [\"分析一下我的简历匹配度\", \"推荐几家适合我的公司\", \"生成一些面试题\"]}}]\n\n请生成回复："
+        }
+      },
+      "usage": {
+        "prompt_tokens": 11853,
+        "completion_tokens": 9194,
+        "total_tokens": 21047
+      },
+      "_time": 156.44041681289673,
+      "type": "done"
+    }
+  ],
+  "timestamp": "2026-06-04T17:21:32.058462",
+  "prompt_tokens": 11853,
+  "completion_tokens": 9194,
+  "total_tokens": 21047,
+  "tool_execution_success_rate": 1.0,
+  "tool_correct_rate": 1.0
+}

@@ -1,0 +1,2711 @@
+{
+  "case_id": "eval_chen_18",
+  "message": "百度大模型应用PM和美团搜索推荐AI PM哪个更适合我",
+  "gold_intents": [
+    "assess"
+  ],
+  "expected_tools": [
+    "kb_retrieve",
+    "match_analyze"
+  ],
+  "scenario": "多意图_对比分析",
+  "eval_context": {
+    "gold_intents": [
+      "assess"
+    ],
+    "gold_slots": {
+      "company": "百度",
+      "position": "大模型应用PM",
+      "companies": [
+        "百度",
+        "美团"
+      ],
+      "positions": [
+        "大模型应用PM",
+        "搜索推荐AI PM"
+      ]
+    },
+    "relevance_score": 0,
+    "expected_tools": [
+      "kb_retrieve",
+      "match_analyze"
+    ],
+    "scenario": "多意图_对比分析",
+    "notes": "两个JD分别匹配后对比，测试多JD assess能力。涉及岗位：百度大模型应用PM、美团搜索推荐AI PM"
+  },
+  "resume_id": "cc50dcfb-aeba-41a3-989a-9e485aa2fc3f",
+  "status": "success",
+  "error": null,
+  "ttfb": 0.018,
+  "total_latency": 88.06,
+  "event_count": 226,
+  "pred_intent": "match_assess",
+  "pred_intents": [
+    "match_assess"
+  ],
+  "pred_tools": [
+    {
+      "tool": "kb_retrieve",
+      "status": "✅",
+      "params": {
+        "query": "百度 大模型应用PM",
+        "company": "百度",
+        "position": "大模型应用PM",
+        "top_k": 3
+      },
+      "result_preview": "{'chunks': [{'chunk_id': 'f46e2577-eca2-448d-a9a8-7fc14402179b_chunk_1', 'content': '【百度 · 大模型应用PM 岗位职责】\\n1. 负责大模型应用的产品规划与设计。2. 深入理解行业需求，将业务经验抽象为大模型可执行的逻辑流与SOP。3. 模型精细化调教：编写结构化Prompt，配合RAG、Function Ca"
+    },
+    {
+      "tool": "kb_retrieve",
+      "status": "❌",
+      "params": {
+        "query": "美团 搜索推荐AI PM",
+        "company": "美团",
+        "position": "搜索推荐AI PM",
+        "top_k": 3
+      },
+      "result_preview": "{'chunks': [{'chunk_id': 'ac997d3f-9206-4414-9fac-16deb62ff88b_chunk_7', 'content': '【美团 · 搜索推荐AI PM 关键词】\\n搜索推荐, AI, Agent, Prompt, RAG, 多模态, 产品经理', 'metadata': {'company': '美团', 'index': 7, 'jd_id': "
+    },
+    {
+      "tool": "match_analyze",
+      "status": "✅",
+      "params": {
+        "resume_text": "姓名：陈雨桐\r\n教育背景\r\n江南科技大学\r\n信息工程学院·软件工程（AI应用方向）·硕士\r\n2024.09-2027.06（预计）\r\nGPA: 3.4/4.0 | 主修：机器学习基础、数据库系统、软件项目管理、人机交互设计\r\n\r\n云溪大学\r\n计算机学院·信息管理与信息系统·本科\r\n2020.09-2024.06\r\n荣誉：两次校级三等奖学金 | 主修：数据结构、管理学原理、Web开发技术、统计学\r\n\r\n项目经历\r\n求职助手小程序 — 智能简历匹配与面试模拟工具\r\n2025.03-2025.11\r\n产品经理 | 三人小组\r\n- 需求分析：设计调研问卷回收40余份有效样本，梳理\"简历评估\"与\"定向面试模拟\"核心需求，使用Figma完成低保真原型，输出产品需求文档。\r\n- AI匹配策略：调研开源Embedding模型实现简历与JD语义相似度计算，探索多维度匹配方案，对比整篇匹配与分块匹配效果差异，持续优化推荐排序。\r\n- 内容生成：基于大模型AI设计结构化Prompt，融合岗位关键词与简历信息输出个性化面试题，建立追问机制增强模拟面试针对性。\r\n- 测试验证：组织20人内测收集用户路径与反馈数据，针对复杂PDF格式设计补充录入机制，完成从需求分析到上线测试的完整产品闭环。\r\n\r\n教务问答机器人 — 基于校内政策的RAG问答系统\r\n2024.10-2025.02\r\n产品设计与测试 | 实验室课题项目\r\n- 知识库构建：收集整理教务处政策文件、培养方案及历史问答共80余份，完成扫描件OCR识别、格式转换与结构化清洗，建立可检索的领域知识库。\r\n- 交互设计：设计Web端对话界面，参考主流客服产品布局增加\"推荐提问\"推荐模块降低投入成本，针对政策类回答设计溯源展示功能增强可信度。\r\n- 效果测试：参与搭建检索增强生成链路，完成实验环境下多轮问答测试，验证标准政策类问题回答准确率，整理测试数据与优化建议形成可复用方案。\r\n\r\n校园经历\r\n江南科技大学软件学院学生会·宣传部干事\r\n2024.09-2025.06\r\n- 负责学院官方公众号推文排版与发布，累计输出活动宣传稿件10余篇；协助组织院内编程比赛，负责报名统计与现场签到。\r\n\r\n云溪大学图书馆·勤工助学岗\r\n2022.03-2023.06\r\n- 负责电子阅览室日常值班，协助同学解决基础网络与设备使用问题；参与旧期刊电子目录录入与数据整理工作。\r\n\r\n获奖情况\r\n- 2025.05 江南科技大学研究生学业三等奖学金\r\n- 2024.11 学院AI应用创新赛（课程组）三等奖\r\n- 2022.06 云溪大学优秀共青团员\r\n- 2022.12 校级网页设计比赛优秀奖\r\n\r\n个人技能\r\n- 产品工具：熟练使用Figma进行原型与交互演示，了解Axure基础操作；能够使用Xmind梳理产品架构，通过腾讯文档/飞书写PRD。\r\n- 技术理解：了解大语言模型在应用层的落地方式，具备Prompt Engineering实践经验；理解RAG基本架构与工作流程，了解Embedding与向量检索作用。\r\n- 语言能力：英语CET-4（525分），可阅读英文技术文档与产品资料。\r\n- 办公技能：熟练使用Office办公软件，掌握Excel数据透视表等基础数据分析功能。",
+        "jd_text": [
+          {
+            "chunk_id": "f46e2577-eca2-448d-a9a8-7fc14402179b_chunk_1",
+            "content": "【百度 · 大模型应用PM 岗位职责】\n1. 负责大模型应用的产品规划与设计。2. 深入理解行业需求，将业务经验抽象为大模型可执行的逻辑流与SOP。3. 模型精细化调教：编写结构化Prompt，配合RAG、Function Calling。4. 数据驱动进化：建立交互好感度与任务成功率双重指标。",
+            "metadata": {
+              "company": "百度",
+              "index": 1,
+              "jd_id": "f46e2577-eca2-448d-a9a8-7fc14402179b",
+              "position": "大模型应用PM",
+              "section": "responsibilities",
+              "strategy": "semantic"
+            },
+            "distance": 0.3195440471172333,
+            "bm25_score": 11.374791570003502,
+            "vec_norm": 1.0,
+            "bm25_norm": 0.6857958634973661,
+            "hybrid_score": 0.9057387590492098,
+            "rerank_score": 0.9996
+          },
+          {
+            "chunk_id": "f46e2577-eca2-448d-a9a8-7fc14402179b_chunk_7",
+            "content": "【百度 · 大模型应用PM 关键词】\n大模型, LLM, RAG, Prompt, 产品经理, AI, NLP",
+            "metadata": {
+              "company": "百度",
+              "index": 7,
+              "jd_id": "f46e2577-eca2-448d-a9a8-7fc14402179b",
+              "position": "大模型应用PM",
+              "section": "keywords",
+              "strategy": "semantic"
+            },
+            "distance": 0.4798579514026642,
+            "bm25_score": 13.933108005934168,
+            "vec_norm": 0.4114104210573193,
+            "bm25_norm": 0.987080411637543,
+            "hybrid_score": 0.5841114182313863,
+            "rerank_score": 0.9987
+          },
+          {
+            "chunk_id": "f46e2577-eca2-448d-a9a8-7fc14402179b_chunk_6",
+            "content": "【百度 · 大模型应用PM 软性要求/加分项】\n有搜索/推荐/内容分发领域实战经验者优先",
+            "metadata": {
+              "company": "百度",
+              "index": 6,
+              "jd_id": "f46e2577-eca2-448d-a9a8-7fc14402179b",
+              "position": "大模型应用PM",
+              "priority": "medium",
+              "section": "soft_requirements",
+              "strategy": "semantic"
+            },
+            "distance": 0.4630567729473114,
+            "bm25_score": 12.751801717782659,
+            "vec_norm": 0.4730956416678165,
+            "bm25_norm": 0.8479618388752943,
+            "hybrid_score": 0.5855555008300598,
+            "rerank_score": 0.9985
+          }
+        ],
+        "company": "百度",
+        "position": "大模型应用PM",
+        "attributes": [
+          "匹配度"
+        ]
+      },
+      "result_preview": "{'score': 75, 'label': '基本匹配', 'advantages': ['大模型应用产品规划与设计', '结构化Prompt编写', 'RAG架构理解与应用', '产品经理基本能力（需求分析、原型设计、PRD）', '数据驱动（用户反馈收集与指标分析）', '团队协作与项目管理'], 'weaknesses': ['候选人缺乏搜索/推荐/内容分发领域的实战经验（JD加分项）；缺"
+    }
+  ],
+  "tools_called": [
+    "kb_retrieve",
+    "kb_retrieve",
+    "match_analyze"
+  ],
+  "kb_chunks": [
+    {
+      "chunk_id": "f46e2577-eca2-448d-a9a8-7fc14402179b_chunk_1",
+      "content": "【百度 · 大模型应用PM 岗位职责】\n1. 负责大模型应用的产品规划与设计。2. 深入理解行业需求，将业务经验抽象为大模型可执行的逻辑流与SOP。3. 模型精细化调教：编写结构化Prompt，配合RAG、Function Calling。4. 数据驱动进化：建立交互好感度与任务成功率双重指标。",
+      "metadata": {
+        "company": "百度",
+        "index": 1,
+        "jd_id": "f46e2577-eca2-448d-a9a8-7fc14402179b",
+        "position": "大模型应用PM",
+        "section": "responsibilities",
+        "strategy": "semantic"
+      },
+      "distance": 0.3195440471172333,
+      "bm25_score": 11.374791570003502,
+      "vec_norm": 1.0,
+      "bm25_norm": 0.6857958634973661,
+      "hybrid_score": 0.9057387590492098,
+      "rerank_score": 0.9996
+    },
+    {
+      "chunk_id": "f46e2577-eca2-448d-a9a8-7fc14402179b_chunk_7",
+      "content": "【百度 · 大模型应用PM 关键词】\n大模型, LLM, RAG, Prompt, 产品经理, AI, NLP",
+      "metadata": {
+        "company": "百度",
+        "index": 7,
+        "jd_id": "f46e2577-eca2-448d-a9a8-7fc14402179b",
+        "position": "大模型应用PM",
+        "section": "keywords",
+        "strategy": "semantic"
+      },
+      "distance": 0.4798579514026642,
+      "bm25_score": 13.933108005934168,
+      "vec_norm": 0.4114104210573193,
+      "bm25_norm": 0.987080411637543,
+      "hybrid_score": 0.5841114182313863,
+      "rerank_score": 0.9987
+    },
+    {
+      "chunk_id": "f46e2577-eca2-448d-a9a8-7fc14402179b_chunk_6",
+      "content": "【百度 · 大模型应用PM 软性要求/加分项】\n有搜索/推荐/内容分发领域实战经验者优先",
+      "metadata": {
+        "company": "百度",
+        "index": 6,
+        "jd_id": "f46e2577-eca2-448d-a9a8-7fc14402179b",
+        "position": "大模型应用PM",
+        "priority": "medium",
+        "section": "soft_requirements",
+        "strategy": "semantic"
+      },
+      "distance": 0.4630567729473114,
+      "bm25_score": 12.751801717782659,
+      "vec_norm": 0.4730956416678165,
+      "bm25_norm": 0.8479618388752943,
+      "hybrid_score": 0.5855555008300598,
+      "rerank_score": 0.9985
+    }
+  ],
+  "tool_executions_full": [
+    {
+      "tool_name": "kb_retrieve",
+      "task_id": "T0",
+      "status": "success",
+      "output": {
+        "chunks": [
+          {
+            "chunk_id": "f46e2577-eca2-448d-a9a8-7fc14402179b_chunk_1",
+            "content": "【百度 · 大模型应用PM 岗位职责】\n1. 负责大模型应用的产品规划与设计。2. 深入理解行业需求，将业务经验抽象为大模型可执行的逻辑流与SOP。3. 模型精细化调教：编写结构化Prompt，配合RAG、Function Calling。4. 数据驱动进化：建立交互好感度与任务成功率双重指标。",
+            "source": "百度-大模型应用PM",
+            "metadata": {
+              "company": "百度",
+              "position": "大模型应用PM"
+            }
+          },
+          {
+            "chunk_id": "f46e2577-eca2-448d-a9a8-7fc14402179b_chunk_7",
+            "content": "【百度 · 大模型应用PM 关键词】\n大模型, LLM, RAG, Prompt, 产品经理, AI, NLP",
+            "source": "百度-大模型应用PM",
+            "metadata": {
+              "company": "百度",
+              "position": "大模型应用PM"
+            }
+          },
+          {
+            "chunk_id": "f46e2577-eca2-448d-a9a8-7fc14402179b_chunk_6",
+            "content": "【百度 · 大模型应用PM 软性要求/加分项】\n有搜索/推荐/内容分发领域实战经验者优先",
+            "source": "百度-大模型应用PM",
+            "metadata": {
+              "company": "百度",
+              "position": "大模型应用PM"
+            }
+          }
+        ],
+        "query": "百度 大模型应用PM",
+        "filters": {
+          "company": "百度",
+          "position": "大模型应用PM"
+        },
+        "strategy": "hybrid(70%vec+30%bm25)+reranker",
+        "pool_k": 3,
+        "rerank_k": 10,
+        "pool_size": 20,
+        "vec_only": 0,
+        "bm25_only": 12,
+        "both": 8,
+        "rerank": {
+          "enabled": true,
+          "candidates": 3,
+          "output": 3,
+          "best_rerank_score": 0.9996
+        }
+      }
+    },
+    {
+      "tool_name": "match_analyze",
+      "task_id": "T2",
+      "status": "success",
+      "output": {
+        "score": 75,
+        "label": "基本匹配",
+        "advantages": [
+          "大模型应用产品规划与设计",
+          "结构化Prompt编写",
+          "RAG架构理解与应用",
+          "产品经理基本能力（需求分析、原型设计、PRD）",
+          "数据驱动（用户反馈收集与指标分析）",
+          "团队协作与项目管理"
+        ],
+        "weaknesses": [
+          "候选人缺乏搜索/推荐/内容分发领域的实战经验（JD加分项）；缺乏商业环境下的完整产品周期经验（仅有校园项目）；未展示Function Calling的实际应用经验；缺乏将复杂业务经验抽象为大模型可执行SOP的明确案例。"
+        ],
+        "suggestions": [
+          "核心能力要求: 大模型产品规划与设计能力、Prompt工程与RAG调教能力、需求分析与业务抽象能力、数据驱动决策能力（交互好感度与任务成功率指标）、搜索/推荐领域知识（优先）、跨团队协作与项目管理能力。"
+        ],
+        "match_score": 75,
+        "covered": [
+          "大模型应用产品规划与设计",
+          "结构化Prompt编写",
+          "RAG架构理解与应用",
+          "产品经理基本能力（需求分析、原型设计、PRD）",
+          "数据驱动（用户反馈收集与指标分析）",
+          "团队协作与项目管理"
+        ],
+        "missing_experience": "候选人缺乏搜索/推荐/内容分发领域的实战经验（JD加分项）；缺乏商业环境下的完整产品周期经验（仅有校园项目）；未展示Function Calling的实际应用经验；缺乏将复杂业务经验抽象为大模型可执行SOP的明确案例。",
+        "core_skills": "大模型产品规划与设计能力、Prompt工程与RAG调教能力、需求分析与业务抽象能力、数据驱动决策能力（交互好感度与任务成功率指标）、搜索/推荐领域知识（优先）、跨团队协作与项目管理能力。",
+        "company": "百度",
+        "position": "大模型应用PM"
+      }
+    },
+    {
+      "tool_name": "kb_retrieve",
+      "task_id": "T1",
+      "status": "failed",
+      "output": {
+        "chunks": [
+          {
+            "chunk_id": "ac997d3f-9206-4414-9fac-16deb62ff88b_chunk_7",
+            "content": "【美团 · 搜索推荐AI PM 关键词】\n搜索推荐, AI, Agent, Prompt, RAG, 多模态, 产品经理",
+            "metadata": {
+              "company": "美团",
+              "index": 7,
+              "jd_id": "ac997d3f-9206-4414-9fac-16deb62ff88b",
+              "position": "搜索推荐AI PM",
+              "section": "keywords",
+              "strategy": "semantic"
+            },
+            "distance": 0.2915450930595398,
+            "bm25_score": 21.915066901782424,
+            "vec_norm": 0.7925466709807063,
+            "bm25_norm": 0.9816137311294516,
+            "hybrid_score": 0.8492667890253298,
+            "rerank_score": 0.9997
+          },
+          {
+            "chunk_id": "ac997d3f-9206-4414-9fac-16deb62ff88b_chunk_1",
+            "content": "【美团 · 搜索推荐AI PM 岗位职责】\n1. 负责搜索推荐全链路的产品演进。2. 利用Agent工作流、意图编程与自动化评估技术，重构从海量供给到亿级用户决策的完整分发链路。3. 智能诊断与进化体系：主导生成式策略的Benchmark建设。4. 全链路用户体验重塑：深入洞察用户在搜索推荐场景中的行为路径。",
+            "metadata": {
+              "company": "美团",
+              "index": 1,
+              "jd_id": "ac997d3f-9206-4414-9fac-16deb62ff88b",
+              "position": "搜索推荐AI PM",
+              "section": "responsibilities",
+              "strategy": "semantic"
+            },
+            "distance": 0.27556273341178894,
+            "bm25_score": 16.611208310977567,
+            "vec_norm": 0.8988018237054364,
+            "bm25_norm": 0.6323106990216986,
+            "hybrid_score": 0.818854486300315,
+            "rerank_score": 0.9996
+          },
+          {
+            "chunk_id": "ac997d3f-9206-4414-9fac-16deb62ff88b_chunk_5",
+            "content": "【美团 · 搜索推荐AI PM 硬性要求】\n具备AI原生交互天赋，能将复杂业务需求精准转化为Agent可执行的任务逻辑",
+            "metadata": {
+              "company": "美团",
+              "index": 5,
+              "jd_id": "ac997d3f-9206-4414-9fac-16deb62ff88b",
+              "position": "搜索推荐AI PM",
+              "priority": "high",
+              "section": "hard_requirements",
+              "strategy": "semantic"
+            },
+            "distance": 0.26034101843833923,
+            "bm25_score": 19.26560336277397,
+            "vec_norm": 1.0,
+            "bm25_norm": 0.807124605563577,
+            "hybrid_score": 0.942137381669073,
+            "rerank_score": 0.9992
+          }
+        ],
+        "query": "美团 搜索推荐AI PM",
+        "filters": {
+          "company": "美团",
+          "position": "搜索推荐AI PM"
+        },
+        "strategy": "hybrid(70%vec+30%bm25)+reranker",
+        "pool_k": 3,
+        "rerank_k": 10,
+        "pool_size": 20,
+        "vec_only": 0,
+        "bm25_only": 12,
+        "both": 8,
+        "rerank": {
+          "enabled": true,
+          "candidates": 3,
+          "output": 3,
+          "best_rerank_score": 0.9997
+        }
+      }
+    },
+    {
+      "tool_name": "match_analyze",
+      "task_id": "T3",
+      "status": "failed",
+      "output": null
+    }
+  ],
+  "debug_info": {
+    "task_graph": {
+      "tasks": {
+        "T0": {
+          "task_id": "T0",
+          "task_type": "tool_call",
+          "tool_name": "kb_retrieve",
+          "status": "success",
+          "parameters": {
+            "query": "百度 大模型应用PM",
+            "company": "百度",
+            "position": "大模型应用PM",
+            "top_k": 3
+          },
+          "resolved_params": {
+            "query": "百度 大模型应用PM",
+            "company": "百度",
+            "position": "大模型应用PM",
+            "top_k": 3
+          },
+          "result": {
+            "chunks": [
+              {
+                "chunk_id": "f46e2577-eca2-448d-a9a8-7fc14402179b_chunk_1",
+                "content": "【百度 · 大模型应用PM 岗位职责】\n1. 负责大模型应用的产品规划与设计。2. 深入理解行业需求，将业务经验抽象为大模型可执行的逻辑流与SOP。3. 模型精细化调教：编写结构化Prompt，配合RAG、Function Calling。4. 数据驱动进化：建立交互好感度与任务成功率双重指标。",
+                "metadata": {
+                  "company": "百度",
+                  "index": 1,
+                  "jd_id": "f46e2577-eca2-448d-a9a8-7fc14402179b",
+                  "position": "大模型应用PM",
+                  "section": "responsibilities",
+                  "strategy": "semantic"
+                },
+                "distance": 0.3195440471172333,
+                "bm25_score": 11.374791570003502,
+                "vec_norm": 1.0,
+                "bm25_norm": 0.6857958634973661,
+                "hybrid_score": 0.9057387590492098,
+                "rerank_score": 0.9996
+              },
+              {
+                "chunk_id": "f46e2577-eca2-448d-a9a8-7fc14402179b_chunk_7",
+                "content": "【百度 · 大模型应用PM 关键词】\n大模型, LLM, RAG, Prompt, 产品经理, AI, NLP",
+                "metadata": {
+                  "company": "百度",
+                  "index": 7,
+                  "jd_id": "f46e2577-eca2-448d-a9a8-7fc14402179b",
+                  "position": "大模型应用PM",
+                  "section": "keywords",
+                  "strategy": "semantic"
+                },
+                "distance": 0.4798579514026642,
+                "bm25_score": 13.933108005934168,
+                "vec_norm": 0.4114104210573193,
+                "bm25_norm": 0.987080411637543,
+                "hybrid_score": 0.5841114182313863,
+                "rerank_score": 0.9987
+              },
+              {
+                "chunk_id": "f46e2577-eca2-448d-a9a8-7fc14402179b_chunk_6",
+                "content": "【百度 · 大模型应用PM 软性要求/加分项】\n有搜索/推荐/内容分发领域实战经验者优先",
+                "metadata": {
+                  "company": "百度",
+                  "index": 6,
+                  "jd_id": "f46e2577-eca2-448d-a9a8-7fc14402179b",
+                  "position": "大模型应用PM",
+                  "priority": "medium",
+                  "section": "soft_requirements",
+                  "strategy": "semantic"
+                },
+                "distance": 0.4630567729473114,
+                "bm25_score": 12.751801717782659,
+                "vec_norm": 0.4730956416678165,
+                "bm25_norm": 0.8479618388752943,
+                "hybrid_score": 0.5855555008300598,
+                "rerank_score": 0.9985
+              }
+            ],
+            "query": "百度 大模型应用PM",
+            "filters": {
+              "company": "百度",
+              "position": "大模型应用PM"
+            },
+            "strategy": "hybrid(70%vec+30%bm25)+reranker",
+            "pool_k": 3,
+            "rerank_k": 10,
+            "pool_size": 20,
+            "vec_only": 0,
+            "bm25_only": 12,
+            "both": 8,
+            "rerank": {
+              "enabled": true,
+              "candidates": 3,
+              "output": 3,
+              "best_rerank_score": 0.9996
+            }
+          },
+          "observation": "工具 kb_retrieve 执行成功"
+        },
+        "T1": {
+          "task_id": "T1",
+          "task_type": "tool_call",
+          "tool_name": "kb_retrieve",
+          "status": "failed",
+          "parameters": {
+            "query": "美团 搜索推荐AI PM",
+            "company": "美团",
+            "position": "搜索推荐AI PM",
+            "top_k": 3
+          },
+          "resolved_params": {
+            "query": "美团 搜索推荐AI PM",
+            "company": "美团",
+            "position": "搜索推荐AI PM",
+            "top_k": 3
+          },
+          "result": {
+            "chunks": [
+              {
+                "chunk_id": "ac997d3f-9206-4414-9fac-16deb62ff88b_chunk_7",
+                "content": "【美团 · 搜索推荐AI PM 关键词】\n搜索推荐, AI, Agent, Prompt, RAG, 多模态, 产品经理",
+                "metadata": {
+                  "company": "美团",
+                  "index": 7,
+                  "jd_id": "ac997d3f-9206-4414-9fac-16deb62ff88b",
+                  "position": "搜索推荐AI PM",
+                  "section": "keywords",
+                  "strategy": "semantic"
+                },
+                "distance": 0.2915450930595398,
+                "bm25_score": 21.915066901782424,
+                "vec_norm": 0.7925466709807063,
+                "bm25_norm": 0.9816137311294516,
+                "hybrid_score": 0.8492667890253298,
+                "rerank_score": 0.9997
+              },
+              {
+                "chunk_id": "ac997d3f-9206-4414-9fac-16deb62ff88b_chunk_1",
+                "content": "【美团 · 搜索推荐AI PM 岗位职责】\n1. 负责搜索推荐全链路的产品演进。2. 利用Agent工作流、意图编程与自动化评估技术，重构从海量供给到亿级用户决策的完整分发链路。3. 智能诊断与进化体系：主导生成式策略的Benchmark建设。4. 全链路用户体验重塑：深入洞察用户在搜索推荐场景中的行为路径。",
+                "metadata": {
+                  "company": "美团",
+                  "index": 1,
+                  "jd_id": "ac997d3f-9206-4414-9fac-16deb62ff88b",
+                  "position": "搜索推荐AI PM",
+                  "section": "responsibilities",
+                  "strategy": "semantic"
+                },
+                "distance": 0.27556273341178894,
+                "bm25_score": 16.611208310977567,
+                "vec_norm": 0.8988018237054364,
+                "bm25_norm": 0.6323106990216986,
+                "hybrid_score": 0.818854486300315,
+                "rerank_score": 0.9996
+              },
+              {
+                "chunk_id": "ac997d3f-9206-4414-9fac-16deb62ff88b_chunk_5",
+                "content": "【美团 · 搜索推荐AI PM 硬性要求】\n具备AI原生交互天赋，能将复杂业务需求精准转化为Agent可执行的任务逻辑",
+                "metadata": {
+                  "company": "美团",
+                  "index": 5,
+                  "jd_id": "ac997d3f-9206-4414-9fac-16deb62ff88b",
+                  "position": "搜索推荐AI PM",
+                  "priority": "high",
+                  "section": "hard_requirements",
+                  "strategy": "semantic"
+                },
+                "distance": 0.26034101843833923,
+                "bm25_score": 19.26560336277397,
+                "vec_norm": 1.0,
+                "bm25_norm": 0.807124605563577,
+                "hybrid_score": 0.942137381669073,
+                "rerank_score": 0.9992
+              }
+            ],
+            "query": "美团 搜索推荐AI PM",
+            "filters": {
+              "company": "美团",
+              "position": "搜索推荐AI PM"
+            },
+            "strategy": "hybrid(70%vec+30%bm25)+reranker",
+            "pool_k": 3,
+            "rerank_k": 10,
+            "pool_size": 20,
+            "vec_only": 0,
+            "bm25_only": 12,
+            "both": 8,
+            "rerank": {
+              "enabled": true,
+              "candidates": 3,
+              "output": 3,
+              "best_rerank_score": 0.9997
+            }
+          },
+          "observation": "SEMANTIC_MISMATCH|检索结果与用户意图不符|suggested_query=百度"
+        },
+        "T2": {
+          "task_id": "T2",
+          "task_type": "tool_call",
+          "tool_name": "match_analyze",
+          "status": "success",
+          "parameters": {
+            "resume_text": "{{global_slots.resume_text}}",
+            "jd_text": "{{T0.output.chunks}}",
+            "company": "百度",
+            "position": "大模型应用PM",
+            "attributes": "{{intent_assess.attributes}}"
+          },
+          "resolved_params": {
+            "resume_text": "姓名：陈雨桐\r\n教育背景\r\n江南科技大学\r\n信息工程学院·软件工程（AI应用方向）·硕士\r\n2024.09-2027.06（预计）\r\nGPA: 3.4/4.0 | 主修：机器学习基础、数据库系统、软件项目管理、人机交互设计\r\n\r\n云溪大学\r\n计算机学院·信息管理与信息系统·本科\r\n2020.09-2024.06\r\n荣誉：两次校级三等奖学金 | 主修：数据结构、管理学原理、Web开发技术、统计学\r\n\r\n项目经历\r\n求职助手小程序 — 智能简历匹配与面试模拟工具\r\n2025.03-2025.11\r\n产品经理 | 三人小组\r\n- 需求分析：设计调研问卷回收40余份有效样本，梳理\"简历评估\"与\"定向面试模拟\"核心需求，使用Figma完成低保真原型，输出产品需求文档。\r\n- AI匹配策略：调研开源Embedding模型实现简历与JD语义相似度计算，探索多维度匹配方案，对比整篇匹配与分块匹配效果差异，持续优化推荐排序。\r\n- 内容生成：基于大模型AI设计结构化Prompt，融合岗位关键词与简历信息输出个性化面试题，建立追问机制增强模拟面试针对性。\r\n- 测试验证：组织20人内测收集用户路径与反馈数据，针对复杂PDF格式设计补充录入机制，完成从需求分析到上线测试的完整产品闭环。\r\n\r\n教务问答机器人 — 基于校内政策的RAG问答系统\r\n2024.10-2025.02\r\n产品设计与测试 | 实验室课题项目\r\n- 知识库构建：收集整理教务处政策文件、培养方案及历史问答共80余份，完成扫描件OCR识别、格式转换与结构化清洗，建立可检索的领域知识库。\r\n- 交互设计：设计Web端对话界面，参考主流客服产品布局增加\"推荐提问\"推荐模块降低投入成本，针对政策类回答设计溯源展示功能增强可信度。\r\n- 效果测试：参与搭建检索增强生成链路，完成实验环境下多轮问答测试，验证标准政策类问题回答准确率，整理测试数据与优化建议形成可复用方案。\r\n\r\n校园经历\r\n江南科技大学软件学院学生会·宣传部干事\r\n2024.09-2025.06\r\n- 负责学院官方公众号推文排版与发布，累计输出活动宣传稿件10余篇；协助组织院内编程比赛，负责报名统计与现场签到。\r\n\r\n云溪大学图书馆·勤工助学岗\r\n2022.03-2023.06\r\n- 负责电子阅览室日常值班，协助同学解决基础网络与设备使用问题；参与旧期刊电子目录录入与数据整理工作。\r\n\r\n获奖情况\r\n- 2025.05 江南科技大学研究生学业三等奖学金\r\n- 2024.11 学院AI应用创新赛（课程组）三等奖\r\n- 2022.06 云溪大学优秀共青团员\r\n- 2022.12 校级网页设计比赛优秀奖\r\n\r\n个人技能\r\n- 产品工具：熟练使用Figma进行原型与交互演示，了解Axure基础操作；能够使用Xmind梳理产品架构，通过腾讯文档/飞书写PRD。\r\n- 技术理解：了解大语言模型在应用层的落地方式，具备Prompt Engineering实践经验；理解RAG基本架构与工作流程，了解Embedding与向量检索作用。\r\n- 语言能力：英语CET-4（525分），可阅读英文技术文档与产品资料。\r\n- 办公技能：熟练使用Office办公软件，掌握Excel数据透视表等基础数据分析功能。",
+            "jd_text": [
+              {
+                "chunk_id": "f46e2577-eca2-448d-a9a8-7fc14402179b_chunk_1",
+                "content": "【百度 · 大模型应用PM 岗位职责】\n1. 负责大模型应用的产品规划与设计。2. 深入理解行业需求，将业务经验抽象为大模型可执行的逻辑流与SOP。3. 模型精细化调教：编写结构化Prompt，配合RAG、Function Calling。4. 数据驱动进化：建立交互好感度与任务成功率双重指标。",
+                "metadata": {
+                  "company": "百度",
+                  "index": 1,
+                  "jd_id": "f46e2577-eca2-448d-a9a8-7fc14402179b",
+                  "position": "大模型应用PM",
+                  "section": "responsibilities",
+                  "strategy": "semantic"
+                },
+                "distance": 0.3195440471172333,
+                "bm25_score": 11.374791570003502,
+                "vec_norm": 1.0,
+                "bm25_norm": 0.6857958634973661,
+                "hybrid_score": 0.9057387590492098,
+                "rerank_score": 0.9996
+              },
+              {
+                "chunk_id": "f46e2577-eca2-448d-a9a8-7fc14402179b_chunk_7",
+                "content": "【百度 · 大模型应用PM 关键词】\n大模型, LLM, RAG, Prompt, 产品经理, AI, NLP",
+                "metadata": {
+                  "company": "百度",
+                  "index": 7,
+                  "jd_id": "f46e2577-eca2-448d-a9a8-7fc14402179b",
+                  "position": "大模型应用PM",
+                  "section": "keywords",
+                  "strategy": "semantic"
+                },
+                "distance": 0.4798579514026642,
+                "bm25_score": 13.933108005934168,
+                "vec_norm": 0.4114104210573193,
+                "bm25_norm": 0.987080411637543,
+                "hybrid_score": 0.5841114182313863,
+                "rerank_score": 0.9987
+              },
+              {
+                "chunk_id": "f46e2577-eca2-448d-a9a8-7fc14402179b_chunk_6",
+                "content": "【百度 · 大模型应用PM 软性要求/加分项】\n有搜索/推荐/内容分发领域实战经验者优先",
+                "metadata": {
+                  "company": "百度",
+                  "index": 6,
+                  "jd_id": "f46e2577-eca2-448d-a9a8-7fc14402179b",
+                  "position": "大模型应用PM",
+                  "priority": "medium",
+                  "section": "soft_requirements",
+                  "strategy": "semantic"
+                },
+                "distance": 0.4630567729473114,
+                "bm25_score": 12.751801717782659,
+                "vec_norm": 0.4730956416678165,
+                "bm25_norm": 0.8479618388752943,
+                "hybrid_score": 0.5855555008300598,
+                "rerank_score": 0.9985
+              }
+            ],
+            "company": "百度",
+            "position": "大模型应用PM",
+            "attributes": [
+              "匹配度"
+            ]
+          },
+          "result": {
+            "score": 75,
+            "label": "基本匹配",
+            "advantages": [
+              "大模型应用产品规划与设计",
+              "结构化Prompt编写",
+              "RAG架构理解与应用",
+              "产品经理基本能力（需求分析、原型设计、PRD）",
+              "数据驱动（用户反馈收集与指标分析）",
+              "团队协作与项目管理"
+            ],
+            "weaknesses": [
+              "候选人缺乏搜索/推荐/内容分发领域的实战经验（JD加分项）；缺乏商业环境下的完整产品周期经验（仅有校园项目）；未展示Function Calling的实际应用经验；缺乏将复杂业务经验抽象为大模型可执行SOP的明确案例。"
+            ],
+            "suggestions": [
+              "核心能力要求: 大模型产品规划与设计能力、Prompt工程与RAG调教能力、需求分析与业务抽象能力、数据驱动决策能力（交互好感度与任务成功率指标）、搜索/推荐领域知识（优先）、跨团队协作与项目管理能力。"
+            ],
+            "match_score": 75,
+            "covered": [
+              "大模型应用产品规划与设计",
+              "结构化Prompt编写",
+              "RAG架构理解与应用",
+              "产品经理基本能力（需求分析、原型设计、PRD）",
+              "数据驱动（用户反馈收集与指标分析）",
+              "团队协作与项目管理"
+            ],
+            "missing_experience": "候选人缺乏搜索/推荐/内容分发领域的实战经验（JD加分项）；缺乏商业环境下的完整产品周期经验（仅有校园项目）；未展示Function Calling的实际应用经验；缺乏将复杂业务经验抽象为大模型可执行SOP的明确案例。",
+            "core_skills": "大模型产品规划与设计能力、Prompt工程与RAG调教能力、需求分析与业务抽象能力、数据驱动决策能力（交互好感度与任务成功率指标）、搜索/推荐领域知识（优先）、跨团队协作与项目管理能力。",
+            "company": "百度",
+            "position": "大模型应用PM"
+          },
+          "observation": "工具 match_analyze 执行成功"
+        },
+        "T3": {
+          "task_id": "T3",
+          "task_type": "tool_call",
+          "tool_name": "match_analyze",
+          "status": "skipped",
+          "parameters": {
+            "resume_text": "{{global_slots.resume_text}}",
+            "jd_text": "{{T1.output.chunks}}",
+            "company": "美团",
+            "position": "搜索推荐AI PM",
+            "attributes": "{{intent_assess.attributes}}"
+          },
+          "resolved_params": {},
+          "result": null,
+          "observation": "执行器退出时未执行"
+        },
+        "T4": {
+          "task_id": "T4",
+          "task_type": "aggregate",
+          "tool_name": null,
+          "status": "skipped",
+          "parameters": {
+            "baidu_result": "{{T2.output}}",
+            "meituan_result": "{{T3.output}}",
+            "query": "{{rewritten_query}}"
+          },
+          "resolved_params": {},
+          "result": null,
+          "observation": "执行器退出时未执行"
+        }
+      },
+      "global_status": "success",
+      "replan_reason": "T1_tool_failed",
+      "replan_count": 1
+    },
+    "intent": {
+      "demands": [
+        {
+          "intent": "match_assess",
+          "entities": {
+            "company": "百度",
+            "companies": [
+              "百度",
+              "美团"
+            ],
+            "attributes": [
+              "匹配度"
+            ],
+            "jd_source": "kb"
+          },
+          "confidence": 0.75
+        }
+      ],
+      "needs_clarification": false,
+      "clarification_question": ""
+    },
+    "rewrite": {
+      "rewritten_query": "百度大模型应用PM和美团搜索推荐AI PM哪个更适合我",
+      "search_keywords": "百度大模型应用PM和美团搜索推荐AI PM哪个更适合我",
+      "is_follow_up": false,
+      "follow_up_type": "none",
+      "resolved_references": {}
+    },
+    "evidence_cache": [
+      {
+        "chunk_id": "f46e2577-eca2-448d-a9a8-7fc14402179b_chunk_1",
+        "content": "【百度 · 大模型应用PM 岗位职责】\n1. 负责大模型应用的产品规划与设计。2. 深入理解行业需求，将业务经验抽象为大模型可执行的逻辑流与SOP。3. 模型精细化调教：编写结构化Prompt，配合RAG、Function Calling。4. 数据驱动进化：建立交互好感度与任务成功率双重指标。",
+        "metadata": {
+          "company": "百度",
+          "index": 1,
+          "jd_id": "f46e2577-eca2-448d-a9a8-7fc14402179b",
+          "position": "大模型应用PM",
+          "section": "responsibilities",
+          "strategy": "semantic"
+        },
+        "distance": 0.3195440471172333,
+        "bm25_score": 11.374791570003502,
+        "vec_norm": 1.0,
+        "bm25_norm": 0.6857958634973661,
+        "hybrid_score": 0.9057387590492098,
+        "rerank_score": 0.9996
+      },
+      {
+        "chunk_id": "f46e2577-eca2-448d-a9a8-7fc14402179b_chunk_7",
+        "content": "【百度 · 大模型应用PM 关键词】\n大模型, LLM, RAG, Prompt, 产品经理, AI, NLP",
+        "metadata": {
+          "company": "百度",
+          "index": 7,
+          "jd_id": "f46e2577-eca2-448d-a9a8-7fc14402179b",
+          "position": "大模型应用PM",
+          "section": "keywords",
+          "strategy": "semantic"
+        },
+        "distance": 0.4798579514026642,
+        "bm25_score": 13.933108005934168,
+        "vec_norm": 0.4114104210573193,
+        "bm25_norm": 0.987080411637543,
+        "hybrid_score": 0.5841114182313863,
+        "rerank_score": 0.9987
+      },
+      {
+        "chunk_id": "f46e2577-eca2-448d-a9a8-7fc14402179b_chunk_6",
+        "content": "【百度 · 大模型应用PM 软性要求/加分项】\n有搜索/推荐/内容分发领域实战经验者优先",
+        "metadata": {
+          "company": "百度",
+          "index": 6,
+          "jd_id": "f46e2577-eca2-448d-a9a8-7fc14402179b",
+          "position": "大模型应用PM",
+          "priority": "medium",
+          "section": "soft_requirements",
+          "strategy": "semantic"
+        },
+        "distance": 0.4630567729473114,
+        "bm25_score": 12.751801717782659,
+        "vec_norm": 0.4730956416678165,
+        "bm25_norm": 0.8479618388752943,
+        "hybrid_score": 0.5855555008300598,
+        "rerank_score": 0.9985
+      }
+    ],
+    "evidence_cache_query": "百度大模型应用PM和美团搜索推荐AI PM哪个更适合我",
+    "tool_outputs": [
+      {
+        "task_id": "T0",
+        "tool": "kb_retrieve",
+        "description": "检索百度大模型应用PM的JD",
+        "result": {
+          "chunks": [
+            {
+              "chunk_id": "f46e2577-eca2-448d-a9a8-7fc14402179b_chunk_1",
+              "content": "【百度 · 大模型应用PM 岗位职责】\n1. 负责大模型应用的产品规划与设计。2. 深入理解行业需求，将业务经验抽象为大模型可执行的逻辑流与SOP。3. 模型精细化调教：编写结构化Prompt，配合RAG、Function Calling。4. 数据驱动进化：建立交互好感度与任务成功率双重指标。",
+              "source": "百度-大模型应用PM",
+              "metadata": {
+                "company": "百度",
+                "position": "大模型应用PM"
+              }
+            },
+            {
+              "chunk_id": "f46e2577-eca2-448d-a9a8-7fc14402179b_chunk_7",
+              "content": "【百度 · 大模型应用PM 关键词】\n大模型, LLM, RAG, Prompt, 产品经理, AI, NLP",
+              "source": "百度-大模型应用PM",
+              "metadata": {
+                "company": "百度",
+                "position": "大模型应用PM"
+              }
+            },
+            {
+              "chunk_id": "f46e2577-eca2-448d-a9a8-7fc14402179b_chunk_6",
+              "content": "【百度 · 大模型应用PM 软性要求/加分项】\n有搜索/推荐/内容分发领域实战经验者优先",
+              "source": "百度-大模型应用PM",
+              "metadata": {
+                "company": "百度",
+                "position": "大模型应用PM"
+              }
+            }
+          ],
+          "query": "百度 大模型应用PM",
+          "filters": {
+            "company": "百度",
+            "position": "大模型应用PM"
+          },
+          "strategy": "hybrid(70%vec+30%bm25)+reranker",
+          "pool_k": 3,
+          "rerank_k": 10,
+          "pool_size": 20,
+          "vec_only": 0,
+          "bm25_only": 12,
+          "both": 8,
+          "rerank": {
+            "enabled": true,
+            "candidates": 3,
+            "output": 3,
+            "best_rerank_score": 0.9996
+          }
+        }
+      },
+      {
+        "task_id": "T2",
+        "tool": "match_analyze",
+        "description": "分析简历与百度大模型应用PM的匹配度",
+        "result": {
+          "score": 75,
+          "label": "基本匹配",
+          "advantages": [
+            "大模型应用产品规划与设计",
+            "结构化Prompt编写",
+            "RAG架构理解与应用",
+            "产品经理基本能力（需求分析、原型设计、PRD）",
+            "数据驱动（用户反馈收集与指标分析）",
+            "团队协作与项目管理"
+          ],
+          "weaknesses": [
+            "候选人缺乏搜索/推荐/内容分发领域的实战经验（JD加分项）；缺乏商业环境下的完整产品周期经验（仅有校园项目）；未展示Function Calling的实际应用经验；缺乏将复杂业务经验抽象为大模型可执行SOP的明确案例。"
+          ],
+          "suggestions": [
+            "核心能力要求: 大模型产品规划与设计能力、Prompt工程与RAG调教能力、需求分析与业务抽象能力、数据驱动决策能力（交互好感度与任务成功率指标）、搜索/推荐领域知识（优先）、跨团队协作与项目管理能力。"
+          ],
+          "match_score": 75,
+          "covered": [
+            "大模型应用产品规划与设计",
+            "结构化Prompt编写",
+            "RAG架构理解与应用",
+            "产品经理基本能力（需求分析、原型设计、PRD）",
+            "数据驱动（用户反馈收集与指标分析）",
+            "团队协作与项目管理"
+          ],
+          "missing_experience": "候选人缺乏搜索/推荐/内容分发领域的实战经验（JD加分项）；缺乏商业环境下的完整产品周期经验（仅有校园项目）；未展示Function Calling的实际应用经验；缺乏将复杂业务经验抽象为大模型可执行SOP的明确案例。",
+          "core_skills": "大模型产品规划与设计能力、Prompt工程与RAG调教能力、需求分析与业务抽象能力、数据驱动决策能力（交互好感度与任务成功率指标）、搜索/推荐领域知识（优先）、跨团队协作与项目管理能力。",
+          "company": "百度",
+          "position": "大模型应用PM"
+        }
+      }
+    ],
+    "final_aggregation_prompt": {
+      "system_prompt": "你是一位专业的求职顾问。请基于以下工具执行结果，给用户一个清晰、有帮助的回复。\n要求：\n1. 先直接回答用户的问题（是/否/有/没有），不要绕弯子，不要重复用户的原话\n2. 如果有匹配分析结果，给出具体的分数和建议\n3. 如果有检索结果，基于事实回答，不要编造\n4. 【强制】引用信息时必须标注来源。每个引用的事实后面都要跟 [来源：公司名-岗位名] 格式。   kb_retrieve 结果的 chunks 中带有 'source' 字段（如'字节跳动-AI产品经理'），请直接使用。   external_search 结果带有 'source_name' 字段，也请直接使用。\n5. 当本地知识库与外部搜索结果冲突时，请并列呈现两种说法并标注各自来源，不要替用户做判断\n6. 语气友好、专业、结构化",
+      "user_prompt": "【用户问题】\n百度大模型应用PM和美团搜索推荐AI PM哪个更适合我\n\n【工具执行结果】\n[{\"task_id\": \"T0\", \"tool\": \"kb_retrieve\", \"description\": \"检索百度大模型应用PM的JD\", \"result\": {\"chunks\": [{\"chunk_id\": \"f46e2577-eca2-448d-a9a8-7fc14402179b_chunk_1\", \"content\": \"【百度 · 大模型应用PM 岗位职责】\\n1. 负责大模型应用的产品规划与设计。2. 深入理解行业需求，将业务经验抽象为大模型可执行的逻辑流与SOP。3. 模型精细化调教：编写结构化Prompt，配合RAG、Function Calling。4. 数据驱动进化：建立交互好感度与任务成功率双重指标。\", \"source\": \"百度-大模型应用PM\", \"metadata\": {\"company\": \"百度\", \"position\": \"大模型应用PM\"}}, {\"chunk_id\": \"f46e2577-eca2-448d-a9a8-7fc14402179b_chunk_7\", \"content\": \"【百度 · 大模型应用PM 关键词】\\n大模型, LLM, RAG, Prompt, 产品经理, AI, NLP\", \"source\": \"百度-大模型应用PM\", \"metadata\": {\"company\": \"百度\", \"position\": \"大模型应用PM\"}}, {\"chunk_id\": \"f46e2577-eca2-448d-a9a8-7fc14402179b_chunk_6\", \"content\": \"【百度 · 大模型应用PM 软性要求/加分项】\\n有搜索/推荐/内容分发领域实战经验者优先\", \"source\": \"百度-大模型应用PM\", \"metadata\": {\"company\": \"百度\", \"position\": \"大模型应用PM\"}}], \"query\": \"百度 大模型应用PM\", \"filters\": {\"company\": \"百度\", \"position\": \"大模型应用PM\"}, \"strategy\": \"hybrid(70%vec+30%bm25)+reranker\", \"pool_k\": 3, \"rerank_k\": 10, \"pool_size\": 20, \"vec_only\": 0, \"bm25_only\": 12, \"both\": 8, \"rerank\": {\"enabled\": true, \"candidates\": 3, \"output\": 3, \"best_rerank_score\": 0.9996}}}, {\"task_id\": \"T2\", \"tool\": \"match_analyze\", \"description\": \"分析简历与百度大模型应用PM的匹配度\", \"result\": {\"score\": 75, \"label\": \"基本匹配\", \"advantages\": [\"大模型应用产品规划与设计\", \"结构化Prompt编写\", \"RAG架构理解与应用\", \"产品经理基本能力（需求分析、原型设计、PRD）\", \"数据驱动（用户反馈收集与指标分析）\", \"团队协作与项目管理\"], \"weaknesses\": [\"候选人缺乏搜索/推荐/内容分发领域的实战经验（JD加分项）；缺乏商业环境下的完整产品周期经验（仅有校园项目）；未展示Function Calling的实际应用经验；缺乏将复杂业务经验抽象为大模型可执行SOP的明确案例。\"], \"suggestions\": [\"核心能力要求: 大模型产品规划与设计能力、Prompt工程与RAG调教能力、需求分析与业务抽象能力、数据驱动决策能力（交互好感度与任务成功率指标）、搜索/推荐领域知识（优先）、跨团队协作与项目管理能力。\"], \"match_score\": 75, \"covered\": [\"大模型应用产品规划与设计\", \"结构化Prompt编写\", \"RAG架构理解与应用\", \"产品经理基本能力（需求分析、原型设计、PRD）\", \"数据驱动（用户反馈收集与指标分析）\", \"团队协作与项目管理\"], \"missing_experience\": \"候选人缺乏搜索/推荐/内容分发领域的实战经验（JD加分项）；缺乏商业环境下的完整产品周期经验（仅有校园项目）；未展示Function Calling的实际应用经验；缺乏将复杂业务经验抽象为大模型可执行SOP的明确案例。\", \"core_skills\": \"大模型产品规划与设计能力、Prompt工程与RAG调教能力、需求分析与业务抽象能力、数据驱动决策能力（交互好感度与任务成功率指标）、搜索/推荐领域知识（优先）、跨团队协作与项目管理能力。\", \"company\": \"百度\", \"position\": \"大模型应用PM\"}}]\n\n请生成回复："
+    }
+  },
+  "reply": "目前无法直接判定哪个更适合，因为缺少美团岗位的匹配数据。但基于现有分析，你与百度大模型应用 PM 的匹配度为 75 分（基本匹配）。\n\n以下是基于现有数据的详细分析与建议：\n\n### 1. 百度大模型应用 PM 匹配分析\n*   **匹配分数**：75 分（基本匹配）\n*   **你的优势**：\n    *   具备大模型应用产品规划与设计能力\n    *   掌握结构化 Prompt 编写及 RAG 架构理解与应用\n    *   拥有产品经理基本能力（需求分析、原型设计、PRD）\n    *   具备数据驱动意识（用户反馈收集与指标分析）\n    *   拥有团队协作与项目管理经验\n*   **待提升点**：\n    *   缺乏搜索/推荐/内容分发领域的实战经验（这是该岗位的加分项）\n    *   缺乏商业环境下的完整产品周期经验（目前仅有校园项目）\n    *   未展示 Function Calling 的实际应用经验\n    *   缺乏将复杂业务经验抽象为大模型可执行 SOP 的明确案例\n*   **备考建议**：\n    *   重点强化大模型产品规划与设计能力、Prompt 工程与 RAG 调教能力\n    *   补充需求分析与业务抽象能力，特别是将业务经验转化为 SOP 的案例\n    *   加强对数据驱动决策能力的展示（如交互好感度与任务成功率指标）\n    *   若有可能，补充搜索/推荐领域知识\n\n### 2. 百度大模型应用 PM 岗位具体要求\n为了帮助你更好地准备，以下是该岗位的核心职责与要求：\n*   **核心职责**：负责大模型应用的产品规划与设计 [来源：百度 - 大模型应用 PM]。深入理解行业需求，将业务经验抽象为大模型可执行的逻辑流与 SOP [来源：百度 - 大模型应用 PM]。进行模型精细化调教，包括编写结构化 Prompt，配合 RAG、Function Calling [来源：百度 - 大模型应用 PM]。建立数据驱动进化机制，设定交互好感度与任务成功率双重指标 [来源：百度 - 大模型应用 PM]。\n*   **关键词**：大模型，LLM, RAG, Prompt, 产品经理，AI, NLP [来源：百度 - 大模型应用 PM]。\n*   **加分项**：有搜索/推荐/内容分发领域实战经验者优先 [来源：百度 - 大模型应用 PM]。\n\n### 3. 美团搜索推荐 AI PM 情况说明\n*   当前知识库中暂无美团搜索推荐 AI PM 的岗位详情（JD）及你的匹配度分析数据。因此无法计算该岗位的匹配分数，也无法对比两者的具体差异。\n\n### 4. 综合建议\n鉴于目前只能确认你与百度岗位的匹配度为 75 分，且存在搜索/推荐经验缺失的短板：\n1.  **若优先考虑百度**：建议针对“业务经验抽象为 SOP\"和\"Function Calling 应用”补充具体案例，并在面试中强调你的 RAG 和 Prompt 工程能力。\n2.  **若需对比美团**：需要获取美团该岗位的 JD 进行匹配分析。通常搜索推荐 AI PM 会更侧重推荐算法理解、排序策略及大规模流量下的性能优化，与百度侧重大模型应用落地（Prompt/RAG）有所不同。\n3.  **下一步行动**：如果你能提供美团岗位的详细描述，我可以为你进行类似的匹配度分析，从而给出更准确的二选一建议。",
+  "reply_length": 1427,
+  "intent_match": true,
+  "tool_match_rate": 1.0,
+  "has_reply": true,
+  "events": [
+    {
+      "step": "intent",
+      "message": "正在识别您的意图...",
+      "_time": 4.551994800567627,
+      "type": "status"
+    },
+    {
+      "step": "plan",
+      "message": "正在规划任务...",
+      "_time": 4.552037715911865,
+      "type": "status"
+    },
+    {
+      "step": "execute",
+      "message": "正在执行分析...",
+      "_time": 16.51108169555664,
+      "type": "status"
+    },
+    {
+      "step": "aggregate",
+      "message": "正在生成回复...",
+      "_time": 28.083621740341187,
+      "type": "status"
+    },
+    {
+      "text": "目前",
+      "_time": 74.28312516212463,
+      "type": "delta"
+    },
+    {
+      "text": "无法",
+      "_time": 74.28730320930481,
+      "type": "delta"
+    },
+    {
+      "text": "直接判定哪个更适合",
+      "_time": 74.37250590324402,
+      "type": "delta"
+    },
+    {
+      "text": "，因为缺少美团",
+      "_time": 74.3753936290741,
+      "type": "delta"
+    },
+    {
+      "text": "岗位的匹配数据。",
+      "_time": 74.51759243011475,
+      "type": "delta"
+    },
+    {
+      "text": "但基于现有",
+      "_time": 74.55249118804932,
+      "type": "delta"
+    },
+    {
+      "text": "分析，你与",
+      "_time": 74.64252305030823,
+      "type": "delta"
+    },
+    {
+      "text": "百度大模型应用",
+      "_time": 74.64634847640991,
+      "type": "delta"
+    },
+    {
+      "text": " PM 的匹配",
+      "_time": 74.785724401474,
+      "type": "delta"
+    },
+    {
+      "text": "度为 7",
+      "_time": 74.78927493095398,
+      "type": "delta"
+    },
+    {
+      "text": "5 分（",
+      "_time": 74.9607470035553,
+      "type": "delta"
+    },
+    {
+      "text": "基本匹配）。\n\n",
+      "_time": 74.9633572101593,
+      "type": "delta"
+    },
+    {
+      "text": "以下是基于现有数据的",
+      "_time": 75.07159495353699,
+      "type": "delta"
+    },
+    {
+      "text": "详细分析与",
+      "_time": 75.0752820968628,
+      "type": "delta"
+    },
+    {
+      "text": "建议：\n\n###",
+      "_time": 75.22973918914795,
+      "type": "delta"
+    },
+    {
+      "text": " 1. ",
+      "_time": 75.23130059242249,
+      "type": "delta"
+    },
+    {
+      "text": "百度大模型应用",
+      "_time": 75.32656621932983,
+      "type": "delta"
+    },
+    {
+      "text": " PM 匹配分析",
+      "_time": 75.3293149471283,
+      "type": "delta"
+    },
+    {
+      "text": "\n*   **",
+      "_time": 75.46962094306946,
+      "type": "delta"
+    },
+    {
+      "text": "匹配分数",
+      "_time": 75.50354719161987,
+      "type": "delta"
+    },
+    {
+      "text": "**：75",
+      "_time": 75.57751369476318,
+      "type": "delta"
+    },
+    {
+      "text": " 分",
+      "_time": 75.58120393753052,
+      "type": "delta"
+    },
+    {
+      "text": "（基本匹配）",
+      "_time": 75.68563938140869,
+      "type": "delta"
+    },
+    {
+      "text": "\n*  ",
+      "_time": 75.68825006484985,
+      "type": "delta"
+    },
+    {
+      "text": " **你的优势**",
+      "_time": 75.81064200401306,
+      "type": "delta"
+    },
+    {
+      "text": "：\n",
+      "_time": 75.81234884262085,
+      "type": "delta"
+    },
+    {
+      "text": "    *   ",
+      "_time": 75.94853067398071,
+      "type": "delta"
+    },
+    {
+      "text": "具备大模型",
+      "_time": 75.9512505531311,
+      "type": "delta"
+    },
+    {
+      "text": "应用产品规划与设计",
+      "_time": 76.04759073257446,
+      "type": "delta"
+    },
+    {
+      "text": "能力\n    *",
+      "_time": 76.04935121536255,
+      "type": "delta"
+    },
+    {
+      "text": "   掌握结构化",
+      "_time": 76.22050452232361,
+      "type": "delta"
+    },
+    {
+      "text": " Prompt",
+      "_time": 76.22311425209045,
+      "type": "delta"
+    },
+    {
+      "text": " 编写及 R",
+      "_time": 76.27952814102173,
+      "type": "delta"
+    },
+    {
+      "text": "AG 架构理解",
+      "_time": 76.28223037719727,
+      "type": "delta"
+    },
+    {
+      "text": "与应用\n    *",
+      "_time": 76.45259737968445,
+      "type": "delta"
+    },
+    {
+      "text": "  ",
+      "_time": 76.4528558254242,
+      "type": "delta"
+    },
+    {
+      "text": " 拥有产品经理基本",
+      "_time": 76.51351404190063,
+      "type": "delta"
+    },
+    {
+      "text": "能力（需求分析",
+      "_time": 76.51720714569092,
+      "type": "delta"
+    },
+    {
+      "text": "、原型设计、",
+      "_time": 76.68756413459778,
+      "type": "delta"
+    },
+    {
+      "text": "PRD）\n",
+      "_time": 76.68927264213562,
+      "type": "delta"
+    },
+    {
+      "text": "    *   ",
+      "_time": 76.80054950714111,
+      "type": "delta"
+    },
+    {
+      "text": "具备数据驱动",
+      "_time": 76.80420017242432,
+      "type": "delta"
+    },
+    {
+      "text": "意识（用户反馈",
+      "_time": 76.92724752426147,
+      "type": "delta"
+    },
+    {
+      "text": "收集与指标分析",
+      "_time": 76.96444773674011,
+      "type": "delta"
+    },
+    {
+      "text": "）\n    *",
+      "_time": 77.07156896591187,
+      "type": "delta"
+    },
+    {
+      "text": "  ",
+      "_time": 77.07506012916565,
+      "type": "delta"
+    },
+    {
+      "text": " 拥有团队协作与",
+      "_time": 77.1612503528595,
+      "type": "delta"
+    },
+    {
+      "text": "项目管理经验",
+      "_time": 77.16623187065125,
+      "type": "delta"
+    },
+    {
+      "text": "\n*   **",
+      "_time": 77.3025553226471,
+      "type": "delta"
+    },
+    {
+      "text": "待提升点",
+      "_time": 77.30622839927673,
+      "type": "delta"
+    },
+    {
+      "text": "**：\n   ",
+      "_time": 77.39628648757935,
+      "type": "delta"
+    },
+    {
+      "text": " *",
+      "_time": 77.39808893203735,
+      "type": "delta"
+    },
+    {
+      "text": "   缺乏搜索",
+      "_time": 77.48519682884216,
+      "type": "delta"
+    },
+    {
+      "text": "/",
+      "_time": 77.4900631904602,
+      "type": "delta"
+    },
+    {
+      "text": "推荐/内容分发",
+      "_time": 77.61246395111084,
+      "type": "delta"
+    },
+    {
+      "text": "领域的实战经验（",
+      "_time": 77.61412835121155,
+      "type": "delta"
+    },
+    {
+      "text": "这是该岗位的加分",
+      "_time": 77.72216749191284,
+      "type": "delta"
+    },
+    {
+      "text": "项）",
+      "_time": 77.72384214401245,
+      "type": "delta"
+    },
+    {
+      "text": "\n    *  ",
+      "_time": 77.82552933692932,
+      "type": "delta"
+    },
+    {
+      "text": " 缺乏商业环境",
+      "_time": 77.85937237739563,
+      "type": "delta"
+    },
+    {
+      "text": "下的完整产品周期",
+      "_time": 77.97146105766296,
+      "type": "delta"
+    },
+    {
+      "text": "经验（目前",
+      "_time": 77.97409915924072,
+      "type": "delta"
+    },
+    {
+      "text": "仅有校园项目）",
+      "_time": 78.0974383354187,
+      "type": "delta"
+    },
+    {
+      "text": "\n    *  ",
+      "_time": 78.13634634017944,
+      "type": "delta"
+    },
+    {
+      "text": " 未展示 Function",
+      "_time": 78.24942374229431,
+      "type": "delta"
+    },
+    {
+      "text": " Calling 的实际应用",
+      "_time": 78.25102972984314,
+      "type": "delta"
+    },
+    {
+      "text": "经验\n    *",
+      "_time": 78.42039918899536,
+      "type": "delta"
+    },
+    {
+      "text": "  ",
+      "_time": 78.42412328720093,
+      "type": "delta"
+    },
+    {
+      "text": " 缺乏将复杂",
+      "_time": 78.4752447605133,
+      "type": "delta"
+    },
+    {
+      "text": "业务经验抽象为大",
+      "_time": 78.47916984558105,
+      "type": "delta"
+    },
+    {
+      "text": "模型可执行 SOP",
+      "_time": 78.65335631370544,
+      "type": "delta"
+    },
+    {
+      "text": " 的明确案例",
+      "_time": 78.65512442588806,
+      "type": "delta"
+    },
+    {
+      "text": "\n*   **",
+      "_time": 78.77133679389954,
+      "type": "delta"
+    },
+    {
+      "text": "备考",
+      "_time": 78.77406549453735,
+      "type": "delta"
+    },
+    {
+      "text": "建议**：\n",
+      "_time": 78.8542230129242,
+      "type": "delta"
+    },
+    {
+      "text": "    *  ",
+      "_time": 78.8881368637085,
+      "type": "delta"
+    },
+    {
+      "text": " 重点强化大",
+      "_time": 78.97922110557556,
+      "type": "delta"
+    },
+    {
+      "text": "模型产品规划与设计",
+      "_time": 78.9820294380188,
+      "type": "delta"
+    },
+    {
+      "text": "能力、Prompt ",
+      "_time": 79.12342405319214,
+      "type": "delta"
+    },
+    {
+      "text": "工程与 RAG",
+      "_time": 79.19522738456726,
+      "type": "delta"
+    },
+    {
+      "text": " 调教能力",
+      "_time": 79.26937508583069,
+      "type": "delta"
+    },
+    {
+      "text": "\n    *  ",
+      "_time": 79.2729697227478,
+      "type": "delta"
+    },
+    {
+      "text": " 补充需求分析与",
+      "_time": 79.41155433654785,
+      "type": "delta"
+    },
+    {
+      "text": "业务抽象能力",
+      "_time": 79.4139723777771,
+      "type": "delta"
+    },
+    {
+      "text": "，特别是将业务",
+      "_time": 79.57129216194153,
+      "type": "delta"
+    },
+    {
+      "text": "经验转化为",
+      "_time": 79.57307624816895,
+      "type": "delta"
+    },
+    {
+      "text": " SOP 的案例\n",
+      "_time": 79.64638471603394,
+      "type": "delta"
+    },
+    {
+      "text": "    *  ",
+      "_time": 79.64992761611938,
+      "type": "delta"
+    },
+    {
+      "text": " 加强对数据驱动",
+      "_time": 79.82095265388489,
+      "type": "delta"
+    },
+    {
+      "text": "决策能力的",
+      "_time": 79.82264113426208,
+      "type": "delta"
+    },
+    {
+      "text": "展示（如交互",
+      "_time": 79.88025116920471,
+      "type": "delta"
+    },
+    {
+      "text": "好感度与",
+      "_time": 79.8840000629425,
+      "type": "delta"
+    },
+    {
+      "text": "任务成功率指标）",
+      "_time": 80.00726819038391,
+      "type": "delta"
+    },
+    {
+      "text": "\n    *  ",
+      "_time": 80.04621434211731,
+      "type": "delta"
+    },
+    {
+      "text": " 若有可能，",
+      "_time": 80.14837265014648,
+      "type": "delta"
+    },
+    {
+      "text": "补充搜索/",
+      "_time": 80.15193510055542,
+      "type": "delta"
+    },
+    {
+      "text": "推荐领域知识\n\n",
+      "_time": 80.27745223045349,
+      "type": "delta"
+    },
+    {
+      "text": "### 2.",
+      "_time": 80.31532311439514,
+      "type": "delta"
+    },
+    {
+      "text": " 百度大模型",
+      "_time": 80.42038130760193,
+      "type": "delta"
+    },
+    {
+      "text": "应用",
+      "_time": 80.42381358146667,
+      "type": "delta"
+    },
+    {
+      "text": " PM 岗位具体要求",
+      "_time": 80.5091245174408,
+      "type": "delta"
+    },
+    {
+      "text": "\n为了",
+      "_time": 80.51506996154785,
+      "type": "delta"
+    },
+    {
+      "text": "帮助你更好地准备，",
+      "_time": 80.65621948242188,
+      "type": "delta"
+    },
+    {
+      "text": "以下是该岗位",
+      "_time": 80.65898299217224,
+      "type": "delta"
+    },
+    {
+      "text": "的核心职责与要求",
+      "_time": 80.74439835548401,
+      "type": "delta"
+    },
+    {
+      "text": "：",
+      "_time": 80.74704074859619,
+      "type": "delta"
+    },
+    {
+      "text": "\n*   **",
+      "_time": 80.8322434425354,
+      "type": "delta"
+    },
+    {
+      "text": "核心职责**",
+      "_time": 80.83582901954651,
+      "type": "delta"
+    },
+    {
+      "text": "：负责大模型",
+      "_time": 80.99815225601196,
+      "type": "delta"
+    },
+    {
+      "text": "应用的产品规划与设计",
+      "_time": 81.00096774101257,
+      "type": "delta"
+    },
+    {
+      "text": " [来源：百度",
+      "_time": 81.10432505607605,
+      "type": "delta"
+    },
+    {
+      "text": " - 大模型",
+      "_time": 81.10695290565491,
+      "type": "delta"
+    },
+    {
+      "text": "应用 PM]。",
+      "_time": 81.28291940689087,
+      "type": "delta"
+    },
+    {
+      "text": "深入",
+      "_time": 81.2846519947052,
+      "type": "delta"
+    },
+    {
+      "text": "理解行业需求，",
+      "_time": 81.33800530433655,
+      "type": "delta"
+    },
+    {
+      "text": "将业务经验抽象",
+      "_time": 81.33969354629517,
+      "type": "delta"
+    },
+    {
+      "text": "为大模型可执行的",
+      "_time": 81.48003768920898,
+      "type": "delta"
+    },
+    {
+      "text": "逻辑流与 SOP",
+      "_time": 81.52500176429749,
+      "type": "delta"
+    },
+    {
+      "text": " [来源：百度",
+      "_time": 81.62487769126892,
+      "type": "delta"
+    },
+    {
+      "text": " - 大模型",
+      "_time": 81.62863397598267,
+      "type": "delta"
+    },
+    {
+      "text": "应用 PM]。",
+      "_time": 81.77713799476624,
+      "type": "delta"
+    },
+    {
+      "text": "进行",
+      "_time": 81.77891325950623,
+      "type": "delta"
+    },
+    {
+      "text": "模型精细化调教",
+      "_time": 81.90028977394104,
+      "type": "delta"
+    },
+    {
+      "text": "，包括编写结构化",
+      "_time": 81.9005959033966,
+      "type": "delta"
+    },
+    {
+      "text": " Prompt，配合 R",
+      "_time": 82.00241494178772,
+      "type": "delta"
+    },
+    {
+      "text": "AG、Function Calling",
+      "_time": 82.03978896141052,
+      "type": "delta"
+    },
+    {
+      "text": " [来源：百度",
+      "_time": 82.14673256874084,
+      "type": "delta"
+    },
+    {
+      "text": " - 大模型",
+      "_time": 82.150395154953,
+      "type": "delta"
+    },
+    {
+      "text": "应用 PM]。",
+      "_time": 82.32824945449829,
+      "type": "delta"
+    },
+    {
+      "text": "建立数据",
+      "_time": 82.3329017162323,
+      "type": "delta"
+    },
+    {
+      "text": "驱动进化机制，",
+      "_time": 82.39913439750671,
+      "type": "delta"
+    },
+    {
+      "text": "设定",
+      "_time": 82.40188121795654,
+      "type": "delta"
+    },
+    {
+      "text": "交互好感度与",
+      "_time": 82.49027109146118,
+      "type": "delta"
+    },
+    {
+      "text": "任务成功率双重指标",
+      "_time": 82.517813205719,
+      "type": "delta"
+    },
+    {
+      "text": " [来源：百度",
+      "_time": 82.63307356834412,
+      "type": "delta"
+    },
+    {
+      "text": " - 大模型",
+      "_time": 82.63482069969177,
+      "type": "delta"
+    },
+    {
+      "text": "应用 PM]。",
+      "_time": 82.7770767211914,
+      "type": "delta"
+    },
+    {
+      "text": "\n*  ",
+      "_time": 82.77884912490845,
+      "type": "delta"
+    },
+    {
+      "text": " **关键词**：",
+      "_time": 82.9323091506958,
+      "type": "delta"
+    },
+    {
+      "text": "大模型，",
+      "_time": 82.93588042259216,
+      "type": "delta"
+    },
+    {
+      "text": "LLM, R",
+      "_time": 83.03004693984985,
+      "type": "delta"
+    },
+    {
+      "text": "AG,",
+      "_time": 83.03397727012634,
+      "type": "delta"
+    },
+    {
+      "text": " Prompt, 产品经理",
+      "_time": 83.1697986125946,
+      "type": "delta"
+    },
+    {
+      "text": "，AI, N",
+      "_time": 83.17287731170654,
+      "type": "delta"
+    },
+    {
+      "text": "LP [来源：",
+      "_time": 83.28103303909302,
+      "type": "delta"
+    },
+    {
+      "text": "百度 - 大",
+      "_time": 83.28378534317017,
+      "type": "delta"
+    },
+    {
+      "text": "模型应用 PM]",
+      "_time": 83.47604131698608,
+      "type": "delta"
+    },
+    {
+      "text": "。\n*  ",
+      "_time": 83.47977042198181,
+      "type": "delta"
+    },
+    {
+      "text": " **加分项**",
+      "_time": 83.56914210319519,
+      "type": "delta"
+    },
+    {
+      "text": "：有搜索/",
+      "_time": 83.57071352005005,
+      "type": "delta"
+    },
+    {
+      "text": "推荐/内容分发",
+      "_time": 83.71286177635193,
+      "type": "delta"
+    },
+    {
+      "text": "领域实战经验者优先 [",
+      "_time": 83.74987769126892,
+      "type": "delta"
+    },
+    {
+      "text": "来源：百度 -",
+      "_time": 83.93232774734497,
+      "type": "delta"
+    },
+    {
+      "text": " 大模型应用",
+      "_time": 83.934889793396,
+      "type": "delta"
+    },
+    {
+      "text": " PM]。\n\n",
+      "_time": 84.0020489692688,
+      "type": "delta"
+    },
+    {
+      "text": "### 3.",
+      "_time": 84.03681540489197,
+      "type": "delta"
+    },
+    {
+      "text": " 美团搜索推荐",
+      "_time": 84.1461386680603,
+      "type": "delta"
+    },
+    {
+      "text": " AI PM 情况说明",
+      "_time": 84.14876699447632,
+      "type": "delta"
+    },
+    {
+      "text": "\n*   ",
+      "_time": 84.29012298583984,
+      "type": "delta"
+    },
+    {
+      "text": "当前知识库",
+      "_time": 84.29273295402527,
+      "type": "delta"
+    },
+    {
+      "text": "中暂无美团搜索",
+      "_time": 84.42676854133606,
+      "type": "delta"
+    },
+    {
+      "text": "推荐 AI PM ",
+      "_time": 84.43117165565491,
+      "type": "delta"
+    },
+    {
+      "text": "的岗位详情（",
+      "_time": 84.54211831092834,
+      "type": "delta"
+    },
+    {
+      "text": "JD）及你的",
+      "_time": 84.54472041130066,
+      "type": "delta"
+    },
+    {
+      "text": "匹配度分析数据",
+      "_time": 84.71122670173645,
+      "type": "delta"
+    },
+    {
+      "text": "。因此无法计算",
+      "_time": 84.71386241912842,
+      "type": "delta"
+    },
+    {
+      "text": "该岗位的匹配分数",
+      "_time": 84.82904601097107,
+      "type": "delta"
+    },
+    {
+      "text": "，也无法对比",
+      "_time": 84.83175659179688,
+      "type": "delta"
+    },
+    {
+      "text": "两者的具体差异。",
+      "_time": 84.98487782478333,
+      "type": "delta"
+    },
+    {
+      "text": "\n\n### ",
+      "_time": 84.9877200126648,
+      "type": "delta"
+    },
+    {
+      "text": "4. 综合",
+      "_time": 85.08092999458313,
+      "type": "delta"
+    },
+    {
+      "text": "建议\n鉴于",
+      "_time": 85.08473634719849,
+      "type": "delta"
+    },
+    {
+      "text": "目前只能确认你",
+      "_time": 85.20596146583557,
+      "type": "delta"
+    },
+    {
+      "text": "与百度岗位的",
+      "_time": 85.24166655540466,
+      "type": "delta"
+    },
+    {
+      "text": "匹配度为 ",
+      "_time": 85.33605623245239,
+      "type": "delta"
+    },
+    {
+      "text": "75 分",
+      "_time": 85.33770418167114,
+      "type": "delta"
+    },
+    {
+      "text": "，且存在搜索",
+      "_time": 85.47807693481445,
+      "type": "delta"
+    },
+    {
+      "text": "/推荐经验",
+      "_time": 85.47866296768188,
+      "type": "delta"
+    },
+    {
+      "text": "缺失的短板：",
+      "_time": 85.60401916503906,
+      "type": "delta"
+    },
+    {
+      "text": "\n1. ",
+      "_time": 85.64484071731567,
+      "type": "delta"
+    },
+    {
+      "text": " **若优先考虑百度",
+      "_time": 85.74813771247864,
+      "type": "delta"
+    },
+    {
+      "text": "**：建议",
+      "_time": 85.75065040588379,
+      "type": "delta"
+    },
+    {
+      "text": "针对“业务经验",
+      "_time": 85.87303066253662,
+      "type": "delta"
+    },
+    {
+      "text": "抽象为",
+      "_time": 85.87570357322693,
+      "type": "delta"
+    },
+    {
+      "text": " SOP\"和\"",
+      "_time": 86.01288032531738,
+      "type": "delta"
+    },
+    {
+      "text": "Function Calling 应用",
+      "_time": 86.01775360107422,
+      "type": "delta"
+    },
+    {
+      "text": "”补充具体案例",
+      "_time": 86.1612458229065,
+      "type": "delta"
+    },
+    {
+      "text": "，并在",
+      "_time": 86.16174674034119,
+      "type": "delta"
+    },
+    {
+      "text": "面试中强调你的",
+      "_time": 86.23284792900085,
+      "type": "delta"
+    },
+    {
+      "text": " R",
+      "_time": 86.23648476600647,
+      "type": "delta"
+    },
+    {
+      "text": "AG 和 Prompt",
+      "_time": 86.3238480091095,
+      "type": "delta"
+    },
+    {
+      "text": " 工程",
+      "_time": 86.32545566558838,
+      "type": "delta"
+    },
+    {
+      "text": "能力。\n2",
+      "_time": 86.46686100959778,
+      "type": "delta"
+    },
+    {
+      "text": ".  **若",
+      "_time": 86.47262406349182,
+      "type": "delta"
+    },
+    {
+      "text": "需对比美团**",
+      "_time": 86.57587456703186,
+      "type": "delta"
+    },
+    {
+      "text": "：需要",
+      "_time": 86.57843041419983,
+      "type": "delta"
+    },
+    {
+      "text": "获取美团该岗位的",
+      "_time": 86.68509268760681,
+      "type": "delta"
+    },
+    {
+      "text": " JD 进行",
+      "_time": 86.72460627555847,
+      "type": "delta"
+    },
+    {
+      "text": "匹配分析。通常",
+      "_time": 86.81004738807678,
+      "type": "delta"
+    },
+    {
+      "text": "搜索",
+      "_time": 86.81263875961304,
+      "type": "delta"
+    },
+    {
+      "text": "推荐 AI PM ",
+      "_time": 86.89995217323303,
+      "type": "delta"
+    },
+    {
+      "text": "会更侧重推荐",
+      "_time": 86.90360760688782,
+      "type": "delta"
+    },
+    {
+      "text": "算法理解、排序",
+      "_time": 87.06293106079102,
+      "type": "delta"
+    },
+    {
+      "text": "策略及大规模",
+      "_time": 87.06559109687805,
+      "type": "delta"
+    },
+    {
+      "text": "流量下的性能优化",
+      "_time": 87.14985728263855,
+      "type": "delta"
+    },
+    {
+      "text": "，与",
+      "_time": 87.1514539718628,
+      "type": "delta"
+    },
+    {
+      "text": "百度侧重大模型",
+      "_time": 87.25786304473877,
+      "type": "delta"
+    },
+    {
+      "text": "应用落地",
+      "_time": 87.26375269889832,
+      "type": "delta"
+    },
+    {
+      "text": "（Prompt/RAG",
+      "_time": 87.40184879302979,
+      "type": "delta"
+    },
+    {
+      "text": "）",
+      "_time": 87.40368700027466,
+      "type": "delta"
+    },
+    {
+      "text": "有所不同。\n3",
+      "_time": 87.45790791511536,
+      "type": "delta"
+    },
+    {
+      "text": ".  **下一步",
+      "_time": 87.45927572250366,
+      "type": "delta"
+    },
+    {
+      "text": "行动**：如果你",
+      "_time": 87.63797116279602,
+      "type": "delta"
+    },
+    {
+      "text": "能提供美团",
+      "_time": 87.64065408706665,
+      "type": "delta"
+    },
+    {
+      "text": "岗位的详细描述，我可以",
+      "_time": 87.70887064933777,
+      "type": "delta"
+    },
+    {
+      "text": "为你",
+      "_time": 87.71244645118713,
+      "type": "delta"
+    },
+    {
+      "text": "进行类似的匹配度",
+      "_time": 87.83489322662354,
+      "type": "delta"
+    },
+    {
+      "text": "分析，",
+      "_time": 87.83745193481445,
+      "type": "delta"
+    },
+    {
+      "text": "从而给出更准确的",
+      "_time": 87.90578603744507,
+      "type": "delta"
+    },
+    {
+      "text": "二",
+      "_time": 87.90943121910095,
+      "type": "delta"
+    },
+    {
+      "text": "选一建议。",
+      "_time": 87.99986290931702,
+      "type": "delta"
+    },
+    {
+      "session_id": "eval_chen_18_1780562212390",
+      "intent": "match_assess",
+      "route_meta": {
+        "layer": "llm",
+        "intent": "match_assess",
+        "confidence": 0.75,
+        "demands": [
+          {
+            "intent": "match_assess",
+            "entities": {
+              "company": "百度",
+              "companies": [
+                "百度",
+                "美团"
+              ],
+              "attributes": [
+                "匹配度"
+              ],
+              "jd_source": "kb"
+            }
+          }
+        ],
+        "plan_tasks": 5
+      },
+      "agent_mode": "llm",
+      "is_clarification": false,
+      "agent": {
+        "rewritten_query": "百度大模型应用PM和美团搜索推荐AI PM哪个更适合我",
+        "tools": [
+          {
+            "tool": "kb_retrieve",
+            "status": "✅",
+            "params": {
+              "query": "百度 大模型应用PM",
+              "company": "百度",
+              "position": "大模型应用PM",
+              "top_k": 3
+            },
+            "result_preview": "{'chunks': [{'chunk_id': 'f46e2577-eca2-448d-a9a8-7fc14402179b_chunk_1', 'content': '【百度 · 大模型应用PM 岗位职责】\\n1. 负责大模型应用的产品规划与设计。2. 深入理解行业需求，将业务经验抽象为大模型可执行的逻辑流与SOP。3. 模型精细化调教：编写结构化Prompt，配合RAG、Function Ca"
+          },
+          {
+            "tool": "kb_retrieve",
+            "status": "❌",
+            "params": {
+              "query": "美团 搜索推荐AI PM",
+              "company": "美团",
+              "position": "搜索推荐AI PM",
+              "top_k": 3
+            },
+            "result_preview": "{'chunks': [{'chunk_id': 'ac997d3f-9206-4414-9fac-16deb62ff88b_chunk_7', 'content': '【美团 · 搜索推荐AI PM 关键词】\\n搜索推荐, AI, Agent, Prompt, RAG, 多模态, 产品经理', 'metadata': {'company': '美团', 'index': 7, 'jd_id': "
+          },
+          {
+            "tool": "match_analyze",
+            "status": "✅",
+            "params": {
+              "resume_text": "姓名：陈雨桐\r\n教育背景\r\n江南科技大学\r\n信息工程学院·软件工程（AI应用方向）·硕士\r\n2024.09-2027.06（预计）\r\nGPA: 3.4/4.0 | 主修：机器学习基础、数据库系统、软件项目管理、人机交互设计\r\n\r\n云溪大学\r\n计算机学院·信息管理与信息系统·本科\r\n2020.09-2024.06\r\n荣誉：两次校级三等奖学金 | 主修：数据结构、管理学原理、Web开发技术、统计学\r\n\r\n项目经历\r\n求职助手小程序 — 智能简历匹配与面试模拟工具\r\n2025.03-2025.11\r\n产品经理 | 三人小组\r\n- 需求分析：设计调研问卷回收40余份有效样本，梳理\"简历评估\"与\"定向面试模拟\"核心需求，使用Figma完成低保真原型，输出产品需求文档。\r\n- AI匹配策略：调研开源Embedding模型实现简历与JD语义相似度计算，探索多维度匹配方案，对比整篇匹配与分块匹配效果差异，持续优化推荐排序。\r\n- 内容生成：基于大模型AI设计结构化Prompt，融合岗位关键词与简历信息输出个性化面试题，建立追问机制增强模拟面试针对性。\r\n- 测试验证：组织20人内测收集用户路径与反馈数据，针对复杂PDF格式设计补充录入机制，完成从需求分析到上线测试的完整产品闭环。\r\n\r\n教务问答机器人 — 基于校内政策的RAG问答系统\r\n2024.10-2025.02\r\n产品设计与测试 | 实验室课题项目\r\n- 知识库构建：收集整理教务处政策文件、培养方案及历史问答共80余份，完成扫描件OCR识别、格式转换与结构化清洗，建立可检索的领域知识库。\r\n- 交互设计：设计Web端对话界面，参考主流客服产品布局增加\"推荐提问\"推荐模块降低投入成本，针对政策类回答设计溯源展示功能增强可信度。\r\n- 效果测试：参与搭建检索增强生成链路，完成实验环境下多轮问答测试，验证标准政策类问题回答准确率，整理测试数据与优化建议形成可复用方案。\r\n\r\n校园经历\r\n江南科技大学软件学院学生会·宣传部干事\r\n2024.09-2025.06\r\n- 负责学院官方公众号推文排版与发布，累计输出活动宣传稿件10余篇；协助组织院内编程比赛，负责报名统计与现场签到。\r\n\r\n云溪大学图书馆·勤工助学岗\r\n2022.03-2023.06\r\n- 负责电子阅览室日常值班，协助同学解决基础网络与设备使用问题；参与旧期刊电子目录录入与数据整理工作。\r\n\r\n获奖情况\r\n- 2025.05 江南科技大学研究生学业三等奖学金\r\n- 2024.11 学院AI应用创新赛（课程组）三等奖\r\n- 2022.06 云溪大学优秀共青团员\r\n- 2022.12 校级网页设计比赛优秀奖\r\n\r\n个人技能\r\n- 产品工具：熟练使用Figma进行原型与交互演示，了解Axure基础操作；能够使用Xmind梳理产品架构，通过腾讯文档/飞书写PRD。\r\n- 技术理解：了解大语言模型在应用层的落地方式，具备Prompt Engineering实践经验；理解RAG基本架构与工作流程，了解Embedding与向量检索作用。\r\n- 语言能力：英语CET-4（525分），可阅读英文技术文档与产品资料。\r\n- 办公技能：熟练使用Office办公软件，掌握Excel数据透视表等基础数据分析功能。",
+              "jd_text": [
+                {
+                  "chunk_id": "f46e2577-eca2-448d-a9a8-7fc14402179b_chunk_1",
+                  "content": "【百度 · 大模型应用PM 岗位职责】\n1. 负责大模型应用的产品规划与设计。2. 深入理解行业需求，将业务经验抽象为大模型可执行的逻辑流与SOP。3. 模型精细化调教：编写结构化Prompt，配合RAG、Function Calling。4. 数据驱动进化：建立交互好感度与任务成功率双重指标。",
+                  "metadata": {
+                    "company": "百度",
+                    "index": 1,
+                    "jd_id": "f46e2577-eca2-448d-a9a8-7fc14402179b",
+                    "position": "大模型应用PM",
+                    "section": "responsibilities",
+                    "strategy": "semantic"
+                  },
+                  "distance": 0.3195440471172333,
+                  "bm25_score": 11.374791570003502,
+                  "vec_norm": 1.0,
+                  "bm25_norm": 0.6857958634973661,
+                  "hybrid_score": 0.9057387590492098,
+                  "rerank_score": 0.9996
+                },
+                {
+                  "chunk_id": "f46e2577-eca2-448d-a9a8-7fc14402179b_chunk_7",
+                  "content": "【百度 · 大模型应用PM 关键词】\n大模型, LLM, RAG, Prompt, 产品经理, AI, NLP",
+                  "metadata": {
+                    "company": "百度",
+                    "index": 7,
+                    "jd_id": "f46e2577-eca2-448d-a9a8-7fc14402179b",
+                    "position": "大模型应用PM",
+                    "section": "keywords",
+                    "strategy": "semantic"
+                  },
+                  "distance": 0.4798579514026642,
+                  "bm25_score": 13.933108005934168,
+                  "vec_norm": 0.4114104210573193,
+                  "bm25_norm": 0.987080411637543,
+                  "hybrid_score": 0.5841114182313863,
+                  "rerank_score": 0.9987
+                },
+                {
+                  "chunk_id": "f46e2577-eca2-448d-a9a8-7fc14402179b_chunk_6",
+                  "content": "【百度 · 大模型应用PM 软性要求/加分项】\n有搜索/推荐/内容分发领域实战经验者优先",
+                  "metadata": {
+                    "company": "百度",
+                    "index": 6,
+                    "jd_id": "f46e2577-eca2-448d-a9a8-7fc14402179b",
+                    "position": "大模型应用PM",
+                    "priority": "medium",
+                    "section": "soft_requirements",
+                    "strategy": "semantic"
+                  },
+                  "distance": 0.4630567729473114,
+                  "bm25_score": 12.751801717782659,
+                  "vec_norm": 0.4730956416678165,
+                  "bm25_norm": 0.8479618388752943,
+                  "hybrid_score": 0.5855555008300598,
+                  "rerank_score": 0.9985
+                }
+              ],
+              "company": "百度",
+              "position": "大模型应用PM",
+              "attributes": [
+                "匹配度"
+              ]
+            },
+            "result_preview": "{'score': 75, 'label': '基本匹配', 'advantages': ['大模型应用产品规划与设计', '结构化Prompt编写', 'RAG架构理解与应用', '产品经理基本能力（需求分析、原型设计、PRD）', '数据驱动（用户反馈收集与指标分析）', '团队协作与项目管理'], 'weaknesses': ['候选人缺乏搜索/推荐/内容分发领域的实战经验（JD加分项）；缺"
+          }
+        ],
+        "kb_chunks_count": 2,
+        "system_prompt_preview": "你是一位专业的求职顾问。请基于以下工具执行结果，给用户一个清晰、有帮助的回复。\n要求：\n1. 先直接回答用户的问题（是/否/有/没有），不要绕弯子，不要重复用户的原话\n2. 如果有匹配分析结果，给出具体的分数和建议\n3. 如果有检索结果，基于事实回答，不要编造\n4. 【强制】引用信息时必须标注来源。每个引用的事实后面都要跟 [来源：公司名-岗位名] 格式。   kb_retrieve 结果的 ch"
+      },
+      "memory": {
+        "working_turns": 1,
+        "compressed_blocks": 0,
+        "current_topic": "general",
+        "evidence_cache_size": 3
+      },
+      "reply": "目前无法直接判定哪个更适合，因为缺少美团岗位的匹配数据。但基于现有分析，你与百度大模型应用 PM 的匹配度为 75 分（基本匹配）。\n\n以下是基于现有数据的详细分析与建议：\n\n### 1. 百度大模型应用 PM 匹配分析\n*   **匹配分数**：75 分（基本匹配）\n*   **你的优势**：\n    *   具备大模型应用产品规划与设计能力\n    *   掌握结构化 Prompt 编写及 RAG 架构理解与应用\n    *   拥有产品经理基本能力（需求分析、原型设计、PRD）\n    *   具备数据驱动意识（用户反馈收集与指标分析）\n    *   拥有团队协作与项目管理经验\n*   **待提升点**：\n    *   缺乏搜索/推荐/内容分发领域的实战经验（这是该岗位的加分项）\n    *   缺乏商业环境下的完整产品周期经验（目前仅有校园项目）\n    *   未展示 Function Calling 的实际应用经验\n    *   缺乏将复杂业务经验抽象为大模型可执行 SOP 的明确案例\n*   **备考建议**：\n    *   重点强化大模型产品规划与设计能力、Prompt 工程与 RAG 调教能力\n    *   补充需求分析与业务抽象能力，特别是将业务经验转化为 SOP 的案例\n    *   加强对数据驱动决策能力的展示（如交互好感度与任务成功率指标）\n    *   若有可能，补充搜索/推荐领域知识\n\n### 2. 百度大模型应用 PM 岗位具体要求\n为了帮助你更好地准备，以下是该岗位的核心职责与要求：\n*   **核心职责**：负责大模型应用的产品规划与设计 [来源：百度 - 大模型应用 PM]。深入理解行业需求，将业务经验抽象为大模型可执行的逻辑流与 SOP [来源：百度 - 大模型应用 PM]。进行模型精细化调教，包括编写结构化 Prompt，配合 RAG、Function Calling [来源：百度 - 大模型应用 PM]。建立数据驱动进化机制，设定交互好感度与任务成功率双重指标 [来源：百度 - 大模型应用 PM]。\n*   **关键词**：大模型，LLM, RAG, Prompt, 产品经理，AI, NLP [来源：百度 - 大模型应用 PM]。\n*   **加分项**：有搜索/推荐/内容分发领域实战经验者优先 [来源：百度 - 大模型应用 PM]。\n\n### 3. 美团搜索推荐 AI PM 情况说明\n*   当前知识库中暂无美团搜索推荐 AI PM 的岗位详情（JD）及你的匹配度分析数据。因此无法计算该岗位的匹配分数，也无法对比两者的具体差异。\n\n### 4. 综合建议\n鉴于目前只能确认你与百度岗位的匹配度为 75 分，且存在搜索/推荐经验缺失的短板：\n1.  **若优先考虑百度**：建议针对“业务经验抽象为 SOP\"和\"Function Calling 应用”补充具体案例，并在面试中强调你的 RAG 和 Prompt 工程能力。\n2.  **若需对比美团**：需要获取美团该岗位的 JD 进行匹配分析。通常搜索推荐 AI PM 会更侧重推荐算法理解、排序策略及大规模流量下的性能优化，与百度侧重大模型应用落地（Prompt/RAG）有所不同。\n3.  **下一步行动**：如果你能提供美团岗位的详细描述，我可以为你进行类似的匹配度分析，从而给出更准确的二选一建议。",
+      "debug_info": {
+        "task_graph": {
+          "tasks": {
+            "T0": {
+              "task_id": "T0",
+              "task_type": "tool_call",
+              "tool_name": "kb_retrieve",
+              "status": "success",
+              "parameters": {
+                "query": "百度 大模型应用PM",
+                "company": "百度",
+                "position": "大模型应用PM",
+                "top_k": 3
+              },
+              "resolved_params": {
+                "query": "百度 大模型应用PM",
+                "company": "百度",
+                "position": "大模型应用PM",
+                "top_k": 3
+              },
+              "result": {
+                "chunks": [
+                  {
+                    "chunk_id": "f46e2577-eca2-448d-a9a8-7fc14402179b_chunk_1",
+                    "content": "【百度 · 大模型应用PM 岗位职责】\n1. 负责大模型应用的产品规划与设计。2. 深入理解行业需求，将业务经验抽象为大模型可执行的逻辑流与SOP。3. 模型精细化调教：编写结构化Prompt，配合RAG、Function Calling。4. 数据驱动进化：建立交互好感度与任务成功率双重指标。",
+                    "metadata": {
+                      "company": "百度",
+                      "index": 1,
+                      "jd_id": "f46e2577-eca2-448d-a9a8-7fc14402179b",
+                      "position": "大模型应用PM",
+                      "section": "responsibilities",
+                      "strategy": "semantic"
+                    },
+                    "distance": 0.3195440471172333,
+                    "bm25_score": 11.374791570003502,
+                    "vec_norm": 1.0,
+                    "bm25_norm": 0.6857958634973661,
+                    "hybrid_score": 0.9057387590492098,
+                    "rerank_score": 0.9996
+                  },
+                  {
+                    "chunk_id": "f46e2577-eca2-448d-a9a8-7fc14402179b_chunk_7",
+                    "content": "【百度 · 大模型应用PM 关键词】\n大模型, LLM, RAG, Prompt, 产品经理, AI, NLP",
+                    "metadata": {
+                      "company": "百度",
+                      "index": 7,
+                      "jd_id": "f46e2577-eca2-448d-a9a8-7fc14402179b",
+                      "position": "大模型应用PM",
+                      "section": "keywords",
+                      "strategy": "semantic"
+                    },
+                    "distance": 0.4798579514026642,
+                    "bm25_score": 13.933108005934168,
+                    "vec_norm": 0.4114104210573193,
+                    "bm25_norm": 0.987080411637543,
+                    "hybrid_score": 0.5841114182313863,
+                    "rerank_score": 0.9987
+                  },
+                  {
+                    "chunk_id": "f46e2577-eca2-448d-a9a8-7fc14402179b_chunk_6",
+                    "content": "【百度 · 大模型应用PM 软性要求/加分项】\n有搜索/推荐/内容分发领域实战经验者优先",
+                    "metadata": {
+                      "company": "百度",
+                      "index": 6,
+                      "jd_id": "f46e2577-eca2-448d-a9a8-7fc14402179b",
+                      "position": "大模型应用PM",
+                      "priority": "medium",
+                      "section": "soft_requirements",
+                      "strategy": "semantic"
+                    },
+                    "distance": 0.4630567729473114,
+                    "bm25_score": 12.751801717782659,
+                    "vec_norm": 0.4730956416678165,
+                    "bm25_norm": 0.8479618388752943,
+                    "hybrid_score": 0.5855555008300598,
+                    "rerank_score": 0.9985
+                  }
+                ],
+                "query": "百度 大模型应用PM",
+                "filters": {
+                  "company": "百度",
+                  "position": "大模型应用PM"
+                },
+                "strategy": "hybrid(70%vec+30%bm25)+reranker",
+                "pool_k": 3,
+                "rerank_k": 10,
+                "pool_size": 20,
+                "vec_only": 0,
+                "bm25_only": 12,
+                "both": 8,
+                "rerank": {
+                  "enabled": true,
+                  "candidates": 3,
+                  "output": 3,
+                  "best_rerank_score": 0.9996
+                }
+              },
+              "observation": "工具 kb_retrieve 执行成功"
+            },
+            "T1": {
+              "task_id": "T1",
+              "task_type": "tool_call",
+              "tool_name": "kb_retrieve",
+              "status": "failed",
+              "parameters": {
+                "query": "美团 搜索推荐AI PM",
+                "company": "美团",
+                "position": "搜索推荐AI PM",
+                "top_k": 3
+              },
+              "resolved_params": {
+                "query": "美团 搜索推荐AI PM",
+                "company": "美团",
+                "position": "搜索推荐AI PM",
+                "top_k": 3
+              },
+              "result": {
+                "chunks": [
+                  {
+                    "chunk_id": "ac997d3f-9206-4414-9fac-16deb62ff88b_chunk_7",
+                    "content": "【美团 · 搜索推荐AI PM 关键词】\n搜索推荐, AI, Agent, Prompt, RAG, 多模态, 产品经理",
+                    "metadata": {
+                      "company": "美团",
+                      "index": 7,
+                      "jd_id": "ac997d3f-9206-4414-9fac-16deb62ff88b",
+                      "position": "搜索推荐AI PM",
+                      "section": "keywords",
+                      "strategy": "semantic"
+                    },
+                    "distance": 0.2915450930595398,
+                    "bm25_score": 21.915066901782424,
+                    "vec_norm": 0.7925466709807063,
+                    "bm25_norm": 0.9816137311294516,
+                    "hybrid_score": 0.8492667890253298,
+                    "rerank_score": 0.9997
+                  },
+                  {
+                    "chunk_id": "ac997d3f-9206-4414-9fac-16deb62ff88b_chunk_1",
+                    "content": "【美团 · 搜索推荐AI PM 岗位职责】\n1. 负责搜索推荐全链路的产品演进。2. 利用Agent工作流、意图编程与自动化评估技术，重构从海量供给到亿级用户决策的完整分发链路。3. 智能诊断与进化体系：主导生成式策略的Benchmark建设。4. 全链路用户体验重塑：深入洞察用户在搜索推荐场景中的行为路径。",
+                    "metadata": {
+                      "company": "美团",
+                      "index": 1,
+                      "jd_id": "ac997d3f-9206-4414-9fac-16deb62ff88b",
+                      "position": "搜索推荐AI PM",
+                      "section": "responsibilities",
+                      "strategy": "semantic"
+                    },
+                    "distance": 0.27556273341178894,
+                    "bm25_score": 16.611208310977567,
+                    "vec_norm": 0.8988018237054364,
+                    "bm25_norm": 0.6323106990216986,
+                    "hybrid_score": 0.818854486300315,
+                    "rerank_score": 0.9996
+                  },
+                  {
+                    "chunk_id": "ac997d3f-9206-4414-9fac-16deb62ff88b_chunk_5",
+                    "content": "【美团 · 搜索推荐AI PM 硬性要求】\n具备AI原生交互天赋，能将复杂业务需求精准转化为Agent可执行的任务逻辑",
+                    "metadata": {
+                      "company": "美团",
+                      "index": 5,
+                      "jd_id": "ac997d3f-9206-4414-9fac-16deb62ff88b",
+                      "position": "搜索推荐AI PM",
+                      "priority": "high",
+                      "section": "hard_requirements",
+                      "strategy": "semantic"
+                    },
+                    "distance": 0.26034101843833923,
+                    "bm25_score": 19.26560336277397,
+                    "vec_norm": 1.0,
+                    "bm25_norm": 0.807124605563577,
+                    "hybrid_score": 0.942137381669073,
+                    "rerank_score": 0.9992
+                  }
+                ],
+                "query": "美团 搜索推荐AI PM",
+                "filters": {
+                  "company": "美团",
+                  "position": "搜索推荐AI PM"
+                },
+                "strategy": "hybrid(70%vec+30%bm25)+reranker",
+                "pool_k": 3,
+                "rerank_k": 10,
+                "pool_size": 20,
+                "vec_only": 0,
+                "bm25_only": 12,
+                "both": 8,
+                "rerank": {
+                  "enabled": true,
+                  "candidates": 3,
+                  "output": 3,
+                  "best_rerank_score": 0.9997
+                }
+              },
+              "observation": "SEMANTIC_MISMATCH|检索结果与用户意图不符|suggested_query=百度"
+            },
+            "T2": {
+              "task_id": "T2",
+              "task_type": "tool_call",
+              "tool_name": "match_analyze",
+              "status": "success",
+              "parameters": {
+                "resume_text": "{{global_slots.resume_text}}",
+                "jd_text": "{{T0.output.chunks}}",
+                "company": "百度",
+                "position": "大模型应用PM",
+                "attributes": "{{intent_assess.attributes}}"
+              },
+              "resolved_params": {
+                "resume_text": "姓名：陈雨桐\r\n教育背景\r\n江南科技大学\r\n信息工程学院·软件工程（AI应用方向）·硕士\r\n2024.09-2027.06（预计）\r\nGPA: 3.4/4.0 | 主修：机器学习基础、数据库系统、软件项目管理、人机交互设计\r\n\r\n云溪大学\r\n计算机学院·信息管理与信息系统·本科\r\n2020.09-2024.06\r\n荣誉：两次校级三等奖学金 | 主修：数据结构、管理学原理、Web开发技术、统计学\r\n\r\n项目经历\r\n求职助手小程序 — 智能简历匹配与面试模拟工具\r\n2025.03-2025.11\r\n产品经理 | 三人小组\r\n- 需求分析：设计调研问卷回收40余份有效样本，梳理\"简历评估\"与\"定向面试模拟\"核心需求，使用Figma完成低保真原型，输出产品需求文档。\r\n- AI匹配策略：调研开源Embedding模型实现简历与JD语义相似度计算，探索多维度匹配方案，对比整篇匹配与分块匹配效果差异，持续优化推荐排序。\r\n- 内容生成：基于大模型AI设计结构化Prompt，融合岗位关键词与简历信息输出个性化面试题，建立追问机制增强模拟面试针对性。\r\n- 测试验证：组织20人内测收集用户路径与反馈数据，针对复杂PDF格式设计补充录入机制，完成从需求分析到上线测试的完整产品闭环。\r\n\r\n教务问答机器人 — 基于校内政策的RAG问答系统\r\n2024.10-2025.02\r\n产品设计与测试 | 实验室课题项目\r\n- 知识库构建：收集整理教务处政策文件、培养方案及历史问答共80余份，完成扫描件OCR识别、格式转换与结构化清洗，建立可检索的领域知识库。\r\n- 交互设计：设计Web端对话界面，参考主流客服产品布局增加\"推荐提问\"推荐模块降低投入成本，针对政策类回答设计溯源展示功能增强可信度。\r\n- 效果测试：参与搭建检索增强生成链路，完成实验环境下多轮问答测试，验证标准政策类问题回答准确率，整理测试数据与优化建议形成可复用方案。\r\n\r\n校园经历\r\n江南科技大学软件学院学生会·宣传部干事\r\n2024.09-2025.06\r\n- 负责学院官方公众号推文排版与发布，累计输出活动宣传稿件10余篇；协助组织院内编程比赛，负责报名统计与现场签到。\r\n\r\n云溪大学图书馆·勤工助学岗\r\n2022.03-2023.06\r\n- 负责电子阅览室日常值班，协助同学解决基础网络与设备使用问题；参与旧期刊电子目录录入与数据整理工作。\r\n\r\n获奖情况\r\n- 2025.05 江南科技大学研究生学业三等奖学金\r\n- 2024.11 学院AI应用创新赛（课程组）三等奖\r\n- 2022.06 云溪大学优秀共青团员\r\n- 2022.12 校级网页设计比赛优秀奖\r\n\r\n个人技能\r\n- 产品工具：熟练使用Figma进行原型与交互演示，了解Axure基础操作；能够使用Xmind梳理产品架构，通过腾讯文档/飞书写PRD。\r\n- 技术理解：了解大语言模型在应用层的落地方式，具备Prompt Engineering实践经验；理解RAG基本架构与工作流程，了解Embedding与向量检索作用。\r\n- 语言能力：英语CET-4（525分），可阅读英文技术文档与产品资料。\r\n- 办公技能：熟练使用Office办公软件，掌握Excel数据透视表等基础数据分析功能。",
+                "jd_text": [
+                  {
+                    "chunk_id": "f46e2577-eca2-448d-a9a8-7fc14402179b_chunk_1",
+                    "content": "【百度 · 大模型应用PM 岗位职责】\n1. 负责大模型应用的产品规划与设计。2. 深入理解行业需求，将业务经验抽象为大模型可执行的逻辑流与SOP。3. 模型精细化调教：编写结构化Prompt，配合RAG、Function Calling。4. 数据驱动进化：建立交互好感度与任务成功率双重指标。",
+                    "metadata": {
+                      "company": "百度",
+                      "index": 1,
+                      "jd_id": "f46e2577-eca2-448d-a9a8-7fc14402179b",
+                      "position": "大模型应用PM",
+                      "section": "responsibilities",
+                      "strategy": "semantic"
+                    },
+                    "distance": 0.3195440471172333,
+                    "bm25_score": 11.374791570003502,
+                    "vec_norm": 1.0,
+                    "bm25_norm": 0.6857958634973661,
+                    "hybrid_score": 0.9057387590492098,
+                    "rerank_score": 0.9996
+                  },
+                  {
+                    "chunk_id": "f46e2577-eca2-448d-a9a8-7fc14402179b_chunk_7",
+                    "content": "【百度 · 大模型应用PM 关键词】\n大模型, LLM, RAG, Prompt, 产品经理, AI, NLP",
+                    "metadata": {
+                      "company": "百度",
+                      "index": 7,
+                      "jd_id": "f46e2577-eca2-448d-a9a8-7fc14402179b",
+                      "position": "大模型应用PM",
+                      "section": "keywords",
+                      "strategy": "semantic"
+                    },
+                    "distance": 0.4798579514026642,
+                    "bm25_score": 13.933108005934168,
+                    "vec_norm": 0.4114104210573193,
+                    "bm25_norm": 0.987080411637543,
+                    "hybrid_score": 0.5841114182313863,
+                    "rerank_score": 0.9987
+                  },
+                  {
+                    "chunk_id": "f46e2577-eca2-448d-a9a8-7fc14402179b_chunk_6",
+                    "content": "【百度 · 大模型应用PM 软性要求/加分项】\n有搜索/推荐/内容分发领域实战经验者优先",
+                    "metadata": {
+                      "company": "百度",
+                      "index": 6,
+                      "jd_id": "f46e2577-eca2-448d-a9a8-7fc14402179b",
+                      "position": "大模型应用PM",
+                      "priority": "medium",
+                      "section": "soft_requirements",
+                      "strategy": "semantic"
+                    },
+                    "distance": 0.4630567729473114,
+                    "bm25_score": 12.751801717782659,
+                    "vec_norm": 0.4730956416678165,
+                    "bm25_norm": 0.8479618388752943,
+                    "hybrid_score": 0.5855555008300598,
+                    "rerank_score": 0.9985
+                  }
+                ],
+                "company": "百度",
+                "position": "大模型应用PM",
+                "attributes": [
+                  "匹配度"
+                ]
+              },
+              "result": {
+                "score": 75,
+                "label": "基本匹配",
+                "advantages": [
+                  "大模型应用产品规划与设计",
+                  "结构化Prompt编写",
+                  "RAG架构理解与应用",
+                  "产品经理基本能力（需求分析、原型设计、PRD）",
+                  "数据驱动（用户反馈收集与指标分析）",
+                  "团队协作与项目管理"
+                ],
+                "weaknesses": [
+                  "候选人缺乏搜索/推荐/内容分发领域的实战经验（JD加分项）；缺乏商业环境下的完整产品周期经验（仅有校园项目）；未展示Function Calling的实际应用经验；缺乏将复杂业务经验抽象为大模型可执行SOP的明确案例。"
+                ],
+                "suggestions": [
+                  "核心能力要求: 大模型产品规划与设计能力、Prompt工程与RAG调教能力、需求分析与业务抽象能力、数据驱动决策能力（交互好感度与任务成功率指标）、搜索/推荐领域知识（优先）、跨团队协作与项目管理能力。"
+                ],
+                "match_score": 75,
+                "covered": [
+                  "大模型应用产品规划与设计",
+                  "结构化Prompt编写",
+                  "RAG架构理解与应用",
+                  "产品经理基本能力（需求分析、原型设计、PRD）",
+                  "数据驱动（用户反馈收集与指标分析）",
+                  "团队协作与项目管理"
+                ],
+                "missing_experience": "候选人缺乏搜索/推荐/内容分发领域的实战经验（JD加分项）；缺乏商业环境下的完整产品周期经验（仅有校园项目）；未展示Function Calling的实际应用经验；缺乏将复杂业务经验抽象为大模型可执行SOP的明确案例。",
+                "core_skills": "大模型产品规划与设计能力、Prompt工程与RAG调教能力、需求分析与业务抽象能力、数据驱动决策能力（交互好感度与任务成功率指标）、搜索/推荐领域知识（优先）、跨团队协作与项目管理能力。",
+                "company": "百度",
+                "position": "大模型应用PM"
+              },
+              "observation": "工具 match_analyze 执行成功"
+            },
+            "T3": {
+              "task_id": "T3",
+              "task_type": "tool_call",
+              "tool_name": "match_analyze",
+              "status": "skipped",
+              "parameters": {
+                "resume_text": "{{global_slots.resume_text}}",
+                "jd_text": "{{T1.output.chunks}}",
+                "company": "美团",
+                "position": "搜索推荐AI PM",
+                "attributes": "{{intent_assess.attributes}}"
+              },
+              "resolved_params": {},
+              "result": null,
+              "observation": "执行器退出时未执行"
+            },
+            "T4": {
+              "task_id": "T4",
+              "task_type": "aggregate",
+              "tool_name": null,
+              "status": "skipped",
+              "parameters": {
+                "baidu_result": "{{T2.output}}",
+                "meituan_result": "{{T3.output}}",
+                "query": "{{rewritten_query}}"
+              },
+              "resolved_params": {},
+              "result": null,
+              "observation": "执行器退出时未执行"
+            }
+          },
+          "global_status": "success",
+          "replan_reason": "T1_tool_failed",
+          "replan_count": 1
+        },
+        "intent": {
+          "demands": [
+            {
+              "intent": "match_assess",
+              "entities": {
+                "company": "百度",
+                "companies": [
+                  "百度",
+                  "美团"
+                ],
+                "attributes": [
+                  "匹配度"
+                ],
+                "jd_source": "kb"
+              },
+              "confidence": 0.75
+            }
+          ],
+          "needs_clarification": false,
+          "clarification_question": ""
+        },
+        "rewrite": {
+          "rewritten_query": "百度大模型应用PM和美团搜索推荐AI PM哪个更适合我",
+          "search_keywords": "百度大模型应用PM和美团搜索推荐AI PM哪个更适合我",
+          "is_follow_up": false,
+          "follow_up_type": "none",
+          "resolved_references": {}
+        },
+        "evidence_cache": [
+          {
+            "chunk_id": "f46e2577-eca2-448d-a9a8-7fc14402179b_chunk_1",
+            "content": "【百度 · 大模型应用PM 岗位职责】\n1. 负责大模型应用的产品规划与设计。2. 深入理解行业需求，将业务经验抽象为大模型可执行的逻辑流与SOP。3. 模型精细化调教：编写结构化Prompt，配合RAG、Function Calling。4. 数据驱动进化：建立交互好感度与任务成功率双重指标。",
+            "metadata": {
+              "company": "百度",
+              "index": 1,
+              "jd_id": "f46e2577-eca2-448d-a9a8-7fc14402179b",
+              "position": "大模型应用PM",
+              "section": "responsibilities",
+              "strategy": "semantic"
+            },
+            "distance": 0.3195440471172333,
+            "bm25_score": 11.374791570003502,
+            "vec_norm": 1.0,
+            "bm25_norm": 0.6857958634973661,
+            "hybrid_score": 0.9057387590492098,
+            "rerank_score": 0.9996
+          },
+          {
+            "chunk_id": "f46e2577-eca2-448d-a9a8-7fc14402179b_chunk_7",
+            "content": "【百度 · 大模型应用PM 关键词】\n大模型, LLM, RAG, Prompt, 产品经理, AI, NLP",
+            "metadata": {
+              "company": "百度",
+              "index": 7,
+              "jd_id": "f46e2577-eca2-448d-a9a8-7fc14402179b",
+              "position": "大模型应用PM",
+              "section": "keywords",
+              "strategy": "semantic"
+            },
+            "distance": 0.4798579514026642,
+            "bm25_score": 13.933108005934168,
+            "vec_norm": 0.4114104210573193,
+            "bm25_norm": 0.987080411637543,
+            "hybrid_score": 0.5841114182313863,
+            "rerank_score": 0.9987
+          },
+          {
+            "chunk_id": "f46e2577-eca2-448d-a9a8-7fc14402179b_chunk_6",
+            "content": "【百度 · 大模型应用PM 软性要求/加分项】\n有搜索/推荐/内容分发领域实战经验者优先",
+            "metadata": {
+              "company": "百度",
+              "index": 6,
+              "jd_id": "f46e2577-eca2-448d-a9a8-7fc14402179b",
+              "position": "大模型应用PM",
+              "priority": "medium",
+              "section": "soft_requirements",
+              "strategy": "semantic"
+            },
+            "distance": 0.4630567729473114,
+            "bm25_score": 12.751801717782659,
+            "vec_norm": 0.4730956416678165,
+            "bm25_norm": 0.8479618388752943,
+            "hybrid_score": 0.5855555008300598,
+            "rerank_score": 0.9985
+          }
+        ],
+        "evidence_cache_query": "百度大模型应用PM和美团搜索推荐AI PM哪个更适合我",
+        "tool_outputs": [
+          {
+            "task_id": "T0",
+            "tool": "kb_retrieve",
+            "description": "检索百度大模型应用PM的JD",
+            "result": {
+              "chunks": [
+                {
+                  "chunk_id": "f46e2577-eca2-448d-a9a8-7fc14402179b_chunk_1",
+                  "content": "【百度 · 大模型应用PM 岗位职责】\n1. 负责大模型应用的产品规划与设计。2. 深入理解行业需求，将业务经验抽象为大模型可执行的逻辑流与SOP。3. 模型精细化调教：编写结构化Prompt，配合RAG、Function Calling。4. 数据驱动进化：建立交互好感度与任务成功率双重指标。",
+                  "source": "百度-大模型应用PM",
+                  "metadata": {
+                    "company": "百度",
+                    "position": "大模型应用PM"
+                  }
+                },
+                {
+                  "chunk_id": "f46e2577-eca2-448d-a9a8-7fc14402179b_chunk_7",
+                  "content": "【百度 · 大模型应用PM 关键词】\n大模型, LLM, RAG, Prompt, 产品经理, AI, NLP",
+                  "source": "百度-大模型应用PM",
+                  "metadata": {
+                    "company": "百度",
+                    "position": "大模型应用PM"
+                  }
+                },
+                {
+                  "chunk_id": "f46e2577-eca2-448d-a9a8-7fc14402179b_chunk_6",
+                  "content": "【百度 · 大模型应用PM 软性要求/加分项】\n有搜索/推荐/内容分发领域实战经验者优先",
+                  "source": "百度-大模型应用PM",
+                  "metadata": {
+                    "company": "百度",
+                    "position": "大模型应用PM"
+                  }
+                }
+              ],
+              "query": "百度 大模型应用PM",
+              "filters": {
+                "company": "百度",
+                "position": "大模型应用PM"
+              },
+              "strategy": "hybrid(70%vec+30%bm25)+reranker",
+              "pool_k": 3,
+              "rerank_k": 10,
+              "pool_size": 20,
+              "vec_only": 0,
+              "bm25_only": 12,
+              "both": 8,
+              "rerank": {
+                "enabled": true,
+                "candidates": 3,
+                "output": 3,
+                "best_rerank_score": 0.9996
+              }
+            }
+          },
+          {
+            "task_id": "T2",
+            "tool": "match_analyze",
+            "description": "分析简历与百度大模型应用PM的匹配度",
+            "result": {
+              "score": 75,
+              "label": "基本匹配",
+              "advantages": [
+                "大模型应用产品规划与设计",
+                "结构化Prompt编写",
+                "RAG架构理解与应用",
+                "产品经理基本能力（需求分析、原型设计、PRD）",
+                "数据驱动（用户反馈收集与指标分析）",
+                "团队协作与项目管理"
+              ],
+              "weaknesses": [
+                "候选人缺乏搜索/推荐/内容分发领域的实战经验（JD加分项）；缺乏商业环境下的完整产品周期经验（仅有校园项目）；未展示Function Calling的实际应用经验；缺乏将复杂业务经验抽象为大模型可执行SOP的明确案例。"
+              ],
+              "suggestions": [
+                "核心能力要求: 大模型产品规划与设计能力、Prompt工程与RAG调教能力、需求分析与业务抽象能力、数据驱动决策能力（交互好感度与任务成功率指标）、搜索/推荐领域知识（优先）、跨团队协作与项目管理能力。"
+              ],
+              "match_score": 75,
+              "covered": [
+                "大模型应用产品规划与设计",
+                "结构化Prompt编写",
+                "RAG架构理解与应用",
+                "产品经理基本能力（需求分析、原型设计、PRD）",
+                "数据驱动（用户反馈收集与指标分析）",
+                "团队协作与项目管理"
+              ],
+              "missing_experience": "候选人缺乏搜索/推荐/内容分发领域的实战经验（JD加分项）；缺乏商业环境下的完整产品周期经验（仅有校园项目）；未展示Function Calling的实际应用经验；缺乏将复杂业务经验抽象为大模型可执行SOP的明确案例。",
+              "core_skills": "大模型产品规划与设计能力、Prompt工程与RAG调教能力、需求分析与业务抽象能力、数据驱动决策能力（交互好感度与任务成功率指标）、搜索/推荐领域知识（优先）、跨团队协作与项目管理能力。",
+              "company": "百度",
+              "position": "大模型应用PM"
+            }
+          }
+        ],
+        "final_aggregation_prompt": {
+          "system_prompt": "你是一位专业的求职顾问。请基于以下工具执行结果，给用户一个清晰、有帮助的回复。\n要求：\n1. 先直接回答用户的问题（是/否/有/没有），不要绕弯子，不要重复用户的原话\n2. 如果有匹配分析结果，给出具体的分数和建议\n3. 如果有检索结果，基于事实回答，不要编造\n4. 【强制】引用信息时必须标注来源。每个引用的事实后面都要跟 [来源：公司名-岗位名] 格式。   kb_retrieve 结果的 chunks 中带有 'source' 字段（如'字节跳动-AI产品经理'），请直接使用。   external_search 结果带有 'source_name' 字段，也请直接使用。\n5. 当本地知识库与外部搜索结果冲突时，请并列呈现两种说法并标注各自来源，不要替用户做判断\n6. 语气友好、专业、结构化",
+          "user_prompt": "【用户问题】\n百度大模型应用PM和美团搜索推荐AI PM哪个更适合我\n\n【工具执行结果】\n[{\"task_id\": \"T0\", \"tool\": \"kb_retrieve\", \"description\": \"检索百度大模型应用PM的JD\", \"result\": {\"chunks\": [{\"chunk_id\": \"f46e2577-eca2-448d-a9a8-7fc14402179b_chunk_1\", \"content\": \"【百度 · 大模型应用PM 岗位职责】\\n1. 负责大模型应用的产品规划与设计。2. 深入理解行业需求，将业务经验抽象为大模型可执行的逻辑流与SOP。3. 模型精细化调教：编写结构化Prompt，配合RAG、Function Calling。4. 数据驱动进化：建立交互好感度与任务成功率双重指标。\", \"source\": \"百度-大模型应用PM\", \"metadata\": {\"company\": \"百度\", \"position\": \"大模型应用PM\"}}, {\"chunk_id\": \"f46e2577-eca2-448d-a9a8-7fc14402179b_chunk_7\", \"content\": \"【百度 · 大模型应用PM 关键词】\\n大模型, LLM, RAG, Prompt, 产品经理, AI, NLP\", \"source\": \"百度-大模型应用PM\", \"metadata\": {\"company\": \"百度\", \"position\": \"大模型应用PM\"}}, {\"chunk_id\": \"f46e2577-eca2-448d-a9a8-7fc14402179b_chunk_6\", \"content\": \"【百度 · 大模型应用PM 软性要求/加分项】\\n有搜索/推荐/内容分发领域实战经验者优先\", \"source\": \"百度-大模型应用PM\", \"metadata\": {\"company\": \"百度\", \"position\": \"大模型应用PM\"}}], \"query\": \"百度 大模型应用PM\", \"filters\": {\"company\": \"百度\", \"position\": \"大模型应用PM\"}, \"strategy\": \"hybrid(70%vec+30%bm25)+reranker\", \"pool_k\": 3, \"rerank_k\": 10, \"pool_size\": 20, \"vec_only\": 0, \"bm25_only\": 12, \"both\": 8, \"rerank\": {\"enabled\": true, \"candidates\": 3, \"output\": 3, \"best_rerank_score\": 0.9996}}}, {\"task_id\": \"T2\", \"tool\": \"match_analyze\", \"description\": \"分析简历与百度大模型应用PM的匹配度\", \"result\": {\"score\": 75, \"label\": \"基本匹配\", \"advantages\": [\"大模型应用产品规划与设计\", \"结构化Prompt编写\", \"RAG架构理解与应用\", \"产品经理基本能力（需求分析、原型设计、PRD）\", \"数据驱动（用户反馈收集与指标分析）\", \"团队协作与项目管理\"], \"weaknesses\": [\"候选人缺乏搜索/推荐/内容分发领域的实战经验（JD加分项）；缺乏商业环境下的完整产品周期经验（仅有校园项目）；未展示Function Calling的实际应用经验；缺乏将复杂业务经验抽象为大模型可执行SOP的明确案例。\"], \"suggestions\": [\"核心能力要求: 大模型产品规划与设计能力、Prompt工程与RAG调教能力、需求分析与业务抽象能力、数据驱动决策能力（交互好感度与任务成功率指标）、搜索/推荐领域知识（优先）、跨团队协作与项目管理能力。\"], \"match_score\": 75, \"covered\": [\"大模型应用产品规划与设计\", \"结构化Prompt编写\", \"RAG架构理解与应用\", \"产品经理基本能力（需求分析、原型设计、PRD）\", \"数据驱动（用户反馈收集与指标分析）\", \"团队协作与项目管理\"], \"missing_experience\": \"候选人缺乏搜索/推荐/内容分发领域的实战经验（JD加分项）；缺乏商业环境下的完整产品周期经验（仅有校园项目）；未展示Function Calling的实际应用经验；缺乏将复杂业务经验抽象为大模型可执行SOP的明确案例。\", \"core_skills\": \"大模型产品规划与设计能力、Prompt工程与RAG调教能力、需求分析与业务抽象能力、数据驱动决策能力（交互好感度与任务成功率指标）、搜索/推荐领域知识（优先）、跨团队协作与项目管理能力。\", \"company\": \"百度\", \"position\": \"大模型应用PM\"}}]\n\n请生成回复："
+        }
+      },
+      "usage": {
+        "prompt_tokens": 9165,
+        "completion_tokens": 6452,
+        "total_tokens": 15617
+      },
+      "_time": 88.06338953971863,
+      "type": "done"
+    }
+  ],
+  "timestamp": "2026-06-04T16:36:52.390410",
+  "prompt_tokens": 9165,
+  "completion_tokens": 6452,
+  "total_tokens": 15617,
+  "tool_execution_success_rate": 0.67,
+  "tool_correct_rate": 1.0
+}

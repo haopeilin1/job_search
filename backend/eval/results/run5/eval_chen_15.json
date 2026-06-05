@@ -1,0 +1,1010 @@
+{
+  "case_id": "eval_chen_15",
+  "message": "没有工作经验能投产品岗吗",
+  "gold_intents": [
+    "verify"
+  ],
+  "expected_tools": [
+    "kb_retrieve",
+    "qa_synthesize"
+  ],
+  "scenario": "属性查询_经验要求",
+  "eval_context": {
+    "gold_intents": [
+      "verify"
+    ],
+    "gold_slots": {
+      "position": "产品",
+      "attributes": [
+        "经验"
+      ]
+    },
+    "relevance_score": 0,
+    "expected_tools": [
+      "kb_retrieve",
+      "qa_synthesize"
+    ],
+    "scenario": "属性查询_经验要求",
+    "notes": "检索知识库中产品岗经验要求，给出有证据的回答"
+  },
+  "resume_id": "cc50dcfb-aeba-41a3-989a-9e485aa2fc3f",
+  "status": "success",
+  "error": null,
+  "ttfb": 0.005,
+  "total_latency": 71.81,
+  "event_count": 70,
+  "pred_intent": "match_assess",
+  "pred_intents": [
+    "match_assess"
+  ],
+  "pred_tools": [
+    {
+      "tool": "kb_retrieve",
+      "status": "❌",
+      "params": {
+        "query": "产品岗 没有工作经验",
+        "top_k": 5,
+        "company": null,
+        "position": "产品岗"
+      },
+      "result_preview": "{'chunks': [{'chunk_id': 'bbbe5988-01f4-447f-a9e2-6715c006d33c_chunk_7', 'content': '【小米 · AI培训方向产品实习生 软性要求/加分项】\\n有互联网产品实习经验者优先', 'metadata': {'company': '小米', 'index': 7, 'jd_id': 'bbbe5988-01f4-447f"
+    }
+  ],
+  "tools_called": [
+    "kb_retrieve"
+  ],
+  "kb_chunks": [],
+  "tool_executions_full": [
+    {
+      "tool_name": "kb_retrieve",
+      "task_id": "T0",
+      "status": "failed",
+      "output": {
+        "chunks": [
+          {
+            "chunk_id": "bbbe5988-01f4-447f-a9e2-6715c006d33c_chunk_7",
+            "content": "【小米 · AI培训方向产品实习生 软性要求/加分项】\n有互联网产品实习经验者优先",
+            "metadata": {
+              "company": "小米",
+              "index": 7,
+              "jd_id": "bbbe5988-01f4-447f-a9e2-6715c006d33c",
+              "position": "AI培训方向产品实习生",
+              "priority": "medium",
+              "section": "soft_requirements",
+              "strategy": "semantic"
+            },
+            "distance": null,
+            "bm25_score": 6.437640656581539,
+            "vec_norm": 0.0,
+            "bm25_norm": 0.43120612927443824,
+            "hybrid_score": 0.12936183878233146,
+            "rerank_score": 0.4031
+          },
+          {
+            "chunk_id": "042ee372-b79c-4ee5-a8d6-0865b3e2dde6_chunk_7",
+            "content": "【小米 · AI培训方向产品实习生-2027届 软性要求/加分项】\n有互联网产品实习经验者优先",
+            "metadata": {
+              "company": "小米",
+              "index": 7,
+              "jd_id": "042ee372-b79c-4ee5-a8d6-0865b3e2dde6",
+              "position": "AI培训方向产品实习生-2027届",
+              "priority": "medium",
+              "section": "soft_requirements",
+              "strategy": "semantic"
+            },
+            "distance": null,
+            "bm25_score": 6.279709022923801,
+            "vec_norm": 0.0,
+            "bm25_norm": 0.3678410940515269,
+            "hybrid_score": 0.11035232821545805,
+            "rerank_score": 0.3803
+          },
+          {
+            "chunk_id": "94df2ae7-baa3-418d-be25-1974b64a5b06_chunk_4",
+            "content": "【百度 · AI能力产品实习生 硬性要求】\n对AI产品有热情，有AI策略产品相关实习经验",
+            "metadata": {
+              "company": "百度",
+              "index": 4,
+              "jd_id": "94df2ae7-baa3-418d-be25-1974b64a5b06",
+              "position": "AI能力产品实习生",
+              "priority": "high",
+              "section": "hard_requirements",
+              "strategy": "semantic"
+            },
+            "distance": null,
+            "bm25_score": 6.6547243363993775,
+            "vec_norm": 0.0,
+            "bm25_norm": 0.5183040380302408,
+            "hybrid_score": 0.15549121140907224,
+            "rerank_score": 0.1912
+          },
+          {
+            "chunk_id": "52a150f9-cff3-49d2-a2df-d514081eed9e_chunk_7",
+            "content": "【小米 · AI产品实习生 软性要求/加分项】\n熟悉AI领域或有AI产品实习经验优先",
+            "metadata": {
+              "company": "小米",
+              "index": 7,
+              "jd_id": "52a150f9-cff3-49d2-a2df-d514081eed9e",
+              "position": "AI产品实习生",
+              "priority": "medium",
+              "section": "soft_requirements",
+              "strategy": "semantic"
+            },
+            "distance": null,
+            "bm25_score": 6.49221545115166,
+            "vec_norm": 0.0,
+            "bm25_norm": 0.45310252646939875,
+            "hybrid_score": 0.13593075794081963,
+            "rerank_score": 0.1889
+          },
+          {
+            "chunk_id": "51054437-3bd1-4da6-8f09-d5b5d5978de8_chunk_7",
+            "content": "【蚂蚁集团 · AI产品工程师（转正实习） 软性要求/加分项】\n熟练使用主流工作流/Agent编排工具，有独立跑通AI应用MVP或搭建复杂AI工作流的实战经验（个人作品、课设均可）",
+            "metadata": {
+              "company": "蚂蚁集团",
+              "index": 7,
+              "jd_id": "51054437-3bd1-4da6-8f09-d5b5d5978de8",
+              "position": "AI产品工程师（转正实习）",
+              "priority": "medium",
+              "section": "soft_requirements",
+              "strategy": "semantic"
+            },
+            "distance": null,
+            "bm25_score": 7.85530806420125,
+            "vec_norm": 0.0,
+            "bm25_norm": 1.0,
+            "hybrid_score": 0.3,
+            "rerank_score": 0.1551
+          }
+        ],
+        "query": "产品岗 没有工作经验",
+        "filters": {
+          "position": "产品岗"
+        },
+        "strategy": "hybrid(70%vec+30%bm25)+reranker",
+        "pool_k": 5,
+        "rerank_k": 10,
+        "pool_size": 20,
+        "vec_only": 0,
+        "bm25_only": 20,
+        "both": 0,
+        "rerank": {
+          "enabled": true,
+          "candidates": 5,
+          "output": 5,
+          "best_rerank_score": 0.4031
+        }
+      }
+    },
+    {
+      "tool_name": "match_analyze",
+      "task_id": "T1",
+      "status": "failed",
+      "output": null
+    }
+  ],
+  "debug_info": {
+    "task_graph": {
+      "tasks": {
+        "T0": {
+          "task_id": "T0",
+          "task_type": "tool_call",
+          "tool_name": "kb_retrieve",
+          "status": "failed",
+          "parameters": {
+            "query": "产品岗 没有工作经验",
+            "top_k": 5,
+            "company": null,
+            "position": "产品岗"
+          },
+          "resolved_params": {
+            "query": "产品岗 没有工作经验",
+            "top_k": 5,
+            "company": null,
+            "position": "产品岗"
+          },
+          "result": {
+            "chunks": [
+              {
+                "chunk_id": "bbbe5988-01f4-447f-a9e2-6715c006d33c_chunk_7",
+                "content": "【小米 · AI培训方向产品实习生 软性要求/加分项】\n有互联网产品实习经验者优先",
+                "metadata": {
+                  "company": "小米",
+                  "index": 7,
+                  "jd_id": "bbbe5988-01f4-447f-a9e2-6715c006d33c",
+                  "position": "AI培训方向产品实习生",
+                  "priority": "medium",
+                  "section": "soft_requirements",
+                  "strategy": "semantic"
+                },
+                "distance": null,
+                "bm25_score": 6.437640656581539,
+                "vec_norm": 0.0,
+                "bm25_norm": 0.43120612927443824,
+                "hybrid_score": 0.12936183878233146,
+                "rerank_score": 0.4031
+              },
+              {
+                "chunk_id": "042ee372-b79c-4ee5-a8d6-0865b3e2dde6_chunk_7",
+                "content": "【小米 · AI培训方向产品实习生-2027届 软性要求/加分项】\n有互联网产品实习经验者优先",
+                "metadata": {
+                  "company": "小米",
+                  "index": 7,
+                  "jd_id": "042ee372-b79c-4ee5-a8d6-0865b3e2dde6",
+                  "position": "AI培训方向产品实习生-2027届",
+                  "priority": "medium",
+                  "section": "soft_requirements",
+                  "strategy": "semantic"
+                },
+                "distance": null,
+                "bm25_score": 6.279709022923801,
+                "vec_norm": 0.0,
+                "bm25_norm": 0.3678410940515269,
+                "hybrid_score": 0.11035232821545805,
+                "rerank_score": 0.3803
+              },
+              {
+                "chunk_id": "94df2ae7-baa3-418d-be25-1974b64a5b06_chunk_4",
+                "content": "【百度 · AI能力产品实习生 硬性要求】\n对AI产品有热情，有AI策略产品相关实习经验",
+                "metadata": {
+                  "company": "百度",
+                  "index": 4,
+                  "jd_id": "94df2ae7-baa3-418d-be25-1974b64a5b06",
+                  "position": "AI能力产品实习生",
+                  "priority": "high",
+                  "section": "hard_requirements",
+                  "strategy": "semantic"
+                },
+                "distance": null,
+                "bm25_score": 6.6547243363993775,
+                "vec_norm": 0.0,
+                "bm25_norm": 0.5183040380302408,
+                "hybrid_score": 0.15549121140907224,
+                "rerank_score": 0.1912
+              },
+              {
+                "chunk_id": "52a150f9-cff3-49d2-a2df-d514081eed9e_chunk_7",
+                "content": "【小米 · AI产品实习生 软性要求/加分项】\n熟悉AI领域或有AI产品实习经验优先",
+                "metadata": {
+                  "company": "小米",
+                  "index": 7,
+                  "jd_id": "52a150f9-cff3-49d2-a2df-d514081eed9e",
+                  "position": "AI产品实习生",
+                  "priority": "medium",
+                  "section": "soft_requirements",
+                  "strategy": "semantic"
+                },
+                "distance": null,
+                "bm25_score": 6.49221545115166,
+                "vec_norm": 0.0,
+                "bm25_norm": 0.45310252646939875,
+                "hybrid_score": 0.13593075794081963,
+                "rerank_score": 0.1889
+              },
+              {
+                "chunk_id": "51054437-3bd1-4da6-8f09-d5b5d5978de8_chunk_7",
+                "content": "【蚂蚁集团 · AI产品工程师（转正实习） 软性要求/加分项】\n熟练使用主流工作流/Agent编排工具，有独立跑通AI应用MVP或搭建复杂AI工作流的实战经验（个人作品、课设均可）",
+                "metadata": {
+                  "company": "蚂蚁集团",
+                  "index": 7,
+                  "jd_id": "51054437-3bd1-4da6-8f09-d5b5d5978de8",
+                  "position": "AI产品工程师（转正实习）",
+                  "priority": "medium",
+                  "section": "soft_requirements",
+                  "strategy": "semantic"
+                },
+                "distance": null,
+                "bm25_score": 7.85530806420125,
+                "vec_norm": 0.0,
+                "bm25_norm": 1.0,
+                "hybrid_score": 0.3,
+                "rerank_score": 0.1551
+              }
+            ],
+            "query": "产品岗 没有工作经验",
+            "filters": {
+              "position": "产品岗"
+            },
+            "strategy": "hybrid(70%vec+30%bm25)+reranker",
+            "pool_k": 5,
+            "rerank_k": 10,
+            "pool_size": 20,
+            "vec_only": 0,
+            "bm25_only": 20,
+            "both": 0,
+            "rerank": {
+              "enabled": true,
+              "candidates": 5,
+              "output": 5,
+              "best_rerank_score": 0.4031
+            }
+          },
+          "observation": "SEMANTIC_MISMATCH|检索结果与用户意图不符|suggested_query=产品岗"
+        },
+        "T1": {
+          "task_id": "T1",
+          "task_type": "tool_call",
+          "tool_name": "match_analyze",
+          "status": "skipped",
+          "parameters": {
+            "resume_text": "{{global_slots.resume_text}}",
+            "jd_text": "{{T0.output.chunks}}",
+            "attributes": [
+              "匹配度"
+            ]
+          },
+          "resolved_params": {},
+          "result": null,
+          "observation": "执行器退出时未执行"
+        },
+        "T2": {
+          "task_id": "T2",
+          "task_type": "aggregate",
+          "tool_name": null,
+          "status": "skipped",
+          "parameters": {
+            "assess": "{{T1.output}}"
+          },
+          "resolved_params": {},
+          "result": null,
+          "observation": "执行器退出时未执行"
+        }
+      },
+      "global_status": "failed",
+      "replan_reason": "T1_tool_failed",
+      "replan_count": 1
+    },
+    "intent": {
+      "demands": [
+        {
+          "intent": "match_assess",
+          "entities": {
+            "position": "产品岗",
+            "attributes": [
+              "匹配度"
+            ],
+            "jd_source": "kb"
+          },
+          "confidence": 0.75
+        }
+      ],
+      "needs_clarification": false,
+      "clarification_question": ""
+    },
+    "rewrite": {
+      "rewritten_query": "没有工作经验能投产品岗吗",
+      "search_keywords": "没有工作经验能投产品岗",
+      "is_follow_up": false,
+      "follow_up_type": "none",
+      "resolved_references": {}
+    },
+    "evidence_cache": [],
+    "evidence_cache_query": "",
+    "tool_outputs": [],
+    "final_aggregation_prompt": {
+      "system_prompt": "你是一位专业的求职顾问。请基于以下工具执行结果，给用户一个清晰、有帮助的回复。\n要求：\n1. 先直接回答用户的问题（是/否/有/没有），不要绕弯子，不要重复用户的原话\n2. 如果有匹配分析结果，给出具体的分数和建议\n3. 如果有检索结果，基于事实回答，不要编造\n4. 【强制】引用信息时必须标注来源。每个引用的事实后面都要跟 [来源：公司名-岗位名] 格式。   kb_retrieve 结果的 chunks 中带有 'source' 字段（如'字节跳动-AI产品经理'），请直接使用。   external_search 结果带有 'source_name' 字段，也请直接使用。\n5. 当本地知识库与外部搜索结果冲突时，请并列呈现两种说法并标注各自来源，不要替用户做判断\n6. 语气友好、专业、结构化",
+      "user_prompt": "【用户问题】\n没有工作经验能投产品岗吗\n\n【工具执行结果】\n[]\n\n请生成回复："
+    }
+  },
+  "reply": "能。\n\n当前未检索到特定公司的具体招聘限制数据，但根据互联网行业普遍招聘标准，产品岗对工作经验的要求主要取决于岗位类型：\n\n1.  **校招/实习岗位**：通常不要求正式工作经验，主要面向应届生或在校生，更看重潜力、逻辑思维及产品sense。\n2.  **社招岗位**：大多要求具备 1 年及以上相关产品经验，无经验直接投递难度较大。\n\n**针对无经验求职者的建议：**\n\n*   **补充项目经历**：通过课程设计、个人作品或竞品分析报告展示能力，弥补工作经验的不足。\n*   **争取实习机会**：先通过日常实习积累实际业务经验，作为跳槽或转正的跳板。\n*   **掌握基础技能**：熟悉 Axure、XMind 等工具及需求文档撰写规范，提升简历通过率。\n\n建议您重点关注标注“校招”、“实习”或“助理”字样的职位，并提前准备作品集以增加竞争力。祝您求职顺利！",
+  "reply_length": 383,
+  "intent_match": false,
+  "tool_match_rate": 0.5,
+  "has_reply": true,
+  "events": [
+    {
+      "step": "intent",
+      "message": "正在识别您的意图...",
+      "_time": 4.850657224655151,
+      "type": "status"
+    },
+    {
+      "step": "plan",
+      "message": "正在规划任务...",
+      "_time": 4.850714206695557,
+      "type": "status"
+    },
+    {
+      "step": "execute",
+      "message": "正在执行分析...",
+      "_time": 17.69717502593994,
+      "type": "status"
+    },
+    {
+      "step": "aggregate",
+      "message": "正在生成回复...",
+      "_time": 18.052994966506958,
+      "type": "status"
+    },
+    {
+      "text": "能。",
+      "_time": 67.80214262008667,
+      "type": "delta"
+    },
+    {
+      "text": "\n\n当前",
+      "_time": 67.80580806732178,
+      "type": "delta"
+    },
+    {
+      "text": "未检索到特定",
+      "_time": 67.90998268127441,
+      "type": "delta"
+    },
+    {
+      "text": "公司的具体招聘限制",
+      "_time": 67.91168975830078,
+      "type": "delta"
+    },
+    {
+      "text": "数据，但根据",
+      "_time": 68.00810766220093,
+      "type": "delta"
+    },
+    {
+      "text": "互联网行业普遍招聘",
+      "_time": 68.04010534286499,
+      "type": "delta"
+    },
+    {
+      "text": "标准，产品岗",
+      "_time": 68.16404676437378,
+      "type": "delta"
+    },
+    {
+      "text": "对",
+      "_time": 68.16562294960022,
+      "type": "delta"
+    },
+    {
+      "text": "工作经验的要求主要取决于",
+      "_time": 68.32206583023071,
+      "type": "delta"
+    },
+    {
+      "text": "岗位",
+      "_time": 68.32574605941772,
+      "type": "delta"
+    },
+    {
+      "text": "类型：\n\n1",
+      "_time": 68.47602605819702,
+      "type": "delta"
+    },
+    {
+      "text": ". ",
+      "_time": 68.47746229171753,
+      "type": "delta"
+    },
+    {
+      "text": " **校招/实习",
+      "_time": 68.55699753761292,
+      "type": "delta"
+    },
+    {
+      "text": "岗位**：通常",
+      "_time": 68.55877733230591,
+      "type": "delta"
+    },
+    {
+      "text": "不要求正式工作经验",
+      "_time": 68.66403985023499,
+      "type": "delta"
+    },
+    {
+      "text": "，主要",
+      "_time": 68.75905728340149,
+      "type": "delta"
+    },
+    {
+      "text": "面向应届生或在校生",
+      "_time": 68.78409075737,
+      "type": "delta"
+    },
+    {
+      "text": "，更看重潜力",
+      "_time": 68.7877950668335,
+      "type": "delta"
+    },
+    {
+      "text": "、逻辑思维及产品sense",
+      "_time": 68.99205565452576,
+      "type": "delta"
+    },
+    {
+      "text": "。\n2.",
+      "_time": 68.9936134815216,
+      "type": "delta"
+    },
+    {
+      "text": "  **社招",
+      "_time": 69.0682532787323,
+      "type": "delta"
+    },
+    {
+      "text": "岗位**：大多",
+      "_time": 69.0710129737854,
+      "type": "delta"
+    },
+    {
+      "text": "要求具备 1",
+      "_time": 69.17410254478455,
+      "type": "delta"
+    },
+    {
+      "text": " ",
+      "_time": 69.17682242393494,
+      "type": "delta"
+    },
+    {
+      "text": "年及以上相关产品经验",
+      "_time": 69.3272294998169,
+      "type": "delta"
+    },
+    {
+      "text": "，无",
+      "_time": 69.33083438873291,
+      "type": "delta"
+    },
+    {
+      "text": "经验直接投递难度",
+      "_time": 69.39809083938599,
+      "type": "delta"
+    },
+    {
+      "text": "较大。",
+      "_time": 69.40082240104675,
+      "type": "delta"
+    },
+    {
+      "text": "\n\n**针对无",
+      "_time": 69.51333332061768,
+      "type": "delta"
+    },
+    {
+      "text": "经验求职",
+      "_time": 69.51475858688354,
+      "type": "delta"
+    },
+    {
+      "text": "者的建议：**\n\n",
+      "_time": 69.66211533546448,
+      "type": "delta"
+    },
+    {
+      "text": "*   **补充",
+      "_time": 69.66354036331177,
+      "type": "delta"
+    },
+    {
+      "text": "项目经历**：",
+      "_time": 69.742032289505,
+      "type": "delta"
+    },
+    {
+      "text": "通过课程设计",
+      "_time": 69.74358081817627,
+      "type": "delta"
+    },
+    {
+      "text": "、个人作品或",
+      "_time": 69.88999366760254,
+      "type": "delta"
+    },
+    {
+      "text": "竞品",
+      "_time": 69.89268183708191,
+      "type": "delta"
+    },
+    {
+      "text": "分析报告展示能力，",
+      "_time": 69.9780662059784,
+      "type": "delta"
+    },
+    {
+      "text": "弥补",
+      "_time": 69.97976326942444,
+      "type": "delta"
+    },
+    {
+      "text": "工作经验的不足。",
+      "_time": 70.20911455154419,
+      "type": "delta"
+    },
+    {
+      "text": "\n*  ",
+      "_time": 70.21174693107605,
+      "type": "delta"
+    },
+    {
+      "text": " **争取实习机会",
+      "_time": 70.34394145011902,
+      "type": "delta"
+    },
+    {
+      "text": "**：先",
+      "_time": 70.34759211540222,
+      "type": "delta"
+    },
+    {
+      "text": "通过日常实习积累",
+      "_time": 70.42007374763489,
+      "type": "delta"
+    },
+    {
+      "text": "实际",
+      "_time": 70.42274022102356,
+      "type": "delta"
+    },
+    {
+      "text": "业务经验，作为",
+      "_time": 70.51902651786804,
+      "type": "delta"
+    },
+    {
+      "text": "跳槽",
+      "_time": 70.55391550064087,
+      "type": "delta"
+    },
+    {
+      "text": "或转正的跳",
+      "_time": 70.72593092918396,
+      "type": "delta"
+    },
+    {
+      "text": "板。\n*",
+      "_time": 70.72873020172119,
+      "type": "delta"
+    },
+    {
+      "text": "   **掌握基础",
+      "_time": 70.83404421806335,
+      "type": "delta"
+    },
+    {
+      "text": "技能**：熟悉",
+      "_time": 70.83682298660278,
+      "type": "delta"
+    },
+    {
+      "text": " Axure、XM",
+      "_time": 70.98095464706421,
+      "type": "delta"
+    },
+    {
+      "text": "ind",
+      "_time": 70.98571681976318,
+      "type": "delta"
+    },
+    {
+      "text": " 等工具及",
+      "_time": 71.05199456214905,
+      "type": "delta"
+    },
+    {
+      "text": "需求文档撰写规范",
+      "_time": 71.05560159683228,
+      "type": "delta"
+    },
+    {
+      "text": "，提升简历通过率",
+      "_time": 71.15996503829956,
+      "type": "delta"
+    },
+    {
+      "text": "。\n\n",
+      "_time": 71.1930284500122,
+      "type": "delta"
+    },
+    {
+      "text": "建议您重点关注标注“",
+      "_time": 71.27206540107727,
+      "type": "delta"
+    },
+    {
+      "text": "校招”、“",
+      "_time": 71.35291886329651,
+      "type": "delta"
+    },
+    {
+      "text": "实习”或“",
+      "_time": 71.37189364433289,
+      "type": "delta"
+    },
+    {
+      "text": "助理",
+      "_time": 71.37341284751892,
+      "type": "delta"
+    },
+    {
+      "text": "”字样的职位",
+      "_time": 71.570969581604,
+      "type": "delta"
+    },
+    {
+      "text": "，并提前",
+      "_time": 71.57365942001343,
+      "type": "delta"
+    },
+    {
+      "text": "准备作品集以增加竞争力",
+      "_time": 71.69600224494934,
+      "type": "delta"
+    },
+    {
+      "text": "。祝您",
+      "_time": 71.69868326187134,
+      "type": "delta"
+    },
+    {
+      "text": "求职顺利！",
+      "_time": 71.7549180984497,
+      "type": "delta"
+    },
+    {
+      "session_id": "eval_chen_15_1780561993281",
+      "intent": "match_assess",
+      "route_meta": {
+        "layer": "llm",
+        "intent": "match_assess",
+        "confidence": 0.75,
+        "demands": [
+          {
+            "intent": "match_assess",
+            "entities": {
+              "position": "产品岗",
+              "attributes": [
+                "匹配度"
+              ],
+              "jd_source": "kb"
+            }
+          }
+        ],
+        "plan_tasks": 3
+      },
+      "agent_mode": "llm",
+      "is_clarification": false,
+      "agent": {
+        "rewritten_query": "没有工作经验能投产品岗吗",
+        "tools": [
+          {
+            "tool": "kb_retrieve",
+            "status": "❌",
+            "params": {
+              "query": "产品岗 没有工作经验",
+              "top_k": 5,
+              "company": null,
+              "position": "产品岗"
+            },
+            "result_preview": "{'chunks': [{'chunk_id': 'bbbe5988-01f4-447f-a9e2-6715c006d33c_chunk_7', 'content': '【小米 · AI培训方向产品实习生 软性要求/加分项】\\n有互联网产品实习经验者优先', 'metadata': {'company': '小米', 'index': 7, 'jd_id': 'bbbe5988-01f4-447f"
+          }
+        ],
+        "kb_chunks_count": 0,
+        "system_prompt_preview": "你是一位专业的求职顾问。请基于以下工具执行结果，给用户一个清晰、有帮助的回复。\n要求：\n1. 先直接回答用户的问题（是/否/有/没有），不要绕弯子，不要重复用户的原话\n2. 如果有匹配分析结果，给出具体的分数和建议\n3. 如果有检索结果，基于事实回答，不要编造\n4. 【强制】引用信息时必须标注来源。每个引用的事实后面都要跟 [来源：公司名-岗位名] 格式。   kb_retrieve 结果的 ch"
+      },
+      "memory": {
+        "working_turns": 1,
+        "compressed_blocks": 0,
+        "current_topic": "general",
+        "evidence_cache_size": 0
+      },
+      "reply": "能。\n\n当前未检索到特定公司的具体招聘限制数据，但根据互联网行业普遍招聘标准，产品岗对工作经验的要求主要取决于岗位类型：\n\n1.  **校招/实习岗位**：通常不要求正式工作经验，主要面向应届生或在校生，更看重潜力、逻辑思维及产品sense。\n2.  **社招岗位**：大多要求具备 1 年及以上相关产品经验，无经验直接投递难度较大。\n\n**针对无经验求职者的建议：**\n\n*   **补充项目经历**：通过课程设计、个人作品或竞品分析报告展示能力，弥补工作经验的不足。\n*   **争取实习机会**：先通过日常实习积累实际业务经验，作为跳槽或转正的跳板。\n*   **掌握基础技能**：熟悉 Axure、XMind 等工具及需求文档撰写规范，提升简历通过率。\n\n建议您重点关注标注“校招”、“实习”或“助理”字样的职位，并提前准备作品集以增加竞争力。祝您求职顺利！",
+      "debug_info": {
+        "task_graph": {
+          "tasks": {
+            "T0": {
+              "task_id": "T0",
+              "task_type": "tool_call",
+              "tool_name": "kb_retrieve",
+              "status": "failed",
+              "parameters": {
+                "query": "产品岗 没有工作经验",
+                "top_k": 5,
+                "company": null,
+                "position": "产品岗"
+              },
+              "resolved_params": {
+                "query": "产品岗 没有工作经验",
+                "top_k": 5,
+                "company": null,
+                "position": "产品岗"
+              },
+              "result": {
+                "chunks": [
+                  {
+                    "chunk_id": "bbbe5988-01f4-447f-a9e2-6715c006d33c_chunk_7",
+                    "content": "【小米 · AI培训方向产品实习生 软性要求/加分项】\n有互联网产品实习经验者优先",
+                    "metadata": {
+                      "company": "小米",
+                      "index": 7,
+                      "jd_id": "bbbe5988-01f4-447f-a9e2-6715c006d33c",
+                      "position": "AI培训方向产品实习生",
+                      "priority": "medium",
+                      "section": "soft_requirements",
+                      "strategy": "semantic"
+                    },
+                    "distance": null,
+                    "bm25_score": 6.437640656581539,
+                    "vec_norm": 0.0,
+                    "bm25_norm": 0.43120612927443824,
+                    "hybrid_score": 0.12936183878233146,
+                    "rerank_score": 0.4031
+                  },
+                  {
+                    "chunk_id": "042ee372-b79c-4ee5-a8d6-0865b3e2dde6_chunk_7",
+                    "content": "【小米 · AI培训方向产品实习生-2027届 软性要求/加分项】\n有互联网产品实习经验者优先",
+                    "metadata": {
+                      "company": "小米",
+                      "index": 7,
+                      "jd_id": "042ee372-b79c-4ee5-a8d6-0865b3e2dde6",
+                      "position": "AI培训方向产品实习生-2027届",
+                      "priority": "medium",
+                      "section": "soft_requirements",
+                      "strategy": "semantic"
+                    },
+                    "distance": null,
+                    "bm25_score": 6.279709022923801,
+                    "vec_norm": 0.0,
+                    "bm25_norm": 0.3678410940515269,
+                    "hybrid_score": 0.11035232821545805,
+                    "rerank_score": 0.3803
+                  },
+                  {
+                    "chunk_id": "94df2ae7-baa3-418d-be25-1974b64a5b06_chunk_4",
+                    "content": "【百度 · AI能力产品实习生 硬性要求】\n对AI产品有热情，有AI策略产品相关实习经验",
+                    "metadata": {
+                      "company": "百度",
+                      "index": 4,
+                      "jd_id": "94df2ae7-baa3-418d-be25-1974b64a5b06",
+                      "position": "AI能力产品实习生",
+                      "priority": "high",
+                      "section": "hard_requirements",
+                      "strategy": "semantic"
+                    },
+                    "distance": null,
+                    "bm25_score": 6.6547243363993775,
+                    "vec_norm": 0.0,
+                    "bm25_norm": 0.5183040380302408,
+                    "hybrid_score": 0.15549121140907224,
+                    "rerank_score": 0.1912
+                  },
+                  {
+                    "chunk_id": "52a150f9-cff3-49d2-a2df-d514081eed9e_chunk_7",
+                    "content": "【小米 · AI产品实习生 软性要求/加分项】\n熟悉AI领域或有AI产品实习经验优先",
+                    "metadata": {
+                      "company": "小米",
+                      "index": 7,
+                      "jd_id": "52a150f9-cff3-49d2-a2df-d514081eed9e",
+                      "position": "AI产品实习生",
+                      "priority": "medium",
+                      "section": "soft_requirements",
+                      "strategy": "semantic"
+                    },
+                    "distance": null,
+                    "bm25_score": 6.49221545115166,
+                    "vec_norm": 0.0,
+                    "bm25_norm": 0.45310252646939875,
+                    "hybrid_score": 0.13593075794081963,
+                    "rerank_score": 0.1889
+                  },
+                  {
+                    "chunk_id": "51054437-3bd1-4da6-8f09-d5b5d5978de8_chunk_7",
+                    "content": "【蚂蚁集团 · AI产品工程师（转正实习） 软性要求/加分项】\n熟练使用主流工作流/Agent编排工具，有独立跑通AI应用MVP或搭建复杂AI工作流的实战经验（个人作品、课设均可）",
+                    "metadata": {
+                      "company": "蚂蚁集团",
+                      "index": 7,
+                      "jd_id": "51054437-3bd1-4da6-8f09-d5b5d5978de8",
+                      "position": "AI产品工程师（转正实习）",
+                      "priority": "medium",
+                      "section": "soft_requirements",
+                      "strategy": "semantic"
+                    },
+                    "distance": null,
+                    "bm25_score": 7.85530806420125,
+                    "vec_norm": 0.0,
+                    "bm25_norm": 1.0,
+                    "hybrid_score": 0.3,
+                    "rerank_score": 0.1551
+                  }
+                ],
+                "query": "产品岗 没有工作经验",
+                "filters": {
+                  "position": "产品岗"
+                },
+                "strategy": "hybrid(70%vec+30%bm25)+reranker",
+                "pool_k": 5,
+                "rerank_k": 10,
+                "pool_size": 20,
+                "vec_only": 0,
+                "bm25_only": 20,
+                "both": 0,
+                "rerank": {
+                  "enabled": true,
+                  "candidates": 5,
+                  "output": 5,
+                  "best_rerank_score": 0.4031
+                }
+              },
+              "observation": "SEMANTIC_MISMATCH|检索结果与用户意图不符|suggested_query=产品岗"
+            },
+            "T1": {
+              "task_id": "T1",
+              "task_type": "tool_call",
+              "tool_name": "match_analyze",
+              "status": "skipped",
+              "parameters": {
+                "resume_text": "{{global_slots.resume_text}}",
+                "jd_text": "{{T0.output.chunks}}",
+                "attributes": [
+                  "匹配度"
+                ]
+              },
+              "resolved_params": {},
+              "result": null,
+              "observation": "执行器退出时未执行"
+            },
+            "T2": {
+              "task_id": "T2",
+              "task_type": "aggregate",
+              "tool_name": null,
+              "status": "skipped",
+              "parameters": {
+                "assess": "{{T1.output}}"
+              },
+              "resolved_params": {},
+              "result": null,
+              "observation": "执行器退出时未执行"
+            }
+          },
+          "global_status": "failed",
+          "replan_reason": "T1_tool_failed",
+          "replan_count": 1
+        },
+        "intent": {
+          "demands": [
+            {
+              "intent": "match_assess",
+              "entities": {
+                "position": "产品岗",
+                "attributes": [
+                  "匹配度"
+                ],
+                "jd_source": "kb"
+              },
+              "confidence": 0.75
+            }
+          ],
+          "needs_clarification": false,
+          "clarification_question": ""
+        },
+        "rewrite": {
+          "rewritten_query": "没有工作经验能投产品岗吗",
+          "search_keywords": "没有工作经验能投产品岗",
+          "is_follow_up": false,
+          "follow_up_type": "none",
+          "resolved_references": {}
+        },
+        "evidence_cache": [],
+        "evidence_cache_query": "",
+        "tool_outputs": [],
+        "final_aggregation_prompt": {
+          "system_prompt": "你是一位专业的求职顾问。请基于以下工具执行结果，给用户一个清晰、有帮助的回复。\n要求：\n1. 先直接回答用户的问题（是/否/有/没有），不要绕弯子，不要重复用户的原话\n2. 如果有匹配分析结果，给出具体的分数和建议\n3. 如果有检索结果，基于事实回答，不要编造\n4. 【强制】引用信息时必须标注来源。每个引用的事实后面都要跟 [来源：公司名-岗位名] 格式。   kb_retrieve 结果的 chunks 中带有 'source' 字段（如'字节跳动-AI产品经理'），请直接使用。   external_search 结果带有 'source_name' 字段，也请直接使用。\n5. 当本地知识库与外部搜索结果冲突时，请并列呈现两种说法并标注各自来源，不要替用户做判断\n6. 语气友好、专业、结构化",
+          "user_prompt": "【用户问题】\n没有工作经验能投产品岗吗\n\n【工具执行结果】\n[]\n\n请生成回复："
+        }
+      },
+      "usage": {
+        "prompt_tokens": 6623,
+        "completion_tokens": 4325,
+        "total_tokens": 10948
+      },
+      "_time": 71.81009268760681,
+      "type": "done"
+    }
+  ],
+  "timestamp": "2026-06-04T16:33:13.281390",
+  "prompt_tokens": 6623,
+  "completion_tokens": 4325,
+  "total_tokens": 10948,
+  "tool_execution_success_rate": 0.0,
+  "tool_correct_rate": 0.0
+}

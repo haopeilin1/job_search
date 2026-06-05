@@ -1,0 +1,2478 @@
+{
+  "case_id": "eval_wang_01",
+  "message": "帮我看看有什么设计岗",
+  "gold_intents": [
+    "explore"
+  ],
+  "expected_tools": [
+    "kb_retrieve",
+    "global_rank"
+  ],
+  "scenario": "有简历_岗位探索_设计岗",
+  "eval_context": {
+    "gold_intents": [
+      "explore"
+    ],
+    "gold_slots": {
+      "position": "设计"
+    },
+    "relevance_score": 0,
+    "expected_tools": [
+      "kb_retrieve",
+      "global_rank"
+    ],
+    "scenario": "有简历_岗位探索_设计岗",
+    "notes": "30条JD中无纯UI/设计岗，测试系统搜索后如何回答空结果"
+  },
+  "resume_id": "6c55e5ca-64a6-4ea8-9344-1d7b729f789a",
+  "status": "success",
+  "error": null,
+  "ttfb": 0.01,
+  "total_latency": 96.73,
+  "event_count": 141,
+  "pred_intent": "position_explore",
+  "pred_intents": [
+    "position_explore"
+  ],
+  "pred_tools": [
+    {
+      "tool": "kb_retrieve",
+      "status": "✅",
+      "params": {
+        "query": "帮我看看有什么设计岗位",
+        "top_k": 5
+      },
+      "result_preview": "{'chunks': [{'chunk_id': 'd8f1f630-f372-467a-b0a0-5a68a6db4ffd_chunk_1', 'content': '【百度 · AI应用-产品经理 岗位职责】\\n负责HR系统组织人才、招聘等模块的产品设计，输出高效、可迭代的解决方案，支撑业务复杂场景-与长期发展与HR业务团队紧密协作，深入理解人才发展、招聘管理流程，精准挖掘需求与痛点-协同研发"
+    },
+    {
+      "tool": "global_rank",
+      "status": "✅",
+      "params": {
+        "resume_text": "姓名：王设计师\n电话：139-XXXX-5678 | 邮箱：wangdesign@email.com | 现居：上海\n作品集：wangdesign.portfolio.com\nUI/UX设计师 | 4年互联网设计经验 | 品牌视觉背景\n\n教育背景\n2015.09 - 2019.06  XX美术学院  视觉传达设计（本科）\n主修课程：品牌设计、信息可视化、交互设计基础、版式设计、用户研究\n在校荣誉：全国大学生广告艺术大赛省级一等奖\n\n职业背景\n2019.07 - 2021.06  XX传媒公司  品牌视觉设计师（2年）\n负责快消、教育行业品牌全案设计，积累扎实的视觉体系搭建与商业审美能力\n\n2021.07 - 至今  XX互联网科技公司（C轮 / 在线教育）  UI设计师（4年）\n从品牌设计跨领域转型至互联网UI/UX，快速补齐交互逻辑与产品思维，主导多条业务线界面设计\n\n专业技能\n精通Figma组件化设计、Auto Layout及变量系统，能搭建可复用的设计规范与UI Kit\n擅长界面动效设计，熟练使用Principle、After Effects制作高保真交互Demo，提升评审效率\n具备品牌全案设计能力，熟悉Logo、VI、运营视觉体系搭建，能统筹产品视觉一致性\n了解前端基础（HTML/CSS），能与开发高效沟通，熟悉切图标注、SVG输出及设计走查流程\n掌握用户研究方法：竞品分析、用户访谈、可用性测试，能基于数据反馈迭代设计方案\n\n工作经历\n在线教育直播课堂改版（2023.06 - 2024.03）\n作为UI主设，主导直播客户端从1.0到2.0的视觉重构，DAU 50W+，完课率提升12%\n建立Figma组件库（300+组件），统一5条业务线设计语言，设计交付效率提升30%\n针对低龄学段用户设计游戏化互动界面（连麦、答题红包），通过动效引导降低操作流失率\n\n制定《移动端设计规范V2.0》，涵盖色彩、字体、间距、无障碍对比度标准（WCAG 2.1 AA级）\n\n品牌跨界联名活动视觉（2022.09 - 2022.12）\n结合前品牌设计经验，主导与知名IP联名运营活动的主视觉及H5传播设计\n设计开屏动画、分享海报模板，活动期间新增用户8W+，分享率提升25%\n输出动态品牌规范手册，帮助市场团队3天内完成20+城市线下物料延展\n\nB端教研后台系统优化（2022.02 - 2022.08）\n负责教师端后台的信息架构重组，将核心备课路径从5步缩减至3步\n设计数据可视化仪表盘，通过卡片层级与色彩语义降低教师数据读取成本\n\n自我评价\n拥有品牌视觉+互联网UI的跨领域背景，既能把控产品视觉调性，也具备用户体验与业务目标平衡能力。习惯用组件化思维提升协作效率，注重设计落地的还原度与数据反馈。",
+        "candidate_jds": [
+          {
+            "chunk_id": "d8f1f630-f372-467a-b0a0-5a68a6db4ffd_chunk_1",
+            "content": "【百度 · AI应用-产品经理 岗位职责】\n负责HR系统组织人才、招聘等模块的产品设计，输出高效、可迭代的解决方案，支撑业务复杂场景-与长期发展与HR业务团队紧密协作，深入理解人才发展、招聘管理流程，精准挖掘需求与痛点-协同研发、测试、运营等团队，推动产品方案高质量落地与按期交付-重视用户体验，积极拥抱AI技术，通过智能化能力提升系统自动化水平，降低合规风险，提高业务效率",
+            "metadata": {
+              "company": "百度",
+              "index": 1,
+              "jd_id": "d8f1f630-f372-467a-b0a0-5a68a6db4ffd",
+              "position": "AI应用-产品经理",
+              "section": "responsibilities",
+              "strategy": "semantic"
+            },
+            "distance": 0.8732128143310547,
+            "bm25_score": 0.0,
+            "vec_norm": 0.37859793431584343,
+            "bm25_norm": 0.0,
+            "hybrid_score": 0.26501855402109037,
+            "rerank_score": 0.416
+          },
+          {
+            "chunk_id": "d8f1f630-f372-467a-b0a0-5a68a6db4ffd_chunk_7",
+            "content": "【百度 · AI应用-产品经理 软性要求/加分项】\n有AI产品功能设计、提示词工程、AI+流程自动化相关实践",
+            "metadata": {
+              "company": "百度",
+              "index": 7,
+              "jd_id": "d8f1f630-f372-467a-b0a0-5a68a6db4ffd",
+              "position": "AI应用-产品经理",
+              "priority": "medium",
+              "section": "soft_requirements",
+              "strategy": "semantic"
+            },
+            "distance": null,
+            "bm25_score": 3.2350222248196414,
+            "vec_norm": 0.0,
+            "bm25_norm": 0.8115070236103469,
+            "hybrid_score": 0.24345210708310405,
+            "rerank_score": 0.2861
+          },
+          {
+            "chunk_id": "4dcb6702-c777-4279-b0e9-99e8edbd608f_chunk_1",
+            "content": "【蚂蚁集团 · AI产品经理 岗位职责】\n你要来搞什么大事?\n1.定义 Agent 灵魂：设计 Planning（思考逻辑）、Reflection（反思）与 Memory（记忆）策略，打造从\"对话框\"进化为\"生产力工具\"的智能体；\n2.重塑 LUI 交互：拒绝枯燥对话，探索意图驱动的流式 UI 与动态组件生成，让 AI 输出像电影般丝滑；\n3.编排超级工作流：深入客服、数据、ERP 等实战场景，设计 Human-in-the-loop（人机协作）机制，平衡 AI 的创造力与执行严谨性；\n4.模型精细化调教：编写结构化 Prompt，配合 RAG、Function Calling 与向量数据库，攻克模型\"幻觉\"与\"死循环\"；\n5.数据驱动进化：建立\"交互爽感\"与\"任务成功率\"双重指标，通过 Bad Case 复盘与 A/B 测试持续迭代。",
+            "metadata": {
+              "company": "蚂蚁集团",
+              "index": 1,
+              "jd_id": "4dcb6702-c777-4279-b0e9-99e8edbd608f",
+              "position": "AI产品经理",
+              "section": "responsibilities",
+              "strategy": "semantic"
+            },
+            "distance": null,
+            "bm25_score": 3.5160570281909105,
+            "vec_norm": 0.0,
+            "bm25_norm": 1.0,
+            "hybrid_score": 0.3,
+            "rerank_score": 0.2489
+          },
+          {
+            "chunk_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a_chunk_1",
+            "content": "【某小公司 · Java后端 岗位职责】\n1. 负责传统企业内部管理系统的设计与开发。2. 数据库CRUD操作与报表开发。3. 系统日常维护与bug修复。",
+            "metadata": {
+              "company": "某小公司",
+              "index": 1,
+              "jd_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a",
+              "position": "Java后端",
+              "section": "responsibilities",
+              "strategy": "semantic"
+            },
+            "distance": 0.7160281538963318,
+            "bm25_score": 2.7171388168741,
+            "vec_norm": 1.0,
+            "bm25_norm": 0.4641572156311845,
+            "hybrid_score": 0.8392471646893553,
+            "rerank_score": 0.2364
+          },
+          {
+            "chunk_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8_chunk_1",
+            "content": "【阿里巴巴 · 后端开发 岗位职责】\n1. 负责电商核心系统的设计与开发。2. 高并发系统架构设计与性能优化。3. 分布式系统开发与微服务治理。4. 数据库设计与优化。",
+            "metadata": {
+              "company": "阿里巴巴",
+              "index": 1,
+              "jd_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8",
+              "position": "后端开发",
+              "section": "responsibilities",
+              "strategy": "semantic"
+            },
+            "distance": 0.8733718395233154,
+            "bm25_score": 3.423225728190739,
+            "vec_norm": 0.37796925602946774,
+            "bm25_norm": 0.9377370780086733,
+            "hybrid_score": 0.5458996026232295,
+            "rerank_score": 0.232
+          }
+        ],
+        "sort_by": "match_score"
+      },
+      "result_preview": "{'rankings': [{'rank': 1, 'jd_id': '45bd2600-af57-45fe-a96e-c6cae6838c7a', 'company': '某小公司', 'position': 'Java后端', 'match_score': 85, 'recommend_reason': '检索相关度较高（0.84）', 'key_match': ['检索召回'], 'key_"
+    }
+  ],
+  "tools_called": [
+    "kb_retrieve",
+    "global_rank"
+  ],
+  "kb_chunks": [
+    {
+      "chunk_id": "d8f1f630-f372-467a-b0a0-5a68a6db4ffd_chunk_1",
+      "content": "【百度 · AI应用-产品经理 岗位职责】\n负责HR系统组织人才、招聘等模块的产品设计，输出高效、可迭代的解决方案，支撑业务复杂场景-与长期发展与HR业务团队紧密协作，深入理解人才发展、招聘管理流程，精准挖掘需求与痛点-协同研发、测试、运营等团队，推动产品方案高质量落地与按期交付-重视用户体验，积极拥抱AI技术，通过智能化能力提升系统自动化水平，降低合规风险，提高业务效率",
+      "metadata": {
+        "company": "百度",
+        "index": 1,
+        "jd_id": "d8f1f630-f372-467a-b0a0-5a68a6db4ffd",
+        "position": "AI应用-产品经理",
+        "section": "responsibilities",
+        "strategy": "semantic"
+      },
+      "distance": 0.8732128143310547,
+      "bm25_score": 0.0,
+      "vec_norm": 0.37859793431584343,
+      "bm25_norm": 0.0,
+      "hybrid_score": 0.26501855402109037,
+      "rerank_score": 0.416
+    },
+    {
+      "chunk_id": "d8f1f630-f372-467a-b0a0-5a68a6db4ffd_chunk_7",
+      "content": "【百度 · AI应用-产品经理 软性要求/加分项】\n有AI产品功能设计、提示词工程、AI+流程自动化相关实践",
+      "metadata": {
+        "company": "百度",
+        "index": 7,
+        "jd_id": "d8f1f630-f372-467a-b0a0-5a68a6db4ffd",
+        "position": "AI应用-产品经理",
+        "priority": "medium",
+        "section": "soft_requirements",
+        "strategy": "semantic"
+      },
+      "distance": null,
+      "bm25_score": 3.2350222248196414,
+      "vec_norm": 0.0,
+      "bm25_norm": 0.8115070236103469,
+      "hybrid_score": 0.24345210708310405,
+      "rerank_score": 0.2861
+    },
+    {
+      "chunk_id": "4dcb6702-c777-4279-b0e9-99e8edbd608f_chunk_1",
+      "content": "【蚂蚁集团 · AI产品经理 岗位职责】\n你要来搞什么大事?\n1.定义 Agent 灵魂：设计 Planning（思考逻辑）、Reflection（反思）与 Memory（记忆）策略，打造从\"对话框\"进化为\"生产力工具\"的智能体；\n2.重塑 LUI 交互：拒绝枯燥对话，探索意图驱动的流式 UI 与动态组件生成，让 AI 输出像电影般丝滑；\n3.编排超级工作流：深入客服、数据、ERP 等实战场景，设计 Human-in-the-loop（人机协作）机制，平衡 AI 的创造力与执行严谨性；\n4.模型精细化调教：编写结构化 Prompt，配合 RAG、Function Calling 与向量数据库，攻克模型\"幻觉\"与\"死循环\"；\n5.数据驱动进化：建立\"交互爽感\"与\"任务成功率\"双重指标，通过 Bad Case 复盘与 A/B 测试持续迭代。",
+      "metadata": {
+        "company": "蚂蚁集团",
+        "index": 1,
+        "jd_id": "4dcb6702-c777-4279-b0e9-99e8edbd608f",
+        "position": "AI产品经理",
+        "section": "responsibilities",
+        "strategy": "semantic"
+      },
+      "distance": null,
+      "bm25_score": 3.5160570281909105,
+      "vec_norm": 0.0,
+      "bm25_norm": 1.0,
+      "hybrid_score": 0.3,
+      "rerank_score": 0.2489
+    },
+    {
+      "chunk_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a_chunk_1",
+      "content": "【某小公司 · Java后端 岗位职责】\n1. 负责传统企业内部管理系统的设计与开发。2. 数据库CRUD操作与报表开发。3. 系统日常维护与bug修复。",
+      "metadata": {
+        "company": "某小公司",
+        "index": 1,
+        "jd_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a",
+        "position": "Java后端",
+        "section": "responsibilities",
+        "strategy": "semantic"
+      },
+      "distance": 0.7160281538963318,
+      "bm25_score": 2.7171388168741,
+      "vec_norm": 1.0,
+      "bm25_norm": 0.4641572156311845,
+      "hybrid_score": 0.8392471646893553,
+      "rerank_score": 0.2364
+    },
+    {
+      "chunk_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8_chunk_1",
+      "content": "【阿里巴巴 · 后端开发 岗位职责】\n1. 负责电商核心系统的设计与开发。2. 高并发系统架构设计与性能优化。3. 分布式系统开发与微服务治理。4. 数据库设计与优化。",
+      "metadata": {
+        "company": "阿里巴巴",
+        "index": 1,
+        "jd_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8",
+        "position": "后端开发",
+        "section": "responsibilities",
+        "strategy": "semantic"
+      },
+      "distance": 0.8733718395233154,
+      "bm25_score": 3.423225728190739,
+      "vec_norm": 0.37796925602946774,
+      "bm25_norm": 0.9377370780086733,
+      "hybrid_score": 0.5458996026232295,
+      "rerank_score": 0.232
+    }
+  ],
+  "tool_executions_full": [
+    {
+      "tool_name": "kb_retrieve",
+      "task_id": "T0",
+      "status": "success",
+      "output": {
+        "chunks": [
+          {
+            "chunk_id": "d8f1f630-f372-467a-b0a0-5a68a6db4ffd_chunk_1",
+            "content": "【百度 · AI应用-产品经理 岗位职责】\n负责HR系统组织人才、招聘等模块的产品设计，输出高效、可迭代的解决方案，支撑业务复杂场景-与长期发展与HR业务团队紧密协作，深入理解人才发展、招聘管理流程，精准挖掘需求与痛点-协同研发、测试、运营等团队，推动产品方案高质量落地与按期交付-重视用户体验，积极拥抱AI技术，通过智能化能力提升系统自动化水平，降低合规风险，提高业务效率",
+            "source": "百度-AI应用-产品经理",
+            "metadata": {
+              "company": "百度",
+              "position": "AI应用-产品经理"
+            }
+          },
+          {
+            "chunk_id": "d8f1f630-f372-467a-b0a0-5a68a6db4ffd_chunk_7",
+            "content": "【百度 · AI应用-产品经理 软性要求/加分项】\n有AI产品功能设计、提示词工程、AI+流程自动化相关实践",
+            "source": "百度-AI应用-产品经理",
+            "metadata": {
+              "company": "百度",
+              "position": "AI应用-产品经理"
+            }
+          },
+          {
+            "chunk_id": "4dcb6702-c777-4279-b0e9-99e8edbd608f_chunk_1",
+            "content": "【蚂蚁集团 · AI产品经理 岗位职责】\n你要来搞什么大事?\n1.定义 Agent 灵魂：设计 Planning（思考逻辑）、Reflection（反思）与 Memory（记忆）策略，打造从\"对话框\"进化为\"生产力工具\"的智能体；\n2.重塑 LUI 交互：拒绝枯燥对话，探索意图驱动的流式 UI 与动态组件生成，让 AI 输出像电影般丝滑；\n3.编排超级工作流：深入客服、数据、ERP 等实战场景，设计 Human-in-the-loop（人机协作）机制，平衡 AI 的创造力与执行严谨性；\n4.模型精细化调教：编写结构化 Prompt，配合 RAG、Function Calling 与向量数据库，",
+            "source": "蚂蚁集团-AI产品经理",
+            "metadata": {
+              "company": "蚂蚁集团",
+              "position": "AI产品经理"
+            }
+          },
+          {
+            "chunk_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a_chunk_1",
+            "content": "【某小公司 · Java后端 岗位职责】\n1. 负责传统企业内部管理系统的设计与开发。2. 数据库CRUD操作与报表开发。3. 系统日常维护与bug修复。",
+            "source": "某小公司-Java后端",
+            "metadata": {
+              "company": "某小公司",
+              "position": "Java后端"
+            }
+          },
+          {
+            "chunk_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8_chunk_1",
+            "content": "【阿里巴巴 · 后端开发 岗位职责】\n1. 负责电商核心系统的设计与开发。2. 高并发系统架构设计与性能优化。3. 分布式系统开发与微服务治理。4. 数据库设计与优化。",
+            "source": "阿里巴巴-后端开发",
+            "metadata": {
+              "company": "阿里巴巴",
+              "position": "后端开发"
+            }
+          }
+        ],
+        "query": "帮我看看有什么设计岗位",
+        "filters": {},
+        "strategy": "hybrid(70%vec+30%bm25)+reranker",
+        "pool_k": 5,
+        "rerank_k": 10,
+        "pool_size": 35,
+        "vec_only": 16,
+        "bm25_only": 15,
+        "both": 4,
+        "rerank": {
+          "enabled": true,
+          "candidates": 5,
+          "output": 5,
+          "best_rerank_score": 0.416
+        }
+      }
+    },
+    {
+      "tool_name": "global_rank",
+      "task_id": "T1",
+      "status": "success",
+      "output": {
+        "rankings": [
+          {
+            "company": "某小公司",
+            "position": "Java后端",
+            "match_score": 85,
+            "recommend_reason": "检索相关度较高（0.84）",
+            "key_match": [
+              "检索召回"
+            ],
+            "key_gap": [
+              "需进一步了解详细匹配情况"
+            ],
+            "apply_priority": "高"
+          },
+          {
+            "company": "阿里巴巴",
+            "position": "后端开发",
+            "match_score": 76,
+            "recommend_reason": "检索相关度较高（0.55）",
+            "key_match": [
+              "检索召回"
+            ],
+            "key_gap": [
+              "需进一步了解详细匹配情况"
+            ],
+            "apply_priority": "中"
+          },
+          {
+            "company": "蚂蚁集团",
+            "position": "AI产品经理",
+            "match_score": 69,
+            "recommend_reason": "检索相关度较高（0.30）",
+            "key_match": [
+              "检索召回"
+            ],
+            "key_gap": [
+              "需进一步了解详细匹配情况"
+            ],
+            "apply_priority": "中"
+          },
+          {
+            "company": "百度",
+            "position": "AI应用-产品经理",
+            "match_score": 68,
+            "recommend_reason": "检索相关度较高（0.25）",
+            "key_match": [
+              "检索召回"
+            ],
+            "key_gap": [
+              "需进一步了解详细匹配情况"
+            ],
+            "apply_priority": "中"
+          }
+        ],
+        "strategy_advice": "有 1 个高度匹配岗位建议优先投递，其余岗位可根据个人偏好选择性尝试。",
+        "_template_mode": true,
+        "_coarse_filter_meta": {
+          "input_jds": 4,
+          "output_jds": 4,
+          "filter_ratio": 0.0
+        }
+      }
+    },
+    {
+      "tool_name": null,
+      "task_id": "T2",
+      "status": "success",
+      "output": {
+        "aggregation": {
+          "explore": "{{T1.output.ranked_list}}",
+          "explanation": "{{T1.output.explanation}}"
+        }
+      }
+    }
+  ],
+  "debug_info": {
+    "task_graph": {
+      "tasks": {
+        "T0": {
+          "task_id": "T0",
+          "task_type": "tool_call",
+          "tool_name": "kb_retrieve",
+          "status": "success",
+          "parameters": {
+            "query": "{{intent_explore.search_keywords}}",
+            "top_k": "{{intent_explore.top_k}}"
+          },
+          "resolved_params": {
+            "query": "帮我看看有什么设计岗位",
+            "top_k": 5
+          },
+          "result": {
+            "chunks": [
+              {
+                "chunk_id": "d8f1f630-f372-467a-b0a0-5a68a6db4ffd_chunk_1",
+                "content": "【百度 · AI应用-产品经理 岗位职责】\n负责HR系统组织人才、招聘等模块的产品设计，输出高效、可迭代的解决方案，支撑业务复杂场景-与长期发展与HR业务团队紧密协作，深入理解人才发展、招聘管理流程，精准挖掘需求与痛点-协同研发、测试、运营等团队，推动产品方案高质量落地与按期交付-重视用户体验，积极拥抱AI技术，通过智能化能力提升系统自动化水平，降低合规风险，提高业务效率",
+                "metadata": {
+                  "company": "百度",
+                  "index": 1,
+                  "jd_id": "d8f1f630-f372-467a-b0a0-5a68a6db4ffd",
+                  "position": "AI应用-产品经理",
+                  "section": "responsibilities",
+                  "strategy": "semantic"
+                },
+                "distance": 0.8732128143310547,
+                "bm25_score": 0.0,
+                "vec_norm": 0.37859793431584343,
+                "bm25_norm": 0.0,
+                "hybrid_score": 0.26501855402109037,
+                "rerank_score": 0.416
+              },
+              {
+                "chunk_id": "d8f1f630-f372-467a-b0a0-5a68a6db4ffd_chunk_7",
+                "content": "【百度 · AI应用-产品经理 软性要求/加分项】\n有AI产品功能设计、提示词工程、AI+流程自动化相关实践",
+                "metadata": {
+                  "company": "百度",
+                  "index": 7,
+                  "jd_id": "d8f1f630-f372-467a-b0a0-5a68a6db4ffd",
+                  "position": "AI应用-产品经理",
+                  "priority": "medium",
+                  "section": "soft_requirements",
+                  "strategy": "semantic"
+                },
+                "distance": null,
+                "bm25_score": 3.2350222248196414,
+                "vec_norm": 0.0,
+                "bm25_norm": 0.8115070236103469,
+                "hybrid_score": 0.24345210708310405,
+                "rerank_score": 0.2861
+              },
+              {
+                "chunk_id": "4dcb6702-c777-4279-b0e9-99e8edbd608f_chunk_1",
+                "content": "【蚂蚁集团 · AI产品经理 岗位职责】\n你要来搞什么大事?\n1.定义 Agent 灵魂：设计 Planning（思考逻辑）、Reflection（反思）与 Memory（记忆）策略，打造从\"对话框\"进化为\"生产力工具\"的智能体；\n2.重塑 LUI 交互：拒绝枯燥对话，探索意图驱动的流式 UI 与动态组件生成，让 AI 输出像电影般丝滑；\n3.编排超级工作流：深入客服、数据、ERP 等实战场景，设计 Human-in-the-loop（人机协作）机制，平衡 AI 的创造力与执行严谨性；\n4.模型精细化调教：编写结构化 Prompt，配合 RAG、Function Calling 与向量数据库，攻克模型\"幻觉\"与\"死循环\"；\n5.数据驱动进化：建立\"交互爽感\"与\"任务成功率\"双重指标，通过 Bad Case 复盘与 A/B 测试持续迭代。",
+                "metadata": {
+                  "company": "蚂蚁集团",
+                  "index": 1,
+                  "jd_id": "4dcb6702-c777-4279-b0e9-99e8edbd608f",
+                  "position": "AI产品经理",
+                  "section": "responsibilities",
+                  "strategy": "semantic"
+                },
+                "distance": null,
+                "bm25_score": 3.5160570281909105,
+                "vec_norm": 0.0,
+                "bm25_norm": 1.0,
+                "hybrid_score": 0.3,
+                "rerank_score": 0.2489
+              },
+              {
+                "chunk_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a_chunk_1",
+                "content": "【某小公司 · Java后端 岗位职责】\n1. 负责传统企业内部管理系统的设计与开发。2. 数据库CRUD操作与报表开发。3. 系统日常维护与bug修复。",
+                "metadata": {
+                  "company": "某小公司",
+                  "index": 1,
+                  "jd_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a",
+                  "position": "Java后端",
+                  "section": "responsibilities",
+                  "strategy": "semantic"
+                },
+                "distance": 0.7160281538963318,
+                "bm25_score": 2.7171388168741,
+                "vec_norm": 1.0,
+                "bm25_norm": 0.4641572156311845,
+                "hybrid_score": 0.8392471646893553,
+                "rerank_score": 0.2364
+              },
+              {
+                "chunk_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8_chunk_1",
+                "content": "【阿里巴巴 · 后端开发 岗位职责】\n1. 负责电商核心系统的设计与开发。2. 高并发系统架构设计与性能优化。3. 分布式系统开发与微服务治理。4. 数据库设计与优化。",
+                "metadata": {
+                  "company": "阿里巴巴",
+                  "index": 1,
+                  "jd_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8",
+                  "position": "后端开发",
+                  "section": "responsibilities",
+                  "strategy": "semantic"
+                },
+                "distance": 0.8733718395233154,
+                "bm25_score": 3.423225728190739,
+                "vec_norm": 0.37796925602946774,
+                "bm25_norm": 0.9377370780086733,
+                "hybrid_score": 0.5458996026232295,
+                "rerank_score": 0.232
+              }
+            ],
+            "query": "帮我看看有什么设计岗位",
+            "filters": {},
+            "strategy": "hybrid(70%vec+30%bm25)+reranker",
+            "pool_k": 5,
+            "rerank_k": 10,
+            "pool_size": 35,
+            "vec_only": 16,
+            "bm25_only": 15,
+            "both": 4,
+            "rerank": {
+              "enabled": true,
+              "candidates": 5,
+              "output": 5,
+              "best_rerank_score": 0.416
+            }
+          },
+          "observation": "工具 kb_retrieve 执行成功"
+        },
+        "T1": {
+          "task_id": "T1",
+          "task_type": "tool_call",
+          "tool_name": "global_rank",
+          "status": "success",
+          "parameters": {
+            "resume_text": "{{global_slots.resume_text}}",
+            "candidate_jds": "{{T0.output.chunks}}",
+            "sort_by": "{{intent_explore.sort_by}}"
+          },
+          "resolved_params": {
+            "resume_text": "姓名：王设计师\n电话：139-XXXX-5678 | 邮箱：wangdesign@email.com | 现居：上海\n作品集：wangdesign.portfolio.com\nUI/UX设计师 | 4年互联网设计经验 | 品牌视觉背景\n\n教育背景\n2015.09 - 2019.06  XX美术学院  视觉传达设计（本科）\n主修课程：品牌设计、信息可视化、交互设计基础、版式设计、用户研究\n在校荣誉：全国大学生广告艺术大赛省级一等奖\n\n职业背景\n2019.07 - 2021.06  XX传媒公司  品牌视觉设计师（2年）\n负责快消、教育行业品牌全案设计，积累扎实的视觉体系搭建与商业审美能力\n\n2021.07 - 至今  XX互联网科技公司（C轮 / 在线教育）  UI设计师（4年）\n从品牌设计跨领域转型至互联网UI/UX，快速补齐交互逻辑与产品思维，主导多条业务线界面设计\n\n专业技能\n精通Figma组件化设计、Auto Layout及变量系统，能搭建可复用的设计规范与UI Kit\n擅长界面动效设计，熟练使用Principle、After Effects制作高保真交互Demo，提升评审效率\n具备品牌全案设计能力，熟悉Logo、VI、运营视觉体系搭建，能统筹产品视觉一致性\n了解前端基础（HTML/CSS），能与开发高效沟通，熟悉切图标注、SVG输出及设计走查流程\n掌握用户研究方法：竞品分析、用户访谈、可用性测试，能基于数据反馈迭代设计方案\n\n工作经历\n在线教育直播课堂改版（2023.06 - 2024.03）\n作为UI主设，主导直播客户端从1.0到2.0的视觉重构，DAU 50W+，完课率提升12%\n建立Figma组件库（300+组件），统一5条业务线设计语言，设计交付效率提升30%\n针对低龄学段用户设计游戏化互动界面（连麦、答题红包），通过动效引导降低操作流失率\n\n制定《移动端设计规范V2.0》，涵盖色彩、字体、间距、无障碍对比度标准（WCAG 2.1 AA级）\n\n品牌跨界联名活动视觉（2022.09 - 2022.12）\n结合前品牌设计经验，主导与知名IP联名运营活动的主视觉及H5传播设计\n设计开屏动画、分享海报模板，活动期间新增用户8W+，分享率提升25%\n输出动态品牌规范手册，帮助市场团队3天内完成20+城市线下物料延展\n\nB端教研后台系统优化（2022.02 - 2022.08）\n负责教师端后台的信息架构重组，将核心备课路径从5步缩减至3步\n设计数据可视化仪表盘，通过卡片层级与色彩语义降低教师数据读取成本\n\n自我评价\n拥有品牌视觉+互联网UI的跨领域背景，既能把控产品视觉调性，也具备用户体验与业务目标平衡能力。习惯用组件化思维提升协作效率，注重设计落地的还原度与数据反馈。",
+            "candidate_jds": [
+              {
+                "chunk_id": "d8f1f630-f372-467a-b0a0-5a68a6db4ffd_chunk_1",
+                "content": "【百度 · AI应用-产品经理 岗位职责】\n负责HR系统组织人才、招聘等模块的产品设计，输出高效、可迭代的解决方案，支撑业务复杂场景-与长期发展与HR业务团队紧密协作，深入理解人才发展、招聘管理流程，精准挖掘需求与痛点-协同研发、测试、运营等团队，推动产品方案高质量落地与按期交付-重视用户体验，积极拥抱AI技术，通过智能化能力提升系统自动化水平，降低合规风险，提高业务效率",
+                "metadata": {
+                  "company": "百度",
+                  "index": 1,
+                  "jd_id": "d8f1f630-f372-467a-b0a0-5a68a6db4ffd",
+                  "position": "AI应用-产品经理",
+                  "section": "responsibilities",
+                  "strategy": "semantic"
+                },
+                "distance": 0.8732128143310547,
+                "bm25_score": 0.0,
+                "vec_norm": 0.37859793431584343,
+                "bm25_norm": 0.0,
+                "hybrid_score": 0.26501855402109037,
+                "rerank_score": 0.416
+              },
+              {
+                "chunk_id": "d8f1f630-f372-467a-b0a0-5a68a6db4ffd_chunk_7",
+                "content": "【百度 · AI应用-产品经理 软性要求/加分项】\n有AI产品功能设计、提示词工程、AI+流程自动化相关实践",
+                "metadata": {
+                  "company": "百度",
+                  "index": 7,
+                  "jd_id": "d8f1f630-f372-467a-b0a0-5a68a6db4ffd",
+                  "position": "AI应用-产品经理",
+                  "priority": "medium",
+                  "section": "soft_requirements",
+                  "strategy": "semantic"
+                },
+                "distance": null,
+                "bm25_score": 3.2350222248196414,
+                "vec_norm": 0.0,
+                "bm25_norm": 0.8115070236103469,
+                "hybrid_score": 0.24345210708310405,
+                "rerank_score": 0.2861
+              },
+              {
+                "chunk_id": "4dcb6702-c777-4279-b0e9-99e8edbd608f_chunk_1",
+                "content": "【蚂蚁集团 · AI产品经理 岗位职责】\n你要来搞什么大事?\n1.定义 Agent 灵魂：设计 Planning（思考逻辑）、Reflection（反思）与 Memory（记忆）策略，打造从\"对话框\"进化为\"生产力工具\"的智能体；\n2.重塑 LUI 交互：拒绝枯燥对话，探索意图驱动的流式 UI 与动态组件生成，让 AI 输出像电影般丝滑；\n3.编排超级工作流：深入客服、数据、ERP 等实战场景，设计 Human-in-the-loop（人机协作）机制，平衡 AI 的创造力与执行严谨性；\n4.模型精细化调教：编写结构化 Prompt，配合 RAG、Function Calling 与向量数据库，攻克模型\"幻觉\"与\"死循环\"；\n5.数据驱动进化：建立\"交互爽感\"与\"任务成功率\"双重指标，通过 Bad Case 复盘与 A/B 测试持续迭代。",
+                "metadata": {
+                  "company": "蚂蚁集团",
+                  "index": 1,
+                  "jd_id": "4dcb6702-c777-4279-b0e9-99e8edbd608f",
+                  "position": "AI产品经理",
+                  "section": "responsibilities",
+                  "strategy": "semantic"
+                },
+                "distance": null,
+                "bm25_score": 3.5160570281909105,
+                "vec_norm": 0.0,
+                "bm25_norm": 1.0,
+                "hybrid_score": 0.3,
+                "rerank_score": 0.2489
+              },
+              {
+                "chunk_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a_chunk_1",
+                "content": "【某小公司 · Java后端 岗位职责】\n1. 负责传统企业内部管理系统的设计与开发。2. 数据库CRUD操作与报表开发。3. 系统日常维护与bug修复。",
+                "metadata": {
+                  "company": "某小公司",
+                  "index": 1,
+                  "jd_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a",
+                  "position": "Java后端",
+                  "section": "responsibilities",
+                  "strategy": "semantic"
+                },
+                "distance": 0.7160281538963318,
+                "bm25_score": 2.7171388168741,
+                "vec_norm": 1.0,
+                "bm25_norm": 0.4641572156311845,
+                "hybrid_score": 0.8392471646893553,
+                "rerank_score": 0.2364
+              },
+              {
+                "chunk_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8_chunk_1",
+                "content": "【阿里巴巴 · 后端开发 岗位职责】\n1. 负责电商核心系统的设计与开发。2. 高并发系统架构设计与性能优化。3. 分布式系统开发与微服务治理。4. 数据库设计与优化。",
+                "metadata": {
+                  "company": "阿里巴巴",
+                  "index": 1,
+                  "jd_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8",
+                  "position": "后端开发",
+                  "section": "responsibilities",
+                  "strategy": "semantic"
+                },
+                "distance": 0.8733718395233154,
+                "bm25_score": 3.423225728190739,
+                "vec_norm": 0.37796925602946774,
+                "bm25_norm": 0.9377370780086733,
+                "hybrid_score": 0.5458996026232295,
+                "rerank_score": 0.232
+              }
+            ],
+            "sort_by": "match_score"
+          },
+          "result": {
+            "rankings": [
+              {
+                "rank": 1,
+                "jd_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a",
+                "company": "某小公司",
+                "position": "Java后端",
+                "match_score": 85,
+                "recommend_reason": "检索相关度较高（0.84）",
+                "key_match": [
+                  "检索召回"
+                ],
+                "key_gap": [
+                  "需进一步了解详细匹配情况"
+                ],
+                "apply_priority": "高"
+              },
+              {
+                "rank": 2,
+                "jd_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8",
+                "company": "阿里巴巴",
+                "position": "后端开发",
+                "match_score": 76,
+                "recommend_reason": "检索相关度较高（0.55）",
+                "key_match": [
+                  "检索召回"
+                ],
+                "key_gap": [
+                  "需进一步了解详细匹配情况"
+                ],
+                "apply_priority": "中"
+              },
+              {
+                "rank": 3,
+                "jd_id": "4dcb6702-c777-4279-b0e9-99e8edbd608f",
+                "company": "蚂蚁集团",
+                "position": "AI产品经理",
+                "match_score": 69,
+                "recommend_reason": "检索相关度较高（0.30）",
+                "key_match": [
+                  "检索召回"
+                ],
+                "key_gap": [
+                  "需进一步了解详细匹配情况"
+                ],
+                "apply_priority": "中"
+              },
+              {
+                "rank": 4,
+                "jd_id": "d8f1f630-f372-467a-b0a0-5a68a6db4ffd",
+                "company": "百度",
+                "position": "AI应用-产品经理",
+                "match_score": 68,
+                "recommend_reason": "检索相关度较高（0.25）",
+                "key_match": [
+                  "检索召回"
+                ],
+                "key_gap": [
+                  "需进一步了解详细匹配情况"
+                ],
+                "apply_priority": "中"
+              }
+            ],
+            "strategy_advice": "有 1 个高度匹配岗位建议优先投递，其余岗位可根据个人偏好选择性尝试。",
+            "_template_mode": true,
+            "_coarse_filter_meta": {
+              "input_jds": 4,
+              "output_jds": 4,
+              "filter_ratio": 0.0
+            }
+          },
+          "observation": "工具 global_rank 执行成功"
+        },
+        "T2": {
+          "task_id": "T2",
+          "task_type": "aggregate",
+          "tool_name": null,
+          "status": "success",
+          "parameters": {
+            "explore": "{{T1.output.ranked_list}}",
+            "explanation": "{{T1.output.explanation}}"
+          },
+          "resolved_params": {
+            "explore": "{{T1.output.ranked_list}}",
+            "explanation": "{{T1.output.explanation}}"
+          },
+          "result": {
+            "aggregation": {
+              "explore": "{{T1.output.ranked_list}}",
+              "explanation": "{{T1.output.explanation}}"
+            }
+          },
+          "observation": "聚合完成"
+        }
+      },
+      "global_status": "success",
+      "replan_reason": "",
+      "replan_count": 0
+    },
+    "intent": {
+      "demands": [
+        {
+          "intent": "position_explore",
+          "entities": {
+            "search_keywords": "帮我看看有什么设计岗位",
+            "sort_by": "match_score",
+            "top_k": 5
+          },
+          "confidence": 0.88
+        }
+      ],
+      "needs_clarification": false,
+      "clarification_question": ""
+    },
+    "rewrite": {
+      "rewritten_query": "帮我看看有什么设计岗位",
+      "search_keywords": "帮我看看有什么设计岗位",
+      "is_follow_up": false,
+      "follow_up_type": "none",
+      "resolved_references": {}
+    },
+    "evidence_cache": [
+      {
+        "chunk_id": "d8f1f630-f372-467a-b0a0-5a68a6db4ffd_chunk_1",
+        "content": "【百度 · AI应用-产品经理 岗位职责】\n负责HR系统组织人才、招聘等模块的产品设计，输出高效、可迭代的解决方案，支撑业务复杂场景-与长期发展与HR业务团队紧密协作，深入理解人才发展、招聘管理流程，精准挖掘需求与痛点-协同研发、测试、运营等团队，推动产品方案高质量落地与按期交付-重视用户体验，积极拥抱AI技术，通过智能化能力提升系统自动化水平，降低合规风险，提高业务效率",
+        "metadata": {
+          "company": "百度",
+          "index": 1,
+          "jd_id": "d8f1f630-f372-467a-b0a0-5a68a6db4ffd",
+          "position": "AI应用-产品经理",
+          "section": "responsibilities",
+          "strategy": "semantic"
+        },
+        "distance": 0.8732128143310547,
+        "bm25_score": 0.0,
+        "vec_norm": 0.37859793431584343,
+        "bm25_norm": 0.0,
+        "hybrid_score": 0.26501855402109037,
+        "rerank_score": 0.416
+      },
+      {
+        "chunk_id": "d8f1f630-f372-467a-b0a0-5a68a6db4ffd_chunk_7",
+        "content": "【百度 · AI应用-产品经理 软性要求/加分项】\n有AI产品功能设计、提示词工程、AI+流程自动化相关实践",
+        "metadata": {
+          "company": "百度",
+          "index": 7,
+          "jd_id": "d8f1f630-f372-467a-b0a0-5a68a6db4ffd",
+          "position": "AI应用-产品经理",
+          "priority": "medium",
+          "section": "soft_requirements",
+          "strategy": "semantic"
+        },
+        "distance": null,
+        "bm25_score": 3.2350222248196414,
+        "vec_norm": 0.0,
+        "bm25_norm": 0.8115070236103469,
+        "hybrid_score": 0.24345210708310405,
+        "rerank_score": 0.2861
+      },
+      {
+        "chunk_id": "4dcb6702-c777-4279-b0e9-99e8edbd608f_chunk_1",
+        "content": "【蚂蚁集团 · AI产品经理 岗位职责】\n你要来搞什么大事?\n1.定义 Agent 灵魂：设计 Planning（思考逻辑）、Reflection（反思）与 Memory（记忆）策略，打造从\"对话框\"进化为\"生产力工具\"的智能体；\n2.重塑 LUI 交互：拒绝枯燥对话，探索意图驱动的流式 UI 与动态组件生成，让 AI 输出像电影般丝滑；\n3.编排超级工作流：深入客服、数据、ERP 等实战场景，设计 Human-in-the-loop（人机协作）机制，平衡 AI 的创造力与执行严谨性；\n4.模型精细化调教：编写结构化 Prompt，配合 RAG、Function Calling 与向量数据库，攻克模型\"幻觉\"与\"死循环\"；\n5.数据驱动进化：建立\"交互爽感\"与\"任务成功率\"双重指标，通过 Bad Case 复盘与 A/B 测试持续迭代。",
+        "metadata": {
+          "company": "蚂蚁集团",
+          "index": 1,
+          "jd_id": "4dcb6702-c777-4279-b0e9-99e8edbd608f",
+          "position": "AI产品经理",
+          "section": "responsibilities",
+          "strategy": "semantic"
+        },
+        "distance": null,
+        "bm25_score": 3.5160570281909105,
+        "vec_norm": 0.0,
+        "bm25_norm": 1.0,
+        "hybrid_score": 0.3,
+        "rerank_score": 0.2489
+      },
+      {
+        "chunk_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a_chunk_1",
+        "content": "【某小公司 · Java后端 岗位职责】\n1. 负责传统企业内部管理系统的设计与开发。2. 数据库CRUD操作与报表开发。3. 系统日常维护与bug修复。",
+        "metadata": {
+          "company": "某小公司",
+          "index": 1,
+          "jd_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a",
+          "position": "Java后端",
+          "section": "responsibilities",
+          "strategy": "semantic"
+        },
+        "distance": 0.7160281538963318,
+        "bm25_score": 2.7171388168741,
+        "vec_norm": 1.0,
+        "bm25_norm": 0.4641572156311845,
+        "hybrid_score": 0.8392471646893553,
+        "rerank_score": 0.2364
+      },
+      {
+        "chunk_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8_chunk_1",
+        "content": "【阿里巴巴 · 后端开发 岗位职责】\n1. 负责电商核心系统的设计与开发。2. 高并发系统架构设计与性能优化。3. 分布式系统开发与微服务治理。4. 数据库设计与优化。",
+        "metadata": {
+          "company": "阿里巴巴",
+          "index": 1,
+          "jd_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8",
+          "position": "后端开发",
+          "section": "responsibilities",
+          "strategy": "semantic"
+        },
+        "distance": 0.8733718395233154,
+        "bm25_score": 3.423225728190739,
+        "vec_norm": 0.37796925602946774,
+        "bm25_norm": 0.9377370780086733,
+        "hybrid_score": 0.5458996026232295,
+        "rerank_score": 0.232
+      }
+    ],
+    "evidence_cache_query": "帮我看看有什么设计岗位",
+    "tool_outputs": [
+      {
+        "task_id": "T0",
+        "tool": "kb_retrieve",
+        "description": "检索设计岗位相关JD",
+        "result": {
+          "chunks": [
+            {
+              "chunk_id": "d8f1f630-f372-467a-b0a0-5a68a6db4ffd_chunk_1",
+              "content": "【百度 · AI应用-产品经理 岗位职责】\n负责HR系统组织人才、招聘等模块的产品设计，输出高效、可迭代的解决方案，支撑业务复杂场景-与长期发展与HR业务团队紧密协作，深入理解人才发展、招聘管理流程，精准挖掘需求与痛点-协同研发、测试、运营等团队，推动产品方案高质量落地与按期交付-重视用户体验，积极拥抱AI技术，通过智能化能力提升系统自动化水平，降低合规风险，提高业务效率",
+              "source": "百度-AI应用-产品经理",
+              "metadata": {
+                "company": "百度",
+                "position": "AI应用-产品经理"
+              }
+            },
+            {
+              "chunk_id": "d8f1f630-f372-467a-b0a0-5a68a6db4ffd_chunk_7",
+              "content": "【百度 · AI应用-产品经理 软性要求/加分项】\n有AI产品功能设计、提示词工程、AI+流程自动化相关实践",
+              "source": "百度-AI应用-产品经理",
+              "metadata": {
+                "company": "百度",
+                "position": "AI应用-产品经理"
+              }
+            },
+            {
+              "chunk_id": "4dcb6702-c777-4279-b0e9-99e8edbd608f_chunk_1",
+              "content": "【蚂蚁集团 · AI产品经理 岗位职责】\n你要来搞什么大事?\n1.定义 Agent 灵魂：设计 Planning（思考逻辑）、Reflection（反思）与 Memory（记忆）策略，打造从\"对话框\"进化为\"生产力工具\"的智能体；\n2.重塑 LUI 交互：拒绝枯燥对话，探索意图驱动的流式 UI 与动态组件生成，让 AI 输出像电影般丝滑；\n3.编排超级工作流：深入客服、数据、ERP 等实战场景，设计 Human-in-the-loop（人机协作）机制，平衡 AI 的创造力与执行严谨性；\n4.模型精细化调教：编写结构化 Prompt，配合 RAG、Function Calling 与向量数据库，",
+              "source": "蚂蚁集团-AI产品经理",
+              "metadata": {
+                "company": "蚂蚁集团",
+                "position": "AI产品经理"
+              }
+            },
+            {
+              "chunk_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a_chunk_1",
+              "content": "【某小公司 · Java后端 岗位职责】\n1. 负责传统企业内部管理系统的设计与开发。2. 数据库CRUD操作与报表开发。3. 系统日常维护与bug修复。",
+              "source": "某小公司-Java后端",
+              "metadata": {
+                "company": "某小公司",
+                "position": "Java后端"
+              }
+            },
+            {
+              "chunk_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8_chunk_1",
+              "content": "【阿里巴巴 · 后端开发 岗位职责】\n1. 负责电商核心系统的设计与开发。2. 高并发系统架构设计与性能优化。3. 分布式系统开发与微服务治理。4. 数据库设计与优化。",
+              "source": "阿里巴巴-后端开发",
+              "metadata": {
+                "company": "阿里巴巴",
+                "position": "后端开发"
+              }
+            }
+          ],
+          "query": "帮我看看有什么设计岗位",
+          "filters": {},
+          "strategy": "hybrid(70%vec+30%bm25)+reranker",
+          "pool_k": 5,
+          "rerank_k": 10,
+          "pool_size": 35,
+          "vec_only": 16,
+          "bm25_only": 15,
+          "both": 4,
+          "rerank": {
+            "enabled": true,
+            "candidates": 5,
+            "output": 5,
+            "best_rerank_score": 0.416
+          }
+        }
+      },
+      {
+        "task_id": "T1",
+        "tool": "global_rank",
+        "description": "根据简历对检索到的JD按匹配度排序",
+        "result": {
+          "rankings": [
+            {
+              "company": "某小公司",
+              "position": "Java后端",
+              "match_score": 85,
+              "recommend_reason": "检索相关度较高（0.84）",
+              "key_match": [
+                "检索召回"
+              ],
+              "key_gap": [
+                "需进一步了解详细匹配情况"
+              ],
+              "apply_priority": "高"
+            },
+            {
+              "company": "阿里巴巴",
+              "position": "后端开发",
+              "match_score": 76,
+              "recommend_reason": "检索相关度较高（0.55）",
+              "key_match": [
+                "检索召回"
+              ],
+              "key_gap": [
+                "需进一步了解详细匹配情况"
+              ],
+              "apply_priority": "中"
+            },
+            {
+              "company": "蚂蚁集团",
+              "position": "AI产品经理",
+              "match_score": 69,
+              "recommend_reason": "检索相关度较高（0.30）",
+              "key_match": [
+                "检索召回"
+              ],
+              "key_gap": [
+                "需进一步了解详细匹配情况"
+              ],
+              "apply_priority": "中"
+            },
+            {
+              "company": "百度",
+              "position": "AI应用-产品经理",
+              "match_score": 68,
+              "recommend_reason": "检索相关度较高（0.25）",
+              "key_match": [
+                "检索召回"
+              ],
+              "key_gap": [
+                "需进一步了解详细匹配情况"
+              ],
+              "apply_priority": "中"
+            }
+          ],
+          "strategy_advice": "有 1 个高度匹配岗位建议优先投递，其余岗位可根据个人偏好选择性尝试。",
+          "_template_mode": true,
+          "_coarse_filter_meta": {
+            "input_jds": 4,
+            "output_jds": 4,
+            "filter_ratio": 0.0
+          }
+        }
+      },
+      {
+        "task_id": "T2",
+        "tool": null,
+        "description": "聚合探索结果，生成回复素材",
+        "result": {
+          "aggregation": {
+            "explore": "{{T1.output.ranked_list}}",
+            "explanation": "{{T1.output.explanation}}"
+          }
+        }
+      }
+    ],
+    "final_aggregation_prompt": {
+      "system_prompt": "你是一位专业的求职顾问。请基于以下工具执行结果，给用户一个清晰、有帮助的回复。\n要求：\n1. 先直接回答用户的问题（是/否/有/没有），不要绕弯子，不要重复用户的原话\n2. 如果有匹配分析结果，给出具体的分数和建议\n3. 如果有检索结果，基于事实回答，不要编造\n4. 【强制】引用信息时必须标注来源。每个引用的事实后面都要跟 [来源：公司名-岗位名] 格式。   kb_retrieve 结果的 chunks 中带有 'source' 字段（如'字节跳动-AI产品经理'），请直接使用。   external_search 结果带有 'source_name' 字段，也请直接使用。\n5. 当本地知识库与外部搜索结果冲突时，请并列呈现两种说法并标注各自来源，不要替用户做判断\n6. 语气友好、专业、结构化",
+      "user_prompt": "【用户问题】\n帮我看看有什么设计岗位\n\n【工具执行结果】\n[{\"task_id\": \"T0\", \"tool\": \"kb_retrieve\", \"description\": \"检索设计岗位相关JD\", \"result\": {\"chunks\": [{\"chunk_id\": \"d8f1f630-f372-467a-b0a0-5a68a6db4ffd_chunk_1\", \"content\": \"【百度 · AI应用-产品经理 岗位职责】\\n负责HR系统组织人才、招聘等模块的产品设计，输出高效、可迭代的解决方案，支撑业务复杂场景-与长期发展与HR业务团队紧密协作，深入理解人才发展、招聘管理流程，精准挖掘需求与痛点-协同研发、测试、运营等团队，推动产品方案高质量落地与按期交付-重视用户体验，积极拥抱AI技术，通过智能化能力提升系统自动化水平，降低合规风险，提高业务效率\", \"source\": \"百度-AI应用-产品经理\", \"metadata\": {\"company\": \"百度\", \"position\": \"AI应用-产品经理\"}}, {\"chunk_id\": \"d8f1f630-f372-467a-b0a0-5a68a6db4ffd_chunk_7\", \"content\": \"【百度 · AI应用-产品经理 软性要求/加分项】\\n有AI产品功能设计、提示词工程、AI+流程自动化相关实践\", \"source\": \"百度-AI应用-产品经理\", \"metadata\": {\"company\": \"百度\", \"position\": \"AI应用-产品经理\"}}, {\"chunk_id\": \"4dcb6702-c777-4279-b0e9-99e8edbd608f_chunk_1\", \"content\": \"【蚂蚁集团 · AI产品经理 岗位职责】\\n你要来搞什么大事?\\n1.定义 Agent 灵魂：设计 Planning（思考逻辑）、Reflection（反思）与 Memory（记忆）策略，打造从\\\"对话框\\\"进化为\\\"生产力工具\\\"的智能体；\\n2.重塑 LUI 交互：拒绝枯燥对话，探索意图驱动的流式 UI 与动态组件生成，让 AI 输出像电影般丝滑；\\n3.编排超级工作流：深入客服、数据、ERP 等实战场景，设计 Human-in-the-loop（人机协作）机制，平衡 AI 的创造力与执行严谨性；\\n4.模型精细化调教：编写结构化 Prompt，配合 RAG、Function Calling 与向量数据库，\", \"source\": \"蚂蚁集团-AI产品经理\", \"metadata\": {\"company\": \"蚂蚁集团\", \"position\": \"AI产品经理\"}}, {\"chunk_id\": \"45bd2600-af57-45fe-a96e-c6cae6838c7a_chunk_1\", \"content\": \"【某小公司 · Java后端 岗位职责】\\n1. 负责传统企业内部管理系统的设计与开发。2. 数据库CRUD操作与报表开发。3. 系统日常维护与bug修复。\", \"source\": \"某小公司-Java后端\", \"metadata\": {\"company\": \"某小公司\", \"position\": \"Java后端\"}}, {\"chunk_id\": \"9cde8355-dcc0-434e-97c4-67dfc5dae5b8_chunk_1\", \"content\": \"【阿里巴巴 · 后端开发 岗位职责】\\n1. 负责电商核心系统的设计与开发。2. 高并发系统架构设计与性能优化。3. 分布式系统开发与微服务治理。4. 数据库设计与优化。\", \"source\": \"阿里巴巴-后端开发\", \"metadata\": {\"company\": \"阿里巴巴\", \"position\": \"后端开发\"}}], \"query\": \"帮我看看有什么设计岗位\", \"filters\": {}, \"strategy\": \"hybrid(70%vec+30%bm25)+reranker\", \"pool_k\": 5, \"rerank_k\": 10, \"pool_size\": 35, \"vec_only\": 16, \"bm25_only\": 15, \"both\": 4, \"rerank\": {\"enabled\": true, \"candidates\": 5, \"output\": 5, \"best_rerank_score\": 0.416}}}, {\"task_id\": \"T1\", \"tool\": \"global_rank\", \"description\": \"根据简历对检索到的JD按匹配度排序\", \"result\": {\"rankings\": [{\"company\": \"某小公司\", \"position\": \"Java后端\", \"match_score\": 85, \"recommend_reason\": \"检索相关度较高（0.84）\", \"key_match\": [\"检索召回\"], \"key_gap\": [\"需进一步了解详细匹配情况\"], \"apply_priority\": \"高\"}, {\"company\": \"阿里巴巴\", \"position\": \"后端开发\", \"match_score\": 76, \"recommend_reason\": \"检索相关度较高（0.55）\", \"key_match\": [\"检索召回\"], \"key_gap\": [\"需进一步了解详细匹配情况\"], \"apply_priority\": \"中\"}, {\"company\": \"蚂蚁集团\", \"position\": \"AI产品经理\", \"match_score\": 69, \"recommend_reason\": \"检索相关度较高（0.30）\", \"key_match\": [\"检索召回\"], \"key_gap\": [\"需进一步了解详细匹配情况\"], \"apply_priority\": \"中\"}, {\"company\": \"百度\", \"position\": \"AI应用-产品经理\", \"match_score\": 68, \"recommend_reason\": \"检索相关度较高（0.25）\", \"key_match\": [\"检索召回\"], \"key_gap\": [\"需进一步了解详细匹配情况\"], \"apply_priority\": \"中\"}], \"strategy_advice\": \"有 1 个高度匹配岗位建议优先投递，其余岗位可根据个人偏好选择性尝试。\", \"_template_mode\": true, \"_coarse_filter_meta\": {\"input_jds\": 4, \"output_jds\": 4, \"filter_ratio\": 0.0}}}, {\"task_id\": \"T2\", \"tool\": null, \"description\": \"聚合探索结果，生成回复素材\", \"result\": {\"aggregation\": {\"explore\": \"{{T1.output.ranked_list}}\", \"explanation\": \"{{T1.output.explanation}}\"}}}]\n\n请生成回复："
+    }
+  },
+  "reply": "有。目前检索到多个涉及设计职责的岗位，但职位标题多为产品经理或研发类，侧重系统、交互或架构设计。\n\n### 匹配度分析与建议\n基于您的背景评估，以下是岗位匹配排序及投递建议：\n\n1.  **某小公司-Java 后端**\n    *   匹配分数：85 分\n    *   建议：优先投递 [来源：某小公司-Java 后端]\n2.  **阿里巴巴 - 后端开发**\n    *   匹配分数：76 分\n    *   建议：选择性尝试 [来源：阿里巴巴 - 后端开发]\n3.  **蚂蚁集团-AI 产品经理**\n    *   匹配分数：69 分\n    *   建议：选择性尝试 [来源：蚂蚁集团-AI 产品经理]\n4.  **百度-AI 应用 - 产品经理**\n    *   匹配分数：68 分\n    *   建议：选择性尝试 [来源：百度-AI 应用 - 产品经理]\n\n### 岗位设计职责详情\n虽然职位标题非纯设计岗，但均包含核心设计工作内容：\n\n*   **百度**：负责 HR 系统组织人才、招聘等模块的产品设计，输出高效、可迭代的解决方案 [来源：百度-AI 应用 - 产品经理]。\n*   **蚂蚁集团**：设计 Agent 的 Planning 思考逻辑与 Memory 记忆策略，重塑 LUI 交互，编排超级工作流 [来源：蚂蚁集团-AI 产品经理]。\n*   **某小公司**：负责传统企业内部管理系统的设计与开发，包含数据库 CRUD 操作与报表开发 [来源：某小公司-Java 后端]。\n*   **阿里巴巴**：负责电商核心系统的设计与开发，涉及高并发系统架构设计与性能优化 [来源：阿里巴巴 - 后端开发]。\n\n### 顾问建议\n虽然有 1 个高度匹配岗位建议优先投递，但请注意这些岗位的设计工作侧重于逻辑、架构或产品层面，而非视觉设计 [来源：某小公司-Java 后端]。建议您根据自己对“设计”工作的具体定义（如交互、系统架构或产品流程）来选择投递重点。",
+  "reply_length": 845,
+  "intent_match": true,
+  "tool_match_rate": 1.0,
+  "has_reply": true,
+  "events": [
+    {
+      "step": "intent",
+      "message": "正在识别您的意图...",
+      "_time": 4.998312473297119,
+      "type": "status"
+    },
+    {
+      "step": "plan",
+      "message": "正在规划任务...",
+      "_time": 4.998353719711304,
+      "type": "status"
+    },
+    {
+      "step": "execute",
+      "message": "正在执行分析...",
+      "_time": 35.82451868057251,
+      "type": "status"
+    },
+    {
+      "step": "aggregate",
+      "message": "正在生成回复...",
+      "_time": 36.21781802177429,
+      "type": "status"
+    },
+    {
+      "text": "有。目前",
+      "_time": 88.14622569084167,
+      "type": "delta"
+    },
+    {
+      "text": "检索到多个涉及",
+      "_time": 88.24626541137695,
+      "type": "delta"
+    },
+    {
+      "text": "设计职责的",
+      "_time": 88.2500672340393,
+      "type": "delta"
+    },
+    {
+      "text": "岗位，但职位",
+      "_time": 88.37022709846497,
+      "type": "delta"
+    },
+    {
+      "text": "标题多为产品经理",
+      "_time": 88.4061107635498,
+      "type": "delta"
+    },
+    {
+      "text": "或研发类，",
+      "_time": 88.49826121330261,
+      "type": "delta"
+    },
+    {
+      "text": "侧重系统",
+      "_time": 88.50108647346497,
+      "type": "delta"
+    },
+    {
+      "text": "、交互或架构",
+      "_time": 88.60618281364441,
+      "type": "delta"
+    },
+    {
+      "text": "设计。",
+      "_time": 88.61097383499146,
+      "type": "delta"
+    },
+    {
+      "text": "\n\n### 匹配",
+      "_time": 88.71115827560425,
+      "type": "delta"
+    },
+    {
+      "text": "度分析与",
+      "_time": 88.75300717353821,
+      "type": "delta"
+    },
+    {
+      "text": "建议\n基于您的",
+      "_time": 88.82326340675354,
+      "type": "delta"
+    },
+    {
+      "text": "背景",
+      "_time": 88.82906365394592,
+      "type": "delta"
+    },
+    {
+      "text": "评估，以下是岗位",
+      "_time": 88.91124820709229,
+      "type": "delta"
+    },
+    {
+      "text": "匹配排序",
+      "_time": 88.91401982307434,
+      "type": "delta"
+    },
+    {
+      "text": "及投递建议：",
+      "_time": 89.01852488517761,
+      "type": "delta"
+    },
+    {
+      "text": "\n\n1",
+      "_time": 89.05535173416138,
+      "type": "delta"
+    },
+    {
+      "text": ".  **某",
+      "_time": 89.12825727462769,
+      "type": "delta"
+    },
+    {
+      "text": "小公司-Java",
+      "_time": 89.13097667694092,
+      "type": "delta"
+    },
+    {
+      "text": " 后端**\n",
+      "_time": 89.27116250991821,
+      "type": "delta"
+    },
+    {
+      "text": "    *   ",
+      "_time": 89.27488112449646,
+      "type": "delta"
+    },
+    {
+      "text": "匹配分数：8",
+      "_time": 89.44906520843506,
+      "type": "delta"
+    },
+    {
+      "text": "5 分",
+      "_time": 89.45296549797058,
+      "type": "delta"
+    },
+    {
+      "text": "\n    *  ",
+      "_time": 89.53919744491577,
+      "type": "delta"
+    },
+    {
+      "text": " 建议：",
+      "_time": 89.54292607307434,
+      "type": "delta"
+    },
+    {
+      "text": "优先投递 [来源",
+      "_time": 89.66807389259338,
+      "type": "delta"
+    },
+    {
+      "text": "：某小",
+      "_time": 89.70200443267822,
+      "type": "delta"
+    },
+    {
+      "text": "公司-Java ",
+      "_time": 89.79316782951355,
+      "type": "delta"
+    },
+    {
+      "text": "后端]\n2",
+      "_time": 89.79701352119446,
+      "type": "delta"
+    },
+    {
+      "text": ".  **阿里巴巴",
+      "_time": 89.93832898139954,
+      "type": "delta"
+    },
+    {
+      "text": " - 后端开发",
+      "_time": 89.94092726707458,
+      "type": "delta"
+    },
+    {
+      "text": "**\n    *",
+      "_time": 90.11817812919617,
+      "type": "delta"
+    },
+    {
+      "text": "   匹配分数",
+      "_time": 90.12089252471924,
+      "type": "delta"
+    },
+    {
+      "text": "：76 ",
+      "_time": 90.2242751121521,
+      "type": "delta"
+    },
+    {
+      "text": "分\n    *",
+      "_time": 90.22600865364075,
+      "type": "delta"
+    },
+    {
+      "text": "   建议：",
+      "_time": 90.4053328037262,
+      "type": "delta"
+    },
+    {
+      "text": "选择性尝试 [",
+      "_time": 90.40890216827393,
+      "type": "delta"
+    },
+    {
+      "text": "来源：阿里巴巴 -",
+      "_time": 90.49533200263977,
+      "type": "delta"
+    },
+    {
+      "text": " 后端开发]",
+      "_time": 90.49912881851196,
+      "type": "delta"
+    },
+    {
+      "text": "\n3. ",
+      "_time": 90.63840413093567,
+      "type": "delta"
+    },
+    {
+      "text": " **蚂蚁",
+      "_time": 90.66714715957642,
+      "type": "delta"
+    },
+    {
+      "text": "集团-AI ",
+      "_time": 90.746178150177,
+      "type": "delta"
+    },
+    {
+      "text": "产品经理**\n   ",
+      "_time": 90.75100493431091,
+      "type": "delta"
+    },
+    {
+      "text": " *   匹配",
+      "_time": 90.89098477363586,
+      "type": "delta"
+    },
+    {
+      "text": "分数",
+      "_time": 90.89789199829102,
+      "type": "delta"
+    },
+    {
+      "text": "：69 ",
+      "_time": 91.01905560493469,
+      "type": "delta"
+    },
+    {
+      "text": "分\n    *",
+      "_time": 91.02398419380188,
+      "type": "delta"
+    },
+    {
+      "text": "   建议：",
+      "_time": 91.12502574920654,
+      "type": "delta"
+    },
+    {
+      "text": "选择性尝试 [",
+      "_time": 91.12869143486023,
+      "type": "delta"
+    },
+    {
+      "text": "来源：蚂蚁集团",
+      "_time": 91.2510278224945,
+      "type": "delta"
+    },
+    {
+      "text": "-AI 产品经理",
+      "_time": 91.29056429862976,
+      "type": "delta"
+    },
+    {
+      "text": "]\n4.",
+      "_time": 91.3931348323822,
+      "type": "delta"
+    },
+    {
+      "text": "  **百度-A",
+      "_time": 91.3988938331604,
+      "type": "delta"
+    },
+    {
+      "text": "I 应用 -",
+      "_time": 91.5382432937622,
+      "type": "delta"
+    },
+    {
+      "text": " 产品经理**\n",
+      "_time": 91.57603669166565,
+      "type": "delta"
+    },
+    {
+      "text": "    *   ",
+      "_time": 91.68294286727905,
+      "type": "delta"
+    },
+    {
+      "text": "匹配分数",
+      "_time": 91.68863344192505,
+      "type": "delta"
+    },
+    {
+      "text": "：68 ",
+      "_time": 91.79022526741028,
+      "type": "delta"
+    },
+    {
+      "text": "分\n    *",
+      "_time": 91.79392194747925,
+      "type": "delta"
+    },
+    {
+      "text": "   建议：",
+      "_time": 91.97016835212708,
+      "type": "delta"
+    },
+    {
+      "text": "选择性尝试 [",
+      "_time": 91.97488307952881,
+      "type": "delta"
+    },
+    {
+      "text": "来源：百度-A",
+      "_time": 92.0600917339325,
+      "type": "delta"
+    },
+    {
+      "text": "I 应用 -",
+      "_time": 92.07985782623291,
+      "type": "delta"
+    },
+    {
+      "text": " 产品经理]\n\n",
+      "_time": 92.20506811141968,
+      "type": "delta"
+    },
+    {
+      "text": "### 岗位设计",
+      "_time": 92.23712706565857,
+      "type": "delta"
+    },
+    {
+      "text": "职责详情\n虽然",
+      "_time": 92.34908604621887,
+      "type": "delta"
+    },
+    {
+      "text": "职位",
+      "_time": 92.35281801223755,
+      "type": "delta"
+    },
+    {
+      "text": "标题非纯设计",
+      "_time": 92.43903136253357,
+      "type": "delta"
+    },
+    {
+      "text": "岗，",
+      "_time": 92.4424660205841,
+      "type": "delta"
+    },
+    {
+      "text": "但均包含核心",
+      "_time": 92.58910465240479,
+      "type": "delta"
+    },
+    {
+      "text": "设计工作内容",
+      "_time": 92.59282326698303,
+      "type": "delta"
+    },
+    {
+      "text": "：\n\n*  ",
+      "_time": 92.65488529205322,
+      "type": "delta"
+    },
+    {
+      "text": " **百度**：",
+      "_time": 92.65789294242859,
+      "type": "delta"
+    },
+    {
+      "text": "负责 HR 系统",
+      "_time": 92.80015563964844,
+      "type": "delta"
+    },
+    {
+      "text": "组织人才、招聘",
+      "_time": 92.84025812149048,
+      "type": "delta"
+    },
+    {
+      "text": "等模块的产品设计",
+      "_time": 92.94269585609436,
+      "type": "delta"
+    },
+    {
+      "text": "，输出高效、",
+      "_time": 92.94750475883484,
+      "type": "delta"
+    },
+    {
+      "text": "可迭代的解决方案",
+      "_time": 93.08776664733887,
+      "type": "delta"
+    },
+    {
+      "text": " [来源：百度",
+      "_time": 93.12981629371643,
+      "type": "delta"
+    },
+    {
+      "text": "-AI 应用",
+      "_time": 93.22990250587463,
+      "type": "delta"
+    },
+    {
+      "text": " - 产品经理]",
+      "_time": 93.23458790779114,
+      "type": "delta"
+    },
+    {
+      "text": "。\n*  ",
+      "_time": 93.3761374950409,
+      "type": "delta"
+    },
+    {
+      "text": " **蚂蚁集团**",
+      "_time": 93.41023397445679,
+      "type": "delta"
+    },
+    {
+      "text": "：设计 Agent ",
+      "_time": 93.52114868164062,
+      "type": "delta"
+    },
+    {
+      "text": "的 Planning ",
+      "_time": 93.52479004859924,
+      "type": "delta"
+    },
+    {
+      "text": "思考逻辑与 Memory",
+      "_time": 93.68110466003418,
+      "type": "delta"
+    },
+    {
+      "text": " 记忆策略",
+      "_time": 93.6868667602539,
+      "type": "delta"
+    },
+    {
+      "text": "，重塑 LUI",
+      "_time": 93.77207064628601,
+      "type": "delta"
+    },
+    {
+      "text": " 交互，",
+      "_time": 93.77573919296265,
+      "type": "delta"
+    },
+    {
+      "text": "编排超级工作流",
+      "_time": 93.89903903007507,
+      "type": "delta"
+    },
+    {
+      "text": " [",
+      "_time": 93.93585109710693,
+      "type": "delta"
+    },
+    {
+      "text": "来源：蚂蚁集团",
+      "_time": 93.98686051368713,
+      "type": "delta"
+    },
+    {
+      "text": "-AI 产品经理",
+      "_time": 93.9917619228363,
+      "type": "delta"
+    },
+    {
+      "text": "]。\n*",
+      "_time": 94.13199639320374,
+      "type": "delta"
+    },
+    {
+      "text": "   **某小",
+      "_time": 94.1358585357666,
+      "type": "delta"
+    },
+    {
+      "text": "公司**：负责",
+      "_time": 94.31092023849487,
+      "type": "delta"
+    },
+    {
+      "text": "传统企业内部管理系统的设计",
+      "_time": 94.31578373908997,
+      "type": "delta"
+    },
+    {
+      "text": "与开发，包含",
+      "_time": 94.41911697387695,
+      "type": "delta"
+    },
+    {
+      "text": "数据库 CRUD",
+      "_time": 94.45673298835754,
+      "type": "delta"
+    },
+    {
+      "text": " 操作与报表",
+      "_time": 94.52696871757507,
+      "type": "delta"
+    },
+    {
+      "text": "开发 [来源：",
+      "_time": 94.53172254562378,
+      "type": "delta"
+    },
+    {
+      "text": "某小公司-J",
+      "_time": 94.67089366912842,
+      "type": "delta"
+    },
+    {
+      "text": "ava 后端]",
+      "_time": 94.67468500137329,
+      "type": "delta"
+    },
+    {
+      "text": "。\n*  ",
+      "_time": 94.8507833480835,
+      "type": "delta"
+    },
+    {
+      "text": " **阿里巴巴**：",
+      "_time": 94.85454106330872,
+      "type": "delta"
+    },
+    {
+      "text": "负责电商核心系统",
+      "_time": 94.96011185646057,
+      "type": "delta"
+    },
+    {
+      "text": "的设计与开发，",
+      "_time": 94.96368408203125,
+      "type": "delta"
+    },
+    {
+      "text": "涉及高并发系统",
+      "_time": 95.13851070404053,
+      "type": "delta"
+    },
+    {
+      "text": "架构",
+      "_time": 95.14329123497009,
+      "type": "delta"
+    },
+    {
+      "text": "设计与性能优化 [",
+      "_time": 95.19292569160461,
+      "type": "delta"
+    },
+    {
+      "text": "来源：",
+      "_time": 95.1966905593872,
+      "type": "delta"
+    },
+    {
+      "text": "阿里巴巴 - 后端",
+      "_time": 95.29967665672302,
+      "type": "delta"
+    },
+    {
+      "text": "开发]。\n\n",
+      "_time": 95.33374977111816,
+      "type": "delta"
+    },
+    {
+      "text": "### 顾问建议",
+      "_time": 95.44508838653564,
+      "type": "delta"
+    },
+    {
+      "text": "\n虽然有",
+      "_time": 95.4487657546997,
+      "type": "delta"
+    },
+    {
+      "text": " 1 个",
+      "_time": 95.5539915561676,
+      "type": "delta"
+    },
+    {
+      "text": "高度匹配岗位建议",
+      "_time": 95.556631565094,
+      "type": "delta"
+    },
+    {
+      "text": "优先投递，但",
+      "_time": 95.7290267944336,
+      "type": "delta"
+    },
+    {
+      "text": "请注意这些岗位的设计",
+      "_time": 95.73266077041626,
+      "type": "delta"
+    },
+    {
+      "text": "工作侧重于逻辑、",
+      "_time": 95.83994817733765,
+      "type": "delta"
+    },
+    {
+      "text": "架构",
+      "_time": 95.8437089920044,
+      "type": "delta"
+    },
+    {
+      "text": "或产品层面，",
+      "_time": 95.93171525001526,
+      "type": "delta"
+    },
+    {
+      "text": "而非视觉",
+      "_time": 95.96462225914001,
+      "type": "delta"
+    },
+    {
+      "text": "设计 [来源：",
+      "_time": 96.03687977790833,
+      "type": "delta"
+    },
+    {
+      "text": "某小公司-J",
+      "_time": 96.04063415527344,
+      "type": "delta"
+    },
+    {
+      "text": "ava 后端]",
+      "_time": 96.18301486968994,
+      "type": "delta"
+    },
+    {
+      "text": "。建议您",
+      "_time": 96.18658924102783,
+      "type": "delta"
+    },
+    {
+      "text": "根据自己对“设计",
+      "_time": 96.32381558418274,
+      "type": "delta"
+    },
+    {
+      "text": "”工作的",
+      "_time": 96.3266191482544,
+      "type": "delta"
+    },
+    {
+      "text": "具体定义（如",
+      "_time": 96.40339779853821,
+      "type": "delta"
+    },
+    {
+      "text": "交互",
+      "_time": 96.4037435054779,
+      "type": "delta"
+    },
+    {
+      "text": "、系统架构或",
+      "_time": 96.48814511299133,
+      "type": "delta"
+    },
+    {
+      "text": "产品",
+      "_time": 96.49384903907776,
+      "type": "delta"
+    },
+    {
+      "text": "流程）来选择投递",
+      "_time": 96.61408376693726,
+      "type": "delta"
+    },
+    {
+      "text": "重点",
+      "_time": 96.6197738647461,
+      "type": "delta"
+    },
+    {
+      "text": "。",
+      "_time": 96.67100429534912,
+      "type": "delta"
+    },
+    {
+      "session_id": "eval_wang_01_1780563729672",
+      "intent": "position_explore",
+      "route_meta": {
+        "layer": "llm",
+        "intent": "position_explore",
+        "confidence": 0.88,
+        "demands": [
+          {
+            "intent": "position_explore",
+            "entities": {
+              "search_keywords": "帮我看看有什么设计岗位",
+              "sort_by": "match_score",
+              "top_k": 5
+            }
+          }
+        ],
+        "plan_tasks": 3
+      },
+      "agent_mode": "llm",
+      "is_clarification": false,
+      "agent": {
+        "rewritten_query": "帮我看看有什么设计岗位",
+        "tools": [
+          {
+            "tool": "kb_retrieve",
+            "status": "✅",
+            "params": {
+              "query": "帮我看看有什么设计岗位",
+              "top_k": 5
+            },
+            "result_preview": "{'chunks': [{'chunk_id': 'd8f1f630-f372-467a-b0a0-5a68a6db4ffd_chunk_1', 'content': '【百度 · AI应用-产品经理 岗位职责】\\n负责HR系统组织人才、招聘等模块的产品设计，输出高效、可迭代的解决方案，支撑业务复杂场景-与长期发展与HR业务团队紧密协作，深入理解人才发展、招聘管理流程，精准挖掘需求与痛点-协同研发"
+          },
+          {
+            "tool": "global_rank",
+            "status": "✅",
+            "params": {
+              "resume_text": "姓名：王设计师\n电话：139-XXXX-5678 | 邮箱：wangdesign@email.com | 现居：上海\n作品集：wangdesign.portfolio.com\nUI/UX设计师 | 4年互联网设计经验 | 品牌视觉背景\n\n教育背景\n2015.09 - 2019.06  XX美术学院  视觉传达设计（本科）\n主修课程：品牌设计、信息可视化、交互设计基础、版式设计、用户研究\n在校荣誉：全国大学生广告艺术大赛省级一等奖\n\n职业背景\n2019.07 - 2021.06  XX传媒公司  品牌视觉设计师（2年）\n负责快消、教育行业品牌全案设计，积累扎实的视觉体系搭建与商业审美能力\n\n2021.07 - 至今  XX互联网科技公司（C轮 / 在线教育）  UI设计师（4年）\n从品牌设计跨领域转型至互联网UI/UX，快速补齐交互逻辑与产品思维，主导多条业务线界面设计\n\n专业技能\n精通Figma组件化设计、Auto Layout及变量系统，能搭建可复用的设计规范与UI Kit\n擅长界面动效设计，熟练使用Principle、After Effects制作高保真交互Demo，提升评审效率\n具备品牌全案设计能力，熟悉Logo、VI、运营视觉体系搭建，能统筹产品视觉一致性\n了解前端基础（HTML/CSS），能与开发高效沟通，熟悉切图标注、SVG输出及设计走查流程\n掌握用户研究方法：竞品分析、用户访谈、可用性测试，能基于数据反馈迭代设计方案\n\n工作经历\n在线教育直播课堂改版（2023.06 - 2024.03）\n作为UI主设，主导直播客户端从1.0到2.0的视觉重构，DAU 50W+，完课率提升12%\n建立Figma组件库（300+组件），统一5条业务线设计语言，设计交付效率提升30%\n针对低龄学段用户设计游戏化互动界面（连麦、答题红包），通过动效引导降低操作流失率\n\n制定《移动端设计规范V2.0》，涵盖色彩、字体、间距、无障碍对比度标准（WCAG 2.1 AA级）\n\n品牌跨界联名活动视觉（2022.09 - 2022.12）\n结合前品牌设计经验，主导与知名IP联名运营活动的主视觉及H5传播设计\n设计开屏动画、分享海报模板，活动期间新增用户8W+，分享率提升25%\n输出动态品牌规范手册，帮助市场团队3天内完成20+城市线下物料延展\n\nB端教研后台系统优化（2022.02 - 2022.08）\n负责教师端后台的信息架构重组，将核心备课路径从5步缩减至3步\n设计数据可视化仪表盘，通过卡片层级与色彩语义降低教师数据读取成本\n\n自我评价\n拥有品牌视觉+互联网UI的跨领域背景，既能把控产品视觉调性，也具备用户体验与业务目标平衡能力。习惯用组件化思维提升协作效率，注重设计落地的还原度与数据反馈。",
+              "candidate_jds": [
+                {
+                  "chunk_id": "d8f1f630-f372-467a-b0a0-5a68a6db4ffd_chunk_1",
+                  "content": "【百度 · AI应用-产品经理 岗位职责】\n负责HR系统组织人才、招聘等模块的产品设计，输出高效、可迭代的解决方案，支撑业务复杂场景-与长期发展与HR业务团队紧密协作，深入理解人才发展、招聘管理流程，精准挖掘需求与痛点-协同研发、测试、运营等团队，推动产品方案高质量落地与按期交付-重视用户体验，积极拥抱AI技术，通过智能化能力提升系统自动化水平，降低合规风险，提高业务效率",
+                  "metadata": {
+                    "company": "百度",
+                    "index": 1,
+                    "jd_id": "d8f1f630-f372-467a-b0a0-5a68a6db4ffd",
+                    "position": "AI应用-产品经理",
+                    "section": "responsibilities",
+                    "strategy": "semantic"
+                  },
+                  "distance": 0.8732128143310547,
+                  "bm25_score": 0.0,
+                  "vec_norm": 0.37859793431584343,
+                  "bm25_norm": 0.0,
+                  "hybrid_score": 0.26501855402109037,
+                  "rerank_score": 0.416
+                },
+                {
+                  "chunk_id": "d8f1f630-f372-467a-b0a0-5a68a6db4ffd_chunk_7",
+                  "content": "【百度 · AI应用-产品经理 软性要求/加分项】\n有AI产品功能设计、提示词工程、AI+流程自动化相关实践",
+                  "metadata": {
+                    "company": "百度",
+                    "index": 7,
+                    "jd_id": "d8f1f630-f372-467a-b0a0-5a68a6db4ffd",
+                    "position": "AI应用-产品经理",
+                    "priority": "medium",
+                    "section": "soft_requirements",
+                    "strategy": "semantic"
+                  },
+                  "distance": null,
+                  "bm25_score": 3.2350222248196414,
+                  "vec_norm": 0.0,
+                  "bm25_norm": 0.8115070236103469,
+                  "hybrid_score": 0.24345210708310405,
+                  "rerank_score": 0.2861
+                },
+                {
+                  "chunk_id": "4dcb6702-c777-4279-b0e9-99e8edbd608f_chunk_1",
+                  "content": "【蚂蚁集团 · AI产品经理 岗位职责】\n你要来搞什么大事?\n1.定义 Agent 灵魂：设计 Planning（思考逻辑）、Reflection（反思）与 Memory（记忆）策略，打造从\"对话框\"进化为\"生产力工具\"的智能体；\n2.重塑 LUI 交互：拒绝枯燥对话，探索意图驱动的流式 UI 与动态组件生成，让 AI 输出像电影般丝滑；\n3.编排超级工作流：深入客服、数据、ERP 等实战场景，设计 Human-in-the-loop（人机协作）机制，平衡 AI 的创造力与执行严谨性；\n4.模型精细化调教：编写结构化 Prompt，配合 RAG、Function Calling 与向量数据库，攻克模型\"幻觉\"与\"死循环\"；\n5.数据驱动进化：建立\"交互爽感\"与\"任务成功率\"双重指标，通过 Bad Case 复盘与 A/B 测试持续迭代。",
+                  "metadata": {
+                    "company": "蚂蚁集团",
+                    "index": 1,
+                    "jd_id": "4dcb6702-c777-4279-b0e9-99e8edbd608f",
+                    "position": "AI产品经理",
+                    "section": "responsibilities",
+                    "strategy": "semantic"
+                  },
+                  "distance": null,
+                  "bm25_score": 3.5160570281909105,
+                  "vec_norm": 0.0,
+                  "bm25_norm": 1.0,
+                  "hybrid_score": 0.3,
+                  "rerank_score": 0.2489
+                },
+                {
+                  "chunk_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a_chunk_1",
+                  "content": "【某小公司 · Java后端 岗位职责】\n1. 负责传统企业内部管理系统的设计与开发。2. 数据库CRUD操作与报表开发。3. 系统日常维护与bug修复。",
+                  "metadata": {
+                    "company": "某小公司",
+                    "index": 1,
+                    "jd_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a",
+                    "position": "Java后端",
+                    "section": "responsibilities",
+                    "strategy": "semantic"
+                  },
+                  "distance": 0.7160281538963318,
+                  "bm25_score": 2.7171388168741,
+                  "vec_norm": 1.0,
+                  "bm25_norm": 0.4641572156311845,
+                  "hybrid_score": 0.8392471646893553,
+                  "rerank_score": 0.2364
+                },
+                {
+                  "chunk_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8_chunk_1",
+                  "content": "【阿里巴巴 · 后端开发 岗位职责】\n1. 负责电商核心系统的设计与开发。2. 高并发系统架构设计与性能优化。3. 分布式系统开发与微服务治理。4. 数据库设计与优化。",
+                  "metadata": {
+                    "company": "阿里巴巴",
+                    "index": 1,
+                    "jd_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8",
+                    "position": "后端开发",
+                    "section": "responsibilities",
+                    "strategy": "semantic"
+                  },
+                  "distance": 0.8733718395233154,
+                  "bm25_score": 3.423225728190739,
+                  "vec_norm": 0.37796925602946774,
+                  "bm25_norm": 0.9377370780086733,
+                  "hybrid_score": 0.5458996026232295,
+                  "rerank_score": 0.232
+                }
+              ],
+              "sort_by": "match_score"
+            },
+            "result_preview": "{'rankings': [{'rank': 1, 'jd_id': '45bd2600-af57-45fe-a96e-c6cae6838c7a', 'company': '某小公司', 'position': 'Java后端', 'match_score': 85, 'recommend_reason': '检索相关度较高（0.84）', 'key_match': ['检索召回'], 'key_"
+          }
+        ],
+        "kb_chunks_count": 3,
+        "system_prompt_preview": "你是一位专业的求职顾问。请基于以下工具执行结果，给用户一个清晰、有帮助的回复。\n要求：\n1. 先直接回答用户的问题（是/否/有/没有），不要绕弯子，不要重复用户的原话\n2. 如果有匹配分析结果，给出具体的分数和建议\n3. 如果有检索结果，基于事实回答，不要编造\n4. 【强制】引用信息时必须标注来源。每个引用的事实后面都要跟 [来源：公司名-岗位名] 格式。   kb_retrieve 结果的 ch"
+      },
+      "memory": {
+        "working_turns": 1,
+        "compressed_blocks": 0,
+        "current_topic": "general",
+        "evidence_cache_size": 5
+      },
+      "reply": "有。目前检索到多个涉及设计职责的岗位，但职位标题多为产品经理或研发类，侧重系统、交互或架构设计。\n\n### 匹配度分析与建议\n基于您的背景评估，以下是岗位匹配排序及投递建议：\n\n1.  **某小公司-Java 后端**\n    *   匹配分数：85 分\n    *   建议：优先投递 [来源：某小公司-Java 后端]\n2.  **阿里巴巴 - 后端开发**\n    *   匹配分数：76 分\n    *   建议：选择性尝试 [来源：阿里巴巴 - 后端开发]\n3.  **蚂蚁集团-AI 产品经理**\n    *   匹配分数：69 分\n    *   建议：选择性尝试 [来源：蚂蚁集团-AI 产品经理]\n4.  **百度-AI 应用 - 产品经理**\n    *   匹配分数：68 分\n    *   建议：选择性尝试 [来源：百度-AI 应用 - 产品经理]\n\n### 岗位设计职责详情\n虽然职位标题非纯设计岗，但均包含核心设计工作内容：\n\n*   **百度**：负责 HR 系统组织人才、招聘等模块的产品设计，输出高效、可迭代的解决方案 [来源：百度-AI 应用 - 产品经理]。\n*   **蚂蚁集团**：设计 Agent 的 Planning 思考逻辑与 Memory 记忆策略，重塑 LUI 交互，编排超级工作流 [来源：蚂蚁集团-AI 产品经理]。\n*   **某小公司**：负责传统企业内部管理系统的设计与开发，包含数据库 CRUD 操作与报表开发 [来源：某小公司-Java 后端]。\n*   **阿里巴巴**：负责电商核心系统的设计与开发，涉及高并发系统架构设计与性能优化 [来源：阿里巴巴 - 后端开发]。\n\n### 顾问建议\n虽然有 1 个高度匹配岗位建议优先投递，但请注意这些岗位的设计工作侧重于逻辑、架构或产品层面，而非视觉设计 [来源：某小公司-Java 后端]。建议您根据自己对“设计”工作的具体定义（如交互、系统架构或产品流程）来选择投递重点。",
+      "debug_info": {
+        "task_graph": {
+          "tasks": {
+            "T0": {
+              "task_id": "T0",
+              "task_type": "tool_call",
+              "tool_name": "kb_retrieve",
+              "status": "success",
+              "parameters": {
+                "query": "{{intent_explore.search_keywords}}",
+                "top_k": "{{intent_explore.top_k}}"
+              },
+              "resolved_params": {
+                "query": "帮我看看有什么设计岗位",
+                "top_k": 5
+              },
+              "result": {
+                "chunks": [
+                  {
+                    "chunk_id": "d8f1f630-f372-467a-b0a0-5a68a6db4ffd_chunk_1",
+                    "content": "【百度 · AI应用-产品经理 岗位职责】\n负责HR系统组织人才、招聘等模块的产品设计，输出高效、可迭代的解决方案，支撑业务复杂场景-与长期发展与HR业务团队紧密协作，深入理解人才发展、招聘管理流程，精准挖掘需求与痛点-协同研发、测试、运营等团队，推动产品方案高质量落地与按期交付-重视用户体验，积极拥抱AI技术，通过智能化能力提升系统自动化水平，降低合规风险，提高业务效率",
+                    "metadata": {
+                      "company": "百度",
+                      "index": 1,
+                      "jd_id": "d8f1f630-f372-467a-b0a0-5a68a6db4ffd",
+                      "position": "AI应用-产品经理",
+                      "section": "responsibilities",
+                      "strategy": "semantic"
+                    },
+                    "distance": 0.8732128143310547,
+                    "bm25_score": 0.0,
+                    "vec_norm": 0.37859793431584343,
+                    "bm25_norm": 0.0,
+                    "hybrid_score": 0.26501855402109037,
+                    "rerank_score": 0.416
+                  },
+                  {
+                    "chunk_id": "d8f1f630-f372-467a-b0a0-5a68a6db4ffd_chunk_7",
+                    "content": "【百度 · AI应用-产品经理 软性要求/加分项】\n有AI产品功能设计、提示词工程、AI+流程自动化相关实践",
+                    "metadata": {
+                      "company": "百度",
+                      "index": 7,
+                      "jd_id": "d8f1f630-f372-467a-b0a0-5a68a6db4ffd",
+                      "position": "AI应用-产品经理",
+                      "priority": "medium",
+                      "section": "soft_requirements",
+                      "strategy": "semantic"
+                    },
+                    "distance": null,
+                    "bm25_score": 3.2350222248196414,
+                    "vec_norm": 0.0,
+                    "bm25_norm": 0.8115070236103469,
+                    "hybrid_score": 0.24345210708310405,
+                    "rerank_score": 0.2861
+                  },
+                  {
+                    "chunk_id": "4dcb6702-c777-4279-b0e9-99e8edbd608f_chunk_1",
+                    "content": "【蚂蚁集团 · AI产品经理 岗位职责】\n你要来搞什么大事?\n1.定义 Agent 灵魂：设计 Planning（思考逻辑）、Reflection（反思）与 Memory（记忆）策略，打造从\"对话框\"进化为\"生产力工具\"的智能体；\n2.重塑 LUI 交互：拒绝枯燥对话，探索意图驱动的流式 UI 与动态组件生成，让 AI 输出像电影般丝滑；\n3.编排超级工作流：深入客服、数据、ERP 等实战场景，设计 Human-in-the-loop（人机协作）机制，平衡 AI 的创造力与执行严谨性；\n4.模型精细化调教：编写结构化 Prompt，配合 RAG、Function Calling 与向量数据库，攻克模型\"幻觉\"与\"死循环\"；\n5.数据驱动进化：建立\"交互爽感\"与\"任务成功率\"双重指标，通过 Bad Case 复盘与 A/B 测试持续迭代。",
+                    "metadata": {
+                      "company": "蚂蚁集团",
+                      "index": 1,
+                      "jd_id": "4dcb6702-c777-4279-b0e9-99e8edbd608f",
+                      "position": "AI产品经理",
+                      "section": "responsibilities",
+                      "strategy": "semantic"
+                    },
+                    "distance": null,
+                    "bm25_score": 3.5160570281909105,
+                    "vec_norm": 0.0,
+                    "bm25_norm": 1.0,
+                    "hybrid_score": 0.3,
+                    "rerank_score": 0.2489
+                  },
+                  {
+                    "chunk_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a_chunk_1",
+                    "content": "【某小公司 · Java后端 岗位职责】\n1. 负责传统企业内部管理系统的设计与开发。2. 数据库CRUD操作与报表开发。3. 系统日常维护与bug修复。",
+                    "metadata": {
+                      "company": "某小公司",
+                      "index": 1,
+                      "jd_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a",
+                      "position": "Java后端",
+                      "section": "responsibilities",
+                      "strategy": "semantic"
+                    },
+                    "distance": 0.7160281538963318,
+                    "bm25_score": 2.7171388168741,
+                    "vec_norm": 1.0,
+                    "bm25_norm": 0.4641572156311845,
+                    "hybrid_score": 0.8392471646893553,
+                    "rerank_score": 0.2364
+                  },
+                  {
+                    "chunk_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8_chunk_1",
+                    "content": "【阿里巴巴 · 后端开发 岗位职责】\n1. 负责电商核心系统的设计与开发。2. 高并发系统架构设计与性能优化。3. 分布式系统开发与微服务治理。4. 数据库设计与优化。",
+                    "metadata": {
+                      "company": "阿里巴巴",
+                      "index": 1,
+                      "jd_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8",
+                      "position": "后端开发",
+                      "section": "responsibilities",
+                      "strategy": "semantic"
+                    },
+                    "distance": 0.8733718395233154,
+                    "bm25_score": 3.423225728190739,
+                    "vec_norm": 0.37796925602946774,
+                    "bm25_norm": 0.9377370780086733,
+                    "hybrid_score": 0.5458996026232295,
+                    "rerank_score": 0.232
+                  }
+                ],
+                "query": "帮我看看有什么设计岗位",
+                "filters": {},
+                "strategy": "hybrid(70%vec+30%bm25)+reranker",
+                "pool_k": 5,
+                "rerank_k": 10,
+                "pool_size": 35,
+                "vec_only": 16,
+                "bm25_only": 15,
+                "both": 4,
+                "rerank": {
+                  "enabled": true,
+                  "candidates": 5,
+                  "output": 5,
+                  "best_rerank_score": 0.416
+                }
+              },
+              "observation": "工具 kb_retrieve 执行成功"
+            },
+            "T1": {
+              "task_id": "T1",
+              "task_type": "tool_call",
+              "tool_name": "global_rank",
+              "status": "success",
+              "parameters": {
+                "resume_text": "{{global_slots.resume_text}}",
+                "candidate_jds": "{{T0.output.chunks}}",
+                "sort_by": "{{intent_explore.sort_by}}"
+              },
+              "resolved_params": {
+                "resume_text": "姓名：王设计师\n电话：139-XXXX-5678 | 邮箱：wangdesign@email.com | 现居：上海\n作品集：wangdesign.portfolio.com\nUI/UX设计师 | 4年互联网设计经验 | 品牌视觉背景\n\n教育背景\n2015.09 - 2019.06  XX美术学院  视觉传达设计（本科）\n主修课程：品牌设计、信息可视化、交互设计基础、版式设计、用户研究\n在校荣誉：全国大学生广告艺术大赛省级一等奖\n\n职业背景\n2019.07 - 2021.06  XX传媒公司  品牌视觉设计师（2年）\n负责快消、教育行业品牌全案设计，积累扎实的视觉体系搭建与商业审美能力\n\n2021.07 - 至今  XX互联网科技公司（C轮 / 在线教育）  UI设计师（4年）\n从品牌设计跨领域转型至互联网UI/UX，快速补齐交互逻辑与产品思维，主导多条业务线界面设计\n\n专业技能\n精通Figma组件化设计、Auto Layout及变量系统，能搭建可复用的设计规范与UI Kit\n擅长界面动效设计，熟练使用Principle、After Effects制作高保真交互Demo，提升评审效率\n具备品牌全案设计能力，熟悉Logo、VI、运营视觉体系搭建，能统筹产品视觉一致性\n了解前端基础（HTML/CSS），能与开发高效沟通，熟悉切图标注、SVG输出及设计走查流程\n掌握用户研究方法：竞品分析、用户访谈、可用性测试，能基于数据反馈迭代设计方案\n\n工作经历\n在线教育直播课堂改版（2023.06 - 2024.03）\n作为UI主设，主导直播客户端从1.0到2.0的视觉重构，DAU 50W+，完课率提升12%\n建立Figma组件库（300+组件），统一5条业务线设计语言，设计交付效率提升30%\n针对低龄学段用户设计游戏化互动界面（连麦、答题红包），通过动效引导降低操作流失率\n\n制定《移动端设计规范V2.0》，涵盖色彩、字体、间距、无障碍对比度标准（WCAG 2.1 AA级）\n\n品牌跨界联名活动视觉（2022.09 - 2022.12）\n结合前品牌设计经验，主导与知名IP联名运营活动的主视觉及H5传播设计\n设计开屏动画、分享海报模板，活动期间新增用户8W+，分享率提升25%\n输出动态品牌规范手册，帮助市场团队3天内完成20+城市线下物料延展\n\nB端教研后台系统优化（2022.02 - 2022.08）\n负责教师端后台的信息架构重组，将核心备课路径从5步缩减至3步\n设计数据可视化仪表盘，通过卡片层级与色彩语义降低教师数据读取成本\n\n自我评价\n拥有品牌视觉+互联网UI的跨领域背景，既能把控产品视觉调性，也具备用户体验与业务目标平衡能力。习惯用组件化思维提升协作效率，注重设计落地的还原度与数据反馈。",
+                "candidate_jds": [
+                  {
+                    "chunk_id": "d8f1f630-f372-467a-b0a0-5a68a6db4ffd_chunk_1",
+                    "content": "【百度 · AI应用-产品经理 岗位职责】\n负责HR系统组织人才、招聘等模块的产品设计，输出高效、可迭代的解决方案，支撑业务复杂场景-与长期发展与HR业务团队紧密协作，深入理解人才发展、招聘管理流程，精准挖掘需求与痛点-协同研发、测试、运营等团队，推动产品方案高质量落地与按期交付-重视用户体验，积极拥抱AI技术，通过智能化能力提升系统自动化水平，降低合规风险，提高业务效率",
+                    "metadata": {
+                      "company": "百度",
+                      "index": 1,
+                      "jd_id": "d8f1f630-f372-467a-b0a0-5a68a6db4ffd",
+                      "position": "AI应用-产品经理",
+                      "section": "responsibilities",
+                      "strategy": "semantic"
+                    },
+                    "distance": 0.8732128143310547,
+                    "bm25_score": 0.0,
+                    "vec_norm": 0.37859793431584343,
+                    "bm25_norm": 0.0,
+                    "hybrid_score": 0.26501855402109037,
+                    "rerank_score": 0.416
+                  },
+                  {
+                    "chunk_id": "d8f1f630-f372-467a-b0a0-5a68a6db4ffd_chunk_7",
+                    "content": "【百度 · AI应用-产品经理 软性要求/加分项】\n有AI产品功能设计、提示词工程、AI+流程自动化相关实践",
+                    "metadata": {
+                      "company": "百度",
+                      "index": 7,
+                      "jd_id": "d8f1f630-f372-467a-b0a0-5a68a6db4ffd",
+                      "position": "AI应用-产品经理",
+                      "priority": "medium",
+                      "section": "soft_requirements",
+                      "strategy": "semantic"
+                    },
+                    "distance": null,
+                    "bm25_score": 3.2350222248196414,
+                    "vec_norm": 0.0,
+                    "bm25_norm": 0.8115070236103469,
+                    "hybrid_score": 0.24345210708310405,
+                    "rerank_score": 0.2861
+                  },
+                  {
+                    "chunk_id": "4dcb6702-c777-4279-b0e9-99e8edbd608f_chunk_1",
+                    "content": "【蚂蚁集团 · AI产品经理 岗位职责】\n你要来搞什么大事?\n1.定义 Agent 灵魂：设计 Planning（思考逻辑）、Reflection（反思）与 Memory（记忆）策略，打造从\"对话框\"进化为\"生产力工具\"的智能体；\n2.重塑 LUI 交互：拒绝枯燥对话，探索意图驱动的流式 UI 与动态组件生成，让 AI 输出像电影般丝滑；\n3.编排超级工作流：深入客服、数据、ERP 等实战场景，设计 Human-in-the-loop（人机协作）机制，平衡 AI 的创造力与执行严谨性；\n4.模型精细化调教：编写结构化 Prompt，配合 RAG、Function Calling 与向量数据库，攻克模型\"幻觉\"与\"死循环\"；\n5.数据驱动进化：建立\"交互爽感\"与\"任务成功率\"双重指标，通过 Bad Case 复盘与 A/B 测试持续迭代。",
+                    "metadata": {
+                      "company": "蚂蚁集团",
+                      "index": 1,
+                      "jd_id": "4dcb6702-c777-4279-b0e9-99e8edbd608f",
+                      "position": "AI产品经理",
+                      "section": "responsibilities",
+                      "strategy": "semantic"
+                    },
+                    "distance": null,
+                    "bm25_score": 3.5160570281909105,
+                    "vec_norm": 0.0,
+                    "bm25_norm": 1.0,
+                    "hybrid_score": 0.3,
+                    "rerank_score": 0.2489
+                  },
+                  {
+                    "chunk_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a_chunk_1",
+                    "content": "【某小公司 · Java后端 岗位职责】\n1. 负责传统企业内部管理系统的设计与开发。2. 数据库CRUD操作与报表开发。3. 系统日常维护与bug修复。",
+                    "metadata": {
+                      "company": "某小公司",
+                      "index": 1,
+                      "jd_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a",
+                      "position": "Java后端",
+                      "section": "responsibilities",
+                      "strategy": "semantic"
+                    },
+                    "distance": 0.7160281538963318,
+                    "bm25_score": 2.7171388168741,
+                    "vec_norm": 1.0,
+                    "bm25_norm": 0.4641572156311845,
+                    "hybrid_score": 0.8392471646893553,
+                    "rerank_score": 0.2364
+                  },
+                  {
+                    "chunk_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8_chunk_1",
+                    "content": "【阿里巴巴 · 后端开发 岗位职责】\n1. 负责电商核心系统的设计与开发。2. 高并发系统架构设计与性能优化。3. 分布式系统开发与微服务治理。4. 数据库设计与优化。",
+                    "metadata": {
+                      "company": "阿里巴巴",
+                      "index": 1,
+                      "jd_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8",
+                      "position": "后端开发",
+                      "section": "responsibilities",
+                      "strategy": "semantic"
+                    },
+                    "distance": 0.8733718395233154,
+                    "bm25_score": 3.423225728190739,
+                    "vec_norm": 0.37796925602946774,
+                    "bm25_norm": 0.9377370780086733,
+                    "hybrid_score": 0.5458996026232295,
+                    "rerank_score": 0.232
+                  }
+                ],
+                "sort_by": "match_score"
+              },
+              "result": {
+                "rankings": [
+                  {
+                    "rank": 1,
+                    "jd_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a",
+                    "company": "某小公司",
+                    "position": "Java后端",
+                    "match_score": 85,
+                    "recommend_reason": "检索相关度较高（0.84）",
+                    "key_match": [
+                      "检索召回"
+                    ],
+                    "key_gap": [
+                      "需进一步了解详细匹配情况"
+                    ],
+                    "apply_priority": "高"
+                  },
+                  {
+                    "rank": 2,
+                    "jd_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8",
+                    "company": "阿里巴巴",
+                    "position": "后端开发",
+                    "match_score": 76,
+                    "recommend_reason": "检索相关度较高（0.55）",
+                    "key_match": [
+                      "检索召回"
+                    ],
+                    "key_gap": [
+                      "需进一步了解详细匹配情况"
+                    ],
+                    "apply_priority": "中"
+                  },
+                  {
+                    "rank": 3,
+                    "jd_id": "4dcb6702-c777-4279-b0e9-99e8edbd608f",
+                    "company": "蚂蚁集团",
+                    "position": "AI产品经理",
+                    "match_score": 69,
+                    "recommend_reason": "检索相关度较高（0.30）",
+                    "key_match": [
+                      "检索召回"
+                    ],
+                    "key_gap": [
+                      "需进一步了解详细匹配情况"
+                    ],
+                    "apply_priority": "中"
+                  },
+                  {
+                    "rank": 4,
+                    "jd_id": "d8f1f630-f372-467a-b0a0-5a68a6db4ffd",
+                    "company": "百度",
+                    "position": "AI应用-产品经理",
+                    "match_score": 68,
+                    "recommend_reason": "检索相关度较高（0.25）",
+                    "key_match": [
+                      "检索召回"
+                    ],
+                    "key_gap": [
+                      "需进一步了解详细匹配情况"
+                    ],
+                    "apply_priority": "中"
+                  }
+                ],
+                "strategy_advice": "有 1 个高度匹配岗位建议优先投递，其余岗位可根据个人偏好选择性尝试。",
+                "_template_mode": true,
+                "_coarse_filter_meta": {
+                  "input_jds": 4,
+                  "output_jds": 4,
+                  "filter_ratio": 0.0
+                }
+              },
+              "observation": "工具 global_rank 执行成功"
+            },
+            "T2": {
+              "task_id": "T2",
+              "task_type": "aggregate",
+              "tool_name": null,
+              "status": "success",
+              "parameters": {
+                "explore": "{{T1.output.ranked_list}}",
+                "explanation": "{{T1.output.explanation}}"
+              },
+              "resolved_params": {
+                "explore": "{{T1.output.ranked_list}}",
+                "explanation": "{{T1.output.explanation}}"
+              },
+              "result": {
+                "aggregation": {
+                  "explore": "{{T1.output.ranked_list}}",
+                  "explanation": "{{T1.output.explanation}}"
+                }
+              },
+              "observation": "聚合完成"
+            }
+          },
+          "global_status": "success",
+          "replan_reason": "",
+          "replan_count": 0
+        },
+        "intent": {
+          "demands": [
+            {
+              "intent": "position_explore",
+              "entities": {
+                "search_keywords": "帮我看看有什么设计岗位",
+                "sort_by": "match_score",
+                "top_k": 5
+              },
+              "confidence": 0.88
+            }
+          ],
+          "needs_clarification": false,
+          "clarification_question": ""
+        },
+        "rewrite": {
+          "rewritten_query": "帮我看看有什么设计岗位",
+          "search_keywords": "帮我看看有什么设计岗位",
+          "is_follow_up": false,
+          "follow_up_type": "none",
+          "resolved_references": {}
+        },
+        "evidence_cache": [
+          {
+            "chunk_id": "d8f1f630-f372-467a-b0a0-5a68a6db4ffd_chunk_1",
+            "content": "【百度 · AI应用-产品经理 岗位职责】\n负责HR系统组织人才、招聘等模块的产品设计，输出高效、可迭代的解决方案，支撑业务复杂场景-与长期发展与HR业务团队紧密协作，深入理解人才发展、招聘管理流程，精准挖掘需求与痛点-协同研发、测试、运营等团队，推动产品方案高质量落地与按期交付-重视用户体验，积极拥抱AI技术，通过智能化能力提升系统自动化水平，降低合规风险，提高业务效率",
+            "metadata": {
+              "company": "百度",
+              "index": 1,
+              "jd_id": "d8f1f630-f372-467a-b0a0-5a68a6db4ffd",
+              "position": "AI应用-产品经理",
+              "section": "responsibilities",
+              "strategy": "semantic"
+            },
+            "distance": 0.8732128143310547,
+            "bm25_score": 0.0,
+            "vec_norm": 0.37859793431584343,
+            "bm25_norm": 0.0,
+            "hybrid_score": 0.26501855402109037,
+            "rerank_score": 0.416
+          },
+          {
+            "chunk_id": "d8f1f630-f372-467a-b0a0-5a68a6db4ffd_chunk_7",
+            "content": "【百度 · AI应用-产品经理 软性要求/加分项】\n有AI产品功能设计、提示词工程、AI+流程自动化相关实践",
+            "metadata": {
+              "company": "百度",
+              "index": 7,
+              "jd_id": "d8f1f630-f372-467a-b0a0-5a68a6db4ffd",
+              "position": "AI应用-产品经理",
+              "priority": "medium",
+              "section": "soft_requirements",
+              "strategy": "semantic"
+            },
+            "distance": null,
+            "bm25_score": 3.2350222248196414,
+            "vec_norm": 0.0,
+            "bm25_norm": 0.8115070236103469,
+            "hybrid_score": 0.24345210708310405,
+            "rerank_score": 0.2861
+          },
+          {
+            "chunk_id": "4dcb6702-c777-4279-b0e9-99e8edbd608f_chunk_1",
+            "content": "【蚂蚁集团 · AI产品经理 岗位职责】\n你要来搞什么大事?\n1.定义 Agent 灵魂：设计 Planning（思考逻辑）、Reflection（反思）与 Memory（记忆）策略，打造从\"对话框\"进化为\"生产力工具\"的智能体；\n2.重塑 LUI 交互：拒绝枯燥对话，探索意图驱动的流式 UI 与动态组件生成，让 AI 输出像电影般丝滑；\n3.编排超级工作流：深入客服、数据、ERP 等实战场景，设计 Human-in-the-loop（人机协作）机制，平衡 AI 的创造力与执行严谨性；\n4.模型精细化调教：编写结构化 Prompt，配合 RAG、Function Calling 与向量数据库，攻克模型\"幻觉\"与\"死循环\"；\n5.数据驱动进化：建立\"交互爽感\"与\"任务成功率\"双重指标，通过 Bad Case 复盘与 A/B 测试持续迭代。",
+            "metadata": {
+              "company": "蚂蚁集团",
+              "index": 1,
+              "jd_id": "4dcb6702-c777-4279-b0e9-99e8edbd608f",
+              "position": "AI产品经理",
+              "section": "responsibilities",
+              "strategy": "semantic"
+            },
+            "distance": null,
+            "bm25_score": 3.5160570281909105,
+            "vec_norm": 0.0,
+            "bm25_norm": 1.0,
+            "hybrid_score": 0.3,
+            "rerank_score": 0.2489
+          },
+          {
+            "chunk_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a_chunk_1",
+            "content": "【某小公司 · Java后端 岗位职责】\n1. 负责传统企业内部管理系统的设计与开发。2. 数据库CRUD操作与报表开发。3. 系统日常维护与bug修复。",
+            "metadata": {
+              "company": "某小公司",
+              "index": 1,
+              "jd_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a",
+              "position": "Java后端",
+              "section": "responsibilities",
+              "strategy": "semantic"
+            },
+            "distance": 0.7160281538963318,
+            "bm25_score": 2.7171388168741,
+            "vec_norm": 1.0,
+            "bm25_norm": 0.4641572156311845,
+            "hybrid_score": 0.8392471646893553,
+            "rerank_score": 0.2364
+          },
+          {
+            "chunk_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8_chunk_1",
+            "content": "【阿里巴巴 · 后端开发 岗位职责】\n1. 负责电商核心系统的设计与开发。2. 高并发系统架构设计与性能优化。3. 分布式系统开发与微服务治理。4. 数据库设计与优化。",
+            "metadata": {
+              "company": "阿里巴巴",
+              "index": 1,
+              "jd_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8",
+              "position": "后端开发",
+              "section": "responsibilities",
+              "strategy": "semantic"
+            },
+            "distance": 0.8733718395233154,
+            "bm25_score": 3.423225728190739,
+            "vec_norm": 0.37796925602946774,
+            "bm25_norm": 0.9377370780086733,
+            "hybrid_score": 0.5458996026232295,
+            "rerank_score": 0.232
+          }
+        ],
+        "evidence_cache_query": "帮我看看有什么设计岗位",
+        "tool_outputs": [
+          {
+            "task_id": "T0",
+            "tool": "kb_retrieve",
+            "description": "检索设计岗位相关JD",
+            "result": {
+              "chunks": [
+                {
+                  "chunk_id": "d8f1f630-f372-467a-b0a0-5a68a6db4ffd_chunk_1",
+                  "content": "【百度 · AI应用-产品经理 岗位职责】\n负责HR系统组织人才、招聘等模块的产品设计，输出高效、可迭代的解决方案，支撑业务复杂场景-与长期发展与HR业务团队紧密协作，深入理解人才发展、招聘管理流程，精准挖掘需求与痛点-协同研发、测试、运营等团队，推动产品方案高质量落地与按期交付-重视用户体验，积极拥抱AI技术，通过智能化能力提升系统自动化水平，降低合规风险，提高业务效率",
+                  "source": "百度-AI应用-产品经理",
+                  "metadata": {
+                    "company": "百度",
+                    "position": "AI应用-产品经理"
+                  }
+                },
+                {
+                  "chunk_id": "d8f1f630-f372-467a-b0a0-5a68a6db4ffd_chunk_7",
+                  "content": "【百度 · AI应用-产品经理 软性要求/加分项】\n有AI产品功能设计、提示词工程、AI+流程自动化相关实践",
+                  "source": "百度-AI应用-产品经理",
+                  "metadata": {
+                    "company": "百度",
+                    "position": "AI应用-产品经理"
+                  }
+                },
+                {
+                  "chunk_id": "4dcb6702-c777-4279-b0e9-99e8edbd608f_chunk_1",
+                  "content": "【蚂蚁集团 · AI产品经理 岗位职责】\n你要来搞什么大事?\n1.定义 Agent 灵魂：设计 Planning（思考逻辑）、Reflection（反思）与 Memory（记忆）策略，打造从\"对话框\"进化为\"生产力工具\"的智能体；\n2.重塑 LUI 交互：拒绝枯燥对话，探索意图驱动的流式 UI 与动态组件生成，让 AI 输出像电影般丝滑；\n3.编排超级工作流：深入客服、数据、ERP 等实战场景，设计 Human-in-the-loop（人机协作）机制，平衡 AI 的创造力与执行严谨性；\n4.模型精细化调教：编写结构化 Prompt，配合 RAG、Function Calling 与向量数据库，",
+                  "source": "蚂蚁集团-AI产品经理",
+                  "metadata": {
+                    "company": "蚂蚁集团",
+                    "position": "AI产品经理"
+                  }
+                },
+                {
+                  "chunk_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a_chunk_1",
+                  "content": "【某小公司 · Java后端 岗位职责】\n1. 负责传统企业内部管理系统的设计与开发。2. 数据库CRUD操作与报表开发。3. 系统日常维护与bug修复。",
+                  "source": "某小公司-Java后端",
+                  "metadata": {
+                    "company": "某小公司",
+                    "position": "Java后端"
+                  }
+                },
+                {
+                  "chunk_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8_chunk_1",
+                  "content": "【阿里巴巴 · 后端开发 岗位职责】\n1. 负责电商核心系统的设计与开发。2. 高并发系统架构设计与性能优化。3. 分布式系统开发与微服务治理。4. 数据库设计与优化。",
+                  "source": "阿里巴巴-后端开发",
+                  "metadata": {
+                    "company": "阿里巴巴",
+                    "position": "后端开发"
+                  }
+                }
+              ],
+              "query": "帮我看看有什么设计岗位",
+              "filters": {},
+              "strategy": "hybrid(70%vec+30%bm25)+reranker",
+              "pool_k": 5,
+              "rerank_k": 10,
+              "pool_size": 35,
+              "vec_only": 16,
+              "bm25_only": 15,
+              "both": 4,
+              "rerank": {
+                "enabled": true,
+                "candidates": 5,
+                "output": 5,
+                "best_rerank_score": 0.416
+              }
+            }
+          },
+          {
+            "task_id": "T1",
+            "tool": "global_rank",
+            "description": "根据简历对检索到的JD按匹配度排序",
+            "result": {
+              "rankings": [
+                {
+                  "company": "某小公司",
+                  "position": "Java后端",
+                  "match_score": 85,
+                  "recommend_reason": "检索相关度较高（0.84）",
+                  "key_match": [
+                    "检索召回"
+                  ],
+                  "key_gap": [
+                    "需进一步了解详细匹配情况"
+                  ],
+                  "apply_priority": "高"
+                },
+                {
+                  "company": "阿里巴巴",
+                  "position": "后端开发",
+                  "match_score": 76,
+                  "recommend_reason": "检索相关度较高（0.55）",
+                  "key_match": [
+                    "检索召回"
+                  ],
+                  "key_gap": [
+                    "需进一步了解详细匹配情况"
+                  ],
+                  "apply_priority": "中"
+                },
+                {
+                  "company": "蚂蚁集团",
+                  "position": "AI产品经理",
+                  "match_score": 69,
+                  "recommend_reason": "检索相关度较高（0.30）",
+                  "key_match": [
+                    "检索召回"
+                  ],
+                  "key_gap": [
+                    "需进一步了解详细匹配情况"
+                  ],
+                  "apply_priority": "中"
+                },
+                {
+                  "company": "百度",
+                  "position": "AI应用-产品经理",
+                  "match_score": 68,
+                  "recommend_reason": "检索相关度较高（0.25）",
+                  "key_match": [
+                    "检索召回"
+                  ],
+                  "key_gap": [
+                    "需进一步了解详细匹配情况"
+                  ],
+                  "apply_priority": "中"
+                }
+              ],
+              "strategy_advice": "有 1 个高度匹配岗位建议优先投递，其余岗位可根据个人偏好选择性尝试。",
+              "_template_mode": true,
+              "_coarse_filter_meta": {
+                "input_jds": 4,
+                "output_jds": 4,
+                "filter_ratio": 0.0
+              }
+            }
+          },
+          {
+            "task_id": "T2",
+            "tool": null,
+            "description": "聚合探索结果，生成回复素材",
+            "result": {
+              "aggregation": {
+                "explore": "{{T1.output.ranked_list}}",
+                "explanation": "{{T1.output.explanation}}"
+              }
+            }
+          }
+        ],
+        "final_aggregation_prompt": {
+          "system_prompt": "你是一位专业的求职顾问。请基于以下工具执行结果，给用户一个清晰、有帮助的回复。\n要求：\n1. 先直接回答用户的问题（是/否/有/没有），不要绕弯子，不要重复用户的原话\n2. 如果有匹配分析结果，给出具体的分数和建议\n3. 如果有检索结果，基于事实回答，不要编造\n4. 【强制】引用信息时必须标注来源。每个引用的事实后面都要跟 [来源：公司名-岗位名] 格式。   kb_retrieve 结果的 chunks 中带有 'source' 字段（如'字节跳动-AI产品经理'），请直接使用。   external_search 结果带有 'source_name' 字段，也请直接使用。\n5. 当本地知识库与外部搜索结果冲突时，请并列呈现两种说法并标注各自来源，不要替用户做判断\n6. 语气友好、专业、结构化",
+          "user_prompt": "【用户问题】\n帮我看看有什么设计岗位\n\n【工具执行结果】\n[{\"task_id\": \"T0\", \"tool\": \"kb_retrieve\", \"description\": \"检索设计岗位相关JD\", \"result\": {\"chunks\": [{\"chunk_id\": \"d8f1f630-f372-467a-b0a0-5a68a6db4ffd_chunk_1\", \"content\": \"【百度 · AI应用-产品经理 岗位职责】\\n负责HR系统组织人才、招聘等模块的产品设计，输出高效、可迭代的解决方案，支撑业务复杂场景-与长期发展与HR业务团队紧密协作，深入理解人才发展、招聘管理流程，精准挖掘需求与痛点-协同研发、测试、运营等团队，推动产品方案高质量落地与按期交付-重视用户体验，积极拥抱AI技术，通过智能化能力提升系统自动化水平，降低合规风险，提高业务效率\", \"source\": \"百度-AI应用-产品经理\", \"metadata\": {\"company\": \"百度\", \"position\": \"AI应用-产品经理\"}}, {\"chunk_id\": \"d8f1f630-f372-467a-b0a0-5a68a6db4ffd_chunk_7\", \"content\": \"【百度 · AI应用-产品经理 软性要求/加分项】\\n有AI产品功能设计、提示词工程、AI+流程自动化相关实践\", \"source\": \"百度-AI应用-产品经理\", \"metadata\": {\"company\": \"百度\", \"position\": \"AI应用-产品经理\"}}, {\"chunk_id\": \"4dcb6702-c777-4279-b0e9-99e8edbd608f_chunk_1\", \"content\": \"【蚂蚁集团 · AI产品经理 岗位职责】\\n你要来搞什么大事?\\n1.定义 Agent 灵魂：设计 Planning（思考逻辑）、Reflection（反思）与 Memory（记忆）策略，打造从\\\"对话框\\\"进化为\\\"生产力工具\\\"的智能体；\\n2.重塑 LUI 交互：拒绝枯燥对话，探索意图驱动的流式 UI 与动态组件生成，让 AI 输出像电影般丝滑；\\n3.编排超级工作流：深入客服、数据、ERP 等实战场景，设计 Human-in-the-loop（人机协作）机制，平衡 AI 的创造力与执行严谨性；\\n4.模型精细化调教：编写结构化 Prompt，配合 RAG、Function Calling 与向量数据库，\", \"source\": \"蚂蚁集团-AI产品经理\", \"metadata\": {\"company\": \"蚂蚁集团\", \"position\": \"AI产品经理\"}}, {\"chunk_id\": \"45bd2600-af57-45fe-a96e-c6cae6838c7a_chunk_1\", \"content\": \"【某小公司 · Java后端 岗位职责】\\n1. 负责传统企业内部管理系统的设计与开发。2. 数据库CRUD操作与报表开发。3. 系统日常维护与bug修复。\", \"source\": \"某小公司-Java后端\", \"metadata\": {\"company\": \"某小公司\", \"position\": \"Java后端\"}}, {\"chunk_id\": \"9cde8355-dcc0-434e-97c4-67dfc5dae5b8_chunk_1\", \"content\": \"【阿里巴巴 · 后端开发 岗位职责】\\n1. 负责电商核心系统的设计与开发。2. 高并发系统架构设计与性能优化。3. 分布式系统开发与微服务治理。4. 数据库设计与优化。\", \"source\": \"阿里巴巴-后端开发\", \"metadata\": {\"company\": \"阿里巴巴\", \"position\": \"后端开发\"}}], \"query\": \"帮我看看有什么设计岗位\", \"filters\": {}, \"strategy\": \"hybrid(70%vec+30%bm25)+reranker\", \"pool_k\": 5, \"rerank_k\": 10, \"pool_size\": 35, \"vec_only\": 16, \"bm25_only\": 15, \"both\": 4, \"rerank\": {\"enabled\": true, \"candidates\": 5, \"output\": 5, \"best_rerank_score\": 0.416}}}, {\"task_id\": \"T1\", \"tool\": \"global_rank\", \"description\": \"根据简历对检索到的JD按匹配度排序\", \"result\": {\"rankings\": [{\"company\": \"某小公司\", \"position\": \"Java后端\", \"match_score\": 85, \"recommend_reason\": \"检索相关度较高（0.84）\", \"key_match\": [\"检索召回\"], \"key_gap\": [\"需进一步了解详细匹配情况\"], \"apply_priority\": \"高\"}, {\"company\": \"阿里巴巴\", \"position\": \"后端开发\", \"match_score\": 76, \"recommend_reason\": \"检索相关度较高（0.55）\", \"key_match\": [\"检索召回\"], \"key_gap\": [\"需进一步了解详细匹配情况\"], \"apply_priority\": \"中\"}, {\"company\": \"蚂蚁集团\", \"position\": \"AI产品经理\", \"match_score\": 69, \"recommend_reason\": \"检索相关度较高（0.30）\", \"key_match\": [\"检索召回\"], \"key_gap\": [\"需进一步了解详细匹配情况\"], \"apply_priority\": \"中\"}, {\"company\": \"百度\", \"position\": \"AI应用-产品经理\", \"match_score\": 68, \"recommend_reason\": \"检索相关度较高（0.25）\", \"key_match\": [\"检索召回\"], \"key_gap\": [\"需进一步了解详细匹配情况\"], \"apply_priority\": \"中\"}], \"strategy_advice\": \"有 1 个高度匹配岗位建议优先投递，其余岗位可根据个人偏好选择性尝试。\", \"_template_mode\": true, \"_coarse_filter_meta\": {\"input_jds\": 4, \"output_jds\": 4, \"filter_ratio\": 0.0}}}, {\"task_id\": \"T2\", \"tool\": null, \"description\": \"聚合探索结果，生成回复素材\", \"result\": {\"aggregation\": {\"explore\": \"{{T1.output.ranked_list}}\", \"explanation\": \"{{T1.output.explanation}}\"}}}]\n\n请生成回复："
+        }
+      },
+      "usage": {
+        "prompt_tokens": 7814,
+        "completion_tokens": 7126,
+        "total_tokens": 14940
+      },
+      "_time": 96.72736835479736,
+      "type": "done"
+    }
+  ],
+  "timestamp": "2026-06-04T17:02:09.672648",
+  "prompt_tokens": 7814,
+  "completion_tokens": 7126,
+  "total_tokens": 14940,
+  "tool_execution_success_rate": 1.0,
+  "tool_correct_rate": 1.0
+}

@@ -1,0 +1,3475 @@
+{
+  "case_id": "eval_chen_07",
+  "message": "帮我筛几个能投的，再重点看看字节那个AI产品经理",
+  "gold_intents": [
+    "assess",
+    "explore"
+  ],
+  "expected_tools": [
+    "kb_retrieve",
+    "global_rank",
+    "match_analyze"
+  ],
+  "scenario": "多意图_探索+匹配",
+  "eval_context": {
+    "gold_intents": [
+      "explore",
+      "assess"
+    ],
+    "gold_slots": {
+      "company": "字节跳动"
+    },
+    "relevance_score": 0,
+    "expected_tools": [
+      "kb_retrieve",
+      "global_rank",
+      "match_analyze"
+    ],
+    "scenario": "多意图_探索+匹配",
+    "notes": "先全局排序，再对字节做深度分析"
+  },
+  "resume_id": "cc50dcfb-aeba-41a3-989a-9e485aa2fc3f",
+  "status": "success",
+  "error": null,
+  "ttfb": 0.011,
+  "total_latency": 80.94,
+  "event_count": 218,
+  "pred_intent": "position_explore",
+  "pred_intents": [
+    "position_explore"
+  ],
+  "pred_tools": [
+    {
+      "tool": "kb_retrieve",
+      "status": "✅",
+      "params": {
+        "query": "字节跳动 产品经理",
+        "top_k": 5,
+        "company": "字节跳动",
+        "position": "产品经理"
+      },
+      "result_preview": "{'chunks': [{'chunk_id': 'ac9973c8-01be-4cd6-9a99-097873a59cf0_chunk_3', 'content': '【字节跳动 · AI产品经理 硬性要求】\\n熟练掌握Transformer、Token、RAG等核心概念', 'metadata': {'company': '字节跳动', 'index': 3, 'jd_id': 'ac9973"
+    },
+    {
+      "tool": "kb_retrieve",
+      "status": "✅",
+      "params": {
+        "query": "字节跳动 AI产品经理",
+        "top_k": 2,
+        "company": "字节跳动",
+        "position": "AI产品经理"
+      },
+      "result_preview": "{'chunks': [{'chunk_id': 'ac9973c8-01be-4cd6-9a99-097873a59cf0_chunk_5', 'content': '【字节跳动 · AI产品经理 硬性要求】\\n具备极强的逻辑拆解力，能像指挥交响乐一样控制模型输出', 'metadata': {'company': '字节跳动', 'index': 5, 'jd_id': 'ac9973c8-0"
+    },
+    {
+      "tool": "global_rank",
+      "status": "✅",
+      "params": {
+        "resume_text": "姓名：陈雨桐\r\n教育背景\r\n江南科技大学\r\n信息工程学院·软件工程（AI应用方向）·硕士\r\n2024.09-2027.06（预计）\r\nGPA: 3.4/4.0 | 主修：机器学习基础、数据库系统、软件项目管理、人机交互设计\r\n\r\n云溪大学\r\n计算机学院·信息管理与信息系统·本科\r\n2020.09-2024.06\r\n荣誉：两次校级三等奖学金 | 主修：数据结构、管理学原理、Web开发技术、统计学\r\n\r\n项目经历\r\n求职助手小程序 — 智能简历匹配与面试模拟工具\r\n2025.03-2025.11\r\n产品经理 | 三人小组\r\n- 需求分析：设计调研问卷回收40余份有效样本，梳理\"简历评估\"与\"定向面试模拟\"核心需求，使用Figma完成低保真原型，输出产品需求文档。\r\n- AI匹配策略：调研开源Embedding模型实现简历与JD语义相似度计算，探索多维度匹配方案，对比整篇匹配与分块匹配效果差异，持续优化推荐排序。\r\n- 内容生成：基于大模型AI设计结构化Prompt，融合岗位关键词与简历信息输出个性化面试题，建立追问机制增强模拟面试针对性。\r\n- 测试验证：组织20人内测收集用户路径与反馈数据，针对复杂PDF格式设计补充录入机制，完成从需求分析到上线测试的完整产品闭环。\r\n\r\n教务问答机器人 — 基于校内政策的RAG问答系统\r\n2024.10-2025.02\r\n产品设计与测试 | 实验室课题项目\r\n- 知识库构建：收集整理教务处政策文件、培养方案及历史问答共80余份，完成扫描件OCR识别、格式转换与结构化清洗，建立可检索的领域知识库。\r\n- 交互设计：设计Web端对话界面，参考主流客服产品布局增加\"推荐提问\"推荐模块降低投入成本，针对政策类回答设计溯源展示功能增强可信度。\r\n- 效果测试：参与搭建检索增强生成链路，完成实验环境下多轮问答测试，验证标准政策类问题回答准确率，整理测试数据与优化建议形成可复用方案。\r\n\r\n校园经历\r\n江南科技大学软件学院学生会·宣传部干事\r\n2024.09-2025.06\r\n- 负责学院官方公众号推文排版与发布，累计输出活动宣传稿件10余篇；协助组织院内编程比赛，负责报名统计与现场签到。\r\n\r\n云溪大学图书馆·勤工助学岗\r\n2022.03-2023.06\r\n- 负责电子阅览室日常值班，协助同学解决基础网络与设备使用问题；参与旧期刊电子目录录入与数据整理工作。\r\n\r\n获奖情况\r\n- 2025.05 江南科技大学研究生学业三等奖学金\r\n- 2024.11 学院AI应用创新赛（课程组）三等奖\r\n- 2022.06 云溪大学优秀共青团员\r\n- 2022.12 校级网页设计比赛优秀奖\r\n\r\n个人技能\r\n- 产品工具：熟练使用Figma进行原型与交互演示，了解Axure基础操作；能够使用Xmind梳理产品架构，通过腾讯文档/飞书写PRD。\r\n- 技术理解：了解大语言模型在应用层的落地方式，具备Prompt Engineering实践经验；理解RAG基本架构与工作流程，了解Embedding与向量检索作用。\r\n- 语言能力：英语CET-4（525分），可阅读英文技术文档与产品资料。\r\n- 办公技能：熟练使用Office办公软件，掌握Excel数据透视表等基础数据分析功能。",
+        "candidate_jds": [
+          {
+            "chunk_id": "ac9973c8-01be-4cd6-9a99-097873a59cf0_chunk_3",
+            "content": "【字节跳动 · AI产品经理 硬性要求】\n熟练掌握Transformer、Token、RAG等核心概念",
+            "metadata": {
+              "company": "字节跳动",
+              "index": 3,
+              "jd_id": "ac9973c8-01be-4cd6-9a99-097873a59cf0",
+              "position": "AI产品经理",
+              "priority": "high",
+              "section": "hard_requirements",
+              "strategy": "semantic"
+            },
+            "distance": null,
+            "bm25_score": 13.29757395863349,
+            "vec_norm": 0.0,
+            "bm25_norm": 0.9815429356960411,
+            "hybrid_score": 0.2944628807088123,
+            "rerank_score": 0.9986
+          },
+          {
+            "chunk_id": "ac9973c8-01be-4cd6-9a99-097873a59cf0_chunk_8",
+            "content": "【字节跳动 · AI产品经理 关键词】\nPython, PyTorch, LangChain, RAG, Agent, 产品经理, AI",
+            "metadata": {
+              "company": "字节跳动",
+              "index": 8,
+              "jd_id": "ac9973c8-01be-4cd6-9a99-097873a59cf0",
+              "position": "AI产品经理",
+              "section": "keywords",
+              "strategy": "semantic"
+            },
+            "distance": null,
+            "bm25_score": 13.45033650682065,
+            "vec_norm": 0.0,
+            "bm25_norm": 1.0,
+            "hybrid_score": 0.3,
+            "rerank_score": 0.9981
+          },
+          {
+            "chunk_id": "ac9973c8-01be-4cd6-9a99-097873a59cf0_chunk_6",
+            "content": "【字节跳动 · AI产品经理 硬性要求】\n24小时高频冲浪，对新技术有雷达般的嗅觉",
+            "metadata": {
+              "company": "字节跳动",
+              "index": 6,
+              "jd_id": "ac9973c8-01be-4cd6-9a99-097873a59cf0",
+              "position": "AI产品经理",
+              "priority": "high",
+              "section": "hard_requirements",
+              "strategy": "semantic"
+            },
+            "distance": null,
+            "bm25_score": 13.158133950491646,
+            "vec_norm": 0.0,
+            "bm25_norm": 0.9646955262533458,
+            "hybrid_score": 0.2894086578760037,
+            "rerank_score": 0.997
+          },
+          {
+            "chunk_id": "ac9973c8-01be-4cd6-9a99-097873a59cf0_chunk_7",
+            "content": "【字节跳动 · AI产品经理 软性要求/加分项】\n有LLM/Agent落地案例者优先",
+            "metadata": {
+              "company": "字节跳动",
+              "index": 7,
+              "jd_id": "ac9973c8-01be-4cd6-9a99-097873a59cf0",
+              "position": "AI产品经理",
+              "priority": "medium",
+              "section": "soft_requirements",
+              "strategy": "semantic"
+            },
+            "distance": null,
+            "bm25_score": 13.29757395863349,
+            "vec_norm": 0.0,
+            "bm25_norm": 0.9815429356960411,
+            "hybrid_score": 0.2944628807088123,
+            "rerank_score": 0.996
+          },
+          {
+            "chunk_id": "ac9973c8-01be-4cd6-9a99-097873a59cf0_chunk_4",
+            "content": "【字节跳动 · AI产品经理 硬性要求】\n深度使用过LangChain、Dify、Coze或LangGraph等框架",
+            "metadata": {
+              "company": "字节跳动",
+              "index": 4,
+              "jd_id": "ac9973c8-01be-4cd6-9a99-097873a59cf0",
+              "position": "AI产品经理",
+              "priority": "high",
+              "section": "hard_requirements",
+              "strategy": "semantic"
+            },
+            "distance": null,
+            "bm25_score": 13.158133950491646,
+            "vec_norm": 0.0,
+            "bm25_norm": 0.9646955262533458,
+            "hybrid_score": 0.2894086578760037,
+            "rerank_score": 0.9958
+          }
+        ],
+        "sort_by": "match_score"
+      },
+      "result_preview": "{'rankings': [{'rank': 1, 'jd_id': 'ac9973c8-01be-4cd6-9a99-097873a59cf0', 'company': '字节跳动', 'position': 'AI产品经理', 'match_score': 72, 'recommend_reason': '技能匹配：rag', 'key_match': ['技能交集：rag'], 'key_g"
+    },
+    {
+      "tool": "match_analyze",
+      "status": "✅",
+      "params": {
+        "resume_text": "姓名：陈雨桐\r\n教育背景\r\n江南科技大学\r\n信息工程学院·软件工程（AI应用方向）·硕士\r\n2024.09-2027.06（预计）\r\nGPA: 3.4/4.0 | 主修：机器学习基础、数据库系统、软件项目管理、人机交互设计\r\n\r\n云溪大学\r\n计算机学院·信息管理与信息系统·本科\r\n2020.09-2024.06\r\n荣誉：两次校级三等奖学金 | 主修：数据结构、管理学原理、Web开发技术、统计学\r\n\r\n项目经历\r\n求职助手小程序 — 智能简历匹配与面试模拟工具\r\n2025.03-2025.11\r\n产品经理 | 三人小组\r\n- 需求分析：设计调研问卷回收40余份有效样本，梳理\"简历评估\"与\"定向面试模拟\"核心需求，使用Figma完成低保真原型，输出产品需求文档。\r\n- AI匹配策略：调研开源Embedding模型实现简历与JD语义相似度计算，探索多维度匹配方案，对比整篇匹配与分块匹配效果差异，持续优化推荐排序。\r\n- 内容生成：基于大模型AI设计结构化Prompt，融合岗位关键词与简历信息输出个性化面试题，建立追问机制增强模拟面试针对性。\r\n- 测试验证：组织20人内测收集用户路径与反馈数据，针对复杂PDF格式设计补充录入机制，完成从需求分析到上线测试的完整产品闭环。\r\n\r\n教务问答机器人 — 基于校内政策的RAG问答系统\r\n2024.10-2025.02\r\n产品设计与测试 | 实验室课题项目\r\n- 知识库构建：收集整理教务处政策文件、培养方案及历史问答共80余份，完成扫描件OCR识别、格式转换与结构化清洗，建立可检索的领域知识库。\r\n- 交互设计：设计Web端对话界面，参考主流客服产品布局增加\"推荐提问\"推荐模块降低投入成本，针对政策类回答设计溯源展示功能增强可信度。\r\n- 效果测试：参与搭建检索增强生成链路，完成实验环境下多轮问答测试，验证标准政策类问题回答准确率，整理测试数据与优化建议形成可复用方案。\r\n\r\n校园经历\r\n江南科技大学软件学院学生会·宣传部干事\r\n2024.09-2025.06\r\n- 负责学院官方公众号推文排版与发布，累计输出活动宣传稿件10余篇；协助组织院内编程比赛，负责报名统计与现场签到。\r\n\r\n云溪大学图书馆·勤工助学岗\r\n2022.03-2023.06\r\n- 负责电子阅览室日常值班，协助同学解决基础网络与设备使用问题；参与旧期刊电子目录录入与数据整理工作。\r\n\r\n获奖情况\r\n- 2025.05 江南科技大学研究生学业三等奖学金\r\n- 2024.11 学院AI应用创新赛（课程组）三等奖\r\n- 2022.06 云溪大学优秀共青团员\r\n- 2022.12 校级网页设计比赛优秀奖\r\n\r\n个人技能\r\n- 产品工具：熟练使用Figma进行原型与交互演示，了解Axure基础操作；能够使用Xmind梳理产品架构，通过腾讯文档/飞书写PRD。\r\n- 技术理解：了解大语言模型在应用层的落地方式，具备Prompt Engineering实践经验；理解RAG基本架构与工作流程，了解Embedding与向量检索作用。\r\n- 语言能力：英语CET-4（525分），可阅读英文技术文档与产品资料。\r\n- 办公技能：熟练使用Office办公软件，掌握Excel数据透视表等基础数据分析功能。",
+        "jd_text": "{{T1.output.chunks[0].text}}",
+        "company": "字节跳动",
+        "position": "AI产品经理",
+        "attributes": [
+          "匹配度"
+        ]
+      },
+      "result_preview": "{'score': 0, 'label': '不匹配', 'advantages': [], 'weaknesses': ['未提供职位描述（JD）文本，无法进行候选人与职位要求的对比分析。请提供完整的JD内容以便评估。'], 'suggestions': ['核心能力要求: 未知'], 'match_score': 0, 'covered': [], 'missing_experience': "
+    }
+  ],
+  "tools_called": [
+    "kb_retrieve",
+    "kb_retrieve",
+    "global_rank",
+    "match_analyze"
+  ],
+  "kb_chunks": [
+    {
+      "chunk_id": "ac9973c8-01be-4cd6-9a99-097873a59cf0_chunk_3",
+      "content": "【字节跳动 · AI产品经理 硬性要求】\n熟练掌握Transformer、Token、RAG等核心概念",
+      "metadata": {
+        "company": "字节跳动",
+        "index": 3,
+        "jd_id": "ac9973c8-01be-4cd6-9a99-097873a59cf0",
+        "position": "AI产品经理",
+        "priority": "high",
+        "section": "hard_requirements",
+        "strategy": "semantic"
+      },
+      "distance": null,
+      "bm25_score": 13.29757395863349,
+      "vec_norm": 0.0,
+      "bm25_norm": 0.9815429356960411,
+      "hybrid_score": 0.2944628807088123,
+      "rerank_score": 0.9986
+    },
+    {
+      "chunk_id": "ac9973c8-01be-4cd6-9a99-097873a59cf0_chunk_8",
+      "content": "【字节跳动 · AI产品经理 关键词】\nPython, PyTorch, LangChain, RAG, Agent, 产品经理, AI",
+      "metadata": {
+        "company": "字节跳动",
+        "index": 8,
+        "jd_id": "ac9973c8-01be-4cd6-9a99-097873a59cf0",
+        "position": "AI产品经理",
+        "section": "keywords",
+        "strategy": "semantic"
+      },
+      "distance": null,
+      "bm25_score": 13.45033650682065,
+      "vec_norm": 0.0,
+      "bm25_norm": 1.0,
+      "hybrid_score": 0.3,
+      "rerank_score": 0.9981
+    },
+    {
+      "chunk_id": "ac9973c8-01be-4cd6-9a99-097873a59cf0_chunk_6",
+      "content": "【字节跳动 · AI产品经理 硬性要求】\n24小时高频冲浪，对新技术有雷达般的嗅觉",
+      "metadata": {
+        "company": "字节跳动",
+        "index": 6,
+        "jd_id": "ac9973c8-01be-4cd6-9a99-097873a59cf0",
+        "position": "AI产品经理",
+        "priority": "high",
+        "section": "hard_requirements",
+        "strategy": "semantic"
+      },
+      "distance": null,
+      "bm25_score": 13.158133950491646,
+      "vec_norm": 0.0,
+      "bm25_norm": 0.9646955262533458,
+      "hybrid_score": 0.2894086578760037,
+      "rerank_score": 0.997
+    },
+    {
+      "chunk_id": "ac9973c8-01be-4cd6-9a99-097873a59cf0_chunk_7",
+      "content": "【字节跳动 · AI产品经理 软性要求/加分项】\n有LLM/Agent落地案例者优先",
+      "metadata": {
+        "company": "字节跳动",
+        "index": 7,
+        "jd_id": "ac9973c8-01be-4cd6-9a99-097873a59cf0",
+        "position": "AI产品经理",
+        "priority": "medium",
+        "section": "soft_requirements",
+        "strategy": "semantic"
+      },
+      "distance": null,
+      "bm25_score": 13.29757395863349,
+      "vec_norm": 0.0,
+      "bm25_norm": 0.9815429356960411,
+      "hybrid_score": 0.2944628807088123,
+      "rerank_score": 0.996
+    },
+    {
+      "chunk_id": "ac9973c8-01be-4cd6-9a99-097873a59cf0_chunk_4",
+      "content": "【字节跳动 · AI产品经理 硬性要求】\n深度使用过LangChain、Dify、Coze或LangGraph等框架",
+      "metadata": {
+        "company": "字节跳动",
+        "index": 4,
+        "jd_id": "ac9973c8-01be-4cd6-9a99-097873a59cf0",
+        "position": "AI产品经理",
+        "priority": "high",
+        "section": "hard_requirements",
+        "strategy": "semantic"
+      },
+      "distance": null,
+      "bm25_score": 13.158133950491646,
+      "vec_norm": 0.0,
+      "bm25_norm": 0.9646955262533458,
+      "hybrid_score": 0.2894086578760037,
+      "rerank_score": 0.9958
+    },
+    {
+      "chunk_id": "ac9973c8-01be-4cd6-9a99-097873a59cf0_chunk_5",
+      "content": "【字节跳动 · AI产品经理 硬性要求】\n具备极强的逻辑拆解力，能像指挥交响乐一样控制模型输出",
+      "metadata": {
+        "company": "字节跳动",
+        "index": 5,
+        "jd_id": "ac9973c8-01be-4cd6-9a99-097873a59cf0",
+        "position": "AI产品经理",
+        "priority": "high",
+        "section": "hard_requirements",
+        "strategy": "semantic"
+      },
+      "distance": 0.33240896463394165,
+      "bm25_score": 13.909874919659451,
+      "vec_norm": 0.8145097267734441,
+      "bm25_norm": 0.8582741299210837,
+      "hybrid_score": 0.827639047717736,
+      "rerank_score": 0.9992
+    },
+    {
+      "chunk_id": "ac9973c8-01be-4cd6-9a99-097873a59cf0_chunk_1",
+      "content": "【字节跳动 · AI产品经理 岗位职责】\n1. 定义Agent框架：设计Planning、Reflection、Memory策略。2. 重塑LUI交互：探索意图驱动的流式UI与动态组件生成。3. 编排超级工作流：深入客服、数据、ERP等实战场景。4. 模型精细化调教：编写结构化Prompt，配合RAG、Function Calling。5. 数据驱动进化：建立交互好感度与任务成功率双重指标。",
+      "metadata": {
+        "company": "字节跳动",
+        "index": 1,
+        "jd_id": "ac9973c8-01be-4cd6-9a99-097873a59cf0",
+        "position": "AI产品经理",
+        "section": "responsibilities",
+        "strategy": "semantic"
+      },
+      "distance": 0.2871961295604706,
+      "bm25_score": 8.56408648103769,
+      "vec_norm": 1.0,
+      "bm25_norm": 0.23213566249506196,
+      "hybrid_score": 0.7696406987485185,
+      "rerank_score": 0.9983
+    }
+  ],
+  "tool_executions_full": [
+    {
+      "tool_name": "kb_retrieve",
+      "task_id": "T0",
+      "status": "success",
+      "output": {
+        "chunks": [
+          {
+            "chunk_id": "ac9973c8-01be-4cd6-9a99-097873a59cf0_chunk_3",
+            "content": "【字节跳动 · AI产品经理 硬性要求】\n熟练掌握Transformer、Token、RAG等核心概念",
+            "source": "字节跳动-AI产品经理",
+            "metadata": {
+              "company": "字节跳动",
+              "position": "AI产品经理"
+            }
+          },
+          {
+            "chunk_id": "ac9973c8-01be-4cd6-9a99-097873a59cf0_chunk_8",
+            "content": "【字节跳动 · AI产品经理 关键词】\nPython, PyTorch, LangChain, RAG, Agent, 产品经理, AI",
+            "source": "字节跳动-AI产品经理",
+            "metadata": {
+              "company": "字节跳动",
+              "position": "AI产品经理"
+            }
+          },
+          {
+            "chunk_id": "ac9973c8-01be-4cd6-9a99-097873a59cf0_chunk_6",
+            "content": "【字节跳动 · AI产品经理 硬性要求】\n24小时高频冲浪，对新技术有雷达般的嗅觉",
+            "source": "字节跳动-AI产品经理",
+            "metadata": {
+              "company": "字节跳动",
+              "position": "AI产品经理"
+            }
+          },
+          {
+            "chunk_id": "ac9973c8-01be-4cd6-9a99-097873a59cf0_chunk_7",
+            "content": "【字节跳动 · AI产品经理 软性要求/加分项】\n有LLM/Agent落地案例者优先",
+            "source": "字节跳动-AI产品经理",
+            "metadata": {
+              "company": "字节跳动",
+              "position": "AI产品经理"
+            }
+          },
+          {
+            "chunk_id": "ac9973c8-01be-4cd6-9a99-097873a59cf0_chunk_4",
+            "content": "【字节跳动 · AI产品经理 硬性要求】\n深度使用过LangChain、Dify、Coze或LangGraph等框架",
+            "source": "字节跳动-AI产品经理",
+            "metadata": {
+              "company": "字节跳动",
+              "position": "AI产品经理"
+            }
+          }
+        ],
+        "query": "字节跳动 产品经理",
+        "filters": {
+          "company": "字节跳动",
+          "position": "产品经理"
+        },
+        "strategy": "hybrid(70%vec+30%bm25)+reranker",
+        "pool_k": 5,
+        "rerank_k": 10,
+        "pool_size": 20,
+        "vec_only": 0,
+        "bm25_only": 20,
+        "both": 0,
+        "rerank": {
+          "enabled": true,
+          "candidates": 5,
+          "output": 5,
+          "best_rerank_score": 0.9986
+        }
+      }
+    },
+    {
+      "tool_name": "kb_retrieve",
+      "task_id": "T1",
+      "status": "success",
+      "output": {
+        "chunks": [
+          {
+            "chunk_id": "ac9973c8-01be-4cd6-9a99-097873a59cf0_chunk_5",
+            "content": "【字节跳动 · AI产品经理 硬性要求】\n具备极强的逻辑拆解力，能像指挥交响乐一样控制模型输出",
+            "source": "字节跳动-AI产品经理",
+            "metadata": {
+              "company": "字节跳动",
+              "position": "AI产品经理"
+            }
+          },
+          {
+            "chunk_id": "ac9973c8-01be-4cd6-9a99-097873a59cf0_chunk_1",
+            "content": "【字节跳动 · AI产品经理 岗位职责】\n1. 定义Agent框架：设计Planning、Reflection、Memory策略。2. 重塑LUI交互：探索意图驱动的流式UI与动态组件生成。3. 编排超级工作流：深入客服、数据、ERP等实战场景。4. 模型精细化调教：编写结构化Prompt，配合RAG、Function Calling。5. 数据驱动进化：建立交互好感度与任务成功率双重指标。",
+            "source": "字节跳动-AI产品经理",
+            "metadata": {
+              "company": "字节跳动",
+              "position": "AI产品经理"
+            }
+          }
+        ],
+        "query": "字节跳动 AI产品经理",
+        "filters": {
+          "company": "字节跳动",
+          "position": "AI产品经理"
+        },
+        "strategy": "hybrid(70%vec+30%bm25)+reranker",
+        "pool_k": 2,
+        "rerank_k": 10,
+        "pool_size": 20,
+        "vec_only": 0,
+        "bm25_only": 11,
+        "both": 9,
+        "rerank": {
+          "enabled": true,
+          "candidates": 2,
+          "output": 2,
+          "best_rerank_score": 0.9992
+        }
+      }
+    },
+    {
+      "tool_name": "global_rank",
+      "task_id": "T2",
+      "status": "success",
+      "output": {
+        "rankings": [
+          {
+            "company": "字节跳动",
+            "position": "AI产品经理",
+            "match_score": 72,
+            "recommend_reason": "技能匹配：rag",
+            "key_match": [
+              "技能交集：rag"
+            ],
+            "key_gap": [
+              "需进一步了解详细匹配情况"
+            ],
+            "apply_priority": "中"
+          }
+        ],
+        "strategy_advice": "暂未发现高度匹配岗位，1 个中等匹配岗位可作为参考，建议进一步评估后再投递。",
+        "_template_mode": true,
+        "_coarse_filter_meta": {
+          "input_jds": 1,
+          "output_jds": 1,
+          "filter_ratio": 0.0
+        }
+      }
+    },
+    {
+      "tool_name": "match_analyze",
+      "task_id": "T3",
+      "status": "success",
+      "output": {
+        "score": 0,
+        "label": "不匹配",
+        "advantages": [],
+        "weaknesses": [
+          "未提供职位描述（JD）文本，无法进行候选人与职位要求的对比分析。请提供完整的JD内容以便评估。"
+        ],
+        "suggestions": [
+          "核心能力要求: 未知"
+        ],
+        "match_score": 0,
+        "covered": [],
+        "missing_experience": "未提供职位描述（JD）文本，无法进行候选人与职位要求的对比分析。请提供完整的JD内容以便评估。",
+        "core_skills": "未知",
+        "company": "字节跳动",
+        "position": "AI产品经理"
+      }
+    },
+    {
+      "tool_name": null,
+      "task_id": "T4",
+      "status": "success",
+      "output": {
+        "aggregation": {
+          "explore_ranking": "{{T2.output.ranked_list}}",
+          "assess_result": {
+            "score": 0,
+            "label": "不匹配",
+            "advantages": [],
+            "weaknesses": [
+              "未提供职位描述（JD）文本，无法进行候选人与职位要求的对比分析。请提供完整的JD内容以便评估。"
+            ],
+            "suggestions": [
+              "核心能力要求: 未知"
+            ],
+            "match_score": 0,
+            "covered": [],
+            "missing_experience": "未提供职位描述（JD）文本，无法进行候选人与职位要求的对比分析。请提供完整的JD内容以便评估。",
+            "core_skills": "未知",
+            "company": "字节跳动",
+            "position": "AI产品经理"
+          }
+        }
+      }
+    }
+  ],
+  "debug_info": {
+    "task_graph": {
+      "tasks": {
+        "T0": {
+          "task_id": "T0",
+          "task_type": "tool_call",
+          "tool_name": "kb_retrieve",
+          "status": "success",
+          "parameters": {
+            "query": "字节跳动 产品经理",
+            "top_k": 5,
+            "company": "字节跳动",
+            "position": "产品经理"
+          },
+          "resolved_params": {
+            "query": "字节跳动 产品经理",
+            "top_k": 5,
+            "company": "字节跳动",
+            "position": "产品经理"
+          },
+          "result": {
+            "chunks": [
+              {
+                "chunk_id": "ac9973c8-01be-4cd6-9a99-097873a59cf0_chunk_3",
+                "content": "【字节跳动 · AI产品经理 硬性要求】\n熟练掌握Transformer、Token、RAG等核心概念",
+                "metadata": {
+                  "company": "字节跳动",
+                  "index": 3,
+                  "jd_id": "ac9973c8-01be-4cd6-9a99-097873a59cf0",
+                  "position": "AI产品经理",
+                  "priority": "high",
+                  "section": "hard_requirements",
+                  "strategy": "semantic"
+                },
+                "distance": null,
+                "bm25_score": 13.29757395863349,
+                "vec_norm": 0.0,
+                "bm25_norm": 0.9815429356960411,
+                "hybrid_score": 0.2944628807088123,
+                "rerank_score": 0.9986
+              },
+              {
+                "chunk_id": "ac9973c8-01be-4cd6-9a99-097873a59cf0_chunk_8",
+                "content": "【字节跳动 · AI产品经理 关键词】\nPython, PyTorch, LangChain, RAG, Agent, 产品经理, AI",
+                "metadata": {
+                  "company": "字节跳动",
+                  "index": 8,
+                  "jd_id": "ac9973c8-01be-4cd6-9a99-097873a59cf0",
+                  "position": "AI产品经理",
+                  "section": "keywords",
+                  "strategy": "semantic"
+                },
+                "distance": null,
+                "bm25_score": 13.45033650682065,
+                "vec_norm": 0.0,
+                "bm25_norm": 1.0,
+                "hybrid_score": 0.3,
+                "rerank_score": 0.9981
+              },
+              {
+                "chunk_id": "ac9973c8-01be-4cd6-9a99-097873a59cf0_chunk_6",
+                "content": "【字节跳动 · AI产品经理 硬性要求】\n24小时高频冲浪，对新技术有雷达般的嗅觉",
+                "metadata": {
+                  "company": "字节跳动",
+                  "index": 6,
+                  "jd_id": "ac9973c8-01be-4cd6-9a99-097873a59cf0",
+                  "position": "AI产品经理",
+                  "priority": "high",
+                  "section": "hard_requirements",
+                  "strategy": "semantic"
+                },
+                "distance": null,
+                "bm25_score": 13.158133950491646,
+                "vec_norm": 0.0,
+                "bm25_norm": 0.9646955262533458,
+                "hybrid_score": 0.2894086578760037,
+                "rerank_score": 0.997
+              },
+              {
+                "chunk_id": "ac9973c8-01be-4cd6-9a99-097873a59cf0_chunk_7",
+                "content": "【字节跳动 · AI产品经理 软性要求/加分项】\n有LLM/Agent落地案例者优先",
+                "metadata": {
+                  "company": "字节跳动",
+                  "index": 7,
+                  "jd_id": "ac9973c8-01be-4cd6-9a99-097873a59cf0",
+                  "position": "AI产品经理",
+                  "priority": "medium",
+                  "section": "soft_requirements",
+                  "strategy": "semantic"
+                },
+                "distance": null,
+                "bm25_score": 13.29757395863349,
+                "vec_norm": 0.0,
+                "bm25_norm": 0.9815429356960411,
+                "hybrid_score": 0.2944628807088123,
+                "rerank_score": 0.996
+              },
+              {
+                "chunk_id": "ac9973c8-01be-4cd6-9a99-097873a59cf0_chunk_4",
+                "content": "【字节跳动 · AI产品经理 硬性要求】\n深度使用过LangChain、Dify、Coze或LangGraph等框架",
+                "metadata": {
+                  "company": "字节跳动",
+                  "index": 4,
+                  "jd_id": "ac9973c8-01be-4cd6-9a99-097873a59cf0",
+                  "position": "AI产品经理",
+                  "priority": "high",
+                  "section": "hard_requirements",
+                  "strategy": "semantic"
+                },
+                "distance": null,
+                "bm25_score": 13.158133950491646,
+                "vec_norm": 0.0,
+                "bm25_norm": 0.9646955262533458,
+                "hybrid_score": 0.2894086578760037,
+                "rerank_score": 0.9958
+              }
+            ],
+            "query": "字节跳动 产品经理",
+            "filters": {
+              "company": "字节跳动",
+              "position": "产品经理"
+            },
+            "strategy": "hybrid(70%vec+30%bm25)+reranker",
+            "pool_k": 5,
+            "rerank_k": 10,
+            "pool_size": 20,
+            "vec_only": 0,
+            "bm25_only": 20,
+            "both": 0,
+            "rerank": {
+              "enabled": true,
+              "candidates": 5,
+              "output": 5,
+              "best_rerank_score": 0.9986
+            }
+          },
+          "observation": "工具 kb_retrieve 执行成功"
+        },
+        "T1": {
+          "task_id": "T1",
+          "task_type": "tool_call",
+          "tool_name": "kb_retrieve",
+          "status": "success",
+          "parameters": {
+            "query": "字节跳动 AI产品经理",
+            "top_k": 2,
+            "company": "字节跳动",
+            "position": "AI产品经理"
+          },
+          "resolved_params": {
+            "query": "字节跳动 AI产品经理",
+            "top_k": 2,
+            "company": "字节跳动",
+            "position": "AI产品经理"
+          },
+          "result": {
+            "chunks": [
+              {
+                "chunk_id": "ac9973c8-01be-4cd6-9a99-097873a59cf0_chunk_5",
+                "content": "【字节跳动 · AI产品经理 硬性要求】\n具备极强的逻辑拆解力，能像指挥交响乐一样控制模型输出",
+                "metadata": {
+                  "company": "字节跳动",
+                  "index": 5,
+                  "jd_id": "ac9973c8-01be-4cd6-9a99-097873a59cf0",
+                  "position": "AI产品经理",
+                  "priority": "high",
+                  "section": "hard_requirements",
+                  "strategy": "semantic"
+                },
+                "distance": 0.33240896463394165,
+                "bm25_score": 13.909874919659451,
+                "vec_norm": 0.8145097267734441,
+                "bm25_norm": 0.8582741299210837,
+                "hybrid_score": 0.827639047717736,
+                "rerank_score": 0.9992
+              },
+              {
+                "chunk_id": "ac9973c8-01be-4cd6-9a99-097873a59cf0_chunk_1",
+                "content": "【字节跳动 · AI产品经理 岗位职责】\n1. 定义Agent框架：设计Planning、Reflection、Memory策略。2. 重塑LUI交互：探索意图驱动的流式UI与动态组件生成。3. 编排超级工作流：深入客服、数据、ERP等实战场景。4. 模型精细化调教：编写结构化Prompt，配合RAG、Function Calling。5. 数据驱动进化：建立交互好感度与任务成功率双重指标。",
+                "metadata": {
+                  "company": "字节跳动",
+                  "index": 1,
+                  "jd_id": "ac9973c8-01be-4cd6-9a99-097873a59cf0",
+                  "position": "AI产品经理",
+                  "section": "responsibilities",
+                  "strategy": "semantic"
+                },
+                "distance": 0.2871961295604706,
+                "bm25_score": 8.56408648103769,
+                "vec_norm": 1.0,
+                "bm25_norm": 0.23213566249506196,
+                "hybrid_score": 0.7696406987485185,
+                "rerank_score": 0.9983
+              }
+            ],
+            "query": "字节跳动 AI产品经理",
+            "filters": {
+              "company": "字节跳动",
+              "position": "AI产品经理"
+            },
+            "strategy": "hybrid(70%vec+30%bm25)+reranker",
+            "pool_k": 2,
+            "rerank_k": 10,
+            "pool_size": 20,
+            "vec_only": 0,
+            "bm25_only": 11,
+            "both": 9,
+            "rerank": {
+              "enabled": true,
+              "candidates": 2,
+              "output": 2,
+              "best_rerank_score": 0.9992
+            }
+          },
+          "observation": "工具 kb_retrieve 执行成功"
+        },
+        "T2": {
+          "task_id": "T2",
+          "task_type": "tool_call",
+          "tool_name": "global_rank",
+          "status": "success",
+          "parameters": {
+            "resume_text": "{{global_slots.resume_text}}",
+            "candidate_jds": "{{T0.output.chunks}}",
+            "sort_by": "match_score"
+          },
+          "resolved_params": {
+            "resume_text": "姓名：陈雨桐\r\n教育背景\r\n江南科技大学\r\n信息工程学院·软件工程（AI应用方向）·硕士\r\n2024.09-2027.06（预计）\r\nGPA: 3.4/4.0 | 主修：机器学习基础、数据库系统、软件项目管理、人机交互设计\r\n\r\n云溪大学\r\n计算机学院·信息管理与信息系统·本科\r\n2020.09-2024.06\r\n荣誉：两次校级三等奖学金 | 主修：数据结构、管理学原理、Web开发技术、统计学\r\n\r\n项目经历\r\n求职助手小程序 — 智能简历匹配与面试模拟工具\r\n2025.03-2025.11\r\n产品经理 | 三人小组\r\n- 需求分析：设计调研问卷回收40余份有效样本，梳理\"简历评估\"与\"定向面试模拟\"核心需求，使用Figma完成低保真原型，输出产品需求文档。\r\n- AI匹配策略：调研开源Embedding模型实现简历与JD语义相似度计算，探索多维度匹配方案，对比整篇匹配与分块匹配效果差异，持续优化推荐排序。\r\n- 内容生成：基于大模型AI设计结构化Prompt，融合岗位关键词与简历信息输出个性化面试题，建立追问机制增强模拟面试针对性。\r\n- 测试验证：组织20人内测收集用户路径与反馈数据，针对复杂PDF格式设计补充录入机制，完成从需求分析到上线测试的完整产品闭环。\r\n\r\n教务问答机器人 — 基于校内政策的RAG问答系统\r\n2024.10-2025.02\r\n产品设计与测试 | 实验室课题项目\r\n- 知识库构建：收集整理教务处政策文件、培养方案及历史问答共80余份，完成扫描件OCR识别、格式转换与结构化清洗，建立可检索的领域知识库。\r\n- 交互设计：设计Web端对话界面，参考主流客服产品布局增加\"推荐提问\"推荐模块降低投入成本，针对政策类回答设计溯源展示功能增强可信度。\r\n- 效果测试：参与搭建检索增强生成链路，完成实验环境下多轮问答测试，验证标准政策类问题回答准确率，整理测试数据与优化建议形成可复用方案。\r\n\r\n校园经历\r\n江南科技大学软件学院学生会·宣传部干事\r\n2024.09-2025.06\r\n- 负责学院官方公众号推文排版与发布，累计输出活动宣传稿件10余篇；协助组织院内编程比赛，负责报名统计与现场签到。\r\n\r\n云溪大学图书馆·勤工助学岗\r\n2022.03-2023.06\r\n- 负责电子阅览室日常值班，协助同学解决基础网络与设备使用问题；参与旧期刊电子目录录入与数据整理工作。\r\n\r\n获奖情况\r\n- 2025.05 江南科技大学研究生学业三等奖学金\r\n- 2024.11 学院AI应用创新赛（课程组）三等奖\r\n- 2022.06 云溪大学优秀共青团员\r\n- 2022.12 校级网页设计比赛优秀奖\r\n\r\n个人技能\r\n- 产品工具：熟练使用Figma进行原型与交互演示，了解Axure基础操作；能够使用Xmind梳理产品架构，通过腾讯文档/飞书写PRD。\r\n- 技术理解：了解大语言模型在应用层的落地方式，具备Prompt Engineering实践经验；理解RAG基本架构与工作流程，了解Embedding与向量检索作用。\r\n- 语言能力：英语CET-4（525分），可阅读英文技术文档与产品资料。\r\n- 办公技能：熟练使用Office办公软件，掌握Excel数据透视表等基础数据分析功能。",
+            "candidate_jds": [
+              {
+                "chunk_id": "ac9973c8-01be-4cd6-9a99-097873a59cf0_chunk_3",
+                "content": "【字节跳动 · AI产品经理 硬性要求】\n熟练掌握Transformer、Token、RAG等核心概念",
+                "metadata": {
+                  "company": "字节跳动",
+                  "index": 3,
+                  "jd_id": "ac9973c8-01be-4cd6-9a99-097873a59cf0",
+                  "position": "AI产品经理",
+                  "priority": "high",
+                  "section": "hard_requirements",
+                  "strategy": "semantic"
+                },
+                "distance": null,
+                "bm25_score": 13.29757395863349,
+                "vec_norm": 0.0,
+                "bm25_norm": 0.9815429356960411,
+                "hybrid_score": 0.2944628807088123,
+                "rerank_score": 0.9986
+              },
+              {
+                "chunk_id": "ac9973c8-01be-4cd6-9a99-097873a59cf0_chunk_8",
+                "content": "【字节跳动 · AI产品经理 关键词】\nPython, PyTorch, LangChain, RAG, Agent, 产品经理, AI",
+                "metadata": {
+                  "company": "字节跳动",
+                  "index": 8,
+                  "jd_id": "ac9973c8-01be-4cd6-9a99-097873a59cf0",
+                  "position": "AI产品经理",
+                  "section": "keywords",
+                  "strategy": "semantic"
+                },
+                "distance": null,
+                "bm25_score": 13.45033650682065,
+                "vec_norm": 0.0,
+                "bm25_norm": 1.0,
+                "hybrid_score": 0.3,
+                "rerank_score": 0.9981
+              },
+              {
+                "chunk_id": "ac9973c8-01be-4cd6-9a99-097873a59cf0_chunk_6",
+                "content": "【字节跳动 · AI产品经理 硬性要求】\n24小时高频冲浪，对新技术有雷达般的嗅觉",
+                "metadata": {
+                  "company": "字节跳动",
+                  "index": 6,
+                  "jd_id": "ac9973c8-01be-4cd6-9a99-097873a59cf0",
+                  "position": "AI产品经理",
+                  "priority": "high",
+                  "section": "hard_requirements",
+                  "strategy": "semantic"
+                },
+                "distance": null,
+                "bm25_score": 13.158133950491646,
+                "vec_norm": 0.0,
+                "bm25_norm": 0.9646955262533458,
+                "hybrid_score": 0.2894086578760037,
+                "rerank_score": 0.997
+              },
+              {
+                "chunk_id": "ac9973c8-01be-4cd6-9a99-097873a59cf0_chunk_7",
+                "content": "【字节跳动 · AI产品经理 软性要求/加分项】\n有LLM/Agent落地案例者优先",
+                "metadata": {
+                  "company": "字节跳动",
+                  "index": 7,
+                  "jd_id": "ac9973c8-01be-4cd6-9a99-097873a59cf0",
+                  "position": "AI产品经理",
+                  "priority": "medium",
+                  "section": "soft_requirements",
+                  "strategy": "semantic"
+                },
+                "distance": null,
+                "bm25_score": 13.29757395863349,
+                "vec_norm": 0.0,
+                "bm25_norm": 0.9815429356960411,
+                "hybrid_score": 0.2944628807088123,
+                "rerank_score": 0.996
+              },
+              {
+                "chunk_id": "ac9973c8-01be-4cd6-9a99-097873a59cf0_chunk_4",
+                "content": "【字节跳动 · AI产品经理 硬性要求】\n深度使用过LangChain、Dify、Coze或LangGraph等框架",
+                "metadata": {
+                  "company": "字节跳动",
+                  "index": 4,
+                  "jd_id": "ac9973c8-01be-4cd6-9a99-097873a59cf0",
+                  "position": "AI产品经理",
+                  "priority": "high",
+                  "section": "hard_requirements",
+                  "strategy": "semantic"
+                },
+                "distance": null,
+                "bm25_score": 13.158133950491646,
+                "vec_norm": 0.0,
+                "bm25_norm": 0.9646955262533458,
+                "hybrid_score": 0.2894086578760037,
+                "rerank_score": 0.9958
+              }
+            ],
+            "sort_by": "match_score"
+          },
+          "result": {
+            "rankings": [
+              {
+                "rank": 1,
+                "jd_id": "ac9973c8-01be-4cd6-9a99-097873a59cf0",
+                "company": "字节跳动",
+                "position": "AI产品经理",
+                "match_score": 72,
+                "recommend_reason": "技能匹配：rag",
+                "key_match": [
+                  "技能交集：rag"
+                ],
+                "key_gap": [
+                  "需进一步了解详细匹配情况"
+                ],
+                "apply_priority": "中"
+              }
+            ],
+            "strategy_advice": "暂未发现高度匹配岗位，1 个中等匹配岗位可作为参考，建议进一步评估后再投递。",
+            "_template_mode": true,
+            "_coarse_filter_meta": {
+              "input_jds": 1,
+              "output_jds": 1,
+              "filter_ratio": 0.0
+            }
+          },
+          "observation": "工具 global_rank 执行成功"
+        },
+        "T3": {
+          "task_id": "T3",
+          "task_type": "tool_call",
+          "tool_name": "match_analyze",
+          "status": "success",
+          "parameters": {
+            "resume_text": "{{global_slots.resume_text}}",
+            "jd_text": "{{T1.output.chunks[0].text}}",
+            "company": "字节跳动",
+            "position": "AI产品经理",
+            "attributes": [
+              "匹配度"
+            ]
+          },
+          "resolved_params": {
+            "resume_text": "姓名：陈雨桐\r\n教育背景\r\n江南科技大学\r\n信息工程学院·软件工程（AI应用方向）·硕士\r\n2024.09-2027.06（预计）\r\nGPA: 3.4/4.0 | 主修：机器学习基础、数据库系统、软件项目管理、人机交互设计\r\n\r\n云溪大学\r\n计算机学院·信息管理与信息系统·本科\r\n2020.09-2024.06\r\n荣誉：两次校级三等奖学金 | 主修：数据结构、管理学原理、Web开发技术、统计学\r\n\r\n项目经历\r\n求职助手小程序 — 智能简历匹配与面试模拟工具\r\n2025.03-2025.11\r\n产品经理 | 三人小组\r\n- 需求分析：设计调研问卷回收40余份有效样本，梳理\"简历评估\"与\"定向面试模拟\"核心需求，使用Figma完成低保真原型，输出产品需求文档。\r\n- AI匹配策略：调研开源Embedding模型实现简历与JD语义相似度计算，探索多维度匹配方案，对比整篇匹配与分块匹配效果差异，持续优化推荐排序。\r\n- 内容生成：基于大模型AI设计结构化Prompt，融合岗位关键词与简历信息输出个性化面试题，建立追问机制增强模拟面试针对性。\r\n- 测试验证：组织20人内测收集用户路径与反馈数据，针对复杂PDF格式设计补充录入机制，完成从需求分析到上线测试的完整产品闭环。\r\n\r\n教务问答机器人 — 基于校内政策的RAG问答系统\r\n2024.10-2025.02\r\n产品设计与测试 | 实验室课题项目\r\n- 知识库构建：收集整理教务处政策文件、培养方案及历史问答共80余份，完成扫描件OCR识别、格式转换与结构化清洗，建立可检索的领域知识库。\r\n- 交互设计：设计Web端对话界面，参考主流客服产品布局增加\"推荐提问\"推荐模块降低投入成本，针对政策类回答设计溯源展示功能增强可信度。\r\n- 效果测试：参与搭建检索增强生成链路，完成实验环境下多轮问答测试，验证标准政策类问题回答准确率，整理测试数据与优化建议形成可复用方案。\r\n\r\n校园经历\r\n江南科技大学软件学院学生会·宣传部干事\r\n2024.09-2025.06\r\n- 负责学院官方公众号推文排版与发布，累计输出活动宣传稿件10余篇；协助组织院内编程比赛，负责报名统计与现场签到。\r\n\r\n云溪大学图书馆·勤工助学岗\r\n2022.03-2023.06\r\n- 负责电子阅览室日常值班，协助同学解决基础网络与设备使用问题；参与旧期刊电子目录录入与数据整理工作。\r\n\r\n获奖情况\r\n- 2025.05 江南科技大学研究生学业三等奖学金\r\n- 2024.11 学院AI应用创新赛（课程组）三等奖\r\n- 2022.06 云溪大学优秀共青团员\r\n- 2022.12 校级网页设计比赛优秀奖\r\n\r\n个人技能\r\n- 产品工具：熟练使用Figma进行原型与交互演示，了解Axure基础操作；能够使用Xmind梳理产品架构，通过腾讯文档/飞书写PRD。\r\n- 技术理解：了解大语言模型在应用层的落地方式，具备Prompt Engineering实践经验；理解RAG基本架构与工作流程，了解Embedding与向量检索作用。\r\n- 语言能力：英语CET-4（525分），可阅读英文技术文档与产品资料。\r\n- 办公技能：熟练使用Office办公软件，掌握Excel数据透视表等基础数据分析功能。",
+            "jd_text": "{{T1.output.chunks[0].text}}",
+            "company": "字节跳动",
+            "position": "AI产品经理",
+            "attributes": [
+              "匹配度"
+            ]
+          },
+          "result": {
+            "score": 0,
+            "label": "不匹配",
+            "advantages": [],
+            "weaknesses": [
+              "未提供职位描述（JD）文本，无法进行候选人与职位要求的对比分析。请提供完整的JD内容以便评估。"
+            ],
+            "suggestions": [
+              "核心能力要求: 未知"
+            ],
+            "match_score": 0,
+            "covered": [],
+            "missing_experience": "未提供职位描述（JD）文本，无法进行候选人与职位要求的对比分析。请提供完整的JD内容以便评估。",
+            "core_skills": "未知",
+            "company": "字节跳动",
+            "position": "AI产品经理"
+          },
+          "observation": "工具 match_analyze 执行成功"
+        },
+        "T4": {
+          "task_id": "T4",
+          "task_type": "aggregate",
+          "tool_name": null,
+          "status": "success",
+          "parameters": {
+            "explore_ranking": "{{T2.output.ranked_list}}",
+            "assess_result": "{{T3.output}}"
+          },
+          "resolved_params": {
+            "explore_ranking": "{{T2.output.ranked_list}}",
+            "assess_result": {
+              "score": 0,
+              "label": "不匹配",
+              "advantages": [],
+              "weaknesses": [
+                "未提供职位描述（JD）文本，无法进行候选人与职位要求的对比分析。请提供完整的JD内容以便评估。"
+              ],
+              "suggestions": [
+                "核心能力要求: 未知"
+              ],
+              "match_score": 0,
+              "covered": [],
+              "missing_experience": "未提供职位描述（JD）文本，无法进行候选人与职位要求的对比分析。请提供完整的JD内容以便评估。",
+              "core_skills": "未知",
+              "company": "字节跳动",
+              "position": "AI产品经理"
+            }
+          },
+          "result": {
+            "aggregation": {
+              "explore_ranking": "{{T2.output.ranked_list}}",
+              "assess_result": {
+                "score": 0,
+                "label": "不匹配",
+                "advantages": [],
+                "weaknesses": [
+                  "未提供职位描述（JD）文本，无法进行候选人与职位要求的对比分析。请提供完整的JD内容以便评估。"
+                ],
+                "suggestions": [
+                  "核心能力要求: 未知"
+                ],
+                "match_score": 0,
+                "covered": [],
+                "missing_experience": "未提供职位描述（JD）文本，无法进行候选人与职位要求的对比分析。请提供完整的JD内容以便评估。",
+                "core_skills": "未知",
+                "company": "字节跳动",
+                "position": "AI产品经理"
+              }
+            }
+          },
+          "observation": "聚合完成"
+        }
+      },
+      "global_status": "success",
+      "replan_reason": "",
+      "replan_count": 0
+    },
+    "intent": {
+      "demands": [
+        {
+          "intent": "position_explore",
+          "entities": {
+            "company": "字节跳动",
+            "position": "产品经理",
+            "search_keywords": "帮我筛选几个能投递的岗位，再重点分析字节跳动的 AI 产品经理岗位",
+            "sort_by": "match_score",
+            "top_k": 5
+          },
+          "confidence": 0.88
+        },
+        {
+          "intent": "match_assess",
+          "entities": {
+            "company": "字节跳动",
+            "position": "产品经理",
+            "attributes": [
+              "匹配度"
+            ],
+            "jd_source": "kb"
+          },
+          "confidence": 0.75
+        }
+      ],
+      "needs_clarification": false,
+      "clarification_question": ""
+    },
+    "rewrite": {
+      "rewritten_query": "帮我筛选几个能投递的岗位，再重点分析字节跳动的 AI 产品经理岗位",
+      "search_keywords": "帮我筛选几个能投递的岗位，再重点分析字节跳动的 AI 产品经理岗位",
+      "is_follow_up": false,
+      "follow_up_type": "none",
+      "resolved_references": {
+        "字节那个 AI 产品经理": "字节跳动-AI 产品经理"
+      }
+    },
+    "evidence_cache": [
+      {
+        "chunk_id": "ac9973c8-01be-4cd6-9a99-097873a59cf0_chunk_3",
+        "content": "【字节跳动 · AI产品经理 硬性要求】\n熟练掌握Transformer、Token、RAG等核心概念",
+        "metadata": {
+          "company": "字节跳动",
+          "index": 3,
+          "jd_id": "ac9973c8-01be-4cd6-9a99-097873a59cf0",
+          "position": "AI产品经理",
+          "priority": "high",
+          "section": "hard_requirements",
+          "strategy": "semantic"
+        },
+        "distance": null,
+        "bm25_score": 13.29757395863349,
+        "vec_norm": 0.0,
+        "bm25_norm": 0.9815429356960411,
+        "hybrid_score": 0.2944628807088123,
+        "rerank_score": 0.9986
+      },
+      {
+        "chunk_id": "ac9973c8-01be-4cd6-9a99-097873a59cf0_chunk_8",
+        "content": "【字节跳动 · AI产品经理 关键词】\nPython, PyTorch, LangChain, RAG, Agent, 产品经理, AI",
+        "metadata": {
+          "company": "字节跳动",
+          "index": 8,
+          "jd_id": "ac9973c8-01be-4cd6-9a99-097873a59cf0",
+          "position": "AI产品经理",
+          "section": "keywords",
+          "strategy": "semantic"
+        },
+        "distance": null,
+        "bm25_score": 13.45033650682065,
+        "vec_norm": 0.0,
+        "bm25_norm": 1.0,
+        "hybrid_score": 0.3,
+        "rerank_score": 0.9981
+      },
+      {
+        "chunk_id": "ac9973c8-01be-4cd6-9a99-097873a59cf0_chunk_6",
+        "content": "【字节跳动 · AI产品经理 硬性要求】\n24小时高频冲浪，对新技术有雷达般的嗅觉",
+        "metadata": {
+          "company": "字节跳动",
+          "index": 6,
+          "jd_id": "ac9973c8-01be-4cd6-9a99-097873a59cf0",
+          "position": "AI产品经理",
+          "priority": "high",
+          "section": "hard_requirements",
+          "strategy": "semantic"
+        },
+        "distance": null,
+        "bm25_score": 13.158133950491646,
+        "vec_norm": 0.0,
+        "bm25_norm": 0.9646955262533458,
+        "hybrid_score": 0.2894086578760037,
+        "rerank_score": 0.997
+      },
+      {
+        "chunk_id": "ac9973c8-01be-4cd6-9a99-097873a59cf0_chunk_7",
+        "content": "【字节跳动 · AI产品经理 软性要求/加分项】\n有LLM/Agent落地案例者优先",
+        "metadata": {
+          "company": "字节跳动",
+          "index": 7,
+          "jd_id": "ac9973c8-01be-4cd6-9a99-097873a59cf0",
+          "position": "AI产品经理",
+          "priority": "medium",
+          "section": "soft_requirements",
+          "strategy": "semantic"
+        },
+        "distance": null,
+        "bm25_score": 13.29757395863349,
+        "vec_norm": 0.0,
+        "bm25_norm": 0.9815429356960411,
+        "hybrid_score": 0.2944628807088123,
+        "rerank_score": 0.996
+      },
+      {
+        "chunk_id": "ac9973c8-01be-4cd6-9a99-097873a59cf0_chunk_4",
+        "content": "【字节跳动 · AI产品经理 硬性要求】\n深度使用过LangChain、Dify、Coze或LangGraph等框架",
+        "metadata": {
+          "company": "字节跳动",
+          "index": 4,
+          "jd_id": "ac9973c8-01be-4cd6-9a99-097873a59cf0",
+          "position": "AI产品经理",
+          "priority": "high",
+          "section": "hard_requirements",
+          "strategy": "semantic"
+        },
+        "distance": null,
+        "bm25_score": 13.158133950491646,
+        "vec_norm": 0.0,
+        "bm25_norm": 0.9646955262533458,
+        "hybrid_score": 0.2894086578760037,
+        "rerank_score": 0.9958
+      },
+      {
+        "chunk_id": "ac9973c8-01be-4cd6-9a99-097873a59cf0_chunk_5",
+        "content": "【字节跳动 · AI产品经理 硬性要求】\n具备极强的逻辑拆解力，能像指挥交响乐一样控制模型输出",
+        "metadata": {
+          "company": "字节跳动",
+          "index": 5,
+          "jd_id": "ac9973c8-01be-4cd6-9a99-097873a59cf0",
+          "position": "AI产品经理",
+          "priority": "high",
+          "section": "hard_requirements",
+          "strategy": "semantic"
+        },
+        "distance": 0.33240896463394165,
+        "bm25_score": 13.909874919659451,
+        "vec_norm": 0.8145097267734441,
+        "bm25_norm": 0.8582741299210837,
+        "hybrid_score": 0.827639047717736,
+        "rerank_score": 0.9992
+      },
+      {
+        "chunk_id": "ac9973c8-01be-4cd6-9a99-097873a59cf0_chunk_1",
+        "content": "【字节跳动 · AI产品经理 岗位职责】\n1. 定义Agent框架：设计Planning、Reflection、Memory策略。2. 重塑LUI交互：探索意图驱动的流式UI与动态组件生成。3. 编排超级工作流：深入客服、数据、ERP等实战场景。4. 模型精细化调教：编写结构化Prompt，配合RAG、Function Calling。5. 数据驱动进化：建立交互好感度与任务成功率双重指标。",
+        "metadata": {
+          "company": "字节跳动",
+          "index": 1,
+          "jd_id": "ac9973c8-01be-4cd6-9a99-097873a59cf0",
+          "position": "AI产品经理",
+          "section": "responsibilities",
+          "strategy": "semantic"
+        },
+        "distance": 0.2871961295604706,
+        "bm25_score": 8.56408648103769,
+        "vec_norm": 1.0,
+        "bm25_norm": 0.23213566249506196,
+        "hybrid_score": 0.7696406987485185,
+        "rerank_score": 0.9983
+      }
+    ],
+    "evidence_cache_query": "帮我筛选几个能投递的岗位，再重点分析字节跳动的 AI 产品经理岗位",
+    "tool_outputs": [
+      {
+        "task_id": "T0",
+        "tool": "kb_retrieve",
+        "description": "检索字节跳动产品经理相关JD（explore意图，用于筛选排序）",
+        "result": {
+          "chunks": [
+            {
+              "chunk_id": "ac9973c8-01be-4cd6-9a99-097873a59cf0_chunk_3",
+              "content": "【字节跳动 · AI产品经理 硬性要求】\n熟练掌握Transformer、Token、RAG等核心概念",
+              "source": "字节跳动-AI产品经理",
+              "metadata": {
+                "company": "字节跳动",
+                "position": "AI产品经理"
+              }
+            },
+            {
+              "chunk_id": "ac9973c8-01be-4cd6-9a99-097873a59cf0_chunk_8",
+              "content": "【字节跳动 · AI产品经理 关键词】\nPython, PyTorch, LangChain, RAG, Agent, 产品经理, AI",
+              "source": "字节跳动-AI产品经理",
+              "metadata": {
+                "company": "字节跳动",
+                "position": "AI产品经理"
+              }
+            },
+            {
+              "chunk_id": "ac9973c8-01be-4cd6-9a99-097873a59cf0_chunk_6",
+              "content": "【字节跳动 · AI产品经理 硬性要求】\n24小时高频冲浪，对新技术有雷达般的嗅觉",
+              "source": "字节跳动-AI产品经理",
+              "metadata": {
+                "company": "字节跳动",
+                "position": "AI产品经理"
+              }
+            },
+            {
+              "chunk_id": "ac9973c8-01be-4cd6-9a99-097873a59cf0_chunk_7",
+              "content": "【字节跳动 · AI产品经理 软性要求/加分项】\n有LLM/Agent落地案例者优先",
+              "source": "字节跳动-AI产品经理",
+              "metadata": {
+                "company": "字节跳动",
+                "position": "AI产品经理"
+              }
+            },
+            {
+              "chunk_id": "ac9973c8-01be-4cd6-9a99-097873a59cf0_chunk_4",
+              "content": "【字节跳动 · AI产品经理 硬性要求】\n深度使用过LangChain、Dify、Coze或LangGraph等框架",
+              "source": "字节跳动-AI产品经理",
+              "metadata": {
+                "company": "字节跳动",
+                "position": "AI产品经理"
+              }
+            }
+          ],
+          "query": "字节跳动 产品经理",
+          "filters": {
+            "company": "字节跳动",
+            "position": "产品经理"
+          },
+          "strategy": "hybrid(70%vec+30%bm25)+reranker",
+          "pool_k": 5,
+          "rerank_k": 10,
+          "pool_size": 20,
+          "vec_only": 0,
+          "bm25_only": 20,
+          "both": 0,
+          "rerank": {
+            "enabled": true,
+            "candidates": 5,
+            "output": 5,
+            "best_rerank_score": 0.9986
+          }
+        }
+      },
+      {
+        "task_id": "T1",
+        "tool": "kb_retrieve",
+        "description": "检索字节跳动AI产品经理JD（assess意图，用于匹配分析）",
+        "result": {
+          "chunks": [
+            {
+              "chunk_id": "ac9973c8-01be-4cd6-9a99-097873a59cf0_chunk_5",
+              "content": "【字节跳动 · AI产品经理 硬性要求】\n具备极强的逻辑拆解力，能像指挥交响乐一样控制模型输出",
+              "source": "字节跳动-AI产品经理",
+              "metadata": {
+                "company": "字节跳动",
+                "position": "AI产品经理"
+              }
+            },
+            {
+              "chunk_id": "ac9973c8-01be-4cd6-9a99-097873a59cf0_chunk_1",
+              "content": "【字节跳动 · AI产品经理 岗位职责】\n1. 定义Agent框架：设计Planning、Reflection、Memory策略。2. 重塑LUI交互：探索意图驱动的流式UI与动态组件生成。3. 编排超级工作流：深入客服、数据、ERP等实战场景。4. 模型精细化调教：编写结构化Prompt，配合RAG、Function Calling。5. 数据驱动进化：建立交互好感度与任务成功率双重指标。",
+              "source": "字节跳动-AI产品经理",
+              "metadata": {
+                "company": "字节跳动",
+                "position": "AI产品经理"
+              }
+            }
+          ],
+          "query": "字节跳动 AI产品经理",
+          "filters": {
+            "company": "字节跳动",
+            "position": "AI产品经理"
+          },
+          "strategy": "hybrid(70%vec+30%bm25)+reranker",
+          "pool_k": 2,
+          "rerank_k": 10,
+          "pool_size": 20,
+          "vec_only": 0,
+          "bm25_only": 11,
+          "both": 9,
+          "rerank": {
+            "enabled": true,
+            "candidates": 2,
+            "output": 2,
+            "best_rerank_score": 0.9992
+          }
+        }
+      },
+      {
+        "task_id": "T2",
+        "tool": "global_rank",
+        "description": "基于简历对检索到的产品经理JD进行排名，筛选出最适合的岗位（explore）",
+        "result": {
+          "rankings": [
+            {
+              "company": "字节跳动",
+              "position": "AI产品经理",
+              "match_score": 72,
+              "recommend_reason": "技能匹配：rag",
+              "key_match": [
+                "技能交集：rag"
+              ],
+              "key_gap": [
+                "需进一步了解详细匹配情况"
+              ],
+              "apply_priority": "中"
+            }
+          ],
+          "strategy_advice": "暂未发现高度匹配岗位，1 个中等匹配岗位可作为参考，建议进一步评估后再投递。",
+          "_template_mode": true,
+          "_coarse_filter_meta": {
+            "input_jds": 1,
+            "output_jds": 1,
+            "filter_ratio": 0.0
+          }
+        }
+      },
+      {
+        "task_id": "T3",
+        "tool": "match_analyze",
+        "description": "分析简历与字节AI产品经理JD的匹配度（assess）",
+        "result": {
+          "score": 0,
+          "label": "不匹配",
+          "advantages": [],
+          "weaknesses": [
+            "未提供职位描述（JD）文本，无法进行候选人与职位要求的对比分析。请提供完整的JD内容以便评估。"
+          ],
+          "suggestions": [
+            "核心能力要求: 未知"
+          ],
+          "match_score": 0,
+          "covered": [],
+          "missing_experience": "未提供职位描述（JD）文本，无法进行候选人与职位要求的对比分析。请提供完整的JD内容以便评估。",
+          "core_skills": "未知",
+          "company": "字节跳动",
+          "position": "AI产品经理"
+        }
+      },
+      {
+        "task_id": "T4",
+        "tool": null,
+        "description": "聚合explore的排名结果和assess的匹配分析结果，生成最终回复素材",
+        "result": {
+          "aggregation": {
+            "explore_ranking": "{{T2.output.ranked_list}}",
+            "assess_result": {
+              "score": 0,
+              "label": "不匹配",
+              "advantages": [],
+              "weaknesses": [
+                "未提供职位描述（JD）文本，无法进行候选人与职位要求的对比分析。请提供完整的JD内容以便评估。"
+              ],
+              "suggestions": [
+                "核心能力要求: 未知"
+              ],
+              "match_score": 0,
+              "covered": [],
+              "missing_experience": "未提供职位描述（JD）文本，无法进行候选人与职位要求的对比分析。请提供完整的JD内容以便评估。",
+              "core_skills": "未知",
+              "company": "字节跳动",
+              "position": "AI产品经理"
+            }
+          }
+        }
+      }
+    ],
+    "final_aggregation_prompt": {
+      "system_prompt": "你是一位专业的求职顾问。请基于以下工具执行结果，给用户一个清晰、有帮助的回复。\n要求：\n1. 先直接回答用户的问题（是/否/有/没有），不要绕弯子，不要重复用户的原话\n2. 如果有匹配分析结果，给出具体的分数和建议\n3. 如果有检索结果，基于事实回答，不要编造\n4. 【强制】引用信息时必须标注来源。每个引用的事实后面都要跟 [来源：公司名-岗位名] 格式。   kb_retrieve 结果的 chunks 中带有 'source' 字段（如'字节跳动-AI产品经理'），请直接使用。   external_search 结果带有 'source_name' 字段，也请直接使用。\n5. 当本地知识库与外部搜索结果冲突时，请并列呈现两种说法并标注各自来源，不要替用户做判断\n6. 语气友好、专业、结构化",
+      "user_prompt": "【用户问题】\n帮我筛选几个能投递的岗位，再重点分析字节跳动的 AI 产品经理岗位\n\n【工具执行结果】\n[{\"task_id\": \"T0\", \"tool\": \"kb_retrieve\", \"description\": \"检索字节跳动产品经理相关JD（explore意图，用于筛选排序）\", \"result\": {\"chunks\": [{\"chunk_id\": \"ac9973c8-01be-4cd6-9a99-097873a59cf0_chunk_3\", \"content\": \"【字节跳动 · AI产品经理 硬性要求】\\n熟练掌握Transformer、Token、RAG等核心概念\", \"source\": \"字节跳动-AI产品经理\", \"metadata\": {\"company\": \"字节跳动\", \"position\": \"AI产品经理\"}}, {\"chunk_id\": \"ac9973c8-01be-4cd6-9a99-097873a59cf0_chunk_8\", \"content\": \"【字节跳动 · AI产品经理 关键词】\\nPython, PyTorch, LangChain, RAG, Agent, 产品经理, AI\", \"source\": \"字节跳动-AI产品经理\", \"metadata\": {\"company\": \"字节跳动\", \"position\": \"AI产品经理\"}}, {\"chunk_id\": \"ac9973c8-01be-4cd6-9a99-097873a59cf0_chunk_6\", \"content\": \"【字节跳动 · AI产品经理 硬性要求】\\n24小时高频冲浪，对新技术有雷达般的嗅觉\", \"source\": \"字节跳动-AI产品经理\", \"metadata\": {\"company\": \"字节跳动\", \"position\": \"AI产品经理\"}}, {\"chunk_id\": \"ac9973c8-01be-4cd6-9a99-097873a59cf0_chunk_7\", \"content\": \"【字节跳动 · AI产品经理 软性要求/加分项】\\n有LLM/Agent落地案例者优先\", \"source\": \"字节跳动-AI产品经理\", \"metadata\": {\"company\": \"字节跳动\", \"position\": \"AI产品经理\"}}, {\"chunk_id\": \"ac9973c8-01be-4cd6-9a99-097873a59cf0_chunk_4\", \"content\": \"【字节跳动 · AI产品经理 硬性要求】\\n深度使用过LangChain、Dify、Coze或LangGraph等框架\", \"source\": \"字节跳动-AI产品经理\", \"metadata\": {\"company\": \"字节跳动\", \"position\": \"AI产品经理\"}}], \"query\": \"字节跳动 产品经理\", \"filters\": {\"company\": \"字节跳动\", \"position\": \"产品经理\"}, \"strategy\": \"hybrid(70%vec+30%bm25)+reranker\", \"pool_k\": 5, \"rerank_k\": 10, \"pool_size\": 20, \"vec_only\": 0, \"bm25_only\": 20, \"both\": 0, \"rerank\": {\"enabled\": true, \"candidates\": 5, \"output\": 5, \"best_rerank_score\": 0.9986}}}, {\"task_id\": \"T1\", \"tool\": \"kb_retrieve\", \"description\": \"检索字节跳动AI产品经理JD（assess意图，用于匹配分析）\", \"result\": {\"chunks\": [{\"chunk_id\": \"ac9973c8-01be-4cd6-9a99-097873a59cf0_chunk_5\", \"content\": \"【字节跳动 · AI产品经理 硬性要求】\\n具备极强的逻辑拆解力，能像指挥交响乐一样控制模型输出\", \"source\": \"字节跳动-AI产品经理\", \"metadata\": {\"company\": \"字节跳动\", \"position\": \"AI产品经理\"}}, {\"chunk_id\": \"ac9973c8-01be-4cd6-9a99-097873a59cf0_chunk_1\", \"content\": \"【字节跳动 · AI产品经理 岗位职责】\\n1. 定义Agent框架：设计Planning、Reflection、Memory策略。2. 重塑LUI交互：探索意图驱动的流式UI与动态组件生成。3. 编排超级工作流：深入客服、数据、ERP等实战场景。4. 模型精细化调教：编写结构化Prompt，配合RAG、Function Calling。5. 数据驱动进化：建立交互好感度与任务成功率双重指标。\", \"source\": \"字节跳动-AI产品经理\", \"metadata\": {\"company\": \"字节跳动\", \"position\": \"AI产品经理\"}}], \"query\": \"字节跳动 AI产品经理\", \"filters\": {\"company\": \"字节跳动\", \"position\": \"AI产品经理\"}, \"strategy\": \"hybrid(70%vec+30%bm25)+reranker\", \"pool_k\": 2, \"rerank_k\": 10, \"pool_size\": 20, \"vec_only\": 0, \"bm25_only\": 11, \"both\": 9, \"rerank\": {\"enabled\": true, \"candidates\": 2, \"output\": 2, \"best_rerank_score\": 0.9992}}}, {\"task_id\": \"T2\", \"tool\": \"global_rank\", \"description\": \"基于简历对检索到的产品经理JD进行排名，筛选出最适合的岗位（explore）\", \"result\": {\"rankings\": [{\"company\": \"字节跳动\", \"position\": \"AI产品经理\", \"match_score\": 72, \"recommend_reason\": \"技能匹配：rag\", \"key_match\": [\"技能交集：rag\"], \"key_gap\": [\"需进一步了解详细匹配情况\"], \"apply_priority\": \"中\"}], \"strategy_advice\": \"暂未发现高度匹配岗位，1 个中等匹配岗位可作为参考，建议进一步评估后再投递。\", \"_template_mode\": true, \"_coarse_filter_meta\": {\"input_jds\": 1, \"output_jds\": 1, \"filter_ratio\": 0.0}}}, {\"task_id\": \"T3\", \"tool\": \"match_analyze\", \"description\": \"分析简历与字节AI产品经理JD的匹配度（assess）\", \"resu\n\n请生成回复："
+    }
+  },
+  "reply": "有 1 个匹配岗位可供参考。\n\n### 1. 岗位筛选结果\n基于您的简历与市场需求匹配，目前筛选出 **1 个** 中等匹配度的岗位：\n*   **公司**：字节跳动\n*   **岗位**：AI 产品经理\n*   **匹配分数**：72 分 [来源：global_rank]\n*   **投递优先级**：中 [来源：global_rank]\n*   **核心匹配点**：技能交集包含 RAG [来源：global_rank]\n*   **系统建议**：暂未发现高度匹配岗位，该岗位可作为参考，建议进一步评估后再投递 [来源：global_rank]\n\n### 2. 字节跳动 AI 产品经理重点分析\n该岗位对技术深度与落地能力有较高要求，具体画像如下：\n\n**硬性技能要求**\n*   **核心技术**：需熟练掌握 Transformer、Token、RAG 等核心概念 [来源：字节跳动-AI 产品经理]。\n*   **框架工具**：要求深度使用过 LangChain、Dify、Coze 或 LangGraph 等框架 [来源：字节跳动-AI 产品经理]。\n*   **技术栈关键词**：涉及 Python, PyTorch, LangChain, RAG, Agent 等 [来源：字节跳动-AI 产品经理]。\n*   **思维能力**：具备极强的逻辑拆解力，能像指挥交响乐一样控制模型输出 [来源：字节跳动-AI 产品经理]。\n\n**岗位职责重点**\n*   **Agent 设计**：定义 Agent 框架，设计 Planning、Reflection、Memory 策略 [来源：字节跳动-AI 产品经理]。\n*   **交互创新**：重塑 LUI 交互，探索意图驱动的流式 UI 与动态组件生成 [来源：字节跳动-AI 产品经理]。\n*   **场景编排**：编排超级工作流，深入客服、数据、ERP 等实战场景 [来源：字节跳动-AI 产品经理]。\n*   **模型调优**：进行模型精细化调教，编写结构化 Prompt，配合 RAG、Function Calling [来源：字节跳动-AI 产品经理]。\n*   **数据驱动**：建立交互好感度与任务成功率双重指标以驱动进化 [来源：字节跳动-AI 产品经理]。\n\n**加分项与软性素质**\n*   **落地经验**：有 LLM/Agent 落地案例者优先 [来源：字节跳动-AI 产品经理]。\n*   **行业敏感度**：需 24 小时高频冲浪，对新技术有雷达般的嗅觉 [来源：字节跳动-AI 产品经理]。\n\n### 3. 顾问建议\n鉴于当前匹配度为 72 分（中等），建议您采取以下策略：\n1.  **简历优化**：重点突出您在 **RAG** 技术上的具体应用细节，这是当前的核心匹配点 [来源：global_rank]。\n2.  **案例补充**：若有任何 **LLM 或 Agent 的落地案例**，请在简历中显著标注，这是该岗位的重要加分项 [来源：字节跳动-AI 产品经理]。\n3.  **技能自查**：确认是否深度使用过 **LangChain、Dify 或 Coze** 等框架，若不足建议尽快补充相关实践描述 [来源：字节跳动-AI 产品经理]。\n4.  **投递决策**：由于系统建议“进一步评估后再投递”，建议您先对照上述硬性要求完善简历，再决定是否正式申请 [来源：global_rank]。",
+  "reply_length": 1443,
+  "intent_match": true,
+  "tool_match_rate": 1.0,
+  "has_reply": true,
+  "events": [
+    {
+      "step": "intent",
+      "message": "正在识别您的意图...",
+      "_time": 13.657857656478882,
+      "type": "status"
+    },
+    {
+      "step": "plan",
+      "message": "正在规划任务...",
+      "_time": 13.657897472381592,
+      "type": "status"
+    },
+    {
+      "step": "execute",
+      "message": "正在执行分析...",
+      "_time": 29.394775390625,
+      "type": "status"
+    },
+    {
+      "step": "aggregate",
+      "message": "正在生成回复...",
+      "_time": 35.21353840827942,
+      "type": "status"
+    },
+    {
+      "text": "有",
+      "_time": 67.23127937316895,
+      "type": "delta"
+    },
+    {
+      "text": " 1 个",
+      "_time": 67.23568058013916,
+      "type": "delta"
+    },
+    {
+      "text": "匹配岗位可供参考",
+      "_time": 67.3719425201416,
+      "type": "delta"
+    },
+    {
+      "text": "。\n\n### ",
+      "_time": 67.37569260597229,
+      "type": "delta"
+    },
+    {
+      "text": "1. 岗位",
+      "_time": 67.51686024665833,
+      "type": "delta"
+    },
+    {
+      "text": "筛选结果\n基于",
+      "_time": 67.55345034599304,
+      "type": "delta"
+    },
+    {
+      "text": "您的简历与市场需求",
+      "_time": 67.66288781166077,
+      "type": "delta"
+    },
+    {
+      "text": "匹配",
+      "_time": 67.66560125350952,
+      "type": "delta"
+    },
+    {
+      "text": "，目前筛选出",
+      "_time": 67.75522637367249,
+      "type": "delta"
+    },
+    {
+      "text": " **1 个",
+      "_time": 67.75557255744934,
+      "type": "delta"
+    },
+    {
+      "text": "** 中等匹配",
+      "_time": 67.92806053161621,
+      "type": "delta"
+    },
+    {
+      "text": "度的",
+      "_time": 67.93277311325073,
+      "type": "delta"
+    },
+    {
+      "text": "岗位：\n*",
+      "_time": 67.9854781627655,
+      "type": "delta"
+    },
+    {
+      "text": "   **公司",
+      "_time": 67.99062490463257,
+      "type": "delta"
+    },
+    {
+      "text": "**：字节跳动",
+      "_time": 68.11200046539307,
+      "type": "delta"
+    },
+    {
+      "text": "\n*",
+      "_time": 68.11358857154846,
+      "type": "delta"
+    },
+    {
+      "text": "   **岗位**",
+      "_time": 68.25491452217102,
+      "type": "delta"
+    },
+    {
+      "text": "：AI 产品经理",
+      "_time": 68.26072645187378,
+      "type": "delta"
+    },
+    {
+      "text": "\n*   **",
+      "_time": 68.36201524734497,
+      "type": "delta"
+    },
+    {
+      "text": "匹配分数",
+      "_time": 68.36586427688599,
+      "type": "delta"
+    },
+    {
+      "text": "**：72",
+      "_time": 68.4728512763977,
+      "type": "delta"
+    },
+    {
+      "text": " 分 [",
+      "_time": 68.50279664993286,
+      "type": "delta"
+    },
+    {
+      "text": "来源：global_rank",
+      "_time": 68.59587788581848,
+      "type": "delta"
+    },
+    {
+      "text": "]",
+      "_time": 68.59954190254211,
+      "type": "delta"
+    },
+    {
+      "text": "\n*   **",
+      "_time": 68.68685793876648,
+      "type": "delta"
+    },
+    {
+      "text": "投递",
+      "_time": 68.68916249275208,
+      "type": "delta"
+    },
+    {
+      "text": "优先级**：中",
+      "_time": 68.80664944648743,
+      "type": "delta"
+    },
+    {
+      "text": " [来源",
+      "_time": 68.81153392791748,
+      "type": "delta"
+    },
+    {
+      "text": "：global_rank]",
+      "_time": 68.88678407669067,
+      "type": "delta"
+    },
+    {
+      "text": "\n*   **",
+      "_time": 68.88947820663452,
+      "type": "delta"
+    },
+    {
+      "text": "核心匹配点**",
+      "_time": 69.06384587287903,
+      "type": "delta"
+    },
+    {
+      "text": "：技能交集",
+      "_time": 69.06761860847473,
+      "type": "delta"
+    },
+    {
+      "text": "包含 RAG [",
+      "_time": 69.15490555763245,
+      "type": "delta"
+    },
+    {
+      "text": "来源：global",
+      "_time": 69.15666818618774,
+      "type": "delta"
+    },
+    {
+      "text": "_rank]\n*",
+      "_time": 69.31689119338989,
+      "type": "delta"
+    },
+    {
+      "text": "   **系统",
+      "_time": 69.321608543396,
+      "type": "delta"
+    },
+    {
+      "text": "建议**：暂未",
+      "_time": 69.40892457962036,
+      "type": "delta"
+    },
+    {
+      "text": "发现高度匹配岗位",
+      "_time": 69.41257381439209,
+      "type": "delta"
+    },
+    {
+      "text": "，该岗位可作为",
+      "_time": 69.5807454586029,
+      "type": "delta"
+    },
+    {
+      "text": "参考，建议",
+      "_time": 69.58352208137512,
+      "type": "delta"
+    },
+    {
+      "text": "进一步评估后再投递",
+      "_time": 69.67779588699341,
+      "type": "delta"
+    },
+    {
+      "text": " [来源：global",
+      "_time": 69.68042397499084,
+      "type": "delta"
+    },
+    {
+      "text": "_rank]\n\n###",
+      "_time": 69.85376954078674,
+      "type": "delta"
+    },
+    {
+      "text": " 2. ",
+      "_time": 69.85745358467102,
+      "type": "delta"
+    },
+    {
+      "text": "字节跳动 AI ",
+      "_time": 69.96572208404541,
+      "type": "delta"
+    },
+    {
+      "text": "产品经理重点",
+      "_time": 69.9685366153717,
+      "type": "delta"
+    },
+    {
+      "text": "分析\n该岗位",
+      "_time": 70.10539817810059,
+      "type": "delta"
+    },
+    {
+      "text": "对",
+      "_time": 70.10912442207336,
+      "type": "delta"
+    },
+    {
+      "text": "技术深度与落地",
+      "_time": 70.20669341087341,
+      "type": "delta"
+    },
+    {
+      "text": "能力有",
+      "_time": 70.21144676208496,
+      "type": "delta"
+    },
+    {
+      "text": "较高要求，具体",
+      "_time": 70.26961421966553,
+      "type": "delta"
+    },
+    {
+      "text": "画像",
+      "_time": 70.27337646484375,
+      "type": "delta"
+    },
+    {
+      "text": "如下：\n\n**",
+      "_time": 70.3996753692627,
+      "type": "delta"
+    },
+    {
+      "text": "硬性技能",
+      "_time": 70.40341091156006,
+      "type": "delta"
+    },
+    {
+      "text": "要求**\n*",
+      "_time": 70.46869277954102,
+      "type": "delta"
+    },
+    {
+      "text": "   **",
+      "_time": 70.47241544723511,
+      "type": "delta"
+    },
+    {
+      "text": "核心技术**：需",
+      "_time": 70.57767295837402,
+      "type": "delta"
+    },
+    {
+      "text": "熟练掌握 Transformer、Token",
+      "_time": 70.61377882957458,
+      "type": "delta"
+    },
+    {
+      "text": "、RAG ",
+      "_time": 70.78864479064941,
+      "type": "delta"
+    },
+    {
+      "text": "等核心概念 [",
+      "_time": 70.79118871688843,
+      "type": "delta"
+    },
+    {
+      "text": "来源：字节跳动",
+      "_time": 70.90860962867737,
+      "type": "delta"
+    },
+    {
+      "text": "-AI 产品经理",
+      "_time": 70.91338968276978,
+      "type": "delta"
+    },
+    {
+      "text": "]。\n*",
+      "_time": 71.01065492630005,
+      "type": "delta"
+    },
+    {
+      "text": "   **框架",
+      "_time": 71.01326370239258,
+      "type": "delta"
+    },
+    {
+      "text": "工具**：要求",
+      "_time": 71.16661334037781,
+      "type": "delta"
+    },
+    {
+      "text": "深度使用过 Lang",
+      "_time": 71.1701922416687,
+      "type": "delta"
+    },
+    {
+      "text": "Chain、Dify",
+      "_time": 71.28074169158936,
+      "type": "delta"
+    },
+    {
+      "text": "、Coze ",
+      "_time": 71.28542733192444,
+      "type": "delta"
+    },
+    {
+      "text": "或 LangGraph ",
+      "_time": 71.46174383163452,
+      "type": "delta"
+    },
+    {
+      "text": "等框架 [来源",
+      "_time": 71.46649360656738,
+      "type": "delta"
+    },
+    {
+      "text": "：字节跳动-A",
+      "_time": 71.56765556335449,
+      "type": "delta"
+    },
+    {
+      "text": "I 产品经理]",
+      "_time": 71.57013249397278,
+      "type": "delta"
+    },
+    {
+      "text": "。\n*  ",
+      "_time": 71.74063754081726,
+      "type": "delta"
+    },
+    {
+      "text": " **技术栈",
+      "_time": 71.74435710906982,
+      "type": "delta"
+    },
+    {
+      "text": "关键词**：涉及",
+      "_time": 71.8384575843811,
+      "type": "delta"
+    },
+    {
+      "text": " Python,",
+      "_time": 71.84508967399597,
+      "type": "delta"
+    },
+    {
+      "text": " PyTorch,",
+      "_time": 71.97436499595642,
+      "type": "delta"
+    },
+    {
+      "text": " LangChain, R",
+      "_time": 71.97843289375305,
+      "type": "delta"
+    },
+    {
+      "text": "AG, Agent ",
+      "_time": 72.08748579025269,
+      "type": "delta"
+    },
+    {
+      "text": "等 [来源：",
+      "_time": 72.12063407897949,
+      "type": "delta"
+    },
+    {
+      "text": "字节跳动-AI",
+      "_time": 72.23230648040771,
+      "type": "delta"
+    },
+    {
+      "text": " 产品经理]。",
+      "_time": 72.23814225196838,
+      "type": "delta"
+    },
+    {
+      "text": "\n*   **",
+      "_time": 72.37665700912476,
+      "type": "delta"
+    },
+    {
+      "text": "思维能力",
+      "_time": 72.38126039505005,
+      "type": "delta"
+    },
+    {
+      "text": "**：具备极强的",
+      "_time": 72.49859189987183,
+      "type": "delta"
+    },
+    {
+      "text": "逻辑拆解力，",
+      "_time": 72.50220489501953,
+      "type": "delta"
+    },
+    {
+      "text": "能像指挥交响",
+      "_time": 72.61046171188354,
+      "type": "delta"
+    },
+    {
+      "text": "乐一样控制模型",
+      "_time": 72.61540532112122,
+      "type": "delta"
+    },
+    {
+      "text": "输出 [来源：",
+      "_time": 72.79051113128662,
+      "type": "delta"
+    },
+    {
+      "text": "字节跳动-AI",
+      "_time": 72.79329776763916,
+      "type": "delta"
+    },
+    {
+      "text": " 产品经理]。",
+      "_time": 72.89842319488525,
+      "type": "delta"
+    },
+    {
+      "text": "\n\n**",
+      "_time": 72.90322685241699,
+      "type": "delta"
+    },
+    {
+      "text": "岗位职责重点**\n",
+      "_time": 73.04463791847229,
+      "type": "delta"
+    },
+    {
+      "text": "*",
+      "_time": 73.04698419570923,
+      "type": "delta"
+    },
+    {
+      "text": "   **Agent ",
+      "_time": 73.09543251991272,
+      "type": "delta"
+    },
+    {
+      "text": "设计",
+      "_time": 73.09921097755432,
+      "type": "delta"
+    },
+    {
+      "text": "**：定义 Agent",
+      "_time": 73.18747329711914,
+      "type": "delta"
+    },
+    {
+      "text": " 框架，设计",
+      "_time": 73.21961808204651,
+      "type": "delta"
+    },
+    {
+      "text": " Planning、Reflection、",
+      "_time": 73.33005833625793,
+      "type": "delta"
+    },
+    {
+      "text": "Memory 策略 [",
+      "_time": 73.3682029247284,
+      "type": "delta"
+    },
+    {
+      "text": "来源：字节跳动",
+      "_time": 73.47559022903442,
+      "type": "delta"
+    },
+    {
+      "text": "-AI 产品经理",
+      "_time": 73.48119330406189,
+      "type": "delta"
+    },
+    {
+      "text": "]。\n*",
+      "_time": 73.61849164962769,
+      "type": "delta"
+    },
+    {
+      "text": "   **交互创新",
+      "_time": 73.65259504318237,
+      "type": "delta"
+    },
+    {
+      "text": "**：重塑 L",
+      "_time": 73.76444697380066,
+      "type": "delta"
+    },
+    {
+      "text": "UI 交互，",
+      "_time": 73.76705646514893,
+      "type": "delta"
+    },
+    {
+      "text": "探索意图驱动的流",
+      "_time": 73.90743780136108,
+      "type": "delta"
+    },
+    {
+      "text": "式 UI 与",
+      "_time": 73.91215753555298,
+      "type": "delta"
+    },
+    {
+      "text": "动态组件生成 [",
+      "_time": 74.08245706558228,
+      "type": "delta"
+    },
+    {
+      "text": "来源：字节跳动",
+      "_time": 74.08512258529663,
+      "type": "delta"
+    },
+    {
+      "text": "-AI 产品经理",
+      "_time": 74.19633150100708,
+      "type": "delta"
+    },
+    {
+      "text": "]。\n*",
+      "_time": 74.19919490814209,
+      "type": "delta"
+    },
+    {
+      "text": "   **场景编排",
+      "_time": 74.39838552474976,
+      "type": "delta"
+    },
+    {
+      "text": "**：编排超级",
+      "_time": 74.40212225914001,
+      "type": "delta"
+    },
+    {
+      "text": "工作流，深入",
+      "_time": 74.48290824890137,
+      "type": "delta"
+    },
+    {
+      "text": "客服、数据、",
+      "_time": 74.487877368927,
+      "type": "delta"
+    },
+    {
+      "text": "ERP 等实战",
+      "_time": 74.66348934173584,
+      "type": "delta"
+    },
+    {
+      "text": "场景 [来源：",
+      "_time": 74.66713786125183,
+      "type": "delta"
+    },
+    {
+      "text": "字节跳动-AI",
+      "_time": 74.77241468429565,
+      "type": "delta"
+    },
+    {
+      "text": " 产品经理]。",
+      "_time": 74.77603459358215,
+      "type": "delta"
+    },
+    {
+      "text": "\n*   **",
+      "_time": 74.91494417190552,
+      "type": "delta"
+    },
+    {
+      "text": "模型调",
+      "_time": 74.95054507255554,
+      "type": "delta"
+    },
+    {
+      "text": "优**：进行",
+      "_time": 75.02234959602356,
+      "type": "delta"
+    },
+    {
+      "text": "模型精细化调教",
+      "_time": 75.02624130249023,
+      "type": "delta"
+    },
+    {
+      "text": "，编写结构化 Prompt",
+      "_time": 75.17041850090027,
+      "type": "delta"
+    },
+    {
+      "text": "，配合 RAG",
+      "_time": 75.19966244697571,
+      "type": "delta"
+    },
+    {
+      "text": "、Function Calling [",
+      "_time": 75.31136798858643,
+      "type": "delta"
+    },
+    {
+      "text": "来源：字节跳动",
+      "_time": 75.38622188568115,
+      "type": "delta"
+    },
+    {
+      "text": "-AI 产品经理",
+      "_time": 75.45632719993591,
+      "type": "delta"
+    },
+    {
+      "text": "]。\n*",
+      "_time": 75.4601047039032,
+      "type": "delta"
+    },
+    {
+      "text": "   **数据驱动",
+      "_time": 75.60031795501709,
+      "type": "delta"
+    },
+    {
+      "text": "**：建立交互",
+      "_time": 75.60550451278687,
+      "type": "delta"
+    },
+    {
+      "text": "好感度与任务",
+      "_time": 75.77729058265686,
+      "type": "delta"
+    },
+    {
+      "text": "成功率双重指标以",
+      "_time": 75.7821135520935,
+      "type": "delta"
+    },
+    {
+      "text": "驱动进化 [来源",
+      "_time": 75.88729763031006,
+      "type": "delta"
+    },
+    {
+      "text": "：字节跳动-A",
+      "_time": 75.89085602760315,
+      "type": "delta"
+    },
+    {
+      "text": "I 产品经理]",
+      "_time": 76.06016564369202,
+      "type": "delta"
+    },
+    {
+      "text": "。\n\n**",
+      "_time": 76.06595706939697,
+      "type": "delta"
+    },
+    {
+      "text": "加分项与软",
+      "_time": 76.15823698043823,
+      "type": "delta"
+    },
+    {
+      "text": "性素质",
+      "_time": 76.16185736656189,
+      "type": "delta"
+    },
+    {
+      "text": "**\n*  ",
+      "_time": 76.26615977287292,
+      "type": "delta"
+    },
+    {
+      "text": " **落地",
+      "_time": 76.27110266685486,
+      "type": "delta"
+    },
+    {
+      "text": "经验**：有",
+      "_time": 76.41217613220215,
+      "type": "delta"
+    },
+    {
+      "text": " L",
+      "_time": 76.41606903076172,
+      "type": "delta"
+    },
+    {
+      "text": "LM/Agent ",
+      "_time": 76.46424102783203,
+      "type": "delta"
+    },
+    {
+      "text": "落地案例者优先 [",
+      "_time": 76.46679544448853,
+      "type": "delta"
+    },
+    {
+      "text": "来源：字节跳动",
+      "_time": 76.64240503311157,
+      "type": "delta"
+    },
+    {
+      "text": "-AI 产品经理",
+      "_time": 76.64811873435974,
+      "type": "delta"
+    },
+    {
+      "text": "]。\n*",
+      "_time": 76.75180673599243,
+      "type": "delta"
+    },
+    {
+      "text": "   **行业",
+      "_time": 76.75571250915527,
+      "type": "delta"
+    },
+    {
+      "text": "敏感度**：需",
+      "_time": 76.87844562530518,
+      "type": "delta"
+    },
+    {
+      "text": " 24 ",
+      "_time": 76.91214656829834,
+      "type": "delta"
+    },
+    {
+      "text": "小时高频冲浪，",
+      "_time": 77.0221791267395,
+      "type": "delta"
+    },
+    {
+      "text": "对新技术有雷达",
+      "_time": 77.02589583396912,
+      "type": "delta"
+    },
+    {
+      "text": "般的嗅觉 [来源",
+      "_time": 77.16320610046387,
+      "type": "delta"
+    },
+    {
+      "text": "：字节跳动-A",
+      "_time": 77.20015478134155,
+      "type": "delta"
+    },
+    {
+      "text": "I 产品经理]",
+      "_time": 77.30955362319946,
+      "type": "delta"
+    },
+    {
+      "text": "。\n\n### ",
+      "_time": 77.31184649467468,
+      "type": "delta"
+    },
+    {
+      "text": "3. 顾问",
+      "_time": 77.4531922340393,
+      "type": "delta"
+    },
+    {
+      "text": "建议\n鉴于",
+      "_time": 77.45697212219238,
+      "type": "delta"
+    },
+    {
+      "text": "当前匹配度为",
+      "_time": 77.70827507972717,
+      "type": "delta"
+    },
+    {
+      "text": " 72 ",
+      "_time": 77.71166777610779,
+      "type": "delta"
+    },
+    {
+      "text": "分（中等），",
+      "_time": 77.72297739982605,
+      "type": "delta"
+    },
+    {
+      "text": "建议您采取",
+      "_time": 77.72569584846497,
+      "type": "delta"
+    },
+    {
+      "text": "以下策略：\n",
+      "_time": 77.8321304321289,
+      "type": "delta"
+    },
+    {
+      "text": "1. ",
+      "_time": 77.83500790596008,
+      "type": "delta"
+    },
+    {
+      "text": " **简历优化**",
+      "_time": 78.00184202194214,
+      "type": "delta"
+    },
+    {
+      "text": "：重点突出您在",
+      "_time": 78.00377631187439,
+      "type": "delta"
+    },
+    {
+      "text": " **RAG**",
+      "_time": 78.10120701789856,
+      "type": "delta"
+    },
+    {
+      "text": " 技术上的",
+      "_time": 78.10802507400513,
+      "type": "delta"
+    },
+    {
+      "text": "具体应用细节，",
+      "_time": 78.25788736343384,
+      "type": "delta"
+    },
+    {
+      "text": "这是当前的",
+      "_time": 78.26265335083008,
+      "type": "delta"
+    },
+    {
+      "text": "核心匹配点 [",
+      "_time": 78.33626890182495,
+      "type": "delta"
+    },
+    {
+      "text": "来源",
+      "_time": 78.33982515335083,
+      "type": "delta"
+    },
+    {
+      "text": "：global_rank]",
+      "_time": 78.425124168396,
+      "type": "delta"
+    },
+    {
+      "text": "。\n2.",
+      "_time": 78.46108508110046,
+      "type": "delta"
+    },
+    {
+      "text": "  **案例补充",
+      "_time": 78.57026314735413,
+      "type": "delta"
+    },
+    {
+      "text": "**：若",
+      "_time": 78.57496809959412,
+      "type": "delta"
+    },
+    {
+      "text": "有任何 **LLM",
+      "_time": 78.69518780708313,
+      "type": "delta"
+    },
+    {
+      "text": " ",
+      "_time": 78.70185112953186,
+      "type": "delta"
+    },
+    {
+      "text": "或 Agent 的",
+      "_time": 78.81792330741882,
+      "type": "delta"
+    },
+    {
+      "text": "落地案例**，",
+      "_time": 78.82278323173523,
+      "type": "delta"
+    },
+    {
+      "text": "请在简历中显著",
+      "_time": 78.92716574668884,
+      "type": "delta"
+    },
+    {
+      "text": "标注",
+      "_time": 78.93284940719604,
+      "type": "delta"
+    },
+    {
+      "text": "，这是该岗位",
+      "_time": 79.02144265174866,
+      "type": "delta"
+    },
+    {
+      "text": "的重要加分项 [",
+      "_time": 79.05512046813965,
+      "type": "delta"
+    },
+    {
+      "text": "来源：字节跳动",
+      "_time": 79.16196465492249,
+      "type": "delta"
+    },
+    {
+      "text": "-AI 产品经理",
+      "_time": 79.16816806793213,
+      "type": "delta"
+    },
+    {
+      "text": "]。\n3",
+      "_time": 79.30712366104126,
+      "type": "delta"
+    },
+    {
+      "text": ".  **技能",
+      "_time": 79.31080532073975,
+      "type": "delta"
+    },
+    {
+      "text": "自查**：确认",
+      "_time": 79.4900553226471,
+      "type": "delta"
+    },
+    {
+      "text": "是否深度",
+      "_time": 79.49377179145813,
+      "type": "delta"
+    },
+    {
+      "text": "使用过 **Lang",
+      "_time": 79.55897307395935,
+      "type": "delta"
+    },
+    {
+      "text": "Chain、Dify",
+      "_time": 79.56374788284302,
+      "type": "delta"
+    },
+    {
+      "text": " 或 Coze",
+      "_time": 79.73800015449524,
+      "type": "delta"
+    },
+    {
+      "text": "** 等框架",
+      "_time": 79.7416934967041,
+      "type": "delta"
+    },
+    {
+      "text": "，若不足建议",
+      "_time": 79.84694123268127,
+      "type": "delta"
+    },
+    {
+      "text": "尽快",
+      "_time": 79.85168242454529,
+      "type": "delta"
+    },
+    {
+      "text": "补充相关实践描述",
+      "_time": 79.9350254535675,
+      "type": "delta"
+    },
+    {
+      "text": " [来源：字节",
+      "_time": 79.97491788864136,
+      "type": "delta"
+    },
+    {
+      "text": "跳动-AI ",
+      "_time": 80.07992148399353,
+      "type": "delta"
+    },
+    {
+      "text": "产品经理]。\n",
+      "_time": 80.08251476287842,
+      "type": "delta"
+    },
+    {
+      "text": "4.  **",
+      "_time": 80.22577238082886,
+      "type": "delta"
+    },
+    {
+      "text": "投递决策**：",
+      "_time": 80.26291632652283,
+      "type": "delta"
+    },
+    {
+      "text": "由于系统建议“",
+      "_time": 80.37706232070923,
+      "type": "delta"
+    },
+    {
+      "text": "进一步评估后再投递",
+      "_time": 80.37965941429138,
+      "type": "delta"
+    },
+    {
+      "text": "”，建议您先对照",
+      "_time": 80.51375222206116,
+      "type": "delta"
+    },
+    {
+      "text": "上述硬性",
+      "_time": 80.5186357498169,
+      "type": "delta"
+    },
+    {
+      "text": "要求完善简历，",
+      "_time": 80.6569573879242,
+      "type": "delta"
+    },
+    {
+      "text": "再决定是否",
+      "_time": 80.66070246696472,
+      "type": "delta"
+    },
+    {
+      "text": "正式申请 [来源",
+      "_time": 80.73093056678772,
+      "type": "delta"
+    },
+    {
+      "text": "：global",
+      "_time": 80.73379755020142,
+      "type": "delta"
+    },
+    {
+      "text": "_rank]。",
+      "_time": 80.87779521942139,
+      "type": "delta"
+    },
+    {
+      "session_id": "eval_chen_07_1780561471781",
+      "intent": "position_explore",
+      "route_meta": {
+        "layer": "llm",
+        "intent": "position_explore",
+        "confidence": 0.88,
+        "demands": [
+          {
+            "intent": "position_explore",
+            "entities": {
+              "company": "字节跳动",
+              "position": "产品经理",
+              "search_keywords": "帮我筛选几个能投递的岗位，再重点分析字节跳动的 AI 产品经理岗位",
+              "sort_by": "match_score",
+              "top_k": 5
+            }
+          },
+          {
+            "intent": "match_assess",
+            "entities": {
+              "company": "字节跳动",
+              "position": "产品经理",
+              "attributes": [
+                "匹配度"
+              ],
+              "jd_source": "kb"
+            }
+          }
+        ],
+        "plan_tasks": 5
+      },
+      "agent_mode": "llm",
+      "is_clarification": false,
+      "agent": {
+        "rewritten_query": "帮我筛选几个能投递的岗位，再重点分析字节跳动的 AI 产品经理岗位",
+        "tools": [
+          {
+            "tool": "kb_retrieve",
+            "status": "✅",
+            "params": {
+              "query": "字节跳动 产品经理",
+              "top_k": 5,
+              "company": "字节跳动",
+              "position": "产品经理"
+            },
+            "result_preview": "{'chunks': [{'chunk_id': 'ac9973c8-01be-4cd6-9a99-097873a59cf0_chunk_3', 'content': '【字节跳动 · AI产品经理 硬性要求】\\n熟练掌握Transformer、Token、RAG等核心概念', 'metadata': {'company': '字节跳动', 'index': 3, 'jd_id': 'ac9973"
+          },
+          {
+            "tool": "kb_retrieve",
+            "status": "✅",
+            "params": {
+              "query": "字节跳动 AI产品经理",
+              "top_k": 2,
+              "company": "字节跳动",
+              "position": "AI产品经理"
+            },
+            "result_preview": "{'chunks': [{'chunk_id': 'ac9973c8-01be-4cd6-9a99-097873a59cf0_chunk_5', 'content': '【字节跳动 · AI产品经理 硬性要求】\\n具备极强的逻辑拆解力，能像指挥交响乐一样控制模型输出', 'metadata': {'company': '字节跳动', 'index': 5, 'jd_id': 'ac9973c8-0"
+          },
+          {
+            "tool": "global_rank",
+            "status": "✅",
+            "params": {
+              "resume_text": "姓名：陈雨桐\r\n教育背景\r\n江南科技大学\r\n信息工程学院·软件工程（AI应用方向）·硕士\r\n2024.09-2027.06（预计）\r\nGPA: 3.4/4.0 | 主修：机器学习基础、数据库系统、软件项目管理、人机交互设计\r\n\r\n云溪大学\r\n计算机学院·信息管理与信息系统·本科\r\n2020.09-2024.06\r\n荣誉：两次校级三等奖学金 | 主修：数据结构、管理学原理、Web开发技术、统计学\r\n\r\n项目经历\r\n求职助手小程序 — 智能简历匹配与面试模拟工具\r\n2025.03-2025.11\r\n产品经理 | 三人小组\r\n- 需求分析：设计调研问卷回收40余份有效样本，梳理\"简历评估\"与\"定向面试模拟\"核心需求，使用Figma完成低保真原型，输出产品需求文档。\r\n- AI匹配策略：调研开源Embedding模型实现简历与JD语义相似度计算，探索多维度匹配方案，对比整篇匹配与分块匹配效果差异，持续优化推荐排序。\r\n- 内容生成：基于大模型AI设计结构化Prompt，融合岗位关键词与简历信息输出个性化面试题，建立追问机制增强模拟面试针对性。\r\n- 测试验证：组织20人内测收集用户路径与反馈数据，针对复杂PDF格式设计补充录入机制，完成从需求分析到上线测试的完整产品闭环。\r\n\r\n教务问答机器人 — 基于校内政策的RAG问答系统\r\n2024.10-2025.02\r\n产品设计与测试 | 实验室课题项目\r\n- 知识库构建：收集整理教务处政策文件、培养方案及历史问答共80余份，完成扫描件OCR识别、格式转换与结构化清洗，建立可检索的领域知识库。\r\n- 交互设计：设计Web端对话界面，参考主流客服产品布局增加\"推荐提问\"推荐模块降低投入成本，针对政策类回答设计溯源展示功能增强可信度。\r\n- 效果测试：参与搭建检索增强生成链路，完成实验环境下多轮问答测试，验证标准政策类问题回答准确率，整理测试数据与优化建议形成可复用方案。\r\n\r\n校园经历\r\n江南科技大学软件学院学生会·宣传部干事\r\n2024.09-2025.06\r\n- 负责学院官方公众号推文排版与发布，累计输出活动宣传稿件10余篇；协助组织院内编程比赛，负责报名统计与现场签到。\r\n\r\n云溪大学图书馆·勤工助学岗\r\n2022.03-2023.06\r\n- 负责电子阅览室日常值班，协助同学解决基础网络与设备使用问题；参与旧期刊电子目录录入与数据整理工作。\r\n\r\n获奖情况\r\n- 2025.05 江南科技大学研究生学业三等奖学金\r\n- 2024.11 学院AI应用创新赛（课程组）三等奖\r\n- 2022.06 云溪大学优秀共青团员\r\n- 2022.12 校级网页设计比赛优秀奖\r\n\r\n个人技能\r\n- 产品工具：熟练使用Figma进行原型与交互演示，了解Axure基础操作；能够使用Xmind梳理产品架构，通过腾讯文档/飞书写PRD。\r\n- 技术理解：了解大语言模型在应用层的落地方式，具备Prompt Engineering实践经验；理解RAG基本架构与工作流程，了解Embedding与向量检索作用。\r\n- 语言能力：英语CET-4（525分），可阅读英文技术文档与产品资料。\r\n- 办公技能：熟练使用Office办公软件，掌握Excel数据透视表等基础数据分析功能。",
+              "candidate_jds": [
+                {
+                  "chunk_id": "ac9973c8-01be-4cd6-9a99-097873a59cf0_chunk_3",
+                  "content": "【字节跳动 · AI产品经理 硬性要求】\n熟练掌握Transformer、Token、RAG等核心概念",
+                  "metadata": {
+                    "company": "字节跳动",
+                    "index": 3,
+                    "jd_id": "ac9973c8-01be-4cd6-9a99-097873a59cf0",
+                    "position": "AI产品经理",
+                    "priority": "high",
+                    "section": "hard_requirements",
+                    "strategy": "semantic"
+                  },
+                  "distance": null,
+                  "bm25_score": 13.29757395863349,
+                  "vec_norm": 0.0,
+                  "bm25_norm": 0.9815429356960411,
+                  "hybrid_score": 0.2944628807088123,
+                  "rerank_score": 0.9986
+                },
+                {
+                  "chunk_id": "ac9973c8-01be-4cd6-9a99-097873a59cf0_chunk_8",
+                  "content": "【字节跳动 · AI产品经理 关键词】\nPython, PyTorch, LangChain, RAG, Agent, 产品经理, AI",
+                  "metadata": {
+                    "company": "字节跳动",
+                    "index": 8,
+                    "jd_id": "ac9973c8-01be-4cd6-9a99-097873a59cf0",
+                    "position": "AI产品经理",
+                    "section": "keywords",
+                    "strategy": "semantic"
+                  },
+                  "distance": null,
+                  "bm25_score": 13.45033650682065,
+                  "vec_norm": 0.0,
+                  "bm25_norm": 1.0,
+                  "hybrid_score": 0.3,
+                  "rerank_score": 0.9981
+                },
+                {
+                  "chunk_id": "ac9973c8-01be-4cd6-9a99-097873a59cf0_chunk_6",
+                  "content": "【字节跳动 · AI产品经理 硬性要求】\n24小时高频冲浪，对新技术有雷达般的嗅觉",
+                  "metadata": {
+                    "company": "字节跳动",
+                    "index": 6,
+                    "jd_id": "ac9973c8-01be-4cd6-9a99-097873a59cf0",
+                    "position": "AI产品经理",
+                    "priority": "high",
+                    "section": "hard_requirements",
+                    "strategy": "semantic"
+                  },
+                  "distance": null,
+                  "bm25_score": 13.158133950491646,
+                  "vec_norm": 0.0,
+                  "bm25_norm": 0.9646955262533458,
+                  "hybrid_score": 0.2894086578760037,
+                  "rerank_score": 0.997
+                },
+                {
+                  "chunk_id": "ac9973c8-01be-4cd6-9a99-097873a59cf0_chunk_7",
+                  "content": "【字节跳动 · AI产品经理 软性要求/加分项】\n有LLM/Agent落地案例者优先",
+                  "metadata": {
+                    "company": "字节跳动",
+                    "index": 7,
+                    "jd_id": "ac9973c8-01be-4cd6-9a99-097873a59cf0",
+                    "position": "AI产品经理",
+                    "priority": "medium",
+                    "section": "soft_requirements",
+                    "strategy": "semantic"
+                  },
+                  "distance": null,
+                  "bm25_score": 13.29757395863349,
+                  "vec_norm": 0.0,
+                  "bm25_norm": 0.9815429356960411,
+                  "hybrid_score": 0.2944628807088123,
+                  "rerank_score": 0.996
+                },
+                {
+                  "chunk_id": "ac9973c8-01be-4cd6-9a99-097873a59cf0_chunk_4",
+                  "content": "【字节跳动 · AI产品经理 硬性要求】\n深度使用过LangChain、Dify、Coze或LangGraph等框架",
+                  "metadata": {
+                    "company": "字节跳动",
+                    "index": 4,
+                    "jd_id": "ac9973c8-01be-4cd6-9a99-097873a59cf0",
+                    "position": "AI产品经理",
+                    "priority": "high",
+                    "section": "hard_requirements",
+                    "strategy": "semantic"
+                  },
+                  "distance": null,
+                  "bm25_score": 13.158133950491646,
+                  "vec_norm": 0.0,
+                  "bm25_norm": 0.9646955262533458,
+                  "hybrid_score": 0.2894086578760037,
+                  "rerank_score": 0.9958
+                }
+              ],
+              "sort_by": "match_score"
+            },
+            "result_preview": "{'rankings': [{'rank': 1, 'jd_id': 'ac9973c8-01be-4cd6-9a99-097873a59cf0', 'company': '字节跳动', 'position': 'AI产品经理', 'match_score': 72, 'recommend_reason': '技能匹配：rag', 'key_match': ['技能交集：rag'], 'key_g"
+          },
+          {
+            "tool": "match_analyze",
+            "status": "✅",
+            "params": {
+              "resume_text": "姓名：陈雨桐\r\n教育背景\r\n江南科技大学\r\n信息工程学院·软件工程（AI应用方向）·硕士\r\n2024.09-2027.06（预计）\r\nGPA: 3.4/4.0 | 主修：机器学习基础、数据库系统、软件项目管理、人机交互设计\r\n\r\n云溪大学\r\n计算机学院·信息管理与信息系统·本科\r\n2020.09-2024.06\r\n荣誉：两次校级三等奖学金 | 主修：数据结构、管理学原理、Web开发技术、统计学\r\n\r\n项目经历\r\n求职助手小程序 — 智能简历匹配与面试模拟工具\r\n2025.03-2025.11\r\n产品经理 | 三人小组\r\n- 需求分析：设计调研问卷回收40余份有效样本，梳理\"简历评估\"与\"定向面试模拟\"核心需求，使用Figma完成低保真原型，输出产品需求文档。\r\n- AI匹配策略：调研开源Embedding模型实现简历与JD语义相似度计算，探索多维度匹配方案，对比整篇匹配与分块匹配效果差异，持续优化推荐排序。\r\n- 内容生成：基于大模型AI设计结构化Prompt，融合岗位关键词与简历信息输出个性化面试题，建立追问机制增强模拟面试针对性。\r\n- 测试验证：组织20人内测收集用户路径与反馈数据，针对复杂PDF格式设计补充录入机制，完成从需求分析到上线测试的完整产品闭环。\r\n\r\n教务问答机器人 — 基于校内政策的RAG问答系统\r\n2024.10-2025.02\r\n产品设计与测试 | 实验室课题项目\r\n- 知识库构建：收集整理教务处政策文件、培养方案及历史问答共80余份，完成扫描件OCR识别、格式转换与结构化清洗，建立可检索的领域知识库。\r\n- 交互设计：设计Web端对话界面，参考主流客服产品布局增加\"推荐提问\"推荐模块降低投入成本，针对政策类回答设计溯源展示功能增强可信度。\r\n- 效果测试：参与搭建检索增强生成链路，完成实验环境下多轮问答测试，验证标准政策类问题回答准确率，整理测试数据与优化建议形成可复用方案。\r\n\r\n校园经历\r\n江南科技大学软件学院学生会·宣传部干事\r\n2024.09-2025.06\r\n- 负责学院官方公众号推文排版与发布，累计输出活动宣传稿件10余篇；协助组织院内编程比赛，负责报名统计与现场签到。\r\n\r\n云溪大学图书馆·勤工助学岗\r\n2022.03-2023.06\r\n- 负责电子阅览室日常值班，协助同学解决基础网络与设备使用问题；参与旧期刊电子目录录入与数据整理工作。\r\n\r\n获奖情况\r\n- 2025.05 江南科技大学研究生学业三等奖学金\r\n- 2024.11 学院AI应用创新赛（课程组）三等奖\r\n- 2022.06 云溪大学优秀共青团员\r\n- 2022.12 校级网页设计比赛优秀奖\r\n\r\n个人技能\r\n- 产品工具：熟练使用Figma进行原型与交互演示，了解Axure基础操作；能够使用Xmind梳理产品架构，通过腾讯文档/飞书写PRD。\r\n- 技术理解：了解大语言模型在应用层的落地方式，具备Prompt Engineering实践经验；理解RAG基本架构与工作流程，了解Embedding与向量检索作用。\r\n- 语言能力：英语CET-4（525分），可阅读英文技术文档与产品资料。\r\n- 办公技能：熟练使用Office办公软件，掌握Excel数据透视表等基础数据分析功能。",
+              "jd_text": "{{T1.output.chunks[0].text}}",
+              "company": "字节跳动",
+              "position": "AI产品经理",
+              "attributes": [
+                "匹配度"
+              ]
+            },
+            "result_preview": "{'score': 0, 'label': '不匹配', 'advantages': [], 'weaknesses': ['未提供职位描述（JD）文本，无法进行候选人与职位要求的对比分析。请提供完整的JD内容以便评估。'], 'suggestions': ['核心能力要求: 未知'], 'match_score': 0, 'covered': [], 'missing_experience': "
+          }
+        ],
+        "kb_chunks_count": 5,
+        "system_prompt_preview": "你是一位专业的求职顾问。请基于以下工具执行结果，给用户一个清晰、有帮助的回复。\n要求：\n1. 先直接回答用户的问题（是/否/有/没有），不要绕弯子，不要重复用户的原话\n2. 如果有匹配分析结果，给出具体的分数和建议\n3. 如果有检索结果，基于事实回答，不要编造\n4. 【强制】引用信息时必须标注来源。每个引用的事实后面都要跟 [来源：公司名-岗位名] 格式。   kb_retrieve 结果的 ch"
+      },
+      "memory": {
+        "working_turns": 1,
+        "compressed_blocks": 0,
+        "current_topic": "general",
+        "evidence_cache_size": 5
+      },
+      "reply": "有 1 个匹配岗位可供参考。\n\n### 1. 岗位筛选结果\n基于您的简历与市场需求匹配，目前筛选出 **1 个** 中等匹配度的岗位：\n*   **公司**：字节跳动\n*   **岗位**：AI 产品经理\n*   **匹配分数**：72 分 [来源：global_rank]\n*   **投递优先级**：中 [来源：global_rank]\n*   **核心匹配点**：技能交集包含 RAG [来源：global_rank]\n*   **系统建议**：暂未发现高度匹配岗位，该岗位可作为参考，建议进一步评估后再投递 [来源：global_rank]\n\n### 2. 字节跳动 AI 产品经理重点分析\n该岗位对技术深度与落地能力有较高要求，具体画像如下：\n\n**硬性技能要求**\n*   **核心技术**：需熟练掌握 Transformer、Token、RAG 等核心概念 [来源：字节跳动-AI 产品经理]。\n*   **框架工具**：要求深度使用过 LangChain、Dify、Coze 或 LangGraph 等框架 [来源：字节跳动-AI 产品经理]。\n*   **技术栈关键词**：涉及 Python, PyTorch, LangChain, RAG, Agent 等 [来源：字节跳动-AI 产品经理]。\n*   **思维能力**：具备极强的逻辑拆解力，能像指挥交响乐一样控制模型输出 [来源：字节跳动-AI 产品经理]。\n\n**岗位职责重点**\n*   **Agent 设计**：定义 Agent 框架，设计 Planning、Reflection、Memory 策略 [来源：字节跳动-AI 产品经理]。\n*   **交互创新**：重塑 LUI 交互，探索意图驱动的流式 UI 与动态组件生成 [来源：字节跳动-AI 产品经理]。\n*   **场景编排**：编排超级工作流，深入客服、数据、ERP 等实战场景 [来源：字节跳动-AI 产品经理]。\n*   **模型调优**：进行模型精细化调教，编写结构化 Prompt，配合 RAG、Function Calling [来源：字节跳动-AI 产品经理]。\n*   **数据驱动**：建立交互好感度与任务成功率双重指标以驱动进化 [来源：字节跳动-AI 产品经理]。\n\n**加分项与软性素质**\n*   **落地经验**：有 LLM/Agent 落地案例者优先 [来源：字节跳动-AI 产品经理]。\n*   **行业敏感度**：需 24 小时高频冲浪，对新技术有雷达般的嗅觉 [来源：字节跳动-AI 产品经理]。\n\n### 3. 顾问建议\n鉴于当前匹配度为 72 分（中等），建议您采取以下策略：\n1.  **简历优化**：重点突出您在 **RAG** 技术上的具体应用细节，这是当前的核心匹配点 [来源：global_rank]。\n2.  **案例补充**：若有任何 **LLM 或 Agent 的落地案例**，请在简历中显著标注，这是该岗位的重要加分项 [来源：字节跳动-AI 产品经理]。\n3.  **技能自查**：确认是否深度使用过 **LangChain、Dify 或 Coze** 等框架，若不足建议尽快补充相关实践描述 [来源：字节跳动-AI 产品经理]。\n4.  **投递决策**：由于系统建议“进一步评估后再投递”，建议您先对照上述硬性要求完善简历，再决定是否正式申请 [来源：global_rank]。",
+      "debug_info": {
+        "task_graph": {
+          "tasks": {
+            "T0": {
+              "task_id": "T0",
+              "task_type": "tool_call",
+              "tool_name": "kb_retrieve",
+              "status": "success",
+              "parameters": {
+                "query": "字节跳动 产品经理",
+                "top_k": 5,
+                "company": "字节跳动",
+                "position": "产品经理"
+              },
+              "resolved_params": {
+                "query": "字节跳动 产品经理",
+                "top_k": 5,
+                "company": "字节跳动",
+                "position": "产品经理"
+              },
+              "result": {
+                "chunks": [
+                  {
+                    "chunk_id": "ac9973c8-01be-4cd6-9a99-097873a59cf0_chunk_3",
+                    "content": "【字节跳动 · AI产品经理 硬性要求】\n熟练掌握Transformer、Token、RAG等核心概念",
+                    "metadata": {
+                      "company": "字节跳动",
+                      "index": 3,
+                      "jd_id": "ac9973c8-01be-4cd6-9a99-097873a59cf0",
+                      "position": "AI产品经理",
+                      "priority": "high",
+                      "section": "hard_requirements",
+                      "strategy": "semantic"
+                    },
+                    "distance": null,
+                    "bm25_score": 13.29757395863349,
+                    "vec_norm": 0.0,
+                    "bm25_norm": 0.9815429356960411,
+                    "hybrid_score": 0.2944628807088123,
+                    "rerank_score": 0.9986
+                  },
+                  {
+                    "chunk_id": "ac9973c8-01be-4cd6-9a99-097873a59cf0_chunk_8",
+                    "content": "【字节跳动 · AI产品经理 关键词】\nPython, PyTorch, LangChain, RAG, Agent, 产品经理, AI",
+                    "metadata": {
+                      "company": "字节跳动",
+                      "index": 8,
+                      "jd_id": "ac9973c8-01be-4cd6-9a99-097873a59cf0",
+                      "position": "AI产品经理",
+                      "section": "keywords",
+                      "strategy": "semantic"
+                    },
+                    "distance": null,
+                    "bm25_score": 13.45033650682065,
+                    "vec_norm": 0.0,
+                    "bm25_norm": 1.0,
+                    "hybrid_score": 0.3,
+                    "rerank_score": 0.9981
+                  },
+                  {
+                    "chunk_id": "ac9973c8-01be-4cd6-9a99-097873a59cf0_chunk_6",
+                    "content": "【字节跳动 · AI产品经理 硬性要求】\n24小时高频冲浪，对新技术有雷达般的嗅觉",
+                    "metadata": {
+                      "company": "字节跳动",
+                      "index": 6,
+                      "jd_id": "ac9973c8-01be-4cd6-9a99-097873a59cf0",
+                      "position": "AI产品经理",
+                      "priority": "high",
+                      "section": "hard_requirements",
+                      "strategy": "semantic"
+                    },
+                    "distance": null,
+                    "bm25_score": 13.158133950491646,
+                    "vec_norm": 0.0,
+                    "bm25_norm": 0.9646955262533458,
+                    "hybrid_score": 0.2894086578760037,
+                    "rerank_score": 0.997
+                  },
+                  {
+                    "chunk_id": "ac9973c8-01be-4cd6-9a99-097873a59cf0_chunk_7",
+                    "content": "【字节跳动 · AI产品经理 软性要求/加分项】\n有LLM/Agent落地案例者优先",
+                    "metadata": {
+                      "company": "字节跳动",
+                      "index": 7,
+                      "jd_id": "ac9973c8-01be-4cd6-9a99-097873a59cf0",
+                      "position": "AI产品经理",
+                      "priority": "medium",
+                      "section": "soft_requirements",
+                      "strategy": "semantic"
+                    },
+                    "distance": null,
+                    "bm25_score": 13.29757395863349,
+                    "vec_norm": 0.0,
+                    "bm25_norm": 0.9815429356960411,
+                    "hybrid_score": 0.2944628807088123,
+                    "rerank_score": 0.996
+                  },
+                  {
+                    "chunk_id": "ac9973c8-01be-4cd6-9a99-097873a59cf0_chunk_4",
+                    "content": "【字节跳动 · AI产品经理 硬性要求】\n深度使用过LangChain、Dify、Coze或LangGraph等框架",
+                    "metadata": {
+                      "company": "字节跳动",
+                      "index": 4,
+                      "jd_id": "ac9973c8-01be-4cd6-9a99-097873a59cf0",
+                      "position": "AI产品经理",
+                      "priority": "high",
+                      "section": "hard_requirements",
+                      "strategy": "semantic"
+                    },
+                    "distance": null,
+                    "bm25_score": 13.158133950491646,
+                    "vec_norm": 0.0,
+                    "bm25_norm": 0.9646955262533458,
+                    "hybrid_score": 0.2894086578760037,
+                    "rerank_score": 0.9958
+                  }
+                ],
+                "query": "字节跳动 产品经理",
+                "filters": {
+                  "company": "字节跳动",
+                  "position": "产品经理"
+                },
+                "strategy": "hybrid(70%vec+30%bm25)+reranker",
+                "pool_k": 5,
+                "rerank_k": 10,
+                "pool_size": 20,
+                "vec_only": 0,
+                "bm25_only": 20,
+                "both": 0,
+                "rerank": {
+                  "enabled": true,
+                  "candidates": 5,
+                  "output": 5,
+                  "best_rerank_score": 0.9986
+                }
+              },
+              "observation": "工具 kb_retrieve 执行成功"
+            },
+            "T1": {
+              "task_id": "T1",
+              "task_type": "tool_call",
+              "tool_name": "kb_retrieve",
+              "status": "success",
+              "parameters": {
+                "query": "字节跳动 AI产品经理",
+                "top_k": 2,
+                "company": "字节跳动",
+                "position": "AI产品经理"
+              },
+              "resolved_params": {
+                "query": "字节跳动 AI产品经理",
+                "top_k": 2,
+                "company": "字节跳动",
+                "position": "AI产品经理"
+              },
+              "result": {
+                "chunks": [
+                  {
+                    "chunk_id": "ac9973c8-01be-4cd6-9a99-097873a59cf0_chunk_5",
+                    "content": "【字节跳动 · AI产品经理 硬性要求】\n具备极强的逻辑拆解力，能像指挥交响乐一样控制模型输出",
+                    "metadata": {
+                      "company": "字节跳动",
+                      "index": 5,
+                      "jd_id": "ac9973c8-01be-4cd6-9a99-097873a59cf0",
+                      "position": "AI产品经理",
+                      "priority": "high",
+                      "section": "hard_requirements",
+                      "strategy": "semantic"
+                    },
+                    "distance": 0.33240896463394165,
+                    "bm25_score": 13.909874919659451,
+                    "vec_norm": 0.8145097267734441,
+                    "bm25_norm": 0.8582741299210837,
+                    "hybrid_score": 0.827639047717736,
+                    "rerank_score": 0.9992
+                  },
+                  {
+                    "chunk_id": "ac9973c8-01be-4cd6-9a99-097873a59cf0_chunk_1",
+                    "content": "【字节跳动 · AI产品经理 岗位职责】\n1. 定义Agent框架：设计Planning、Reflection、Memory策略。2. 重塑LUI交互：探索意图驱动的流式UI与动态组件生成。3. 编排超级工作流：深入客服、数据、ERP等实战场景。4. 模型精细化调教：编写结构化Prompt，配合RAG、Function Calling。5. 数据驱动进化：建立交互好感度与任务成功率双重指标。",
+                    "metadata": {
+                      "company": "字节跳动",
+                      "index": 1,
+                      "jd_id": "ac9973c8-01be-4cd6-9a99-097873a59cf0",
+                      "position": "AI产品经理",
+                      "section": "responsibilities",
+                      "strategy": "semantic"
+                    },
+                    "distance": 0.2871961295604706,
+                    "bm25_score": 8.56408648103769,
+                    "vec_norm": 1.0,
+                    "bm25_norm": 0.23213566249506196,
+                    "hybrid_score": 0.7696406987485185,
+                    "rerank_score": 0.9983
+                  }
+                ],
+                "query": "字节跳动 AI产品经理",
+                "filters": {
+                  "company": "字节跳动",
+                  "position": "AI产品经理"
+                },
+                "strategy": "hybrid(70%vec+30%bm25)+reranker",
+                "pool_k": 2,
+                "rerank_k": 10,
+                "pool_size": 20,
+                "vec_only": 0,
+                "bm25_only": 11,
+                "both": 9,
+                "rerank": {
+                  "enabled": true,
+                  "candidates": 2,
+                  "output": 2,
+                  "best_rerank_score": 0.9992
+                }
+              },
+              "observation": "工具 kb_retrieve 执行成功"
+            },
+            "T2": {
+              "task_id": "T2",
+              "task_type": "tool_call",
+              "tool_name": "global_rank",
+              "status": "success",
+              "parameters": {
+                "resume_text": "{{global_slots.resume_text}}",
+                "candidate_jds": "{{T0.output.chunks}}",
+                "sort_by": "match_score"
+              },
+              "resolved_params": {
+                "resume_text": "姓名：陈雨桐\r\n教育背景\r\n江南科技大学\r\n信息工程学院·软件工程（AI应用方向）·硕士\r\n2024.09-2027.06（预计）\r\nGPA: 3.4/4.0 | 主修：机器学习基础、数据库系统、软件项目管理、人机交互设计\r\n\r\n云溪大学\r\n计算机学院·信息管理与信息系统·本科\r\n2020.09-2024.06\r\n荣誉：两次校级三等奖学金 | 主修：数据结构、管理学原理、Web开发技术、统计学\r\n\r\n项目经历\r\n求职助手小程序 — 智能简历匹配与面试模拟工具\r\n2025.03-2025.11\r\n产品经理 | 三人小组\r\n- 需求分析：设计调研问卷回收40余份有效样本，梳理\"简历评估\"与\"定向面试模拟\"核心需求，使用Figma完成低保真原型，输出产品需求文档。\r\n- AI匹配策略：调研开源Embedding模型实现简历与JD语义相似度计算，探索多维度匹配方案，对比整篇匹配与分块匹配效果差异，持续优化推荐排序。\r\n- 内容生成：基于大模型AI设计结构化Prompt，融合岗位关键词与简历信息输出个性化面试题，建立追问机制增强模拟面试针对性。\r\n- 测试验证：组织20人内测收集用户路径与反馈数据，针对复杂PDF格式设计补充录入机制，完成从需求分析到上线测试的完整产品闭环。\r\n\r\n教务问答机器人 — 基于校内政策的RAG问答系统\r\n2024.10-2025.02\r\n产品设计与测试 | 实验室课题项目\r\n- 知识库构建：收集整理教务处政策文件、培养方案及历史问答共80余份，完成扫描件OCR识别、格式转换与结构化清洗，建立可检索的领域知识库。\r\n- 交互设计：设计Web端对话界面，参考主流客服产品布局增加\"推荐提问\"推荐模块降低投入成本，针对政策类回答设计溯源展示功能增强可信度。\r\n- 效果测试：参与搭建检索增强生成链路，完成实验环境下多轮问答测试，验证标准政策类问题回答准确率，整理测试数据与优化建议形成可复用方案。\r\n\r\n校园经历\r\n江南科技大学软件学院学生会·宣传部干事\r\n2024.09-2025.06\r\n- 负责学院官方公众号推文排版与发布，累计输出活动宣传稿件10余篇；协助组织院内编程比赛，负责报名统计与现场签到。\r\n\r\n云溪大学图书馆·勤工助学岗\r\n2022.03-2023.06\r\n- 负责电子阅览室日常值班，协助同学解决基础网络与设备使用问题；参与旧期刊电子目录录入与数据整理工作。\r\n\r\n获奖情况\r\n- 2025.05 江南科技大学研究生学业三等奖学金\r\n- 2024.11 学院AI应用创新赛（课程组）三等奖\r\n- 2022.06 云溪大学优秀共青团员\r\n- 2022.12 校级网页设计比赛优秀奖\r\n\r\n个人技能\r\n- 产品工具：熟练使用Figma进行原型与交互演示，了解Axure基础操作；能够使用Xmind梳理产品架构，通过腾讯文档/飞书写PRD。\r\n- 技术理解：了解大语言模型在应用层的落地方式，具备Prompt Engineering实践经验；理解RAG基本架构与工作流程，了解Embedding与向量检索作用。\r\n- 语言能力：英语CET-4（525分），可阅读英文技术文档与产品资料。\r\n- 办公技能：熟练使用Office办公软件，掌握Excel数据透视表等基础数据分析功能。",
+                "candidate_jds": [
+                  {
+                    "chunk_id": "ac9973c8-01be-4cd6-9a99-097873a59cf0_chunk_3",
+                    "content": "【字节跳动 · AI产品经理 硬性要求】\n熟练掌握Transformer、Token、RAG等核心概念",
+                    "metadata": {
+                      "company": "字节跳动",
+                      "index": 3,
+                      "jd_id": "ac9973c8-01be-4cd6-9a99-097873a59cf0",
+                      "position": "AI产品经理",
+                      "priority": "high",
+                      "section": "hard_requirements",
+                      "strategy": "semantic"
+                    },
+                    "distance": null,
+                    "bm25_score": 13.29757395863349,
+                    "vec_norm": 0.0,
+                    "bm25_norm": 0.9815429356960411,
+                    "hybrid_score": 0.2944628807088123,
+                    "rerank_score": 0.9986
+                  },
+                  {
+                    "chunk_id": "ac9973c8-01be-4cd6-9a99-097873a59cf0_chunk_8",
+                    "content": "【字节跳动 · AI产品经理 关键词】\nPython, PyTorch, LangChain, RAG, Agent, 产品经理, AI",
+                    "metadata": {
+                      "company": "字节跳动",
+                      "index": 8,
+                      "jd_id": "ac9973c8-01be-4cd6-9a99-097873a59cf0",
+                      "position": "AI产品经理",
+                      "section": "keywords",
+                      "strategy": "semantic"
+                    },
+                    "distance": null,
+                    "bm25_score": 13.45033650682065,
+                    "vec_norm": 0.0,
+                    "bm25_norm": 1.0,
+                    "hybrid_score": 0.3,
+                    "rerank_score": 0.9981
+                  },
+                  {
+                    "chunk_id": "ac9973c8-01be-4cd6-9a99-097873a59cf0_chunk_6",
+                    "content": "【字节跳动 · AI产品经理 硬性要求】\n24小时高频冲浪，对新技术有雷达般的嗅觉",
+                    "metadata": {
+                      "company": "字节跳动",
+                      "index": 6,
+                      "jd_id": "ac9973c8-01be-4cd6-9a99-097873a59cf0",
+                      "position": "AI产品经理",
+                      "priority": "high",
+                      "section": "hard_requirements",
+                      "strategy": "semantic"
+                    },
+                    "distance": null,
+                    "bm25_score": 13.158133950491646,
+                    "vec_norm": 0.0,
+                    "bm25_norm": 0.9646955262533458,
+                    "hybrid_score": 0.2894086578760037,
+                    "rerank_score": 0.997
+                  },
+                  {
+                    "chunk_id": "ac9973c8-01be-4cd6-9a99-097873a59cf0_chunk_7",
+                    "content": "【字节跳动 · AI产品经理 软性要求/加分项】\n有LLM/Agent落地案例者优先",
+                    "metadata": {
+                      "company": "字节跳动",
+                      "index": 7,
+                      "jd_id": "ac9973c8-01be-4cd6-9a99-097873a59cf0",
+                      "position": "AI产品经理",
+                      "priority": "medium",
+                      "section": "soft_requirements",
+                      "strategy": "semantic"
+                    },
+                    "distance": null,
+                    "bm25_score": 13.29757395863349,
+                    "vec_norm": 0.0,
+                    "bm25_norm": 0.9815429356960411,
+                    "hybrid_score": 0.2944628807088123,
+                    "rerank_score": 0.996
+                  },
+                  {
+                    "chunk_id": "ac9973c8-01be-4cd6-9a99-097873a59cf0_chunk_4",
+                    "content": "【字节跳动 · AI产品经理 硬性要求】\n深度使用过LangChain、Dify、Coze或LangGraph等框架",
+                    "metadata": {
+                      "company": "字节跳动",
+                      "index": 4,
+                      "jd_id": "ac9973c8-01be-4cd6-9a99-097873a59cf0",
+                      "position": "AI产品经理",
+                      "priority": "high",
+                      "section": "hard_requirements",
+                      "strategy": "semantic"
+                    },
+                    "distance": null,
+                    "bm25_score": 13.158133950491646,
+                    "vec_norm": 0.0,
+                    "bm25_norm": 0.9646955262533458,
+                    "hybrid_score": 0.2894086578760037,
+                    "rerank_score": 0.9958
+                  }
+                ],
+                "sort_by": "match_score"
+              },
+              "result": {
+                "rankings": [
+                  {
+                    "rank": 1,
+                    "jd_id": "ac9973c8-01be-4cd6-9a99-097873a59cf0",
+                    "company": "字节跳动",
+                    "position": "AI产品经理",
+                    "match_score": 72,
+                    "recommend_reason": "技能匹配：rag",
+                    "key_match": [
+                      "技能交集：rag"
+                    ],
+                    "key_gap": [
+                      "需进一步了解详细匹配情况"
+                    ],
+                    "apply_priority": "中"
+                  }
+                ],
+                "strategy_advice": "暂未发现高度匹配岗位，1 个中等匹配岗位可作为参考，建议进一步评估后再投递。",
+                "_template_mode": true,
+                "_coarse_filter_meta": {
+                  "input_jds": 1,
+                  "output_jds": 1,
+                  "filter_ratio": 0.0
+                }
+              },
+              "observation": "工具 global_rank 执行成功"
+            },
+            "T3": {
+              "task_id": "T3",
+              "task_type": "tool_call",
+              "tool_name": "match_analyze",
+              "status": "success",
+              "parameters": {
+                "resume_text": "{{global_slots.resume_text}}",
+                "jd_text": "{{T1.output.chunks[0].text}}",
+                "company": "字节跳动",
+                "position": "AI产品经理",
+                "attributes": [
+                  "匹配度"
+                ]
+              },
+              "resolved_params": {
+                "resume_text": "姓名：陈雨桐\r\n教育背景\r\n江南科技大学\r\n信息工程学院·软件工程（AI应用方向）·硕士\r\n2024.09-2027.06（预计）\r\nGPA: 3.4/4.0 | 主修：机器学习基础、数据库系统、软件项目管理、人机交互设计\r\n\r\n云溪大学\r\n计算机学院·信息管理与信息系统·本科\r\n2020.09-2024.06\r\n荣誉：两次校级三等奖学金 | 主修：数据结构、管理学原理、Web开发技术、统计学\r\n\r\n项目经历\r\n求职助手小程序 — 智能简历匹配与面试模拟工具\r\n2025.03-2025.11\r\n产品经理 | 三人小组\r\n- 需求分析：设计调研问卷回收40余份有效样本，梳理\"简历评估\"与\"定向面试模拟\"核心需求，使用Figma完成低保真原型，输出产品需求文档。\r\n- AI匹配策略：调研开源Embedding模型实现简历与JD语义相似度计算，探索多维度匹配方案，对比整篇匹配与分块匹配效果差异，持续优化推荐排序。\r\n- 内容生成：基于大模型AI设计结构化Prompt，融合岗位关键词与简历信息输出个性化面试题，建立追问机制增强模拟面试针对性。\r\n- 测试验证：组织20人内测收集用户路径与反馈数据，针对复杂PDF格式设计补充录入机制，完成从需求分析到上线测试的完整产品闭环。\r\n\r\n教务问答机器人 — 基于校内政策的RAG问答系统\r\n2024.10-2025.02\r\n产品设计与测试 | 实验室课题项目\r\n- 知识库构建：收集整理教务处政策文件、培养方案及历史问答共80余份，完成扫描件OCR识别、格式转换与结构化清洗，建立可检索的领域知识库。\r\n- 交互设计：设计Web端对话界面，参考主流客服产品布局增加\"推荐提问\"推荐模块降低投入成本，针对政策类回答设计溯源展示功能增强可信度。\r\n- 效果测试：参与搭建检索增强生成链路，完成实验环境下多轮问答测试，验证标准政策类问题回答准确率，整理测试数据与优化建议形成可复用方案。\r\n\r\n校园经历\r\n江南科技大学软件学院学生会·宣传部干事\r\n2024.09-2025.06\r\n- 负责学院官方公众号推文排版与发布，累计输出活动宣传稿件10余篇；协助组织院内编程比赛，负责报名统计与现场签到。\r\n\r\n云溪大学图书馆·勤工助学岗\r\n2022.03-2023.06\r\n- 负责电子阅览室日常值班，协助同学解决基础网络与设备使用问题；参与旧期刊电子目录录入与数据整理工作。\r\n\r\n获奖情况\r\n- 2025.05 江南科技大学研究生学业三等奖学金\r\n- 2024.11 学院AI应用创新赛（课程组）三等奖\r\n- 2022.06 云溪大学优秀共青团员\r\n- 2022.12 校级网页设计比赛优秀奖\r\n\r\n个人技能\r\n- 产品工具：熟练使用Figma进行原型与交互演示，了解Axure基础操作；能够使用Xmind梳理产品架构，通过腾讯文档/飞书写PRD。\r\n- 技术理解：了解大语言模型在应用层的落地方式，具备Prompt Engineering实践经验；理解RAG基本架构与工作流程，了解Embedding与向量检索作用。\r\n- 语言能力：英语CET-4（525分），可阅读英文技术文档与产品资料。\r\n- 办公技能：熟练使用Office办公软件，掌握Excel数据透视表等基础数据分析功能。",
+                "jd_text": "{{T1.output.chunks[0].text}}",
+                "company": "字节跳动",
+                "position": "AI产品经理",
+                "attributes": [
+                  "匹配度"
+                ]
+              },
+              "result": {
+                "score": 0,
+                "label": "不匹配",
+                "advantages": [],
+                "weaknesses": [
+                  "未提供职位描述（JD）文本，无法进行候选人与职位要求的对比分析。请提供完整的JD内容以便评估。"
+                ],
+                "suggestions": [
+                  "核心能力要求: 未知"
+                ],
+                "match_score": 0,
+                "covered": [],
+                "missing_experience": "未提供职位描述（JD）文本，无法进行候选人与职位要求的对比分析。请提供完整的JD内容以便评估。",
+                "core_skills": "未知",
+                "company": "字节跳动",
+                "position": "AI产品经理"
+              },
+              "observation": "工具 match_analyze 执行成功"
+            },
+            "T4": {
+              "task_id": "T4",
+              "task_type": "aggregate",
+              "tool_name": null,
+              "status": "success",
+              "parameters": {
+                "explore_ranking": "{{T2.output.ranked_list}}",
+                "assess_result": "{{T3.output}}"
+              },
+              "resolved_params": {
+                "explore_ranking": "{{T2.output.ranked_list}}",
+                "assess_result": {
+                  "score": 0,
+                  "label": "不匹配",
+                  "advantages": [],
+                  "weaknesses": [
+                    "未提供职位描述（JD）文本，无法进行候选人与职位要求的对比分析。请提供完整的JD内容以便评估。"
+                  ],
+                  "suggestions": [
+                    "核心能力要求: 未知"
+                  ],
+                  "match_score": 0,
+                  "covered": [],
+                  "missing_experience": "未提供职位描述（JD）文本，无法进行候选人与职位要求的对比分析。请提供完整的JD内容以便评估。",
+                  "core_skills": "未知",
+                  "company": "字节跳动",
+                  "position": "AI产品经理"
+                }
+              },
+              "result": {
+                "aggregation": {
+                  "explore_ranking": "{{T2.output.ranked_list}}",
+                  "assess_result": {
+                    "score": 0,
+                    "label": "不匹配",
+                    "advantages": [],
+                    "weaknesses": [
+                      "未提供职位描述（JD）文本，无法进行候选人与职位要求的对比分析。请提供完整的JD内容以便评估。"
+                    ],
+                    "suggestions": [
+                      "核心能力要求: 未知"
+                    ],
+                    "match_score": 0,
+                    "covered": [],
+                    "missing_experience": "未提供职位描述（JD）文本，无法进行候选人与职位要求的对比分析。请提供完整的JD内容以便评估。",
+                    "core_skills": "未知",
+                    "company": "字节跳动",
+                    "position": "AI产品经理"
+                  }
+                }
+              },
+              "observation": "聚合完成"
+            }
+          },
+          "global_status": "success",
+          "replan_reason": "",
+          "replan_count": 0
+        },
+        "intent": {
+          "demands": [
+            {
+              "intent": "position_explore",
+              "entities": {
+                "company": "字节跳动",
+                "position": "产品经理",
+                "search_keywords": "帮我筛选几个能投递的岗位，再重点分析字节跳动的 AI 产品经理岗位",
+                "sort_by": "match_score",
+                "top_k": 5
+              },
+              "confidence": 0.88
+            },
+            {
+              "intent": "match_assess",
+              "entities": {
+                "company": "字节跳动",
+                "position": "产品经理",
+                "attributes": [
+                  "匹配度"
+                ],
+                "jd_source": "kb"
+              },
+              "confidence": 0.75
+            }
+          ],
+          "needs_clarification": false,
+          "clarification_question": ""
+        },
+        "rewrite": {
+          "rewritten_query": "帮我筛选几个能投递的岗位，再重点分析字节跳动的 AI 产品经理岗位",
+          "search_keywords": "帮我筛选几个能投递的岗位，再重点分析字节跳动的 AI 产品经理岗位",
+          "is_follow_up": false,
+          "follow_up_type": "none",
+          "resolved_references": {
+            "字节那个 AI 产品经理": "字节跳动-AI 产品经理"
+          }
+        },
+        "evidence_cache": [
+          {
+            "chunk_id": "ac9973c8-01be-4cd6-9a99-097873a59cf0_chunk_3",
+            "content": "【字节跳动 · AI产品经理 硬性要求】\n熟练掌握Transformer、Token、RAG等核心概念",
+            "metadata": {
+              "company": "字节跳动",
+              "index": 3,
+              "jd_id": "ac9973c8-01be-4cd6-9a99-097873a59cf0",
+              "position": "AI产品经理",
+              "priority": "high",
+              "section": "hard_requirements",
+              "strategy": "semantic"
+            },
+            "distance": null,
+            "bm25_score": 13.29757395863349,
+            "vec_norm": 0.0,
+            "bm25_norm": 0.9815429356960411,
+            "hybrid_score": 0.2944628807088123,
+            "rerank_score": 0.9986
+          },
+          {
+            "chunk_id": "ac9973c8-01be-4cd6-9a99-097873a59cf0_chunk_8",
+            "content": "【字节跳动 · AI产品经理 关键词】\nPython, PyTorch, LangChain, RAG, Agent, 产品经理, AI",
+            "metadata": {
+              "company": "字节跳动",
+              "index": 8,
+              "jd_id": "ac9973c8-01be-4cd6-9a99-097873a59cf0",
+              "position": "AI产品经理",
+              "section": "keywords",
+              "strategy": "semantic"
+            },
+            "distance": null,
+            "bm25_score": 13.45033650682065,
+            "vec_norm": 0.0,
+            "bm25_norm": 1.0,
+            "hybrid_score": 0.3,
+            "rerank_score": 0.9981
+          },
+          {
+            "chunk_id": "ac9973c8-01be-4cd6-9a99-097873a59cf0_chunk_6",
+            "content": "【字节跳动 · AI产品经理 硬性要求】\n24小时高频冲浪，对新技术有雷达般的嗅觉",
+            "metadata": {
+              "company": "字节跳动",
+              "index": 6,
+              "jd_id": "ac9973c8-01be-4cd6-9a99-097873a59cf0",
+              "position": "AI产品经理",
+              "priority": "high",
+              "section": "hard_requirements",
+              "strategy": "semantic"
+            },
+            "distance": null,
+            "bm25_score": 13.158133950491646,
+            "vec_norm": 0.0,
+            "bm25_norm": 0.9646955262533458,
+            "hybrid_score": 0.2894086578760037,
+            "rerank_score": 0.997
+          },
+          {
+            "chunk_id": "ac9973c8-01be-4cd6-9a99-097873a59cf0_chunk_7",
+            "content": "【字节跳动 · AI产品经理 软性要求/加分项】\n有LLM/Agent落地案例者优先",
+            "metadata": {
+              "company": "字节跳动",
+              "index": 7,
+              "jd_id": "ac9973c8-01be-4cd6-9a99-097873a59cf0",
+              "position": "AI产品经理",
+              "priority": "medium",
+              "section": "soft_requirements",
+              "strategy": "semantic"
+            },
+            "distance": null,
+            "bm25_score": 13.29757395863349,
+            "vec_norm": 0.0,
+            "bm25_norm": 0.9815429356960411,
+            "hybrid_score": 0.2944628807088123,
+            "rerank_score": 0.996
+          },
+          {
+            "chunk_id": "ac9973c8-01be-4cd6-9a99-097873a59cf0_chunk_4",
+            "content": "【字节跳动 · AI产品经理 硬性要求】\n深度使用过LangChain、Dify、Coze或LangGraph等框架",
+            "metadata": {
+              "company": "字节跳动",
+              "index": 4,
+              "jd_id": "ac9973c8-01be-4cd6-9a99-097873a59cf0",
+              "position": "AI产品经理",
+              "priority": "high",
+              "section": "hard_requirements",
+              "strategy": "semantic"
+            },
+            "distance": null,
+            "bm25_score": 13.158133950491646,
+            "vec_norm": 0.0,
+            "bm25_norm": 0.9646955262533458,
+            "hybrid_score": 0.2894086578760037,
+            "rerank_score": 0.9958
+          },
+          {
+            "chunk_id": "ac9973c8-01be-4cd6-9a99-097873a59cf0_chunk_5",
+            "content": "【字节跳动 · AI产品经理 硬性要求】\n具备极强的逻辑拆解力，能像指挥交响乐一样控制模型输出",
+            "metadata": {
+              "company": "字节跳动",
+              "index": 5,
+              "jd_id": "ac9973c8-01be-4cd6-9a99-097873a59cf0",
+              "position": "AI产品经理",
+              "priority": "high",
+              "section": "hard_requirements",
+              "strategy": "semantic"
+            },
+            "distance": 0.33240896463394165,
+            "bm25_score": 13.909874919659451,
+            "vec_norm": 0.8145097267734441,
+            "bm25_norm": 0.8582741299210837,
+            "hybrid_score": 0.827639047717736,
+            "rerank_score": 0.9992
+          },
+          {
+            "chunk_id": "ac9973c8-01be-4cd6-9a99-097873a59cf0_chunk_1",
+            "content": "【字节跳动 · AI产品经理 岗位职责】\n1. 定义Agent框架：设计Planning、Reflection、Memory策略。2. 重塑LUI交互：探索意图驱动的流式UI与动态组件生成。3. 编排超级工作流：深入客服、数据、ERP等实战场景。4. 模型精细化调教：编写结构化Prompt，配合RAG、Function Calling。5. 数据驱动进化：建立交互好感度与任务成功率双重指标。",
+            "metadata": {
+              "company": "字节跳动",
+              "index": 1,
+              "jd_id": "ac9973c8-01be-4cd6-9a99-097873a59cf0",
+              "position": "AI产品经理",
+              "section": "responsibilities",
+              "strategy": "semantic"
+            },
+            "distance": 0.2871961295604706,
+            "bm25_score": 8.56408648103769,
+            "vec_norm": 1.0,
+            "bm25_norm": 0.23213566249506196,
+            "hybrid_score": 0.7696406987485185,
+            "rerank_score": 0.9983
+          }
+        ],
+        "evidence_cache_query": "帮我筛选几个能投递的岗位，再重点分析字节跳动的 AI 产品经理岗位",
+        "tool_outputs": [
+          {
+            "task_id": "T0",
+            "tool": "kb_retrieve",
+            "description": "检索字节跳动产品经理相关JD（explore意图，用于筛选排序）",
+            "result": {
+              "chunks": [
+                {
+                  "chunk_id": "ac9973c8-01be-4cd6-9a99-097873a59cf0_chunk_3",
+                  "content": "【字节跳动 · AI产品经理 硬性要求】\n熟练掌握Transformer、Token、RAG等核心概念",
+                  "source": "字节跳动-AI产品经理",
+                  "metadata": {
+                    "company": "字节跳动",
+                    "position": "AI产品经理"
+                  }
+                },
+                {
+                  "chunk_id": "ac9973c8-01be-4cd6-9a99-097873a59cf0_chunk_8",
+                  "content": "【字节跳动 · AI产品经理 关键词】\nPython, PyTorch, LangChain, RAG, Agent, 产品经理, AI",
+                  "source": "字节跳动-AI产品经理",
+                  "metadata": {
+                    "company": "字节跳动",
+                    "position": "AI产品经理"
+                  }
+                },
+                {
+                  "chunk_id": "ac9973c8-01be-4cd6-9a99-097873a59cf0_chunk_6",
+                  "content": "【字节跳动 · AI产品经理 硬性要求】\n24小时高频冲浪，对新技术有雷达般的嗅觉",
+                  "source": "字节跳动-AI产品经理",
+                  "metadata": {
+                    "company": "字节跳动",
+                    "position": "AI产品经理"
+                  }
+                },
+                {
+                  "chunk_id": "ac9973c8-01be-4cd6-9a99-097873a59cf0_chunk_7",
+                  "content": "【字节跳动 · AI产品经理 软性要求/加分项】\n有LLM/Agent落地案例者优先",
+                  "source": "字节跳动-AI产品经理",
+                  "metadata": {
+                    "company": "字节跳动",
+                    "position": "AI产品经理"
+                  }
+                },
+                {
+                  "chunk_id": "ac9973c8-01be-4cd6-9a99-097873a59cf0_chunk_4",
+                  "content": "【字节跳动 · AI产品经理 硬性要求】\n深度使用过LangChain、Dify、Coze或LangGraph等框架",
+                  "source": "字节跳动-AI产品经理",
+                  "metadata": {
+                    "company": "字节跳动",
+                    "position": "AI产品经理"
+                  }
+                }
+              ],
+              "query": "字节跳动 产品经理",
+              "filters": {
+                "company": "字节跳动",
+                "position": "产品经理"
+              },
+              "strategy": "hybrid(70%vec+30%bm25)+reranker",
+              "pool_k": 5,
+              "rerank_k": 10,
+              "pool_size": 20,
+              "vec_only": 0,
+              "bm25_only": 20,
+              "both": 0,
+              "rerank": {
+                "enabled": true,
+                "candidates": 5,
+                "output": 5,
+                "best_rerank_score": 0.9986
+              }
+            }
+          },
+          {
+            "task_id": "T1",
+            "tool": "kb_retrieve",
+            "description": "检索字节跳动AI产品经理JD（assess意图，用于匹配分析）",
+            "result": {
+              "chunks": [
+                {
+                  "chunk_id": "ac9973c8-01be-4cd6-9a99-097873a59cf0_chunk_5",
+                  "content": "【字节跳动 · AI产品经理 硬性要求】\n具备极强的逻辑拆解力，能像指挥交响乐一样控制模型输出",
+                  "source": "字节跳动-AI产品经理",
+                  "metadata": {
+                    "company": "字节跳动",
+                    "position": "AI产品经理"
+                  }
+                },
+                {
+                  "chunk_id": "ac9973c8-01be-4cd6-9a99-097873a59cf0_chunk_1",
+                  "content": "【字节跳动 · AI产品经理 岗位职责】\n1. 定义Agent框架：设计Planning、Reflection、Memory策略。2. 重塑LUI交互：探索意图驱动的流式UI与动态组件生成。3. 编排超级工作流：深入客服、数据、ERP等实战场景。4. 模型精细化调教：编写结构化Prompt，配合RAG、Function Calling。5. 数据驱动进化：建立交互好感度与任务成功率双重指标。",
+                  "source": "字节跳动-AI产品经理",
+                  "metadata": {
+                    "company": "字节跳动",
+                    "position": "AI产品经理"
+                  }
+                }
+              ],
+              "query": "字节跳动 AI产品经理",
+              "filters": {
+                "company": "字节跳动",
+                "position": "AI产品经理"
+              },
+              "strategy": "hybrid(70%vec+30%bm25)+reranker",
+              "pool_k": 2,
+              "rerank_k": 10,
+              "pool_size": 20,
+              "vec_only": 0,
+              "bm25_only": 11,
+              "both": 9,
+              "rerank": {
+                "enabled": true,
+                "candidates": 2,
+                "output": 2,
+                "best_rerank_score": 0.9992
+              }
+            }
+          },
+          {
+            "task_id": "T2",
+            "tool": "global_rank",
+            "description": "基于简历对检索到的产品经理JD进行排名，筛选出最适合的岗位（explore）",
+            "result": {
+              "rankings": [
+                {
+                  "company": "字节跳动",
+                  "position": "AI产品经理",
+                  "match_score": 72,
+                  "recommend_reason": "技能匹配：rag",
+                  "key_match": [
+                    "技能交集：rag"
+                  ],
+                  "key_gap": [
+                    "需进一步了解详细匹配情况"
+                  ],
+                  "apply_priority": "中"
+                }
+              ],
+              "strategy_advice": "暂未发现高度匹配岗位，1 个中等匹配岗位可作为参考，建议进一步评估后再投递。",
+              "_template_mode": true,
+              "_coarse_filter_meta": {
+                "input_jds": 1,
+                "output_jds": 1,
+                "filter_ratio": 0.0
+              }
+            }
+          },
+          {
+            "task_id": "T3",
+            "tool": "match_analyze",
+            "description": "分析简历与字节AI产品经理JD的匹配度（assess）",
+            "result": {
+              "score": 0,
+              "label": "不匹配",
+              "advantages": [],
+              "weaknesses": [
+                "未提供职位描述（JD）文本，无法进行候选人与职位要求的对比分析。请提供完整的JD内容以便评估。"
+              ],
+              "suggestions": [
+                "核心能力要求: 未知"
+              ],
+              "match_score": 0,
+              "covered": [],
+              "missing_experience": "未提供职位描述（JD）文本，无法进行候选人与职位要求的对比分析。请提供完整的JD内容以便评估。",
+              "core_skills": "未知",
+              "company": "字节跳动",
+              "position": "AI产品经理"
+            }
+          },
+          {
+            "task_id": "T4",
+            "tool": null,
+            "description": "聚合explore的排名结果和assess的匹配分析结果，生成最终回复素材",
+            "result": {
+              "aggregation": {
+                "explore_ranking": "{{T2.output.ranked_list}}",
+                "assess_result": {
+                  "score": 0,
+                  "label": "不匹配",
+                  "advantages": [],
+                  "weaknesses": [
+                    "未提供职位描述（JD）文本，无法进行候选人与职位要求的对比分析。请提供完整的JD内容以便评估。"
+                  ],
+                  "suggestions": [
+                    "核心能力要求: 未知"
+                  ],
+                  "match_score": 0,
+                  "covered": [],
+                  "missing_experience": "未提供职位描述（JD）文本，无法进行候选人与职位要求的对比分析。请提供完整的JD内容以便评估。",
+                  "core_skills": "未知",
+                  "company": "字节跳动",
+                  "position": "AI产品经理"
+                }
+              }
+            }
+          }
+        ],
+        "final_aggregation_prompt": {
+          "system_prompt": "你是一位专业的求职顾问。请基于以下工具执行结果，给用户一个清晰、有帮助的回复。\n要求：\n1. 先直接回答用户的问题（是/否/有/没有），不要绕弯子，不要重复用户的原话\n2. 如果有匹配分析结果，给出具体的分数和建议\n3. 如果有检索结果，基于事实回答，不要编造\n4. 【强制】引用信息时必须标注来源。每个引用的事实后面都要跟 [来源：公司名-岗位名] 格式。   kb_retrieve 结果的 chunks 中带有 'source' 字段（如'字节跳动-AI产品经理'），请直接使用。   external_search 结果带有 'source_name' 字段，也请直接使用。\n5. 当本地知识库与外部搜索结果冲突时，请并列呈现两种说法并标注各自来源，不要替用户做判断\n6. 语气友好、专业、结构化",
+          "user_prompt": "【用户问题】\n帮我筛选几个能投递的岗位，再重点分析字节跳动的 AI 产品经理岗位\n\n【工具执行结果】\n[{\"task_id\": \"T0\", \"tool\": \"kb_retrieve\", \"description\": \"检索字节跳动产品经理相关JD（explore意图，用于筛选排序）\", \"result\": {\"chunks\": [{\"chunk_id\": \"ac9973c8-01be-4cd6-9a99-097873a59cf0_chunk_3\", \"content\": \"【字节跳动 · AI产品经理 硬性要求】\\n熟练掌握Transformer、Token、RAG等核心概念\", \"source\": \"字节跳动-AI产品经理\", \"metadata\": {\"company\": \"字节跳动\", \"position\": \"AI产品经理\"}}, {\"chunk_id\": \"ac9973c8-01be-4cd6-9a99-097873a59cf0_chunk_8\", \"content\": \"【字节跳动 · AI产品经理 关键词】\\nPython, PyTorch, LangChain, RAG, Agent, 产品经理, AI\", \"source\": \"字节跳动-AI产品经理\", \"metadata\": {\"company\": \"字节跳动\", \"position\": \"AI产品经理\"}}, {\"chunk_id\": \"ac9973c8-01be-4cd6-9a99-097873a59cf0_chunk_6\", \"content\": \"【字节跳动 · AI产品经理 硬性要求】\\n24小时高频冲浪，对新技术有雷达般的嗅觉\", \"source\": \"字节跳动-AI产品经理\", \"metadata\": {\"company\": \"字节跳动\", \"position\": \"AI产品经理\"}}, {\"chunk_id\": \"ac9973c8-01be-4cd6-9a99-097873a59cf0_chunk_7\", \"content\": \"【字节跳动 · AI产品经理 软性要求/加分项】\\n有LLM/Agent落地案例者优先\", \"source\": \"字节跳动-AI产品经理\", \"metadata\": {\"company\": \"字节跳动\", \"position\": \"AI产品经理\"}}, {\"chunk_id\": \"ac9973c8-01be-4cd6-9a99-097873a59cf0_chunk_4\", \"content\": \"【字节跳动 · AI产品经理 硬性要求】\\n深度使用过LangChain、Dify、Coze或LangGraph等框架\", \"source\": \"字节跳动-AI产品经理\", \"metadata\": {\"company\": \"字节跳动\", \"position\": \"AI产品经理\"}}], \"query\": \"字节跳动 产品经理\", \"filters\": {\"company\": \"字节跳动\", \"position\": \"产品经理\"}, \"strategy\": \"hybrid(70%vec+30%bm25)+reranker\", \"pool_k\": 5, \"rerank_k\": 10, \"pool_size\": 20, \"vec_only\": 0, \"bm25_only\": 20, \"both\": 0, \"rerank\": {\"enabled\": true, \"candidates\": 5, \"output\": 5, \"best_rerank_score\": 0.9986}}}, {\"task_id\": \"T1\", \"tool\": \"kb_retrieve\", \"description\": \"检索字节跳动AI产品经理JD（assess意图，用于匹配分析）\", \"result\": {\"chunks\": [{\"chunk_id\": \"ac9973c8-01be-4cd6-9a99-097873a59cf0_chunk_5\", \"content\": \"【字节跳动 · AI产品经理 硬性要求】\\n具备极强的逻辑拆解力，能像指挥交响乐一样控制模型输出\", \"source\": \"字节跳动-AI产品经理\", \"metadata\": {\"company\": \"字节跳动\", \"position\": \"AI产品经理\"}}, {\"chunk_id\": \"ac9973c8-01be-4cd6-9a99-097873a59cf0_chunk_1\", \"content\": \"【字节跳动 · AI产品经理 岗位职责】\\n1. 定义Agent框架：设计Planning、Reflection、Memory策略。2. 重塑LUI交互：探索意图驱动的流式UI与动态组件生成。3. 编排超级工作流：深入客服、数据、ERP等实战场景。4. 模型精细化调教：编写结构化Prompt，配合RAG、Function Calling。5. 数据驱动进化：建立交互好感度与任务成功率双重指标。\", \"source\": \"字节跳动-AI产品经理\", \"metadata\": {\"company\": \"字节跳动\", \"position\": \"AI产品经理\"}}], \"query\": \"字节跳动 AI产品经理\", \"filters\": {\"company\": \"字节跳动\", \"position\": \"AI产品经理\"}, \"strategy\": \"hybrid(70%vec+30%bm25)+reranker\", \"pool_k\": 2, \"rerank_k\": 10, \"pool_size\": 20, \"vec_only\": 0, \"bm25_only\": 11, \"both\": 9, \"rerank\": {\"enabled\": true, \"candidates\": 2, \"output\": 2, \"best_rerank_score\": 0.9992}}}, {\"task_id\": \"T2\", \"tool\": \"global_rank\", \"description\": \"基于简历对检索到的产品经理JD进行排名，筛选出最适合的岗位（explore）\", \"result\": {\"rankings\": [{\"company\": \"字节跳动\", \"position\": \"AI产品经理\", \"match_score\": 72, \"recommend_reason\": \"技能匹配：rag\", \"key_match\": [\"技能交集：rag\"], \"key_gap\": [\"需进一步了解详细匹配情况\"], \"apply_priority\": \"中\"}], \"strategy_advice\": \"暂未发现高度匹配岗位，1 个中等匹配岗位可作为参考，建议进一步评估后再投递。\", \"_template_mode\": true, \"_coarse_filter_meta\": {\"input_jds\": 1, \"output_jds\": 1, \"filter_ratio\": 0.0}}}, {\"task_id\": \"T3\", \"tool\": \"match_analyze\", \"description\": \"分析简历与字节AI产品经理JD的匹配度（assess）\", \"resu\n\n请生成回复："
+        }
+      },
+      "usage": {
+        "prompt_tokens": 9514,
+        "completion_tokens": 5935,
+        "total_tokens": 15449
+      },
+      "_time": 80.9411129951477,
+      "type": "done"
+    }
+  ],
+  "timestamp": "2026-06-04T16:24:31.781400",
+  "prompt_tokens": 9514,
+  "completion_tokens": 5935,
+  "total_tokens": 15449,
+  "tool_execution_success_rate": 1.0,
+  "tool_correct_rate": 1.0
+}

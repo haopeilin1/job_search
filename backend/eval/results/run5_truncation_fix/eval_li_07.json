@@ -1,0 +1,3119 @@
+{
+  "case_id": "eval_li_07",
+  "message": "帮我筛几个岗，重点看看阿里那个后端开发",
+  "gold_intents": [
+    "assess",
+    "explore"
+  ],
+  "expected_tools": [
+    "kb_retrieve",
+    "global_rank",
+    "match_analyze"
+  ],
+  "scenario": "多意图_探索+匹配_含指定公司",
+  "eval_context": {
+    "gold_intents": [
+      "explore",
+      "assess"
+    ],
+    "gold_slots": {
+      "company": "阿里巴巴",
+      "position": "后端开发"
+    },
+    "relevance_score": 0,
+    "expected_tools": [
+      "kb_retrieve",
+      "global_rank",
+      "match_analyze"
+    ],
+    "scenario": "多意图_探索+匹配_含指定公司",
+    "notes": "explore做全局，assess针对阿里后端开发"
+  },
+  "resume_id": "e30c8b27-cfce-4918-8810-832e3ab5087c",
+  "status": "success",
+  "error": null,
+  "ttfb": 0.011,
+  "total_latency": 84.13,
+  "event_count": 120,
+  "pred_intent": "position_explore",
+  "pred_intents": [
+    "position_explore"
+  ],
+  "pred_tools": [
+    {
+      "tool": "kb_retrieve",
+      "status": "✅",
+      "params": {
+        "query": "帮我筛选几个岗位，重点查看阿里巴巴后端开发职位",
+        "company": "阿里巴巴",
+        "position": "后端开发",
+        "top_k": 5
+      },
+      "result_preview": "{'chunks': [{'chunk_id': '9cde8355-dcc0-434e-97c4-67dfc5dae5b8_chunk_1', 'content': '【阿里巴巴 · 后端开发 岗位职责】\\n1. 负责电商核心系统的设计与开发。2. 高并发系统架构设计与性能优化。3. 分布式系统开发与微服务治理。4. 数据库设计与优化。', 'metadata': {'company': '阿里"
+    },
+    {
+      "tool": "global_rank",
+      "status": "✅",
+      "params": {
+        "resume_text": "姓名：李工程师\n电话：138-XXXX-1234 | 邮箱：lixx_dev@email.com | 现居：北京\nJava后端开发工程师 | 3年经验 | 本科\n\n教育背景\n2018.09 - 2022.06  XX理工大学  计算机科学与技术（本科）\n主修课程：数据结构与算法、操作系统、计算机网络、数据库原理、软件工程\n在校荣誉：校级优秀毕业设计（基于微服务的校园二手交易平台）\n\n专业技能\n熟练掌握Java核心技术，熟悉JVM内存模型、GC机制及常见调优手段\n精通Spring Boot、Spring Cloud微服务生态，熟悉Nacos、Gateway、Sentinel、Seata等组件\n熟悉MySQL索引优化、事务机制、分库分表策略，具备SQL调优及慢查询治理经验\n了解Redis缓存设计、Kafka消息队列，熟悉Docker容器化部署及Jenkins CI/CD流程\n掌握Git版本控制，熟悉Linux日常运维及日志排查\n\n工作经历\n2022.07 - 至今  XX科技有限公司（B轮 / 企业服务 SaaS）  Java后端工程师\n\nSaaS供应链管理平台（2023.03 - 至今）\n负责订单中心、库存中心核心模块设计与开发，采用Spring Cloud Alibaba微服务架构，支撑日均10W+订单处理\n主导MySQL分库分表方案设计（ShardingSphere），解决单表数据量过亿导致的查询性能瓶颈，接口响应时间从800ms降至120ms\n设计多级缓存策略（Redis + Caffeine本地缓存），热点数据命中率提升至95%，降低数据库负载40%\n基于Seata AT模式实现分布式事务，保障订单与库存数据一致性，线上运行半年零资损事故\n\n企业权限中台重构（2022.09 - 2023.02）\n参与RBAC权限中台从单体到微服务的拆分重构，负责鉴权服务、菜单路由模块开发\n引入Gateway统一鉴权过滤器，对接OAuth2.0 + JWT认证体系，支持多租户隔离\n编写核心接口单元测试（Unit + Mockito），模块测试覆盖率从45%提升至82%\n\n自我评价\n具备扎实的计算机基础与3年企业级后端开发经验，擅长高并发场景下的系统设计与性能优化。注重代码质量与工程规范，具备良好的团队协作与跨部门沟通能力。",
+        "candidate_jds": [
+          {
+            "chunk_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8_chunk_1",
+            "content": "【阿里巴巴 · 后端开发 岗位职责】\n1. 负责电商核心系统的设计与开发。2. 高并发系统架构设计与性能优化。3. 分布式系统开发与微服务治理。4. 数据库设计与优化。",
+            "metadata": {
+              "company": "阿里巴巴",
+              "index": 1,
+              "jd_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8",
+              "position": "后端开发",
+              "section": "responsibilities",
+              "strategy": "semantic"
+            },
+            "distance": 0.2331186980009079,
+            "bm25_score": 14.494167942777871,
+            "vec_norm": 1.0,
+            "bm25_norm": 0.49054151418510233,
+            "hybrid_score": 0.8471624542555307,
+            "rerank_score": 0.9984
+          },
+          {
+            "chunk_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8_chunk_6",
+            "content": "【阿里巴巴 · 后端开发 软性要求/加分项】\n有电商行业经验优先",
+            "metadata": {
+              "company": "阿里巴巴",
+              "index": 6,
+              "jd_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8",
+              "position": "后端开发",
+              "priority": "medium",
+              "section": "soft_requirements",
+              "strategy": "semantic"
+            },
+            "distance": 0.359084814786911,
+            "bm25_score": 17.69157209161958,
+            "vec_norm": 0.36635977740028036,
+            "bm25_norm": 0.7119521496020548,
+            "hybrid_score": 0.47003748906081266,
+            "rerank_score": 0.981
+          },
+          {
+            "chunk_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8_chunk_0",
+            "content": "公司：阿里巴巴，岗位：后端开发，地点：杭州，薪资：35k-65k",
+            "metadata": {
+              "category": "技术",
+              "company": "阿里巴巴",
+              "domain": "电商",
+              "index": 0,
+              "jd_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8",
+              "min_education": "本科",
+              "min_years": 3,
+              "position": "后端开发",
+              "section": "basic_info",
+              "strategy": "semantic"
+            },
+            "distance": 0.3634324371814728,
+            "bm25_score": 21.85128822356113,
+            "vec_norm": 0.34449017871645593,
+            "bm25_norm": 1.0,
+            "hybrid_score": 0.5411431251015191,
+            "rerank_score": 0.9787
+          },
+          {
+            "chunk_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8_chunk_4",
+            "content": "【阿里巴巴 · 后端开发 硬性要求】\n熟悉分布式系统设计与微服务架构",
+            "metadata": {
+              "company": "阿里巴巴",
+              "index": 4,
+              "jd_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8",
+              "position": "后端开发",
+              "priority": "high",
+              "section": "hard_requirements",
+              "strategy": "semantic"
+            },
+            "distance": 0.3839608132839203,
+            "bm25_score": 17.08930651075854,
+            "vec_norm": 0.24122745112707167,
+            "bm25_norm": 0.6702470667471052,
+            "hybrid_score": 0.36993333581308174,
+            "rerank_score": 0.9724
+          },
+          {
+            "chunk_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8_chunk_2",
+            "content": "【阿里巴巴 · 后端开发 硬性要求】\n3年以上Java开发经验",
+            "metadata": {
+              "company": "阿里巴巴",
+              "index": 2,
+              "jd_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8",
+              "position": "后端开发",
+              "priority": "high",
+              "section": "hard_requirements",
+              "strategy": "semantic"
+            },
+            "distance": 0.39003244042396545,
+            "bm25_score": 19.10231278381687,
+            "vec_norm": 0.21068568901896,
+            "bm25_norm": 0.8096417060446165,
+            "hybrid_score": 0.390372494126657,
+            "rerank_score": 0.8933
+          }
+        ],
+        "sort_by": "match_score"
+      },
+      "result_preview": "{'rankings': [{'rank': 1, 'jd_id': '9cde8355-dcc0-434e-97c4-67dfc5dae5b8', 'company': '阿里巴巴', 'position': '后端开发', 'match_score': 66, 'recommend_reason': '方向差异：简历侧重后端，JD方向电商', 'key_match': ['检索召回'], 'k"
+    }
+  ],
+  "tools_called": [
+    "kb_retrieve",
+    "global_rank"
+  ],
+  "kb_chunks": [
+    {
+      "chunk_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8_chunk_1",
+      "content": "【阿里巴巴 · 后端开发 岗位职责】\n1. 负责电商核心系统的设计与开发。2. 高并发系统架构设计与性能优化。3. 分布式系统开发与微服务治理。4. 数据库设计与优化。",
+      "metadata": {
+        "company": "阿里巴巴",
+        "index": 1,
+        "jd_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8",
+        "position": "后端开发",
+        "section": "responsibilities",
+        "strategy": "semantic"
+      },
+      "distance": 0.2331186980009079,
+      "bm25_score": 14.494167942777871,
+      "vec_norm": 1.0,
+      "bm25_norm": 0.49054151418510233,
+      "hybrid_score": 0.8471624542555307,
+      "rerank_score": 0.9984
+    },
+    {
+      "chunk_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8_chunk_6",
+      "content": "【阿里巴巴 · 后端开发 软性要求/加分项】\n有电商行业经验优先",
+      "metadata": {
+        "company": "阿里巴巴",
+        "index": 6,
+        "jd_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8",
+        "position": "后端开发",
+        "priority": "medium",
+        "section": "soft_requirements",
+        "strategy": "semantic"
+      },
+      "distance": 0.359084814786911,
+      "bm25_score": 17.69157209161958,
+      "vec_norm": 0.36635977740028036,
+      "bm25_norm": 0.7119521496020548,
+      "hybrid_score": 0.47003748906081266,
+      "rerank_score": 0.981
+    },
+    {
+      "chunk_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8_chunk_0",
+      "content": "公司：阿里巴巴，岗位：后端开发，地点：杭州，薪资：35k-65k",
+      "metadata": {
+        "category": "技术",
+        "company": "阿里巴巴",
+        "domain": "电商",
+        "index": 0,
+        "jd_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8",
+        "min_education": "本科",
+        "min_years": 3,
+        "position": "后端开发",
+        "section": "basic_info",
+        "strategy": "semantic"
+      },
+      "distance": 0.3634324371814728,
+      "bm25_score": 21.85128822356113,
+      "vec_norm": 0.34449017871645593,
+      "bm25_norm": 1.0,
+      "hybrid_score": 0.5411431251015191,
+      "rerank_score": 0.9787
+    },
+    {
+      "chunk_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8_chunk_4",
+      "content": "【阿里巴巴 · 后端开发 硬性要求】\n熟悉分布式系统设计与微服务架构",
+      "metadata": {
+        "company": "阿里巴巴",
+        "index": 4,
+        "jd_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8",
+        "position": "后端开发",
+        "priority": "high",
+        "section": "hard_requirements",
+        "strategy": "semantic"
+      },
+      "distance": 0.3839608132839203,
+      "bm25_score": 17.08930651075854,
+      "vec_norm": 0.24122745112707167,
+      "bm25_norm": 0.6702470667471052,
+      "hybrid_score": 0.36993333581308174,
+      "rerank_score": 0.9724
+    },
+    {
+      "chunk_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8_chunk_2",
+      "content": "【阿里巴巴 · 后端开发 硬性要求】\n3年以上Java开发经验",
+      "metadata": {
+        "company": "阿里巴巴",
+        "index": 2,
+        "jd_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8",
+        "position": "后端开发",
+        "priority": "high",
+        "section": "hard_requirements",
+        "strategy": "semantic"
+      },
+      "distance": 0.39003244042396545,
+      "bm25_score": 19.10231278381687,
+      "vec_norm": 0.21068568901896,
+      "bm25_norm": 0.8096417060446165,
+      "hybrid_score": 0.390372494126657,
+      "rerank_score": 0.8933
+    }
+  ],
+  "tool_executions_full": [
+    {
+      "tool_name": "kb_retrieve",
+      "task_id": "T0",
+      "status": "success",
+      "output": {
+        "chunks": [
+          {
+            "chunk_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8_chunk_1",
+            "content": "【阿里巴巴 · 后端开发 岗位职责】\n1. 负责电商核心系统的设计与开发。2. 高并发系统架构设计与性能优化。3. 分布式系统开发与微服务治理。4. 数据库设计与优化。",
+            "source": "阿里巴巴-后端开发",
+            "metadata": {
+              "company": "阿里巴巴",
+              "position": "后端开发"
+            }
+          },
+          {
+            "chunk_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8_chunk_6",
+            "content": "【阿里巴巴 · 后端开发 软性要求/加分项】\n有电商行业经验优先",
+            "source": "阿里巴巴-后端开发",
+            "metadata": {
+              "company": "阿里巴巴",
+              "position": "后端开发"
+            }
+          },
+          {
+            "chunk_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8_chunk_0",
+            "content": "公司：阿里巴巴，岗位：后端开发，地点：杭州，薪资：35k-65k",
+            "source": "阿里巴巴-后端开发",
+            "metadata": {
+              "company": "阿里巴巴",
+              "position": "后端开发"
+            }
+          },
+          {
+            "chunk_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8_chunk_4",
+            "content": "【阿里巴巴 · 后端开发 硬性要求】\n熟悉分布式系统设计与微服务架构",
+            "source": "阿里巴巴-后端开发",
+            "metadata": {
+              "company": "阿里巴巴",
+              "position": "后端开发"
+            }
+          },
+          {
+            "chunk_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8_chunk_2",
+            "content": "【阿里巴巴 · 后端开发 硬性要求】\n3年以上Java开发经验",
+            "source": "阿里巴巴-后端开发",
+            "metadata": {
+              "company": "阿里巴巴",
+              "position": "后端开发"
+            }
+          }
+        ],
+        "query": "帮我筛选几个岗位，重点查看阿里巴巴后端开发职位",
+        "filters": {
+          "company": "阿里巴巴",
+          "position": "后端开发"
+        },
+        "strategy": "hybrid(70%vec+30%bm25)+reranker",
+        "pool_k": 5,
+        "rerank_k": 10,
+        "pool_size": 17,
+        "vec_only": 0,
+        "bm25_only": 8,
+        "both": 9,
+        "rerank": {
+          "enabled": true,
+          "candidates": 5,
+          "output": 5,
+          "best_rerank_score": 0.9984
+        }
+      }
+    },
+    {
+      "tool_name": "global_rank",
+      "task_id": "T1",
+      "status": "success",
+      "output": {
+        "rankings": [
+          {
+            "company": "阿里巴巴",
+            "position": "后端开发",
+            "match_score": 66,
+            "recommend_reason": "方向差异：简历侧重后端，JD方向电商",
+            "key_match": [
+              "检索召回"
+            ],
+            "key_gap": [
+              "方向不匹配（简历后端 vs JD电商）"
+            ],
+            "apply_priority": "中"
+          }
+        ],
+        "strategy_advice": "暂未发现高度匹配岗位，1 个中等匹配岗位可作为参考，建议进一步评估后再投递。",
+        "_template_mode": true,
+        "_coarse_filter_meta": {
+          "input_jds": 1,
+          "output_jds": 1,
+          "filter_ratio": 0.0
+        }
+      }
+    },
+    {
+      "tool_name": null,
+      "task_id": "T2",
+      "status": "success",
+      "output": {
+        "aggregation": {
+          "kb_results": [
+            {
+              "chunk_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8_chunk_1",
+              "content": "【阿里巴巴 · 后端开发 岗位职责】\n1. 负责电商核心系统的设计与开发。2. 高并发系统架构设计与性能优化。3. 分布式系统开发与微服务治理。4. 数据库设计与优化。",
+              "metadata": {
+                "company": "阿里巴巴",
+                "index": 1,
+                "jd_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8",
+                "position": "后端开发",
+                "section": "responsibilities",
+                "strategy": "semantic"
+              },
+              "distance": 0.2331186980009079,
+              "bm25_score": 14.494167942777871,
+              "vec_norm": 1.0,
+              "bm25_norm": 0.49054151418510233,
+              "hybrid_score": 0.8471624542555307,
+              "rerank_score": 0.9984
+            },
+            {
+              "chunk_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8_chunk_6",
+              "content": "【阿里巴巴 · 后端开发 软性要求/加分项】\n有电商行业经验优先",
+              "metadata": {
+                "company": "阿里巴巴",
+                "index": 6,
+                "jd_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8",
+                "position": "后端开发",
+                "priority": "medium",
+                "section": "soft_requirements",
+                "strategy": "semantic"
+              },
+              "distance": 0.359084814786911,
+              "bm25_score": 17.69157209161958,
+              "vec_norm": 0.36635977740028036,
+              "bm25_norm": 0.7119521496020548,
+              "hybrid_score": 0.47003748906081266,
+              "rerank_score": 0.981
+            },
+            {
+              "chunk_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8_chunk_0",
+              "content": "公司：阿里巴巴，岗位：后端开发，地点：杭州，薪资：35k-65k",
+              "metadata": {
+                "category": "技术",
+                "company": "阿里巴巴",
+                "domain": "电商",
+                "index": 0,
+                "jd_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8",
+                "min_education": "本科",
+                "min_years": 3,
+                "position": "后端开发",
+                "section": "basic_info",
+                "strategy": "semantic"
+              },
+              "distance": 0.3634324371814728,
+              "bm25_score": 21.85128822356113,
+              "vec_norm": 0.34449017871645593,
+              "bm25_norm": 1.0,
+              "hybrid_score": 0.5411431251015191,
+              "rerank_score": 0.9787
+            },
+            {
+              "chunk_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8_chunk_4",
+              "content": "【阿里巴巴 · 后端开发 硬性要求】\n熟悉分布式系统设计与微服务架构",
+              "metadata": {
+                "company": "阿里巴巴",
+                "index": 4,
+                "jd_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8",
+                "position": "后端开发",
+                "priority": "high",
+                "section": "hard_requirements",
+                "strategy": "semantic"
+              },
+              "distance": 0.3839608132839203,
+              "bm25_score": 17.08930651075854,
+              "vec_norm": 0.24122745112707167,
+              "bm25_norm": 0.6702470667471052,
+              "hybrid_score": 0.36993333581308174,
+              "rerank_score": 0.9724
+            },
+            {
+              "chunk_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8_chunk_2",
+              "content": "【阿里巴巴 · 后端开发 硬性要求】\n3年以上Java开发经验",
+              "metadata": {
+                "company": "阿里巴巴",
+                "index": 2,
+                "jd_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8",
+                "position": "后端开发",
+                "priority": "high",
+                "section": "hard_requirements",
+                "strategy": "semantic"
+              },
+              "distance": 0.39003244042396545,
+              "bm25_score": 19.10231278381687,
+              "vec_norm": 0.21068568901896,
+              "bm25_norm": 0.8096417060446165,
+              "hybrid_score": 0.390372494126657,
+              "rerank_score": 0.8933
+            }
+          ],
+          "ranked": {
+            "rankings": [
+              {
+                "rank": 1,
+                "jd_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8",
+                "company": "阿里巴巴",
+                "position": "后端开发",
+                "match_score": 66,
+                "recommend_reason": "方向差异：简历侧重后端，JD方向电商",
+                "key_match": [
+                  "检索召回"
+                ],
+                "key_gap": [
+                  "方向不匹配（简历后端 vs JD电商）"
+                ],
+                "apply_priority": "中"
+              }
+            ],
+            "strategy_advice": "暂未发现高度匹配岗位，1 个中等匹配岗位可作为参考，建议进一步评估后再投递。",
+            "_template_mode": true,
+            "_coarse_filter_meta": {
+              "input_jds": 1,
+              "output_jds": 1,
+              "filter_ratio": 0.0
+            }
+          }
+        }
+      }
+    }
+  ],
+  "debug_info": {
+    "task_graph": {
+      "tasks": {
+        "T0": {
+          "task_id": "T0",
+          "task_type": "tool_call",
+          "tool_name": "kb_retrieve",
+          "status": "success",
+          "parameters": {
+            "query": "{{intent_explore.search_keywords}}",
+            "company": "阿里巴巴",
+            "position": "{{intent_explore.position}}",
+            "top_k": 5
+          },
+          "resolved_params": {
+            "query": "帮我筛选几个岗位，重点查看阿里巴巴后端开发职位",
+            "company": "阿里巴巴",
+            "position": "后端开发",
+            "top_k": 5
+          },
+          "result": {
+            "chunks": [
+              {
+                "chunk_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8_chunk_1",
+                "content": "【阿里巴巴 · 后端开发 岗位职责】\n1. 负责电商核心系统的设计与开发。2. 高并发系统架构设计与性能优化。3. 分布式系统开发与微服务治理。4. 数据库设计与优化。",
+                "metadata": {
+                  "company": "阿里巴巴",
+                  "index": 1,
+                  "jd_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8",
+                  "position": "后端开发",
+                  "section": "responsibilities",
+                  "strategy": "semantic"
+                },
+                "distance": 0.2331186980009079,
+                "bm25_score": 14.494167942777871,
+                "vec_norm": 1.0,
+                "bm25_norm": 0.49054151418510233,
+                "hybrid_score": 0.8471624542555307,
+                "rerank_score": 0.9984
+              },
+              {
+                "chunk_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8_chunk_6",
+                "content": "【阿里巴巴 · 后端开发 软性要求/加分项】\n有电商行业经验优先",
+                "metadata": {
+                  "company": "阿里巴巴",
+                  "index": 6,
+                  "jd_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8",
+                  "position": "后端开发",
+                  "priority": "medium",
+                  "section": "soft_requirements",
+                  "strategy": "semantic"
+                },
+                "distance": 0.359084814786911,
+                "bm25_score": 17.69157209161958,
+                "vec_norm": 0.36635977740028036,
+                "bm25_norm": 0.7119521496020548,
+                "hybrid_score": 0.47003748906081266,
+                "rerank_score": 0.981
+              },
+              {
+                "chunk_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8_chunk_0",
+                "content": "公司：阿里巴巴，岗位：后端开发，地点：杭州，薪资：35k-65k",
+                "metadata": {
+                  "category": "技术",
+                  "company": "阿里巴巴",
+                  "domain": "电商",
+                  "index": 0,
+                  "jd_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8",
+                  "min_education": "本科",
+                  "min_years": 3,
+                  "position": "后端开发",
+                  "section": "basic_info",
+                  "strategy": "semantic"
+                },
+                "distance": 0.3634324371814728,
+                "bm25_score": 21.85128822356113,
+                "vec_norm": 0.34449017871645593,
+                "bm25_norm": 1.0,
+                "hybrid_score": 0.5411431251015191,
+                "rerank_score": 0.9787
+              },
+              {
+                "chunk_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8_chunk_4",
+                "content": "【阿里巴巴 · 后端开发 硬性要求】\n熟悉分布式系统设计与微服务架构",
+                "metadata": {
+                  "company": "阿里巴巴",
+                  "index": 4,
+                  "jd_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8",
+                  "position": "后端开发",
+                  "priority": "high",
+                  "section": "hard_requirements",
+                  "strategy": "semantic"
+                },
+                "distance": 0.3839608132839203,
+                "bm25_score": 17.08930651075854,
+                "vec_norm": 0.24122745112707167,
+                "bm25_norm": 0.6702470667471052,
+                "hybrid_score": 0.36993333581308174,
+                "rerank_score": 0.9724
+              },
+              {
+                "chunk_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8_chunk_2",
+                "content": "【阿里巴巴 · 后端开发 硬性要求】\n3年以上Java开发经验",
+                "metadata": {
+                  "company": "阿里巴巴",
+                  "index": 2,
+                  "jd_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8",
+                  "position": "后端开发",
+                  "priority": "high",
+                  "section": "hard_requirements",
+                  "strategy": "semantic"
+                },
+                "distance": 0.39003244042396545,
+                "bm25_score": 19.10231278381687,
+                "vec_norm": 0.21068568901896,
+                "bm25_norm": 0.8096417060446165,
+                "hybrid_score": 0.390372494126657,
+                "rerank_score": 0.8933
+              }
+            ],
+            "query": "帮我筛选几个岗位，重点查看阿里巴巴后端开发职位",
+            "filters": {
+              "company": "阿里巴巴",
+              "position": "后端开发"
+            },
+            "strategy": "hybrid(70%vec+30%bm25)+reranker",
+            "pool_k": 5,
+            "rerank_k": 10,
+            "pool_size": 17,
+            "vec_only": 0,
+            "bm25_only": 8,
+            "both": 9,
+            "rerank": {
+              "enabled": true,
+              "candidates": 5,
+              "output": 5,
+              "best_rerank_score": 0.9984
+            }
+          },
+          "observation": "工具 kb_retrieve 执行成功"
+        },
+        "T1": {
+          "task_id": "T1",
+          "task_type": "tool_call",
+          "tool_name": "global_rank",
+          "status": "success",
+          "parameters": {
+            "resume_text": "{{global_slots.resume_text}}",
+            "candidate_jds": "{{T0.output.chunks}}",
+            "sort_by": "{{intent_explore.sort_by}}"
+          },
+          "resolved_params": {
+            "resume_text": "姓名：李工程师\n电话：138-XXXX-1234 | 邮箱：lixx_dev@email.com | 现居：北京\nJava后端开发工程师 | 3年经验 | 本科\n\n教育背景\n2018.09 - 2022.06  XX理工大学  计算机科学与技术（本科）\n主修课程：数据结构与算法、操作系统、计算机网络、数据库原理、软件工程\n在校荣誉：校级优秀毕业设计（基于微服务的校园二手交易平台）\n\n专业技能\n熟练掌握Java核心技术，熟悉JVM内存模型、GC机制及常见调优手段\n精通Spring Boot、Spring Cloud微服务生态，熟悉Nacos、Gateway、Sentinel、Seata等组件\n熟悉MySQL索引优化、事务机制、分库分表策略，具备SQL调优及慢查询治理经验\n了解Redis缓存设计、Kafka消息队列，熟悉Docker容器化部署及Jenkins CI/CD流程\n掌握Git版本控制，熟悉Linux日常运维及日志排查\n\n工作经历\n2022.07 - 至今  XX科技有限公司（B轮 / 企业服务 SaaS）  Java后端工程师\n\nSaaS供应链管理平台（2023.03 - 至今）\n负责订单中心、库存中心核心模块设计与开发，采用Spring Cloud Alibaba微服务架构，支撑日均10W+订单处理\n主导MySQL分库分表方案设计（ShardingSphere），解决单表数据量过亿导致的查询性能瓶颈，接口响应时间从800ms降至120ms\n设计多级缓存策略（Redis + Caffeine本地缓存），热点数据命中率提升至95%，降低数据库负载40%\n基于Seata AT模式实现分布式事务，保障订单与库存数据一致性，线上运行半年零资损事故\n\n企业权限中台重构（2022.09 - 2023.02）\n参与RBAC权限中台从单体到微服务的拆分重构，负责鉴权服务、菜单路由模块开发\n引入Gateway统一鉴权过滤器，对接OAuth2.0 + JWT认证体系，支持多租户隔离\n编写核心接口单元测试（Unit + Mockito），模块测试覆盖率从45%提升至82%\n\n自我评价\n具备扎实的计算机基础与3年企业级后端开发经验，擅长高并发场景下的系统设计与性能优化。注重代码质量与工程规范，具备良好的团队协作与跨部门沟通能力。",
+            "candidate_jds": [
+              {
+                "chunk_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8_chunk_1",
+                "content": "【阿里巴巴 · 后端开发 岗位职责】\n1. 负责电商核心系统的设计与开发。2. 高并发系统架构设计与性能优化。3. 分布式系统开发与微服务治理。4. 数据库设计与优化。",
+                "metadata": {
+                  "company": "阿里巴巴",
+                  "index": 1,
+                  "jd_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8",
+                  "position": "后端开发",
+                  "section": "responsibilities",
+                  "strategy": "semantic"
+                },
+                "distance": 0.2331186980009079,
+                "bm25_score": 14.494167942777871,
+                "vec_norm": 1.0,
+                "bm25_norm": 0.49054151418510233,
+                "hybrid_score": 0.8471624542555307,
+                "rerank_score": 0.9984
+              },
+              {
+                "chunk_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8_chunk_6",
+                "content": "【阿里巴巴 · 后端开发 软性要求/加分项】\n有电商行业经验优先",
+                "metadata": {
+                  "company": "阿里巴巴",
+                  "index": 6,
+                  "jd_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8",
+                  "position": "后端开发",
+                  "priority": "medium",
+                  "section": "soft_requirements",
+                  "strategy": "semantic"
+                },
+                "distance": 0.359084814786911,
+                "bm25_score": 17.69157209161958,
+                "vec_norm": 0.36635977740028036,
+                "bm25_norm": 0.7119521496020548,
+                "hybrid_score": 0.47003748906081266,
+                "rerank_score": 0.981
+              },
+              {
+                "chunk_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8_chunk_0",
+                "content": "公司：阿里巴巴，岗位：后端开发，地点：杭州，薪资：35k-65k",
+                "metadata": {
+                  "category": "技术",
+                  "company": "阿里巴巴",
+                  "domain": "电商",
+                  "index": 0,
+                  "jd_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8",
+                  "min_education": "本科",
+                  "min_years": 3,
+                  "position": "后端开发",
+                  "section": "basic_info",
+                  "strategy": "semantic"
+                },
+                "distance": 0.3634324371814728,
+                "bm25_score": 21.85128822356113,
+                "vec_norm": 0.34449017871645593,
+                "bm25_norm": 1.0,
+                "hybrid_score": 0.5411431251015191,
+                "rerank_score": 0.9787
+              },
+              {
+                "chunk_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8_chunk_4",
+                "content": "【阿里巴巴 · 后端开发 硬性要求】\n熟悉分布式系统设计与微服务架构",
+                "metadata": {
+                  "company": "阿里巴巴",
+                  "index": 4,
+                  "jd_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8",
+                  "position": "后端开发",
+                  "priority": "high",
+                  "section": "hard_requirements",
+                  "strategy": "semantic"
+                },
+                "distance": 0.3839608132839203,
+                "bm25_score": 17.08930651075854,
+                "vec_norm": 0.24122745112707167,
+                "bm25_norm": 0.6702470667471052,
+                "hybrid_score": 0.36993333581308174,
+                "rerank_score": 0.9724
+              },
+              {
+                "chunk_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8_chunk_2",
+                "content": "【阿里巴巴 · 后端开发 硬性要求】\n3年以上Java开发经验",
+                "metadata": {
+                  "company": "阿里巴巴",
+                  "index": 2,
+                  "jd_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8",
+                  "position": "后端开发",
+                  "priority": "high",
+                  "section": "hard_requirements",
+                  "strategy": "semantic"
+                },
+                "distance": 0.39003244042396545,
+                "bm25_score": 19.10231278381687,
+                "vec_norm": 0.21068568901896,
+                "bm25_norm": 0.8096417060446165,
+                "hybrid_score": 0.390372494126657,
+                "rerank_score": 0.8933
+              }
+            ],
+            "sort_by": "match_score"
+          },
+          "result": {
+            "rankings": [
+              {
+                "rank": 1,
+                "jd_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8",
+                "company": "阿里巴巴",
+                "position": "后端开发",
+                "match_score": 66,
+                "recommend_reason": "方向差异：简历侧重后端，JD方向电商",
+                "key_match": [
+                  "检索召回"
+                ],
+                "key_gap": [
+                  "方向不匹配（简历后端 vs JD电商）"
+                ],
+                "apply_priority": "中"
+              }
+            ],
+            "strategy_advice": "暂未发现高度匹配岗位，1 个中等匹配岗位可作为参考，建议进一步评估后再投递。",
+            "_template_mode": true,
+            "_coarse_filter_meta": {
+              "input_jds": 1,
+              "output_jds": 1,
+              "filter_ratio": 0.0
+            }
+          },
+          "observation": "工具 global_rank 执行成功"
+        },
+        "T2": {
+          "task_id": "T2",
+          "task_type": "aggregate",
+          "tool_name": null,
+          "status": "success",
+          "parameters": {
+            "kb_results": "{{T0.output.chunks}}",
+            "ranked": "{{T1.output}}"
+          },
+          "resolved_params": {
+            "kb_results": [
+              {
+                "chunk_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8_chunk_1",
+                "content": "【阿里巴巴 · 后端开发 岗位职责】\n1. 负责电商核心系统的设计与开发。2. 高并发系统架构设计与性能优化。3. 分布式系统开发与微服务治理。4. 数据库设计与优化。",
+                "metadata": {
+                  "company": "阿里巴巴",
+                  "index": 1,
+                  "jd_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8",
+                  "position": "后端开发",
+                  "section": "responsibilities",
+                  "strategy": "semantic"
+                },
+                "distance": 0.2331186980009079,
+                "bm25_score": 14.494167942777871,
+                "vec_norm": 1.0,
+                "bm25_norm": 0.49054151418510233,
+                "hybrid_score": 0.8471624542555307,
+                "rerank_score": 0.9984
+              },
+              {
+                "chunk_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8_chunk_6",
+                "content": "【阿里巴巴 · 后端开发 软性要求/加分项】\n有电商行业经验优先",
+                "metadata": {
+                  "company": "阿里巴巴",
+                  "index": 6,
+                  "jd_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8",
+                  "position": "后端开发",
+                  "priority": "medium",
+                  "section": "soft_requirements",
+                  "strategy": "semantic"
+                },
+                "distance": 0.359084814786911,
+                "bm25_score": 17.69157209161958,
+                "vec_norm": 0.36635977740028036,
+                "bm25_norm": 0.7119521496020548,
+                "hybrid_score": 0.47003748906081266,
+                "rerank_score": 0.981
+              },
+              {
+                "chunk_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8_chunk_0",
+                "content": "公司：阿里巴巴，岗位：后端开发，地点：杭州，薪资：35k-65k",
+                "metadata": {
+                  "category": "技术",
+                  "company": "阿里巴巴",
+                  "domain": "电商",
+                  "index": 0,
+                  "jd_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8",
+                  "min_education": "本科",
+                  "min_years": 3,
+                  "position": "后端开发",
+                  "section": "basic_info",
+                  "strategy": "semantic"
+                },
+                "distance": 0.3634324371814728,
+                "bm25_score": 21.85128822356113,
+                "vec_norm": 0.34449017871645593,
+                "bm25_norm": 1.0,
+                "hybrid_score": 0.5411431251015191,
+                "rerank_score": 0.9787
+              },
+              {
+                "chunk_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8_chunk_4",
+                "content": "【阿里巴巴 · 后端开发 硬性要求】\n熟悉分布式系统设计与微服务架构",
+                "metadata": {
+                  "company": "阿里巴巴",
+                  "index": 4,
+                  "jd_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8",
+                  "position": "后端开发",
+                  "priority": "high",
+                  "section": "hard_requirements",
+                  "strategy": "semantic"
+                },
+                "distance": 0.3839608132839203,
+                "bm25_score": 17.08930651075854,
+                "vec_norm": 0.24122745112707167,
+                "bm25_norm": 0.6702470667471052,
+                "hybrid_score": 0.36993333581308174,
+                "rerank_score": 0.9724
+              },
+              {
+                "chunk_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8_chunk_2",
+                "content": "【阿里巴巴 · 后端开发 硬性要求】\n3年以上Java开发经验",
+                "metadata": {
+                  "company": "阿里巴巴",
+                  "index": 2,
+                  "jd_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8",
+                  "position": "后端开发",
+                  "priority": "high",
+                  "section": "hard_requirements",
+                  "strategy": "semantic"
+                },
+                "distance": 0.39003244042396545,
+                "bm25_score": 19.10231278381687,
+                "vec_norm": 0.21068568901896,
+                "bm25_norm": 0.8096417060446165,
+                "hybrid_score": 0.390372494126657,
+                "rerank_score": 0.8933
+              }
+            ],
+            "ranked": {
+              "rankings": [
+                {
+                  "rank": 1,
+                  "jd_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8",
+                  "company": "阿里巴巴",
+                  "position": "后端开发",
+                  "match_score": 66,
+                  "recommend_reason": "方向差异：简历侧重后端，JD方向电商",
+                  "key_match": [
+                    "检索召回"
+                  ],
+                  "key_gap": [
+                    "方向不匹配（简历后端 vs JD电商）"
+                  ],
+                  "apply_priority": "中"
+                }
+              ],
+              "strategy_advice": "暂未发现高度匹配岗位，1 个中等匹配岗位可作为参考，建议进一步评估后再投递。",
+              "_template_mode": true,
+              "_coarse_filter_meta": {
+                "input_jds": 1,
+                "output_jds": 1,
+                "filter_ratio": 0.0
+              }
+            }
+          },
+          "result": {
+            "aggregation": {
+              "kb_results": [
+                {
+                  "chunk_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8_chunk_1",
+                  "content": "【阿里巴巴 · 后端开发 岗位职责】\n1. 负责电商核心系统的设计与开发。2. 高并发系统架构设计与性能优化。3. 分布式系统开发与微服务治理。4. 数据库设计与优化。",
+                  "metadata": {
+                    "company": "阿里巴巴",
+                    "index": 1,
+                    "jd_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8",
+                    "position": "后端开发",
+                    "section": "responsibilities",
+                    "strategy": "semantic"
+                  },
+                  "distance": 0.2331186980009079,
+                  "bm25_score": 14.494167942777871,
+                  "vec_norm": 1.0,
+                  "bm25_norm": 0.49054151418510233,
+                  "hybrid_score": 0.8471624542555307,
+                  "rerank_score": 0.9984
+                },
+                {
+                  "chunk_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8_chunk_6",
+                  "content": "【阿里巴巴 · 后端开发 软性要求/加分项】\n有电商行业经验优先",
+                  "metadata": {
+                    "company": "阿里巴巴",
+                    "index": 6,
+                    "jd_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8",
+                    "position": "后端开发",
+                    "priority": "medium",
+                    "section": "soft_requirements",
+                    "strategy": "semantic"
+                  },
+                  "distance": 0.359084814786911,
+                  "bm25_score": 17.69157209161958,
+                  "vec_norm": 0.36635977740028036,
+                  "bm25_norm": 0.7119521496020548,
+                  "hybrid_score": 0.47003748906081266,
+                  "rerank_score": 0.981
+                },
+                {
+                  "chunk_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8_chunk_0",
+                  "content": "公司：阿里巴巴，岗位：后端开发，地点：杭州，薪资：35k-65k",
+                  "metadata": {
+                    "category": "技术",
+                    "company": "阿里巴巴",
+                    "domain": "电商",
+                    "index": 0,
+                    "jd_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8",
+                    "min_education": "本科",
+                    "min_years": 3,
+                    "position": "后端开发",
+                    "section": "basic_info",
+                    "strategy": "semantic"
+                  },
+                  "distance": 0.3634324371814728,
+                  "bm25_score": 21.85128822356113,
+                  "vec_norm": 0.34449017871645593,
+                  "bm25_norm": 1.0,
+                  "hybrid_score": 0.5411431251015191,
+                  "rerank_score": 0.9787
+                },
+                {
+                  "chunk_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8_chunk_4",
+                  "content": "【阿里巴巴 · 后端开发 硬性要求】\n熟悉分布式系统设计与微服务架构",
+                  "metadata": {
+                    "company": "阿里巴巴",
+                    "index": 4,
+                    "jd_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8",
+                    "position": "后端开发",
+                    "priority": "high",
+                    "section": "hard_requirements",
+                    "strategy": "semantic"
+                  },
+                  "distance": 0.3839608132839203,
+                  "bm25_score": 17.08930651075854,
+                  "vec_norm": 0.24122745112707167,
+                  "bm25_norm": 0.6702470667471052,
+                  "hybrid_score": 0.36993333581308174,
+                  "rerank_score": 0.9724
+                },
+                {
+                  "chunk_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8_chunk_2",
+                  "content": "【阿里巴巴 · 后端开发 硬性要求】\n3年以上Java开发经验",
+                  "metadata": {
+                    "company": "阿里巴巴",
+                    "index": 2,
+                    "jd_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8",
+                    "position": "后端开发",
+                    "priority": "high",
+                    "section": "hard_requirements",
+                    "strategy": "semantic"
+                  },
+                  "distance": 0.39003244042396545,
+                  "bm25_score": 19.10231278381687,
+                  "vec_norm": 0.21068568901896,
+                  "bm25_norm": 0.8096417060446165,
+                  "hybrid_score": 0.390372494126657,
+                  "rerank_score": 0.8933
+                }
+              ],
+              "ranked": {
+                "rankings": [
+                  {
+                    "rank": 1,
+                    "jd_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8",
+                    "company": "阿里巴巴",
+                    "position": "后端开发",
+                    "match_score": 66,
+                    "recommend_reason": "方向差异：简历侧重后端，JD方向电商",
+                    "key_match": [
+                      "检索召回"
+                    ],
+                    "key_gap": [
+                      "方向不匹配（简历后端 vs JD电商）"
+                    ],
+                    "apply_priority": "中"
+                  }
+                ],
+                "strategy_advice": "暂未发现高度匹配岗位，1 个中等匹配岗位可作为参考，建议进一步评估后再投递。",
+                "_template_mode": true,
+                "_coarse_filter_meta": {
+                  "input_jds": 1,
+                  "output_jds": 1,
+                  "filter_ratio": 0.0
+                }
+              }
+            }
+          },
+          "observation": "聚合完成"
+        }
+      },
+      "global_status": "success",
+      "replan_reason": "",
+      "replan_count": 0
+    },
+    "intent": {
+      "demands": [
+        {
+          "intent": "position_explore",
+          "entities": {
+            "company": "阿里巴巴",
+            "position": "后端开发",
+            "search_keywords": "帮我筛选几个岗位，重点查看阿里巴巴后端开发职位",
+            "sort_by": "match_score",
+            "top_k": 5
+          },
+          "confidence": 0.88
+        }
+      ],
+      "needs_clarification": false,
+      "clarification_question": ""
+    },
+    "rewrite": {
+      "rewritten_query": "帮我筛选几个岗位，重点查看阿里巴巴后端开发职位",
+      "search_keywords": "帮我筛选几个岗位，重点查看阿里巴巴后端开发职位",
+      "is_follow_up": false,
+      "follow_up_type": "none",
+      "resolved_references": {}
+    },
+    "evidence_cache": [
+      {
+        "chunk_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8_chunk_1",
+        "content": "【阿里巴巴 · 后端开发 岗位职责】\n1. 负责电商核心系统的设计与开发。2. 高并发系统架构设计与性能优化。3. 分布式系统开发与微服务治理。4. 数据库设计与优化。",
+        "metadata": {
+          "company": "阿里巴巴",
+          "index": 1,
+          "jd_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8",
+          "position": "后端开发",
+          "section": "responsibilities",
+          "strategy": "semantic"
+        },
+        "distance": 0.2331186980009079,
+        "bm25_score": 14.494167942777871,
+        "vec_norm": 1.0,
+        "bm25_norm": 0.49054151418510233,
+        "hybrid_score": 0.8471624542555307,
+        "rerank_score": 0.9984
+      },
+      {
+        "chunk_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8_chunk_6",
+        "content": "【阿里巴巴 · 后端开发 软性要求/加分项】\n有电商行业经验优先",
+        "metadata": {
+          "company": "阿里巴巴",
+          "index": 6,
+          "jd_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8",
+          "position": "后端开发",
+          "priority": "medium",
+          "section": "soft_requirements",
+          "strategy": "semantic"
+        },
+        "distance": 0.359084814786911,
+        "bm25_score": 17.69157209161958,
+        "vec_norm": 0.36635977740028036,
+        "bm25_norm": 0.7119521496020548,
+        "hybrid_score": 0.47003748906081266,
+        "rerank_score": 0.981
+      },
+      {
+        "chunk_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8_chunk_0",
+        "content": "公司：阿里巴巴，岗位：后端开发，地点：杭州，薪资：35k-65k",
+        "metadata": {
+          "category": "技术",
+          "company": "阿里巴巴",
+          "domain": "电商",
+          "index": 0,
+          "jd_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8",
+          "min_education": "本科",
+          "min_years": 3,
+          "position": "后端开发",
+          "section": "basic_info",
+          "strategy": "semantic"
+        },
+        "distance": 0.3634324371814728,
+        "bm25_score": 21.85128822356113,
+        "vec_norm": 0.34449017871645593,
+        "bm25_norm": 1.0,
+        "hybrid_score": 0.5411431251015191,
+        "rerank_score": 0.9787
+      },
+      {
+        "chunk_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8_chunk_4",
+        "content": "【阿里巴巴 · 后端开发 硬性要求】\n熟悉分布式系统设计与微服务架构",
+        "metadata": {
+          "company": "阿里巴巴",
+          "index": 4,
+          "jd_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8",
+          "position": "后端开发",
+          "priority": "high",
+          "section": "hard_requirements",
+          "strategy": "semantic"
+        },
+        "distance": 0.3839608132839203,
+        "bm25_score": 17.08930651075854,
+        "vec_norm": 0.24122745112707167,
+        "bm25_norm": 0.6702470667471052,
+        "hybrid_score": 0.36993333581308174,
+        "rerank_score": 0.9724
+      },
+      {
+        "chunk_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8_chunk_2",
+        "content": "【阿里巴巴 · 后端开发 硬性要求】\n3年以上Java开发经验",
+        "metadata": {
+          "company": "阿里巴巴",
+          "index": 2,
+          "jd_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8",
+          "position": "后端开发",
+          "priority": "high",
+          "section": "hard_requirements",
+          "strategy": "semantic"
+        },
+        "distance": 0.39003244042396545,
+        "bm25_score": 19.10231278381687,
+        "vec_norm": 0.21068568901896,
+        "bm25_norm": 0.8096417060446165,
+        "hybrid_score": 0.390372494126657,
+        "rerank_score": 0.8933
+      }
+    ],
+    "evidence_cache_query": "帮我筛选几个岗位，重点查看阿里巴巴后端开发职位",
+    "tool_outputs": [
+      {
+        "task_id": "T0",
+        "tool": "kb_retrieve",
+        "description": "检索阿里巴巴后端开发职位（5个）",
+        "result": {
+          "chunks": [
+            {
+              "chunk_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8_chunk_1",
+              "content": "【阿里巴巴 · 后端开发 岗位职责】\n1. 负责电商核心系统的设计与开发。2. 高并发系统架构设计与性能优化。3. 分布式系统开发与微服务治理。4. 数据库设计与优化。",
+              "source": "阿里巴巴-后端开发",
+              "metadata": {
+                "company": "阿里巴巴",
+                "position": "后端开发"
+              }
+            },
+            {
+              "chunk_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8_chunk_6",
+              "content": "【阿里巴巴 · 后端开发 软性要求/加分项】\n有电商行业经验优先",
+              "source": "阿里巴巴-后端开发",
+              "metadata": {
+                "company": "阿里巴巴",
+                "position": "后端开发"
+              }
+            },
+            {
+              "chunk_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8_chunk_0",
+              "content": "公司：阿里巴巴，岗位：后端开发，地点：杭州，薪资：35k-65k",
+              "source": "阿里巴巴-后端开发",
+              "metadata": {
+                "company": "阿里巴巴",
+                "position": "后端开发"
+              }
+            },
+            {
+              "chunk_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8_chunk_4",
+              "content": "【阿里巴巴 · 后端开发 硬性要求】\n熟悉分布式系统设计与微服务架构",
+              "source": "阿里巴巴-后端开发",
+              "metadata": {
+                "company": "阿里巴巴",
+                "position": "后端开发"
+              }
+            },
+            {
+              "chunk_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8_chunk_2",
+              "content": "【阿里巴巴 · 后端开发 硬性要求】\n3年以上Java开发经验",
+              "source": "阿里巴巴-后端开发",
+              "metadata": {
+                "company": "阿里巴巴",
+                "position": "后端开发"
+              }
+            }
+          ],
+          "query": "帮我筛选几个岗位，重点查看阿里巴巴后端开发职位",
+          "filters": {
+            "company": "阿里巴巴",
+            "position": "后端开发"
+          },
+          "strategy": "hybrid(70%vec+30%bm25)+reranker",
+          "pool_k": 5,
+          "rerank_k": 10,
+          "pool_size": 17,
+          "vec_only": 0,
+          "bm25_only": 8,
+          "both": 9,
+          "rerank": {
+            "enabled": true,
+            "candidates": 5,
+            "output": 5,
+            "best_rerank_score": 0.9984
+          }
+        }
+      },
+      {
+        "task_id": "T1",
+        "tool": "global_rank",
+        "description": "根据简历与JD的匹配度对岗位排序",
+        "result": {
+          "rankings": [
+            {
+              "company": "阿里巴巴",
+              "position": "后端开发",
+              "match_score": 66,
+              "recommend_reason": "方向差异：简历侧重后端，JD方向电商",
+              "key_match": [
+                "检索召回"
+              ],
+              "key_gap": [
+                "方向不匹配（简历后端 vs JD电商）"
+              ],
+              "apply_priority": "中"
+            }
+          ],
+          "strategy_advice": "暂未发现高度匹配岗位，1 个中等匹配岗位可作为参考，建议进一步评估后再投递。",
+          "_template_mode": true,
+          "_coarse_filter_meta": {
+            "input_jds": 1,
+            "output_jds": 1,
+            "filter_ratio": 0.0
+          }
+        }
+      },
+      {
+        "task_id": "T2",
+        "tool": null,
+        "description": "整合检索和排序结果生成最终回复",
+        "result": {
+          "aggregation": {
+            "kb_results": [
+              {
+                "chunk_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8_chunk_1",
+                "content": "【阿里巴巴 · 后端开发 岗位职责】\n1. 负责电商核心系统的设计与开发。2. 高并发系统架构设计与性能优化。3. 分布式系统开发与微服务治理。4. 数据库设计与优化。",
+                "metadata": {
+                  "company": "阿里巴巴",
+                  "index": 1,
+                  "jd_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8",
+                  "position": "后端开发",
+                  "section": "responsibilities",
+                  "strategy": "semantic"
+                },
+                "distance": 0.2331186980009079,
+                "bm25_score": 14.494167942777871,
+                "vec_norm": 1.0,
+                "bm25_norm": 0.49054151418510233,
+                "hybrid_score": 0.8471624542555307,
+                "rerank_score": 0.9984
+              },
+              {
+                "chunk_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8_chunk_6",
+                "content": "【阿里巴巴 · 后端开发 软性要求/加分项】\n有电商行业经验优先",
+                "metadata": {
+                  "company": "阿里巴巴",
+                  "index": 6,
+                  "jd_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8",
+                  "position": "后端开发",
+                  "priority": "medium",
+                  "section": "soft_requirements",
+                  "strategy": "semantic"
+                },
+                "distance": 0.359084814786911,
+                "bm25_score": 17.69157209161958,
+                "vec_norm": 0.36635977740028036,
+                "bm25_norm": 0.7119521496020548,
+                "hybrid_score": 0.47003748906081266,
+                "rerank_score": 0.981
+              },
+              {
+                "chunk_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8_chunk_0",
+                "content": "公司：阿里巴巴，岗位：后端开发，地点：杭州，薪资：35k-65k",
+                "metadata": {
+                  "category": "技术",
+                  "company": "阿里巴巴",
+                  "domain": "电商",
+                  "index": 0,
+                  "jd_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8",
+                  "min_education": "本科",
+                  "min_years": 3,
+                  "position": "后端开发",
+                  "section": "basic_info",
+                  "strategy": "semantic"
+                },
+                "distance": 0.3634324371814728,
+                "bm25_score": 21.85128822356113,
+                "vec_norm": 0.34449017871645593,
+                "bm25_norm": 1.0,
+                "hybrid_score": 0.5411431251015191,
+                "rerank_score": 0.9787
+              },
+              {
+                "chunk_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8_chunk_4",
+                "content": "【阿里巴巴 · 后端开发 硬性要求】\n熟悉分布式系统设计与微服务架构",
+                "metadata": {
+                  "company": "阿里巴巴",
+                  "index": 4,
+                  "jd_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8",
+                  "position": "后端开发",
+                  "priority": "high",
+                  "section": "hard_requirements",
+                  "strategy": "semantic"
+                },
+                "distance": 0.3839608132839203,
+                "bm25_score": 17.08930651075854,
+                "vec_norm": 0.24122745112707167,
+                "bm25_norm": 0.6702470667471052,
+                "hybrid_score": 0.36993333581308174,
+                "rerank_score": 0.9724
+              },
+              {
+                "chunk_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8_chunk_2",
+                "content": "【阿里巴巴 · 后端开发 硬性要求】\n3年以上Java开发经验",
+                "metadata": {
+                  "company": "阿里巴巴",
+                  "index": 2,
+                  "jd_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8",
+                  "position": "后端开发",
+                  "priority": "high",
+                  "section": "hard_requirements",
+                  "strategy": "semantic"
+                },
+                "distance": 0.39003244042396545,
+                "bm25_score": 19.10231278381687,
+                "vec_norm": 0.21068568901896,
+                "bm25_norm": 0.8096417060446165,
+                "hybrid_score": 0.390372494126657,
+                "rerank_score": 0.8933
+              }
+            ],
+            "ranked": {
+              "rankings": [
+                {
+                  "rank": 1,
+                  "jd_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8",
+                  "company": "阿里巴巴",
+                  "position": "后端开发",
+                  "match_score": 66,
+                  "recommend_reason": "方向差异：简历侧重后端，JD方向电商",
+                  "key_match": [
+                    "检索召回"
+                  ],
+                  "key_gap": [
+                    "方向不匹配（简历后端 vs JD电商）"
+                  ],
+                  "apply_priority": "中"
+                }
+              ],
+              "strategy_advice": "暂未发现高度匹配岗位，1 个中等匹配岗位可作为参考，建议进一步评估后再投递。",
+              "_template_mode": true,
+              "_coarse_filter_meta": {
+                "input_jds": 1,
+                "output_jds": 1,
+                "filter_ratio": 0.0
+              }
+            }
+          }
+        }
+      }
+    ],
+    "final_aggregation_prompt": {
+      "system_prompt": "你是一位专业的求职顾问。请基于以下工具执行结果，给用户一个清晰、有帮助的回复。\n要求：\n1. 先直接回答用户的问题（是/否/有/没有），不要绕弯子，不要重复用户的原话\n2. 如果有匹配分析结果，给出具体的分数和建议\n3. 如果有检索结果，基于事实回答，不要编造\n4. 【强制】引用信息时必须标注来源。每个引用的事实后面都要跟 [来源：公司名-岗位名] 格式。   kb_retrieve 结果的 chunks 中带有 'source' 字段（如'字节跳动-AI产品经理'），请直接使用。   external_search 结果带有 'source_name' 字段，也请直接使用。\n5. 当本地知识库与外部搜索结果冲突时，请并列呈现两种说法并标注各自来源，不要替用户做判断\n6. 语气友好、专业、结构化",
+      "user_prompt": "【用户问题】\n帮我筛选几个岗位，重点查看阿里巴巴后端开发职位\n\n【工具执行结果】\n[{\"task_id\": \"T0\", \"tool\": \"kb_retrieve\", \"description\": \"检索阿里巴巴后端开发职位（5个）\", \"result\": {\"chunks\": [{\"chunk_id\": \"9cde8355-dcc0-434e-97c4-67dfc5dae5b8_chunk_1\", \"content\": \"【阿里巴巴 · 后端开发 岗位职责】\\n1. 负责电商核心系统的设计与开发。2. 高并发系统架构设计与性能优化。3. 分布式系统开发与微服务治理。4. 数据库设计与优化。\", \"source\": \"阿里巴巴-后端开发\", \"metadata\": {\"company\": \"阿里巴巴\", \"position\": \"后端开发\"}}, {\"chunk_id\": \"9cde8355-dcc0-434e-97c4-67dfc5dae5b8_chunk_6\", \"content\": \"【阿里巴巴 · 后端开发 软性要求/加分项】\\n有电商行业经验优先\", \"source\": \"阿里巴巴-后端开发\", \"metadata\": {\"company\": \"阿里巴巴\", \"position\": \"后端开发\"}}, {\"chunk_id\": \"9cde8355-dcc0-434e-97c4-67dfc5dae5b8_chunk_0\", \"content\": \"公司：阿里巴巴，岗位：后端开发，地点：杭州，薪资：35k-65k\", \"source\": \"阿里巴巴-后端开发\", \"metadata\": {\"company\": \"阿里巴巴\", \"position\": \"后端开发\"}}, {\"chunk_id\": \"9cde8355-dcc0-434e-97c4-67dfc5dae5b8_chunk_4\", \"content\": \"【阿里巴巴 · 后端开发 硬性要求】\\n熟悉分布式系统设计与微服务架构\", \"source\": \"阿里巴巴-后端开发\", \"metadata\": {\"company\": \"阿里巴巴\", \"position\": \"后端开发\"}}, {\"chunk_id\": \"9cde8355-dcc0-434e-97c4-67dfc5dae5b8_chunk_2\", \"content\": \"【阿里巴巴 · 后端开发 硬性要求】\\n3年以上Java开发经验\", \"source\": \"阿里巴巴-后端开发\", \"metadata\": {\"company\": \"阿里巴巴\", \"position\": \"后端开发\"}}], \"query\": \"帮我筛选几个岗位，重点查看阿里巴巴后端开发职位\", \"filters\": {\"company\": \"阿里巴巴\", \"position\": \"后端开发\"}, \"strategy\": \"hybrid(70%vec+30%bm25)+reranker\", \"pool_k\": 5, \"rerank_k\": 10, \"pool_size\": 17, \"vec_only\": 0, \"bm25_only\": 8, \"both\": 9, \"rerank\": {\"enabled\": true, \"candidates\": 5, \"output\": 5, \"best_rerank_score\": 0.9984}}}, {\"task_id\": \"T1\", \"tool\": \"global_rank\", \"description\": \"根据简历与JD的匹配度对岗位排序\", \"result\": {\"rankings\": [{\"company\": \"阿里巴巴\", \"position\": \"后端开发\", \"match_score\": 66, \"recommend_reason\": \"方向差异：简历侧重后端，JD方向电商\", \"key_match\": [\"检索召回\"], \"key_gap\": [\"方向不匹配（简历后端 vs JD电商）\"], \"apply_priority\": \"中\"}], \"strategy_advice\": \"暂未发现高度匹配岗位，1 个中等匹配岗位可作为参考，建议进一步评估后再投递。\", \"_template_mode\": true, \"_coarse_filter_meta\": {\"input_jds\": 1, \"output_jds\": 1, \"filter_ratio\": 0.0}}}, {\"task_id\": \"T2\", \"tool\": null, \"description\": \"整合检索和排序结果生成最终回复\", \"result\": {\"aggregation\": {\"kb_results\": [{\"chunk_id\": \"9cde8355-dcc0-434e-97c4-67dfc5dae5b8_chunk_1\", \"content\": \"【阿里巴巴 · 后端开发 岗位职责】\\n1. 负责电商核心系统的设计与开发。2. 高并发系统架构设计与性能优化。3. 分布式系统开发与微服务治理。4. 数据库设计与优化。\", \"metadata\": {\"company\": \"阿里巴巴\", \"index\": 1, \"jd_id\": \"9cde8355-dcc0-434e-97c4-67dfc5dae5b8\", \"position\": \"后端开发\", \"section\": \"responsibilities\", \"strategy\": \"semantic\"}, \"distance\": 0.2331186980009079, \"bm25_score\": 14.494167942777871, \"vec_norm\": 1.0, \"bm25_norm\": 0.49054151418510233, \"hybrid_score\": 0.8471624542555307, \"rerank_score\": 0.9984}, {\"chunk_id\": \"9cde8355-dcc0-434e-97c4-67dfc5dae5b8_chunk_6\", \"content\": \"【阿里巴巴 · 后端开发 软性要求/加分项】\\n有电商行业经验优先\", \"metadata\": {\"company\": \"阿里巴巴\", \"index\": 6, \"jd_id\": \"9cde8355-dcc0-434e-97c4-67dfc5dae5b8\", \"position\": \"后端开发\", \"priority\": \"medium\", \"section\": \"soft_requirements\", \"strategy\": \"semantic\"}, \"distance\": 0.359084814786911, \"bm25_score\": 17.69157209161958, \"vec_norm\": 0.36635977740028036, \"bm25_norm\": 0.7119521496020548, \"hybrid_score\": 0.47003748906081266, \"rerank_score\": 0.981}, {\"chunk_id\": \"9cde8355-dcc0-434e-97c4-67dfc5da\n\n请生成回复："
+    }
+  },
+  "reply": "有。已为您筛选到 1 个相关岗位，但匹配度中等，建议您结合以下详细分析进行评估。\n\n### 1. 匹配度分析\n*   **匹配分数**：66 分 [来源：阿里巴巴 - 后端开发]\n*   **推荐优先级**：中 [来源：阿里巴巴 - 后端开发]\n*   **核心差距**：您的简历侧重通用后端开发，而该岗位 JD 方向侧重电商业务 [来源：阿里巴巴 - 后端开发]\n*   **匹配亮点**：技术栈检索召回匹配 [来源：阿里巴巴 - 后端开发]\n\n### 2. 岗位详细信息\n*   **基本信息**：工作地点位于杭州，薪资范围为 35k-65k [来源：阿里巴巴 - 后端开发]\n*   **硬性要求**：\n    *   需要具备 3 年以上 Java 开发经验 [来源：阿里巴巴 - 后端开发]\n    *   熟悉分布式系统设计与微服务架构 [来源：阿里巴巴 - 后端开发]\n*   **岗位职责**：\n    *   负责电商核心系统的设计与开发 [来源：阿里巴巴 - 后端开发]\n    *   进行高并发系统架构设计与性能优化 [来源：阿里巴巴 - 后端开发]\n    *   负责分布式系统开发与微服务治理 [来源：阿里巴巴 - 后端开发]\n    *   负责数据库设计与优化 [来源：阿里巴巴 - 后端开发]\n*   **加分项**：有电商行业经验优先 [来源：阿里巴巴 - 后端开发]\n\n### 3. 求职建议\n鉴于目前暂未发现高度匹配岗位，该岗位可作为参考 [来源：阿里巴巴 - 后端开发]。建议您进一步评估自身电商业务经验与该岗位的契合度，若决定投递，可在简历中重点突出高并发系统架构设计与性能优化 related 的项目经历，以弥补业务方向上的差异。",
+  "reply_length": 739,
+  "intent_match": true,
+  "tool_match_rate": 0.67,
+  "has_reply": true,
+  "events": [
+    {
+      "step": "intent",
+      "message": "正在识别您的意图...",
+      "_time": 11.103702783584595,
+      "type": "status"
+    },
+    {
+      "step": "plan",
+      "message": "正在规划任务...",
+      "_time": 11.103739738464355,
+      "type": "status"
+    },
+    {
+      "step": "execute",
+      "message": "正在执行分析...",
+      "_time": 32.95775818824768,
+      "type": "status"
+    },
+    {
+      "step": "aggregate",
+      "message": "正在生成回复...",
+      "_time": 33.48229098320007,
+      "type": "status"
+    },
+    {
+      "text": "有",
+      "_time": 76.74816107749939,
+      "type": "delta"
+    },
+    {
+      "text": "。已为您筛选",
+      "_time": 76.88844227790833,
+      "type": "delta"
+    },
+    {
+      "text": "到",
+      "_time": 76.89307951927185,
+      "type": "delta"
+    },
+    {
+      "text": " 1 个",
+      "_time": 76.9792857170105,
+      "type": "delta"
+    },
+    {
+      "text": "相关岗位，但",
+      "_time": 76.98311018943787,
+      "type": "delta"
+    },
+    {
+      "text": "匹配度中等，",
+      "_time": 77.12437891960144,
+      "type": "delta"
+    },
+    {
+      "text": "建议您",
+      "_time": 77.1261146068573,
+      "type": "delta"
+    },
+    {
+      "text": "结合以下详细分析",
+      "_time": 77.2463800907135,
+      "type": "delta"
+    },
+    {
+      "text": "进行评估",
+      "_time": 77.24918174743652,
+      "type": "delta"
+    },
+    {
+      "text": "。\n\n### ",
+      "_time": 77.3023886680603,
+      "type": "delta"
+    },
+    {
+      "text": "1. ",
+      "_time": 77.30716490745544,
+      "type": "delta"
+    },
+    {
+      "text": "匹配度分析\n",
+      "_time": 77.429452419281,
+      "type": "delta"
+    },
+    {
+      "text": "*   **匹配",
+      "_time": 77.46336889266968,
+      "type": "delta"
+    },
+    {
+      "text": "分数**：6",
+      "_time": 77.57358694076538,
+      "type": "delta"
+    },
+    {
+      "text": "6 分 [",
+      "_time": 77.57820558547974,
+      "type": "delta"
+    },
+    {
+      "text": "来源：阿里巴巴 -",
+      "_time": 77.71531176567078,
+      "type": "delta"
+    },
+    {
+      "text": " 后端开发]",
+      "_time": 77.71912622451782,
+      "type": "delta"
+    },
+    {
+      "text": "\n*   **",
+      "_time": 77.89931416511536,
+      "type": "delta"
+    },
+    {
+      "text": "推荐优先级**：",
+      "_time": 77.90578818321228,
+      "type": "delta"
+    },
+    {
+      "text": "中 [来源：",
+      "_time": 78.00545716285706,
+      "type": "delta"
+    },
+    {
+      "text": "阿里巴巴 -",
+      "_time": 78.00931477546692,
+      "type": "delta"
+    },
+    {
+      "text": " 后端开发]",
+      "_time": 78.14241552352905,
+      "type": "delta"
+    },
+    {
+      "text": "\n*   **",
+      "_time": 78.14404845237732,
+      "type": "delta"
+    },
+    {
+      "text": "核心差距**：",
+      "_time": 78.26151084899902,
+      "type": "delta"
+    },
+    {
+      "text": "您的",
+      "_time": 78.26296615600586,
+      "type": "delta"
+    },
+    {
+      "text": "简历侧重通用后端",
+      "_time": 78.34636783599854,
+      "type": "delta"
+    },
+    {
+      "text": "开发，而",
+      "_time": 78.38929414749146,
+      "type": "delta"
+    },
+    {
+      "text": "该岗位 JD ",
+      "_time": 78.4734787940979,
+      "type": "delta"
+    },
+    {
+      "text": "方向侧重",
+      "_time": 78.4760148525238,
+      "type": "delta"
+    },
+    {
+      "text": "电商业务 [来源",
+      "_time": 78.60333371162415,
+      "type": "delta"
+    },
+    {
+      "text": "：阿里巴巴 -",
+      "_time": 78.6060209274292,
+      "type": "delta"
+    },
+    {
+      "text": " 后端开发]",
+      "_time": 78.7363932132721,
+      "type": "delta"
+    },
+    {
+      "text": "\n*   **",
+      "_time": 78.73791980743408,
+      "type": "delta"
+    },
+    {
+      "text": "匹配亮点**：",
+      "_time": 78.8513970375061,
+      "type": "delta"
+    },
+    {
+      "text": "技术",
+      "_time": 78.85515546798706,
+      "type": "delta"
+    },
+    {
+      "text": "栈检索召回匹配",
+      "_time": 78.9424397945404,
+      "type": "delta"
+    },
+    {
+      "text": " [",
+      "_time": 78.94439673423767,
+      "type": "delta"
+    },
+    {
+      "text": "来源：阿里巴巴 -",
+      "_time": 79.08117127418518,
+      "type": "delta"
+    },
+    {
+      "text": " 后端开发]",
+      "_time": 79.08175587654114,
+      "type": "delta"
+    },
+    {
+      "text": "\n\n### 2",
+      "_time": 79.17360401153564,
+      "type": "delta"
+    },
+    {
+      "text": ". 岗位详细信息",
+      "_time": 79.17531132698059,
+      "type": "delta"
+    },
+    {
+      "text": "\n*   **",
+      "_time": 79.39446997642517,
+      "type": "delta"
+    },
+    {
+      "text": "基本信息**：工作地点",
+      "_time": 79.39717936515808,
+      "type": "delta"
+    },
+    {
+      "text": "位于杭州，薪资",
+      "_time": 79.46313691139221,
+      "type": "delta"
+    },
+    {
+      "text": "范围为",
+      "_time": 79.46691656112671,
+      "type": "delta"
+    },
+    {
+      "text": " 35k",
+      "_time": 79.55334496498108,
+      "type": "delta"
+    },
+    {
+      "text": "-65k",
+      "_time": 79.58324122428894,
+      "type": "delta"
+    },
+    {
+      "text": " [来源：阿里巴巴",
+      "_time": 79.69744181632996,
+      "type": "delta"
+    },
+    {
+      "text": " - 后端开发",
+      "_time": 79.70207262039185,
+      "type": "delta"
+    },
+    {
+      "text": "]\n*  ",
+      "_time": 79.84149312973022,
+      "type": "delta"
+    },
+    {
+      "text": " **硬性要求**",
+      "_time": 79.86854672431946,
+      "type": "delta"
+    },
+    {
+      "text": "：\n    *",
+      "_time": 79.98552894592285,
+      "type": "delta"
+    },
+    {
+      "text": "   需要具备",
+      "_time": 79.9868860244751,
+      "type": "delta"
+    },
+    {
+      "text": " 3 年以上",
+      "_time": 80.11006760597229,
+      "type": "delta"
+    },
+    {
+      "text": " Java 开发经验",
+      "_time": 80.15128874778748,
+      "type": "delta"
+    },
+    {
+      "text": " [来源：阿里巴巴",
+      "_time": 80.25638341903687,
+      "type": "delta"
+    },
+    {
+      "text": " - 后端开发",
+      "_time": 80.25675129890442,
+      "type": "delta"
+    },
+    {
+      "text": "]\n    *",
+      "_time": 80.39940404891968,
+      "type": "delta"
+    },
+    {
+      "text": "   熟悉分布式",
+      "_time": 80.45227384567261,
+      "type": "delta"
+    },
+    {
+      "text": "系统设计与微服务",
+      "_time": 80.54717993736267,
+      "type": "delta"
+    },
+    {
+      "text": "架构 [来源：",
+      "_time": 80.5472309589386,
+      "type": "delta"
+    },
+    {
+      "text": "阿里巴巴 - 后端",
+      "_time": 80.68685126304626,
+      "type": "delta"
+    },
+    {
+      "text": "开发]\n*",
+      "_time": 80.73331093788147,
+      "type": "delta"
+    },
+    {
+      "text": "   **岗位职责**",
+      "_time": 80.83092713356018,
+      "type": "delta"
+    },
+    {
+      "text": "：\n   ",
+      "_time": 80.83372378349304,
+      "type": "delta"
+    },
+    {
+      "text": " *   负责",
+      "_time": 80.95733380317688,
+      "type": "delta"
+    },
+    {
+      "text": "电商核心系统的设计",
+      "_time": 80.99027419090271,
+      "type": "delta"
+    },
+    {
+      "text": "与开发 [来源",
+      "_time": 81.10226368904114,
+      "type": "delta"
+    },
+    {
+      "text": "：阿里巴巴 - ",
+      "_time": 81.10587096214294,
+      "type": "delta"
+    },
+    {
+      "text": "后端开发]\n",
+      "_time": 81.24423789978027,
+      "type": "delta"
+    },
+    {
+      "text": "    *   ",
+      "_time": 81.27501463890076,
+      "type": "delta"
+    },
+    {
+      "text": "进行高并发系统",
+      "_time": 81.3882691860199,
+      "type": "delta"
+    },
+    {
+      "text": "架构",
+      "_time": 81.38978028297424,
+      "type": "delta"
+    },
+    {
+      "text": "设计与性能优化 [",
+      "_time": 81.47821617126465,
+      "type": "delta"
+    },
+    {
+      "text": "来源：阿里巴巴 -",
+      "_time": 81.519287109375,
+      "type": "delta"
+    },
+    {
+      "text": " 后端开发]",
+      "_time": 81.62251281738281,
+      "type": "delta"
+    },
+    {
+      "text": "\n    *  ",
+      "_time": 81.62592554092407,
+      "type": "delta"
+    },
+    {
+      "text": " 负责分布式系统",
+      "_time": 81.7652759552002,
+      "type": "delta"
+    },
+    {
+      "text": "开发与微服务治理",
+      "_time": 81.81930804252625,
+      "type": "delta"
+    },
+    {
+      "text": " [来源：阿里巴巴",
+      "_time": 81.91125583648682,
+      "type": "delta"
+    },
+    {
+      "text": " - 后端开发",
+      "_time": 81.91270852088928,
+      "type": "delta"
+    },
+    {
+      "text": "]\n    *",
+      "_time": 82.05540108680725,
+      "type": "delta"
+    },
+    {
+      "text": "   负责数据库",
+      "_time": 82.08406448364258,
+      "type": "delta"
+    },
+    {
+      "text": "设计与优化 [来源",
+      "_time": 82.19926190376282,
+      "type": "delta"
+    },
+    {
+      "text": "：阿里巴巴 - ",
+      "_time": 82.20070695877075,
+      "type": "delta"
+    },
+    {
+      "text": "后端开发]\n",
+      "_time": 82.34232640266418,
+      "type": "delta"
+    },
+    {
+      "text": "*   **加分",
+      "_time": 82.38128685951233,
+      "type": "delta"
+    },
+    {
+      "text": "项**：有",
+      "_time": 82.48827743530273,
+      "type": "delta"
+    },
+    {
+      "text": "电商行业经验优先",
+      "_time": 82.49084806442261,
+      "type": "delta"
+    },
+    {
+      "text": " [来源：阿里巴巴",
+      "_time": 82.63225054740906,
+      "type": "delta"
+    },
+    {
+      "text": " - 后端开发",
+      "_time": 82.67223167419434,
+      "type": "delta"
+    },
+    {
+      "text": "]\n\n### ",
+      "_time": 82.77623081207275,
+      "type": "delta"
+    },
+    {
+      "text": "3. 求职",
+      "_time": 82.77806234359741,
+      "type": "delta"
+    },
+    {
+      "text": "建议\n鉴于目前",
+      "_time": 82.91940021514893,
+      "type": "delta"
+    },
+    {
+      "text": "暂未",
+      "_time": 82.92295360565186,
+      "type": "delta"
+    },
+    {
+      "text": "发现高度匹配岗位",
+      "_time": 83.04400205612183,
+      "type": "delta"
+    },
+    {
+      "text": "，该岗位可作为",
+      "_time": 83.04447031021118,
+      "type": "delta"
+    },
+    {
+      "text": "参考 [来源：",
+      "_time": 83.15522146224976,
+      "type": "delta"
+    },
+    {
+      "text": "阿里巴巴 -",
+      "_time": 83.15794515609741,
+      "type": "delta"
+    },
+    {
+      "text": " 后端开发]",
+      "_time": 83.26133871078491,
+      "type": "delta"
+    },
+    {
+      "text": "。建议您进一步",
+      "_time": 83.29833388328552,
+      "type": "delta"
+    },
+    {
+      "text": "评估自身电商业务",
+      "_time": 83.38720512390137,
+      "type": "delta"
+    },
+    {
+      "text": "经验与该",
+      "_time": 83.38984942436218,
+      "type": "delta"
+    },
+    {
+      "text": "岗位的契合度，",
+      "_time": 83.49727129936218,
+      "type": "delta"
+    },
+    {
+      "text": "若",
+      "_time": 83.49772596359253,
+      "type": "delta"
+    },
+    {
+      "text": "决定投递，可在",
+      "_time": 83.62313032150269,
+      "type": "delta"
+    },
+    {
+      "text": "简历中重点",
+      "_time": 83.62574505805969,
+      "type": "delta"
+    },
+    {
+      "text": "突出高并发系统",
+      "_time": 83.71337556838989,
+      "type": "delta"
+    },
+    {
+      "text": "架构",
+      "_time": 83.71779727935791,
+      "type": "delta"
+    },
+    {
+      "text": "设计与性能优化 related",
+      "_time": 83.83754444122314,
+      "type": "delta"
+    },
+    {
+      "text": " ",
+      "_time": 83.83788442611694,
+      "type": "delta"
+    },
+    {
+      "text": "的项目经历，以",
+      "_time": 83.89329433441162,
+      "type": "delta"
+    },
+    {
+      "text": "弥补",
+      "_time": 83.89704656600952,
+      "type": "delta"
+    },
+    {
+      "text": "业务方向上的差异",
+      "_time": 83.98223757743835,
+      "type": "delta"
+    },
+    {
+      "text": "。",
+      "_time": 83.98375701904297,
+      "type": "delta"
+    },
+    {
+      "session_id": "eval_li_07_1780648963900",
+      "intent": "position_explore",
+      "route_meta": {
+        "layer": "llm",
+        "intent": "position_explore",
+        "confidence": 0.88,
+        "demands": [
+          {
+            "intent": "position_explore",
+            "entities": {
+              "company": "阿里巴巴",
+              "position": "后端开发",
+              "search_keywords": "帮我筛选几个岗位，重点查看阿里巴巴后端开发职位",
+              "sort_by": "match_score",
+              "top_k": 5
+            }
+          }
+        ],
+        "plan_tasks": 3
+      },
+      "agent_mode": "llm",
+      "is_clarification": false,
+      "agent": {
+        "rewritten_query": "帮我筛选几个岗位，重点查看阿里巴巴后端开发职位",
+        "tools": [
+          {
+            "tool": "kb_retrieve",
+            "status": "✅",
+            "params": {
+              "query": "帮我筛选几个岗位，重点查看阿里巴巴后端开发职位",
+              "company": "阿里巴巴",
+              "position": "后端开发",
+              "top_k": 5
+            },
+            "result_preview": "{'chunks': [{'chunk_id': '9cde8355-dcc0-434e-97c4-67dfc5dae5b8_chunk_1', 'content': '【阿里巴巴 · 后端开发 岗位职责】\\n1. 负责电商核心系统的设计与开发。2. 高并发系统架构设计与性能优化。3. 分布式系统开发与微服务治理。4. 数据库设计与优化。', 'metadata': {'company': '阿里"
+          },
+          {
+            "tool": "global_rank",
+            "status": "✅",
+            "params": {
+              "resume_text": "姓名：李工程师\n电话：138-XXXX-1234 | 邮箱：lixx_dev@email.com | 现居：北京\nJava后端开发工程师 | 3年经验 | 本科\n\n教育背景\n2018.09 - 2022.06  XX理工大学  计算机科学与技术（本科）\n主修课程：数据结构与算法、操作系统、计算机网络、数据库原理、软件工程\n在校荣誉：校级优秀毕业设计（基于微服务的校园二手交易平台）\n\n专业技能\n熟练掌握Java核心技术，熟悉JVM内存模型、GC机制及常见调优手段\n精通Spring Boot、Spring Cloud微服务生态，熟悉Nacos、Gateway、Sentinel、Seata等组件\n熟悉MySQL索引优化、事务机制、分库分表策略，具备SQL调优及慢查询治理经验\n了解Redis缓存设计、Kafka消息队列，熟悉Docker容器化部署及Jenkins CI/CD流程\n掌握Git版本控制，熟悉Linux日常运维及日志排查\n\n工作经历\n2022.07 - 至今  XX科技有限公司（B轮 / 企业服务 SaaS）  Java后端工程师\n\nSaaS供应链管理平台（2023.03 - 至今）\n负责订单中心、库存中心核心模块设计与开发，采用Spring Cloud Alibaba微服务架构，支撑日均10W+订单处理\n主导MySQL分库分表方案设计（ShardingSphere），解决单表数据量过亿导致的查询性能瓶颈，接口响应时间从800ms降至120ms\n设计多级缓存策略（Redis + Caffeine本地缓存），热点数据命中率提升至95%，降低数据库负载40%\n基于Seata AT模式实现分布式事务，保障订单与库存数据一致性，线上运行半年零资损事故\n\n企业权限中台重构（2022.09 - 2023.02）\n参与RBAC权限中台从单体到微服务的拆分重构，负责鉴权服务、菜单路由模块开发\n引入Gateway统一鉴权过滤器，对接OAuth2.0 + JWT认证体系，支持多租户隔离\n编写核心接口单元测试（Unit + Mockito），模块测试覆盖率从45%提升至82%\n\n自我评价\n具备扎实的计算机基础与3年企业级后端开发经验，擅长高并发场景下的系统设计与性能优化。注重代码质量与工程规范，具备良好的团队协作与跨部门沟通能力。",
+              "candidate_jds": [
+                {
+                  "chunk_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8_chunk_1",
+                  "content": "【阿里巴巴 · 后端开发 岗位职责】\n1. 负责电商核心系统的设计与开发。2. 高并发系统架构设计与性能优化。3. 分布式系统开发与微服务治理。4. 数据库设计与优化。",
+                  "metadata": {
+                    "company": "阿里巴巴",
+                    "index": 1,
+                    "jd_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8",
+                    "position": "后端开发",
+                    "section": "responsibilities",
+                    "strategy": "semantic"
+                  },
+                  "distance": 0.2331186980009079,
+                  "bm25_score": 14.494167942777871,
+                  "vec_norm": 1.0,
+                  "bm25_norm": 0.49054151418510233,
+                  "hybrid_score": 0.8471624542555307,
+                  "rerank_score": 0.9984
+                },
+                {
+                  "chunk_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8_chunk_6",
+                  "content": "【阿里巴巴 · 后端开发 软性要求/加分项】\n有电商行业经验优先",
+                  "metadata": {
+                    "company": "阿里巴巴",
+                    "index": 6,
+                    "jd_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8",
+                    "position": "后端开发",
+                    "priority": "medium",
+                    "section": "soft_requirements",
+                    "strategy": "semantic"
+                  },
+                  "distance": 0.359084814786911,
+                  "bm25_score": 17.69157209161958,
+                  "vec_norm": 0.36635977740028036,
+                  "bm25_norm": 0.7119521496020548,
+                  "hybrid_score": 0.47003748906081266,
+                  "rerank_score": 0.981
+                },
+                {
+                  "chunk_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8_chunk_0",
+                  "content": "公司：阿里巴巴，岗位：后端开发，地点：杭州，薪资：35k-65k",
+                  "metadata": {
+                    "category": "技术",
+                    "company": "阿里巴巴",
+                    "domain": "电商",
+                    "index": 0,
+                    "jd_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8",
+                    "min_education": "本科",
+                    "min_years": 3,
+                    "position": "后端开发",
+                    "section": "basic_info",
+                    "strategy": "semantic"
+                  },
+                  "distance": 0.3634324371814728,
+                  "bm25_score": 21.85128822356113,
+                  "vec_norm": 0.34449017871645593,
+                  "bm25_norm": 1.0,
+                  "hybrid_score": 0.5411431251015191,
+                  "rerank_score": 0.9787
+                },
+                {
+                  "chunk_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8_chunk_4",
+                  "content": "【阿里巴巴 · 后端开发 硬性要求】\n熟悉分布式系统设计与微服务架构",
+                  "metadata": {
+                    "company": "阿里巴巴",
+                    "index": 4,
+                    "jd_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8",
+                    "position": "后端开发",
+                    "priority": "high",
+                    "section": "hard_requirements",
+                    "strategy": "semantic"
+                  },
+                  "distance": 0.3839608132839203,
+                  "bm25_score": 17.08930651075854,
+                  "vec_norm": 0.24122745112707167,
+                  "bm25_norm": 0.6702470667471052,
+                  "hybrid_score": 0.36993333581308174,
+                  "rerank_score": 0.9724
+                },
+                {
+                  "chunk_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8_chunk_2",
+                  "content": "【阿里巴巴 · 后端开发 硬性要求】\n3年以上Java开发经验",
+                  "metadata": {
+                    "company": "阿里巴巴",
+                    "index": 2,
+                    "jd_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8",
+                    "position": "后端开发",
+                    "priority": "high",
+                    "section": "hard_requirements",
+                    "strategy": "semantic"
+                  },
+                  "distance": 0.39003244042396545,
+                  "bm25_score": 19.10231278381687,
+                  "vec_norm": 0.21068568901896,
+                  "bm25_norm": 0.8096417060446165,
+                  "hybrid_score": 0.390372494126657,
+                  "rerank_score": 0.8933
+                }
+              ],
+              "sort_by": "match_score"
+            },
+            "result_preview": "{'rankings': [{'rank': 1, 'jd_id': '9cde8355-dcc0-434e-97c4-67dfc5dae5b8', 'company': '阿里巴巴', 'position': '后端开发', 'match_score': 66, 'recommend_reason': '方向差异：简历侧重后端，JD方向电商', 'key_match': ['检索召回'], 'k"
+          }
+        ],
+        "kb_chunks_count": 3,
+        "system_prompt_preview": "你是一位专业的求职顾问。请基于以下工具执行结果，给用户一个清晰、有帮助的回复。\n要求：\n1. 先直接回答用户的问题（是/否/有/没有），不要绕弯子，不要重复用户的原话\n2. 如果有匹配分析结果，给出具体的分数和建议\n3. 如果有检索结果，基于事实回答，不要编造\n4. 【强制】引用信息时必须标注来源。每个引用的事实后面都要跟 [来源：公司名-岗位名] 格式。   kb_retrieve 结果的 ch"
+      },
+      "memory": {
+        "working_turns": 1,
+        "compressed_blocks": 0,
+        "current_topic": "general",
+        "evidence_cache_size": 5
+      },
+      "reply": "有。已为您筛选到 1 个相关岗位，但匹配度中等，建议您结合以下详细分析进行评估。\n\n### 1. 匹配度分析\n*   **匹配分数**：66 分 [来源：阿里巴巴 - 后端开发]\n*   **推荐优先级**：中 [来源：阿里巴巴 - 后端开发]\n*   **核心差距**：您的简历侧重通用后端开发，而该岗位 JD 方向侧重电商业务 [来源：阿里巴巴 - 后端开发]\n*   **匹配亮点**：技术栈检索召回匹配 [来源：阿里巴巴 - 后端开发]\n\n### 2. 岗位详细信息\n*   **基本信息**：工作地点位于杭州，薪资范围为 35k-65k [来源：阿里巴巴 - 后端开发]\n*   **硬性要求**：\n    *   需要具备 3 年以上 Java 开发经验 [来源：阿里巴巴 - 后端开发]\n    *   熟悉分布式系统设计与微服务架构 [来源：阿里巴巴 - 后端开发]\n*   **岗位职责**：\n    *   负责电商核心系统的设计与开发 [来源：阿里巴巴 - 后端开发]\n    *   进行高并发系统架构设计与性能优化 [来源：阿里巴巴 - 后端开发]\n    *   负责分布式系统开发与微服务治理 [来源：阿里巴巴 - 后端开发]\n    *   负责数据库设计与优化 [来源：阿里巴巴 - 后端开发]\n*   **加分项**：有电商行业经验优先 [来源：阿里巴巴 - 后端开发]\n\n### 3. 求职建议\n鉴于目前暂未发现高度匹配岗位，该岗位可作为参考 [来源：阿里巴巴 - 后端开发]。建议您进一步评估自身电商业务经验与该岗位的契合度，若决定投递，可在简历中重点突出高并发系统架构设计与性能优化 related 的项目经历，以弥补业务方向上的差异。",
+      "debug_info": {
+        "task_graph": {
+          "tasks": {
+            "T0": {
+              "task_id": "T0",
+              "task_type": "tool_call",
+              "tool_name": "kb_retrieve",
+              "status": "success",
+              "parameters": {
+                "query": "{{intent_explore.search_keywords}}",
+                "company": "阿里巴巴",
+                "position": "{{intent_explore.position}}",
+                "top_k": 5
+              },
+              "resolved_params": {
+                "query": "帮我筛选几个岗位，重点查看阿里巴巴后端开发职位",
+                "company": "阿里巴巴",
+                "position": "后端开发",
+                "top_k": 5
+              },
+              "result": {
+                "chunks": [
+                  {
+                    "chunk_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8_chunk_1",
+                    "content": "【阿里巴巴 · 后端开发 岗位职责】\n1. 负责电商核心系统的设计与开发。2. 高并发系统架构设计与性能优化。3. 分布式系统开发与微服务治理。4. 数据库设计与优化。",
+                    "metadata": {
+                      "company": "阿里巴巴",
+                      "index": 1,
+                      "jd_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8",
+                      "position": "后端开发",
+                      "section": "responsibilities",
+                      "strategy": "semantic"
+                    },
+                    "distance": 0.2331186980009079,
+                    "bm25_score": 14.494167942777871,
+                    "vec_norm": 1.0,
+                    "bm25_norm": 0.49054151418510233,
+                    "hybrid_score": 0.8471624542555307,
+                    "rerank_score": 0.9984
+                  },
+                  {
+                    "chunk_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8_chunk_6",
+                    "content": "【阿里巴巴 · 后端开发 软性要求/加分项】\n有电商行业经验优先",
+                    "metadata": {
+                      "company": "阿里巴巴",
+                      "index": 6,
+                      "jd_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8",
+                      "position": "后端开发",
+                      "priority": "medium",
+                      "section": "soft_requirements",
+                      "strategy": "semantic"
+                    },
+                    "distance": 0.359084814786911,
+                    "bm25_score": 17.69157209161958,
+                    "vec_norm": 0.36635977740028036,
+                    "bm25_norm": 0.7119521496020548,
+                    "hybrid_score": 0.47003748906081266,
+                    "rerank_score": 0.981
+                  },
+                  {
+                    "chunk_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8_chunk_0",
+                    "content": "公司：阿里巴巴，岗位：后端开发，地点：杭州，薪资：35k-65k",
+                    "metadata": {
+                      "category": "技术",
+                      "company": "阿里巴巴",
+                      "domain": "电商",
+                      "index": 0,
+                      "jd_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8",
+                      "min_education": "本科",
+                      "min_years": 3,
+                      "position": "后端开发",
+                      "section": "basic_info",
+                      "strategy": "semantic"
+                    },
+                    "distance": 0.3634324371814728,
+                    "bm25_score": 21.85128822356113,
+                    "vec_norm": 0.34449017871645593,
+                    "bm25_norm": 1.0,
+                    "hybrid_score": 0.5411431251015191,
+                    "rerank_score": 0.9787
+                  },
+                  {
+                    "chunk_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8_chunk_4",
+                    "content": "【阿里巴巴 · 后端开发 硬性要求】\n熟悉分布式系统设计与微服务架构",
+                    "metadata": {
+                      "company": "阿里巴巴",
+                      "index": 4,
+                      "jd_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8",
+                      "position": "后端开发",
+                      "priority": "high",
+                      "section": "hard_requirements",
+                      "strategy": "semantic"
+                    },
+                    "distance": 0.3839608132839203,
+                    "bm25_score": 17.08930651075854,
+                    "vec_norm": 0.24122745112707167,
+                    "bm25_norm": 0.6702470667471052,
+                    "hybrid_score": 0.36993333581308174,
+                    "rerank_score": 0.9724
+                  },
+                  {
+                    "chunk_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8_chunk_2",
+                    "content": "【阿里巴巴 · 后端开发 硬性要求】\n3年以上Java开发经验",
+                    "metadata": {
+                      "company": "阿里巴巴",
+                      "index": 2,
+                      "jd_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8",
+                      "position": "后端开发",
+                      "priority": "high",
+                      "section": "hard_requirements",
+                      "strategy": "semantic"
+                    },
+                    "distance": 0.39003244042396545,
+                    "bm25_score": 19.10231278381687,
+                    "vec_norm": 0.21068568901896,
+                    "bm25_norm": 0.8096417060446165,
+                    "hybrid_score": 0.390372494126657,
+                    "rerank_score": 0.8933
+                  }
+                ],
+                "query": "帮我筛选几个岗位，重点查看阿里巴巴后端开发职位",
+                "filters": {
+                  "company": "阿里巴巴",
+                  "position": "后端开发"
+                },
+                "strategy": "hybrid(70%vec+30%bm25)+reranker",
+                "pool_k": 5,
+                "rerank_k": 10,
+                "pool_size": 17,
+                "vec_only": 0,
+                "bm25_only": 8,
+                "both": 9,
+                "rerank": {
+                  "enabled": true,
+                  "candidates": 5,
+                  "output": 5,
+                  "best_rerank_score": 0.9984
+                }
+              },
+              "observation": "工具 kb_retrieve 执行成功"
+            },
+            "T1": {
+              "task_id": "T1",
+              "task_type": "tool_call",
+              "tool_name": "global_rank",
+              "status": "success",
+              "parameters": {
+                "resume_text": "{{global_slots.resume_text}}",
+                "candidate_jds": "{{T0.output.chunks}}",
+                "sort_by": "{{intent_explore.sort_by}}"
+              },
+              "resolved_params": {
+                "resume_text": "姓名：李工程师\n电话：138-XXXX-1234 | 邮箱：lixx_dev@email.com | 现居：北京\nJava后端开发工程师 | 3年经验 | 本科\n\n教育背景\n2018.09 - 2022.06  XX理工大学  计算机科学与技术（本科）\n主修课程：数据结构与算法、操作系统、计算机网络、数据库原理、软件工程\n在校荣誉：校级优秀毕业设计（基于微服务的校园二手交易平台）\n\n专业技能\n熟练掌握Java核心技术，熟悉JVM内存模型、GC机制及常见调优手段\n精通Spring Boot、Spring Cloud微服务生态，熟悉Nacos、Gateway、Sentinel、Seata等组件\n熟悉MySQL索引优化、事务机制、分库分表策略，具备SQL调优及慢查询治理经验\n了解Redis缓存设计、Kafka消息队列，熟悉Docker容器化部署及Jenkins CI/CD流程\n掌握Git版本控制，熟悉Linux日常运维及日志排查\n\n工作经历\n2022.07 - 至今  XX科技有限公司（B轮 / 企业服务 SaaS）  Java后端工程师\n\nSaaS供应链管理平台（2023.03 - 至今）\n负责订单中心、库存中心核心模块设计与开发，采用Spring Cloud Alibaba微服务架构，支撑日均10W+订单处理\n主导MySQL分库分表方案设计（ShardingSphere），解决单表数据量过亿导致的查询性能瓶颈，接口响应时间从800ms降至120ms\n设计多级缓存策略（Redis + Caffeine本地缓存），热点数据命中率提升至95%，降低数据库负载40%\n基于Seata AT模式实现分布式事务，保障订单与库存数据一致性，线上运行半年零资损事故\n\n企业权限中台重构（2022.09 - 2023.02）\n参与RBAC权限中台从单体到微服务的拆分重构，负责鉴权服务、菜单路由模块开发\n引入Gateway统一鉴权过滤器，对接OAuth2.0 + JWT认证体系，支持多租户隔离\n编写核心接口单元测试（Unit + Mockito），模块测试覆盖率从45%提升至82%\n\n自我评价\n具备扎实的计算机基础与3年企业级后端开发经验，擅长高并发场景下的系统设计与性能优化。注重代码质量与工程规范，具备良好的团队协作与跨部门沟通能力。",
+                "candidate_jds": [
+                  {
+                    "chunk_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8_chunk_1",
+                    "content": "【阿里巴巴 · 后端开发 岗位职责】\n1. 负责电商核心系统的设计与开发。2. 高并发系统架构设计与性能优化。3. 分布式系统开发与微服务治理。4. 数据库设计与优化。",
+                    "metadata": {
+                      "company": "阿里巴巴",
+                      "index": 1,
+                      "jd_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8",
+                      "position": "后端开发",
+                      "section": "responsibilities",
+                      "strategy": "semantic"
+                    },
+                    "distance": 0.2331186980009079,
+                    "bm25_score": 14.494167942777871,
+                    "vec_norm": 1.0,
+                    "bm25_norm": 0.49054151418510233,
+                    "hybrid_score": 0.8471624542555307,
+                    "rerank_score": 0.9984
+                  },
+                  {
+                    "chunk_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8_chunk_6",
+                    "content": "【阿里巴巴 · 后端开发 软性要求/加分项】\n有电商行业经验优先",
+                    "metadata": {
+                      "company": "阿里巴巴",
+                      "index": 6,
+                      "jd_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8",
+                      "position": "后端开发",
+                      "priority": "medium",
+                      "section": "soft_requirements",
+                      "strategy": "semantic"
+                    },
+                    "distance": 0.359084814786911,
+                    "bm25_score": 17.69157209161958,
+                    "vec_norm": 0.36635977740028036,
+                    "bm25_norm": 0.7119521496020548,
+                    "hybrid_score": 0.47003748906081266,
+                    "rerank_score": 0.981
+                  },
+                  {
+                    "chunk_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8_chunk_0",
+                    "content": "公司：阿里巴巴，岗位：后端开发，地点：杭州，薪资：35k-65k",
+                    "metadata": {
+                      "category": "技术",
+                      "company": "阿里巴巴",
+                      "domain": "电商",
+                      "index": 0,
+                      "jd_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8",
+                      "min_education": "本科",
+                      "min_years": 3,
+                      "position": "后端开发",
+                      "section": "basic_info",
+                      "strategy": "semantic"
+                    },
+                    "distance": 0.3634324371814728,
+                    "bm25_score": 21.85128822356113,
+                    "vec_norm": 0.34449017871645593,
+                    "bm25_norm": 1.0,
+                    "hybrid_score": 0.5411431251015191,
+                    "rerank_score": 0.9787
+                  },
+                  {
+                    "chunk_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8_chunk_4",
+                    "content": "【阿里巴巴 · 后端开发 硬性要求】\n熟悉分布式系统设计与微服务架构",
+                    "metadata": {
+                      "company": "阿里巴巴",
+                      "index": 4,
+                      "jd_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8",
+                      "position": "后端开发",
+                      "priority": "high",
+                      "section": "hard_requirements",
+                      "strategy": "semantic"
+                    },
+                    "distance": 0.3839608132839203,
+                    "bm25_score": 17.08930651075854,
+                    "vec_norm": 0.24122745112707167,
+                    "bm25_norm": 0.6702470667471052,
+                    "hybrid_score": 0.36993333581308174,
+                    "rerank_score": 0.9724
+                  },
+                  {
+                    "chunk_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8_chunk_2",
+                    "content": "【阿里巴巴 · 后端开发 硬性要求】\n3年以上Java开发经验",
+                    "metadata": {
+                      "company": "阿里巴巴",
+                      "index": 2,
+                      "jd_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8",
+                      "position": "后端开发",
+                      "priority": "high",
+                      "section": "hard_requirements",
+                      "strategy": "semantic"
+                    },
+                    "distance": 0.39003244042396545,
+                    "bm25_score": 19.10231278381687,
+                    "vec_norm": 0.21068568901896,
+                    "bm25_norm": 0.8096417060446165,
+                    "hybrid_score": 0.390372494126657,
+                    "rerank_score": 0.8933
+                  }
+                ],
+                "sort_by": "match_score"
+              },
+              "result": {
+                "rankings": [
+                  {
+                    "rank": 1,
+                    "jd_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8",
+                    "company": "阿里巴巴",
+                    "position": "后端开发",
+                    "match_score": 66,
+                    "recommend_reason": "方向差异：简历侧重后端，JD方向电商",
+                    "key_match": [
+                      "检索召回"
+                    ],
+                    "key_gap": [
+                      "方向不匹配（简历后端 vs JD电商）"
+                    ],
+                    "apply_priority": "中"
+                  }
+                ],
+                "strategy_advice": "暂未发现高度匹配岗位，1 个中等匹配岗位可作为参考，建议进一步评估后再投递。",
+                "_template_mode": true,
+                "_coarse_filter_meta": {
+                  "input_jds": 1,
+                  "output_jds": 1,
+                  "filter_ratio": 0.0
+                }
+              },
+              "observation": "工具 global_rank 执行成功"
+            },
+            "T2": {
+              "task_id": "T2",
+              "task_type": "aggregate",
+              "tool_name": null,
+              "status": "success",
+              "parameters": {
+                "kb_results": "{{T0.output.chunks}}",
+                "ranked": "{{T1.output}}"
+              },
+              "resolved_params": {
+                "kb_results": [
+                  {
+                    "chunk_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8_chunk_1",
+                    "content": "【阿里巴巴 · 后端开发 岗位职责】\n1. 负责电商核心系统的设计与开发。2. 高并发系统架构设计与性能优化。3. 分布式系统开发与微服务治理。4. 数据库设计与优化。",
+                    "metadata": {
+                      "company": "阿里巴巴",
+                      "index": 1,
+                      "jd_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8",
+                      "position": "后端开发",
+                      "section": "responsibilities",
+                      "strategy": "semantic"
+                    },
+                    "distance": 0.2331186980009079,
+                    "bm25_score": 14.494167942777871,
+                    "vec_norm": 1.0,
+                    "bm25_norm": 0.49054151418510233,
+                    "hybrid_score": 0.8471624542555307,
+                    "rerank_score": 0.9984
+                  },
+                  {
+                    "chunk_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8_chunk_6",
+                    "content": "【阿里巴巴 · 后端开发 软性要求/加分项】\n有电商行业经验优先",
+                    "metadata": {
+                      "company": "阿里巴巴",
+                      "index": 6,
+                      "jd_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8",
+                      "position": "后端开发",
+                      "priority": "medium",
+                      "section": "soft_requirements",
+                      "strategy": "semantic"
+                    },
+                    "distance": 0.359084814786911,
+                    "bm25_score": 17.69157209161958,
+                    "vec_norm": 0.36635977740028036,
+                    "bm25_norm": 0.7119521496020548,
+                    "hybrid_score": 0.47003748906081266,
+                    "rerank_score": 0.981
+                  },
+                  {
+                    "chunk_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8_chunk_0",
+                    "content": "公司：阿里巴巴，岗位：后端开发，地点：杭州，薪资：35k-65k",
+                    "metadata": {
+                      "category": "技术",
+                      "company": "阿里巴巴",
+                      "domain": "电商",
+                      "index": 0,
+                      "jd_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8",
+                      "min_education": "本科",
+                      "min_years": 3,
+                      "position": "后端开发",
+                      "section": "basic_info",
+                      "strategy": "semantic"
+                    },
+                    "distance": 0.3634324371814728,
+                    "bm25_score": 21.85128822356113,
+                    "vec_norm": 0.34449017871645593,
+                    "bm25_norm": 1.0,
+                    "hybrid_score": 0.5411431251015191,
+                    "rerank_score": 0.9787
+                  },
+                  {
+                    "chunk_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8_chunk_4",
+                    "content": "【阿里巴巴 · 后端开发 硬性要求】\n熟悉分布式系统设计与微服务架构",
+                    "metadata": {
+                      "company": "阿里巴巴",
+                      "index": 4,
+                      "jd_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8",
+                      "position": "后端开发",
+                      "priority": "high",
+                      "section": "hard_requirements",
+                      "strategy": "semantic"
+                    },
+                    "distance": 0.3839608132839203,
+                    "bm25_score": 17.08930651075854,
+                    "vec_norm": 0.24122745112707167,
+                    "bm25_norm": 0.6702470667471052,
+                    "hybrid_score": 0.36993333581308174,
+                    "rerank_score": 0.9724
+                  },
+                  {
+                    "chunk_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8_chunk_2",
+                    "content": "【阿里巴巴 · 后端开发 硬性要求】\n3年以上Java开发经验",
+                    "metadata": {
+                      "company": "阿里巴巴",
+                      "index": 2,
+                      "jd_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8",
+                      "position": "后端开发",
+                      "priority": "high",
+                      "section": "hard_requirements",
+                      "strategy": "semantic"
+                    },
+                    "distance": 0.39003244042396545,
+                    "bm25_score": 19.10231278381687,
+                    "vec_norm": 0.21068568901896,
+                    "bm25_norm": 0.8096417060446165,
+                    "hybrid_score": 0.390372494126657,
+                    "rerank_score": 0.8933
+                  }
+                ],
+                "ranked": {
+                  "rankings": [
+                    {
+                      "rank": 1,
+                      "jd_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8",
+                      "company": "阿里巴巴",
+                      "position": "后端开发",
+                      "match_score": 66,
+                      "recommend_reason": "方向差异：简历侧重后端，JD方向电商",
+                      "key_match": [
+                        "检索召回"
+                      ],
+                      "key_gap": [
+                        "方向不匹配（简历后端 vs JD电商）"
+                      ],
+                      "apply_priority": "中"
+                    }
+                  ],
+                  "strategy_advice": "暂未发现高度匹配岗位，1 个中等匹配岗位可作为参考，建议进一步评估后再投递。",
+                  "_template_mode": true,
+                  "_coarse_filter_meta": {
+                    "input_jds": 1,
+                    "output_jds": 1,
+                    "filter_ratio": 0.0
+                  }
+                }
+              },
+              "result": {
+                "aggregation": {
+                  "kb_results": [
+                    {
+                      "chunk_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8_chunk_1",
+                      "content": "【阿里巴巴 · 后端开发 岗位职责】\n1. 负责电商核心系统的设计与开发。2. 高并发系统架构设计与性能优化。3. 分布式系统开发与微服务治理。4. 数据库设计与优化。",
+                      "metadata": {
+                        "company": "阿里巴巴",
+                        "index": 1,
+                        "jd_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8",
+                        "position": "后端开发",
+                        "section": "responsibilities",
+                        "strategy": "semantic"
+                      },
+                      "distance": 0.2331186980009079,
+                      "bm25_score": 14.494167942777871,
+                      "vec_norm": 1.0,
+                      "bm25_norm": 0.49054151418510233,
+                      "hybrid_score": 0.8471624542555307,
+                      "rerank_score": 0.9984
+                    },
+                    {
+                      "chunk_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8_chunk_6",
+                      "content": "【阿里巴巴 · 后端开发 软性要求/加分项】\n有电商行业经验优先",
+                      "metadata": {
+                        "company": "阿里巴巴",
+                        "index": 6,
+                        "jd_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8",
+                        "position": "后端开发",
+                        "priority": "medium",
+                        "section": "soft_requirements",
+                        "strategy": "semantic"
+                      },
+                      "distance": 0.359084814786911,
+                      "bm25_score": 17.69157209161958,
+                      "vec_norm": 0.36635977740028036,
+                      "bm25_norm": 0.7119521496020548,
+                      "hybrid_score": 0.47003748906081266,
+                      "rerank_score": 0.981
+                    },
+                    {
+                      "chunk_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8_chunk_0",
+                      "content": "公司：阿里巴巴，岗位：后端开发，地点：杭州，薪资：35k-65k",
+                      "metadata": {
+                        "category": "技术",
+                        "company": "阿里巴巴",
+                        "domain": "电商",
+                        "index": 0,
+                        "jd_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8",
+                        "min_education": "本科",
+                        "min_years": 3,
+                        "position": "后端开发",
+                        "section": "basic_info",
+                        "strategy": "semantic"
+                      },
+                      "distance": 0.3634324371814728,
+                      "bm25_score": 21.85128822356113,
+                      "vec_norm": 0.34449017871645593,
+                      "bm25_norm": 1.0,
+                      "hybrid_score": 0.5411431251015191,
+                      "rerank_score": 0.9787
+                    },
+                    {
+                      "chunk_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8_chunk_4",
+                      "content": "【阿里巴巴 · 后端开发 硬性要求】\n熟悉分布式系统设计与微服务架构",
+                      "metadata": {
+                        "company": "阿里巴巴",
+                        "index": 4,
+                        "jd_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8",
+                        "position": "后端开发",
+                        "priority": "high",
+                        "section": "hard_requirements",
+                        "strategy": "semantic"
+                      },
+                      "distance": 0.3839608132839203,
+                      "bm25_score": 17.08930651075854,
+                      "vec_norm": 0.24122745112707167,
+                      "bm25_norm": 0.6702470667471052,
+                      "hybrid_score": 0.36993333581308174,
+                      "rerank_score": 0.9724
+                    },
+                    {
+                      "chunk_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8_chunk_2",
+                      "content": "【阿里巴巴 · 后端开发 硬性要求】\n3年以上Java开发经验",
+                      "metadata": {
+                        "company": "阿里巴巴",
+                        "index": 2,
+                        "jd_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8",
+                        "position": "后端开发",
+                        "priority": "high",
+                        "section": "hard_requirements",
+                        "strategy": "semantic"
+                      },
+                      "distance": 0.39003244042396545,
+                      "bm25_score": 19.10231278381687,
+                      "vec_norm": 0.21068568901896,
+                      "bm25_norm": 0.8096417060446165,
+                      "hybrid_score": 0.390372494126657,
+                      "rerank_score": 0.8933
+                    }
+                  ],
+                  "ranked": {
+                    "rankings": [
+                      {
+                        "rank": 1,
+                        "jd_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8",
+                        "company": "阿里巴巴",
+                        "position": "后端开发",
+                        "match_score": 66,
+                        "recommend_reason": "方向差异：简历侧重后端，JD方向电商",
+                        "key_match": [
+                          "检索召回"
+                        ],
+                        "key_gap": [
+                          "方向不匹配（简历后端 vs JD电商）"
+                        ],
+                        "apply_priority": "中"
+                      }
+                    ],
+                    "strategy_advice": "暂未发现高度匹配岗位，1 个中等匹配岗位可作为参考，建议进一步评估后再投递。",
+                    "_template_mode": true,
+                    "_coarse_filter_meta": {
+                      "input_jds": 1,
+                      "output_jds": 1,
+                      "filter_ratio": 0.0
+                    }
+                  }
+                }
+              },
+              "observation": "聚合完成"
+            }
+          },
+          "global_status": "success",
+          "replan_reason": "",
+          "replan_count": 0
+        },
+        "intent": {
+          "demands": [
+            {
+              "intent": "position_explore",
+              "entities": {
+                "company": "阿里巴巴",
+                "position": "后端开发",
+                "search_keywords": "帮我筛选几个岗位，重点查看阿里巴巴后端开发职位",
+                "sort_by": "match_score",
+                "top_k": 5
+              },
+              "confidence": 0.88
+            }
+          ],
+          "needs_clarification": false,
+          "clarification_question": ""
+        },
+        "rewrite": {
+          "rewritten_query": "帮我筛选几个岗位，重点查看阿里巴巴后端开发职位",
+          "search_keywords": "帮我筛选几个岗位，重点查看阿里巴巴后端开发职位",
+          "is_follow_up": false,
+          "follow_up_type": "none",
+          "resolved_references": {}
+        },
+        "evidence_cache": [
+          {
+            "chunk_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8_chunk_1",
+            "content": "【阿里巴巴 · 后端开发 岗位职责】\n1. 负责电商核心系统的设计与开发。2. 高并发系统架构设计与性能优化。3. 分布式系统开发与微服务治理。4. 数据库设计与优化。",
+            "metadata": {
+              "company": "阿里巴巴",
+              "index": 1,
+              "jd_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8",
+              "position": "后端开发",
+              "section": "responsibilities",
+              "strategy": "semantic"
+            },
+            "distance": 0.2331186980009079,
+            "bm25_score": 14.494167942777871,
+            "vec_norm": 1.0,
+            "bm25_norm": 0.49054151418510233,
+            "hybrid_score": 0.8471624542555307,
+            "rerank_score": 0.9984
+          },
+          {
+            "chunk_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8_chunk_6",
+            "content": "【阿里巴巴 · 后端开发 软性要求/加分项】\n有电商行业经验优先",
+            "metadata": {
+              "company": "阿里巴巴",
+              "index": 6,
+              "jd_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8",
+              "position": "后端开发",
+              "priority": "medium",
+              "section": "soft_requirements",
+              "strategy": "semantic"
+            },
+            "distance": 0.359084814786911,
+            "bm25_score": 17.69157209161958,
+            "vec_norm": 0.36635977740028036,
+            "bm25_norm": 0.7119521496020548,
+            "hybrid_score": 0.47003748906081266,
+            "rerank_score": 0.981
+          },
+          {
+            "chunk_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8_chunk_0",
+            "content": "公司：阿里巴巴，岗位：后端开发，地点：杭州，薪资：35k-65k",
+            "metadata": {
+              "category": "技术",
+              "company": "阿里巴巴",
+              "domain": "电商",
+              "index": 0,
+              "jd_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8",
+              "min_education": "本科",
+              "min_years": 3,
+              "position": "后端开发",
+              "section": "basic_info",
+              "strategy": "semantic"
+            },
+            "distance": 0.3634324371814728,
+            "bm25_score": 21.85128822356113,
+            "vec_norm": 0.34449017871645593,
+            "bm25_norm": 1.0,
+            "hybrid_score": 0.5411431251015191,
+            "rerank_score": 0.9787
+          },
+          {
+            "chunk_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8_chunk_4",
+            "content": "【阿里巴巴 · 后端开发 硬性要求】\n熟悉分布式系统设计与微服务架构",
+            "metadata": {
+              "company": "阿里巴巴",
+              "index": 4,
+              "jd_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8",
+              "position": "后端开发",
+              "priority": "high",
+              "section": "hard_requirements",
+              "strategy": "semantic"
+            },
+            "distance": 0.3839608132839203,
+            "bm25_score": 17.08930651075854,
+            "vec_norm": 0.24122745112707167,
+            "bm25_norm": 0.6702470667471052,
+            "hybrid_score": 0.36993333581308174,
+            "rerank_score": 0.9724
+          },
+          {
+            "chunk_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8_chunk_2",
+            "content": "【阿里巴巴 · 后端开发 硬性要求】\n3年以上Java开发经验",
+            "metadata": {
+              "company": "阿里巴巴",
+              "index": 2,
+              "jd_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8",
+              "position": "后端开发",
+              "priority": "high",
+              "section": "hard_requirements",
+              "strategy": "semantic"
+            },
+            "distance": 0.39003244042396545,
+            "bm25_score": 19.10231278381687,
+            "vec_norm": 0.21068568901896,
+            "bm25_norm": 0.8096417060446165,
+            "hybrid_score": 0.390372494126657,
+            "rerank_score": 0.8933
+          }
+        ],
+        "evidence_cache_query": "帮我筛选几个岗位，重点查看阿里巴巴后端开发职位",
+        "tool_outputs": [
+          {
+            "task_id": "T0",
+            "tool": "kb_retrieve",
+            "description": "检索阿里巴巴后端开发职位（5个）",
+            "result": {
+              "chunks": [
+                {
+                  "chunk_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8_chunk_1",
+                  "content": "【阿里巴巴 · 后端开发 岗位职责】\n1. 负责电商核心系统的设计与开发。2. 高并发系统架构设计与性能优化。3. 分布式系统开发与微服务治理。4. 数据库设计与优化。",
+                  "source": "阿里巴巴-后端开发",
+                  "metadata": {
+                    "company": "阿里巴巴",
+                    "position": "后端开发"
+                  }
+                },
+                {
+                  "chunk_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8_chunk_6",
+                  "content": "【阿里巴巴 · 后端开发 软性要求/加分项】\n有电商行业经验优先",
+                  "source": "阿里巴巴-后端开发",
+                  "metadata": {
+                    "company": "阿里巴巴",
+                    "position": "后端开发"
+                  }
+                },
+                {
+                  "chunk_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8_chunk_0",
+                  "content": "公司：阿里巴巴，岗位：后端开发，地点：杭州，薪资：35k-65k",
+                  "source": "阿里巴巴-后端开发",
+                  "metadata": {
+                    "company": "阿里巴巴",
+                    "position": "后端开发"
+                  }
+                },
+                {
+                  "chunk_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8_chunk_4",
+                  "content": "【阿里巴巴 · 后端开发 硬性要求】\n熟悉分布式系统设计与微服务架构",
+                  "source": "阿里巴巴-后端开发",
+                  "metadata": {
+                    "company": "阿里巴巴",
+                    "position": "后端开发"
+                  }
+                },
+                {
+                  "chunk_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8_chunk_2",
+                  "content": "【阿里巴巴 · 后端开发 硬性要求】\n3年以上Java开发经验",
+                  "source": "阿里巴巴-后端开发",
+                  "metadata": {
+                    "company": "阿里巴巴",
+                    "position": "后端开发"
+                  }
+                }
+              ],
+              "query": "帮我筛选几个岗位，重点查看阿里巴巴后端开发职位",
+              "filters": {
+                "company": "阿里巴巴",
+                "position": "后端开发"
+              },
+              "strategy": "hybrid(70%vec+30%bm25)+reranker",
+              "pool_k": 5,
+              "rerank_k": 10,
+              "pool_size": 17,
+              "vec_only": 0,
+              "bm25_only": 8,
+              "both": 9,
+              "rerank": {
+                "enabled": true,
+                "candidates": 5,
+                "output": 5,
+                "best_rerank_score": 0.9984
+              }
+            }
+          },
+          {
+            "task_id": "T1",
+            "tool": "global_rank",
+            "description": "根据简历与JD的匹配度对岗位排序",
+            "result": {
+              "rankings": [
+                {
+                  "company": "阿里巴巴",
+                  "position": "后端开发",
+                  "match_score": 66,
+                  "recommend_reason": "方向差异：简历侧重后端，JD方向电商",
+                  "key_match": [
+                    "检索召回"
+                  ],
+                  "key_gap": [
+                    "方向不匹配（简历后端 vs JD电商）"
+                  ],
+                  "apply_priority": "中"
+                }
+              ],
+              "strategy_advice": "暂未发现高度匹配岗位，1 个中等匹配岗位可作为参考，建议进一步评估后再投递。",
+              "_template_mode": true,
+              "_coarse_filter_meta": {
+                "input_jds": 1,
+                "output_jds": 1,
+                "filter_ratio": 0.0
+              }
+            }
+          },
+          {
+            "task_id": "T2",
+            "tool": null,
+            "description": "整合检索和排序结果生成最终回复",
+            "result": {
+              "aggregation": {
+                "kb_results": [
+                  {
+                    "chunk_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8_chunk_1",
+                    "content": "【阿里巴巴 · 后端开发 岗位职责】\n1. 负责电商核心系统的设计与开发。2. 高并发系统架构设计与性能优化。3. 分布式系统开发与微服务治理。4. 数据库设计与优化。",
+                    "metadata": {
+                      "company": "阿里巴巴",
+                      "index": 1,
+                      "jd_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8",
+                      "position": "后端开发",
+                      "section": "responsibilities",
+                      "strategy": "semantic"
+                    },
+                    "distance": 0.2331186980009079,
+                    "bm25_score": 14.494167942777871,
+                    "vec_norm": 1.0,
+                    "bm25_norm": 0.49054151418510233,
+                    "hybrid_score": 0.8471624542555307,
+                    "rerank_score": 0.9984
+                  },
+                  {
+                    "chunk_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8_chunk_6",
+                    "content": "【阿里巴巴 · 后端开发 软性要求/加分项】\n有电商行业经验优先",
+                    "metadata": {
+                      "company": "阿里巴巴",
+                      "index": 6,
+                      "jd_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8",
+                      "position": "后端开发",
+                      "priority": "medium",
+                      "section": "soft_requirements",
+                      "strategy": "semantic"
+                    },
+                    "distance": 0.359084814786911,
+                    "bm25_score": 17.69157209161958,
+                    "vec_norm": 0.36635977740028036,
+                    "bm25_norm": 0.7119521496020548,
+                    "hybrid_score": 0.47003748906081266,
+                    "rerank_score": 0.981
+                  },
+                  {
+                    "chunk_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8_chunk_0",
+                    "content": "公司：阿里巴巴，岗位：后端开发，地点：杭州，薪资：35k-65k",
+                    "metadata": {
+                      "category": "技术",
+                      "company": "阿里巴巴",
+                      "domain": "电商",
+                      "index": 0,
+                      "jd_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8",
+                      "min_education": "本科",
+                      "min_years": 3,
+                      "position": "后端开发",
+                      "section": "basic_info",
+                      "strategy": "semantic"
+                    },
+                    "distance": 0.3634324371814728,
+                    "bm25_score": 21.85128822356113,
+                    "vec_norm": 0.34449017871645593,
+                    "bm25_norm": 1.0,
+                    "hybrid_score": 0.5411431251015191,
+                    "rerank_score": 0.9787
+                  },
+                  {
+                    "chunk_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8_chunk_4",
+                    "content": "【阿里巴巴 · 后端开发 硬性要求】\n熟悉分布式系统设计与微服务架构",
+                    "metadata": {
+                      "company": "阿里巴巴",
+                      "index": 4,
+                      "jd_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8",
+                      "position": "后端开发",
+                      "priority": "high",
+                      "section": "hard_requirements",
+                      "strategy": "semantic"
+                    },
+                    "distance": 0.3839608132839203,
+                    "bm25_score": 17.08930651075854,
+                    "vec_norm": 0.24122745112707167,
+                    "bm25_norm": 0.6702470667471052,
+                    "hybrid_score": 0.36993333581308174,
+                    "rerank_score": 0.9724
+                  },
+                  {
+                    "chunk_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8_chunk_2",
+                    "content": "【阿里巴巴 · 后端开发 硬性要求】\n3年以上Java开发经验",
+                    "metadata": {
+                      "company": "阿里巴巴",
+                      "index": 2,
+                      "jd_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8",
+                      "position": "后端开发",
+                      "priority": "high",
+                      "section": "hard_requirements",
+                      "strategy": "semantic"
+                    },
+                    "distance": 0.39003244042396545,
+                    "bm25_score": 19.10231278381687,
+                    "vec_norm": 0.21068568901896,
+                    "bm25_norm": 0.8096417060446165,
+                    "hybrid_score": 0.390372494126657,
+                    "rerank_score": 0.8933
+                  }
+                ],
+                "ranked": {
+                  "rankings": [
+                    {
+                      "rank": 1,
+                      "jd_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8",
+                      "company": "阿里巴巴",
+                      "position": "后端开发",
+                      "match_score": 66,
+                      "recommend_reason": "方向差异：简历侧重后端，JD方向电商",
+                      "key_match": [
+                        "检索召回"
+                      ],
+                      "key_gap": [
+                        "方向不匹配（简历后端 vs JD电商）"
+                      ],
+                      "apply_priority": "中"
+                    }
+                  ],
+                  "strategy_advice": "暂未发现高度匹配岗位，1 个中等匹配岗位可作为参考，建议进一步评估后再投递。",
+                  "_template_mode": true,
+                  "_coarse_filter_meta": {
+                    "input_jds": 1,
+                    "output_jds": 1,
+                    "filter_ratio": 0.0
+                  }
+                }
+              }
+            }
+          }
+        ],
+        "final_aggregation_prompt": {
+          "system_prompt": "你是一位专业的求职顾问。请基于以下工具执行结果，给用户一个清晰、有帮助的回复。\n要求：\n1. 先直接回答用户的问题（是/否/有/没有），不要绕弯子，不要重复用户的原话\n2. 如果有匹配分析结果，给出具体的分数和建议\n3. 如果有检索结果，基于事实回答，不要编造\n4. 【强制】引用信息时必须标注来源。每个引用的事实后面都要跟 [来源：公司名-岗位名] 格式。   kb_retrieve 结果的 chunks 中带有 'source' 字段（如'字节跳动-AI产品经理'），请直接使用。   external_search 结果带有 'source_name' 字段，也请直接使用。\n5. 当本地知识库与外部搜索结果冲突时，请并列呈现两种说法并标注各自来源，不要替用户做判断\n6. 语气友好、专业、结构化",
+          "user_prompt": "【用户问题】\n帮我筛选几个岗位，重点查看阿里巴巴后端开发职位\n\n【工具执行结果】\n[{\"task_id\": \"T0\", \"tool\": \"kb_retrieve\", \"description\": \"检索阿里巴巴后端开发职位（5个）\", \"result\": {\"chunks\": [{\"chunk_id\": \"9cde8355-dcc0-434e-97c4-67dfc5dae5b8_chunk_1\", \"content\": \"【阿里巴巴 · 后端开发 岗位职责】\\n1. 负责电商核心系统的设计与开发。2. 高并发系统架构设计与性能优化。3. 分布式系统开发与微服务治理。4. 数据库设计与优化。\", \"source\": \"阿里巴巴-后端开发\", \"metadata\": {\"company\": \"阿里巴巴\", \"position\": \"后端开发\"}}, {\"chunk_id\": \"9cde8355-dcc0-434e-97c4-67dfc5dae5b8_chunk_6\", \"content\": \"【阿里巴巴 · 后端开发 软性要求/加分项】\\n有电商行业经验优先\", \"source\": \"阿里巴巴-后端开发\", \"metadata\": {\"company\": \"阿里巴巴\", \"position\": \"后端开发\"}}, {\"chunk_id\": \"9cde8355-dcc0-434e-97c4-67dfc5dae5b8_chunk_0\", \"content\": \"公司：阿里巴巴，岗位：后端开发，地点：杭州，薪资：35k-65k\", \"source\": \"阿里巴巴-后端开发\", \"metadata\": {\"company\": \"阿里巴巴\", \"position\": \"后端开发\"}}, {\"chunk_id\": \"9cde8355-dcc0-434e-97c4-67dfc5dae5b8_chunk_4\", \"content\": \"【阿里巴巴 · 后端开发 硬性要求】\\n熟悉分布式系统设计与微服务架构\", \"source\": \"阿里巴巴-后端开发\", \"metadata\": {\"company\": \"阿里巴巴\", \"position\": \"后端开发\"}}, {\"chunk_id\": \"9cde8355-dcc0-434e-97c4-67dfc5dae5b8_chunk_2\", \"content\": \"【阿里巴巴 · 后端开发 硬性要求】\\n3年以上Java开发经验\", \"source\": \"阿里巴巴-后端开发\", \"metadata\": {\"company\": \"阿里巴巴\", \"position\": \"后端开发\"}}], \"query\": \"帮我筛选几个岗位，重点查看阿里巴巴后端开发职位\", \"filters\": {\"company\": \"阿里巴巴\", \"position\": \"后端开发\"}, \"strategy\": \"hybrid(70%vec+30%bm25)+reranker\", \"pool_k\": 5, \"rerank_k\": 10, \"pool_size\": 17, \"vec_only\": 0, \"bm25_only\": 8, \"both\": 9, \"rerank\": {\"enabled\": true, \"candidates\": 5, \"output\": 5, \"best_rerank_score\": 0.9984}}}, {\"task_id\": \"T1\", \"tool\": \"global_rank\", \"description\": \"根据简历与JD的匹配度对岗位排序\", \"result\": {\"rankings\": [{\"company\": \"阿里巴巴\", \"position\": \"后端开发\", \"match_score\": 66, \"recommend_reason\": \"方向差异：简历侧重后端，JD方向电商\", \"key_match\": [\"检索召回\"], \"key_gap\": [\"方向不匹配（简历后端 vs JD电商）\"], \"apply_priority\": \"中\"}], \"strategy_advice\": \"暂未发现高度匹配岗位，1 个中等匹配岗位可作为参考，建议进一步评估后再投递。\", \"_template_mode\": true, \"_coarse_filter_meta\": {\"input_jds\": 1, \"output_jds\": 1, \"filter_ratio\": 0.0}}}, {\"task_id\": \"T2\", \"tool\": null, \"description\": \"整合检索和排序结果生成最终回复\", \"result\": {\"aggregation\": {\"kb_results\": [{\"chunk_id\": \"9cde8355-dcc0-434e-97c4-67dfc5dae5b8_chunk_1\", \"content\": \"【阿里巴巴 · 后端开发 岗位职责】\\n1. 负责电商核心系统的设计与开发。2. 高并发系统架构设计与性能优化。3. 分布式系统开发与微服务治理。4. 数据库设计与优化。\", \"metadata\": {\"company\": \"阿里巴巴\", \"index\": 1, \"jd_id\": \"9cde8355-dcc0-434e-97c4-67dfc5dae5b8\", \"position\": \"后端开发\", \"section\": \"responsibilities\", \"strategy\": \"semantic\"}, \"distance\": 0.2331186980009079, \"bm25_score\": 14.494167942777871, \"vec_norm\": 1.0, \"bm25_norm\": 0.49054151418510233, \"hybrid_score\": 0.8471624542555307, \"rerank_score\": 0.9984}, {\"chunk_id\": \"9cde8355-dcc0-434e-97c4-67dfc5dae5b8_chunk_6\", \"content\": \"【阿里巴巴 · 后端开发 软性要求/加分项】\\n有电商行业经验优先\", \"metadata\": {\"company\": \"阿里巴巴\", \"index\": 6, \"jd_id\": \"9cde8355-dcc0-434e-97c4-67dfc5dae5b8\", \"position\": \"后端开发\", \"priority\": \"medium\", \"section\": \"soft_requirements\", \"strategy\": \"semantic\"}, \"distance\": 0.359084814786911, \"bm25_score\": 17.69157209161958, \"vec_norm\": 0.36635977740028036, \"bm25_norm\": 0.7119521496020548, \"hybrid_score\": 0.47003748906081266, \"rerank_score\": 0.981}, {\"chunk_id\": \"9cde8355-dcc0-434e-97c4-67dfc5da\n\n请生成回复："
+        }
+      },
+      "usage": {
+        "prompt_tokens": 7817,
+        "completion_tokens": 5370,
+        "total_tokens": 13187
+      },
+      "_time": 84.13351273536682,
+      "type": "done"
+    }
+  ],
+  "timestamp": "2026-06-05T16:42:43.900694",
+  "prompt_tokens": 7817,
+  "completion_tokens": 5370,
+  "total_tokens": 13187,
+  "tool_execution_success_rate": 1.0,
+  "tool_correct_rate": 0.67
+}

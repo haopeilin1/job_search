@@ -1,0 +1,2998 @@
+{
+  "case_id": "eval_li_04",
+  "message": "Java后端面试一般问什么",
+  "gold_intents": [
+    "prepare"
+  ],
+  "expected_tools": [
+    "interview_gen"
+  ],
+  "scenario": "面试准备_泛化岗位",
+  "eval_context": {
+    "gold_intents": [
+      "prepare"
+    ],
+    "gold_slots": {
+      "position": "Java后端"
+    },
+    "relevance_score": 0,
+    "expected_tools": [
+      "interview_gen"
+    ],
+    "scenario": "面试准备_泛化岗位",
+    "notes": "无公司名，测试泛化面试题生成"
+  },
+  "resume_id": "e30c8b27-cfce-4918-8810-832e3ab5087c",
+  "status": "success",
+  "error": null,
+  "ttfb": 0.01,
+  "total_latency": 90.53,
+  "event_count": 257,
+  "pred_intent": "interview_prepare",
+  "pred_intents": [
+    "interview_prepare"
+  ],
+  "pred_tools": [
+    {
+      "tool": "kb_retrieve",
+      "status": "✅",
+      "params": {
+        "query": "Java后端",
+        "top_k": 3,
+        "company": null,
+        "position": "Java后端"
+      },
+      "result_preview": "{'chunks': [{'chunk_id': '45bd2600-af57-45fe-a96e-c6cae6838c7a_chunk_1', 'content': '【某小公司 · Java后端 岗位职责】\\n1. 负责传统企业内部管理系统的设计与开发。2. 数据库CRUD操作与报表开发。3. 系统日常维护与bug修复。', 'metadata': {'company': '某小公司', 'i"
+    },
+    {
+      "tool": "match_analyze",
+      "status": "✅",
+      "params": {
+        "resume_text": "姓名：李工程师\n电话：138-XXXX-1234 | 邮箱：lixx_dev@email.com | 现居：北京\nJava后端开发工程师 | 3年经验 | 本科\n\n教育背景\n2018.09 - 2022.06  XX理工大学  计算机科学与技术（本科）\n主修课程：数据结构与算法、操作系统、计算机网络、数据库原理、软件工程\n在校荣誉：校级优秀毕业设计（基于微服务的校园二手交易平台）\n\n专业技能\n熟练掌握Java核心技术，熟悉JVM内存模型、GC机制及常见调优手段\n精通Spring Boot、Spring Cloud微服务生态，熟悉Nacos、Gateway、Sentinel、Seata等组件\n熟悉MySQL索引优化、事务机制、分库分表策略，具备SQL调优及慢查询治理经验\n了解Redis缓存设计、Kafka消息队列，熟悉Docker容器化部署及Jenkins CI/CD流程\n掌握Git版本控制，熟悉Linux日常运维及日志排查\n\n工作经历\n2022.07 - 至今  XX科技有限公司（B轮 / 企业服务 SaaS）  Java后端工程师\n\nSaaS供应链管理平台（2023.03 - 至今）\n负责订单中心、库存中心核心模块设计与开发，采用Spring Cloud Alibaba微服务架构，支撑日均10W+订单处理\n主导MySQL分库分表方案设计（ShardingSphere），解决单表数据量过亿导致的查询性能瓶颈，接口响应时间从800ms降至120ms\n设计多级缓存策略（Redis + Caffeine本地缓存），热点数据命中率提升至95%，降低数据库负载40%\n基于Seata AT模式实现分布式事务，保障订单与库存数据一致性，线上运行半年零资损事故\n\n企业权限中台重构（2022.09 - 2023.02）\n参与RBAC权限中台从单体到微服务的拆分重构，负责鉴权服务、菜单路由模块开发\n引入Gateway统一鉴权过滤器，对接OAuth2.0 + JWT认证体系，支持多租户隔离\n编写核心接口单元测试（Unit + Mockito），模块测试覆盖率从45%提升至82%\n\n自我评价\n具备扎实的计算机基础与3年企业级后端开发经验，擅长高并发场景下的系统设计与性能优化。注重代码质量与工程规范，具备良好的团队协作与跨部门沟通能力。",
+        "jd_text": [
+          {
+            "chunk_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a_chunk_1",
+            "content": "【某小公司 · Java后端 岗位职责】\n1. 负责传统企业内部管理系统的设计与开发。2. 数据库CRUD操作与报表开发。3. 系统日常维护与bug修复。",
+            "metadata": {
+              "company": "某小公司",
+              "index": 1,
+              "jd_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a",
+              "position": "Java后端",
+              "section": "responsibilities",
+              "strategy": "semantic"
+            },
+            "distance": 0.7322511076927185,
+            "bm25_score": 6.803795908828786,
+            "vec_norm": 0.641017779861409,
+            "bm25_norm": 0.42577783366977107,
+            "hybrid_score": 0.5764457960039175,
+            "rerank_score": 0.9982
+          },
+          {
+            "chunk_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a_chunk_6",
+            "content": "【某小公司 · Java后端 关键词】\nJava, Spring Boot, MySQL, ERP, 后端",
+            "metadata": {
+              "company": "某小公司",
+              "index": 6,
+              "jd_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a",
+              "position": "Java后端",
+              "section": "keywords",
+              "strategy": "semantic"
+            },
+            "distance": 0.6197474598884583,
+            "bm25_score": 9.906145995550908,
+            "vec_norm": 1.0,
+            "bm25_norm": 0.8622791554222022,
+            "hybrid_score": 0.9586837466266607,
+            "rerank_score": 0.9911
+          },
+          {
+            "chunk_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a_chunk_3",
+            "content": "【某小公司 · Java后端 硬性要求】\n熟悉Spring Boot、MySQL",
+            "metadata": {
+              "company": "某小公司",
+              "index": 3,
+              "jd_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a",
+              "position": "Java后端",
+              "priority": "high",
+              "section": "hard_requirements",
+              "strategy": "semantic"
+            },
+            "distance": 0.7657338976860046,
+            "bm25_score": 9.57143819239722,
+            "vec_norm": 0.5341792326425969,
+            "bm25_norm": 0.8151856958211281,
+            "hybrid_score": 0.6184811715961562,
+            "rerank_score": 0.9567
+          }
+        ],
+        "position": "Java后端",
+        "attributes": [
+          "技术栈",
+          "项目经验"
+        ]
+      },
+      "result_preview": "{'score': 85, 'label': '高度契合', 'advantages': ['Java核心技术', 'Spring Boot', 'MySQL数据库设计与优化', '后端开发经验', '企业级系统开发（SaaS供应链管理平台）', 'Git版本控制', 'Linux运维', '团队协作能力'], 'weaknesses': ['候选人缺乏报表开发经验，JD明确要求负责数据库CRUD"
+    },
+    {
+      "tool": "interview_gen",
+      "status": "✅",
+      "params": {
+        "match_result": {
+          "score": 85,
+          "label": "高度契合",
+          "advantages": [
+            "Java核心技术",
+            "Spring Boot",
+            "MySQL数据库设计与优化",
+            "后端开发经验",
+            "企业级系统开发（SaaS供应链管理平台）",
+            "Git版本控制",
+            "Linux运维",
+            "团队协作能力"
+          ],
+          "weaknesses": [
+            "候选人缺乏报表开发经验，JD明确要求负责数据库CRUD操作与报表开发，而简历中未提及任何报表相关的技术（如JasperReports、POI、ECharts等）或实际项目经历。此外，候选人主要经验集中在微服务和高并发场景，而JD描述为传统企业内部管理系统，可能更偏向简单CRUD和报表，候选人相对缺乏此类场景的适配经验。"
+          ],
+          "suggestions": [
+            "核心能力要求: Java、Spring Boot、MySQL、ERP系统、后端开发、数据库CRUD、报表开发、系统维护与bug修复"
+          ],
+          "match_score": 85,
+          "covered": [
+            "Java核心技术",
+            "Spring Boot",
+            "MySQL数据库设计与优化",
+            "后端开发经验",
+            "企业级系统开发（SaaS供应链管理平台）",
+            "Git版本控制",
+            "Linux运维",
+            "团队协作能力"
+          ],
+          "missing_experience": "候选人缺乏报表开发经验，JD明确要求负责数据库CRUD操作与报表开发，而简历中未提及任何报表相关的技术（如JasperReports、POI、ECharts等）或实际项目经历。此外，候选人主要经验集中在微服务和高并发场景，而JD描述为传统企业内部管理系统，可能更偏向简单CRUD和报表，候选人相对缺乏此类场景的适配经验。",
+          "core_skills": "Java、Spring Boot、MySQL、ERP系统、后端开发、数据库CRUD、报表开发、系统维护与bug修复",
+          "company": null,
+          "position": "Java后端"
+        },
+        "count": 5,
+        "difficulty": "mixed",
+        "focus_area": [
+          "JVM",
+          "Spring框架",
+          "数据库",
+          "分布式",
+          "项目经验"
+        ],
+        "company": null,
+        "position": "Java后端"
+      },
+      "result_preview": "{'questions': ['假设我们现在需要为一个ERP系统开发一个销售数据报表模块，要求支持月报、季报和年报的生成，数据源来自多个MySQL表（订单表、产品表、客户表等），数据量在百万级。请设计一个报表生成方案，包括数据查询、计算、缓存、导出（如Excel或PDF）等方面。追问方向：1）如果报表查询耗时过长（超过10秒），你会如何优化？请具体说明索引、分页、预计算或使用聚合表的方案。2）如果"
+    }
+  ],
+  "tools_called": [
+    "kb_retrieve",
+    "match_analyze",
+    "interview_gen"
+  ],
+  "kb_chunks": [
+    {
+      "chunk_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a_chunk_1",
+      "content": "【某小公司 · Java后端 岗位职责】\n1. 负责传统企业内部管理系统的设计与开发。2. 数据库CRUD操作与报表开发。3. 系统日常维护与bug修复。",
+      "metadata": {
+        "company": "某小公司",
+        "index": 1,
+        "jd_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a",
+        "position": "Java后端",
+        "section": "responsibilities",
+        "strategy": "semantic"
+      },
+      "distance": 0.7322511076927185,
+      "bm25_score": 6.803795908828786,
+      "vec_norm": 0.641017779861409,
+      "bm25_norm": 0.42577783366977107,
+      "hybrid_score": 0.5764457960039175,
+      "rerank_score": 0.9982
+    },
+    {
+      "chunk_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a_chunk_6",
+      "content": "【某小公司 · Java后端 关键词】\nJava, Spring Boot, MySQL, ERP, 后端",
+      "metadata": {
+        "company": "某小公司",
+        "index": 6,
+        "jd_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a",
+        "position": "Java后端",
+        "section": "keywords",
+        "strategy": "semantic"
+      },
+      "distance": 0.6197474598884583,
+      "bm25_score": 9.906145995550908,
+      "vec_norm": 1.0,
+      "bm25_norm": 0.8622791554222022,
+      "hybrid_score": 0.9586837466266607,
+      "rerank_score": 0.9911
+    },
+    {
+      "chunk_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a_chunk_3",
+      "content": "【某小公司 · Java后端 硬性要求】\n熟悉Spring Boot、MySQL",
+      "metadata": {
+        "company": "某小公司",
+        "index": 3,
+        "jd_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a",
+        "position": "Java后端",
+        "priority": "high",
+        "section": "hard_requirements",
+        "strategy": "semantic"
+      },
+      "distance": 0.7657338976860046,
+      "bm25_score": 9.57143819239722,
+      "vec_norm": 0.5341792326425969,
+      "bm25_norm": 0.8151856958211281,
+      "hybrid_score": 0.6184811715961562,
+      "rerank_score": 0.9567
+    }
+  ],
+  "tool_executions_full": [
+    {
+      "tool_name": "kb_retrieve",
+      "task_id": "T0",
+      "status": "success",
+      "output": {
+        "chunks": [
+          {
+            "chunk_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a_chunk_1",
+            "content": "【某小公司 · Java后端 岗位职责】\n1. 负责传统企业内部管理系统的设计与开发。2. 数据库CRUD操作与报表开发。3. 系统日常维护与bug修复。",
+            "source": "某小公司-Java后端",
+            "metadata": {
+              "company": "某小公司",
+              "position": "Java后端"
+            }
+          },
+          {
+            "chunk_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a_chunk_6",
+            "content": "【某小公司 · Java后端 关键词】\nJava, Spring Boot, MySQL, ERP, 后端",
+            "source": "某小公司-Java后端",
+            "metadata": {
+              "company": "某小公司",
+              "position": "Java后端"
+            }
+          },
+          {
+            "chunk_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a_chunk_3",
+            "content": "【某小公司 · Java后端 硬性要求】\n熟悉Spring Boot、MySQL",
+            "source": "某小公司-Java后端",
+            "metadata": {
+              "company": "某小公司",
+              "position": "Java后端"
+            }
+          }
+        ],
+        "query": "Java后端",
+        "filters": {
+          "position": "Java后端"
+        },
+        "strategy": "hybrid(70%vec+30%bm25)+reranker",
+        "pool_k": 3,
+        "rerank_k": 10,
+        "pool_size": 9,
+        "vec_only": 0,
+        "bm25_only": 2,
+        "both": 7,
+        "rerank": {
+          "enabled": true,
+          "candidates": 3,
+          "output": 3,
+          "best_rerank_score": 0.9982
+        }
+      }
+    },
+    {
+      "tool_name": "match_analyze",
+      "task_id": "T1",
+      "status": "success",
+      "output": {
+        "score": 85,
+        "label": "高度契合",
+        "advantages": [
+          "Java核心技术",
+          "Spring Boot",
+          "MySQL数据库设计与优化",
+          "后端开发经验",
+          "企业级系统开发（SaaS供应链管理平台）",
+          "Git版本控制",
+          "Linux运维",
+          "团队协作能力"
+        ],
+        "weaknesses": [
+          "候选人缺乏报表开发经验，JD明确要求负责数据库CRUD操作与报表开发，而简历中未提及任何报表相关的技术（如JasperReports、POI、ECharts等）或实际项目经历。此外，候选人主要经验集中在微服务和高并发场景，而JD描述为传统企业内部管理系统，可能更偏向简单CRUD和报表，候选人相对缺乏此类场景的适配经验。"
+        ],
+        "suggestions": [
+          "核心能力要求: Java、Spring Boot、MySQL、ERP系统、后端开发、数据库CRUD、报表开发、系统维护与bug修复"
+        ],
+        "match_score": 85,
+        "covered": [
+          "Java核心技术",
+          "Spring Boot",
+          "MySQL数据库设计与优化",
+          "后端开发经验",
+          "企业级系统开发（SaaS供应链管理平台）",
+          "Git版本控制",
+          "Linux运维",
+          "团队协作能力"
+        ],
+        "missing_experience": "候选人缺乏报表开发经验，JD明确要求负责数据库CRUD操作与报表开发，而简历中未提及任何报表相关的技术（如JasperReports、POI、ECharts等）或实际项目经历。此外，候选人主要经验集中在微服务和高并发场景，而JD描述为传统企业内部管理系统，可能更偏向简单CRUD和报表，候选人相对缺乏此类场景的适配经验。",
+        "core_skills": "Java、Spring Boot、MySQL、ERP系统、后端开发、数据库CRUD、报表开发、系统维护与bug修复",
+        "company": null,
+        "position": "Java后端"
+      }
+    },
+    {
+      "tool_name": "interview_gen",
+      "task_id": "T2",
+      "status": "success",
+      "output": {
+        "questions": [
+          "假设我们现在需要为一个ERP系统开发一个销售数据报表模块，要求支持月报、季报和年报的生成，数据源来自多个MySQL表（订单表、产品表、客户表等），数据量在百万级。请设计一个报表生成方案，包括数据查询、计算、缓存、导出（如Excel或PDF）等方面。追问方向：1）如果报表查询耗时过长（超过10秒），你会如何优化？请具体说明索引、分页、预计算或使用聚合表的方案。2）如果需要支持用户自定义报表字段和筛选条件，你的设计如何扩展？",
+          "你的简历中强调微服务和分布式系统经验，而我们这个岗位主要维护一个单体ERP系统，涉及大量复杂的SQL和报表。请谈谈你将如何适应这种从高并发微服务到传统单体CRUD系统的转变？具体说明你在代码质量、性能优化、数据库设计方面的经验如何应用到简单的业务报表场景中。追问方向：1）在单体应用中，你如何处理慢查询和死锁问题？请举例说明你曾经遇到过的类似问题及解决方案。2）如果让你引入一个简单的报表框架（如JasperReports或Apache POI）到现有项目中，你会如何评估和选择？请给出你的判断标准。",
+          "请写一段Java代码实现以下功能：从数据库中查询出某个月份的所有订单，按产品分类统计销售额，并将结果输出为Excel文件（.xlsx格式）。假设使用Spring Boot + MyBatis，数据库表结构为：orders表（id, product_id, amount, create_time），products表（id, category_id, name）。要求考虑性能（百万级数据）和代码可维护性。追问方向：1）如何分页查询避免内存溢出？请给出伪代码。2）如果Excel文件需要包含图表（如饼图），你有什么方案？",
+          "在ERP系统中，报表往往需要根据用户选择的日期范围动态生成，但数据可能分布在多个表中且需要关联计算。请设计一个通用的报表查询服务，要求支持动态SQL拼接、参数校验、结果集映射，并提供统一的异常处理。追问方向：1）动态SQL拼接容易导致SQL注入，你如何防止？请给出具体防范措施。2）当报表查询结果需要缓存时，你如何设计缓存策略以平衡实时性和性能？",
+          "假设你接手了一个遗留的ERP报表模块，代码中大量使用JSP和纯JDBC，报表生成慢且难以维护。作为新入职的Java后端开发，你会如何制定重构计划？请从技术选型、架构分层、数据访问层优化、单元测试等方面阐述。追问方向：1）在重构过程中，如何确保现有报表功能不受影响？你会采用什么测试策略？2）如果业务部门要求快速修复一个报表数据错误，而重构任务又很紧迫，你如何平衡？"
+        ],
+        "focus_areas": [
+          "短板深挖：候选人缺乏报表开发经验，JD明确要求负责数据库CRUD操作与报表开发，而简历中未提及任何报表相关的技术（如JasperReports、POI、ECharts等）或实际项目经历。此外，候选人主要经验集中",
+          "核心能力：Java、Spring Boot、MySQL、ERP系统、后端开发、数据库CRUD、报表开发、系统维护与bug修复"
+        ],
+        "question_count": 5,
+        "company": null,
+        "position": "Java后端"
+      }
+    },
+    {
+      "tool_name": null,
+      "task_id": "T3",
+      "status": "success",
+      "output": {
+        "aggregation": {
+          "interview": {
+            "questions": [
+              "假设我们现在需要为一个ERP系统开发一个销售数据报表模块，要求支持月报、季报和年报的生成，数据源来自多个MySQL表（订单表、产品表、客户表等），数据量在百万级。请设计一个报表生成方案，包括数据查询、计算、缓存、导出（如Excel或PDF）等方面。追问方向：1）如果报表查询耗时过长（超过10秒），你会如何优化？请具体说明索引、分页、预计算或使用聚合表的方案。2）如果需要支持用户自定义报表字段和筛选条件，你的设计如何扩展？",
+              "你的简历中强调微服务和分布式系统经验，而我们这个岗位主要维护一个单体ERP系统，涉及大量复杂的SQL和报表。请谈谈你将如何适应这种从高并发微服务到传统单体CRUD系统的转变？具体说明你在代码质量、性能优化、数据库设计方面的经验如何应用到简单的业务报表场景中。追问方向：1）在单体应用中，你如何处理慢查询和死锁问题？请举例说明你曾经遇到过的类似问题及解决方案。2）如果让你引入一个简单的报表框架（如JasperReports或Apache POI）到现有项目中，你会如何评估和选择？请给出你的判断标准。",
+              "请写一段Java代码实现以下功能：从数据库中查询出某个月份的所有订单，按产品分类统计销售额，并将结果输出为Excel文件（.xlsx格式）。假设使用Spring Boot + MyBatis，数据库表结构为：orders表（id, product_id, amount, create_time），products表（id, category_id, name）。要求考虑性能（百万级数据）和代码可维护性。追问方向：1）如何分页查询避免内存溢出？请给出伪代码。2）如果Excel文件需要包含图表（如饼图），你有什么方案？",
+              "在ERP系统中，报表往往需要根据用户选择的日期范围动态生成，但数据可能分布在多个表中且需要关联计算。请设计一个通用的报表查询服务，要求支持动态SQL拼接、参数校验、结果集映射，并提供统一的异常处理。追问方向：1）动态SQL拼接容易导致SQL注入，你如何防止？请给出具体防范措施。2）当报表查询结果需要缓存时，你如何设计缓存策略以平衡实时性和性能？",
+              "假设你接手了一个遗留的ERP报表模块，代码中大量使用JSP和纯JDBC，报表生成慢且难以维护。作为新入职的Java后端开发，你会如何制定重构计划？请从技术选型、架构分层、数据访问层优化、单元测试等方面阐述。追问方向：1）在重构过程中，如何确保现有报表功能不受影响？你会采用什么测试策略？2）如果业务部门要求快速修复一个报表数据错误，而重构任务又很紧迫，你如何平衡？"
+            ],
+            "focus_areas": [
+              "短板深挖：候选人缺乏报表开发经验，JD明确要求负责数据库CRUD操作与报表开发，而简历中未提及任何报表相关的技术（如JasperReports、POI、ECharts等）或实际项目经历。此外，候选人主要经验集中",
+              "核心能力：Java、Spring Boot、MySQL、ERP系统、后端开发、数据库CRUD、报表开发、系统维护与bug修复"
+            ],
+            "question_count": 5,
+            "company": null,
+            "position": "Java后端"
+          }
+        }
+      }
+    }
+  ],
+  "debug_info": {
+    "task_graph": {
+      "tasks": {
+        "T0": {
+          "task_id": "T0",
+          "task_type": "tool_call",
+          "tool_name": "kb_retrieve",
+          "status": "success",
+          "parameters": {
+            "query": "Java后端",
+            "top_k": 3,
+            "company": null,
+            "position": "Java后端"
+          },
+          "resolved_params": {
+            "query": "Java后端",
+            "top_k": 3,
+            "company": null,
+            "position": "Java后端"
+          },
+          "result": {
+            "chunks": [
+              {
+                "chunk_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a_chunk_1",
+                "content": "【某小公司 · Java后端 岗位职责】\n1. 负责传统企业内部管理系统的设计与开发。2. 数据库CRUD操作与报表开发。3. 系统日常维护与bug修复。",
+                "metadata": {
+                  "company": "某小公司",
+                  "index": 1,
+                  "jd_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a",
+                  "position": "Java后端",
+                  "section": "responsibilities",
+                  "strategy": "semantic"
+                },
+                "distance": 0.7322511076927185,
+                "bm25_score": 6.803795908828786,
+                "vec_norm": 0.641017779861409,
+                "bm25_norm": 0.42577783366977107,
+                "hybrid_score": 0.5764457960039175,
+                "rerank_score": 0.9982
+              },
+              {
+                "chunk_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a_chunk_6",
+                "content": "【某小公司 · Java后端 关键词】\nJava, Spring Boot, MySQL, ERP, 后端",
+                "metadata": {
+                  "company": "某小公司",
+                  "index": 6,
+                  "jd_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a",
+                  "position": "Java后端",
+                  "section": "keywords",
+                  "strategy": "semantic"
+                },
+                "distance": 0.6197474598884583,
+                "bm25_score": 9.906145995550908,
+                "vec_norm": 1.0,
+                "bm25_norm": 0.8622791554222022,
+                "hybrid_score": 0.9586837466266607,
+                "rerank_score": 0.9911
+              },
+              {
+                "chunk_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a_chunk_3",
+                "content": "【某小公司 · Java后端 硬性要求】\n熟悉Spring Boot、MySQL",
+                "metadata": {
+                  "company": "某小公司",
+                  "index": 3,
+                  "jd_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a",
+                  "position": "Java后端",
+                  "priority": "high",
+                  "section": "hard_requirements",
+                  "strategy": "semantic"
+                },
+                "distance": 0.7657338976860046,
+                "bm25_score": 9.57143819239722,
+                "vec_norm": 0.5341792326425969,
+                "bm25_norm": 0.8151856958211281,
+                "hybrid_score": 0.6184811715961562,
+                "rerank_score": 0.9567
+              }
+            ],
+            "query": "Java后端",
+            "filters": {
+              "position": "Java后端"
+            },
+            "strategy": "hybrid(70%vec+30%bm25)+reranker",
+            "pool_k": 3,
+            "rerank_k": 10,
+            "pool_size": 9,
+            "vec_only": 0,
+            "bm25_only": 2,
+            "both": 7,
+            "rerank": {
+              "enabled": true,
+              "candidates": 3,
+              "output": 3,
+              "best_rerank_score": 0.9982
+            }
+          },
+          "observation": "工具 kb_retrieve 执行成功"
+        },
+        "T1": {
+          "task_id": "T1",
+          "task_type": "tool_call",
+          "tool_name": "match_analyze",
+          "status": "success",
+          "parameters": {
+            "resume_text": "{{global_slots.resume_text}}",
+            "jd_text": "{{T0.output.chunks}}",
+            "position": "Java后端",
+            "attributes": [
+              "技术栈",
+              "项目经验"
+            ]
+          },
+          "resolved_params": {
+            "resume_text": "姓名：李工程师\n电话：138-XXXX-1234 | 邮箱：lixx_dev@email.com | 现居：北京\nJava后端开发工程师 | 3年经验 | 本科\n\n教育背景\n2018.09 - 2022.06  XX理工大学  计算机科学与技术（本科）\n主修课程：数据结构与算法、操作系统、计算机网络、数据库原理、软件工程\n在校荣誉：校级优秀毕业设计（基于微服务的校园二手交易平台）\n\n专业技能\n熟练掌握Java核心技术，熟悉JVM内存模型、GC机制及常见调优手段\n精通Spring Boot、Spring Cloud微服务生态，熟悉Nacos、Gateway、Sentinel、Seata等组件\n熟悉MySQL索引优化、事务机制、分库分表策略，具备SQL调优及慢查询治理经验\n了解Redis缓存设计、Kafka消息队列，熟悉Docker容器化部署及Jenkins CI/CD流程\n掌握Git版本控制，熟悉Linux日常运维及日志排查\n\n工作经历\n2022.07 - 至今  XX科技有限公司（B轮 / 企业服务 SaaS）  Java后端工程师\n\nSaaS供应链管理平台（2023.03 - 至今）\n负责订单中心、库存中心核心模块设计与开发，采用Spring Cloud Alibaba微服务架构，支撑日均10W+订单处理\n主导MySQL分库分表方案设计（ShardingSphere），解决单表数据量过亿导致的查询性能瓶颈，接口响应时间从800ms降至120ms\n设计多级缓存策略（Redis + Caffeine本地缓存），热点数据命中率提升至95%，降低数据库负载40%\n基于Seata AT模式实现分布式事务，保障订单与库存数据一致性，线上运行半年零资损事故\n\n企业权限中台重构（2022.09 - 2023.02）\n参与RBAC权限中台从单体到微服务的拆分重构，负责鉴权服务、菜单路由模块开发\n引入Gateway统一鉴权过滤器，对接OAuth2.0 + JWT认证体系，支持多租户隔离\n编写核心接口单元测试（Unit + Mockito），模块测试覆盖率从45%提升至82%\n\n自我评价\n具备扎实的计算机基础与3年企业级后端开发经验，擅长高并发场景下的系统设计与性能优化。注重代码质量与工程规范，具备良好的团队协作与跨部门沟通能力。",
+            "jd_text": [
+              {
+                "chunk_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a_chunk_1",
+                "content": "【某小公司 · Java后端 岗位职责】\n1. 负责传统企业内部管理系统的设计与开发。2. 数据库CRUD操作与报表开发。3. 系统日常维护与bug修复。",
+                "metadata": {
+                  "company": "某小公司",
+                  "index": 1,
+                  "jd_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a",
+                  "position": "Java后端",
+                  "section": "responsibilities",
+                  "strategy": "semantic"
+                },
+                "distance": 0.7322511076927185,
+                "bm25_score": 6.803795908828786,
+                "vec_norm": 0.641017779861409,
+                "bm25_norm": 0.42577783366977107,
+                "hybrid_score": 0.5764457960039175,
+                "rerank_score": 0.9982
+              },
+              {
+                "chunk_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a_chunk_6",
+                "content": "【某小公司 · Java后端 关键词】\nJava, Spring Boot, MySQL, ERP, 后端",
+                "metadata": {
+                  "company": "某小公司",
+                  "index": 6,
+                  "jd_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a",
+                  "position": "Java后端",
+                  "section": "keywords",
+                  "strategy": "semantic"
+                },
+                "distance": 0.6197474598884583,
+                "bm25_score": 9.906145995550908,
+                "vec_norm": 1.0,
+                "bm25_norm": 0.8622791554222022,
+                "hybrid_score": 0.9586837466266607,
+                "rerank_score": 0.9911
+              },
+              {
+                "chunk_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a_chunk_3",
+                "content": "【某小公司 · Java后端 硬性要求】\n熟悉Spring Boot、MySQL",
+                "metadata": {
+                  "company": "某小公司",
+                  "index": 3,
+                  "jd_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a",
+                  "position": "Java后端",
+                  "priority": "high",
+                  "section": "hard_requirements",
+                  "strategy": "semantic"
+                },
+                "distance": 0.7657338976860046,
+                "bm25_score": 9.57143819239722,
+                "vec_norm": 0.5341792326425969,
+                "bm25_norm": 0.8151856958211281,
+                "hybrid_score": 0.6184811715961562,
+                "rerank_score": 0.9567
+              }
+            ],
+            "position": "Java后端",
+            "attributes": [
+              "技术栈",
+              "项目经验"
+            ]
+          },
+          "result": {
+            "score": 85,
+            "label": "高度契合",
+            "advantages": [
+              "Java核心技术",
+              "Spring Boot",
+              "MySQL数据库设计与优化",
+              "后端开发经验",
+              "企业级系统开发（SaaS供应链管理平台）",
+              "Git版本控制",
+              "Linux运维",
+              "团队协作能力"
+            ],
+            "weaknesses": [
+              "候选人缺乏报表开发经验，JD明确要求负责数据库CRUD操作与报表开发，而简历中未提及任何报表相关的技术（如JasperReports、POI、ECharts等）或实际项目经历。此外，候选人主要经验集中在微服务和高并发场景，而JD描述为传统企业内部管理系统，可能更偏向简单CRUD和报表，候选人相对缺乏此类场景的适配经验。"
+            ],
+            "suggestions": [
+              "核心能力要求: Java、Spring Boot、MySQL、ERP系统、后端开发、数据库CRUD、报表开发、系统维护与bug修复"
+            ],
+            "match_score": 85,
+            "covered": [
+              "Java核心技术",
+              "Spring Boot",
+              "MySQL数据库设计与优化",
+              "后端开发经验",
+              "企业级系统开发（SaaS供应链管理平台）",
+              "Git版本控制",
+              "Linux运维",
+              "团队协作能力"
+            ],
+            "missing_experience": "候选人缺乏报表开发经验，JD明确要求负责数据库CRUD操作与报表开发，而简历中未提及任何报表相关的技术（如JasperReports、POI、ECharts等）或实际项目经历。此外，候选人主要经验集中在微服务和高并发场景，而JD描述为传统企业内部管理系统，可能更偏向简单CRUD和报表，候选人相对缺乏此类场景的适配经验。",
+            "core_skills": "Java、Spring Boot、MySQL、ERP系统、后端开发、数据库CRUD、报表开发、系统维护与bug修复",
+            "company": null,
+            "position": "Java后端"
+          },
+          "observation": "工具 match_analyze 执行成功"
+        },
+        "T2": {
+          "task_id": "T2",
+          "task_type": "tool_call",
+          "tool_name": "interview_gen",
+          "status": "success",
+          "parameters": {
+            "match_result": "{{T1.output}}",
+            "count": 5,
+            "difficulty": "mixed",
+            "focus_area": [
+              "JVM",
+              "Spring框架",
+              "数据库",
+              "分布式",
+              "项目经验"
+            ],
+            "company": null,
+            "position": "Java后端"
+          },
+          "resolved_params": {
+            "match_result": {
+              "score": 85,
+              "label": "高度契合",
+              "advantages": [
+                "Java核心技术",
+                "Spring Boot",
+                "MySQL数据库设计与优化",
+                "后端开发经验",
+                "企业级系统开发（SaaS供应链管理平台）",
+                "Git版本控制",
+                "Linux运维",
+                "团队协作能力"
+              ],
+              "weaknesses": [
+                "候选人缺乏报表开发经验，JD明确要求负责数据库CRUD操作与报表开发，而简历中未提及任何报表相关的技术（如JasperReports、POI、ECharts等）或实际项目经历。此外，候选人主要经验集中在微服务和高并发场景，而JD描述为传统企业内部管理系统，可能更偏向简单CRUD和报表，候选人相对缺乏此类场景的适配经验。"
+              ],
+              "suggestions": [
+                "核心能力要求: Java、Spring Boot、MySQL、ERP系统、后端开发、数据库CRUD、报表开发、系统维护与bug修复"
+              ],
+              "match_score": 85,
+              "covered": [
+                "Java核心技术",
+                "Spring Boot",
+                "MySQL数据库设计与优化",
+                "后端开发经验",
+                "企业级系统开发（SaaS供应链管理平台）",
+                "Git版本控制",
+                "Linux运维",
+                "团队协作能力"
+              ],
+              "missing_experience": "候选人缺乏报表开发经验，JD明确要求负责数据库CRUD操作与报表开发，而简历中未提及任何报表相关的技术（如JasperReports、POI、ECharts等）或实际项目经历。此外，候选人主要经验集中在微服务和高并发场景，而JD描述为传统企业内部管理系统，可能更偏向简单CRUD和报表，候选人相对缺乏此类场景的适配经验。",
+              "core_skills": "Java、Spring Boot、MySQL、ERP系统、后端开发、数据库CRUD、报表开发、系统维护与bug修复",
+              "company": null,
+              "position": "Java后端"
+            },
+            "count": 5,
+            "difficulty": "mixed",
+            "focus_area": [
+              "JVM",
+              "Spring框架",
+              "数据库",
+              "分布式",
+              "项目经验"
+            ],
+            "company": null,
+            "position": "Java后端"
+          },
+          "result": {
+            "questions": [
+              "假设我们现在需要为一个ERP系统开发一个销售数据报表模块，要求支持月报、季报和年报的生成，数据源来自多个MySQL表（订单表、产品表、客户表等），数据量在百万级。请设计一个报表生成方案，包括数据查询、计算、缓存、导出（如Excel或PDF）等方面。追问方向：1）如果报表查询耗时过长（超过10秒），你会如何优化？请具体说明索引、分页、预计算或使用聚合表的方案。2）如果需要支持用户自定义报表字段和筛选条件，你的设计如何扩展？",
+              "你的简历中强调微服务和分布式系统经验，而我们这个岗位主要维护一个单体ERP系统，涉及大量复杂的SQL和报表。请谈谈你将如何适应这种从高并发微服务到传统单体CRUD系统的转变？具体说明你在代码质量、性能优化、数据库设计方面的经验如何应用到简单的业务报表场景中。追问方向：1）在单体应用中，你如何处理慢查询和死锁问题？请举例说明你曾经遇到过的类似问题及解决方案。2）如果让你引入一个简单的报表框架（如JasperReports或Apache POI）到现有项目中，你会如何评估和选择？请给出你的判断标准。",
+              "请写一段Java代码实现以下功能：从数据库中查询出某个月份的所有订单，按产品分类统计销售额，并将结果输出为Excel文件（.xlsx格式）。假设使用Spring Boot + MyBatis，数据库表结构为：orders表（id, product_id, amount, create_time），products表（id, category_id, name）。要求考虑性能（百万级数据）和代码可维护性。追问方向：1）如何分页查询避免内存溢出？请给出伪代码。2）如果Excel文件需要包含图表（如饼图），你有什么方案？",
+              "在ERP系统中，报表往往需要根据用户选择的日期范围动态生成，但数据可能分布在多个表中且需要关联计算。请设计一个通用的报表查询服务，要求支持动态SQL拼接、参数校验、结果集映射，并提供统一的异常处理。追问方向：1）动态SQL拼接容易导致SQL注入，你如何防止？请给出具体防范措施。2）当报表查询结果需要缓存时，你如何设计缓存策略以平衡实时性和性能？",
+              "假设你接手了一个遗留的ERP报表模块，代码中大量使用JSP和纯JDBC，报表生成慢且难以维护。作为新入职的Java后端开发，你会如何制定重构计划？请从技术选型、架构分层、数据访问层优化、单元测试等方面阐述。追问方向：1）在重构过程中，如何确保现有报表功能不受影响？你会采用什么测试策略？2）如果业务部门要求快速修复一个报表数据错误，而重构任务又很紧迫，你如何平衡？"
+            ],
+            "focus_areas": [
+              "短板深挖：候选人缺乏报表开发经验，JD明确要求负责数据库CRUD操作与报表开发，而简历中未提及任何报表相关的技术（如JasperReports、POI、ECharts等）或实际项目经历。此外，候选人主要经验集中",
+              "核心能力：Java、Spring Boot、MySQL、ERP系统、后端开发、数据库CRUD、报表开发、系统维护与bug修复"
+            ],
+            "question_count": 5,
+            "company": null,
+            "position": "Java后端"
+          },
+          "observation": "工具 interview_gen 执行成功"
+        },
+        "T3": {
+          "task_id": "T3",
+          "task_type": "aggregate",
+          "tool_name": null,
+          "status": "success",
+          "parameters": {
+            "interview": "{{T2.output}}"
+          },
+          "resolved_params": {
+            "interview": {
+              "questions": [
+                "假设我们现在需要为一个ERP系统开发一个销售数据报表模块，要求支持月报、季报和年报的生成，数据源来自多个MySQL表（订单表、产品表、客户表等），数据量在百万级。请设计一个报表生成方案，包括数据查询、计算、缓存、导出（如Excel或PDF）等方面。追问方向：1）如果报表查询耗时过长（超过10秒），你会如何优化？请具体说明索引、分页、预计算或使用聚合表的方案。2）如果需要支持用户自定义报表字段和筛选条件，你的设计如何扩展？",
+                "你的简历中强调微服务和分布式系统经验，而我们这个岗位主要维护一个单体ERP系统，涉及大量复杂的SQL和报表。请谈谈你将如何适应这种从高并发微服务到传统单体CRUD系统的转变？具体说明你在代码质量、性能优化、数据库设计方面的经验如何应用到简单的业务报表场景中。追问方向：1）在单体应用中，你如何处理慢查询和死锁问题？请举例说明你曾经遇到过的类似问题及解决方案。2）如果让你引入一个简单的报表框架（如JasperReports或Apache POI）到现有项目中，你会如何评估和选择？请给出你的判断标准。",
+                "请写一段Java代码实现以下功能：从数据库中查询出某个月份的所有订单，按产品分类统计销售额，并将结果输出为Excel文件（.xlsx格式）。假设使用Spring Boot + MyBatis，数据库表结构为：orders表（id, product_id, amount, create_time），products表（id, category_id, name）。要求考虑性能（百万级数据）和代码可维护性。追问方向：1）如何分页查询避免内存溢出？请给出伪代码。2）如果Excel文件需要包含图表（如饼图），你有什么方案？",
+                "在ERP系统中，报表往往需要根据用户选择的日期范围动态生成，但数据可能分布在多个表中且需要关联计算。请设计一个通用的报表查询服务，要求支持动态SQL拼接、参数校验、结果集映射，并提供统一的异常处理。追问方向：1）动态SQL拼接容易导致SQL注入，你如何防止？请给出具体防范措施。2）当报表查询结果需要缓存时，你如何设计缓存策略以平衡实时性和性能？",
+                "假设你接手了一个遗留的ERP报表模块，代码中大量使用JSP和纯JDBC，报表生成慢且难以维护。作为新入职的Java后端开发，你会如何制定重构计划？请从技术选型、架构分层、数据访问层优化、单元测试等方面阐述。追问方向：1）在重构过程中，如何确保现有报表功能不受影响？你会采用什么测试策略？2）如果业务部门要求快速修复一个报表数据错误，而重构任务又很紧迫，你如何平衡？"
+              ],
+              "focus_areas": [
+                "短板深挖：候选人缺乏报表开发经验，JD明确要求负责数据库CRUD操作与报表开发，而简历中未提及任何报表相关的技术（如JasperReports、POI、ECharts等）或实际项目经历。此外，候选人主要经验集中",
+                "核心能力：Java、Spring Boot、MySQL、ERP系统、后端开发、数据库CRUD、报表开发、系统维护与bug修复"
+              ],
+              "question_count": 5,
+              "company": null,
+              "position": "Java后端"
+            }
+          },
+          "result": {
+            "aggregation": {
+              "interview": {
+                "questions": [
+                  "假设我们现在需要为一个ERP系统开发一个销售数据报表模块，要求支持月报、季报和年报的生成，数据源来自多个MySQL表（订单表、产品表、客户表等），数据量在百万级。请设计一个报表生成方案，包括数据查询、计算、缓存、导出（如Excel或PDF）等方面。追问方向：1）如果报表查询耗时过长（超过10秒），你会如何优化？请具体说明索引、分页、预计算或使用聚合表的方案。2）如果需要支持用户自定义报表字段和筛选条件，你的设计如何扩展？",
+                  "你的简历中强调微服务和分布式系统经验，而我们这个岗位主要维护一个单体ERP系统，涉及大量复杂的SQL和报表。请谈谈你将如何适应这种从高并发微服务到传统单体CRUD系统的转变？具体说明你在代码质量、性能优化、数据库设计方面的经验如何应用到简单的业务报表场景中。追问方向：1）在单体应用中，你如何处理慢查询和死锁问题？请举例说明你曾经遇到过的类似问题及解决方案。2）如果让你引入一个简单的报表框架（如JasperReports或Apache POI）到现有项目中，你会如何评估和选择？请给出你的判断标准。",
+                  "请写一段Java代码实现以下功能：从数据库中查询出某个月份的所有订单，按产品分类统计销售额，并将结果输出为Excel文件（.xlsx格式）。假设使用Spring Boot + MyBatis，数据库表结构为：orders表（id, product_id, amount, create_time），products表（id, category_id, name）。要求考虑性能（百万级数据）和代码可维护性。追问方向：1）如何分页查询避免内存溢出？请给出伪代码。2）如果Excel文件需要包含图表（如饼图），你有什么方案？",
+                  "在ERP系统中，报表往往需要根据用户选择的日期范围动态生成，但数据可能分布在多个表中且需要关联计算。请设计一个通用的报表查询服务，要求支持动态SQL拼接、参数校验、结果集映射，并提供统一的异常处理。追问方向：1）动态SQL拼接容易导致SQL注入，你如何防止？请给出具体防范措施。2）当报表查询结果需要缓存时，你如何设计缓存策略以平衡实时性和性能？",
+                  "假设你接手了一个遗留的ERP报表模块，代码中大量使用JSP和纯JDBC，报表生成慢且难以维护。作为新入职的Java后端开发，你会如何制定重构计划？请从技术选型、架构分层、数据访问层优化、单元测试等方面阐述。追问方向：1）在重构过程中，如何确保现有报表功能不受影响？你会采用什么测试策略？2）如果业务部门要求快速修复一个报表数据错误，而重构任务又很紧迫，你如何平衡？"
+                ],
+                "focus_areas": [
+                  "短板深挖：候选人缺乏报表开发经验，JD明确要求负责数据库CRUD操作与报表开发，而简历中未提及任何报表相关的技术（如JasperReports、POI、ECharts等）或实际项目经历。此外，候选人主要经验集中",
+                  "核心能力：Java、Spring Boot、MySQL、ERP系统、后端开发、数据库CRUD、报表开发、系统维护与bug修复"
+                ],
+                "question_count": 5,
+                "company": null,
+                "position": "Java后端"
+              }
+            }
+          },
+          "observation": "聚合完成"
+        }
+      },
+      "global_status": "success",
+      "replan_reason": "",
+      "replan_count": 0
+    },
+    "intent": {
+      "demands": [
+        {
+          "intent": "interview_prepare",
+          "entities": {
+            "position": "Java后端"
+          },
+          "confidence": 0.88
+        }
+      ],
+      "needs_clarification": false,
+      "clarification_question": ""
+    },
+    "rewrite": {
+      "rewritten_query": "Java后端面试一般问什么",
+      "search_keywords": "Java后端面试一般问什么",
+      "is_follow_up": false,
+      "follow_up_type": "none",
+      "resolved_references": {}
+    },
+    "evidence_cache": [
+      {
+        "chunk_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a_chunk_1",
+        "content": "【某小公司 · Java后端 岗位职责】\n1. 负责传统企业内部管理系统的设计与开发。2. 数据库CRUD操作与报表开发。3. 系统日常维护与bug修复。",
+        "metadata": {
+          "company": "某小公司",
+          "index": 1,
+          "jd_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a",
+          "position": "Java后端",
+          "section": "responsibilities",
+          "strategy": "semantic"
+        },
+        "distance": 0.7322511076927185,
+        "bm25_score": 6.803795908828786,
+        "vec_norm": 0.641017779861409,
+        "bm25_norm": 0.42577783366977107,
+        "hybrid_score": 0.5764457960039175,
+        "rerank_score": 0.9982
+      },
+      {
+        "chunk_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a_chunk_6",
+        "content": "【某小公司 · Java后端 关键词】\nJava, Spring Boot, MySQL, ERP, 后端",
+        "metadata": {
+          "company": "某小公司",
+          "index": 6,
+          "jd_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a",
+          "position": "Java后端",
+          "section": "keywords",
+          "strategy": "semantic"
+        },
+        "distance": 0.6197474598884583,
+        "bm25_score": 9.906145995550908,
+        "vec_norm": 1.0,
+        "bm25_norm": 0.8622791554222022,
+        "hybrid_score": 0.9586837466266607,
+        "rerank_score": 0.9911
+      },
+      {
+        "chunk_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a_chunk_3",
+        "content": "【某小公司 · Java后端 硬性要求】\n熟悉Spring Boot、MySQL",
+        "metadata": {
+          "company": "某小公司",
+          "index": 3,
+          "jd_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a",
+          "position": "Java后端",
+          "priority": "high",
+          "section": "hard_requirements",
+          "strategy": "semantic"
+        },
+        "distance": 0.7657338976860046,
+        "bm25_score": 9.57143819239722,
+        "vec_norm": 0.5341792326425969,
+        "bm25_norm": 0.8151856958211281,
+        "hybrid_score": 0.6184811715961562,
+        "rerank_score": 0.9567
+      }
+    ],
+    "evidence_cache_query": "Java后端面试一般问什么",
+    "tool_outputs": [
+      {
+        "task_id": "T0",
+        "tool": "kb_retrieve",
+        "description": "检索Java后端相关JD",
+        "result": {
+          "chunks": [
+            {
+              "chunk_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a_chunk_1",
+              "content": "【某小公司 · Java后端 岗位职责】\n1. 负责传统企业内部管理系统的设计与开发。2. 数据库CRUD操作与报表开发。3. 系统日常维护与bug修复。",
+              "source": "某小公司-Java后端",
+              "metadata": {
+                "company": "某小公司",
+                "position": "Java后端"
+              }
+            },
+            {
+              "chunk_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a_chunk_6",
+              "content": "【某小公司 · Java后端 关键词】\nJava, Spring Boot, MySQL, ERP, 后端",
+              "source": "某小公司-Java后端",
+              "metadata": {
+                "company": "某小公司",
+                "position": "Java后端"
+              }
+            },
+            {
+              "chunk_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a_chunk_3",
+              "content": "【某小公司 · Java后端 硬性要求】\n熟悉Spring Boot、MySQL",
+              "source": "某小公司-Java后端",
+              "metadata": {
+                "company": "某小公司",
+                "position": "Java后端"
+              }
+            }
+          ],
+          "query": "Java后端",
+          "filters": {
+            "position": "Java后端"
+          },
+          "strategy": "hybrid(70%vec+30%bm25)+reranker",
+          "pool_k": 3,
+          "rerank_k": 10,
+          "pool_size": 9,
+          "vec_only": 0,
+          "bm25_only": 2,
+          "both": 7,
+          "rerank": {
+            "enabled": true,
+            "candidates": 3,
+            "output": 3,
+            "best_rerank_score": 0.9982
+          }
+        }
+      },
+      {
+        "task_id": "T1",
+        "tool": "match_analyze",
+        "description": "分析简历与Java后端JD的匹配度",
+        "result": {
+          "score": 85,
+          "label": "高度契合",
+          "advantages": [
+            "Java核心技术",
+            "Spring Boot",
+            "MySQL数据库设计与优化",
+            "后端开发经验",
+            "企业级系统开发（SaaS供应链管理平台）",
+            "Git版本控制",
+            "Linux运维",
+            "团队协作能力"
+          ],
+          "weaknesses": [
+            "候选人缺乏报表开发经验，JD明确要求负责数据库CRUD操作与报表开发，而简历中未提及任何报表相关的技术（如JasperReports、POI、ECharts等）或实际项目经历。此外，候选人主要经验集中在微服务和高并发场景，而JD描述为传统企业内部管理系统，可能更偏向简单CRUD和报表，候选人相对缺乏此类场景的适配经验。"
+          ],
+          "suggestions": [
+            "核心能力要求: Java、Spring Boot、MySQL、ERP系统、后端开发、数据库CRUD、报表开发、系统维护与bug修复"
+          ],
+          "match_score": 85,
+          "covered": [
+            "Java核心技术",
+            "Spring Boot",
+            "MySQL数据库设计与优化",
+            "后端开发经验",
+            "企业级系统开发（SaaS供应链管理平台）",
+            "Git版本控制",
+            "Linux运维",
+            "团队协作能力"
+          ],
+          "missing_experience": "候选人缺乏报表开发经验，JD明确要求负责数据库CRUD操作与报表开发，而简历中未提及任何报表相关的技术（如JasperReports、POI、ECharts等）或实际项目经历。此外，候选人主要经验集中在微服务和高并发场景，而JD描述为传统企业内部管理系统，可能更偏向简单CRUD和报表，候选人相对缺乏此类场景的适配经验。",
+          "core_skills": "Java、Spring Boot、MySQL、ERP系统、后端开发、数据库CRUD、报表开发、系统维护与bug修复",
+          "company": null,
+          "position": "Java后端"
+        }
+      },
+      {
+        "task_id": "T2",
+        "tool": "interview_gen",
+        "description": "基于匹配结果生成Java后端面试题",
+        "result": {
+          "questions": [
+            "假设我们现在需要为一个ERP系统开发一个销售数据报表模块，要求支持月报、季报和年报的生成，数据源来自多个MySQL表（订单表、产品表、客户表等），数据量在百万级。请设计一个报表生成方案，包括数据查询、计算、缓存、导出（如Excel或PDF）等方面。追问方向：1）如果报表查询耗时过长（超过10秒），你会如何优化？请具体说明索引、分页、预计算或使用聚合表的方案。2）如果需要支持用户自定义报表字段和筛选条件，你的设计如何扩展？",
+            "你的简历中强调微服务和分布式系统经验，而我们这个岗位主要维护一个单体ERP系统，涉及大量复杂的SQL和报表。请谈谈你将如何适应这种从高并发微服务到传统单体CRUD系统的转变？具体说明你在代码质量、性能优化、数据库设计方面的经验如何应用到简单的业务报表场景中。追问方向：1）在单体应用中，你如何处理慢查询和死锁问题？请举例说明你曾经遇到过的类似问题及解决方案。2）如果让你引入一个简单的报表框架（如JasperReports或Apache POI）到现有项目中，你会如何评估和选择？请给出你的判断标准。",
+            "请写一段Java代码实现以下功能：从数据库中查询出某个月份的所有订单，按产品分类统计销售额，并将结果输出为Excel文件（.xlsx格式）。假设使用Spring Boot + MyBatis，数据库表结构为：orders表（id, product_id, amount, create_time），products表（id, category_id, name）。要求考虑性能（百万级数据）和代码可维护性。追问方向：1）如何分页查询避免内存溢出？请给出伪代码。2）如果Excel文件需要包含图表（如饼图），你有什么方案？",
+            "在ERP系统中，报表往往需要根据用户选择的日期范围动态生成，但数据可能分布在多个表中且需要关联计算。请设计一个通用的报表查询服务，要求支持动态SQL拼接、参数校验、结果集映射，并提供统一的异常处理。追问方向：1）动态SQL拼接容易导致SQL注入，你如何防止？请给出具体防范措施。2）当报表查询结果需要缓存时，你如何设计缓存策略以平衡实时性和性能？",
+            "假设你接手了一个遗留的ERP报表模块，代码中大量使用JSP和纯JDBC，报表生成慢且难以维护。作为新入职的Java后端开发，你会如何制定重构计划？请从技术选型、架构分层、数据访问层优化、单元测试等方面阐述。追问方向：1）在重构过程中，如何确保现有报表功能不受影响？你会采用什么测试策略？2）如果业务部门要求快速修复一个报表数据错误，而重构任务又很紧迫，你如何平衡？"
+          ],
+          "focus_areas": [
+            "短板深挖：候选人缺乏报表开发经验，JD明确要求负责数据库CRUD操作与报表开发，而简历中未提及任何报表相关的技术（如JasperReports、POI、ECharts等）或实际项目经历。此外，候选人主要经验集中",
+            "核心能力：Java、Spring Boot、MySQL、ERP系统、后端开发、数据库CRUD、报表开发、系统维护与bug修复"
+          ],
+          "question_count": 5,
+          "company": null,
+          "position": "Java后端"
+        }
+      },
+      {
+        "task_id": "T3",
+        "tool": null,
+        "description": "聚合面试题生成结果",
+        "result": {
+          "aggregation": {
+            "interview": {
+              "questions": [
+                "假设我们现在需要为一个ERP系统开发一个销售数据报表模块，要求支持月报、季报和年报的生成，数据源来自多个MySQL表（订单表、产品表、客户表等），数据量在百万级。请设计一个报表生成方案，包括数据查询、计算、缓存、导出（如Excel或PDF）等方面。追问方向：1）如果报表查询耗时过长（超过10秒），你会如何优化？请具体说明索引、分页、预计算或使用聚合表的方案。2）如果需要支持用户自定义报表字段和筛选条件，你的设计如何扩展？",
+                "你的简历中强调微服务和分布式系统经验，而我们这个岗位主要维护一个单体ERP系统，涉及大量复杂的SQL和报表。请谈谈你将如何适应这种从高并发微服务到传统单体CRUD系统的转变？具体说明你在代码质量、性能优化、数据库设计方面的经验如何应用到简单的业务报表场景中。追问方向：1）在单体应用中，你如何处理慢查询和死锁问题？请举例说明你曾经遇到过的类似问题及解决方案。2）如果让你引入一个简单的报表框架（如JasperReports或Apache POI）到现有项目中，你会如何评估和选择？请给出你的判断标准。",
+                "请写一段Java代码实现以下功能：从数据库中查询出某个月份的所有订单，按产品分类统计销售额，并将结果输出为Excel文件（.xlsx格式）。假设使用Spring Boot + MyBatis，数据库表结构为：orders表（id, product_id, amount, create_time），products表（id, category_id, name）。要求考虑性能（百万级数据）和代码可维护性。追问方向：1）如何分页查询避免内存溢出？请给出伪代码。2）如果Excel文件需要包含图表（如饼图），你有什么方案？",
+                "在ERP系统中，报表往往需要根据用户选择的日期范围动态生成，但数据可能分布在多个表中且需要关联计算。请设计一个通用的报表查询服务，要求支持动态SQL拼接、参数校验、结果集映射，并提供统一的异常处理。追问方向：1）动态SQL拼接容易导致SQL注入，你如何防止？请给出具体防范措施。2）当报表查询结果需要缓存时，你如何设计缓存策略以平衡实时性和性能？",
+                "假设你接手了一个遗留的ERP报表模块，代码中大量使用JSP和纯JDBC，报表生成慢且难以维护。作为新入职的Java后端开发，你会如何制定重构计划？请从技术选型、架构分层、数据访问层优化、单元测试等方面阐述。追问方向：1）在重构过程中，如何确保现有报表功能不受影响？你会采用什么测试策略？2）如果业务部门要求快速修复一个报表数据错误，而重构任务又很紧迫，你如何平衡？"
+              ],
+              "focus_areas": [
+                "短板深挖：候选人缺乏报表开发经验，JD明确要求负责数据库CRUD操作与报表开发，而简历中未提及任何报表相关的技术（如JasperReports、POI、ECharts等）或实际项目经历。此外，候选人主要经验集中",
+                "核心能力：Java、Spring Boot、MySQL、ERP系统、后端开发、数据库CRUD、报表开发、系统维护与bug修复"
+              ],
+              "question_count": 5,
+              "company": null,
+              "position": "Java后端"
+            }
+          }
+        }
+      }
+    ],
+    "final_aggregation_prompt": {
+      "system_prompt": "你是一位专业的求职顾问。请基于以下工具执行结果，给用户一个清晰、有帮助的回复。\n要求：\n1. 先直接回答用户的问题（是/否/有/没有），不要绕弯子，不要重复用户的原话\n2. 如果有匹配分析结果，给出具体的分数和建议\n3. 如果有检索结果，基于事实回答，不要编造\n4. 【强制】引用信息时必须标注来源。每个引用的事实后面都要跟 [来源：公司名-岗位名] 格式。   kb_retrieve 结果的 chunks 中带有 'source' 字段（如'字节跳动-AI产品经理'），请直接使用。   external_search 结果带有 'source_name' 字段，也请直接使用。\n5. 当本地知识库与外部搜索结果冲突时，请并列呈现两种说法并标注各自来源，不要替用户做判断\n6. 语气友好、专业、结构化",
+      "user_prompt": "【用户问题】\nJava后端面试一般问什么\n\n【工具执行结果】\n[{\"task_id\": \"T0\", \"tool\": \"kb_retrieve\", \"description\": \"检索Java后端相关JD\", \"result\": {\"chunks\": [{\"chunk_id\": \"45bd2600-af57-45fe-a96e-c6cae6838c7a_chunk_1\", \"content\": \"【某小公司 · Java后端 岗位职责】\\n1. 负责传统企业内部管理系统的设计与开发。2. 数据库CRUD操作与报表开发。3. 系统日常维护与bug修复。\", \"source\": \"某小公司-Java后端\", \"metadata\": {\"company\": \"某小公司\", \"position\": \"Java后端\"}}, {\"chunk_id\": \"45bd2600-af57-45fe-a96e-c6cae6838c7a_chunk_6\", \"content\": \"【某小公司 · Java后端 关键词】\\nJava, Spring Boot, MySQL, ERP, 后端\", \"source\": \"某小公司-Java后端\", \"metadata\": {\"company\": \"某小公司\", \"position\": \"Java后端\"}}, {\"chunk_id\": \"45bd2600-af57-45fe-a96e-c6cae6838c7a_chunk_3\", \"content\": \"【某小公司 · Java后端 硬性要求】\\n熟悉Spring Boot、MySQL\", \"source\": \"某小公司-Java后端\", \"metadata\": {\"company\": \"某小公司\", \"position\": \"Java后端\"}}], \"query\": \"Java后端\", \"filters\": {\"position\": \"Java后端\"}, \"strategy\": \"hybrid(70%vec+30%bm25)+reranker\", \"pool_k\": 3, \"rerank_k\": 10, \"pool_size\": 9, \"vec_only\": 0, \"bm25_only\": 2, \"both\": 7, \"rerank\": {\"enabled\": true, \"candidates\": 3, \"output\": 3, \"best_rerank_score\": 0.9982}}}, {\"task_id\": \"T1\", \"tool\": \"match_analyze\", \"description\": \"分析简历与Java后端JD的匹配度\", \"result\": {\"score\": 85, \"label\": \"高度契合\", \"advantages\": [\"Java核心技术\", \"Spring Boot\", \"MySQL数据库设计与优化\", \"后端开发经验\", \"企业级系统开发（SaaS供应链管理平台）\", \"Git版本控制\", \"Linux运维\", \"团队协作能力\"], \"weaknesses\": [\"候选人缺乏报表开发经验，JD明确要求负责数据库CRUD操作与报表开发，而简历中未提及任何报表相关的技术（如JasperReports、POI、ECharts等）或实际项目经历。此外，候选人主要经验集中在微服务和高并发场景，而JD描述为传统企业内部管理系统，可能更偏向简单CRUD和报表，候选人相对缺乏此类场景的适配经验。\"], \"suggestions\": [\"核心能力要求: Java、Spring Boot、MySQL、ERP系统、后端开发、数据库CRUD、报表开发、系统维护与bug修复\"], \"match_score\": 85, \"covered\": [\"Java核心技术\", \"Spring Boot\", \"MySQL数据库设计与优化\", \"后端开发经验\", \"企业级系统开发（SaaS供应链管理平台）\", \"Git版本控制\", \"Linux运维\", \"团队协作能力\"], \"missing_experience\": \"候选人缺乏报表开发经验，JD明确要求负责数据库CRUD操作与报表开发，而简历中未提及任何报表相关的技术（如JasperReports、POI、ECharts等）或实际项目经历。此外，候选人主要经验集中在微服务和高并发场景，而JD描述为传统企业内部管理系统，可能更偏向简单CRUD和报表，候选人相对缺乏此类场景的适配经验。\", \"core_skills\": \"Java、Spring Boot、MySQL、ERP系统、后端开发、数据库CRUD、报表开发、系统维护与bug修复\", \"company\": null, \"position\": \"Java后端\"}}, {\"task_id\": \"T2\", \"tool\": \"interview_gen\", \"description\": \"基于匹配结果生成Java后端面试题\", \"result\": {\"questions\": [\"假设我们现在需要为一个ERP系统开发一个销售数据报表模块，要求支持月报、季报和年报的生成，数据源来自多个MySQL表（订单表、产品表、客户表等），数据量在百万级。请设计一个报表生成方案，包括数据查询、计算、缓存、导出（如Excel或PDF）等方面。追问方向：1）如果报表查询耗时过长（超过10秒），你会如何优化？请具体说明索引、分页、预计算或使用聚合表的方案。2）如果需要支持用户自定义报表字段和筛选条件，你的设计如何扩展？\", \"你的简历中强调微服务和分布式系统经验，而我们这个岗位主要维护一个单体ERP系统，涉及大量复杂的SQL和报表。请谈谈你将如何适应这种从高并发微服务到传统单体CRUD系统的转变？具体说明你在代码质量、性能优化、数据库设计方面的经验如何应用到简单的业务报表场景中。追问方向：1）在单体应用中，你如何处理慢查询和死锁问题？请举例说明你曾经遇到过的类似问题及解决方案。2）如果让你引入一个简单的报表框架（如JasperReports或Apache POI）到现有项目中，你会如何评估和选择？请给出你的判断标准。\", \"请写一段Java代码实现以下功能：从数据库中查询出某个月份的所有订单，按产品分类统计销售额，并将结果输出为Excel文件（.xlsx格式）。假设使用Spring Boot + MyBatis，数据库表结构为：orders表（id, product_id, amount, create_time），products表（id, category_id, name）。要求考虑性能（百万级数据）和代码可维护性。追问方向：1）如何分页查询避免内存溢出？请给出伪代码。2）如果Excel文件需要包含图表（如饼图），你有什么方案？\", \"在ERP系统中，报表往往需要根据用户选择的日期范围动态生成，但数据可能分布在多个表中且需要关联计算。请设计一个通用的报表查询服务，要求支持动态SQL拼接、参数校验、结果集映射，并提供统一的异常处理。追问方向：1）动态SQL拼接容易导致SQL注入，你如何防止？请给出具体防范措施。2）当报表查询结果需要缓存时，你如何设计缓存策略以平衡实时性和性能？\", \"假设你接手了一个遗\n\n请生成回复："
+    }
+  },
+  "reply": "有具体的考察范围和高频题型。基于您的简历与岗位匹配分析，以及行业常见需求，为您梳理如下面试重点：\n\n### 1. 人岗匹配度分析\n根据您的简历与目标岗位的匹配分析，结果如下：\n*   **匹配分数**：85 分（高度契合）\n*   **核心优势**：具备 Java 核心技术、Spring Boot、MySQL 数据库设计与优化、后端开发经验、企业级系统开发（SaaS 供应链管理平台）、Git 版本控制、Linux 运维及团队协作能力。\n*   **潜在短板**：候选人缺乏报表开发经验，而岗位明确要求负责数据库 CRUD 操作与报表开发，简历中未提及 JasperReports、POI、ECharts 等相关技术或经历。此外，候选人经验集中在微服务和高并发，而岗位偏向传统企业内部管理系统，可能更侧重简单 CRUD 和报表场景 [来源：某小公司-Java 后端]。\n*   **备考建议**：重点复习 Java、Spring Boot、MySQL、ERP 系统、后端开发、数据库 CRUD、报表开发、系统维护与 bug 修复等核心能力要求。\n\n### 2. 常见面试考察内容\n根据检索到的岗位描述，Java 后端面试通常围绕以下维度展开：\n*   **岗位职责**：负责传统企业内部管理系统的设计与开发 [来源：某小公司-Java 后端]；进行数据库 CRUD 操作与报表开发 [来源：某小公司-Java 后端]；负责系统日常维护与 bug 修复 [来源：某小公司-Java 后端]。\n*   **技术关键词**：Java, Spring Boot, MySQL, ERP, 后端 [来源：某小公司-Java 后端]。\n*   **硬性要求**：熟悉 Spring Boot、MySQL [来源：某小公司-Java 后端]。\n\n### 3. 模拟面试真题\n基于上述岗位要求及您的背景，以下是可能遇到的具体面试题：\n\n*   **场景设计题**：假设需要为 ERP 系统开发销售数据报表模块，支持月报、季报和年报，数据源来自多个 MySQL 表（订单、产品、客户等），数据量百万级。请设计报表生成方案（查询、计算、缓存、导出）。\n    *   *追问*：报表查询耗时过长（超过 10 秒）如何优化？如何支持用户自定义报表字段？\n*   **适应性考察**：简历强调微服务和分布式经验，但岗位主要维护单体 ERP 系统，涉及复杂 SQL 和报表。请谈谈如何适应从高并发微服务到传统单体 CRUD 系统的转变？\n    *   *追问*：在单体应用中如何处理慢查询和死锁？如何评估和选择报表框架（如 JasperReports 或 Apache POI）？\n*   **代码实现题**：写一段 Java 代码，从数据库查询某月份所有订单，按产品分类统计销售额，并输出为 Excel 文件（.xlsx）。假设使用 Spring Boot + MyBatis，需考虑百万级数据性能及代码可维护性。\n    *   *追问*：如何分页查询避免内存溢出？如果 Excel 需要包含图表，有什么方案？\n*   **架构设计题**：设计一个通用的报表查询服务，支持动态 SQL 拼接、参数校验、结果集映射及统一异常处理。\n    *   *追问*：如何防止动态 SQL 拼接导致的 SQL 注入？如何设计缓存策略以平衡实时性和性能？\n\n### 4. 顾问建议\n鉴于匹配分析中指出的短板，建议您在面试准备中：\n1.  **补充报表知识**：快速了解 JasperReports、Apache POI 或 EasyExcel 等工具的基本用法。\n2.  **调整叙事重点**：在介绍项目时，除了高并发亮点，也要强调对复杂 SQL 查询、数据一致性及系统稳定性的处理能力，以契合传统 ERP 系统的需求 [来源：某小公司-Java 后端]。\n3.  **准备单体优化案例**：准备一些在单体架构下进行数据库优化、代码重构的具体案例，以证明适应不同技术场景的能力。",
+  "reply_length": 1673,
+  "intent_match": true,
+  "tool_match_rate": 1.0,
+  "has_reply": true,
+  "events": [
+    {
+      "step": "intent",
+      "message": "正在识别您的意图...",
+      "_time": 4.12505578994751,
+      "type": "status"
+    },
+    {
+      "step": "plan",
+      "message": "正在规划任务...",
+      "_time": 4.125095844268799,
+      "type": "status"
+    },
+    {
+      "step": "execute",
+      "message": "正在执行分析...",
+      "_time": 17.584639310836792,
+      "type": "status"
+    },
+    {
+      "step": "aggregate",
+      "message": "正在生成回复...",
+      "_time": 28.770792484283447,
+      "type": "status"
+    },
+    {
+      "text": "有具体的",
+      "_time": 74.78529071807861,
+      "type": "delta"
+    },
+    {
+      "text": "考察范围和高频题型",
+      "_time": 74.92516613006592,
+      "type": "delta"
+    },
+    {
+      "text": "。基于",
+      "_time": 74.92883777618408,
+      "type": "delta"
+    },
+    {
+      "text": "您的简历与岗位",
+      "_time": 75.03229928016663,
+      "type": "delta"
+    },
+    {
+      "text": "匹配",
+      "_time": 75.03690814971924,
+      "type": "delta"
+    },
+    {
+      "text": "分析，以及行业",
+      "_time": 75.15522718429565,
+      "type": "delta"
+    },
+    {
+      "text": "常见需求",
+      "_time": 75.15893864631653,
+      "type": "delta"
+    },
+    {
+      "text": "，为您梳理如下",
+      "_time": 75.22909927368164,
+      "type": "delta"
+    },
+    {
+      "text": "面试",
+      "_time": 75.23391437530518,
+      "type": "delta"
+    },
+    {
+      "text": "重点：\n\n###",
+      "_time": 75.31825923919678,
+      "type": "delta"
+    },
+    {
+      "text": " 1. ",
+      "_time": 75.32291221618652,
+      "type": "delta"
+    },
+    {
+      "text": "人岗匹配度",
+      "_time": 75.49817895889282,
+      "type": "delta"
+    },
+    {
+      "text": "分析",
+      "_time": 75.50195956230164,
+      "type": "delta"
+    },
+    {
+      "text": "\n根据您的简历与",
+      "_time": 75.55311322212219,
+      "type": "delta"
+    },
+    {
+      "text": "目标",
+      "_time": 75.55882143974304,
+      "type": "delta"
+    },
+    {
+      "text": "岗位的匹配分析，",
+      "_time": 75.64320874214172,
+      "type": "delta"
+    },
+    {
+      "text": "结果如下：",
+      "_time": 75.64881777763367,
+      "type": "delta"
+    },
+    {
+      "text": "\n*   **",
+      "_time": 75.79908871650696,
+      "type": "delta"
+    },
+    {
+      "text": "匹配分数",
+      "_time": 75.80181503295898,
+      "type": "delta"
+    },
+    {
+      "text": "**：85",
+      "_time": 75.87705898284912,
+      "type": "delta"
+    },
+    {
+      "text": " 分（高度",
+      "_time": 75.87987303733826,
+      "type": "delta"
+    },
+    {
+      "text": "契合）\n*",
+      "_time": 76.02209877967834,
+      "type": "delta"
+    },
+    {
+      "text": "   **核心",
+      "_time": 76.14705467224121,
+      "type": "delta"
+    },
+    {
+      "text": "优势**：具备",
+      "_time": 76.1528217792511,
+      "type": "delta"
+    },
+    {
+      "text": " Java 核心技术、",
+      "_time": 76.15673732757568,
+      "type": "delta"
+    },
+    {
+      "text": "Spring Boot、MySQL",
+      "_time": 76.31804418563843,
+      "type": "delta"
+    },
+    {
+      "text": " 数据库设计与优化",
+      "_time": 76.32175946235657,
+      "type": "delta"
+    },
+    {
+      "text": "、后端开发经验",
+      "_time": 76.43697834014893,
+      "type": "delta"
+    },
+    {
+      "text": "、企业级系统",
+      "_time": 76.442946434021,
+      "type": "delta"
+    },
+    {
+      "text": "开发（SaaS",
+      "_time": 76.61110997200012,
+      "type": "delta"
+    },
+    {
+      "text": " 供应链管理平台）、",
+      "_time": 76.61670017242432,
+      "type": "delta"
+    },
+    {
+      "text": "Git 版本控制",
+      "_time": 76.72417116165161,
+      "type": "delta"
+    },
+    {
+      "text": "、Linux 运维",
+      "_time": 76.75806474685669,
+      "type": "delta"
+    },
+    {
+      "text": "及团队协作能力。",
+      "_time": 76.86605906486511,
+      "type": "delta"
+    },
+    {
+      "text": "\n*   **",
+      "_time": 76.86975264549255,
+      "type": "delta"
+    },
+    {
+      "text": "潜在短板**：",
+      "_time": 77.01219582557678,
+      "type": "delta"
+    },
+    {
+      "text": "候选人缺乏",
+      "_time": 77.01669526100159,
+      "type": "delta"
+    },
+    {
+      "text": "报表开发经验，",
+      "_time": 77.15301537513733,
+      "type": "delta"
+    },
+    {
+      "text": "而岗位",
+      "_time": 77.15979957580566,
+      "type": "delta"
+    },
+    {
+      "text": "明确要求负责数据库 CRUD",
+      "_time": 77.22699928283691,
+      "type": "delta"
+    },
+    {
+      "text": " 操作与报表",
+      "_time": 77.25585651397705,
+      "type": "delta"
+    },
+    {
+      "text": "开发，简历中",
+      "_time": 77.40398383140564,
+      "type": "delta"
+    },
+    {
+      "text": "未提及 Jasper",
+      "_time": 77.40864443778992,
+      "type": "delta"
+    },
+    {
+      "text": "Reports、POI",
+      "_time": 77.49745798110962,
+      "type": "delta"
+    },
+    {
+      "text": "、ECharts ",
+      "_time": 77.53383684158325,
+      "type": "delta"
+    },
+    {
+      "text": "等相关技术或经历",
+      "_time": 77.6430995464325,
+      "type": "delta"
+    },
+    {
+      "text": "。",
+      "_time": 77.64571332931519,
+      "type": "delta"
+    },
+    {
+      "text": "此外，候选人经验",
+      "_time": 77.73096513748169,
+      "type": "delta"
+    },
+    {
+      "text": "集中在微服务和高",
+      "_time": 77.73672533035278,
+      "type": "delta"
+    },
+    {
+      "text": "并发，而岗位",
+      "_time": 77.93080472946167,
+      "type": "delta"
+    },
+    {
+      "text": "偏向传统企业内部管理系统",
+      "_time": 77.93568778038025,
+      "type": "delta"
+    },
+    {
+      "text": "，可能更侧重",
+      "_time": 78.0210542678833,
+      "type": "delta"
+    },
+    {
+      "text": "简单 CRUD 和",
+      "_time": 78.06562423706055,
+      "type": "delta"
+    },
+    {
+      "text": "报表场景 [来源",
+      "_time": 78.16395163536072,
+      "type": "delta"
+    },
+    {
+      "text": "：某小",
+      "_time": 78.168710231781,
+      "type": "delta"
+    },
+    {
+      "text": "公司-Java ",
+      "_time": 78.29091286659241,
+      "type": "delta"
+    },
+    {
+      "text": "后端]。\n",
+      "_time": 78.29365420341492,
+      "type": "delta"
+    },
+    {
+      "text": "*   **备考",
+      "_time": 78.46194458007812,
+      "type": "delta"
+    },
+    {
+      "text": "建议**：重点",
+      "_time": 78.46663045883179,
+      "type": "delta"
+    },
+    {
+      "text": "复习 Java、Spring",
+      "_time": 78.5769772529602,
+      "type": "delta"
+    },
+    {
+      "text": " Boot、",
+      "_time": 78.60992860794067,
+      "type": "delta"
+    },
+    {
+      "text": "MySQL、ERP ",
+      "_time": 78.68486261367798,
+      "type": "delta"
+    },
+    {
+      "text": "系统、后端开发",
+      "_time": 78.69075274467468,
+      "type": "delta"
+    },
+    {
+      "text": "、数据库 CRUD、",
+      "_time": 78.83089804649353,
+      "type": "delta"
+    },
+    {
+      "text": "报表开发、",
+      "_time": 78.86189985275269,
+      "type": "delta"
+    },
+    {
+      "text": "系统维护与 bug",
+      "_time": 78.95491814613342,
+      "type": "delta"
+    },
+    {
+      "text": " ",
+      "_time": 78.96063256263733,
+      "type": "delta"
+    },
+    {
+      "text": "修复等核心能力",
+      "_time": 79.04605913162231,
+      "type": "delta"
+    },
+    {
+      "text": "要求。",
+      "_time": 79.04971671104431,
+      "type": "delta"
+    },
+    {
+      "text": "\n\n### 2",
+      "_time": 79.18484592437744,
+      "type": "delta"
+    },
+    {
+      "text": ". 常见面试",
+      "_time": 79.18775510787964,
+      "type": "delta"
+    },
+    {
+      "text": "考察内容\n根据",
+      "_time": 79.29721117019653,
+      "type": "delta"
+    },
+    {
+      "text": "检索",
+      "_time": 79.30164885520935,
+      "type": "delta"
+    },
+    {
+      "text": "到的岗位描述，",
+      "_time": 79.38580131530762,
+      "type": "delta"
+    },
+    {
+      "text": "Java",
+      "_time": 79.3893711566925,
+      "type": "delta"
+    },
+    {
+      "text": " 后端面试通常",
+      "_time": 79.51184248924255,
+      "type": "delta"
+    },
+    {
+      "text": "围绕以下维度",
+      "_time": 79.51661682128906,
+      "type": "delta"
+    },
+    {
+      "text": "展开：\n*",
+      "_time": 79.60481691360474,
+      "type": "delta"
+    },
+    {
+      "text": "   **岗位职责",
+      "_time": 79.61081767082214,
+      "type": "delta"
+    },
+    {
+      "text": "**：负责传统",
+      "_time": 79.76265716552734,
+      "type": "delta"
+    },
+    {
+      "text": "企业内部管理系统的设计与",
+      "_time": 79.76755976676941,
+      "type": "delta"
+    },
+    {
+      "text": "开发 [来源：",
+      "_time": 79.87294149398804,
+      "type": "delta"
+    },
+    {
+      "text": "某小公司-J",
+      "_time": 79.87768602371216,
+      "type": "delta"
+    },
+    {
+      "text": "ava 后端]",
+      "_time": 80.05801510810852,
+      "type": "delta"
+    },
+    {
+      "text": "；",
+      "_time": 80.0616614818573,
+      "type": "delta"
+    },
+    {
+      "text": "进行数据库 CRUD ",
+      "_time": 80.10799551010132,
+      "type": "delta"
+    },
+    {
+      "text": "操作与报表开发",
+      "_time": 80.11160945892334,
+      "type": "delta"
+    },
+    {
+      "text": " [来源：某",
+      "_time": 80.25092482566833,
+      "type": "delta"
+    },
+    {
+      "text": "小公司-Java",
+      "_time": 80.29368042945862,
+      "type": "delta"
+    },
+    {
+      "text": " 后端]；",
+      "_time": 80.39575099945068,
+      "type": "delta"
+    },
+    {
+      "text": "负责系统日常维护",
+      "_time": 80.40058922767639,
+      "type": "delta"
+    },
+    {
+      "text": "与 bug 修复",
+      "_time": 80.5399100780487,
+      "type": "delta"
+    },
+    {
+      "text": " [来源：",
+      "_time": 80.57487773895264,
+      "type": "delta"
+    },
+    {
+      "text": "某小公司-J",
+      "_time": 80.66577696800232,
+      "type": "delta"
+    },
+    {
+      "text": "ava 后端]",
+      "_time": 80.66935753822327,
+      "type": "delta"
+    },
+    {
+      "text": "。\n*  ",
+      "_time": 80.8084020614624,
+      "type": "delta"
+    },
+    {
+      "text": " **技术关键词**",
+      "_time": 80.81311178207397,
+      "type": "delta"
+    },
+    {
+      "text": "：Java, Spring",
+      "_time": 80.9918303489685,
+      "type": "delta"
+    },
+    {
+      "text": " Boot, MySQL",
+      "_time": 80.99556541442871,
+      "type": "delta"
+    },
+    {
+      "text": ", ERP, ",
+      "_time": 81.10987782478333,
+      "type": "delta"
+    },
+    {
+      "text": "后端 [来源：",
+      "_time": 81.11356496810913,
+      "type": "delta"
+    },
+    {
+      "text": "某小公司-J",
+      "_time": 81.22384905815125,
+      "type": "delta"
+    },
+    {
+      "text": "ava 后端]",
+      "_time": 81.22938203811646,
+      "type": "delta"
+    },
+    {
+      "text": "。\n*  ",
+      "_time": 81.36788153648376,
+      "type": "delta"
+    },
+    {
+      "text": " **硬性要求**",
+      "_time": 81.4016592502594,
+      "type": "delta"
+    },
+    {
+      "text": "：熟悉 Spring Boot",
+      "_time": 81.51179623603821,
+      "type": "delta"
+    },
+    {
+      "text": "、MySQL [来源",
+      "_time": 81.55173850059509,
+      "type": "delta"
+    },
+    {
+      "text": "：某小公司",
+      "_time": 81.65479636192322,
+      "type": "delta"
+    },
+    {
+      "text": "-Java 后端",
+      "_time": 81.65960907936096,
+      "type": "delta"
+    },
+    {
+      "text": "]。\n\n###",
+      "_time": 81.7986707687378,
+      "type": "delta"
+    },
+    {
+      "text": " 3. ",
+      "_time": 81.80221056938171,
+      "type": "delta"
+    },
+    {
+      "text": "模拟面试真题\n",
+      "_time": 81.97482967376709,
+      "type": "delta"
+    },
+    {
+      "text": "基于上述",
+      "_time": 81.97735738754272,
+      "type": "delta"
+    },
+    {
+      "text": "岗位要求及您的背景",
+      "_time": 82.05301594734192,
+      "type": "delta"
+    },
+    {
+      "text": "，以下是可能",
+      "_time": 82.05769109725952,
+      "type": "delta"
+    },
+    {
+      "text": "遇到的具体面试题：",
+      "_time": 82.17675423622131,
+      "type": "delta"
+    },
+    {
+      "text": "\n\n",
+      "_time": 82.21373105049133,
+      "type": "delta"
+    },
+    {
+      "text": "*   **场景",
+      "_time": 82.26799821853638,
+      "type": "delta"
+    },
+    {
+      "text": "设计题**：",
+      "_time": 82.27245497703552,
+      "type": "delta"
+    },
+    {
+      "text": "假设需要为 ERP",
+      "_time": 82.45885848999023,
+      "type": "delta"
+    },
+    {
+      "text": " 系统开发",
+      "_time": 82.46563386917114,
+      "type": "delta"
+    },
+    {
+      "text": "销售数据报表模块",
+      "_time": 82.63084673881531,
+      "type": "delta"
+    },
+    {
+      "text": "，支持月报",
+      "_time": 82.63649320602417,
+      "type": "delta"
+    },
+    {
+      "text": "、季报和年报",
+      "_time": 82.6817147731781,
+      "type": "delta"
+    },
+    {
+      "text": "，",
+      "_time": 82.68448305130005,
+      "type": "delta"
+    },
+    {
+      "text": "数据源来自多个",
+      "_time": 82.7715950012207,
+      "type": "delta"
+    },
+    {
+      "text": " MySQL 表（",
+      "_time": 82.80369567871094,
+      "type": "delta"
+    },
+    {
+      "text": "订单、产品、",
+      "_time": 82.91371726989746,
+      "type": "delta"
+    },
+    {
+      "text": "客户等",
+      "_time": 82.9276270866394,
+      "type": "delta"
+    },
+    {
+      "text": "），数据量百万",
+      "_time": 83.02475762367249,
+      "type": "delta"
+    },
+    {
+      "text": "级。请设计",
+      "_time": 83.0302050113678,
+      "type": "delta"
+    },
+    {
+      "text": "报表生成方案（",
+      "_time": 83.20167231559753,
+      "type": "delta"
+    },
+    {
+      "text": "查询",
+      "_time": 83.20866537094116,
+      "type": "delta"
+    },
+    {
+      "text": "、计算、缓存",
+      "_time": 83.2627124786377,
+      "type": "delta"
+    },
+    {
+      "text": "、导出）。",
+      "_time": 83.26651191711426,
+      "type": "delta"
+    },
+    {
+      "text": "\n    *  ",
+      "_time": 83.38267374038696,
+      "type": "delta"
+    },
+    {
+      "text": " *",
+      "_time": 83.38630056381226,
+      "type": "delta"
+    },
+    {
+      "text": "追问*：报表",
+      "_time": 83.5097508430481,
+      "type": "delta"
+    },
+    {
+      "text": "查询耗时过长",
+      "_time": 83.51342844963074,
+      "type": "delta"
+    },
+    {
+      "text": "（超过 1",
+      "_time": 83.59885096549988,
+      "type": "delta"
+    },
+    {
+      "text": "0 秒）",
+      "_time": 83.6036627292633,
+      "type": "delta"
+    },
+    {
+      "text": "如何优化？如何",
+      "_time": 83.7448365688324,
+      "type": "delta"
+    },
+    {
+      "text": "支持用户",
+      "_time": 83.74853157997131,
+      "type": "delta"
+    },
+    {
+      "text": "自定义报表字段？",
+      "_time": 83.87970542907715,
+      "type": "delta"
+    },
+    {
+      "text": "\n*",
+      "_time": 83.88264393806458,
+      "type": "delta"
+    },
+    {
+      "text": "   **适应性考察",
+      "_time": 83.9597680568695,
+      "type": "delta"
+    },
+    {
+      "text": "**：简历",
+      "_time": 83.96541976928711,
+      "type": "delta"
+    },
+    {
+      "text": "强调微服务和分布式",
+      "_time": 84.11772012710571,
+      "type": "delta"
+    },
+    {
+      "text": "经验，但",
+      "_time": 84.12235307693481,
+      "type": "delta"
+    },
+    {
+      "text": "岗位主要维护单体",
+      "_time": 84.21510219573975,
+      "type": "delta"
+    },
+    {
+      "text": " ERP ",
+      "_time": 84.21544694900513,
+      "type": "delta"
+    },
+    {
+      "text": "系统，涉及复杂",
+      "_time": 84.31864666938782,
+      "type": "delta"
+    },
+    {
+      "text": " SQL 和报表",
+      "_time": 84.35654473304749,
+      "type": "delta"
+    },
+    {
+      "text": "。请谈谈如何",
+      "_time": 84.46462965011597,
+      "type": "delta"
+    },
+    {
+      "text": "适应从高并发微",
+      "_time": 84.46840262413025,
+      "type": "delta"
+    },
+    {
+      "text": "服务到传统单体",
+      "_time": 84.60764527320862,
+      "type": "delta"
+    },
+    {
+      "text": " CRUD",
+      "_time": 84.61108684539795,
+      "type": "delta"
+    },
+    {
+      "text": " 系统的转变？",
+      "_time": 84.73764157295227,
+      "type": "delta"
+    },
+    {
+      "text": "\n    *  ",
+      "_time": 84.74128031730652,
+      "type": "delta"
+    },
+    {
+      "text": " *追问*：",
+      "_time": 84.84155368804932,
+      "type": "delta"
+    },
+    {
+      "text": "在单体应用中",
+      "_time": 84.84633040428162,
+      "type": "delta"
+    },
+    {
+      "text": "如何处理慢查询和",
+      "_time": 85.00259351730347,
+      "type": "delta"
+    },
+    {
+      "text": "死锁？如何",
+      "_time": 85.00645351409912,
+      "type": "delta"
+    },
+    {
+      "text": "评估和选择报表",
+      "_time": 85.11161708831787,
+      "type": "delta"
+    },
+    {
+      "text": "框架",
+      "_time": 85.11532378196716,
+      "type": "delta"
+    },
+    {
+      "text": "（如 JasperReports",
+      "_time": 85.23831844329834,
+      "type": "delta"
+    },
+    {
+      "text": " 或 Apache PO",
+      "_time": 85.24170017242432,
+      "type": "delta"
+    },
+    {
+      "text": "I）？\n",
+      "_time": 85.34560513496399,
+      "type": "delta"
+    },
+    {
+      "text": "*   **代码",
+      "_time": 85.34929037094116,
+      "type": "delta"
+    },
+    {
+      "text": "实现题**：",
+      "_time": 85.52752542495728,
+      "type": "delta"
+    },
+    {
+      "text": "写",
+      "_time": 85.53020906448364,
+      "type": "delta"
+    },
+    {
+      "text": "一段 Java 代码",
+      "_time": 85.58051204681396,
+      "type": "delta"
+    },
+    {
+      "text": "，",
+      "_time": 85.58410406112671,
+      "type": "delta"
+    },
+    {
+      "text": "从数据库查询某",
+      "_time": 85.6706612110138,
+      "type": "delta"
+    },
+    {
+      "text": "月份所有",
+      "_time": 85.67623019218445,
+      "type": "delta"
+    },
+    {
+      "text": "订单，按产品分类",
+      "_time": 85.81578326225281,
+      "type": "delta"
+    },
+    {
+      "text": "统计销售额，并",
+      "_time": 85.82134747505188,
+      "type": "delta"
+    },
+    {
+      "text": "输出为 Excel ",
+      "_time": 85.9215989112854,
+      "type": "delta"
+    },
+    {
+      "text": "文件（.xlsx",
+      "_time": 85.96152973175049,
+      "type": "delta"
+    },
+    {
+      "text": "）。假设使用 Spring",
+      "_time": 86.06543564796448,
+      "type": "delta"
+    },
+    {
+      "text": " Boot + MyB",
+      "_time": 86.06802797317505,
+      "type": "delta"
+    },
+    {
+      "text": "atis，需考虑",
+      "_time": 86.24382376670837,
+      "type": "delta"
+    },
+    {
+      "text": "百万",
+      "_time": 86.24866199493408,
+      "type": "delta"
+    },
+    {
+      "text": "级数据性能及",
+      "_time": 86.3005108833313,
+      "type": "delta"
+    },
+    {
+      "text": "代码可维护性",
+      "_time": 86.30211567878723,
+      "type": "delta"
+    },
+    {
+      "text": "。\n    *",
+      "_time": 86.4436206817627,
+      "type": "delta"
+    },
+    {
+      "text": "   *追问*",
+      "_time": 86.47660851478577,
+      "type": "delta"
+    },
+    {
+      "text": "：如何分页查询",
+      "_time": 86.5885820388794,
+      "type": "delta"
+    },
+    {
+      "text": "避免内存溢出？",
+      "_time": 86.59321188926697,
+      "type": "delta"
+    },
+    {
+      "text": "如果 Excel 需要",
+      "_time": 86.7324059009552,
+      "type": "delta"
+    },
+    {
+      "text": "包含图表，有什么",
+      "_time": 86.77851390838623,
+      "type": "delta"
+    },
+    {
+      "text": "方案？\n*",
+      "_time": 86.873526096344,
+      "type": "delta"
+    },
+    {
+      "text": "   **架构",
+      "_time": 86.87927031517029,
+      "type": "delta"
+    },
+    {
+      "text": "设计题**：",
+      "_time": 87.02646279335022,
+      "type": "delta"
+    },
+    {
+      "text": "设计一个通用的报表",
+      "_time": 87.03740954399109,
+      "type": "delta"
+    },
+    {
+      "text": "查询服务，支持",
+      "_time": 87.14549136161804,
+      "type": "delta"
+    },
+    {
+      "text": "动态 SQL 拼接",
+      "_time": 87.14916658401489,
+      "type": "delta"
+    },
+    {
+      "text": "、参数校验、",
+      "_time": 87.28946781158447,
+      "type": "delta"
+    },
+    {
+      "text": "结果集映射及",
+      "_time": 87.29849624633789,
+      "type": "delta"
+    },
+    {
+      "text": "统一异常处理。",
+      "_time": 87.47352385520935,
+      "type": "delta"
+    },
+    {
+      "text": "\n    *  ",
+      "_time": 87.47926473617554,
+      "type": "delta"
+    },
+    {
+      "text": " *追问*：",
+      "_time": 87.57850861549377,
+      "type": "delta"
+    },
+    {
+      "text": "如何防止动态",
+      "_time": 87.58224487304688,
+      "type": "delta"
+    },
+    {
+      "text": " SQL 拼接导致的",
+      "_time": 87.73746466636658,
+      "type": "delta"
+    },
+    {
+      "text": " SQL 注入？",
+      "_time": 87.74123525619507,
+      "type": "delta"
+    },
+    {
+      "text": "如何设计缓存策略",
+      "_time": 87.849365234375,
+      "type": "delta"
+    },
+    {
+      "text": "以平衡实时性和",
+      "_time": 87.8531391620636,
+      "type": "delta"
+    },
+    {
+      "text": "性能？\n\n###",
+      "_time": 88.02843046188354,
+      "type": "delta"
+    },
+    {
+      "text": " 4. ",
+      "_time": 88.03316593170166,
+      "type": "delta"
+    },
+    {
+      "text": "顾问建议\n鉴于",
+      "_time": 88.13643312454224,
+      "type": "delta"
+    },
+    {
+      "text": "匹配",
+      "_time": 88.14120030403137,
+      "type": "delta"
+    },
+    {
+      "text": "分析中指出的短板",
+      "_time": 88.22543358802795,
+      "type": "delta"
+    },
+    {
+      "text": "，建议您在",
+      "_time": 88.26346254348755,
+      "type": "delta"
+    },
+    {
+      "text": "面试准备中：",
+      "_time": 88.35044002532959,
+      "type": "delta"
+    },
+    {
+      "text": "\n1. ",
+      "_time": 88.35515213012695,
+      "type": "delta"
+    },
+    {
+      "text": " **补充报表知识",
+      "_time": 88.49632716178894,
+      "type": "delta"
+    },
+    {
+      "text": "**：快速",
+      "_time": 88.50230121612549,
+      "type": "delta"
+    },
+    {
+      "text": "了解 JasperReports、",
+      "_time": 88.65645241737366,
+      "type": "delta"
+    },
+    {
+      "text": "Apache",
+      "_time": 88.66458415985107,
+      "type": "delta"
+    },
+    {
+      "text": " POI 或",
+      "_time": 88.7374496459961,
+      "type": "delta"
+    },
+    {
+      "text": " Easy",
+      "_time": 88.74523830413818,
+      "type": "delta"
+    },
+    {
+      "text": "Excel 等工具",
+      "_time": 88.801442861557,
+      "type": "delta"
+    },
+    {
+      "text": "的基本用法。",
+      "_time": 88.80619621276855,
+      "type": "delta"
+    },
+    {
+      "text": "\n2. ",
+      "_time": 88.92842626571655,
+      "type": "delta"
+    },
+    {
+      "text": " **调整叙事",
+      "_time": 88.93221092224121,
+      "type": "delta"
+    },
+    {
+      "text": "重点**：在",
+      "_time": 89.09251284599304,
+      "type": "delta"
+    },
+    {
+      "text": "介绍",
+      "_time": 89.09513902664185,
+      "type": "delta"
+    },
+    {
+      "text": "项目时，除了",
+      "_time": 89.14244031906128,
+      "type": "delta"
+    },
+    {
+      "text": "高",
+      "_time": 89.14710927009583,
+      "type": "delta"
+    },
+    {
+      "text": "并发亮点，也要",
+      "_time": 89.23439264297485,
+      "type": "delta"
+    },
+    {
+      "text": "强调对",
+      "_time": 89.24017286300659,
+      "type": "delta"
+    },
+    {
+      "text": "复杂 SQL 查询",
+      "_time": 89.37340092658997,
+      "type": "delta"
+    },
+    {
+      "text": "、数据",
+      "_time": 89.37907934188843,
+      "type": "delta"
+    },
+    {
+      "text": "一致性及系统稳定",
+      "_time": 89.45046210289001,
+      "type": "delta"
+    },
+    {
+      "text": "性的处理能力",
+      "_time": 89.45306038856506,
+      "type": "delta"
+    },
+    {
+      "text": "，以契合传统",
+      "_time": 89.55643320083618,
+      "type": "delta"
+    },
+    {
+      "text": " ERP 系统",
+      "_time": 89.59547448158264,
+      "type": "delta"
+    },
+    {
+      "text": "的需求 [来源：",
+      "_time": 89.68669319152832,
+      "type": "delta"
+    },
+    {
+      "text": "某小公司-J",
+      "_time": 89.68900942802429,
+      "type": "delta"
+    },
+    {
+      "text": "ava 后端]",
+      "_time": 89.82643747329712,
+      "type": "delta"
+    },
+    {
+      "text": "。\n3.",
+      "_time": 89.83518123626709,
+      "type": "delta"
+    },
+    {
+      "text": "  **准备单体",
+      "_time": 90.00244307518005,
+      "type": "delta"
+    },
+    {
+      "text": "优化",
+      "_time": 90.00719714164734,
+      "type": "delta"
+    },
+    {
+      "text": "案例**：准备",
+      "_time": 90.0612907409668,
+      "type": "delta"
+    },
+    {
+      "text": "一些在",
+      "_time": 90.06706309318542,
+      "type": "delta"
+    },
+    {
+      "text": "单体架构下进行数据库",
+      "_time": 90.17041158676147,
+      "type": "delta"
+    },
+    {
+      "text": "优化",
+      "_time": 90.17624878883362,
+      "type": "delta"
+    },
+    {
+      "text": "、代码重构的具体",
+      "_time": 90.28839707374573,
+      "type": "delta"
+    },
+    {
+      "text": "案例，以",
+      "_time": 90.29299759864807,
+      "type": "delta"
+    },
+    {
+      "text": "证明适应不同技术",
+      "_time": 90.38534188270569,
+      "type": "delta"
+    },
+    {
+      "text": "场景",
+      "_time": 90.39112329483032,
+      "type": "delta"
+    },
+    {
+      "text": "的能力。",
+      "_time": 90.47830629348755,
+      "type": "delta"
+    },
+    {
+      "session_id": "eval_li_04_1780562570362",
+      "intent": "interview_prepare",
+      "route_meta": {
+        "layer": "llm",
+        "intent": "interview_prepare",
+        "confidence": 0.88,
+        "demands": [
+          {
+            "intent": "interview_prepare",
+            "entities": {
+              "position": "Java后端"
+            }
+          }
+        ],
+        "plan_tasks": 4
+      },
+      "agent_mode": "llm",
+      "is_clarification": false,
+      "agent": {
+        "rewritten_query": "Java后端面试一般问什么",
+        "tools": [
+          {
+            "tool": "kb_retrieve",
+            "status": "✅",
+            "params": {
+              "query": "Java后端",
+              "top_k": 3,
+              "company": null,
+              "position": "Java后端"
+            },
+            "result_preview": "{'chunks': [{'chunk_id': '45bd2600-af57-45fe-a96e-c6cae6838c7a_chunk_1', 'content': '【某小公司 · Java后端 岗位职责】\\n1. 负责传统企业内部管理系统的设计与开发。2. 数据库CRUD操作与报表开发。3. 系统日常维护与bug修复。', 'metadata': {'company': '某小公司', 'i"
+          },
+          {
+            "tool": "match_analyze",
+            "status": "✅",
+            "params": {
+              "resume_text": "姓名：李工程师\n电话：138-XXXX-1234 | 邮箱：lixx_dev@email.com | 现居：北京\nJava后端开发工程师 | 3年经验 | 本科\n\n教育背景\n2018.09 - 2022.06  XX理工大学  计算机科学与技术（本科）\n主修课程：数据结构与算法、操作系统、计算机网络、数据库原理、软件工程\n在校荣誉：校级优秀毕业设计（基于微服务的校园二手交易平台）\n\n专业技能\n熟练掌握Java核心技术，熟悉JVM内存模型、GC机制及常见调优手段\n精通Spring Boot、Spring Cloud微服务生态，熟悉Nacos、Gateway、Sentinel、Seata等组件\n熟悉MySQL索引优化、事务机制、分库分表策略，具备SQL调优及慢查询治理经验\n了解Redis缓存设计、Kafka消息队列，熟悉Docker容器化部署及Jenkins CI/CD流程\n掌握Git版本控制，熟悉Linux日常运维及日志排查\n\n工作经历\n2022.07 - 至今  XX科技有限公司（B轮 / 企业服务 SaaS）  Java后端工程师\n\nSaaS供应链管理平台（2023.03 - 至今）\n负责订单中心、库存中心核心模块设计与开发，采用Spring Cloud Alibaba微服务架构，支撑日均10W+订单处理\n主导MySQL分库分表方案设计（ShardingSphere），解决单表数据量过亿导致的查询性能瓶颈，接口响应时间从800ms降至120ms\n设计多级缓存策略（Redis + Caffeine本地缓存），热点数据命中率提升至95%，降低数据库负载40%\n基于Seata AT模式实现分布式事务，保障订单与库存数据一致性，线上运行半年零资损事故\n\n企业权限中台重构（2022.09 - 2023.02）\n参与RBAC权限中台从单体到微服务的拆分重构，负责鉴权服务、菜单路由模块开发\n引入Gateway统一鉴权过滤器，对接OAuth2.0 + JWT认证体系，支持多租户隔离\n编写核心接口单元测试（Unit + Mockito），模块测试覆盖率从45%提升至82%\n\n自我评价\n具备扎实的计算机基础与3年企业级后端开发经验，擅长高并发场景下的系统设计与性能优化。注重代码质量与工程规范，具备良好的团队协作与跨部门沟通能力。",
+              "jd_text": [
+                {
+                  "chunk_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a_chunk_1",
+                  "content": "【某小公司 · Java后端 岗位职责】\n1. 负责传统企业内部管理系统的设计与开发。2. 数据库CRUD操作与报表开发。3. 系统日常维护与bug修复。",
+                  "metadata": {
+                    "company": "某小公司",
+                    "index": 1,
+                    "jd_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a",
+                    "position": "Java后端",
+                    "section": "responsibilities",
+                    "strategy": "semantic"
+                  },
+                  "distance": 0.7322511076927185,
+                  "bm25_score": 6.803795908828786,
+                  "vec_norm": 0.641017779861409,
+                  "bm25_norm": 0.42577783366977107,
+                  "hybrid_score": 0.5764457960039175,
+                  "rerank_score": 0.9982
+                },
+                {
+                  "chunk_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a_chunk_6",
+                  "content": "【某小公司 · Java后端 关键词】\nJava, Spring Boot, MySQL, ERP, 后端",
+                  "metadata": {
+                    "company": "某小公司",
+                    "index": 6,
+                    "jd_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a",
+                    "position": "Java后端",
+                    "section": "keywords",
+                    "strategy": "semantic"
+                  },
+                  "distance": 0.6197474598884583,
+                  "bm25_score": 9.906145995550908,
+                  "vec_norm": 1.0,
+                  "bm25_norm": 0.8622791554222022,
+                  "hybrid_score": 0.9586837466266607,
+                  "rerank_score": 0.9911
+                },
+                {
+                  "chunk_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a_chunk_3",
+                  "content": "【某小公司 · Java后端 硬性要求】\n熟悉Spring Boot、MySQL",
+                  "metadata": {
+                    "company": "某小公司",
+                    "index": 3,
+                    "jd_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a",
+                    "position": "Java后端",
+                    "priority": "high",
+                    "section": "hard_requirements",
+                    "strategy": "semantic"
+                  },
+                  "distance": 0.7657338976860046,
+                  "bm25_score": 9.57143819239722,
+                  "vec_norm": 0.5341792326425969,
+                  "bm25_norm": 0.8151856958211281,
+                  "hybrid_score": 0.6184811715961562,
+                  "rerank_score": 0.9567
+                }
+              ],
+              "position": "Java后端",
+              "attributes": [
+                "技术栈",
+                "项目经验"
+              ]
+            },
+            "result_preview": "{'score': 85, 'label': '高度契合', 'advantages': ['Java核心技术', 'Spring Boot', 'MySQL数据库设计与优化', '后端开发经验', '企业级系统开发（SaaS供应链管理平台）', 'Git版本控制', 'Linux运维', '团队协作能力'], 'weaknesses': ['候选人缺乏报表开发经验，JD明确要求负责数据库CRUD"
+          },
+          {
+            "tool": "interview_gen",
+            "status": "✅",
+            "params": {
+              "match_result": {
+                "score": 85,
+                "label": "高度契合",
+                "advantages": [
+                  "Java核心技术",
+                  "Spring Boot",
+                  "MySQL数据库设计与优化",
+                  "后端开发经验",
+                  "企业级系统开发（SaaS供应链管理平台）",
+                  "Git版本控制",
+                  "Linux运维",
+                  "团队协作能力"
+                ],
+                "weaknesses": [
+                  "候选人缺乏报表开发经验，JD明确要求负责数据库CRUD操作与报表开发，而简历中未提及任何报表相关的技术（如JasperReports、POI、ECharts等）或实际项目经历。此外，候选人主要经验集中在微服务和高并发场景，而JD描述为传统企业内部管理系统，可能更偏向简单CRUD和报表，候选人相对缺乏此类场景的适配经验。"
+                ],
+                "suggestions": [
+                  "核心能力要求: Java、Spring Boot、MySQL、ERP系统、后端开发、数据库CRUD、报表开发、系统维护与bug修复"
+                ],
+                "match_score": 85,
+                "covered": [
+                  "Java核心技术",
+                  "Spring Boot",
+                  "MySQL数据库设计与优化",
+                  "后端开发经验",
+                  "企业级系统开发（SaaS供应链管理平台）",
+                  "Git版本控制",
+                  "Linux运维",
+                  "团队协作能力"
+                ],
+                "missing_experience": "候选人缺乏报表开发经验，JD明确要求负责数据库CRUD操作与报表开发，而简历中未提及任何报表相关的技术（如JasperReports、POI、ECharts等）或实际项目经历。此外，候选人主要经验集中在微服务和高并发场景，而JD描述为传统企业内部管理系统，可能更偏向简单CRUD和报表，候选人相对缺乏此类场景的适配经验。",
+                "core_skills": "Java、Spring Boot、MySQL、ERP系统、后端开发、数据库CRUD、报表开发、系统维护与bug修复",
+                "company": null,
+                "position": "Java后端"
+              },
+              "count": 5,
+              "difficulty": "mixed",
+              "focus_area": [
+                "JVM",
+                "Spring框架",
+                "数据库",
+                "分布式",
+                "项目经验"
+              ],
+              "company": null,
+              "position": "Java后端"
+            },
+            "result_preview": "{'questions': ['假设我们现在需要为一个ERP系统开发一个销售数据报表模块，要求支持月报、季报和年报的生成，数据源来自多个MySQL表（订单表、产品表、客户表等），数据量在百万级。请设计一个报表生成方案，包括数据查询、计算、缓存、导出（如Excel或PDF）等方面。追问方向：1）如果报表查询耗时过长（超过10秒），你会如何优化？请具体说明索引、分页、预计算或使用聚合表的方案。2）如果"
+          }
+        ],
+        "kb_chunks_count": 4,
+        "system_prompt_preview": "你是一位专业的求职顾问。请基于以下工具执行结果，给用户一个清晰、有帮助的回复。\n要求：\n1. 先直接回答用户的问题（是/否/有/没有），不要绕弯子，不要重复用户的原话\n2. 如果有匹配分析结果，给出具体的分数和建议\n3. 如果有检索结果，基于事实回答，不要编造\n4. 【强制】引用信息时必须标注来源。每个引用的事实后面都要跟 [来源：公司名-岗位名] 格式。   kb_retrieve 结果的 ch"
+      },
+      "memory": {
+        "working_turns": 1,
+        "compressed_blocks": 0,
+        "current_topic": "general",
+        "evidence_cache_size": 3
+      },
+      "reply": "有具体的考察范围和高频题型。基于您的简历与岗位匹配分析，以及行业常见需求，为您梳理如下面试重点：\n\n### 1. 人岗匹配度分析\n根据您的简历与目标岗位的匹配分析，结果如下：\n*   **匹配分数**：85 分（高度契合）\n*   **核心优势**：具备 Java 核心技术、Spring Boot、MySQL 数据库设计与优化、后端开发经验、企业级系统开发（SaaS 供应链管理平台）、Git 版本控制、Linux 运维及团队协作能力。\n*   **潜在短板**：候选人缺乏报表开发经验，而岗位明确要求负责数据库 CRUD 操作与报表开发，简历中未提及 JasperReports、POI、ECharts 等相关技术或经历。此外，候选人经验集中在微服务和高并发，而岗位偏向传统企业内部管理系统，可能更侧重简单 CRUD 和报表场景 [来源：某小公司-Java 后端]。\n*   **备考建议**：重点复习 Java、Spring Boot、MySQL、ERP 系统、后端开发、数据库 CRUD、报表开发、系统维护与 bug 修复等核心能力要求。\n\n### 2. 常见面试考察内容\n根据检索到的岗位描述，Java 后端面试通常围绕以下维度展开：\n*   **岗位职责**：负责传统企业内部管理系统的设计与开发 [来源：某小公司-Java 后端]；进行数据库 CRUD 操作与报表开发 [来源：某小公司-Java 后端]；负责系统日常维护与 bug 修复 [来源：某小公司-Java 后端]。\n*   **技术关键词**：Java, Spring Boot, MySQL, ERP, 后端 [来源：某小公司-Java 后端]。\n*   **硬性要求**：熟悉 Spring Boot、MySQL [来源：某小公司-Java 后端]。\n\n### 3. 模拟面试真题\n基于上述岗位要求及您的背景，以下是可能遇到的具体面试题：\n\n*   **场景设计题**：假设需要为 ERP 系统开发销售数据报表模块，支持月报、季报和年报，数据源来自多个 MySQL 表（订单、产品、客户等），数据量百万级。请设计报表生成方案（查询、计算、缓存、导出）。\n    *   *追问*：报表查询耗时过长（超过 10 秒）如何优化？如何支持用户自定义报表字段？\n*   **适应性考察**：简历强调微服务和分布式经验，但岗位主要维护单体 ERP 系统，涉及复杂 SQL 和报表。请谈谈如何适应从高并发微服务到传统单体 CRUD 系统的转变？\n    *   *追问*：在单体应用中如何处理慢查询和死锁？如何评估和选择报表框架（如 JasperReports 或 Apache POI）？\n*   **代码实现题**：写一段 Java 代码，从数据库查询某月份所有订单，按产品分类统计销售额，并输出为 Excel 文件（.xlsx）。假设使用 Spring Boot + MyBatis，需考虑百万级数据性能及代码可维护性。\n    *   *追问*：如何分页查询避免内存溢出？如果 Excel 需要包含图表，有什么方案？\n*   **架构设计题**：设计一个通用的报表查询服务，支持动态 SQL 拼接、参数校验、结果集映射及统一异常处理。\n    *   *追问*：如何防止动态 SQL 拼接导致的 SQL 注入？如何设计缓存策略以平衡实时性和性能？\n\n### 4. 顾问建议\n鉴于匹配分析中指出的短板，建议您在面试准备中：\n1.  **补充报表知识**：快速了解 JasperReports、Apache POI 或 EasyExcel 等工具的基本用法。\n2.  **调整叙事重点**：在介绍项目时，除了高并发亮点，也要强调对复杂 SQL 查询、数据一致性及系统稳定性的处理能力，以契合传统 ERP 系统的需求 [来源：某小公司-Java 后端]。\n3.  **准备单体优化案例**：准备一些在单体架构下进行数据库优化、代码重构的具体案例，以证明适应不同技术场景的能力。",
+      "debug_info": {
+        "task_graph": {
+          "tasks": {
+            "T0": {
+              "task_id": "T0",
+              "task_type": "tool_call",
+              "tool_name": "kb_retrieve",
+              "status": "success",
+              "parameters": {
+                "query": "Java后端",
+                "top_k": 3,
+                "company": null,
+                "position": "Java后端"
+              },
+              "resolved_params": {
+                "query": "Java后端",
+                "top_k": 3,
+                "company": null,
+                "position": "Java后端"
+              },
+              "result": {
+                "chunks": [
+                  {
+                    "chunk_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a_chunk_1",
+                    "content": "【某小公司 · Java后端 岗位职责】\n1. 负责传统企业内部管理系统的设计与开发。2. 数据库CRUD操作与报表开发。3. 系统日常维护与bug修复。",
+                    "metadata": {
+                      "company": "某小公司",
+                      "index": 1,
+                      "jd_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a",
+                      "position": "Java后端",
+                      "section": "responsibilities",
+                      "strategy": "semantic"
+                    },
+                    "distance": 0.7322511076927185,
+                    "bm25_score": 6.803795908828786,
+                    "vec_norm": 0.641017779861409,
+                    "bm25_norm": 0.42577783366977107,
+                    "hybrid_score": 0.5764457960039175,
+                    "rerank_score": 0.9982
+                  },
+                  {
+                    "chunk_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a_chunk_6",
+                    "content": "【某小公司 · Java后端 关键词】\nJava, Spring Boot, MySQL, ERP, 后端",
+                    "metadata": {
+                      "company": "某小公司",
+                      "index": 6,
+                      "jd_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a",
+                      "position": "Java后端",
+                      "section": "keywords",
+                      "strategy": "semantic"
+                    },
+                    "distance": 0.6197474598884583,
+                    "bm25_score": 9.906145995550908,
+                    "vec_norm": 1.0,
+                    "bm25_norm": 0.8622791554222022,
+                    "hybrid_score": 0.9586837466266607,
+                    "rerank_score": 0.9911
+                  },
+                  {
+                    "chunk_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a_chunk_3",
+                    "content": "【某小公司 · Java后端 硬性要求】\n熟悉Spring Boot、MySQL",
+                    "metadata": {
+                      "company": "某小公司",
+                      "index": 3,
+                      "jd_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a",
+                      "position": "Java后端",
+                      "priority": "high",
+                      "section": "hard_requirements",
+                      "strategy": "semantic"
+                    },
+                    "distance": 0.7657338976860046,
+                    "bm25_score": 9.57143819239722,
+                    "vec_norm": 0.5341792326425969,
+                    "bm25_norm": 0.8151856958211281,
+                    "hybrid_score": 0.6184811715961562,
+                    "rerank_score": 0.9567
+                  }
+                ],
+                "query": "Java后端",
+                "filters": {
+                  "position": "Java后端"
+                },
+                "strategy": "hybrid(70%vec+30%bm25)+reranker",
+                "pool_k": 3,
+                "rerank_k": 10,
+                "pool_size": 9,
+                "vec_only": 0,
+                "bm25_only": 2,
+                "both": 7,
+                "rerank": {
+                  "enabled": true,
+                  "candidates": 3,
+                  "output": 3,
+                  "best_rerank_score": 0.9982
+                }
+              },
+              "observation": "工具 kb_retrieve 执行成功"
+            },
+            "T1": {
+              "task_id": "T1",
+              "task_type": "tool_call",
+              "tool_name": "match_analyze",
+              "status": "success",
+              "parameters": {
+                "resume_text": "{{global_slots.resume_text}}",
+                "jd_text": "{{T0.output.chunks}}",
+                "position": "Java后端",
+                "attributes": [
+                  "技术栈",
+                  "项目经验"
+                ]
+              },
+              "resolved_params": {
+                "resume_text": "姓名：李工程师\n电话：138-XXXX-1234 | 邮箱：lixx_dev@email.com | 现居：北京\nJava后端开发工程师 | 3年经验 | 本科\n\n教育背景\n2018.09 - 2022.06  XX理工大学  计算机科学与技术（本科）\n主修课程：数据结构与算法、操作系统、计算机网络、数据库原理、软件工程\n在校荣誉：校级优秀毕业设计（基于微服务的校园二手交易平台）\n\n专业技能\n熟练掌握Java核心技术，熟悉JVM内存模型、GC机制及常见调优手段\n精通Spring Boot、Spring Cloud微服务生态，熟悉Nacos、Gateway、Sentinel、Seata等组件\n熟悉MySQL索引优化、事务机制、分库分表策略，具备SQL调优及慢查询治理经验\n了解Redis缓存设计、Kafka消息队列，熟悉Docker容器化部署及Jenkins CI/CD流程\n掌握Git版本控制，熟悉Linux日常运维及日志排查\n\n工作经历\n2022.07 - 至今  XX科技有限公司（B轮 / 企业服务 SaaS）  Java后端工程师\n\nSaaS供应链管理平台（2023.03 - 至今）\n负责订单中心、库存中心核心模块设计与开发，采用Spring Cloud Alibaba微服务架构，支撑日均10W+订单处理\n主导MySQL分库分表方案设计（ShardingSphere），解决单表数据量过亿导致的查询性能瓶颈，接口响应时间从800ms降至120ms\n设计多级缓存策略（Redis + Caffeine本地缓存），热点数据命中率提升至95%，降低数据库负载40%\n基于Seata AT模式实现分布式事务，保障订单与库存数据一致性，线上运行半年零资损事故\n\n企业权限中台重构（2022.09 - 2023.02）\n参与RBAC权限中台从单体到微服务的拆分重构，负责鉴权服务、菜单路由模块开发\n引入Gateway统一鉴权过滤器，对接OAuth2.0 + JWT认证体系，支持多租户隔离\n编写核心接口单元测试（Unit + Mockito），模块测试覆盖率从45%提升至82%\n\n自我评价\n具备扎实的计算机基础与3年企业级后端开发经验，擅长高并发场景下的系统设计与性能优化。注重代码质量与工程规范，具备良好的团队协作与跨部门沟通能力。",
+                "jd_text": [
+                  {
+                    "chunk_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a_chunk_1",
+                    "content": "【某小公司 · Java后端 岗位职责】\n1. 负责传统企业内部管理系统的设计与开发。2. 数据库CRUD操作与报表开发。3. 系统日常维护与bug修复。",
+                    "metadata": {
+                      "company": "某小公司",
+                      "index": 1,
+                      "jd_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a",
+                      "position": "Java后端",
+                      "section": "responsibilities",
+                      "strategy": "semantic"
+                    },
+                    "distance": 0.7322511076927185,
+                    "bm25_score": 6.803795908828786,
+                    "vec_norm": 0.641017779861409,
+                    "bm25_norm": 0.42577783366977107,
+                    "hybrid_score": 0.5764457960039175,
+                    "rerank_score": 0.9982
+                  },
+                  {
+                    "chunk_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a_chunk_6",
+                    "content": "【某小公司 · Java后端 关键词】\nJava, Spring Boot, MySQL, ERP, 后端",
+                    "metadata": {
+                      "company": "某小公司",
+                      "index": 6,
+                      "jd_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a",
+                      "position": "Java后端",
+                      "section": "keywords",
+                      "strategy": "semantic"
+                    },
+                    "distance": 0.6197474598884583,
+                    "bm25_score": 9.906145995550908,
+                    "vec_norm": 1.0,
+                    "bm25_norm": 0.8622791554222022,
+                    "hybrid_score": 0.9586837466266607,
+                    "rerank_score": 0.9911
+                  },
+                  {
+                    "chunk_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a_chunk_3",
+                    "content": "【某小公司 · Java后端 硬性要求】\n熟悉Spring Boot、MySQL",
+                    "metadata": {
+                      "company": "某小公司",
+                      "index": 3,
+                      "jd_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a",
+                      "position": "Java后端",
+                      "priority": "high",
+                      "section": "hard_requirements",
+                      "strategy": "semantic"
+                    },
+                    "distance": 0.7657338976860046,
+                    "bm25_score": 9.57143819239722,
+                    "vec_norm": 0.5341792326425969,
+                    "bm25_norm": 0.8151856958211281,
+                    "hybrid_score": 0.6184811715961562,
+                    "rerank_score": 0.9567
+                  }
+                ],
+                "position": "Java后端",
+                "attributes": [
+                  "技术栈",
+                  "项目经验"
+                ]
+              },
+              "result": {
+                "score": 85,
+                "label": "高度契合",
+                "advantages": [
+                  "Java核心技术",
+                  "Spring Boot",
+                  "MySQL数据库设计与优化",
+                  "后端开发经验",
+                  "企业级系统开发（SaaS供应链管理平台）",
+                  "Git版本控制",
+                  "Linux运维",
+                  "团队协作能力"
+                ],
+                "weaknesses": [
+                  "候选人缺乏报表开发经验，JD明确要求负责数据库CRUD操作与报表开发，而简历中未提及任何报表相关的技术（如JasperReports、POI、ECharts等）或实际项目经历。此外，候选人主要经验集中在微服务和高并发场景，而JD描述为传统企业内部管理系统，可能更偏向简单CRUD和报表，候选人相对缺乏此类场景的适配经验。"
+                ],
+                "suggestions": [
+                  "核心能力要求: Java、Spring Boot、MySQL、ERP系统、后端开发、数据库CRUD、报表开发、系统维护与bug修复"
+                ],
+                "match_score": 85,
+                "covered": [
+                  "Java核心技术",
+                  "Spring Boot",
+                  "MySQL数据库设计与优化",
+                  "后端开发经验",
+                  "企业级系统开发（SaaS供应链管理平台）",
+                  "Git版本控制",
+                  "Linux运维",
+                  "团队协作能力"
+                ],
+                "missing_experience": "候选人缺乏报表开发经验，JD明确要求负责数据库CRUD操作与报表开发，而简历中未提及任何报表相关的技术（如JasperReports、POI、ECharts等）或实际项目经历。此外，候选人主要经验集中在微服务和高并发场景，而JD描述为传统企业内部管理系统，可能更偏向简单CRUD和报表，候选人相对缺乏此类场景的适配经验。",
+                "core_skills": "Java、Spring Boot、MySQL、ERP系统、后端开发、数据库CRUD、报表开发、系统维护与bug修复",
+                "company": null,
+                "position": "Java后端"
+              },
+              "observation": "工具 match_analyze 执行成功"
+            },
+            "T2": {
+              "task_id": "T2",
+              "task_type": "tool_call",
+              "tool_name": "interview_gen",
+              "status": "success",
+              "parameters": {
+                "match_result": "{{T1.output}}",
+                "count": 5,
+                "difficulty": "mixed",
+                "focus_area": [
+                  "JVM",
+                  "Spring框架",
+                  "数据库",
+                  "分布式",
+                  "项目经验"
+                ],
+                "company": null,
+                "position": "Java后端"
+              },
+              "resolved_params": {
+                "match_result": {
+                  "score": 85,
+                  "label": "高度契合",
+                  "advantages": [
+                    "Java核心技术",
+                    "Spring Boot",
+                    "MySQL数据库设计与优化",
+                    "后端开发经验",
+                    "企业级系统开发（SaaS供应链管理平台）",
+                    "Git版本控制",
+                    "Linux运维",
+                    "团队协作能力"
+                  ],
+                  "weaknesses": [
+                    "候选人缺乏报表开发经验，JD明确要求负责数据库CRUD操作与报表开发，而简历中未提及任何报表相关的技术（如JasperReports、POI、ECharts等）或实际项目经历。此外，候选人主要经验集中在微服务和高并发场景，而JD描述为传统企业内部管理系统，可能更偏向简单CRUD和报表，候选人相对缺乏此类场景的适配经验。"
+                  ],
+                  "suggestions": [
+                    "核心能力要求: Java、Spring Boot、MySQL、ERP系统、后端开发、数据库CRUD、报表开发、系统维护与bug修复"
+                  ],
+                  "match_score": 85,
+                  "covered": [
+                    "Java核心技术",
+                    "Spring Boot",
+                    "MySQL数据库设计与优化",
+                    "后端开发经验",
+                    "企业级系统开发（SaaS供应链管理平台）",
+                    "Git版本控制",
+                    "Linux运维",
+                    "团队协作能力"
+                  ],
+                  "missing_experience": "候选人缺乏报表开发经验，JD明确要求负责数据库CRUD操作与报表开发，而简历中未提及任何报表相关的技术（如JasperReports、POI、ECharts等）或实际项目经历。此外，候选人主要经验集中在微服务和高并发场景，而JD描述为传统企业内部管理系统，可能更偏向简单CRUD和报表，候选人相对缺乏此类场景的适配经验。",
+                  "core_skills": "Java、Spring Boot、MySQL、ERP系统、后端开发、数据库CRUD、报表开发、系统维护与bug修复",
+                  "company": null,
+                  "position": "Java后端"
+                },
+                "count": 5,
+                "difficulty": "mixed",
+                "focus_area": [
+                  "JVM",
+                  "Spring框架",
+                  "数据库",
+                  "分布式",
+                  "项目经验"
+                ],
+                "company": null,
+                "position": "Java后端"
+              },
+              "result": {
+                "questions": [
+                  "假设我们现在需要为一个ERP系统开发一个销售数据报表模块，要求支持月报、季报和年报的生成，数据源来自多个MySQL表（订单表、产品表、客户表等），数据量在百万级。请设计一个报表生成方案，包括数据查询、计算、缓存、导出（如Excel或PDF）等方面。追问方向：1）如果报表查询耗时过长（超过10秒），你会如何优化？请具体说明索引、分页、预计算或使用聚合表的方案。2）如果需要支持用户自定义报表字段和筛选条件，你的设计如何扩展？",
+                  "你的简历中强调微服务和分布式系统经验，而我们这个岗位主要维护一个单体ERP系统，涉及大量复杂的SQL和报表。请谈谈你将如何适应这种从高并发微服务到传统单体CRUD系统的转变？具体说明你在代码质量、性能优化、数据库设计方面的经验如何应用到简单的业务报表场景中。追问方向：1）在单体应用中，你如何处理慢查询和死锁问题？请举例说明你曾经遇到过的类似问题及解决方案。2）如果让你引入一个简单的报表框架（如JasperReports或Apache POI）到现有项目中，你会如何评估和选择？请给出你的判断标准。",
+                  "请写一段Java代码实现以下功能：从数据库中查询出某个月份的所有订单，按产品分类统计销售额，并将结果输出为Excel文件（.xlsx格式）。假设使用Spring Boot + MyBatis，数据库表结构为：orders表（id, product_id, amount, create_time），products表（id, category_id, name）。要求考虑性能（百万级数据）和代码可维护性。追问方向：1）如何分页查询避免内存溢出？请给出伪代码。2）如果Excel文件需要包含图表（如饼图），你有什么方案？",
+                  "在ERP系统中，报表往往需要根据用户选择的日期范围动态生成，但数据可能分布在多个表中且需要关联计算。请设计一个通用的报表查询服务，要求支持动态SQL拼接、参数校验、结果集映射，并提供统一的异常处理。追问方向：1）动态SQL拼接容易导致SQL注入，你如何防止？请给出具体防范措施。2）当报表查询结果需要缓存时，你如何设计缓存策略以平衡实时性和性能？",
+                  "假设你接手了一个遗留的ERP报表模块，代码中大量使用JSP和纯JDBC，报表生成慢且难以维护。作为新入职的Java后端开发，你会如何制定重构计划？请从技术选型、架构分层、数据访问层优化、单元测试等方面阐述。追问方向：1）在重构过程中，如何确保现有报表功能不受影响？你会采用什么测试策略？2）如果业务部门要求快速修复一个报表数据错误，而重构任务又很紧迫，你如何平衡？"
+                ],
+                "focus_areas": [
+                  "短板深挖：候选人缺乏报表开发经验，JD明确要求负责数据库CRUD操作与报表开发，而简历中未提及任何报表相关的技术（如JasperReports、POI、ECharts等）或实际项目经历。此外，候选人主要经验集中",
+                  "核心能力：Java、Spring Boot、MySQL、ERP系统、后端开发、数据库CRUD、报表开发、系统维护与bug修复"
+                ],
+                "question_count": 5,
+                "company": null,
+                "position": "Java后端"
+              },
+              "observation": "工具 interview_gen 执行成功"
+            },
+            "T3": {
+              "task_id": "T3",
+              "task_type": "aggregate",
+              "tool_name": null,
+              "status": "success",
+              "parameters": {
+                "interview": "{{T2.output}}"
+              },
+              "resolved_params": {
+                "interview": {
+                  "questions": [
+                    "假设我们现在需要为一个ERP系统开发一个销售数据报表模块，要求支持月报、季报和年报的生成，数据源来自多个MySQL表（订单表、产品表、客户表等），数据量在百万级。请设计一个报表生成方案，包括数据查询、计算、缓存、导出（如Excel或PDF）等方面。追问方向：1）如果报表查询耗时过长（超过10秒），你会如何优化？请具体说明索引、分页、预计算或使用聚合表的方案。2）如果需要支持用户自定义报表字段和筛选条件，你的设计如何扩展？",
+                    "你的简历中强调微服务和分布式系统经验，而我们这个岗位主要维护一个单体ERP系统，涉及大量复杂的SQL和报表。请谈谈你将如何适应这种从高并发微服务到传统单体CRUD系统的转变？具体说明你在代码质量、性能优化、数据库设计方面的经验如何应用到简单的业务报表场景中。追问方向：1）在单体应用中，你如何处理慢查询和死锁问题？请举例说明你曾经遇到过的类似问题及解决方案。2）如果让你引入一个简单的报表框架（如JasperReports或Apache POI）到现有项目中，你会如何评估和选择？请给出你的判断标准。",
+                    "请写一段Java代码实现以下功能：从数据库中查询出某个月份的所有订单，按产品分类统计销售额，并将结果输出为Excel文件（.xlsx格式）。假设使用Spring Boot + MyBatis，数据库表结构为：orders表（id, product_id, amount, create_time），products表（id, category_id, name）。要求考虑性能（百万级数据）和代码可维护性。追问方向：1）如何分页查询避免内存溢出？请给出伪代码。2）如果Excel文件需要包含图表（如饼图），你有什么方案？",
+                    "在ERP系统中，报表往往需要根据用户选择的日期范围动态生成，但数据可能分布在多个表中且需要关联计算。请设计一个通用的报表查询服务，要求支持动态SQL拼接、参数校验、结果集映射，并提供统一的异常处理。追问方向：1）动态SQL拼接容易导致SQL注入，你如何防止？请给出具体防范措施。2）当报表查询结果需要缓存时，你如何设计缓存策略以平衡实时性和性能？",
+                    "假设你接手了一个遗留的ERP报表模块，代码中大量使用JSP和纯JDBC，报表生成慢且难以维护。作为新入职的Java后端开发，你会如何制定重构计划？请从技术选型、架构分层、数据访问层优化、单元测试等方面阐述。追问方向：1）在重构过程中，如何确保现有报表功能不受影响？你会采用什么测试策略？2）如果业务部门要求快速修复一个报表数据错误，而重构任务又很紧迫，你如何平衡？"
+                  ],
+                  "focus_areas": [
+                    "短板深挖：候选人缺乏报表开发经验，JD明确要求负责数据库CRUD操作与报表开发，而简历中未提及任何报表相关的技术（如JasperReports、POI、ECharts等）或实际项目经历。此外，候选人主要经验集中",
+                    "核心能力：Java、Spring Boot、MySQL、ERP系统、后端开发、数据库CRUD、报表开发、系统维护与bug修复"
+                  ],
+                  "question_count": 5,
+                  "company": null,
+                  "position": "Java后端"
+                }
+              },
+              "result": {
+                "aggregation": {
+                  "interview": {
+                    "questions": [
+                      "假设我们现在需要为一个ERP系统开发一个销售数据报表模块，要求支持月报、季报和年报的生成，数据源来自多个MySQL表（订单表、产品表、客户表等），数据量在百万级。请设计一个报表生成方案，包括数据查询、计算、缓存、导出（如Excel或PDF）等方面。追问方向：1）如果报表查询耗时过长（超过10秒），你会如何优化？请具体说明索引、分页、预计算或使用聚合表的方案。2）如果需要支持用户自定义报表字段和筛选条件，你的设计如何扩展？",
+                      "你的简历中强调微服务和分布式系统经验，而我们这个岗位主要维护一个单体ERP系统，涉及大量复杂的SQL和报表。请谈谈你将如何适应这种从高并发微服务到传统单体CRUD系统的转变？具体说明你在代码质量、性能优化、数据库设计方面的经验如何应用到简单的业务报表场景中。追问方向：1）在单体应用中，你如何处理慢查询和死锁问题？请举例说明你曾经遇到过的类似问题及解决方案。2）如果让你引入一个简单的报表框架（如JasperReports或Apache POI）到现有项目中，你会如何评估和选择？请给出你的判断标准。",
+                      "请写一段Java代码实现以下功能：从数据库中查询出某个月份的所有订单，按产品分类统计销售额，并将结果输出为Excel文件（.xlsx格式）。假设使用Spring Boot + MyBatis，数据库表结构为：orders表（id, product_id, amount, create_time），products表（id, category_id, name）。要求考虑性能（百万级数据）和代码可维护性。追问方向：1）如何分页查询避免内存溢出？请给出伪代码。2）如果Excel文件需要包含图表（如饼图），你有什么方案？",
+                      "在ERP系统中，报表往往需要根据用户选择的日期范围动态生成，但数据可能分布在多个表中且需要关联计算。请设计一个通用的报表查询服务，要求支持动态SQL拼接、参数校验、结果集映射，并提供统一的异常处理。追问方向：1）动态SQL拼接容易导致SQL注入，你如何防止？请给出具体防范措施。2）当报表查询结果需要缓存时，你如何设计缓存策略以平衡实时性和性能？",
+                      "假设你接手了一个遗留的ERP报表模块，代码中大量使用JSP和纯JDBC，报表生成慢且难以维护。作为新入职的Java后端开发，你会如何制定重构计划？请从技术选型、架构分层、数据访问层优化、单元测试等方面阐述。追问方向：1）在重构过程中，如何确保现有报表功能不受影响？你会采用什么测试策略？2）如果业务部门要求快速修复一个报表数据错误，而重构任务又很紧迫，你如何平衡？"
+                    ],
+                    "focus_areas": [
+                      "短板深挖：候选人缺乏报表开发经验，JD明确要求负责数据库CRUD操作与报表开发，而简历中未提及任何报表相关的技术（如JasperReports、POI、ECharts等）或实际项目经历。此外，候选人主要经验集中",
+                      "核心能力：Java、Spring Boot、MySQL、ERP系统、后端开发、数据库CRUD、报表开发、系统维护与bug修复"
+                    ],
+                    "question_count": 5,
+                    "company": null,
+                    "position": "Java后端"
+                  }
+                }
+              },
+              "observation": "聚合完成"
+            }
+          },
+          "global_status": "success",
+          "replan_reason": "",
+          "replan_count": 0
+        },
+        "intent": {
+          "demands": [
+            {
+              "intent": "interview_prepare",
+              "entities": {
+                "position": "Java后端"
+              },
+              "confidence": 0.88
+            }
+          ],
+          "needs_clarification": false,
+          "clarification_question": ""
+        },
+        "rewrite": {
+          "rewritten_query": "Java后端面试一般问什么",
+          "search_keywords": "Java后端面试一般问什么",
+          "is_follow_up": false,
+          "follow_up_type": "none",
+          "resolved_references": {}
+        },
+        "evidence_cache": [
+          {
+            "chunk_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a_chunk_1",
+            "content": "【某小公司 · Java后端 岗位职责】\n1. 负责传统企业内部管理系统的设计与开发。2. 数据库CRUD操作与报表开发。3. 系统日常维护与bug修复。",
+            "metadata": {
+              "company": "某小公司",
+              "index": 1,
+              "jd_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a",
+              "position": "Java后端",
+              "section": "responsibilities",
+              "strategy": "semantic"
+            },
+            "distance": 0.7322511076927185,
+            "bm25_score": 6.803795908828786,
+            "vec_norm": 0.641017779861409,
+            "bm25_norm": 0.42577783366977107,
+            "hybrid_score": 0.5764457960039175,
+            "rerank_score": 0.9982
+          },
+          {
+            "chunk_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a_chunk_6",
+            "content": "【某小公司 · Java后端 关键词】\nJava, Spring Boot, MySQL, ERP, 后端",
+            "metadata": {
+              "company": "某小公司",
+              "index": 6,
+              "jd_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a",
+              "position": "Java后端",
+              "section": "keywords",
+              "strategy": "semantic"
+            },
+            "distance": 0.6197474598884583,
+            "bm25_score": 9.906145995550908,
+            "vec_norm": 1.0,
+            "bm25_norm": 0.8622791554222022,
+            "hybrid_score": 0.9586837466266607,
+            "rerank_score": 0.9911
+          },
+          {
+            "chunk_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a_chunk_3",
+            "content": "【某小公司 · Java后端 硬性要求】\n熟悉Spring Boot、MySQL",
+            "metadata": {
+              "company": "某小公司",
+              "index": 3,
+              "jd_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a",
+              "position": "Java后端",
+              "priority": "high",
+              "section": "hard_requirements",
+              "strategy": "semantic"
+            },
+            "distance": 0.7657338976860046,
+            "bm25_score": 9.57143819239722,
+            "vec_norm": 0.5341792326425969,
+            "bm25_norm": 0.8151856958211281,
+            "hybrid_score": 0.6184811715961562,
+            "rerank_score": 0.9567
+          }
+        ],
+        "evidence_cache_query": "Java后端面试一般问什么",
+        "tool_outputs": [
+          {
+            "task_id": "T0",
+            "tool": "kb_retrieve",
+            "description": "检索Java后端相关JD",
+            "result": {
+              "chunks": [
+                {
+                  "chunk_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a_chunk_1",
+                  "content": "【某小公司 · Java后端 岗位职责】\n1. 负责传统企业内部管理系统的设计与开发。2. 数据库CRUD操作与报表开发。3. 系统日常维护与bug修复。",
+                  "source": "某小公司-Java后端",
+                  "metadata": {
+                    "company": "某小公司",
+                    "position": "Java后端"
+                  }
+                },
+                {
+                  "chunk_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a_chunk_6",
+                  "content": "【某小公司 · Java后端 关键词】\nJava, Spring Boot, MySQL, ERP, 后端",
+                  "source": "某小公司-Java后端",
+                  "metadata": {
+                    "company": "某小公司",
+                    "position": "Java后端"
+                  }
+                },
+                {
+                  "chunk_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a_chunk_3",
+                  "content": "【某小公司 · Java后端 硬性要求】\n熟悉Spring Boot、MySQL",
+                  "source": "某小公司-Java后端",
+                  "metadata": {
+                    "company": "某小公司",
+                    "position": "Java后端"
+                  }
+                }
+              ],
+              "query": "Java后端",
+              "filters": {
+                "position": "Java后端"
+              },
+              "strategy": "hybrid(70%vec+30%bm25)+reranker",
+              "pool_k": 3,
+              "rerank_k": 10,
+              "pool_size": 9,
+              "vec_only": 0,
+              "bm25_only": 2,
+              "both": 7,
+              "rerank": {
+                "enabled": true,
+                "candidates": 3,
+                "output": 3,
+                "best_rerank_score": 0.9982
+              }
+            }
+          },
+          {
+            "task_id": "T1",
+            "tool": "match_analyze",
+            "description": "分析简历与Java后端JD的匹配度",
+            "result": {
+              "score": 85,
+              "label": "高度契合",
+              "advantages": [
+                "Java核心技术",
+                "Spring Boot",
+                "MySQL数据库设计与优化",
+                "后端开发经验",
+                "企业级系统开发（SaaS供应链管理平台）",
+                "Git版本控制",
+                "Linux运维",
+                "团队协作能力"
+              ],
+              "weaknesses": [
+                "候选人缺乏报表开发经验，JD明确要求负责数据库CRUD操作与报表开发，而简历中未提及任何报表相关的技术（如JasperReports、POI、ECharts等）或实际项目经历。此外，候选人主要经验集中在微服务和高并发场景，而JD描述为传统企业内部管理系统，可能更偏向简单CRUD和报表，候选人相对缺乏此类场景的适配经验。"
+              ],
+              "suggestions": [
+                "核心能力要求: Java、Spring Boot、MySQL、ERP系统、后端开发、数据库CRUD、报表开发、系统维护与bug修复"
+              ],
+              "match_score": 85,
+              "covered": [
+                "Java核心技术",
+                "Spring Boot",
+                "MySQL数据库设计与优化",
+                "后端开发经验",
+                "企业级系统开发（SaaS供应链管理平台）",
+                "Git版本控制",
+                "Linux运维",
+                "团队协作能力"
+              ],
+              "missing_experience": "候选人缺乏报表开发经验，JD明确要求负责数据库CRUD操作与报表开发，而简历中未提及任何报表相关的技术（如JasperReports、POI、ECharts等）或实际项目经历。此外，候选人主要经验集中在微服务和高并发场景，而JD描述为传统企业内部管理系统，可能更偏向简单CRUD和报表，候选人相对缺乏此类场景的适配经验。",
+              "core_skills": "Java、Spring Boot、MySQL、ERP系统、后端开发、数据库CRUD、报表开发、系统维护与bug修复",
+              "company": null,
+              "position": "Java后端"
+            }
+          },
+          {
+            "task_id": "T2",
+            "tool": "interview_gen",
+            "description": "基于匹配结果生成Java后端面试题",
+            "result": {
+              "questions": [
+                "假设我们现在需要为一个ERP系统开发一个销售数据报表模块，要求支持月报、季报和年报的生成，数据源来自多个MySQL表（订单表、产品表、客户表等），数据量在百万级。请设计一个报表生成方案，包括数据查询、计算、缓存、导出（如Excel或PDF）等方面。追问方向：1）如果报表查询耗时过长（超过10秒），你会如何优化？请具体说明索引、分页、预计算或使用聚合表的方案。2）如果需要支持用户自定义报表字段和筛选条件，你的设计如何扩展？",
+                "你的简历中强调微服务和分布式系统经验，而我们这个岗位主要维护一个单体ERP系统，涉及大量复杂的SQL和报表。请谈谈你将如何适应这种从高并发微服务到传统单体CRUD系统的转变？具体说明你在代码质量、性能优化、数据库设计方面的经验如何应用到简单的业务报表场景中。追问方向：1）在单体应用中，你如何处理慢查询和死锁问题？请举例说明你曾经遇到过的类似问题及解决方案。2）如果让你引入一个简单的报表框架（如JasperReports或Apache POI）到现有项目中，你会如何评估和选择？请给出你的判断标准。",
+                "请写一段Java代码实现以下功能：从数据库中查询出某个月份的所有订单，按产品分类统计销售额，并将结果输出为Excel文件（.xlsx格式）。假设使用Spring Boot + MyBatis，数据库表结构为：orders表（id, product_id, amount, create_time），products表（id, category_id, name）。要求考虑性能（百万级数据）和代码可维护性。追问方向：1）如何分页查询避免内存溢出？请给出伪代码。2）如果Excel文件需要包含图表（如饼图），你有什么方案？",
+                "在ERP系统中，报表往往需要根据用户选择的日期范围动态生成，但数据可能分布在多个表中且需要关联计算。请设计一个通用的报表查询服务，要求支持动态SQL拼接、参数校验、结果集映射，并提供统一的异常处理。追问方向：1）动态SQL拼接容易导致SQL注入，你如何防止？请给出具体防范措施。2）当报表查询结果需要缓存时，你如何设计缓存策略以平衡实时性和性能？",
+                "假设你接手了一个遗留的ERP报表模块，代码中大量使用JSP和纯JDBC，报表生成慢且难以维护。作为新入职的Java后端开发，你会如何制定重构计划？请从技术选型、架构分层、数据访问层优化、单元测试等方面阐述。追问方向：1）在重构过程中，如何确保现有报表功能不受影响？你会采用什么测试策略？2）如果业务部门要求快速修复一个报表数据错误，而重构任务又很紧迫，你如何平衡？"
+              ],
+              "focus_areas": [
+                "短板深挖：候选人缺乏报表开发经验，JD明确要求负责数据库CRUD操作与报表开发，而简历中未提及任何报表相关的技术（如JasperReports、POI、ECharts等）或实际项目经历。此外，候选人主要经验集中",
+                "核心能力：Java、Spring Boot、MySQL、ERP系统、后端开发、数据库CRUD、报表开发、系统维护与bug修复"
+              ],
+              "question_count": 5,
+              "company": null,
+              "position": "Java后端"
+            }
+          },
+          {
+            "task_id": "T3",
+            "tool": null,
+            "description": "聚合面试题生成结果",
+            "result": {
+              "aggregation": {
+                "interview": {
+                  "questions": [
+                    "假设我们现在需要为一个ERP系统开发一个销售数据报表模块，要求支持月报、季报和年报的生成，数据源来自多个MySQL表（订单表、产品表、客户表等），数据量在百万级。请设计一个报表生成方案，包括数据查询、计算、缓存、导出（如Excel或PDF）等方面。追问方向：1）如果报表查询耗时过长（超过10秒），你会如何优化？请具体说明索引、分页、预计算或使用聚合表的方案。2）如果需要支持用户自定义报表字段和筛选条件，你的设计如何扩展？",
+                    "你的简历中强调微服务和分布式系统经验，而我们这个岗位主要维护一个单体ERP系统，涉及大量复杂的SQL和报表。请谈谈你将如何适应这种从高并发微服务到传统单体CRUD系统的转变？具体说明你在代码质量、性能优化、数据库设计方面的经验如何应用到简单的业务报表场景中。追问方向：1）在单体应用中，你如何处理慢查询和死锁问题？请举例说明你曾经遇到过的类似问题及解决方案。2）如果让你引入一个简单的报表框架（如JasperReports或Apache POI）到现有项目中，你会如何评估和选择？请给出你的判断标准。",
+                    "请写一段Java代码实现以下功能：从数据库中查询出某个月份的所有订单，按产品分类统计销售额，并将结果输出为Excel文件（.xlsx格式）。假设使用Spring Boot + MyBatis，数据库表结构为：orders表（id, product_id, amount, create_time），products表（id, category_id, name）。要求考虑性能（百万级数据）和代码可维护性。追问方向：1）如何分页查询避免内存溢出？请给出伪代码。2）如果Excel文件需要包含图表（如饼图），你有什么方案？",
+                    "在ERP系统中，报表往往需要根据用户选择的日期范围动态生成，但数据可能分布在多个表中且需要关联计算。请设计一个通用的报表查询服务，要求支持动态SQL拼接、参数校验、结果集映射，并提供统一的异常处理。追问方向：1）动态SQL拼接容易导致SQL注入，你如何防止？请给出具体防范措施。2）当报表查询结果需要缓存时，你如何设计缓存策略以平衡实时性和性能？",
+                    "假设你接手了一个遗留的ERP报表模块，代码中大量使用JSP和纯JDBC，报表生成慢且难以维护。作为新入职的Java后端开发，你会如何制定重构计划？请从技术选型、架构分层、数据访问层优化、单元测试等方面阐述。追问方向：1）在重构过程中，如何确保现有报表功能不受影响？你会采用什么测试策略？2）如果业务部门要求快速修复一个报表数据错误，而重构任务又很紧迫，你如何平衡？"
+                  ],
+                  "focus_areas": [
+                    "短板深挖：候选人缺乏报表开发经验，JD明确要求负责数据库CRUD操作与报表开发，而简历中未提及任何报表相关的技术（如JasperReports、POI、ECharts等）或实际项目经历。此外，候选人主要经验集中",
+                    "核心能力：Java、Spring Boot、MySQL、ERP系统、后端开发、数据库CRUD、报表开发、系统维护与bug修复"
+                  ],
+                  "question_count": 5,
+                  "company": null,
+                  "position": "Java后端"
+                }
+              }
+            }
+          }
+        ],
+        "final_aggregation_prompt": {
+          "system_prompt": "你是一位专业的求职顾问。请基于以下工具执行结果，给用户一个清晰、有帮助的回复。\n要求：\n1. 先直接回答用户的问题（是/否/有/没有），不要绕弯子，不要重复用户的原话\n2. 如果有匹配分析结果，给出具体的分数和建议\n3. 如果有检索结果，基于事实回答，不要编造\n4. 【强制】引用信息时必须标注来源。每个引用的事实后面都要跟 [来源：公司名-岗位名] 格式。   kb_retrieve 结果的 chunks 中带有 'source' 字段（如'字节跳动-AI产品经理'），请直接使用。   external_search 结果带有 'source_name' 字段，也请直接使用。\n5. 当本地知识库与外部搜索结果冲突时，请并列呈现两种说法并标注各自来源，不要替用户做判断\n6. 语气友好、专业、结构化",
+          "user_prompt": "【用户问题】\nJava后端面试一般问什么\n\n【工具执行结果】\n[{\"task_id\": \"T0\", \"tool\": \"kb_retrieve\", \"description\": \"检索Java后端相关JD\", \"result\": {\"chunks\": [{\"chunk_id\": \"45bd2600-af57-45fe-a96e-c6cae6838c7a_chunk_1\", \"content\": \"【某小公司 · Java后端 岗位职责】\\n1. 负责传统企业内部管理系统的设计与开发。2. 数据库CRUD操作与报表开发。3. 系统日常维护与bug修复。\", \"source\": \"某小公司-Java后端\", \"metadata\": {\"company\": \"某小公司\", \"position\": \"Java后端\"}}, {\"chunk_id\": \"45bd2600-af57-45fe-a96e-c6cae6838c7a_chunk_6\", \"content\": \"【某小公司 · Java后端 关键词】\\nJava, Spring Boot, MySQL, ERP, 后端\", \"source\": \"某小公司-Java后端\", \"metadata\": {\"company\": \"某小公司\", \"position\": \"Java后端\"}}, {\"chunk_id\": \"45bd2600-af57-45fe-a96e-c6cae6838c7a_chunk_3\", \"content\": \"【某小公司 · Java后端 硬性要求】\\n熟悉Spring Boot、MySQL\", \"source\": \"某小公司-Java后端\", \"metadata\": {\"company\": \"某小公司\", \"position\": \"Java后端\"}}], \"query\": \"Java后端\", \"filters\": {\"position\": \"Java后端\"}, \"strategy\": \"hybrid(70%vec+30%bm25)+reranker\", \"pool_k\": 3, \"rerank_k\": 10, \"pool_size\": 9, \"vec_only\": 0, \"bm25_only\": 2, \"both\": 7, \"rerank\": {\"enabled\": true, \"candidates\": 3, \"output\": 3, \"best_rerank_score\": 0.9982}}}, {\"task_id\": \"T1\", \"tool\": \"match_analyze\", \"description\": \"分析简历与Java后端JD的匹配度\", \"result\": {\"score\": 85, \"label\": \"高度契合\", \"advantages\": [\"Java核心技术\", \"Spring Boot\", \"MySQL数据库设计与优化\", \"后端开发经验\", \"企业级系统开发（SaaS供应链管理平台）\", \"Git版本控制\", \"Linux运维\", \"团队协作能力\"], \"weaknesses\": [\"候选人缺乏报表开发经验，JD明确要求负责数据库CRUD操作与报表开发，而简历中未提及任何报表相关的技术（如JasperReports、POI、ECharts等）或实际项目经历。此外，候选人主要经验集中在微服务和高并发场景，而JD描述为传统企业内部管理系统，可能更偏向简单CRUD和报表，候选人相对缺乏此类场景的适配经验。\"], \"suggestions\": [\"核心能力要求: Java、Spring Boot、MySQL、ERP系统、后端开发、数据库CRUD、报表开发、系统维护与bug修复\"], \"match_score\": 85, \"covered\": [\"Java核心技术\", \"Spring Boot\", \"MySQL数据库设计与优化\", \"后端开发经验\", \"企业级系统开发（SaaS供应链管理平台）\", \"Git版本控制\", \"Linux运维\", \"团队协作能力\"], \"missing_experience\": \"候选人缺乏报表开发经验，JD明确要求负责数据库CRUD操作与报表开发，而简历中未提及任何报表相关的技术（如JasperReports、POI、ECharts等）或实际项目经历。此外，候选人主要经验集中在微服务和高并发场景，而JD描述为传统企业内部管理系统，可能更偏向简单CRUD和报表，候选人相对缺乏此类场景的适配经验。\", \"core_skills\": \"Java、Spring Boot、MySQL、ERP系统、后端开发、数据库CRUD、报表开发、系统维护与bug修复\", \"company\": null, \"position\": \"Java后端\"}}, {\"task_id\": \"T2\", \"tool\": \"interview_gen\", \"description\": \"基于匹配结果生成Java后端面试题\", \"result\": {\"questions\": [\"假设我们现在需要为一个ERP系统开发一个销售数据报表模块，要求支持月报、季报和年报的生成，数据源来自多个MySQL表（订单表、产品表、客户表等），数据量在百万级。请设计一个报表生成方案，包括数据查询、计算、缓存、导出（如Excel或PDF）等方面。追问方向：1）如果报表查询耗时过长（超过10秒），你会如何优化？请具体说明索引、分页、预计算或使用聚合表的方案。2）如果需要支持用户自定义报表字段和筛选条件，你的设计如何扩展？\", \"你的简历中强调微服务和分布式系统经验，而我们这个岗位主要维护一个单体ERP系统，涉及大量复杂的SQL和报表。请谈谈你将如何适应这种从高并发微服务到传统单体CRUD系统的转变？具体说明你在代码质量、性能优化、数据库设计方面的经验如何应用到简单的业务报表场景中。追问方向：1）在单体应用中，你如何处理慢查询和死锁问题？请举例说明你曾经遇到过的类似问题及解决方案。2）如果让你引入一个简单的报表框架（如JasperReports或Apache POI）到现有项目中，你会如何评估和选择？请给出你的判断标准。\", \"请写一段Java代码实现以下功能：从数据库中查询出某个月份的所有订单，按产品分类统计销售额，并将结果输出为Excel文件（.xlsx格式）。假设使用Spring Boot + MyBatis，数据库表结构为：orders表（id, product_id, amount, create_time），products表（id, category_id, name）。要求考虑性能（百万级数据）和代码可维护性。追问方向：1）如何分页查询避免内存溢出？请给出伪代码。2）如果Excel文件需要包含图表（如饼图），你有什么方案？\", \"在ERP系统中，报表往往需要根据用户选择的日期范围动态生成，但数据可能分布在多个表中且需要关联计算。请设计一个通用的报表查询服务，要求支持动态SQL拼接、参数校验、结果集映射，并提供统一的异常处理。追问方向：1）动态SQL拼接容易导致SQL注入，你如何防止？请给出具体防范措施。2）当报表查询结果需要缓存时，你如何设计缓存策略以平衡实时性和性能？\", \"假设你接手了一个遗\n\n请生成回复："
+        }
+      },
+      "usage": {
+        "prompt_tokens": 9575,
+        "completion_tokens": 6952,
+        "total_tokens": 16527
+      },
+      "_time": 90.53193736076355,
+      "type": "done"
+    }
+  ],
+  "timestamp": "2026-06-04T16:42:50.362477",
+  "prompt_tokens": 9575,
+  "completion_tokens": 6952,
+  "total_tokens": 16527,
+  "tool_execution_success_rate": 1.0,
+  "tool_correct_rate": 1.0
+}

@@ -83,26 +83,76 @@ _INTENT_NORMALIZE_MAP = {
 
 # ── 上下文构建 ───────────────────────────────────────────────
 
+def _build_resume_text(resume_id: str) -> str:
+    """从 resumes 构建完整简历文本供 Judge 使用"""
+    if not resume_id or resume_id not in resumes:
+        return "无简历"
+    r = resumes[resume_id]
+    ps = r.get("parsed_schema", {})
+    
+    # 优先使用原始文本
+    raw = ps.get("meta", {}).get("raw_text", "") if ps.get("meta") else ""
+    if raw and len(raw) > 50:
+        return raw[:2500]  # 限制长度防止 prompt 过长
+    
+    # 否则从结构化字段重建
+    parts = []
+    bi = ps.get("basic_info", {})
+    if bi.get("name"):
+        parts.append(f"姓名：{bi['name']}")
+    if bi.get("years_exp") is not None:
+        parts.append(f"经验：{bi['years_exp']}年")
+    
+    edu = ps.get("education", [])
+    if edu:
+        parts.append("教育背景：")
+        for e in edu:
+            line = f"  - {e.get('school', '')} {e.get('degree', '')} {e.get('major', '')}"
+            if e.get("graduation_year"):
+                line += f"（毕业：{e['graduation_year']}）"
+            parts.append(line)
+    
+    work = ps.get("work_experience", [])
+    if work:
+        parts.append("工作经历：")
+        for w in work:
+            line = f"  - {w.get('company', '')} {w.get('title', '')}"
+            if w.get("duration"):
+                line += f"（{w['duration']}）"
+            parts.append(line)
+            if w.get("description"):
+                parts.append(f"    {w['description'][:200]}")
+    
+    projects = ps.get("projects", [])
+    if projects:
+        parts.append("项目经历：")
+        for p in projects:
+            line = f"  - {p.get('name', '')} {p.get('role', '')}"
+            if p.get("duration"):
+                line += f"（{p['duration']}）"
+            parts.append(line)
+            if p.get("description"):
+                parts.append(f"    {p['description'][:200]}")
+    
+    skills = ps.get('skills', [])
+    if isinstance(skills, dict):
+        skill_list = []
+        for v in skills.values():
+            if isinstance(v, list):
+                skill_list.extend(v)
+        skills = skill_list
+    if skills:
+        parts.append(f"技能：{', '.join(skills[:20])}")
+    
+    return "\n".join(parts) or "（简历信息为空）"
+
+
 def _build_case_context(case_id: str, case_result: dict) -> dict:
     """构建 Judge 需要的上下文信息"""
     eval_ctx = case_result.get("eval_context", {})
 
     resume_id = case_result.get("resume_id", "")
-    resume_info = "无简历"
-    if resume_id and resume_id in resumes:
-        r = resumes[resume_id]
-        ps = r.get("parsed_schema", {})
-        skills = ps.get('skills', [])
-        if isinstance(skills, dict):
-            # skills 可能是 {'technical': [...], 'business': [...], 'soft': [...]} 的结构
-            skill_list = []
-            for v in skills.values():
-                if isinstance(v, list):
-                    skill_list.extend(v)
-            skills = skill_list
-        elif not isinstance(skills, list):
-            skills = []
-        resume_info = f"姓名：{ps.get('name', '未知')} | 经验：{ps.get('total_years', '未知')}年 | 技能：{', '.join(skills[:5])}"
+    resume_info = _build_resume_text(resume_id)
 
     gold_slots = eval_ctx.get("gold_slots", {})
 
@@ -169,7 +219,8 @@ def _rule_based_check(pred_intents: list, reply: str, gold_intents: list, ctx: d
     reply_stripped = (reply or "").strip()
     
     # 0. 空回复 / 极短回复（否决项）
-    if len(reply_stripped) < 30:
+    # 例外：当期望意图为 clarification 时，澄清问题本身通常很短（10~20字），不应因短而否决
+    if "clarification" not in gold_intents and len(reply_stripped) < 30:
         return {"resolved": False, "reason": "【规则否决】回复为空或过短(<30字)", "rule_hit": "empty_reply", "veto": True}
     
     # 1. 声称缺少简历但实际应有（否决项）

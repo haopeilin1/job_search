@@ -1,0 +1,2566 @@
+{
+  "case_id": "eval_li_02",
+  "message": "阿里巴巴后端开发我匹配吗",
+  "gold_intents": [
+    "assess"
+  ],
+  "expected_tools": [
+    "kb_retrieve",
+    "match_analyze"
+  ],
+  "scenario": "有简历_单JD匹配_阿里巴巴",
+  "eval_context": {
+    "gold_intents": [
+      "assess"
+    ],
+    "gold_slots": {
+      "company": "阿里巴巴",
+      "position": "后端开发"
+    },
+    "relevance_score": 0,
+    "expected_tools": [
+      "kb_retrieve",
+      "match_analyze"
+    ],
+    "scenario": "有简历_单JD匹配_阿里巴巴",
+    "notes": "阿里ID=1要求3年+Java经验，李工程师3年经验高度匹配"
+  },
+  "resume_id": "e30c8b27-cfce-4918-8810-832e3ab5087c",
+  "status": "success",
+  "error": null,
+  "ttfb": 0.012,
+  "total_latency": 113.95,
+  "event_count": 132,
+  "pred_intent": "match_assess",
+  "pred_intents": [
+    "match_assess"
+  ],
+  "pred_tools": [
+    {
+      "tool": "kb_retrieve",
+      "status": "✅",
+      "params": {
+        "query": "阿里巴巴 后端开发 岗位描述",
+        "company": "阿里巴巴",
+        "position": "后端开发",
+        "top_k": 5
+      },
+      "result_preview": "{'chunks': [{'chunk_id': '9cde8355-dcc0-434e-97c4-67dfc5dae5b8_chunk_1', 'content': '【阿里巴巴 · 后端开发 岗位职责】\\n1. 负责电商核心系统的设计与开发。2. 高并发系统架构设计与性能优化。3. 分布式系统开发与微服务治理。4. 数据库设计与优化。', 'metadata': {'company': '阿里"
+    },
+    {
+      "tool": "match_analyze",
+      "status": "✅",
+      "params": {
+        "resume_text": "姓名：李工程师\n电话：138-XXXX-1234 | 邮箱：lixx_dev@email.com | 现居：北京\nJava后端开发工程师 | 3年经验 | 本科\n\n教育背景\n2018.09 - 2022.06  XX理工大学  计算机科学与技术（本科）\n主修课程：数据结构与算法、操作系统、计算机网络、数据库原理、软件工程\n在校荣誉：校级优秀毕业设计（基于微服务的校园二手交易平台）\n\n专业技能\n熟练掌握Java核心技术，熟悉JVM内存模型、GC机制及常见调优手段\n精通Spring Boot、Spring Cloud微服务生态，熟悉Nacos、Gateway、Sentinel、Seata等组件\n熟悉MySQL索引优化、事务机制、分库分表策略，具备SQL调优及慢查询治理经验\n了解Redis缓存设计、Kafka消息队列，熟悉Docker容器化部署及Jenkins CI/CD流程\n掌握Git版本控制，熟悉Linux日常运维及日志排查\n\n工作经历\n2022.07 - 至今  XX科技有限公司（B轮 / 企业服务 SaaS）  Java后端工程师\n\nSaaS供应链管理平台（2023.03 - 至今）\n负责订单中心、库存中心核心模块设计与开发，采用Spring Cloud Alibaba微服务架构，支撑日均10W+订单处理\n主导MySQL分库分表方案设计（ShardingSphere），解决单表数据量过亿导致的查询性能瓶颈，接口响应时间从800ms降至120ms\n设计多级缓存策略（Redis + Caffeine本地缓存），热点数据命中率提升至95%，降低数据库负载40%\n基于Seata AT模式实现分布式事务，保障订单与库存数据一致性，线上运行半年零资损事故\n\n企业权限中台重构（2022.09 - 2023.02）\n参与RBAC权限中台从单体到微服务的拆分重构，负责鉴权服务、菜单路由模块开发\n引入Gateway统一鉴权过滤器，对接OAuth2.0 + JWT认证体系，支持多租户隔离\n编写核心接口单元测试（Unit + Mockito），模块测试覆盖率从45%提升至82%\n\n自我评价\n具备扎实的计算机基础与3年企业级后端开发经验，擅长高并发场景下的系统设计与性能优化。注重代码质量与工程规范，具备良好的团队协作与跨部门沟通能力。",
+        "jd_text": [
+          {
+            "chunk_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8_chunk_1",
+            "content": "【阿里巴巴 · 后端开发 岗位职责】\n1. 负责电商核心系统的设计与开发。2. 高并发系统架构设计与性能优化。3. 分布式系统开发与微服务治理。4. 数据库设计与优化。",
+            "metadata": {
+              "company": "阿里巴巴",
+              "index": 1,
+              "jd_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8",
+              "position": "后端开发",
+              "section": "responsibilities",
+              "strategy": "semantic"
+            },
+            "distance": 0.2260117083787918,
+            "bm25_score": 18.630862039785967,
+            "vec_norm": 1.0,
+            "bm25_norm": 0.6406014709806387,
+            "hybrid_score": 0.8921804412941916,
+            "rerank_score": 0.9998
+          },
+          {
+            "chunk_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8_chunk_6",
+            "content": "【阿里巴巴 · 后端开发 软性要求/加分项】\n有电商行业经验优先",
+            "metadata": {
+              "company": "阿里巴巴",
+              "index": 6,
+              "jd_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8",
+              "position": "后端开发",
+              "priority": "medium",
+              "section": "soft_requirements",
+              "strategy": "semantic"
+            },
+            "distance": 0.3799883723258972,
+            "bm25_score": 21.72463909589805,
+            "vec_norm": 0.32974663120331615,
+            "bm25_norm": 0.8849205513970899,
+            "hybrid_score": 0.49629880726144826,
+            "rerank_score": 0.9912
+          },
+          {
+            "chunk_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8_chunk_4",
+            "content": "【阿里巴巴 · 后端开发 硬性要求】\n熟悉分布式系统设计与微服务架构",
+            "metadata": {
+              "company": "阿里巴巴",
+              "index": 4,
+              "jd_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8",
+              "position": "后端开发",
+              "priority": "high",
+              "section": "hard_requirements",
+              "strategy": "semantic"
+            },
+            "distance": 0.3794054090976715,
+            "bm25_score": 21.054586656772862,
+            "vec_norm": 0.3322842434465395,
+            "bm25_norm": 0.832005750883444,
+            "hybrid_score": 0.4822006956776108,
+            "rerank_score": 0.9909
+          },
+          {
+            "chunk_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8_chunk_3",
+            "content": "【阿里巴巴 · 后端开发 硬性要求】\n精通Spring Boot、MySQL、Redis、Kafka",
+            "metadata": {
+              "company": "阿里巴巴",
+              "index": 3,
+              "jd_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8",
+              "position": "后端开发",
+              "priority": "high",
+              "section": "hard_requirements",
+              "strategy": "semantic"
+            },
+            "distance": 0.3772203326225281,
+            "bm25_score": 21.523449479760323,
+            "vec_norm": 0.3417957813055905,
+            "bm25_norm": 0.8690323793948449,
+            "hybrid_score": 0.4999667607323668,
+            "rerank_score": 0.9907
+          },
+          {
+            "chunk_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8_chunk_2",
+            "content": "【阿里巴巴 · 后端开发 硬性要求】\n3年以上Java开发经验",
+            "metadata": {
+              "company": "阿里巴巴",
+              "index": 2,
+              "jd_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8",
+              "position": "后端开发",
+              "priority": "high",
+              "section": "hard_requirements",
+              "strategy": "semantic"
+            },
+            "distance": 0.3813605308532715,
+            "bm25_score": 23.181873451523675,
+            "vec_norm": 0.3237736879538661,
+            "bm25_norm": 1.0,
+            "hybrid_score": 0.5266415815677062,
+            "rerank_score": 0.9713
+          }
+        ],
+        "company": "阿里巴巴",
+        "position": "后端开发",
+        "attributes": [
+          "匹配度"
+        ]
+      },
+      "result_preview": "{'score': 85, 'label': '高度契合', 'advantages': ['Java核心开发', 'Spring Boot', 'MySQL数据库设计与优化', 'Redis缓存设计', '微服务架构（Spring Cloud）', '分布式系统设计（Seata、Nacos）', '高并发性能优化（分库分表、多级缓存）'], 'weaknesses': ['候选人缺乏Kafka消"
+    }
+  ],
+  "tools_called": [
+    "kb_retrieve",
+    "match_analyze"
+  ],
+  "kb_chunks": [
+    {
+      "chunk_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8_chunk_1",
+      "content": "【阿里巴巴 · 后端开发 岗位职责】\n1. 负责电商核心系统的设计与开发。2. 高并发系统架构设计与性能优化。3. 分布式系统开发与微服务治理。4. 数据库设计与优化。",
+      "metadata": {
+        "company": "阿里巴巴",
+        "index": 1,
+        "jd_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8",
+        "position": "后端开发",
+        "section": "responsibilities",
+        "strategy": "semantic"
+      },
+      "distance": 0.2260117083787918,
+      "bm25_score": 18.630862039785967,
+      "vec_norm": 1.0,
+      "bm25_norm": 0.6406014709806387,
+      "hybrid_score": 0.8921804412941916,
+      "rerank_score": 0.9998
+    },
+    {
+      "chunk_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8_chunk_6",
+      "content": "【阿里巴巴 · 后端开发 软性要求/加分项】\n有电商行业经验优先",
+      "metadata": {
+        "company": "阿里巴巴",
+        "index": 6,
+        "jd_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8",
+        "position": "后端开发",
+        "priority": "medium",
+        "section": "soft_requirements",
+        "strategy": "semantic"
+      },
+      "distance": 0.3799883723258972,
+      "bm25_score": 21.72463909589805,
+      "vec_norm": 0.32974663120331615,
+      "bm25_norm": 0.8849205513970899,
+      "hybrid_score": 0.49629880726144826,
+      "rerank_score": 0.9912
+    },
+    {
+      "chunk_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8_chunk_4",
+      "content": "【阿里巴巴 · 后端开发 硬性要求】\n熟悉分布式系统设计与微服务架构",
+      "metadata": {
+        "company": "阿里巴巴",
+        "index": 4,
+        "jd_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8",
+        "position": "后端开发",
+        "priority": "high",
+        "section": "hard_requirements",
+        "strategy": "semantic"
+      },
+      "distance": 0.3794054090976715,
+      "bm25_score": 21.054586656772862,
+      "vec_norm": 0.3322842434465395,
+      "bm25_norm": 0.832005750883444,
+      "hybrid_score": 0.4822006956776108,
+      "rerank_score": 0.9909
+    },
+    {
+      "chunk_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8_chunk_3",
+      "content": "【阿里巴巴 · 后端开发 硬性要求】\n精通Spring Boot、MySQL、Redis、Kafka",
+      "metadata": {
+        "company": "阿里巴巴",
+        "index": 3,
+        "jd_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8",
+        "position": "后端开发",
+        "priority": "high",
+        "section": "hard_requirements",
+        "strategy": "semantic"
+      },
+      "distance": 0.3772203326225281,
+      "bm25_score": 21.523449479760323,
+      "vec_norm": 0.3417957813055905,
+      "bm25_norm": 0.8690323793948449,
+      "hybrid_score": 0.4999667607323668,
+      "rerank_score": 0.9907
+    },
+    {
+      "chunk_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8_chunk_2",
+      "content": "【阿里巴巴 · 后端开发 硬性要求】\n3年以上Java开发经验",
+      "metadata": {
+        "company": "阿里巴巴",
+        "index": 2,
+        "jd_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8",
+        "position": "后端开发",
+        "priority": "high",
+        "section": "hard_requirements",
+        "strategy": "semantic"
+      },
+      "distance": 0.3813605308532715,
+      "bm25_score": 23.181873451523675,
+      "vec_norm": 0.3237736879538661,
+      "bm25_norm": 1.0,
+      "hybrid_score": 0.5266415815677062,
+      "rerank_score": 0.9713
+    }
+  ],
+  "tool_executions_full": [
+    {
+      "tool_name": "kb_retrieve",
+      "task_id": "T0",
+      "status": "success",
+      "output": {
+        "chunks": [
+          {
+            "chunk_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8_chunk_1",
+            "content": "【阿里巴巴 · 后端开发 岗位职责】\n1. 负责电商核心系统的设计与开发。2. 高并发系统架构设计与性能优化。3. 分布式系统开发与微服务治理。4. 数据库设计与优化。",
+            "source": "阿里巴巴-后端开发",
+            "metadata": {
+              "company": "阿里巴巴",
+              "position": "后端开发"
+            }
+          },
+          {
+            "chunk_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8_chunk_6",
+            "content": "【阿里巴巴 · 后端开发 软性要求/加分项】\n有电商行业经验优先",
+            "source": "阿里巴巴-后端开发",
+            "metadata": {
+              "company": "阿里巴巴",
+              "position": "后端开发"
+            }
+          },
+          {
+            "chunk_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8_chunk_4",
+            "content": "【阿里巴巴 · 后端开发 硬性要求】\n熟悉分布式系统设计与微服务架构",
+            "source": "阿里巴巴-后端开发",
+            "metadata": {
+              "company": "阿里巴巴",
+              "position": "后端开发"
+            }
+          },
+          {
+            "chunk_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8_chunk_3",
+            "content": "【阿里巴巴 · 后端开发 硬性要求】\n精通Spring Boot、MySQL、Redis、Kafka",
+            "source": "阿里巴巴-后端开发",
+            "metadata": {
+              "company": "阿里巴巴",
+              "position": "后端开发"
+            }
+          },
+          {
+            "chunk_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8_chunk_2",
+            "content": "【阿里巴巴 · 后端开发 硬性要求】\n3年以上Java开发经验",
+            "source": "阿里巴巴-后端开发",
+            "metadata": {
+              "company": "阿里巴巴",
+              "position": "后端开发"
+            }
+          }
+        ],
+        "query": "阿里巴巴 后端开发 岗位描述",
+        "filters": {
+          "company": "阿里巴巴",
+          "position": "后端开发"
+        },
+        "strategy": "hybrid(70%vec+30%bm25)+reranker",
+        "pool_k": 5,
+        "rerank_k": 10,
+        "pool_size": 18,
+        "vec_only": 0,
+        "bm25_only": 9,
+        "both": 9,
+        "rerank": {
+          "enabled": true,
+          "candidates": 5,
+          "output": 5,
+          "best_rerank_score": 0.9998
+        }
+      }
+    },
+    {
+      "tool_name": "match_analyze",
+      "task_id": "T1",
+      "status": "success",
+      "output": {
+        "score": 85,
+        "label": "高度契合",
+        "advantages": [
+          "Java核心开发",
+          "Spring Boot",
+          "MySQL数据库设计与优化",
+          "Redis缓存设计",
+          "微服务架构（Spring Cloud）",
+          "分布式系统设计（Seata、Nacos）",
+          "高并发性能优化（分库分表、多级缓存）"
+        ],
+        "weaknesses": [
+          "候选人缺乏Kafka消息队列的深入使用经验（简历仅了解，未达到精通程度）；同时没有电商行业核心系统的直接开发经验（其项目为SaaS供应链管理，虽相关但非电商核心业务）。"
+        ],
+        "suggestions": [
+          "核心能力要求: Java后端开发；精通Spring Boot、MySQL、Redis、Kafka；熟悉分布式系统设计与微服务架构；具备高并发系统架构设计与性能优化能力；数据库设计与优化；电商行业经验（加分项）"
+        ],
+        "match_score": 85,
+        "covered": [
+          "Java核心开发",
+          "Spring Boot",
+          "MySQL数据库设计与优化",
+          "Redis缓存设计",
+          "微服务架构（Spring Cloud）",
+          "分布式系统设计（Seata、Nacos）",
+          "高并发性能优化（分库分表、多级缓存）"
+        ],
+        "missing_experience": "候选人缺乏Kafka消息队列的深入使用经验（简历仅了解，未达到精通程度）；同时没有电商行业核心系统的直接开发经验（其项目为SaaS供应链管理，虽相关但非电商核心业务）。",
+        "core_skills": "Java后端开发；精通Spring Boot、MySQL、Redis、Kafka；熟悉分布式系统设计与微服务架构；具备高并发系统架构设计与性能优化能力；数据库设计与优化；电商行业经验（加分项）",
+        "company": "阿里巴巴",
+        "position": "后端开发"
+      }
+    },
+    {
+      "tool_name": null,
+      "task_id": "T2",
+      "status": "success",
+      "output": {
+        "aggregation": {
+          "assess_result": {
+            "score": 85,
+            "label": "高度契合",
+            "advantages": [
+              "Java核心开发",
+              "Spring Boot",
+              "MySQL数据库设计与优化",
+              "Redis缓存设计",
+              "微服务架构（Spring Cloud）",
+              "分布式系统设计（Seata、Nacos）",
+              "高并发性能优化（分库分表、多级缓存）"
+            ],
+            "weaknesses": [
+              "候选人缺乏Kafka消息队列的深入使用经验（简历仅了解，未达到精通程度）；同时没有电商行业核心系统的直接开发经验（其项目为SaaS供应链管理，虽相关但非电商核心业务）。"
+            ],
+            "suggestions": [
+              "核心能力要求: Java后端开发；精通Spring Boot、MySQL、Redis、Kafka；熟悉分布式系统设计与微服务架构；具备高并发系统架构设计与性能优化能力；数据库设计与优化；电商行业经验（加分项）"
+            ],
+            "match_score": 85,
+            "covered": [
+              "Java核心开发",
+              "Spring Boot",
+              "MySQL数据库设计与优化",
+              "Redis缓存设计",
+              "微服务架构（Spring Cloud）",
+              "分布式系统设计（Seata、Nacos）",
+              "高并发性能优化（分库分表、多级缓存）"
+            ],
+            "missing_experience": "候选人缺乏Kafka消息队列的深入使用经验（简历仅了解，未达到精通程度）；同时没有电商行业核心系统的直接开发经验（其项目为SaaS供应链管理，虽相关但非电商核心业务）。",
+            "core_skills": "Java后端开发；精通Spring Boot、MySQL、Redis、Kafka；熟悉分布式系统设计与微服务架构；具备高并发系统架构设计与性能优化能力；数据库设计与优化；电商行业经验（加分项）",
+            "company": "阿里巴巴",
+            "position": "后端开发"
+          }
+        }
+      }
+    }
+  ],
+  "debug_info": {
+    "task_graph": {
+      "tasks": {
+        "T0": {
+          "task_id": "T0",
+          "task_type": "tool_call",
+          "tool_name": "kb_retrieve",
+          "status": "success",
+          "parameters": {
+            "query": "{{global_slots.company}} {{global_slots.position}} 岗位描述",
+            "company": "{{global_slots.company}}",
+            "position": "{{global_slots.position}}",
+            "top_k": 5
+          },
+          "resolved_params": {
+            "query": "阿里巴巴 后端开发 岗位描述",
+            "company": "阿里巴巴",
+            "position": "后端开发",
+            "top_k": 5
+          },
+          "result": {
+            "chunks": [
+              {
+                "chunk_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8_chunk_1",
+                "content": "【阿里巴巴 · 后端开发 岗位职责】\n1. 负责电商核心系统的设计与开发。2. 高并发系统架构设计与性能优化。3. 分布式系统开发与微服务治理。4. 数据库设计与优化。",
+                "metadata": {
+                  "company": "阿里巴巴",
+                  "index": 1,
+                  "jd_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8",
+                  "position": "后端开发",
+                  "section": "responsibilities",
+                  "strategy": "semantic"
+                },
+                "distance": 0.2260117083787918,
+                "bm25_score": 18.630862039785967,
+                "vec_norm": 1.0,
+                "bm25_norm": 0.6406014709806387,
+                "hybrid_score": 0.8921804412941916,
+                "rerank_score": 0.9998
+              },
+              {
+                "chunk_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8_chunk_6",
+                "content": "【阿里巴巴 · 后端开发 软性要求/加分项】\n有电商行业经验优先",
+                "metadata": {
+                  "company": "阿里巴巴",
+                  "index": 6,
+                  "jd_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8",
+                  "position": "后端开发",
+                  "priority": "medium",
+                  "section": "soft_requirements",
+                  "strategy": "semantic"
+                },
+                "distance": 0.3799883723258972,
+                "bm25_score": 21.72463909589805,
+                "vec_norm": 0.32974663120331615,
+                "bm25_norm": 0.8849205513970899,
+                "hybrid_score": 0.49629880726144826,
+                "rerank_score": 0.9912
+              },
+              {
+                "chunk_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8_chunk_4",
+                "content": "【阿里巴巴 · 后端开发 硬性要求】\n熟悉分布式系统设计与微服务架构",
+                "metadata": {
+                  "company": "阿里巴巴",
+                  "index": 4,
+                  "jd_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8",
+                  "position": "后端开发",
+                  "priority": "high",
+                  "section": "hard_requirements",
+                  "strategy": "semantic"
+                },
+                "distance": 0.3794054090976715,
+                "bm25_score": 21.054586656772862,
+                "vec_norm": 0.3322842434465395,
+                "bm25_norm": 0.832005750883444,
+                "hybrid_score": 0.4822006956776108,
+                "rerank_score": 0.9909
+              },
+              {
+                "chunk_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8_chunk_3",
+                "content": "【阿里巴巴 · 后端开发 硬性要求】\n精通Spring Boot、MySQL、Redis、Kafka",
+                "metadata": {
+                  "company": "阿里巴巴",
+                  "index": 3,
+                  "jd_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8",
+                  "position": "后端开发",
+                  "priority": "high",
+                  "section": "hard_requirements",
+                  "strategy": "semantic"
+                },
+                "distance": 0.3772203326225281,
+                "bm25_score": 21.523449479760323,
+                "vec_norm": 0.3417957813055905,
+                "bm25_norm": 0.8690323793948449,
+                "hybrid_score": 0.4999667607323668,
+                "rerank_score": 0.9907
+              },
+              {
+                "chunk_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8_chunk_2",
+                "content": "【阿里巴巴 · 后端开发 硬性要求】\n3年以上Java开发经验",
+                "metadata": {
+                  "company": "阿里巴巴",
+                  "index": 2,
+                  "jd_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8",
+                  "position": "后端开发",
+                  "priority": "high",
+                  "section": "hard_requirements",
+                  "strategy": "semantic"
+                },
+                "distance": 0.3813605308532715,
+                "bm25_score": 23.181873451523675,
+                "vec_norm": 0.3237736879538661,
+                "bm25_norm": 1.0,
+                "hybrid_score": 0.5266415815677062,
+                "rerank_score": 0.9713
+              }
+            ],
+            "query": "阿里巴巴 后端开发 岗位描述",
+            "filters": {
+              "company": "阿里巴巴",
+              "position": "后端开发"
+            },
+            "strategy": "hybrid(70%vec+30%bm25)+reranker",
+            "pool_k": 5,
+            "rerank_k": 10,
+            "pool_size": 18,
+            "vec_only": 0,
+            "bm25_only": 9,
+            "both": 9,
+            "rerank": {
+              "enabled": true,
+              "candidates": 5,
+              "output": 5,
+              "best_rerank_score": 0.9998
+            }
+          },
+          "observation": "工具 kb_retrieve 执行成功"
+        },
+        "T1": {
+          "task_id": "T1",
+          "task_type": "tool_call",
+          "tool_name": "match_analyze",
+          "status": "success",
+          "parameters": {
+            "resume_text": "{{global_slots.resume_text}}",
+            "jd_text": "{{T0.output.chunks}}",
+            "company": "{{global_slots.company}}",
+            "position": "{{global_slots.position}}",
+            "attributes": "{{global_slots.attributes}}"
+          },
+          "resolved_params": {
+            "resume_text": "姓名：李工程师\n电话：138-XXXX-1234 | 邮箱：lixx_dev@email.com | 现居：北京\nJava后端开发工程师 | 3年经验 | 本科\n\n教育背景\n2018.09 - 2022.06  XX理工大学  计算机科学与技术（本科）\n主修课程：数据结构与算法、操作系统、计算机网络、数据库原理、软件工程\n在校荣誉：校级优秀毕业设计（基于微服务的校园二手交易平台）\n\n专业技能\n熟练掌握Java核心技术，熟悉JVM内存模型、GC机制及常见调优手段\n精通Spring Boot、Spring Cloud微服务生态，熟悉Nacos、Gateway、Sentinel、Seata等组件\n熟悉MySQL索引优化、事务机制、分库分表策略，具备SQL调优及慢查询治理经验\n了解Redis缓存设计、Kafka消息队列，熟悉Docker容器化部署及Jenkins CI/CD流程\n掌握Git版本控制，熟悉Linux日常运维及日志排查\n\n工作经历\n2022.07 - 至今  XX科技有限公司（B轮 / 企业服务 SaaS）  Java后端工程师\n\nSaaS供应链管理平台（2023.03 - 至今）\n负责订单中心、库存中心核心模块设计与开发，采用Spring Cloud Alibaba微服务架构，支撑日均10W+订单处理\n主导MySQL分库分表方案设计（ShardingSphere），解决单表数据量过亿导致的查询性能瓶颈，接口响应时间从800ms降至120ms\n设计多级缓存策略（Redis + Caffeine本地缓存），热点数据命中率提升至95%，降低数据库负载40%\n基于Seata AT模式实现分布式事务，保障订单与库存数据一致性，线上运行半年零资损事故\n\n企业权限中台重构（2022.09 - 2023.02）\n参与RBAC权限中台从单体到微服务的拆分重构，负责鉴权服务、菜单路由模块开发\n引入Gateway统一鉴权过滤器，对接OAuth2.0 + JWT认证体系，支持多租户隔离\n编写核心接口单元测试（Unit + Mockito），模块测试覆盖率从45%提升至82%\n\n自我评价\n具备扎实的计算机基础与3年企业级后端开发经验，擅长高并发场景下的系统设计与性能优化。注重代码质量与工程规范，具备良好的团队协作与跨部门沟通能力。",
+            "jd_text": [
+              {
+                "chunk_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8_chunk_1",
+                "content": "【阿里巴巴 · 后端开发 岗位职责】\n1. 负责电商核心系统的设计与开发。2. 高并发系统架构设计与性能优化。3. 分布式系统开发与微服务治理。4. 数据库设计与优化。",
+                "metadata": {
+                  "company": "阿里巴巴",
+                  "index": 1,
+                  "jd_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8",
+                  "position": "后端开发",
+                  "section": "responsibilities",
+                  "strategy": "semantic"
+                },
+                "distance": 0.2260117083787918,
+                "bm25_score": 18.630862039785967,
+                "vec_norm": 1.0,
+                "bm25_norm": 0.6406014709806387,
+                "hybrid_score": 0.8921804412941916,
+                "rerank_score": 0.9998
+              },
+              {
+                "chunk_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8_chunk_6",
+                "content": "【阿里巴巴 · 后端开发 软性要求/加分项】\n有电商行业经验优先",
+                "metadata": {
+                  "company": "阿里巴巴",
+                  "index": 6,
+                  "jd_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8",
+                  "position": "后端开发",
+                  "priority": "medium",
+                  "section": "soft_requirements",
+                  "strategy": "semantic"
+                },
+                "distance": 0.3799883723258972,
+                "bm25_score": 21.72463909589805,
+                "vec_norm": 0.32974663120331615,
+                "bm25_norm": 0.8849205513970899,
+                "hybrid_score": 0.49629880726144826,
+                "rerank_score": 0.9912
+              },
+              {
+                "chunk_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8_chunk_4",
+                "content": "【阿里巴巴 · 后端开发 硬性要求】\n熟悉分布式系统设计与微服务架构",
+                "metadata": {
+                  "company": "阿里巴巴",
+                  "index": 4,
+                  "jd_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8",
+                  "position": "后端开发",
+                  "priority": "high",
+                  "section": "hard_requirements",
+                  "strategy": "semantic"
+                },
+                "distance": 0.3794054090976715,
+                "bm25_score": 21.054586656772862,
+                "vec_norm": 0.3322842434465395,
+                "bm25_norm": 0.832005750883444,
+                "hybrid_score": 0.4822006956776108,
+                "rerank_score": 0.9909
+              },
+              {
+                "chunk_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8_chunk_3",
+                "content": "【阿里巴巴 · 后端开发 硬性要求】\n精通Spring Boot、MySQL、Redis、Kafka",
+                "metadata": {
+                  "company": "阿里巴巴",
+                  "index": 3,
+                  "jd_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8",
+                  "position": "后端开发",
+                  "priority": "high",
+                  "section": "hard_requirements",
+                  "strategy": "semantic"
+                },
+                "distance": 0.3772203326225281,
+                "bm25_score": 21.523449479760323,
+                "vec_norm": 0.3417957813055905,
+                "bm25_norm": 0.8690323793948449,
+                "hybrid_score": 0.4999667607323668,
+                "rerank_score": 0.9907
+              },
+              {
+                "chunk_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8_chunk_2",
+                "content": "【阿里巴巴 · 后端开发 硬性要求】\n3年以上Java开发经验",
+                "metadata": {
+                  "company": "阿里巴巴",
+                  "index": 2,
+                  "jd_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8",
+                  "position": "后端开发",
+                  "priority": "high",
+                  "section": "hard_requirements",
+                  "strategy": "semantic"
+                },
+                "distance": 0.3813605308532715,
+                "bm25_score": 23.181873451523675,
+                "vec_norm": 0.3237736879538661,
+                "bm25_norm": 1.0,
+                "hybrid_score": 0.5266415815677062,
+                "rerank_score": 0.9713
+              }
+            ],
+            "company": "阿里巴巴",
+            "position": "后端开发",
+            "attributes": [
+              "匹配度"
+            ]
+          },
+          "result": {
+            "score": 85,
+            "label": "高度契合",
+            "advantages": [
+              "Java核心开发",
+              "Spring Boot",
+              "MySQL数据库设计与优化",
+              "Redis缓存设计",
+              "微服务架构（Spring Cloud）",
+              "分布式系统设计（Seata、Nacos）",
+              "高并发性能优化（分库分表、多级缓存）"
+            ],
+            "weaknesses": [
+              "候选人缺乏Kafka消息队列的深入使用经验（简历仅了解，未达到精通程度）；同时没有电商行业核心系统的直接开发经验（其项目为SaaS供应链管理，虽相关但非电商核心业务）。"
+            ],
+            "suggestions": [
+              "核心能力要求: Java后端开发；精通Spring Boot、MySQL、Redis、Kafka；熟悉分布式系统设计与微服务架构；具备高并发系统架构设计与性能优化能力；数据库设计与优化；电商行业经验（加分项）"
+            ],
+            "match_score": 85,
+            "covered": [
+              "Java核心开发",
+              "Spring Boot",
+              "MySQL数据库设计与优化",
+              "Redis缓存设计",
+              "微服务架构（Spring Cloud）",
+              "分布式系统设计（Seata、Nacos）",
+              "高并发性能优化（分库分表、多级缓存）"
+            ],
+            "missing_experience": "候选人缺乏Kafka消息队列的深入使用经验（简历仅了解，未达到精通程度）；同时没有电商行业核心系统的直接开发经验（其项目为SaaS供应链管理，虽相关但非电商核心业务）。",
+            "core_skills": "Java后端开发；精通Spring Boot、MySQL、Redis、Kafka；熟悉分布式系统设计与微服务架构；具备高并发系统架构设计与性能优化能力；数据库设计与优化；电商行业经验（加分项）",
+            "company": "阿里巴巴",
+            "position": "后端开发"
+          },
+          "observation": "工具 match_analyze 执行成功"
+        },
+        "T2": {
+          "task_id": "T2",
+          "task_type": "aggregate",
+          "tool_name": null,
+          "status": "success",
+          "parameters": {
+            "assess_result": "{{T1.output}}"
+          },
+          "resolved_params": {
+            "assess_result": {
+              "score": 85,
+              "label": "高度契合",
+              "advantages": [
+                "Java核心开发",
+                "Spring Boot",
+                "MySQL数据库设计与优化",
+                "Redis缓存设计",
+                "微服务架构（Spring Cloud）",
+                "分布式系统设计（Seata、Nacos）",
+                "高并发性能优化（分库分表、多级缓存）"
+              ],
+              "weaknesses": [
+                "候选人缺乏Kafka消息队列的深入使用经验（简历仅了解，未达到精通程度）；同时没有电商行业核心系统的直接开发经验（其项目为SaaS供应链管理，虽相关但非电商核心业务）。"
+              ],
+              "suggestions": [
+                "核心能力要求: Java后端开发；精通Spring Boot、MySQL、Redis、Kafka；熟悉分布式系统设计与微服务架构；具备高并发系统架构设计与性能优化能力；数据库设计与优化；电商行业经验（加分项）"
+              ],
+              "match_score": 85,
+              "covered": [
+                "Java核心开发",
+                "Spring Boot",
+                "MySQL数据库设计与优化",
+                "Redis缓存设计",
+                "微服务架构（Spring Cloud）",
+                "分布式系统设计（Seata、Nacos）",
+                "高并发性能优化（分库分表、多级缓存）"
+              ],
+              "missing_experience": "候选人缺乏Kafka消息队列的深入使用经验（简历仅了解，未达到精通程度）；同时没有电商行业核心系统的直接开发经验（其项目为SaaS供应链管理，虽相关但非电商核心业务）。",
+              "core_skills": "Java后端开发；精通Spring Boot、MySQL、Redis、Kafka；熟悉分布式系统设计与微服务架构；具备高并发系统架构设计与性能优化能力；数据库设计与优化；电商行业经验（加分项）",
+              "company": "阿里巴巴",
+              "position": "后端开发"
+            }
+          },
+          "result": {
+            "aggregation": {
+              "assess_result": {
+                "score": 85,
+                "label": "高度契合",
+                "advantages": [
+                  "Java核心开发",
+                  "Spring Boot",
+                  "MySQL数据库设计与优化",
+                  "Redis缓存设计",
+                  "微服务架构（Spring Cloud）",
+                  "分布式系统设计（Seata、Nacos）",
+                  "高并发性能优化（分库分表、多级缓存）"
+                ],
+                "weaknesses": [
+                  "候选人缺乏Kafka消息队列的深入使用经验（简历仅了解，未达到精通程度）；同时没有电商行业核心系统的直接开发经验（其项目为SaaS供应链管理，虽相关但非电商核心业务）。"
+                ],
+                "suggestions": [
+                  "核心能力要求: Java后端开发；精通Spring Boot、MySQL、Redis、Kafka；熟悉分布式系统设计与微服务架构；具备高并发系统架构设计与性能优化能力；数据库设计与优化；电商行业经验（加分项）"
+                ],
+                "match_score": 85,
+                "covered": [
+                  "Java核心开发",
+                  "Spring Boot",
+                  "MySQL数据库设计与优化",
+                  "Redis缓存设计",
+                  "微服务架构（Spring Cloud）",
+                  "分布式系统设计（Seata、Nacos）",
+                  "高并发性能优化（分库分表、多级缓存）"
+                ],
+                "missing_experience": "候选人缺乏Kafka消息队列的深入使用经验（简历仅了解，未达到精通程度）；同时没有电商行业核心系统的直接开发经验（其项目为SaaS供应链管理，虽相关但非电商核心业务）。",
+                "core_skills": "Java后端开发；精通Spring Boot、MySQL、Redis、Kafka；熟悉分布式系统设计与微服务架构；具备高并发系统架构设计与性能优化能力；数据库设计与优化；电商行业经验（加分项）",
+                "company": "阿里巴巴",
+                "position": "后端开发"
+              }
+            }
+          },
+          "observation": "聚合完成"
+        }
+      },
+      "global_status": "success",
+      "replan_reason": "",
+      "replan_count": 0
+    },
+    "intent": {
+      "demands": [
+        {
+          "intent": "match_assess",
+          "entities": {
+            "company": "阿里巴巴",
+            "position": "后端开发",
+            "attributes": [
+              "匹配度"
+            ],
+            "jd_source": "kb"
+          },
+          "confidence": 0.75
+        }
+      ],
+      "needs_clarification": false,
+      "clarification_question": ""
+    },
+    "rewrite": {
+      "rewritten_query": "阿里巴巴后端开发岗位匹配度分析",
+      "search_keywords": "阿里巴巴后端开发岗位匹配度分析",
+      "is_follow_up": false,
+      "follow_up_type": "none",
+      "resolved_references": {}
+    },
+    "evidence_cache": [
+      {
+        "chunk_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8_chunk_1",
+        "content": "【阿里巴巴 · 后端开发 岗位职责】\n1. 负责电商核心系统的设计与开发。2. 高并发系统架构设计与性能优化。3. 分布式系统开发与微服务治理。4. 数据库设计与优化。",
+        "metadata": {
+          "company": "阿里巴巴",
+          "index": 1,
+          "jd_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8",
+          "position": "后端开发",
+          "section": "responsibilities",
+          "strategy": "semantic"
+        },
+        "distance": 0.2260117083787918,
+        "bm25_score": 18.630862039785967,
+        "vec_norm": 1.0,
+        "bm25_norm": 0.6406014709806387,
+        "hybrid_score": 0.8921804412941916,
+        "rerank_score": 0.9998
+      },
+      {
+        "chunk_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8_chunk_6",
+        "content": "【阿里巴巴 · 后端开发 软性要求/加分项】\n有电商行业经验优先",
+        "metadata": {
+          "company": "阿里巴巴",
+          "index": 6,
+          "jd_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8",
+          "position": "后端开发",
+          "priority": "medium",
+          "section": "soft_requirements",
+          "strategy": "semantic"
+        },
+        "distance": 0.3799883723258972,
+        "bm25_score": 21.72463909589805,
+        "vec_norm": 0.32974663120331615,
+        "bm25_norm": 0.8849205513970899,
+        "hybrid_score": 0.49629880726144826,
+        "rerank_score": 0.9912
+      },
+      {
+        "chunk_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8_chunk_4",
+        "content": "【阿里巴巴 · 后端开发 硬性要求】\n熟悉分布式系统设计与微服务架构",
+        "metadata": {
+          "company": "阿里巴巴",
+          "index": 4,
+          "jd_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8",
+          "position": "后端开发",
+          "priority": "high",
+          "section": "hard_requirements",
+          "strategy": "semantic"
+        },
+        "distance": 0.3794054090976715,
+        "bm25_score": 21.054586656772862,
+        "vec_norm": 0.3322842434465395,
+        "bm25_norm": 0.832005750883444,
+        "hybrid_score": 0.4822006956776108,
+        "rerank_score": 0.9909
+      },
+      {
+        "chunk_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8_chunk_3",
+        "content": "【阿里巴巴 · 后端开发 硬性要求】\n精通Spring Boot、MySQL、Redis、Kafka",
+        "metadata": {
+          "company": "阿里巴巴",
+          "index": 3,
+          "jd_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8",
+          "position": "后端开发",
+          "priority": "high",
+          "section": "hard_requirements",
+          "strategy": "semantic"
+        },
+        "distance": 0.3772203326225281,
+        "bm25_score": 21.523449479760323,
+        "vec_norm": 0.3417957813055905,
+        "bm25_norm": 0.8690323793948449,
+        "hybrid_score": 0.4999667607323668,
+        "rerank_score": 0.9907
+      },
+      {
+        "chunk_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8_chunk_2",
+        "content": "【阿里巴巴 · 后端开发 硬性要求】\n3年以上Java开发经验",
+        "metadata": {
+          "company": "阿里巴巴",
+          "index": 2,
+          "jd_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8",
+          "position": "后端开发",
+          "priority": "high",
+          "section": "hard_requirements",
+          "strategy": "semantic"
+        },
+        "distance": 0.3813605308532715,
+        "bm25_score": 23.181873451523675,
+        "vec_norm": 0.3237736879538661,
+        "bm25_norm": 1.0,
+        "hybrid_score": 0.5266415815677062,
+        "rerank_score": 0.9713
+      }
+    ],
+    "evidence_cache_query": "阿里巴巴后端开发岗位匹配度分析",
+    "tool_outputs": [
+      {
+        "task_id": "T0",
+        "tool": "kb_retrieve",
+        "description": "检索阿里巴巴后端开发岗位JD",
+        "result": {
+          "chunks": [
+            {
+              "chunk_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8_chunk_1",
+              "content": "【阿里巴巴 · 后端开发 岗位职责】\n1. 负责电商核心系统的设计与开发。2. 高并发系统架构设计与性能优化。3. 分布式系统开发与微服务治理。4. 数据库设计与优化。",
+              "source": "阿里巴巴-后端开发",
+              "metadata": {
+                "company": "阿里巴巴",
+                "position": "后端开发"
+              }
+            },
+            {
+              "chunk_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8_chunk_6",
+              "content": "【阿里巴巴 · 后端开发 软性要求/加分项】\n有电商行业经验优先",
+              "source": "阿里巴巴-后端开发",
+              "metadata": {
+                "company": "阿里巴巴",
+                "position": "后端开发"
+              }
+            },
+            {
+              "chunk_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8_chunk_4",
+              "content": "【阿里巴巴 · 后端开发 硬性要求】\n熟悉分布式系统设计与微服务架构",
+              "source": "阿里巴巴-后端开发",
+              "metadata": {
+                "company": "阿里巴巴",
+                "position": "后端开发"
+              }
+            },
+            {
+              "chunk_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8_chunk_3",
+              "content": "【阿里巴巴 · 后端开发 硬性要求】\n精通Spring Boot、MySQL、Redis、Kafka",
+              "source": "阿里巴巴-后端开发",
+              "metadata": {
+                "company": "阿里巴巴",
+                "position": "后端开发"
+              }
+            },
+            {
+              "chunk_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8_chunk_2",
+              "content": "【阿里巴巴 · 后端开发 硬性要求】\n3年以上Java开发经验",
+              "source": "阿里巴巴-后端开发",
+              "metadata": {
+                "company": "阿里巴巴",
+                "position": "后端开发"
+              }
+            }
+          ],
+          "query": "阿里巴巴 后端开发 岗位描述",
+          "filters": {
+            "company": "阿里巴巴",
+            "position": "后端开发"
+          },
+          "strategy": "hybrid(70%vec+30%bm25)+reranker",
+          "pool_k": 5,
+          "rerank_k": 10,
+          "pool_size": 18,
+          "vec_only": 0,
+          "bm25_only": 9,
+          "both": 9,
+          "rerank": {
+            "enabled": true,
+            "candidates": 5,
+            "output": 5,
+            "best_rerank_score": 0.9998
+          }
+        }
+      },
+      {
+        "task_id": "T1",
+        "tool": "match_analyze",
+        "description": "分析简历与阿里巴巴后端开发JD的匹配度",
+        "result": {
+          "score": 85,
+          "label": "高度契合",
+          "advantages": [
+            "Java核心开发",
+            "Spring Boot",
+            "MySQL数据库设计与优化",
+            "Redis缓存设计",
+            "微服务架构（Spring Cloud）",
+            "分布式系统设计（Seata、Nacos）",
+            "高并发性能优化（分库分表、多级缓存）"
+          ],
+          "weaknesses": [
+            "候选人缺乏Kafka消息队列的深入使用经验（简历仅了解，未达到精通程度）；同时没有电商行业核心系统的直接开发经验（其项目为SaaS供应链管理，虽相关但非电商核心业务）。"
+          ],
+          "suggestions": [
+            "核心能力要求: Java后端开发；精通Spring Boot、MySQL、Redis、Kafka；熟悉分布式系统设计与微服务架构；具备高并发系统架构设计与性能优化能力；数据库设计与优化；电商行业经验（加分项）"
+          ],
+          "match_score": 85,
+          "covered": [
+            "Java核心开发",
+            "Spring Boot",
+            "MySQL数据库设计与优化",
+            "Redis缓存设计",
+            "微服务架构（Spring Cloud）",
+            "分布式系统设计（Seata、Nacos）",
+            "高并发性能优化（分库分表、多级缓存）"
+          ],
+          "missing_experience": "候选人缺乏Kafka消息队列的深入使用经验（简历仅了解，未达到精通程度）；同时没有电商行业核心系统的直接开发经验（其项目为SaaS供应链管理，虽相关但非电商核心业务）。",
+          "core_skills": "Java后端开发；精通Spring Boot、MySQL、Redis、Kafka；熟悉分布式系统设计与微服务架构；具备高并发系统架构设计与性能优化能力；数据库设计与优化；电商行业经验（加分项）",
+          "company": "阿里巴巴",
+          "position": "后端开发"
+        }
+      },
+      {
+        "task_id": "T2",
+        "tool": null,
+        "description": "聚合匹配分析结果，生成回复素材",
+        "result": {
+          "aggregation": {
+            "assess_result": {
+              "score": 85,
+              "label": "高度契合",
+              "advantages": [
+                "Java核心开发",
+                "Spring Boot",
+                "MySQL数据库设计与优化",
+                "Redis缓存设计",
+                "微服务架构（Spring Cloud）",
+                "分布式系统设计（Seata、Nacos）",
+                "高并发性能优化（分库分表、多级缓存）"
+              ],
+              "weaknesses": [
+                "候选人缺乏Kafka消息队列的深入使用经验（简历仅了解，未达到精通程度）；同时没有电商行业核心系统的直接开发经验（其项目为SaaS供应链管理，虽相关但非电商核心业务）。"
+              ],
+              "suggestions": [
+                "核心能力要求: Java后端开发；精通Spring Boot、MySQL、Redis、Kafka；熟悉分布式系统设计与微服务架构；具备高并发系统架构设计与性能优化能力；数据库设计与优化；电商行业经验（加分项）"
+              ],
+              "match_score": 85,
+              "covered": [
+                "Java核心开发",
+                "Spring Boot",
+                "MySQL数据库设计与优化",
+                "Redis缓存设计",
+                "微服务架构（Spring Cloud）",
+                "分布式系统设计（Seata、Nacos）",
+                "高并发性能优化（分库分表、多级缓存）"
+              ],
+              "missing_experience": "候选人缺乏Kafka消息队列的深入使用经验（简历仅了解，未达到精通程度）；同时没有电商行业核心系统的直接开发经验（其项目为SaaS供应链管理，虽相关但非电商核心业务）。",
+              "core_skills": "Java后端开发；精通Spring Boot、MySQL、Redis、Kafka；熟悉分布式系统设计与微服务架构；具备高并发系统架构设计与性能优化能力；数据库设计与优化；电商行业经验（加分项）",
+              "company": "阿里巴巴",
+              "position": "后端开发"
+            }
+          }
+        }
+      }
+    ],
+    "final_aggregation_prompt": {
+      "system_prompt": "你是一位专业的求职顾问。请基于以下工具执行结果，给用户一个清晰、有帮助的回复。\n要求：\n1. 先直接回答用户的问题（是/否/有/没有），不要绕弯子，不要重复用户的原话\n2. 如果有匹配分析结果，给出具体的分数和建议\n3. 如果有检索结果，基于事实回答，不要编造\n4. 【强制】引用信息时必须标注来源。每个引用的事实后面都要跟 [来源：公司名-岗位名] 格式。   kb_retrieve 结果的 chunks 中带有 'source' 字段（如'字节跳动-AI产品经理'），请直接使用。   external_search 结果带有 'source_name' 字段，也请直接使用。\n5. 当本地知识库与外部搜索结果冲突时，请并列呈现两种说法并标注各自来源，不要替用户做判断\n6. 语气友好、专业、结构化",
+      "user_prompt": "【用户问题】\n阿里巴巴后端开发岗位匹配度分析\n\n【工具执行结果】\n[{\"task_id\": \"T0\", \"tool\": \"kb_retrieve\", \"description\": \"检索阿里巴巴后端开发岗位JD\", \"result\": {\"chunks\": [{\"chunk_id\": \"9cde8355-dcc0-434e-97c4-67dfc5dae5b8_chunk_1\", \"content\": \"【阿里巴巴 · 后端开发 岗位职责】\\n1. 负责电商核心系统的设计与开发。2. 高并发系统架构设计与性能优化。3. 分布式系统开发与微服务治理。4. 数据库设计与优化。\", \"source\": \"阿里巴巴-后端开发\", \"metadata\": {\"company\": \"阿里巴巴\", \"position\": \"后端开发\"}}, {\"chunk_id\": \"9cde8355-dcc0-434e-97c4-67dfc5dae5b8_chunk_6\", \"content\": \"【阿里巴巴 · 后端开发 软性要求/加分项】\\n有电商行业经验优先\", \"source\": \"阿里巴巴-后端开发\", \"metadata\": {\"company\": \"阿里巴巴\", \"position\": \"后端开发\"}}, {\"chunk_id\": \"9cde8355-dcc0-434e-97c4-67dfc5dae5b8_chunk_4\", \"content\": \"【阿里巴巴 · 后端开发 硬性要求】\\n熟悉分布式系统设计与微服务架构\", \"source\": \"阿里巴巴-后端开发\", \"metadata\": {\"company\": \"阿里巴巴\", \"position\": \"后端开发\"}}, {\"chunk_id\": \"9cde8355-dcc0-434e-97c4-67dfc5dae5b8_chunk_3\", \"content\": \"【阿里巴巴 · 后端开发 硬性要求】\\n精通Spring Boot、MySQL、Redis、Kafka\", \"source\": \"阿里巴巴-后端开发\", \"metadata\": {\"company\": \"阿里巴巴\", \"position\": \"后端开发\"}}, {\"chunk_id\": \"9cde8355-dcc0-434e-97c4-67dfc5dae5b8_chunk_2\", \"content\": \"【阿里巴巴 · 后端开发 硬性要求】\\n3年以上Java开发经验\", \"source\": \"阿里巴巴-后端开发\", \"metadata\": {\"company\": \"阿里巴巴\", \"position\": \"后端开发\"}}], \"query\": \"阿里巴巴 后端开发 岗位描述\", \"filters\": {\"company\": \"阿里巴巴\", \"position\": \"后端开发\"}, \"strategy\": \"hybrid(70%vec+30%bm25)+reranker\", \"pool_k\": 5, \"rerank_k\": 10, \"pool_size\": 18, \"vec_only\": 0, \"bm25_only\": 9, \"both\": 9, \"rerank\": {\"enabled\": true, \"candidates\": 5, \"output\": 5, \"best_rerank_score\": 0.9998}}}, {\"task_id\": \"T1\", \"tool\": \"match_analyze\", \"description\": \"分析简历与阿里巴巴后端开发JD的匹配度\", \"result\": {\"score\": 85, \"label\": \"高度契合\", \"advantages\": [\"Java核心开发\", \"Spring Boot\", \"MySQL数据库设计与优化\", \"Redis缓存设计\", \"微服务架构（Spring Cloud）\", \"分布式系统设计（Seata、Nacos）\", \"高并发性能优化（分库分表、多级缓存）\"], \"weaknesses\": [\"候选人缺乏Kafka消息队列的深入使用经验（简历仅了解，未达到精通程度）；同时没有电商行业核心系统的直接开发经验（其项目为SaaS供应链管理，虽相关但非电商核心业务）。\"], \"suggestions\": [\"核心能力要求: Java后端开发；精通Spring Boot、MySQL、Redis、Kafka；熟悉分布式系统设计与微服务架构；具备高并发系统架构设计与性能优化能力；数据库设计与优化；电商行业经验（加分项）\"], \"match_score\": 85, \"covered\": [\"Java核心开发\", \"Spring Boot\", \"MySQL数据库设计与优化\", \"Redis缓存设计\", \"微服务架构（Spring Cloud）\", \"分布式系统设计（Seata、Nacos）\", \"高并发性能优化（分库分表、多级缓存）\"], \"missing_experience\": \"候选人缺乏Kafka消息队列的深入使用经验（简历仅了解，未达到精通程度）；同时没有电商行业核心系统的直接开发经验（其项目为SaaS供应链管理，虽相关但非电商核心业务）。\", \"core_skills\": \"Java后端开发；精通Spring Boot、MySQL、Redis、Kafka；熟悉分布式系统设计与微服务架构；具备高并发系统架构设计与性能优化能力；数据库设计与优化；电商行业经验（加分项）\", \"company\": \"阿里巴巴\", \"position\": \"后端开发\"}}, {\"task_id\": \"T2\", \"tool\": null, \"description\": \"聚合匹配分析结果，生成回复素材\", \"result\": {\"aggregation\": {\"assess_result\": {\"score\": 85, \"label\": \"高度契合\", \"advantages\": [\"Java核心开发\", \"Spring Boot\", \"MySQL数据库设计与优化\", \"Redis缓存设计\", \"微服务架构（Spring Cloud）\", \"分布式系统设计（Seata、Nacos）\", \"高并发性能优化（分库分表、多级缓存）\"], \"weaknesses\": [\"候选人缺乏Kafka消息队列的深入使用经验（简历仅了解，未达到精通程度）；同时没有电商行业核心系统的直接开发经验（其项目为SaaS供应链管理，虽相关但非电商核心业务）。\"], \"suggestions\": [\"核心能力要求: Java后端开发；精通Spring Boot、MySQL、Redis、Kafka；熟悉分布式系统设计与微服务架构；具备高并发系统架构设计与性能优化能力；数据库设计与优化；电商行业经验（加分项）\"], \"match_score\": 85, \"covered\": [\"Java核心开发\", \"Spring Boot\", \"MySQL数据库设计与优化\", \"Redis缓存设计\", \"微服务架构（Spring Cloud）\", \"分布式系统设计（Seata、Nacos）\", \"高并发性能优化（分库分表、多级缓存）\"], \"missing_e\n\n请生成回复："
+    }
+  },
+  "reply": "有匹配分析结果。\n\n**1. 综合评估**\n*   **匹配分数**：85 分\n*   **评估标签**：高度契合\n\n**2. 岗位核心要求**\n根据检索到的岗位描述，该职位的主要要求如下：\n*   **经验要求**：3 年以上 Java 开发经验 `[来源：阿里巴巴 - 后端开发]`\n*   **技术栈**：精通 Spring Boot、MySQL、Redis、Kafka `[来源：阿里巴巴 - 后端开发]`\n*   **架构能力**：熟悉分布式系统设计与微服务架构 `[来源：阿里巴巴 - 后端开发]`\n*   **业务能力**：负责电商核心系统的设计与开发 `[来源：阿里巴巴 - 后端开发]`\n*   **加分项**：有电商行业经验优先 `[来源：阿里巴巴 - 后端开发]`\n\n**3. 匹配详情分析**\n*   **优势领域**：\n    *   候选人具备 Java 核心开发、Spring Boot、MySQL 数据库设计与优化、Redis 缓存设计能力。\n    *   拥有微服务架构（Spring Cloud）、分布式系统设计（Seata、Nacos）经验。\n    *   具备高并发性能优化（分库分表、多级缓存）能力。\n*   **待提升领域**：\n    *   **Kafka 消息队列**：候选人目前仅了解，未达到岗位要求的精通程度 `[来源：阿里巴巴 - 后端开发]`。\n    *   **行业经验**：没有电商行业核心系统的直接开发经验，现有项目为 SaaS 供应链管理，虽相关但非电商核心业务 `[来源：阿里巴巴 - 后端开发]`。\n\n**4. 求职建议**\n*   **技术补强**：建议针对 Kafka 消息队列进行深入学习或补充相关项目实践，以满足精通要求 `[来源：阿里巴巴 - 后端开发]`。\n*   **面试策略**：准备具体话术，强调 SaaS 供应链管理与电商核心系统在高并发、分布式架构上的技术共通性，以弥补行业经验差异 `[来源：阿里巴巴 - 后端开发]`。",
+  "reply_length": 860,
+  "intent_match": true,
+  "tool_match_rate": 1.0,
+  "has_reply": true,
+  "events": [
+    {
+      "step": "intent",
+      "message": "正在识别您的意图...",
+      "_time": 14.378010272979736,
+      "type": "status"
+    },
+    {
+      "step": "plan",
+      "message": "正在规划任务...",
+      "_time": 14.378068923950195,
+      "type": "status"
+    },
+    {
+      "step": "execute",
+      "message": "正在执行分析...",
+      "_time": 25.760568380355835,
+      "type": "status"
+    },
+    {
+      "step": "aggregate",
+      "message": "正在生成回复...",
+      "_time": 40.58493781089783,
+      "type": "status"
+    },
+    {
+      "text": "有",
+      "_time": 105.77861142158508,
+      "type": "delta"
+    },
+    {
+      "text": "匹配分析结果。",
+      "_time": 105.91776657104492,
+      "type": "delta"
+    },
+    {
+      "text": "\n\n**",
+      "_time": 105.92143177986145,
+      "type": "delta"
+    },
+    {
+      "text": "1. 综合",
+      "_time": 106.02749991416931,
+      "type": "delta"
+    },
+    {
+      "text": "评估",
+      "_time": 106.03151345252991,
+      "type": "delta"
+    },
+    {
+      "text": "**\n*  ",
+      "_time": 106.1165223121643,
+      "type": "delta"
+    },
+    {
+      "text": " **匹配分数",
+      "_time": 106.15669393539429,
+      "type": "delta"
+    },
+    {
+      "text": "**：85",
+      "_time": 106.24776148796082,
+      "type": "delta"
+    },
+    {
+      "text": " ",
+      "_time": 106.24815273284912,
+      "type": "delta"
+    },
+    {
+      "text": "分\n*  ",
+      "_time": 106.33276224136353,
+      "type": "delta"
+    },
+    {
+      "text": " **评估标签",
+      "_time": 106.3375597000122,
+      "type": "delta"
+    },
+    {
+      "text": "**：高度契合",
+      "_time": 106.45870232582092,
+      "type": "delta"
+    },
+    {
+      "text": "\n\n**2.",
+      "_time": 106.48878455162048,
+      "type": "delta"
+    },
+    {
+      "text": " 岗位核心要求",
+      "_time": 106.60183215141296,
+      "type": "delta"
+    },
+    {
+      "text": "**",
+      "_time": 106.60344386100769,
+      "type": "delta"
+    },
+    {
+      "text": "\n根据检索到的",
+      "_time": 106.69182991981506,
+      "type": "delta"
+    },
+    {
+      "text": "岗位描述",
+      "_time": 106.69554209709167,
+      "type": "delta"
+    },
+    {
+      "text": "，该职位的主要",
+      "_time": 106.83562278747559,
+      "type": "delta"
+    },
+    {
+      "text": "要求如下：\n",
+      "_time": 106.83840203285217,
+      "type": "delta"
+    },
+    {
+      "text": "*   **经验",
+      "_time": 106.94382905960083,
+      "type": "delta"
+    },
+    {
+      "text": "要求**：3",
+      "_time": 106.94737219810486,
+      "type": "delta"
+    },
+    {
+      "text": " 年以上 Java ",
+      "_time": 107.12977623939514,
+      "type": "delta"
+    },
+    {
+      "text": "开发经验 `[来源",
+      "_time": 107.1334319114685,
+      "type": "delta"
+    },
+    {
+      "text": "：阿里巴巴 - ",
+      "_time": 107.23386287689209,
+      "type": "delta"
+    },
+    {
+      "text": "后端开发]`",
+      "_time": 107.23841094970703,
+      "type": "delta"
+    },
+    {
+      "text": "\n*   **",
+      "_time": 107.41810607910156,
+      "type": "delta"
+    },
+    {
+      "text": "技术栈**：",
+      "_time": 107.41872096061707,
+      "type": "delta"
+    },
+    {
+      "text": "精通 Spring Boot、",
+      "_time": 107.52065825462341,
+      "type": "delta"
+    },
+    {
+      "text": "MySQL、Redis、",
+      "_time": 107.55820846557617,
+      "type": "delta"
+    },
+    {
+      "text": "Kafka `[来源",
+      "_time": 107.67262291908264,
+      "type": "delta"
+    },
+    {
+      "text": "：阿里巴巴 - ",
+      "_time": 107.67643213272095,
+      "type": "delta"
+    },
+    {
+      "text": "后端开发]`",
+      "_time": 107.80980801582336,
+      "type": "delta"
+    },
+    {
+      "text": "\n*   **",
+      "_time": 107.83961415290833,
+      "type": "delta"
+    },
+    {
+      "text": "架构能力**：",
+      "_time": 107.95167446136475,
+      "type": "delta"
+    },
+    {
+      "text": "熟悉分布式系统设计与",
+      "_time": 107.95529818534851,
+      "type": "delta"
+    },
+    {
+      "text": "微服务架构 `[",
+      "_time": 108.09840273857117,
+      "type": "delta"
+    },
+    {
+      "text": "来源：阿里巴巴 -",
+      "_time": 108.13956427574158,
+      "type": "delta"
+    },
+    {
+      "text": " 后端开发]",
+      "_time": 108.24062871932983,
+      "type": "delta"
+    },
+    {
+      "text": "`\n*  ",
+      "_time": 108.24451613426208,
+      "type": "delta"
+    },
+    {
+      "text": " **业务能力**：",
+      "_time": 108.38370251655579,
+      "type": "delta"
+    },
+    {
+      "text": "负责电商",
+      "_time": 108.42359757423401,
+      "type": "delta"
+    },
+    {
+      "text": "核心系统的设计与",
+      "_time": 108.49370455741882,
+      "type": "delta"
+    },
+    {
+      "text": "开发 `[来源：",
+      "_time": 108.4963104724884,
+      "type": "delta"
+    },
+    {
+      "text": "阿里巴巴 - 后端",
+      "_time": 108.63780975341797,
+      "type": "delta"
+    },
+    {
+      "text": "开发]`\n",
+      "_time": 108.70065641403198,
+      "type": "delta"
+    },
+    {
+      "text": "*   **加分",
+      "_time": 108.77963280677795,
+      "type": "delta"
+    },
+    {
+      "text": "项**：有",
+      "_time": 108.78337121009827,
+      "type": "delta"
+    },
+    {
+      "text": "电商行业经验优先",
+      "_time": 108.92566156387329,
+      "type": "delta"
+    },
+    {
+      "text": " `[来源：阿里巴巴",
+      "_time": 109.00673151016235,
+      "type": "delta"
+    },
+    {
+      "text": " - 后端开发",
+      "_time": 109.06969547271729,
+      "type": "delta"
+    },
+    {
+      "text": "]`\n\n**",
+      "_time": 109.07445120811462,
+      "type": "delta"
+    },
+    {
+      "text": "3. 匹配",
+      "_time": 109.21316409111023,
+      "type": "delta"
+    },
+    {
+      "text": "详情",
+      "_time": 109.21684527397156,
+      "type": "delta"
+    },
+    {
+      "text": "分析**\n*",
+      "_time": 109.38565254211426,
+      "type": "delta"
+    },
+    {
+      "text": "   **优势领域",
+      "_time": 109.39127540588379,
+      "type": "delta"
+    },
+    {
+      "text": "**：\n   ",
+      "_time": 109.44638776779175,
+      "type": "delta"
+    },
+    {
+      "text": " *   候选人",
+      "_time": 109.44930744171143,
+      "type": "delta"
+    },
+    {
+      "text": "具备 Java 核心",
+      "_time": 109.63054847717285,
+      "type": "delta"
+    },
+    {
+      "text": "开发、Spring Boot",
+      "_time": 109.63531279563904,
+      "type": "delta"
+    },
+    {
+      "text": "、MySQL 数据库",
+      "_time": 109.73559594154358,
+      "type": "delta"
+    },
+    {
+      "text": "设计与优化、",
+      "_time": 109.76937890052795,
+      "type": "delta"
+    },
+    {
+      "text": "Redis 缓存设计",
+      "_time": 109.85951590538025,
+      "type": "delta"
+    },
+    {
+      "text": "能力。",
+      "_time": 109.86526250839233,
+      "type": "delta"
+    },
+    {
+      "text": "\n    *  ",
+      "_time": 109.96854400634766,
+      "type": "delta"
+    },
+    {
+      "text": " 拥有",
+      "_time": 109.9722900390625,
+      "type": "delta"
+    },
+    {
+      "text": "微服务架构（",
+      "_time": 110.10958123207092,
+      "type": "delta"
+    },
+    {
+      "text": "Spring Cloud）、",
+      "_time": 110.11425185203552,
+      "type": "delta"
+    },
+    {
+      "text": "分布式系统设计（Se",
+      "_time": 110.20349860191345,
+      "type": "delta"
+    },
+    {
+      "text": "ata、Nacos",
+      "_time": 110.24030804634094,
+      "type": "delta"
+    },
+    {
+      "text": "）经验。\n",
+      "_time": 110.3504068851471,
+      "type": "delta"
+    },
+    {
+      "text": "   ",
+      "_time": 110.35068821907043,
+      "type": "delta"
+    },
+    {
+      "text": " *   具备",
+      "_time": 110.43558359146118,
+      "type": "delta"
+    },
+    {
+      "text": "高并发性能",
+      "_time": 110.44030117988586,
+      "type": "delta"
+    },
+    {
+      "text": "优化（分库",
+      "_time": 110.59759092330933,
+      "type": "delta"
+    },
+    {
+      "text": "分表、多级",
+      "_time": 110.5991485118866,
+      "type": "delta"
+    },
+    {
+      "text": "缓存）能力。",
+      "_time": 110.70755243301392,
+      "type": "delta"
+    },
+    {
+      "text": "\n*   **",
+      "_time": 110.71115851402283,
+      "type": "delta"
+    },
+    {
+      "text": "待提升领域**",
+      "_time": 110.84956526756287,
+      "type": "delta"
+    },
+    {
+      "text": "：\n   ",
+      "_time": 110.88958859443665,
+      "type": "delta"
+    },
+    {
+      "text": " *   **K",
+      "_time": 110.97546148300171,
+      "type": "delta"
+    },
+    {
+      "text": "afka 消息队列",
+      "_time": 110.97818207740784,
+      "type": "delta"
+    },
+    {
+      "text": "**：候选人目前",
+      "_time": 111.1215410232544,
+      "type": "delta"
+    },
+    {
+      "text": "仅了解，未达到",
+      "_time": 111.15729808807373,
+      "type": "delta"
+    },
+    {
+      "text": "岗位要求的精通程度",
+      "_time": 111.26549911499023,
+      "type": "delta"
+    },
+    {
+      "text": " `[",
+      "_time": 111.27015471458435,
+      "type": "delta"
+    },
+    {
+      "text": "来源：阿里巴巴 -",
+      "_time": 111.35644960403442,
+      "type": "delta"
+    },
+    {
+      "text": " 后端开发]",
+      "_time": 111.3922209739685,
+      "type": "delta"
+    },
+    {
+      "text": "`。\n   ",
+      "_time": 111.49843502044678,
+      "type": "delta"
+    },
+    {
+      "text": " *   **行业",
+      "_time": 111.50125122070312,
+      "type": "delta"
+    },
+    {
+      "text": "经验**：没有",
+      "_time": 111.64161491394043,
+      "type": "delta"
+    },
+    {
+      "text": "电商行业核心系统的",
+      "_time": 111.68344306945801,
+      "type": "delta"
+    },
+    {
+      "text": "直接开发经验，",
+      "_time": 111.78853678703308,
+      "type": "delta"
+    },
+    {
+      "text": "现有",
+      "_time": 111.79000759124756,
+      "type": "delta"
+    },
+    {
+      "text": "项目为 SaaS",
+      "_time": 111.87831902503967,
+      "type": "delta"
+    },
+    {
+      "text": " 供应链管理，虽",
+      "_time": 111.88215470314026,
+      "type": "delta"
+    },
+    {
+      "text": "相关但非电商",
+      "_time": 112.05956363677979,
+      "type": "delta"
+    },
+    {
+      "text": "核心业务 `[来源",
+      "_time": 112.06522274017334,
+      "type": "delta"
+    },
+    {
+      "text": "：阿里巴巴 - ",
+      "_time": 112.16459345817566,
+      "type": "delta"
+    },
+    {
+      "text": "后端开发]`",
+      "_time": 112.16831040382385,
+      "type": "delta"
+    },
+    {
+      "text": "。\n\n**4",
+      "_time": 112.35413455963135,
+      "type": "delta"
+    },
+    {
+      "text": ". 求职",
+      "_time": 112.35417342185974,
+      "type": "delta"
+    },
+    {
+      "text": "建议**\n*",
+      "_time": 112.43450117111206,
+      "type": "delta"
+    },
+    {
+      "text": "   **技术",
+      "_time": 112.43710160255432,
+      "type": "delta"
+    },
+    {
+      "text": "补强**：",
+      "_time": 112.56154417991638,
+      "type": "delta"
+    },
+    {
+      "text": "建议",
+      "_time": 112.56593084335327,
+      "type": "delta"
+    },
+    {
+      "text": "针对 Kafka 消息",
+      "_time": 112.69644021987915,
+      "type": "delta"
+    },
+    {
+      "text": "队列进行",
+      "_time": 112.70003342628479,
+      "type": "delta"
+    },
+    {
+      "text": "深入学习或补充相关",
+      "_time": 112.76024389266968,
+      "type": "delta"
+    },
+    {
+      "text": "项目实践，以满足",
+      "_time": 112.76412749290466,
+      "type": "delta"
+    },
+    {
+      "text": "精通要求 `[来源",
+      "_time": 112.93971133232117,
+      "type": "delta"
+    },
+    {
+      "text": "：阿里巴巴 -",
+      "_time": 112.94309616088867,
+      "type": "delta"
+    },
+    {
+      "text": " 后端开发]",
+      "_time": 113.03049349784851,
+      "type": "delta"
+    },
+    {
+      "text": "`。\n*",
+      "_time": 113.03402924537659,
+      "type": "delta"
+    },
+    {
+      "text": "   **面试策略",
+      "_time": 113.22154450416565,
+      "type": "delta"
+    },
+    {
+      "text": "**：准备",
+      "_time": 113.2242362499237,
+      "type": "delta"
+    },
+    {
+      "text": "具体话术，",
+      "_time": 113.29848790168762,
+      "type": "delta"
+    },
+    {
+      "text": "强调",
+      "_time": 113.30106949806213,
+      "type": "delta"
+    },
+    {
+      "text": " SaaS 供应链",
+      "_time": 113.40946793556213,
+      "type": "delta"
+    },
+    {
+      "text": "管理与电商核心系统",
+      "_time": 113.42834734916687,
+      "type": "delta"
+    },
+    {
+      "text": "在高并发、分布式",
+      "_time": 113.53243517875671,
+      "type": "delta"
+    },
+    {
+      "text": "架构上的技术",
+      "_time": 113.53814220428467,
+      "type": "delta"
+    },
+    {
+      "text": "共通性，以",
+      "_time": 113.65940165519714,
+      "type": "delta"
+    },
+    {
+      "text": "弥补行业",
+      "_time": 113.66197562217712,
+      "type": "delta"
+    },
+    {
+      "text": "经验差异 `[来源",
+      "_time": 113.79743075370789,
+      "type": "delta"
+    },
+    {
+      "text": "：阿里巴巴 -",
+      "_time": 113.8011121749878,
+      "type": "delta"
+    },
+    {
+      "text": " 后端开发]",
+      "_time": 113.8954553604126,
+      "type": "delta"
+    },
+    {
+      "text": "`。",
+      "_time": 113.89804863929749,
+      "type": "delta"
+    },
+    {
+      "session_id": "batch_li_m1_1780649301120",
+      "intent": "match_assess",
+      "route_meta": {
+        "layer": "llm",
+        "intent": "match_assess",
+        "confidence": 0.75,
+        "demands": [
+          {
+            "intent": "match_assess",
+            "entities": {
+              "company": "阿里巴巴",
+              "position": "后端开发",
+              "attributes": [
+                "匹配度"
+              ],
+              "jd_source": "kb"
+            }
+          }
+        ],
+        "plan_tasks": 3
+      },
+      "agent_mode": "llm",
+      "is_clarification": false,
+      "agent": {
+        "rewritten_query": "阿里巴巴后端开发岗位匹配度分析",
+        "tools": [
+          {
+            "tool": "kb_retrieve",
+            "status": "✅",
+            "params": {
+              "query": "阿里巴巴 后端开发 岗位描述",
+              "company": "阿里巴巴",
+              "position": "后端开发",
+              "top_k": 5
+            },
+            "result_preview": "{'chunks': [{'chunk_id': '9cde8355-dcc0-434e-97c4-67dfc5dae5b8_chunk_1', 'content': '【阿里巴巴 · 后端开发 岗位职责】\\n1. 负责电商核心系统的设计与开发。2. 高并发系统架构设计与性能优化。3. 分布式系统开发与微服务治理。4. 数据库设计与优化。', 'metadata': {'company': '阿里"
+          },
+          {
+            "tool": "match_analyze",
+            "status": "✅",
+            "params": {
+              "resume_text": "姓名：李工程师\n电话：138-XXXX-1234 | 邮箱：lixx_dev@email.com | 现居：北京\nJava后端开发工程师 | 3年经验 | 本科\n\n教育背景\n2018.09 - 2022.06  XX理工大学  计算机科学与技术（本科）\n主修课程：数据结构与算法、操作系统、计算机网络、数据库原理、软件工程\n在校荣誉：校级优秀毕业设计（基于微服务的校园二手交易平台）\n\n专业技能\n熟练掌握Java核心技术，熟悉JVM内存模型、GC机制及常见调优手段\n精通Spring Boot、Spring Cloud微服务生态，熟悉Nacos、Gateway、Sentinel、Seata等组件\n熟悉MySQL索引优化、事务机制、分库分表策略，具备SQL调优及慢查询治理经验\n了解Redis缓存设计、Kafka消息队列，熟悉Docker容器化部署及Jenkins CI/CD流程\n掌握Git版本控制，熟悉Linux日常运维及日志排查\n\n工作经历\n2022.07 - 至今  XX科技有限公司（B轮 / 企业服务 SaaS）  Java后端工程师\n\nSaaS供应链管理平台（2023.03 - 至今）\n负责订单中心、库存中心核心模块设计与开发，采用Spring Cloud Alibaba微服务架构，支撑日均10W+订单处理\n主导MySQL分库分表方案设计（ShardingSphere），解决单表数据量过亿导致的查询性能瓶颈，接口响应时间从800ms降至120ms\n设计多级缓存策略（Redis + Caffeine本地缓存），热点数据命中率提升至95%，降低数据库负载40%\n基于Seata AT模式实现分布式事务，保障订单与库存数据一致性，线上运行半年零资损事故\n\n企业权限中台重构（2022.09 - 2023.02）\n参与RBAC权限中台从单体到微服务的拆分重构，负责鉴权服务、菜单路由模块开发\n引入Gateway统一鉴权过滤器，对接OAuth2.0 + JWT认证体系，支持多租户隔离\n编写核心接口单元测试（Unit + Mockito），模块测试覆盖率从45%提升至82%\n\n自我评价\n具备扎实的计算机基础与3年企业级后端开发经验，擅长高并发场景下的系统设计与性能优化。注重代码质量与工程规范，具备良好的团队协作与跨部门沟通能力。",
+              "jd_text": [
+                {
+                  "chunk_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8_chunk_1",
+                  "content": "【阿里巴巴 · 后端开发 岗位职责】\n1. 负责电商核心系统的设计与开发。2. 高并发系统架构设计与性能优化。3. 分布式系统开发与微服务治理。4. 数据库设计与优化。",
+                  "metadata": {
+                    "company": "阿里巴巴",
+                    "index": 1,
+                    "jd_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8",
+                    "position": "后端开发",
+                    "section": "responsibilities",
+                    "strategy": "semantic"
+                  },
+                  "distance": 0.2260117083787918,
+                  "bm25_score": 18.630862039785967,
+                  "vec_norm": 1.0,
+                  "bm25_norm": 0.6406014709806387,
+                  "hybrid_score": 0.8921804412941916,
+                  "rerank_score": 0.9998
+                },
+                {
+                  "chunk_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8_chunk_6",
+                  "content": "【阿里巴巴 · 后端开发 软性要求/加分项】\n有电商行业经验优先",
+                  "metadata": {
+                    "company": "阿里巴巴",
+                    "index": 6,
+                    "jd_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8",
+                    "position": "后端开发",
+                    "priority": "medium",
+                    "section": "soft_requirements",
+                    "strategy": "semantic"
+                  },
+                  "distance": 0.3799883723258972,
+                  "bm25_score": 21.72463909589805,
+                  "vec_norm": 0.32974663120331615,
+                  "bm25_norm": 0.8849205513970899,
+                  "hybrid_score": 0.49629880726144826,
+                  "rerank_score": 0.9912
+                },
+                {
+                  "chunk_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8_chunk_4",
+                  "content": "【阿里巴巴 · 后端开发 硬性要求】\n熟悉分布式系统设计与微服务架构",
+                  "metadata": {
+                    "company": "阿里巴巴",
+                    "index": 4,
+                    "jd_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8",
+                    "position": "后端开发",
+                    "priority": "high",
+                    "section": "hard_requirements",
+                    "strategy": "semantic"
+                  },
+                  "distance": 0.3794054090976715,
+                  "bm25_score": 21.054586656772862,
+                  "vec_norm": 0.3322842434465395,
+                  "bm25_norm": 0.832005750883444,
+                  "hybrid_score": 0.4822006956776108,
+                  "rerank_score": 0.9909
+                },
+                {
+                  "chunk_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8_chunk_3",
+                  "content": "【阿里巴巴 · 后端开发 硬性要求】\n精通Spring Boot、MySQL、Redis、Kafka",
+                  "metadata": {
+                    "company": "阿里巴巴",
+                    "index": 3,
+                    "jd_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8",
+                    "position": "后端开发",
+                    "priority": "high",
+                    "section": "hard_requirements",
+                    "strategy": "semantic"
+                  },
+                  "distance": 0.3772203326225281,
+                  "bm25_score": 21.523449479760323,
+                  "vec_norm": 0.3417957813055905,
+                  "bm25_norm": 0.8690323793948449,
+                  "hybrid_score": 0.4999667607323668,
+                  "rerank_score": 0.9907
+                },
+                {
+                  "chunk_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8_chunk_2",
+                  "content": "【阿里巴巴 · 后端开发 硬性要求】\n3年以上Java开发经验",
+                  "metadata": {
+                    "company": "阿里巴巴",
+                    "index": 2,
+                    "jd_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8",
+                    "position": "后端开发",
+                    "priority": "high",
+                    "section": "hard_requirements",
+                    "strategy": "semantic"
+                  },
+                  "distance": 0.3813605308532715,
+                  "bm25_score": 23.181873451523675,
+                  "vec_norm": 0.3237736879538661,
+                  "bm25_norm": 1.0,
+                  "hybrid_score": 0.5266415815677062,
+                  "rerank_score": 0.9713
+                }
+              ],
+              "company": "阿里巴巴",
+              "position": "后端开发",
+              "attributes": [
+                "匹配度"
+              ]
+            },
+            "result_preview": "{'score': 85, 'label': '高度契合', 'advantages': ['Java核心开发', 'Spring Boot', 'MySQL数据库设计与优化', 'Redis缓存设计', '微服务架构（Spring Cloud）', '分布式系统设计（Seata、Nacos）', '高并发性能优化（分库分表、多级缓存）'], 'weaknesses': ['候选人缺乏Kafka消"
+          }
+        ],
+        "kb_chunks_count": 3,
+        "system_prompt_preview": "你是一位专业的求职顾问。请基于以下工具执行结果，给用户一个清晰、有帮助的回复。\n要求：\n1. 先直接回答用户的问题（是/否/有/没有），不要绕弯子，不要重复用户的原话\n2. 如果有匹配分析结果，给出具体的分数和建议\n3. 如果有检索结果，基于事实回答，不要编造\n4. 【强制】引用信息时必须标注来源。每个引用的事实后面都要跟 [来源：公司名-岗位名] 格式。   kb_retrieve 结果的 ch"
+      },
+      "memory": {
+        "working_turns": 1,
+        "compressed_blocks": 0,
+        "current_topic": "general",
+        "evidence_cache_size": 5
+      },
+      "reply": "有匹配分析结果。\n\n**1. 综合评估**\n*   **匹配分数**：85 分\n*   **评估标签**：高度契合\n\n**2. 岗位核心要求**\n根据检索到的岗位描述，该职位的主要要求如下：\n*   **经验要求**：3 年以上 Java 开发经验 `[来源：阿里巴巴 - 后端开发]`\n*   **技术栈**：精通 Spring Boot、MySQL、Redis、Kafka `[来源：阿里巴巴 - 后端开发]`\n*   **架构能力**：熟悉分布式系统设计与微服务架构 `[来源：阿里巴巴 - 后端开发]`\n*   **业务能力**：负责电商核心系统的设计与开发 `[来源：阿里巴巴 - 后端开发]`\n*   **加分项**：有电商行业经验优先 `[来源：阿里巴巴 - 后端开发]`\n\n**3. 匹配详情分析**\n*   **优势领域**：\n    *   候选人具备 Java 核心开发、Spring Boot、MySQL 数据库设计与优化、Redis 缓存设计能力。\n    *   拥有微服务架构（Spring Cloud）、分布式系统设计（Seata、Nacos）经验。\n    *   具备高并发性能优化（分库分表、多级缓存）能力。\n*   **待提升领域**：\n    *   **Kafka 消息队列**：候选人目前仅了解，未达到岗位要求的精通程度 `[来源：阿里巴巴 - 后端开发]`。\n    *   **行业经验**：没有电商行业核心系统的直接开发经验，现有项目为 SaaS 供应链管理，虽相关但非电商核心业务 `[来源：阿里巴巴 - 后端开发]`。\n\n**4. 求职建议**\n*   **技术补强**：建议针对 Kafka 消息队列进行深入学习或补充相关项目实践，以满足精通要求 `[来源：阿里巴巴 - 后端开发]`。\n*   **面试策略**：准备具体话术，强调 SaaS 供应链管理与电商核心系统在高并发、分布式架构上的技术共通性，以弥补行业经验差异 `[来源：阿里巴巴 - 后端开发]`。",
+      "debug_info": {
+        "task_graph": {
+          "tasks": {
+            "T0": {
+              "task_id": "T0",
+              "task_type": "tool_call",
+              "tool_name": "kb_retrieve",
+              "status": "success",
+              "parameters": {
+                "query": "{{global_slots.company}} {{global_slots.position}} 岗位描述",
+                "company": "{{global_slots.company}}",
+                "position": "{{global_slots.position}}",
+                "top_k": 5
+              },
+              "resolved_params": {
+                "query": "阿里巴巴 后端开发 岗位描述",
+                "company": "阿里巴巴",
+                "position": "后端开发",
+                "top_k": 5
+              },
+              "result": {
+                "chunks": [
+                  {
+                    "chunk_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8_chunk_1",
+                    "content": "【阿里巴巴 · 后端开发 岗位职责】\n1. 负责电商核心系统的设计与开发。2. 高并发系统架构设计与性能优化。3. 分布式系统开发与微服务治理。4. 数据库设计与优化。",
+                    "metadata": {
+                      "company": "阿里巴巴",
+                      "index": 1,
+                      "jd_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8",
+                      "position": "后端开发",
+                      "section": "responsibilities",
+                      "strategy": "semantic"
+                    },
+                    "distance": 0.2260117083787918,
+                    "bm25_score": 18.630862039785967,
+                    "vec_norm": 1.0,
+                    "bm25_norm": 0.6406014709806387,
+                    "hybrid_score": 0.8921804412941916,
+                    "rerank_score": 0.9998
+                  },
+                  {
+                    "chunk_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8_chunk_6",
+                    "content": "【阿里巴巴 · 后端开发 软性要求/加分项】\n有电商行业经验优先",
+                    "metadata": {
+                      "company": "阿里巴巴",
+                      "index": 6,
+                      "jd_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8",
+                      "position": "后端开发",
+                      "priority": "medium",
+                      "section": "soft_requirements",
+                      "strategy": "semantic"
+                    },
+                    "distance": 0.3799883723258972,
+                    "bm25_score": 21.72463909589805,
+                    "vec_norm": 0.32974663120331615,
+                    "bm25_norm": 0.8849205513970899,
+                    "hybrid_score": 0.49629880726144826,
+                    "rerank_score": 0.9912
+                  },
+                  {
+                    "chunk_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8_chunk_4",
+                    "content": "【阿里巴巴 · 后端开发 硬性要求】\n熟悉分布式系统设计与微服务架构",
+                    "metadata": {
+                      "company": "阿里巴巴",
+                      "index": 4,
+                      "jd_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8",
+                      "position": "后端开发",
+                      "priority": "high",
+                      "section": "hard_requirements",
+                      "strategy": "semantic"
+                    },
+                    "distance": 0.3794054090976715,
+                    "bm25_score": 21.054586656772862,
+                    "vec_norm": 0.3322842434465395,
+                    "bm25_norm": 0.832005750883444,
+                    "hybrid_score": 0.4822006956776108,
+                    "rerank_score": 0.9909
+                  },
+                  {
+                    "chunk_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8_chunk_3",
+                    "content": "【阿里巴巴 · 后端开发 硬性要求】\n精通Spring Boot、MySQL、Redis、Kafka",
+                    "metadata": {
+                      "company": "阿里巴巴",
+                      "index": 3,
+                      "jd_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8",
+                      "position": "后端开发",
+                      "priority": "high",
+                      "section": "hard_requirements",
+                      "strategy": "semantic"
+                    },
+                    "distance": 0.3772203326225281,
+                    "bm25_score": 21.523449479760323,
+                    "vec_norm": 0.3417957813055905,
+                    "bm25_norm": 0.8690323793948449,
+                    "hybrid_score": 0.4999667607323668,
+                    "rerank_score": 0.9907
+                  },
+                  {
+                    "chunk_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8_chunk_2",
+                    "content": "【阿里巴巴 · 后端开发 硬性要求】\n3年以上Java开发经验",
+                    "metadata": {
+                      "company": "阿里巴巴",
+                      "index": 2,
+                      "jd_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8",
+                      "position": "后端开发",
+                      "priority": "high",
+                      "section": "hard_requirements",
+                      "strategy": "semantic"
+                    },
+                    "distance": 0.3813605308532715,
+                    "bm25_score": 23.181873451523675,
+                    "vec_norm": 0.3237736879538661,
+                    "bm25_norm": 1.0,
+                    "hybrid_score": 0.5266415815677062,
+                    "rerank_score": 0.9713
+                  }
+                ],
+                "query": "阿里巴巴 后端开发 岗位描述",
+                "filters": {
+                  "company": "阿里巴巴",
+                  "position": "后端开发"
+                },
+                "strategy": "hybrid(70%vec+30%bm25)+reranker",
+                "pool_k": 5,
+                "rerank_k": 10,
+                "pool_size": 18,
+                "vec_only": 0,
+                "bm25_only": 9,
+                "both": 9,
+                "rerank": {
+                  "enabled": true,
+                  "candidates": 5,
+                  "output": 5,
+                  "best_rerank_score": 0.9998
+                }
+              },
+              "observation": "工具 kb_retrieve 执行成功"
+            },
+            "T1": {
+              "task_id": "T1",
+              "task_type": "tool_call",
+              "tool_name": "match_analyze",
+              "status": "success",
+              "parameters": {
+                "resume_text": "{{global_slots.resume_text}}",
+                "jd_text": "{{T0.output.chunks}}",
+                "company": "{{global_slots.company}}",
+                "position": "{{global_slots.position}}",
+                "attributes": "{{global_slots.attributes}}"
+              },
+              "resolved_params": {
+                "resume_text": "姓名：李工程师\n电话：138-XXXX-1234 | 邮箱：lixx_dev@email.com | 现居：北京\nJava后端开发工程师 | 3年经验 | 本科\n\n教育背景\n2018.09 - 2022.06  XX理工大学  计算机科学与技术（本科）\n主修课程：数据结构与算法、操作系统、计算机网络、数据库原理、软件工程\n在校荣誉：校级优秀毕业设计（基于微服务的校园二手交易平台）\n\n专业技能\n熟练掌握Java核心技术，熟悉JVM内存模型、GC机制及常见调优手段\n精通Spring Boot、Spring Cloud微服务生态，熟悉Nacos、Gateway、Sentinel、Seata等组件\n熟悉MySQL索引优化、事务机制、分库分表策略，具备SQL调优及慢查询治理经验\n了解Redis缓存设计、Kafka消息队列，熟悉Docker容器化部署及Jenkins CI/CD流程\n掌握Git版本控制，熟悉Linux日常运维及日志排查\n\n工作经历\n2022.07 - 至今  XX科技有限公司（B轮 / 企业服务 SaaS）  Java后端工程师\n\nSaaS供应链管理平台（2023.03 - 至今）\n负责订单中心、库存中心核心模块设计与开发，采用Spring Cloud Alibaba微服务架构，支撑日均10W+订单处理\n主导MySQL分库分表方案设计（ShardingSphere），解决单表数据量过亿导致的查询性能瓶颈，接口响应时间从800ms降至120ms\n设计多级缓存策略（Redis + Caffeine本地缓存），热点数据命中率提升至95%，降低数据库负载40%\n基于Seata AT模式实现分布式事务，保障订单与库存数据一致性，线上运行半年零资损事故\n\n企业权限中台重构（2022.09 - 2023.02）\n参与RBAC权限中台从单体到微服务的拆分重构，负责鉴权服务、菜单路由模块开发\n引入Gateway统一鉴权过滤器，对接OAuth2.0 + JWT认证体系，支持多租户隔离\n编写核心接口单元测试（Unit + Mockito），模块测试覆盖率从45%提升至82%\n\n自我评价\n具备扎实的计算机基础与3年企业级后端开发经验，擅长高并发场景下的系统设计与性能优化。注重代码质量与工程规范，具备良好的团队协作与跨部门沟通能力。",
+                "jd_text": [
+                  {
+                    "chunk_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8_chunk_1",
+                    "content": "【阿里巴巴 · 后端开发 岗位职责】\n1. 负责电商核心系统的设计与开发。2. 高并发系统架构设计与性能优化。3. 分布式系统开发与微服务治理。4. 数据库设计与优化。",
+                    "metadata": {
+                      "company": "阿里巴巴",
+                      "index": 1,
+                      "jd_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8",
+                      "position": "后端开发",
+                      "section": "responsibilities",
+                      "strategy": "semantic"
+                    },
+                    "distance": 0.2260117083787918,
+                    "bm25_score": 18.630862039785967,
+                    "vec_norm": 1.0,
+                    "bm25_norm": 0.6406014709806387,
+                    "hybrid_score": 0.8921804412941916,
+                    "rerank_score": 0.9998
+                  },
+                  {
+                    "chunk_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8_chunk_6",
+                    "content": "【阿里巴巴 · 后端开发 软性要求/加分项】\n有电商行业经验优先",
+                    "metadata": {
+                      "company": "阿里巴巴",
+                      "index": 6,
+                      "jd_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8",
+                      "position": "后端开发",
+                      "priority": "medium",
+                      "section": "soft_requirements",
+                      "strategy": "semantic"
+                    },
+                    "distance": 0.3799883723258972,
+                    "bm25_score": 21.72463909589805,
+                    "vec_norm": 0.32974663120331615,
+                    "bm25_norm": 0.8849205513970899,
+                    "hybrid_score": 0.49629880726144826,
+                    "rerank_score": 0.9912
+                  },
+                  {
+                    "chunk_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8_chunk_4",
+                    "content": "【阿里巴巴 · 后端开发 硬性要求】\n熟悉分布式系统设计与微服务架构",
+                    "metadata": {
+                      "company": "阿里巴巴",
+                      "index": 4,
+                      "jd_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8",
+                      "position": "后端开发",
+                      "priority": "high",
+                      "section": "hard_requirements",
+                      "strategy": "semantic"
+                    },
+                    "distance": 0.3794054090976715,
+                    "bm25_score": 21.054586656772862,
+                    "vec_norm": 0.3322842434465395,
+                    "bm25_norm": 0.832005750883444,
+                    "hybrid_score": 0.4822006956776108,
+                    "rerank_score": 0.9909
+                  },
+                  {
+                    "chunk_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8_chunk_3",
+                    "content": "【阿里巴巴 · 后端开发 硬性要求】\n精通Spring Boot、MySQL、Redis、Kafka",
+                    "metadata": {
+                      "company": "阿里巴巴",
+                      "index": 3,
+                      "jd_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8",
+                      "position": "后端开发",
+                      "priority": "high",
+                      "section": "hard_requirements",
+                      "strategy": "semantic"
+                    },
+                    "distance": 0.3772203326225281,
+                    "bm25_score": 21.523449479760323,
+                    "vec_norm": 0.3417957813055905,
+                    "bm25_norm": 0.8690323793948449,
+                    "hybrid_score": 0.4999667607323668,
+                    "rerank_score": 0.9907
+                  },
+                  {
+                    "chunk_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8_chunk_2",
+                    "content": "【阿里巴巴 · 后端开发 硬性要求】\n3年以上Java开发经验",
+                    "metadata": {
+                      "company": "阿里巴巴",
+                      "index": 2,
+                      "jd_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8",
+                      "position": "后端开发",
+                      "priority": "high",
+                      "section": "hard_requirements",
+                      "strategy": "semantic"
+                    },
+                    "distance": 0.3813605308532715,
+                    "bm25_score": 23.181873451523675,
+                    "vec_norm": 0.3237736879538661,
+                    "bm25_norm": 1.0,
+                    "hybrid_score": 0.5266415815677062,
+                    "rerank_score": 0.9713
+                  }
+                ],
+                "company": "阿里巴巴",
+                "position": "后端开发",
+                "attributes": [
+                  "匹配度"
+                ]
+              },
+              "result": {
+                "score": 85,
+                "label": "高度契合",
+                "advantages": [
+                  "Java核心开发",
+                  "Spring Boot",
+                  "MySQL数据库设计与优化",
+                  "Redis缓存设计",
+                  "微服务架构（Spring Cloud）",
+                  "分布式系统设计（Seata、Nacos）",
+                  "高并发性能优化（分库分表、多级缓存）"
+                ],
+                "weaknesses": [
+                  "候选人缺乏Kafka消息队列的深入使用经验（简历仅了解，未达到精通程度）；同时没有电商行业核心系统的直接开发经验（其项目为SaaS供应链管理，虽相关但非电商核心业务）。"
+                ],
+                "suggestions": [
+                  "核心能力要求: Java后端开发；精通Spring Boot、MySQL、Redis、Kafka；熟悉分布式系统设计与微服务架构；具备高并发系统架构设计与性能优化能力；数据库设计与优化；电商行业经验（加分项）"
+                ],
+                "match_score": 85,
+                "covered": [
+                  "Java核心开发",
+                  "Spring Boot",
+                  "MySQL数据库设计与优化",
+                  "Redis缓存设计",
+                  "微服务架构（Spring Cloud）",
+                  "分布式系统设计（Seata、Nacos）",
+                  "高并发性能优化（分库分表、多级缓存）"
+                ],
+                "missing_experience": "候选人缺乏Kafka消息队列的深入使用经验（简历仅了解，未达到精通程度）；同时没有电商行业核心系统的直接开发经验（其项目为SaaS供应链管理，虽相关但非电商核心业务）。",
+                "core_skills": "Java后端开发；精通Spring Boot、MySQL、Redis、Kafka；熟悉分布式系统设计与微服务架构；具备高并发系统架构设计与性能优化能力；数据库设计与优化；电商行业经验（加分项）",
+                "company": "阿里巴巴",
+                "position": "后端开发"
+              },
+              "observation": "工具 match_analyze 执行成功"
+            },
+            "T2": {
+              "task_id": "T2",
+              "task_type": "aggregate",
+              "tool_name": null,
+              "status": "success",
+              "parameters": {
+                "assess_result": "{{T1.output}}"
+              },
+              "resolved_params": {
+                "assess_result": {
+                  "score": 85,
+                  "label": "高度契合",
+                  "advantages": [
+                    "Java核心开发",
+                    "Spring Boot",
+                    "MySQL数据库设计与优化",
+                    "Redis缓存设计",
+                    "微服务架构（Spring Cloud）",
+                    "分布式系统设计（Seata、Nacos）",
+                    "高并发性能优化（分库分表、多级缓存）"
+                  ],
+                  "weaknesses": [
+                    "候选人缺乏Kafka消息队列的深入使用经验（简历仅了解，未达到精通程度）；同时没有电商行业核心系统的直接开发经验（其项目为SaaS供应链管理，虽相关但非电商核心业务）。"
+                  ],
+                  "suggestions": [
+                    "核心能力要求: Java后端开发；精通Spring Boot、MySQL、Redis、Kafka；熟悉分布式系统设计与微服务架构；具备高并发系统架构设计与性能优化能力；数据库设计与优化；电商行业经验（加分项）"
+                  ],
+                  "match_score": 85,
+                  "covered": [
+                    "Java核心开发",
+                    "Spring Boot",
+                    "MySQL数据库设计与优化",
+                    "Redis缓存设计",
+                    "微服务架构（Spring Cloud）",
+                    "分布式系统设计（Seata、Nacos）",
+                    "高并发性能优化（分库分表、多级缓存）"
+                  ],
+                  "missing_experience": "候选人缺乏Kafka消息队列的深入使用经验（简历仅了解，未达到精通程度）；同时没有电商行业核心系统的直接开发经验（其项目为SaaS供应链管理，虽相关但非电商核心业务）。",
+                  "core_skills": "Java后端开发；精通Spring Boot、MySQL、Redis、Kafka；熟悉分布式系统设计与微服务架构；具备高并发系统架构设计与性能优化能力；数据库设计与优化；电商行业经验（加分项）",
+                  "company": "阿里巴巴",
+                  "position": "后端开发"
+                }
+              },
+              "result": {
+                "aggregation": {
+                  "assess_result": {
+                    "score": 85,
+                    "label": "高度契合",
+                    "advantages": [
+                      "Java核心开发",
+                      "Spring Boot",
+                      "MySQL数据库设计与优化",
+                      "Redis缓存设计",
+                      "微服务架构（Spring Cloud）",
+                      "分布式系统设计（Seata、Nacos）",
+                      "高并发性能优化（分库分表、多级缓存）"
+                    ],
+                    "weaknesses": [
+                      "候选人缺乏Kafka消息队列的深入使用经验（简历仅了解，未达到精通程度）；同时没有电商行业核心系统的直接开发经验（其项目为SaaS供应链管理，虽相关但非电商核心业务）。"
+                    ],
+                    "suggestions": [
+                      "核心能力要求: Java后端开发；精通Spring Boot、MySQL、Redis、Kafka；熟悉分布式系统设计与微服务架构；具备高并发系统架构设计与性能优化能力；数据库设计与优化；电商行业经验（加分项）"
+                    ],
+                    "match_score": 85,
+                    "covered": [
+                      "Java核心开发",
+                      "Spring Boot",
+                      "MySQL数据库设计与优化",
+                      "Redis缓存设计",
+                      "微服务架构（Spring Cloud）",
+                      "分布式系统设计（Seata、Nacos）",
+                      "高并发性能优化（分库分表、多级缓存）"
+                    ],
+                    "missing_experience": "候选人缺乏Kafka消息队列的深入使用经验（简历仅了解，未达到精通程度）；同时没有电商行业核心系统的直接开发经验（其项目为SaaS供应链管理，虽相关但非电商核心业务）。",
+                    "core_skills": "Java后端开发；精通Spring Boot、MySQL、Redis、Kafka；熟悉分布式系统设计与微服务架构；具备高并发系统架构设计与性能优化能力；数据库设计与优化；电商行业经验（加分项）",
+                    "company": "阿里巴巴",
+                    "position": "后端开发"
+                  }
+                }
+              },
+              "observation": "聚合完成"
+            }
+          },
+          "global_status": "success",
+          "replan_reason": "",
+          "replan_count": 0
+        },
+        "intent": {
+          "demands": [
+            {
+              "intent": "match_assess",
+              "entities": {
+                "company": "阿里巴巴",
+                "position": "后端开发",
+                "attributes": [
+                  "匹配度"
+                ],
+                "jd_source": "kb"
+              },
+              "confidence": 0.75
+            }
+          ],
+          "needs_clarification": false,
+          "clarification_question": ""
+        },
+        "rewrite": {
+          "rewritten_query": "阿里巴巴后端开发岗位匹配度分析",
+          "search_keywords": "阿里巴巴后端开发岗位匹配度分析",
+          "is_follow_up": false,
+          "follow_up_type": "none",
+          "resolved_references": {}
+        },
+        "evidence_cache": [
+          {
+            "chunk_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8_chunk_1",
+            "content": "【阿里巴巴 · 后端开发 岗位职责】\n1. 负责电商核心系统的设计与开发。2. 高并发系统架构设计与性能优化。3. 分布式系统开发与微服务治理。4. 数据库设计与优化。",
+            "metadata": {
+              "company": "阿里巴巴",
+              "index": 1,
+              "jd_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8",
+              "position": "后端开发",
+              "section": "responsibilities",
+              "strategy": "semantic"
+            },
+            "distance": 0.2260117083787918,
+            "bm25_score": 18.630862039785967,
+            "vec_norm": 1.0,
+            "bm25_norm": 0.6406014709806387,
+            "hybrid_score": 0.8921804412941916,
+            "rerank_score": 0.9998
+          },
+          {
+            "chunk_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8_chunk_6",
+            "content": "【阿里巴巴 · 后端开发 软性要求/加分项】\n有电商行业经验优先",
+            "metadata": {
+              "company": "阿里巴巴",
+              "index": 6,
+              "jd_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8",
+              "position": "后端开发",
+              "priority": "medium",
+              "section": "soft_requirements",
+              "strategy": "semantic"
+            },
+            "distance": 0.3799883723258972,
+            "bm25_score": 21.72463909589805,
+            "vec_norm": 0.32974663120331615,
+            "bm25_norm": 0.8849205513970899,
+            "hybrid_score": 0.49629880726144826,
+            "rerank_score": 0.9912
+          },
+          {
+            "chunk_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8_chunk_4",
+            "content": "【阿里巴巴 · 后端开发 硬性要求】\n熟悉分布式系统设计与微服务架构",
+            "metadata": {
+              "company": "阿里巴巴",
+              "index": 4,
+              "jd_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8",
+              "position": "后端开发",
+              "priority": "high",
+              "section": "hard_requirements",
+              "strategy": "semantic"
+            },
+            "distance": 0.3794054090976715,
+            "bm25_score": 21.054586656772862,
+            "vec_norm": 0.3322842434465395,
+            "bm25_norm": 0.832005750883444,
+            "hybrid_score": 0.4822006956776108,
+            "rerank_score": 0.9909
+          },
+          {
+            "chunk_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8_chunk_3",
+            "content": "【阿里巴巴 · 后端开发 硬性要求】\n精通Spring Boot、MySQL、Redis、Kafka",
+            "metadata": {
+              "company": "阿里巴巴",
+              "index": 3,
+              "jd_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8",
+              "position": "后端开发",
+              "priority": "high",
+              "section": "hard_requirements",
+              "strategy": "semantic"
+            },
+            "distance": 0.3772203326225281,
+            "bm25_score": 21.523449479760323,
+            "vec_norm": 0.3417957813055905,
+            "bm25_norm": 0.8690323793948449,
+            "hybrid_score": 0.4999667607323668,
+            "rerank_score": 0.9907
+          },
+          {
+            "chunk_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8_chunk_2",
+            "content": "【阿里巴巴 · 后端开发 硬性要求】\n3年以上Java开发经验",
+            "metadata": {
+              "company": "阿里巴巴",
+              "index": 2,
+              "jd_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8",
+              "position": "后端开发",
+              "priority": "high",
+              "section": "hard_requirements",
+              "strategy": "semantic"
+            },
+            "distance": 0.3813605308532715,
+            "bm25_score": 23.181873451523675,
+            "vec_norm": 0.3237736879538661,
+            "bm25_norm": 1.0,
+            "hybrid_score": 0.5266415815677062,
+            "rerank_score": 0.9713
+          }
+        ],
+        "evidence_cache_query": "阿里巴巴后端开发岗位匹配度分析",
+        "tool_outputs": [
+          {
+            "task_id": "T0",
+            "tool": "kb_retrieve",
+            "description": "检索阿里巴巴后端开发岗位JD",
+            "result": {
+              "chunks": [
+                {
+                  "chunk_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8_chunk_1",
+                  "content": "【阿里巴巴 · 后端开发 岗位职责】\n1. 负责电商核心系统的设计与开发。2. 高并发系统架构设计与性能优化。3. 分布式系统开发与微服务治理。4. 数据库设计与优化。",
+                  "source": "阿里巴巴-后端开发",
+                  "metadata": {
+                    "company": "阿里巴巴",
+                    "position": "后端开发"
+                  }
+                },
+                {
+                  "chunk_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8_chunk_6",
+                  "content": "【阿里巴巴 · 后端开发 软性要求/加分项】\n有电商行业经验优先",
+                  "source": "阿里巴巴-后端开发",
+                  "metadata": {
+                    "company": "阿里巴巴",
+                    "position": "后端开发"
+                  }
+                },
+                {
+                  "chunk_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8_chunk_4",
+                  "content": "【阿里巴巴 · 后端开发 硬性要求】\n熟悉分布式系统设计与微服务架构",
+                  "source": "阿里巴巴-后端开发",
+                  "metadata": {
+                    "company": "阿里巴巴",
+                    "position": "后端开发"
+                  }
+                },
+                {
+                  "chunk_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8_chunk_3",
+                  "content": "【阿里巴巴 · 后端开发 硬性要求】\n精通Spring Boot、MySQL、Redis、Kafka",
+                  "source": "阿里巴巴-后端开发",
+                  "metadata": {
+                    "company": "阿里巴巴",
+                    "position": "后端开发"
+                  }
+                },
+                {
+                  "chunk_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8_chunk_2",
+                  "content": "【阿里巴巴 · 后端开发 硬性要求】\n3年以上Java开发经验",
+                  "source": "阿里巴巴-后端开发",
+                  "metadata": {
+                    "company": "阿里巴巴",
+                    "position": "后端开发"
+                  }
+                }
+              ],
+              "query": "阿里巴巴 后端开发 岗位描述",
+              "filters": {
+                "company": "阿里巴巴",
+                "position": "后端开发"
+              },
+              "strategy": "hybrid(70%vec+30%bm25)+reranker",
+              "pool_k": 5,
+              "rerank_k": 10,
+              "pool_size": 18,
+              "vec_only": 0,
+              "bm25_only": 9,
+              "both": 9,
+              "rerank": {
+                "enabled": true,
+                "candidates": 5,
+                "output": 5,
+                "best_rerank_score": 0.9998
+              }
+            }
+          },
+          {
+            "task_id": "T1",
+            "tool": "match_analyze",
+            "description": "分析简历与阿里巴巴后端开发JD的匹配度",
+            "result": {
+              "score": 85,
+              "label": "高度契合",
+              "advantages": [
+                "Java核心开发",
+                "Spring Boot",
+                "MySQL数据库设计与优化",
+                "Redis缓存设计",
+                "微服务架构（Spring Cloud）",
+                "分布式系统设计（Seata、Nacos）",
+                "高并发性能优化（分库分表、多级缓存）"
+              ],
+              "weaknesses": [
+                "候选人缺乏Kafka消息队列的深入使用经验（简历仅了解，未达到精通程度）；同时没有电商行业核心系统的直接开发经验（其项目为SaaS供应链管理，虽相关但非电商核心业务）。"
+              ],
+              "suggestions": [
+                "核心能力要求: Java后端开发；精通Spring Boot、MySQL、Redis、Kafka；熟悉分布式系统设计与微服务架构；具备高并发系统架构设计与性能优化能力；数据库设计与优化；电商行业经验（加分项）"
+              ],
+              "match_score": 85,
+              "covered": [
+                "Java核心开发",
+                "Spring Boot",
+                "MySQL数据库设计与优化",
+                "Redis缓存设计",
+                "微服务架构（Spring Cloud）",
+                "分布式系统设计（Seata、Nacos）",
+                "高并发性能优化（分库分表、多级缓存）"
+              ],
+              "missing_experience": "候选人缺乏Kafka消息队列的深入使用经验（简历仅了解，未达到精通程度）；同时没有电商行业核心系统的直接开发经验（其项目为SaaS供应链管理，虽相关但非电商核心业务）。",
+              "core_skills": "Java后端开发；精通Spring Boot、MySQL、Redis、Kafka；熟悉分布式系统设计与微服务架构；具备高并发系统架构设计与性能优化能力；数据库设计与优化；电商行业经验（加分项）",
+              "company": "阿里巴巴",
+              "position": "后端开发"
+            }
+          },
+          {
+            "task_id": "T2",
+            "tool": null,
+            "description": "聚合匹配分析结果，生成回复素材",
+            "result": {
+              "aggregation": {
+                "assess_result": {
+                  "score": 85,
+                  "label": "高度契合",
+                  "advantages": [
+                    "Java核心开发",
+                    "Spring Boot",
+                    "MySQL数据库设计与优化",
+                    "Redis缓存设计",
+                    "微服务架构（Spring Cloud）",
+                    "分布式系统设计（Seata、Nacos）",
+                    "高并发性能优化（分库分表、多级缓存）"
+                  ],
+                  "weaknesses": [
+                    "候选人缺乏Kafka消息队列的深入使用经验（简历仅了解，未达到精通程度）；同时没有电商行业核心系统的直接开发经验（其项目为SaaS供应链管理，虽相关但非电商核心业务）。"
+                  ],
+                  "suggestions": [
+                    "核心能力要求: Java后端开发；精通Spring Boot、MySQL、Redis、Kafka；熟悉分布式系统设计与微服务架构；具备高并发系统架构设计与性能优化能力；数据库设计与优化；电商行业经验（加分项）"
+                  ],
+                  "match_score": 85,
+                  "covered": [
+                    "Java核心开发",
+                    "Spring Boot",
+                    "MySQL数据库设计与优化",
+                    "Redis缓存设计",
+                    "微服务架构（Spring Cloud）",
+                    "分布式系统设计（Seata、Nacos）",
+                    "高并发性能优化（分库分表、多级缓存）"
+                  ],
+                  "missing_experience": "候选人缺乏Kafka消息队列的深入使用经验（简历仅了解，未达到精通程度）；同时没有电商行业核心系统的直接开发经验（其项目为SaaS供应链管理，虽相关但非电商核心业务）。",
+                  "core_skills": "Java后端开发；精通Spring Boot、MySQL、Redis、Kafka；熟悉分布式系统设计与微服务架构；具备高并发系统架构设计与性能优化能力；数据库设计与优化；电商行业经验（加分项）",
+                  "company": "阿里巴巴",
+                  "position": "后端开发"
+                }
+              }
+            }
+          }
+        ],
+        "final_aggregation_prompt": {
+          "system_prompt": "你是一位专业的求职顾问。请基于以下工具执行结果，给用户一个清晰、有帮助的回复。\n要求：\n1. 先直接回答用户的问题（是/否/有/没有），不要绕弯子，不要重复用户的原话\n2. 如果有匹配分析结果，给出具体的分数和建议\n3. 如果有检索结果，基于事实回答，不要编造\n4. 【强制】引用信息时必须标注来源。每个引用的事实后面都要跟 [来源：公司名-岗位名] 格式。   kb_retrieve 结果的 chunks 中带有 'source' 字段（如'字节跳动-AI产品经理'），请直接使用。   external_search 结果带有 'source_name' 字段，也请直接使用。\n5. 当本地知识库与外部搜索结果冲突时，请并列呈现两种说法并标注各自来源，不要替用户做判断\n6. 语气友好、专业、结构化",
+          "user_prompt": "【用户问题】\n阿里巴巴后端开发岗位匹配度分析\n\n【工具执行结果】\n[{\"task_id\": \"T0\", \"tool\": \"kb_retrieve\", \"description\": \"检索阿里巴巴后端开发岗位JD\", \"result\": {\"chunks\": [{\"chunk_id\": \"9cde8355-dcc0-434e-97c4-67dfc5dae5b8_chunk_1\", \"content\": \"【阿里巴巴 · 后端开发 岗位职责】\\n1. 负责电商核心系统的设计与开发。2. 高并发系统架构设计与性能优化。3. 分布式系统开发与微服务治理。4. 数据库设计与优化。\", \"source\": \"阿里巴巴-后端开发\", \"metadata\": {\"company\": \"阿里巴巴\", \"position\": \"后端开发\"}}, {\"chunk_id\": \"9cde8355-dcc0-434e-97c4-67dfc5dae5b8_chunk_6\", \"content\": \"【阿里巴巴 · 后端开发 软性要求/加分项】\\n有电商行业经验优先\", \"source\": \"阿里巴巴-后端开发\", \"metadata\": {\"company\": \"阿里巴巴\", \"position\": \"后端开发\"}}, {\"chunk_id\": \"9cde8355-dcc0-434e-97c4-67dfc5dae5b8_chunk_4\", \"content\": \"【阿里巴巴 · 后端开发 硬性要求】\\n熟悉分布式系统设计与微服务架构\", \"source\": \"阿里巴巴-后端开发\", \"metadata\": {\"company\": \"阿里巴巴\", \"position\": \"后端开发\"}}, {\"chunk_id\": \"9cde8355-dcc0-434e-97c4-67dfc5dae5b8_chunk_3\", \"content\": \"【阿里巴巴 · 后端开发 硬性要求】\\n精通Spring Boot、MySQL、Redis、Kafka\", \"source\": \"阿里巴巴-后端开发\", \"metadata\": {\"company\": \"阿里巴巴\", \"position\": \"后端开发\"}}, {\"chunk_id\": \"9cde8355-dcc0-434e-97c4-67dfc5dae5b8_chunk_2\", \"content\": \"【阿里巴巴 · 后端开发 硬性要求】\\n3年以上Java开发经验\", \"source\": \"阿里巴巴-后端开发\", \"metadata\": {\"company\": \"阿里巴巴\", \"position\": \"后端开发\"}}], \"query\": \"阿里巴巴 后端开发 岗位描述\", \"filters\": {\"company\": \"阿里巴巴\", \"position\": \"后端开发\"}, \"strategy\": \"hybrid(70%vec+30%bm25)+reranker\", \"pool_k\": 5, \"rerank_k\": 10, \"pool_size\": 18, \"vec_only\": 0, \"bm25_only\": 9, \"both\": 9, \"rerank\": {\"enabled\": true, \"candidates\": 5, \"output\": 5, \"best_rerank_score\": 0.9998}}}, {\"task_id\": \"T1\", \"tool\": \"match_analyze\", \"description\": \"分析简历与阿里巴巴后端开发JD的匹配度\", \"result\": {\"score\": 85, \"label\": \"高度契合\", \"advantages\": [\"Java核心开发\", \"Spring Boot\", \"MySQL数据库设计与优化\", \"Redis缓存设计\", \"微服务架构（Spring Cloud）\", \"分布式系统设计（Seata、Nacos）\", \"高并发性能优化（分库分表、多级缓存）\"], \"weaknesses\": [\"候选人缺乏Kafka消息队列的深入使用经验（简历仅了解，未达到精通程度）；同时没有电商行业核心系统的直接开发经验（其项目为SaaS供应链管理，虽相关但非电商核心业务）。\"], \"suggestions\": [\"核心能力要求: Java后端开发；精通Spring Boot、MySQL、Redis、Kafka；熟悉分布式系统设计与微服务架构；具备高并发系统架构设计与性能优化能力；数据库设计与优化；电商行业经验（加分项）\"], \"match_score\": 85, \"covered\": [\"Java核心开发\", \"Spring Boot\", \"MySQL数据库设计与优化\", \"Redis缓存设计\", \"微服务架构（Spring Cloud）\", \"分布式系统设计（Seata、Nacos）\", \"高并发性能优化（分库分表、多级缓存）\"], \"missing_experience\": \"候选人缺乏Kafka消息队列的深入使用经验（简历仅了解，未达到精通程度）；同时没有电商行业核心系统的直接开发经验（其项目为SaaS供应链管理，虽相关但非电商核心业务）。\", \"core_skills\": \"Java后端开发；精通Spring Boot、MySQL、Redis、Kafka；熟悉分布式系统设计与微服务架构；具备高并发系统架构设计与性能优化能力；数据库设计与优化；电商行业经验（加分项）\", \"company\": \"阿里巴巴\", \"position\": \"后端开发\"}}, {\"task_id\": \"T2\", \"tool\": null, \"description\": \"聚合匹配分析结果，生成回复素材\", \"result\": {\"aggregation\": {\"assess_result\": {\"score\": 85, \"label\": \"高度契合\", \"advantages\": [\"Java核心开发\", \"Spring Boot\", \"MySQL数据库设计与优化\", \"Redis缓存设计\", \"微服务架构（Spring Cloud）\", \"分布式系统设计（Seata、Nacos）\", \"高并发性能优化（分库分表、多级缓存）\"], \"weaknesses\": [\"候选人缺乏Kafka消息队列的深入使用经验（简历仅了解，未达到精通程度）；同时没有电商行业核心系统的直接开发经验（其项目为SaaS供应链管理，虽相关但非电商核心业务）。\"], \"suggestions\": [\"核心能力要求: Java后端开发；精通Spring Boot、MySQL、Redis、Kafka；熟悉分布式系统设计与微服务架构；具备高并发系统架构设计与性能优化能力；数据库设计与优化；电商行业经验（加分项）\"], \"match_score\": 85, \"covered\": [\"Java核心开发\", \"Spring Boot\", \"MySQL数据库设计与优化\", \"Redis缓存设计\", \"微服务架构（Spring Cloud）\", \"分布式系统设计（Seata、Nacos）\", \"高并发性能优化（分库分表、多级缓存）\"], \"missing_e\n\n请生成回复："
+        }
+      },
+      "usage": {
+        "prompt_tokens": 8836,
+        "completion_tokens": 6451,
+        "total_tokens": 15287
+      },
+      "_time": 113.95006227493286,
+      "type": "done"
+    }
+  ],
+  "timestamp": "2026-06-05T16:48:21.120904",
+  "prompt_tokens": 8836,
+  "completion_tokens": 6451,
+  "total_tokens": 15287,
+  "tool_execution_success_rate": 1.0,
+  "tool_correct_rate": 1.0
+}

@@ -1,0 +1,2679 @@
+{
+  "case_id": "eval_li_10",
+  "message": "后端岗面试要准备什么",
+  "gold_intents": [
+    "prepare"
+  ],
+  "expected_tools": [
+    "interview_gen"
+  ],
+  "scenario": "面试准备_泛化",
+  "eval_context": {
+    "gold_intents": [
+      "prepare"
+    ],
+    "gold_slots": {
+      "position": "后端"
+    },
+    "relevance_score": 0,
+    "expected_tools": [
+      "interview_gen"
+    ],
+    "scenario": "面试准备_泛化",
+    "notes": "期望生成Java后端相关面试题"
+  },
+  "resume_id": "e30c8b27-cfce-4918-8810-832e3ab5087c",
+  "status": "success",
+  "error": null,
+  "ttfb": 0.007,
+  "total_latency": 95.9,
+  "event_count": 201,
+  "pred_intent": "interview_prepare",
+  "pred_intents": [
+    "interview_prepare"
+  ],
+  "pred_tools": [
+    {
+      "tool": "kb_retrieve",
+      "status": "✅",
+      "params": {
+        "query": "后端",
+        "top_k": 3,
+        "position": "后端"
+      },
+      "result_preview": "{'chunks': [{'chunk_id': '9cde8355-dcc0-434e-97c4-67dfc5dae5b8_chunk_0', 'content': '公司：阿里巴巴，岗位：后端开发，地点：杭州，薪资：35k-65k', 'metadata': {'category': '技术', 'company': '阿里巴巴', 'domain': '电商', 'index': 0, 'j"
+    },
+    {
+      "tool": "match_analyze",
+      "status": "✅",
+      "params": {
+        "resume_text": "姓名：李工程师\n电话：138-XXXX-1234 | 邮箱：lixx_dev@email.com | 现居：北京\nJava后端开发工程师 | 3年经验 | 本科\n\n教育背景\n2018.09 - 2022.06  XX理工大学  计算机科学与技术（本科）\n主修课程：数据结构与算法、操作系统、计算机网络、数据库原理、软件工程\n在校荣誉：校级优秀毕业设计（基于微服务的校园二手交易平台）\n\n专业技能\n熟练掌握Java核心技术，熟悉JVM内存模型、GC机制及常见调优手段\n精通Spring Boot、Spring Cloud微服务生态，熟悉Nacos、Gateway、Sentinel、Seata等组件\n熟悉MySQL索引优化、事务机制、分库分表策略，具备SQL调优及慢查询治理经验\n了解Redis缓存设计、Kafka消息队列，熟悉Docker容器化部署及Jenkins CI/CD流程\n掌握Git版本控制，熟悉Linux日常运维及日志排查\n\n工作经历\n2022.07 - 至今  XX科技有限公司（B轮 / 企业服务 SaaS）  Java后端工程师\n\nSaaS供应链管理平台（2023.03 - 至今）\n负责订单中心、库存中心核心模块设计与开发，采用Spring Cloud Alibaba微服务架构，支撑日均10W+订单处理\n主导MySQL分库分表方案设计（ShardingSphere），解决单表数据量过亿导致的查询性能瓶颈，接口响应时间从800ms降至120ms\n设计多级缓存策略（Redis + Caffeine本地缓存），热点数据命中率提升至95%，降低数据库负载40%\n基于Seata AT模式实现分布式事务，保障订单与库存数据一致性，线上运行半年零资损事故\n\n企业权限中台重构（2022.09 - 2023.02）\n参与RBAC权限中台从单体到微服务的拆分重构，负责鉴权服务、菜单路由模块开发\n引入Gateway统一鉴权过滤器，对接OAuth2.0 + JWT认证体系，支持多租户隔离\n编写核心接口单元测试（Unit + Mockito），模块测试覆盖率从45%提升至82%\n\n自我评价\n具备扎实的计算机基础与3年企业级后端开发经验，擅长高并发场景下的系统设计与性能优化。注重代码质量与工程规范，具备良好的团队协作与跨部门沟通能力。",
+        "jd_text": [
+          {
+            "chunk_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8_chunk_0",
+            "content": "公司：阿里巴巴，岗位：后端开发，地点：杭州，薪资：35k-65k",
+            "metadata": {
+              "category": "技术",
+              "company": "阿里巴巴",
+              "domain": "电商",
+              "index": 0,
+              "jd_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8",
+              "min_education": "本科",
+              "min_years": 3,
+              "position": "后端开发",
+              "section": "basic_info",
+              "strategy": "semantic"
+            },
+            "distance": null,
+            "bm25_score": 7.814368472060279,
+            "vec_norm": 0.0,
+            "bm25_norm": 1.0,
+            "hybrid_score": 0.3,
+            "rerank_score": 0.9741
+          },
+          {
+            "chunk_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8_chunk_5",
+            "content": "【阿里巴巴 · 后端开发 硬性要求】\n本科及以上学历",
+            "metadata": {
+              "company": "阿里巴巴",
+              "index": 5,
+              "jd_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8",
+              "position": "后端开发",
+              "priority": "high",
+              "section": "hard_requirements",
+              "strategy": "semantic"
+            },
+            "distance": null,
+            "bm25_score": 7.814368472060279,
+            "vec_norm": 0.0,
+            "bm25_norm": 1.0,
+            "hybrid_score": 0.3,
+            "rerank_score": 0.9613
+          },
+          {
+            "chunk_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8_chunk_2",
+            "content": "【阿里巴巴 · 后端开发 硬性要求】\n3年以上Java开发经验",
+            "metadata": {
+              "company": "阿里巴巴",
+              "index": 2,
+              "jd_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8",
+              "position": "后端开发",
+              "priority": "high",
+              "section": "hard_requirements",
+              "strategy": "semantic"
+            },
+            "distance": null,
+            "bm25_score": 7.814368472060279,
+            "vec_norm": 0.0,
+            "bm25_norm": 1.0,
+            "hybrid_score": 0.3,
+            "rerank_score": 0.9327
+          }
+        ],
+        "position": "后端"
+      },
+      "result_preview": "{'score': 95, 'label': '高度契合', 'advantages': ['本科及以上学历', '3年以上Java开发经验', 'Java后端开发技术', '微服务架构经验', '分布式系统设计', '数据库优化', '缓存策略', '分布式事务'], 'weaknesses': ['候选人完全满足JD中的硬性要求（本科及以上学历和3年以上Java开发经验），未发现明显缺失。但J"
+    },
+    {
+      "tool": "interview_gen",
+      "status": "✅",
+      "params": {
+        "match_result": {
+          "score": 95,
+          "label": "高度契合",
+          "advantages": [
+            "本科及以上学历",
+            "3年以上Java开发经验",
+            "Java后端开发技术",
+            "微服务架构经验",
+            "分布式系统设计",
+            "数据库优化",
+            "缓存策略",
+            "分布式事务"
+          ],
+          "weaknesses": [
+            "候选人完全满足JD中的硬性要求（本科及以上学历和3年以上Java开发经验），未发现明显缺失。但JD未列出更多技术或业务要求，因此无法进一步评估其他方面的匹配度。"
+          ],
+          "suggestions": [
+            "核心能力要求: 本科及以上学历、3年以上Java开发经验"
+          ],
+          "match_score": 95,
+          "covered": [
+            "本科及以上学历",
+            "3年以上Java开发经验",
+            "Java后端开发技术",
+            "微服务架构经验",
+            "分布式系统设计",
+            "数据库优化",
+            "缓存策略",
+            "分布式事务"
+          ],
+          "missing_experience": "候选人完全满足JD中的硬性要求（本科及以上学历和3年以上Java开发经验），未发现明显缺失。但JD未列出更多技术或业务要求，因此无法进一步评估其他方面的匹配度。",
+          "core_skills": "本科及以上学历、3年以上Java开发经验",
+          "company": null,
+          "position": "后端"
+        },
+        "count": 5,
+        "difficulty": "mixed"
+      },
+      "result_preview": "{'questions': ['请描述一个你实际参与过的分布式事务场景，并说明你采用了哪种解决方案（如TCC、Saga、最终一致性等）？为什么选择这种方案？实际落地中遇到了哪些数据一致性问题，你是如何处理的？追问方向：1）如果系统要求强一致性，你会如何改造现有方案？2）当使用消息队列实现最终一致性时，如何处理消息丢失或重复消费导致的数据不一致？', '在高并发场景下，缓存和数据库之间的一致性问题是"
+    }
+  ],
+  "tools_called": [
+    "kb_retrieve",
+    "match_analyze",
+    "interview_gen"
+  ],
+  "kb_chunks": [
+    {
+      "chunk_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8_chunk_0",
+      "content": "公司：阿里巴巴，岗位：后端开发，地点：杭州，薪资：35k-65k",
+      "metadata": {
+        "category": "技术",
+        "company": "阿里巴巴",
+        "domain": "电商",
+        "index": 0,
+        "jd_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8",
+        "min_education": "本科",
+        "min_years": 3,
+        "position": "后端开发",
+        "section": "basic_info",
+        "strategy": "semantic"
+      },
+      "distance": null,
+      "bm25_score": 7.814368472060279,
+      "vec_norm": 0.0,
+      "bm25_norm": 1.0,
+      "hybrid_score": 0.3,
+      "rerank_score": 0.9741
+    },
+    {
+      "chunk_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8_chunk_5",
+      "content": "【阿里巴巴 · 后端开发 硬性要求】\n本科及以上学历",
+      "metadata": {
+        "company": "阿里巴巴",
+        "index": 5,
+        "jd_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8",
+        "position": "后端开发",
+        "priority": "high",
+        "section": "hard_requirements",
+        "strategy": "semantic"
+      },
+      "distance": null,
+      "bm25_score": 7.814368472060279,
+      "vec_norm": 0.0,
+      "bm25_norm": 1.0,
+      "hybrid_score": 0.3,
+      "rerank_score": 0.9613
+    },
+    {
+      "chunk_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8_chunk_2",
+      "content": "【阿里巴巴 · 后端开发 硬性要求】\n3年以上Java开发经验",
+      "metadata": {
+        "company": "阿里巴巴",
+        "index": 2,
+        "jd_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8",
+        "position": "后端开发",
+        "priority": "high",
+        "section": "hard_requirements",
+        "strategy": "semantic"
+      },
+      "distance": null,
+      "bm25_score": 7.814368472060279,
+      "vec_norm": 0.0,
+      "bm25_norm": 1.0,
+      "hybrid_score": 0.3,
+      "rerank_score": 0.9327
+    }
+  ],
+  "tool_executions_full": [
+    {
+      "tool_name": "kb_retrieve",
+      "task_id": "T0",
+      "status": "success",
+      "output": {
+        "chunks": [
+          {
+            "chunk_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8_chunk_0",
+            "content": "公司：阿里巴巴，岗位：后端开发，地点：杭州，薪资：35k-65k",
+            "source": "阿里巴巴-后端开发",
+            "metadata": {
+              "company": "阿里巴巴",
+              "position": "后端开发"
+            }
+          },
+          {
+            "chunk_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8_chunk_5",
+            "content": "【阿里巴巴 · 后端开发 硬性要求】\n本科及以上学历",
+            "source": "阿里巴巴-后端开发",
+            "metadata": {
+              "company": "阿里巴巴",
+              "position": "后端开发"
+            }
+          },
+          {
+            "chunk_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8_chunk_2",
+            "content": "【阿里巴巴 · 后端开发 硬性要求】\n3年以上Java开发经验",
+            "source": "阿里巴巴-后端开发",
+            "metadata": {
+              "company": "阿里巴巴",
+              "position": "后端开发"
+            }
+          }
+        ],
+        "query": "后端",
+        "filters": {
+          "position": "后端"
+        },
+        "strategy": "hybrid(70%vec+30%bm25)+reranker",
+        "pool_k": 3,
+        "rerank_k": 10,
+        "pool_size": 15,
+        "vec_only": 0,
+        "bm25_only": 15,
+        "both": 0,
+        "rerank": {
+          "enabled": true,
+          "candidates": 3,
+          "output": 3,
+          "best_rerank_score": 0.9741
+        }
+      }
+    },
+    {
+      "tool_name": "match_analyze",
+      "task_id": "T1",
+      "status": "success",
+      "output": {
+        "score": 95,
+        "label": "高度契合",
+        "advantages": [
+          "本科及以上学历",
+          "3年以上Java开发经验",
+          "Java后端开发技术",
+          "微服务架构经验",
+          "分布式系统设计",
+          "数据库优化",
+          "缓存策略",
+          "分布式事务"
+        ],
+        "weaknesses": [
+          "候选人完全满足JD中的硬性要求（本科及以上学历和3年以上Java开发经验），未发现明显缺失。但JD未列出更多技术或业务要求，因此无法进一步评估其他方面的匹配度。"
+        ],
+        "suggestions": [
+          "核心能力要求: 本科及以上学历、3年以上Java开发经验"
+        ],
+        "match_score": 95,
+        "covered": [
+          "本科及以上学历",
+          "3年以上Java开发经验",
+          "Java后端开发技术",
+          "微服务架构经验",
+          "分布式系统设计",
+          "数据库优化",
+          "缓存策略",
+          "分布式事务"
+        ],
+        "missing_experience": "候选人完全满足JD中的硬性要求（本科及以上学历和3年以上Java开发经验），未发现明显缺失。但JD未列出更多技术或业务要求，因此无法进一步评估其他方面的匹配度。",
+        "core_skills": "本科及以上学历、3年以上Java开发经验",
+        "company": null,
+        "position": "后端"
+      }
+    },
+    {
+      "tool_name": "interview_gen",
+      "task_id": "T2",
+      "status": "success",
+      "output": {
+        "questions": [
+          "请描述一个你实际参与过的分布式事务场景，并说明你采用了哪种解决方案（如TCC、Saga、最终一致性等）？为什么选择这种方案？实际落地中遇到了哪些数据一致性问题，你是如何处理的？追问方向：1）如果系统要求强一致性，你会如何改造现有方案？2）当使用消息队列实现最终一致性时，如何处理消息丢失或重复消费导致的数据不一致？",
+          "在高并发场景下，缓存和数据库之间的一致性问题是一个经典难题。请结合你的项目经验，谈谈你是如何保证缓存与数据库数据最终一致性的？如果出现缓存穿透、击穿、雪崩，你会如何设计解决方案？追问方向：1）能否详细说明你使用过的一种缓存更新策略（如Cache-Aside、Read/Write Through）并分析其优缺点？2）假设缓存层出现大面积失效，导致数据库瞬间压力剧增，除了常规的限流降级，你还会采取哪些更精细化的措施？",
+          "微服务架构中，服务拆分是一个核心设计决策。假设你要将一个单体电商系统拆分为微服务，请从业务边界、数据管理、服务间通信、部署运维等角度，阐述你的拆分思路和关键考量。追问方向：1）在拆分过程中，如何识别并处理共享数据库或公共依赖模块？2）如果拆分后出现跨服务的复杂查询（如多表join），你会如何设计查询方案以避免性能问题？",
+          "设计一个高并发的秒杀系统，要求支撑10万+ QPS的瞬时流量，需要从架构分层、流量控制、库存管理、防超卖、用户体验等方面进行详细设计。请给出你的方案，并解释关键设计决策的理由。追问方向：1）如何防止恶意用户通过脚本或机器刷单？你有哪些风控策略？2）如果秒杀结束后，仍有大量用户看到“已售罄”页面，但存在部分用户下单后未支付导致库存释放，你会如何处理这种库存回滚与用户体验的平衡？",
+          "请谈谈你对Java并发编程中线程池的理解。在一个高并发的数据处理任务中，你如何根据任务类型（CPU密集、IO密集）来设置线程池参数（核心线程数、最大线程数、队列类型等）？如果任务执行过程中出现OOM或死锁，你会如何排查和修复？追问方向：1）如果任务依赖外部服务且响应时间不稳定，如何调整线程池策略以提升整体吞吐量？2）你能手写一个简单的线程池或者描述其关键实现逻辑吗？包括工作线程的创建、任务队列的阻塞、拒绝策略等。"
+        ],
+        "focus_areas": [
+          "短板深挖：候选人完全满足JD中的硬性要求（本科及以上学历和3年以上Java开发经验），未发现明显缺失。但JD未列出更多技术或业务要求，因此无法进一步评估其他方面的匹配度。",
+          "核心能力：本科及以上学历、3年以上Java开发经验"
+        ],
+        "question_count": 5,
+        "company": null,
+        "position": "后端"
+      }
+    },
+    {
+      "tool_name": null,
+      "task_id": "T3",
+      "status": "success",
+      "output": {
+        "aggregation": {
+          "prepare": {
+            "questions": [
+              "请描述一个你实际参与过的分布式事务场景，并说明你采用了哪种解决方案（如TCC、Saga、最终一致性等）？为什么选择这种方案？实际落地中遇到了哪些数据一致性问题，你是如何处理的？追问方向：1）如果系统要求强一致性，你会如何改造现有方案？2）当使用消息队列实现最终一致性时，如何处理消息丢失或重复消费导致的数据不一致？",
+              "在高并发场景下，缓存和数据库之间的一致性问题是一个经典难题。请结合你的项目经验，谈谈你是如何保证缓存与数据库数据最终一致性的？如果出现缓存穿透、击穿、雪崩，你会如何设计解决方案？追问方向：1）能否详细说明你使用过的一种缓存更新策略（如Cache-Aside、Read/Write Through）并分析其优缺点？2）假设缓存层出现大面积失效，导致数据库瞬间压力剧增，除了常规的限流降级，你还会采取哪些更精细化的措施？",
+              "微服务架构中，服务拆分是一个核心设计决策。假设你要将一个单体电商系统拆分为微服务，请从业务边界、数据管理、服务间通信、部署运维等角度，阐述你的拆分思路和关键考量。追问方向：1）在拆分过程中，如何识别并处理共享数据库或公共依赖模块？2）如果拆分后出现跨服务的复杂查询（如多表join），你会如何设计查询方案以避免性能问题？",
+              "设计一个高并发的秒杀系统，要求支撑10万+ QPS的瞬时流量，需要从架构分层、流量控制、库存管理、防超卖、用户体验等方面进行详细设计。请给出你的方案，并解释关键设计决策的理由。追问方向：1）如何防止恶意用户通过脚本或机器刷单？你有哪些风控策略？2）如果秒杀结束后，仍有大量用户看到“已售罄”页面，但存在部分用户下单后未支付导致库存释放，你会如何处理这种库存回滚与用户体验的平衡？",
+              "请谈谈你对Java并发编程中线程池的理解。在一个高并发的数据处理任务中，你如何根据任务类型（CPU密集、IO密集）来设置线程池参数（核心线程数、最大线程数、队列类型等）？如果任务执行过程中出现OOM或死锁，你会如何排查和修复？追问方向：1）如果任务依赖外部服务且响应时间不稳定，如何调整线程池策略以提升整体吞吐量？2）你能手写一个简单的线程池或者描述其关键实现逻辑吗？包括工作线程的创建、任务队列的阻塞、拒绝策略等。"
+            ],
+            "focus_areas": [
+              "短板深挖：候选人完全满足JD中的硬性要求（本科及以上学历和3年以上Java开发经验），未发现明显缺失。但JD未列出更多技术或业务要求，因此无法进一步评估其他方面的匹配度。",
+              "核心能力：本科及以上学历、3年以上Java开发经验"
+            ],
+            "question_count": 5,
+            "company": null,
+            "position": "后端"
+          }
+        }
+      }
+    }
+  ],
+  "debug_info": {
+    "task_graph": {
+      "tasks": {
+        "T0": {
+          "task_id": "T0",
+          "task_type": "tool_call",
+          "tool_name": "kb_retrieve",
+          "status": "success",
+          "parameters": {
+            "query": "后端",
+            "top_k": 3,
+            "position": "后端"
+          },
+          "resolved_params": {
+            "query": "后端",
+            "top_k": 3,
+            "position": "后端"
+          },
+          "result": {
+            "chunks": [
+              {
+                "chunk_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8_chunk_0",
+                "content": "公司：阿里巴巴，岗位：后端开发，地点：杭州，薪资：35k-65k",
+                "metadata": {
+                  "category": "技术",
+                  "company": "阿里巴巴",
+                  "domain": "电商",
+                  "index": 0,
+                  "jd_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8",
+                  "min_education": "本科",
+                  "min_years": 3,
+                  "position": "后端开发",
+                  "section": "basic_info",
+                  "strategy": "semantic"
+                },
+                "distance": null,
+                "bm25_score": 7.814368472060279,
+                "vec_norm": 0.0,
+                "bm25_norm": 1.0,
+                "hybrid_score": 0.3,
+                "rerank_score": 0.9741
+              },
+              {
+                "chunk_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8_chunk_5",
+                "content": "【阿里巴巴 · 后端开发 硬性要求】\n本科及以上学历",
+                "metadata": {
+                  "company": "阿里巴巴",
+                  "index": 5,
+                  "jd_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8",
+                  "position": "后端开发",
+                  "priority": "high",
+                  "section": "hard_requirements",
+                  "strategy": "semantic"
+                },
+                "distance": null,
+                "bm25_score": 7.814368472060279,
+                "vec_norm": 0.0,
+                "bm25_norm": 1.0,
+                "hybrid_score": 0.3,
+                "rerank_score": 0.9613
+              },
+              {
+                "chunk_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8_chunk_2",
+                "content": "【阿里巴巴 · 后端开发 硬性要求】\n3年以上Java开发经验",
+                "metadata": {
+                  "company": "阿里巴巴",
+                  "index": 2,
+                  "jd_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8",
+                  "position": "后端开发",
+                  "priority": "high",
+                  "section": "hard_requirements",
+                  "strategy": "semantic"
+                },
+                "distance": null,
+                "bm25_score": 7.814368472060279,
+                "vec_norm": 0.0,
+                "bm25_norm": 1.0,
+                "hybrid_score": 0.3,
+                "rerank_score": 0.9327
+              }
+            ],
+            "query": "后端",
+            "filters": {
+              "position": "后端"
+            },
+            "strategy": "hybrid(70%vec+30%bm25)+reranker",
+            "pool_k": 3,
+            "rerank_k": 10,
+            "pool_size": 15,
+            "vec_only": 0,
+            "bm25_only": 15,
+            "both": 0,
+            "rerank": {
+              "enabled": true,
+              "candidates": 3,
+              "output": 3,
+              "best_rerank_score": 0.9741
+            }
+          },
+          "observation": "工具 kb_retrieve 执行成功"
+        },
+        "T1": {
+          "task_id": "T1",
+          "task_type": "tool_call",
+          "tool_name": "match_analyze",
+          "status": "success",
+          "parameters": {
+            "resume_text": "{{global_slots.resume_text}}",
+            "jd_text": "{{T0.output.chunks}}",
+            "position": "{{global_slots.position}}"
+          },
+          "resolved_params": {
+            "resume_text": "姓名：李工程师\n电话：138-XXXX-1234 | 邮箱：lixx_dev@email.com | 现居：北京\nJava后端开发工程师 | 3年经验 | 本科\n\n教育背景\n2018.09 - 2022.06  XX理工大学  计算机科学与技术（本科）\n主修课程：数据结构与算法、操作系统、计算机网络、数据库原理、软件工程\n在校荣誉：校级优秀毕业设计（基于微服务的校园二手交易平台）\n\n专业技能\n熟练掌握Java核心技术，熟悉JVM内存模型、GC机制及常见调优手段\n精通Spring Boot、Spring Cloud微服务生态，熟悉Nacos、Gateway、Sentinel、Seata等组件\n熟悉MySQL索引优化、事务机制、分库分表策略，具备SQL调优及慢查询治理经验\n了解Redis缓存设计、Kafka消息队列，熟悉Docker容器化部署及Jenkins CI/CD流程\n掌握Git版本控制，熟悉Linux日常运维及日志排查\n\n工作经历\n2022.07 - 至今  XX科技有限公司（B轮 / 企业服务 SaaS）  Java后端工程师\n\nSaaS供应链管理平台（2023.03 - 至今）\n负责订单中心、库存中心核心模块设计与开发，采用Spring Cloud Alibaba微服务架构，支撑日均10W+订单处理\n主导MySQL分库分表方案设计（ShardingSphere），解决单表数据量过亿导致的查询性能瓶颈，接口响应时间从800ms降至120ms\n设计多级缓存策略（Redis + Caffeine本地缓存），热点数据命中率提升至95%，降低数据库负载40%\n基于Seata AT模式实现分布式事务，保障订单与库存数据一致性，线上运行半年零资损事故\n\n企业权限中台重构（2022.09 - 2023.02）\n参与RBAC权限中台从单体到微服务的拆分重构，负责鉴权服务、菜单路由模块开发\n引入Gateway统一鉴权过滤器，对接OAuth2.0 + JWT认证体系，支持多租户隔离\n编写核心接口单元测试（Unit + Mockito），模块测试覆盖率从45%提升至82%\n\n自我评价\n具备扎实的计算机基础与3年企业级后端开发经验，擅长高并发场景下的系统设计与性能优化。注重代码质量与工程规范，具备良好的团队协作与跨部门沟通能力。",
+            "jd_text": [
+              {
+                "chunk_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8_chunk_0",
+                "content": "公司：阿里巴巴，岗位：后端开发，地点：杭州，薪资：35k-65k",
+                "metadata": {
+                  "category": "技术",
+                  "company": "阿里巴巴",
+                  "domain": "电商",
+                  "index": 0,
+                  "jd_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8",
+                  "min_education": "本科",
+                  "min_years": 3,
+                  "position": "后端开发",
+                  "section": "basic_info",
+                  "strategy": "semantic"
+                },
+                "distance": null,
+                "bm25_score": 7.814368472060279,
+                "vec_norm": 0.0,
+                "bm25_norm": 1.0,
+                "hybrid_score": 0.3,
+                "rerank_score": 0.9741
+              },
+              {
+                "chunk_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8_chunk_5",
+                "content": "【阿里巴巴 · 后端开发 硬性要求】\n本科及以上学历",
+                "metadata": {
+                  "company": "阿里巴巴",
+                  "index": 5,
+                  "jd_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8",
+                  "position": "后端开发",
+                  "priority": "high",
+                  "section": "hard_requirements",
+                  "strategy": "semantic"
+                },
+                "distance": null,
+                "bm25_score": 7.814368472060279,
+                "vec_norm": 0.0,
+                "bm25_norm": 1.0,
+                "hybrid_score": 0.3,
+                "rerank_score": 0.9613
+              },
+              {
+                "chunk_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8_chunk_2",
+                "content": "【阿里巴巴 · 后端开发 硬性要求】\n3年以上Java开发经验",
+                "metadata": {
+                  "company": "阿里巴巴",
+                  "index": 2,
+                  "jd_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8",
+                  "position": "后端开发",
+                  "priority": "high",
+                  "section": "hard_requirements",
+                  "strategy": "semantic"
+                },
+                "distance": null,
+                "bm25_score": 7.814368472060279,
+                "vec_norm": 0.0,
+                "bm25_norm": 1.0,
+                "hybrid_score": 0.3,
+                "rerank_score": 0.9327
+              }
+            ],
+            "position": "后端"
+          },
+          "result": {
+            "score": 95,
+            "label": "高度契合",
+            "advantages": [
+              "本科及以上学历",
+              "3年以上Java开发经验",
+              "Java后端开发技术",
+              "微服务架构经验",
+              "分布式系统设计",
+              "数据库优化",
+              "缓存策略",
+              "分布式事务"
+            ],
+            "weaknesses": [
+              "候选人完全满足JD中的硬性要求（本科及以上学历和3年以上Java开发经验），未发现明显缺失。但JD未列出更多技术或业务要求，因此无法进一步评估其他方面的匹配度。"
+            ],
+            "suggestions": [
+              "核心能力要求: 本科及以上学历、3年以上Java开发经验"
+            ],
+            "match_score": 95,
+            "covered": [
+              "本科及以上学历",
+              "3年以上Java开发经验",
+              "Java后端开发技术",
+              "微服务架构经验",
+              "分布式系统设计",
+              "数据库优化",
+              "缓存策略",
+              "分布式事务"
+            ],
+            "missing_experience": "候选人完全满足JD中的硬性要求（本科及以上学历和3年以上Java开发经验），未发现明显缺失。但JD未列出更多技术或业务要求，因此无法进一步评估其他方面的匹配度。",
+            "core_skills": "本科及以上学历、3年以上Java开发经验",
+            "company": null,
+            "position": "后端"
+          },
+          "observation": "工具 match_analyze 执行成功"
+        },
+        "T2": {
+          "task_id": "T2",
+          "task_type": "tool_call",
+          "tool_name": "interview_gen",
+          "status": "success",
+          "parameters": {
+            "match_result": "{{T1.output}}",
+            "count": 5,
+            "difficulty": "mixed"
+          },
+          "resolved_params": {
+            "match_result": {
+              "score": 95,
+              "label": "高度契合",
+              "advantages": [
+                "本科及以上学历",
+                "3年以上Java开发经验",
+                "Java后端开发技术",
+                "微服务架构经验",
+                "分布式系统设计",
+                "数据库优化",
+                "缓存策略",
+                "分布式事务"
+              ],
+              "weaknesses": [
+                "候选人完全满足JD中的硬性要求（本科及以上学历和3年以上Java开发经验），未发现明显缺失。但JD未列出更多技术或业务要求，因此无法进一步评估其他方面的匹配度。"
+              ],
+              "suggestions": [
+                "核心能力要求: 本科及以上学历、3年以上Java开发经验"
+              ],
+              "match_score": 95,
+              "covered": [
+                "本科及以上学历",
+                "3年以上Java开发经验",
+                "Java后端开发技术",
+                "微服务架构经验",
+                "分布式系统设计",
+                "数据库优化",
+                "缓存策略",
+                "分布式事务"
+              ],
+              "missing_experience": "候选人完全满足JD中的硬性要求（本科及以上学历和3年以上Java开发经验），未发现明显缺失。但JD未列出更多技术或业务要求，因此无法进一步评估其他方面的匹配度。",
+              "core_skills": "本科及以上学历、3年以上Java开发经验",
+              "company": null,
+              "position": "后端"
+            },
+            "count": 5,
+            "difficulty": "mixed"
+          },
+          "result": {
+            "questions": [
+              "请描述一个你实际参与过的分布式事务场景，并说明你采用了哪种解决方案（如TCC、Saga、最终一致性等）？为什么选择这种方案？实际落地中遇到了哪些数据一致性问题，你是如何处理的？追问方向：1）如果系统要求强一致性，你会如何改造现有方案？2）当使用消息队列实现最终一致性时，如何处理消息丢失或重复消费导致的数据不一致？",
+              "在高并发场景下，缓存和数据库之间的一致性问题是一个经典难题。请结合你的项目经验，谈谈你是如何保证缓存与数据库数据最终一致性的？如果出现缓存穿透、击穿、雪崩，你会如何设计解决方案？追问方向：1）能否详细说明你使用过的一种缓存更新策略（如Cache-Aside、Read/Write Through）并分析其优缺点？2）假设缓存层出现大面积失效，导致数据库瞬间压力剧增，除了常规的限流降级，你还会采取哪些更精细化的措施？",
+              "微服务架构中，服务拆分是一个核心设计决策。假设你要将一个单体电商系统拆分为微服务，请从业务边界、数据管理、服务间通信、部署运维等角度，阐述你的拆分思路和关键考量。追问方向：1）在拆分过程中，如何识别并处理共享数据库或公共依赖模块？2）如果拆分后出现跨服务的复杂查询（如多表join），你会如何设计查询方案以避免性能问题？",
+              "设计一个高并发的秒杀系统，要求支撑10万+ QPS的瞬时流量，需要从架构分层、流量控制、库存管理、防超卖、用户体验等方面进行详细设计。请给出你的方案，并解释关键设计决策的理由。追问方向：1）如何防止恶意用户通过脚本或机器刷单？你有哪些风控策略？2）如果秒杀结束后，仍有大量用户看到“已售罄”页面，但存在部分用户下单后未支付导致库存释放，你会如何处理这种库存回滚与用户体验的平衡？",
+              "请谈谈你对Java并发编程中线程池的理解。在一个高并发的数据处理任务中，你如何根据任务类型（CPU密集、IO密集）来设置线程池参数（核心线程数、最大线程数、队列类型等）？如果任务执行过程中出现OOM或死锁，你会如何排查和修复？追问方向：1）如果任务依赖外部服务且响应时间不稳定，如何调整线程池策略以提升整体吞吐量？2）你能手写一个简单的线程池或者描述其关键实现逻辑吗？包括工作线程的创建、任务队列的阻塞、拒绝策略等。"
+            ],
+            "focus_areas": [
+              "短板深挖：候选人完全满足JD中的硬性要求（本科及以上学历和3年以上Java开发经验），未发现明显缺失。但JD未列出更多技术或业务要求，因此无法进一步评估其他方面的匹配度。",
+              "核心能力：本科及以上学历、3年以上Java开发经验"
+            ],
+            "question_count": 5,
+            "company": null,
+            "position": "后端"
+          },
+          "observation": "工具 interview_gen 执行成功"
+        },
+        "T3": {
+          "task_id": "T3",
+          "task_type": "aggregate",
+          "tool_name": null,
+          "status": "success",
+          "parameters": {
+            "prepare": "{{T2.output}}"
+          },
+          "resolved_params": {
+            "prepare": {
+              "questions": [
+                "请描述一个你实际参与过的分布式事务场景，并说明你采用了哪种解决方案（如TCC、Saga、最终一致性等）？为什么选择这种方案？实际落地中遇到了哪些数据一致性问题，你是如何处理的？追问方向：1）如果系统要求强一致性，你会如何改造现有方案？2）当使用消息队列实现最终一致性时，如何处理消息丢失或重复消费导致的数据不一致？",
+                "在高并发场景下，缓存和数据库之间的一致性问题是一个经典难题。请结合你的项目经验，谈谈你是如何保证缓存与数据库数据最终一致性的？如果出现缓存穿透、击穿、雪崩，你会如何设计解决方案？追问方向：1）能否详细说明你使用过的一种缓存更新策略（如Cache-Aside、Read/Write Through）并分析其优缺点？2）假设缓存层出现大面积失效，导致数据库瞬间压力剧增，除了常规的限流降级，你还会采取哪些更精细化的措施？",
+                "微服务架构中，服务拆分是一个核心设计决策。假设你要将一个单体电商系统拆分为微服务，请从业务边界、数据管理、服务间通信、部署运维等角度，阐述你的拆分思路和关键考量。追问方向：1）在拆分过程中，如何识别并处理共享数据库或公共依赖模块？2）如果拆分后出现跨服务的复杂查询（如多表join），你会如何设计查询方案以避免性能问题？",
+                "设计一个高并发的秒杀系统，要求支撑10万+ QPS的瞬时流量，需要从架构分层、流量控制、库存管理、防超卖、用户体验等方面进行详细设计。请给出你的方案，并解释关键设计决策的理由。追问方向：1）如何防止恶意用户通过脚本或机器刷单？你有哪些风控策略？2）如果秒杀结束后，仍有大量用户看到“已售罄”页面，但存在部分用户下单后未支付导致库存释放，你会如何处理这种库存回滚与用户体验的平衡？",
+                "请谈谈你对Java并发编程中线程池的理解。在一个高并发的数据处理任务中，你如何根据任务类型（CPU密集、IO密集）来设置线程池参数（核心线程数、最大线程数、队列类型等）？如果任务执行过程中出现OOM或死锁，你会如何排查和修复？追问方向：1）如果任务依赖外部服务且响应时间不稳定，如何调整线程池策略以提升整体吞吐量？2）你能手写一个简单的线程池或者描述其关键实现逻辑吗？包括工作线程的创建、任务队列的阻塞、拒绝策略等。"
+              ],
+              "focus_areas": [
+                "短板深挖：候选人完全满足JD中的硬性要求（本科及以上学历和3年以上Java开发经验），未发现明显缺失。但JD未列出更多技术或业务要求，因此无法进一步评估其他方面的匹配度。",
+                "核心能力：本科及以上学历、3年以上Java开发经验"
+              ],
+              "question_count": 5,
+              "company": null,
+              "position": "后端"
+            }
+          },
+          "result": {
+            "aggregation": {
+              "prepare": {
+                "questions": [
+                  "请描述一个你实际参与过的分布式事务场景，并说明你采用了哪种解决方案（如TCC、Saga、最终一致性等）？为什么选择这种方案？实际落地中遇到了哪些数据一致性问题，你是如何处理的？追问方向：1）如果系统要求强一致性，你会如何改造现有方案？2）当使用消息队列实现最终一致性时，如何处理消息丢失或重复消费导致的数据不一致？",
+                  "在高并发场景下，缓存和数据库之间的一致性问题是一个经典难题。请结合你的项目经验，谈谈你是如何保证缓存与数据库数据最终一致性的？如果出现缓存穿透、击穿、雪崩，你会如何设计解决方案？追问方向：1）能否详细说明你使用过的一种缓存更新策略（如Cache-Aside、Read/Write Through）并分析其优缺点？2）假设缓存层出现大面积失效，导致数据库瞬间压力剧增，除了常规的限流降级，你还会采取哪些更精细化的措施？",
+                  "微服务架构中，服务拆分是一个核心设计决策。假设你要将一个单体电商系统拆分为微服务，请从业务边界、数据管理、服务间通信、部署运维等角度，阐述你的拆分思路和关键考量。追问方向：1）在拆分过程中，如何识别并处理共享数据库或公共依赖模块？2）如果拆分后出现跨服务的复杂查询（如多表join），你会如何设计查询方案以避免性能问题？",
+                  "设计一个高并发的秒杀系统，要求支撑10万+ QPS的瞬时流量，需要从架构分层、流量控制、库存管理、防超卖、用户体验等方面进行详细设计。请给出你的方案，并解释关键设计决策的理由。追问方向：1）如何防止恶意用户通过脚本或机器刷单？你有哪些风控策略？2）如果秒杀结束后，仍有大量用户看到“已售罄”页面，但存在部分用户下单后未支付导致库存释放，你会如何处理这种库存回滚与用户体验的平衡？",
+                  "请谈谈你对Java并发编程中线程池的理解。在一个高并发的数据处理任务中，你如何根据任务类型（CPU密集、IO密集）来设置线程池参数（核心线程数、最大线程数、队列类型等）？如果任务执行过程中出现OOM或死锁，你会如何排查和修复？追问方向：1）如果任务依赖外部服务且响应时间不稳定，如何调整线程池策略以提升整体吞吐量？2）你能手写一个简单的线程池或者描述其关键实现逻辑吗？包括工作线程的创建、任务队列的阻塞、拒绝策略等。"
+                ],
+                "focus_areas": [
+                  "短板深挖：候选人完全满足JD中的硬性要求（本科及以上学历和3年以上Java开发经验），未发现明显缺失。但JD未列出更多技术或业务要求，因此无法进一步评估其他方面的匹配度。",
+                  "核心能力：本科及以上学历、3年以上Java开发经验"
+                ],
+                "question_count": 5,
+                "company": null,
+                "position": "后端"
+              }
+            }
+          },
+          "observation": "聚合完成"
+        }
+      },
+      "global_status": "success",
+      "replan_reason": "",
+      "replan_count": 0
+    },
+    "intent": {
+      "demands": [
+        {
+          "intent": "interview_prepare",
+          "entities": {
+            "position": "后端"
+          },
+          "confidence": 0.88
+        }
+      ],
+      "needs_clarification": false,
+      "clarification_question": ""
+    },
+    "rewrite": {
+      "rewritten_query": "后端岗面试要准备什么",
+      "search_keywords": "后端岗面试要准备什么",
+      "is_follow_up": false,
+      "follow_up_type": "none",
+      "resolved_references": {}
+    },
+    "evidence_cache": [
+      {
+        "chunk_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8_chunk_0",
+        "content": "公司：阿里巴巴，岗位：后端开发，地点：杭州，薪资：35k-65k",
+        "metadata": {
+          "category": "技术",
+          "company": "阿里巴巴",
+          "domain": "电商",
+          "index": 0,
+          "jd_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8",
+          "min_education": "本科",
+          "min_years": 3,
+          "position": "后端开发",
+          "section": "basic_info",
+          "strategy": "semantic"
+        },
+        "distance": null,
+        "bm25_score": 7.814368472060279,
+        "vec_norm": 0.0,
+        "bm25_norm": 1.0,
+        "hybrid_score": 0.3,
+        "rerank_score": 0.9741
+      },
+      {
+        "chunk_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8_chunk_5",
+        "content": "【阿里巴巴 · 后端开发 硬性要求】\n本科及以上学历",
+        "metadata": {
+          "company": "阿里巴巴",
+          "index": 5,
+          "jd_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8",
+          "position": "后端开发",
+          "priority": "high",
+          "section": "hard_requirements",
+          "strategy": "semantic"
+        },
+        "distance": null,
+        "bm25_score": 7.814368472060279,
+        "vec_norm": 0.0,
+        "bm25_norm": 1.0,
+        "hybrid_score": 0.3,
+        "rerank_score": 0.9613
+      },
+      {
+        "chunk_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8_chunk_2",
+        "content": "【阿里巴巴 · 后端开发 硬性要求】\n3年以上Java开发经验",
+        "metadata": {
+          "company": "阿里巴巴",
+          "index": 2,
+          "jd_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8",
+          "position": "后端开发",
+          "priority": "high",
+          "section": "hard_requirements",
+          "strategy": "semantic"
+        },
+        "distance": null,
+        "bm25_score": 7.814368472060279,
+        "vec_norm": 0.0,
+        "bm25_norm": 1.0,
+        "hybrid_score": 0.3,
+        "rerank_score": 0.9327
+      }
+    ],
+    "evidence_cache_query": "后端岗面试要准备什么",
+    "tool_outputs": [
+      {
+        "task_id": "T0",
+        "tool": "kb_retrieve",
+        "description": "检索通用后端岗位JD（不指定公司，取top_k=3）",
+        "result": {
+          "chunks": [
+            {
+              "chunk_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8_chunk_0",
+              "content": "公司：阿里巴巴，岗位：后端开发，地点：杭州，薪资：35k-65k",
+              "source": "阿里巴巴-后端开发",
+              "metadata": {
+                "company": "阿里巴巴",
+                "position": "后端开发"
+              }
+            },
+            {
+              "chunk_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8_chunk_5",
+              "content": "【阿里巴巴 · 后端开发 硬性要求】\n本科及以上学历",
+              "source": "阿里巴巴-后端开发",
+              "metadata": {
+                "company": "阿里巴巴",
+                "position": "后端开发"
+              }
+            },
+            {
+              "chunk_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8_chunk_2",
+              "content": "【阿里巴巴 · 后端开发 硬性要求】\n3年以上Java开发经验",
+              "source": "阿里巴巴-后端开发",
+              "metadata": {
+                "company": "阿里巴巴",
+                "position": "后端开发"
+              }
+            }
+          ],
+          "query": "后端",
+          "filters": {
+            "position": "后端"
+          },
+          "strategy": "hybrid(70%vec+30%bm25)+reranker",
+          "pool_k": 3,
+          "rerank_k": 10,
+          "pool_size": 15,
+          "vec_only": 0,
+          "bm25_only": 15,
+          "both": 0,
+          "rerank": {
+            "enabled": true,
+            "candidates": 3,
+            "output": 3,
+            "best_rerank_score": 0.9741
+          }
+        }
+      },
+      {
+        "task_id": "T1",
+        "tool": "match_analyze",
+        "description": "分析简历与通用后端JD的匹配度",
+        "result": {
+          "score": 95,
+          "label": "高度契合",
+          "advantages": [
+            "本科及以上学历",
+            "3年以上Java开发经验",
+            "Java后端开发技术",
+            "微服务架构经验",
+            "分布式系统设计",
+            "数据库优化",
+            "缓存策略",
+            "分布式事务"
+          ],
+          "weaknesses": [
+            "候选人完全满足JD中的硬性要求（本科及以上学历和3年以上Java开发经验），未发现明显缺失。但JD未列出更多技术或业务要求，因此无法进一步评估其他方面的匹配度。"
+          ],
+          "suggestions": [
+            "核心能力要求: 本科及以上学历、3年以上Java开发经验"
+          ],
+          "match_score": 95,
+          "covered": [
+            "本科及以上学历",
+            "3年以上Java开发经验",
+            "Java后端开发技术",
+            "微服务架构经验",
+            "分布式系统设计",
+            "数据库优化",
+            "缓存策略",
+            "分布式事务"
+          ],
+          "missing_experience": "候选人完全满足JD中的硬性要求（本科及以上学历和3年以上Java开发经验），未发现明显缺失。但JD未列出更多技术或业务要求，因此无法进一步评估其他方面的匹配度。",
+          "core_skills": "本科及以上学历、3年以上Java开发经验",
+          "company": null,
+          "position": "后端"
+        }
+      },
+      {
+        "task_id": "T2",
+        "tool": "interview_gen",
+        "description": "基于匹配结果生成后端岗位面试题（默认5题，难度混合）",
+        "result": {
+          "questions": [
+            "请描述一个你实际参与过的分布式事务场景，并说明你采用了哪种解决方案（如TCC、Saga、最终一致性等）？为什么选择这种方案？实际落地中遇到了哪些数据一致性问题，你是如何处理的？追问方向：1）如果系统要求强一致性，你会如何改造现有方案？2）当使用消息队列实现最终一致性时，如何处理消息丢失或重复消费导致的数据不一致？",
+            "在高并发场景下，缓存和数据库之间的一致性问题是一个经典难题。请结合你的项目经验，谈谈你是如何保证缓存与数据库数据最终一致性的？如果出现缓存穿透、击穿、雪崩，你会如何设计解决方案？追问方向：1）能否详细说明你使用过的一种缓存更新策略（如Cache-Aside、Read/Write Through）并分析其优缺点？2）假设缓存层出现大面积失效，导致数据库瞬间压力剧增，除了常规的限流降级，你还会采取哪些更精细化的措施？",
+            "微服务架构中，服务拆分是一个核心设计决策。假设你要将一个单体电商系统拆分为微服务，请从业务边界、数据管理、服务间通信、部署运维等角度，阐述你的拆分思路和关键考量。追问方向：1）在拆分过程中，如何识别并处理共享数据库或公共依赖模块？2）如果拆分后出现跨服务的复杂查询（如多表join），你会如何设计查询方案以避免性能问题？",
+            "设计一个高并发的秒杀系统，要求支撑10万+ QPS的瞬时流量，需要从架构分层、流量控制、库存管理、防超卖、用户体验等方面进行详细设计。请给出你的方案，并解释关键设计决策的理由。追问方向：1）如何防止恶意用户通过脚本或机器刷单？你有哪些风控策略？2）如果秒杀结束后，仍有大量用户看到“已售罄”页面，但存在部分用户下单后未支付导致库存释放，你会如何处理这种库存回滚与用户体验的平衡？",
+            "请谈谈你对Java并发编程中线程池的理解。在一个高并发的数据处理任务中，你如何根据任务类型（CPU密集、IO密集）来设置线程池参数（核心线程数、最大线程数、队列类型等）？如果任务执行过程中出现OOM或死锁，你会如何排查和修复？追问方向：1）如果任务依赖外部服务且响应时间不稳定，如何调整线程池策略以提升整体吞吐量？2）你能手写一个简单的线程池或者描述其关键实现逻辑吗？包括工作线程的创建、任务队列的阻塞、拒绝策略等。"
+          ],
+          "focus_areas": [
+            "短板深挖：候选人完全满足JD中的硬性要求（本科及以上学历和3年以上Java开发经验），未发现明显缺失。但JD未列出更多技术或业务要求，因此无法进一步评估其他方面的匹配度。",
+            "核心能力：本科及以上学历、3年以上Java开发经验"
+          ],
+          "question_count": 5,
+          "company": null,
+          "position": "后端"
+        }
+      },
+      {
+        "task_id": "T3",
+        "tool": null,
+        "description": "聚合面试题生成结果，输出最终回复素材",
+        "result": {
+          "aggregation": {
+            "prepare": {
+              "questions": [
+                "请描述一个你实际参与过的分布式事务场景，并说明你采用了哪种解决方案（如TCC、Saga、最终一致性等）？为什么选择这种方案？实际落地中遇到了哪些数据一致性问题，你是如何处理的？追问方向：1）如果系统要求强一致性，你会如何改造现有方案？2）当使用消息队列实现最终一致性时，如何处理消息丢失或重复消费导致的数据不一致？",
+                "在高并发场景下，缓存和数据库之间的一致性问题是一个经典难题。请结合你的项目经验，谈谈你是如何保证缓存与数据库数据最终一致性的？如果出现缓存穿透、击穿、雪崩，你会如何设计解决方案？追问方向：1）能否详细说明你使用过的一种缓存更新策略（如Cache-Aside、Read/Write Through）并分析其优缺点？2）假设缓存层出现大面积失效，导致数据库瞬间压力剧增，除了常规的限流降级，你还会采取哪些更精细化的措施？",
+                "微服务架构中，服务拆分是一个核心设计决策。假设你要将一个单体电商系统拆分为微服务，请从业务边界、数据管理、服务间通信、部署运维等角度，阐述你的拆分思路和关键考量。追问方向：1）在拆分过程中，如何识别并处理共享数据库或公共依赖模块？2）如果拆分后出现跨服务的复杂查询（如多表join），你会如何设计查询方案以避免性能问题？",
+                "设计一个高并发的秒杀系统，要求支撑10万+ QPS的瞬时流量，需要从架构分层、流量控制、库存管理、防超卖、用户体验等方面进行详细设计。请给出你的方案，并解释关键设计决策的理由。追问方向：1）如何防止恶意用户通过脚本或机器刷单？你有哪些风控策略？2）如果秒杀结束后，仍有大量用户看到“已售罄”页面，但存在部分用户下单后未支付导致库存释放，你会如何处理这种库存回滚与用户体验的平衡？",
+                "请谈谈你对Java并发编程中线程池的理解。在一个高并发的数据处理任务中，你如何根据任务类型（CPU密集、IO密集）来设置线程池参数（核心线程数、最大线程数、队列类型等）？如果任务执行过程中出现OOM或死锁，你会如何排查和修复？追问方向：1）如果任务依赖外部服务且响应时间不稳定，如何调整线程池策略以提升整体吞吐量？2）你能手写一个简单的线程池或者描述其关键实现逻辑吗？包括工作线程的创建、任务队列的阻塞、拒绝策略等。"
+              ],
+              "focus_areas": [
+                "短板深挖：候选人完全满足JD中的硬性要求（本科及以上学历和3年以上Java开发经验），未发现明显缺失。但JD未列出更多技术或业务要求，因此无法进一步评估其他方面的匹配度。",
+                "核心能力：本科及以上学历、3年以上Java开发经验"
+              ],
+              "question_count": 5,
+              "company": null,
+              "position": "后端"
+            }
+          }
+        }
+      }
+    ],
+    "final_aggregation_prompt": {
+      "system_prompt": "你是一位专业的求职顾问。请基于以下工具执行结果，给用户一个清晰、有帮助的回复。\n要求：\n1. 先直接回答用户的问题（是/否/有/没有），不要绕弯子，不要重复用户的原话\n2. 如果有匹配分析结果，给出具体的分数和建议\n3. 如果有检索结果，基于事实回答，不要编造\n4. 【强制】引用信息时必须标注来源。每个引用的事实后面都要跟 [来源：公司名-岗位名] 格式。   kb_retrieve 结果的 chunks 中带有 'source' 字段（如'字节跳动-AI产品经理'），请直接使用。   external_search 结果带有 'source_name' 字段，也请直接使用。\n5. 当本地知识库与外部搜索结果冲突时，请并列呈现两种说法并标注各自来源，不要替用户做判断\n6. 语气友好、专业、结构化",
+      "user_prompt": "【用户问题】\n后端岗面试要准备什么\n\n【工具执行结果】\n[{\"task_id\": \"T0\", \"tool\": \"kb_retrieve\", \"description\": \"检索通用后端岗位JD（不指定公司，取top_k=3）\", \"result\": {\"chunks\": [{\"chunk_id\": \"9cde8355-dcc0-434e-97c4-67dfc5dae5b8_chunk_0\", \"content\": \"公司：阿里巴巴，岗位：后端开发，地点：杭州，薪资：35k-65k\", \"source\": \"阿里巴巴-后端开发\", \"metadata\": {\"company\": \"阿里巴巴\", \"position\": \"后端开发\"}}, {\"chunk_id\": \"9cde8355-dcc0-434e-97c4-67dfc5dae5b8_chunk_5\", \"content\": \"【阿里巴巴 · 后端开发 硬性要求】\\n本科及以上学历\", \"source\": \"阿里巴巴-后端开发\", \"metadata\": {\"company\": \"阿里巴巴\", \"position\": \"后端开发\"}}, {\"chunk_id\": \"9cde8355-dcc0-434e-97c4-67dfc5dae5b8_chunk_2\", \"content\": \"【阿里巴巴 · 后端开发 硬性要求】\\n3年以上Java开发经验\", \"source\": \"阿里巴巴-后端开发\", \"metadata\": {\"company\": \"阿里巴巴\", \"position\": \"后端开发\"}}], \"query\": \"后端\", \"filters\": {\"position\": \"后端\"}, \"strategy\": \"hybrid(70%vec+30%bm25)+reranker\", \"pool_k\": 3, \"rerank_k\": 10, \"pool_size\": 15, \"vec_only\": 0, \"bm25_only\": 15, \"both\": 0, \"rerank\": {\"enabled\": true, \"candidates\": 3, \"output\": 3, \"best_rerank_score\": 0.9741}}}, {\"task_id\": \"T1\", \"tool\": \"match_analyze\", \"description\": \"分析简历与通用后端JD的匹配度\", \"result\": {\"score\": 95, \"label\": \"高度契合\", \"advantages\": [\"本科及以上学历\", \"3年以上Java开发经验\", \"Java后端开发技术\", \"微服务架构经验\", \"分布式系统设计\", \"数据库优化\", \"缓存策略\", \"分布式事务\"], \"weaknesses\": [\"候选人完全满足JD中的硬性要求（本科及以上学历和3年以上Java开发经验），未发现明显缺失。但JD未列出更多技术或业务要求，因此无法进一步评估其他方面的匹配度。\"], \"suggestions\": [\"核心能力要求: 本科及以上学历、3年以上Java开发经验\"], \"match_score\": 95, \"covered\": [\"本科及以上学历\", \"3年以上Java开发经验\", \"Java后端开发技术\", \"微服务架构经验\", \"分布式系统设计\", \"数据库优化\", \"缓存策略\", \"分布式事务\"], \"missing_experience\": \"候选人完全满足JD中的硬性要求（本科及以上学历和3年以上Java开发经验），未发现明显缺失。但JD未列出更多技术或业务要求，因此无法进一步评估其他方面的匹配度。\", \"core_skills\": \"本科及以上学历、3年以上Java开发经验\", \"company\": null, \"position\": \"后端\"}}, {\"task_id\": \"T2\", \"tool\": \"interview_gen\", \"description\": \"基于匹配结果生成后端岗位面试题（默认5题，难度混合）\", \"result\": {\"questions\": [\"请描述一个你实际参与过的分布式事务场景，并说明你采用了哪种解决方案（如TCC、Saga、最终一致性等）？为什么选择这种方案？实际落地中遇到了哪些数据一致性问题，你是如何处理的？追问方向：1）如果系统要求强一致性，你会如何改造现有方案？2）当使用消息队列实现最终一致性时，如何处理消息丢失或重复消费导致的数据不一致？\", \"在高并发场景下，缓存和数据库之间的一致性问题是一个经典难题。请结合你的项目经验，谈谈你是如何保证缓存与数据库数据最终一致性的？如果出现缓存穿透、击穿、雪崩，你会如何设计解决方案？追问方向：1）能否详细说明你使用过的一种缓存更新策略（如Cache-Aside、Read/Write Through）并分析其优缺点？2）假设缓存层出现大面积失效，导致数据库瞬间压力剧增，除了常规的限流降级，你还会采取哪些更精细化的措施？\", \"微服务架构中，服务拆分是一个核心设计决策。假设你要将一个单体电商系统拆分为微服务，请从业务边界、数据管理、服务间通信、部署运维等角度，阐述你的拆分思路和关键考量。追问方向：1）在拆分过程中，如何识别并处理共享数据库或公共依赖模块？2）如果拆分后出现跨服务的复杂查询（如多表join），你会如何设计查询方案以避免性能问题？\", \"设计一个高并发的秒杀系统，要求支撑10万+ QPS的瞬时流量，需要从架构分层、流量控制、库存管理、防超卖、用户体验等方面进行详细设计。请给出你的方案，并解释关键设计决策的理由。追问方向：1）如何防止恶意用户通过脚本或机器刷单？你有哪些风控策略？2）如果秒杀结束后，仍有大量用户看到“已售罄”页面，但存在部分用户下单后未支付导致库存释放，你会如何处理这种库存回滚与用户体验的平衡？\", \"请谈谈你对Java并发编程中线程池的理解。在一个高并发的数据处理任务中，你如何根据任务类型（CPU密集、IO密集）来设置线程池参数（核心线程数、最大线程数、队列类型等）？如果任务执行过程中出现OOM或死锁，你会如何排查和修复？追问方向：1）如果任务依赖外部服务且响应时间不稳定，如何调整线程池策略以提升整体吞吐量？2）你能手写一个简单的线程池或者描述其关键实现逻辑吗？包括工作线程的创建、任务队列的阻塞、拒绝策略等。\"], \"focus_areas\": [\"短板深挖：候选人完全满足JD中的硬性要求（本科及以上学历和3年以上Java开发经验），未发现明显缺失。但JD未列出更多技术或业务要求，因此无法进一步评估其他方面的匹配度。\", \"核心能力：本科及以上学历、3年以上Java开发经验\"], \"question_count\": 5, \"company\": null, \"position\": \"后端\"}}, {\"task_id\": \"T3\", \"tool\": null, \"description\": \"聚合面试题生成结果，输出最终回复素材\", \"result\": {\"aggregation\": {\"prepare\": {\"questions\": [\"请描述一个你实际参与过的分布式事务场景，并\n\n请生成回复："
+    }
+  },
+  "reply": "有详细的准备建议。基于您的简历与通用后端岗位 JD 的匹配分析，以及行业头部公司的招聘要求，为您整理了以下备考指南：\n\n### 1. 匹配度分析\n*   **匹配分数**：95 分（高度契合）\n*   **核心优势**：您具备本科及以上学历、3 年以上 Java 开发经验 [来源：阿里巴巴 - 后端开发]，且在微服务架构、分布式系统设计、数据库优化、缓存策略及分布式事务等方面均有覆盖。\n*   **潜在风险**：虽然硬性条件完全满足，但通用 JD 未列出更多特定业务要求，建议针对目标公司的具体业务场景做额外准备。\n\n### 2. 硬性门槛准备\n根据头部互联网公司的后端岗位招聘标准，以下为基础门槛，面试前请确保简历清晰体现：\n*   **学历要求**：本科及以上学历 [来源：阿里巴巴 - 后端开发]。\n*   **经验要求**：3 年以上 Java 开发经验 [来源：阿里巴巴 - 后端开发]。\n*   **薪资参考**：同类岗位市场薪资范围约为 35k-65k [来源：阿里巴巴 - 后端开发]。\n\n### 3. 高频面试模拟题\n基于您的匹配结果，以下 5 道题目覆盖了分布式、高并发及底层原理，建议重点演练：\n\n1.  **分布式事务**：请描述一个你实际参与过的分布式事务场景，并说明你采用了哪种解决方案（如 TCC、Saga、最终一致性等）？为什么选择这种方案？实际落地中遇到了哪些数据一致性问题，你是如何处理的？\n2.  **缓存一致性**：在高并发场景下，请结合你的项目经验，谈谈你是如何保证缓存与数据库数据最终一致性的？如果出现缓存穿透、击穿、雪崩，你会如何设计解决方案？\n3.  **微服务拆分**：假设你要将一个单体电商系统拆分为微服务，请从业务边界、数据管理、服务间通信、部署运维等角度，阐述你的拆分思路和关键考量。\n4.  **系统设计**：设计一个高并发的秒杀系统，要求支撑 10 万+ QPS 的瞬时流量，需要从架构分层、流量控制、库存管理、防超卖、用户体验等方面进行详细设计。\n5.  **并发编程**：请谈谈你对 Java 并发编程中线程池的理解。在一个高并发的数据处理任务中，你如何根据任务类型（CPU 密集、IO 密集）来设置线程池参数？如果任务执行过程中出现 OOM 或死锁，你会如何排查和修复？\n\n### 4. 备考建议\n*   **核心能力巩固**：重点复习本科及以上学历对应的计算机基础理论，以及 3 年以上 Java 开发经验应具备的深度技术栈 [来源：阿里巴巴 - 后端开发]。\n*   **项目深挖**：针对匹配分析中提到的“分布式事务”和“缓存策略”等优势领域，准备好具体的案例数据和问题解决过程，以应对追问。\n*   **短板补充**：虽然硬性要求已满足，但建议关注目标公司特定的业务领域知识，因为通用 JD 未列出更多技术或业务要求，无法进一步评估其他方面的匹配度。\n\n祝您面试顺利！",
+  "reply_length": 1223,
+  "intent_match": true,
+  "tool_match_rate": 1.0,
+  "has_reply": true,
+  "events": [
+    {
+      "step": "intent",
+      "message": "正在识别您的意图...",
+      "_time": 4.237339496612549,
+      "type": "status"
+    },
+    {
+      "step": "plan",
+      "message": "正在规划任务...",
+      "_time": 4.237380504608154,
+      "type": "status"
+    },
+    {
+      "step": "execute",
+      "message": "正在执行分析...",
+      "_time": 23.754645824432373,
+      "type": "status"
+    },
+    {
+      "step": "aggregate",
+      "message": "正在生成回复...",
+      "_time": 35.60333609580994,
+      "type": "status"
+    },
+    {
+      "text": "有详细的准备",
+      "_time": 83.60427212715149,
+      "type": "delta"
+    },
+    {
+      "text": "建议。基于",
+      "_time": 83.6056854724884,
+      "type": "delta"
+    },
+    {
+      "text": "您的简历与通用",
+      "_time": 83.73117113113403,
+      "type": "delta"
+    },
+    {
+      "text": "后端岗位 JD",
+      "_time": 83.73371720314026,
+      "type": "delta"
+    },
+    {
+      "text": " 的匹配分析",
+      "_time": 83.88804507255554,
+      "type": "delta"
+    },
+    {
+      "text": "，以及行业",
+      "_time": 83.8920271396637,
+      "type": "delta"
+    },
+    {
+      "text": "头部公司的招聘要求",
+      "_time": 83.98314070701599,
+      "type": "delta"
+    },
+    {
+      "text": "，为您整理了",
+      "_time": 83.98360586166382,
+      "type": "delta"
+    },
+    {
+      "text": "以下备考指南：",
+      "_time": 84.10914444923401,
+      "type": "delta"
+    },
+    {
+      "text": "\n\n###",
+      "_time": 84.15106225013733,
+      "type": "delta"
+    },
+    {
+      "text": " 1. ",
+      "_time": 84.21615386009216,
+      "type": "delta"
+    },
+    {
+      "text": "匹配度分析\n",
+      "_time": 84.21773147583008,
+      "type": "delta"
+    },
+    {
+      "text": "*   **匹配",
+      "_time": 84.36171174049377,
+      "type": "delta"
+    },
+    {
+      "text": "分数**：9",
+      "_time": 84.36443185806274,
+      "type": "delta"
+    },
+    {
+      "text": "5 分（",
+      "_time": 84.54111194610596,
+      "type": "delta"
+    },
+    {
+      "text": "高度契合）\n",
+      "_time": 84.54385590553284,
+      "type": "delta"
+    },
+    {
+      "text": "*   **核心",
+      "_time": 84.64888095855713,
+      "type": "delta"
+    },
+    {
+      "text": "优势**：您",
+      "_time": 84.65086388587952,
+      "type": "delta"
+    },
+    {
+      "text": "具备本科及以上学历、3",
+      "_time": 84.82724285125732,
+      "type": "delta"
+    },
+    {
+      "text": " 年以上 Java ",
+      "_time": 84.83088111877441,
+      "type": "delta"
+    },
+    {
+      "text": "开发经验 [来源",
+      "_time": 84.93727111816406,
+      "type": "delta"
+    },
+    {
+      "text": "：阿里巴巴 -",
+      "_time": 84.9397988319397,
+      "type": "delta"
+    },
+    {
+      "text": " 后端开发]",
+      "_time": 85.09907817840576,
+      "type": "delta"
+    },
+    {
+      "text": "，且在",
+      "_time": 85.10269689559937,
+      "type": "delta"
+    },
+    {
+      "text": "微服务架构、",
+      "_time": 85.17087888717651,
+      "type": "delta"
+    },
+    {
+      "text": "分布式系统设计、数据库",
+      "_time": 85.17462754249573,
+      "type": "delta"
+    },
+    {
+      "text": "优化、缓存策略",
+      "_time": 85.35508108139038,
+      "type": "delta"
+    },
+    {
+      "text": "及分布式",
+      "_time": 85.35546660423279,
+      "type": "delta"
+    },
+    {
+      "text": "事务等方面均有覆盖",
+      "_time": 85.42395997047424,
+      "type": "delta"
+    },
+    {
+      "text": "。\n*  ",
+      "_time": 85.42671918869019,
+      "type": "delta"
+    },
+    {
+      "text": " **潜在风险**",
+      "_time": 85.56605434417725,
+      "type": "delta"
+    },
+    {
+      "text": "：虽然",
+      "_time": 85.60900163650513,
+      "type": "delta"
+    },
+    {
+      "text": "硬性条件完全满足",
+      "_time": 85.67403292655945,
+      "type": "delta"
+    },
+    {
+      "text": "，但通用",
+      "_time": 85.67455959320068,
+      "type": "delta"
+    },
+    {
+      "text": " JD 未列出",
+      "_time": 85.80068182945251,
+      "type": "delta"
+    },
+    {
+      "text": "更多特定",
+      "_time": 85.80422568321228,
+      "type": "delta"
+    },
+    {
+      "text": "业务要求，建议",
+      "_time": 85.94199013710022,
+      "type": "delta"
+    },
+    {
+      "text": "针对",
+      "_time": 85.94374132156372,
+      "type": "delta"
+    },
+    {
+      "text": "目标公司的具体业务",
+      "_time": 85.99807953834534,
+      "type": "delta"
+    },
+    {
+      "text": "场景",
+      "_time": 85.99961185455322,
+      "type": "delta"
+    },
+    {
+      "text": "做额外准备。",
+      "_time": 86.08906817436218,
+      "type": "delta"
+    },
+    {
+      "text": "\n\n",
+      "_time": 86.09168696403503,
+      "type": "delta"
+    },
+    {
+      "text": "### 2.",
+      "_time": 86.17802381515503,
+      "type": "delta"
+    },
+    {
+      "text": " 硬性门槛",
+      "_time": 86.20581436157227,
+      "type": "delta"
+    },
+    {
+      "text": "准备\n根据头部",
+      "_time": 86.30305099487305,
+      "type": "delta"
+    },
+    {
+      "text": "互联网",
+      "_time": 86.30555009841919,
+      "type": "delta"
+    },
+    {
+      "text": "公司的后端岗位招聘",
+      "_time": 86.39462971687317,
+      "type": "delta"
+    },
+    {
+      "text": "标准",
+      "_time": 86.39731574058533,
+      "type": "delta"
+    },
+    {
+      "text": "，以下为基础门槛",
+      "_time": 86.51713824272156,
+      "type": "delta"
+    },
+    {
+      "text": "，面试",
+      "_time": 86.52070617675781,
+      "type": "delta"
+    },
+    {
+      "text": "前请确保简历",
+      "_time": 86.59285044670105,
+      "type": "delta"
+    },
+    {
+      "text": "清晰",
+      "_time": 86.59667658805847,
+      "type": "delta"
+    },
+    {
+      "text": "体现：\n*",
+      "_time": 86.68318819999695,
+      "type": "delta"
+    },
+    {
+      "text": "  ",
+      "_time": 86.68566393852234,
+      "type": "delta"
+    },
+    {
+      "text": " **学历要求**：",
+      "_time": 86.77280354499817,
+      "type": "delta"
+    },
+    {
+      "text": "本科及以上学历 [来源：",
+      "_time": 86.8113329410553,
+      "type": "delta"
+    },
+    {
+      "text": "阿里巴巴 - 后端",
+      "_time": 86.9179196357727,
+      "type": "delta"
+    },
+    {
+      "text": "开发]。\n",
+      "_time": 86.91957259178162,
+      "type": "delta"
+    },
+    {
+      "text": "*   **经验",
+      "_time": 87.09798192977905,
+      "type": "delta"
+    },
+    {
+      "text": "要求**",
+      "_time": 87.10062313079834,
+      "type": "delta"
+    },
+    {
+      "text": "：3 年以上",
+      "_time": 87.16817688941956,
+      "type": "delta"
+    },
+    {
+      "text": " Java 开发经验",
+      "_time": 87.17177987098694,
+      "type": "delta"
+    },
+    {
+      "text": " [来源：阿里巴巴",
+      "_time": 87.34499478340149,
+      "type": "delta"
+    },
+    {
+      "text": " - 后端开发",
+      "_time": 87.34672474861145,
+      "type": "delta"
+    },
+    {
+      "text": "]。\n*",
+      "_time": 87.4559805393219,
+      "type": "delta"
+    },
+    {
+      "text": "   **薪资",
+      "_time": 87.45751285552979,
+      "type": "delta"
+    },
+    {
+      "text": "参考**：同类",
+      "_time": 87.5830066204071,
+      "type": "delta"
+    },
+    {
+      "text": "岗位市场",
+      "_time": 87.61607241630554,
+      "type": "delta"
+    },
+    {
+      "text": "薪资范围约为 ",
+      "_time": 87.69086837768555,
+      "type": "delta"
+    },
+    {
+      "text": "35k-",
+      "_time": 87.69273281097412,
+      "type": "delta"
+    },
+    {
+      "text": "65k [",
+      "_time": 87.83594417572021,
+      "type": "delta"
+    },
+    {
+      "text": "来源：阿里巴巴 -",
+      "_time": 87.83632588386536,
+      "type": "delta"
+    },
+    {
+      "text": " 后端开发]",
+      "_time": 88.01099991798401,
+      "type": "delta"
+    },
+    {
+      "text": "。\n\n### ",
+      "_time": 88.01464509963989,
+      "type": "delta"
+    },
+    {
+      "text": "3. 高频",
+      "_time": 88.12506461143494,
+      "type": "delta"
+    },
+    {
+      "text": "面试",
+      "_time": 88.12761187553406,
+      "type": "delta"
+    },
+    {
+      "text": "模拟题\n基于您的",
+      "_time": 88.21197032928467,
+      "type": "delta"
+    },
+    {
+      "text": "匹配结果",
+      "_time": 88.21220922470093,
+      "type": "delta"
+    },
+    {
+      "text": "，以下 5",
+      "_time": 88.39305782318115,
+      "type": "delta"
+    },
+    {
+      "text": " 道",
+      "_time": 88.39673686027527,
+      "type": "delta"
+    },
+    {
+      "text": "题目覆盖了分布式、",
+      "_time": 88.42775654792786,
+      "type": "delta"
+    },
+    {
+      "text": "高",
+      "_time": 88.43042874336243,
+      "type": "delta"
+    },
+    {
+      "text": "并发及底层原理",
+      "_time": 88.5199236869812,
+      "type": "delta"
+    },
+    {
+      "text": "，建议重点演练",
+      "_time": 88.52148294448853,
+      "type": "delta"
+    },
+    {
+      "text": "：\n\n1.",
+      "_time": 88.69180345535278,
+      "type": "delta"
+    },
+    {
+      "text": " ",
+      "_time": 88.69434332847595,
+      "type": "delta"
+    },
+    {
+      "text": " **分布式事务**",
+      "_time": 88.75457644462585,
+      "type": "delta"
+    },
+    {
+      "text": "：请",
+      "_time": 88.75824046134949,
+      "type": "delta"
+    },
+    {
+      "text": "描述一个你实际",
+      "_time": 88.8617742061615,
+      "type": "delta"
+    },
+    {
+      "text": "参与过的分布式事务",
+      "_time": 88.89683485031128,
+      "type": "delta"
+    },
+    {
+      "text": "场景，并说明",
+      "_time": 89.00478744506836,
+      "type": "delta"
+    },
+    {
+      "text": "你采用了哪种解决方案",
+      "_time": 89.0075535774231,
+      "type": "delta"
+    },
+    {
+      "text": "（如 TCC",
+      "_time": 89.15387725830078,
+      "type": "delta"
+    },
+    {
+      "text": "、Saga、最终",
+      "_time": 89.19391989707947,
+      "type": "delta"
+    },
+    {
+      "text": "一致性等）？",
+      "_time": 89.29372549057007,
+      "type": "delta"
+    },
+    {
+      "text": "为什么选择这种方案",
+      "_time": 89.2940616607666,
+      "type": "delta"
+    },
+    {
+      "text": "？实际落地中",
+      "_time": 89.43769073486328,
+      "type": "delta"
+    },
+    {
+      "text": "遇到了哪些",
+      "_time": 89.43929982185364,
+      "type": "delta"
+    },
+    {
+      "text": "数据一致性问题，",
+      "_time": 89.58104515075684,
+      "type": "delta"
+    },
+    {
+      "text": "你是如何处理的？",
+      "_time": 89.58246874809265,
+      "type": "delta"
+    },
+    {
+      "text": "\n2. ",
+      "_time": 89.68983125686646,
+      "type": "delta"
+    },
+    {
+      "text": " **缓存",
+      "_time": 89.69252181053162,
+      "type": "delta"
+    },
+    {
+      "text": "一致性**：在高",
+      "_time": 89.824636220932,
+      "type": "delta"
+    },
+    {
+      "text": "并发场景下，",
+      "_time": 89.8273253440857,
+      "type": "delta"
+    },
+    {
+      "text": "请结合你的项目",
+      "_time": 89.94244408607483,
+      "type": "delta"
+    },
+    {
+      "text": "经验，谈谈你是",
+      "_time": 89.94395542144775,
+      "type": "delta"
+    },
+    {
+      "text": "如何保证缓存与",
+      "_time": 90.08770251274109,
+      "type": "delta"
+    },
+    {
+      "text": "数据库数据最终一致",
+      "_time": 90.13552856445312,
+      "type": "delta"
+    },
+    {
+      "text": "性的？如果出现缓存",
+      "_time": 90.22868061065674,
+      "type": "delta"
+    },
+    {
+      "text": "穿透、击穿、",
+      "_time": 90.23141098022461,
+      "type": "delta"
+    },
+    {
+      "text": "雪崩，你会",
+      "_time": 90.3716332912445,
+      "type": "delta"
+    },
+    {
+      "text": "如何设计解决方案？",
+      "_time": 90.41252756118774,
+      "type": "delta"
+    },
+    {
+      "text": "\n3. ",
+      "_time": 90.51631903648376,
+      "type": "delta"
+    },
+    {
+      "text": " **微",
+      "_time": 90.51909351348877,
+      "type": "delta"
+    },
+    {
+      "text": "服务拆分**：",
+      "_time": 90.62573885917664,
+      "type": "delta"
+    },
+    {
+      "text": "假设你要将一个单体",
+      "_time": 90.66385173797607,
+      "type": "delta"
+    },
+    {
+      "text": "电商系统拆分为",
+      "_time": 90.77175736427307,
+      "type": "delta"
+    },
+    {
+      "text": "微服务，请",
+      "_time": 90.77345943450928,
+      "type": "delta"
+    },
+    {
+      "text": "从业务边界、",
+      "_time": 90.91346430778503,
+      "type": "delta"
+    },
+    {
+      "text": "数据管理、服务",
+      "_time": 90.91793608665466,
+      "type": "delta"
+    },
+    {
+      "text": "间通信、部署",
+      "_time": 91.08578252792358,
+      "type": "delta"
+    },
+    {
+      "text": "运维等角度，",
+      "_time": 91.08935141563416,
+      "type": "delta"
+    },
+    {
+      "text": "阐述你的拆分思路和",
+      "_time": 91.20163702964783,
+      "type": "delta"
+    },
+    {
+      "text": "关键考量。\n",
+      "_time": 91.20431852340698,
+      "type": "delta"
+    },
+    {
+      "text": "4.  **",
+      "_time": 91.34576892852783,
+      "type": "delta"
+    },
+    {
+      "text": "系统设计**：设计",
+      "_time": 91.37863159179688,
+      "type": "delta"
+    },
+    {
+      "text": "一个高并发的",
+      "_time": 91.4885561466217,
+      "type": "delta"
+    },
+    {
+      "text": "秒杀系统，要求",
+      "_time": 91.49146485328674,
+      "type": "delta"
+    },
+    {
+      "text": "支撑 10",
+      "_time": 91.63153314590454,
+      "type": "delta"
+    },
+    {
+      "text": " ",
+      "_time": 91.63543939590454,
+      "type": "delta"
+    },
+    {
+      "text": "万+ QPS",
+      "_time": 91.75366139411926,
+      "type": "delta"
+    },
+    {
+      "text": " 的",
+      "_time": 91.75632977485657,
+      "type": "delta"
+    },
+    {
+      "text": "瞬时流量，需要从",
+      "_time": 91.83168649673462,
+      "type": "delta"
+    },
+    {
+      "text": "架构分层、流量",
+      "_time": 91.83293652534485,
+      "type": "delta"
+    },
+    {
+      "text": "控制、库存管理",
+      "_time": 91.97560429573059,
+      "type": "delta"
+    },
+    {
+      "text": "、防超卖",
+      "_time": 92.00837206840515,
+      "type": "delta"
+    },
+    {
+      "text": "、用户体验等方面进行详细",
+      "_time": 92.11966943740845,
+      "type": "delta"
+    },
+    {
+      "text": "设计。\n5",
+      "_time": 92.12138438224792,
+      "type": "delta"
+    },
+    {
+      "text": ".  **并发",
+      "_time": 92.26365041732788,
+      "type": "delta"
+    },
+    {
+      "text": "编程**：请",
+      "_time": 92.29557204246521,
+      "type": "delta"
+    },
+    {
+      "text": "谈谈你对 Java ",
+      "_time": 92.40739893913269,
+      "type": "delta"
+    },
+    {
+      "text": "并发编程中线程",
+      "_time": 92.40912365913391,
+      "type": "delta"
+    },
+    {
+      "text": "池的理解。在一个",
+      "_time": 92.55064296722412,
+      "type": "delta"
+    },
+    {
+      "text": "高并发的数据处理",
+      "_time": 92.58262300491333,
+      "type": "delta"
+    },
+    {
+      "text": "任务中，你",
+      "_time": 92.69656825065613,
+      "type": "delta"
+    },
+    {
+      "text": "如何根据任务类型",
+      "_time": 92.69935703277588,
+      "type": "delta"
+    },
+    {
+      "text": "（CPU 密集",
+      "_time": 92.8386607170105,
+      "type": "delta"
+    },
+    {
+      "text": "、IO 密集",
+      "_time": 92.8717839717865,
+      "type": "delta"
+    },
+    {
+      "text": "）来设置线程",
+      "_time": 92.98162293434143,
+      "type": "delta"
+    },
+    {
+      "text": "池参数？如果",
+      "_time": 92.98530864715576,
+      "type": "delta"
+    },
+    {
+      "text": "任务执行过程中出现",
+      "_time": 93.12748670578003,
+      "type": "delta"
+    },
+    {
+      "text": " OOM 或",
+      "_time": 93.13014578819275,
+      "type": "delta"
+    },
+    {
+      "text": "死锁，你会",
+      "_time": 93.30820274353027,
+      "type": "delta"
+    },
+    {
+      "text": "如何排查和修复",
+      "_time": 93.3097653388977,
+      "type": "delta"
+    },
+    {
+      "text": "？\n\n### ",
+      "_time": 93.41572570800781,
+      "type": "delta"
+    },
+    {
+      "text": "4. 备考",
+      "_time": 93.41635632514954,
+      "type": "delta"
+    },
+    {
+      "text": "建议\n*  ",
+      "_time": 93.55916213989258,
+      "type": "delta"
+    },
+    {
+      "text": " **核心能力巩固",
+      "_time": 93.59497094154358,
+      "type": "delta"
+    },
+    {
+      "text": "**：重点复习",
+      "_time": 93.711660861969,
+      "type": "delta"
+    },
+    {
+      "text": "本科及以上学历对应的",
+      "_time": 93.71330642700195,
+      "type": "delta"
+    },
+    {
+      "text": "计算机基础理论，",
+      "_time": 93.84552597999573,
+      "type": "delta"
+    },
+    {
+      "text": "以及 ",
+      "_time": 93.84726405143738,
+      "type": "delta"
+    },
+    {
+      "text": "3 年以上 Java",
+      "_time": 93.91964435577393,
+      "type": "delta"
+    },
+    {
+      "text": " 开发经验应具备",
+      "_time": 93.92128014564514,
+      "type": "delta"
+    },
+    {
+      "text": "的深度技术栈 [",
+      "_time": 94.0944447517395,
+      "type": "delta"
+    },
+    {
+      "text": "来源：",
+      "_time": 94.09614872932434,
+      "type": "delta"
+    },
+    {
+      "text": "阿里巴巴 - 后端",
+      "_time": 94.1715247631073,
+      "type": "delta"
+    },
+    {
+      "text": "开发]。\n",
+      "_time": 94.17526626586914,
+      "type": "delta"
+    },
+    {
+      "text": "*   **项目",
+      "_time": 94.31651711463928,
+      "type": "delta"
+    },
+    {
+      "text": "深挖**：针对",
+      "_time": 94.35038638114929,
+      "type": "delta"
+    },
+    {
+      "text": "匹配分析中提到的",
+      "_time": 94.45840001106262,
+      "type": "delta"
+    },
+    {
+      "text": "“",
+      "_time": 94.46117925643921,
+      "type": "delta"
+    },
+    {
+      "text": "分布式事务”和",
+      "_time": 94.5506865978241,
+      "type": "delta"
+    },
+    {
+      "text": "“",
+      "_time": 94.55933284759521,
+      "type": "delta"
+    },
+    {
+      "text": "缓存策略”等优势",
+      "_time": 94.63942170143127,
+      "type": "delta"
+    },
+    {
+      "text": "领域",
+      "_time": 94.6441297531128,
+      "type": "delta"
+    },
+    {
+      "text": "，准备好具体的案例",
+      "_time": 94.76745891571045,
+      "type": "delta"
+    },
+    {
+      "text": "数据和问题",
+      "_time": 94.76922750473022,
+      "type": "delta"
+    },
+    {
+      "text": "解决过程，以",
+      "_time": 94.8365466594696,
+      "type": "delta"
+    },
+    {
+      "text": "应对追问",
+      "_time": 94.83921790122986,
+      "type": "delta"
+    },
+    {
+      "text": "。\n*  ",
+      "_time": 94.94535207748413,
+      "type": "delta"
+    },
+    {
+      "text": " **短板补充",
+      "_time": 94.9743103981018,
+      "type": "delta"
+    },
+    {
+      "text": "**：虽然硬性",
+      "_time": 95.07165575027466,
+      "type": "delta"
+    },
+    {
+      "text": "要求已",
+      "_time": 95.07324814796448,
+      "type": "delta"
+    },
+    {
+      "text": "满足，但建议",
+      "_time": 95.17957377433777,
+      "type": "delta"
+    },
+    {
+      "text": "关注目标",
+      "_time": 95.18218088150024,
+      "type": "delta"
+    },
+    {
+      "text": "公司特定的业务领域",
+      "_time": 95.3683180809021,
+      "type": "delta"
+    },
+    {
+      "text": "知识",
+      "_time": 95.37192606925964,
+      "type": "delta"
+    },
+    {
+      "text": "，因为通用 JD",
+      "_time": 95.3961730003357,
+      "type": "delta"
+    },
+    {
+      "text": " 未",
+      "_time": 95.39899945259094,
+      "type": "delta"
+    },
+    {
+      "text": "列出更多技术或",
+      "_time": 95.48511934280396,
+      "type": "delta"
+    },
+    {
+      "text": "业务要求，无法",
+      "_time": 95.52335906028748,
+      "type": "delta"
+    },
+    {
+      "text": "进一步评估其他方面的",
+      "_time": 95.62937140464783,
+      "type": "delta"
+    },
+    {
+      "text": "匹配度。",
+      "_time": 95.63326954841614,
+      "type": "delta"
+    },
+    {
+      "text": "\n\n祝您面试顺利",
+      "_time": 95.75643253326416,
+      "type": "delta"
+    },
+    {
+      "text": "！",
+      "_time": 95.75930762290955,
+      "type": "delta"
+    },
+    {
+      "session_id": "eval_li_10_1780563126562",
+      "intent": "interview_prepare",
+      "route_meta": {
+        "layer": "llm",
+        "intent": "interview_prepare",
+        "confidence": 0.88,
+        "demands": [
+          {
+            "intent": "interview_prepare",
+            "entities": {
+              "position": "后端"
+            }
+          }
+        ],
+        "plan_tasks": 4
+      },
+      "agent_mode": "llm",
+      "is_clarification": false,
+      "agent": {
+        "rewritten_query": "后端岗面试要准备什么",
+        "tools": [
+          {
+            "tool": "kb_retrieve",
+            "status": "✅",
+            "params": {
+              "query": "后端",
+              "top_k": 3,
+              "position": "后端"
+            },
+            "result_preview": "{'chunks': [{'chunk_id': '9cde8355-dcc0-434e-97c4-67dfc5dae5b8_chunk_0', 'content': '公司：阿里巴巴，岗位：后端开发，地点：杭州，薪资：35k-65k', 'metadata': {'category': '技术', 'company': '阿里巴巴', 'domain': '电商', 'index': 0, 'j"
+          },
+          {
+            "tool": "match_analyze",
+            "status": "✅",
+            "params": {
+              "resume_text": "姓名：李工程师\n电话：138-XXXX-1234 | 邮箱：lixx_dev@email.com | 现居：北京\nJava后端开发工程师 | 3年经验 | 本科\n\n教育背景\n2018.09 - 2022.06  XX理工大学  计算机科学与技术（本科）\n主修课程：数据结构与算法、操作系统、计算机网络、数据库原理、软件工程\n在校荣誉：校级优秀毕业设计（基于微服务的校园二手交易平台）\n\n专业技能\n熟练掌握Java核心技术，熟悉JVM内存模型、GC机制及常见调优手段\n精通Spring Boot、Spring Cloud微服务生态，熟悉Nacos、Gateway、Sentinel、Seata等组件\n熟悉MySQL索引优化、事务机制、分库分表策略，具备SQL调优及慢查询治理经验\n了解Redis缓存设计、Kafka消息队列，熟悉Docker容器化部署及Jenkins CI/CD流程\n掌握Git版本控制，熟悉Linux日常运维及日志排查\n\n工作经历\n2022.07 - 至今  XX科技有限公司（B轮 / 企业服务 SaaS）  Java后端工程师\n\nSaaS供应链管理平台（2023.03 - 至今）\n负责订单中心、库存中心核心模块设计与开发，采用Spring Cloud Alibaba微服务架构，支撑日均10W+订单处理\n主导MySQL分库分表方案设计（ShardingSphere），解决单表数据量过亿导致的查询性能瓶颈，接口响应时间从800ms降至120ms\n设计多级缓存策略（Redis + Caffeine本地缓存），热点数据命中率提升至95%，降低数据库负载40%\n基于Seata AT模式实现分布式事务，保障订单与库存数据一致性，线上运行半年零资损事故\n\n企业权限中台重构（2022.09 - 2023.02）\n参与RBAC权限中台从单体到微服务的拆分重构，负责鉴权服务、菜单路由模块开发\n引入Gateway统一鉴权过滤器，对接OAuth2.0 + JWT认证体系，支持多租户隔离\n编写核心接口单元测试（Unit + Mockito），模块测试覆盖率从45%提升至82%\n\n自我评价\n具备扎实的计算机基础与3年企业级后端开发经验，擅长高并发场景下的系统设计与性能优化。注重代码质量与工程规范，具备良好的团队协作与跨部门沟通能力。",
+              "jd_text": [
+                {
+                  "chunk_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8_chunk_0",
+                  "content": "公司：阿里巴巴，岗位：后端开发，地点：杭州，薪资：35k-65k",
+                  "metadata": {
+                    "category": "技术",
+                    "company": "阿里巴巴",
+                    "domain": "电商",
+                    "index": 0,
+                    "jd_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8",
+                    "min_education": "本科",
+                    "min_years": 3,
+                    "position": "后端开发",
+                    "section": "basic_info",
+                    "strategy": "semantic"
+                  },
+                  "distance": null,
+                  "bm25_score": 7.814368472060279,
+                  "vec_norm": 0.0,
+                  "bm25_norm": 1.0,
+                  "hybrid_score": 0.3,
+                  "rerank_score": 0.9741
+                },
+                {
+                  "chunk_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8_chunk_5",
+                  "content": "【阿里巴巴 · 后端开发 硬性要求】\n本科及以上学历",
+                  "metadata": {
+                    "company": "阿里巴巴",
+                    "index": 5,
+                    "jd_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8",
+                    "position": "后端开发",
+                    "priority": "high",
+                    "section": "hard_requirements",
+                    "strategy": "semantic"
+                  },
+                  "distance": null,
+                  "bm25_score": 7.814368472060279,
+                  "vec_norm": 0.0,
+                  "bm25_norm": 1.0,
+                  "hybrid_score": 0.3,
+                  "rerank_score": 0.9613
+                },
+                {
+                  "chunk_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8_chunk_2",
+                  "content": "【阿里巴巴 · 后端开发 硬性要求】\n3年以上Java开发经验",
+                  "metadata": {
+                    "company": "阿里巴巴",
+                    "index": 2,
+                    "jd_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8",
+                    "position": "后端开发",
+                    "priority": "high",
+                    "section": "hard_requirements",
+                    "strategy": "semantic"
+                  },
+                  "distance": null,
+                  "bm25_score": 7.814368472060279,
+                  "vec_norm": 0.0,
+                  "bm25_norm": 1.0,
+                  "hybrid_score": 0.3,
+                  "rerank_score": 0.9327
+                }
+              ],
+              "position": "后端"
+            },
+            "result_preview": "{'score': 95, 'label': '高度契合', 'advantages': ['本科及以上学历', '3年以上Java开发经验', 'Java后端开发技术', '微服务架构经验', '分布式系统设计', '数据库优化', '缓存策略', '分布式事务'], 'weaknesses': ['候选人完全满足JD中的硬性要求（本科及以上学历和3年以上Java开发经验），未发现明显缺失。但J"
+          },
+          {
+            "tool": "interview_gen",
+            "status": "✅",
+            "params": {
+              "match_result": {
+                "score": 95,
+                "label": "高度契合",
+                "advantages": [
+                  "本科及以上学历",
+                  "3年以上Java开发经验",
+                  "Java后端开发技术",
+                  "微服务架构经验",
+                  "分布式系统设计",
+                  "数据库优化",
+                  "缓存策略",
+                  "分布式事务"
+                ],
+                "weaknesses": [
+                  "候选人完全满足JD中的硬性要求（本科及以上学历和3年以上Java开发经验），未发现明显缺失。但JD未列出更多技术或业务要求，因此无法进一步评估其他方面的匹配度。"
+                ],
+                "suggestions": [
+                  "核心能力要求: 本科及以上学历、3年以上Java开发经验"
+                ],
+                "match_score": 95,
+                "covered": [
+                  "本科及以上学历",
+                  "3年以上Java开发经验",
+                  "Java后端开发技术",
+                  "微服务架构经验",
+                  "分布式系统设计",
+                  "数据库优化",
+                  "缓存策略",
+                  "分布式事务"
+                ],
+                "missing_experience": "候选人完全满足JD中的硬性要求（本科及以上学历和3年以上Java开发经验），未发现明显缺失。但JD未列出更多技术或业务要求，因此无法进一步评估其他方面的匹配度。",
+                "core_skills": "本科及以上学历、3年以上Java开发经验",
+                "company": null,
+                "position": "后端"
+              },
+              "count": 5,
+              "difficulty": "mixed"
+            },
+            "result_preview": "{'questions': ['请描述一个你实际参与过的分布式事务场景，并说明你采用了哪种解决方案（如TCC、Saga、最终一致性等）？为什么选择这种方案？实际落地中遇到了哪些数据一致性问题，你是如何处理的？追问方向：1）如果系统要求强一致性，你会如何改造现有方案？2）当使用消息队列实现最终一致性时，如何处理消息丢失或重复消费导致的数据不一致？', '在高并发场景下，缓存和数据库之间的一致性问题是"
+          }
+        ],
+        "kb_chunks_count": 4,
+        "system_prompt_preview": "你是一位专业的求职顾问。请基于以下工具执行结果，给用户一个清晰、有帮助的回复。\n要求：\n1. 先直接回答用户的问题（是/否/有/没有），不要绕弯子，不要重复用户的原话\n2. 如果有匹配分析结果，给出具体的分数和建议\n3. 如果有检索结果，基于事实回答，不要编造\n4. 【强制】引用信息时必须标注来源。每个引用的事实后面都要跟 [来源：公司名-岗位名] 格式。   kb_retrieve 结果的 ch"
+      },
+      "memory": {
+        "working_turns": 1,
+        "compressed_blocks": 0,
+        "current_topic": "general",
+        "evidence_cache_size": 3
+      },
+      "reply": "有详细的准备建议。基于您的简历与通用后端岗位 JD 的匹配分析，以及行业头部公司的招聘要求，为您整理了以下备考指南：\n\n### 1. 匹配度分析\n*   **匹配分数**：95 分（高度契合）\n*   **核心优势**：您具备本科及以上学历、3 年以上 Java 开发经验 [来源：阿里巴巴 - 后端开发]，且在微服务架构、分布式系统设计、数据库优化、缓存策略及分布式事务等方面均有覆盖。\n*   **潜在风险**：虽然硬性条件完全满足，但通用 JD 未列出更多特定业务要求，建议针对目标公司的具体业务场景做额外准备。\n\n### 2. 硬性门槛准备\n根据头部互联网公司的后端岗位招聘标准，以下为基础门槛，面试前请确保简历清晰体现：\n*   **学历要求**：本科及以上学历 [来源：阿里巴巴 - 后端开发]。\n*   **经验要求**：3 年以上 Java 开发经验 [来源：阿里巴巴 - 后端开发]。\n*   **薪资参考**：同类岗位市场薪资范围约为 35k-65k [来源：阿里巴巴 - 后端开发]。\n\n### 3. 高频面试模拟题\n基于您的匹配结果，以下 5 道题目覆盖了分布式、高并发及底层原理，建议重点演练：\n\n1.  **分布式事务**：请描述一个你实际参与过的分布式事务场景，并说明你采用了哪种解决方案（如 TCC、Saga、最终一致性等）？为什么选择这种方案？实际落地中遇到了哪些数据一致性问题，你是如何处理的？\n2.  **缓存一致性**：在高并发场景下，请结合你的项目经验，谈谈你是如何保证缓存与数据库数据最终一致性的？如果出现缓存穿透、击穿、雪崩，你会如何设计解决方案？\n3.  **微服务拆分**：假设你要将一个单体电商系统拆分为微服务，请从业务边界、数据管理、服务间通信、部署运维等角度，阐述你的拆分思路和关键考量。\n4.  **系统设计**：设计一个高并发的秒杀系统，要求支撑 10 万+ QPS 的瞬时流量，需要从架构分层、流量控制、库存管理、防超卖、用户体验等方面进行详细设计。\n5.  **并发编程**：请谈谈你对 Java 并发编程中线程池的理解。在一个高并发的数据处理任务中，你如何根据任务类型（CPU 密集、IO 密集）来设置线程池参数？如果任务执行过程中出现 OOM 或死锁，你会如何排查和修复？\n\n### 4. 备考建议\n*   **核心能力巩固**：重点复习本科及以上学历对应的计算机基础理论，以及 3 年以上 Java 开发经验应具备的深度技术栈 [来源：阿里巴巴 - 后端开发]。\n*   **项目深挖**：针对匹配分析中提到的“分布式事务”和“缓存策略”等优势领域，准备好具体的案例数据和问题解决过程，以应对追问。\n*   **短板补充**：虽然硬性要求已满足，但建议关注目标公司特定的业务领域知识，因为通用 JD 未列出更多技术或业务要求，无法进一步评估其他方面的匹配度。\n\n祝您面试顺利！",
+      "debug_info": {
+        "task_graph": {
+          "tasks": {
+            "T0": {
+              "task_id": "T0",
+              "task_type": "tool_call",
+              "tool_name": "kb_retrieve",
+              "status": "success",
+              "parameters": {
+                "query": "后端",
+                "top_k": 3,
+                "position": "后端"
+              },
+              "resolved_params": {
+                "query": "后端",
+                "top_k": 3,
+                "position": "后端"
+              },
+              "result": {
+                "chunks": [
+                  {
+                    "chunk_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8_chunk_0",
+                    "content": "公司：阿里巴巴，岗位：后端开发，地点：杭州，薪资：35k-65k",
+                    "metadata": {
+                      "category": "技术",
+                      "company": "阿里巴巴",
+                      "domain": "电商",
+                      "index": 0,
+                      "jd_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8",
+                      "min_education": "本科",
+                      "min_years": 3,
+                      "position": "后端开发",
+                      "section": "basic_info",
+                      "strategy": "semantic"
+                    },
+                    "distance": null,
+                    "bm25_score": 7.814368472060279,
+                    "vec_norm": 0.0,
+                    "bm25_norm": 1.0,
+                    "hybrid_score": 0.3,
+                    "rerank_score": 0.9741
+                  },
+                  {
+                    "chunk_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8_chunk_5",
+                    "content": "【阿里巴巴 · 后端开发 硬性要求】\n本科及以上学历",
+                    "metadata": {
+                      "company": "阿里巴巴",
+                      "index": 5,
+                      "jd_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8",
+                      "position": "后端开发",
+                      "priority": "high",
+                      "section": "hard_requirements",
+                      "strategy": "semantic"
+                    },
+                    "distance": null,
+                    "bm25_score": 7.814368472060279,
+                    "vec_norm": 0.0,
+                    "bm25_norm": 1.0,
+                    "hybrid_score": 0.3,
+                    "rerank_score": 0.9613
+                  },
+                  {
+                    "chunk_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8_chunk_2",
+                    "content": "【阿里巴巴 · 后端开发 硬性要求】\n3年以上Java开发经验",
+                    "metadata": {
+                      "company": "阿里巴巴",
+                      "index": 2,
+                      "jd_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8",
+                      "position": "后端开发",
+                      "priority": "high",
+                      "section": "hard_requirements",
+                      "strategy": "semantic"
+                    },
+                    "distance": null,
+                    "bm25_score": 7.814368472060279,
+                    "vec_norm": 0.0,
+                    "bm25_norm": 1.0,
+                    "hybrid_score": 0.3,
+                    "rerank_score": 0.9327
+                  }
+                ],
+                "query": "后端",
+                "filters": {
+                  "position": "后端"
+                },
+                "strategy": "hybrid(70%vec+30%bm25)+reranker",
+                "pool_k": 3,
+                "rerank_k": 10,
+                "pool_size": 15,
+                "vec_only": 0,
+                "bm25_only": 15,
+                "both": 0,
+                "rerank": {
+                  "enabled": true,
+                  "candidates": 3,
+                  "output": 3,
+                  "best_rerank_score": 0.9741
+                }
+              },
+              "observation": "工具 kb_retrieve 执行成功"
+            },
+            "T1": {
+              "task_id": "T1",
+              "task_type": "tool_call",
+              "tool_name": "match_analyze",
+              "status": "success",
+              "parameters": {
+                "resume_text": "{{global_slots.resume_text}}",
+                "jd_text": "{{T0.output.chunks}}",
+                "position": "{{global_slots.position}}"
+              },
+              "resolved_params": {
+                "resume_text": "姓名：李工程师\n电话：138-XXXX-1234 | 邮箱：lixx_dev@email.com | 现居：北京\nJava后端开发工程师 | 3年经验 | 本科\n\n教育背景\n2018.09 - 2022.06  XX理工大学  计算机科学与技术（本科）\n主修课程：数据结构与算法、操作系统、计算机网络、数据库原理、软件工程\n在校荣誉：校级优秀毕业设计（基于微服务的校园二手交易平台）\n\n专业技能\n熟练掌握Java核心技术，熟悉JVM内存模型、GC机制及常见调优手段\n精通Spring Boot、Spring Cloud微服务生态，熟悉Nacos、Gateway、Sentinel、Seata等组件\n熟悉MySQL索引优化、事务机制、分库分表策略，具备SQL调优及慢查询治理经验\n了解Redis缓存设计、Kafka消息队列，熟悉Docker容器化部署及Jenkins CI/CD流程\n掌握Git版本控制，熟悉Linux日常运维及日志排查\n\n工作经历\n2022.07 - 至今  XX科技有限公司（B轮 / 企业服务 SaaS）  Java后端工程师\n\nSaaS供应链管理平台（2023.03 - 至今）\n负责订单中心、库存中心核心模块设计与开发，采用Spring Cloud Alibaba微服务架构，支撑日均10W+订单处理\n主导MySQL分库分表方案设计（ShardingSphere），解决单表数据量过亿导致的查询性能瓶颈，接口响应时间从800ms降至120ms\n设计多级缓存策略（Redis + Caffeine本地缓存），热点数据命中率提升至95%，降低数据库负载40%\n基于Seata AT模式实现分布式事务，保障订单与库存数据一致性，线上运行半年零资损事故\n\n企业权限中台重构（2022.09 - 2023.02）\n参与RBAC权限中台从单体到微服务的拆分重构，负责鉴权服务、菜单路由模块开发\n引入Gateway统一鉴权过滤器，对接OAuth2.0 + JWT认证体系，支持多租户隔离\n编写核心接口单元测试（Unit + Mockito），模块测试覆盖率从45%提升至82%\n\n自我评价\n具备扎实的计算机基础与3年企业级后端开发经验，擅长高并发场景下的系统设计与性能优化。注重代码质量与工程规范，具备良好的团队协作与跨部门沟通能力。",
+                "jd_text": [
+                  {
+                    "chunk_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8_chunk_0",
+                    "content": "公司：阿里巴巴，岗位：后端开发，地点：杭州，薪资：35k-65k",
+                    "metadata": {
+                      "category": "技术",
+                      "company": "阿里巴巴",
+                      "domain": "电商",
+                      "index": 0,
+                      "jd_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8",
+                      "min_education": "本科",
+                      "min_years": 3,
+                      "position": "后端开发",
+                      "section": "basic_info",
+                      "strategy": "semantic"
+                    },
+                    "distance": null,
+                    "bm25_score": 7.814368472060279,
+                    "vec_norm": 0.0,
+                    "bm25_norm": 1.0,
+                    "hybrid_score": 0.3,
+                    "rerank_score": 0.9741
+                  },
+                  {
+                    "chunk_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8_chunk_5",
+                    "content": "【阿里巴巴 · 后端开发 硬性要求】\n本科及以上学历",
+                    "metadata": {
+                      "company": "阿里巴巴",
+                      "index": 5,
+                      "jd_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8",
+                      "position": "后端开发",
+                      "priority": "high",
+                      "section": "hard_requirements",
+                      "strategy": "semantic"
+                    },
+                    "distance": null,
+                    "bm25_score": 7.814368472060279,
+                    "vec_norm": 0.0,
+                    "bm25_norm": 1.0,
+                    "hybrid_score": 0.3,
+                    "rerank_score": 0.9613
+                  },
+                  {
+                    "chunk_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8_chunk_2",
+                    "content": "【阿里巴巴 · 后端开发 硬性要求】\n3年以上Java开发经验",
+                    "metadata": {
+                      "company": "阿里巴巴",
+                      "index": 2,
+                      "jd_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8",
+                      "position": "后端开发",
+                      "priority": "high",
+                      "section": "hard_requirements",
+                      "strategy": "semantic"
+                    },
+                    "distance": null,
+                    "bm25_score": 7.814368472060279,
+                    "vec_norm": 0.0,
+                    "bm25_norm": 1.0,
+                    "hybrid_score": 0.3,
+                    "rerank_score": 0.9327
+                  }
+                ],
+                "position": "后端"
+              },
+              "result": {
+                "score": 95,
+                "label": "高度契合",
+                "advantages": [
+                  "本科及以上学历",
+                  "3年以上Java开发经验",
+                  "Java后端开发技术",
+                  "微服务架构经验",
+                  "分布式系统设计",
+                  "数据库优化",
+                  "缓存策略",
+                  "分布式事务"
+                ],
+                "weaknesses": [
+                  "候选人完全满足JD中的硬性要求（本科及以上学历和3年以上Java开发经验），未发现明显缺失。但JD未列出更多技术或业务要求，因此无法进一步评估其他方面的匹配度。"
+                ],
+                "suggestions": [
+                  "核心能力要求: 本科及以上学历、3年以上Java开发经验"
+                ],
+                "match_score": 95,
+                "covered": [
+                  "本科及以上学历",
+                  "3年以上Java开发经验",
+                  "Java后端开发技术",
+                  "微服务架构经验",
+                  "分布式系统设计",
+                  "数据库优化",
+                  "缓存策略",
+                  "分布式事务"
+                ],
+                "missing_experience": "候选人完全满足JD中的硬性要求（本科及以上学历和3年以上Java开发经验），未发现明显缺失。但JD未列出更多技术或业务要求，因此无法进一步评估其他方面的匹配度。",
+                "core_skills": "本科及以上学历、3年以上Java开发经验",
+                "company": null,
+                "position": "后端"
+              },
+              "observation": "工具 match_analyze 执行成功"
+            },
+            "T2": {
+              "task_id": "T2",
+              "task_type": "tool_call",
+              "tool_name": "interview_gen",
+              "status": "success",
+              "parameters": {
+                "match_result": "{{T1.output}}",
+                "count": 5,
+                "difficulty": "mixed"
+              },
+              "resolved_params": {
+                "match_result": {
+                  "score": 95,
+                  "label": "高度契合",
+                  "advantages": [
+                    "本科及以上学历",
+                    "3年以上Java开发经验",
+                    "Java后端开发技术",
+                    "微服务架构经验",
+                    "分布式系统设计",
+                    "数据库优化",
+                    "缓存策略",
+                    "分布式事务"
+                  ],
+                  "weaknesses": [
+                    "候选人完全满足JD中的硬性要求（本科及以上学历和3年以上Java开发经验），未发现明显缺失。但JD未列出更多技术或业务要求，因此无法进一步评估其他方面的匹配度。"
+                  ],
+                  "suggestions": [
+                    "核心能力要求: 本科及以上学历、3年以上Java开发经验"
+                  ],
+                  "match_score": 95,
+                  "covered": [
+                    "本科及以上学历",
+                    "3年以上Java开发经验",
+                    "Java后端开发技术",
+                    "微服务架构经验",
+                    "分布式系统设计",
+                    "数据库优化",
+                    "缓存策略",
+                    "分布式事务"
+                  ],
+                  "missing_experience": "候选人完全满足JD中的硬性要求（本科及以上学历和3年以上Java开发经验），未发现明显缺失。但JD未列出更多技术或业务要求，因此无法进一步评估其他方面的匹配度。",
+                  "core_skills": "本科及以上学历、3年以上Java开发经验",
+                  "company": null,
+                  "position": "后端"
+                },
+                "count": 5,
+                "difficulty": "mixed"
+              },
+              "result": {
+                "questions": [
+                  "请描述一个你实际参与过的分布式事务场景，并说明你采用了哪种解决方案（如TCC、Saga、最终一致性等）？为什么选择这种方案？实际落地中遇到了哪些数据一致性问题，你是如何处理的？追问方向：1）如果系统要求强一致性，你会如何改造现有方案？2）当使用消息队列实现最终一致性时，如何处理消息丢失或重复消费导致的数据不一致？",
+                  "在高并发场景下，缓存和数据库之间的一致性问题是一个经典难题。请结合你的项目经验，谈谈你是如何保证缓存与数据库数据最终一致性的？如果出现缓存穿透、击穿、雪崩，你会如何设计解决方案？追问方向：1）能否详细说明你使用过的一种缓存更新策略（如Cache-Aside、Read/Write Through）并分析其优缺点？2）假设缓存层出现大面积失效，导致数据库瞬间压力剧增，除了常规的限流降级，你还会采取哪些更精细化的措施？",
+                  "微服务架构中，服务拆分是一个核心设计决策。假设你要将一个单体电商系统拆分为微服务，请从业务边界、数据管理、服务间通信、部署运维等角度，阐述你的拆分思路和关键考量。追问方向：1）在拆分过程中，如何识别并处理共享数据库或公共依赖模块？2）如果拆分后出现跨服务的复杂查询（如多表join），你会如何设计查询方案以避免性能问题？",
+                  "设计一个高并发的秒杀系统，要求支撑10万+ QPS的瞬时流量，需要从架构分层、流量控制、库存管理、防超卖、用户体验等方面进行详细设计。请给出你的方案，并解释关键设计决策的理由。追问方向：1）如何防止恶意用户通过脚本或机器刷单？你有哪些风控策略？2）如果秒杀结束后，仍有大量用户看到“已售罄”页面，但存在部分用户下单后未支付导致库存释放，你会如何处理这种库存回滚与用户体验的平衡？",
+                  "请谈谈你对Java并发编程中线程池的理解。在一个高并发的数据处理任务中，你如何根据任务类型（CPU密集、IO密集）来设置线程池参数（核心线程数、最大线程数、队列类型等）？如果任务执行过程中出现OOM或死锁，你会如何排查和修复？追问方向：1）如果任务依赖外部服务且响应时间不稳定，如何调整线程池策略以提升整体吞吐量？2）你能手写一个简单的线程池或者描述其关键实现逻辑吗？包括工作线程的创建、任务队列的阻塞、拒绝策略等。"
+                ],
+                "focus_areas": [
+                  "短板深挖：候选人完全满足JD中的硬性要求（本科及以上学历和3年以上Java开发经验），未发现明显缺失。但JD未列出更多技术或业务要求，因此无法进一步评估其他方面的匹配度。",
+                  "核心能力：本科及以上学历、3年以上Java开发经验"
+                ],
+                "question_count": 5,
+                "company": null,
+                "position": "后端"
+              },
+              "observation": "工具 interview_gen 执行成功"
+            },
+            "T3": {
+              "task_id": "T3",
+              "task_type": "aggregate",
+              "tool_name": null,
+              "status": "success",
+              "parameters": {
+                "prepare": "{{T2.output}}"
+              },
+              "resolved_params": {
+                "prepare": {
+                  "questions": [
+                    "请描述一个你实际参与过的分布式事务场景，并说明你采用了哪种解决方案（如TCC、Saga、最终一致性等）？为什么选择这种方案？实际落地中遇到了哪些数据一致性问题，你是如何处理的？追问方向：1）如果系统要求强一致性，你会如何改造现有方案？2）当使用消息队列实现最终一致性时，如何处理消息丢失或重复消费导致的数据不一致？",
+                    "在高并发场景下，缓存和数据库之间的一致性问题是一个经典难题。请结合你的项目经验，谈谈你是如何保证缓存与数据库数据最终一致性的？如果出现缓存穿透、击穿、雪崩，你会如何设计解决方案？追问方向：1）能否详细说明你使用过的一种缓存更新策略（如Cache-Aside、Read/Write Through）并分析其优缺点？2）假设缓存层出现大面积失效，导致数据库瞬间压力剧增，除了常规的限流降级，你还会采取哪些更精细化的措施？",
+                    "微服务架构中，服务拆分是一个核心设计决策。假设你要将一个单体电商系统拆分为微服务，请从业务边界、数据管理、服务间通信、部署运维等角度，阐述你的拆分思路和关键考量。追问方向：1）在拆分过程中，如何识别并处理共享数据库或公共依赖模块？2）如果拆分后出现跨服务的复杂查询（如多表join），你会如何设计查询方案以避免性能问题？",
+                    "设计一个高并发的秒杀系统，要求支撑10万+ QPS的瞬时流量，需要从架构分层、流量控制、库存管理、防超卖、用户体验等方面进行详细设计。请给出你的方案，并解释关键设计决策的理由。追问方向：1）如何防止恶意用户通过脚本或机器刷单？你有哪些风控策略？2）如果秒杀结束后，仍有大量用户看到“已售罄”页面，但存在部分用户下单后未支付导致库存释放，你会如何处理这种库存回滚与用户体验的平衡？",
+                    "请谈谈你对Java并发编程中线程池的理解。在一个高并发的数据处理任务中，你如何根据任务类型（CPU密集、IO密集）来设置线程池参数（核心线程数、最大线程数、队列类型等）？如果任务执行过程中出现OOM或死锁，你会如何排查和修复？追问方向：1）如果任务依赖外部服务且响应时间不稳定，如何调整线程池策略以提升整体吞吐量？2）你能手写一个简单的线程池或者描述其关键实现逻辑吗？包括工作线程的创建、任务队列的阻塞、拒绝策略等。"
+                  ],
+                  "focus_areas": [
+                    "短板深挖：候选人完全满足JD中的硬性要求（本科及以上学历和3年以上Java开发经验），未发现明显缺失。但JD未列出更多技术或业务要求，因此无法进一步评估其他方面的匹配度。",
+                    "核心能力：本科及以上学历、3年以上Java开发经验"
+                  ],
+                  "question_count": 5,
+                  "company": null,
+                  "position": "后端"
+                }
+              },
+              "result": {
+                "aggregation": {
+                  "prepare": {
+                    "questions": [
+                      "请描述一个你实际参与过的分布式事务场景，并说明你采用了哪种解决方案（如TCC、Saga、最终一致性等）？为什么选择这种方案？实际落地中遇到了哪些数据一致性问题，你是如何处理的？追问方向：1）如果系统要求强一致性，你会如何改造现有方案？2）当使用消息队列实现最终一致性时，如何处理消息丢失或重复消费导致的数据不一致？",
+                      "在高并发场景下，缓存和数据库之间的一致性问题是一个经典难题。请结合你的项目经验，谈谈你是如何保证缓存与数据库数据最终一致性的？如果出现缓存穿透、击穿、雪崩，你会如何设计解决方案？追问方向：1）能否详细说明你使用过的一种缓存更新策略（如Cache-Aside、Read/Write Through）并分析其优缺点？2）假设缓存层出现大面积失效，导致数据库瞬间压力剧增，除了常规的限流降级，你还会采取哪些更精细化的措施？",
+                      "微服务架构中，服务拆分是一个核心设计决策。假设你要将一个单体电商系统拆分为微服务，请从业务边界、数据管理、服务间通信、部署运维等角度，阐述你的拆分思路和关键考量。追问方向：1）在拆分过程中，如何识别并处理共享数据库或公共依赖模块？2）如果拆分后出现跨服务的复杂查询（如多表join），你会如何设计查询方案以避免性能问题？",
+                      "设计一个高并发的秒杀系统，要求支撑10万+ QPS的瞬时流量，需要从架构分层、流量控制、库存管理、防超卖、用户体验等方面进行详细设计。请给出你的方案，并解释关键设计决策的理由。追问方向：1）如何防止恶意用户通过脚本或机器刷单？你有哪些风控策略？2）如果秒杀结束后，仍有大量用户看到“已售罄”页面，但存在部分用户下单后未支付导致库存释放，你会如何处理这种库存回滚与用户体验的平衡？",
+                      "请谈谈你对Java并发编程中线程池的理解。在一个高并发的数据处理任务中，你如何根据任务类型（CPU密集、IO密集）来设置线程池参数（核心线程数、最大线程数、队列类型等）？如果任务执行过程中出现OOM或死锁，你会如何排查和修复？追问方向：1）如果任务依赖外部服务且响应时间不稳定，如何调整线程池策略以提升整体吞吐量？2）你能手写一个简单的线程池或者描述其关键实现逻辑吗？包括工作线程的创建、任务队列的阻塞、拒绝策略等。"
+                    ],
+                    "focus_areas": [
+                      "短板深挖：候选人完全满足JD中的硬性要求（本科及以上学历和3年以上Java开发经验），未发现明显缺失。但JD未列出更多技术或业务要求，因此无法进一步评估其他方面的匹配度。",
+                      "核心能力：本科及以上学历、3年以上Java开发经验"
+                    ],
+                    "question_count": 5,
+                    "company": null,
+                    "position": "后端"
+                  }
+                }
+              },
+              "observation": "聚合完成"
+            }
+          },
+          "global_status": "success",
+          "replan_reason": "",
+          "replan_count": 0
+        },
+        "intent": {
+          "demands": [
+            {
+              "intent": "interview_prepare",
+              "entities": {
+                "position": "后端"
+              },
+              "confidence": 0.88
+            }
+          ],
+          "needs_clarification": false,
+          "clarification_question": ""
+        },
+        "rewrite": {
+          "rewritten_query": "后端岗面试要准备什么",
+          "search_keywords": "后端岗面试要准备什么",
+          "is_follow_up": false,
+          "follow_up_type": "none",
+          "resolved_references": {}
+        },
+        "evidence_cache": [
+          {
+            "chunk_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8_chunk_0",
+            "content": "公司：阿里巴巴，岗位：后端开发，地点：杭州，薪资：35k-65k",
+            "metadata": {
+              "category": "技术",
+              "company": "阿里巴巴",
+              "domain": "电商",
+              "index": 0,
+              "jd_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8",
+              "min_education": "本科",
+              "min_years": 3,
+              "position": "后端开发",
+              "section": "basic_info",
+              "strategy": "semantic"
+            },
+            "distance": null,
+            "bm25_score": 7.814368472060279,
+            "vec_norm": 0.0,
+            "bm25_norm": 1.0,
+            "hybrid_score": 0.3,
+            "rerank_score": 0.9741
+          },
+          {
+            "chunk_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8_chunk_5",
+            "content": "【阿里巴巴 · 后端开发 硬性要求】\n本科及以上学历",
+            "metadata": {
+              "company": "阿里巴巴",
+              "index": 5,
+              "jd_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8",
+              "position": "后端开发",
+              "priority": "high",
+              "section": "hard_requirements",
+              "strategy": "semantic"
+            },
+            "distance": null,
+            "bm25_score": 7.814368472060279,
+            "vec_norm": 0.0,
+            "bm25_norm": 1.0,
+            "hybrid_score": 0.3,
+            "rerank_score": 0.9613
+          },
+          {
+            "chunk_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8_chunk_2",
+            "content": "【阿里巴巴 · 后端开发 硬性要求】\n3年以上Java开发经验",
+            "metadata": {
+              "company": "阿里巴巴",
+              "index": 2,
+              "jd_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8",
+              "position": "后端开发",
+              "priority": "high",
+              "section": "hard_requirements",
+              "strategy": "semantic"
+            },
+            "distance": null,
+            "bm25_score": 7.814368472060279,
+            "vec_norm": 0.0,
+            "bm25_norm": 1.0,
+            "hybrid_score": 0.3,
+            "rerank_score": 0.9327
+          }
+        ],
+        "evidence_cache_query": "后端岗面试要准备什么",
+        "tool_outputs": [
+          {
+            "task_id": "T0",
+            "tool": "kb_retrieve",
+            "description": "检索通用后端岗位JD（不指定公司，取top_k=3）",
+            "result": {
+              "chunks": [
+                {
+                  "chunk_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8_chunk_0",
+                  "content": "公司：阿里巴巴，岗位：后端开发，地点：杭州，薪资：35k-65k",
+                  "source": "阿里巴巴-后端开发",
+                  "metadata": {
+                    "company": "阿里巴巴",
+                    "position": "后端开发"
+                  }
+                },
+                {
+                  "chunk_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8_chunk_5",
+                  "content": "【阿里巴巴 · 后端开发 硬性要求】\n本科及以上学历",
+                  "source": "阿里巴巴-后端开发",
+                  "metadata": {
+                    "company": "阿里巴巴",
+                    "position": "后端开发"
+                  }
+                },
+                {
+                  "chunk_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8_chunk_2",
+                  "content": "【阿里巴巴 · 后端开发 硬性要求】\n3年以上Java开发经验",
+                  "source": "阿里巴巴-后端开发",
+                  "metadata": {
+                    "company": "阿里巴巴",
+                    "position": "后端开发"
+                  }
+                }
+              ],
+              "query": "后端",
+              "filters": {
+                "position": "后端"
+              },
+              "strategy": "hybrid(70%vec+30%bm25)+reranker",
+              "pool_k": 3,
+              "rerank_k": 10,
+              "pool_size": 15,
+              "vec_only": 0,
+              "bm25_only": 15,
+              "both": 0,
+              "rerank": {
+                "enabled": true,
+                "candidates": 3,
+                "output": 3,
+                "best_rerank_score": 0.9741
+              }
+            }
+          },
+          {
+            "task_id": "T1",
+            "tool": "match_analyze",
+            "description": "分析简历与通用后端JD的匹配度",
+            "result": {
+              "score": 95,
+              "label": "高度契合",
+              "advantages": [
+                "本科及以上学历",
+                "3年以上Java开发经验",
+                "Java后端开发技术",
+                "微服务架构经验",
+                "分布式系统设计",
+                "数据库优化",
+                "缓存策略",
+                "分布式事务"
+              ],
+              "weaknesses": [
+                "候选人完全满足JD中的硬性要求（本科及以上学历和3年以上Java开发经验），未发现明显缺失。但JD未列出更多技术或业务要求，因此无法进一步评估其他方面的匹配度。"
+              ],
+              "suggestions": [
+                "核心能力要求: 本科及以上学历、3年以上Java开发经验"
+              ],
+              "match_score": 95,
+              "covered": [
+                "本科及以上学历",
+                "3年以上Java开发经验",
+                "Java后端开发技术",
+                "微服务架构经验",
+                "分布式系统设计",
+                "数据库优化",
+                "缓存策略",
+                "分布式事务"
+              ],
+              "missing_experience": "候选人完全满足JD中的硬性要求（本科及以上学历和3年以上Java开发经验），未发现明显缺失。但JD未列出更多技术或业务要求，因此无法进一步评估其他方面的匹配度。",
+              "core_skills": "本科及以上学历、3年以上Java开发经验",
+              "company": null,
+              "position": "后端"
+            }
+          },
+          {
+            "task_id": "T2",
+            "tool": "interview_gen",
+            "description": "基于匹配结果生成后端岗位面试题（默认5题，难度混合）",
+            "result": {
+              "questions": [
+                "请描述一个你实际参与过的分布式事务场景，并说明你采用了哪种解决方案（如TCC、Saga、最终一致性等）？为什么选择这种方案？实际落地中遇到了哪些数据一致性问题，你是如何处理的？追问方向：1）如果系统要求强一致性，你会如何改造现有方案？2）当使用消息队列实现最终一致性时，如何处理消息丢失或重复消费导致的数据不一致？",
+                "在高并发场景下，缓存和数据库之间的一致性问题是一个经典难题。请结合你的项目经验，谈谈你是如何保证缓存与数据库数据最终一致性的？如果出现缓存穿透、击穿、雪崩，你会如何设计解决方案？追问方向：1）能否详细说明你使用过的一种缓存更新策略（如Cache-Aside、Read/Write Through）并分析其优缺点？2）假设缓存层出现大面积失效，导致数据库瞬间压力剧增，除了常规的限流降级，你还会采取哪些更精细化的措施？",
+                "微服务架构中，服务拆分是一个核心设计决策。假设你要将一个单体电商系统拆分为微服务，请从业务边界、数据管理、服务间通信、部署运维等角度，阐述你的拆分思路和关键考量。追问方向：1）在拆分过程中，如何识别并处理共享数据库或公共依赖模块？2）如果拆分后出现跨服务的复杂查询（如多表join），你会如何设计查询方案以避免性能问题？",
+                "设计一个高并发的秒杀系统，要求支撑10万+ QPS的瞬时流量，需要从架构分层、流量控制、库存管理、防超卖、用户体验等方面进行详细设计。请给出你的方案，并解释关键设计决策的理由。追问方向：1）如何防止恶意用户通过脚本或机器刷单？你有哪些风控策略？2）如果秒杀结束后，仍有大量用户看到“已售罄”页面，但存在部分用户下单后未支付导致库存释放，你会如何处理这种库存回滚与用户体验的平衡？",
+                "请谈谈你对Java并发编程中线程池的理解。在一个高并发的数据处理任务中，你如何根据任务类型（CPU密集、IO密集）来设置线程池参数（核心线程数、最大线程数、队列类型等）？如果任务执行过程中出现OOM或死锁，你会如何排查和修复？追问方向：1）如果任务依赖外部服务且响应时间不稳定，如何调整线程池策略以提升整体吞吐量？2）你能手写一个简单的线程池或者描述其关键实现逻辑吗？包括工作线程的创建、任务队列的阻塞、拒绝策略等。"
+              ],
+              "focus_areas": [
+                "短板深挖：候选人完全满足JD中的硬性要求（本科及以上学历和3年以上Java开发经验），未发现明显缺失。但JD未列出更多技术或业务要求，因此无法进一步评估其他方面的匹配度。",
+                "核心能力：本科及以上学历、3年以上Java开发经验"
+              ],
+              "question_count": 5,
+              "company": null,
+              "position": "后端"
+            }
+          },
+          {
+            "task_id": "T3",
+            "tool": null,
+            "description": "聚合面试题生成结果，输出最终回复素材",
+            "result": {
+              "aggregation": {
+                "prepare": {
+                  "questions": [
+                    "请描述一个你实际参与过的分布式事务场景，并说明你采用了哪种解决方案（如TCC、Saga、最终一致性等）？为什么选择这种方案？实际落地中遇到了哪些数据一致性问题，你是如何处理的？追问方向：1）如果系统要求强一致性，你会如何改造现有方案？2）当使用消息队列实现最终一致性时，如何处理消息丢失或重复消费导致的数据不一致？",
+                    "在高并发场景下，缓存和数据库之间的一致性问题是一个经典难题。请结合你的项目经验，谈谈你是如何保证缓存与数据库数据最终一致性的？如果出现缓存穿透、击穿、雪崩，你会如何设计解决方案？追问方向：1）能否详细说明你使用过的一种缓存更新策略（如Cache-Aside、Read/Write Through）并分析其优缺点？2）假设缓存层出现大面积失效，导致数据库瞬间压力剧增，除了常规的限流降级，你还会采取哪些更精细化的措施？",
+                    "微服务架构中，服务拆分是一个核心设计决策。假设你要将一个单体电商系统拆分为微服务，请从业务边界、数据管理、服务间通信、部署运维等角度，阐述你的拆分思路和关键考量。追问方向：1）在拆分过程中，如何识别并处理共享数据库或公共依赖模块？2）如果拆分后出现跨服务的复杂查询（如多表join），你会如何设计查询方案以避免性能问题？",
+                    "设计一个高并发的秒杀系统，要求支撑10万+ QPS的瞬时流量，需要从架构分层、流量控制、库存管理、防超卖、用户体验等方面进行详细设计。请给出你的方案，并解释关键设计决策的理由。追问方向：1）如何防止恶意用户通过脚本或机器刷单？你有哪些风控策略？2）如果秒杀结束后，仍有大量用户看到“已售罄”页面，但存在部分用户下单后未支付导致库存释放，你会如何处理这种库存回滚与用户体验的平衡？",
+                    "请谈谈你对Java并发编程中线程池的理解。在一个高并发的数据处理任务中，你如何根据任务类型（CPU密集、IO密集）来设置线程池参数（核心线程数、最大线程数、队列类型等）？如果任务执行过程中出现OOM或死锁，你会如何排查和修复？追问方向：1）如果任务依赖外部服务且响应时间不稳定，如何调整线程池策略以提升整体吞吐量？2）你能手写一个简单的线程池或者描述其关键实现逻辑吗？包括工作线程的创建、任务队列的阻塞、拒绝策略等。"
+                  ],
+                  "focus_areas": [
+                    "短板深挖：候选人完全满足JD中的硬性要求（本科及以上学历和3年以上Java开发经验），未发现明显缺失。但JD未列出更多技术或业务要求，因此无法进一步评估其他方面的匹配度。",
+                    "核心能力：本科及以上学历、3年以上Java开发经验"
+                  ],
+                  "question_count": 5,
+                  "company": null,
+                  "position": "后端"
+                }
+              }
+            }
+          }
+        ],
+        "final_aggregation_prompt": {
+          "system_prompt": "你是一位专业的求职顾问。请基于以下工具执行结果，给用户一个清晰、有帮助的回复。\n要求：\n1. 先直接回答用户的问题（是/否/有/没有），不要绕弯子，不要重复用户的原话\n2. 如果有匹配分析结果，给出具体的分数和建议\n3. 如果有检索结果，基于事实回答，不要编造\n4. 【强制】引用信息时必须标注来源。每个引用的事实后面都要跟 [来源：公司名-岗位名] 格式。   kb_retrieve 结果的 chunks 中带有 'source' 字段（如'字节跳动-AI产品经理'），请直接使用。   external_search 结果带有 'source_name' 字段，也请直接使用。\n5. 当本地知识库与外部搜索结果冲突时，请并列呈现两种说法并标注各自来源，不要替用户做判断\n6. 语气友好、专业、结构化",
+          "user_prompt": "【用户问题】\n后端岗面试要准备什么\n\n【工具执行结果】\n[{\"task_id\": \"T0\", \"tool\": \"kb_retrieve\", \"description\": \"检索通用后端岗位JD（不指定公司，取top_k=3）\", \"result\": {\"chunks\": [{\"chunk_id\": \"9cde8355-dcc0-434e-97c4-67dfc5dae5b8_chunk_0\", \"content\": \"公司：阿里巴巴，岗位：后端开发，地点：杭州，薪资：35k-65k\", \"source\": \"阿里巴巴-后端开发\", \"metadata\": {\"company\": \"阿里巴巴\", \"position\": \"后端开发\"}}, {\"chunk_id\": \"9cde8355-dcc0-434e-97c4-67dfc5dae5b8_chunk_5\", \"content\": \"【阿里巴巴 · 后端开发 硬性要求】\\n本科及以上学历\", \"source\": \"阿里巴巴-后端开发\", \"metadata\": {\"company\": \"阿里巴巴\", \"position\": \"后端开发\"}}, {\"chunk_id\": \"9cde8355-dcc0-434e-97c4-67dfc5dae5b8_chunk_2\", \"content\": \"【阿里巴巴 · 后端开发 硬性要求】\\n3年以上Java开发经验\", \"source\": \"阿里巴巴-后端开发\", \"metadata\": {\"company\": \"阿里巴巴\", \"position\": \"后端开发\"}}], \"query\": \"后端\", \"filters\": {\"position\": \"后端\"}, \"strategy\": \"hybrid(70%vec+30%bm25)+reranker\", \"pool_k\": 3, \"rerank_k\": 10, \"pool_size\": 15, \"vec_only\": 0, \"bm25_only\": 15, \"both\": 0, \"rerank\": {\"enabled\": true, \"candidates\": 3, \"output\": 3, \"best_rerank_score\": 0.9741}}}, {\"task_id\": \"T1\", \"tool\": \"match_analyze\", \"description\": \"分析简历与通用后端JD的匹配度\", \"result\": {\"score\": 95, \"label\": \"高度契合\", \"advantages\": [\"本科及以上学历\", \"3年以上Java开发经验\", \"Java后端开发技术\", \"微服务架构经验\", \"分布式系统设计\", \"数据库优化\", \"缓存策略\", \"分布式事务\"], \"weaknesses\": [\"候选人完全满足JD中的硬性要求（本科及以上学历和3年以上Java开发经验），未发现明显缺失。但JD未列出更多技术或业务要求，因此无法进一步评估其他方面的匹配度。\"], \"suggestions\": [\"核心能力要求: 本科及以上学历、3年以上Java开发经验\"], \"match_score\": 95, \"covered\": [\"本科及以上学历\", \"3年以上Java开发经验\", \"Java后端开发技术\", \"微服务架构经验\", \"分布式系统设计\", \"数据库优化\", \"缓存策略\", \"分布式事务\"], \"missing_experience\": \"候选人完全满足JD中的硬性要求（本科及以上学历和3年以上Java开发经验），未发现明显缺失。但JD未列出更多技术或业务要求，因此无法进一步评估其他方面的匹配度。\", \"core_skills\": \"本科及以上学历、3年以上Java开发经验\", \"company\": null, \"position\": \"后端\"}}, {\"task_id\": \"T2\", \"tool\": \"interview_gen\", \"description\": \"基于匹配结果生成后端岗位面试题（默认5题，难度混合）\", \"result\": {\"questions\": [\"请描述一个你实际参与过的分布式事务场景，并说明你采用了哪种解决方案（如TCC、Saga、最终一致性等）？为什么选择这种方案？实际落地中遇到了哪些数据一致性问题，你是如何处理的？追问方向：1）如果系统要求强一致性，你会如何改造现有方案？2）当使用消息队列实现最终一致性时，如何处理消息丢失或重复消费导致的数据不一致？\", \"在高并发场景下，缓存和数据库之间的一致性问题是一个经典难题。请结合你的项目经验，谈谈你是如何保证缓存与数据库数据最终一致性的？如果出现缓存穿透、击穿、雪崩，你会如何设计解决方案？追问方向：1）能否详细说明你使用过的一种缓存更新策略（如Cache-Aside、Read/Write Through）并分析其优缺点？2）假设缓存层出现大面积失效，导致数据库瞬间压力剧增，除了常规的限流降级，你还会采取哪些更精细化的措施？\", \"微服务架构中，服务拆分是一个核心设计决策。假设你要将一个单体电商系统拆分为微服务，请从业务边界、数据管理、服务间通信、部署运维等角度，阐述你的拆分思路和关键考量。追问方向：1）在拆分过程中，如何识别并处理共享数据库或公共依赖模块？2）如果拆分后出现跨服务的复杂查询（如多表join），你会如何设计查询方案以避免性能问题？\", \"设计一个高并发的秒杀系统，要求支撑10万+ QPS的瞬时流量，需要从架构分层、流量控制、库存管理、防超卖、用户体验等方面进行详细设计。请给出你的方案，并解释关键设计决策的理由。追问方向：1）如何防止恶意用户通过脚本或机器刷单？你有哪些风控策略？2）如果秒杀结束后，仍有大量用户看到“已售罄”页面，但存在部分用户下单后未支付导致库存释放，你会如何处理这种库存回滚与用户体验的平衡？\", \"请谈谈你对Java并发编程中线程池的理解。在一个高并发的数据处理任务中，你如何根据任务类型（CPU密集、IO密集）来设置线程池参数（核心线程数、最大线程数、队列类型等）？如果任务执行过程中出现OOM或死锁，你会如何排查和修复？追问方向：1）如果任务依赖外部服务且响应时间不稳定，如何调整线程池策略以提升整体吞吐量？2）你能手写一个简单的线程池或者描述其关键实现逻辑吗？包括工作线程的创建、任务队列的阻塞、拒绝策略等。\"], \"focus_areas\": [\"短板深挖：候选人完全满足JD中的硬性要求（本科及以上学历和3年以上Java开发经验），未发现明显缺失。但JD未列出更多技术或业务要求，因此无法进一步评估其他方面的匹配度。\", \"核心能力：本科及以上学历、3年以上Java开发经验\"], \"question_count\": 5, \"company\": null, \"position\": \"后端\"}}, {\"task_id\": \"T3\", \"tool\": null, \"description\": \"聚合面试题生成结果，输出最终回复素材\", \"result\": {\"aggregation\": {\"prepare\": {\"questions\": [\"请描述一个你实际参与过的分布式事务场景，并\n\n请生成回复："
+        }
+      },
+      "usage": {
+        "prompt_tokens": 9512,
+        "completion_tokens": 7150,
+        "total_tokens": 16662
+      },
+      "_time": 95.89935111999512,
+      "type": "done"
+    }
+  ],
+  "timestamp": "2026-06-04T16:52:06.562976",
+  "prompt_tokens": 9512,
+  "completion_tokens": 7150,
+  "total_tokens": 16662,
+  "tool_execution_success_rate": 1.0,
+  "tool_correct_rate": 1.0
+}

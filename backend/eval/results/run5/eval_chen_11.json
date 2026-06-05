@@ -1,0 +1,83 @@
+{
+  "case_id": "eval_chen_11",
+  "message": "先帮我挑几个能投的岗，再告诉我要准备什么面试题",
+  "gold_intents": [
+    "explore",
+    "prepare"
+  ],
+  "expected_tools": [
+    "kb_retrieve",
+    "global_rank",
+    "interview_gen"
+  ],
+  "scenario": "多意图_探索+面试准备",
+  "eval_context": {
+    "gold_intents": [
+      "explore",
+      "prepare"
+    ],
+    "gold_slots": {},
+    "relevance_score": 0,
+    "expected_tools": [
+      "kb_retrieve",
+      "global_rank",
+      "interview_gen"
+    ],
+    "scenario": "多意图_探索+面试准备",
+    "notes": "prepare依赖explore的top结果"
+  },
+  "resume_id": "cc50dcfb-aeba-41a3-989a-9e485aa2fc3f",
+  "status": "success",
+  "error": null,
+  "ttfb": 0.01,
+  "total_latency": 7.06,
+  "event_count": 3,
+  "pred_intent": "position_explore",
+  "pred_intents": [
+    "position_explore"
+  ],
+  "pred_tools": [],
+  "tools_called": [],
+  "kb_chunks": [],
+  "tool_executions_full": [],
+  "debug_info": {},
+  "reply": "你是想找某个具体岗位，还是了解某个公司的整体情况？",
+  "reply_length": 25,
+  "intent_match": true,
+  "tool_match_rate": 0.0,
+  "has_reply": false,
+  "events": [
+    {
+      "step": "intent",
+      "message": "正在识别您的意图...",
+      "_time": 7.062469005584717,
+      "type": "status"
+    },
+    {
+      "question": "你是想找某个具体岗位，还是了解某个公司的整体情况？",
+      "_time": 7.062512159347534,
+      "type": "clarification"
+    },
+    {
+      "session_id": "eval_chen_11_1780561828103",
+      "intent": "position_explore",
+      "is_clarification": true,
+      "reply": {
+        "text": "你是想找某个具体岗位，还是了解某个公司的整体情况？"
+      },
+      "usage": {
+        "prompt_tokens": 1499,
+        "completion_tokens": 245,
+        "total_tokens": 1744
+      },
+      "_time": 7.062567949295044,
+      "type": "done"
+    }
+  ],
+  "timestamp": "2026-06-04T16:30:28.103861",
+  "prompt_tokens": 1499,
+  "completion_tokens": 245,
+  "total_tokens": 1744,
+  "tool_execution_success_rate": 0.0,
+  "tool_correct_rate": 0.0
+}

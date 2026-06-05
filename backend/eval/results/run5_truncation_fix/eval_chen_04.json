@@ -1,0 +1,3300 @@
+{
+  "case_id": "eval_chen_04",
+  "message": "面字节AI产品经理要准备什么",
+  "gold_intents": [
+    "prepare"
+  ],
+  "expected_tools": [
+    "kb_retrieve",
+    "interview_gen"
+  ],
+  "scenario": "面试准备_指定岗位",
+  "eval_context": {
+    "gold_intents": [
+      "prepare"
+    ],
+    "gold_slots": {
+      "company": "字节跳动",
+      "position": "AI产品经理"
+    },
+    "relevance_score": 0,
+    "expected_tools": [
+      "kb_retrieve",
+      "interview_gen"
+    ],
+    "scenario": "面试准备_指定岗位",
+    "notes": "期望生成针对性面试题"
+  },
+  "resume_id": "cc50dcfb-aeba-41a3-989a-9e485aa2fc3f",
+  "status": "success",
+  "error": null,
+  "ttfb": 0.012,
+  "total_latency": 138.25,
+  "event_count": 191,
+  "pred_intent": "interview_prepare",
+  "pred_intents": [
+    "interview_prepare"
+  ],
+  "pred_tools": [
+    {
+      "tool": "kb_retrieve",
+      "status": "✅",
+      "params": {
+        "query": "字节 AI产品经理 JD",
+        "top_k": 5
+      },
+      "result_preview": "{'chunks': [{'chunk_id': 'ac9973c8-01be-4cd6-9a99-097873a59cf0_chunk_2', 'content': '【字节跳动 · AI产品经理 硬性要求】\\n本科及以上学历，兼具C端AIGC敏锐度与B端SaaS/RPA逻辑功底', 'metadata': {'company': '字节跳动', 'index': 2, 'jd_id': 'ac"
+    },
+    {
+      "tool": "match_analyze",
+      "status": "✅",
+      "params": {
+        "resume_text": "姓名：陈雨桐\r\n教育背景\r\n江南科技大学\r\n信息工程学院·软件工程（AI应用方向）·硕士\r\n2024.09-2027.06（预计）\r\nGPA: 3.4/4.0 | 主修：机器学习基础、数据库系统、软件项目管理、人机交互设计\r\n\r\n云溪大学\r\n计算机学院·信息管理与信息系统·本科\r\n2020.09-2024.06\r\n荣誉：两次校级三等奖学金 | 主修：数据结构、管理学原理、Web开发技术、统计学\r\n\r\n项目经历\r\n求职助手小程序 — 智能简历匹配与面试模拟工具\r\n2025.03-2025.11\r\n产品经理 | 三人小组\r\n- 需求分析：设计调研问卷回收40余份有效样本，梳理\"简历评估\"与\"定向面试模拟\"核心需求，使用Figma完成低保真原型，输出产品需求文档。\r\n- AI匹配策略：调研开源Embedding模型实现简历与JD语义相似度计算，探索多维度匹配方案，对比整篇匹配与分块匹配效果差异，持续优化推荐排序。\r\n- 内容生成：基于大模型AI设计结构化Prompt，融合岗位关键词与简历信息输出个性化面试题，建立追问机制增强模拟面试针对性。\r\n- 测试验证：组织20人内测收集用户路径与反馈数据，针对复杂PDF格式设计补充录入机制，完成从需求分析到上线测试的完整产品闭环。\r\n\r\n教务问答机器人 — 基于校内政策的RAG问答系统\r\n2024.10-2025.02\r\n产品设计与测试 | 实验室课题项目\r\n- 知识库构建：收集整理教务处政策文件、培养方案及历史问答共80余份，完成扫描件OCR识别、格式转换与结构化清洗，建立可检索的领域知识库。\r\n- 交互设计：设计Web端对话界面，参考主流客服产品布局增加\"推荐提问\"推荐模块降低投入成本，针对政策类回答设计溯源展示功能增强可信度。\r\n- 效果测试：参与搭建检索增强生成链路，完成实验环境下多轮问答测试，验证标准政策类问题回答准确率，整理测试数据与优化建议形成可复用方案。\r\n\r\n校园经历\r\n江南科技大学软件学院学生会·宣传部干事\r\n2024.09-2025.06\r\n- 负责学院官方公众号推文排版与发布，累计输出活动宣传稿件10余篇；协助组织院内编程比赛，负责报名统计与现场签到。\r\n\r\n云溪大学图书馆·勤工助学岗\r\n2022.03-2023.06\r\n- 负责电子阅览室日常值班，协助同学解决基础网络与设备使用问题；参与旧期刊电子目录录入与数据整理工作。\r\n\r\n获奖情况\r\n- 2025.05 江南科技大学研究生学业三等奖学金\r\n- 2024.11 学院AI应用创新赛（课程组）三等奖\r\n- 2022.06 云溪大学优秀共青团员\r\n- 2022.12 校级网页设计比赛优秀奖\r\n\r\n个人技能\r\n- 产品工具：熟练使用Figma进行原型与交互演示，了解Axure基础操作；能够使用Xmind梳理产品架构，通过腾讯文档/飞书写PRD。\r\n- 技术理解：了解大语言模型在应用层的落地方式，具备Prompt Engineering实践经验；理解RAG基本架构与工作流程，了解Embedding与向量检索作用。\r\n- 语言能力：英语CET-4（525分），可阅读英文技术文档与产品资料。\r\n- 办公技能：熟练使用Office办公软件，掌握Excel数据透视表等基础数据分析功能。",
+        "jd_text": [
+          {
+            "chunk_id": "ac9973c8-01be-4cd6-9a99-097873a59cf0_chunk_2",
+            "content": "【字节跳动 · AI产品经理 硬性要求】\n本科及以上学历，兼具C端AIGC敏锐度与B端SaaS/RPA逻辑功底",
+            "metadata": {
+              "company": "字节跳动",
+              "index": 2,
+              "jd_id": "ac9973c8-01be-4cd6-9a99-097873a59cf0",
+              "position": "AI产品经理",
+              "priority": "high",
+              "section": "hard_requirements",
+              "strategy": "semantic"
+            },
+            "distance": 0.5172616243362427,
+            "bm25_score": 11.273926253930416,
+            "vec_norm": 0.7234805915091891,
+            "bm25_norm": 0.521062592596384,
+            "hybrid_score": 0.6627551918353476,
+            "rerank_score": 0.9876
+          },
+          {
+            "chunk_id": "ac9973c8-01be-4cd6-9a99-097873a59cf0_chunk_5",
+            "content": "【字节跳动 · AI产品经理 硬性要求】\n具备极强的逻辑拆解力，能像指挥交响乐一样控制模型输出",
+            "metadata": {
+              "company": "字节跳动",
+              "index": 5,
+              "jd_id": "ac9973c8-01be-4cd6-9a99-097873a59cf0",
+              "position": "AI产品经理",
+              "priority": "high",
+              "section": "hard_requirements",
+              "strategy": "semantic"
+            },
+            "distance": 0.4580254852771759,
+            "bm25_score": 11.78435584408047,
+            "vec_norm": 0.9491384202935884,
+            "bm25_norm": 0.6287314186120652,
+            "hybrid_score": 0.8530163197891314,
+            "rerank_score": 0.9858
+          },
+          {
+            "chunk_id": "ac9973c8-01be-4cd6-9a99-097873a59cf0_chunk_8",
+            "content": "【字节跳动 · AI产品经理 关键词】\nPython, PyTorch, LangChain, RAG, Agent, 产品经理, AI",
+            "metadata": {
+              "company": "字节跳动",
+              "index": 8,
+              "jd_id": "ac9973c8-01be-4cd6-9a99-097873a59cf0",
+              "position": "AI产品经理",
+              "section": "keywords",
+              "strategy": "semantic"
+            },
+            "distance": 0.5713280439376831,
+            "bm25_score": 13.544442554841437,
+            "vec_norm": 0.5175166132485243,
+            "bm25_norm": 1.0,
+            "hybrid_score": 0.6622616292739669,
+            "rerank_score": 0.9817
+          },
+          {
+            "chunk_id": "ac9973c8-01be-4cd6-9a99-097873a59cf0_chunk_0",
+            "content": "公司：字节跳动，岗位：AI产品经理，地点：北京，薪资：30k-60k",
+            "metadata": {
+              "category": "产品",
+              "company": "字节跳动",
+              "domain": "AI",
+              "index": 0,
+              "jd_id": "ac9973c8-01be-4cd6-9a99-097873a59cf0",
+              "max_years": 5,
+              "min_education": "本科",
+              "min_years": 3,
+              "position": "AI产品经理",
+              "section": "basic_info",
+              "strategy": "semantic"
+            },
+            "distance": 0.4446741044521332,
+            "bm25_score": 8.868667810026786,
+            "vec_norm": 1.0,
+            "bm25_norm": 0.013702992140467742,
+            "hybrid_score": 0.7041108976421403,
+            "rerank_score": 0.9796
+          },
+          {
+            "chunk_id": "ac9973c8-01be-4cd6-9a99-097873a59cf0_chunk_6",
+            "content": "【字节跳动 · AI产品经理 硬性要求】\n24小时高频冲浪，对新技术有雷达般的嗅觉",
+            "metadata": {
+              "company": "字节跳动",
+              "index": 6,
+              "jd_id": "ac9973c8-01be-4cd6-9a99-097873a59cf0",
+              "position": "AI产品经理",
+              "priority": "high",
+              "section": "hard_requirements",
+              "strategy": "semantic"
+            },
+            "distance": 0.5325616598129272,
+            "bm25_score": 12.230124469647883,
+            "vec_norm": 0.6651956856926533,
+            "bm25_norm": 0.7227608117265157,
+            "hybrid_score": 0.6824652235028119,
+            "rerank_score": 0.9373
+          }
+        ],
+        "company": "字节",
+        "position": "AI产品经理"
+      },
+      "result_preview": "{'score': 36, 'label': '不匹配', 'advantages': ['产品需求分析与原型设计（Figma）', '用户调研与问卷设计', 'RAG知识库构建与问答系统', 'Prompt Engineering与AI内容生成', '多维度匹配方案探索', '项目管理（从需求到上线）', '用户测试与反馈收集', '基础数据分析（Excel数据透视表）', '英文技术文档阅读'"
+    },
+    {
+      "tool": "interview_gen",
+      "status": "✅",
+      "params": {
+        "match_result": {
+          "score": 36,
+          "label": "不匹配",
+          "advantages": [
+            "产品需求分析与原型设计（Figma）",
+            "用户调研与问卷设计",
+            "RAG知识库构建与问答系统",
+            "Prompt Engineering与AI内容生成",
+            "多维度匹配方案探索",
+            "项目管理（从需求到上线）",
+            "用户测试与反馈收集",
+            "基础数据分析（Excel数据透视表）",
+            "英文技术文档阅读"
+          ],
+          "weaknesses": [
+            "1. 缺乏Python、PyTorch、LangChain等AI开发框架的实际编程经验（仅了解概念，未在项目中使用）；2. 无B端SaaS或RPA产品的设计或交付经验；3. 无C端AIGC产品（如智能助手、内容编辑工具等）的完整设计经验；4. 无Agent相关项目或应用经验；5. 未体现对前沿AI技术的主动追踪与敏锐感知（如高频使用新工具、阅读行业动态）；6. 尚未毕业，无全职工作经验，无法满足通常要求的2年以上经验。"
+          ],
+          "suggestions": [
+            "核心能力要求: 1. 本科及以上学历，计算机/AI相关专业；2. 极强的逻辑拆解与结构化思维能力；3. C端AIGC产品敏感度与设计能力；4. B端SaaS/RPA逻辑功底与产品思维；5. 技术技能：Python、PyTorch、LangChain、RAG、Agent；6. 产品经理基本能力：需求分析、原型设计（Figma）、项目管理、用户测试；7. 24小时高频冲浪，对新技术有雷达般的嗅觉。"
+          ],
+          "match_score": 36,
+          "covered": [
+            "产品需求分析与原型设计（Figma）",
+            "用户调研与问卷设计",
+            "RAG知识库构建与问答系统",
+            "Prompt Engineering与AI内容生成",
+            "多维度匹配方案探索",
+            "项目管理（从需求到上线）",
+            "用户测试与反馈收集",
+            "基础数据分析（Excel数据透视表）",
+            "英文技术文档阅读"
+          ],
+          "missing_experience": "1. 缺乏Python、PyTorch、LangChain等AI开发框架的实际编程经验（仅了解概念，未在项目中使用）；2. 无B端SaaS或RPA产品的设计或交付经验；3. 无C端AIGC产品（如智能助手、内容编辑工具等）的完整设计经验；4. 无Agent相关项目或应用经验；5. 未体现对前沿AI技术的主动追踪与敏锐感知（如高频使用新工具、阅读行业动态）；6. 尚未毕业，无全职工作经验，无法满足通常要求的2年以上经验。",
+          "core_skills": "1. 本科及以上学历，计算机/AI相关专业；2. 极强的逻辑拆解与结构化思维能力；3. C端AIGC产品敏感度与设计能力；4. B端SaaS/RPA逻辑功底与产品思维；5. 技术技能：Python、PyTorch、LangChain、RAG、Agent；6. 产品经理基本能力：需求分析、原型设计（Figma）、项目管理、用户测试；7. 24小时高频冲浪，对新技术有雷达般的嗅觉。",
+          "company": "字节",
+          "position": "AI产品经理"
+        },
+        "count": 5,
+        "difficulty": "mixed"
+      },
+      "result_preview": "{'questions': ['假设你要设计一款面向C端用户的AI智能笔记助手，能够自动整理用户碎片化记录并生成结构化知识图谱。请你从用户需求分层、核心功能拆解、AI能力边界三个维度，阐述你的产品设计思路。追问方向：1）如果发现用户对自动生成的图谱准确率仅60%，你会如何平衡产品体验与技术局限？2）请举出一个具体场景，说明如何通过Prompt Engineering优化用户输入质量。', '请设计"
+    }
+  ],
+  "tools_called": [
+    "kb_retrieve",
+    "match_analyze",
+    "interview_gen"
+  ],
+  "kb_chunks": [
+    {
+      "chunk_id": "ac9973c8-01be-4cd6-9a99-097873a59cf0_chunk_2",
+      "content": "【字节跳动 · AI产品经理 硬性要求】\n本科及以上学历，兼具C端AIGC敏锐度与B端SaaS/RPA逻辑功底",
+      "metadata": {
+        "company": "字节跳动",
+        "index": 2,
+        "jd_id": "ac9973c8-01be-4cd6-9a99-097873a59cf0",
+        "position": "AI产品经理",
+        "priority": "high",
+        "section": "hard_requirements",
+        "strategy": "semantic"
+      },
+      "distance": 0.5172616243362427,
+      "bm25_score": 11.273926253930416,
+      "vec_norm": 0.7234805915091891,
+      "bm25_norm": 0.521062592596384,
+      "hybrid_score": 0.6627551918353476,
+      "rerank_score": 0.9876
+    },
+    {
+      "chunk_id": "ac9973c8-01be-4cd6-9a99-097873a59cf0_chunk_5",
+      "content": "【字节跳动 · AI产品经理 硬性要求】\n具备极强的逻辑拆解力，能像指挥交响乐一样控制模型输出",
+      "metadata": {
+        "company": "字节跳动",
+        "index": 5,
+        "jd_id": "ac9973c8-01be-4cd6-9a99-097873a59cf0",
+        "position": "AI产品经理",
+        "priority": "high",
+        "section": "hard_requirements",
+        "strategy": "semantic"
+      },
+      "distance": 0.4580254852771759,
+      "bm25_score": 11.78435584408047,
+      "vec_norm": 0.9491384202935884,
+      "bm25_norm": 0.6287314186120652,
+      "hybrid_score": 0.8530163197891314,
+      "rerank_score": 0.9858
+    },
+    {
+      "chunk_id": "ac9973c8-01be-4cd6-9a99-097873a59cf0_chunk_8",
+      "content": "【字节跳动 · AI产品经理 关键词】\nPython, PyTorch, LangChain, RAG, Agent, 产品经理, AI",
+      "metadata": {
+        "company": "字节跳动",
+        "index": 8,
+        "jd_id": "ac9973c8-01be-4cd6-9a99-097873a59cf0",
+        "position": "AI产品经理",
+        "section": "keywords",
+        "strategy": "semantic"
+      },
+      "distance": 0.5713280439376831,
+      "bm25_score": 13.544442554841437,
+      "vec_norm": 0.5175166132485243,
+      "bm25_norm": 1.0,
+      "hybrid_score": 0.6622616292739669,
+      "rerank_score": 0.9817
+    },
+    {
+      "chunk_id": "ac9973c8-01be-4cd6-9a99-097873a59cf0_chunk_0",
+      "content": "公司：字节跳动，岗位：AI产品经理，地点：北京，薪资：30k-60k",
+      "metadata": {
+        "category": "产品",
+        "company": "字节跳动",
+        "domain": "AI",
+        "index": 0,
+        "jd_id": "ac9973c8-01be-4cd6-9a99-097873a59cf0",
+        "max_years": 5,
+        "min_education": "本科",
+        "min_years": 3,
+        "position": "AI产品经理",
+        "section": "basic_info",
+        "strategy": "semantic"
+      },
+      "distance": 0.4446741044521332,
+      "bm25_score": 8.868667810026786,
+      "vec_norm": 1.0,
+      "bm25_norm": 0.013702992140467742,
+      "hybrid_score": 0.7041108976421403,
+      "rerank_score": 0.9796
+    },
+    {
+      "chunk_id": "ac9973c8-01be-4cd6-9a99-097873a59cf0_chunk_6",
+      "content": "【字节跳动 · AI产品经理 硬性要求】\n24小时高频冲浪，对新技术有雷达般的嗅觉",
+      "metadata": {
+        "company": "字节跳动",
+        "index": 6,
+        "jd_id": "ac9973c8-01be-4cd6-9a99-097873a59cf0",
+        "position": "AI产品经理",
+        "priority": "high",
+        "section": "hard_requirements",
+        "strategy": "semantic"
+      },
+      "distance": 0.5325616598129272,
+      "bm25_score": 12.230124469647883,
+      "vec_norm": 0.6651956856926533,
+      "bm25_norm": 0.7227608117265157,
+      "hybrid_score": 0.6824652235028119,
+      "rerank_score": 0.9373
+    }
+  ],
+  "tool_executions_full": [
+    {
+      "tool_name": "kb_retrieve",
+      "task_id": "T0",
+      "status": "success",
+      "output": {
+        "chunks": [
+          {
+            "chunk_id": "ac9973c8-01be-4cd6-9a99-097873a59cf0_chunk_2",
+            "content": "【字节跳动 · AI产品经理 硬性要求】\n本科及以上学历，兼具C端AIGC敏锐度与B端SaaS/RPA逻辑功底",
+            "source": "字节跳动-AI产品经理",
+            "metadata": {
+              "company": "字节跳动",
+              "position": "AI产品经理"
+            }
+          },
+          {
+            "chunk_id": "ac9973c8-01be-4cd6-9a99-097873a59cf0_chunk_5",
+            "content": "【字节跳动 · AI产品经理 硬性要求】\n具备极强的逻辑拆解力，能像指挥交响乐一样控制模型输出",
+            "source": "字节跳动-AI产品经理",
+            "metadata": {
+              "company": "字节跳动",
+              "position": "AI产品经理"
+            }
+          },
+          {
+            "chunk_id": "ac9973c8-01be-4cd6-9a99-097873a59cf0_chunk_8",
+            "content": "【字节跳动 · AI产品经理 关键词】\nPython, PyTorch, LangChain, RAG, Agent, 产品经理, AI",
+            "source": "字节跳动-AI产品经理",
+            "metadata": {
+              "company": "字节跳动",
+              "position": "AI产品经理"
+            }
+          },
+          {
+            "chunk_id": "ac9973c8-01be-4cd6-9a99-097873a59cf0_chunk_0",
+            "content": "公司：字节跳动，岗位：AI产品经理，地点：北京，薪资：30k-60k",
+            "source": "字节跳动-AI产品经理",
+            "metadata": {
+              "company": "字节跳动",
+              "position": "AI产品经理"
+            }
+          },
+          {
+            "chunk_id": "ac9973c8-01be-4cd6-9a99-097873a59cf0_chunk_6",
+            "content": "【字节跳动 · AI产品经理 硬性要求】\n24小时高频冲浪，对新技术有雷达般的嗅觉",
+            "source": "字节跳动-AI产品经理",
+            "metadata": {
+              "company": "字节跳动",
+              "position": "AI产品经理"
+            }
+          }
+        ],
+        "query": "字节 AI产品经理 JD",
+        "filters": {},
+        "strategy": "hybrid(70%vec+30%bm25)+reranker",
+        "pool_k": 5,
+        "rerank_k": 10,
+        "pool_size": 31,
+        "vec_only": 11,
+        "bm25_only": 11,
+        "both": 9,
+        "rerank": {
+          "enabled": true,
+          "candidates": 5,
+          "output": 5,
+          "best_rerank_score": 0.9876
+        }
+      }
+    },
+    {
+      "tool_name": "match_analyze",
+      "task_id": "T1",
+      "status": "success",
+      "output": {
+        "score": 36,
+        "label": "不匹配",
+        "advantages": [
+          "产品需求分析与原型设计（Figma）",
+          "用户调研与问卷设计",
+          "RAG知识库构建与问答系统",
+          "Prompt Engineering与AI内容生成",
+          "多维度匹配方案探索",
+          "项目管理（从需求到上线）",
+          "用户测试与反馈收集",
+          "基础数据分析（Excel数据透视表）",
+          "英文技术文档阅读"
+        ],
+        "weaknesses": [
+          "1. 缺乏Python、PyTorch、LangChain等AI开发框架的实际编程经验（仅了解概念，未在项目中使用）；2. 无B端SaaS或RPA产品的设计或交付经验；3. 无C端AIGC产品（如智能助手、内容编辑工具等）的完整设计经验；4. 无Agent相关项目或应用经验；5. 未体现对前沿AI技术的主动追踪与敏锐感知（如高频使用新工具、阅读行业动态）；6. 尚未毕业，无全职工作经验，无法满足通常要求的2年以上经验。"
+        ],
+        "suggestions": [
+          "核心能力要求: 1. 本科及以上学历，计算机/AI相关专业；2. 极强的逻辑拆解与结构化思维能力；3. C端AIGC产品敏感度与设计能力；4. B端SaaS/RPA逻辑功底与产品思维；5. 技术技能：Python、PyTorch、LangChain、RAG、Agent；6. 产品经理基本能力：需求分析、原型设计（Figma）、项目管理、用户测试；7. 24小时高频冲浪，对新技术有雷达般的嗅觉。"
+        ],
+        "match_score": 36,
+        "covered": [
+          "产品需求分析与原型设计（Figma）",
+          "用户调研与问卷设计",
+          "RAG知识库构建与问答系统",
+          "Prompt Engineering与AI内容生成",
+          "多维度匹配方案探索",
+          "项目管理（从需求到上线）",
+          "用户测试与反馈收集",
+          "基础数据分析（Excel数据透视表）",
+          "英文技术文档阅读"
+        ],
+        "missing_experience": "1. 缺乏Python、PyTorch、LangChain等AI开发框架的实际编程经验（仅了解概念，未在项目中使用）；2. 无B端SaaS或RPA产品的设计或交付经验；3. 无C端AIGC产品（如智能助手、内容编辑工具等）的完整设计经验；4. 无Agent相关项目或应用经验；5. 未体现对前沿AI技术的主动追踪与敏锐感知（如高频使用新工具、阅读行业动态）；6. 尚未毕业，无全职工作经验，无法满足通常要求的2年以上经验。",
+        "core_skills": "1. 本科及以上学历，计算机/AI相关专业；2. 极强的逻辑拆解与结构化思维能力；3. C端AIGC产品敏感度与设计能力；4. B端SaaS/RPA逻辑功底与产品思维；5. 技术技能：Python、PyTorch、LangChain、RAG、Agent；6. 产品经理基本能力：需求分析、原型设计（Figma）、项目管理、用户测试；7. 24小时高频冲浪，对新技术有雷达般的嗅觉。",
+        "company": "字节",
+        "position": "AI产品经理"
+      }
+    },
+    {
+      "tool_name": "interview_gen",
+      "task_id": "T2",
+      "status": "success",
+      "output": {
+        "questions": [
+          "假设你要设计一款面向C端用户的AI智能笔记助手，能够自动整理用户碎片化记录并生成结构化知识图谱。请你从用户需求分层、核心功能拆解、AI能力边界三个维度，阐述你的产品设计思路。追问方向：1）如果发现用户对自动生成的图谱准确率仅60%，你会如何平衡产品体验与技术局限？2）请举出一个具体场景，说明如何通过Prompt Engineering优化用户输入质量。",
+          "请设计一个RPA机器人，用于自动化处理企业内部的多系统数据同步任务（例如CRM到ERP的客户信息同步）。要求描述其流程编排逻辑、异常处理机制，以及如何利用RPA+AI（如OCR或NLP）解决非结构化数据问题。追问方向：1）如果外部系统API频繁变更，你的RPA方案如何保证长期稳定性？2）你如何评估这个RPA项目投入产出比？请给出量化思路。",
+          "你负责一款AI内容生成工具（如AI写作助手）的产品规划，需要支持用户自定义生成风格。请你描述一种可落地的用户模型（User Model）方案，用于动态调整模型输出参数（如温度、top-p、系统提示词），并解释如何通过用户行为数据迭代模型效果。追问方向：1）在缺乏用户反馈标注数据时，你会如何设计冷启动阶段的prompt策略？2）请用具体案例说明如何权衡模型创造力与内容准确性。",
+          "假设你需要向非技术团队成员解释LangChain框架中Agent的核心工作原理，以及RAG（检索增强生成）如何解决大模型幻觉问题。请你用通俗易懂的语言构建一个类比，并分析在实际应用中Agent+ RAG组合可能遇到的至少两个关键挑战。追问方向：1）如果检索到的文档质量参差不齐，你会如何设计过滤或重排机制？2）请说明你如何用非技术指标（如用户满意度、任务完成率）衡量RAG系统的效果。",
+          "字节跳动某款C端产品计划引入AI功能，但当前团队缺乏AI相关经验。作为AI产品经理，请你设计一个为期3个月的技术预研与产品落地方案，包括优先级排序、技术可行性验证方法、跨团队协作机制。追问方向：1）你如何快速学习并掌握必要的AI技术概念（如Agent、RAG）以支撑产品决策？请给出具体学习路径。2）如果在预研阶段发现某个AI能力成本过高而收益不确定，你会如何说服团队调整方向？"
+        ],
+        "focus_areas": [
+          "短板深挖：1. 缺乏Python、PyTorch、LangChain等AI开发框架的实际编程经验（仅了解概念，未在项目中使用）；2. 无B端SaaS或RPA产品的设计或交付经验；3. 无C端AIGC产品（如智能",
+          "核心能力：1. 本科及以上学历，计算机/AI相关专业；2. 极强的逻辑拆解与结构化思维能力；3. C端AIGC产品敏感度与设计能力；4. B端SaaS/RPA逻辑功底与产品思维；5. 技术技能：Python、P"
+        ],
+        "question_count": 5,
+        "company": "字节",
+        "position": "AI产品经理"
+      }
+    },
+    {
+      "tool_name": null,
+      "task_id": "T3",
+      "status": "success",
+      "output": {
+        "aggregation": {
+          "match_result": {
+            "score": 36,
+            "label": "不匹配",
+            "advantages": [
+              "产品需求分析与原型设计（Figma）",
+              "用户调研与问卷设计",
+              "RAG知识库构建与问答系统",
+              "Prompt Engineering与AI内容生成",
+              "多维度匹配方案探索",
+              "项目管理（从需求到上线）",
+              "用户测试与反馈收集",
+              "基础数据分析（Excel数据透视表）",
+              "英文技术文档阅读"
+            ],
+            "weaknesses": [
+              "1. 缺乏Python、PyTorch、LangChain等AI开发框架的实际编程经验（仅了解概念，未在项目中使用）；2. 无B端SaaS或RPA产品的设计或交付经验；3. 无C端AIGC产品（如智能助手、内容编辑工具等）的完整设计经验；4. 无Agent相关项目或应用经验；5. 未体现对前沿AI技术的主动追踪与敏锐感知（如高频使用新工具、阅读行业动态）；6. 尚未毕业，无全职工作经验，无法满足通常要求的2年以上经验。"
+            ],
+            "suggestions": [
+              "核心能力要求: 1. 本科及以上学历，计算机/AI相关专业；2. 极强的逻辑拆解与结构化思维能力；3. C端AIGC产品敏感度与设计能力；4. B端SaaS/RPA逻辑功底与产品思维；5. 技术技能：Python、PyTorch、LangChain、RAG、Agent；6. 产品经理基本能力：需求分析、原型设计（Figma）、项目管理、用户测试；7. 24小时高频冲浪，对新技术有雷达般的嗅觉。"
+            ],
+            "match_score": 36,
+            "covered": [
+              "产品需求分析与原型设计（Figma）",
+              "用户调研与问卷设计",
+              "RAG知识库构建与问答系统",
+              "Prompt Engineering与AI内容生成",
+              "多维度匹配方案探索",
+              "项目管理（从需求到上线）",
+              "用户测试与反馈收集",
+              "基础数据分析（Excel数据透视表）",
+              "英文技术文档阅读"
+            ],
+            "missing_experience": "1. 缺乏Python、PyTorch、LangChain等AI开发框架的实际编程经验（仅了解概念，未在项目中使用）；2. 无B端SaaS或RPA产品的设计或交付经验；3. 无C端AIGC产品（如智能助手、内容编辑工具等）的完整设计经验；4. 无Agent相关项目或应用经验；5. 未体现对前沿AI技术的主动追踪与敏锐感知（如高频使用新工具、阅读行业动态）；6. 尚未毕业，无全职工作经验，无法满足通常要求的2年以上经验。",
+            "core_skills": "1. 本科及以上学历，计算机/AI相关专业；2. 极强的逻辑拆解与结构化思维能力；3. C端AIGC产品敏感度与设计能力；4. B端SaaS/RPA逻辑功底与产品思维；5. 技术技能：Python、PyTorch、LangChain、RAG、Agent；6. 产品经理基本能力：需求分析、原型设计（Figma）、项目管理、用户测试；7. 24小时高频冲浪，对新技术有雷达般的嗅觉。",
+            "company": "字节",
+            "position": "AI产品经理"
+          },
+          "interview_questions": {
+            "questions": [
+              "假设你要设计一款面向C端用户的AI智能笔记助手，能够自动整理用户碎片化记录并生成结构化知识图谱。请你从用户需求分层、核心功能拆解、AI能力边界三个维度，阐述你的产品设计思路。追问方向：1）如果发现用户对自动生成的图谱准确率仅60%，你会如何平衡产品体验与技术局限？2）请举出一个具体场景，说明如何通过Prompt Engineering优化用户输入质量。",
+              "请设计一个RPA机器人，用于自动化处理企业内部的多系统数据同步任务（例如CRM到ERP的客户信息同步）。要求描述其流程编排逻辑、异常处理机制，以及如何利用RPA+AI（如OCR或NLP）解决非结构化数据问题。追问方向：1）如果外部系统API频繁变更，你的RPA方案如何保证长期稳定性？2）你如何评估这个RPA项目投入产出比？请给出量化思路。",
+              "你负责一款AI内容生成工具（如AI写作助手）的产品规划，需要支持用户自定义生成风格。请你描述一种可落地的用户模型（User Model）方案，用于动态调整模型输出参数（如温度、top-p、系统提示词），并解释如何通过用户行为数据迭代模型效果。追问方向：1）在缺乏用户反馈标注数据时，你会如何设计冷启动阶段的prompt策略？2）请用具体案例说明如何权衡模型创造力与内容准确性。",
+              "假设你需要向非技术团队成员解释LangChain框架中Agent的核心工作原理，以及RAG（检索增强生成）如何解决大模型幻觉问题。请你用通俗易懂的语言构建一个类比，并分析在实际应用中Agent+ RAG组合可能遇到的至少两个关键挑战。追问方向：1）如果检索到的文档质量参差不齐，你会如何设计过滤或重排机制？2）请说明你如何用非技术指标（如用户满意度、任务完成率）衡量RAG系统的效果。",
+              "字节跳动某款C端产品计划引入AI功能，但当前团队缺乏AI相关经验。作为AI产品经理，请你设计一个为期3个月的技术预研与产品落地方案，包括优先级排序、技术可行性验证方法、跨团队协作机制。追问方向：1）你如何快速学习并掌握必要的AI技术概念（如Agent、RAG）以支撑产品决策？请给出具体学习路径。2）如果在预研阶段发现某个AI能力成本过高而收益不确定，你会如何说服团队调整方向？"
+            ],
+            "focus_areas": [
+              "短板深挖：1. 缺乏Python、PyTorch、LangChain等AI开发框架的实际编程经验（仅了解概念，未在项目中使用）；2. 无B端SaaS或RPA产品的设计或交付经验；3. 无C端AIGC产品（如智能",
+              "核心能力：1. 本科及以上学历，计算机/AI相关专业；2. 极强的逻辑拆解与结构化思维能力；3. C端AIGC产品敏感度与设计能力；4. B端SaaS/RPA逻辑功底与产品思维；5. 技术技能：Python、P"
+            ],
+            "question_count": 5,
+            "company": "字节",
+            "position": "AI产品经理"
+          }
+        }
+      }
+    }
+  ],
+  "debug_info": {
+    "task_graph": {
+      "tasks": {
+        "T0": {
+          "task_id": "T0",
+          "task_type": "tool_call",
+          "tool_name": "kb_retrieve",
+          "status": "success",
+          "parameters": {
+            "query": "{{intent_prepare.company}} {{intent_prepare.position}} JD",
+            "top_k": 5
+          },
+          "resolved_params": {
+            "query": "字节 AI产品经理 JD",
+            "top_k": 5
+          },
+          "result": {
+            "chunks": [
+              {
+                "chunk_id": "ac9973c8-01be-4cd6-9a99-097873a59cf0_chunk_2",
+                "content": "【字节跳动 · AI产品经理 硬性要求】\n本科及以上学历，兼具C端AIGC敏锐度与B端SaaS/RPA逻辑功底",
+                "metadata": {
+                  "company": "字节跳动",
+                  "index": 2,
+                  "jd_id": "ac9973c8-01be-4cd6-9a99-097873a59cf0",
+                  "position": "AI产品经理",
+                  "priority": "high",
+                  "section": "hard_requirements",
+                  "strategy": "semantic"
+                },
+                "distance": 0.5172616243362427,
+                "bm25_score": 11.273926253930416,
+                "vec_norm": 0.7234805915091891,
+                "bm25_norm": 0.521062592596384,
+                "hybrid_score": 0.6627551918353476,
+                "rerank_score": 0.9876
+              },
+              {
+                "chunk_id": "ac9973c8-01be-4cd6-9a99-097873a59cf0_chunk_5",
+                "content": "【字节跳动 · AI产品经理 硬性要求】\n具备极强的逻辑拆解力，能像指挥交响乐一样控制模型输出",
+                "metadata": {
+                  "company": "字节跳动",
+                  "index": 5,
+                  "jd_id": "ac9973c8-01be-4cd6-9a99-097873a59cf0",
+                  "position": "AI产品经理",
+                  "priority": "high",
+                  "section": "hard_requirements",
+                  "strategy": "semantic"
+                },
+                "distance": 0.4580254852771759,
+                "bm25_score": 11.78435584408047,
+                "vec_norm": 0.9491384202935884,
+                "bm25_norm": 0.6287314186120652,
+                "hybrid_score": 0.8530163197891314,
+                "rerank_score": 0.9858
+              },
+              {
+                "chunk_id": "ac9973c8-01be-4cd6-9a99-097873a59cf0_chunk_8",
+                "content": "【字节跳动 · AI产品经理 关键词】\nPython, PyTorch, LangChain, RAG, Agent, 产品经理, AI",
+                "metadata": {
+                  "company": "字节跳动",
+                  "index": 8,
+                  "jd_id": "ac9973c8-01be-4cd6-9a99-097873a59cf0",
+                  "position": "AI产品经理",
+                  "section": "keywords",
+                  "strategy": "semantic"
+                },
+                "distance": 0.5713280439376831,
+                "bm25_score": 13.544442554841437,
+                "vec_norm": 0.5175166132485243,
+                "bm25_norm": 1.0,
+                "hybrid_score": 0.6622616292739669,
+                "rerank_score": 0.9817
+              },
+              {
+                "chunk_id": "ac9973c8-01be-4cd6-9a99-097873a59cf0_chunk_0",
+                "content": "公司：字节跳动，岗位：AI产品经理，地点：北京，薪资：30k-60k",
+                "metadata": {
+                  "category": "产品",
+                  "company": "字节跳动",
+                  "domain": "AI",
+                  "index": 0,
+                  "jd_id": "ac9973c8-01be-4cd6-9a99-097873a59cf0",
+                  "max_years": 5,
+                  "min_education": "本科",
+                  "min_years": 3,
+                  "position": "AI产品经理",
+                  "section": "basic_info",
+                  "strategy": "semantic"
+                },
+                "distance": 0.4446741044521332,
+                "bm25_score": 8.868667810026786,
+                "vec_norm": 1.0,
+                "bm25_norm": 0.013702992140467742,
+                "hybrid_score": 0.7041108976421403,
+                "rerank_score": 0.9796
+              },
+              {
+                "chunk_id": "ac9973c8-01be-4cd6-9a99-097873a59cf0_chunk_6",
+                "content": "【字节跳动 · AI产品经理 硬性要求】\n24小时高频冲浪，对新技术有雷达般的嗅觉",
+                "metadata": {
+                  "company": "字节跳动",
+                  "index": 6,
+                  "jd_id": "ac9973c8-01be-4cd6-9a99-097873a59cf0",
+                  "position": "AI产品经理",
+                  "priority": "high",
+                  "section": "hard_requirements",
+                  "strategy": "semantic"
+                },
+                "distance": 0.5325616598129272,
+                "bm25_score": 12.230124469647883,
+                "vec_norm": 0.6651956856926533,
+                "bm25_norm": 0.7227608117265157,
+                "hybrid_score": 0.6824652235028119,
+                "rerank_score": 0.9373
+              }
+            ],
+            "query": "字节 AI产品经理 JD",
+            "filters": {},
+            "strategy": "hybrid(70%vec+30%bm25)+reranker",
+            "pool_k": 5,
+            "rerank_k": 10,
+            "pool_size": 31,
+            "vec_only": 11,
+            "bm25_only": 11,
+            "both": 9,
+            "rerank": {
+              "enabled": true,
+              "candidates": 5,
+              "output": 5,
+              "best_rerank_score": 0.9876
+            }
+          },
+          "observation": "工具 kb_retrieve 执行成功"
+        },
+        "T1": {
+          "task_id": "T1",
+          "task_type": "tool_call",
+          "tool_name": "match_analyze",
+          "status": "success",
+          "parameters": {
+            "resume_text": "{{global_slots.resume_text}}",
+            "jd_text": "{{T0.output.chunks}}",
+            "company": "{{intent_prepare.company}}",
+            "position": "{{intent_prepare.position}}"
+          },
+          "resolved_params": {
+            "resume_text": "姓名：陈雨桐\r\n教育背景\r\n江南科技大学\r\n信息工程学院·软件工程（AI应用方向）·硕士\r\n2024.09-2027.06（预计）\r\nGPA: 3.4/4.0 | 主修：机器学习基础、数据库系统、软件项目管理、人机交互设计\r\n\r\n云溪大学\r\n计算机学院·信息管理与信息系统·本科\r\n2020.09-2024.06\r\n荣誉：两次校级三等奖学金 | 主修：数据结构、管理学原理、Web开发技术、统计学\r\n\r\n项目经历\r\n求职助手小程序 — 智能简历匹配与面试模拟工具\r\n2025.03-2025.11\r\n产品经理 | 三人小组\r\n- 需求分析：设计调研问卷回收40余份有效样本，梳理\"简历评估\"与\"定向面试模拟\"核心需求，使用Figma完成低保真原型，输出产品需求文档。\r\n- AI匹配策略：调研开源Embedding模型实现简历与JD语义相似度计算，探索多维度匹配方案，对比整篇匹配与分块匹配效果差异，持续优化推荐排序。\r\n- 内容生成：基于大模型AI设计结构化Prompt，融合岗位关键词与简历信息输出个性化面试题，建立追问机制增强模拟面试针对性。\r\n- 测试验证：组织20人内测收集用户路径与反馈数据，针对复杂PDF格式设计补充录入机制，完成从需求分析到上线测试的完整产品闭环。\r\n\r\n教务问答机器人 — 基于校内政策的RAG问答系统\r\n2024.10-2025.02\r\n产品设计与测试 | 实验室课题项目\r\n- 知识库构建：收集整理教务处政策文件、培养方案及历史问答共80余份，完成扫描件OCR识别、格式转换与结构化清洗，建立可检索的领域知识库。\r\n- 交互设计：设计Web端对话界面，参考主流客服产品布局增加\"推荐提问\"推荐模块降低投入成本，针对政策类回答设计溯源展示功能增强可信度。\r\n- 效果测试：参与搭建检索增强生成链路，完成实验环境下多轮问答测试，验证标准政策类问题回答准确率，整理测试数据与优化建议形成可复用方案。\r\n\r\n校园经历\r\n江南科技大学软件学院学生会·宣传部干事\r\n2024.09-2025.06\r\n- 负责学院官方公众号推文排版与发布，累计输出活动宣传稿件10余篇；协助组织院内编程比赛，负责报名统计与现场签到。\r\n\r\n云溪大学图书馆·勤工助学岗\r\n2022.03-2023.06\r\n- 负责电子阅览室日常值班，协助同学解决基础网络与设备使用问题；参与旧期刊电子目录录入与数据整理工作。\r\n\r\n获奖情况\r\n- 2025.05 江南科技大学研究生学业三等奖学金\r\n- 2024.11 学院AI应用创新赛（课程组）三等奖\r\n- 2022.06 云溪大学优秀共青团员\r\n- 2022.12 校级网页设计比赛优秀奖\r\n\r\n个人技能\r\n- 产品工具：熟练使用Figma进行原型与交互演示，了解Axure基础操作；能够使用Xmind梳理产品架构，通过腾讯文档/飞书写PRD。\r\n- 技术理解：了解大语言模型在应用层的落地方式，具备Prompt Engineering实践经验；理解RAG基本架构与工作流程，了解Embedding与向量检索作用。\r\n- 语言能力：英语CET-4（525分），可阅读英文技术文档与产品资料。\r\n- 办公技能：熟练使用Office办公软件，掌握Excel数据透视表等基础数据分析功能。",
+            "jd_text": [
+              {
+                "chunk_id": "ac9973c8-01be-4cd6-9a99-097873a59cf0_chunk_2",
+                "content": "【字节跳动 · AI产品经理 硬性要求】\n本科及以上学历，兼具C端AIGC敏锐度与B端SaaS/RPA逻辑功底",
+                "metadata": {
+                  "company": "字节跳动",
+                  "index": 2,
+                  "jd_id": "ac9973c8-01be-4cd6-9a99-097873a59cf0",
+                  "position": "AI产品经理",
+                  "priority": "high",
+                  "section": "hard_requirements",
+                  "strategy": "semantic"
+                },
+                "distance": 0.5172616243362427,
+                "bm25_score": 11.273926253930416,
+                "vec_norm": 0.7234805915091891,
+                "bm25_norm": 0.521062592596384,
+                "hybrid_score": 0.6627551918353476,
+                "rerank_score": 0.9876
+              },
+              {
+                "chunk_id": "ac9973c8-01be-4cd6-9a99-097873a59cf0_chunk_5",
+                "content": "【字节跳动 · AI产品经理 硬性要求】\n具备极强的逻辑拆解力，能像指挥交响乐一样控制模型输出",
+                "metadata": {
+                  "company": "字节跳动",
+                  "index": 5,
+                  "jd_id": "ac9973c8-01be-4cd6-9a99-097873a59cf0",
+                  "position": "AI产品经理",
+                  "priority": "high",
+                  "section": "hard_requirements",
+                  "strategy": "semantic"
+                },
+                "distance": 0.4580254852771759,
+                "bm25_score": 11.78435584408047,
+                "vec_norm": 0.9491384202935884,
+                "bm25_norm": 0.6287314186120652,
+                "hybrid_score": 0.8530163197891314,
+                "rerank_score": 0.9858
+              },
+              {
+                "chunk_id": "ac9973c8-01be-4cd6-9a99-097873a59cf0_chunk_8",
+                "content": "【字节跳动 · AI产品经理 关键词】\nPython, PyTorch, LangChain, RAG, Agent, 产品经理, AI",
+                "metadata": {
+                  "company": "字节跳动",
+                  "index": 8,
+                  "jd_id": "ac9973c8-01be-4cd6-9a99-097873a59cf0",
+                  "position": "AI产品经理",
+                  "section": "keywords",
+                  "strategy": "semantic"
+                },
+                "distance": 0.5713280439376831,
+                "bm25_score": 13.544442554841437,
+                "vec_norm": 0.5175166132485243,
+                "bm25_norm": 1.0,
+                "hybrid_score": 0.6622616292739669,
+                "rerank_score": 0.9817
+              },
+              {
+                "chunk_id": "ac9973c8-01be-4cd6-9a99-097873a59cf0_chunk_0",
+                "content": "公司：字节跳动，岗位：AI产品经理，地点：北京，薪资：30k-60k",
+                "metadata": {
+                  "category": "产品",
+                  "company": "字节跳动",
+                  "domain": "AI",
+                  "index": 0,
+                  "jd_id": "ac9973c8-01be-4cd6-9a99-097873a59cf0",
+                  "max_years": 5,
+                  "min_education": "本科",
+                  "min_years": 3,
+                  "position": "AI产品经理",
+                  "section": "basic_info",
+                  "strategy": "semantic"
+                },
+                "distance": 0.4446741044521332,
+                "bm25_score": 8.868667810026786,
+                "vec_norm": 1.0,
+                "bm25_norm": 0.013702992140467742,
+                "hybrid_score": 0.7041108976421403,
+                "rerank_score": 0.9796
+              },
+              {
+                "chunk_id": "ac9973c8-01be-4cd6-9a99-097873a59cf0_chunk_6",
+                "content": "【字节跳动 · AI产品经理 硬性要求】\n24小时高频冲浪，对新技术有雷达般的嗅觉",
+                "metadata": {
+                  "company": "字节跳动",
+                  "index": 6,
+                  "jd_id": "ac9973c8-01be-4cd6-9a99-097873a59cf0",
+                  "position": "AI产品经理",
+                  "priority": "high",
+                  "section": "hard_requirements",
+                  "strategy": "semantic"
+                },
+                "distance": 0.5325616598129272,
+                "bm25_score": 12.230124469647883,
+                "vec_norm": 0.6651956856926533,
+                "bm25_norm": 0.7227608117265157,
+                "hybrid_score": 0.6824652235028119,
+                "rerank_score": 0.9373
+              }
+            ],
+            "company": "字节",
+            "position": "AI产品经理"
+          },
+          "result": {
+            "score": 36,
+            "label": "不匹配",
+            "advantages": [
+              "产品需求分析与原型设计（Figma）",
+              "用户调研与问卷设计",
+              "RAG知识库构建与问答系统",
+              "Prompt Engineering与AI内容生成",
+              "多维度匹配方案探索",
+              "项目管理（从需求到上线）",
+              "用户测试与反馈收集",
+              "基础数据分析（Excel数据透视表）",
+              "英文技术文档阅读"
+            ],
+            "weaknesses": [
+              "1. 缺乏Python、PyTorch、LangChain等AI开发框架的实际编程经验（仅了解概念，未在项目中使用）；2. 无B端SaaS或RPA产品的设计或交付经验；3. 无C端AIGC产品（如智能助手、内容编辑工具等）的完整设计经验；4. 无Agent相关项目或应用经验；5. 未体现对前沿AI技术的主动追踪与敏锐感知（如高频使用新工具、阅读行业动态）；6. 尚未毕业，无全职工作经验，无法满足通常要求的2年以上经验。"
+            ],
+            "suggestions": [
+              "核心能力要求: 1. 本科及以上学历，计算机/AI相关专业；2. 极强的逻辑拆解与结构化思维能力；3. C端AIGC产品敏感度与设计能力；4. B端SaaS/RPA逻辑功底与产品思维；5. 技术技能：Python、PyTorch、LangChain、RAG、Agent；6. 产品经理基本能力：需求分析、原型设计（Figma）、项目管理、用户测试；7. 24小时高频冲浪，对新技术有雷达般的嗅觉。"
+            ],
+            "match_score": 36,
+            "covered": [
+              "产品需求分析与原型设计（Figma）",
+              "用户调研与问卷设计",
+              "RAG知识库构建与问答系统",
+              "Prompt Engineering与AI内容生成",
+              "多维度匹配方案探索",
+              "项目管理（从需求到上线）",
+              "用户测试与反馈收集",
+              "基础数据分析（Excel数据透视表）",
+              "英文技术文档阅读"
+            ],
+            "missing_experience": "1. 缺乏Python、PyTorch、LangChain等AI开发框架的实际编程经验（仅了解概念，未在项目中使用）；2. 无B端SaaS或RPA产品的设计或交付经验；3. 无C端AIGC产品（如智能助手、内容编辑工具等）的完整设计经验；4. 无Agent相关项目或应用经验；5. 未体现对前沿AI技术的主动追踪与敏锐感知（如高频使用新工具、阅读行业动态）；6. 尚未毕业，无全职工作经验，无法满足通常要求的2年以上经验。",
+            "core_skills": "1. 本科及以上学历，计算机/AI相关专业；2. 极强的逻辑拆解与结构化思维能力；3. C端AIGC产品敏感度与设计能力；4. B端SaaS/RPA逻辑功底与产品思维；5. 技术技能：Python、PyTorch、LangChain、RAG、Agent；6. 产品经理基本能力：需求分析、原型设计（Figma）、项目管理、用户测试；7. 24小时高频冲浪，对新技术有雷达般的嗅觉。",
+            "company": "字节",
+            "position": "AI产品经理"
+          },
+          "observation": "工具 match_analyze 执行成功"
+        },
+        "T2": {
+          "task_id": "T2",
+          "task_type": "tool_call",
+          "tool_name": "interview_gen",
+          "status": "success",
+          "parameters": {
+            "match_result": "{{T1.output}}",
+            "count": 5,
+            "difficulty": "mixed"
+          },
+          "resolved_params": {
+            "match_result": {
+              "score": 36,
+              "label": "不匹配",
+              "advantages": [
+                "产品需求分析与原型设计（Figma）",
+                "用户调研与问卷设计",
+                "RAG知识库构建与问答系统",
+                "Prompt Engineering与AI内容生成",
+                "多维度匹配方案探索",
+                "项目管理（从需求到上线）",
+                "用户测试与反馈收集",
+                "基础数据分析（Excel数据透视表）",
+                "英文技术文档阅读"
+              ],
+              "weaknesses": [
+                "1. 缺乏Python、PyTorch、LangChain等AI开发框架的实际编程经验（仅了解概念，未在项目中使用）；2. 无B端SaaS或RPA产品的设计或交付经验；3. 无C端AIGC产品（如智能助手、内容编辑工具等）的完整设计经验；4. 无Agent相关项目或应用经验；5. 未体现对前沿AI技术的主动追踪与敏锐感知（如高频使用新工具、阅读行业动态）；6. 尚未毕业，无全职工作经验，无法满足通常要求的2年以上经验。"
+              ],
+              "suggestions": [
+                "核心能力要求: 1. 本科及以上学历，计算机/AI相关专业；2. 极强的逻辑拆解与结构化思维能力；3. C端AIGC产品敏感度与设计能力；4. B端SaaS/RPA逻辑功底与产品思维；5. 技术技能：Python、PyTorch、LangChain、RAG、Agent；6. 产品经理基本能力：需求分析、原型设计（Figma）、项目管理、用户测试；7. 24小时高频冲浪，对新技术有雷达般的嗅觉。"
+              ],
+              "match_score": 36,
+              "covered": [
+                "产品需求分析与原型设计（Figma）",
+                "用户调研与问卷设计",
+                "RAG知识库构建与问答系统",
+                "Prompt Engineering与AI内容生成",
+                "多维度匹配方案探索",
+                "项目管理（从需求到上线）",
+                "用户测试与反馈收集",
+                "基础数据分析（Excel数据透视表）",
+                "英文技术文档阅读"
+              ],
+              "missing_experience": "1. 缺乏Python、PyTorch、LangChain等AI开发框架的实际编程经验（仅了解概念，未在项目中使用）；2. 无B端SaaS或RPA产品的设计或交付经验；3. 无C端AIGC产品（如智能助手、内容编辑工具等）的完整设计经验；4. 无Agent相关项目或应用经验；5. 未体现对前沿AI技术的主动追踪与敏锐感知（如高频使用新工具、阅读行业动态）；6. 尚未毕业，无全职工作经验，无法满足通常要求的2年以上经验。",
+              "core_skills": "1. 本科及以上学历，计算机/AI相关专业；2. 极强的逻辑拆解与结构化思维能力；3. C端AIGC产品敏感度与设计能力；4. B端SaaS/RPA逻辑功底与产品思维；5. 技术技能：Python、PyTorch、LangChain、RAG、Agent；6. 产品经理基本能力：需求分析、原型设计（Figma）、项目管理、用户测试；7. 24小时高频冲浪，对新技术有雷达般的嗅觉。",
+              "company": "字节",
+              "position": "AI产品经理"
+            },
+            "count": 5,
+            "difficulty": "mixed"
+          },
+          "result": {
+            "questions": [
+              "假设你要设计一款面向C端用户的AI智能笔记助手，能够自动整理用户碎片化记录并生成结构化知识图谱。请你从用户需求分层、核心功能拆解、AI能力边界三个维度，阐述你的产品设计思路。追问方向：1）如果发现用户对自动生成的图谱准确率仅60%，你会如何平衡产品体验与技术局限？2）请举出一个具体场景，说明如何通过Prompt Engineering优化用户输入质量。",
+              "请设计一个RPA机器人，用于自动化处理企业内部的多系统数据同步任务（例如CRM到ERP的客户信息同步）。要求描述其流程编排逻辑、异常处理机制，以及如何利用RPA+AI（如OCR或NLP）解决非结构化数据问题。追问方向：1）如果外部系统API频繁变更，你的RPA方案如何保证长期稳定性？2）你如何评估这个RPA项目投入产出比？请给出量化思路。",
+              "你负责一款AI内容生成工具（如AI写作助手）的产品规划，需要支持用户自定义生成风格。请你描述一种可落地的用户模型（User Model）方案，用于动态调整模型输出参数（如温度、top-p、系统提示词），并解释如何通过用户行为数据迭代模型效果。追问方向：1）在缺乏用户反馈标注数据时，你会如何设计冷启动阶段的prompt策略？2）请用具体案例说明如何权衡模型创造力与内容准确性。",
+              "假设你需要向非技术团队成员解释LangChain框架中Agent的核心工作原理，以及RAG（检索增强生成）如何解决大模型幻觉问题。请你用通俗易懂的语言构建一个类比，并分析在实际应用中Agent+ RAG组合可能遇到的至少两个关键挑战。追问方向：1）如果检索到的文档质量参差不齐，你会如何设计过滤或重排机制？2）请说明你如何用非技术指标（如用户满意度、任务完成率）衡量RAG系统的效果。",
+              "字节跳动某款C端产品计划引入AI功能，但当前团队缺乏AI相关经验。作为AI产品经理，请你设计一个为期3个月的技术预研与产品落地方案，包括优先级排序、技术可行性验证方法、跨团队协作机制。追问方向：1）你如何快速学习并掌握必要的AI技术概念（如Agent、RAG）以支撑产品决策？请给出具体学习路径。2）如果在预研阶段发现某个AI能力成本过高而收益不确定，你会如何说服团队调整方向？"
+            ],
+            "focus_areas": [
+              "短板深挖：1. 缺乏Python、PyTorch、LangChain等AI开发框架的实际编程经验（仅了解概念，未在项目中使用）；2. 无B端SaaS或RPA产品的设计或交付经验；3. 无C端AIGC产品（如智能",
+              "核心能力：1. 本科及以上学历，计算机/AI相关专业；2. 极强的逻辑拆解与结构化思维能力；3. C端AIGC产品敏感度与设计能力；4. B端SaaS/RPA逻辑功底与产品思维；5. 技术技能：Python、P"
+            ],
+            "question_count": 5,
+            "company": "字节",
+            "position": "AI产品经理"
+          },
+          "observation": "工具 interview_gen 执行成功"
+        },
+        "T3": {
+          "task_id": "T3",
+          "task_type": "aggregate",
+          "tool_name": null,
+          "status": "success",
+          "parameters": {
+            "match_result": "{{T1.output}}",
+            "interview_questions": "{{T2.output}}"
+          },
+          "resolved_params": {
+            "match_result": {
+              "score": 36,
+              "label": "不匹配",
+              "advantages": [
+                "产品需求分析与原型设计（Figma）",
+                "用户调研与问卷设计",
+                "RAG知识库构建与问答系统",
+                "Prompt Engineering与AI内容生成",
+                "多维度匹配方案探索",
+                "项目管理（从需求到上线）",
+                "用户测试与反馈收集",
+                "基础数据分析（Excel数据透视表）",
+                "英文技术文档阅读"
+              ],
+              "weaknesses": [
+                "1. 缺乏Python、PyTorch、LangChain等AI开发框架的实际编程经验（仅了解概念，未在项目中使用）；2. 无B端SaaS或RPA产品的设计或交付经验；3. 无C端AIGC产品（如智能助手、内容编辑工具等）的完整设计经验；4. 无Agent相关项目或应用经验；5. 未体现对前沿AI技术的主动追踪与敏锐感知（如高频使用新工具、阅读行业动态）；6. 尚未毕业，无全职工作经验，无法满足通常要求的2年以上经验。"
+              ],
+              "suggestions": [
+                "核心能力要求: 1. 本科及以上学历，计算机/AI相关专业；2. 极强的逻辑拆解与结构化思维能力；3. C端AIGC产品敏感度与设计能力；4. B端SaaS/RPA逻辑功底与产品思维；5. 技术技能：Python、PyTorch、LangChain、RAG、Agent；6. 产品经理基本能力：需求分析、原型设计（Figma）、项目管理、用户测试；7. 24小时高频冲浪，对新技术有雷达般的嗅觉。"
+              ],
+              "match_score": 36,
+              "covered": [
+                "产品需求分析与原型设计（Figma）",
+                "用户调研与问卷设计",
+                "RAG知识库构建与问答系统",
+                "Prompt Engineering与AI内容生成",
+                "多维度匹配方案探索",
+                "项目管理（从需求到上线）",
+                "用户测试与反馈收集",
+                "基础数据分析（Excel数据透视表）",
+                "英文技术文档阅读"
+              ],
+              "missing_experience": "1. 缺乏Python、PyTorch、LangChain等AI开发框架的实际编程经验（仅了解概念，未在项目中使用）；2. 无B端SaaS或RPA产品的设计或交付经验；3. 无C端AIGC产品（如智能助手、内容编辑工具等）的完整设计经验；4. 无Agent相关项目或应用经验；5. 未体现对前沿AI技术的主动追踪与敏锐感知（如高频使用新工具、阅读行业动态）；6. 尚未毕业，无全职工作经验，无法满足通常要求的2年以上经验。",
+              "core_skills": "1. 本科及以上学历，计算机/AI相关专业；2. 极强的逻辑拆解与结构化思维能力；3. C端AIGC产品敏感度与设计能力；4. B端SaaS/RPA逻辑功底与产品思维；5. 技术技能：Python、PyTorch、LangChain、RAG、Agent；6. 产品经理基本能力：需求分析、原型设计（Figma）、项目管理、用户测试；7. 24小时高频冲浪，对新技术有雷达般的嗅觉。",
+              "company": "字节",
+              "position": "AI产品经理"
+            },
+            "interview_questions": {
+              "questions": [
+                "假设你要设计一款面向C端用户的AI智能笔记助手，能够自动整理用户碎片化记录并生成结构化知识图谱。请你从用户需求分层、核心功能拆解、AI能力边界三个维度，阐述你的产品设计思路。追问方向：1）如果发现用户对自动生成的图谱准确率仅60%，你会如何平衡产品体验与技术局限？2）请举出一个具体场景，说明如何通过Prompt Engineering优化用户输入质量。",
+                "请设计一个RPA机器人，用于自动化处理企业内部的多系统数据同步任务（例如CRM到ERP的客户信息同步）。要求描述其流程编排逻辑、异常处理机制，以及如何利用RPA+AI（如OCR或NLP）解决非结构化数据问题。追问方向：1）如果外部系统API频繁变更，你的RPA方案如何保证长期稳定性？2）你如何评估这个RPA项目投入产出比？请给出量化思路。",
+                "你负责一款AI内容生成工具（如AI写作助手）的产品规划，需要支持用户自定义生成风格。请你描述一种可落地的用户模型（User Model）方案，用于动态调整模型输出参数（如温度、top-p、系统提示词），并解释如何通过用户行为数据迭代模型效果。追问方向：1）在缺乏用户反馈标注数据时，你会如何设计冷启动阶段的prompt策略？2）请用具体案例说明如何权衡模型创造力与内容准确性。",
+                "假设你需要向非技术团队成员解释LangChain框架中Agent的核心工作原理，以及RAG（检索增强生成）如何解决大模型幻觉问题。请你用通俗易懂的语言构建一个类比，并分析在实际应用中Agent+ RAG组合可能遇到的至少两个关键挑战。追问方向：1）如果检索到的文档质量参差不齐，你会如何设计过滤或重排机制？2）请说明你如何用非技术指标（如用户满意度、任务完成率）衡量RAG系统的效果。",
+                "字节跳动某款C端产品计划引入AI功能，但当前团队缺乏AI相关经验。作为AI产品经理，请你设计一个为期3个月的技术预研与产品落地方案，包括优先级排序、技术可行性验证方法、跨团队协作机制。追问方向：1）你如何快速学习并掌握必要的AI技术概念（如Agent、RAG）以支撑产品决策？请给出具体学习路径。2）如果在预研阶段发现某个AI能力成本过高而收益不确定，你会如何说服团队调整方向？"
+              ],
+              "focus_areas": [
+                "短板深挖：1. 缺乏Python、PyTorch、LangChain等AI开发框架的实际编程经验（仅了解概念，未在项目中使用）；2. 无B端SaaS或RPA产品的设计或交付经验；3. 无C端AIGC产品（如智能",
+                "核心能力：1. 本科及以上学历，计算机/AI相关专业；2. 极强的逻辑拆解与结构化思维能力；3. C端AIGC产品敏感度与设计能力；4. B端SaaS/RPA逻辑功底与产品思维；5. 技术技能：Python、P"
+              ],
+              "question_count": 5,
+              "company": "字节",
+              "position": "AI产品经理"
+            }
+          },
+          "result": {
+            "aggregation": {
+              "match_result": {
+                "score": 36,
+                "label": "不匹配",
+                "advantages": [
+                  "产品需求分析与原型设计（Figma）",
+                  "用户调研与问卷设计",
+                  "RAG知识库构建与问答系统",
+                  "Prompt Engineering与AI内容生成",
+                  "多维度匹配方案探索",
+                  "项目管理（从需求到上线）",
+                  "用户测试与反馈收集",
+                  "基础数据分析（Excel数据透视表）",
+                  "英文技术文档阅读"
+                ],
+                "weaknesses": [
+                  "1. 缺乏Python、PyTorch、LangChain等AI开发框架的实际编程经验（仅了解概念，未在项目中使用）；2. 无B端SaaS或RPA产品的设计或交付经验；3. 无C端AIGC产品（如智能助手、内容编辑工具等）的完整设计经验；4. 无Agent相关项目或应用经验；5. 未体现对前沿AI技术的主动追踪与敏锐感知（如高频使用新工具、阅读行业动态）；6. 尚未毕业，无全职工作经验，无法满足通常要求的2年以上经验。"
+                ],
+                "suggestions": [
+                  "核心能力要求: 1. 本科及以上学历，计算机/AI相关专业；2. 极强的逻辑拆解与结构化思维能力；3. C端AIGC产品敏感度与设计能力；4. B端SaaS/RPA逻辑功底与产品思维；5. 技术技能：Python、PyTorch、LangChain、RAG、Agent；6. 产品经理基本能力：需求分析、原型设计（Figma）、项目管理、用户测试；7. 24小时高频冲浪，对新技术有雷达般的嗅觉。"
+                ],
+                "match_score": 36,
+                "covered": [
+                  "产品需求分析与原型设计（Figma）",
+                  "用户调研与问卷设计",
+                  "RAG知识库构建与问答系统",
+                  "Prompt Engineering与AI内容生成",
+                  "多维度匹配方案探索",
+                  "项目管理（从需求到上线）",
+                  "用户测试与反馈收集",
+                  "基础数据分析（Excel数据透视表）",
+                  "英文技术文档阅读"
+                ],
+                "missing_experience": "1. 缺乏Python、PyTorch、LangChain等AI开发框架的实际编程经验（仅了解概念，未在项目中使用）；2. 无B端SaaS或RPA产品的设计或交付经验；3. 无C端AIGC产品（如智能助手、内容编辑工具等）的完整设计经验；4. 无Agent相关项目或应用经验；5. 未体现对前沿AI技术的主动追踪与敏锐感知（如高频使用新工具、阅读行业动态）；6. 尚未毕业，无全职工作经验，无法满足通常要求的2年以上经验。",
+                "core_skills": "1. 本科及以上学历，计算机/AI相关专业；2. 极强的逻辑拆解与结构化思维能力；3. C端AIGC产品敏感度与设计能力；4. B端SaaS/RPA逻辑功底与产品思维；5. 技术技能：Python、PyTorch、LangChain、RAG、Agent；6. 产品经理基本能力：需求分析、原型设计（Figma）、项目管理、用户测试；7. 24小时高频冲浪，对新技术有雷达般的嗅觉。",
+                "company": "字节",
+                "position": "AI产品经理"
+              },
+              "interview_questions": {
+                "questions": [
+                  "假设你要设计一款面向C端用户的AI智能笔记助手，能够自动整理用户碎片化记录并生成结构化知识图谱。请你从用户需求分层、核心功能拆解、AI能力边界三个维度，阐述你的产品设计思路。追问方向：1）如果发现用户对自动生成的图谱准确率仅60%，你会如何平衡产品体验与技术局限？2）请举出一个具体场景，说明如何通过Prompt Engineering优化用户输入质量。",
+                  "请设计一个RPA机器人，用于自动化处理企业内部的多系统数据同步任务（例如CRM到ERP的客户信息同步）。要求描述其流程编排逻辑、异常处理机制，以及如何利用RPA+AI（如OCR或NLP）解决非结构化数据问题。追问方向：1）如果外部系统API频繁变更，你的RPA方案如何保证长期稳定性？2）你如何评估这个RPA项目投入产出比？请给出量化思路。",
+                  "你负责一款AI内容生成工具（如AI写作助手）的产品规划，需要支持用户自定义生成风格。请你描述一种可落地的用户模型（User Model）方案，用于动态调整模型输出参数（如温度、top-p、系统提示词），并解释如何通过用户行为数据迭代模型效果。追问方向：1）在缺乏用户反馈标注数据时，你会如何设计冷启动阶段的prompt策略？2）请用具体案例说明如何权衡模型创造力与内容准确性。",
+                  "假设你需要向非技术团队成员解释LangChain框架中Agent的核心工作原理，以及RAG（检索增强生成）如何解决大模型幻觉问题。请你用通俗易懂的语言构建一个类比，并分析在实际应用中Agent+ RAG组合可能遇到的至少两个关键挑战。追问方向：1）如果检索到的文档质量参差不齐，你会如何设计过滤或重排机制？2）请说明你如何用非技术指标（如用户满意度、任务完成率）衡量RAG系统的效果。",
+                  "字节跳动某款C端产品计划引入AI功能，但当前团队缺乏AI相关经验。作为AI产品经理，请你设计一个为期3个月的技术预研与产品落地方案，包括优先级排序、技术可行性验证方法、跨团队协作机制。追问方向：1）你如何快速学习并掌握必要的AI技术概念（如Agent、RAG）以支撑产品决策？请给出具体学习路径。2）如果在预研阶段发现某个AI能力成本过高而收益不确定，你会如何说服团队调整方向？"
+                ],
+                "focus_areas": [
+                  "短板深挖：1. 缺乏Python、PyTorch、LangChain等AI开发框架的实际编程经验（仅了解概念，未在项目中使用）；2. 无B端SaaS或RPA产品的设计或交付经验；3. 无C端AIGC产品（如智能",
+                  "核心能力：1. 本科及以上学历，计算机/AI相关专业；2. 极强的逻辑拆解与结构化思维能力；3. C端AIGC产品敏感度与设计能力；4. B端SaaS/RPA逻辑功底与产品思维；5. 技术技能：Python、P"
+                ],
+                "question_count": 5,
+                "company": "字节",
+                "position": "AI产品经理"
+              }
+            }
+          },
+          "observation": "聚合完成"
+        }
+      },
+      "global_status": "success",
+      "replan_reason": "",
+      "replan_count": 0
+    },
+    "intent": {
+      "demands": [
+        {
+          "intent": "interview_prepare",
+          "entities": {
+            "company": "字节",
+            "position": "AI产品经理"
+          },
+          "confidence": 0.88
+        }
+      ],
+      "needs_clarification": false,
+      "clarification_question": ""
+    },
+    "rewrite": {
+      "rewritten_query": "面字节AI产品经理要准备什么",
+      "search_keywords": "面字节AI产品经理要准备什么",
+      "is_follow_up": false,
+      "follow_up_type": "none",
+      "resolved_references": {}
+    },
+    "evidence_cache": [
+      {
+        "chunk_id": "ac9973c8-01be-4cd6-9a99-097873a59cf0_chunk_2",
+        "content": "【字节跳动 · AI产品经理 硬性要求】\n本科及以上学历，兼具C端AIGC敏锐度与B端SaaS/RPA逻辑功底",
+        "metadata": {
+          "company": "字节跳动",
+          "index": 2,
+          "jd_id": "ac9973c8-01be-4cd6-9a99-097873a59cf0",
+          "position": "AI产品经理",
+          "priority": "high",
+          "section": "hard_requirements",
+          "strategy": "semantic"
+        },
+        "distance": 0.5172616243362427,
+        "bm25_score": 11.273926253930416,
+        "vec_norm": 0.7234805915091891,
+        "bm25_norm": 0.521062592596384,
+        "hybrid_score": 0.6627551918353476,
+        "rerank_score": 0.9876
+      },
+      {
+        "chunk_id": "ac9973c8-01be-4cd6-9a99-097873a59cf0_chunk_5",
+        "content": "【字节跳动 · AI产品经理 硬性要求】\n具备极强的逻辑拆解力，能像指挥交响乐一样控制模型输出",
+        "metadata": {
+          "company": "字节跳动",
+          "index": 5,
+          "jd_id": "ac9973c8-01be-4cd6-9a99-097873a59cf0",
+          "position": "AI产品经理",
+          "priority": "high",
+          "section": "hard_requirements",
+          "strategy": "semantic"
+        },
+        "distance": 0.4580254852771759,
+        "bm25_score": 11.78435584408047,
+        "vec_norm": 0.9491384202935884,
+        "bm25_norm": 0.6287314186120652,
+        "hybrid_score": 0.8530163197891314,
+        "rerank_score": 0.9858
+      },
+      {
+        "chunk_id": "ac9973c8-01be-4cd6-9a99-097873a59cf0_chunk_8",
+        "content": "【字节跳动 · AI产品经理 关键词】\nPython, PyTorch, LangChain, RAG, Agent, 产品经理, AI",
+        "metadata": {
+          "company": "字节跳动",
+          "index": 8,
+          "jd_id": "ac9973c8-01be-4cd6-9a99-097873a59cf0",
+          "position": "AI产品经理",
+          "section": "keywords",
+          "strategy": "semantic"
+        },
+        "distance": 0.5713280439376831,
+        "bm25_score": 13.544442554841437,
+        "vec_norm": 0.5175166132485243,
+        "bm25_norm": 1.0,
+        "hybrid_score": 0.6622616292739669,
+        "rerank_score": 0.9817
+      },
+      {
+        "chunk_id": "ac9973c8-01be-4cd6-9a99-097873a59cf0_chunk_0",
+        "content": "公司：字节跳动，岗位：AI产品经理，地点：北京，薪资：30k-60k",
+        "metadata": {
+          "category": "产品",
+          "company": "字节跳动",
+          "domain": "AI",
+          "index": 0,
+          "jd_id": "ac9973c8-01be-4cd6-9a99-097873a59cf0",
+          "max_years": 5,
+          "min_education": "本科",
+          "min_years": 3,
+          "position": "AI产品经理",
+          "section": "basic_info",
+          "strategy": "semantic"
+        },
+        "distance": 0.4446741044521332,
+        "bm25_score": 8.868667810026786,
+        "vec_norm": 1.0,
+        "bm25_norm": 0.013702992140467742,
+        "hybrid_score": 0.7041108976421403,
+        "rerank_score": 0.9796
+      },
+      {
+        "chunk_id": "ac9973c8-01be-4cd6-9a99-097873a59cf0_chunk_6",
+        "content": "【字节跳动 · AI产品经理 硬性要求】\n24小时高频冲浪，对新技术有雷达般的嗅觉",
+        "metadata": {
+          "company": "字节跳动",
+          "index": 6,
+          "jd_id": "ac9973c8-01be-4cd6-9a99-097873a59cf0",
+          "position": "AI产品经理",
+          "priority": "high",
+          "section": "hard_requirements",
+          "strategy": "semantic"
+        },
+        "distance": 0.5325616598129272,
+        "bm25_score": 12.230124469647883,
+        "vec_norm": 0.6651956856926533,
+        "bm25_norm": 0.7227608117265157,
+        "hybrid_score": 0.6824652235028119,
+        "rerank_score": 0.9373
+      }
+    ],
+    "evidence_cache_query": "面字节AI产品经理要准备什么",
+    "tool_outputs": [
+      {
+        "task_id": "T0",
+        "tool": "kb_retrieve",
+        "description": "检索字节AI产品经理JD",
+        "result": {
+          "chunks": [
+            {
+              "chunk_id": "ac9973c8-01be-4cd6-9a99-097873a59cf0_chunk_2",
+              "content": "【字节跳动 · AI产品经理 硬性要求】\n本科及以上学历，兼具C端AIGC敏锐度与B端SaaS/RPA逻辑功底",
+              "source": "字节跳动-AI产品经理",
+              "metadata": {
+                "company": "字节跳动",
+                "position": "AI产品经理"
+              }
+            },
+            {
+              "chunk_id": "ac9973c8-01be-4cd6-9a99-097873a59cf0_chunk_5",
+              "content": "【字节跳动 · AI产品经理 硬性要求】\n具备极强的逻辑拆解力，能像指挥交响乐一样控制模型输出",
+              "source": "字节跳动-AI产品经理",
+              "metadata": {
+                "company": "字节跳动",
+                "position": "AI产品经理"
+              }
+            },
+            {
+              "chunk_id": "ac9973c8-01be-4cd6-9a99-097873a59cf0_chunk_8",
+              "content": "【字节跳动 · AI产品经理 关键词】\nPython, PyTorch, LangChain, RAG, Agent, 产品经理, AI",
+              "source": "字节跳动-AI产品经理",
+              "metadata": {
+                "company": "字节跳动",
+                "position": "AI产品经理"
+              }
+            },
+            {
+              "chunk_id": "ac9973c8-01be-4cd6-9a99-097873a59cf0_chunk_0",
+              "content": "公司：字节跳动，岗位：AI产品经理，地点：北京，薪资：30k-60k",
+              "source": "字节跳动-AI产品经理",
+              "metadata": {
+                "company": "字节跳动",
+                "position": "AI产品经理"
+              }
+            },
+            {
+              "chunk_id": "ac9973c8-01be-4cd6-9a99-097873a59cf0_chunk_6",
+              "content": "【字节跳动 · AI产品经理 硬性要求】\n24小时高频冲浪，对新技术有雷达般的嗅觉",
+              "source": "字节跳动-AI产品经理",
+              "metadata": {
+                "company": "字节跳动",
+                "position": "AI产品经理"
+              }
+            }
+          ],
+          "query": "字节 AI产品经理 JD",
+          "filters": {},
+          "strategy": "hybrid(70%vec+30%bm25)+reranker",
+          "pool_k": 5,
+          "rerank_k": 10,
+          "pool_size": 31,
+          "vec_only": 11,
+          "bm25_only": 11,
+          "both": 9,
+          "rerank": {
+            "enabled": true,
+            "candidates": 5,
+            "output": 5,
+            "best_rerank_score": 0.9876
+          }
+        }
+      },
+      {
+        "task_id": "T1",
+        "tool": "match_analyze",
+        "description": "分析简历与字节AI产品经理JD的匹配度",
+        "result": {
+          "score": 36,
+          "label": "不匹配",
+          "advantages": [
+            "产品需求分析与原型设计（Figma）",
+            "用户调研与问卷设计",
+            "RAG知识库构建与问答系统",
+            "Prompt Engineering与AI内容生成",
+            "多维度匹配方案探索",
+            "项目管理（从需求到上线）",
+            "用户测试与反馈收集",
+            "基础数据分析（Excel数据透视表）",
+            "英文技术文档阅读"
+          ],
+          "weaknesses": [
+            "1. 缺乏Python、PyTorch、LangChain等AI开发框架的实际编程经验（仅了解概念，未在项目中使用）；2. 无B端SaaS或RPA产品的设计或交付经验；3. 无C端AIGC产品（如智能助手、内容编辑工具等）的完整设计经验；4. 无Agent相关项目或应用经验；5. 未体现对前沿AI技术的主动追踪与敏锐感知（如高频使用新工具、阅读行业动态）；6. 尚未毕业，无全职工作经验，无法满足通常要求的2年以上经验。"
+          ],
+          "suggestions": [
+            "核心能力要求: 1. 本科及以上学历，计算机/AI相关专业；2. 极强的逻辑拆解与结构化思维能力；3. C端AIGC产品敏感度与设计能力；4. B端SaaS/RPA逻辑功底与产品思维；5. 技术技能：Python、PyTorch、LangChain、RAG、Agent；6. 产品经理基本能力：需求分析、原型设计（Figma）、项目管理、用户测试；7. 24小时高频冲浪，对新技术有雷达般的嗅觉。"
+          ],
+          "match_score": 36,
+          "covered": [
+            "产品需求分析与原型设计（Figma）",
+            "用户调研与问卷设计",
+            "RAG知识库构建与问答系统",
+            "Prompt Engineering与AI内容生成",
+            "多维度匹配方案探索",
+            "项目管理（从需求到上线）",
+            "用户测试与反馈收集",
+            "基础数据分析（Excel数据透视表）",
+            "英文技术文档阅读"
+          ],
+          "missing_experience": "1. 缺乏Python、PyTorch、LangChain等AI开发框架的实际编程经验（仅了解概念，未在项目中使用）；2. 无B端SaaS或RPA产品的设计或交付经验；3. 无C端AIGC产品（如智能助手、内容编辑工具等）的完整设计经验；4. 无Agent相关项目或应用经验；5. 未体现对前沿AI技术的主动追踪与敏锐感知（如高频使用新工具、阅读行业动态）；6. 尚未毕业，无全职工作经验，无法满足通常要求的2年以上经验。",
+          "core_skills": "1. 本科及以上学历，计算机/AI相关专业；2. 极强的逻辑拆解与结构化思维能力；3. C端AIGC产品敏感度与设计能力；4. B端SaaS/RPA逻辑功底与产品思维；5. 技术技能：Python、PyTorch、LangChain、RAG、Agent；6. 产品经理基本能力：需求分析、原型设计（Figma）、项目管理、用户测试；7. 24小时高频冲浪，对新技术有雷达般的嗅觉。",
+          "company": "字节",
+          "position": "AI产品经理"
+        }
+      },
+      {
+        "task_id": "T2",
+        "tool": "interview_gen",
+        "description": "基于匹配短板生成面试题",
+        "result": {
+          "questions": [
+            "假设你要设计一款面向C端用户的AI智能笔记助手，能够自动整理用户碎片化记录并生成结构化知识图谱。请你从用户需求分层、核心功能拆解、AI能力边界三个维度，阐述你的产品设计思路。追问方向：1）如果发现用户对自动生成的图谱准确率仅60%，你会如何平衡产品体验与技术局限？2）请举出一个具体场景，说明如何通过Prompt Engineering优化用户输入质量。",
+            "请设计一个RPA机器人，用于自动化处理企业内部的多系统数据同步任务（例如CRM到ERP的客户信息同步）。要求描述其流程编排逻辑、异常处理机制，以及如何利用RPA+AI（如OCR或NLP）解决非结构化数据问题。追问方向：1）如果外部系统API频繁变更，你的RPA方案如何保证长期稳定性？2）你如何评估这个RPA项目投入产出比？请给出量化思路。",
+            "你负责一款AI内容生成工具（如AI写作助手）的产品规划，需要支持用户自定义生成风格。请你描述一种可落地的用户模型（User Model）方案，用于动态调整模型输出参数（如温度、top-p、系统提示词），并解释如何通过用户行为数据迭代模型效果。追问方向：1）在缺乏用户反馈标注数据时，你会如何设计冷启动阶段的prompt策略？2）请用具体案例说明如何权衡模型创造力与内容准确性。",
+            "假设你需要向非技术团队成员解释LangChain框架中Agent的核心工作原理，以及RAG（检索增强生成）如何解决大模型幻觉问题。请你用通俗易懂的语言构建一个类比，并分析在实际应用中Agent+ RAG组合可能遇到的至少两个关键挑战。追问方向：1）如果检索到的文档质量参差不齐，你会如何设计过滤或重排机制？2）请说明你如何用非技术指标（如用户满意度、任务完成率）衡量RAG系统的效果。",
+            "字节跳动某款C端产品计划引入AI功能，但当前团队缺乏AI相关经验。作为AI产品经理，请你设计一个为期3个月的技术预研与产品落地方案，包括优先级排序、技术可行性验证方法、跨团队协作机制。追问方向：1）你如何快速学习并掌握必要的AI技术概念（如Agent、RAG）以支撑产品决策？请给出具体学习路径。2）如果在预研阶段发现某个AI能力成本过高而收益不确定，你会如何说服团队调整方向？"
+          ],
+          "focus_areas": [
+            "短板深挖：1. 缺乏Python、PyTorch、LangChain等AI开发框架的实际编程经验（仅了解概念，未在项目中使用）；2. 无B端SaaS或RPA产品的设计或交付经验；3. 无C端AIGC产品（如智能",
+            "核心能力：1. 本科及以上学历，计算机/AI相关专业；2. 极强的逻辑拆解与结构化思维能力；3. C端AIGC产品敏感度与设计能力；4. B端SaaS/RPA逻辑功底与产品思维；5. 技术技能：Python、P"
+          ],
+          "question_count": 5,
+          "company": "字节",
+          "position": "AI产品经理"
+        }
+      },
+      {
+        "task_id": "T3",
+        "tool": null,
+        "description": "聚合匹配分析和面试题结果",
+        "result": {
+          "aggregation": {
+            "match_result": {
+              "score": 36,
+              "label": "不匹配",
+              "advantages": [
+                "产品需求分析与原型设计（Figma）",
+                "用户调研与问卷设计",
+                "RAG知识库构建与问答系统",
+                "Prompt Engineering与AI内容生成",
+                "多维度匹配方案探索",
+                "项目管理（从需求到上线）",
+                "用户测试与反馈收集",
+                "基础数据分析（Excel数据透视表）",
+                "英文技术文档阅读"
+              ],
+              "weaknesses": [
+                "1. 缺乏Python、PyTorch、LangChain等AI开发框架的实际编程经验（仅了解概念，未在项目中使用）；2. 无B端SaaS或RPA产品的设计或交付经验；3. 无C端AIGC产品（如智能助手、内容编辑工具等）的完整设计经验；4. 无Agent相关项目或应用经验；5. 未体现对前沿AI技术的主动追踪与敏锐感知（如高频使用新工具、阅读行业动态）；6. 尚未毕业，无全职工作经验，无法满足通常要求的2年以上经验。"
+              ],
+              "suggestions": [
+                "核心能力要求: 1. 本科及以上学历，计算机/AI相关专业；2. 极强的逻辑拆解与结构化思维能力；3. C端AIGC产品敏感度与设计能力；4. B端SaaS/RPA逻辑功底与产品思维；5. 技术技能：Python、PyTorch、LangChain、RAG、Agent；6. 产品经理基本能力：需求分析、原型设计（Figma）、项目管理、用户测试；7. 24小时高频冲浪，对新技术有雷达般的嗅觉。"
+              ],
+              "match_score": 36,
+              "covered": [
+                "产品需求分析与原型设计（Figma）",
+                "用户调研与问卷设计",
+                "RAG知识库构建与问答系统",
+                "Prompt Engineering与AI内容生成",
+                "多维度匹配方案探索",
+                "项目管理（从需求到上线）",
+                "用户测试与反馈收集",
+                "基础数据分析（Excel数据透视表）",
+                "英文技术文档阅读"
+              ],
+              "missing_experience": "1. 缺乏Python、PyTorch、LangChain等AI开发框架的实际编程经验（仅了解概念，未在项目中使用）；2. 无B端SaaS或RPA产品的设计或交付经验；3. 无C端AIGC产品（如智能助手、内容编辑工具等）的完整设计经验；4. 无Agent相关项目或应用经验；5. 未体现对前沿AI技术的主动追踪与敏锐感知（如高频使用新工具、阅读行业动态）；6. 尚未毕业，无全职工作经验，无法满足通常要求的2年以上经验。",
+              "core_skills": "1. 本科及以上学历，计算机/AI相关专业；2. 极强的逻辑拆解与结构化思维能力；3. C端AIGC产品敏感度与设计能力；4. B端SaaS/RPA逻辑功底与产品思维；5. 技术技能：Python、PyTorch、LangChain、RAG、Agent；6. 产品经理基本能力：需求分析、原型设计（Figma）、项目管理、用户测试；7. 24小时高频冲浪，对新技术有雷达般的嗅觉。",
+              "company": "字节",
+              "position": "AI产品经理"
+            },
+            "interview_questions": {
+              "questions": [
+                "假设你要设计一款面向C端用户的AI智能笔记助手，能够自动整理用户碎片化记录并生成结构化知识图谱。请你从用户需求分层、核心功能拆解、AI能力边界三个维度，阐述你的产品设计思路。追问方向：1）如果发现用户对自动生成的图谱准确率仅60%，你会如何平衡产品体验与技术局限？2）请举出一个具体场景，说明如何通过Prompt Engineering优化用户输入质量。",
+                "请设计一个RPA机器人，用于自动化处理企业内部的多系统数据同步任务（例如CRM到ERP的客户信息同步）。要求描述其流程编排逻辑、异常处理机制，以及如何利用RPA+AI（如OCR或NLP）解决非结构化数据问题。追问方向：1）如果外部系统API频繁变更，你的RPA方案如何保证长期稳定性？2）你如何评估这个RPA项目投入产出比？请给出量化思路。",
+                "你负责一款AI内容生成工具（如AI写作助手）的产品规划，需要支持用户自定义生成风格。请你描述一种可落地的用户模型（User Model）方案，用于动态调整模型输出参数（如温度、top-p、系统提示词），并解释如何通过用户行为数据迭代模型效果。追问方向：1）在缺乏用户反馈标注数据时，你会如何设计冷启动阶段的prompt策略？2）请用具体案例说明如何权衡模型创造力与内容准确性。",
+                "假设你需要向非技术团队成员解释LangChain框架中Agent的核心工作原理，以及RAG（检索增强生成）如何解决大模型幻觉问题。请你用通俗易懂的语言构建一个类比，并分析在实际应用中Agent+ RAG组合可能遇到的至少两个关键挑战。追问方向：1）如果检索到的文档质量参差不齐，你会如何设计过滤或重排机制？2）请说明你如何用非技术指标（如用户满意度、任务完成率）衡量RAG系统的效果。",
+                "字节跳动某款C端产品计划引入AI功能，但当前团队缺乏AI相关经验。作为AI产品经理，请你设计一个为期3个月的技术预研与产品落地方案，包括优先级排序、技术可行性验证方法、跨团队协作机制。追问方向：1）你如何快速学习并掌握必要的AI技术概念（如Agent、RAG）以支撑产品决策？请给出具体学习路径。2）如果在预研阶段发现某个AI能力成本过高而收益不确定，你会如何说服团队调整方向？"
+              ],
+              "focus_areas": [
+                "短板深挖：1. 缺乏Python、PyTorch、LangChain等AI开发框架的实际编程经验（仅了解概念，未在项目中使用）；2. 无B端SaaS或RPA产品的设计或交付经验；3. 无C端AIGC产品（如智能",
+                "核心能力：1. 本科及以上学历，计算机/AI相关专业；2. 极强的逻辑拆解与结构化思维能力；3. C端AIGC产品敏感度与设计能力；4. B端SaaS/RPA逻辑功底与产品思维；5. 技术技能：Python、P"
+              ],
+              "question_count": 5,
+              "company": "字节",
+              "position": "AI产品经理"
+            }
+          }
+        }
+      }
+    ],
+    "final_aggregation_prompt": {
+      "system_prompt": "你是一位专业的求职顾问。请基于以下工具执行结果，给用户一个清晰、有帮助的回复。\n要求：\n1. 先直接回答用户的问题（是/否/有/没有），不要绕弯子，不要重复用户的原话\n2. 如果有匹配分析结果，给出具体的分数和建议\n3. 如果有检索结果，基于事实回答，不要编造\n4. 【强制】引用信息时必须标注来源。每个引用的事实后面都要跟 [来源：公司名-岗位名] 格式。   kb_retrieve 结果的 chunks 中带有 'source' 字段（如'字节跳动-AI产品经理'），请直接使用。   external_search 结果带有 'source_name' 字段，也请直接使用。\n5. 当本地知识库与外部搜索结果冲突时，请并列呈现两种说法并标注各自来源，不要替用户做判断\n6. 语气友好、专业、结构化",
+      "user_prompt": "【用户问题】\n面字节AI产品经理要准备什么\n\n【工具执行结果】\n[{\"task_id\": \"T0\", \"tool\": \"kb_retrieve\", \"description\": \"检索字节AI产品经理JD\", \"result\": {\"chunks\": [{\"chunk_id\": \"ac9973c8-01be-4cd6-9a99-097873a59cf0_chunk_2\", \"content\": \"【字节跳动 · AI产品经理 硬性要求】\\n本科及以上学历，兼具C端AIGC敏锐度与B端SaaS/RPA逻辑功底\", \"source\": \"字节跳动-AI产品经理\", \"metadata\": {\"company\": \"字节跳动\", \"position\": \"AI产品经理\"}}, {\"chunk_id\": \"ac9973c8-01be-4cd6-9a99-097873a59cf0_chunk_5\", \"content\": \"【字节跳动 · AI产品经理 硬性要求】\\n具备极强的逻辑拆解力，能像指挥交响乐一样控制模型输出\", \"source\": \"字节跳动-AI产品经理\", \"metadata\": {\"company\": \"字节跳动\", \"position\": \"AI产品经理\"}}, {\"chunk_id\": \"ac9973c8-01be-4cd6-9a99-097873a59cf0_chunk_8\", \"content\": \"【字节跳动 · AI产品经理 关键词】\\nPython, PyTorch, LangChain, RAG, Agent, 产品经理, AI\", \"source\": \"字节跳动-AI产品经理\", \"metadata\": {\"company\": \"字节跳动\", \"position\": \"AI产品经理\"}}, {\"chunk_id\": \"ac9973c8-01be-4cd6-9a99-097873a59cf0_chunk_0\", \"content\": \"公司：字节跳动，岗位：AI产品经理，地点：北京，薪资：30k-60k\", \"source\": \"字节跳动-AI产品经理\", \"metadata\": {\"company\": \"字节跳动\", \"position\": \"AI产品经理\"}}, {\"chunk_id\": \"ac9973c8-01be-4cd6-9a99-097873a59cf0_chunk_6\", \"content\": \"【字节跳动 · AI产品经理 硬性要求】\\n24小时高频冲浪，对新技术有雷达般的嗅觉\", \"source\": \"字节跳动-AI产品经理\", \"metadata\": {\"company\": \"字节跳动\", \"position\": \"AI产品经理\"}}], \"query\": \"字节 AI产品经理 JD\", \"filters\": {}, \"strategy\": \"hybrid(70%vec+30%bm25)+reranker\", \"pool_k\": 5, \"rerank_k\": 10, \"pool_size\": 31, \"vec_only\": 11, \"bm25_only\": 11, \"both\": 9, \"rerank\": {\"enabled\": true, \"candidates\": 5, \"output\": 5, \"best_rerank_score\": 0.9876}}}, {\"task_id\": \"T1\", \"tool\": \"match_analyze\", \"description\": \"分析简历与字节AI产品经理JD的匹配度\", \"result\": {\"score\": 36, \"label\": \"不匹配\", \"advantages\": [\"产品需求分析与原型设计（Figma）\", \"用户调研与问卷设计\", \"RAG知识库构建与问答系统\", \"Prompt Engineering与AI内容生成\", \"多维度匹配方案探索\", \"项目管理（从需求到上线）\", \"用户测试与反馈收集\", \"基础数据分析（Excel数据透视表）\", \"英文技术文档阅读\"], \"weaknesses\": [\"1. 缺乏Python、PyTorch、LangChain等AI开发框架的实际编程经验（仅了解概念，未在项目中使用）；2. 无B端SaaS或RPA产品的设计或交付经验；3. 无C端AIGC产品（如智能助手、内容编辑工具等）的完整设计经验；4. 无Agent相关项目或应用经验；5. 未体现对前沿AI技术的主动追踪与敏锐感知（如高频使用新工具、阅读行业动态）；6. 尚未毕业，无全职工作经验，无法满足通常要求的2年以上经验。\"], \"suggestions\": [\"核心能力要求: 1. 本科及以上学历，计算机/AI相关专业；2. 极强的逻辑拆解与结构化思维能力；3. C端AIGC产品敏感度与设计能力；4. B端SaaS/RPA逻辑功底与产品思维；5. 技术技能：Python、PyTorch、LangChain、RAG、Agent；6. 产品经理基本能力：需求分析、原型设计（Figma）、项目管理、用户测试；7. 24小时高频冲浪，对新技术有雷达般的嗅觉。\"], \"match_score\": 36, \"covered\": [\"产品需求分析与原型设计（Figma）\", \"用户调研与问卷设计\", \"RAG知识库构建与问答系统\", \"Prompt Engineering与AI内容生成\", \"多维度匹配方案探索\", \"项目管理（从需求到上线）\", \"用户测试与反馈收集\", \"基础数据分析（Excel数据透视表）\", \"英文技术文档阅读\"], \"missing_experience\": \"1. 缺乏Python、PyTorch、LangChain等AI开发框架的实际编程经验（仅了解概念，未在项目中使用）；2. 无B端SaaS或RPA产品的设计或交付经验；3. 无C端AIGC产品（如智能助手、内容编辑工具等）的完整设计经验；4. 无Agent相关项目或应用经验；5. 未体现对前沿AI技术的主动追踪与敏锐感知（如高频使用新工具、阅读行业动态）；6. 尚未毕业，无全职工作经验，无法满足通常要求的2年以上经验。\", \"core_skills\": \"1. 本科及以上学历，计算机/AI相关专业；2. 极强的逻辑拆解与结构化思维能力；3. C端AIGC产品敏感度与设计能力；4. B端SaaS/RPA逻辑功底与产品思维；5. 技术技能：Python、PyTorch、LangChain、RAG、Agent；6. 产品经理基本能力：需求分析、原型设计（Figma）、项目管理、用户测试；7. 24小时高频冲浪，对新技术有雷达般的嗅觉。\", \"company\": \"字节\", \"position\": \"AI产品经理\"}}, {\"task_id\": \"T2\", \"tool\": \"interview_gen\", \"description\": \"基于匹配短板生成面试题\", \"result\": {\"questions\": [\"假设你要设计一款面向C端用户的AI智能笔记助手，能够自动整理用户碎片化记录并生成结构化知识图谱。请你从用户需求分层、核心功能拆解、AI能力边界三个维度，阐述你的产品设计\n\n请生成回复："
+    }
+  },
+  "reply": "有具体的准备重点，但当前匹配度较低。\n\n### 1. 匹配度诊断\n根据简历与岗位要求的分析，当前匹配评分为 **36 分**，标签为 **不匹配**。\n*   **优势领域**：产品需求分析与原型设计（Figma）、用户调研、RAG 知识库构建、Prompt Engineering、项目管理及基础数据分析。\n*   **核心短板**：\n    1.  缺乏 Python、PyTorch、LangChain 等 AI 开发框架的实际编程经验。\n    2.  无 B 端 SaaS 或 RPA 产品的设计交付经验。\n    3.  无 C 端 AIGC 产品（如智能助手）的完整设计经验。\n    4.  无 Agent 相关项目经验。\n    5.  未体现对前沿 AI 技术的主动追踪与敏锐感知。\n    6.  尚未毕业，无全职工作经验，通常该岗位要求 2 年以上经验。\n\n### 2. 核心准备清单（基于 JD 硬性要求）\n针对字节该岗位，你需要重点准备以下内容：\n*   **学历与思维**：需具备本科及以上学历，且拥有极强的逻辑拆解力，能像指挥交响乐一样控制模型输出 [来源：字节跳动-AI 产品经理]。\n*   **技术栈储备**：必须熟悉 Python, PyTorch, LangChain, RAG, Agent 等关键词及相关技术实现 [来源：字节跳动-AI 产品经理]。\n*   **产品经验**：需兼具 C 端 AIGC 敏锐度与 B 端 SaaS/RPA 逻辑功底 [来源：字节跳动-AI 产品经理]。\n*   **行业嗅觉**：需保持 24 小时高频冲浪，对新技术有雷达般的嗅觉 [来源：字节跳动-AI 产品经理]。\n*   **薪资参考**：该岗位地点北京，薪资范围通常在 30k-60k [来源：字节跳动-AI 产品经理]。\n\n### 3. 面试模拟训练\n基于你的短板，建议重点练习以下面试题：\n*   **场景设计题**：假设你要设计一款面向 C 端用户的 AI 智能笔记助手，能够自动整理用户碎片化记录并生成结构化知识图谱。请你从用户需求分层、核心功能拆解、AI 能力边界三个维度，阐述你的产品设计。\n\n### 4. 提升建议\n为了提高通过率，建议采取以下行动：\n*   **补充技术实战**：尽快在实际项目中应用 Python、PyTorch、LangChain 等框架，而非仅了解概念。\n*   **完善项目经历**：尝试设计完整的 C 端 AIGC 产品或 B 端 SaaS/RPA 方案，特别是 Agent 相关应用。\n*   **展现技术敏感度**：在简历或面试中体现对前沿 AI 技术的主动追踪（如高频使用新工具、阅读行业动态）。\n*   **强化逻辑思维**：准备案例证明你的逻辑拆解与结构化思维能力，这是该岗位的核心要求之一。",
+  "reply_length": 1191,
+  "intent_match": true,
+  "tool_match_rate": 1.0,
+  "has_reply": true,
+  "events": [
+    {
+      "step": "intent",
+      "message": "正在识别您的意图...",
+      "_time": 8.545522451400757,
+      "type": "status"
+    },
+    {
+      "step": "plan",
+      "message": "正在规划任务...",
+      "_time": 8.545564651489258,
+      "type": "status"
+    },
+    {
+      "step": "execute",
+      "message": "正在执行分析...",
+      "_time": 24.77022886276245,
+      "type": "status"
+    },
+    {
+      "step": "aggregate",
+      "message": "正在生成回复...",
+      "_time": 47.73731303215027,
+      "type": "status"
+    },
+    {
+      "text": "有具体的准备重点",
+      "_time": 126.83424949645996,
+      "type": "delta"
+    },
+    {
+      "text": "，但当前匹配",
+      "_time": 126.94521117210388,
+      "type": "delta"
+    },
+    {
+      "text": "度较低。",
+      "_time": 126.948002576828,
+      "type": "delta"
+    },
+    {
+      "text": "\n\n### 1",
+      "_time": 127.05529260635376,
+      "type": "delta"
+    },
+    {
+      "text": ". ",
+      "_time": 127.05683469772339,
+      "type": "delta"
+    },
+    {
+      "text": "匹配度诊断\n",
+      "_time": 127.2024302482605,
+      "type": "delta"
+    },
+    {
+      "text": "根据",
+      "_time": 127.20598459243774,
+      "type": "delta"
+    },
+    {
+      "text": "简历与岗位要求的",
+      "_time": 127.27933835983276,
+      "type": "delta"
+    },
+    {
+      "text": "分析",
+      "_time": 127.28093695640564,
+      "type": "delta"
+    },
+    {
+      "text": "，当前匹配评分",
+      "_time": 127.39560079574585,
+      "type": "delta"
+    },
+    {
+      "text": "为 **36",
+      "_time": 127.39596939086914,
+      "type": "delta"
+    },
+    {
+      "text": " 分**，",
+      "_time": 127.53737497329712,
+      "type": "delta"
+    },
+    {
+      "text": "标签为 **不",
+      "_time": 127.53893876075745,
+      "type": "delta"
+    },
+    {
+      "text": "匹配**。\n*",
+      "_time": 127.62120914459229,
+      "type": "delta"
+    },
+    {
+      "text": "   **优势领域",
+      "_time": 127.62491178512573,
+      "type": "delta"
+    },
+    {
+      "text": "**：产品需求",
+      "_time": 127.76024603843689,
+      "type": "delta"
+    },
+    {
+      "text": "分析与原型设计",
+      "_time": 127.76066708564758,
+      "type": "delta"
+    },
+    {
+      "text": "（Figma）、",
+      "_time": 127.83933687210083,
+      "type": "delta"
+    },
+    {
+      "text": "用户调研、",
+      "_time": 127.84366393089294,
+      "type": "delta"
+    },
+    {
+      "text": "RAG 知识库",
+      "_time": 127.9814965724945,
+      "type": "delta"
+    },
+    {
+      "text": "构建、",
+      "_time": 127.98496294021606,
+      "type": "delta"
+    },
+    {
+      "text": "Prompt Engineering、项目管理",
+      "_time": 128.11527228355408,
+      "type": "delta"
+    },
+    {
+      "text": "及基础数据分析。",
+      "_time": 128.15040755271912,
+      "type": "delta"
+    },
+    {
+      "text": "\n*   **",
+      "_time": 128.22137832641602,
+      "type": "delta"
+    },
+    {
+      "text": "核心",
+      "_time": 128.2230658531189,
+      "type": "delta"
+    },
+    {
+      "text": "短板**：\n",
+      "_time": 128.34046411514282,
+      "type": "delta"
+    },
+    {
+      "text": "    1.",
+      "_time": 128.34202575683594,
+      "type": "delta"
+    },
+    {
+      "text": "  缺乏 Python",
+      "_time": 128.48240733146667,
+      "type": "delta"
+    },
+    {
+      "text": "、PyTorch",
+      "_time": 128.4870057106018,
+      "type": "delta"
+    },
+    {
+      "text": "、LangChain ",
+      "_time": 128.55645942687988,
+      "type": "delta"
+    },
+    {
+      "text": "等 AI 开发",
+      "_time": 128.58422994613647,
+      "type": "delta"
+    },
+    {
+      "text": "框架的实际编程经验",
+      "_time": 128.6653356552124,
+      "type": "delta"
+    },
+    {
+      "text": "。\n    ",
+      "_time": 128.6679801940918,
+      "type": "delta"
+    },
+    {
+      "text": "2.  ",
+      "_time": 128.7734260559082,
+      "type": "delta"
+    },
+    {
+      "text": "无 B 端",
+      "_time": 128.7769591808319,
+      "type": "delta"
+    },
+    {
+      "text": " SaaS 或",
+      "_time": 128.9231026172638,
+      "type": "delta"
+    },
+    {
+      "text": " RPA 产品",
+      "_time": 128.92697739601135,
+      "type": "delta"
+    },
+    {
+      "text": "的设计交付经验。",
+      "_time": 129.02045607566833,
+      "type": "delta"
+    },
+    {
+      "text": "\n   ",
+      "_time": 129.0207760334015,
+      "type": "delta"
+    },
+    {
+      "text": " 3. ",
+      "_time": 129.12524032592773,
+      "type": "delta"
+    },
+    {
+      "text": " 无 C ",
+      "_time": 129.14706921577454,
+      "type": "delta"
+    },
+    {
+      "text": "端 AIGC",
+      "_time": 129.21521830558777,
+      "type": "delta"
+    },
+    {
+      "text": " 产品（",
+      "_time": 129.217919588089,
+      "type": "delta"
+    },
+    {
+      "text": "如智能助手）",
+      "_time": 129.32625079154968,
+      "type": "delta"
+    },
+    {
+      "text": "的完整设计经验",
+      "_time": 129.32662224769592,
+      "type": "delta"
+    },
+    {
+      "text": "。\n    ",
+      "_time": 129.47044372558594,
+      "type": "delta"
+    },
+    {
+      "text": "4.  ",
+      "_time": 129.47409105300903,
+      "type": "delta"
+    },
+    {
+      "text": "无 Agent 相关",
+      "_time": 129.5391321182251,
+      "type": "delta"
+    },
+    {
+      "text": "项目经验",
+      "_time": 129.54271411895752,
+      "type": "delta"
+    },
+    {
+      "text": "。\n    ",
+      "_time": 129.66636657714844,
+      "type": "delta"
+    },
+    {
+      "text": "5.  ",
+      "_time": 129.6689488887787,
+      "type": "delta"
+    },
+    {
+      "text": "未体现对前沿",
+      "_time": 129.79530024528503,
+      "type": "delta"
+    },
+    {
+      "text": " AI 技术的主动",
+      "_time": 129.79884958267212,
+      "type": "delta"
+    },
+    {
+      "text": "追踪与敏锐感知",
+      "_time": 129.87631845474243,
+      "type": "delta"
+    },
+    {
+      "text": "。\n    ",
+      "_time": 129.87895464897156,
+      "type": "delta"
+    },
+    {
+      "text": "6.  ",
+      "_time": 130.05631494522095,
+      "type": "delta"
+    },
+    {
+      "text": "尚未毕业，无",
+      "_time": 130.05987930297852,
+      "type": "delta"
+    },
+    {
+      "text": "全职工作经验，通常",
+      "_time": 130.12520098686218,
+      "type": "delta"
+    },
+    {
+      "text": "该",
+      "_time": 130.12551283836365,
+      "type": "delta"
+    },
+    {
+      "text": "岗位要求 2 ",
+      "_time": 130.2341833114624,
+      "type": "delta"
+    },
+    {
+      "text": "年以上",
+      "_time": 130.23684525489807,
+      "type": "delta"
+    },
+    {
+      "text": "经验。\n\n###",
+      "_time": 130.38052701950073,
+      "type": "delta"
+    },
+    {
+      "text": " 2. ",
+      "_time": 130.38286709785461,
+      "type": "delta"
+    },
+    {
+      "text": "核心准备清单（",
+      "_time": 130.45838856697083,
+      "type": "delta"
+    },
+    {
+      "text": "基于 JD ",
+      "_time": 130.4598798751831,
+      "type": "delta"
+    },
+    {
+      "text": "硬性要求）\n",
+      "_time": 130.5723099708557,
+      "type": "delta"
+    },
+    {
+      "text": "针对字节",
+      "_time": 130.6030342578888,
+      "type": "delta"
+    },
+    {
+      "text": "该岗位，你需要",
+      "_time": 130.89223718643188,
+      "type": "delta"
+    },
+    {
+      "text": "重点准备以下内容",
+      "_time": 130.8938136100769,
+      "type": "delta"
+    },
+    {
+      "text": "：\n*  ",
+      "_time": 130.8978202342987,
+      "type": "delta"
+    },
+    {
+      "text": " **",
+      "_time": 130.89976000785828,
+      "type": "delta"
+    },
+    {
+      "text": "学历与思维**",
+      "_time": 131.0391776561737,
+      "type": "delta"
+    },
+    {
+      "text": "：需",
+      "_time": 131.04084730148315,
+      "type": "delta"
+    },
+    {
+      "text": "具备本科及以上学历，且",
+      "_time": 131.1189796924591,
+      "type": "delta"
+    },
+    {
+      "text": "拥有极强的逻辑拆解",
+      "_time": 131.12281703948975,
+      "type": "delta"
+    },
+    {
+      "text": "力，能像",
+      "_time": 131.24686646461487,
+      "type": "delta"
+    },
+    {
+      "text": "指挥交响乐一样",
+      "_time": 131.27003359794617,
+      "type": "delta"
+    },
+    {
+      "text": "控制模型输出 [",
+      "_time": 131.34304356575012,
+      "type": "delta"
+    },
+    {
+      "text": "来源：字节跳动",
+      "_time": 131.34592199325562,
+      "type": "delta"
+    },
+    {
+      "text": "-AI 产品经理",
+      "_time": 131.45934891700745,
+      "type": "delta"
+    },
+    {
+      "text": "]。\n*",
+      "_time": 131.49797201156616,
+      "type": "delta"
+    },
+    {
+      "text": "   **技术栈",
+      "_time": 131.5660674571991,
+      "type": "delta"
+    },
+    {
+      "text": "储备",
+      "_time": 131.5687174797058,
+      "type": "delta"
+    },
+    {
+      "text": "**：必须熟悉",
+      "_time": 131.6851098537445,
+      "type": "delta"
+    },
+    {
+      "text": " Python",
+      "_time": 131.6896414756775,
+      "type": "delta"
+    },
+    {
+      "text": ", PyTorch",
+      "_time": 131.83313488960266,
+      "type": "delta"
+    },
+    {
+      "text": ",",
+      "_time": 131.83657908439636,
+      "type": "delta"
+    },
+    {
+      "text": " LangChain, R",
+      "_time": 131.9087040424347,
+      "type": "delta"
+    },
+    {
+      "text": "AG, Agent ",
+      "_time": 131.91035628318787,
+      "type": "delta"
+    },
+    {
+      "text": "等关键词及相关技术",
+      "_time": 132.1092164516449,
+      "type": "delta"
+    },
+    {
+      "text": "实现",
+      "_time": 132.11176991462708,
+      "type": "delta"
+    },
+    {
+      "text": " [来源：字节",
+      "_time": 132.18108701705933,
+      "type": "delta"
+    },
+    {
+      "text": "跳动-AI ",
+      "_time": 132.18248653411865,
+      "type": "delta"
+    },
+    {
+      "text": "产品经理]。\n",
+      "_time": 132.2848663330078,
+      "type": "delta"
+    },
+    {
+      "text": "*   **产品",
+      "_time": 132.319020986557,
+      "type": "delta"
+    },
+    {
+      "text": "经验**：需",
+      "_time": 132.4001066684723,
+      "type": "delta"
+    },
+    {
+      "text": "兼具 C 端",
+      "_time": 132.4037230014801,
+      "type": "delta"
+    },
+    {
+      "text": " AIGC ",
+      "_time": 132.50176644325256,
+      "type": "delta"
+    },
+    {
+      "text": "敏锐度与 B",
+      "_time": 132.54190874099731,
+      "type": "delta"
+    },
+    {
+      "text": " 端 SaaS",
+      "_time": 132.61204934120178,
+      "type": "delta"
+    },
+    {
+      "text": "/RPA 逻辑",
+      "_time": 132.62014985084534,
+      "type": "delta"
+    },
+    {
+      "text": "功底 [来源：",
+      "_time": 132.73028874397278,
+      "type": "delta"
+    },
+    {
+      "text": "字节跳动-AI",
+      "_time": 132.73377537727356,
+      "type": "delta"
+    },
+    {
+      "text": " 产品经理]。",
+      "_time": 132.86913084983826,
+      "type": "delta"
+    },
+    {
+      "text": "\n*   **",
+      "_time": 132.8717098236084,
+      "type": "delta"
+    },
+    {
+      "text": "行业嗅觉**：",
+      "_time": 132.95321035385132,
+      "type": "delta"
+    },
+    {
+      "text": "需",
+      "_time": 132.9535095691681,
+      "type": "delta"
+    },
+    {
+      "text": "保持 24",
+      "_time": 133.06209588050842,
+      "type": "delta"
+    },
+    {
+      "text": " 小时高频冲浪",
+      "_time": 133.09294033050537,
+      "type": "delta"
+    },
+    {
+      "text": "，对新技术有",
+      "_time": 133.17004656791687,
+      "type": "delta"
+    },
+    {
+      "text": "雷达般的嗅觉 [",
+      "_time": 133.17281699180603,
+      "type": "delta"
+    },
+    {
+      "text": "来源：字节跳动",
+      "_time": 133.28122758865356,
+      "type": "delta"
+    },
+    {
+      "text": "-AI 产品经理",
+      "_time": 133.31102919578552,
+      "type": "delta"
+    },
+    {
+      "text": "]。\n*",
+      "_time": 133.39389419555664,
+      "type": "delta"
+    },
+    {
+      "text": "   **薪资",
+      "_time": 133.39664912223816,
+      "type": "delta"
+    },
+    {
+      "text": "参考**：该",
+      "_time": 133.5028796195984,
+      "type": "delta"
+    },
+    {
+      "text": "岗位地点",
+      "_time": 133.5033311843872,
+      "type": "delta"
+    },
+    {
+      "text": "北京，薪资范围",
+      "_time": 133.7129876613617,
+      "type": "delta"
+    },
+    {
+      "text": "通常在",
+      "_time": 133.71572995185852,
+      "type": "delta"
+    },
+    {
+      "text": " 30k",
+      "_time": 133.78300404548645,
+      "type": "delta"
+    },
+    {
+      "text": "-60k",
+      "_time": 133.78567743301392,
+      "type": "delta"
+    },
+    {
+      "text": " [来源：字节",
+      "_time": 133.89111638069153,
+      "type": "delta"
+    },
+    {
+      "text": "跳动-AI ",
+      "_time": 133.8937268257141,
+      "type": "delta"
+    },
+    {
+      "text": "产品经理]。\n\n",
+      "_time": 134.05212473869324,
+      "type": "delta"
+    },
+    {
+      "text": "### 3.",
+      "_time": 134.0546646118164,
+      "type": "delta"
+    },
+    {
+      "text": " 面试模拟训练",
+      "_time": 134.1038534641266,
+      "type": "delta"
+    },
+    {
+      "text": "\n基于",
+      "_time": 134.10567784309387,
+      "type": "delta"
+    },
+    {
+      "text": "你的短板，建议",
+      "_time": 134.22399616241455,
+      "type": "delta"
+    },
+    {
+      "text": "重点",
+      "_time": 134.22767663002014,
+      "type": "delta"
+    },
+    {
+      "text": "练习以下面试题：",
+      "_time": 134.48500156402588,
+      "type": "delta"
+    },
+    {
+      "text": "\n*   **",
+      "_time": 134.48654294013977,
+      "type": "delta"
+    },
+    {
+      "text": "场景设计题**",
+      "_time": 134.59900903701782,
+      "type": "delta"
+    },
+    {
+      "text": "：假设你要",
+      "_time": 134.60031867027283,
+      "type": "delta"
+    },
+    {
+      "text": "设计一款面向 C",
+      "_time": 134.797043800354,
+      "type": "delta"
+    },
+    {
+      "text": " 端用户的 AI",
+      "_time": 134.7973997592926,
+      "type": "delta"
+    },
+    {
+      "text": " 智能笔记助手",
+      "_time": 134.8298692703247,
+      "type": "delta"
+    },
+    {
+      "text": "，能够自动整理",
+      "_time": 134.83254098892212,
+      "type": "delta"
+    },
+    {
+      "text": "用户碎片化记录",
+      "_time": 134.96859335899353,
+      "type": "delta"
+    },
+    {
+      "text": "并生成结构化知识",
+      "_time": 134.97233319282532,
+      "type": "delta"
+    },
+    {
+      "text": "图谱。请你从",
+      "_time": 135.05201053619385,
+      "type": "delta"
+    },
+    {
+      "text": "用户需求分层、核心",
+      "_time": 135.05450558662415,
+      "type": "delta"
+    },
+    {
+      "text": "功能拆解、AI",
+      "_time": 135.19305396080017,
+      "type": "delta"
+    },
+    {
+      "text": " 能力边界三个",
+      "_time": 135.1975667476654,
+      "type": "delta"
+    },
+    {
+      "text": "维度，阐述你的",
+      "_time": 135.26378965377808,
+      "type": "delta"
+    },
+    {
+      "text": "产品设计。\n\n###",
+      "_time": 135.2675268650055,
+      "type": "delta"
+    },
+    {
+      "text": " 4. ",
+      "_time": 135.38105034828186,
+      "type": "delta"
+    },
+    {
+      "text": "提升建议\n为了提高",
+      "_time": 135.42880249023438,
+      "type": "delta"
+    },
+    {
+      "text": "通过率，建议采取",
+      "_time": 135.55202317237854,
+      "type": "delta"
+    },
+    {
+      "text": "以下行动：\n",
+      "_time": 135.55251049995422,
+      "type": "delta"
+    },
+    {
+      "text": "*   **补充",
+      "_time": 135.75393104553223,
+      "type": "delta"
+    },
+    {
+      "text": "技术实战",
+      "_time": 135.757342338562,
+      "type": "delta"
+    },
+    {
+      "text": "**：尽快在实际",
+      "_time": 135.8824281692505,
+      "type": "delta"
+    },
+    {
+      "text": "项目中应用 Python、",
+      "_time": 135.88359117507935,
+      "type": "delta"
+    },
+    {
+      "text": "PyTorch、",
+      "_time": 136.03696084022522,
+      "type": "delta"
+    },
+    {
+      "text": "LangChain 等",
+      "_time": 136.03729629516602,
+      "type": "delta"
+    },
+    {
+      "text": "框架，而非仅",
+      "_time": 136.11180090904236,
+      "type": "delta"
+    },
+    {
+      "text": "了解概念。\n",
+      "_time": 136.11224389076233,
+      "type": "delta"
+    },
+    {
+      "text": "*   **完善",
+      "_time": 136.31489658355713,
+      "type": "delta"
+    },
+    {
+      "text": "项目经历",
+      "_time": 136.3185453414917,
+      "type": "delta"
+    },
+    {
+      "text": "**：尝试设计",
+      "_time": 136.38787412643433,
+      "type": "delta"
+    },
+    {
+      "text": "完整的",
+      "_time": 136.3905746936798,
+      "type": "delta"
+    },
+    {
+      "text": " C 端 A",
+      "_time": 136.4987132549286,
+      "type": "delta"
+    },
+    {
+      "text": "IGC 产品",
+      "_time": 136.52884459495544,
+      "type": "delta"
+    },
+    {
+      "text": "或 B 端",
+      "_time": 136.60295057296753,
+      "type": "delta"
+    },
+    {
+      "text": " SaaS",
+      "_time": 136.61082315444946,
+      "type": "delta"
+    },
+    {
+      "text": "/RPA 方案",
+      "_time": 136.77895998954773,
+      "type": "delta"
+    },
+    {
+      "text": "，特别是",
+      "_time": 136.77924942970276,
+      "type": "delta"
+    },
+    {
+      "text": " Agent 相关应用",
+      "_time": 136.92763924598694,
+      "type": "delta"
+    },
+    {
+      "text": "。\n*",
+      "_time": 136.92807602882385,
+      "type": "delta"
+    },
+    {
+      "text": "   **展现技术",
+      "_time": 137.00694966316223,
+      "type": "delta"
+    },
+    {
+      "text": "敏感度**：",
+      "_time": 137.00948548316956,
+      "type": "delta"
+    },
+    {
+      "text": "在简历或面试",
+      "_time": 137.17097926139832,
+      "type": "delta"
+    },
+    {
+      "text": "中体现",
+      "_time": 137.17350721359253,
+      "type": "delta"
+    },
+    {
+      "text": "对前沿 AI ",
+      "_time": 137.31383299827576,
+      "type": "delta"
+    },
+    {
+      "text": "技术的",
+      "_time": 137.3141646385193,
+      "type": "delta"
+    },
+    {
+      "text": "主动追踪（如",
+      "_time": 137.38889455795288,
+      "type": "delta"
+    },
+    {
+      "text": "高频使用新",
+      "_time": 137.39259886741638,
+      "type": "delta"
+    },
+    {
+      "text": "工具、阅读行业动态",
+      "_time": 137.49383759498596,
+      "type": "delta"
+    },
+    {
+      "text": "）。\n*",
+      "_time": 137.52401518821716,
+      "type": "delta"
+    },
+    {
+      "text": "   **强化逻辑思维",
+      "_time": 137.6547520160675,
+      "type": "delta"
+    },
+    {
+      "text": "**：准备",
+      "_time": 137.65735721588135,
+      "type": "delta"
+    },
+    {
+      "text": "案例证明你的逻辑",
+      "_time": 137.93574833869934,
+      "type": "delta"
+    },
+    {
+      "text": "拆解与结构化思维能力",
+      "_time": 137.9777479171753,
+      "type": "delta"
+    },
+    {
+      "text": "，这是该岗位",
+      "_time": 138.10887837409973,
+      "type": "delta"
+    },
+    {
+      "text": "的核心要求之一",
+      "_time": 138.1103594303131,
+      "type": "delta"
+    },
+    {
+      "text": "。",
+      "_time": 138.17379093170166,
+      "type": "delta"
+    },
+    {
+      "session_id": "eval_chen_04_1780648728837",
+      "intent": "interview_prepare",
+      "route_meta": {
+        "layer": "llm",
+        "intent": "interview_prepare",
+        "confidence": 0.88,
+        "demands": [
+          {
+            "intent": "interview_prepare",
+            "entities": {
+              "company": "字节",
+              "position": "AI产品经理"
+            }
+          }
+        ],
+        "plan_tasks": 4
+      },
+      "agent_mode": "llm",
+      "is_clarification": false,
+      "agent": {
+        "rewritten_query": "面字节AI产品经理要准备什么",
+        "tools": [
+          {
+            "tool": "kb_retrieve",
+            "status": "✅",
+            "params": {
+              "query": "字节 AI产品经理 JD",
+              "top_k": 5
+            },
+            "result_preview": "{'chunks': [{'chunk_id': 'ac9973c8-01be-4cd6-9a99-097873a59cf0_chunk_2', 'content': '【字节跳动 · AI产品经理 硬性要求】\\n本科及以上学历，兼具C端AIGC敏锐度与B端SaaS/RPA逻辑功底', 'metadata': {'company': '字节跳动', 'index': 2, 'jd_id': 'ac"
+          },
+          {
+            "tool": "match_analyze",
+            "status": "✅",
+            "params": {
+              "resume_text": "姓名：陈雨桐\r\n教育背景\r\n江南科技大学\r\n信息工程学院·软件工程（AI应用方向）·硕士\r\n2024.09-2027.06（预计）\r\nGPA: 3.4/4.0 | 主修：机器学习基础、数据库系统、软件项目管理、人机交互设计\r\n\r\n云溪大学\r\n计算机学院·信息管理与信息系统·本科\r\n2020.09-2024.06\r\n荣誉：两次校级三等奖学金 | 主修：数据结构、管理学原理、Web开发技术、统计学\r\n\r\n项目经历\r\n求职助手小程序 — 智能简历匹配与面试模拟工具\r\n2025.03-2025.11\r\n产品经理 | 三人小组\r\n- 需求分析：设计调研问卷回收40余份有效样本，梳理\"简历评估\"与\"定向面试模拟\"核心需求，使用Figma完成低保真原型，输出产品需求文档。\r\n- AI匹配策略：调研开源Embedding模型实现简历与JD语义相似度计算，探索多维度匹配方案，对比整篇匹配与分块匹配效果差异，持续优化推荐排序。\r\n- 内容生成：基于大模型AI设计结构化Prompt，融合岗位关键词与简历信息输出个性化面试题，建立追问机制增强模拟面试针对性。\r\n- 测试验证：组织20人内测收集用户路径与反馈数据，针对复杂PDF格式设计补充录入机制，完成从需求分析到上线测试的完整产品闭环。\r\n\r\n教务问答机器人 — 基于校内政策的RAG问答系统\r\n2024.10-2025.02\r\n产品设计与测试 | 实验室课题项目\r\n- 知识库构建：收集整理教务处政策文件、培养方案及历史问答共80余份，完成扫描件OCR识别、格式转换与结构化清洗，建立可检索的领域知识库。\r\n- 交互设计：设计Web端对话界面，参考主流客服产品布局增加\"推荐提问\"推荐模块降低投入成本，针对政策类回答设计溯源展示功能增强可信度。\r\n- 效果测试：参与搭建检索增强生成链路，完成实验环境下多轮问答测试，验证标准政策类问题回答准确率，整理测试数据与优化建议形成可复用方案。\r\n\r\n校园经历\r\n江南科技大学软件学院学生会·宣传部干事\r\n2024.09-2025.06\r\n- 负责学院官方公众号推文排版与发布，累计输出活动宣传稿件10余篇；协助组织院内编程比赛，负责报名统计与现场签到。\r\n\r\n云溪大学图书馆·勤工助学岗\r\n2022.03-2023.06\r\n- 负责电子阅览室日常值班，协助同学解决基础网络与设备使用问题；参与旧期刊电子目录录入与数据整理工作。\r\n\r\n获奖情况\r\n- 2025.05 江南科技大学研究生学业三等奖学金\r\n- 2024.11 学院AI应用创新赛（课程组）三等奖\r\n- 2022.06 云溪大学优秀共青团员\r\n- 2022.12 校级网页设计比赛优秀奖\r\n\r\n个人技能\r\n- 产品工具：熟练使用Figma进行原型与交互演示，了解Axure基础操作；能够使用Xmind梳理产品架构，通过腾讯文档/飞书写PRD。\r\n- 技术理解：了解大语言模型在应用层的落地方式，具备Prompt Engineering实践经验；理解RAG基本架构与工作流程，了解Embedding与向量检索作用。\r\n- 语言能力：英语CET-4（525分），可阅读英文技术文档与产品资料。\r\n- 办公技能：熟练使用Office办公软件，掌握Excel数据透视表等基础数据分析功能。",
+              "jd_text": [
+                {
+                  "chunk_id": "ac9973c8-01be-4cd6-9a99-097873a59cf0_chunk_2",
+                  "content": "【字节跳动 · AI产品经理 硬性要求】\n本科及以上学历，兼具C端AIGC敏锐度与B端SaaS/RPA逻辑功底",
+                  "metadata": {
+                    "company": "字节跳动",
+                    "index": 2,
+                    "jd_id": "ac9973c8-01be-4cd6-9a99-097873a59cf0",
+                    "position": "AI产品经理",
+                    "priority": "high",
+                    "section": "hard_requirements",
+                    "strategy": "semantic"
+                  },
+                  "distance": 0.5172616243362427,
+                  "bm25_score": 11.273926253930416,
+                  "vec_norm": 0.7234805915091891,
+                  "bm25_norm": 0.521062592596384,
+                  "hybrid_score": 0.6627551918353476,
+                  "rerank_score": 0.9876
+                },
+                {
+                  "chunk_id": "ac9973c8-01be-4cd6-9a99-097873a59cf0_chunk_5",
+                  "content": "【字节跳动 · AI产品经理 硬性要求】\n具备极强的逻辑拆解力，能像指挥交响乐一样控制模型输出",
+                  "metadata": {
+                    "company": "字节跳动",
+                    "index": 5,
+                    "jd_id": "ac9973c8-01be-4cd6-9a99-097873a59cf0",
+                    "position": "AI产品经理",
+                    "priority": "high",
+                    "section": "hard_requirements",
+                    "strategy": "semantic"
+                  },
+                  "distance": 0.4580254852771759,
+                  "bm25_score": 11.78435584408047,
+                  "vec_norm": 0.9491384202935884,
+                  "bm25_norm": 0.6287314186120652,
+                  "hybrid_score": 0.8530163197891314,
+                  "rerank_score": 0.9858
+                },
+                {
+                  "chunk_id": "ac9973c8-01be-4cd6-9a99-097873a59cf0_chunk_8",
+                  "content": "【字节跳动 · AI产品经理 关键词】\nPython, PyTorch, LangChain, RAG, Agent, 产品经理, AI",
+                  "metadata": {
+                    "company": "字节跳动",
+                    "index": 8,
+                    "jd_id": "ac9973c8-01be-4cd6-9a99-097873a59cf0",
+                    "position": "AI产品经理",
+                    "section": "keywords",
+                    "strategy": "semantic"
+                  },
+                  "distance": 0.5713280439376831,
+                  "bm25_score": 13.544442554841437,
+                  "vec_norm": 0.5175166132485243,
+                  "bm25_norm": 1.0,
+                  "hybrid_score": 0.6622616292739669,
+                  "rerank_score": 0.9817
+                },
+                {
+                  "chunk_id": "ac9973c8-01be-4cd6-9a99-097873a59cf0_chunk_0",
+                  "content": "公司：字节跳动，岗位：AI产品经理，地点：北京，薪资：30k-60k",
+                  "metadata": {
+                    "category": "产品",
+                    "company": "字节跳动",
+                    "domain": "AI",
+                    "index": 0,
+                    "jd_id": "ac9973c8-01be-4cd6-9a99-097873a59cf0",
+                    "max_years": 5,
+                    "min_education": "本科",
+                    "min_years": 3,
+                    "position": "AI产品经理",
+                    "section": "basic_info",
+                    "strategy": "semantic"
+                  },
+                  "distance": 0.4446741044521332,
+                  "bm25_score": 8.868667810026786,
+                  "vec_norm": 1.0,
+                  "bm25_norm": 0.013702992140467742,
+                  "hybrid_score": 0.7041108976421403,
+                  "rerank_score": 0.9796
+                },
+                {
+                  "chunk_id": "ac9973c8-01be-4cd6-9a99-097873a59cf0_chunk_6",
+                  "content": "【字节跳动 · AI产品经理 硬性要求】\n24小时高频冲浪，对新技术有雷达般的嗅觉",
+                  "metadata": {
+                    "company": "字节跳动",
+                    "index": 6,
+                    "jd_id": "ac9973c8-01be-4cd6-9a99-097873a59cf0",
+                    "position": "AI产品经理",
+                    "priority": "high",
+                    "section": "hard_requirements",
+                    "strategy": "semantic"
+                  },
+                  "distance": 0.5325616598129272,
+                  "bm25_score": 12.230124469647883,
+                  "vec_norm": 0.6651956856926533,
+                  "bm25_norm": 0.7227608117265157,
+                  "hybrid_score": 0.6824652235028119,
+                  "rerank_score": 0.9373
+                }
+              ],
+              "company": "字节",
+              "position": "AI产品经理"
+            },
+            "result_preview": "{'score': 36, 'label': '不匹配', 'advantages': ['产品需求分析与原型设计（Figma）', '用户调研与问卷设计', 'RAG知识库构建与问答系统', 'Prompt Engineering与AI内容生成', '多维度匹配方案探索', '项目管理（从需求到上线）', '用户测试与反馈收集', '基础数据分析（Excel数据透视表）', '英文技术文档阅读'"
+          },
+          {
+            "tool": "interview_gen",
+            "status": "✅",
+            "params": {
+              "match_result": {
+                "score": 36,
+                "label": "不匹配",
+                "advantages": [
+                  "产品需求分析与原型设计（Figma）",
+                  "用户调研与问卷设计",
+                  "RAG知识库构建与问答系统",
+                  "Prompt Engineering与AI内容生成",
+                  "多维度匹配方案探索",
+                  "项目管理（从需求到上线）",
+                  "用户测试与反馈收集",
+                  "基础数据分析（Excel数据透视表）",
+                  "英文技术文档阅读"
+                ],
+                "weaknesses": [
+                  "1. 缺乏Python、PyTorch、LangChain等AI开发框架的实际编程经验（仅了解概念，未在项目中使用）；2. 无B端SaaS或RPA产品的设计或交付经验；3. 无C端AIGC产品（如智能助手、内容编辑工具等）的完整设计经验；4. 无Agent相关项目或应用经验；5. 未体现对前沿AI技术的主动追踪与敏锐感知（如高频使用新工具、阅读行业动态）；6. 尚未毕业，无全职工作经验，无法满足通常要求的2年以上经验。"
+                ],
+                "suggestions": [
+                  "核心能力要求: 1. 本科及以上学历，计算机/AI相关专业；2. 极强的逻辑拆解与结构化思维能力；3. C端AIGC产品敏感度与设计能力；4. B端SaaS/RPA逻辑功底与产品思维；5. 技术技能：Python、PyTorch、LangChain、RAG、Agent；6. 产品经理基本能力：需求分析、原型设计（Figma）、项目管理、用户测试；7. 24小时高频冲浪，对新技术有雷达般的嗅觉。"
+                ],
+                "match_score": 36,
+                "covered": [
+                  "产品需求分析与原型设计（Figma）",
+                  "用户调研与问卷设计",
+                  "RAG知识库构建与问答系统",
+                  "Prompt Engineering与AI内容生成",
+                  "多维度匹配方案探索",
+                  "项目管理（从需求到上线）",
+                  "用户测试与反馈收集",
+                  "基础数据分析（Excel数据透视表）",
+                  "英文技术文档阅读"
+                ],
+                "missing_experience": "1. 缺乏Python、PyTorch、LangChain等AI开发框架的实际编程经验（仅了解概念，未在项目中使用）；2. 无B端SaaS或RPA产品的设计或交付经验；3. 无C端AIGC产品（如智能助手、内容编辑工具等）的完整设计经验；4. 无Agent相关项目或应用经验；5. 未体现对前沿AI技术的主动追踪与敏锐感知（如高频使用新工具、阅读行业动态）；6. 尚未毕业，无全职工作经验，无法满足通常要求的2年以上经验。",
+                "core_skills": "1. 本科及以上学历，计算机/AI相关专业；2. 极强的逻辑拆解与结构化思维能力；3. C端AIGC产品敏感度与设计能力；4. B端SaaS/RPA逻辑功底与产品思维；5. 技术技能：Python、PyTorch、LangChain、RAG、Agent；6. 产品经理基本能力：需求分析、原型设计（Figma）、项目管理、用户测试；7. 24小时高频冲浪，对新技术有雷达般的嗅觉。",
+                "company": "字节",
+                "position": "AI产品经理"
+              },
+              "count": 5,
+              "difficulty": "mixed"
+            },
+            "result_preview": "{'questions': ['假设你要设计一款面向C端用户的AI智能笔记助手，能够自动整理用户碎片化记录并生成结构化知识图谱。请你从用户需求分层、核心功能拆解、AI能力边界三个维度，阐述你的产品设计思路。追问方向：1）如果发现用户对自动生成的图谱准确率仅60%，你会如何平衡产品体验与技术局限？2）请举出一个具体场景，说明如何通过Prompt Engineering优化用户输入质量。', '请设计"
+          }
+        ],
+        "kb_chunks_count": 4,
+        "system_prompt_preview": "你是一位专业的求职顾问。请基于以下工具执行结果，给用户一个清晰、有帮助的回复。\n要求：\n1. 先直接回答用户的问题（是/否/有/没有），不要绕弯子，不要重复用户的原话\n2. 如果有匹配分析结果，给出具体的分数和建议\n3. 如果有检索结果，基于事实回答，不要编造\n4. 【强制】引用信息时必须标注来源。每个引用的事实后面都要跟 [来源：公司名-岗位名] 格式。   kb_retrieve 结果的 ch"
+      },
+      "memory": {
+        "working_turns": 1,
+        "compressed_blocks": 0,
+        "current_topic": "general",
+        "evidence_cache_size": 5
+      },
+      "reply": "有具体的准备重点，但当前匹配度较低。\n\n### 1. 匹配度诊断\n根据简历与岗位要求的分析，当前匹配评分为 **36 分**，标签为 **不匹配**。\n*   **优势领域**：产品需求分析与原型设计（Figma）、用户调研、RAG 知识库构建、Prompt Engineering、项目管理及基础数据分析。\n*   **核心短板**：\n    1.  缺乏 Python、PyTorch、LangChain 等 AI 开发框架的实际编程经验。\n    2.  无 B 端 SaaS 或 RPA 产品的设计交付经验。\n    3.  无 C 端 AIGC 产品（如智能助手）的完整设计经验。\n    4.  无 Agent 相关项目经验。\n    5.  未体现对前沿 AI 技术的主动追踪与敏锐感知。\n    6.  尚未毕业，无全职工作经验，通常该岗位要求 2 年以上经验。\n\n### 2. 核心准备清单（基于 JD 硬性要求）\n针对字节该岗位，你需要重点准备以下内容：\n*   **学历与思维**：需具备本科及以上学历，且拥有极强的逻辑拆解力，能像指挥交响乐一样控制模型输出 [来源：字节跳动-AI 产品经理]。\n*   **技术栈储备**：必须熟悉 Python, PyTorch, LangChain, RAG, Agent 等关键词及相关技术实现 [来源：字节跳动-AI 产品经理]。\n*   **产品经验**：需兼具 C 端 AIGC 敏锐度与 B 端 SaaS/RPA 逻辑功底 [来源：字节跳动-AI 产品经理]。\n*   **行业嗅觉**：需保持 24 小时高频冲浪，对新技术有雷达般的嗅觉 [来源：字节跳动-AI 产品经理]。\n*   **薪资参考**：该岗位地点北京，薪资范围通常在 30k-60k [来源：字节跳动-AI 产品经理]。\n\n### 3. 面试模拟训练\n基于你的短板，建议重点练习以下面试题：\n*   **场景设计题**：假设你要设计一款面向 C 端用户的 AI 智能笔记助手，能够自动整理用户碎片化记录并生成结构化知识图谱。请你从用户需求分层、核心功能拆解、AI 能力边界三个维度，阐述你的产品设计。\n\n### 4. 提升建议\n为了提高通过率，建议采取以下行动：\n*   **补充技术实战**：尽快在实际项目中应用 Python、PyTorch、LangChain 等框架，而非仅了解概念。\n*   **完善项目经历**：尝试设计完整的 C 端 AIGC 产品或 B 端 SaaS/RPA 方案，特别是 Agent 相关应用。\n*   **展现技术敏感度**：在简历或面试中体现对前沿 AI 技术的主动追踪（如高频使用新工具、阅读行业动态）。\n*   **强化逻辑思维**：准备案例证明你的逻辑拆解与结构化思维能力，这是该岗位的核心要求之一。",
+      "debug_info": {
+        "task_graph": {
+          "tasks": {
+            "T0": {
+              "task_id": "T0",
+              "task_type": "tool_call",
+              "tool_name": "kb_retrieve",
+              "status": "success",
+              "parameters": {
+                "query": "{{intent_prepare.company}} {{intent_prepare.position}} JD",
+                "top_k": 5
+              },
+              "resolved_params": {
+                "query": "字节 AI产品经理 JD",
+                "top_k": 5
+              },
+              "result": {
+                "chunks": [
+                  {
+                    "chunk_id": "ac9973c8-01be-4cd6-9a99-097873a59cf0_chunk_2",
+                    "content": "【字节跳动 · AI产品经理 硬性要求】\n本科及以上学历，兼具C端AIGC敏锐度与B端SaaS/RPA逻辑功底",
+                    "metadata": {
+                      "company": "字节跳动",
+                      "index": 2,
+                      "jd_id": "ac9973c8-01be-4cd6-9a99-097873a59cf0",
+                      "position": "AI产品经理",
+                      "priority": "high",
+                      "section": "hard_requirements",
+                      "strategy": "semantic"
+                    },
+                    "distance": 0.5172616243362427,
+                    "bm25_score": 11.273926253930416,
+                    "vec_norm": 0.7234805915091891,
+                    "bm25_norm": 0.521062592596384,
+                    "hybrid_score": 0.6627551918353476,
+                    "rerank_score": 0.9876
+                  },
+                  {
+                    "chunk_id": "ac9973c8-01be-4cd6-9a99-097873a59cf0_chunk_5",
+                    "content": "【字节跳动 · AI产品经理 硬性要求】\n具备极强的逻辑拆解力，能像指挥交响乐一样控制模型输出",
+                    "metadata": {
+                      "company": "字节跳动",
+                      "index": 5,
+                      "jd_id": "ac9973c8-01be-4cd6-9a99-097873a59cf0",
+                      "position": "AI产品经理",
+                      "priority": "high",
+                      "section": "hard_requirements",
+                      "strategy": "semantic"
+                    },
+                    "distance": 0.4580254852771759,
+                    "bm25_score": 11.78435584408047,
+                    "vec_norm": 0.9491384202935884,
+                    "bm25_norm": 0.6287314186120652,
+                    "hybrid_score": 0.8530163197891314,
+                    "rerank_score": 0.9858
+                  },
+                  {
+                    "chunk_id": "ac9973c8-01be-4cd6-9a99-097873a59cf0_chunk_8",
+                    "content": "【字节跳动 · AI产品经理 关键词】\nPython, PyTorch, LangChain, RAG, Agent, 产品经理, AI",
+                    "metadata": {
+                      "company": "字节跳动",
+                      "index": 8,
+                      "jd_id": "ac9973c8-01be-4cd6-9a99-097873a59cf0",
+                      "position": "AI产品经理",
+                      "section": "keywords",
+                      "strategy": "semantic"
+                    },
+                    "distance": 0.5713280439376831,
+                    "bm25_score": 13.544442554841437,
+                    "vec_norm": 0.5175166132485243,
+                    "bm25_norm": 1.0,
+                    "hybrid_score": 0.6622616292739669,
+                    "rerank_score": 0.9817
+                  },
+                  {
+                    "chunk_id": "ac9973c8-01be-4cd6-9a99-097873a59cf0_chunk_0",
+                    "content": "公司：字节跳动，岗位：AI产品经理，地点：北京，薪资：30k-60k",
+                    "metadata": {
+                      "category": "产品",
+                      "company": "字节跳动",
+                      "domain": "AI",
+                      "index": 0,
+                      "jd_id": "ac9973c8-01be-4cd6-9a99-097873a59cf0",
+                      "max_years": 5,
+                      "min_education": "本科",
+                      "min_years": 3,
+                      "position": "AI产品经理",
+                      "section": "basic_info",
+                      "strategy": "semantic"
+                    },
+                    "distance": 0.4446741044521332,
+                    "bm25_score": 8.868667810026786,
+                    "vec_norm": 1.0,
+                    "bm25_norm": 0.013702992140467742,
+                    "hybrid_score": 0.7041108976421403,
+                    "rerank_score": 0.9796
+                  },
+                  {
+                    "chunk_id": "ac9973c8-01be-4cd6-9a99-097873a59cf0_chunk_6",
+                    "content": "【字节跳动 · AI产品经理 硬性要求】\n24小时高频冲浪，对新技术有雷达般的嗅觉",
+                    "metadata": {
+                      "company": "字节跳动",
+                      "index": 6,
+                      "jd_id": "ac9973c8-01be-4cd6-9a99-097873a59cf0",
+                      "position": "AI产品经理",
+                      "priority": "high",
+                      "section": "hard_requirements",
+                      "strategy": "semantic"
+                    },
+                    "distance": 0.5325616598129272,
+                    "bm25_score": 12.230124469647883,
+                    "vec_norm": 0.6651956856926533,
+                    "bm25_norm": 0.7227608117265157,
+                    "hybrid_score": 0.6824652235028119,
+                    "rerank_score": 0.9373
+                  }
+                ],
+                "query": "字节 AI产品经理 JD",
+                "filters": {},
+                "strategy": "hybrid(70%vec+30%bm25)+reranker",
+                "pool_k": 5,
+                "rerank_k": 10,
+                "pool_size": 31,
+                "vec_only": 11,
+                "bm25_only": 11,
+                "both": 9,
+                "rerank": {
+                  "enabled": true,
+                  "candidates": 5,
+                  "output": 5,
+                  "best_rerank_score": 0.9876
+                }
+              },
+              "observation": "工具 kb_retrieve 执行成功"
+            },
+            "T1": {
+              "task_id": "T1",
+              "task_type": "tool_call",
+              "tool_name": "match_analyze",
+              "status": "success",
+              "parameters": {
+                "resume_text": "{{global_slots.resume_text}}",
+                "jd_text": "{{T0.output.chunks}}",
+                "company": "{{intent_prepare.company}}",
+                "position": "{{intent_prepare.position}}"
+              },
+              "resolved_params": {
+                "resume_text": "姓名：陈雨桐\r\n教育背景\r\n江南科技大学\r\n信息工程学院·软件工程（AI应用方向）·硕士\r\n2024.09-2027.06（预计）\r\nGPA: 3.4/4.0 | 主修：机器学习基础、数据库系统、软件项目管理、人机交互设计\r\n\r\n云溪大学\r\n计算机学院·信息管理与信息系统·本科\r\n2020.09-2024.06\r\n荣誉：两次校级三等奖学金 | 主修：数据结构、管理学原理、Web开发技术、统计学\r\n\r\n项目经历\r\n求职助手小程序 — 智能简历匹配与面试模拟工具\r\n2025.03-2025.11\r\n产品经理 | 三人小组\r\n- 需求分析：设计调研问卷回收40余份有效样本，梳理\"简历评估\"与\"定向面试模拟\"核心需求，使用Figma完成低保真原型，输出产品需求文档。\r\n- AI匹配策略：调研开源Embedding模型实现简历与JD语义相似度计算，探索多维度匹配方案，对比整篇匹配与分块匹配效果差异，持续优化推荐排序。\r\n- 内容生成：基于大模型AI设计结构化Prompt，融合岗位关键词与简历信息输出个性化面试题，建立追问机制增强模拟面试针对性。\r\n- 测试验证：组织20人内测收集用户路径与反馈数据，针对复杂PDF格式设计补充录入机制，完成从需求分析到上线测试的完整产品闭环。\r\n\r\n教务问答机器人 — 基于校内政策的RAG问答系统\r\n2024.10-2025.02\r\n产品设计与测试 | 实验室课题项目\r\n- 知识库构建：收集整理教务处政策文件、培养方案及历史问答共80余份，完成扫描件OCR识别、格式转换与结构化清洗，建立可检索的领域知识库。\r\n- 交互设计：设计Web端对话界面，参考主流客服产品布局增加\"推荐提问\"推荐模块降低投入成本，针对政策类回答设计溯源展示功能增强可信度。\r\n- 效果测试：参与搭建检索增强生成链路，完成实验环境下多轮问答测试，验证标准政策类问题回答准确率，整理测试数据与优化建议形成可复用方案。\r\n\r\n校园经历\r\n江南科技大学软件学院学生会·宣传部干事\r\n2024.09-2025.06\r\n- 负责学院官方公众号推文排版与发布，累计输出活动宣传稿件10余篇；协助组织院内编程比赛，负责报名统计与现场签到。\r\n\r\n云溪大学图书馆·勤工助学岗\r\n2022.03-2023.06\r\n- 负责电子阅览室日常值班，协助同学解决基础网络与设备使用问题；参与旧期刊电子目录录入与数据整理工作。\r\n\r\n获奖情况\r\n- 2025.05 江南科技大学研究生学业三等奖学金\r\n- 2024.11 学院AI应用创新赛（课程组）三等奖\r\n- 2022.06 云溪大学优秀共青团员\r\n- 2022.12 校级网页设计比赛优秀奖\r\n\r\n个人技能\r\n- 产品工具：熟练使用Figma进行原型与交互演示，了解Axure基础操作；能够使用Xmind梳理产品架构，通过腾讯文档/飞书写PRD。\r\n- 技术理解：了解大语言模型在应用层的落地方式，具备Prompt Engineering实践经验；理解RAG基本架构与工作流程，了解Embedding与向量检索作用。\r\n- 语言能力：英语CET-4（525分），可阅读英文技术文档与产品资料。\r\n- 办公技能：熟练使用Office办公软件，掌握Excel数据透视表等基础数据分析功能。",
+                "jd_text": [
+                  {
+                    "chunk_id": "ac9973c8-01be-4cd6-9a99-097873a59cf0_chunk_2",
+                    "content": "【字节跳动 · AI产品经理 硬性要求】\n本科及以上学历，兼具C端AIGC敏锐度与B端SaaS/RPA逻辑功底",
+                    "metadata": {
+                      "company": "字节跳动",
+                      "index": 2,
+                      "jd_id": "ac9973c8-01be-4cd6-9a99-097873a59cf0",
+                      "position": "AI产品经理",
+                      "priority": "high",
+                      "section": "hard_requirements",
+                      "strategy": "semantic"
+                    },
+                    "distance": 0.5172616243362427,
+                    "bm25_score": 11.273926253930416,
+                    "vec_norm": 0.7234805915091891,
+                    "bm25_norm": 0.521062592596384,
+                    "hybrid_score": 0.6627551918353476,
+                    "rerank_score": 0.9876
+                  },
+                  {
+                    "chunk_id": "ac9973c8-01be-4cd6-9a99-097873a59cf0_chunk_5",
+                    "content": "【字节跳动 · AI产品经理 硬性要求】\n具备极强的逻辑拆解力，能像指挥交响乐一样控制模型输出",
+                    "metadata": {
+                      "company": "字节跳动",
+                      "index": 5,
+                      "jd_id": "ac9973c8-01be-4cd6-9a99-097873a59cf0",
+                      "position": "AI产品经理",
+                      "priority": "high",
+                      "section": "hard_requirements",
+                      "strategy": "semantic"
+                    },
+                    "distance": 0.4580254852771759,
+                    "bm25_score": 11.78435584408047,
+                    "vec_norm": 0.9491384202935884,
+                    "bm25_norm": 0.6287314186120652,
+                    "hybrid_score": 0.8530163197891314,
+                    "rerank_score": 0.9858
+                  },
+                  {
+                    "chunk_id": "ac9973c8-01be-4cd6-9a99-097873a59cf0_chunk_8",
+                    "content": "【字节跳动 · AI产品经理 关键词】\nPython, PyTorch, LangChain, RAG, Agent, 产品经理, AI",
+                    "metadata": {
+                      "company": "字节跳动",
+                      "index": 8,
+                      "jd_id": "ac9973c8-01be-4cd6-9a99-097873a59cf0",
+                      "position": "AI产品经理",
+                      "section": "keywords",
+                      "strategy": "semantic"
+                    },
+                    "distance": 0.5713280439376831,
+                    "bm25_score": 13.544442554841437,
+                    "vec_norm": 0.5175166132485243,
+                    "bm25_norm": 1.0,
+                    "hybrid_score": 0.6622616292739669,
+                    "rerank_score": 0.9817
+                  },
+                  {
+                    "chunk_id": "ac9973c8-01be-4cd6-9a99-097873a59cf0_chunk_0",
+                    "content": "公司：字节跳动，岗位：AI产品经理，地点：北京，薪资：30k-60k",
+                    "metadata": {
+                      "category": "产品",
+                      "company": "字节跳动",
+                      "domain": "AI",
+                      "index": 0,
+                      "jd_id": "ac9973c8-01be-4cd6-9a99-097873a59cf0",
+                      "max_years": 5,
+                      "min_education": "本科",
+                      "min_years": 3,
+                      "position": "AI产品经理",
+                      "section": "basic_info",
+                      "strategy": "semantic"
+                    },
+                    "distance": 0.4446741044521332,
+                    "bm25_score": 8.868667810026786,
+                    "vec_norm": 1.0,
+                    "bm25_norm": 0.013702992140467742,
+                    "hybrid_score": 0.7041108976421403,
+                    "rerank_score": 0.9796
+                  },
+                  {
+                    "chunk_id": "ac9973c8-01be-4cd6-9a99-097873a59cf0_chunk_6",
+                    "content": "【字节跳动 · AI产品经理 硬性要求】\n24小时高频冲浪，对新技术有雷达般的嗅觉",
+                    "metadata": {
+                      "company": "字节跳动",
+                      "index": 6,
+                      "jd_id": "ac9973c8-01be-4cd6-9a99-097873a59cf0",
+                      "position": "AI产品经理",
+                      "priority": "high",
+                      "section": "hard_requirements",
+                      "strategy": "semantic"
+                    },
+                    "distance": 0.5325616598129272,
+                    "bm25_score": 12.230124469647883,
+                    "vec_norm": 0.6651956856926533,
+                    "bm25_norm": 0.7227608117265157,
+                    "hybrid_score": 0.6824652235028119,
+                    "rerank_score": 0.9373
+                  }
+                ],
+                "company": "字节",
+                "position": "AI产品经理"
+              },
+              "result": {
+                "score": 36,
+                "label": "不匹配",
+                "advantages": [
+                  "产品需求分析与原型设计（Figma）",
+                  "用户调研与问卷设计",
+                  "RAG知识库构建与问答系统",
+                  "Prompt Engineering与AI内容生成",
+                  "多维度匹配方案探索",
+                  "项目管理（从需求到上线）",
+                  "用户测试与反馈收集",
+                  "基础数据分析（Excel数据透视表）",
+                  "英文技术文档阅读"
+                ],
+                "weaknesses": [
+                  "1. 缺乏Python、PyTorch、LangChain等AI开发框架的实际编程经验（仅了解概念，未在项目中使用）；2. 无B端SaaS或RPA产品的设计或交付经验；3. 无C端AIGC产品（如智能助手、内容编辑工具等）的完整设计经验；4. 无Agent相关项目或应用经验；5. 未体现对前沿AI技术的主动追踪与敏锐感知（如高频使用新工具、阅读行业动态）；6. 尚未毕业，无全职工作经验，无法满足通常要求的2年以上经验。"
+                ],
+                "suggestions": [
+                  "核心能力要求: 1. 本科及以上学历，计算机/AI相关专业；2. 极强的逻辑拆解与结构化思维能力；3. C端AIGC产品敏感度与设计能力；4. B端SaaS/RPA逻辑功底与产品思维；5. 技术技能：Python、PyTorch、LangChain、RAG、Agent；6. 产品经理基本能力：需求分析、原型设计（Figma）、项目管理、用户测试；7. 24小时高频冲浪，对新技术有雷达般的嗅觉。"
+                ],
+                "match_score": 36,
+                "covered": [
+                  "产品需求分析与原型设计（Figma）",
+                  "用户调研与问卷设计",
+                  "RAG知识库构建与问答系统",
+                  "Prompt Engineering与AI内容生成",
+                  "多维度匹配方案探索",
+                  "项目管理（从需求到上线）",
+                  "用户测试与反馈收集",
+                  "基础数据分析（Excel数据透视表）",
+                  "英文技术文档阅读"
+                ],
+                "missing_experience": "1. 缺乏Python、PyTorch、LangChain等AI开发框架的实际编程经验（仅了解概念，未在项目中使用）；2. 无B端SaaS或RPA产品的设计或交付经验；3. 无C端AIGC产品（如智能助手、内容编辑工具等）的完整设计经验；4. 无Agent相关项目或应用经验；5. 未体现对前沿AI技术的主动追踪与敏锐感知（如高频使用新工具、阅读行业动态）；6. 尚未毕业，无全职工作经验，无法满足通常要求的2年以上经验。",
+                "core_skills": "1. 本科及以上学历，计算机/AI相关专业；2. 极强的逻辑拆解与结构化思维能力；3. C端AIGC产品敏感度与设计能力；4. B端SaaS/RPA逻辑功底与产品思维；5. 技术技能：Python、PyTorch、LangChain、RAG、Agent；6. 产品经理基本能力：需求分析、原型设计（Figma）、项目管理、用户测试；7. 24小时高频冲浪，对新技术有雷达般的嗅觉。",
+                "company": "字节",
+                "position": "AI产品经理"
+              },
+              "observation": "工具 match_analyze 执行成功"
+            },
+            "T2": {
+              "task_id": "T2",
+              "task_type": "tool_call",
+              "tool_name": "interview_gen",
+              "status": "success",
+              "parameters": {
+                "match_result": "{{T1.output}}",
+                "count": 5,
+                "difficulty": "mixed"
+              },
+              "resolved_params": {
+                "match_result": {
+                  "score": 36,
+                  "label": "不匹配",
+                  "advantages": [
+                    "产品需求分析与原型设计（Figma）",
+                    "用户调研与问卷设计",
+                    "RAG知识库构建与问答系统",
+                    "Prompt Engineering与AI内容生成",
+                    "多维度匹配方案探索",
+                    "项目管理（从需求到上线）",
+                    "用户测试与反馈收集",
+                    "基础数据分析（Excel数据透视表）",
+                    "英文技术文档阅读"
+                  ],
+                  "weaknesses": [
+                    "1. 缺乏Python、PyTorch、LangChain等AI开发框架的实际编程经验（仅了解概念，未在项目中使用）；2. 无B端SaaS或RPA产品的设计或交付经验；3. 无C端AIGC产品（如智能助手、内容编辑工具等）的完整设计经验；4. 无Agent相关项目或应用经验；5. 未体现对前沿AI技术的主动追踪与敏锐感知（如高频使用新工具、阅读行业动态）；6. 尚未毕业，无全职工作经验，无法满足通常要求的2年以上经验。"
+                  ],
+                  "suggestions": [
+                    "核心能力要求: 1. 本科及以上学历，计算机/AI相关专业；2. 极强的逻辑拆解与结构化思维能力；3. C端AIGC产品敏感度与设计能力；4. B端SaaS/RPA逻辑功底与产品思维；5. 技术技能：Python、PyTorch、LangChain、RAG、Agent；6. 产品经理基本能力：需求分析、原型设计（Figma）、项目管理、用户测试；7. 24小时高频冲浪，对新技术有雷达般的嗅觉。"
+                  ],
+                  "match_score": 36,
+                  "covered": [
+                    "产品需求分析与原型设计（Figma）",
+                    "用户调研与问卷设计",
+                    "RAG知识库构建与问答系统",
+                    "Prompt Engineering与AI内容生成",
+                    "多维度匹配方案探索",
+                    "项目管理（从需求到上线）",
+                    "用户测试与反馈收集",
+                    "基础数据分析（Excel数据透视表）",
+                    "英文技术文档阅读"
+                  ],
+                  "missing_experience": "1. 缺乏Python、PyTorch、LangChain等AI开发框架的实际编程经验（仅了解概念，未在项目中使用）；2. 无B端SaaS或RPA产品的设计或交付经验；3. 无C端AIGC产品（如智能助手、内容编辑工具等）的完整设计经验；4. 无Agent相关项目或应用经验；5. 未体现对前沿AI技术的主动追踪与敏锐感知（如高频使用新工具、阅读行业动态）；6. 尚未毕业，无全职工作经验，无法满足通常要求的2年以上经验。",
+                  "core_skills": "1. 本科及以上学历，计算机/AI相关专业；2. 极强的逻辑拆解与结构化思维能力；3. C端AIGC产品敏感度与设计能力；4. B端SaaS/RPA逻辑功底与产品思维；5. 技术技能：Python、PyTorch、LangChain、RAG、Agent；6. 产品经理基本能力：需求分析、原型设计（Figma）、项目管理、用户测试；7. 24小时高频冲浪，对新技术有雷达般的嗅觉。",
+                  "company": "字节",
+                  "position": "AI产品经理"
+                },
+                "count": 5,
+                "difficulty": "mixed"
+              },
+              "result": {
+                "questions": [
+                  "假设你要设计一款面向C端用户的AI智能笔记助手，能够自动整理用户碎片化记录并生成结构化知识图谱。请你从用户需求分层、核心功能拆解、AI能力边界三个维度，阐述你的产品设计思路。追问方向：1）如果发现用户对自动生成的图谱准确率仅60%，你会如何平衡产品体验与技术局限？2）请举出一个具体场景，说明如何通过Prompt Engineering优化用户输入质量。",
+                  "请设计一个RPA机器人，用于自动化处理企业内部的多系统数据同步任务（例如CRM到ERP的客户信息同步）。要求描述其流程编排逻辑、异常处理机制，以及如何利用RPA+AI（如OCR或NLP）解决非结构化数据问题。追问方向：1）如果外部系统API频繁变更，你的RPA方案如何保证长期稳定性？2）你如何评估这个RPA项目投入产出比？请给出量化思路。",
+                  "你负责一款AI内容生成工具（如AI写作助手）的产品规划，需要支持用户自定义生成风格。请你描述一种可落地的用户模型（User Model）方案，用于动态调整模型输出参数（如温度、top-p、系统提示词），并解释如何通过用户行为数据迭代模型效果。追问方向：1）在缺乏用户反馈标注数据时，你会如何设计冷启动阶段的prompt策略？2）请用具体案例说明如何权衡模型创造力与内容准确性。",
+                  "假设你需要向非技术团队成员解释LangChain框架中Agent的核心工作原理，以及RAG（检索增强生成）如何解决大模型幻觉问题。请你用通俗易懂的语言构建一个类比，并分析在实际应用中Agent+ RAG组合可能遇到的至少两个关键挑战。追问方向：1）如果检索到的文档质量参差不齐，你会如何设计过滤或重排机制？2）请说明你如何用非技术指标（如用户满意度、任务完成率）衡量RAG系统的效果。",
+                  "字节跳动某款C端产品计划引入AI功能，但当前团队缺乏AI相关经验。作为AI产品经理，请你设计一个为期3个月的技术预研与产品落地方案，包括优先级排序、技术可行性验证方法、跨团队协作机制。追问方向：1）你如何快速学习并掌握必要的AI技术概念（如Agent、RAG）以支撑产品决策？请给出具体学习路径。2）如果在预研阶段发现某个AI能力成本过高而收益不确定，你会如何说服团队调整方向？"
+                ],
+                "focus_areas": [
+                  "短板深挖：1. 缺乏Python、PyTorch、LangChain等AI开发框架的实际编程经验（仅了解概念，未在项目中使用）；2. 无B端SaaS或RPA产品的设计或交付经验；3. 无C端AIGC产品（如智能",
+                  "核心能力：1. 本科及以上学历，计算机/AI相关专业；2. 极强的逻辑拆解与结构化思维能力；3. C端AIGC产品敏感度与设计能力；4. B端SaaS/RPA逻辑功底与产品思维；5. 技术技能：Python、P"
+                ],
+                "question_count": 5,
+                "company": "字节",
+                "position": "AI产品经理"
+              },
+              "observation": "工具 interview_gen 执行成功"
+            },
+            "T3": {
+              "task_id": "T3",
+              "task_type": "aggregate",
+              "tool_name": null,
+              "status": "success",
+              "parameters": {
+                "match_result": "{{T1.output}}",
+                "interview_questions": "{{T2.output}}"
+              },
+              "resolved_params": {
+                "match_result": {
+                  "score": 36,
+                  "label": "不匹配",
+                  "advantages": [
+                    "产品需求分析与原型设计（Figma）",
+                    "用户调研与问卷设计",
+                    "RAG知识库构建与问答系统",
+                    "Prompt Engineering与AI内容生成",
+                    "多维度匹配方案探索",
+                    "项目管理（从需求到上线）",
+                    "用户测试与反馈收集",
+                    "基础数据分析（Excel数据透视表）",
+                    "英文技术文档阅读"
+                  ],
+                  "weaknesses": [
+                    "1. 缺乏Python、PyTorch、LangChain等AI开发框架的实际编程经验（仅了解概念，未在项目中使用）；2. 无B端SaaS或RPA产品的设计或交付经验；3. 无C端AIGC产品（如智能助手、内容编辑工具等）的完整设计经验；4. 无Agent相关项目或应用经验；5. 未体现对前沿AI技术的主动追踪与敏锐感知（如高频使用新工具、阅读行业动态）；6. 尚未毕业，无全职工作经验，无法满足通常要求的2年以上经验。"
+                  ],
+                  "suggestions": [
+                    "核心能力要求: 1. 本科及以上学历，计算机/AI相关专业；2. 极强的逻辑拆解与结构化思维能力；3. C端AIGC产品敏感度与设计能力；4. B端SaaS/RPA逻辑功底与产品思维；5. 技术技能：Python、PyTorch、LangChain、RAG、Agent；6. 产品经理基本能力：需求分析、原型设计（Figma）、项目管理、用户测试；7. 24小时高频冲浪，对新技术有雷达般的嗅觉。"
+                  ],
+                  "match_score": 36,
+                  "covered": [
+                    "产品需求分析与原型设计（Figma）",
+                    "用户调研与问卷设计",
+                    "RAG知识库构建与问答系统",
+                    "Prompt Engineering与AI内容生成",
+                    "多维度匹配方案探索",
+                    "项目管理（从需求到上线）",
+                    "用户测试与反馈收集",
+                    "基础数据分析（Excel数据透视表）",
+                    "英文技术文档阅读"
+                  ],
+                  "missing_experience": "1. 缺乏Python、PyTorch、LangChain等AI开发框架的实际编程经验（仅了解概念，未在项目中使用）；2. 无B端SaaS或RPA产品的设计或交付经验；3. 无C端AIGC产品（如智能助手、内容编辑工具等）的完整设计经验；4. 无Agent相关项目或应用经验；5. 未体现对前沿AI技术的主动追踪与敏锐感知（如高频使用新工具、阅读行业动态）；6. 尚未毕业，无全职工作经验，无法满足通常要求的2年以上经验。",
+                  "core_skills": "1. 本科及以上学历，计算机/AI相关专业；2. 极强的逻辑拆解与结构化思维能力；3. C端AIGC产品敏感度与设计能力；4. B端SaaS/RPA逻辑功底与产品思维；5. 技术技能：Python、PyTorch、LangChain、RAG、Agent；6. 产品经理基本能力：需求分析、原型设计（Figma）、项目管理、用户测试；7. 24小时高频冲浪，对新技术有雷达般的嗅觉。",
+                  "company": "字节",
+                  "position": "AI产品经理"
+                },
+                "interview_questions": {
+                  "questions": [
+                    "假设你要设计一款面向C端用户的AI智能笔记助手，能够自动整理用户碎片化记录并生成结构化知识图谱。请你从用户需求分层、核心功能拆解、AI能力边界三个维度，阐述你的产品设计思路。追问方向：1）如果发现用户对自动生成的图谱准确率仅60%，你会如何平衡产品体验与技术局限？2）请举出一个具体场景，说明如何通过Prompt Engineering优化用户输入质量。",
+                    "请设计一个RPA机器人，用于自动化处理企业内部的多系统数据同步任务（例如CRM到ERP的客户信息同步）。要求描述其流程编排逻辑、异常处理机制，以及如何利用RPA+AI（如OCR或NLP）解决非结构化数据问题。追问方向：1）如果外部系统API频繁变更，你的RPA方案如何保证长期稳定性？2）你如何评估这个RPA项目投入产出比？请给出量化思路。",
+                    "你负责一款AI内容生成工具（如AI写作助手）的产品规划，需要支持用户自定义生成风格。请你描述一种可落地的用户模型（User Model）方案，用于动态调整模型输出参数（如温度、top-p、系统提示词），并解释如何通过用户行为数据迭代模型效果。追问方向：1）在缺乏用户反馈标注数据时，你会如何设计冷启动阶段的prompt策略？2）请用具体案例说明如何权衡模型创造力与内容准确性。",
+                    "假设你需要向非技术团队成员解释LangChain框架中Agent的核心工作原理，以及RAG（检索增强生成）如何解决大模型幻觉问题。请你用通俗易懂的语言构建一个类比，并分析在实际应用中Agent+ RAG组合可能遇到的至少两个关键挑战。追问方向：1）如果检索到的文档质量参差不齐，你会如何设计过滤或重排机制？2）请说明你如何用非技术指标（如用户满意度、任务完成率）衡量RAG系统的效果。",
+                    "字节跳动某款C端产品计划引入AI功能，但当前团队缺乏AI相关经验。作为AI产品经理，请你设计一个为期3个月的技术预研与产品落地方案，包括优先级排序、技术可行性验证方法、跨团队协作机制。追问方向：1）你如何快速学习并掌握必要的AI技术概念（如Agent、RAG）以支撑产品决策？请给出具体学习路径。2）如果在预研阶段发现某个AI能力成本过高而收益不确定，你会如何说服团队调整方向？"
+                  ],
+                  "focus_areas": [
+                    "短板深挖：1. 缺乏Python、PyTorch、LangChain等AI开发框架的实际编程经验（仅了解概念，未在项目中使用）；2. 无B端SaaS或RPA产品的设计或交付经验；3. 无C端AIGC产品（如智能",
+                    "核心能力：1. 本科及以上学历，计算机/AI相关专业；2. 极强的逻辑拆解与结构化思维能力；3. C端AIGC产品敏感度与设计能力；4. B端SaaS/RPA逻辑功底与产品思维；5. 技术技能：Python、P"
+                  ],
+                  "question_count": 5,
+                  "company": "字节",
+                  "position": "AI产品经理"
+                }
+              },
+              "result": {
+                "aggregation": {
+                  "match_result": {
+                    "score": 36,
+                    "label": "不匹配",
+                    "advantages": [
+                      "产品需求分析与原型设计（Figma）",
+                      "用户调研与问卷设计",
+                      "RAG知识库构建与问答系统",
+                      "Prompt Engineering与AI内容生成",
+                      "多维度匹配方案探索",
+                      "项目管理（从需求到上线）",
+                      "用户测试与反馈收集",
+                      "基础数据分析（Excel数据透视表）",
+                      "英文技术文档阅读"
+                    ],
+                    "weaknesses": [
+                      "1. 缺乏Python、PyTorch、LangChain等AI开发框架的实际编程经验（仅了解概念，未在项目中使用）；2. 无B端SaaS或RPA产品的设计或交付经验；3. 无C端AIGC产品（如智能助手、内容编辑工具等）的完整设计经验；4. 无Agent相关项目或应用经验；5. 未体现对前沿AI技术的主动追踪与敏锐感知（如高频使用新工具、阅读行业动态）；6. 尚未毕业，无全职工作经验，无法满足通常要求的2年以上经验。"
+                    ],
+                    "suggestions": [
+                      "核心能力要求: 1. 本科及以上学历，计算机/AI相关专业；2. 极强的逻辑拆解与结构化思维能力；3. C端AIGC产品敏感度与设计能力；4. B端SaaS/RPA逻辑功底与产品思维；5. 技术技能：Python、PyTorch、LangChain、RAG、Agent；6. 产品经理基本能力：需求分析、原型设计（Figma）、项目管理、用户测试；7. 24小时高频冲浪，对新技术有雷达般的嗅觉。"
+                    ],
+                    "match_score": 36,
+                    "covered": [
+                      "产品需求分析与原型设计（Figma）",
+                      "用户调研与问卷设计",
+                      "RAG知识库构建与问答系统",
+                      "Prompt Engineering与AI内容生成",
+                      "多维度匹配方案探索",
+                      "项目管理（从需求到上线）",
+                      "用户测试与反馈收集",
+                      "基础数据分析（Excel数据透视表）",
+                      "英文技术文档阅读"
+                    ],
+                    "missing_experience": "1. 缺乏Python、PyTorch、LangChain等AI开发框架的实际编程经验（仅了解概念，未在项目中使用）；2. 无B端SaaS或RPA产品的设计或交付经验；3. 无C端AIGC产品（如智能助手、内容编辑工具等）的完整设计经验；4. 无Agent相关项目或应用经验；5. 未体现对前沿AI技术的主动追踪与敏锐感知（如高频使用新工具、阅读行业动态）；6. 尚未毕业，无全职工作经验，无法满足通常要求的2年以上经验。",
+                    "core_skills": "1. 本科及以上学历，计算机/AI相关专业；2. 极强的逻辑拆解与结构化思维能力；3. C端AIGC产品敏感度与设计能力；4. B端SaaS/RPA逻辑功底与产品思维；5. 技术技能：Python、PyTorch、LangChain、RAG、Agent；6. 产品经理基本能力：需求分析、原型设计（Figma）、项目管理、用户测试；7. 24小时高频冲浪，对新技术有雷达般的嗅觉。",
+                    "company": "字节",
+                    "position": "AI产品经理"
+                  },
+                  "interview_questions": {
+                    "questions": [
+                      "假设你要设计一款面向C端用户的AI智能笔记助手，能够自动整理用户碎片化记录并生成结构化知识图谱。请你从用户需求分层、核心功能拆解、AI能力边界三个维度，阐述你的产品设计思路。追问方向：1）如果发现用户对自动生成的图谱准确率仅60%，你会如何平衡产品体验与技术局限？2）请举出一个具体场景，说明如何通过Prompt Engineering优化用户输入质量。",
+                      "请设计一个RPA机器人，用于自动化处理企业内部的多系统数据同步任务（例如CRM到ERP的客户信息同步）。要求描述其流程编排逻辑、异常处理机制，以及如何利用RPA+AI（如OCR或NLP）解决非结构化数据问题。追问方向：1）如果外部系统API频繁变更，你的RPA方案如何保证长期稳定性？2）你如何评估这个RPA项目投入产出比？请给出量化思路。",
+                      "你负责一款AI内容生成工具（如AI写作助手）的产品规划，需要支持用户自定义生成风格。请你描述一种可落地的用户模型（User Model）方案，用于动态调整模型输出参数（如温度、top-p、系统提示词），并解释如何通过用户行为数据迭代模型效果。追问方向：1）在缺乏用户反馈标注数据时，你会如何设计冷启动阶段的prompt策略？2）请用具体案例说明如何权衡模型创造力与内容准确性。",
+                      "假设你需要向非技术团队成员解释LangChain框架中Agent的核心工作原理，以及RAG（检索增强生成）如何解决大模型幻觉问题。请你用通俗易懂的语言构建一个类比，并分析在实际应用中Agent+ RAG组合可能遇到的至少两个关键挑战。追问方向：1）如果检索到的文档质量参差不齐，你会如何设计过滤或重排机制？2）请说明你如何用非技术指标（如用户满意度、任务完成率）衡量RAG系统的效果。",
+                      "字节跳动某款C端产品计划引入AI功能，但当前团队缺乏AI相关经验。作为AI产品经理，请你设计一个为期3个月的技术预研与产品落地方案，包括优先级排序、技术可行性验证方法、跨团队协作机制。追问方向：1）你如何快速学习并掌握必要的AI技术概念（如Agent、RAG）以支撑产品决策？请给出具体学习路径。2）如果在预研阶段发现某个AI能力成本过高而收益不确定，你会如何说服团队调整方向？"
+                    ],
+                    "focus_areas": [
+                      "短板深挖：1. 缺乏Python、PyTorch、LangChain等AI开发框架的实际编程经验（仅了解概念，未在项目中使用）；2. 无B端SaaS或RPA产品的设计或交付经验；3. 无C端AIGC产品（如智能",
+                      "核心能力：1. 本科及以上学历，计算机/AI相关专业；2. 极强的逻辑拆解与结构化思维能力；3. C端AIGC产品敏感度与设计能力；4. B端SaaS/RPA逻辑功底与产品思维；5. 技术技能：Python、P"
+                    ],
+                    "question_count": 5,
+                    "company": "字节",
+                    "position": "AI产品经理"
+                  }
+                }
+              },
+              "observation": "聚合完成"
+            }
+          },
+          "global_status": "success",
+          "replan_reason": "",
+          "replan_count": 0
+        },
+        "intent": {
+          "demands": [
+            {
+              "intent": "interview_prepare",
+              "entities": {
+                "company": "字节",
+                "position": "AI产品经理"
+              },
+              "confidence": 0.88
+            }
+          ],
+          "needs_clarification": false,
+          "clarification_question": ""
+        },
+        "rewrite": {
+          "rewritten_query": "面字节AI产品经理要准备什么",
+          "search_keywords": "面字节AI产品经理要准备什么",
+          "is_follow_up": false,
+          "follow_up_type": "none",
+          "resolved_references": {}
+        },
+        "evidence_cache": [
+          {
+            "chunk_id": "ac9973c8-01be-4cd6-9a99-097873a59cf0_chunk_2",
+            "content": "【字节跳动 · AI产品经理 硬性要求】\n本科及以上学历，兼具C端AIGC敏锐度与B端SaaS/RPA逻辑功底",
+            "metadata": {
+              "company": "字节跳动",
+              "index": 2,
+              "jd_id": "ac9973c8-01be-4cd6-9a99-097873a59cf0",
+              "position": "AI产品经理",
+              "priority": "high",
+              "section": "hard_requirements",
+              "strategy": "semantic"
+            },
+            "distance": 0.5172616243362427,
+            "bm25_score": 11.273926253930416,
+            "vec_norm": 0.7234805915091891,
+            "bm25_norm": 0.521062592596384,
+            "hybrid_score": 0.6627551918353476,
+            "rerank_score": 0.9876
+          },
+          {
+            "chunk_id": "ac9973c8-01be-4cd6-9a99-097873a59cf0_chunk_5",
+            "content": "【字节跳动 · AI产品经理 硬性要求】\n具备极强的逻辑拆解力，能像指挥交响乐一样控制模型输出",
+            "metadata": {
+              "company": "字节跳动",
+              "index": 5,
+              "jd_id": "ac9973c8-01be-4cd6-9a99-097873a59cf0",
+              "position": "AI产品经理",
+              "priority": "high",
+              "section": "hard_requirements",
+              "strategy": "semantic"
+            },
+            "distance": 0.4580254852771759,
+            "bm25_score": 11.78435584408047,
+            "vec_norm": 0.9491384202935884,
+            "bm25_norm": 0.6287314186120652,
+            "hybrid_score": 0.8530163197891314,
+            "rerank_score": 0.9858
+          },
+          {
+            "chunk_id": "ac9973c8-01be-4cd6-9a99-097873a59cf0_chunk_8",
+            "content": "【字节跳动 · AI产品经理 关键词】\nPython, PyTorch, LangChain, RAG, Agent, 产品经理, AI",
+            "metadata": {
+              "company": "字节跳动",
+              "index": 8,
+              "jd_id": "ac9973c8-01be-4cd6-9a99-097873a59cf0",
+              "position": "AI产品经理",
+              "section": "keywords",
+              "strategy": "semantic"
+            },
+            "distance": 0.5713280439376831,
+            "bm25_score": 13.544442554841437,
+            "vec_norm": 0.5175166132485243,
+            "bm25_norm": 1.0,
+            "hybrid_score": 0.6622616292739669,
+            "rerank_score": 0.9817
+          },
+          {
+            "chunk_id": "ac9973c8-01be-4cd6-9a99-097873a59cf0_chunk_0",
+            "content": "公司：字节跳动，岗位：AI产品经理，地点：北京，薪资：30k-60k",
+            "metadata": {
+              "category": "产品",
+              "company": "字节跳动",
+              "domain": "AI",
+              "index": 0,
+              "jd_id": "ac9973c8-01be-4cd6-9a99-097873a59cf0",
+              "max_years": 5,
+              "min_education": "本科",
+              "min_years": 3,
+              "position": "AI产品经理",
+              "section": "basic_info",
+              "strategy": "semantic"
+            },
+            "distance": 0.4446741044521332,
+            "bm25_score": 8.868667810026786,
+            "vec_norm": 1.0,
+            "bm25_norm": 0.013702992140467742,
+            "hybrid_score": 0.7041108976421403,
+            "rerank_score": 0.9796
+          },
+          {
+            "chunk_id": "ac9973c8-01be-4cd6-9a99-097873a59cf0_chunk_6",
+            "content": "【字节跳动 · AI产品经理 硬性要求】\n24小时高频冲浪，对新技术有雷达般的嗅觉",
+            "metadata": {
+              "company": "字节跳动",
+              "index": 6,
+              "jd_id": "ac9973c8-01be-4cd6-9a99-097873a59cf0",
+              "position": "AI产品经理",
+              "priority": "high",
+              "section": "hard_requirements",
+              "strategy": "semantic"
+            },
+            "distance": 0.5325616598129272,
+            "bm25_score": 12.230124469647883,
+            "vec_norm": 0.6651956856926533,
+            "bm25_norm": 0.7227608117265157,
+            "hybrid_score": 0.6824652235028119,
+            "rerank_score": 0.9373
+          }
+        ],
+        "evidence_cache_query": "面字节AI产品经理要准备什么",
+        "tool_outputs": [
+          {
+            "task_id": "T0",
+            "tool": "kb_retrieve",
+            "description": "检索字节AI产品经理JD",
+            "result": {
+              "chunks": [
+                {
+                  "chunk_id": "ac9973c8-01be-4cd6-9a99-097873a59cf0_chunk_2",
+                  "content": "【字节跳动 · AI产品经理 硬性要求】\n本科及以上学历，兼具C端AIGC敏锐度与B端SaaS/RPA逻辑功底",
+                  "source": "字节跳动-AI产品经理",
+                  "metadata": {
+                    "company": "字节跳动",
+                    "position": "AI产品经理"
+                  }
+                },
+                {
+                  "chunk_id": "ac9973c8-01be-4cd6-9a99-097873a59cf0_chunk_5",
+                  "content": "【字节跳动 · AI产品经理 硬性要求】\n具备极强的逻辑拆解力，能像指挥交响乐一样控制模型输出",
+                  "source": "字节跳动-AI产品经理",
+                  "metadata": {
+                    "company": "字节跳动",
+                    "position": "AI产品经理"
+                  }
+                },
+                {
+                  "chunk_id": "ac9973c8-01be-4cd6-9a99-097873a59cf0_chunk_8",
+                  "content": "【字节跳动 · AI产品经理 关键词】\nPython, PyTorch, LangChain, RAG, Agent, 产品经理, AI",
+                  "source": "字节跳动-AI产品经理",
+                  "metadata": {
+                    "company": "字节跳动",
+                    "position": "AI产品经理"
+                  }
+                },
+                {
+                  "chunk_id": "ac9973c8-01be-4cd6-9a99-097873a59cf0_chunk_0",
+                  "content": "公司：字节跳动，岗位：AI产品经理，地点：北京，薪资：30k-60k",
+                  "source": "字节跳动-AI产品经理",
+                  "metadata": {
+                    "company": "字节跳动",
+                    "position": "AI产品经理"
+                  }
+                },
+                {
+                  "chunk_id": "ac9973c8-01be-4cd6-9a99-097873a59cf0_chunk_6",
+                  "content": "【字节跳动 · AI产品经理 硬性要求】\n24小时高频冲浪，对新技术有雷达般的嗅觉",
+                  "source": "字节跳动-AI产品经理",
+                  "metadata": {
+                    "company": "字节跳动",
+                    "position": "AI产品经理"
+                  }
+                }
+              ],
+              "query": "字节 AI产品经理 JD",
+              "filters": {},
+              "strategy": "hybrid(70%vec+30%bm25)+reranker",
+              "pool_k": 5,
+              "rerank_k": 10,
+              "pool_size": 31,
+              "vec_only": 11,
+              "bm25_only": 11,
+              "both": 9,
+              "rerank": {
+                "enabled": true,
+                "candidates": 5,
+                "output": 5,
+                "best_rerank_score": 0.9876
+              }
+            }
+          },
+          {
+            "task_id": "T1",
+            "tool": "match_analyze",
+            "description": "分析简历与字节AI产品经理JD的匹配度",
+            "result": {
+              "score": 36,
+              "label": "不匹配",
+              "advantages": [
+                "产品需求分析与原型设计（Figma）",
+                "用户调研与问卷设计",
+                "RAG知识库构建与问答系统",
+                "Prompt Engineering与AI内容生成",
+                "多维度匹配方案探索",
+                "项目管理（从需求到上线）",
+                "用户测试与反馈收集",
+                "基础数据分析（Excel数据透视表）",
+                "英文技术文档阅读"
+              ],
+              "weaknesses": [
+                "1. 缺乏Python、PyTorch、LangChain等AI开发框架的实际编程经验（仅了解概念，未在项目中使用）；2. 无B端SaaS或RPA产品的设计或交付经验；3. 无C端AIGC产品（如智能助手、内容编辑工具等）的完整设计经验；4. 无Agent相关项目或应用经验；5. 未体现对前沿AI技术的主动追踪与敏锐感知（如高频使用新工具、阅读行业动态）；6. 尚未毕业，无全职工作经验，无法满足通常要求的2年以上经验。"
+              ],
+              "suggestions": [
+                "核心能力要求: 1. 本科及以上学历，计算机/AI相关专业；2. 极强的逻辑拆解与结构化思维能力；3. C端AIGC产品敏感度与设计能力；4. B端SaaS/RPA逻辑功底与产品思维；5. 技术技能：Python、PyTorch、LangChain、RAG、Agent；6. 产品经理基本能力：需求分析、原型设计（Figma）、项目管理、用户测试；7. 24小时高频冲浪，对新技术有雷达般的嗅觉。"
+              ],
+              "match_score": 36,
+              "covered": [
+                "产品需求分析与原型设计（Figma）",
+                "用户调研与问卷设计",
+                "RAG知识库构建与问答系统",
+                "Prompt Engineering与AI内容生成",
+                "多维度匹配方案探索",
+                "项目管理（从需求到上线）",
+                "用户测试与反馈收集",
+                "基础数据分析（Excel数据透视表）",
+                "英文技术文档阅读"
+              ],
+              "missing_experience": "1. 缺乏Python、PyTorch、LangChain等AI开发框架的实际编程经验（仅了解概念，未在项目中使用）；2. 无B端SaaS或RPA产品的设计或交付经验；3. 无C端AIGC产品（如智能助手、内容编辑工具等）的完整设计经验；4. 无Agent相关项目或应用经验；5. 未体现对前沿AI技术的主动追踪与敏锐感知（如高频使用新工具、阅读行业动态）；6. 尚未毕业，无全职工作经验，无法满足通常要求的2年以上经验。",
+              "core_skills": "1. 本科及以上学历，计算机/AI相关专业；2. 极强的逻辑拆解与结构化思维能力；3. C端AIGC产品敏感度与设计能力；4. B端SaaS/RPA逻辑功底与产品思维；5. 技术技能：Python、PyTorch、LangChain、RAG、Agent；6. 产品经理基本能力：需求分析、原型设计（Figma）、项目管理、用户测试；7. 24小时高频冲浪，对新技术有雷达般的嗅觉。",
+              "company": "字节",
+              "position": "AI产品经理"
+            }
+          },
+          {
+            "task_id": "T2",
+            "tool": "interview_gen",
+            "description": "基于匹配短板生成面试题",
+            "result": {
+              "questions": [
+                "假设你要设计一款面向C端用户的AI智能笔记助手，能够自动整理用户碎片化记录并生成结构化知识图谱。请你从用户需求分层、核心功能拆解、AI能力边界三个维度，阐述你的产品设计思路。追问方向：1）如果发现用户对自动生成的图谱准确率仅60%，你会如何平衡产品体验与技术局限？2）请举出一个具体场景，说明如何通过Prompt Engineering优化用户输入质量。",
+                "请设计一个RPA机器人，用于自动化处理企业内部的多系统数据同步任务（例如CRM到ERP的客户信息同步）。要求描述其流程编排逻辑、异常处理机制，以及如何利用RPA+AI（如OCR或NLP）解决非结构化数据问题。追问方向：1）如果外部系统API频繁变更，你的RPA方案如何保证长期稳定性？2）你如何评估这个RPA项目投入产出比？请给出量化思路。",
+                "你负责一款AI内容生成工具（如AI写作助手）的产品规划，需要支持用户自定义生成风格。请你描述一种可落地的用户模型（User Model）方案，用于动态调整模型输出参数（如温度、top-p、系统提示词），并解释如何通过用户行为数据迭代模型效果。追问方向：1）在缺乏用户反馈标注数据时，你会如何设计冷启动阶段的prompt策略？2）请用具体案例说明如何权衡模型创造力与内容准确性。",
+                "假设你需要向非技术团队成员解释LangChain框架中Agent的核心工作原理，以及RAG（检索增强生成）如何解决大模型幻觉问题。请你用通俗易懂的语言构建一个类比，并分析在实际应用中Agent+ RAG组合可能遇到的至少两个关键挑战。追问方向：1）如果检索到的文档质量参差不齐，你会如何设计过滤或重排机制？2）请说明你如何用非技术指标（如用户满意度、任务完成率）衡量RAG系统的效果。",
+                "字节跳动某款C端产品计划引入AI功能，但当前团队缺乏AI相关经验。作为AI产品经理，请你设计一个为期3个月的技术预研与产品落地方案，包括优先级排序、技术可行性验证方法、跨团队协作机制。追问方向：1）你如何快速学习并掌握必要的AI技术概念（如Agent、RAG）以支撑产品决策？请给出具体学习路径。2）如果在预研阶段发现某个AI能力成本过高而收益不确定，你会如何说服团队调整方向？"
+              ],
+              "focus_areas": [
+                "短板深挖：1. 缺乏Python、PyTorch、LangChain等AI开发框架的实际编程经验（仅了解概念，未在项目中使用）；2. 无B端SaaS或RPA产品的设计或交付经验；3. 无C端AIGC产品（如智能",
+                "核心能力：1. 本科及以上学历，计算机/AI相关专业；2. 极强的逻辑拆解与结构化思维能力；3. C端AIGC产品敏感度与设计能力；4. B端SaaS/RPA逻辑功底与产品思维；5. 技术技能：Python、P"
+              ],
+              "question_count": 5,
+              "company": "字节",
+              "position": "AI产品经理"
+            }
+          },
+          {
+            "task_id": "T3",
+            "tool": null,
+            "description": "聚合匹配分析和面试题结果",
+            "result": {
+              "aggregation": {
+                "match_result": {
+                  "score": 36,
+                  "label": "不匹配",
+                  "advantages": [
+                    "产品需求分析与原型设计（Figma）",
+                    "用户调研与问卷设计",
+                    "RAG知识库构建与问答系统",
+                    "Prompt Engineering与AI内容生成",
+                    "多维度匹配方案探索",
+                    "项目管理（从需求到上线）",
+                    "用户测试与反馈收集",
+                    "基础数据分析（Excel数据透视表）",
+                    "英文技术文档阅读"
+                  ],
+                  "weaknesses": [
+                    "1. 缺乏Python、PyTorch、LangChain等AI开发框架的实际编程经验（仅了解概念，未在项目中使用）；2. 无B端SaaS或RPA产品的设计或交付经验；3. 无C端AIGC产品（如智能助手、内容编辑工具等）的完整设计经验；4. 无Agent相关项目或应用经验；5. 未体现对前沿AI技术的主动追踪与敏锐感知（如高频使用新工具、阅读行业动态）；6. 尚未毕业，无全职工作经验，无法满足通常要求的2年以上经验。"
+                  ],
+                  "suggestions": [
+                    "核心能力要求: 1. 本科及以上学历，计算机/AI相关专业；2. 极强的逻辑拆解与结构化思维能力；3. C端AIGC产品敏感度与设计能力；4. B端SaaS/RPA逻辑功底与产品思维；5. 技术技能：Python、PyTorch、LangChain、RAG、Agent；6. 产品经理基本能力：需求分析、原型设计（Figma）、项目管理、用户测试；7. 24小时高频冲浪，对新技术有雷达般的嗅觉。"
+                  ],
+                  "match_score": 36,
+                  "covered": [
+                    "产品需求分析与原型设计（Figma）",
+                    "用户调研与问卷设计",
+                    "RAG知识库构建与问答系统",
+                    "Prompt Engineering与AI内容生成",
+                    "多维度匹配方案探索",
+                    "项目管理（从需求到上线）",
+                    "用户测试与反馈收集",
+                    "基础数据分析（Excel数据透视表）",
+                    "英文技术文档阅读"
+                  ],
+                  "missing_experience": "1. 缺乏Python、PyTorch、LangChain等AI开发框架的实际编程经验（仅了解概念，未在项目中使用）；2. 无B端SaaS或RPA产品的设计或交付经验；3. 无C端AIGC产品（如智能助手、内容编辑工具等）的完整设计经验；4. 无Agent相关项目或应用经验；5. 未体现对前沿AI技术的主动追踪与敏锐感知（如高频使用新工具、阅读行业动态）；6. 尚未毕业，无全职工作经验，无法满足通常要求的2年以上经验。",
+                  "core_skills": "1. 本科及以上学历，计算机/AI相关专业；2. 极强的逻辑拆解与结构化思维能力；3. C端AIGC产品敏感度与设计能力；4. B端SaaS/RPA逻辑功底与产品思维；5. 技术技能：Python、PyTorch、LangChain、RAG、Agent；6. 产品经理基本能力：需求分析、原型设计（Figma）、项目管理、用户测试；7. 24小时高频冲浪，对新技术有雷达般的嗅觉。",
+                  "company": "字节",
+                  "position": "AI产品经理"
+                },
+                "interview_questions": {
+                  "questions": [
+                    "假设你要设计一款面向C端用户的AI智能笔记助手，能够自动整理用户碎片化记录并生成结构化知识图谱。请你从用户需求分层、核心功能拆解、AI能力边界三个维度，阐述你的产品设计思路。追问方向：1）如果发现用户对自动生成的图谱准确率仅60%，你会如何平衡产品体验与技术局限？2）请举出一个具体场景，说明如何通过Prompt Engineering优化用户输入质量。",
+                    "请设计一个RPA机器人，用于自动化处理企业内部的多系统数据同步任务（例如CRM到ERP的客户信息同步）。要求描述其流程编排逻辑、异常处理机制，以及如何利用RPA+AI（如OCR或NLP）解决非结构化数据问题。追问方向：1）如果外部系统API频繁变更，你的RPA方案如何保证长期稳定性？2）你如何评估这个RPA项目投入产出比？请给出量化思路。",
+                    "你负责一款AI内容生成工具（如AI写作助手）的产品规划，需要支持用户自定义生成风格。请你描述一种可落地的用户模型（User Model）方案，用于动态调整模型输出参数（如温度、top-p、系统提示词），并解释如何通过用户行为数据迭代模型效果。追问方向：1）在缺乏用户反馈标注数据时，你会如何设计冷启动阶段的prompt策略？2）请用具体案例说明如何权衡模型创造力与内容准确性。",
+                    "假设你需要向非技术团队成员解释LangChain框架中Agent的核心工作原理，以及RAG（检索增强生成）如何解决大模型幻觉问题。请你用通俗易懂的语言构建一个类比，并分析在实际应用中Agent+ RAG组合可能遇到的至少两个关键挑战。追问方向：1）如果检索到的文档质量参差不齐，你会如何设计过滤或重排机制？2）请说明你如何用非技术指标（如用户满意度、任务完成率）衡量RAG系统的效果。",
+                    "字节跳动某款C端产品计划引入AI功能，但当前团队缺乏AI相关经验。作为AI产品经理，请你设计一个为期3个月的技术预研与产品落地方案，包括优先级排序、技术可行性验证方法、跨团队协作机制。追问方向：1）你如何快速学习并掌握必要的AI技术概念（如Agent、RAG）以支撑产品决策？请给出具体学习路径。2）如果在预研阶段发现某个AI能力成本过高而收益不确定，你会如何说服团队调整方向？"
+                  ],
+                  "focus_areas": [
+                    "短板深挖：1. 缺乏Python、PyTorch、LangChain等AI开发框架的实际编程经验（仅了解概念，未在项目中使用）；2. 无B端SaaS或RPA产品的设计或交付经验；3. 无C端AIGC产品（如智能",
+                    "核心能力：1. 本科及以上学历，计算机/AI相关专业；2. 极强的逻辑拆解与结构化思维能力；3. C端AIGC产品敏感度与设计能力；4. B端SaaS/RPA逻辑功底与产品思维；5. 技术技能：Python、P"
+                  ],
+                  "question_count": 5,
+                  "company": "字节",
+                  "position": "AI产品经理"
+                }
+              }
+            }
+          }
+        ],
+        "final_aggregation_prompt": {
+          "system_prompt": "你是一位专业的求职顾问。请基于以下工具执行结果，给用户一个清晰、有帮助的回复。\n要求：\n1. 先直接回答用户的问题（是/否/有/没有），不要绕弯子，不要重复用户的原话\n2. 如果有匹配分析结果，给出具体的分数和建议\n3. 如果有检索结果，基于事实回答，不要编造\n4. 【强制】引用信息时必须标注来源。每个引用的事实后面都要跟 [来源：公司名-岗位名] 格式。   kb_retrieve 结果的 chunks 中带有 'source' 字段（如'字节跳动-AI产品经理'），请直接使用。   external_search 结果带有 'source_name' 字段，也请直接使用。\n5. 当本地知识库与外部搜索结果冲突时，请并列呈现两种说法并标注各自来源，不要替用户做判断\n6. 语气友好、专业、结构化",
+          "user_prompt": "【用户问题】\n面字节AI产品经理要准备什么\n\n【工具执行结果】\n[{\"task_id\": \"T0\", \"tool\": \"kb_retrieve\", \"description\": \"检索字节AI产品经理JD\", \"result\": {\"chunks\": [{\"chunk_id\": \"ac9973c8-01be-4cd6-9a99-097873a59cf0_chunk_2\", \"content\": \"【字节跳动 · AI产品经理 硬性要求】\\n本科及以上学历，兼具C端AIGC敏锐度与B端SaaS/RPA逻辑功底\", \"source\": \"字节跳动-AI产品经理\", \"metadata\": {\"company\": \"字节跳动\", \"position\": \"AI产品经理\"}}, {\"chunk_id\": \"ac9973c8-01be-4cd6-9a99-097873a59cf0_chunk_5\", \"content\": \"【字节跳动 · AI产品经理 硬性要求】\\n具备极强的逻辑拆解力，能像指挥交响乐一样控制模型输出\", \"source\": \"字节跳动-AI产品经理\", \"metadata\": {\"company\": \"字节跳动\", \"position\": \"AI产品经理\"}}, {\"chunk_id\": \"ac9973c8-01be-4cd6-9a99-097873a59cf0_chunk_8\", \"content\": \"【字节跳动 · AI产品经理 关键词】\\nPython, PyTorch, LangChain, RAG, Agent, 产品经理, AI\", \"source\": \"字节跳动-AI产品经理\", \"metadata\": {\"company\": \"字节跳动\", \"position\": \"AI产品经理\"}}, {\"chunk_id\": \"ac9973c8-01be-4cd6-9a99-097873a59cf0_chunk_0\", \"content\": \"公司：字节跳动，岗位：AI产品经理，地点：北京，薪资：30k-60k\", \"source\": \"字节跳动-AI产品经理\", \"metadata\": {\"company\": \"字节跳动\", \"position\": \"AI产品经理\"}}, {\"chunk_id\": \"ac9973c8-01be-4cd6-9a99-097873a59cf0_chunk_6\", \"content\": \"【字节跳动 · AI产品经理 硬性要求】\\n24小时高频冲浪，对新技术有雷达般的嗅觉\", \"source\": \"字节跳动-AI产品经理\", \"metadata\": {\"company\": \"字节跳动\", \"position\": \"AI产品经理\"}}], \"query\": \"字节 AI产品经理 JD\", \"filters\": {}, \"strategy\": \"hybrid(70%vec+30%bm25)+reranker\", \"pool_k\": 5, \"rerank_k\": 10, \"pool_size\": 31, \"vec_only\": 11, \"bm25_only\": 11, \"both\": 9, \"rerank\": {\"enabled\": true, \"candidates\": 5, \"output\": 5, \"best_rerank_score\": 0.9876}}}, {\"task_id\": \"T1\", \"tool\": \"match_analyze\", \"description\": \"分析简历与字节AI产品经理JD的匹配度\", \"result\": {\"score\": 36, \"label\": \"不匹配\", \"advantages\": [\"产品需求分析与原型设计（Figma）\", \"用户调研与问卷设计\", \"RAG知识库构建与问答系统\", \"Prompt Engineering与AI内容生成\", \"多维度匹配方案探索\", \"项目管理（从需求到上线）\", \"用户测试与反馈收集\", \"基础数据分析（Excel数据透视表）\", \"英文技术文档阅读\"], \"weaknesses\": [\"1. 缺乏Python、PyTorch、LangChain等AI开发框架的实际编程经验（仅了解概念，未在项目中使用）；2. 无B端SaaS或RPA产品的设计或交付经验；3. 无C端AIGC产品（如智能助手、内容编辑工具等）的完整设计经验；4. 无Agent相关项目或应用经验；5. 未体现对前沿AI技术的主动追踪与敏锐感知（如高频使用新工具、阅读行业动态）；6. 尚未毕业，无全职工作经验，无法满足通常要求的2年以上经验。\"], \"suggestions\": [\"核心能力要求: 1. 本科及以上学历，计算机/AI相关专业；2. 极强的逻辑拆解与结构化思维能力；3. C端AIGC产品敏感度与设计能力；4. B端SaaS/RPA逻辑功底与产品思维；5. 技术技能：Python、PyTorch、LangChain、RAG、Agent；6. 产品经理基本能力：需求分析、原型设计（Figma）、项目管理、用户测试；7. 24小时高频冲浪，对新技术有雷达般的嗅觉。\"], \"match_score\": 36, \"covered\": [\"产品需求分析与原型设计（Figma）\", \"用户调研与问卷设计\", \"RAG知识库构建与问答系统\", \"Prompt Engineering与AI内容生成\", \"多维度匹配方案探索\", \"项目管理（从需求到上线）\", \"用户测试与反馈收集\", \"基础数据分析（Excel数据透视表）\", \"英文技术文档阅读\"], \"missing_experience\": \"1. 缺乏Python、PyTorch、LangChain等AI开发框架的实际编程经验（仅了解概念，未在项目中使用）；2. 无B端SaaS或RPA产品的设计或交付经验；3. 无C端AIGC产品（如智能助手、内容编辑工具等）的完整设计经验；4. 无Agent相关项目或应用经验；5. 未体现对前沿AI技术的主动追踪与敏锐感知（如高频使用新工具、阅读行业动态）；6. 尚未毕业，无全职工作经验，无法满足通常要求的2年以上经验。\", \"core_skills\": \"1. 本科及以上学历，计算机/AI相关专业；2. 极强的逻辑拆解与结构化思维能力；3. C端AIGC产品敏感度与设计能力；4. B端SaaS/RPA逻辑功底与产品思维；5. 技术技能：Python、PyTorch、LangChain、RAG、Agent；6. 产品经理基本能力：需求分析、原型设计（Figma）、项目管理、用户测试；7. 24小时高频冲浪，对新技术有雷达般的嗅觉。\", \"company\": \"字节\", \"position\": \"AI产品经理\"}}, {\"task_id\": \"T2\", \"tool\": \"interview_gen\", \"description\": \"基于匹配短板生成面试题\", \"result\": {\"questions\": [\"假设你要设计一款面向C端用户的AI智能笔记助手，能够自动整理用户碎片化记录并生成结构化知识图谱。请你从用户需求分层、核心功能拆解、AI能力边界三个维度，阐述你的产品设计\n\n请生成回复："
+        }
+      },
+      "usage": {
+        "prompt_tokens": 10528,
+        "completion_tokens": 8485,
+        "total_tokens": 19013
+      },
+      "_time": 138.24663996696472,
+      "type": "done"
+    }
+  ],
+  "timestamp": "2026-06-05T16:38:48.837968",
+  "prompt_tokens": 10528,
+  "completion_tokens": 8485,
+  "total_tokens": 19013,
+  "tool_execution_success_rate": 1.0,
+  "tool_correct_rate": 1.0
+}

@@ -1,0 +1,977 @@
+{
+  "case_id": "eval_chen_17",
+  "message": "我比较看重Prompt Engineering的应用场景，有合适的岗吗",
+  "gold_intents": [
+    "explore"
+  ],
+  "expected_tools": [
+    "kb_retrieve",
+    "global_rank"
+  ],
+  "scenario": "有简历_偏好导向探索",
+  "status": "success",
+  "error": null,
+  "ttfb": 0.008,
+  "total_latency": 88.6,
+  "event_count": 134,
+  "pred_intent": "position_explore",
+  "pred_tools": [
+    {
+      "tool": "kb_retrieve",
+      "status": "✅",
+      "params": {
+        "query": "我比较看重 Prompt Engineering 的应用场景，有合适的岗位推荐",
+        "top_k": 5
+      },
+      "result_preview": "{'chunks': [{'chunk_id': '51054437-3bd1-4da6-8f09-d5b5d5978de8_chunk_3', 'content': '【蚂蚁集团 · AI产品工程师（转正实习） 硬性要求】\\n技术直觉与体感：熟悉大模型基础原理，理解 RAG、Prompt Engineering 及 Agent 工作流与局限（如RAG机制、Context Window、模型幻觉等"
+    },
+    {
+      "tool": "global_rank",
+      "status": "✅",
+      "params": {
+        "resume_text": "姓名：陈雨桐\r\n教育背景\r\n江南科技大学\r\n信息工程学院·软件工程（AI应用方向）·硕士\r\n2024.09-2027.06（预计）\r\nGPA: 3.4/4.0 | 主修：机器学习基础、数据库系统、软件项目管理、人机交互设计\r\n\r\n云溪大学\r\n计算机学院·信息管理与信息系统·本科\r\n2020.09-2024.06\r\n荣誉：两次校级三等奖学金 | 主修：数据结构、管理学原理、Web开发技术、统计学\r\n\r\n项目经历\r\n求职助手小程序 — 智能简历匹配与面试模拟工具\r\n2025.03-2025.11\r\n产品经理 | 三人小组\r\n- 需求分析：设计调研问卷回收40余份有效样本，梳理\"简历评估\"与\"定向面试模拟\"核心需求，使用Figma完成低保真原型，输出产品需求文档。\r\n- AI匹配策略：调研开源Embedding模型实现简历与JD语义相似度计算，探索多维度匹配方案，对比整篇匹配与分块匹配效果差异，持续优化推荐排序。\r\n- 内容生成：基于大模型AI设计结构化Prompt，融合岗位关键词与简历信息输出个性化面试题，建立追问机制增强模拟面试针对性。\r\n- 测试验证：组织20人内测收集用户路径与反馈数据，针对复杂PDF格式设计补充录入机制，完成从需求分析到上线测试的完整产品闭环。\r\n\r\n教务问答机器人 — 基于校内政策的RAG问答系统\r\n2024.10-2025.02\r\n产品设计与测试 | 实验室课题项目\r\n- 知识库构建：收集整理教务处政策文件、培养方案及历史问答共80余份，完成扫描件OCR识别、格式转换与结构化清洗，建立可检索的领域知识库。\r\n- 交互设计：设计Web端对话界面，参考主流客服产品布局增加\"推荐提问\"推荐模块降低投入成本，针对政策类回答设计溯源展示功能增强可信度。\r\n- 效果测试：参与搭建检索增强生成链路，完成实验环境下多轮问答测试，验证标准政策类问题回答准确率，整理测试数据与优化建议形成可复用方案。\r\n\r\n校园经历\r\n江南科技大学软件学院学生会·宣传部干事\r\n2024.09-2025.06\r\n- 负责学院官方公众号推文排版与发布，累计输出活动宣传稿件10余篇；协助组织院内编程比赛，负责报名统计与现场签到。\r\n\r\n云溪大学图书馆·勤工助学岗\r\n2022.03-2023.06\r\n- 负责电子阅览室日常值班，协助同学解决基础网络与设备使用问题；参与旧期刊电子目录录入与数据整理工作。\r\n\r\n获奖情况\r\n- 2025.05 江南科技大学研究生学业三等奖学金\r\n- 2024.11 学院AI应用创新赛（课程组）三等奖\r\n- 2022.06 云溪大学优秀共青团员\r\n- 2022.12 校级网页设计比赛优秀奖\r\n\r\n个人技能\r\n- 产品工具：熟练使用Figma进行原型与交互演示，了解Axure基础操作；能够使用Xmind梳理产品架构，通过腾讯文档/飞书写PRD。\r\n- 技术理解：了解大语言模型在应用层的落地方式，具备Prompt Engineering实践经验；理解RAG基本架构与工作流程，了解Embedding与向量检索作用。\r\n- 语言能力：英语CET-4（525分），可阅读英文技术文档与产品资料。\r\n- 办公技能：熟练使用Office办公软件，掌握Excel数据透视表等基础数据分析功能。",
+        "candidate_jds": [
+          {
+            "chunk_id": "51054437-3bd1-4da6-8f09-d5b5d5978de8_chunk_3",
+            "content": "【蚂蚁集团 · AI产品工程师（转正实习） 硬性要求】\n技术直觉与体感：熟悉大模型基础原理，理解 RAG、Prompt Engineering 及 Agent 工作流与局限（如RAG机制、Context Window、模型幻觉等），能够与底层算法/工程团队同频对话，准确评估技术可行性",
+            "metadata": {
+              "company": "蚂蚁集团",
+              "index": 3,
+              "jd_id": "51054437-3bd1-4da6-8f09-d5b5d5978de8",
+              "position": "AI产品工程师（转正实习）",
+              "priority": "high",
+              "section": "hard_requirements",
+              "strategy": "semantic"
+            },
+            "distance": 0.6915279626846313,
+            "bm25_score": 12.410926852602906,
+            "vec_norm": 0.711230828497821,
+            "bm25_norm": 0.11491565027412302,
+            "hybrid_score": 0.5323362750307116,
+            "rerank_score": 0.4694
+          },
+          {
+            "chunk_id": "ac997d3f-9206-4414-9fac-16deb62ff88b_chunk_4",
+            "content": "【美团 · 搜索推荐AI PM 硬性要求】\n熟悉大模型基础原理，理解RAG、Prompt Engineering或Agent工作流",
+            "metadata": {
+              "company": "美团",
+              "index": 4,
+              "jd_id": "ac997d3f-9206-4414-9fac-16deb62ff88b",
+              "position": "搜索推荐AI PM",
+              "priority": "high",
+              "section": "hard_requirements",
+              "strategy": "semantic"
+            },
+            "distance": 0.7359729409217834,
+            "bm25_score": 17.476111178442586,
+            "vec_norm": 0.41200571433157573,
+            "bm25_norm": 1.0,
+            "hybrid_score": 0.5884040000321029,
+            "rerank_score": 0.4089
+          },
+          {
+            "chunk_id": "2af1570c-e34f-4fb9-8422-e08e3ac3b927_chunk_4",
+            "content": "【蚂蚁集团 · AI产品工程师（搜推方向） 硬性要求】\n熟悉大模型基础原理，理解 RAG、Prompt Engineering 及 Agent 工作流，具备成本评估意识与良好的合规风险判断力",
+            "metadata": {
+              "company": "蚂蚁集团",
+              "index": 4,
+              "jd_id": "2af1570c-e34f-4fb9-8422-e08e3ac3b927",
+              "position": "AI产品工程师（搜推方向）",
+              "priority": "high",
+              "section": "hard_requirements",
+              "strategy": "semantic"
+            },
+            "distance": 0.6486360430717468,
+            "bm25_score": 14.713629141743343,
+            "vec_norm": 1.0,
+            "bm25_norm": 0.517287139066545,
+            "hybrid_score": 0.8551861417199634,
+            "rerank_score": 0.3912
+          },
+          {
+            "chunk_id": "2af1570c-e34f-4fb9-8422-e08e3ac3b927_chunk_9",
+            "content": "【蚂蚁集团 · AI产品工程师（搜推方向） 关键词】\nAI产品工程师, 搜索推荐, Agent工作流, 意图编程, 自动化评测, 支付宝, 全域智能增长, Prompt Engineering, RAG, 大模型, 用户体验, 业务增长, 跨团队协作, 转正实习, 杭州",
+            "metadata": {
+              "company": "蚂蚁集团",
+              "index": 9,
+              "jd_id": "2af1570c-e34f-4fb9-8422-e08e3ac3b927",
+              "position": "AI产品工程师（搜推方向）",
+              "section": "keywords",
+              "strategy": "semantic"
+            },
+            "distance": 0.6965044736862183,
+            "bm25_score": 13.281572962546884,
+            "vec_norm": 0.6777265467620126,
+            "bm25_norm": 0.2670513271793035,
+            "hybrid_score": 0.5545239808871999,
+            "rerank_score": 0.1997
+          },
+          {
+            "chunk_id": "2af1570c-e34f-4fb9-8422-e08e3ac3b927_chunk_8",
+            "content": "【蚂蚁集团 · AI产品工程师（搜推方向） 软性要求/加分项】\n有搜索/推荐/内容分发领域实战经验者优先",
+            "metadata": {
+              "company": "蚂蚁集团",
+              "index": 8,
+              "jd_id": "2af1570c-e34f-4fb9-8422-e08e3ac3b927",
+              "position": "AI产品工程师（搜推方向）",
+              "priority": "medium",
+              "section": "soft_requirements",
+              "strategy": "semantic"
+            },
+            "distance": 0.6903048753738403,
+            "bm25_score": 0.0,
+            "vec_norm": 0.71946524450437,
+            "bm25_norm": 0.0,
+            "hybrid_score": 0.503625671153059,
+            "rerank_score": 0.1457
+          }
+        ],
+        "sort_by": "match_score"
+      },
+      "result_preview": "{'rankings': [{'rank': 1, 'jd_id': '2af1570c-e34f-4fb9-8422-e08e3ac3b927', 'company': '蚂蚁集团', 'position': 'AI产品工程师（搜推方向）', 'match_score': 85, 'recommend_reason': '技能匹配：prompt engineering, rag', 'key_m"
+    }
+  ],
+  "tools_called": [
+    "kb_retrieve",
+    "global_rank"
+  ],
+  "reply": "有。\n\n基于您对 Prompt Engineering 应用场景的关注，我们为您检索并匹配了以下岗位，按匹配度排序如下：\n\n**1. 高度匹配岗位**\n*   **岗位名称**：蚂蚁集团 - AI 产品工程师（搜推方向）\n*   **匹配分数**：85 分\n*   **匹配理由**：技能交集包含 prompt engineering, rag，申请优先级为高 [来源：蚂蚁集团-AI 产品工程师（搜推方向）]。\n*   **硬性要求**：熟悉大模型基础原理，理解 RAG、Prompt Engineering 及 Agent 工作流，具备成本评估意识与良好的合规风险判断力 [来源：蚂蚁集团-AI 产品工程师（搜推方向）]。\n*   **加分项**：有搜索/推荐/内容分发领域实战经验者优先 [来源：蚂蚁集团-AI 产品工程师（搜推方向）]。\n\n**2. 中度匹配岗位**\n*   **岗位名称**：美团 - 搜索推荐 AI PM\n*   **匹配分数**：78 分\n*   **硬性要求**：熟悉大模型基础原理，理解 RAG、Prompt Engineering 或 Agent 工作流 [来源：美团 - 搜索推荐 AI PM]。\n\n*   **岗位名称**：蚂蚁集团 - AI 产品工程师（转正实习）\n*   **匹配分数**：76 分\n*   **硬性要求**：熟悉大模型基础原理，理解 RAG、Prompt Engineering 及 Agent 工作流与局限（如 RAG 机制、Context Window、模型幻觉等），能够与底层算法/工程团队同频对话 [来源：蚂蚁集团-AI 产品工程师（转正实习）]。\n\n**求职建议**\n建议您优先投递匹配度最高的蚂蚁集团搜推方向岗位，其余岗位可根据个人偏好选择性尝试 [来源：蚂蚁集团-AI 产品工程师（搜推方向）]。在准备过程中，建议重点深化对 RAG 机制、Context Window 及模型幻觉等技术细节的理解，因为这些是相关岗位共同关注的硬性要求 [来源：蚂蚁集团-AI 产品工程师（转正实习）]。同时，若有搜索/推荐/内容分发领域实战经验，会是显著的加分项 [来源：蚂蚁集团-AI 产品工程师（搜推方向）]。",
+  "reply_length": 937,
+  "intent_match": true,
+  "tool_match_rate": 1.0,
+  "has_reply": true,
+  "events": [
+    {
+      "step": "intent",
+      "message": "正在识别您的意图...",
+      "_time": 4.745249509811401,
+      "type": "status"
+    },
+    {
+      "step": "plan",
+      "message": "正在规划任务...",
+      "_time": 4.745290756225586,
+      "type": "status"
+    },
+    {
+      "step": "execute",
+      "message": "正在执行分析...",
+      "_time": 16.861843824386597,
+      "type": "status"
+    },
+    {
+      "step": "aggregate",
+      "message": "正在生成回复...",
+      "_time": 17.252027988433838,
+      "type": "status"
+    },
+    {
+      "text": "有",
+      "_time": 79.68762636184692,
+      "type": "delta"
+    },
+    {
+      "text": "。\n\n基于您对",
+      "_time": 79.82245016098022,
+      "type": "delta"
+    },
+    {
+      "text": " Prompt Engineering 应用场景",
+      "_time": 79.85835003852844,
+      "type": "delta"
+    },
+    {
+      "text": "的关注，我们为您",
+      "_time": 79.96672058105469,
+      "type": "delta"
+    },
+    {
+      "text": "检索并匹配了",
+      "_time": 79.96943092346191,
+      "type": "delta"
+    },
+    {
+      "text": "以下岗位，按",
+      "_time": 80.10969114303589,
+      "type": "delta"
+    },
+    {
+      "text": "匹配度排序如下",
+      "_time": 80.11332845687866,
+      "type": "delta"
+    },
+    {
+      "text": "：\n\n**1",
+      "_time": 80.28943395614624,
+      "type": "delta"
+    },
+    {
+      "text": ". 高度匹配",
+      "_time": 80.29197478294373,
+      "type": "delta"
+    },
+    {
+      "text": "岗位**\n*",
+      "_time": 80.39915108680725,
+      "type": "delta"
+    },
+    {
+      "text": "   **岗位",
+      "_time": 80.4018988609314,
+      "type": "delta"
+    },
+    {
+      "text": "名称**：蚂蚁",
+      "_time": 80.5595555305481,
+      "type": "delta"
+    },
+    {
+      "text": "集团 - AI ",
+      "_time": 80.56216502189636,
+      "type": "delta"
+    },
+    {
+      "text": "产品工程师（搜",
+      "_time": 80.67043209075928,
+      "type": "delta"
+    },
+    {
+      "text": "推方向）\n",
+      "_time": 80.67319917678833,
+      "type": "delta"
+    },
+    {
+      "text": "*   **匹配",
+      "_time": 80.81361532211304,
+      "type": "delta"
+    },
+    {
+      "text": "分数**：8",
+      "_time": 80.84935808181763,
+      "type": "delta"
+    },
+    {
+      "text": "5 分\n",
+      "_time": 80.95759701728821,
+      "type": "delta"
+    },
+    {
+      "text": "*   **匹配",
+      "_time": 80.96026110649109,
+      "type": "delta"
+    },
+    {
+      "text": "理由**：技能",
+      "_time": 81.10251355171204,
+      "type": "delta"
+    },
+    {
+      "text": "交集包含",
+      "_time": 81.10424470901489,
+      "type": "delta"
+    },
+    {
+      "text": " prompt engineering, rag",
+      "_time": 81.2405595779419,
+      "type": "delta"
+    },
+    {
+      "text": "，申请",
+      "_time": 81.24729585647583,
+      "type": "delta"
+    },
+    {
+      "text": "优先级为高 [",
+      "_time": 81.3434329032898,
+      "type": "delta"
+    },
+    {
+      "text": "来源：蚂蚁集团",
+      "_time": 81.3472113609314,
+      "type": "delta"
+    },
+    {
+      "text": "-AI 产品",
+      "_time": 81.46165752410889,
+      "type": "delta"
+    },
+    {
+      "text": "工程师（搜推",
+      "_time": 81.46189308166504,
+      "type": "delta"
+    },
+    {
+      "text": "方向）]。",
+      "_time": 81.60755109786987,
+      "type": "delta"
+    },
+    {
+      "text": "\n*   **",
+      "_time": 81.64030838012695,
+      "type": "delta"
+    },
+    {
+      "text": "硬性要求**：",
+      "_time": 81.75043749809265,
+      "type": "delta"
+    },
+    {
+      "text": "熟悉大模型基础",
+      "_time": 81.75327157974243,
+      "type": "delta"
+    },
+    {
+      "text": "原理，理解 R",
+      "_time": 81.8934576511383,
+      "type": "delta"
+    },
+    {
+      "text": "AG、Prompt Engineering",
+      "_time": 81.95650172233582,
+      "type": "delta"
+    },
+    {
+      "text": " 及 Agent ",
+      "_time": 82.03841733932495,
+      "type": "delta"
+    },
+    {
+      "text": "工作流，具备",
+      "_time": 82.0844988822937,
+      "type": "delta"
+    },
+    {
+      "text": "成本评估意识与",
+      "_time": 82.18114185333252,
+      "type": "delta"
+    },
+    {
+      "text": "良好的合规风险判断",
+      "_time": 82.18373894691467,
+      "type": "delta"
+    },
+    {
+      "text": "力 [来源：",
+      "_time": 82.32551264762878,
+      "type": "delta"
+    },
+    {
+      "text": "蚂蚁集团-AI",
+      "_time": 82.3291654586792,
+      "type": "delta"
+    },
+    {
+      "text": " 产品工程师（",
+      "_time": 82.50850462913513,
+      "type": "delta"
+    },
+    {
+      "text": "搜推方向）",
+      "_time": 82.51116490364075,
+      "type": "delta"
+    },
+    {
+      "text": "]。\n*",
+      "_time": 82.61349153518677,
+      "type": "delta"
+    },
+    {
+      "text": "   **加分",
+      "_time": 82.61599707603455,
+      "type": "delta"
+    },
+    {
+      "text": "项**：有",
+      "_time": 82.73746609687805,
+      "type": "delta"
+    },
+    {
+      "text": "搜索/推荐/",
+      "_time": 82.78124403953552,
+      "type": "delta"
+    },
+    {
+      "text": "内容分发领域实战",
+      "_time": 82.88427305221558,
+      "type": "delta"
+    },
+    {
+      "text": "经验者优先 [来源：",
+      "_time": 82.88709831237793,
+      "type": "delta"
+    },
+    {
+      "text": "蚂蚁集团-AI",
+      "_time": 83.02851271629333,
+      "type": "delta"
+    },
+    {
+      "text": " 产品工程师（",
+      "_time": 83.06942200660706,
+      "type": "delta"
+    },
+    {
+      "text": "搜推方向）",
+      "_time": 83.17347955703735,
+      "type": "delta"
+    },
+    {
+      "text": "]。\n\n**",
+      "_time": 83.17479586601257,
+      "type": "delta"
+    },
+    {
+      "text": "2. 中度",
+      "_time": 83.31540274620056,
+      "type": "delta"
+    },
+    {
+      "text": "匹配岗位**\n",
+      "_time": 83.31906914710999,
+      "type": "delta"
+    },
+    {
+      "text": "*   **岗位",
+      "_time": 83.49734735488892,
+      "type": "delta"
+    },
+    {
+      "text": "名称**：美团",
+      "_time": 83.49913930892944,
+      "type": "delta"
+    },
+    {
+      "text": " - 搜索推荐",
+      "_time": 83.60330319404602,
+      "type": "delta"
+    },
+    {
+      "text": " AI PM\n*",
+      "_time": 83.60507583618164,
+      "type": "delta"
+    },
+    {
+      "text": "   **匹配分数",
+      "_time": 83.77632188796997,
+      "type": "delta"
+    },
+    {
+      "text": "**：78",
+      "_time": 83.77787065505981,
+      "type": "delta"
+    },
+    {
+      "text": " 分\n*",
+      "_time": 83.89127159118652,
+      "type": "delta"
+    },
+    {
+      "text": "   **硬性要求",
+      "_time": 83.89277052879333,
+      "type": "delta"
+    },
+    {
+      "text": "**：熟悉大",
+      "_time": 84.06541395187378,
+      "type": "delta"
+    },
+    {
+      "text": "模型基础原理，",
+      "_time": 84.06806325912476,
+      "type": "delta"
+    },
+    {
+      "text": "理解 RAG、",
+      "_time": 84.18223738670349,
+      "type": "delta"
+    },
+    {
+      "text": "Prompt Engineering 或",
+      "_time": 84.21536946296692,
+      "type": "delta"
+    },
+    {
+      "text": " Agent 工作流",
+      "_time": 84.32439184188843,
+      "type": "delta"
+    },
+    {
+      "text": " [来源：美团",
+      "_time": 84.32699418067932,
+      "type": "delta"
+    },
+    {
+      "text": " - 搜索推荐",
+      "_time": 84.46943306922913,
+      "type": "delta"
+    },
+    {
+      "text": " AI PM]。",
+      "_time": 84.49609994888306,
+      "type": "delta"
+    },
+    {
+      "text": "\n\n*   **",
+      "_time": 84.61231207847595,
+      "type": "delta"
+    },
+    {
+      "text": "岗位名称**：",
+      "_time": 84.6160614490509,
+      "type": "delta"
+    },
+    {
+      "text": "蚂蚁集团 - AI",
+      "_time": 84.78727340698242,
+      "type": "delta"
+    },
+    {
+      "text": " 产品工程师（",
+      "_time": 84.79003953933716,
+      "type": "delta"
+    },
+    {
+      "text": "转正实习）\n",
+      "_time": 84.90041518211365,
+      "type": "delta"
+    },
+    {
+      "text": "*   **匹配",
+      "_time": 84.90290808677673,
+      "type": "delta"
+    },
+    {
+      "text": "分数**：7",
+      "_time": 85.07346391677856,
+      "type": "delta"
+    },
+    {
+      "text": "6 分\n",
+      "_time": 85.08298468589783,
+      "type": "delta"
+    },
+    {
+      "text": "*   **硬性",
+      "_time": 85.18824696540833,
+      "type": "delta"
+    },
+    {
+      "text": "要求**：熟悉",
+      "_time": 85.19204020500183,
+      "type": "delta"
+    },
+    {
+      "text": "大模型基础原理",
+      "_time": 85.33226776123047,
+      "type": "delta"
+    },
+    {
+      "text": "，理解 RAG",
+      "_time": 85.37320637702942,
+      "type": "delta"
+    },
+    {
+      "text": "、Prompt Engineering ",
+      "_time": 85.47734355926514,
+      "type": "delta"
+    },
+    {
+      "text": "及 Agent 工作",
+      "_time": 85.50703001022339,
+      "type": "delta"
+    },
+    {
+      "text": "流与局限（",
+      "_time": 85.62185335159302,
+      "type": "delta"
+    },
+    {
+      "text": "如 RAG ",
+      "_time": 85.62189292907715,
+      "type": "delta"
+    },
+    {
+      "text": "机制、Context Window",
+      "_time": 85.76318120956421,
+      "type": "delta"
+    },
+    {
+      "text": "、模型幻觉等",
+      "_time": 85.79912543296814,
+      "type": "delta"
+    },
+    {
+      "text": "），能够与底层",
+      "_time": 85.90824818611145,
+      "type": "delta"
+    },
+    {
+      "text": "算法/工程团队",
+      "_time": 85.91203570365906,
+      "type": "delta"
+    },
+    {
+      "text": "同频对话 [",
+      "_time": 86.05298638343811,
+      "type": "delta"
+    },
+    {
+      "text": "来源：蚂蚁集团",
+      "_time": 86.09724068641663,
+      "type": "delta"
+    },
+    {
+      "text": "-AI 产品",
+      "_time": 86.19618725776672,
+      "type": "delta"
+    },
+    {
+      "text": "工程师（转正实习",
+      "_time": 86.19894886016846,
+      "type": "delta"
+    },
+    {
+      "text": "）]。\n\n",
+      "_time": 86.33973336219788,
+      "type": "delta"
+    },
+    {
+      "text": "**求职建议**",
+      "_time": 86.34331464767456,
+      "type": "delta"
+    },
+    {
+      "text": "\n建议您优先投递",
+      "_time": 86.51612782478333,
+      "type": "delta"
+    },
+    {
+      "text": "匹配度最高的蚂蚁",
+      "_time": 86.5189049243927,
+      "type": "delta"
+    },
+    {
+      "text": "集团搜推方向",
+      "_time": 86.62702870368958,
+      "type": "delta"
+    },
+    {
+      "text": "岗位，",
+      "_time": 86.62898111343384,
+      "type": "delta"
+    },
+    {
+      "text": "其余岗位可根据个人",
+      "_time": 86.76295900344849,
+      "type": "delta"
+    },
+    {
+      "text": "偏好",
+      "_time": 86.76685047149658,
+      "type": "delta"
+    },
+    {
+      "text": "选择性尝试 [来源",
+      "_time": 86.8260018825531,
+      "type": "delta"
+    },
+    {
+      "text": "：蚂蚁集团",
+      "_time": 86.82983326911926,
+      "type": "delta"
+    },
+    {
+      "text": "-AI 产品",
+      "_time": 86.95211887359619,
+      "type": "delta"
+    },
+    {
+      "text": "工程师（搜推",
+      "_time": 86.98822283744812,
+      "type": "delta"
+    },
+    {
+      "text": "方向）]。",
+      "_time": 87.09714198112488,
+      "type": "delta"
+    },
+    {
+      "text": "在准备",
+      "_time": 87.09885382652283,
+      "type": "delta"
+    },
+    {
+      "text": "过程中，建议重点",
+      "_time": 87.20431280136108,
+      "type": "delta"
+    },
+    {
+      "text": "深化对 R",
+      "_time": 87.2046856880188,
+      "type": "delta"
+    },
+    {
+      "text": "AG 机制、",
+      "_time": 87.32920551300049,
+      "type": "delta"
+    },
+    {
+      "text": "Context Window",
+      "_time": 87.35992074012756,
+      "type": "delta"
+    },
+    {
+      "text": " 及模型幻觉",
+      "_time": 87.43914318084717,
+      "type": "delta"
+    },
+    {
+      "text": "等技术细节的理解，",
+      "_time": 87.44087076187134,
+      "type": "delta"
+    },
+    {
+      "text": "因为这些是相关岗位",
+      "_time": 87.60616397857666,
+      "type": "delta"
+    },
+    {
+      "text": "共同关注的",
+      "_time": 87.6076762676239,
+      "type": "delta"
+    },
+    {
+      "text": "硬性要求 [来源",
+      "_time": 87.69117498397827,
+      "type": "delta"
+    },
+    {
+      "text": "：蚂蚁集团-A",
+      "_time": 87.69378781318665,
+      "type": "delta"
+    },
+    {
+      "text": "I 产品工程师",
+      "_time": 87.86601972579956,
+      "type": "delta"
+    },
+    {
+      "text": "（转正实习）",
+      "_time": 87.86769127845764,
+      "type": "delta"
+    },
+    {
+      "text": "]。同时，",
+      "_time": 87.97810792922974,
+      "type": "delta"
+    },
+    {
+      "text": "若有搜索/",
+      "_time": 87.97986245155334,
+      "type": "delta"
+    },
+    {
+      "text": "推荐/内容分发",
+      "_time": 88.10320854187012,
+      "type": "delta"
+    },
+    {
+      "text": "领域实战",
+      "_time": 88.14694547653198,
+      "type": "delta"
+    },
+    {
+      "text": "经验，会是显著的",
+      "_time": 88.21096014976501,
+      "type": "delta"
+    },
+    {
+      "text": "加分项 [来源",
+      "_time": 88.21355843544006,
+      "type": "delta"
+    },
+    {
+      "text": "：蚂蚁集团-A",
+      "_time": 88.35613703727722,
+      "type": "delta"
+    },
+    {
+      "text": "I 产品工程师",
+      "_time": 88.35869479179382,
+      "type": "delta"
+    },
+    {
+      "text": "（搜推方向",
+      "_time": 88.54110336303711,
+      "type": "delta"
+    },
+    {
+      "text": "）]。",
+      "_time": 88.54474520683289,
+      "type": "delta"
+    },
+    {
+      "session_id": "eval_chen_17_1780477417989",
+      "intent": "position_explore",
+      "route_meta": {
+        "layer": "llm",
+        "intent": "position_explore",
+        "confidence": 0.88,
+        "demands": [
+          {
+            "intent": "position_explore",
+            "entities": {
+              "search_keywords": "我比较看重 Prompt Engineering 的应用场景，有合适的岗位推荐吗",
+              "sort_by": "match_score",
+              "top_k": 5
+            }
+          }
+        ],
+        "plan_tasks": 3
+      },
+      "agent_mode": "llm",
+      "is_clarification": false,
+      "agent": {
+        "rewritten_query": "我比较看重 Prompt Engineering 的应用场景，有合适的岗位推荐吗",
+        "tools": [
+          {
+            "tool": "kb_retrieve",
+            "status": "✅",
+            "params": {
+              "query": "我比较看重 Prompt Engineering 的应用场景，有合适的岗位推荐",
+              "top_k": 5
+            },
+            "result_preview": "{'chunks': [{'chunk_id': '51054437-3bd1-4da6-8f09-d5b5d5978de8_chunk_3', 'content': '【蚂蚁集团 · AI产品工程师（转正实习） 硬性要求】\\n技术直觉与体感：熟悉大模型基础原理，理解 RAG、Prompt Engineering 及 Agent 工作流与局限（如RAG机制、Context Window、模型幻觉等"
+          },
+          {
+            "tool": "global_rank",
+            "status": "✅",
+            "params": {
+              "resume_text": "姓名：陈雨桐\r\n教育背景\r\n江南科技大学\r\n信息工程学院·软件工程（AI应用方向）·硕士\r\n2024.09-2027.06（预计）\r\nGPA: 3.4/4.0 | 主修：机器学习基础、数据库系统、软件项目管理、人机交互设计\r\n\r\n云溪大学\r\n计算机学院·信息管理与信息系统·本科\r\n2020.09-2024.06\r\n荣誉：两次校级三等奖学金 | 主修：数据结构、管理学原理、Web开发技术、统计学\r\n\r\n项目经历\r\n求职助手小程序 — 智能简历匹配与面试模拟工具\r\n2025.03-2025.11\r\n产品经理 | 三人小组\r\n- 需求分析：设计调研问卷回收40余份有效样本，梳理\"简历评估\"与\"定向面试模拟\"核心需求，使用Figma完成低保真原型，输出产品需求文档。\r\n- AI匹配策略：调研开源Embedding模型实现简历与JD语义相似度计算，探索多维度匹配方案，对比整篇匹配与分块匹配效果差异，持续优化推荐排序。\r\n- 内容生成：基于大模型AI设计结构化Prompt，融合岗位关键词与简历信息输出个性化面试题，建立追问机制增强模拟面试针对性。\r\n- 测试验证：组织20人内测收集用户路径与反馈数据，针对复杂PDF格式设计补充录入机制，完成从需求分析到上线测试的完整产品闭环。\r\n\r\n教务问答机器人 — 基于校内政策的RAG问答系统\r\n2024.10-2025.02\r\n产品设计与测试 | 实验室课题项目\r\n- 知识库构建：收集整理教务处政策文件、培养方案及历史问答共80余份，完成扫描件OCR识别、格式转换与结构化清洗，建立可检索的领域知识库。\r\n- 交互设计：设计Web端对话界面，参考主流客服产品布局增加\"推荐提问\"推荐模块降低投入成本，针对政策类回答设计溯源展示功能增强可信度。\r\n- 效果测试：参与搭建检索增强生成链路，完成实验环境下多轮问答测试，验证标准政策类问题回答准确率，整理测试数据与优化建议形成可复用方案。\r\n\r\n校园经历\r\n江南科技大学软件学院学生会·宣传部干事\r\n2024.09-2025.06\r\n- 负责学院官方公众号推文排版与发布，累计输出活动宣传稿件10余篇；协助组织院内编程比赛，负责报名统计与现场签到。\r\n\r\n云溪大学图书馆·勤工助学岗\r\n2022.03-2023.06\r\n- 负责电子阅览室日常值班，协助同学解决基础网络与设备使用问题；参与旧期刊电子目录录入与数据整理工作。\r\n\r\n获奖情况\r\n- 2025.05 江南科技大学研究生学业三等奖学金\r\n- 2024.11 学院AI应用创新赛（课程组）三等奖\r\n- 2022.06 云溪大学优秀共青团员\r\n- 2022.12 校级网页设计比赛优秀奖\r\n\r\n个人技能\r\n- 产品工具：熟练使用Figma进行原型与交互演示，了解Axure基础操作；能够使用Xmind梳理产品架构，通过腾讯文档/飞书写PRD。\r\n- 技术理解：了解大语言模型在应用层的落地方式，具备Prompt Engineering实践经验；理解RAG基本架构与工作流程，了解Embedding与向量检索作用。\r\n- 语言能力：英语CET-4（525分），可阅读英文技术文档与产品资料。\r\n- 办公技能：熟练使用Office办公软件，掌握Excel数据透视表等基础数据分析功能。",
+              "candidate_jds": [
+                {
+                  "chunk_id": "51054437-3bd1-4da6-8f09-d5b5d5978de8_chunk_3",
+                  "content": "【蚂蚁集团 · AI产品工程师（转正实习） 硬性要求】\n技术直觉与体感：熟悉大模型基础原理，理解 RAG、Prompt Engineering 及 Agent 工作流与局限（如RAG机制、Context Window、模型幻觉等），能够与底层算法/工程团队同频对话，准确评估技术可行性",
+                  "metadata": {
+                    "company": "蚂蚁集团",
+                    "index": 3,
+                    "jd_id": "51054437-3bd1-4da6-8f09-d5b5d5978de8",
+                    "position": "AI产品工程师（转正实习）",
+                    "priority": "high",
+                    "section": "hard_requirements",
+                    "strategy": "semantic"
+                  },
+                  "distance": 0.6915279626846313,
+                  "bm25_score": 12.410926852602906,
+                  "vec_norm": 0.711230828497821,
+                  "bm25_norm": 0.11491565027412302,
+                  "hybrid_score": 0.5323362750307116,
+                  "rerank_score": 0.4694
+                },
+                {
+                  "chunk_id": "ac997d3f-9206-4414-9fac-16deb62ff88b_chunk_4",
+                  "content": "【美团 · 搜索推荐AI PM 硬性要求】\n熟悉大模型基础原理，理解RAG、Prompt Engineering或Agent工作流",
+                  "metadata": {
+                    "company": "美团",
+                    "index": 4,
+                    "jd_id": "ac997d3f-9206-4414-9fac-16deb62ff88b",
+                    "position": "搜索推荐AI PM",
+                    "priority": "high",
+                    "section": "hard_requirements",
+                    "strategy": "semantic"
+                  },
+                  "distance": 0.7359729409217834,
+                  "bm25_score": 17.476111178442586,
+                  "vec_norm": 0.41200571433157573,
+                  "bm25_norm": 1.0,
+                  "hybrid_score": 0.5884040000321029,
+                  "rerank_score": 0.4089
+                },
+                {
+                  "chunk_id": "2af1570c-e34f-4fb9-8422-e08e3ac3b927_chunk_4",
+                  "content": "【蚂蚁集团 · AI产品工程师（搜推方向） 硬性要求】\n熟悉大模型基础原理，理解 RAG、Prompt Engineering 及 Agent 工作流，具备成本评估意识与良好的合规风险判断力",
+                  "metadata": {
+                    "company": "蚂蚁集团",
+                    "index": 4,
+                    "jd_id": "2af1570c-e34f-4fb9-8422-e08e3ac3b927",
+                    "position": "AI产品工程师（搜推方向）",
+                    "priority": "high",
+                    "section": "hard_requirements",
+                    "strategy": "semantic"
+                  },
+                  "distance": 0.6486360430717468,
+                  "bm25_score": 14.713629141743343,
+                  "vec_norm": 1.0,
+                  "bm25_norm": 0.517287139066545,
+                  "hybrid_score": 0.8551861417199634,
+                  "rerank_score": 0.3912
+                },
+                {
+                  "chunk_id": "2af1570c-e34f-4fb9-8422-e08e3ac3b927_chunk_9",
+                  "content": "【蚂蚁集团 · AI产品工程师（搜推方向） 关键词】\nAI产品工程师, 搜索推荐, Agent工作流, 意图编程, 自动化评测, 支付宝, 全域智能增长, Prompt Engineering, RAG, 大模型, 用户体验, 业务增长, 跨团队协作, 转正实习, 杭州",
+                  "metadata": {
+                    "company": "蚂蚁集团",
+                    "index": 9,
+                    "jd_id": "2af1570c-e34f-4fb9-8422-e08e3ac3b927",
+                    "position": "AI产品工程师（搜推方向）",
+                    "section": "keywords",
+                    "strategy": "semantic"
+                  },
+                  "distance": 0.6965044736862183,
+                  "bm25_score": 13.281572962546884,
+                  "vec_norm": 0.6777265467620126,
+                  "bm25_norm": 0.2670513271793035,
+                  "hybrid_score": 0.5545239808871999,
+                  "rerank_score": 0.1997
+                },
+                {
+                  "chunk_id": "2af1570c-e34f-4fb9-8422-e08e3ac3b927_chunk_8",
+                  "content": "【蚂蚁集团 · AI产品工程师（搜推方向） 软性要求/加分项】\n有搜索/推荐/内容分发领域实战经验者优先",
+                  "metadata": {
+                    "company": "蚂蚁集团",
+                    "index": 8,
+                    "jd_id": "2af1570c-e34f-4fb9-8422-e08e3ac3b927",
+                    "position": "AI产品工程师（搜推方向）",
+                    "priority": "medium",
+                    "section": "soft_requirements",
+                    "strategy": "semantic"
+                  },
+                  "distance": 0.6903048753738403,
+                  "bm25_score": 0.0,
+                  "vec_norm": 0.71946524450437,
+                  "bm25_norm": 0.0,
+                  "hybrid_score": 0.503625671153059,
+                  "rerank_score": 0.1457
+                }
+              ],
+              "sort_by": "match_score"
+            },
+            "result_preview": "{'rankings': [{'rank': 1, 'jd_id': '2af1570c-e34f-4fb9-8422-e08e3ac3b927', 'company': '蚂蚁集团', 'position': 'AI产品工程师（搜推方向）', 'match_score': 85, 'recommend_reason': '技能匹配：prompt engineering, rag', 'key_m"
+          }
+        ],
+        "kb_chunks_count": 3,
+        "system_prompt_preview": "你是一位专业的求职顾问。请基于以下工具执行结果，给用户一个清晰、有帮助的回复。\n要求：\n1. 先直接回答用户的问题（是/否/有/没有），不要绕弯子，不要重复用户的原话\n2. 如果有匹配分析结果，给出具体的分数和建议\n3. 如果有检索结果，基于事实回答，不要编造\n4. 【强制】引用信息时必须标注来源。每个引用的事实后面都要跟 [来源：公司名-岗位名] 格式。   kb_retrieve 结果的 ch"
+      },
+      "memory": {
+        "working_turns": 1,
+        "compressed_blocks": 0,
+        "current_topic": "general",
+        "evidence_cache_size": 5
+      },
+      "reply": "有。\n\n基于您对 Prompt Engineering 应用场景的关注，我们为您检索并匹配了以下岗位，按匹配度排序如下：\n\n**1. 高度匹配岗位**\n*   **岗位名称**：蚂蚁集团 - AI 产品工程师（搜推方向）\n*   **匹配分数**：85 分\n*   **匹配理由**：技能交集包含 prompt engineering, rag，申请优先级为高 [来源：蚂蚁集团-AI 产品工程师（搜推方向）]。\n*   **硬性要求**：熟悉大模型基础原理，理解 RAG、Prompt Engineering 及 Agent 工作流，具备成本评估意识与良好的合规风险判断力 [来源：蚂蚁集团-AI 产品工程师（搜推方向）]。\n*   **加分项**：有搜索/推荐/内容分发领域实战经验者优先 [来源：蚂蚁集团-AI 产品工程师（搜推方向）]。\n\n**2. 中度匹配岗位**\n*   **岗位名称**：美团 - 搜索推荐 AI PM\n*   **匹配分数**：78 分\n*   **硬性要求**：熟悉大模型基础原理，理解 RAG、Prompt Engineering 或 Agent 工作流 [来源：美团 - 搜索推荐 AI PM]。\n\n*   **岗位名称**：蚂蚁集团 - AI 产品工程师（转正实习）\n*   **匹配分数**：76 分\n*   **硬性要求**：熟悉大模型基础原理，理解 RAG、Prompt Engineering 及 Agent 工作流与局限（如 RAG 机制、Context Window、模型幻觉等），能够与底层算法/工程团队同频对话 [来源：蚂蚁集团-AI 产品工程师（转正实习）]。\n\n**求职建议**\n建议您优先投递匹配度最高的蚂蚁集团搜推方向岗位，其余岗位可根据个人偏好选择性尝试 [来源：蚂蚁集团-AI 产品工程师（搜推方向）]。在准备过程中，建议重点深化对 RAG 机制、Context Window 及模型幻觉等技术细节的理解，因为这些是相关岗位共同关注的硬性要求 [来源：蚂蚁集团-AI 产品工程师（转正实习）]。同时，若有搜索/推荐/内容分发领域实战经验，会是显著的加分项 [来源：蚂蚁集团-AI 产品工程师（搜推方向）]。",
+      "usage": {
+        "prompt_tokens": 7980,
+        "completion_tokens": 5599,
+        "total_tokens": 13579
+      },
+      "_time": 88.60277342796326,
+      "type": "done"
+    }
+  ],
+  "timestamp": "2026-06-03T17:03:37.989438",
+  "prompt_tokens": 7980,
+  "completion_tokens": 5599,
+  "total_tokens": 13579,
+  "tool_execution_success_rate": 1.0,
+  "tool_correct_rate": 1.0
+}

@@ -1,0 +1,2245 @@
+{
+  "case_id": "eval_chen_03",
+  "message": "百度的AI产品实习生要求什么学历",
+  "gold_intents": [
+    "verify"
+  ],
+  "expected_tools": [
+    "kb_retrieve",
+    "qa_synthesize"
+  ],
+  "scenario": "属性查询_学历要求",
+  "eval_context": {
+    "gold_intents": [
+      "verify"
+    ],
+    "gold_slots": {
+      "company": "百度",
+      "attributes": [
+        "学历"
+      ]
+    },
+    "relevance_score": 0,
+    "expected_tools": [
+      "kb_retrieve",
+      "qa_synthesize"
+    ],
+    "scenario": "属性查询_学历要求",
+    "notes": "RAG问答，期望有引用证据"
+  },
+  "resume_id": "cc50dcfb-aeba-41a3-989a-9e485aa2fc3f",
+  "status": "success",
+  "error": null,
+  "ttfb": 0.01,
+  "total_latency": 158.17,
+  "event_count": 136,
+  "pred_intent": "attribute_verify",
+  "pred_intents": [
+    "attribute_verify"
+  ],
+  "pred_tools": [
+    {
+      "tool": "kb_retrieve",
+      "status": "✅",
+      "params": {
+        "query": "百度的AI产品实习生要求什么学历",
+        "company": "百度",
+        "position": "AI产品实习生",
+        "top_k": 5
+      },
+      "result_preview": "{'chunks': [{'chunk_id': '22fa0d11-9483-4b94-bb38-c3c90676fd9b_chunk_2', 'content': '【百度 · AI产品实习生 硬性要求】\\n计算机科学、人工智能、数据科学、产品设计或相关专业在校学生或应届毕业生', 'metadata': {'company': '百度', 'index': 2, 'jd_id': '22fa"
+    },
+    {
+      "tool": "qa_synthesize",
+      "status": "✅",
+      "params": {
+        "question": "[\"要求\", \"学历\"]中的学历要求是什么",
+        "evidence_chunks": [
+          {
+            "chunk_id": "22fa0d11-9483-4b94-bb38-c3c90676fd9b_chunk_2",
+            "content": "【百度 · AI产品实习生 硬性要求】\n计算机科学、人工智能、数据科学、产品设计或相关专业在校学生或应届毕业生",
+            "metadata": {
+              "company": "百度",
+              "index": 2,
+              "jd_id": "22fa0d11-9483-4b94-bb38-c3c90676fd9b",
+              "position": "AI产品实习生",
+              "priority": "high",
+              "section": "hard_requirements",
+              "strategy": "semantic"
+            },
+            "distance": 0.31845447421073914,
+            "bm25_score": 0.0,
+            "vec_norm": 1.0,
+            "bm25_norm": 0.0,
+            "hybrid_score": 0.7,
+            "rerank_score": 0.9999
+          },
+          {
+            "chunk_id": "22fa0d11-9483-4b94-bb38-c3c90676fd9b_chunk_3",
+            "content": "【百度 · AI产品实习生 硬性要求】\n对AI技术有浓厚兴趣，了解机器学习、深度学习等基本概念",
+            "metadata": {
+              "company": "百度",
+              "index": 3,
+              "jd_id": "22fa0d11-9483-4b94-bb38-c3c90676fd9b",
+              "position": "AI产品实习生",
+              "priority": "high",
+              "section": "hard_requirements",
+              "strategy": "semantic"
+            },
+            "distance": 0.37794405221939087,
+            "bm25_score": 7.165582770674353,
+            "vec_norm": 0.7292778746049814,
+            "bm25_norm": 0.229095439024634,
+            "hybrid_score": 0.5792231439308771,
+            "rerank_score": 0.9992
+          },
+          {
+            "chunk_id": "22fa0d11-9483-4b94-bb38-c3c90676fd9b_chunk_5",
+            "content": "【百度 · AI产品实习生 硬性要求】\n强烈的责任心与自我驱动力，能够主动承担责任，按时完成任务",
+            "metadata": {
+              "company": "百度",
+              "index": 5,
+              "jd_id": "22fa0d11-9483-4b94-bb38-c3c90676fd9b",
+              "position": "AI产品实习生",
+              "priority": "high",
+              "section": "hard_requirements",
+              "strategy": "semantic"
+            },
+            "distance": 0.396601140499115,
+            "bm25_score": 7.30040738175568,
+            "vec_norm": 0.6443741526112762,
+            "bm25_norm": 0.29248260430027656,
+            "hybrid_score": 0.5388066881179763,
+            "rerank_score": 0.9975
+          },
+          {
+            "chunk_id": "d8f1f630-f372-467a-b0a0-5a68a6db4ffd_chunk_2",
+            "content": "【百度 · AI应用-产品经理 硬性要求】\n本科及以上学历，计算机、人力资源、管理类相关专业",
+            "metadata": {
+              "company": "百度",
+              "index": 2,
+              "jd_id": "d8f1f630-f372-467a-b0a0-5a68a6db4ffd",
+              "position": "AI应用-产品经理",
+              "priority": "high",
+              "section": "hard_requirements",
+              "strategy": "semantic"
+            },
+            "distance": null,
+            "bm25_score": 8.534867350420107,
+            "vec_norm": 0.0,
+            "bm25_norm": 0.8728582303252341,
+            "hybrid_score": 0.26185746909757024,
+            "rerank_score": 0.9965
+          },
+          {
+            "chunk_id": "caa7985c-efa3-4018-96e6-2293b42202da_chunk_2",
+            "content": "【小米 · AI产品经理实习生 硬性要求】\n本科及以上学历",
+            "metadata": {
+              "company": "小米",
+              "index": 2,
+              "jd_id": "caa7985c-efa3-4018-96e6-2293b42202da",
+              "position": "AI产品经理实习生",
+              "priority": "high",
+              "section": "hard_requirements",
+              "strategy": "semantic"
+            },
+            "distance": null,
+            "bm25_score": 8.805298116239177,
+            "vec_norm": 0.0,
+            "bm25_norm": 1.0,
+            "hybrid_score": 0.3,
+            "rerank_score": 0.9691
+          }
+        ],
+        "qa_type": "factual"
+      },
+      "result_preview": "{'answer': '根据检索到的证据，学历要求主要为**本科及以上学历**，部分实习生岗位强调**在校学生或应届毕业生**身份及特定专业背景。\\n\\n⚠️ 注意：不同来源的信息存在差异——\\n1. 学历表述不同：部分岗位（如小米 AI 产品经理实习生、百度 AI 应用 - 产品经理）明确要求“本科及以上学历”[4][5]，而百度 AI 产品实习生岗位主要强调“在校学生或应届毕业生”及专业背景，"
+    }
+  ],
+  "tools_called": [
+    "kb_retrieve",
+    "qa_synthesize"
+  ],
+  "kb_chunks": [
+    {
+      "chunk_id": "22fa0d11-9483-4b94-bb38-c3c90676fd9b_chunk_2",
+      "content": "【百度 · AI产品实习生 硬性要求】\n计算机科学、人工智能、数据科学、产品设计或相关专业在校学生或应届毕业生",
+      "metadata": {
+        "company": "百度",
+        "index": 2,
+        "jd_id": "22fa0d11-9483-4b94-bb38-c3c90676fd9b",
+        "position": "AI产品实习生",
+        "priority": "high",
+        "section": "hard_requirements",
+        "strategy": "semantic"
+      },
+      "distance": 0.31845447421073914,
+      "bm25_score": 0.0,
+      "vec_norm": 1.0,
+      "bm25_norm": 0.0,
+      "hybrid_score": 0.7,
+      "rerank_score": 0.9999
+    },
+    {
+      "chunk_id": "22fa0d11-9483-4b94-bb38-c3c90676fd9b_chunk_3",
+      "content": "【百度 · AI产品实习生 硬性要求】\n对AI技术有浓厚兴趣，了解机器学习、深度学习等基本概念",
+      "metadata": {
+        "company": "百度",
+        "index": 3,
+        "jd_id": "22fa0d11-9483-4b94-bb38-c3c90676fd9b",
+        "position": "AI产品实习生",
+        "priority": "high",
+        "section": "hard_requirements",
+        "strategy": "semantic"
+      },
+      "distance": 0.37794405221939087,
+      "bm25_score": 7.165582770674353,
+      "vec_norm": 0.7292778746049814,
+      "bm25_norm": 0.229095439024634,
+      "hybrid_score": 0.5792231439308771,
+      "rerank_score": 0.9992
+    },
+    {
+      "chunk_id": "22fa0d11-9483-4b94-bb38-c3c90676fd9b_chunk_5",
+      "content": "【百度 · AI产品实习生 硬性要求】\n强烈的责任心与自我驱动力，能够主动承担责任，按时完成任务",
+      "metadata": {
+        "company": "百度",
+        "index": 5,
+        "jd_id": "22fa0d11-9483-4b94-bb38-c3c90676fd9b",
+        "position": "AI产品实习生",
+        "priority": "high",
+        "section": "hard_requirements",
+        "strategy": "semantic"
+      },
+      "distance": 0.396601140499115,
+      "bm25_score": 7.30040738175568,
+      "vec_norm": 0.6443741526112762,
+      "bm25_norm": 0.29248260430027656,
+      "hybrid_score": 0.5388066881179763,
+      "rerank_score": 0.9975
+    },
+    {
+      "chunk_id": "d8f1f630-f372-467a-b0a0-5a68a6db4ffd_chunk_2",
+      "content": "【百度 · AI应用-产品经理 硬性要求】\n本科及以上学历，计算机、人力资源、管理类相关专业",
+      "metadata": {
+        "company": "百度",
+        "index": 2,
+        "jd_id": "d8f1f630-f372-467a-b0a0-5a68a6db4ffd",
+        "position": "AI应用-产品经理",
+        "priority": "high",
+        "section": "hard_requirements",
+        "strategy": "semantic"
+      },
+      "distance": null,
+      "bm25_score": 8.534867350420107,
+      "vec_norm": 0.0,
+      "bm25_norm": 0.8728582303252341,
+      "hybrid_score": 0.26185746909757024,
+      "rerank_score": 0.9965
+    },
+    {
+      "chunk_id": "caa7985c-efa3-4018-96e6-2293b42202da_chunk_2",
+      "content": "【小米 · AI产品经理实习生 硬性要求】\n本科及以上学历",
+      "metadata": {
+        "company": "小米",
+        "index": 2,
+        "jd_id": "caa7985c-efa3-4018-96e6-2293b42202da",
+        "position": "AI产品经理实习生",
+        "priority": "high",
+        "section": "hard_requirements",
+        "strategy": "semantic"
+      },
+      "distance": null,
+      "bm25_score": 8.805298116239177,
+      "vec_norm": 0.0,
+      "bm25_norm": 1.0,
+      "hybrid_score": 0.3,
+      "rerank_score": 0.9691
+    }
+  ],
+  "tool_executions_full": [
+    {
+      "tool_name": "kb_retrieve",
+      "task_id": "T0",
+      "status": "success",
+      "output": {
+        "chunks": [
+          {
+            "chunk_id": "22fa0d11-9483-4b94-bb38-c3c90676fd9b_chunk_2",
+            "content": "【百度 · AI产品实习生 硬性要求】\n计算机科学、人工智能、数据科学、产品设计或相关专业在校学生或应届毕业生",
+            "source": "百度-AI产品实习生",
+            "metadata": {
+              "company": "百度",
+              "position": "AI产品实习生"
+            }
+          },
+          {
+            "chunk_id": "22fa0d11-9483-4b94-bb38-c3c90676fd9b_chunk_3",
+            "content": "【百度 · AI产品实习生 硬性要求】\n对AI技术有浓厚兴趣，了解机器学习、深度学习等基本概念",
+            "source": "百度-AI产品实习生",
+            "metadata": {
+              "company": "百度",
+              "position": "AI产品实习生"
+            }
+          },
+          {
+            "chunk_id": "22fa0d11-9483-4b94-bb38-c3c90676fd9b_chunk_5",
+            "content": "【百度 · AI产品实习生 硬性要求】\n强烈的责任心与自我驱动力，能够主动承担责任，按时完成任务",
+            "source": "百度-AI产品实习生",
+            "metadata": {
+              "company": "百度",
+              "position": "AI产品实习生"
+            }
+          },
+          {
+            "chunk_id": "d8f1f630-f372-467a-b0a0-5a68a6db4ffd_chunk_2",
+            "content": "【百度 · AI应用-产品经理 硬性要求】\n本科及以上学历，计算机、人力资源、管理类相关专业",
+            "source": "百度-AI应用-产品经理",
+            "metadata": {
+              "company": "百度",
+              "position": "AI应用-产品经理"
+            }
+          },
+          {
+            "chunk_id": "caa7985c-efa3-4018-96e6-2293b42202da_chunk_2",
+            "content": "【小米 · AI产品经理实习生 硬性要求】\n本科及以上学历",
+            "source": "小米-AI产品经理实习生",
+            "metadata": {
+              "company": "小米",
+              "position": "AI产品经理实习生"
+            }
+          }
+        ],
+        "query": "百度的AI产品实习生要求什么学历",
+        "filters": {
+          "company": "百度",
+          "position": "AI产品实习生"
+        },
+        "strategy": "hybrid(70%vec+30%bm25)+reranker",
+        "pool_k": 5,
+        "rerank_k": 10,
+        "pool_size": 24,
+        "vec_only": 4,
+        "bm25_only": 17,
+        "both": 3,
+        "rerank": {
+          "enabled": true,
+          "candidates": 5,
+          "output": 5,
+          "best_rerank_score": 0.9999
+        }
+      }
+    },
+    {
+      "tool_name": "qa_synthesize",
+      "task_id": "T1",
+      "status": "success",
+      "output": {
+        "answer": "根据检索到的证据，学历要求主要为**本科及以上学历**，部分实习生岗位强调**在校学生或应届毕业生**身份及特定专业背景。\n\n⚠️ 注意：不同来源的信息存在差异——\n1. 学历表述不同：部分岗位（如小米 AI 产品经理实习生、百度 AI 应用 - 产品经理）明确要求“本科及以上学历”[4][5]，而百度 AI 产品实习生岗位主要强调“在校学生或应届毕业生”及专业背景，未显式注明学历层级 [1]。\n2. 岗位层级不同：明确要求本科及以上学历的包含正式产品经理岗位 [4]，而其他为实习生岗位 [1][5]。\n\n可能原因：\n- 岗位细分方向不同（校招实习生 vs 社招/正式员工的要求差异）\n- 信息描述侧重不同（侧重身份状态 vs 侧重学位等级）\n\n以上信息仅供参考，具体请以该公司官方发布的 JD 为准。",
+        "citations": [
+          {
+            "index": 1,
+            "source": "检索证据 - 百度 - AI 产品实习生",
+            "quote": "计算机科学、人工智能、数据科学、产品设计或相关专业在校学生或应届毕业生"
+          },
+          {
+            "index": 4,
+            "source": "检索证据 - 百度 - AI 应用 - 产品经理",
+            "quote": "本科及以上学历，计算机、人力资源、管理类相关专业"
+          },
+          {
+            "index": 5,
+            "source": "检索证据 - 小米 - AI 产品经理实习生",
+            "quote": "本科及以上学历"
+          }
+        ],
+        "confidence": "high",
+        "conflict_detected": true,
+        "conflict_details": "不同岗位对学历的显式要求存在差异：百度 AI 产品实习生 [1] 未显式注明学历层级，仅强调学生身份；而百度 AI 应用 - 产品经理 [4] 和小米 AI 产品经理实习生 [5] 均明确要求“本科及以上学历”。此外，岗位层级存在实习生与正式产品经理的区别。",
+        "insufficient_note": null
+      }
+    }
+  ],
+  "debug_info": {
+    "task_graph": {
+      "tasks": {
+        "T0": {
+          "task_id": "T0",
+          "task_type": "tool_call",
+          "tool_name": "kb_retrieve",
+          "status": "success",
+          "parameters": {
+            "query": "{{intent_verify.search_keywords}}",
+            "company": "百度",
+            "position": "AI产品实习生",
+            "top_k": 5
+          },
+          "resolved_params": {
+            "query": "百度的AI产品实习生要求什么学历",
+            "company": "百度",
+            "position": "AI产品实习生",
+            "top_k": 5
+          },
+          "result": {
+            "chunks": [
+              {
+                "chunk_id": "22fa0d11-9483-4b94-bb38-c3c90676fd9b_chunk_2",
+                "content": "【百度 · AI产品实习生 硬性要求】\n计算机科学、人工智能、数据科学、产品设计或相关专业在校学生或应届毕业生",
+                "metadata": {
+                  "company": "百度",
+                  "index": 2,
+                  "jd_id": "22fa0d11-9483-4b94-bb38-c3c90676fd9b",
+                  "position": "AI产品实习生",
+                  "priority": "high",
+                  "section": "hard_requirements",
+                  "strategy": "semantic"
+                },
+                "distance": 0.31845447421073914,
+                "bm25_score": 0.0,
+                "vec_norm": 1.0,
+                "bm25_norm": 0.0,
+                "hybrid_score": 0.7,
+                "rerank_score": 0.9999
+              },
+              {
+                "chunk_id": "22fa0d11-9483-4b94-bb38-c3c90676fd9b_chunk_3",
+                "content": "【百度 · AI产品实习生 硬性要求】\n对AI技术有浓厚兴趣，了解机器学习、深度学习等基本概念",
+                "metadata": {
+                  "company": "百度",
+                  "index": 3,
+                  "jd_id": "22fa0d11-9483-4b94-bb38-c3c90676fd9b",
+                  "position": "AI产品实习生",
+                  "priority": "high",
+                  "section": "hard_requirements",
+                  "strategy": "semantic"
+                },
+                "distance": 0.37794405221939087,
+                "bm25_score": 7.165582770674353,
+                "vec_norm": 0.7292778746049814,
+                "bm25_norm": 0.229095439024634,
+                "hybrid_score": 0.5792231439308771,
+                "rerank_score": 0.9992
+              },
+              {
+                "chunk_id": "22fa0d11-9483-4b94-bb38-c3c90676fd9b_chunk_5",
+                "content": "【百度 · AI产品实习生 硬性要求】\n强烈的责任心与自我驱动力，能够主动承担责任，按时完成任务",
+                "metadata": {
+                  "company": "百度",
+                  "index": 5,
+                  "jd_id": "22fa0d11-9483-4b94-bb38-c3c90676fd9b",
+                  "position": "AI产品实习生",
+                  "priority": "high",
+                  "section": "hard_requirements",
+                  "strategy": "semantic"
+                },
+                "distance": 0.396601140499115,
+                "bm25_score": 7.30040738175568,
+                "vec_norm": 0.6443741526112762,
+                "bm25_norm": 0.29248260430027656,
+                "hybrid_score": 0.5388066881179763,
+                "rerank_score": 0.9975
+              },
+              {
+                "chunk_id": "d8f1f630-f372-467a-b0a0-5a68a6db4ffd_chunk_2",
+                "content": "【百度 · AI应用-产品经理 硬性要求】\n本科及以上学历，计算机、人力资源、管理类相关专业",
+                "metadata": {
+                  "company": "百度",
+                  "index": 2,
+                  "jd_id": "d8f1f630-f372-467a-b0a0-5a68a6db4ffd",
+                  "position": "AI应用-产品经理",
+                  "priority": "high",
+                  "section": "hard_requirements",
+                  "strategy": "semantic"
+                },
+                "distance": null,
+                "bm25_score": 8.534867350420107,
+                "vec_norm": 0.0,
+                "bm25_norm": 0.8728582303252341,
+                "hybrid_score": 0.26185746909757024,
+                "rerank_score": 0.9965
+              },
+              {
+                "chunk_id": "caa7985c-efa3-4018-96e6-2293b42202da_chunk_2",
+                "content": "【小米 · AI产品经理实习生 硬性要求】\n本科及以上学历",
+                "metadata": {
+                  "company": "小米",
+                  "index": 2,
+                  "jd_id": "caa7985c-efa3-4018-96e6-2293b42202da",
+                  "position": "AI产品经理实习生",
+                  "priority": "high",
+                  "section": "hard_requirements",
+                  "strategy": "semantic"
+                },
+                "distance": null,
+                "bm25_score": 8.805298116239177,
+                "vec_norm": 0.0,
+                "bm25_norm": 1.0,
+                "hybrid_score": 0.3,
+                "rerank_score": 0.9691
+              }
+            ],
+            "query": "百度的AI产品实习生要求什么学历",
+            "filters": {
+              "company": "百度",
+              "position": "AI产品实习生"
+            },
+            "strategy": "hybrid(70%vec+30%bm25)+reranker",
+            "pool_k": 5,
+            "rerank_k": 10,
+            "pool_size": 24,
+            "vec_only": 4,
+            "bm25_only": 17,
+            "both": 3,
+            "rerank": {
+              "enabled": true,
+              "candidates": 5,
+              "output": 5,
+              "best_rerank_score": 0.9999
+            }
+          },
+          "observation": "工具 kb_retrieve 执行成功"
+        },
+        "T1": {
+          "task_id": "T1",
+          "task_type": "tool_call",
+          "tool_name": "qa_synthesize",
+          "status": "success",
+          "parameters": {
+            "question": "{{intent_verify.attributes}}中的学历要求是什么",
+            "evidence_chunks": "{{T0.output.chunks}}",
+            "qa_type": "factual"
+          },
+          "resolved_params": {
+            "question": "[\"要求\", \"学历\"]中的学历要求是什么",
+            "evidence_chunks": [
+              {
+                "chunk_id": "22fa0d11-9483-4b94-bb38-c3c90676fd9b_chunk_2",
+                "content": "【百度 · AI产品实习生 硬性要求】\n计算机科学、人工智能、数据科学、产品设计或相关专业在校学生或应届毕业生",
+                "metadata": {
+                  "company": "百度",
+                  "index": 2,
+                  "jd_id": "22fa0d11-9483-4b94-bb38-c3c90676fd9b",
+                  "position": "AI产品实习生",
+                  "priority": "high",
+                  "section": "hard_requirements",
+                  "strategy": "semantic"
+                },
+                "distance": 0.31845447421073914,
+                "bm25_score": 0.0,
+                "vec_norm": 1.0,
+                "bm25_norm": 0.0,
+                "hybrid_score": 0.7,
+                "rerank_score": 0.9999
+              },
+              {
+                "chunk_id": "22fa0d11-9483-4b94-bb38-c3c90676fd9b_chunk_3",
+                "content": "【百度 · AI产品实习生 硬性要求】\n对AI技术有浓厚兴趣，了解机器学习、深度学习等基本概念",
+                "metadata": {
+                  "company": "百度",
+                  "index": 3,
+                  "jd_id": "22fa0d11-9483-4b94-bb38-c3c90676fd9b",
+                  "position": "AI产品实习生",
+                  "priority": "high",
+                  "section": "hard_requirements",
+                  "strategy": "semantic"
+                },
+                "distance": 0.37794405221939087,
+                "bm25_score": 7.165582770674353,
+                "vec_norm": 0.7292778746049814,
+                "bm25_norm": 0.229095439024634,
+                "hybrid_score": 0.5792231439308771,
+                "rerank_score": 0.9992
+              },
+              {
+                "chunk_id": "22fa0d11-9483-4b94-bb38-c3c90676fd9b_chunk_5",
+                "content": "【百度 · AI产品实习生 硬性要求】\n强烈的责任心与自我驱动力，能够主动承担责任，按时完成任务",
+                "metadata": {
+                  "company": "百度",
+                  "index": 5,
+                  "jd_id": "22fa0d11-9483-4b94-bb38-c3c90676fd9b",
+                  "position": "AI产品实习生",
+                  "priority": "high",
+                  "section": "hard_requirements",
+                  "strategy": "semantic"
+                },
+                "distance": 0.396601140499115,
+                "bm25_score": 7.30040738175568,
+                "vec_norm": 0.6443741526112762,
+                "bm25_norm": 0.29248260430027656,
+                "hybrid_score": 0.5388066881179763,
+                "rerank_score": 0.9975
+              },
+              {
+                "chunk_id": "d8f1f630-f372-467a-b0a0-5a68a6db4ffd_chunk_2",
+                "content": "【百度 · AI应用-产品经理 硬性要求】\n本科及以上学历，计算机、人力资源、管理类相关专业",
+                "metadata": {
+                  "company": "百度",
+                  "index": 2,
+                  "jd_id": "d8f1f630-f372-467a-b0a0-5a68a6db4ffd",
+                  "position": "AI应用-产品经理",
+                  "priority": "high",
+                  "section": "hard_requirements",
+                  "strategy": "semantic"
+                },
+                "distance": null,
+                "bm25_score": 8.534867350420107,
+                "vec_norm": 0.0,
+                "bm25_norm": 0.8728582303252341,
+                "hybrid_score": 0.26185746909757024,
+                "rerank_score": 0.9965
+              },
+              {
+                "chunk_id": "caa7985c-efa3-4018-96e6-2293b42202da_chunk_2",
+                "content": "【小米 · AI产品经理实习生 硬性要求】\n本科及以上学历",
+                "metadata": {
+                  "company": "小米",
+                  "index": 2,
+                  "jd_id": "caa7985c-efa3-4018-96e6-2293b42202da",
+                  "position": "AI产品经理实习生",
+                  "priority": "high",
+                  "section": "hard_requirements",
+                  "strategy": "semantic"
+                },
+                "distance": null,
+                "bm25_score": 8.805298116239177,
+                "vec_norm": 0.0,
+                "bm25_norm": 1.0,
+                "hybrid_score": 0.3,
+                "rerank_score": 0.9691
+              }
+            ],
+            "qa_type": "factual"
+          },
+          "result": {
+            "answer": "根据检索到的证据，学历要求主要为**本科及以上学历**，部分实习生岗位强调**在校学生或应届毕业生**身份及特定专业背景。\n\n⚠️ 注意：不同来源的信息存在差异——\n1. 学历表述不同：部分岗位（如小米 AI 产品经理实习生、百度 AI 应用 - 产品经理）明确要求“本科及以上学历”[4][5]，而百度 AI 产品实习生岗位主要强调“在校学生或应届毕业生”及专业背景，未显式注明学历层级 [1]。\n2. 岗位层级不同：明确要求本科及以上学历的包含正式产品经理岗位 [4]，而其他为实习生岗位 [1][5]。\n\n可能原因：\n- 岗位细分方向不同（校招实习生 vs 社招/正式员工的要求差异）\n- 信息描述侧重不同（侧重身份状态 vs 侧重学位等级）\n\n以上信息仅供参考，具体请以该公司官方发布的 JD 为准。",
+            "citations": [
+              {
+                "index": 1,
+                "source": "检索证据 - 百度 - AI 产品实习生",
+                "quote": "计算机科学、人工智能、数据科学、产品设计或相关专业在校学生或应届毕业生"
+              },
+              {
+                "index": 4,
+                "source": "检索证据 - 百度 - AI 应用 - 产品经理",
+                "quote": "本科及以上学历，计算机、人力资源、管理类相关专业"
+              },
+              {
+                "index": 5,
+                "source": "检索证据 - 小米 - AI 产品经理实习生",
+                "quote": "本科及以上学历"
+              }
+            ],
+            "confidence": "high",
+            "conflict_detected": true,
+            "conflict_details": "不同岗位对学历的显式要求存在差异：百度 AI 产品实习生 [1] 未显式注明学历层级，仅强调学生身份；而百度 AI 应用 - 产品经理 [4] 和小米 AI 产品经理实习生 [5] 均明确要求“本科及以上学历”。此外，岗位层级存在实习生与正式产品经理的区别。",
+            "insufficient_note": null
+          },
+          "observation": "工具 qa_synthesize 执行成功"
+        }
+      },
+      "global_status": "success",
+      "replan_reason": "",
+      "replan_count": 0
+    },
+    "intent": {
+      "demands": [
+        {
+          "intent": "attribute_verify",
+          "entities": {
+            "company": "百度",
+            "position": "AI产品实习生",
+            "attributes": [
+              "要求",
+              "学历"
+            ],
+            "qa_type": "factual"
+          },
+          "confidence": 0.88
+        }
+      ],
+      "needs_clarification": false,
+      "clarification_question": ""
+    },
+    "rewrite": {
+      "rewritten_query": "百度的AI产品实习生要求什么学历",
+      "search_keywords": "百度的AI产品实习生要求什么学历",
+      "is_follow_up": false,
+      "follow_up_type": "none",
+      "resolved_references": {}
+    },
+    "evidence_cache": [
+      {
+        "chunk_id": "22fa0d11-9483-4b94-bb38-c3c90676fd9b_chunk_2",
+        "content": "【百度 · AI产品实习生 硬性要求】\n计算机科学、人工智能、数据科学、产品设计或相关专业在校学生或应届毕业生",
+        "metadata": {
+          "company": "百度",
+          "index": 2,
+          "jd_id": "22fa0d11-9483-4b94-bb38-c3c90676fd9b",
+          "position": "AI产品实习生",
+          "priority": "high",
+          "section": "hard_requirements",
+          "strategy": "semantic"
+        },
+        "distance": 0.31845447421073914,
+        "bm25_score": 0.0,
+        "vec_norm": 1.0,
+        "bm25_norm": 0.0,
+        "hybrid_score": 0.7,
+        "rerank_score": 0.9999
+      },
+      {
+        "chunk_id": "22fa0d11-9483-4b94-bb38-c3c90676fd9b_chunk_3",
+        "content": "【百度 · AI产品实习生 硬性要求】\n对AI技术有浓厚兴趣，了解机器学习、深度学习等基本概念",
+        "metadata": {
+          "company": "百度",
+          "index": 3,
+          "jd_id": "22fa0d11-9483-4b94-bb38-c3c90676fd9b",
+          "position": "AI产品实习生",
+          "priority": "high",
+          "section": "hard_requirements",
+          "strategy": "semantic"
+        },
+        "distance": 0.37794405221939087,
+        "bm25_score": 7.165582770674353,
+        "vec_norm": 0.7292778746049814,
+        "bm25_norm": 0.229095439024634,
+        "hybrid_score": 0.5792231439308771,
+        "rerank_score": 0.9992
+      },
+      {
+        "chunk_id": "22fa0d11-9483-4b94-bb38-c3c90676fd9b_chunk_5",
+        "content": "【百度 · AI产品实习生 硬性要求】\n强烈的责任心与自我驱动力，能够主动承担责任，按时完成任务",
+        "metadata": {
+          "company": "百度",
+          "index": 5,
+          "jd_id": "22fa0d11-9483-4b94-bb38-c3c90676fd9b",
+          "position": "AI产品实习生",
+          "priority": "high",
+          "section": "hard_requirements",
+          "strategy": "semantic"
+        },
+        "distance": 0.396601140499115,
+        "bm25_score": 7.30040738175568,
+        "vec_norm": 0.6443741526112762,
+        "bm25_norm": 0.29248260430027656,
+        "hybrid_score": 0.5388066881179763,
+        "rerank_score": 0.9975
+      },
+      {
+        "chunk_id": "d8f1f630-f372-467a-b0a0-5a68a6db4ffd_chunk_2",
+        "content": "【百度 · AI应用-产品经理 硬性要求】\n本科及以上学历，计算机、人力资源、管理类相关专业",
+        "metadata": {
+          "company": "百度",
+          "index": 2,
+          "jd_id": "d8f1f630-f372-467a-b0a0-5a68a6db4ffd",
+          "position": "AI应用-产品经理",
+          "priority": "high",
+          "section": "hard_requirements",
+          "strategy": "semantic"
+        },
+        "distance": null,
+        "bm25_score": 8.534867350420107,
+        "vec_norm": 0.0,
+        "bm25_norm": 0.8728582303252341,
+        "hybrid_score": 0.26185746909757024,
+        "rerank_score": 0.9965
+      },
+      {
+        "chunk_id": "caa7985c-efa3-4018-96e6-2293b42202da_chunk_2",
+        "content": "【小米 · AI产品经理实习生 硬性要求】\n本科及以上学历",
+        "metadata": {
+          "company": "小米",
+          "index": 2,
+          "jd_id": "caa7985c-efa3-4018-96e6-2293b42202da",
+          "position": "AI产品经理实习生",
+          "priority": "high",
+          "section": "hard_requirements",
+          "strategy": "semantic"
+        },
+        "distance": null,
+        "bm25_score": 8.805298116239177,
+        "vec_norm": 0.0,
+        "bm25_norm": 1.0,
+        "hybrid_score": 0.3,
+        "rerank_score": 0.9691
+      }
+    ],
+    "evidence_cache_query": "百度的AI产品实习生要求什么学历",
+    "tool_outputs": [
+      {
+        "task_id": "T0",
+        "tool": "kb_retrieve",
+        "description": "检索百度AI产品实习生JD",
+        "result": {
+          "chunks": [
+            {
+              "chunk_id": "22fa0d11-9483-4b94-bb38-c3c90676fd9b_chunk_2",
+              "content": "【百度 · AI产品实习生 硬性要求】\n计算机科学、人工智能、数据科学、产品设计或相关专业在校学生或应届毕业生",
+              "source": "百度-AI产品实习生",
+              "metadata": {
+                "company": "百度",
+                "position": "AI产品实习生"
+              }
+            },
+            {
+              "chunk_id": "22fa0d11-9483-4b94-bb38-c3c90676fd9b_chunk_3",
+              "content": "【百度 · AI产品实习生 硬性要求】\n对AI技术有浓厚兴趣，了解机器学习、深度学习等基本概念",
+              "source": "百度-AI产品实习生",
+              "metadata": {
+                "company": "百度",
+                "position": "AI产品实习生"
+              }
+            },
+            {
+              "chunk_id": "22fa0d11-9483-4b94-bb38-c3c90676fd9b_chunk_5",
+              "content": "【百度 · AI产品实习生 硬性要求】\n强烈的责任心与自我驱动力，能够主动承担责任，按时完成任务",
+              "source": "百度-AI产品实习生",
+              "metadata": {
+                "company": "百度",
+                "position": "AI产品实习生"
+              }
+            },
+            {
+              "chunk_id": "d8f1f630-f372-467a-b0a0-5a68a6db4ffd_chunk_2",
+              "content": "【百度 · AI应用-产品经理 硬性要求】\n本科及以上学历，计算机、人力资源、管理类相关专业",
+              "source": "百度-AI应用-产品经理",
+              "metadata": {
+                "company": "百度",
+                "position": "AI应用-产品经理"
+              }
+            },
+            {
+              "chunk_id": "caa7985c-efa3-4018-96e6-2293b42202da_chunk_2",
+              "content": "【小米 · AI产品经理实习生 硬性要求】\n本科及以上学历",
+              "source": "小米-AI产品经理实习生",
+              "metadata": {
+                "company": "小米",
+                "position": "AI产品经理实习生"
+              }
+            }
+          ],
+          "query": "百度的AI产品实习生要求什么学历",
+          "filters": {
+            "company": "百度",
+            "position": "AI产品实习生"
+          },
+          "strategy": "hybrid(70%vec+30%bm25)+reranker",
+          "pool_k": 5,
+          "rerank_k": 10,
+          "pool_size": 24,
+          "vec_only": 4,
+          "bm25_only": 17,
+          "both": 3,
+          "rerank": {
+            "enabled": true,
+            "candidates": 5,
+            "output": 5,
+            "best_rerank_score": 0.9999
+          }
+        }
+      },
+      {
+        "task_id": "T1",
+        "tool": "qa_synthesize",
+        "description": "基于检索证据回答百度AI产品实习生学历要求",
+        "result": {
+          "answer": "根据检索到的证据，学历要求主要为**本科及以上学历**，部分实习生岗位强调**在校学生或应届毕业生**身份及特定专业背景。\n\n⚠️ 注意：不同来源的信息存在差异——\n1. 学历表述不同：部分岗位（如小米 AI 产品经理实习生、百度 AI 应用 - 产品经理）明确要求“本科及以上学历”[4][5]，而百度 AI 产品实习生岗位主要强调“在校学生或应届毕业生”及专业背景，未显式注明学历层级 [1]。\n2. 岗位层级不同：明确要求本科及以上学历的包含正式产品经理岗位 [4]，而其他为实习生岗位 [1][5]。\n\n可能原因：\n- 岗位细分方向不同（校招实习生 vs 社招/正式员工的要求差异）\n- 信息描述侧重不同（侧重身份状态 vs 侧重学位等级）\n\n以上信息仅供参考，具体请以该公司官方发布的 JD 为准。",
+          "citations": [
+            {
+              "index": 1,
+              "source": "检索证据 - 百度 - AI 产品实习生",
+              "quote": "计算机科学、人工智能、数据科学、产品设计或相关专业在校学生或应届毕业生"
+            },
+            {
+              "index": 4,
+              "source": "检索证据 - 百度 - AI 应用 - 产品经理",
+              "quote": "本科及以上学历，计算机、人力资源、管理类相关专业"
+            },
+            {
+              "index": 5,
+              "source": "检索证据 - 小米 - AI 产品经理实习生",
+              "quote": "本科及以上学历"
+            }
+          ],
+          "confidence": "high",
+          "conflict_detected": true,
+          "conflict_details": "不同岗位对学历的显式要求存在差异：百度 AI 产品实习生 [1] 未显式注明学历层级，仅强调学生身份；而百度 AI 应用 - 产品经理 [4] 和小米 AI 产品经理实习生 [5] 均明确要求“本科及以上学历”。此外，岗位层级存在实习生与正式产品经理的区别。",
+          "insufficient_note": null
+        }
+      }
+    ],
+    "final_aggregation_prompt": {
+      "system_prompt": "你是一位专业的求职顾问。请基于以下工具执行结果，给用户一个清晰、有帮助的回复。\n要求：\n1. 先直接回答用户的问题（是/否/有/没有），不要绕弯子，不要重复用户的原话\n2. 如果有匹配分析结果，给出具体的分数和建议\n3. 如果有检索结果，基于事实回答，不要编造\n4. 【强制】引用信息时必须标注来源。每个引用的事实后面都要跟 [来源：公司名-岗位名] 格式。   kb_retrieve 结果的 chunks 中带有 'source' 字段（如'字节跳动-AI产品经理'），请直接使用。   external_search 结果带有 'source_name' 字段，也请直接使用。\n5. 当本地知识库与外部搜索结果冲突时，请并列呈现两种说法并标注各自来源，不要替用户做判断\n6. 语气友好、专业、结构化",
+      "user_prompt": "【用户问题】\n百度的AI产品实习生要求什么学历\n\n【工具执行结果】\n[{\"task_id\": \"T0\", \"tool\": \"kb_retrieve\", \"description\": \"检索百度AI产品实习生JD\", \"result\": {\"chunks\": [{\"chunk_id\": \"22fa0d11-9483-4b94-bb38-c3c90676fd9b_chunk_2\", \"content\": \"【百度 · AI产品实习生 硬性要求】\\n计算机科学、人工智能、数据科学、产品设计或相关专业在校学生或应届毕业生\", \"source\": \"百度-AI产品实习生\", \"metadata\": {\"company\": \"百度\", \"position\": \"AI产品实习生\"}}, {\"chunk_id\": \"22fa0d11-9483-4b94-bb38-c3c90676fd9b_chunk_3\", \"content\": \"【百度 · AI产品实习生 硬性要求】\\n对AI技术有浓厚兴趣，了解机器学习、深度学习等基本概念\", \"source\": \"百度-AI产品实习生\", \"metadata\": {\"company\": \"百度\", \"position\": \"AI产品实习生\"}}, {\"chunk_id\": \"22fa0d11-9483-4b94-bb38-c3c90676fd9b_chunk_5\", \"content\": \"【百度 · AI产品实习生 硬性要求】\\n强烈的责任心与自我驱动力，能够主动承担责任，按时完成任务\", \"source\": \"百度-AI产品实习生\", \"metadata\": {\"company\": \"百度\", \"position\": \"AI产品实习生\"}}, {\"chunk_id\": \"d8f1f630-f372-467a-b0a0-5a68a6db4ffd_chunk_2\", \"content\": \"【百度 · AI应用-产品经理 硬性要求】\\n本科及以上学历，计算机、人力资源、管理类相关专业\", \"source\": \"百度-AI应用-产品经理\", \"metadata\": {\"company\": \"百度\", \"position\": \"AI应用-产品经理\"}}, {\"chunk_id\": \"caa7985c-efa3-4018-96e6-2293b42202da_chunk_2\", \"content\": \"【小米 · AI产品经理实习生 硬性要求】\\n本科及以上学历\", \"source\": \"小米-AI产品经理实习生\", \"metadata\": {\"company\": \"小米\", \"position\": \"AI产品经理实习生\"}}], \"query\": \"百度的AI产品实习生要求什么学历\", \"filters\": {\"company\": \"百度\", \"position\": \"AI产品实习生\"}, \"strategy\": \"hybrid(70%vec+30%bm25)+reranker\", \"pool_k\": 5, \"rerank_k\": 10, \"pool_size\": 24, \"vec_only\": 4, \"bm25_only\": 17, \"both\": 3, \"rerank\": {\"enabled\": true, \"candidates\": 5, \"output\": 5, \"best_rerank_score\": 0.9999}}}, {\"task_id\": \"T1\", \"tool\": \"qa_synthesize\", \"description\": \"基于检索证据回答百度AI产品实习生学历要求\", \"result\": {\"answer\": \"根据检索到的证据，学历要求主要为**本科及以上学历**，部分实习生岗位强调**在校学生或应届毕业生**身份及特定专业背景。\\n\\n⚠️ 注意：不同来源的信息存在差异——\\n1. 学历表述不同：部分岗位（如小米 AI 产品经理实习生、百度 AI 应用 - 产品经理）明确要求“本科及以上学历”[4][5]，而百度 AI 产品实习生岗位主要强调“在校学生或应届毕业生”及专业背景，未显式注明学历层级 [1]。\\n2. 岗位层级不同：明确要求本科及以上学历的包含正式产品经理岗位 [4]，而其他为实习生岗位 [1][5]。\\n\\n可能原因：\\n- 岗位细分方向不同（校招实习生 vs 社招/正式员工的要求差异）\\n- 信息描述侧重不同（侧重身份状态 vs 侧重学位等级）\\n\\n以上信息仅供参考，具体请以该公司官方发布的 JD 为准。\", \"citations\": [{\"index\": 1, \"source\": \"检索证据 - 百度 - AI 产品实习生\", \"quote\": \"计算机科学、人工智能、数据科学、产品设计或相关专业在校学生或应届毕业生\"}, {\"index\": 4, \"source\": \"检索证据 - 百度 - AI 应用 - 产品经理\", \"quote\": \"本科及以上学历，计算机、人力资源、管理类相关专业\"}, {\"index\": 5, \"source\": \"检索证据 - 小米 - AI 产品经理实习生\", \"quote\": \"本科及以上学历\"}], \"confidence\": \"high\", \"conflict_detected\": true, \"conflict_details\": \"不同岗位对学历的显式要求存在差异：百度 AI 产品实习生 [1] 未显式注明学历层级，仅强调学生身份；而百度 AI 应用 - 产品经理 [4] 和小米 AI 产品经理实习生 [5] 均明确要求“本科及以上学历”。此外，岗位层级存在实习生与正式产品经理的区别。\", \"insufficient_note\": null}}]\n\n请生成回复："
+    }
+  },
+  "reply": "主要面向**在校学生或应届毕业生**，通常隐含**本科及以上**学历要求。\n\n以下是基于检索到的岗位信息整理的具体要求与分析：\n\n### 1. 核心学历要求\n*   **身份状态：** 计算机科学、人工智能、数据科学、产品设计或相关专业在校学生或应届毕业生 [来源：百度-AI 产品实习生]。\n*   **学历层级参考：** 本科及以上学历，计算机、人力资源、管理类相关专业 [来源：百度-AI 应用 - 产品经理]。\n*   **行业同类参考：** 本科及以上学历 [来源：小米-AI 产品经理实习生]。\n\n### 2. 专业能力要求\n*   **技术背景：** 对 AI 技术有浓厚兴趣，了解机器学习、深度学习等基本概念 [来源：百度-AI 产品实习生]。\n*   **综合素质：** 强烈的责任心与自我驱动力，能够主动承担责任，按时完成任务 [来源：百度-AI 产品实习生]。\n\n### 3. 信息差异说明\n检索发现不同岗位描述存在细微差异，供您参考判断：\n*   **实习生岗位：** 主要强调“在校学生或应届毕业生”身份及专业背景，未显式注明学历层级 [来源：百度-AI 产品实习生]。\n*   **正式/相关岗位：** 明确要求“本科及以上学历” [来源：百度-AI 应用 - 产品经理]。\n*   **建议：** 虽然实习生 JD 未显式写明，但基于同类岗位及正式岗要求，建议按**本科及以上**标准准备。\n\n### 4. 求职建议\n1.  **简历优化：** 突出计算机、人工智能等相关专业背景，明确标注在校身份或毕业时间 [来源：百度-AI 产品实习生]。\n2.  **技能准备：** 复习机器学习、深度学习基本概念，准备相关项目经历以证明对 AI 技术的兴趣 [来源：百度-AI 产品实习生]。\n3.  **软实力展示：** 在面试中举例说明责任心与自我驱动力，如主动承担责任并按时完成任务的经历 [来源：百度-AI 产品实习生]。\n\n以上信息基于现有知识库检索结果，具体请以该公司官方发布的最新 JD 为准。",
+  "reply_length": 865,
+  "intent_match": true,
+  "tool_match_rate": 1.0,
+  "has_reply": true,
+  "events": [
+    {
+      "step": "intent",
+      "message": "正在识别您的意图...",
+      "_time": 10.481855392456055,
+      "type": "status"
+    },
+    {
+      "step": "plan",
+      "message": "正在规划任务...",
+      "_time": 10.48189663887024,
+      "type": "status"
+    },
+    {
+      "step": "execute",
+      "message": "正在执行分析...",
+      "_time": 25.869944095611572,
+      "type": "status"
+    },
+    {
+      "step": "aggregate",
+      "message": "正在生成回复...",
+      "_time": 94.58577704429626,
+      "type": "status"
+    },
+    {
+      "text": "主要面向**",
+      "_time": 150.124835729599,
+      "type": "delta"
+    },
+    {
+      "text": "在校学生或应届毕业生**",
+      "_time": 150.12737011909485,
+      "type": "delta"
+    },
+    {
+      "text": "，通常隐含**",
+      "_time": 150.26883172988892,
+      "type": "delta"
+    },
+    {
+      "text": "本科及以上**学历要求",
+      "_time": 150.30335474014282,
+      "type": "delta"
+    },
+    {
+      "text": "。\n\n以下是基于",
+      "_time": 150.4095196723938,
+      "type": "delta"
+    },
+    {
+      "text": "检索到的岗位",
+      "_time": 150.41330933570862,
+      "type": "delta"
+    },
+    {
+      "text": "信息整理的具体要求",
+      "_time": 150.53879833221436,
+      "type": "delta"
+    },
+    {
+      "text": "与分析",
+      "_time": 150.57588863372803,
+      "type": "delta"
+    },
+    {
+      "text": "：\n\n### ",
+      "_time": 150.6270318031311,
+      "type": "delta"
+    },
+    {
+      "text": "1. ",
+      "_time": 150.6328582763672,
+      "type": "delta"
+    },
+    {
+      "text": "核心学历要求\n*",
+      "_time": 150.75166058540344,
+      "type": "delta"
+    },
+    {
+      "text": "   **",
+      "_time": 150.7572681903839,
+      "type": "delta"
+    },
+    {
+      "text": "身份状态：** ",
+      "_time": 150.8973786830902,
+      "type": "delta"
+    },
+    {
+      "text": "计算机科学、人工智能",
+      "_time": 150.9001772403717,
+      "type": "delta"
+    },
+    {
+      "text": "、数据科学、",
+      "_time": 150.98748183250427,
+      "type": "delta"
+    },
+    {
+      "text": "产品设计或相关专业在校学生",
+      "_time": 151.01933026313782,
+      "type": "delta"
+    },
+    {
+      "text": "或应届毕业生 [来源",
+      "_time": 151.13269805908203,
+      "type": "delta"
+    },
+    {
+      "text": "：百度-AI",
+      "_time": 151.13770389556885,
+      "type": "delta"
+    },
+    {
+      "text": " 产品实习生]",
+      "_time": 151.27701878547668,
+      "type": "delta"
+    },
+    {
+      "text": "。\n*  ",
+      "_time": 151.32739400863647,
+      "type": "delta"
+    },
+    {
+      "text": " **学历层级参考",
+      "_time": 151.41990852355957,
+      "type": "delta"
+    },
+    {
+      "text": "：**",
+      "_time": 151.4233193397522,
+      "type": "delta"
+    },
+    {
+      "text": " 本科及以上学历，计算机",
+      "_time": 151.51237988471985,
+      "type": "delta"
+    },
+    {
+      "text": "、人力资源",
+      "_time": 151.5170087814331,
+      "type": "delta"
+    },
+    {
+      "text": "、管理类相关专业 [",
+      "_time": 151.6536831855774,
+      "type": "delta"
+    },
+    {
+      "text": "来源：百度-A",
+      "_time": 151.65756559371948,
+      "type": "delta"
+    },
+    {
+      "text": "I 应用 -",
+      "_time": 151.76052331924438,
+      "type": "delta"
+    },
+    {
+      "text": " 产品经理]。",
+      "_time": 151.76536226272583,
+      "type": "delta"
+    },
+    {
+      "text": "\n*   **",
+      "_time": 151.9415955543518,
+      "type": "delta"
+    },
+    {
+      "text": "行业同类参考：**",
+      "_time": 151.94635796546936,
+      "type": "delta"
+    },
+    {
+      "text": " 本科及以上学历 [来源",
+      "_time": 152.04970860481262,
+      "type": "delta"
+    },
+    {
+      "text": "：小米-A",
+      "_time": 152.09153175354004,
+      "type": "delta"
+    },
+    {
+      "text": "I 产品经理实习生",
+      "_time": 152.17577481269836,
+      "type": "delta"
+    },
+    {
+      "text": "]。\n\n###",
+      "_time": 152.17835974693298,
+      "type": "delta"
+    },
+    {
+      "text": " 2. ",
+      "_time": 152.31770992279053,
+      "type": "delta"
+    },
+    {
+      "text": "专业能力要求",
+      "_time": 152.32449507713318,
+      "type": "delta"
+    },
+    {
+      "text": "\n*   **",
+      "_time": 152.46276783943176,
+      "type": "delta"
+    },
+    {
+      "text": "技术背景",
+      "_time": 152.46616911888123,
+      "type": "delta"
+    },
+    {
+      "text": "：** 对 AI",
+      "_time": 152.53658151626587,
+      "type": "delta"
+    },
+    {
+      "text": " 技术有浓厚",
+      "_time": 152.53929781913757,
+      "type": "delta"
+    },
+    {
+      "text": "兴趣，了解机器学习",
+      "_time": 152.71257305145264,
+      "type": "delta"
+    },
+    {
+      "text": "、深度学习等基本概念",
+      "_time": 152.71627283096313,
+      "type": "delta"
+    },
+    {
+      "text": " [来源：百度",
+      "_time": 152.82359337806702,
+      "type": "delta"
+    },
+    {
+      "text": "-AI 产品",
+      "_time": 152.8253059387207,
+      "type": "delta"
+    },
+    {
+      "text": "实习生]。\n",
+      "_time": 153.00866723060608,
+      "type": "delta"
+    },
+    {
+      "text": "*   **综合素质",
+      "_time": 153.0123131275177,
+      "type": "delta"
+    },
+    {
+      "text": "：** 强烈的责任心",
+      "_time": 153.11058473587036,
+      "type": "delta"
+    },
+    {
+      "text": "与自我驱动力，",
+      "_time": 153.11425495147705,
+      "type": "delta"
+    },
+    {
+      "text": "能够主动承担责任，",
+      "_time": 153.29769253730774,
+      "type": "delta"
+    },
+    {
+      "text": "按时完成任务 [来源",
+      "_time": 153.3003478050232,
+      "type": "delta"
+    },
+    {
+      "text": "：百度-AI",
+      "_time": 153.39969611167908,
+      "type": "delta"
+    },
+    {
+      "text": " 产品实习生]",
+      "_time": 153.43762969970703,
+      "type": "delta"
+    },
+    {
+      "text": "。\n\n### ",
+      "_time": 153.5435597896576,
+      "type": "delta"
+    },
+    {
+      "text": "3. 信息",
+      "_time": 153.54728317260742,
+      "type": "delta"
+    },
+    {
+      "text": "差异说明\n检索",
+      "_time": 153.6876471042633,
+      "type": "delta"
+    },
+    {
+      "text": "发现",
+      "_time": 153.69337844848633,
+      "type": "delta"
+    },
+    {
+      "text": "不同岗位描述存在",
+      "_time": 153.77740502357483,
+      "type": "delta"
+    },
+    {
+      "text": "细微差异，",
+      "_time": 153.8196680545807,
+      "type": "delta"
+    },
+    {
+      "text": "供您参考判断：",
+      "_time": 153.90465235710144,
+      "type": "delta"
+    },
+    {
+      "text": "\n*",
+      "_time": 153.90826749801636,
+      "type": "delta"
+    },
+    {
+      "text": "   **实习生岗位",
+      "_time": 154.0128092765808,
+      "type": "delta"
+    },
+    {
+      "text": "：** 主要",
+      "_time": 154.0184245109558,
+      "type": "delta"
+    },
+    {
+      "text": "强调“在校学生或",
+      "_time": 154.20262908935547,
+      "type": "delta"
+    },
+    {
+      "text": "应届毕业生”身份及",
+      "_time": 154.20636510849,
+      "type": "delta"
+    },
+    {
+      "text": "专业背景，未",
+      "_time": 154.2806112766266,
+      "type": "delta"
+    },
+    {
+      "text": "显",
+      "_time": 154.28524112701416,
+      "type": "delta"
+    },
+    {
+      "text": "式注明学历层级",
+      "_time": 154.43061113357544,
+      "type": "delta"
+    },
+    {
+      "text": " [来源：百度",
+      "_time": 154.43319439888,
+      "type": "delta"
+    },
+    {
+      "text": "-AI 产品",
+      "_time": 154.5154366493225,
+      "type": "delta"
+    },
+    {
+      "text": "实习生]。\n",
+      "_time": 154.52025079727173,
+      "type": "delta"
+    },
+    {
+      "text": "*   **正式",
+      "_time": 154.66047978401184,
+      "type": "delta"
+    },
+    {
+      "text": "/相关",
+      "_time": 154.69440507888794,
+      "type": "delta"
+    },
+    {
+      "text": "岗位：** 明确要求",
+      "_time": 154.76748514175415,
+      "type": "delta"
+    },
+    {
+      "text": "“",
+      "_time": 154.77336311340332,
+      "type": "delta"
+    },
+    {
+      "text": "本科及以上学历” [来源",
+      "_time": 154.85812950134277,
+      "type": "delta"
+    },
+    {
+      "text": "：百度",
+      "_time": 154.8628649711609,
+      "type": "delta"
+    },
+    {
+      "text": "-AI 应用",
+      "_time": 155.00358200073242,
+      "type": "delta"
+    },
+    {
+      "text": " - 产品经理]",
+      "_time": 155.0091564655304,
+      "type": "delta"
+    },
+    {
+      "text": "。\n*  ",
+      "_time": 155.10857939720154,
+      "type": "delta"
+    },
+    {
+      "text": " **建议",
+      "_time": 155.11429810523987,
+      "type": "delta"
+    },
+    {
+      "text": "：** 虽然实习生",
+      "_time": 155.21950435638428,
+      "type": "delta"
+    },
+    {
+      "text": " JD 未显",
+      "_time": 155.2524709701538,
+      "type": "delta"
+    },
+    {
+      "text": "式写明，但",
+      "_time": 155.36056971549988,
+      "type": "delta"
+    },
+    {
+      "text": "基于",
+      "_time": 155.36532187461853,
+      "type": "delta"
+    },
+    {
+      "text": "同类岗位及正式",
+      "_time": 155.61042141914368,
+      "type": "delta"
+    },
+    {
+      "text": "岗",
+      "_time": 155.62345504760742,
+      "type": "delta"
+    },
+    {
+      "text": "要求，建议按",
+      "_time": 155.62616991996765,
+      "type": "delta"
+    },
+    {
+      "text": "**本科及以上**",
+      "_time": 155.6301784515381,
+      "type": "delta"
+    },
+    {
+      "text": "标准准备。\n\n",
+      "_time": 155.68437719345093,
+      "type": "delta"
+    },
+    {
+      "text": "### 4.",
+      "_time": 155.68808031082153,
+      "type": "delta"
+    },
+    {
+      "text": " 求职建议\n",
+      "_time": 155.82904505729675,
+      "type": "delta"
+    },
+    {
+      "text": "1",
+      "_time": 155.83535838127136,
+      "type": "delta"
+    },
+    {
+      "text": ".  **简历",
+      "_time": 155.95124626159668,
+      "type": "delta"
+    },
+    {
+      "text": "优化",
+      "_time": 155.95597195625305,
+      "type": "delta"
+    },
+    {
+      "text": "：** 突出计算机",
+      "_time": 156.00935530662537,
+      "type": "delta"
+    },
+    {
+      "text": "、人工智能等相关专业",
+      "_time": 156.01408314704895,
+      "type": "delta"
+    },
+    {
+      "text": "背景，明确标注",
+      "_time": 156.170494556427,
+      "type": "delta"
+    },
+    {
+      "text": "在校",
+      "_time": 156.17320585250854,
+      "type": "delta"
+    },
+    {
+      "text": "身份或毕业时间",
+      "_time": 156.22442746162415,
+      "type": "delta"
+    },
+    {
+      "text": " [来源",
+      "_time": 156.22911024093628,
+      "type": "delta"
+    },
+    {
+      "text": "：百度-AI",
+      "_time": 156.33148002624512,
+      "type": "delta"
+    },
+    {
+      "text": " 产品实习生]",
+      "_time": 156.3359842300415,
+      "type": "delta"
+    },
+    {
+      "text": "。\n2.",
+      "_time": 156.50743675231934,
+      "type": "delta"
+    },
+    {
+      "text": "  **技能",
+      "_time": 156.51219654083252,
+      "type": "delta"
+    },
+    {
+      "text": "准备：** 复习",
+      "_time": 156.60257601737976,
+      "type": "delta"
+    },
+    {
+      "text": "机器学习、深度学习基本概念",
+      "_time": 156.607106924057,
+      "type": "delta"
+    },
+    {
+      "text": "，准备相关项目",
+      "_time": 156.7825427055359,
+      "type": "delta"
+    },
+    {
+      "text": "经历",
+      "_time": 156.78916692733765,
+      "type": "delta"
+    },
+    {
+      "text": "以证明对 AI",
+      "_time": 156.8373475074768,
+      "type": "delta"
+    },
+    {
+      "text": " 技术的",
+      "_time": 156.8421609401703,
+      "type": "delta"
+    },
+    {
+      "text": "兴趣 [来源：",
+      "_time": 156.94636034965515,
+      "type": "delta"
+    },
+    {
+      "text": "百度-AI ",
+      "_time": 156.98029208183289,
+      "type": "delta"
+    },
+    {
+      "text": "产品实习生]。",
+      "_time": 157.091299533844,
+      "type": "delta"
+    },
+    {
+      "text": "\n3. ",
+      "_time": 157.0949010848999,
+      "type": "delta"
+    },
+    {
+      "text": " **软实力展示：**",
+      "_time": 157.23431968688965,
+      "type": "delta"
+    },
+    {
+      "text": " 在",
+      "_time": 157.23701810836792,
+      "type": "delta"
+    },
+    {
+      "text": "面试中举例说明",
+      "_time": 157.37044024467468,
+      "type": "delta"
+    },
+    {
+      "text": "责任心",
+      "_time": 157.3750913143158,
+      "type": "delta"
+    },
+    {
+      "text": "与自我驱动力，",
+      "_time": 157.43225812911987,
+      "type": "delta"
+    },
+    {
+      "text": "如主动承担责任",
+      "_time": 157.43615889549255,
+      "type": "delta"
+    },
+    {
+      "text": "并按时完成任务的经历",
+      "_time": 157.55531549453735,
+      "type": "delta"
+    },
+    {
+      "text": " [来源：百度",
+      "_time": 157.59640073776245,
+      "type": "delta"
+    },
+    {
+      "text": "-AI 产品",
+      "_time": 157.70339703559875,
+      "type": "delta"
+    },
+    {
+      "text": "实习生]。\n\n",
+      "_time": 157.70606207847595,
+      "type": "delta"
+    },
+    {
+      "text": "以上信息基于现有",
+      "_time": 157.84737849235535,
+      "type": "delta"
+    },
+    {
+      "text": "知识库",
+      "_time": 157.85093426704407,
+      "type": "delta"
+    },
+    {
+      "text": "检索结果，具体",
+      "_time": 157.97826552391052,
+      "type": "delta"
+    },
+    {
+      "text": "请以",
+      "_time": 157.98206973075867,
+      "type": "delta"
+    },
+    {
+      "text": "该公司官方发布的最新",
+      "_time": 158.02609944343567,
+      "type": "delta"
+    },
+    {
+      "text": " JD",
+      "_time": 158.03006625175476,
+      "type": "delta"
+    },
+    {
+      "text": " 为准。",
+      "_time": 158.11921286582947,
+      "type": "delta"
+    },
+    {
+      "session_id": "eval_chen_03_1780560964642",
+      "intent": "attribute_verify",
+      "route_meta": {
+        "layer": "llm",
+        "intent": "attribute_verify",
+        "confidence": 0.88,
+        "demands": [
+          {
+            "intent": "attribute_verify",
+            "entities": {
+              "company": "百度",
+              "position": "AI产品实习生",
+              "attributes": [
+                "要求",
+                "学历"
+              ],
+              "qa_type": "factual"
+            }
+          }
+        ],
+        "plan_tasks": 2
+      },
+      "agent_mode": "llm",
+      "is_clarification": false,
+      "agent": {
+        "rewritten_query": "百度的AI产品实习生要求什么学历",
+        "tools": [
+          {
+            "tool": "kb_retrieve",
+            "status": "✅",
+            "params": {
+              "query": "百度的AI产品实习生要求什么学历",
+              "company": "百度",
+              "position": "AI产品实习生",
+              "top_k": 5
+            },
+            "result_preview": "{'chunks': [{'chunk_id': '22fa0d11-9483-4b94-bb38-c3c90676fd9b_chunk_2', 'content': '【百度 · AI产品实习生 硬性要求】\\n计算机科学、人工智能、数据科学、产品设计或相关专业在校学生或应届毕业生', 'metadata': {'company': '百度', 'index': 2, 'jd_id': '22fa"
+          },
+          {
+            "tool": "qa_synthesize",
+            "status": "✅",
+            "params": {
+              "question": "[\"要求\", \"学历\"]中的学历要求是什么",
+              "evidence_chunks": [
+                {
+                  "chunk_id": "22fa0d11-9483-4b94-bb38-c3c90676fd9b_chunk_2",
+                  "content": "【百度 · AI产品实习生 硬性要求】\n计算机科学、人工智能、数据科学、产品设计或相关专业在校学生或应届毕业生",
+                  "metadata": {
+                    "company": "百度",
+                    "index": 2,
+                    "jd_id": "22fa0d11-9483-4b94-bb38-c3c90676fd9b",
+                    "position": "AI产品实习生",
+                    "priority": "high",
+                    "section": "hard_requirements",
+                    "strategy": "semantic"
+                  },
+                  "distance": 0.31845447421073914,
+                  "bm25_score": 0.0,
+                  "vec_norm": 1.0,
+                  "bm25_norm": 0.0,
+                  "hybrid_score": 0.7,
+                  "rerank_score": 0.9999
+                },
+                {
+                  "chunk_id": "22fa0d11-9483-4b94-bb38-c3c90676fd9b_chunk_3",
+                  "content": "【百度 · AI产品实习生 硬性要求】\n对AI技术有浓厚兴趣，了解机器学习、深度学习等基本概念",
+                  "metadata": {
+                    "company": "百度",
+                    "index": 3,
+                    "jd_id": "22fa0d11-9483-4b94-bb38-c3c90676fd9b",
+                    "position": "AI产品实习生",
+                    "priority": "high",
+                    "section": "hard_requirements",
+                    "strategy": "semantic"
+                  },
+                  "distance": 0.37794405221939087,
+                  "bm25_score": 7.165582770674353,
+                  "vec_norm": 0.7292778746049814,
+                  "bm25_norm": 0.229095439024634,
+                  "hybrid_score": 0.5792231439308771,
+                  "rerank_score": 0.9992
+                },
+                {
+                  "chunk_id": "22fa0d11-9483-4b94-bb38-c3c90676fd9b_chunk_5",
+                  "content": "【百度 · AI产品实习生 硬性要求】\n强烈的责任心与自我驱动力，能够主动承担责任，按时完成任务",
+                  "metadata": {
+                    "company": "百度",
+                    "index": 5,
+                    "jd_id": "22fa0d11-9483-4b94-bb38-c3c90676fd9b",
+                    "position": "AI产品实习生",
+                    "priority": "high",
+                    "section": "hard_requirements",
+                    "strategy": "semantic"
+                  },
+                  "distance": 0.396601140499115,
+                  "bm25_score": 7.30040738175568,
+                  "vec_norm": 0.6443741526112762,
+                  "bm25_norm": 0.29248260430027656,
+                  "hybrid_score": 0.5388066881179763,
+                  "rerank_score": 0.9975
+                },
+                {
+                  "chunk_id": "d8f1f630-f372-467a-b0a0-5a68a6db4ffd_chunk_2",
+                  "content": "【百度 · AI应用-产品经理 硬性要求】\n本科及以上学历，计算机、人力资源、管理类相关专业",
+                  "metadata": {
+                    "company": "百度",
+                    "index": 2,
+                    "jd_id": "d8f1f630-f372-467a-b0a0-5a68a6db4ffd",
+                    "position": "AI应用-产品经理",
+                    "priority": "high",
+                    "section": "hard_requirements",
+                    "strategy": "semantic"
+                  },
+                  "distance": null,
+                  "bm25_score": 8.534867350420107,
+                  "vec_norm": 0.0,
+                  "bm25_norm": 0.8728582303252341,
+                  "hybrid_score": 0.26185746909757024,
+                  "rerank_score": 0.9965
+                },
+                {
+                  "chunk_id": "caa7985c-efa3-4018-96e6-2293b42202da_chunk_2",
+                  "content": "【小米 · AI产品经理实习生 硬性要求】\n本科及以上学历",
+                  "metadata": {
+                    "company": "小米",
+                    "index": 2,
+                    "jd_id": "caa7985c-efa3-4018-96e6-2293b42202da",
+                    "position": "AI产品经理实习生",
+                    "priority": "high",
+                    "section": "hard_requirements",
+                    "strategy": "semantic"
+                  },
+                  "distance": null,
+                  "bm25_score": 8.805298116239177,
+                  "vec_norm": 0.0,
+                  "bm25_norm": 1.0,
+                  "hybrid_score": 0.3,
+                  "rerank_score": 0.9691
+                }
+              ],
+              "qa_type": "factual"
+            },
+            "result_preview": "{'answer': '根据检索到的证据，学历要求主要为**本科及以上学历**，部分实习生岗位强调**在校学生或应届毕业生**身份及特定专业背景。\\n\\n⚠️ 注意：不同来源的信息存在差异——\\n1. 学历表述不同：部分岗位（如小米 AI 产品经理实习生、百度 AI 应用 - 产品经理）明确要求“本科及以上学历”[4][5]，而百度 AI 产品实习生岗位主要强调“在校学生或应届毕业生”及专业背景，"
+          }
+        ],
+        "kb_chunks_count": 2,
+        "system_prompt_preview": "你是一位专业的求职顾问。请基于以下工具执行结果，给用户一个清晰、有帮助的回复。\n要求：\n1. 先直接回答用户的问题（是/否/有/没有），不要绕弯子，不要重复用户的原话\n2. 如果有匹配分析结果，给出具体的分数和建议\n3. 如果有检索结果，基于事实回答，不要编造\n4. 【强制】引用信息时必须标注来源。每个引用的事实后面都要跟 [来源：公司名-岗位名] 格式。   kb_retrieve 结果的 ch"
+      },
+      "memory": {
+        "working_turns": 1,
+        "compressed_blocks": 0,
+        "current_topic": "general",
+        "evidence_cache_size": 5
+      },
+      "reply": "主要面向**在校学生或应届毕业生**，通常隐含**本科及以上**学历要求。\n\n以下是基于检索到的岗位信息整理的具体要求与分析：\n\n### 1. 核心学历要求\n*   **身份状态：** 计算机科学、人工智能、数据科学、产品设计或相关专业在校学生或应届毕业生 [来源：百度-AI 产品实习生]。\n*   **学历层级参考：** 本科及以上学历，计算机、人力资源、管理类相关专业 [来源：百度-AI 应用 - 产品经理]。\n*   **行业同类参考：** 本科及以上学历 [来源：小米-AI 产品经理实习生]。\n\n### 2. 专业能力要求\n*   **技术背景：** 对 AI 技术有浓厚兴趣，了解机器学习、深度学习等基本概念 [来源：百度-AI 产品实习生]。\n*   **综合素质：** 强烈的责任心与自我驱动力，能够主动承担责任，按时完成任务 [来源：百度-AI 产品实习生]。\n\n### 3. 信息差异说明\n检索发现不同岗位描述存在细微差异，供您参考判断：\n*   **实习生岗位：** 主要强调“在校学生或应届毕业生”身份及专业背景，未显式注明学历层级 [来源：百度-AI 产品实习生]。\n*   **正式/相关岗位：** 明确要求“本科及以上学历” [来源：百度-AI 应用 - 产品经理]。\n*   **建议：** 虽然实习生 JD 未显式写明，但基于同类岗位及正式岗要求，建议按**本科及以上**标准准备。\n\n### 4. 求职建议\n1.  **简历优化：** 突出计算机、人工智能等相关专业背景，明确标注在校身份或毕业时间 [来源：百度-AI 产品实习生]。\n2.  **技能准备：** 复习机器学习、深度学习基本概念，准备相关项目经历以证明对 AI 技术的兴趣 [来源：百度-AI 产品实习生]。\n3.  **软实力展示：** 在面试中举例说明责任心与自我驱动力，如主动承担责任并按时完成任务的经历 [来源：百度-AI 产品实习生]。\n\n以上信息基于现有知识库检索结果，具体请以该公司官方发布的最新 JD 为准。",
+      "debug_info": {
+        "task_graph": {
+          "tasks": {
+            "T0": {
+              "task_id": "T0",
+              "task_type": "tool_call",
+              "tool_name": "kb_retrieve",
+              "status": "success",
+              "parameters": {
+                "query": "{{intent_verify.search_keywords}}",
+                "company": "百度",
+                "position": "AI产品实习生",
+                "top_k": 5
+              },
+              "resolved_params": {
+                "query": "百度的AI产品实习生要求什么学历",
+                "company": "百度",
+                "position": "AI产品实习生",
+                "top_k": 5
+              },
+              "result": {
+                "chunks": [
+                  {
+                    "chunk_id": "22fa0d11-9483-4b94-bb38-c3c90676fd9b_chunk_2",
+                    "content": "【百度 · AI产品实习生 硬性要求】\n计算机科学、人工智能、数据科学、产品设计或相关专业在校学生或应届毕业生",
+                    "metadata": {
+                      "company": "百度",
+                      "index": 2,
+                      "jd_id": "22fa0d11-9483-4b94-bb38-c3c90676fd9b",
+                      "position": "AI产品实习生",
+                      "priority": "high",
+                      "section": "hard_requirements",
+                      "strategy": "semantic"
+                    },
+                    "distance": 0.31845447421073914,
+                    "bm25_score": 0.0,
+                    "vec_norm": 1.0,
+                    "bm25_norm": 0.0,
+                    "hybrid_score": 0.7,
+                    "rerank_score": 0.9999
+                  },
+                  {
+                    "chunk_id": "22fa0d11-9483-4b94-bb38-c3c90676fd9b_chunk_3",
+                    "content": "【百度 · AI产品实习生 硬性要求】\n对AI技术有浓厚兴趣，了解机器学习、深度学习等基本概念",
+                    "metadata": {
+                      "company": "百度",
+                      "index": 3,
+                      "jd_id": "22fa0d11-9483-4b94-bb38-c3c90676fd9b",
+                      "position": "AI产品实习生",
+                      "priority": "high",
+                      "section": "hard_requirements",
+                      "strategy": "semantic"
+                    },
+                    "distance": 0.37794405221939087,
+                    "bm25_score": 7.165582770674353,
+                    "vec_norm": 0.7292778746049814,
+                    "bm25_norm": 0.229095439024634,
+                    "hybrid_score": 0.5792231439308771,
+                    "rerank_score": 0.9992
+                  },
+                  {
+                    "chunk_id": "22fa0d11-9483-4b94-bb38-c3c90676fd9b_chunk_5",
+                    "content": "【百度 · AI产品实习生 硬性要求】\n强烈的责任心与自我驱动力，能够主动承担责任，按时完成任务",
+                    "metadata": {
+                      "company": "百度",
+                      "index": 5,
+                      "jd_id": "22fa0d11-9483-4b94-bb38-c3c90676fd9b",
+                      "position": "AI产品实习生",
+                      "priority": "high",
+                      "section": "hard_requirements",
+                      "strategy": "semantic"
+                    },
+                    "distance": 0.396601140499115,
+                    "bm25_score": 7.30040738175568,
+                    "vec_norm": 0.6443741526112762,
+                    "bm25_norm": 0.29248260430027656,
+                    "hybrid_score": 0.5388066881179763,
+                    "rerank_score": 0.9975
+                  },
+                  {
+                    "chunk_id": "d8f1f630-f372-467a-b0a0-5a68a6db4ffd_chunk_2",
+                    "content": "【百度 · AI应用-产品经理 硬性要求】\n本科及以上学历，计算机、人力资源、管理类相关专业",
+                    "metadata": {
+                      "company": "百度",
+                      "index": 2,
+                      "jd_id": "d8f1f630-f372-467a-b0a0-5a68a6db4ffd",
+                      "position": "AI应用-产品经理",
+                      "priority": "high",
+                      "section": "hard_requirements",
+                      "strategy": "semantic"
+                    },
+                    "distance": null,
+                    "bm25_score": 8.534867350420107,
+                    "vec_norm": 0.0,
+                    "bm25_norm": 0.8728582303252341,
+                    "hybrid_score": 0.26185746909757024,
+                    "rerank_score": 0.9965
+                  },
+                  {
+                    "chunk_id": "caa7985c-efa3-4018-96e6-2293b42202da_chunk_2",
+                    "content": "【小米 · AI产品经理实习生 硬性要求】\n本科及以上学历",
+                    "metadata": {
+                      "company": "小米",
+                      "index": 2,
+                      "jd_id": "caa7985c-efa3-4018-96e6-2293b42202da",
+                      "position": "AI产品经理实习生",
+                      "priority": "high",
+                      "section": "hard_requirements",
+                      "strategy": "semantic"
+                    },
+                    "distance": null,
+                    "bm25_score": 8.805298116239177,
+                    "vec_norm": 0.0,
+                    "bm25_norm": 1.0,
+                    "hybrid_score": 0.3,
+                    "rerank_score": 0.9691
+                  }
+                ],
+                "query": "百度的AI产品实习生要求什么学历",
+                "filters": {
+                  "company": "百度",
+                  "position": "AI产品实习生"
+                },
+                "strategy": "hybrid(70%vec+30%bm25)+reranker",
+                "pool_k": 5,
+                "rerank_k": 10,
+                "pool_size": 24,
+                "vec_only": 4,
+                "bm25_only": 17,
+                "both": 3,
+                "rerank": {
+                  "enabled": true,
+                  "candidates": 5,
+                  "output": 5,
+                  "best_rerank_score": 0.9999
+                }
+              },
+              "observation": "工具 kb_retrieve 执行成功"
+            },
+            "T1": {
+              "task_id": "T1",
+              "task_type": "tool_call",
+              "tool_name": "qa_synthesize",
+              "status": "success",
+              "parameters": {
+                "question": "{{intent_verify.attributes}}中的学历要求是什么",
+                "evidence_chunks": "{{T0.output.chunks}}",
+                "qa_type": "factual"
+              },
+              "resolved_params": {
+                "question": "[\"要求\", \"学历\"]中的学历要求是什么",
+                "evidence_chunks": [
+                  {
+                    "chunk_id": "22fa0d11-9483-4b94-bb38-c3c90676fd9b_chunk_2",
+                    "content": "【百度 · AI产品实习生 硬性要求】\n计算机科学、人工智能、数据科学、产品设计或相关专业在校学生或应届毕业生",
+                    "metadata": {
+                      "company": "百度",
+                      "index": 2,
+                      "jd_id": "22fa0d11-9483-4b94-bb38-c3c90676fd9b",
+                      "position": "AI产品实习生",
+                      "priority": "high",
+                      "section": "hard_requirements",
+                      "strategy": "semantic"
+                    },
+                    "distance": 0.31845447421073914,
+                    "bm25_score": 0.0,
+                    "vec_norm": 1.0,
+                    "bm25_norm": 0.0,
+                    "hybrid_score": 0.7,
+                    "rerank_score": 0.9999
+                  },
+                  {
+                    "chunk_id": "22fa0d11-9483-4b94-bb38-c3c90676fd9b_chunk_3",
+                    "content": "【百度 · AI产品实习生 硬性要求】\n对AI技术有浓厚兴趣，了解机器学习、深度学习等基本概念",
+                    "metadata": {
+                      "company": "百度",
+                      "index": 3,
+                      "jd_id": "22fa0d11-9483-4b94-bb38-c3c90676fd9b",
+                      "position": "AI产品实习生",
+                      "priority": "high",
+                      "section": "hard_requirements",
+                      "strategy": "semantic"
+                    },
+                    "distance": 0.37794405221939087,
+                    "bm25_score": 7.165582770674353,
+                    "vec_norm": 0.7292778746049814,
+                    "bm25_norm": 0.229095439024634,
+                    "hybrid_score": 0.5792231439308771,
+                    "rerank_score": 0.9992
+                  },
+                  {
+                    "chunk_id": "22fa0d11-9483-4b94-bb38-c3c90676fd9b_chunk_5",
+                    "content": "【百度 · AI产品实习生 硬性要求】\n强烈的责任心与自我驱动力，能够主动承担责任，按时完成任务",
+                    "metadata": {
+                      "company": "百度",
+                      "index": 5,
+                      "jd_id": "22fa0d11-9483-4b94-bb38-c3c90676fd9b",
+                      "position": "AI产品实习生",
+                      "priority": "high",
+                      "section": "hard_requirements",
+                      "strategy": "semantic"
+                    },
+                    "distance": 0.396601140499115,
+                    "bm25_score": 7.30040738175568,
+                    "vec_norm": 0.6443741526112762,
+                    "bm25_norm": 0.29248260430027656,
+                    "hybrid_score": 0.5388066881179763,
+                    "rerank_score": 0.9975
+                  },
+                  {
+                    "chunk_id": "d8f1f630-f372-467a-b0a0-5a68a6db4ffd_chunk_2",
+                    "content": "【百度 · AI应用-产品经理 硬性要求】\n本科及以上学历，计算机、人力资源、管理类相关专业",
+                    "metadata": {
+                      "company": "百度",
+                      "index": 2,
+                      "jd_id": "d8f1f630-f372-467a-b0a0-5a68a6db4ffd",
+                      "position": "AI应用-产品经理",
+                      "priority": "high",
+                      "section": "hard_requirements",
+                      "strategy": "semantic"
+                    },
+                    "distance": null,
+                    "bm25_score": 8.534867350420107,
+                    "vec_norm": 0.0,
+                    "bm25_norm": 0.8728582303252341,
+                    "hybrid_score": 0.26185746909757024,
+                    "rerank_score": 0.9965
+                  },
+                  {
+                    "chunk_id": "caa7985c-efa3-4018-96e6-2293b42202da_chunk_2",
+                    "content": "【小米 · AI产品经理实习生 硬性要求】\n本科及以上学历",
+                    "metadata": {
+                      "company": "小米",
+                      "index": 2,
+                      "jd_id": "caa7985c-efa3-4018-96e6-2293b42202da",
+                      "position": "AI产品经理实习生",
+                      "priority": "high",
+                      "section": "hard_requirements",
+                      "strategy": "semantic"
+                    },
+                    "distance": null,
+                    "bm25_score": 8.805298116239177,
+                    "vec_norm": 0.0,
+                    "bm25_norm": 1.0,
+                    "hybrid_score": 0.3,
+                    "rerank_score": 0.9691
+                  }
+                ],
+                "qa_type": "factual"
+              },
+              "result": {
+                "answer": "根据检索到的证据，学历要求主要为**本科及以上学历**，部分实习生岗位强调**在校学生或应届毕业生**身份及特定专业背景。\n\n⚠️ 注意：不同来源的信息存在差异——\n1. 学历表述不同：部分岗位（如小米 AI 产品经理实习生、百度 AI 应用 - 产品经理）明确要求“本科及以上学历”[4][5]，而百度 AI 产品实习生岗位主要强调“在校学生或应届毕业生”及专业背景，未显式注明学历层级 [1]。\n2. 岗位层级不同：明确要求本科及以上学历的包含正式产品经理岗位 [4]，而其他为实习生岗位 [1][5]。\n\n可能原因：\n- 岗位细分方向不同（校招实习生 vs 社招/正式员工的要求差异）\n- 信息描述侧重不同（侧重身份状态 vs 侧重学位等级）\n\n以上信息仅供参考，具体请以该公司官方发布的 JD 为准。",
+                "citations": [
+                  {
+                    "index": 1,
+                    "source": "检索证据 - 百度 - AI 产品实习生",
+                    "quote": "计算机科学、人工智能、数据科学、产品设计或相关专业在校学生或应届毕业生"
+                  },
+                  {
+                    "index": 4,
+                    "source": "检索证据 - 百度 - AI 应用 - 产品经理",
+                    "quote": "本科及以上学历，计算机、人力资源、管理类相关专业"
+                  },
+                  {
+                    "index": 5,
+                    "source": "检索证据 - 小米 - AI 产品经理实习生",
+                    "quote": "本科及以上学历"
+                  }
+                ],
+                "confidence": "high",
+                "conflict_detected": true,
+                "conflict_details": "不同岗位对学历的显式要求存在差异：百度 AI 产品实习生 [1] 未显式注明学历层级，仅强调学生身份；而百度 AI 应用 - 产品经理 [4] 和小米 AI 产品经理实习生 [5] 均明确要求“本科及以上学历”。此外，岗位层级存在实习生与正式产品经理的区别。",
+                "insufficient_note": null
+              },
+              "observation": "工具 qa_synthesize 执行成功"
+            }
+          },
+          "global_status": "success",
+          "replan_reason": "",
+          "replan_count": 0
+        },
+        "intent": {
+          "demands": [
+            {
+              "intent": "attribute_verify",
+              "entities": {
+                "company": "百度",
+                "position": "AI产品实习生",
+                "attributes": [
+                  "要求",
+                  "学历"
+                ],
+                "qa_type": "factual"
+              },
+              "confidence": 0.88
+            }
+          ],
+          "needs_clarification": false,
+          "clarification_question": ""
+        },
+        "rewrite": {
+          "rewritten_query": "百度的AI产品实习生要求什么学历",
+          "search_keywords": "百度的AI产品实习生要求什么学历",
+          "is_follow_up": false,
+          "follow_up_type": "none",
+          "resolved_references": {}
+        },
+        "evidence_cache": [
+          {
+            "chunk_id": "22fa0d11-9483-4b94-bb38-c3c90676fd9b_chunk_2",
+            "content": "【百度 · AI产品实习生 硬性要求】\n计算机科学、人工智能、数据科学、产品设计或相关专业在校学生或应届毕业生",
+            "metadata": {
+              "company": "百度",
+              "index": 2,
+              "jd_id": "22fa0d11-9483-4b94-bb38-c3c90676fd9b",
+              "position": "AI产品实习生",
+              "priority": "high",
+              "section": "hard_requirements",
+              "strategy": "semantic"
+            },
+            "distance": 0.31845447421073914,
+            "bm25_score": 0.0,
+            "vec_norm": 1.0,
+            "bm25_norm": 0.0,
+            "hybrid_score": 0.7,
+            "rerank_score": 0.9999
+          },
+          {
+            "chunk_id": "22fa0d11-9483-4b94-bb38-c3c90676fd9b_chunk_3",
+            "content": "【百度 · AI产品实习生 硬性要求】\n对AI技术有浓厚兴趣，了解机器学习、深度学习等基本概念",
+            "metadata": {
+              "company": "百度",
+              "index": 3,
+              "jd_id": "22fa0d11-9483-4b94-bb38-c3c90676fd9b",
+              "position": "AI产品实习生",
+              "priority": "high",
+              "section": "hard_requirements",
+              "strategy": "semantic"
+            },
+            "distance": 0.37794405221939087,
+            "bm25_score": 7.165582770674353,
+            "vec_norm": 0.7292778746049814,
+            "bm25_norm": 0.229095439024634,
+            "hybrid_score": 0.5792231439308771,
+            "rerank_score": 0.9992
+          },
+          {
+            "chunk_id": "22fa0d11-9483-4b94-bb38-c3c90676fd9b_chunk_5",
+            "content": "【百度 · AI产品实习生 硬性要求】\n强烈的责任心与自我驱动力，能够主动承担责任，按时完成任务",
+            "metadata": {
+              "company": "百度",
+              "index": 5,
+              "jd_id": "22fa0d11-9483-4b94-bb38-c3c90676fd9b",
+              "position": "AI产品实习生",
+              "priority": "high",
+              "section": "hard_requirements",
+              "strategy": "semantic"
+            },
+            "distance": 0.396601140499115,
+            "bm25_score": 7.30040738175568,
+            "vec_norm": 0.6443741526112762,
+            "bm25_norm": 0.29248260430027656,
+            "hybrid_score": 0.5388066881179763,
+            "rerank_score": 0.9975
+          },
+          {
+            "chunk_id": "d8f1f630-f372-467a-b0a0-5a68a6db4ffd_chunk_2",
+            "content": "【百度 · AI应用-产品经理 硬性要求】\n本科及以上学历，计算机、人力资源、管理类相关专业",
+            "metadata": {
+              "company": "百度",
+              "index": 2,
+              "jd_id": "d8f1f630-f372-467a-b0a0-5a68a6db4ffd",
+              "position": "AI应用-产品经理",
+              "priority": "high",
+              "section": "hard_requirements",
+              "strategy": "semantic"
+            },
+            "distance": null,
+            "bm25_score": 8.534867350420107,
+            "vec_norm": 0.0,
+            "bm25_norm": 0.8728582303252341,
+            "hybrid_score": 0.26185746909757024,
+            "rerank_score": 0.9965
+          },
+          {
+            "chunk_id": "caa7985c-efa3-4018-96e6-2293b42202da_chunk_2",
+            "content": "【小米 · AI产品经理实习生 硬性要求】\n本科及以上学历",
+            "metadata": {
+              "company": "小米",
+              "index": 2,
+              "jd_id": "caa7985c-efa3-4018-96e6-2293b42202da",
+              "position": "AI产品经理实习生",
+              "priority": "high",
+              "section": "hard_requirements",
+              "strategy": "semantic"
+            },
+            "distance": null,
+            "bm25_score": 8.805298116239177,
+            "vec_norm": 0.0,
+            "bm25_norm": 1.0,
+            "hybrid_score": 0.3,
+            "rerank_score": 0.9691
+          }
+        ],
+        "evidence_cache_query": "百度的AI产品实习生要求什么学历",
+        "tool_outputs": [
+          {
+            "task_id": "T0",
+            "tool": "kb_retrieve",
+            "description": "检索百度AI产品实习生JD",
+            "result": {
+              "chunks": [
+                {
+                  "chunk_id": "22fa0d11-9483-4b94-bb38-c3c90676fd9b_chunk_2",
+                  "content": "【百度 · AI产品实习生 硬性要求】\n计算机科学、人工智能、数据科学、产品设计或相关专业在校学生或应届毕业生",
+                  "source": "百度-AI产品实习生",
+                  "metadata": {
+                    "company": "百度",
+                    "position": "AI产品实习生"
+                  }
+                },
+                {
+                  "chunk_id": "22fa0d11-9483-4b94-bb38-c3c90676fd9b_chunk_3",
+                  "content": "【百度 · AI产品实习生 硬性要求】\n对AI技术有浓厚兴趣，了解机器学习、深度学习等基本概念",
+                  "source": "百度-AI产品实习生",
+                  "metadata": {
+                    "company": "百度",
+                    "position": "AI产品实习生"
+                  }
+                },
+                {
+                  "chunk_id": "22fa0d11-9483-4b94-bb38-c3c90676fd9b_chunk_5",
+                  "content": "【百度 · AI产品实习生 硬性要求】\n强烈的责任心与自我驱动力，能够主动承担责任，按时完成任务",
+                  "source": "百度-AI产品实习生",
+                  "metadata": {
+                    "company": "百度",
+                    "position": "AI产品实习生"
+                  }
+                },
+                {
+                  "chunk_id": "d8f1f630-f372-467a-b0a0-5a68a6db4ffd_chunk_2",
+                  "content": "【百度 · AI应用-产品经理 硬性要求】\n本科及以上学历，计算机、人力资源、管理类相关专业",
+                  "source": "百度-AI应用-产品经理",
+                  "metadata": {
+                    "company": "百度",
+                    "position": "AI应用-产品经理"
+                  }
+                },
+                {
+                  "chunk_id": "caa7985c-efa3-4018-96e6-2293b42202da_chunk_2",
+                  "content": "【小米 · AI产品经理实习生 硬性要求】\n本科及以上学历",
+                  "source": "小米-AI产品经理实习生",
+                  "metadata": {
+                    "company": "小米",
+                    "position": "AI产品经理实习生"
+                  }
+                }
+              ],
+              "query": "百度的AI产品实习生要求什么学历",
+              "filters": {
+                "company": "百度",
+                "position": "AI产品实习生"
+              },
+              "strategy": "hybrid(70%vec+30%bm25)+reranker",
+              "pool_k": 5,
+              "rerank_k": 10,
+              "pool_size": 24,
+              "vec_only": 4,
+              "bm25_only": 17,
+              "both": 3,
+              "rerank": {
+                "enabled": true,
+                "candidates": 5,
+                "output": 5,
+                "best_rerank_score": 0.9999
+              }
+            }
+          },
+          {
+            "task_id": "T1",
+            "tool": "qa_synthesize",
+            "description": "基于检索证据回答百度AI产品实习生学历要求",
+            "result": {
+              "answer": "根据检索到的证据，学历要求主要为**本科及以上学历**，部分实习生岗位强调**在校学生或应届毕业生**身份及特定专业背景。\n\n⚠️ 注意：不同来源的信息存在差异——\n1. 学历表述不同：部分岗位（如小米 AI 产品经理实习生、百度 AI 应用 - 产品经理）明确要求“本科及以上学历”[4][5]，而百度 AI 产品实习生岗位主要强调“在校学生或应届毕业生”及专业背景，未显式注明学历层级 [1]。\n2. 岗位层级不同：明确要求本科及以上学历的包含正式产品经理岗位 [4]，而其他为实习生岗位 [1][5]。\n\n可能原因：\n- 岗位细分方向不同（校招实习生 vs 社招/正式员工的要求差异）\n- 信息描述侧重不同（侧重身份状态 vs 侧重学位等级）\n\n以上信息仅供参考，具体请以该公司官方发布的 JD 为准。",
+              "citations": [
+                {
+                  "index": 1,
+                  "source": "检索证据 - 百度 - AI 产品实习生",
+                  "quote": "计算机科学、人工智能、数据科学、产品设计或相关专业在校学生或应届毕业生"
+                },
+                {
+                  "index": 4,
+                  "source": "检索证据 - 百度 - AI 应用 - 产品经理",
+                  "quote": "本科及以上学历，计算机、人力资源、管理类相关专业"
+                },
+                {
+                  "index": 5,
+                  "source": "检索证据 - 小米 - AI 产品经理实习生",
+                  "quote": "本科及以上学历"
+                }
+              ],
+              "confidence": "high",
+              "conflict_detected": true,
+              "conflict_details": "不同岗位对学历的显式要求存在差异：百度 AI 产品实习生 [1] 未显式注明学历层级，仅强调学生身份；而百度 AI 应用 - 产品经理 [4] 和小米 AI 产品经理实习生 [5] 均明确要求“本科及以上学历”。此外，岗位层级存在实习生与正式产品经理的区别。",
+              "insufficient_note": null
+            }
+          }
+        ],
+        "final_aggregation_prompt": {
+          "system_prompt": "你是一位专业的求职顾问。请基于以下工具执行结果，给用户一个清晰、有帮助的回复。\n要求：\n1. 先直接回答用户的问题（是/否/有/没有），不要绕弯子，不要重复用户的原话\n2. 如果有匹配分析结果，给出具体的分数和建议\n3. 如果有检索结果，基于事实回答，不要编造\n4. 【强制】引用信息时必须标注来源。每个引用的事实后面都要跟 [来源：公司名-岗位名] 格式。   kb_retrieve 结果的 chunks 中带有 'source' 字段（如'字节跳动-AI产品经理'），请直接使用。   external_search 结果带有 'source_name' 字段，也请直接使用。\n5. 当本地知识库与外部搜索结果冲突时，请并列呈现两种说法并标注各自来源，不要替用户做判断\n6. 语气友好、专业、结构化",
+          "user_prompt": "【用户问题】\n百度的AI产品实习生要求什么学历\n\n【工具执行结果】\n[{\"task_id\": \"T0\", \"tool\": \"kb_retrieve\", \"description\": \"检索百度AI产品实习生JD\", \"result\": {\"chunks\": [{\"chunk_id\": \"22fa0d11-9483-4b94-bb38-c3c90676fd9b_chunk_2\", \"content\": \"【百度 · AI产品实习生 硬性要求】\\n计算机科学、人工智能、数据科学、产品设计或相关专业在校学生或应届毕业生\", \"source\": \"百度-AI产品实习生\", \"metadata\": {\"company\": \"百度\", \"position\": \"AI产品实习生\"}}, {\"chunk_id\": \"22fa0d11-9483-4b94-bb38-c3c90676fd9b_chunk_3\", \"content\": \"【百度 · AI产品实习生 硬性要求】\\n对AI技术有浓厚兴趣，了解机器学习、深度学习等基本概念\", \"source\": \"百度-AI产品实习生\", \"metadata\": {\"company\": \"百度\", \"position\": \"AI产品实习生\"}}, {\"chunk_id\": \"22fa0d11-9483-4b94-bb38-c3c90676fd9b_chunk_5\", \"content\": \"【百度 · AI产品实习生 硬性要求】\\n强烈的责任心与自我驱动力，能够主动承担责任，按时完成任务\", \"source\": \"百度-AI产品实习生\", \"metadata\": {\"company\": \"百度\", \"position\": \"AI产品实习生\"}}, {\"chunk_id\": \"d8f1f630-f372-467a-b0a0-5a68a6db4ffd_chunk_2\", \"content\": \"【百度 · AI应用-产品经理 硬性要求】\\n本科及以上学历，计算机、人力资源、管理类相关专业\", \"source\": \"百度-AI应用-产品经理\", \"metadata\": {\"company\": \"百度\", \"position\": \"AI应用-产品经理\"}}, {\"chunk_id\": \"caa7985c-efa3-4018-96e6-2293b42202da_chunk_2\", \"content\": \"【小米 · AI产品经理实习生 硬性要求】\\n本科及以上学历\", \"source\": \"小米-AI产品经理实习生\", \"metadata\": {\"company\": \"小米\", \"position\": \"AI产品经理实习生\"}}], \"query\": \"百度的AI产品实习生要求什么学历\", \"filters\": {\"company\": \"百度\", \"position\": \"AI产品实习生\"}, \"strategy\": \"hybrid(70%vec+30%bm25)+reranker\", \"pool_k\": 5, \"rerank_k\": 10, \"pool_size\": 24, \"vec_only\": 4, \"bm25_only\": 17, \"both\": 3, \"rerank\": {\"enabled\": true, \"candidates\": 5, \"output\": 5, \"best_rerank_score\": 0.9999}}}, {\"task_id\": \"T1\", \"tool\": \"qa_synthesize\", \"description\": \"基于检索证据回答百度AI产品实习生学历要求\", \"result\": {\"answer\": \"根据检索到的证据，学历要求主要为**本科及以上学历**，部分实习生岗位强调**在校学生或应届毕业生**身份及特定专业背景。\\n\\n⚠️ 注意：不同来源的信息存在差异——\\n1. 学历表述不同：部分岗位（如小米 AI 产品经理实习生、百度 AI 应用 - 产品经理）明确要求“本科及以上学历”[4][5]，而百度 AI 产品实习生岗位主要强调“在校学生或应届毕业生”及专业背景，未显式注明学历层级 [1]。\\n2. 岗位层级不同：明确要求本科及以上学历的包含正式产品经理岗位 [4]，而其他为实习生岗位 [1][5]。\\n\\n可能原因：\\n- 岗位细分方向不同（校招实习生 vs 社招/正式员工的要求差异）\\n- 信息描述侧重不同（侧重身份状态 vs 侧重学位等级）\\n\\n以上信息仅供参考，具体请以该公司官方发布的 JD 为准。\", \"citations\": [{\"index\": 1, \"source\": \"检索证据 - 百度 - AI 产品实习生\", \"quote\": \"计算机科学、人工智能、数据科学、产品设计或相关专业在校学生或应届毕业生\"}, {\"index\": 4, \"source\": \"检索证据 - 百度 - AI 应用 - 产品经理\", \"quote\": \"本科及以上学历，计算机、人力资源、管理类相关专业\"}, {\"index\": 5, \"source\": \"检索证据 - 小米 - AI 产品经理实习生\", \"quote\": \"本科及以上学历\"}], \"confidence\": \"high\", \"conflict_detected\": true, \"conflict_details\": \"不同岗位对学历的显式要求存在差异：百度 AI 产品实习生 [1] 未显式注明学历层级，仅强调学生身份；而百度 AI 应用 - 产品经理 [4] 和小米 AI 产品经理实习生 [5] 均明确要求“本科及以上学历”。此外，岗位层级存在实习生与正式产品经理的区别。\", \"insufficient_note\": null}}]\n\n请生成回复："
+        }
+      },
+      "usage": {
+        "prompt_tokens": 8632,
+        "completion_tokens": 8522,
+        "total_tokens": 17154
+      },
+      "_time": 158.17469143867493,
+      "type": "done"
+    }
+  ],
+  "timestamp": "2026-06-04T16:16:04.642282",
+  "prompt_tokens": 8632,
+  "completion_tokens": 8522,
+  "total_tokens": 17154,
+  "tool_execution_success_rate": 1.0,
+  "tool_correct_rate": 1.0
+}

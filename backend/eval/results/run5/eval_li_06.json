@@ -1,0 +1,1156 @@
+{
+  "case_id": "eval_li_06",
+  "message": "阿里后端要求几年经验",
+  "gold_intents": [
+    "verify"
+  ],
+  "expected_tools": [
+    "kb_retrieve",
+    "qa_synthesize"
+  ],
+  "scenario": "属性查询_经验要求",
+  "eval_context": {
+    "gold_intents": [
+      "verify"
+    ],
+    "gold_slots": {
+      "company": "阿里巴巴",
+      "position": "后端",
+      "attributes": [
+        "经验"
+      ]
+    },
+    "relevance_score": 0,
+    "expected_tools": [
+      "kb_retrieve",
+      "qa_synthesize"
+    ],
+    "scenario": "属性查询_经验要求",
+    "notes": "阿里ID=1要求3年以上Java"
+  },
+  "resume_id": "e30c8b27-cfce-4918-8810-832e3ab5087c",
+  "status": "success",
+  "error": null,
+  "ttfb": 0.01,
+  "total_latency": 74.48,
+  "event_count": 62,
+  "pred_intent": "attribute_verify",
+  "pred_intents": [
+    "attribute_verify"
+  ],
+  "pred_tools": [
+    {
+      "tool": "kb_retrieve",
+      "status": "✅",
+      "params": {
+        "query": "{{rewritten_query}}",
+        "company": "阿里",
+        "position": "后端",
+        "top_k": 5
+      },
+      "result_preview": "{'chunks': [], 'query': '{{rewritten_query}}', 'filters': {'company': '阿里', 'position': '后端'}, 'strategy': 'hybrid(70%vec+30%bm25)+reranker', 'pool_k': 5, 'rerank_k': 10, 'pool_size': 0, 'vec_only': 0"
+    },
+    {
+      "tool": "qa_synthesize",
+      "status": "✅",
+      "params": {
+        "question": "阿里后端岗位要求的经验年限是什么？",
+        "evidence_chunks": [],
+        "qa_type": "factual"
+      },
+      "result_preview": "{'answer': '抱歉，知识库中没有找到相关信息。', 'citations': [], 'confidence': 'low', 'insufficient_note': '未检索到相关证据'}"
+    },
+    {
+      "tool": "external_search",
+      "status": "❌",
+      "params": {
+        "query": "{{rewritten_query}}",
+        "count": 5
+      },
+      "result_preview": "{'chunks': [{'chunk_id': 'tavily_480179108', 'content': '【来源：arxiv.org】[PDF] GenRewrite: Query Rewriting via Large Language Models - arXiv\\nAbstract. Query rewriting is an effective technique for refi"
+    }
+  ],
+  "tools_called": [
+    "kb_retrieve",
+    "qa_synthesize",
+    "external_search"
+  ],
+  "kb_chunks": [],
+  "tool_executions_full": [
+    {
+      "tool_name": "kb_retrieve",
+      "task_id": "T0",
+      "status": "success",
+      "output": {
+        "chunks": [],
+        "query": "{{rewritten_query}}",
+        "filters": {
+          "company": "阿里",
+          "position": "后端"
+        },
+        "strategy": "hybrid(70%vec+30%bm25)+reranker",
+        "pool_k": 5,
+        "rerank_k": 10,
+        "pool_size": 0,
+        "vec_only": 0,
+        "bm25_only": 0,
+        "both": 0,
+        "rerank": {
+          "enabled": true,
+          "candidates": 0,
+          "output": 0,
+          "best_rerank_score": 0.0
+        }
+      }
+    },
+    {
+      "tool_name": "qa_synthesize",
+      "task_id": "T1",
+      "status": "success",
+      "output": {
+        "answer": "抱歉，知识库中没有找到相关信息。",
+        "citations": [],
+        "confidence": "low",
+        "insufficient_note": "未检索到相关证据"
+      }
+    },
+    {
+      "tool_name": "external_search",
+      "task_id": "T2",
+      "status": "failed",
+      "output": {
+        "chunks": [
+          {
+            "chunk_id": "tavily_480179108",
+            "content": "【来源：arxiv.org】[PDF] GenRewrite: Query Rewriting via Large Language Models - arXiv\nAbstract. Query rewriting is an effective technique for refining poorly written queries before they reach the query optimizer. However, manual.\n参考链接：https://arxiv.org/pdf/2403.09060",
+            "metadata": {
+              "source": "tavily_search",
+              "url": "https://arxiv.org/pdf/2403.09060",
+              "title": "[PDF] GenRewrite: Query Rewriting via Large Language Models - arXiv",
+              "source_name": "arxiv.org",
+              "source_reliability": "low",
+              "company": "未知",
+              "position": "",
+              "section": "external_search",
+              "jd_id": "ext_480179108",
+              "tavily_score": 0.60861784
+            },
+            "distance": null,
+            "bm25_score": 0.0,
+            "hybrid_score": 0.9939,
+            "rerank_score": 0.9939
+          },
+          {
+            "chunk_id": "tavily_3552973222",
+            "content": "【来源：en.wikipedia.org】Query rewriting - Wikipedia\n**Query rewriting** is a typically automatic transformation that takes a set of database tables, views \"View (SQL)\"), and/or queries, usually indices, often gathered data and query statistics, and other metadata, and yields a set of different queries, which produce the same results but execute with better performance (for example, faster, or with lower memory use). Query rewriting can be based on relational algebra or an extension thereof (e.g. multiset relational algebra with sorting, aggregation and three-valued predicates i.e. NULLs as in the case of SQL). For example, the input queries may be in relational algebra or SQL, and the rewritten queries may be closer to the physical representation of the data, e.g. array operations. Query rewriting can also involve materialization of views and other subqueries; operations that may or may not be available to the API user.\n参考链接：https://en.wikipedia.org/wiki/Query_rewriting",
+            "metadata": {
+              "source": "tavily_search",
+              "url": "https://en.wikipedia.org/wiki/Query_rewriting",
+              "title": "Query rewriting - Wikipedia",
+              "source_name": "en.wikipedia.org",
+              "source_reliability": "low",
+              "company": "未知",
+              "position": "",
+              "section": "external_search",
+              "jd_id": "ext_3552973222",
+              "tavily_score": 0.8380581
+            },
+            "distance": null,
+            "bm25_score": 0.0,
+            "hybrid_score": 0.9928,
+            "rerank_score": 0.9928
+          },
+          {
+            "chunk_id": "tavily_1239614154",
+            "content": "【来源：developers.cloudflare.com】Query rewriting · Cloudflare AI Search docs\n>  Fetch the complete documentation index at: https://developers.cloudflare.com/ai-search/llms.txt. This is the HTML version of a Cloudflare documentation page. Get this page as Markdown: https://developers.cloudflare.com/ai-search/configuration/retrieval/query-rewriting/index.md (append index.md) or send Accept: text/markdown to https://developers.cloudflare.com/ai-search/configuration/retrieval/query-rewriting/. For this product's page index use https://developers.cloudflare.com/ai-search/llms.txt. For all Cloudflare products use https://developers.cloudflare.com/llms.txt. # Query rewriting. Query rewriting is an optional step in the AI Search pipeline that improves retrieval quality for follow-up queries. ## Why use query rewriting? The first message is always used as-is. For follow-up queries, AI Search sends the conversation history, the latest user message, and the query rewrite system prompt to the configured LLM. The rewritten query is then embedded and used to perform the search. **First message:** `What is Cloudflare Workers?` (used as-is, no rewriting). Query rewriting uses the conversation context to understand \"one\" refers to a Cloudflare Worker. How the query is rewritten depends on your query rewrite system prompt.\n参考链接：https://developers.cloudflare.com/ai-search/configuration/retrieval/query-rewriting",
+            "metadata": {
+              "source": "tavily_search",
+              "url": "https://developers.cloudflare.com/ai-search/configuration/retrieval/query-rewriting",
+              "title": "Query rewriting · Cloudflare AI Search docs",
+              "source_name": "developers.cloudflare.com",
+              "source_reliability": "low",
+              "company": "未知",
+              "position": "",
+              "section": "external_search",
+              "jd_id": "ext_1239614154",
+              "tavily_score": 0.6241337
+            },
+            "distance": null,
+            "bm25_score": 0.0,
+            "hybrid_score": 0.9544,
+            "rerank_score": 0.9544
+          },
+          {
+            "chunk_id": "tavily_1437159931",
+            "content": "【来源：learn.microsoft.com】Rewrite Queries with Semantic Ranker - Azure AI Search | Microsoft Learn\n# Rewrite queries with semantic ranker in Azure AI Search (Preview). Query rewriting is the process of transforming a user's query into a more effective one, adding more terms and refining search results. The search service sends the search query (or a variation of it) to a generative model that generates alternative queries. * The user query is sent via the `search` property in the request. * The search service uses the original query and the rewritten queries to retrieve search results. Without query rewriting, the search service just uses the original query to retrieve search results. * Set \"search\" to a full text search query. * Set \"debug\" to \"queryRewrites\" to get the query rewrites in the response. * Because you set the \"debug\" property to \"queryRewrites\" for testing, the response includes a `@search.debug` object with the text input query and query rewrites. Set the `\"debug\": \"queryRewrites\"` property in your query request to get the query rewrites in the response.\n参考链接：https://learn.microsoft.com/en-us/azure/search/semantic-how-to-query-rewrite",
+            "metadata": {
+              "source": "tavily_search",
+              "url": "https://learn.microsoft.com/en-us/azure/search/semantic-how-to-query-rewrite",
+              "title": "Rewrite Queries with Semantic Ranker - Azure AI Search | Microsoft Learn",
+              "source_name": "learn.microsoft.com",
+              "source_reliability": "low",
+              "company": "Microsoft",
+              "position": "",
+              "section": "external_search",
+              "jd_id": "ext_1437159931",
+              "tavily_score": 0.5582553
+            },
+            "distance": null,
+            "bm25_score": 0.0,
+            "hybrid_score": 0.939,
+            "rerank_score": 0.939
+          },
+          {
+            "chunk_id": "tavily_285157049",
+            "content": "【来源：zenml.io】Query Rewriting in RAG Isn't Enough: How ZenML's Evaluation ...\nBlog  / Query Rewriting in RAG Isn’t Enough: How ZenML’s Evaluation Pipelines Unlock Reliable AI. # Query Rewriting in RAG Isn’t Enough: How ZenML’s Evaluation Pipelines Unlock Reliable AI. Are your query rewriting strategies silently hurting your Retrieval-Augmented Generation (RAG) system? Learn how ZenML's automated evaluation pipelines can systematically detect, measure, and resolve these hidden issues—ensuring that your RAG implementations consistently provide relevant, trustworthy responses. You’ve integrated state-of-the-art retrieval patterns, optimized embeddings, and swapped in the latest LLMs. Yet, when users query your AI with something like, ”Postgres connection refused error” your RAG system might simply retrieve generic documentation about PostgreSQL connections, missing practical troubleshooting advice involving firewall and other rules. We spend so much time implementing the latest RAG patterns, like query rewriting, that we often forget to ask the fundamental question: “Is this actually working *in a measurable, reliable way*?”. ## Quick Recap: What is Query Rewriting in RAG? * **Rewritten Query**: *“What are the steps for implementing secrets management in ZenML?”*.\n参考链接：https://www.zenml.io/blog/query-rewriting-evaluation",
+            "metadata": {
+              "source": "tavily_search",
+              "url": "https://www.zenml.io/blog/query-rewriting-evaluation",
+              "title": "Query Rewriting in RAG Isn't Enough: How ZenML's Evaluation ...",
+              "source_name": "zenml.io",
+              "source_reliability": "low",
+              "company": "未知",
+              "position": "",
+              "section": "external_search",
+              "jd_id": "ext_285157049",
+              "tavily_score": 0.5021246
+            },
+            "distance": null,
+            "bm25_score": 0.0,
+            "hybrid_score": 0.6396,
+            "rerank_score": 0.6396
+          }
+        ],
+        "query": "{{rewritten_query}}",
+        "source": "tavily_search"
+      }
+    }
+  ],
+  "debug_info": {
+    "task_graph": {
+      "tasks": {
+        "T0": {
+          "task_id": "T0",
+          "task_type": "tool_call",
+          "tool_name": "kb_retrieve",
+          "status": "success",
+          "parameters": {
+            "query": "{{rewritten_query}}",
+            "company": "{{global_slots.company}}",
+            "position": "{{global_slots.position}}",
+            "top_k": 5
+          },
+          "resolved_params": {
+            "query": "{{rewritten_query}}",
+            "company": "阿里",
+            "position": "后端",
+            "top_k": 5
+          },
+          "result": {
+            "chunks": [],
+            "query": "{{rewritten_query}}",
+            "filters": {
+              "company": "阿里",
+              "position": "后端"
+            },
+            "strategy": "hybrid(70%vec+30%bm25)+reranker",
+            "pool_k": 5,
+            "rerank_k": 10,
+            "pool_size": 0,
+            "vec_only": 0,
+            "bm25_only": 0,
+            "both": 0,
+            "rerank": {
+              "enabled": true,
+              "candidates": 0,
+              "output": 0,
+              "best_rerank_score": 0.0
+            }
+          },
+          "observation": "工具 kb_retrieve 执行成功"
+        },
+        "T1": {
+          "task_id": "T1",
+          "task_type": "tool_call",
+          "tool_name": "qa_synthesize",
+          "status": "success",
+          "parameters": {
+            "question": "阿里后端岗位要求的经验年限是什么？",
+            "evidence_chunks": "{{T0.output.chunks}}",
+            "qa_type": "{{intent_verify.qa_type}}"
+          },
+          "resolved_params": {
+            "question": "阿里后端岗位要求的经验年限是什么？",
+            "evidence_chunks": [],
+            "qa_type": "factual"
+          },
+          "result": {
+            "answer": "抱歉，知识库中没有找到相关信息。",
+            "citations": [],
+            "confidence": "low",
+            "insufficient_note": "未检索到相关证据"
+          },
+          "observation": "工具 qa_synthesize 执行成功"
+        },
+        "T2": {
+          "task_id": "T2",
+          "task_type": "tool_call",
+          "tool_name": "external_search",
+          "status": "failed",
+          "parameters": {
+            "query": "{{rewritten_query}}",
+            "count": 5
+          },
+          "resolved_params": {
+            "query": "{{rewritten_query}}",
+            "count": 5
+          },
+          "result": {
+            "chunks": [
+              {
+                "chunk_id": "tavily_480179108",
+                "content": "【来源：arxiv.org】[PDF] GenRewrite: Query Rewriting via Large Language Models - arXiv\nAbstract. Query rewriting is an effective technique for refining poorly written queries before they reach the query optimizer. However, manual.\n参考链接：https://arxiv.org/pdf/2403.09060",
+                "metadata": {
+                  "source": "tavily_search",
+                  "url": "https://arxiv.org/pdf/2403.09060",
+                  "title": "[PDF] GenRewrite: Query Rewriting via Large Language Models - arXiv",
+                  "source_name": "arxiv.org",
+                  "source_reliability": "low",
+                  "company": "未知",
+                  "position": "",
+                  "section": "external_search",
+                  "jd_id": "ext_480179108",
+                  "tavily_score": 0.60861784
+                },
+                "distance": null,
+                "bm25_score": 0.0,
+                "hybrid_score": 0.9939,
+                "rerank_score": 0.9939
+              },
+              {
+                "chunk_id": "tavily_3552973222",
+                "content": "【来源：en.wikipedia.org】Query rewriting - Wikipedia\n**Query rewriting** is a typically automatic transformation that takes a set of database tables, views \"View (SQL)\"), and/or queries, usually indices, often gathered data and query statistics, and other metadata, and yields a set of different queries, which produce the same results but execute with better performance (for example, faster, or with lower memory use). Query rewriting can be based on relational algebra or an extension thereof (e.g. multiset relational algebra with sorting, aggregation and three-valued predicates i.e. NULLs as in the case of SQL). For example, the input queries may be in relational algebra or SQL, and the rewritten queries may be closer to the physical representation of the data, e.g. array operations. Query rewriting can also involve materialization of views and other subqueries; operations that may or may not be available to the API user.\n参考链接：https://en.wikipedia.org/wiki/Query_rewriting",
+                "metadata": {
+                  "source": "tavily_search",
+                  "url": "https://en.wikipedia.org/wiki/Query_rewriting",
+                  "title": "Query rewriting - Wikipedia",
+                  "source_name": "en.wikipedia.org",
+                  "source_reliability": "low",
+                  "company": "未知",
+                  "position": "",
+                  "section": "external_search",
+                  "jd_id": "ext_3552973222",
+                  "tavily_score": 0.8380581
+                },
+                "distance": null,
+                "bm25_score": 0.0,
+                "hybrid_score": 0.9928,
+                "rerank_score": 0.9928
+              },
+              {
+                "chunk_id": "tavily_1239614154",
+                "content": "【来源：developers.cloudflare.com】Query rewriting · Cloudflare AI Search docs\n>  Fetch the complete documentation index at: https://developers.cloudflare.com/ai-search/llms.txt. This is the HTML version of a Cloudflare documentation page. Get this page as Markdown: https://developers.cloudflare.com/ai-search/configuration/retrieval/query-rewriting/index.md (append index.md) or send Accept: text/markdown to https://developers.cloudflare.com/ai-search/configuration/retrieval/query-rewriting/. For this product's page index use https://developers.cloudflare.com/ai-search/llms.txt. For all Cloudflare products use https://developers.cloudflare.com/llms.txt. # Query rewriting. Query rewriting is an optional step in the AI Search pipeline that improves retrieval quality for follow-up queries. ## Why use query rewriting? The first message is always used as-is. For follow-up queries, AI Search sends the conversation history, the latest user message, and the query rewrite system prompt to the configured LLM. The rewritten query is then embedded and used to perform the search. **First message:** `What is Cloudflare Workers?` (used as-is, no rewriting). Query rewriting uses the conversation context to understand \"one\" refers to a Cloudflare Worker. How the query is rewritten depends on your query rewrite system prompt.\n参考链接：https://developers.cloudflare.com/ai-search/configuration/retrieval/query-rewriting",
+                "metadata": {
+                  "source": "tavily_search",
+                  "url": "https://developers.cloudflare.com/ai-search/configuration/retrieval/query-rewriting",
+                  "title": "Query rewriting · Cloudflare AI Search docs",
+                  "source_name": "developers.cloudflare.com",
+                  "source_reliability": "low",
+                  "company": "未知",
+                  "position": "",
+                  "section": "external_search",
+                  "jd_id": "ext_1239614154",
+                  "tavily_score": 0.6241337
+                },
+                "distance": null,
+                "bm25_score": 0.0,
+                "hybrid_score": 0.9544,
+                "rerank_score": 0.9544
+              },
+              {
+                "chunk_id": "tavily_1437159931",
+                "content": "【来源：learn.microsoft.com】Rewrite Queries with Semantic Ranker - Azure AI Search | Microsoft Learn\n# Rewrite queries with semantic ranker in Azure AI Search (Preview). Query rewriting is the process of transforming a user's query into a more effective one, adding more terms and refining search results. The search service sends the search query (or a variation of it) to a generative model that generates alternative queries. * The user query is sent via the `search` property in the request. * The search service uses the original query and the rewritten queries to retrieve search results. Without query rewriting, the search service just uses the original query to retrieve search results. * Set \"search\" to a full text search query. * Set \"debug\" to \"queryRewrites\" to get the query rewrites in the response. * Because you set the \"debug\" property to \"queryRewrites\" for testing, the response includes a `@search.debug` object with the text input query and query rewrites. Set the `\"debug\": \"queryRewrites\"` property in your query request to get the query rewrites in the response.\n参考链接：https://learn.microsoft.com/en-us/azure/search/semantic-how-to-query-rewrite",
+                "metadata": {
+                  "source": "tavily_search",
+                  "url": "https://learn.microsoft.com/en-us/azure/search/semantic-how-to-query-rewrite",
+                  "title": "Rewrite Queries with Semantic Ranker - Azure AI Search | Microsoft Learn",
+                  "source_name": "learn.microsoft.com",
+                  "source_reliability": "low",
+                  "company": "Microsoft",
+                  "position": "",
+                  "section": "external_search",
+                  "jd_id": "ext_1437159931",
+                  "tavily_score": 0.5582553
+                },
+                "distance": null,
+                "bm25_score": 0.0,
+                "hybrid_score": 0.939,
+                "rerank_score": 0.939
+              },
+              {
+                "chunk_id": "tavily_285157049",
+                "content": "【来源：zenml.io】Query Rewriting in RAG Isn't Enough: How ZenML's Evaluation ...\nBlog  / Query Rewriting in RAG Isn’t Enough: How ZenML’s Evaluation Pipelines Unlock Reliable AI. # Query Rewriting in RAG Isn’t Enough: How ZenML’s Evaluation Pipelines Unlock Reliable AI. Are your query rewriting strategies silently hurting your Retrieval-Augmented Generation (RAG) system? Learn how ZenML's automated evaluation pipelines can systematically detect, measure, and resolve these hidden issues—ensuring that your RAG implementations consistently provide relevant, trustworthy responses. You’ve integrated state-of-the-art retrieval patterns, optimized embeddings, and swapped in the latest LLMs. Yet, when users query your AI with something like, ”Postgres connection refused error” your RAG system might simply retrieve generic documentation about PostgreSQL connections, missing practical troubleshooting advice involving firewall and other rules. We spend so much time implementing the latest RAG patterns, like query rewriting, that we often forget to ask the fundamental question: “Is this actually working *in a measurable, reliable way*?”. ## Quick Recap: What is Query Rewriting in RAG? * **Rewritten Query**: *“What are the steps for implementing secrets management in ZenML?”*.\n参考链接：https://www.zenml.io/blog/query-rewriting-evaluation",
+                "metadata": {
+                  "source": "tavily_search",
+                  "url": "https://www.zenml.io/blog/query-rewriting-evaluation",
+                  "title": "Query Rewriting in RAG Isn't Enough: How ZenML's Evaluation ...",
+                  "source_name": "zenml.io",
+                  "source_reliability": "low",
+                  "company": "未知",
+                  "position": "",
+                  "section": "external_search",
+                  "jd_id": "ext_285157049",
+                  "tavily_score": 0.5021246
+                },
+                "distance": null,
+                "bm25_score": 0.0,
+                "hybrid_score": 0.6396,
+                "rerank_score": 0.6396
+              }
+            ],
+            "query": "{{rewritten_query}}",
+            "source": "tavily_search"
+          },
+          "observation": "SEMANTIC_MISMATCH|检索结果与用户意图不符|suggested_query=阿里 后端"
+        }
+      },
+      "global_status": "success",
+      "replan_reason": "T1_tool_failed",
+      "replan_count": 2
+    },
+    "intent": {
+      "demands": [
+        {
+          "intent": "attribute_verify",
+          "entities": {
+            "company": "阿里",
+            "position": "后端",
+            "attributes": [
+              "要求",
+              "经验"
+            ],
+            "qa_type": "factual"
+          },
+          "confidence": 0.88
+        }
+      ],
+      "needs_clarification": false,
+      "clarification_question": ""
+    },
+    "rewrite": {
+      "rewritten_query": "阿里后端岗位要求的经验年限",
+      "search_keywords": "阿里后端岗位要求的经验年限",
+      "is_follow_up": false,
+      "follow_up_type": "none",
+      "resolved_references": {}
+    },
+    "evidence_cache": [],
+    "evidence_cache_query": "",
+    "tool_outputs": [
+      {
+        "task_id": "T0",
+        "tool": "kb_retrieve",
+        "description": "检索阿里后端岗位JD信息（用于verify）",
+        "result": {
+          "chunks": [],
+          "query": "{{rewritten_query}}",
+          "filters": {
+            "company": "阿里",
+            "position": "后端"
+          },
+          "strategy": "hybrid(70%vec+30%bm25)+reranker",
+          "pool_k": 5,
+          "rerank_k": 10,
+          "pool_size": 0,
+          "vec_only": 0,
+          "bm25_only": 0,
+          "both": 0,
+          "rerank": {
+            "enabled": true,
+            "candidates": 0,
+            "output": 0,
+            "best_rerank_score": 0.0
+          }
+        }
+      },
+      {
+        "task_id": "T1",
+        "tool": "qa_synthesize",
+        "description": "基于检索结果回答阿里后端岗位经验年限要求",
+        "result": {
+          "answer": "抱歉，知识库中没有找到相关信息。",
+          "citations": [],
+          "confidence": "low",
+          "insufficient_note": "未检索到相关证据"
+        }
+      }
+    ],
+    "final_aggregation_prompt": {
+      "system_prompt": "你是一位专业的求职顾问。请基于以下工具执行结果，给用户一个清晰、有帮助的回复。\n要求：\n1. 先直接回答用户的问题（是/否/有/没有），不要绕弯子，不要重复用户的原话\n2. 如果有匹配分析结果，给出具体的分数和建议\n3. 如果有检索结果，基于事实回答，不要编造\n4. 【强制】引用信息时必须标注来源。每个引用的事实后面都要跟 [来源：公司名-岗位名] 格式。   kb_retrieve 结果的 chunks 中带有 'source' 字段（如'字节跳动-AI产品经理'），请直接使用。   external_search 结果带有 'source_name' 字段，也请直接使用。\n5. 当本地知识库与外部搜索结果冲突时，请并列呈现两种说法并标注各自来源，不要替用户做判断\n6. 语气友好、专业、结构化",
+      "user_prompt": "【用户问题】\n阿里后端岗位要求的经验年限\n\n【工具执行结果】\n[{\"task_id\": \"T0\", \"tool\": \"kb_retrieve\", \"description\": \"检索阿里后端岗位JD信息（用于verify）\", \"result\": {\"chunks\": [], \"query\": \"{{rewritten_query}}\", \"filters\": {\"company\": \"阿里\", \"position\": \"后端\"}, \"strategy\": \"hybrid(70%vec+30%bm25)+reranker\", \"pool_k\": 5, \"rerank_k\": 10, \"pool_size\": 0, \"vec_only\": 0, \"bm25_only\": 0, \"both\": 0, \"rerank\": {\"enabled\": true, \"candidates\": 0, \"output\": 0, \"best_rerank_score\": 0.0}}}, {\"task_id\": \"T1\", \"tool\": \"qa_synthesize\", \"description\": \"基于检索结果回答阿里后端岗位经验年限要求\", \"result\": {\"answer\": \"抱歉，知识库中没有找到相关信息。\", \"citations\": [], \"confidence\": \"low\", \"insufficient_note\": \"未检索到相关证据\"}}]\n\n请生成回复："
+    }
+  },
+  "reply": "您好！基于当前的检索结果，**没有**找到阿里后端岗位经验年限的具体数据。\n\n**检索情况说明**：\n系统在本地知识库中针对“阿里 - 后端”岗位进行了检索，但未命中包含经验年限要求的岗位描述（JD）信息片段。\n\n**求职建议**：\n1.  **官方渠道核实**：建议直接访问阿里巴巴集团官方招聘网站，筛选“后端开发”相关岗位，查看最新的职位描述（JD）以获取准确年限要求。\n2.  **结合职级参考**：大厂岗位通常与职级体系挂钩，不同职级（如 P 序列）对工作经验的要求会有所不同，建议结合具体职级进行查询。\n3.  **多渠道验证**：可参考主流招聘平台上的实时发布信息，或通过内部推荐人咨询具体团队的用人标准。\n\n如有具体的岗位链接或更详细的职位描述，欢迎提供，我可以为您做进一步的分析。",
+  "reply_length": 348,
+  "intent_match": true,
+  "tool_match_rate": 1.0,
+  "has_reply": true,
+  "events": [
+    {
+      "step": "intent",
+      "message": "正在识别您的意图...",
+      "_time": 4.5989367961883545,
+      "type": "status"
+    },
+    {
+      "step": "plan",
+      "message": "正在规划任务...",
+      "_time": 4.598995208740234,
+      "type": "status"
+    },
+    {
+      "step": "execute",
+      "message": "正在执行分析...",
+      "_time": 12.044804096221924,
+      "type": "status"
+    },
+    {
+      "step": "aggregate",
+      "message": "正在生成回复...",
+      "_time": 16.092000007629395,
+      "type": "status"
+    },
+    {
+      "text": "您好！基于当前的",
+      "_time": 71.04619073867798,
+      "type": "delta"
+    },
+    {
+      "text": "检索结果，**",
+      "_time": 71.06610774993896,
+      "type": "delta"
+    },
+    {
+      "text": "没有**找到阿里",
+      "_time": 71.18732643127441,
+      "type": "delta"
+    },
+    {
+      "text": "后端岗位经验",
+      "_time": 71.19203305244446,
+      "type": "delta"
+    },
+    {
+      "text": "年限的具体数据。",
+      "_time": 71.34571433067322,
+      "type": "delta"
+    },
+    {
+      "text": "\n\n**检索情况说明",
+      "_time": 71.34677505493164,
+      "type": "delta"
+    },
+    {
+      "text": "**：\n系统在",
+      "_time": 71.4575264453888,
+      "type": "delta"
+    },
+    {
+      "text": "本地知识库中针对",
+      "_time": 71.49442982673645,
+      "type": "delta"
+    },
+    {
+      "text": "“阿里 - ",
+      "_time": 71.60254836082458,
+      "type": "delta"
+    },
+    {
+      "text": "后端”岗位",
+      "_time": 71.6049644947052,
+      "type": "delta"
+    },
+    {
+      "text": "进行了检索，但未",
+      "_time": 71.73045945167542,
+      "type": "delta"
+    },
+    {
+      "text": "命中包含经验",
+      "_time": 71.73620867729187,
+      "type": "delta"
+    },
+    {
+      "text": "年限要求的岗位描述",
+      "_time": 71.89033651351929,
+      "type": "delta"
+    },
+    {
+      "text": "（JD）信息",
+      "_time": 71.89494109153748,
+      "type": "delta"
+    },
+    {
+      "text": "片段。\n\n**",
+      "_time": 72.00134444236755,
+      "type": "delta"
+    },
+    {
+      "text": "求职建议**：",
+      "_time": 72.00697135925293,
+      "type": "delta"
+    },
+    {
+      "text": "\n1. ",
+      "_time": 72.17295455932617,
+      "type": "delta"
+    },
+    {
+      "text": " **官方",
+      "_time": 72.17572665214539,
+      "type": "delta"
+    },
+    {
+      "text": "渠道核实**：",
+      "_time": 72.25226092338562,
+      "type": "delta"
+    },
+    {
+      "text": "建议直接",
+      "_time": 72.25807619094849,
+      "type": "delta"
+    },
+    {
+      "text": "访问阿里巴巴集团官方",
+      "_time": 72.36032056808472,
+      "type": "delta"
+    },
+    {
+      "text": "招聘网站",
+      "_time": 72.39430022239685,
+      "type": "delta"
+    },
+    {
+      "text": "，筛选“后端",
+      "_time": 72.46718907356262,
+      "type": "delta"
+    },
+    {
+      "text": "开发",
+      "_time": 72.47218441963196,
+      "type": "delta"
+    },
+    {
+      "text": "”相关岗位，",
+      "_time": 72.55834937095642,
+      "type": "delta"
+    },
+    {
+      "text": "查看最新的",
+      "_time": 72.56278419494629,
+      "type": "delta"
+    },
+    {
+      "text": "职位描述（JD）",
+      "_time": 72.66636562347412,
+      "type": "delta"
+    },
+    {
+      "text": "以获取准确",
+      "_time": 72.697110414505,
+      "type": "delta"
+    },
+    {
+      "text": "年限要求。\n",
+      "_time": 72.79230451583862,
+      "type": "delta"
+    },
+    {
+      "text": "2.  **",
+      "_time": 72.79497647285461,
+      "type": "delta"
+    },
+    {
+      "text": "结合职级参考",
+      "_time": 72.93324255943298,
+      "type": "delta"
+    },
+    {
+      "text": "**：大厂",
+      "_time": 72.93795561790466,
+      "type": "delta"
+    },
+    {
+      "text": "岗位通常与职",
+      "_time": 73.10121297836304,
+      "type": "delta"
+    },
+    {
+      "text": "级体系",
+      "_time": 73.1072084903717,
+      "type": "delta"
+    },
+    {
+      "text": "挂钩，不同职",
+      "_time": 73.16923570632935,
+      "type": "delta"
+    },
+    {
+      "text": "级（",
+      "_time": 73.17190384864807,
+      "type": "delta"
+    },
+    {
+      "text": "如 P 序列",
+      "_time": 73.2758309841156,
+      "type": "delta"
+    },
+    {
+      "text": "）对工作经验",
+      "_time": 73.28349113464355,
+      "type": "delta"
+    },
+    {
+      "text": "的要求会有所不同",
+      "_time": 73.43312644958496,
+      "type": "delta"
+    },
+    {
+      "text": "，建议",
+      "_time": 73.43693399429321,
+      "type": "delta"
+    },
+    {
+      "text": "结合具体职级",
+      "_time": 73.51120328903198,
+      "type": "delta"
+    },
+    {
+      "text": "进行查询",
+      "_time": 73.51796627044678,
+      "type": "delta"
+    },
+    {
+      "text": "。\n3.",
+      "_time": 73.61718583106995,
+      "type": "delta"
+    },
+    {
+      "text": "  **多渠道验证",
+      "_time": 73.62198209762573,
+      "type": "delta"
+    },
+    {
+      "text": "**：可参考",
+      "_time": 73.79429888725281,
+      "type": "delta"
+    },
+    {
+      "text": "主流招聘平台",
+      "_time": 73.79993844032288,
+      "type": "delta"
+    },
+    {
+      "text": "上的实时发布信息，",
+      "_time": 73.88923501968384,
+      "type": "delta"
+    },
+    {
+      "text": "或通过",
+      "_time": 73.89194083213806,
+      "type": "delta"
+    },
+    {
+      "text": "内部推荐人咨询",
+      "_time": 73.97820520401001,
+      "type": "delta"
+    },
+    {
+      "text": "具体团队的",
+      "_time": 74.0122184753418,
+      "type": "delta"
+    },
+    {
+      "text": "用人标准。\n\n",
+      "_time": 74.08698582649231,
+      "type": "delta"
+    },
+    {
+      "text": "如有具体的",
+      "_time": 74.09090256690979,
+      "type": "delta"
+    },
+    {
+      "text": "岗位链接或更",
+      "_time": 74.1961658000946,
+      "type": "delta"
+    },
+    {
+      "text": "详细的职位描述",
+      "_time": 74.19991660118103,
+      "type": "delta"
+    },
+    {
+      "text": "，欢迎提供，",
+      "_time": 74.33115315437317,
+      "type": "delta"
+    },
+    {
+      "text": "我可以为您做",
+      "_time": 74.33683657646179,
+      "type": "delta"
+    },
+    {
+      "text": "进一步的分析。",
+      "_time": 74.4319977760315,
+      "type": "delta"
+    },
+    {
+      "session_id": "eval_li_06_1780562733840",
+      "intent": "attribute_verify",
+      "route_meta": {
+        "layer": "llm",
+        "intent": "attribute_verify",
+        "confidence": 0.88,
+        "demands": [
+          {
+            "intent": "attribute_verify",
+            "entities": {
+              "company": "阿里",
+              "position": "后端",
+              "attributes": [
+                "要求",
+                "经验"
+              ],
+              "qa_type": "factual"
+            }
+          }
+        ],
+        "plan_tasks": 3
+      },
+      "agent_mode": "llm",
+      "is_clarification": false,
+      "agent": {
+        "rewritten_query": "阿里后端岗位要求的经验年限",
+        "tools": [
+          {
+            "tool": "kb_retrieve",
+            "status": "✅",
+            "params": {
+              "query": "{{rewritten_query}}",
+              "company": "阿里",
+              "position": "后端",
+              "top_k": 5
+            },
+            "result_preview": "{'chunks': [], 'query': '{{rewritten_query}}', 'filters': {'company': '阿里', 'position': '后端'}, 'strategy': 'hybrid(70%vec+30%bm25)+reranker', 'pool_k': 5, 'rerank_k': 10, 'pool_size': 0, 'vec_only': 0"
+          },
+          {
+            "tool": "qa_synthesize",
+            "status": "✅",
+            "params": {
+              "question": "阿里后端岗位要求的经验年限是什么？",
+              "evidence_chunks": [],
+              "qa_type": "factual"
+            },
+            "result_preview": "{'answer': '抱歉，知识库中没有找到相关信息。', 'citations': [], 'confidence': 'low', 'insufficient_note': '未检索到相关证据'}"
+          },
+          {
+            "tool": "external_search",
+            "status": "❌",
+            "params": {
+              "query": "{{rewritten_query}}",
+              "count": 5
+            },
+            "result_preview": "{'chunks': [{'chunk_id': 'tavily_480179108', 'content': '【来源：arxiv.org】[PDF] GenRewrite: Query Rewriting via Large Language Models - arXiv\\nAbstract. Query rewriting is an effective technique for refi"
+          }
+        ],
+        "kb_chunks_count": 2,
+        "system_prompt_preview": "你是一位专业的求职顾问。请基于以下工具执行结果，给用户一个清晰、有帮助的回复。\n要求：\n1. 先直接回答用户的问题（是/否/有/没有），不要绕弯子，不要重复用户的原话\n2. 如果有匹配分析结果，给出具体的分数和建议\n3. 如果有检索结果，基于事实回答，不要编造\n4. 【强制】引用信息时必须标注来源。每个引用的事实后面都要跟 [来源：公司名-岗位名] 格式。   kb_retrieve 结果的 ch"
+      },
+      "memory": {
+        "working_turns": 1,
+        "compressed_blocks": 0,
+        "current_topic": "general",
+        "evidence_cache_size": 0
+      },
+      "reply": "您好！基于当前的检索结果，**没有**找到阿里后端岗位经验年限的具体数据。\n\n**检索情况说明**：\n系统在本地知识库中针对“阿里 - 后端”岗位进行了检索，但未命中包含经验年限要求的岗位描述（JD）信息片段。\n\n**求职建议**：\n1.  **官方渠道核实**：建议直接访问阿里巴巴集团官方招聘网站，筛选“后端开发”相关岗位，查看最新的职位描述（JD）以获取准确年限要求。\n2.  **结合职级参考**：大厂岗位通常与职级体系挂钩，不同职级（如 P 序列）对工作经验的要求会有所不同，建议结合具体职级进行查询。\n3.  **多渠道验证**：可参考主流招聘平台上的实时发布信息，或通过内部推荐人咨询具体团队的用人标准。\n\n如有具体的岗位链接或更详细的职位描述，欢迎提供，我可以为您做进一步的分析。",
+      "debug_info": {
+        "task_graph": {
+          "tasks": {
+            "T0": {
+              "task_id": "T0",
+              "task_type": "tool_call",
+              "tool_name": "kb_retrieve",
+              "status": "success",
+              "parameters": {
+                "query": "{{rewritten_query}}",
+                "company": "{{global_slots.company}}",
+                "position": "{{global_slots.position}}",
+                "top_k": 5
+              },
+              "resolved_params": {
+                "query": "{{rewritten_query}}",
+                "company": "阿里",
+                "position": "后端",
+                "top_k": 5
+              },
+              "result": {
+                "chunks": [],
+                "query": "{{rewritten_query}}",
+                "filters": {
+                  "company": "阿里",
+                  "position": "后端"
+                },
+                "strategy": "hybrid(70%vec+30%bm25)+reranker",
+                "pool_k": 5,
+                "rerank_k": 10,
+                "pool_size": 0,
+                "vec_only": 0,
+                "bm25_only": 0,
+                "both": 0,
+                "rerank": {
+                  "enabled": true,
+                  "candidates": 0,
+                  "output": 0,
+                  "best_rerank_score": 0.0
+                }
+              },
+              "observation": "工具 kb_retrieve 执行成功"
+            },
+            "T1": {
+              "task_id": "T1",
+              "task_type": "tool_call",
+              "tool_name": "qa_synthesize",
+              "status": "success",
+              "parameters": {
+                "question": "阿里后端岗位要求的经验年限是什么？",
+                "evidence_chunks": "{{T0.output.chunks}}",
+                "qa_type": "{{intent_verify.qa_type}}"
+              },
+              "resolved_params": {
+                "question": "阿里后端岗位要求的经验年限是什么？",
+                "evidence_chunks": [],
+                "qa_type": "factual"
+              },
+              "result": {
+                "answer": "抱歉，知识库中没有找到相关信息。",
+                "citations": [],
+                "confidence": "low",
+                "insufficient_note": "未检索到相关证据"
+              },
+              "observation": "工具 qa_synthesize 执行成功"
+            },
+            "T2": {
+              "task_id": "T2",
+              "task_type": "tool_call",
+              "tool_name": "external_search",
+              "status": "failed",
+              "parameters": {
+                "query": "{{rewritten_query}}",
+                "count": 5
+              },
+              "resolved_params": {
+                "query": "{{rewritten_query}}",
+                "count": 5
+              },
+              "result": {
+                "chunks": [
+                  {
+                    "chunk_id": "tavily_480179108",
+                    "content": "【来源：arxiv.org】[PDF] GenRewrite: Query Rewriting via Large Language Models - arXiv\nAbstract. Query rewriting is an effective technique for refining poorly written queries before they reach the query optimizer. However, manual.\n参考链接：https://arxiv.org/pdf/2403.09060",
+                    "metadata": {
+                      "source": "tavily_search",
+                      "url": "https://arxiv.org/pdf/2403.09060",
+                      "title": "[PDF] GenRewrite: Query Rewriting via Large Language Models - arXiv",
+                      "source_name": "arxiv.org",
+                      "source_reliability": "low",
+                      "company": "未知",
+                      "position": "",
+                      "section": "external_search",
+                      "jd_id": "ext_480179108",
+                      "tavily_score": 0.60861784
+                    },
+                    "distance": null,
+                    "bm25_score": 0.0,
+                    "hybrid_score": 0.9939,
+                    "rerank_score": 0.9939
+                  },
+                  {
+                    "chunk_id": "tavily_3552973222",
+                    "content": "【来源：en.wikipedia.org】Query rewriting - Wikipedia\n**Query rewriting** is a typically automatic transformation that takes a set of database tables, views \"View (SQL)\"), and/or queries, usually indices, often gathered data and query statistics, and other metadata, and yields a set of different queries, which produce the same results but execute with better performance (for example, faster, or with lower memory use). Query rewriting can be based on relational algebra or an extension thereof (e.g. multiset relational algebra with sorting, aggregation and three-valued predicates i.e. NULLs as in the case of SQL). For example, the input queries may be in relational algebra or SQL, and the rewritten queries may be closer to the physical representation of the data, e.g. array operations. Query rewriting can also involve materialization of views and other subqueries; operations that may or may not be available to the API user.\n参考链接：https://en.wikipedia.org/wiki/Query_rewriting",
+                    "metadata": {
+                      "source": "tavily_search",
+                      "url": "https://en.wikipedia.org/wiki/Query_rewriting",
+                      "title": "Query rewriting - Wikipedia",
+                      "source_name": "en.wikipedia.org",
+                      "source_reliability": "low",
+                      "company": "未知",
+                      "position": "",
+                      "section": "external_search",
+                      "jd_id": "ext_3552973222",
+                      "tavily_score": 0.8380581
+                    },
+                    "distance": null,
+                    "bm25_score": 0.0,
+                    "hybrid_score": 0.9928,
+                    "rerank_score": 0.9928
+                  },
+                  {
+                    "chunk_id": "tavily_1239614154",
+                    "content": "【来源：developers.cloudflare.com】Query rewriting · Cloudflare AI Search docs\n>  Fetch the complete documentation index at: https://developers.cloudflare.com/ai-search/llms.txt. This is the HTML version of a Cloudflare documentation page. Get this page as Markdown: https://developers.cloudflare.com/ai-search/configuration/retrieval/query-rewriting/index.md (append index.md) or send Accept: text/markdown to https://developers.cloudflare.com/ai-search/configuration/retrieval/query-rewriting/. For this product's page index use https://developers.cloudflare.com/ai-search/llms.txt. For all Cloudflare products use https://developers.cloudflare.com/llms.txt. # Query rewriting. Query rewriting is an optional step in the AI Search pipeline that improves retrieval quality for follow-up queries. ## Why use query rewriting? The first message is always used as-is. For follow-up queries, AI Search sends the conversation history, the latest user message, and the query rewrite system prompt to the configured LLM. The rewritten query is then embedded and used to perform the search. **First message:** `What is Cloudflare Workers?` (used as-is, no rewriting). Query rewriting uses the conversation context to understand \"one\" refers to a Cloudflare Worker. How the query is rewritten depends on your query rewrite system prompt.\n参考链接：https://developers.cloudflare.com/ai-search/configuration/retrieval/query-rewriting",
+                    "metadata": {
+                      "source": "tavily_search",
+                      "url": "https://developers.cloudflare.com/ai-search/configuration/retrieval/query-rewriting",
+                      "title": "Query rewriting · Cloudflare AI Search docs",
+                      "source_name": "developers.cloudflare.com",
+                      "source_reliability": "low",
+                      "company": "未知",
+                      "position": "",
+                      "section": "external_search",
+                      "jd_id": "ext_1239614154",
+                      "tavily_score": 0.6241337
+                    },
+                    "distance": null,
+                    "bm25_score": 0.0,
+                    "hybrid_score": 0.9544,
+                    "rerank_score": 0.9544
+                  },
+                  {
+                    "chunk_id": "tavily_1437159931",
+                    "content": "【来源：learn.microsoft.com】Rewrite Queries with Semantic Ranker - Azure AI Search | Microsoft Learn\n# Rewrite queries with semantic ranker in Azure AI Search (Preview). Query rewriting is the process of transforming a user's query into a more effective one, adding more terms and refining search results. The search service sends the search query (or a variation of it) to a generative model that generates alternative queries. * The user query is sent via the `search` property in the request. * The search service uses the original query and the rewritten queries to retrieve search results. Without query rewriting, the search service just uses the original query to retrieve search results. * Set \"search\" to a full text search query. * Set \"debug\" to \"queryRewrites\" to get the query rewrites in the response. * Because you set the \"debug\" property to \"queryRewrites\" for testing, the response includes a `@search.debug` object with the text input query and query rewrites. Set the `\"debug\": \"queryRewrites\"` property in your query request to get the query rewrites in the response.\n参考链接：https://learn.microsoft.com/en-us/azure/search/semantic-how-to-query-rewrite",
+                    "metadata": {
+                      "source": "tavily_search",
+                      "url": "https://learn.microsoft.com/en-us/azure/search/semantic-how-to-query-rewrite",
+                      "title": "Rewrite Queries with Semantic Ranker - Azure AI Search | Microsoft Learn",
+                      "source_name": "learn.microsoft.com",
+                      "source_reliability": "low",
+                      "company": "Microsoft",
+                      "position": "",
+                      "section": "external_search",
+                      "jd_id": "ext_1437159931",
+                      "tavily_score": 0.5582553
+                    },
+                    "distance": null,
+                    "bm25_score": 0.0,
+                    "hybrid_score": 0.939,
+                    "rerank_score": 0.939
+                  },
+                  {
+                    "chunk_id": "tavily_285157049",
+                    "content": "【来源：zenml.io】Query Rewriting in RAG Isn't Enough: How ZenML's Evaluation ...\nBlog  / Query Rewriting in RAG Isn’t Enough: How ZenML’s Evaluation Pipelines Unlock Reliable AI. # Query Rewriting in RAG Isn’t Enough: How ZenML’s Evaluation Pipelines Unlock Reliable AI. Are your query rewriting strategies silently hurting your Retrieval-Augmented Generation (RAG) system? Learn how ZenML's automated evaluation pipelines can systematically detect, measure, and resolve these hidden issues—ensuring that your RAG implementations consistently provide relevant, trustworthy responses. You’ve integrated state-of-the-art retrieval patterns, optimized embeddings, and swapped in the latest LLMs. Yet, when users query your AI with something like, ”Postgres connection refused error” your RAG system might simply retrieve generic documentation about PostgreSQL connections, missing practical troubleshooting advice involving firewall and other rules. We spend so much time implementing the latest RAG patterns, like query rewriting, that we often forget to ask the fundamental question: “Is this actually working *in a measurable, reliable way*?”. ## Quick Recap: What is Query Rewriting in RAG? * **Rewritten Query**: *“What are the steps for implementing secrets management in ZenML?”*.\n参考链接：https://www.zenml.io/blog/query-rewriting-evaluation",
+                    "metadata": {
+                      "source": "tavily_search",
+                      "url": "https://www.zenml.io/blog/query-rewriting-evaluation",
+                      "title": "Query Rewriting in RAG Isn't Enough: How ZenML's Evaluation ...",
+                      "source_name": "zenml.io",
+                      "source_reliability": "low",
+                      "company": "未知",
+                      "position": "",
+                      "section": "external_search",
+                      "jd_id": "ext_285157049",
+                      "tavily_score": 0.5021246
+                    },
+                    "distance": null,
+                    "bm25_score": 0.0,
+                    "hybrid_score": 0.6396,
+                    "rerank_score": 0.6396
+                  }
+                ],
+                "query": "{{rewritten_query}}",
+                "source": "tavily_search"
+              },
+              "observation": "SEMANTIC_MISMATCH|检索结果与用户意图不符|suggested_query=阿里 后端"
+            }
+          },
+          "global_status": "success",
+          "replan_reason": "T1_tool_failed",
+          "replan_count": 2
+        },
+        "intent": {
+          "demands": [
+            {
+              "intent": "attribute_verify",
+              "entities": {
+                "company": "阿里",
+                "position": "后端",
+                "attributes": [
+                  "要求",
+                  "经验"
+                ],
+                "qa_type": "factual"
+              },
+              "confidence": 0.88
+            }
+          ],
+          "needs_clarification": false,
+          "clarification_question": ""
+        },
+        "rewrite": {
+          "rewritten_query": "阿里后端岗位要求的经验年限",
+          "search_keywords": "阿里后端岗位要求的经验年限",
+          "is_follow_up": false,
+          "follow_up_type": "none",
+          "resolved_references": {}
+        },
+        "evidence_cache": [],
+        "evidence_cache_query": "",
+        "tool_outputs": [
+          {
+            "task_id": "T0",
+            "tool": "kb_retrieve",
+            "description": "检索阿里后端岗位JD信息（用于verify）",
+            "result": {
+              "chunks": [],
+              "query": "{{rewritten_query}}",
+              "filters": {
+                "company": "阿里",
+                "position": "后端"
+              },
+              "strategy": "hybrid(70%vec+30%bm25)+reranker",
+              "pool_k": 5,
+              "rerank_k": 10,
+              "pool_size": 0,
+              "vec_only": 0,
+              "bm25_only": 0,
+              "both": 0,
+              "rerank": {
+                "enabled": true,
+                "candidates": 0,
+                "output": 0,
+                "best_rerank_score": 0.0
+              }
+            }
+          },
+          {
+            "task_id": "T1",
+            "tool": "qa_synthesize",
+            "description": "基于检索结果回答阿里后端岗位经验年限要求",
+            "result": {
+              "answer": "抱歉，知识库中没有找到相关信息。",
+              "citations": [],
+              "confidence": "low",
+              "insufficient_note": "未检索到相关证据"
+            }
+          }
+        ],
+        "final_aggregation_prompt": {
+          "system_prompt": "你是一位专业的求职顾问。请基于以下工具执行结果，给用户一个清晰、有帮助的回复。\n要求：\n1. 先直接回答用户的问题（是/否/有/没有），不要绕弯子，不要重复用户的原话\n2. 如果有匹配分析结果，给出具体的分数和建议\n3. 如果有检索结果，基于事实回答，不要编造\n4. 【强制】引用信息时必须标注来源。每个引用的事实后面都要跟 [来源：公司名-岗位名] 格式。   kb_retrieve 结果的 chunks 中带有 'source' 字段（如'字节跳动-AI产品经理'），请直接使用。   external_search 结果带有 'source_name' 字段，也请直接使用。\n5. 当本地知识库与外部搜索结果冲突时，请并列呈现两种说法并标注各自来源，不要替用户做判断\n6. 语气友好、专业、结构化",
+          "user_prompt": "【用户问题】\n阿里后端岗位要求的经验年限\n\n【工具执行结果】\n[{\"task_id\": \"T0\", \"tool\": \"kb_retrieve\", \"description\": \"检索阿里后端岗位JD信息（用于verify）\", \"result\": {\"chunks\": [], \"query\": \"{{rewritten_query}}\", \"filters\": {\"company\": \"阿里\", \"position\": \"后端\"}, \"strategy\": \"hybrid(70%vec+30%bm25)+reranker\", \"pool_k\": 5, \"rerank_k\": 10, \"pool_size\": 0, \"vec_only\": 0, \"bm25_only\": 0, \"both\": 0, \"rerank\": {\"enabled\": true, \"candidates\": 0, \"output\": 0, \"best_rerank_score\": 0.0}}}, {\"task_id\": \"T1\", \"tool\": \"qa_synthesize\", \"description\": \"基于检索结果回答阿里后端岗位经验年限要求\", \"result\": {\"answer\": \"抱歉，知识库中没有找到相关信息。\", \"citations\": [], \"confidence\": \"low\", \"insufficient_note\": \"未检索到相关证据\"}}]\n\n请生成回复："
+        }
+      },
+      "usage": {
+        "prompt_tokens": 6537,
+        "completion_tokens": 4413,
+        "total_tokens": 10950
+      },
+      "_time": 74.48065257072449,
+      "type": "done"
+    }
+  ],
+  "timestamp": "2026-06-04T16:45:33.840526",
+  "prompt_tokens": 6537,
+  "completion_tokens": 4413,
+  "total_tokens": 10950,
+  "tool_execution_success_rate": 0.67,
+  "tool_correct_rate": 1.0
+}

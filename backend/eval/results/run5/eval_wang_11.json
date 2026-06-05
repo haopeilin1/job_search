@@ -1,0 +1,3483 @@
+{
+  "case_id": "eval_wang_11",
+  "message": "帮我筛几个岗，再看看哪个需要设计经验",
+  "gold_intents": [
+    "explore",
+    "verify"
+  ],
+  "expected_tools": [
+    "kb_retrieve",
+    "global_rank",
+    "qa_synthesize"
+  ],
+  "scenario": "多意图_探索+属性查询",
+  "eval_context": {
+    "gold_intents": [
+      "explore",
+      "verify"
+    ],
+    "gold_slots": {},
+    "relevance_score": 0,
+    "expected_tools": [
+      "kb_retrieve",
+      "global_rank",
+      "qa_synthesize"
+    ],
+    "scenario": "多意图_探索+属性查询",
+    "notes": "30条JD中无纯设计岗，verify针对explore推荐的top岗位询问设计要求"
+  },
+  "resume_id": "6c55e5ca-64a6-4ea8-9344-1d7b729f789a",
+  "status": "success",
+  "error": null,
+  "ttfb": 0.01,
+  "total_latency": 87.24,
+  "event_count": 113,
+  "pred_intent": "position_explore",
+  "pred_intents": [
+    "position_explore"
+  ],
+  "pred_tools": [
+    {
+      "tool": "kb_retrieve",
+      "status": "✅",
+      "params": {
+        "query": "帮我筛几个岗位，再看看哪个需要设计经验",
+        "top_k": 5
+      },
+      "result_preview": "{'chunks': [{'chunk_id': '45bd2600-af57-45fe-a96e-c6cae6838c7a_chunk_5', 'content': '【某小公司 · Java后端 软性要求/加分项】\\n有ERP系统开发经验优先', 'metadata': {'company': '某小公司', 'index': 5, 'jd_id': '45bd2600-af57-45fe-a"
+    },
+    {
+      "tool": "global_rank",
+      "status": "✅",
+      "params": {
+        "resume_text": "姓名：王设计师\n电话：139-XXXX-5678 | 邮箱：wangdesign@email.com | 现居：上海\n作品集：wangdesign.portfolio.com\nUI/UX设计师 | 4年互联网设计经验 | 品牌视觉背景\n\n教育背景\n2015.09 - 2019.06  XX美术学院  视觉传达设计（本科）\n主修课程：品牌设计、信息可视化、交互设计基础、版式设计、用户研究\n在校荣誉：全国大学生广告艺术大赛省级一等奖\n\n职业背景\n2019.07 - 2021.06  XX传媒公司  品牌视觉设计师（2年）\n负责快消、教育行业品牌全案设计，积累扎实的视觉体系搭建与商业审美能力\n\n2021.07 - 至今  XX互联网科技公司（C轮 / 在线教育）  UI设计师（4年）\n从品牌设计跨领域转型至互联网UI/UX，快速补齐交互逻辑与产品思维，主导多条业务线界面设计\n\n专业技能\n精通Figma组件化设计、Auto Layout及变量系统，能搭建可复用的设计规范与UI Kit\n擅长界面动效设计，熟练使用Principle、After Effects制作高保真交互Demo，提升评审效率\n具备品牌全案设计能力，熟悉Logo、VI、运营视觉体系搭建，能统筹产品视觉一致性\n了解前端基础（HTML/CSS），能与开发高效沟通，熟悉切图标注、SVG输出及设计走查流程\n掌握用户研究方法：竞品分析、用户访谈、可用性测试，能基于数据反馈迭代设计方案\n\n工作经历\n在线教育直播课堂改版（2023.06 - 2024.03）\n作为UI主设，主导直播客户端从1.0到2.0的视觉重构，DAU 50W+，完课率提升12%\n建立Figma组件库（300+组件），统一5条业务线设计语言，设计交付效率提升30%\n针对低龄学段用户设计游戏化互动界面（连麦、答题红包），通过动效引导降低操作流失率\n\n制定《移动端设计规范V2.0》，涵盖色彩、字体、间距、无障碍对比度标准（WCAG 2.1 AA级）\n\n品牌跨界联名活动视觉（2022.09 - 2022.12）\n结合前品牌设计经验，主导与知名IP联名运营活动的主视觉及H5传播设计\n设计开屏动画、分享海报模板，活动期间新增用户8W+，分享率提升25%\n输出动态品牌规范手册，帮助市场团队3天内完成20+城市线下物料延展\n\nB端教研后台系统优化（2022.02 - 2022.08）\n负责教师端后台的信息架构重组，将核心备课路径从5步缩减至3步\n设计数据可视化仪表盘，通过卡片层级与色彩语义降低教师数据读取成本\n\n自我评价\n拥有品牌视觉+互联网UI的跨领域背景，既能把控产品视觉调性，也具备用户体验与业务目标平衡能力。习惯用组件化思维提升协作效率，注重设计落地的还原度与数据反馈。",
+        "candidate_jds": [
+          {
+            "chunk_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a_chunk_5",
+            "content": "【某小公司 · Java后端 软性要求/加分项】\n有ERP系统开发经验优先",
+            "metadata": {
+              "company": "某小公司",
+              "index": 5,
+              "jd_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a",
+              "position": "Java后端",
+              "priority": "medium",
+              "section": "soft_requirements",
+              "strategy": "semantic"
+            },
+            "distance": 0.7376145720481873,
+            "bm25_score": 0.0,
+            "vec_norm": 1.0,
+            "bm25_norm": 0.0,
+            "hybrid_score": 0.7,
+            "rerank_score": 0.3381
+          },
+          {
+            "chunk_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a_chunk_2",
+            "content": "【某小公司 · Java后端 硬性要求】\n1年以上Java开发经验",
+            "metadata": {
+              "company": "某小公司",
+              "index": 2,
+              "jd_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a",
+              "position": "Java后端",
+              "priority": "high",
+              "section": "hard_requirements",
+              "strategy": "semantic"
+            },
+            "distance": 0.7427959442138672,
+            "bm25_score": 0.0,
+            "vec_norm": 0.9477063121908318,
+            "bm25_norm": 0.0,
+            "hybrid_score": 0.6633944185335822,
+            "rerank_score": 0.221
+          },
+          {
+            "chunk_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8_chunk_6",
+            "content": "【阿里巴巴 · 后端开发 软性要求/加分项】\n有电商行业经验优先",
+            "metadata": {
+              "company": "阿里巴巴",
+              "index": 6,
+              "jd_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8",
+              "position": "后端开发",
+              "priority": "medium",
+              "section": "soft_requirements",
+              "strategy": "semantic"
+            },
+            "distance": 0.7635329961776733,
+            "bm25_score": 0.0,
+            "vec_norm": 0.7384148567997917,
+            "bm25_norm": 0.0,
+            "hybrid_score": 0.5168903997598542,
+            "rerank_score": 0.2149
+          },
+          {
+            "chunk_id": "f0427344-e282-48e4-8074-bcc9419cf414_chunk_6",
+            "content": "【淘天集团 · AI大模型产品经理 软性要求/加分项】\n如不方便外部体验，也可附工作流、prompt说明、输入和输出的效果示意来展示",
+            "metadata": {
+              "company": "淘天集团",
+              "index": 6,
+              "jd_id": "f0427344-e282-48e4-8074-bcc9419cf414",
+              "position": "AI大模型产品经理",
+              "priority": "medium",
+              "section": "soft_requirements",
+              "strategy": "semantic"
+            },
+            "distance": 0.7485970262904157,
+            "bm25_score": 0.0,
+            "vec_norm": 0.8891581196723003,
+            "bm25_norm": 0.0,
+            "hybrid_score": 0.6224106837706102,
+            "rerank_score": 0.0307
+          },
+          {
+            "chunk_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a_chunk_4",
+            "content": "【某小公司 · Java后端 硬性要求】\n大专及以上学历",
+            "metadata": {
+              "company": "某小公司",
+              "index": 4,
+              "jd_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a",
+              "position": "Java后端",
+              "priority": "high",
+              "section": "hard_requirements",
+              "strategy": "semantic"
+            },
+            "distance": 0.7560716867446899,
+            "bm25_score": 0.0,
+            "vec_norm": 0.8137191147568794,
+            "bm25_norm": 0.0,
+            "hybrid_score": 0.5696033803298155,
+            "rerank_score": 0.0253
+          }
+        ],
+        "sort_by": "match_score"
+      },
+      "result_preview": "{'rankings': [{'rank': 1, 'jd_id': '45bd2600-af57-45fe-a96e-c6cae6838c7a', 'company': '某小公司', 'position': 'Java后端', 'match_score': 79, 'recommend_reason': '检索相关度较高（0.64）', 'key_match': ['检索召回'], 'key_"
+    }
+  ],
+  "tools_called": [
+    "kb_retrieve",
+    "global_rank"
+  ],
+  "kb_chunks": [
+    {
+      "chunk_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a_chunk_5",
+      "content": "【某小公司 · Java后端 软性要求/加分项】\n有ERP系统开发经验优先",
+      "metadata": {
+        "company": "某小公司",
+        "index": 5,
+        "jd_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a",
+        "position": "Java后端",
+        "priority": "medium",
+        "section": "soft_requirements",
+        "strategy": "semantic"
+      },
+      "distance": 0.7376145720481873,
+      "bm25_score": 0.0,
+      "vec_norm": 1.0,
+      "bm25_norm": 0.0,
+      "hybrid_score": 0.7,
+      "rerank_score": 0.3381
+    },
+    {
+      "chunk_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a_chunk_2",
+      "content": "【某小公司 · Java后端 硬性要求】\n1年以上Java开发经验",
+      "metadata": {
+        "company": "某小公司",
+        "index": 2,
+        "jd_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a",
+        "position": "Java后端",
+        "priority": "high",
+        "section": "hard_requirements",
+        "strategy": "semantic"
+      },
+      "distance": 0.7427959442138672,
+      "bm25_score": 0.0,
+      "vec_norm": 0.9477063121908318,
+      "bm25_norm": 0.0,
+      "hybrid_score": 0.6633944185335822,
+      "rerank_score": 0.221
+    },
+    {
+      "chunk_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8_chunk_6",
+      "content": "【阿里巴巴 · 后端开发 软性要求/加分项】\n有电商行业经验优先",
+      "metadata": {
+        "company": "阿里巴巴",
+        "index": 6,
+        "jd_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8",
+        "position": "后端开发",
+        "priority": "medium",
+        "section": "soft_requirements",
+        "strategy": "semantic"
+      },
+      "distance": 0.7635329961776733,
+      "bm25_score": 0.0,
+      "vec_norm": 0.7384148567997917,
+      "bm25_norm": 0.0,
+      "hybrid_score": 0.5168903997598542,
+      "rerank_score": 0.2149
+    },
+    {
+      "chunk_id": "f0427344-e282-48e4-8074-bcc9419cf414_chunk_6",
+      "content": "【淘天集团 · AI大模型产品经理 软性要求/加分项】\n如不方便外部体验，也可附工作流、prompt说明、输入和输出的效果示意来展示",
+      "metadata": {
+        "company": "淘天集团",
+        "index": 6,
+        "jd_id": "f0427344-e282-48e4-8074-bcc9419cf414",
+        "position": "AI大模型产品经理",
+        "priority": "medium",
+        "section": "soft_requirements",
+        "strategy": "semantic"
+      },
+      "distance": 0.7485970262904157,
+      "bm25_score": 0.0,
+      "vec_norm": 0.8891581196723003,
+      "bm25_norm": 0.0,
+      "hybrid_score": 0.6224106837706102,
+      "rerank_score": 0.0307
+    },
+    {
+      "chunk_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a_chunk_4",
+      "content": "【某小公司 · Java后端 硬性要求】\n大专及以上学历",
+      "metadata": {
+        "company": "某小公司",
+        "index": 4,
+        "jd_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a",
+        "position": "Java后端",
+        "priority": "high",
+        "section": "hard_requirements",
+        "strategy": "semantic"
+      },
+      "distance": 0.7560716867446899,
+      "bm25_score": 0.0,
+      "vec_norm": 0.8137191147568794,
+      "bm25_norm": 0.0,
+      "hybrid_score": 0.5696033803298155,
+      "rerank_score": 0.0253
+    }
+  ],
+  "tool_executions_full": [
+    {
+      "tool_name": "kb_retrieve",
+      "task_id": "T0",
+      "status": "success",
+      "output": {
+        "chunks": [
+          {
+            "chunk_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a_chunk_5",
+            "content": "【某小公司 · Java后端 软性要求/加分项】\n有ERP系统开发经验优先",
+            "source": "某小公司-Java后端",
+            "metadata": {
+              "company": "某小公司",
+              "position": "Java后端"
+            }
+          },
+          {
+            "chunk_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a_chunk_2",
+            "content": "【某小公司 · Java后端 硬性要求】\n1年以上Java开发经验",
+            "source": "某小公司-Java后端",
+            "metadata": {
+              "company": "某小公司",
+              "position": "Java后端"
+            }
+          },
+          {
+            "chunk_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8_chunk_6",
+            "content": "【阿里巴巴 · 后端开发 软性要求/加分项】\n有电商行业经验优先",
+            "source": "阿里巴巴-后端开发",
+            "metadata": {
+              "company": "阿里巴巴",
+              "position": "后端开发"
+            }
+          },
+          {
+            "chunk_id": "f0427344-e282-48e4-8074-bcc9419cf414_chunk_6",
+            "content": "【淘天集团 · AI大模型产品经理 软性要求/加分项】\n如不方便外部体验，也可附工作流、prompt说明、输入和输出的效果示意来展示",
+            "source": "淘天集团-AI大模型产品经理",
+            "metadata": {
+              "company": "淘天集团",
+              "position": "AI大模型产品经理"
+            }
+          },
+          {
+            "chunk_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a_chunk_4",
+            "content": "【某小公司 · Java后端 硬性要求】\n大专及以上学历",
+            "source": "某小公司-Java后端",
+            "metadata": {
+              "company": "某小公司",
+              "position": "Java后端"
+            }
+          }
+        ],
+        "query": "帮我筛几个岗位，再看看哪个需要设计经验",
+        "filters": {},
+        "strategy": "hybrid(70%vec+30%bm25)+reranker",
+        "pool_k": 5,
+        "rerank_k": 10,
+        "pool_size": 38,
+        "vec_only": 19,
+        "bm25_only": 19,
+        "both": 0,
+        "rerank": {
+          "enabled": true,
+          "candidates": 5,
+          "output": 5,
+          "best_rerank_score": 0.3381
+        }
+      }
+    },
+    {
+      "tool_name": "global_rank",
+      "task_id": "T1",
+      "status": "success",
+      "output": {
+        "rankings": [
+          {
+            "company": "某小公司",
+            "position": "Java后端",
+            "match_score": 79,
+            "recommend_reason": "检索相关度较高（0.64）",
+            "key_match": [
+              "检索召回"
+            ],
+            "key_gap": [
+              "需进一步了解详细匹配情况"
+            ],
+            "apply_priority": "中"
+          },
+          {
+            "company": "淘天集团",
+            "position": "AI大模型产品经理",
+            "match_score": 79,
+            "recommend_reason": "检索相关度较高（0.62）",
+            "key_match": [
+              "检索召回"
+            ],
+            "key_gap": [
+              "需进一步了解详细匹配情况"
+            ],
+            "apply_priority": "中"
+          },
+          {
+            "company": "阿里巴巴",
+            "position": "后端开发",
+            "match_score": 76,
+            "recommend_reason": "检索相关度较高（0.52）",
+            "key_match": [
+              "检索召回"
+            ],
+            "key_gap": [
+              "需进一步了解详细匹配情况"
+            ],
+            "apply_priority": "中"
+          }
+        ],
+        "strategy_advice": "暂未发现高度匹配岗位，3 个中等匹配岗位可作为参考，建议进一步评估后再投递。",
+        "_template_mode": true,
+        "_coarse_filter_meta": {
+          "input_jds": 3,
+          "output_jds": 3,
+          "filter_ratio": 0.0
+        }
+      }
+    },
+    {
+      "tool_name": null,
+      "task_id": "T2",
+      "status": "success",
+      "output": {
+        "aggregation": {
+          "kb_result": {
+            "chunks": [
+              {
+                "chunk_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a_chunk_5",
+                "content": "【某小公司 · Java后端 软性要求/加分项】\n有ERP系统开发经验优先",
+                "metadata": {
+                  "company": "某小公司",
+                  "index": 5,
+                  "jd_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a",
+                  "position": "Java后端",
+                  "priority": "medium",
+                  "section": "soft_requirements",
+                  "strategy": "semantic"
+                },
+                "distance": 0.7376145720481873,
+                "bm25_score": 0.0,
+                "vec_norm": 1.0,
+                "bm25_norm": 0.0,
+                "hybrid_score": 0.7,
+                "rerank_score": 0.3381
+              },
+              {
+                "chunk_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a_chunk_2",
+                "content": "【某小公司 · Java后端 硬性要求】\n1年以上Java开发经验",
+                "metadata": {
+                  "company": "某小公司",
+                  "index": 2,
+                  "jd_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a",
+                  "position": "Java后端",
+                  "priority": "high",
+                  "section": "hard_requirements",
+                  "strategy": "semantic"
+                },
+                "distance": 0.7427959442138672,
+                "bm25_score": 0.0,
+                "vec_norm": 0.9477063121908318,
+                "bm25_norm": 0.0,
+                "hybrid_score": 0.6633944185335822,
+                "rerank_score": 0.221
+              },
+              {
+                "chunk_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8_chunk_6",
+                "content": "【阿里巴巴 · 后端开发 软性要求/加分项】\n有电商行业经验优先",
+                "metadata": {
+                  "company": "阿里巴巴",
+                  "index": 6,
+                  "jd_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8",
+                  "position": "后端开发",
+                  "priority": "medium",
+                  "section": "soft_requirements",
+                  "strategy": "semantic"
+                },
+                "distance": 0.7635329961776733,
+                "bm25_score": 0.0,
+                "vec_norm": 0.7384148567997917,
+                "bm25_norm": 0.0,
+                "hybrid_score": 0.5168903997598542,
+                "rerank_score": 0.2149
+              },
+              {
+                "chunk_id": "f0427344-e282-48e4-8074-bcc9419cf414_chunk_6",
+                "content": "【淘天集团 · AI大模型产品经理 软性要求/加分项】\n如不方便外部体验，也可附工作流、prompt说明、输入和输出的效果示意来展示",
+                "metadata": {
+                  "company": "淘天集团",
+                  "index": 6,
+                  "jd_id": "f0427344-e282-48e4-8074-bcc9419cf414",
+                  "position": "AI大模型产品经理",
+                  "priority": "medium",
+                  "section": "soft_requirements",
+                  "strategy": "semantic"
+                },
+                "distance": 0.7485970262904157,
+                "bm25_score": 0.0,
+                "vec_norm": 0.8891581196723003,
+                "bm25_norm": 0.0,
+                "hybrid_score": 0.6224106837706102,
+                "rerank_score": 0.0307
+              },
+              {
+                "chunk_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a_chunk_4",
+                "content": "【某小公司 · Java后端 硬性要求】\n大专及以上学历",
+                "metadata": {
+                  "company": "某小公司",
+                  "index": 4,
+                  "jd_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a",
+                  "position": "Java后端",
+                  "priority": "high",
+                  "section": "hard_requirements",
+                  "strategy": "semantic"
+                },
+                "distance": 0.7560716867446899,
+                "bm25_score": 0.0,
+                "vec_norm": 0.8137191147568794,
+                "bm25_norm": 0.0,
+                "hybrid_score": 0.5696033803298155,
+                "rerank_score": 0.0253
+              }
+            ],
+            "query": "帮我筛几个岗位，再看看哪个需要设计经验",
+            "filters": {},
+            "strategy": "hybrid(70%vec+30%bm25)+reranker",
+            "pool_k": 5,
+            "rerank_k": 10,
+            "pool_size": 38,
+            "vec_only": 19,
+            "bm25_only": 19,
+            "both": 0,
+            "rerank": {
+              "enabled": true,
+              "candidates": 5,
+              "output": 5,
+              "best_rerank_score": 0.3381
+            }
+          },
+          "rank_result": {
+            "rankings": [
+              {
+                "rank": 1,
+                "jd_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a",
+                "company": "某小公司",
+                "position": "Java后端",
+                "match_score": 79,
+                "recommend_reason": "检索相关度较高（0.64）",
+                "key_match": [
+                  "检索召回"
+                ],
+                "key_gap": [
+                  "需进一步了解详细匹配情况"
+                ],
+                "apply_priority": "中"
+              },
+              {
+                "rank": 2,
+                "jd_id": "f0427344-e282-48e4-8074-bcc9419cf414",
+                "company": "淘天集团",
+                "position": "AI大模型产品经理",
+                "match_score": 79,
+                "recommend_reason": "检索相关度较高（0.62）",
+                "key_match": [
+                  "检索召回"
+                ],
+                "key_gap": [
+                  "需进一步了解详细匹配情况"
+                ],
+                "apply_priority": "中"
+              },
+              {
+                "rank": 3,
+                "jd_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8",
+                "company": "阿里巴巴",
+                "position": "后端开发",
+                "match_score": 76,
+                "recommend_reason": "检索相关度较高（0.52）",
+                "key_match": [
+                  "检索召回"
+                ],
+                "key_gap": [
+                  "需进一步了解详细匹配情况"
+                ],
+                "apply_priority": "中"
+              }
+            ],
+            "strategy_advice": "暂未发现高度匹配岗位，3 个中等匹配岗位可作为参考，建议进一步评估后再投递。",
+            "_template_mode": true,
+            "_coarse_filter_meta": {
+              "input_jds": 3,
+              "output_jds": 3,
+              "filter_ratio": 0.0
+            }
+          }
+        }
+      }
+    }
+  ],
+  "debug_info": {
+    "task_graph": {
+      "tasks": {
+        "T0": {
+          "task_id": "T0",
+          "task_type": "tool_call",
+          "tool_name": "kb_retrieve",
+          "status": "success",
+          "parameters": {
+            "query": "{{global_slots.search_keywords}}",
+            "top_k": "{{global_slots.top_k}}"
+          },
+          "resolved_params": {
+            "query": "帮我筛几个岗位，再看看哪个需要设计经验",
+            "top_k": 5
+          },
+          "result": {
+            "chunks": [
+              {
+                "chunk_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a_chunk_5",
+                "content": "【某小公司 · Java后端 软性要求/加分项】\n有ERP系统开发经验优先",
+                "metadata": {
+                  "company": "某小公司",
+                  "index": 5,
+                  "jd_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a",
+                  "position": "Java后端",
+                  "priority": "medium",
+                  "section": "soft_requirements",
+                  "strategy": "semantic"
+                },
+                "distance": 0.7376145720481873,
+                "bm25_score": 0.0,
+                "vec_norm": 1.0,
+                "bm25_norm": 0.0,
+                "hybrid_score": 0.7,
+                "rerank_score": 0.3381
+              },
+              {
+                "chunk_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a_chunk_2",
+                "content": "【某小公司 · Java后端 硬性要求】\n1年以上Java开发经验",
+                "metadata": {
+                  "company": "某小公司",
+                  "index": 2,
+                  "jd_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a",
+                  "position": "Java后端",
+                  "priority": "high",
+                  "section": "hard_requirements",
+                  "strategy": "semantic"
+                },
+                "distance": 0.7427959442138672,
+                "bm25_score": 0.0,
+                "vec_norm": 0.9477063121908318,
+                "bm25_norm": 0.0,
+                "hybrid_score": 0.6633944185335822,
+                "rerank_score": 0.221
+              },
+              {
+                "chunk_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8_chunk_6",
+                "content": "【阿里巴巴 · 后端开发 软性要求/加分项】\n有电商行业经验优先",
+                "metadata": {
+                  "company": "阿里巴巴",
+                  "index": 6,
+                  "jd_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8",
+                  "position": "后端开发",
+                  "priority": "medium",
+                  "section": "soft_requirements",
+                  "strategy": "semantic"
+                },
+                "distance": 0.7635329961776733,
+                "bm25_score": 0.0,
+                "vec_norm": 0.7384148567997917,
+                "bm25_norm": 0.0,
+                "hybrid_score": 0.5168903997598542,
+                "rerank_score": 0.2149
+              },
+              {
+                "chunk_id": "f0427344-e282-48e4-8074-bcc9419cf414_chunk_6",
+                "content": "【淘天集团 · AI大模型产品经理 软性要求/加分项】\n如不方便外部体验，也可附工作流、prompt说明、输入和输出的效果示意来展示",
+                "metadata": {
+                  "company": "淘天集团",
+                  "index": 6,
+                  "jd_id": "f0427344-e282-48e4-8074-bcc9419cf414",
+                  "position": "AI大模型产品经理",
+                  "priority": "medium",
+                  "section": "soft_requirements",
+                  "strategy": "semantic"
+                },
+                "distance": 0.7485970262904157,
+                "bm25_score": 0.0,
+                "vec_norm": 0.8891581196723003,
+                "bm25_norm": 0.0,
+                "hybrid_score": 0.6224106837706102,
+                "rerank_score": 0.0307
+              },
+              {
+                "chunk_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a_chunk_4",
+                "content": "【某小公司 · Java后端 硬性要求】\n大专及以上学历",
+                "metadata": {
+                  "company": "某小公司",
+                  "index": 4,
+                  "jd_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a",
+                  "position": "Java后端",
+                  "priority": "high",
+                  "section": "hard_requirements",
+                  "strategy": "semantic"
+                },
+                "distance": 0.7560716867446899,
+                "bm25_score": 0.0,
+                "vec_norm": 0.8137191147568794,
+                "bm25_norm": 0.0,
+                "hybrid_score": 0.5696033803298155,
+                "rerank_score": 0.0253
+              }
+            ],
+            "query": "帮我筛几个岗位，再看看哪个需要设计经验",
+            "filters": {},
+            "strategy": "hybrid(70%vec+30%bm25)+reranker",
+            "pool_k": 5,
+            "rerank_k": 10,
+            "pool_size": 38,
+            "vec_only": 19,
+            "bm25_only": 19,
+            "both": 0,
+            "rerank": {
+              "enabled": true,
+              "candidates": 5,
+              "output": 5,
+              "best_rerank_score": 0.3381
+            }
+          },
+          "observation": "工具 kb_retrieve 执行成功"
+        },
+        "T1": {
+          "task_id": "T1",
+          "task_type": "tool_call",
+          "tool_name": "global_rank",
+          "status": "success",
+          "parameters": {
+            "resume_text": "{{global_slots.resume_text}}",
+            "candidate_jds": "{{T0.output.chunks}}",
+            "sort_by": "{{global_slots.sort_by}}"
+          },
+          "resolved_params": {
+            "resume_text": "姓名：王设计师\n电话：139-XXXX-5678 | 邮箱：wangdesign@email.com | 现居：上海\n作品集：wangdesign.portfolio.com\nUI/UX设计师 | 4年互联网设计经验 | 品牌视觉背景\n\n教育背景\n2015.09 - 2019.06  XX美术学院  视觉传达设计（本科）\n主修课程：品牌设计、信息可视化、交互设计基础、版式设计、用户研究\n在校荣誉：全国大学生广告艺术大赛省级一等奖\n\n职业背景\n2019.07 - 2021.06  XX传媒公司  品牌视觉设计师（2年）\n负责快消、教育行业品牌全案设计，积累扎实的视觉体系搭建与商业审美能力\n\n2021.07 - 至今  XX互联网科技公司（C轮 / 在线教育）  UI设计师（4年）\n从品牌设计跨领域转型至互联网UI/UX，快速补齐交互逻辑与产品思维，主导多条业务线界面设计\n\n专业技能\n精通Figma组件化设计、Auto Layout及变量系统，能搭建可复用的设计规范与UI Kit\n擅长界面动效设计，熟练使用Principle、After Effects制作高保真交互Demo，提升评审效率\n具备品牌全案设计能力，熟悉Logo、VI、运营视觉体系搭建，能统筹产品视觉一致性\n了解前端基础（HTML/CSS），能与开发高效沟通，熟悉切图标注、SVG输出及设计走查流程\n掌握用户研究方法：竞品分析、用户访谈、可用性测试，能基于数据反馈迭代设计方案\n\n工作经历\n在线教育直播课堂改版（2023.06 - 2024.03）\n作为UI主设，主导直播客户端从1.0到2.0的视觉重构，DAU 50W+，完课率提升12%\n建立Figma组件库（300+组件），统一5条业务线设计语言，设计交付效率提升30%\n针对低龄学段用户设计游戏化互动界面（连麦、答题红包），通过动效引导降低操作流失率\n\n制定《移动端设计规范V2.0》，涵盖色彩、字体、间距、无障碍对比度标准（WCAG 2.1 AA级）\n\n品牌跨界联名活动视觉（2022.09 - 2022.12）\n结合前品牌设计经验，主导与知名IP联名运营活动的主视觉及H5传播设计\n设计开屏动画、分享海报模板，活动期间新增用户8W+，分享率提升25%\n输出动态品牌规范手册，帮助市场团队3天内完成20+城市线下物料延展\n\nB端教研后台系统优化（2022.02 - 2022.08）\n负责教师端后台的信息架构重组，将核心备课路径从5步缩减至3步\n设计数据可视化仪表盘，通过卡片层级与色彩语义降低教师数据读取成本\n\n自我评价\n拥有品牌视觉+互联网UI的跨领域背景，既能把控产品视觉调性，也具备用户体验与业务目标平衡能力。习惯用组件化思维提升协作效率，注重设计落地的还原度与数据反馈。",
+            "candidate_jds": [
+              {
+                "chunk_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a_chunk_5",
+                "content": "【某小公司 · Java后端 软性要求/加分项】\n有ERP系统开发经验优先",
+                "metadata": {
+                  "company": "某小公司",
+                  "index": 5,
+                  "jd_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a",
+                  "position": "Java后端",
+                  "priority": "medium",
+                  "section": "soft_requirements",
+                  "strategy": "semantic"
+                },
+                "distance": 0.7376145720481873,
+                "bm25_score": 0.0,
+                "vec_norm": 1.0,
+                "bm25_norm": 0.0,
+                "hybrid_score": 0.7,
+                "rerank_score": 0.3381
+              },
+              {
+                "chunk_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a_chunk_2",
+                "content": "【某小公司 · Java后端 硬性要求】\n1年以上Java开发经验",
+                "metadata": {
+                  "company": "某小公司",
+                  "index": 2,
+                  "jd_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a",
+                  "position": "Java后端",
+                  "priority": "high",
+                  "section": "hard_requirements",
+                  "strategy": "semantic"
+                },
+                "distance": 0.7427959442138672,
+                "bm25_score": 0.0,
+                "vec_norm": 0.9477063121908318,
+                "bm25_norm": 0.0,
+                "hybrid_score": 0.6633944185335822,
+                "rerank_score": 0.221
+              },
+              {
+                "chunk_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8_chunk_6",
+                "content": "【阿里巴巴 · 后端开发 软性要求/加分项】\n有电商行业经验优先",
+                "metadata": {
+                  "company": "阿里巴巴",
+                  "index": 6,
+                  "jd_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8",
+                  "position": "后端开发",
+                  "priority": "medium",
+                  "section": "soft_requirements",
+                  "strategy": "semantic"
+                },
+                "distance": 0.7635329961776733,
+                "bm25_score": 0.0,
+                "vec_norm": 0.7384148567997917,
+                "bm25_norm": 0.0,
+                "hybrid_score": 0.5168903997598542,
+                "rerank_score": 0.2149
+              },
+              {
+                "chunk_id": "f0427344-e282-48e4-8074-bcc9419cf414_chunk_6",
+                "content": "【淘天集团 · AI大模型产品经理 软性要求/加分项】\n如不方便外部体验，也可附工作流、prompt说明、输入和输出的效果示意来展示",
+                "metadata": {
+                  "company": "淘天集团",
+                  "index": 6,
+                  "jd_id": "f0427344-e282-48e4-8074-bcc9419cf414",
+                  "position": "AI大模型产品经理",
+                  "priority": "medium",
+                  "section": "soft_requirements",
+                  "strategy": "semantic"
+                },
+                "distance": 0.7485970262904157,
+                "bm25_score": 0.0,
+                "vec_norm": 0.8891581196723003,
+                "bm25_norm": 0.0,
+                "hybrid_score": 0.6224106837706102,
+                "rerank_score": 0.0307
+              },
+              {
+                "chunk_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a_chunk_4",
+                "content": "【某小公司 · Java后端 硬性要求】\n大专及以上学历",
+                "metadata": {
+                  "company": "某小公司",
+                  "index": 4,
+                  "jd_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a",
+                  "position": "Java后端",
+                  "priority": "high",
+                  "section": "hard_requirements",
+                  "strategy": "semantic"
+                },
+                "distance": 0.7560716867446899,
+                "bm25_score": 0.0,
+                "vec_norm": 0.8137191147568794,
+                "bm25_norm": 0.0,
+                "hybrid_score": 0.5696033803298155,
+                "rerank_score": 0.0253
+              }
+            ],
+            "sort_by": "match_score"
+          },
+          "result": {
+            "rankings": [
+              {
+                "rank": 1,
+                "jd_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a",
+                "company": "某小公司",
+                "position": "Java后端",
+                "match_score": 79,
+                "recommend_reason": "检索相关度较高（0.64）",
+                "key_match": [
+                  "检索召回"
+                ],
+                "key_gap": [
+                  "需进一步了解详细匹配情况"
+                ],
+                "apply_priority": "中"
+              },
+              {
+                "rank": 2,
+                "jd_id": "f0427344-e282-48e4-8074-bcc9419cf414",
+                "company": "淘天集团",
+                "position": "AI大模型产品经理",
+                "match_score": 79,
+                "recommend_reason": "检索相关度较高（0.62）",
+                "key_match": [
+                  "检索召回"
+                ],
+                "key_gap": [
+                  "需进一步了解详细匹配情况"
+                ],
+                "apply_priority": "中"
+              },
+              {
+                "rank": 3,
+                "jd_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8",
+                "company": "阿里巴巴",
+                "position": "后端开发",
+                "match_score": 76,
+                "recommend_reason": "检索相关度较高（0.52）",
+                "key_match": [
+                  "检索召回"
+                ],
+                "key_gap": [
+                  "需进一步了解详细匹配情况"
+                ],
+                "apply_priority": "中"
+              }
+            ],
+            "strategy_advice": "暂未发现高度匹配岗位，3 个中等匹配岗位可作为参考，建议进一步评估后再投递。",
+            "_template_mode": true,
+            "_coarse_filter_meta": {
+              "input_jds": 3,
+              "output_jds": 3,
+              "filter_ratio": 0.0
+            }
+          },
+          "observation": "工具 global_rank 执行成功"
+        },
+        "T2": {
+          "task_id": "T2",
+          "task_type": "aggregate",
+          "tool_name": null,
+          "status": "success",
+          "parameters": {
+            "kb_result": "{{T0.output}}",
+            "rank_result": "{{T1.output}}"
+          },
+          "resolved_params": {
+            "kb_result": {
+              "chunks": [
+                {
+                  "chunk_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a_chunk_5",
+                  "content": "【某小公司 · Java后端 软性要求/加分项】\n有ERP系统开发经验优先",
+                  "metadata": {
+                    "company": "某小公司",
+                    "index": 5,
+                    "jd_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a",
+                    "position": "Java后端",
+                    "priority": "medium",
+                    "section": "soft_requirements",
+                    "strategy": "semantic"
+                  },
+                  "distance": 0.7376145720481873,
+                  "bm25_score": 0.0,
+                  "vec_norm": 1.0,
+                  "bm25_norm": 0.0,
+                  "hybrid_score": 0.7,
+                  "rerank_score": 0.3381
+                },
+                {
+                  "chunk_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a_chunk_2",
+                  "content": "【某小公司 · Java后端 硬性要求】\n1年以上Java开发经验",
+                  "metadata": {
+                    "company": "某小公司",
+                    "index": 2,
+                    "jd_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a",
+                    "position": "Java后端",
+                    "priority": "high",
+                    "section": "hard_requirements",
+                    "strategy": "semantic"
+                  },
+                  "distance": 0.7427959442138672,
+                  "bm25_score": 0.0,
+                  "vec_norm": 0.9477063121908318,
+                  "bm25_norm": 0.0,
+                  "hybrid_score": 0.6633944185335822,
+                  "rerank_score": 0.221
+                },
+                {
+                  "chunk_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8_chunk_6",
+                  "content": "【阿里巴巴 · 后端开发 软性要求/加分项】\n有电商行业经验优先",
+                  "metadata": {
+                    "company": "阿里巴巴",
+                    "index": 6,
+                    "jd_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8",
+                    "position": "后端开发",
+                    "priority": "medium",
+                    "section": "soft_requirements",
+                    "strategy": "semantic"
+                  },
+                  "distance": 0.7635329961776733,
+                  "bm25_score": 0.0,
+                  "vec_norm": 0.7384148567997917,
+                  "bm25_norm": 0.0,
+                  "hybrid_score": 0.5168903997598542,
+                  "rerank_score": 0.2149
+                },
+                {
+                  "chunk_id": "f0427344-e282-48e4-8074-bcc9419cf414_chunk_6",
+                  "content": "【淘天集团 · AI大模型产品经理 软性要求/加分项】\n如不方便外部体验，也可附工作流、prompt说明、输入和输出的效果示意来展示",
+                  "metadata": {
+                    "company": "淘天集团",
+                    "index": 6,
+                    "jd_id": "f0427344-e282-48e4-8074-bcc9419cf414",
+                    "position": "AI大模型产品经理",
+                    "priority": "medium",
+                    "section": "soft_requirements",
+                    "strategy": "semantic"
+                  },
+                  "distance": 0.7485970262904157,
+                  "bm25_score": 0.0,
+                  "vec_norm": 0.8891581196723003,
+                  "bm25_norm": 0.0,
+                  "hybrid_score": 0.6224106837706102,
+                  "rerank_score": 0.0307
+                },
+                {
+                  "chunk_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a_chunk_4",
+                  "content": "【某小公司 · Java后端 硬性要求】\n大专及以上学历",
+                  "metadata": {
+                    "company": "某小公司",
+                    "index": 4,
+                    "jd_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a",
+                    "position": "Java后端",
+                    "priority": "high",
+                    "section": "hard_requirements",
+                    "strategy": "semantic"
+                  },
+                  "distance": 0.7560716867446899,
+                  "bm25_score": 0.0,
+                  "vec_norm": 0.8137191147568794,
+                  "bm25_norm": 0.0,
+                  "hybrid_score": 0.5696033803298155,
+                  "rerank_score": 0.0253
+                }
+              ],
+              "query": "帮我筛几个岗位，再看看哪个需要设计经验",
+              "filters": {},
+              "strategy": "hybrid(70%vec+30%bm25)+reranker",
+              "pool_k": 5,
+              "rerank_k": 10,
+              "pool_size": 38,
+              "vec_only": 19,
+              "bm25_only": 19,
+              "both": 0,
+              "rerank": {
+                "enabled": true,
+                "candidates": 5,
+                "output": 5,
+                "best_rerank_score": 0.3381
+              }
+            },
+            "rank_result": {
+              "rankings": [
+                {
+                  "rank": 1,
+                  "jd_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a",
+                  "company": "某小公司",
+                  "position": "Java后端",
+                  "match_score": 79,
+                  "recommend_reason": "检索相关度较高（0.64）",
+                  "key_match": [
+                    "检索召回"
+                  ],
+                  "key_gap": [
+                    "需进一步了解详细匹配情况"
+                  ],
+                  "apply_priority": "中"
+                },
+                {
+                  "rank": 2,
+                  "jd_id": "f0427344-e282-48e4-8074-bcc9419cf414",
+                  "company": "淘天集团",
+                  "position": "AI大模型产品经理",
+                  "match_score": 79,
+                  "recommend_reason": "检索相关度较高（0.62）",
+                  "key_match": [
+                    "检索召回"
+                  ],
+                  "key_gap": [
+                    "需进一步了解详细匹配情况"
+                  ],
+                  "apply_priority": "中"
+                },
+                {
+                  "rank": 3,
+                  "jd_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8",
+                  "company": "阿里巴巴",
+                  "position": "后端开发",
+                  "match_score": 76,
+                  "recommend_reason": "检索相关度较高（0.52）",
+                  "key_match": [
+                    "检索召回"
+                  ],
+                  "key_gap": [
+                    "需进一步了解详细匹配情况"
+                  ],
+                  "apply_priority": "中"
+                }
+              ],
+              "strategy_advice": "暂未发现高度匹配岗位，3 个中等匹配岗位可作为参考，建议进一步评估后再投递。",
+              "_template_mode": true,
+              "_coarse_filter_meta": {
+                "input_jds": 3,
+                "output_jds": 3,
+                "filter_ratio": 0.0
+              }
+            }
+          },
+          "result": {
+            "aggregation": {
+              "kb_result": {
+                "chunks": [
+                  {
+                    "chunk_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a_chunk_5",
+                    "content": "【某小公司 · Java后端 软性要求/加分项】\n有ERP系统开发经验优先",
+                    "metadata": {
+                      "company": "某小公司",
+                      "index": 5,
+                      "jd_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a",
+                      "position": "Java后端",
+                      "priority": "medium",
+                      "section": "soft_requirements",
+                      "strategy": "semantic"
+                    },
+                    "distance": 0.7376145720481873,
+                    "bm25_score": 0.0,
+                    "vec_norm": 1.0,
+                    "bm25_norm": 0.0,
+                    "hybrid_score": 0.7,
+                    "rerank_score": 0.3381
+                  },
+                  {
+                    "chunk_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a_chunk_2",
+                    "content": "【某小公司 · Java后端 硬性要求】\n1年以上Java开发经验",
+                    "metadata": {
+                      "company": "某小公司",
+                      "index": 2,
+                      "jd_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a",
+                      "position": "Java后端",
+                      "priority": "high",
+                      "section": "hard_requirements",
+                      "strategy": "semantic"
+                    },
+                    "distance": 0.7427959442138672,
+                    "bm25_score": 0.0,
+                    "vec_norm": 0.9477063121908318,
+                    "bm25_norm": 0.0,
+                    "hybrid_score": 0.6633944185335822,
+                    "rerank_score": 0.221
+                  },
+                  {
+                    "chunk_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8_chunk_6",
+                    "content": "【阿里巴巴 · 后端开发 软性要求/加分项】\n有电商行业经验优先",
+                    "metadata": {
+                      "company": "阿里巴巴",
+                      "index": 6,
+                      "jd_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8",
+                      "position": "后端开发",
+                      "priority": "medium",
+                      "section": "soft_requirements",
+                      "strategy": "semantic"
+                    },
+                    "distance": 0.7635329961776733,
+                    "bm25_score": 0.0,
+                    "vec_norm": 0.7384148567997917,
+                    "bm25_norm": 0.0,
+                    "hybrid_score": 0.5168903997598542,
+                    "rerank_score": 0.2149
+                  },
+                  {
+                    "chunk_id": "f0427344-e282-48e4-8074-bcc9419cf414_chunk_6",
+                    "content": "【淘天集团 · AI大模型产品经理 软性要求/加分项】\n如不方便外部体验，也可附工作流、prompt说明、输入和输出的效果示意来展示",
+                    "metadata": {
+                      "company": "淘天集团",
+                      "index": 6,
+                      "jd_id": "f0427344-e282-48e4-8074-bcc9419cf414",
+                      "position": "AI大模型产品经理",
+                      "priority": "medium",
+                      "section": "soft_requirements",
+                      "strategy": "semantic"
+                    },
+                    "distance": 0.7485970262904157,
+                    "bm25_score": 0.0,
+                    "vec_norm": 0.8891581196723003,
+                    "bm25_norm": 0.0,
+                    "hybrid_score": 0.6224106837706102,
+                    "rerank_score": 0.0307
+                  },
+                  {
+                    "chunk_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a_chunk_4",
+                    "content": "【某小公司 · Java后端 硬性要求】\n大专及以上学历",
+                    "metadata": {
+                      "company": "某小公司",
+                      "index": 4,
+                      "jd_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a",
+                      "position": "Java后端",
+                      "priority": "high",
+                      "section": "hard_requirements",
+                      "strategy": "semantic"
+                    },
+                    "distance": 0.7560716867446899,
+                    "bm25_score": 0.0,
+                    "vec_norm": 0.8137191147568794,
+                    "bm25_norm": 0.0,
+                    "hybrid_score": 0.5696033803298155,
+                    "rerank_score": 0.0253
+                  }
+                ],
+                "query": "帮我筛几个岗位，再看看哪个需要设计经验",
+                "filters": {},
+                "strategy": "hybrid(70%vec+30%bm25)+reranker",
+                "pool_k": 5,
+                "rerank_k": 10,
+                "pool_size": 38,
+                "vec_only": 19,
+                "bm25_only": 19,
+                "both": 0,
+                "rerank": {
+                  "enabled": true,
+                  "candidates": 5,
+                  "output": 5,
+                  "best_rerank_score": 0.3381
+                }
+              },
+              "rank_result": {
+                "rankings": [
+                  {
+                    "rank": 1,
+                    "jd_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a",
+                    "company": "某小公司",
+                    "position": "Java后端",
+                    "match_score": 79,
+                    "recommend_reason": "检索相关度较高（0.64）",
+                    "key_match": [
+                      "检索召回"
+                    ],
+                    "key_gap": [
+                      "需进一步了解详细匹配情况"
+                    ],
+                    "apply_priority": "中"
+                  },
+                  {
+                    "rank": 2,
+                    "jd_id": "f0427344-e282-48e4-8074-bcc9419cf414",
+                    "company": "淘天集团",
+                    "position": "AI大模型产品经理",
+                    "match_score": 79,
+                    "recommend_reason": "检索相关度较高（0.62）",
+                    "key_match": [
+                      "检索召回"
+                    ],
+                    "key_gap": [
+                      "需进一步了解详细匹配情况"
+                    ],
+                    "apply_priority": "中"
+                  },
+                  {
+                    "rank": 3,
+                    "jd_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8",
+                    "company": "阿里巴巴",
+                    "position": "后端开发",
+                    "match_score": 76,
+                    "recommend_reason": "检索相关度较高（0.52）",
+                    "key_match": [
+                      "检索召回"
+                    ],
+                    "key_gap": [
+                      "需进一步了解详细匹配情况"
+                    ],
+                    "apply_priority": "中"
+                  }
+                ],
+                "strategy_advice": "暂未发现高度匹配岗位，3 个中等匹配岗位可作为参考，建议进一步评估后再投递。",
+                "_template_mode": true,
+                "_coarse_filter_meta": {
+                  "input_jds": 3,
+                  "output_jds": 3,
+                  "filter_ratio": 0.0
+                }
+              }
+            }
+          },
+          "observation": "聚合完成"
+        }
+      },
+      "global_status": "success",
+      "replan_reason": "",
+      "replan_count": 0
+    },
+    "intent": {
+      "demands": [
+        {
+          "intent": "position_explore",
+          "entities": {
+            "search_keywords": "帮我筛几个岗位，再看看哪个需要设计经验",
+            "sort_by": "match_score",
+            "top_k": 5
+          },
+          "confidence": 0.88
+        }
+      ],
+      "needs_clarification": false,
+      "clarification_question": ""
+    },
+    "rewrite": {
+      "rewritten_query": "帮我筛几个岗位，再看看哪个需要设计经验",
+      "search_keywords": "帮我筛几个岗位，再看看哪个需要设计经验",
+      "is_follow_up": false,
+      "follow_up_type": "none",
+      "resolved_references": {}
+    },
+    "evidence_cache": [
+      {
+        "chunk_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a_chunk_5",
+        "content": "【某小公司 · Java后端 软性要求/加分项】\n有ERP系统开发经验优先",
+        "metadata": {
+          "company": "某小公司",
+          "index": 5,
+          "jd_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a",
+          "position": "Java后端",
+          "priority": "medium",
+          "section": "soft_requirements",
+          "strategy": "semantic"
+        },
+        "distance": 0.7376145720481873,
+        "bm25_score": 0.0,
+        "vec_norm": 1.0,
+        "bm25_norm": 0.0,
+        "hybrid_score": 0.7,
+        "rerank_score": 0.3381
+      },
+      {
+        "chunk_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a_chunk_2",
+        "content": "【某小公司 · Java后端 硬性要求】\n1年以上Java开发经验",
+        "metadata": {
+          "company": "某小公司",
+          "index": 2,
+          "jd_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a",
+          "position": "Java后端",
+          "priority": "high",
+          "section": "hard_requirements",
+          "strategy": "semantic"
+        },
+        "distance": 0.7427959442138672,
+        "bm25_score": 0.0,
+        "vec_norm": 0.9477063121908318,
+        "bm25_norm": 0.0,
+        "hybrid_score": 0.6633944185335822,
+        "rerank_score": 0.221
+      },
+      {
+        "chunk_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8_chunk_6",
+        "content": "【阿里巴巴 · 后端开发 软性要求/加分项】\n有电商行业经验优先",
+        "metadata": {
+          "company": "阿里巴巴",
+          "index": 6,
+          "jd_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8",
+          "position": "后端开发",
+          "priority": "medium",
+          "section": "soft_requirements",
+          "strategy": "semantic"
+        },
+        "distance": 0.7635329961776733,
+        "bm25_score": 0.0,
+        "vec_norm": 0.7384148567997917,
+        "bm25_norm": 0.0,
+        "hybrid_score": 0.5168903997598542,
+        "rerank_score": 0.2149
+      },
+      {
+        "chunk_id": "f0427344-e282-48e4-8074-bcc9419cf414_chunk_6",
+        "content": "【淘天集团 · AI大模型产品经理 软性要求/加分项】\n如不方便外部体验，也可附工作流、prompt说明、输入和输出的效果示意来展示",
+        "metadata": {
+          "company": "淘天集团",
+          "index": 6,
+          "jd_id": "f0427344-e282-48e4-8074-bcc9419cf414",
+          "position": "AI大模型产品经理",
+          "priority": "medium",
+          "section": "soft_requirements",
+          "strategy": "semantic"
+        },
+        "distance": 0.7485970262904157,
+        "bm25_score": 0.0,
+        "vec_norm": 0.8891581196723003,
+        "bm25_norm": 0.0,
+        "hybrid_score": 0.6224106837706102,
+        "rerank_score": 0.0307
+      },
+      {
+        "chunk_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a_chunk_4",
+        "content": "【某小公司 · Java后端 硬性要求】\n大专及以上学历",
+        "metadata": {
+          "company": "某小公司",
+          "index": 4,
+          "jd_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a",
+          "position": "Java后端",
+          "priority": "high",
+          "section": "hard_requirements",
+          "strategy": "semantic"
+        },
+        "distance": 0.7560716867446899,
+        "bm25_score": 0.0,
+        "vec_norm": 0.8137191147568794,
+        "bm25_norm": 0.0,
+        "hybrid_score": 0.5696033803298155,
+        "rerank_score": 0.0253
+      }
+    ],
+    "evidence_cache_query": "帮我筛几个岗位，再看看哪个需要设计经验",
+    "tool_outputs": [
+      {
+        "task_id": "T0",
+        "tool": "kb_retrieve",
+        "description": "检索相关岗位JD（用于explore筛选）",
+        "result": {
+          "chunks": [
+            {
+              "chunk_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a_chunk_5",
+              "content": "【某小公司 · Java后端 软性要求/加分项】\n有ERP系统开发经验优先",
+              "source": "某小公司-Java后端",
+              "metadata": {
+                "company": "某小公司",
+                "position": "Java后端"
+              }
+            },
+            {
+              "chunk_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a_chunk_2",
+              "content": "【某小公司 · Java后端 硬性要求】\n1年以上Java开发经验",
+              "source": "某小公司-Java后端",
+              "metadata": {
+                "company": "某小公司",
+                "position": "Java后端"
+              }
+            },
+            {
+              "chunk_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8_chunk_6",
+              "content": "【阿里巴巴 · 后端开发 软性要求/加分项】\n有电商行业经验优先",
+              "source": "阿里巴巴-后端开发",
+              "metadata": {
+                "company": "阿里巴巴",
+                "position": "后端开发"
+              }
+            },
+            {
+              "chunk_id": "f0427344-e282-48e4-8074-bcc9419cf414_chunk_6",
+              "content": "【淘天集团 · AI大模型产品经理 软性要求/加分项】\n如不方便外部体验，也可附工作流、prompt说明、输入和输出的效果示意来展示",
+              "source": "淘天集团-AI大模型产品经理",
+              "metadata": {
+                "company": "淘天集团",
+                "position": "AI大模型产品经理"
+              }
+            },
+            {
+              "chunk_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a_chunk_4",
+              "content": "【某小公司 · Java后端 硬性要求】\n大专及以上学历",
+              "source": "某小公司-Java后端",
+              "metadata": {
+                "company": "某小公司",
+                "position": "Java后端"
+              }
+            }
+          ],
+          "query": "帮我筛几个岗位，再看看哪个需要设计经验",
+          "filters": {},
+          "strategy": "hybrid(70%vec+30%bm25)+reranker",
+          "pool_k": 5,
+          "rerank_k": 10,
+          "pool_size": 38,
+          "vec_only": 19,
+          "bm25_only": 19,
+          "both": 0,
+          "rerank": {
+            "enabled": true,
+            "candidates": 5,
+            "output": 5,
+            "best_rerank_score": 0.3381
+          }
+        }
+      },
+      {
+        "task_id": "T1",
+        "tool": "global_rank",
+        "description": "对检索到的岗位按匹配度排序，识别哪些岗位需要设计经验",
+        "result": {
+          "rankings": [
+            {
+              "company": "某小公司",
+              "position": "Java后端",
+              "match_score": 79,
+              "recommend_reason": "检索相关度较高（0.64）",
+              "key_match": [
+                "检索召回"
+              ],
+              "key_gap": [
+                "需进一步了解详细匹配情况"
+              ],
+              "apply_priority": "中"
+            },
+            {
+              "company": "淘天集团",
+              "position": "AI大模型产品经理",
+              "match_score": 79,
+              "recommend_reason": "检索相关度较高（0.62）",
+              "key_match": [
+                "检索召回"
+              ],
+              "key_gap": [
+                "需进一步了解详细匹配情况"
+              ],
+              "apply_priority": "中"
+            },
+            {
+              "company": "阿里巴巴",
+              "position": "后端开发",
+              "match_score": 76,
+              "recommend_reason": "检索相关度较高（0.52）",
+              "key_match": [
+                "检索召回"
+              ],
+              "key_gap": [
+                "需进一步了解详细匹配情况"
+              ],
+              "apply_priority": "中"
+            }
+          ],
+          "strategy_advice": "暂未发现高度匹配岗位，3 个中等匹配岗位可作为参考，建议进一步评估后再投递。",
+          "_template_mode": true,
+          "_coarse_filter_meta": {
+            "input_jds": 3,
+            "output_jds": 3,
+            "filter_ratio": 0.0
+          }
+        }
+      },
+      {
+        "task_id": "T2",
+        "tool": null,
+        "description": "聚合检索结果和排序结果，生成回复素材",
+        "result": {
+          "aggregation": {
+            "kb_result": {
+              "chunks": [
+                {
+                  "chunk_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a_chunk_5",
+                  "content": "【某小公司 · Java后端 软性要求/加分项】\n有ERP系统开发经验优先",
+                  "metadata": {
+                    "company": "某小公司",
+                    "index": 5,
+                    "jd_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a",
+                    "position": "Java后端",
+                    "priority": "medium",
+                    "section": "soft_requirements",
+                    "strategy": "semantic"
+                  },
+                  "distance": 0.7376145720481873,
+                  "bm25_score": 0.0,
+                  "vec_norm": 1.0,
+                  "bm25_norm": 0.0,
+                  "hybrid_score": 0.7,
+                  "rerank_score": 0.3381
+                },
+                {
+                  "chunk_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a_chunk_2",
+                  "content": "【某小公司 · Java后端 硬性要求】\n1年以上Java开发经验",
+                  "metadata": {
+                    "company": "某小公司",
+                    "index": 2,
+                    "jd_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a",
+                    "position": "Java后端",
+                    "priority": "high",
+                    "section": "hard_requirements",
+                    "strategy": "semantic"
+                  },
+                  "distance": 0.7427959442138672,
+                  "bm25_score": 0.0,
+                  "vec_norm": 0.9477063121908318,
+                  "bm25_norm": 0.0,
+                  "hybrid_score": 0.6633944185335822,
+                  "rerank_score": 0.221
+                },
+                {
+                  "chunk_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8_chunk_6",
+                  "content": "【阿里巴巴 · 后端开发 软性要求/加分项】\n有电商行业经验优先",
+                  "metadata": {
+                    "company": "阿里巴巴",
+                    "index": 6,
+                    "jd_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8",
+                    "position": "后端开发",
+                    "priority": "medium",
+                    "section": "soft_requirements",
+                    "strategy": "semantic"
+                  },
+                  "distance": 0.7635329961776733,
+                  "bm25_score": 0.0,
+                  "vec_norm": 0.7384148567997917,
+                  "bm25_norm": 0.0,
+                  "hybrid_score": 0.5168903997598542,
+                  "rerank_score": 0.2149
+                },
+                {
+                  "chunk_id": "f0427344-e282-48e4-8074-bcc9419cf414_chunk_6",
+                  "content": "【淘天集团 · AI大模型产品经理 软性要求/加分项】\n如不方便外部体验，也可附工作流、prompt说明、输入和输出的效果示意来展示",
+                  "metadata": {
+                    "company": "淘天集团",
+                    "index": 6,
+                    "jd_id": "f0427344-e282-48e4-8074-bcc9419cf414",
+                    "position": "AI大模型产品经理",
+                    "priority": "medium",
+                    "section": "soft_requirements",
+                    "strategy": "semantic"
+                  },
+                  "distance": 0.7485970262904157,
+                  "bm25_score": 0.0,
+                  "vec_norm": 0.8891581196723003,
+                  "bm25_norm": 0.0,
+                  "hybrid_score": 0.6224106837706102,
+                  "rerank_score": 0.0307
+                },
+                {
+                  "chunk_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a_chunk_4",
+                  "content": "【某小公司 · Java后端 硬性要求】\n大专及以上学历",
+                  "metadata": {
+                    "company": "某小公司",
+                    "index": 4,
+                    "jd_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a",
+                    "position": "Java后端",
+                    "priority": "high",
+                    "section": "hard_requirements",
+                    "strategy": "semantic"
+                  },
+                  "distance": 0.7560716867446899,
+                  "bm25_score": 0.0,
+                  "vec_norm": 0.8137191147568794,
+                  "bm25_norm": 0.0,
+                  "hybrid_score": 0.5696033803298155,
+                  "rerank_score": 0.0253
+                }
+              ],
+              "query": "帮我筛几个岗位，再看看哪个需要设计经验",
+              "filters": {},
+              "strategy": "hybrid(70%vec+30%bm25)+reranker",
+              "pool_k": 5,
+              "rerank_k": 10,
+              "pool_size": 38,
+              "vec_only": 19,
+              "bm25_only": 19,
+              "both": 0,
+              "rerank": {
+                "enabled": true,
+                "candidates": 5,
+                "output": 5,
+                "best_rerank_score": 0.3381
+              }
+            },
+            "rank_result": {
+              "rankings": [
+                {
+                  "rank": 1,
+                  "jd_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a",
+                  "company": "某小公司",
+                  "position": "Java后端",
+                  "match_score": 79,
+                  "recommend_reason": "检索相关度较高（0.64）",
+                  "key_match": [
+                    "检索召回"
+                  ],
+                  "key_gap": [
+                    "需进一步了解详细匹配情况"
+                  ],
+                  "apply_priority": "中"
+                },
+                {
+                  "rank": 2,
+                  "jd_id": "f0427344-e282-48e4-8074-bcc9419cf414",
+                  "company": "淘天集团",
+                  "position": "AI大模型产品经理",
+                  "match_score": 79,
+                  "recommend_reason": "检索相关度较高（0.62）",
+                  "key_match": [
+                    "检索召回"
+                  ],
+                  "key_gap": [
+                    "需进一步了解详细匹配情况"
+                  ],
+                  "apply_priority": "中"
+                },
+                {
+                  "rank": 3,
+                  "jd_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8",
+                  "company": "阿里巴巴",
+                  "position": "后端开发",
+                  "match_score": 76,
+                  "recommend_reason": "检索相关度较高（0.52）",
+                  "key_match": [
+                    "检索召回"
+                  ],
+                  "key_gap": [
+                    "需进一步了解详细匹配情况"
+                  ],
+                  "apply_priority": "中"
+                }
+              ],
+              "strategy_advice": "暂未发现高度匹配岗位，3 个中等匹配岗位可作为参考，建议进一步评估后再投递。",
+              "_template_mode": true,
+              "_coarse_filter_meta": {
+                "input_jds": 3,
+                "output_jds": 3,
+                "filter_ratio": 0.0
+              }
+            }
+          }
+        }
+      }
+    ],
+    "final_aggregation_prompt": {
+      "system_prompt": "你是一位专业的求职顾问。请基于以下工具执行结果，给用户一个清晰、有帮助的回复。\n要求：\n1. 先直接回答用户的问题（是/否/有/没有），不要绕弯子，不要重复用户的原话\n2. 如果有匹配分析结果，给出具体的分数和建议\n3. 如果有检索结果，基于事实回答，不要编造\n4. 【强制】引用信息时必须标注来源。每个引用的事实后面都要跟 [来源：公司名-岗位名] 格式。   kb_retrieve 结果的 chunks 中带有 'source' 字段（如'字节跳动-AI产品经理'），请直接使用。   external_search 结果带有 'source_name' 字段，也请直接使用。\n5. 当本地知识库与外部搜索结果冲突时，请并列呈现两种说法并标注各自来源，不要替用户做判断\n6. 语气友好、专业、结构化",
+      "user_prompt": "【用户问题】\n帮我筛几个岗位，再看看哪个需要设计经验\n\n【工具执行结果】\n[{\"task_id\": \"T0\", \"tool\": \"kb_retrieve\", \"description\": \"检索相关岗位JD（用于explore筛选）\", \"result\": {\"chunks\": [{\"chunk_id\": \"45bd2600-af57-45fe-a96e-c6cae6838c7a_chunk_5\", \"content\": \"【某小公司 · Java后端 软性要求/加分项】\\n有ERP系统开发经验优先\", \"source\": \"某小公司-Java后端\", \"metadata\": {\"company\": \"某小公司\", \"position\": \"Java后端\"}}, {\"chunk_id\": \"45bd2600-af57-45fe-a96e-c6cae6838c7a_chunk_2\", \"content\": \"【某小公司 · Java后端 硬性要求】\\n1年以上Java开发经验\", \"source\": \"某小公司-Java后端\", \"metadata\": {\"company\": \"某小公司\", \"position\": \"Java后端\"}}, {\"chunk_id\": \"9cde8355-dcc0-434e-97c4-67dfc5dae5b8_chunk_6\", \"content\": \"【阿里巴巴 · 后端开发 软性要求/加分项】\\n有电商行业经验优先\", \"source\": \"阿里巴巴-后端开发\", \"metadata\": {\"company\": \"阿里巴巴\", \"position\": \"后端开发\"}}, {\"chunk_id\": \"f0427344-e282-48e4-8074-bcc9419cf414_chunk_6\", \"content\": \"【淘天集团 · AI大模型产品经理 软性要求/加分项】\\n如不方便外部体验，也可附工作流、prompt说明、输入和输出的效果示意来展示\", \"source\": \"淘天集团-AI大模型产品经理\", \"metadata\": {\"company\": \"淘天集团\", \"position\": \"AI大模型产品经理\"}}, {\"chunk_id\": \"45bd2600-af57-45fe-a96e-c6cae6838c7a_chunk_4\", \"content\": \"【某小公司 · Java后端 硬性要求】\\n大专及以上学历\", \"source\": \"某小公司-Java后端\", \"metadata\": {\"company\": \"某小公司\", \"position\": \"Java后端\"}}], \"query\": \"帮我筛几个岗位，再看看哪个需要设计经验\", \"filters\": {}, \"strategy\": \"hybrid(70%vec+30%bm25)+reranker\", \"pool_k\": 5, \"rerank_k\": 10, \"pool_size\": 38, \"vec_only\": 19, \"bm25_only\": 19, \"both\": 0, \"rerank\": {\"enabled\": true, \"candidates\": 5, \"output\": 5, \"best_rerank_score\": 0.3381}}}, {\"task_id\": \"T1\", \"tool\": \"global_rank\", \"description\": \"对检索到的岗位按匹配度排序，识别哪些岗位需要设计经验\", \"result\": {\"rankings\": [{\"company\": \"某小公司\", \"position\": \"Java后端\", \"match_score\": 79, \"recommend_reason\": \"检索相关度较高（0.64）\", \"key_match\": [\"检索召回\"], \"key_gap\": [\"需进一步了解详细匹配情况\"], \"apply_priority\": \"中\"}, {\"company\": \"淘天集团\", \"position\": \"AI大模型产品经理\", \"match_score\": 79, \"recommend_reason\": \"检索相关度较高（0.62）\", \"key_match\": [\"检索召回\"], \"key_gap\": [\"需进一步了解详细匹配情况\"], \"apply_priority\": \"中\"}, {\"company\": \"阿里巴巴\", \"position\": \"后端开发\", \"match_score\": 76, \"recommend_reason\": \"检索相关度较高（0.52）\", \"key_match\": [\"检索召回\"], \"key_gap\": [\"需进一步了解详细匹配情况\"], \"apply_priority\": \"中\"}], \"strategy_advice\": \"暂未发现高度匹配岗位，3 个中等匹配岗位可作为参考，建议进一步评估后再投递。\", \"_template_mode\": true, \"_coarse_filter_meta\": {\"input_jds\": 3, \"output_jds\": 3, \"filter_ratio\": 0.0}}}, {\"task_id\": \"T2\", \"tool\": null, \"description\": \"聚合检索结果和排序结果，生成回复素材\", \"result\": {\"aggregation\": {\"kb_result\": {\"chunks\": [{\"chunk_id\": \"45bd2600-af57-45fe-a96e-c6cae6838c7a_chunk_5\", \"content\": \"【某小公司 · Java后端 软性要求/加分项】\\n有ERP系统开发经验优先\", \"metadata\": {\"company\": \"某小公司\", \"index\": 5, \"jd_id\": \"45bd2600-af57-45fe-a96e-c6cae6838c7a\", \"position\": \"Java后端\", \"priority\": \"medium\", \"section\": \"soft_requirements\", \"strategy\": \"semantic\"}, \"distance\": 0.7376145720481873, \"bm25_score\": 0.0, \"vec_norm\": 1.0, \"bm25_norm\": 0.0, \"hybrid_score\": 0.7, \"rerank_score\": 0.3381}, {\"chunk_id\": \"45bd2600-af57-45fe-a96e-c6cae6838c7a_chunk_2\", \"content\": \"【某小公司 · Java后端 硬性要求】\\n1年以上Java开发经验\", \"metadata\": {\"company\": \"某小公司\", \"index\": 2, \"jd_id\": \"45bd2600-af57-45fe-a96e-c6cae6838c7a\", \"position\": \"Java后端\", \"priority\": \"high\", \"section\": \"hard_requiremen\n\n请生成回复："
+    }
+  },
+  "reply": "没有。基于检索结果，筛选出的岗位中均未明确要求设计经验。\n\n以下是为您筛选出的 3 个岗位及其匹配分析：\n\n### 1. 岗位筛选与匹配度\n*   **某小公司 - Java 后端**\n    *   匹配分数：79 分\n    *   优先级：中\n*   **淘天集团-AI 大模型产品经理**\n    *   匹配分数：79 分\n    *   优先级：中\n*   **阿里巴巴 - 后端开发**\n    *   匹配分数：76 分\n    *   优先级：中\n\n### 2. 设计经验要求核查\n经核查各岗位的具体要求，均未发现“设计经验”相关条款：\n*   **某小公司 - Java 后端**：硬性要求为 1 年以上 Java 开发经验 [来源：某小公司-Java 后端]，软性加分项为有 ERP 系统开发经验 [来源：某小公司-Java 后端]。\n*   **阿里巴巴 - 后端开发**：软性要求/加分项为有电商行业经验优先 [来源：阿里巴巴 - 后端开发]。\n*   **淘天集团-AI 大模型产品经理**：软性要求/加分项为可附工作流、prompt 说明、输入和输出的效果示意来展示 [来源：淘天集团-AI 大模型产品经理]。\n\n### 3. 求职建议\n暂未发现高度匹配岗位，这 3 个中等匹配岗位可作为参考，建议进一步评估后再投递。如果您拥有设计经验，可以在投递**淘天集团-AI 大模型产品经理**时，尝试将设计能力融入“效果示意”的作品展示中，以增加竞争优势。",
+  "reply_length": 640,
+  "intent_match": true,
+  "tool_match_rate": 0.67,
+  "has_reply": true,
+  "events": [
+    {
+      "step": "intent",
+      "message": "正在识别您的意图...",
+      "_time": 11.280922174453735,
+      "type": "status"
+    },
+    {
+      "step": "plan",
+      "message": "正在规划任务...",
+      "_time": 11.280946016311646,
+      "type": "status"
+    },
+    {
+      "step": "execute",
+      "message": "正在执行分析...",
+      "_time": 38.80007982254028,
+      "type": "status"
+    },
+    {
+      "step": "aggregate",
+      "message": "正在生成回复...",
+      "_time": 39.17931604385376,
+      "type": "status"
+    },
+    {
+      "text": "没有。",
+      "_time": 80.3677110671997,
+      "type": "delta"
+    },
+    {
+      "text": "基于检索结果，",
+      "_time": 80.48685145378113,
+      "type": "delta"
+    },
+    {
+      "text": "筛选",
+      "_time": 80.49057793617249,
+      "type": "delta"
+    },
+    {
+      "text": "出的岗位中均未",
+      "_time": 80.57783889770508,
+      "type": "delta"
+    },
+    {
+      "text": "明确要求设计经验。",
+      "_time": 80.58147835731506,
+      "type": "delta"
+    },
+    {
+      "text": "\n\n以下是为您筛选",
+      "_time": 80.75499224662781,
+      "type": "delta"
+    },
+    {
+      "text": "出的",
+      "_time": 80.76515769958496,
+      "type": "delta"
+    },
+    {
+      "text": " 3 个",
+      "_time": 80.8122398853302,
+      "type": "delta"
+    },
+    {
+      "text": "岗位及其匹配分析",
+      "_time": 80.81675505638123,
+      "type": "delta"
+    },
+    {
+      "text": "：\n\n### ",
+      "_time": 80.95597791671753,
+      "type": "delta"
+    },
+    {
+      "text": "1",
+      "_time": 80.95869374275208,
+      "type": "delta"
+    },
+    {
+      "text": ". 岗位筛选",
+      "_time": 81.075927734375,
+      "type": "delta"
+    },
+    {
+      "text": "与匹配度\n",
+      "_time": 81.0796411037445,
+      "type": "delta"
+    },
+    {
+      "text": "*   **某",
+      "_time": 81.1898443698883,
+      "type": "delta"
+    },
+    {
+      "text": "小公司 - Java",
+      "_time": 81.19490551948547,
+      "type": "delta"
+    },
+    {
+      "text": " 后端**\n",
+      "_time": 81.36986756324768,
+      "type": "delta"
+    },
+    {
+      "text": "    *   ",
+      "_time": 81.37665581703186,
+      "type": "delta"
+    },
+    {
+      "text": "匹配分数：7",
+      "_time": 81.47790837287903,
+      "type": "delta"
+    },
+    {
+      "text": "9 ",
+      "_time": 81.48250317573547,
+      "type": "delta"
+    },
+    {
+      "text": "分\n    *",
+      "_time": 81.58405113220215,
+      "type": "delta"
+    },
+    {
+      "text": "   优先级",
+      "_time": 81.61703372001648,
+      "type": "delta"
+    },
+    {
+      "text": "：中\n*",
+      "_time": 81.71106791496277,
+      "type": "delta"
+    },
+    {
+      "text": "   **淘天",
+      "_time": 81.71669793128967,
+      "type": "delta"
+    },
+    {
+      "text": "集团-AI ",
+      "_time": 81.8548686504364,
+      "type": "delta"
+    },
+    {
+      "text": "大模型",
+      "_time": 81.85947608947754,
+      "type": "delta"
+    },
+    {
+      "text": "产品经理**\n   ",
+      "_time": 81.99177241325378,
+      "type": "delta"
+    },
+    {
+      "text": " *   匹配",
+      "_time": 81.99541401863098,
+      "type": "delta"
+    },
+    {
+      "text": "分数：79",
+      "_time": 82.10585856437683,
+      "type": "delta"
+    },
+    {
+      "text": " ",
+      "_time": 82.10955381393433,
+      "type": "delta"
+    },
+    {
+      "text": "分\n    *",
+      "_time": 82.19679164886475,
+      "type": "delta"
+    },
+    {
+      "text": "   优先级",
+      "_time": 82.20139479637146,
+      "type": "delta"
+    },
+    {
+      "text": "：中\n*",
+      "_time": 82.35991406440735,
+      "type": "delta"
+    },
+    {
+      "text": "   **阿里巴巴 -",
+      "_time": 82.36357641220093,
+      "type": "delta"
+    },
+    {
+      "text": " 后端开发**",
+      "_time": 82.46674251556396,
+      "type": "delta"
+    },
+    {
+      "text": "\n    *  ",
+      "_time": 82.47145438194275,
+      "type": "delta"
+    },
+    {
+      "text": " 匹配分数：",
+      "_time": 82.6563892364502,
+      "type": "delta"
+    },
+    {
+      "text": "76 ",
+      "_time": 82.65965557098389,
+      "type": "delta"
+    },
+    {
+      "text": "分\n    *",
+      "_time": 82.73585367202759,
+      "type": "delta"
+    },
+    {
+      "text": "   优先级",
+      "_time": 82.74288582801819,
+      "type": "delta"
+    },
+    {
+      "text": "：中\n\n###",
+      "_time": 82.86389803886414,
+      "type": "delta"
+    },
+    {
+      "text": " 2. ",
+      "_time": 82.89872598648071,
+      "type": "delta"
+    },
+    {
+      "text": "设计经验要求核查",
+      "_time": 83.0067970752716,
+      "type": "delta"
+    },
+    {
+      "text": "\n经核查",
+      "_time": 83.0105369091034,
+      "type": "delta"
+    },
+    {
+      "text": "各岗位的具体要求",
+      "_time": 83.13174605369568,
+      "type": "delta"
+    },
+    {
+      "text": "，均未",
+      "_time": 83.1358118057251,
+      "type": "delta"
+    },
+    {
+      "text": "发现“设计经验",
+      "_time": 83.27715468406677,
+      "type": "delta"
+    },
+    {
+      "text": "”相关",
+      "_time": 83.28083205223083,
+      "type": "delta"
+    },
+    {
+      "text": "条款：\n*",
+      "_time": 83.3488097190857,
+      "type": "delta"
+    },
+    {
+      "text": "  ",
+      "_time": 83.35244655609131,
+      "type": "delta"
+    },
+    {
+      "text": " **某小公司",
+      "_time": 83.43964719772339,
+      "type": "delta"
+    },
+    {
+      "text": " - Java 后端",
+      "_time": 83.44228506088257,
+      "type": "delta"
+    },
+    {
+      "text": "**：硬性要求",
+      "_time": 83.62264609336853,
+      "type": "delta"
+    },
+    {
+      "text": "为 1 ",
+      "_time": 83.62645840644836,
+      "type": "delta"
+    },
+    {
+      "text": "年以上 Java 开发",
+      "_time": 83.72678852081299,
+      "type": "delta"
+    },
+    {
+      "text": "经验 [来源：",
+      "_time": 83.7316620349884,
+      "type": "delta"
+    },
+    {
+      "text": "某小公司-J",
+      "_time": 83.89992237091064,
+      "type": "delta"
+    },
+    {
+      "text": "ava 后端]",
+      "_time": 83.90454983711243,
+      "type": "delta"
+    },
+    {
+      "text": "，软性加分",
+      "_time": 84.01483702659607,
+      "type": "delta"
+    },
+    {
+      "text": "项为有 ERP",
+      "_time": 84.01963686943054,
+      "type": "delta"
+    },
+    {
+      "text": " 系统开发经验",
+      "_time": 84.15874195098877,
+      "type": "delta"
+    },
+    {
+      "text": " [",
+      "_time": 84.19682431221008,
+      "type": "delta"
+    },
+    {
+      "text": "来源：某小",
+      "_time": 84.24864196777344,
+      "type": "delta"
+    },
+    {
+      "text": "公司-Java ",
+      "_time": 84.25334358215332,
+      "type": "delta"
+    },
+    {
+      "text": "后端]。\n",
+      "_time": 84.39366912841797,
+      "type": "delta"
+    },
+    {
+      "text": "*   **阿里巴巴",
+      "_time": 84.39741110801697,
+      "type": "delta"
+    },
+    {
+      "text": " - 后端开发",
+      "_time": 84.57408928871155,
+      "type": "delta"
+    },
+    {
+      "text": "**：软性",
+      "_time": 84.57653999328613,
+      "type": "delta"
+    },
+    {
+      "text": "要求/加分项",
+      "_time": 84.68070697784424,
+      "type": "delta"
+    },
+    {
+      "text": "为有电商行业",
+      "_time": 84.68651461601257,
+      "type": "delta"
+    },
+    {
+      "text": "经验优先 [来源",
+      "_time": 84.86459398269653,
+      "type": "delta"
+    },
+    {
+      "text": "：阿里巴巴 - ",
+      "_time": 84.86730575561523,
+      "type": "delta"
+    },
+    {
+      "text": "后端开发]。",
+      "_time": 84.96860098838806,
+      "type": "delta"
+    },
+    {
+      "text": "\n*   **",
+      "_time": 84.97131419181824,
+      "type": "delta"
+    },
+    {
+      "text": "淘天集团-A",
+      "_time": 85.11161255836487,
+      "type": "delta"
+    },
+    {
+      "text": "I 大模型",
+      "_time": 85.17469787597656,
+      "type": "delta"
+    },
+    {
+      "text": "产品经理**：软",
+      "_time": 85.25604939460754,
+      "type": "delta"
+    },
+    {
+      "text": "性要求/加分",
+      "_time": 85.26066160202026,
+      "type": "delta"
+    },
+    {
+      "text": "项为可附",
+      "_time": 85.4005708694458,
+      "type": "delta"
+    },
+    {
+      "text": "工作流、",
+      "_time": 85.40415620803833,
+      "type": "delta"
+    },
+    {
+      "text": "prompt 说明、",
+      "_time": 85.56580424308777,
+      "type": "delta"
+    },
+    {
+      "text": "输入和",
+      "_time": 85.57134485244751,
+      "type": "delta"
+    },
+    {
+      "text": "输出的效果示意来",
+      "_time": 85.63449263572693,
+      "type": "delta"
+    },
+    {
+      "text": "展示 [来源：",
+      "_time": 85.67242431640625,
+      "type": "delta"
+    },
+    {
+      "text": "淘天集团-A",
+      "_time": 85.778564453125,
+      "type": "delta"
+    },
+    {
+      "text": "I 大模型",
+      "_time": 85.81244039535522,
+      "type": "delta"
+    },
+    {
+      "text": "产品经理]。\n\n",
+      "_time": 85.92264533042908,
+      "type": "delta"
+    },
+    {
+      "text": "### 3.",
+      "_time": 85.926274061203,
+      "type": "delta"
+    },
+    {
+      "text": " 求职建议\n",
+      "_time": 86.06767725944519,
+      "type": "delta"
+    },
+    {
+      "text": "暂未发现高度匹配",
+      "_time": 86.10145545005798,
+      "type": "delta"
+    },
+    {
+      "text": "岗位，这 ",
+      "_time": 86.21460843086243,
+      "type": "delta"
+    },
+    {
+      "text": "3 个",
+      "_time": 86.21824336051941,
+      "type": "delta"
+    },
+    {
+      "text": "中等匹配岗位可作为",
+      "_time": 86.34159278869629,
+      "type": "delta"
+    },
+    {
+      "text": "参考，",
+      "_time": 86.34216284751892,
+      "type": "delta"
+    },
+    {
+      "text": "建议进一步评估后再",
+      "_time": 86.47787141799927,
+      "type": "delta"
+    },
+    {
+      "text": "投递。如果您",
+      "_time": 86.48150157928467,
+      "type": "delta"
+    },
+    {
+      "text": "拥有设计经验，",
+      "_time": 86.57056951522827,
+      "type": "delta"
+    },
+    {
+      "text": "可以在",
+      "_time": 86.57516264915466,
+      "type": "delta"
+    },
+    {
+      "text": "投递**淘天",
+      "_time": 86.66062378883362,
+      "type": "delta"
+    },
+    {
+      "text": "集团-A",
+      "_time": 86.66528797149658,
+      "type": "delta"
+    },
+    {
+      "text": "I 大模型",
+      "_time": 86.80763387680054,
+      "type": "delta"
+    },
+    {
+      "text": "产品经理**时，",
+      "_time": 86.83141660690308,
+      "type": "delta"
+    },
+    {
+      "text": "尝试将设计能力",
+      "_time": 86.9115993976593,
+      "type": "delta"
+    },
+    {
+      "text": "融入",
+      "_time": 86.91635012626648,
+      "type": "delta"
+    },
+    {
+      "text": "“效果示意”",
+      "_time": 87.00362062454224,
+      "type": "delta"
+    },
+    {
+      "text": "的作品",
+      "_time": 87.00914931297302,
+      "type": "delta"
+    },
+    {
+      "text": "展示中，以增加",
+      "_time": 87.12850499153137,
+      "type": "delta"
+    },
+    {
+      "text": "竞争优势",
+      "_time": 87.13317656517029,
+      "type": "delta"
+    },
+    {
+      "text": "。",
+      "_time": 87.18653964996338,
+      "type": "delta"
+    },
+    {
+      "session_id": "eval_wang_11_1780564530993",
+      "intent": "position_explore",
+      "route_meta": {
+        "layer": "llm",
+        "intent": "position_explore",
+        "confidence": 0.88,
+        "demands": [
+          {
+            "intent": "position_explore",
+            "entities": {
+              "search_keywords": "帮我筛几个岗位，再看看哪个需要设计经验",
+              "sort_by": "match_score",
+              "top_k": 5
+            }
+          }
+        ],
+        "plan_tasks": 3
+      },
+      "agent_mode": "llm",
+      "is_clarification": false,
+      "agent": {
+        "rewritten_query": "帮我筛几个岗位，再看看哪个需要设计经验",
+        "tools": [
+          {
+            "tool": "kb_retrieve",
+            "status": "✅",
+            "params": {
+              "query": "帮我筛几个岗位，再看看哪个需要设计经验",
+              "top_k": 5
+            },
+            "result_preview": "{'chunks': [{'chunk_id': '45bd2600-af57-45fe-a96e-c6cae6838c7a_chunk_5', 'content': '【某小公司 · Java后端 软性要求/加分项】\\n有ERP系统开发经验优先', 'metadata': {'company': '某小公司', 'index': 5, 'jd_id': '45bd2600-af57-45fe-a"
+          },
+          {
+            "tool": "global_rank",
+            "status": "✅",
+            "params": {
+              "resume_text": "姓名：王设计师\n电话：139-XXXX-5678 | 邮箱：wangdesign@email.com | 现居：上海\n作品集：wangdesign.portfolio.com\nUI/UX设计师 | 4年互联网设计经验 | 品牌视觉背景\n\n教育背景\n2015.09 - 2019.06  XX美术学院  视觉传达设计（本科）\n主修课程：品牌设计、信息可视化、交互设计基础、版式设计、用户研究\n在校荣誉：全国大学生广告艺术大赛省级一等奖\n\n职业背景\n2019.07 - 2021.06  XX传媒公司  品牌视觉设计师（2年）\n负责快消、教育行业品牌全案设计，积累扎实的视觉体系搭建与商业审美能力\n\n2021.07 - 至今  XX互联网科技公司（C轮 / 在线教育）  UI设计师（4年）\n从品牌设计跨领域转型至互联网UI/UX，快速补齐交互逻辑与产品思维，主导多条业务线界面设计\n\n专业技能\n精通Figma组件化设计、Auto Layout及变量系统，能搭建可复用的设计规范与UI Kit\n擅长界面动效设计，熟练使用Principle、After Effects制作高保真交互Demo，提升评审效率\n具备品牌全案设计能力，熟悉Logo、VI、运营视觉体系搭建，能统筹产品视觉一致性\n了解前端基础（HTML/CSS），能与开发高效沟通，熟悉切图标注、SVG输出及设计走查流程\n掌握用户研究方法：竞品分析、用户访谈、可用性测试，能基于数据反馈迭代设计方案\n\n工作经历\n在线教育直播课堂改版（2023.06 - 2024.03）\n作为UI主设，主导直播客户端从1.0到2.0的视觉重构，DAU 50W+，完课率提升12%\n建立Figma组件库（300+组件），统一5条业务线设计语言，设计交付效率提升30%\n针对低龄学段用户设计游戏化互动界面（连麦、答题红包），通过动效引导降低操作流失率\n\n制定《移动端设计规范V2.0》，涵盖色彩、字体、间距、无障碍对比度标准（WCAG 2.1 AA级）\n\n品牌跨界联名活动视觉（2022.09 - 2022.12）\n结合前品牌设计经验，主导与知名IP联名运营活动的主视觉及H5传播设计\n设计开屏动画、分享海报模板，活动期间新增用户8W+，分享率提升25%\n输出动态品牌规范手册，帮助市场团队3天内完成20+城市线下物料延展\n\nB端教研后台系统优化（2022.02 - 2022.08）\n负责教师端后台的信息架构重组，将核心备课路径从5步缩减至3步\n设计数据可视化仪表盘，通过卡片层级与色彩语义降低教师数据读取成本\n\n自我评价\n拥有品牌视觉+互联网UI的跨领域背景，既能把控产品视觉调性，也具备用户体验与业务目标平衡能力。习惯用组件化思维提升协作效率，注重设计落地的还原度与数据反馈。",
+              "candidate_jds": [
+                {
+                  "chunk_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a_chunk_5",
+                  "content": "【某小公司 · Java后端 软性要求/加分项】\n有ERP系统开发经验优先",
+                  "metadata": {
+                    "company": "某小公司",
+                    "index": 5,
+                    "jd_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a",
+                    "position": "Java后端",
+                    "priority": "medium",
+                    "section": "soft_requirements",
+                    "strategy": "semantic"
+                  },
+                  "distance": 0.7376145720481873,
+                  "bm25_score": 0.0,
+                  "vec_norm": 1.0,
+                  "bm25_norm": 0.0,
+                  "hybrid_score": 0.7,
+                  "rerank_score": 0.3381
+                },
+                {
+                  "chunk_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a_chunk_2",
+                  "content": "【某小公司 · Java后端 硬性要求】\n1年以上Java开发经验",
+                  "metadata": {
+                    "company": "某小公司",
+                    "index": 2,
+                    "jd_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a",
+                    "position": "Java后端",
+                    "priority": "high",
+                    "section": "hard_requirements",
+                    "strategy": "semantic"
+                  },
+                  "distance": 0.7427959442138672,
+                  "bm25_score": 0.0,
+                  "vec_norm": 0.9477063121908318,
+                  "bm25_norm": 0.0,
+                  "hybrid_score": 0.6633944185335822,
+                  "rerank_score": 0.221
+                },
+                {
+                  "chunk_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8_chunk_6",
+                  "content": "【阿里巴巴 · 后端开发 软性要求/加分项】\n有电商行业经验优先",
+                  "metadata": {
+                    "company": "阿里巴巴",
+                    "index": 6,
+                    "jd_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8",
+                    "position": "后端开发",
+                    "priority": "medium",
+                    "section": "soft_requirements",
+                    "strategy": "semantic"
+                  },
+                  "distance": 0.7635329961776733,
+                  "bm25_score": 0.0,
+                  "vec_norm": 0.7384148567997917,
+                  "bm25_norm": 0.0,
+                  "hybrid_score": 0.5168903997598542,
+                  "rerank_score": 0.2149
+                },
+                {
+                  "chunk_id": "f0427344-e282-48e4-8074-bcc9419cf414_chunk_6",
+                  "content": "【淘天集团 · AI大模型产品经理 软性要求/加分项】\n如不方便外部体验，也可附工作流、prompt说明、输入和输出的效果示意来展示",
+                  "metadata": {
+                    "company": "淘天集团",
+                    "index": 6,
+                    "jd_id": "f0427344-e282-48e4-8074-bcc9419cf414",
+                    "position": "AI大模型产品经理",
+                    "priority": "medium",
+                    "section": "soft_requirements",
+                    "strategy": "semantic"
+                  },
+                  "distance": 0.7485970262904157,
+                  "bm25_score": 0.0,
+                  "vec_norm": 0.8891581196723003,
+                  "bm25_norm": 0.0,
+                  "hybrid_score": 0.6224106837706102,
+                  "rerank_score": 0.0307
+                },
+                {
+                  "chunk_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a_chunk_4",
+                  "content": "【某小公司 · Java后端 硬性要求】\n大专及以上学历",
+                  "metadata": {
+                    "company": "某小公司",
+                    "index": 4,
+                    "jd_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a",
+                    "position": "Java后端",
+                    "priority": "high",
+                    "section": "hard_requirements",
+                    "strategy": "semantic"
+                  },
+                  "distance": 0.7560716867446899,
+                  "bm25_score": 0.0,
+                  "vec_norm": 0.8137191147568794,
+                  "bm25_norm": 0.0,
+                  "hybrid_score": 0.5696033803298155,
+                  "rerank_score": 0.0253
+                }
+              ],
+              "sort_by": "match_score"
+            },
+            "result_preview": "{'rankings': [{'rank': 1, 'jd_id': '45bd2600-af57-45fe-a96e-c6cae6838c7a', 'company': '某小公司', 'position': 'Java后端', 'match_score': 79, 'recommend_reason': '检索相关度较高（0.64）', 'key_match': ['检索召回'], 'key_"
+          }
+        ],
+        "kb_chunks_count": 3,
+        "system_prompt_preview": "你是一位专业的求职顾问。请基于以下工具执行结果，给用户一个清晰、有帮助的回复。\n要求：\n1. 先直接回答用户的问题（是/否/有/没有），不要绕弯子，不要重复用户的原话\n2. 如果有匹配分析结果，给出具体的分数和建议\n3. 如果有检索结果，基于事实回答，不要编造\n4. 【强制】引用信息时必须标注来源。每个引用的事实后面都要跟 [来源：公司名-岗位名] 格式。   kb_retrieve 结果的 ch"
+      },
+      "memory": {
+        "working_turns": 1,
+        "compressed_blocks": 0,
+        "current_topic": "general",
+        "evidence_cache_size": 5
+      },
+      "reply": "没有。基于检索结果，筛选出的岗位中均未明确要求设计经验。\n\n以下是为您筛选出的 3 个岗位及其匹配分析：\n\n### 1. 岗位筛选与匹配度\n*   **某小公司 - Java 后端**\n    *   匹配分数：79 分\n    *   优先级：中\n*   **淘天集团-AI 大模型产品经理**\n    *   匹配分数：79 分\n    *   优先级：中\n*   **阿里巴巴 - 后端开发**\n    *   匹配分数：76 分\n    *   优先级：中\n\n### 2. 设计经验要求核查\n经核查各岗位的具体要求，均未发现“设计经验”相关条款：\n*   **某小公司 - Java 后端**：硬性要求为 1 年以上 Java 开发经验 [来源：某小公司-Java 后端]，软性加分项为有 ERP 系统开发经验 [来源：某小公司-Java 后端]。\n*   **阿里巴巴 - 后端开发**：软性要求/加分项为有电商行业经验优先 [来源：阿里巴巴 - 后端开发]。\n*   **淘天集团-AI 大模型产品经理**：软性要求/加分项为可附工作流、prompt 说明、输入和输出的效果示意来展示 [来源：淘天集团-AI 大模型产品经理]。\n\n### 3. 求职建议\n暂未发现高度匹配岗位，这 3 个中等匹配岗位可作为参考，建议进一步评估后再投递。如果您拥有设计经验，可以在投递**淘天集团-AI 大模型产品经理**时，尝试将设计能力融入“效果示意”的作品展示中，以增加竞争优势。",
+      "debug_info": {
+        "task_graph": {
+          "tasks": {
+            "T0": {
+              "task_id": "T0",
+              "task_type": "tool_call",
+              "tool_name": "kb_retrieve",
+              "status": "success",
+              "parameters": {
+                "query": "{{global_slots.search_keywords}}",
+                "top_k": "{{global_slots.top_k}}"
+              },
+              "resolved_params": {
+                "query": "帮我筛几个岗位，再看看哪个需要设计经验",
+                "top_k": 5
+              },
+              "result": {
+                "chunks": [
+                  {
+                    "chunk_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a_chunk_5",
+                    "content": "【某小公司 · Java后端 软性要求/加分项】\n有ERP系统开发经验优先",
+                    "metadata": {
+                      "company": "某小公司",
+                      "index": 5,
+                      "jd_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a",
+                      "position": "Java后端",
+                      "priority": "medium",
+                      "section": "soft_requirements",
+                      "strategy": "semantic"
+                    },
+                    "distance": 0.7376145720481873,
+                    "bm25_score": 0.0,
+                    "vec_norm": 1.0,
+                    "bm25_norm": 0.0,
+                    "hybrid_score": 0.7,
+                    "rerank_score": 0.3381
+                  },
+                  {
+                    "chunk_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a_chunk_2",
+                    "content": "【某小公司 · Java后端 硬性要求】\n1年以上Java开发经验",
+                    "metadata": {
+                      "company": "某小公司",
+                      "index": 2,
+                      "jd_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a",
+                      "position": "Java后端",
+                      "priority": "high",
+                      "section": "hard_requirements",
+                      "strategy": "semantic"
+                    },
+                    "distance": 0.7427959442138672,
+                    "bm25_score": 0.0,
+                    "vec_norm": 0.9477063121908318,
+                    "bm25_norm": 0.0,
+                    "hybrid_score": 0.6633944185335822,
+                    "rerank_score": 0.221
+                  },
+                  {
+                    "chunk_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8_chunk_6",
+                    "content": "【阿里巴巴 · 后端开发 软性要求/加分项】\n有电商行业经验优先",
+                    "metadata": {
+                      "company": "阿里巴巴",
+                      "index": 6,
+                      "jd_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8",
+                      "position": "后端开发",
+                      "priority": "medium",
+                      "section": "soft_requirements",
+                      "strategy": "semantic"
+                    },
+                    "distance": 0.7635329961776733,
+                    "bm25_score": 0.0,
+                    "vec_norm": 0.7384148567997917,
+                    "bm25_norm": 0.0,
+                    "hybrid_score": 0.5168903997598542,
+                    "rerank_score": 0.2149
+                  },
+                  {
+                    "chunk_id": "f0427344-e282-48e4-8074-bcc9419cf414_chunk_6",
+                    "content": "【淘天集团 · AI大模型产品经理 软性要求/加分项】\n如不方便外部体验，也可附工作流、prompt说明、输入和输出的效果示意来展示",
+                    "metadata": {
+                      "company": "淘天集团",
+                      "index": 6,
+                      "jd_id": "f0427344-e282-48e4-8074-bcc9419cf414",
+                      "position": "AI大模型产品经理",
+                      "priority": "medium",
+                      "section": "soft_requirements",
+                      "strategy": "semantic"
+                    },
+                    "distance": 0.7485970262904157,
+                    "bm25_score": 0.0,
+                    "vec_norm": 0.8891581196723003,
+                    "bm25_norm": 0.0,
+                    "hybrid_score": 0.6224106837706102,
+                    "rerank_score": 0.0307
+                  },
+                  {
+                    "chunk_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a_chunk_4",
+                    "content": "【某小公司 · Java后端 硬性要求】\n大专及以上学历",
+                    "metadata": {
+                      "company": "某小公司",
+                      "index": 4,
+                      "jd_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a",
+                      "position": "Java后端",
+                      "priority": "high",
+                      "section": "hard_requirements",
+                      "strategy": "semantic"
+                    },
+                    "distance": 0.7560716867446899,
+                    "bm25_score": 0.0,
+                    "vec_norm": 0.8137191147568794,
+                    "bm25_norm": 0.0,
+                    "hybrid_score": 0.5696033803298155,
+                    "rerank_score": 0.0253
+                  }
+                ],
+                "query": "帮我筛几个岗位，再看看哪个需要设计经验",
+                "filters": {},
+                "strategy": "hybrid(70%vec+30%bm25)+reranker",
+                "pool_k": 5,
+                "rerank_k": 10,
+                "pool_size": 38,
+                "vec_only": 19,
+                "bm25_only": 19,
+                "both": 0,
+                "rerank": {
+                  "enabled": true,
+                  "candidates": 5,
+                  "output": 5,
+                  "best_rerank_score": 0.3381
+                }
+              },
+              "observation": "工具 kb_retrieve 执行成功"
+            },
+            "T1": {
+              "task_id": "T1",
+              "task_type": "tool_call",
+              "tool_name": "global_rank",
+              "status": "success",
+              "parameters": {
+                "resume_text": "{{global_slots.resume_text}}",
+                "candidate_jds": "{{T0.output.chunks}}",
+                "sort_by": "{{global_slots.sort_by}}"
+              },
+              "resolved_params": {
+                "resume_text": "姓名：王设计师\n电话：139-XXXX-5678 | 邮箱：wangdesign@email.com | 现居：上海\n作品集：wangdesign.portfolio.com\nUI/UX设计师 | 4年互联网设计经验 | 品牌视觉背景\n\n教育背景\n2015.09 - 2019.06  XX美术学院  视觉传达设计（本科）\n主修课程：品牌设计、信息可视化、交互设计基础、版式设计、用户研究\n在校荣誉：全国大学生广告艺术大赛省级一等奖\n\n职业背景\n2019.07 - 2021.06  XX传媒公司  品牌视觉设计师（2年）\n负责快消、教育行业品牌全案设计，积累扎实的视觉体系搭建与商业审美能力\n\n2021.07 - 至今  XX互联网科技公司（C轮 / 在线教育）  UI设计师（4年）\n从品牌设计跨领域转型至互联网UI/UX，快速补齐交互逻辑与产品思维，主导多条业务线界面设计\n\n专业技能\n精通Figma组件化设计、Auto Layout及变量系统，能搭建可复用的设计规范与UI Kit\n擅长界面动效设计，熟练使用Principle、After Effects制作高保真交互Demo，提升评审效率\n具备品牌全案设计能力，熟悉Logo、VI、运营视觉体系搭建，能统筹产品视觉一致性\n了解前端基础（HTML/CSS），能与开发高效沟通，熟悉切图标注、SVG输出及设计走查流程\n掌握用户研究方法：竞品分析、用户访谈、可用性测试，能基于数据反馈迭代设计方案\n\n工作经历\n在线教育直播课堂改版（2023.06 - 2024.03）\n作为UI主设，主导直播客户端从1.0到2.0的视觉重构，DAU 50W+，完课率提升12%\n建立Figma组件库（300+组件），统一5条业务线设计语言，设计交付效率提升30%\n针对低龄学段用户设计游戏化互动界面（连麦、答题红包），通过动效引导降低操作流失率\n\n制定《移动端设计规范V2.0》，涵盖色彩、字体、间距、无障碍对比度标准（WCAG 2.1 AA级）\n\n品牌跨界联名活动视觉（2022.09 - 2022.12）\n结合前品牌设计经验，主导与知名IP联名运营活动的主视觉及H5传播设计\n设计开屏动画、分享海报模板，活动期间新增用户8W+，分享率提升25%\n输出动态品牌规范手册，帮助市场团队3天内完成20+城市线下物料延展\n\nB端教研后台系统优化（2022.02 - 2022.08）\n负责教师端后台的信息架构重组，将核心备课路径从5步缩减至3步\n设计数据可视化仪表盘，通过卡片层级与色彩语义降低教师数据读取成本\n\n自我评价\n拥有品牌视觉+互联网UI的跨领域背景，既能把控产品视觉调性，也具备用户体验与业务目标平衡能力。习惯用组件化思维提升协作效率，注重设计落地的还原度与数据反馈。",
+                "candidate_jds": [
+                  {
+                    "chunk_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a_chunk_5",
+                    "content": "【某小公司 · Java后端 软性要求/加分项】\n有ERP系统开发经验优先",
+                    "metadata": {
+                      "company": "某小公司",
+                      "index": 5,
+                      "jd_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a",
+                      "position": "Java后端",
+                      "priority": "medium",
+                      "section": "soft_requirements",
+                      "strategy": "semantic"
+                    },
+                    "distance": 0.7376145720481873,
+                    "bm25_score": 0.0,
+                    "vec_norm": 1.0,
+                    "bm25_norm": 0.0,
+                    "hybrid_score": 0.7,
+                    "rerank_score": 0.3381
+                  },
+                  {
+                    "chunk_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a_chunk_2",
+                    "content": "【某小公司 · Java后端 硬性要求】\n1年以上Java开发经验",
+                    "metadata": {
+                      "company": "某小公司",
+                      "index": 2,
+                      "jd_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a",
+                      "position": "Java后端",
+                      "priority": "high",
+                      "section": "hard_requirements",
+                      "strategy": "semantic"
+                    },
+                    "distance": 0.7427959442138672,
+                    "bm25_score": 0.0,
+                    "vec_norm": 0.9477063121908318,
+                    "bm25_norm": 0.0,
+                    "hybrid_score": 0.6633944185335822,
+                    "rerank_score": 0.221
+                  },
+                  {
+                    "chunk_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8_chunk_6",
+                    "content": "【阿里巴巴 · 后端开发 软性要求/加分项】\n有电商行业经验优先",
+                    "metadata": {
+                      "company": "阿里巴巴",
+                      "index": 6,
+                      "jd_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8",
+                      "position": "后端开发",
+                      "priority": "medium",
+                      "section": "soft_requirements",
+                      "strategy": "semantic"
+                    },
+                    "distance": 0.7635329961776733,
+                    "bm25_score": 0.0,
+                    "vec_norm": 0.7384148567997917,
+                    "bm25_norm": 0.0,
+                    "hybrid_score": 0.5168903997598542,
+                    "rerank_score": 0.2149
+                  },
+                  {
+                    "chunk_id": "f0427344-e282-48e4-8074-bcc9419cf414_chunk_6",
+                    "content": "【淘天集团 · AI大模型产品经理 软性要求/加分项】\n如不方便外部体验，也可附工作流、prompt说明、输入和输出的效果示意来展示",
+                    "metadata": {
+                      "company": "淘天集团",
+                      "index": 6,
+                      "jd_id": "f0427344-e282-48e4-8074-bcc9419cf414",
+                      "position": "AI大模型产品经理",
+                      "priority": "medium",
+                      "section": "soft_requirements",
+                      "strategy": "semantic"
+                    },
+                    "distance": 0.7485970262904157,
+                    "bm25_score": 0.0,
+                    "vec_norm": 0.8891581196723003,
+                    "bm25_norm": 0.0,
+                    "hybrid_score": 0.6224106837706102,
+                    "rerank_score": 0.0307
+                  },
+                  {
+                    "chunk_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a_chunk_4",
+                    "content": "【某小公司 · Java后端 硬性要求】\n大专及以上学历",
+                    "metadata": {
+                      "company": "某小公司",
+                      "index": 4,
+                      "jd_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a",
+                      "position": "Java后端",
+                      "priority": "high",
+                      "section": "hard_requirements",
+                      "strategy": "semantic"
+                    },
+                    "distance": 0.7560716867446899,
+                    "bm25_score": 0.0,
+                    "vec_norm": 0.8137191147568794,
+                    "bm25_norm": 0.0,
+                    "hybrid_score": 0.5696033803298155,
+                    "rerank_score": 0.0253
+                  }
+                ],
+                "sort_by": "match_score"
+              },
+              "result": {
+                "rankings": [
+                  {
+                    "rank": 1,
+                    "jd_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a",
+                    "company": "某小公司",
+                    "position": "Java后端",
+                    "match_score": 79,
+                    "recommend_reason": "检索相关度较高（0.64）",
+                    "key_match": [
+                      "检索召回"
+                    ],
+                    "key_gap": [
+                      "需进一步了解详细匹配情况"
+                    ],
+                    "apply_priority": "中"
+                  },
+                  {
+                    "rank": 2,
+                    "jd_id": "f0427344-e282-48e4-8074-bcc9419cf414",
+                    "company": "淘天集团",
+                    "position": "AI大模型产品经理",
+                    "match_score": 79,
+                    "recommend_reason": "检索相关度较高（0.62）",
+                    "key_match": [
+                      "检索召回"
+                    ],
+                    "key_gap": [
+                      "需进一步了解详细匹配情况"
+                    ],
+                    "apply_priority": "中"
+                  },
+                  {
+                    "rank": 3,
+                    "jd_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8",
+                    "company": "阿里巴巴",
+                    "position": "后端开发",
+                    "match_score": 76,
+                    "recommend_reason": "检索相关度较高（0.52）",
+                    "key_match": [
+                      "检索召回"
+                    ],
+                    "key_gap": [
+                      "需进一步了解详细匹配情况"
+                    ],
+                    "apply_priority": "中"
+                  }
+                ],
+                "strategy_advice": "暂未发现高度匹配岗位，3 个中等匹配岗位可作为参考，建议进一步评估后再投递。",
+                "_template_mode": true,
+                "_coarse_filter_meta": {
+                  "input_jds": 3,
+                  "output_jds": 3,
+                  "filter_ratio": 0.0
+                }
+              },
+              "observation": "工具 global_rank 执行成功"
+            },
+            "T2": {
+              "task_id": "T2",
+              "task_type": "aggregate",
+              "tool_name": null,
+              "status": "success",
+              "parameters": {
+                "kb_result": "{{T0.output}}",
+                "rank_result": "{{T1.output}}"
+              },
+              "resolved_params": {
+                "kb_result": {
+                  "chunks": [
+                    {
+                      "chunk_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a_chunk_5",
+                      "content": "【某小公司 · Java后端 软性要求/加分项】\n有ERP系统开发经验优先",
+                      "metadata": {
+                        "company": "某小公司",
+                        "index": 5,
+                        "jd_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a",
+                        "position": "Java后端",
+                        "priority": "medium",
+                        "section": "soft_requirements",
+                        "strategy": "semantic"
+                      },
+                      "distance": 0.7376145720481873,
+                      "bm25_score": 0.0,
+                      "vec_norm": 1.0,
+                      "bm25_norm": 0.0,
+                      "hybrid_score": 0.7,
+                      "rerank_score": 0.3381
+                    },
+                    {
+                      "chunk_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a_chunk_2",
+                      "content": "【某小公司 · Java后端 硬性要求】\n1年以上Java开发经验",
+                      "metadata": {
+                        "company": "某小公司",
+                        "index": 2,
+                        "jd_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a",
+                        "position": "Java后端",
+                        "priority": "high",
+                        "section": "hard_requirements",
+                        "strategy": "semantic"
+                      },
+                      "distance": 0.7427959442138672,
+                      "bm25_score": 0.0,
+                      "vec_norm": 0.9477063121908318,
+                      "bm25_norm": 0.0,
+                      "hybrid_score": 0.6633944185335822,
+                      "rerank_score": 0.221
+                    },
+                    {
+                      "chunk_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8_chunk_6",
+                      "content": "【阿里巴巴 · 后端开发 软性要求/加分项】\n有电商行业经验优先",
+                      "metadata": {
+                        "company": "阿里巴巴",
+                        "index": 6,
+                        "jd_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8",
+                        "position": "后端开发",
+                        "priority": "medium",
+                        "section": "soft_requirements",
+                        "strategy": "semantic"
+                      },
+                      "distance": 0.7635329961776733,
+                      "bm25_score": 0.0,
+                      "vec_norm": 0.7384148567997917,
+                      "bm25_norm": 0.0,
+                      "hybrid_score": 0.5168903997598542,
+                      "rerank_score": 0.2149
+                    },
+                    {
+                      "chunk_id": "f0427344-e282-48e4-8074-bcc9419cf414_chunk_6",
+                      "content": "【淘天集团 · AI大模型产品经理 软性要求/加分项】\n如不方便外部体验，也可附工作流、prompt说明、输入和输出的效果示意来展示",
+                      "metadata": {
+                        "company": "淘天集团",
+                        "index": 6,
+                        "jd_id": "f0427344-e282-48e4-8074-bcc9419cf414",
+                        "position": "AI大模型产品经理",
+                        "priority": "medium",
+                        "section": "soft_requirements",
+                        "strategy": "semantic"
+                      },
+                      "distance": 0.7485970262904157,
+                      "bm25_score": 0.0,
+                      "vec_norm": 0.8891581196723003,
+                      "bm25_norm": 0.0,
+                      "hybrid_score": 0.6224106837706102,
+                      "rerank_score": 0.0307
+                    },
+                    {
+                      "chunk_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a_chunk_4",
+                      "content": "【某小公司 · Java后端 硬性要求】\n大专及以上学历",
+                      "metadata": {
+                        "company": "某小公司",
+                        "index": 4,
+                        "jd_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a",
+                        "position": "Java后端",
+                        "priority": "high",
+                        "section": "hard_requirements",
+                        "strategy": "semantic"
+                      },
+                      "distance": 0.7560716867446899,
+                      "bm25_score": 0.0,
+                      "vec_norm": 0.8137191147568794,
+                      "bm25_norm": 0.0,
+                      "hybrid_score": 0.5696033803298155,
+                      "rerank_score": 0.0253
+                    }
+                  ],
+                  "query": "帮我筛几个岗位，再看看哪个需要设计经验",
+                  "filters": {},
+                  "strategy": "hybrid(70%vec+30%bm25)+reranker",
+                  "pool_k": 5,
+                  "rerank_k": 10,
+                  "pool_size": 38,
+                  "vec_only": 19,
+                  "bm25_only": 19,
+                  "both": 0,
+                  "rerank": {
+                    "enabled": true,
+                    "candidates": 5,
+                    "output": 5,
+                    "best_rerank_score": 0.3381
+                  }
+                },
+                "rank_result": {
+                  "rankings": [
+                    {
+                      "rank": 1,
+                      "jd_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a",
+                      "company": "某小公司",
+                      "position": "Java后端",
+                      "match_score": 79,
+                      "recommend_reason": "检索相关度较高（0.64）",
+                      "key_match": [
+                        "检索召回"
+                      ],
+                      "key_gap": [
+                        "需进一步了解详细匹配情况"
+                      ],
+                      "apply_priority": "中"
+                    },
+                    {
+                      "rank": 2,
+                      "jd_id": "f0427344-e282-48e4-8074-bcc9419cf414",
+                      "company": "淘天集团",
+                      "position": "AI大模型产品经理",
+                      "match_score": 79,
+                      "recommend_reason": "检索相关度较高（0.62）",
+                      "key_match": [
+                        "检索召回"
+                      ],
+                      "key_gap": [
+                        "需进一步了解详细匹配情况"
+                      ],
+                      "apply_priority": "中"
+                    },
+                    {
+                      "rank": 3,
+                      "jd_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8",
+                      "company": "阿里巴巴",
+                      "position": "后端开发",
+                      "match_score": 76,
+                      "recommend_reason": "检索相关度较高（0.52）",
+                      "key_match": [
+                        "检索召回"
+                      ],
+                      "key_gap": [
+                        "需进一步了解详细匹配情况"
+                      ],
+                      "apply_priority": "中"
+                    }
+                  ],
+                  "strategy_advice": "暂未发现高度匹配岗位，3 个中等匹配岗位可作为参考，建议进一步评估后再投递。",
+                  "_template_mode": true,
+                  "_coarse_filter_meta": {
+                    "input_jds": 3,
+                    "output_jds": 3,
+                    "filter_ratio": 0.0
+                  }
+                }
+              },
+              "result": {
+                "aggregation": {
+                  "kb_result": {
+                    "chunks": [
+                      {
+                        "chunk_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a_chunk_5",
+                        "content": "【某小公司 · Java后端 软性要求/加分项】\n有ERP系统开发经验优先",
+                        "metadata": {
+                          "company": "某小公司",
+                          "index": 5,
+                          "jd_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a",
+                          "position": "Java后端",
+                          "priority": "medium",
+                          "section": "soft_requirements",
+                          "strategy": "semantic"
+                        },
+                        "distance": 0.7376145720481873,
+                        "bm25_score": 0.0,
+                        "vec_norm": 1.0,
+                        "bm25_norm": 0.0,
+                        "hybrid_score": 0.7,
+                        "rerank_score": 0.3381
+                      },
+                      {
+                        "chunk_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a_chunk_2",
+                        "content": "【某小公司 · Java后端 硬性要求】\n1年以上Java开发经验",
+                        "metadata": {
+                          "company": "某小公司",
+                          "index": 2,
+                          "jd_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a",
+                          "position": "Java后端",
+                          "priority": "high",
+                          "section": "hard_requirements",
+                          "strategy": "semantic"
+                        },
+                        "distance": 0.7427959442138672,
+                        "bm25_score": 0.0,
+                        "vec_norm": 0.9477063121908318,
+                        "bm25_norm": 0.0,
+                        "hybrid_score": 0.6633944185335822,
+                        "rerank_score": 0.221
+                      },
+                      {
+                        "chunk_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8_chunk_6",
+                        "content": "【阿里巴巴 · 后端开发 软性要求/加分项】\n有电商行业经验优先",
+                        "metadata": {
+                          "company": "阿里巴巴",
+                          "index": 6,
+                          "jd_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8",
+                          "position": "后端开发",
+                          "priority": "medium",
+                          "section": "soft_requirements",
+                          "strategy": "semantic"
+                        },
+                        "distance": 0.7635329961776733,
+                        "bm25_score": 0.0,
+                        "vec_norm": 0.7384148567997917,
+                        "bm25_norm": 0.0,
+                        "hybrid_score": 0.5168903997598542,
+                        "rerank_score": 0.2149
+                      },
+                      {
+                        "chunk_id": "f0427344-e282-48e4-8074-bcc9419cf414_chunk_6",
+                        "content": "【淘天集团 · AI大模型产品经理 软性要求/加分项】\n如不方便外部体验，也可附工作流、prompt说明、输入和输出的效果示意来展示",
+                        "metadata": {
+                          "company": "淘天集团",
+                          "index": 6,
+                          "jd_id": "f0427344-e282-48e4-8074-bcc9419cf414",
+                          "position": "AI大模型产品经理",
+                          "priority": "medium",
+                          "section": "soft_requirements",
+                          "strategy": "semantic"
+                        },
+                        "distance": 0.7485970262904157,
+                        "bm25_score": 0.0,
+                        "vec_norm": 0.8891581196723003,
+                        "bm25_norm": 0.0,
+                        "hybrid_score": 0.6224106837706102,
+                        "rerank_score": 0.0307
+                      },
+                      {
+                        "chunk_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a_chunk_4",
+                        "content": "【某小公司 · Java后端 硬性要求】\n大专及以上学历",
+                        "metadata": {
+                          "company": "某小公司",
+                          "index": 4,
+                          "jd_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a",
+                          "position": "Java后端",
+                          "priority": "high",
+                          "section": "hard_requirements",
+                          "strategy": "semantic"
+                        },
+                        "distance": 0.7560716867446899,
+                        "bm25_score": 0.0,
+                        "vec_norm": 0.8137191147568794,
+                        "bm25_norm": 0.0,
+                        "hybrid_score": 0.5696033803298155,
+                        "rerank_score": 0.0253
+                      }
+                    ],
+                    "query": "帮我筛几个岗位，再看看哪个需要设计经验",
+                    "filters": {},
+                    "strategy": "hybrid(70%vec+30%bm25)+reranker",
+                    "pool_k": 5,
+                    "rerank_k": 10,
+                    "pool_size": 38,
+                    "vec_only": 19,
+                    "bm25_only": 19,
+                    "both": 0,
+                    "rerank": {
+                      "enabled": true,
+                      "candidates": 5,
+                      "output": 5,
+                      "best_rerank_score": 0.3381
+                    }
+                  },
+                  "rank_result": {
+                    "rankings": [
+                      {
+                        "rank": 1,
+                        "jd_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a",
+                        "company": "某小公司",
+                        "position": "Java后端",
+                        "match_score": 79,
+                        "recommend_reason": "检索相关度较高（0.64）",
+                        "key_match": [
+                          "检索召回"
+                        ],
+                        "key_gap": [
+                          "需进一步了解详细匹配情况"
+                        ],
+                        "apply_priority": "中"
+                      },
+                      {
+                        "rank": 2,
+                        "jd_id": "f0427344-e282-48e4-8074-bcc9419cf414",
+                        "company": "淘天集团",
+                        "position": "AI大模型产品经理",
+                        "match_score": 79,
+                        "recommend_reason": "检索相关度较高（0.62）",
+                        "key_match": [
+                          "检索召回"
+                        ],
+                        "key_gap": [
+                          "需进一步了解详细匹配情况"
+                        ],
+                        "apply_priority": "中"
+                      },
+                      {
+                        "rank": 3,
+                        "jd_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8",
+                        "company": "阿里巴巴",
+                        "position": "后端开发",
+                        "match_score": 76,
+                        "recommend_reason": "检索相关度较高（0.52）",
+                        "key_match": [
+                          "检索召回"
+                        ],
+                        "key_gap": [
+                          "需进一步了解详细匹配情况"
+                        ],
+                        "apply_priority": "中"
+                      }
+                    ],
+                    "strategy_advice": "暂未发现高度匹配岗位，3 个中等匹配岗位可作为参考，建议进一步评估后再投递。",
+                    "_template_mode": true,
+                    "_coarse_filter_meta": {
+                      "input_jds": 3,
+                      "output_jds": 3,
+                      "filter_ratio": 0.0
+                    }
+                  }
+                }
+              },
+              "observation": "聚合完成"
+            }
+          },
+          "global_status": "success",
+          "replan_reason": "",
+          "replan_count": 0
+        },
+        "intent": {
+          "demands": [
+            {
+              "intent": "position_explore",
+              "entities": {
+                "search_keywords": "帮我筛几个岗位，再看看哪个需要设计经验",
+                "sort_by": "match_score",
+                "top_k": 5
+              },
+              "confidence": 0.88
+            }
+          ],
+          "needs_clarification": false,
+          "clarification_question": ""
+        },
+        "rewrite": {
+          "rewritten_query": "帮我筛几个岗位，再看看哪个需要设计经验",
+          "search_keywords": "帮我筛几个岗位，再看看哪个需要设计经验",
+          "is_follow_up": false,
+          "follow_up_type": "none",
+          "resolved_references": {}
+        },
+        "evidence_cache": [
+          {
+            "chunk_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a_chunk_5",
+            "content": "【某小公司 · Java后端 软性要求/加分项】\n有ERP系统开发经验优先",
+            "metadata": {
+              "company": "某小公司",
+              "index": 5,
+              "jd_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a",
+              "position": "Java后端",
+              "priority": "medium",
+              "section": "soft_requirements",
+              "strategy": "semantic"
+            },
+            "distance": 0.7376145720481873,
+            "bm25_score": 0.0,
+            "vec_norm": 1.0,
+            "bm25_norm": 0.0,
+            "hybrid_score": 0.7,
+            "rerank_score": 0.3381
+          },
+          {
+            "chunk_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a_chunk_2",
+            "content": "【某小公司 · Java后端 硬性要求】\n1年以上Java开发经验",
+            "metadata": {
+              "company": "某小公司",
+              "index": 2,
+              "jd_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a",
+              "position": "Java后端",
+              "priority": "high",
+              "section": "hard_requirements",
+              "strategy": "semantic"
+            },
+            "distance": 0.7427959442138672,
+            "bm25_score": 0.0,
+            "vec_norm": 0.9477063121908318,
+            "bm25_norm": 0.0,
+            "hybrid_score": 0.6633944185335822,
+            "rerank_score": 0.221
+          },
+          {
+            "chunk_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8_chunk_6",
+            "content": "【阿里巴巴 · 后端开发 软性要求/加分项】\n有电商行业经验优先",
+            "metadata": {
+              "company": "阿里巴巴",
+              "index": 6,
+              "jd_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8",
+              "position": "后端开发",
+              "priority": "medium",
+              "section": "soft_requirements",
+              "strategy": "semantic"
+            },
+            "distance": 0.7635329961776733,
+            "bm25_score": 0.0,
+            "vec_norm": 0.7384148567997917,
+            "bm25_norm": 0.0,
+            "hybrid_score": 0.5168903997598542,
+            "rerank_score": 0.2149
+          },
+          {
+            "chunk_id": "f0427344-e282-48e4-8074-bcc9419cf414_chunk_6",
+            "content": "【淘天集团 · AI大模型产品经理 软性要求/加分项】\n如不方便外部体验，也可附工作流、prompt说明、输入和输出的效果示意来展示",
+            "metadata": {
+              "company": "淘天集团",
+              "index": 6,
+              "jd_id": "f0427344-e282-48e4-8074-bcc9419cf414",
+              "position": "AI大模型产品经理",
+              "priority": "medium",
+              "section": "soft_requirements",
+              "strategy": "semantic"
+            },
+            "distance": 0.7485970262904157,
+            "bm25_score": 0.0,
+            "vec_norm": 0.8891581196723003,
+            "bm25_norm": 0.0,
+            "hybrid_score": 0.6224106837706102,
+            "rerank_score": 0.0307
+          },
+          {
+            "chunk_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a_chunk_4",
+            "content": "【某小公司 · Java后端 硬性要求】\n大专及以上学历",
+            "metadata": {
+              "company": "某小公司",
+              "index": 4,
+              "jd_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a",
+              "position": "Java后端",
+              "priority": "high",
+              "section": "hard_requirements",
+              "strategy": "semantic"
+            },
+            "distance": 0.7560716867446899,
+            "bm25_score": 0.0,
+            "vec_norm": 0.8137191147568794,
+            "bm25_norm": 0.0,
+            "hybrid_score": 0.5696033803298155,
+            "rerank_score": 0.0253
+          }
+        ],
+        "evidence_cache_query": "帮我筛几个岗位，再看看哪个需要设计经验",
+        "tool_outputs": [
+          {
+            "task_id": "T0",
+            "tool": "kb_retrieve",
+            "description": "检索相关岗位JD（用于explore筛选）",
+            "result": {
+              "chunks": [
+                {
+                  "chunk_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a_chunk_5",
+                  "content": "【某小公司 · Java后端 软性要求/加分项】\n有ERP系统开发经验优先",
+                  "source": "某小公司-Java后端",
+                  "metadata": {
+                    "company": "某小公司",
+                    "position": "Java后端"
+                  }
+                },
+                {
+                  "chunk_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a_chunk_2",
+                  "content": "【某小公司 · Java后端 硬性要求】\n1年以上Java开发经验",
+                  "source": "某小公司-Java后端",
+                  "metadata": {
+                    "company": "某小公司",
+                    "position": "Java后端"
+                  }
+                },
+                {
+                  "chunk_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8_chunk_6",
+                  "content": "【阿里巴巴 · 后端开发 软性要求/加分项】\n有电商行业经验优先",
+                  "source": "阿里巴巴-后端开发",
+                  "metadata": {
+                    "company": "阿里巴巴",
+                    "position": "后端开发"
+                  }
+                },
+                {
+                  "chunk_id": "f0427344-e282-48e4-8074-bcc9419cf414_chunk_6",
+                  "content": "【淘天集团 · AI大模型产品经理 软性要求/加分项】\n如不方便外部体验，也可附工作流、prompt说明、输入和输出的效果示意来展示",
+                  "source": "淘天集团-AI大模型产品经理",
+                  "metadata": {
+                    "company": "淘天集团",
+                    "position": "AI大模型产品经理"
+                  }
+                },
+                {
+                  "chunk_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a_chunk_4",
+                  "content": "【某小公司 · Java后端 硬性要求】\n大专及以上学历",
+                  "source": "某小公司-Java后端",
+                  "metadata": {
+                    "company": "某小公司",
+                    "position": "Java后端"
+                  }
+                }
+              ],
+              "query": "帮我筛几个岗位，再看看哪个需要设计经验",
+              "filters": {},
+              "strategy": "hybrid(70%vec+30%bm25)+reranker",
+              "pool_k": 5,
+              "rerank_k": 10,
+              "pool_size": 38,
+              "vec_only": 19,
+              "bm25_only": 19,
+              "both": 0,
+              "rerank": {
+                "enabled": true,
+                "candidates": 5,
+                "output": 5,
+                "best_rerank_score": 0.3381
+              }
+            }
+          },
+          {
+            "task_id": "T1",
+            "tool": "global_rank",
+            "description": "对检索到的岗位按匹配度排序，识别哪些岗位需要设计经验",
+            "result": {
+              "rankings": [
+                {
+                  "company": "某小公司",
+                  "position": "Java后端",
+                  "match_score": 79,
+                  "recommend_reason": "检索相关度较高（0.64）",
+                  "key_match": [
+                    "检索召回"
+                  ],
+                  "key_gap": [
+                    "需进一步了解详细匹配情况"
+                  ],
+                  "apply_priority": "中"
+                },
+                {
+                  "company": "淘天集团",
+                  "position": "AI大模型产品经理",
+                  "match_score": 79,
+                  "recommend_reason": "检索相关度较高（0.62）",
+                  "key_match": [
+                    "检索召回"
+                  ],
+                  "key_gap": [
+                    "需进一步了解详细匹配情况"
+                  ],
+                  "apply_priority": "中"
+                },
+                {
+                  "company": "阿里巴巴",
+                  "position": "后端开发",
+                  "match_score": 76,
+                  "recommend_reason": "检索相关度较高（0.52）",
+                  "key_match": [
+                    "检索召回"
+                  ],
+                  "key_gap": [
+                    "需进一步了解详细匹配情况"
+                  ],
+                  "apply_priority": "中"
+                }
+              ],
+              "strategy_advice": "暂未发现高度匹配岗位，3 个中等匹配岗位可作为参考，建议进一步评估后再投递。",
+              "_template_mode": true,
+              "_coarse_filter_meta": {
+                "input_jds": 3,
+                "output_jds": 3,
+                "filter_ratio": 0.0
+              }
+            }
+          },
+          {
+            "task_id": "T2",
+            "tool": null,
+            "description": "聚合检索结果和排序结果，生成回复素材",
+            "result": {
+              "aggregation": {
+                "kb_result": {
+                  "chunks": [
+                    {
+                      "chunk_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a_chunk_5",
+                      "content": "【某小公司 · Java后端 软性要求/加分项】\n有ERP系统开发经验优先",
+                      "metadata": {
+                        "company": "某小公司",
+                        "index": 5,
+                        "jd_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a",
+                        "position": "Java后端",
+                        "priority": "medium",
+                        "section": "soft_requirements",
+                        "strategy": "semantic"
+                      },
+                      "distance": 0.7376145720481873,
+                      "bm25_score": 0.0,
+                      "vec_norm": 1.0,
+                      "bm25_norm": 0.0,
+                      "hybrid_score": 0.7,
+                      "rerank_score": 0.3381
+                    },
+                    {
+                      "chunk_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a_chunk_2",
+                      "content": "【某小公司 · Java后端 硬性要求】\n1年以上Java开发经验",
+                      "metadata": {
+                        "company": "某小公司",
+                        "index": 2,
+                        "jd_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a",
+                        "position": "Java后端",
+                        "priority": "high",
+                        "section": "hard_requirements",
+                        "strategy": "semantic"
+                      },
+                      "distance": 0.7427959442138672,
+                      "bm25_score": 0.0,
+                      "vec_norm": 0.9477063121908318,
+                      "bm25_norm": 0.0,
+                      "hybrid_score": 0.6633944185335822,
+                      "rerank_score": 0.221
+                    },
+                    {
+                      "chunk_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8_chunk_6",
+                      "content": "【阿里巴巴 · 后端开发 软性要求/加分项】\n有电商行业经验优先",
+                      "metadata": {
+                        "company": "阿里巴巴",
+                        "index": 6,
+                        "jd_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8",
+                        "position": "后端开发",
+                        "priority": "medium",
+                        "section": "soft_requirements",
+                        "strategy": "semantic"
+                      },
+                      "distance": 0.7635329961776733,
+                      "bm25_score": 0.0,
+                      "vec_norm": 0.7384148567997917,
+                      "bm25_norm": 0.0,
+                      "hybrid_score": 0.5168903997598542,
+                      "rerank_score": 0.2149
+                    },
+                    {
+                      "chunk_id": "f0427344-e282-48e4-8074-bcc9419cf414_chunk_6",
+                      "content": "【淘天集团 · AI大模型产品经理 软性要求/加分项】\n如不方便外部体验，也可附工作流、prompt说明、输入和输出的效果示意来展示",
+                      "metadata": {
+                        "company": "淘天集团",
+                        "index": 6,
+                        "jd_id": "f0427344-e282-48e4-8074-bcc9419cf414",
+                        "position": "AI大模型产品经理",
+                        "priority": "medium",
+                        "section": "soft_requirements",
+                        "strategy": "semantic"
+                      },
+                      "distance": 0.7485970262904157,
+                      "bm25_score": 0.0,
+                      "vec_norm": 0.8891581196723003,
+                      "bm25_norm": 0.0,
+                      "hybrid_score": 0.6224106837706102,
+                      "rerank_score": 0.0307
+                    },
+                    {
+                      "chunk_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a_chunk_4",
+                      "content": "【某小公司 · Java后端 硬性要求】\n大专及以上学历",
+                      "metadata": {
+                        "company": "某小公司",
+                        "index": 4,
+                        "jd_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a",
+                        "position": "Java后端",
+                        "priority": "high",
+                        "section": "hard_requirements",
+                        "strategy": "semantic"
+                      },
+                      "distance": 0.7560716867446899,
+                      "bm25_score": 0.0,
+                      "vec_norm": 0.8137191147568794,
+                      "bm25_norm": 0.0,
+                      "hybrid_score": 0.5696033803298155,
+                      "rerank_score": 0.0253
+                    }
+                  ],
+                  "query": "帮我筛几个岗位，再看看哪个需要设计经验",
+                  "filters": {},
+                  "strategy": "hybrid(70%vec+30%bm25)+reranker",
+                  "pool_k": 5,
+                  "rerank_k": 10,
+                  "pool_size": 38,
+                  "vec_only": 19,
+                  "bm25_only": 19,
+                  "both": 0,
+                  "rerank": {
+                    "enabled": true,
+                    "candidates": 5,
+                    "output": 5,
+                    "best_rerank_score": 0.3381
+                  }
+                },
+                "rank_result": {
+                  "rankings": [
+                    {
+                      "rank": 1,
+                      "jd_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a",
+                      "company": "某小公司",
+                      "position": "Java后端",
+                      "match_score": 79,
+                      "recommend_reason": "检索相关度较高（0.64）",
+                      "key_match": [
+                        "检索召回"
+                      ],
+                      "key_gap": [
+                        "需进一步了解详细匹配情况"
+                      ],
+                      "apply_priority": "中"
+                    },
+                    {
+                      "rank": 2,
+                      "jd_id": "f0427344-e282-48e4-8074-bcc9419cf414",
+                      "company": "淘天集团",
+                      "position": "AI大模型产品经理",
+                      "match_score": 79,
+                      "recommend_reason": "检索相关度较高（0.62）",
+                      "key_match": [
+                        "检索召回"
+                      ],
+                      "key_gap": [
+                        "需进一步了解详细匹配情况"
+                      ],
+                      "apply_priority": "中"
+                    },
+                    {
+                      "rank": 3,
+                      "jd_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8",
+                      "company": "阿里巴巴",
+                      "position": "后端开发",
+                      "match_score": 76,
+                      "recommend_reason": "检索相关度较高（0.52）",
+                      "key_match": [
+                        "检索召回"
+                      ],
+                      "key_gap": [
+                        "需进一步了解详细匹配情况"
+                      ],
+                      "apply_priority": "中"
+                    }
+                  ],
+                  "strategy_advice": "暂未发现高度匹配岗位，3 个中等匹配岗位可作为参考，建议进一步评估后再投递。",
+                  "_template_mode": true,
+                  "_coarse_filter_meta": {
+                    "input_jds": 3,
+                    "output_jds": 3,
+                    "filter_ratio": 0.0
+                  }
+                }
+              }
+            }
+          }
+        ],
+        "final_aggregation_prompt": {
+          "system_prompt": "你是一位专业的求职顾问。请基于以下工具执行结果，给用户一个清晰、有帮助的回复。\n要求：\n1. 先直接回答用户的问题（是/否/有/没有），不要绕弯子，不要重复用户的原话\n2. 如果有匹配分析结果，给出具体的分数和建议\n3. 如果有检索结果，基于事实回答，不要编造\n4. 【强制】引用信息时必须标注来源。每个引用的事实后面都要跟 [来源：公司名-岗位名] 格式。   kb_retrieve 结果的 chunks 中带有 'source' 字段（如'字节跳动-AI产品经理'），请直接使用。   external_search 结果带有 'source_name' 字段，也请直接使用。\n5. 当本地知识库与外部搜索结果冲突时，请并列呈现两种说法并标注各自来源，不要替用户做判断\n6. 语气友好、专业、结构化",
+          "user_prompt": "【用户问题】\n帮我筛几个岗位，再看看哪个需要设计经验\n\n【工具执行结果】\n[{\"task_id\": \"T0\", \"tool\": \"kb_retrieve\", \"description\": \"检索相关岗位JD（用于explore筛选）\", \"result\": {\"chunks\": [{\"chunk_id\": \"45bd2600-af57-45fe-a96e-c6cae6838c7a_chunk_5\", \"content\": \"【某小公司 · Java后端 软性要求/加分项】\\n有ERP系统开发经验优先\", \"source\": \"某小公司-Java后端\", \"metadata\": {\"company\": \"某小公司\", \"position\": \"Java后端\"}}, {\"chunk_id\": \"45bd2600-af57-45fe-a96e-c6cae6838c7a_chunk_2\", \"content\": \"【某小公司 · Java后端 硬性要求】\\n1年以上Java开发经验\", \"source\": \"某小公司-Java后端\", \"metadata\": {\"company\": \"某小公司\", \"position\": \"Java后端\"}}, {\"chunk_id\": \"9cde8355-dcc0-434e-97c4-67dfc5dae5b8_chunk_6\", \"content\": \"【阿里巴巴 · 后端开发 软性要求/加分项】\\n有电商行业经验优先\", \"source\": \"阿里巴巴-后端开发\", \"metadata\": {\"company\": \"阿里巴巴\", \"position\": \"后端开发\"}}, {\"chunk_id\": \"f0427344-e282-48e4-8074-bcc9419cf414_chunk_6\", \"content\": \"【淘天集团 · AI大模型产品经理 软性要求/加分项】\\n如不方便外部体验，也可附工作流、prompt说明、输入和输出的效果示意来展示\", \"source\": \"淘天集团-AI大模型产品经理\", \"metadata\": {\"company\": \"淘天集团\", \"position\": \"AI大模型产品经理\"}}, {\"chunk_id\": \"45bd2600-af57-45fe-a96e-c6cae6838c7a_chunk_4\", \"content\": \"【某小公司 · Java后端 硬性要求】\\n大专及以上学历\", \"source\": \"某小公司-Java后端\", \"metadata\": {\"company\": \"某小公司\", \"position\": \"Java后端\"}}], \"query\": \"帮我筛几个岗位，再看看哪个需要设计经验\", \"filters\": {}, \"strategy\": \"hybrid(70%vec+30%bm25)+reranker\", \"pool_k\": 5, \"rerank_k\": 10, \"pool_size\": 38, \"vec_only\": 19, \"bm25_only\": 19, \"both\": 0, \"rerank\": {\"enabled\": true, \"candidates\": 5, \"output\": 5, \"best_rerank_score\": 0.3381}}}, {\"task_id\": \"T1\", \"tool\": \"global_rank\", \"description\": \"对检索到的岗位按匹配度排序，识别哪些岗位需要设计经验\", \"result\": {\"rankings\": [{\"company\": \"某小公司\", \"position\": \"Java后端\", \"match_score\": 79, \"recommend_reason\": \"检索相关度较高（0.64）\", \"key_match\": [\"检索召回\"], \"key_gap\": [\"需进一步了解详细匹配情况\"], \"apply_priority\": \"中\"}, {\"company\": \"淘天集团\", \"position\": \"AI大模型产品经理\", \"match_score\": 79, \"recommend_reason\": \"检索相关度较高（0.62）\", \"key_match\": [\"检索召回\"], \"key_gap\": [\"需进一步了解详细匹配情况\"], \"apply_priority\": \"中\"}, {\"company\": \"阿里巴巴\", \"position\": \"后端开发\", \"match_score\": 76, \"recommend_reason\": \"检索相关度较高（0.52）\", \"key_match\": [\"检索召回\"], \"key_gap\": [\"需进一步了解详细匹配情况\"], \"apply_priority\": \"中\"}], \"strategy_advice\": \"暂未发现高度匹配岗位，3 个中等匹配岗位可作为参考，建议进一步评估后再投递。\", \"_template_mode\": true, \"_coarse_filter_meta\": {\"input_jds\": 3, \"output_jds\": 3, \"filter_ratio\": 0.0}}}, {\"task_id\": \"T2\", \"tool\": null, \"description\": \"聚合检索结果和排序结果，生成回复素材\", \"result\": {\"aggregation\": {\"kb_result\": {\"chunks\": [{\"chunk_id\": \"45bd2600-af57-45fe-a96e-c6cae6838c7a_chunk_5\", \"content\": \"【某小公司 · Java后端 软性要求/加分项】\\n有ERP系统开发经验优先\", \"metadata\": {\"company\": \"某小公司\", \"index\": 5, \"jd_id\": \"45bd2600-af57-45fe-a96e-c6cae6838c7a\", \"position\": \"Java后端\", \"priority\": \"medium\", \"section\": \"soft_requirements\", \"strategy\": \"semantic\"}, \"distance\": 0.7376145720481873, \"bm25_score\": 0.0, \"vec_norm\": 1.0, \"bm25_norm\": 0.0, \"hybrid_score\": 0.7, \"rerank_score\": 0.3381}, {\"chunk_id\": \"45bd2600-af57-45fe-a96e-c6cae6838c7a_chunk_2\", \"content\": \"【某小公司 · Java后端 硬性要求】\\n1年以上Java开发经验\", \"metadata\": {\"company\": \"某小公司\", \"index\": 2, \"jd_id\": \"45bd2600-af57-45fe-a96e-c6cae6838c7a\", \"position\": \"Java后端\", \"priority\": \"high\", \"section\": \"hard_requiremen\n\n请生成回复："
+        }
+      },
+      "usage": {
+        "prompt_tokens": 7870,
+        "completion_tokens": 6207,
+        "total_tokens": 14077
+      },
+      "_time": 87.23742842674255,
+      "type": "done"
+    }
+  ],
+  "timestamp": "2026-06-04T17:15:30.993023",
+  "prompt_tokens": 7870,
+  "completion_tokens": 6207,
+  "total_tokens": 14077,
+  "tool_execution_success_rate": 1.0,
+  "tool_correct_rate": 0.67
+}

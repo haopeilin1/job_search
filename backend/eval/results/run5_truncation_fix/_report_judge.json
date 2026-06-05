@@ -1,0 +1,154 @@
+{
+  "summary": {
+    "total_cases": 6,
+    "resolved_count": 6,
+    "resolved_rate": 1.0
+  },
+  "cases": [
+    {
+      "resolved": true,
+      "scores": {
+        "intent_accuracy": 5,
+        "slot_accuracy": 5,
+        "tool_correctness": 5,
+        "tool_execution": 5,
+        "response_accuracy": 5,
+        "response_completeness": 5,
+        "citation_quality": 3,
+        "coherence": 5,
+        "tone": 4,
+        "efficiency": 5,
+        "faithfulness": 5,
+        "answer_relevance": 5
+      },
+      "reason": "系统准确识别了assess意图并调用kb_retrieve和match_analyze工具，槽位提取正确。回复基于检索到的JD证据和简历，给出了详细的匹配度分析、差距和提升建议，所有事实均有证据支撑，无编造。语气专业但略模板化，引用标注未使用数字格式，但不影响整体准确性。所有关键维度得分≥3，未触发否决项，通过。",
+      "case_id": "eval_chen_02",
+      "rule_hit": null,
+      "veto": false,
+      "needs_rag": true,
+      "judge_prompt": "【用户消息】字节跳动的AI产品经理我够格吗\n\n【期望意图(gold)】['assess']\n【期望槽位(gold_slots)】{\"company\": \"字节跳动\", \"position\": \"AI产品经理\"}\n【期望工具(expected_tools)】['kb_retrieve', 'match_analyze']\n【系统识别意图(pred)】['match_assess']\n【实际调用工具】[{'tool': 'kb_retrieve', 'status': '✅'}, {'tool': 'match_analyze', 'status': '✅'}]\n\n【测试场景】有简历_单JD匹配_知识库命中\n【测试备注】指定JD在库中(ID=5)，期望检索后做match_analyze\n【跟进类型】\n\n【简历信息】\n姓名：陈雨桐\r\n教育背景\r\n江南科技大学\r\n信息工程学院·软件工程（AI应用方向）·硕士\r\n2024.09-2027.06（预计）\r\nGPA: 3.4/4.0 | 主修：机器学习基础、数据库系统、软件项目管理、人机交互设计\r\n\r\n云溪大学\r\n计算机学院·信息管理与信息系统·本科\r\n2020.09-2024.06\r\n荣誉：两次校级三等奖学金 | 主修：数据结构、管理学原理、Web开发技术、统计学\r\n\r\n项目经历\r\n求职助手小程序 — 智能简历匹配与面试模拟工具\r\n2025.03-2025.11\r\n产品经理 | 三人小组\r\n- 需求分析：设计调研问卷回收40余份有效样本，梳理\"简历评估\"与\"定向面试模拟\"核心需求，使用Figma完成低保真原型，输出产品需求文档。\r\n- AI匹配策略：调研开源Embedding模型实现简历与JD语义相似度计算，探索多维度匹配方案，对比整篇匹配与分块匹配效果差异，持续优化推荐排序。\r\n- 内容生成：基于大模型AI设计结构化Prompt，融合岗位关键词与简历信息输出个性化面试题，建立追问机制增强模拟面试针对性。\r\n- 测试验证：组织20人内测收集用户路径与反馈数据，针对复杂PDF格式设计补充录入机制，完成从需求分析到上线测试的完整产品闭环。\r\n\r\n教务问答机器人 — 基于校内政策的RAG问答系统\r\n2024.10-2025.02\r\n产品设计与测试 | 实验室课题项目\r\n- 知识库构建：收集整理教务处政策文件、培养方案及历史问答共80余份，完成扫描件OCR识别、格式转换与结构化清洗，建立可检索的领域知识库。\r\n- 交互设计：设计Web端对话界面，参考主流客服产品布局增加\"推荐提问\"推荐模块降低投入成本，针对政策类回答设计溯源展示功能增强可信度。\r\n- 效果测试：参与搭建检索增强生成链路，完成实验环境下多轮问答测试，验证标准政策类问题回答准确率，整理测试数据与优化建议形成可复用方案。\r\n\r\n校园经历\r\n江南科技大学软件学院学生会·宣传部干事\r\n2024.09-2025.06\r\n- 负责学院官方公众号推文排版与发布，累计输出活动宣传稿件10余篇；协助组织院内编程比赛，负责报名统计与现场签到。\r\n\r\n云溪大学图书馆·勤工助学岗\r\n2022.03-2023.06\r\n- 负责电子阅览室日常值班，协助同学解决基础网络与设备使用问题；参与旧期刊电子目录录入与数据整理工作。\r\n\r\n获奖情况\r\n- 2025.05 江南科技大学研究生学业三等奖学金\r\n- 2024.11 学院AI应用创新赛（课程组）三等奖\r\n- 2022.06 云溪大学优秀共青团员\r\n- 2022.12 校级网页设计比赛优秀奖\r\n\r\n个人技能\r\n- 产品工具：熟练使用Figma进行原型与交互演示，了解Axure基础操作；能够使用Xmind梳理产品架构，通过腾讯文档/飞书写PRD。\r\n- 技术理解：了解大语言模型在应用层的落地方式，具备Prompt Engineering实践经验；理解RAG基本架构与工作流程，了解Embedding与向量检索作用。\r\n- 语言能力：英语CET-4（525分），可阅读英文技术文档与产品资料。\r\n- 办公技能：熟练使用Office办公软件，掌握Excel数据透视表等基础数据分析功能。\n\n【相关JD信息】\n知识库中 字节跳动 的JD：AI产品经理（实习生招聘）(ID=5)\n\n【检索到的证据 chunks】（共5条，用于评判 faithfulness）\n[证据1] ID=ac9973c8-01be-4cd6-9a99-097873a59cf0_chunk_5 [字节跳动/AI产品经理/]\n【字节跳动 · AI产品经理 硬性要求】\n具备极强的逻辑拆解力，能像指挥交响乐一样控制模型输出\n\n[证据2] ID=ac9973c8-01be-4cd6-9a99-097873a59cf0_chunk_3 [字节跳动/AI产品经理/]\n【字节跳动 · AI产品经理 硬性要求】\n熟练掌握Transformer、Token、RAG等核心概念\n\n[证据3] ID=ac9973c8-01be-4cd6-9a99-097873a59cf0_chunk_8 [字节跳动/AI产品经理/]\n【字节跳动 · AI产品经理 关键词】\nPython, PyTorch, LangChain, RAG, Agent, 产品经理, AI\n\n[证据4] ID=ac9973c8-01be-4cd6-9a99-097873a59cf0_chunk_1 [字节跳动/AI产品经理/]\n【字节跳动 · AI产品经理 岗位职责】\n1. 定义Agent框架：设计Planning、Reflection、Memory策略。2. 重塑LUI交互：探索意图驱动的流式UI与动态组件生成。3. 编排超级工作流：深入客服、数据、ERP等实战场景。4. 模型精细化调教：编写结构化Prompt，配合RAG、Function Calling。5. 数据驱动进化：建立交互好感度与任务成功率双重指标。\n\n[证据5] ID=ac9973c8-01be-4cd6-9a99-097873a59cf0_chunk_6 [字节跳动/AI产品经理/]\n【字节跳动 · AI产品经理 硬性要求】\n24小时高频冲浪，对新技术有雷达般的嗅觉\n\n【注意】请基于上述【检索到的证据 chunks】评判 faithfulness（忠实度）。\n如果系统回复中的事实声明在上述证据中找不到支撑，则 faithfulness 应低分。\n如果检索结果为空/极少，系统回复\"未找到\"或\"无法确定\"是合理的，faithfulness 应高分。\n\n【系统回复】\n暂时不够格。\n\n根据匹配分析，您与该岗位的匹配度为 **52 分**，标签为“略有差距” [来源：match_analyze]。虽然您具备一定的基础，但距离字节跳动 AI 产品经理的硬性要求仍有显著不足。以下是基于岗位jd 与您简历的详细对比分析：\n\n### 1. 核心差距分析\n该岗位对技术深度和实战经验有较高要求，目前您的简历在以下关键维度尚未达标：\n\n*   **核心技术概念：** 岗位要求熟练掌握 Transformer、Token、RAG 等核心概念 [来源：字节跳动-AI 产品经理]，而您缺乏对这些概念的深入理解 [来源：match_analyze]。\n*   **工具与编程能力：** 岗位关键词明确包含 Python, PyTorch, LangChain 等 [来源：字节跳动-AI 产品经理]，但您无这些工具的实际运用经验，简历仅提及技术了解而无编程实践记录 [来源：match_analyze]。\n*   **框架设计与交互：** 岗位职责涉及定义 Agent 框架（Planning、Reflection、Memory）[来源：字节跳动-AI 产品经理] 以及重塑 LUI 交互（流式 UI、动态组件）[来源：字节跳动-AI 产品经理]，您目前无相关设计或落地经验 [来源：match_analyze]。\n*   **场景与数据驱动：** 岗位需要编排超级工作流（客服、数据、ERP 等）[来源：字节跳动-AI 产品经理] 并建立数据驱动指标（交互好感度、任务成功率）[来源：字节跳动-AI 产品经理]，您无相关实战场景经历及指标建立经验 [来源：match_analyze]。\n*   **综合素质：** 岗位要求具备极强的逻辑拆解力 [来源：字节跳动-AI 产品经理] 以及 24 小时高频冲浪、对新技术有雷达般的嗅觉 [来源：字节跳动-AI 产品经理]，您目前无全职工作经验且未体现新技术敏锐度 [来源：match_analyze]。\n\n### 2. 您的现有优势\n尽管存在差距，您在以下方面已具备一定基础，值得保持：\n*   掌握 RAG、Prompt Engineering、Embedding 等技术概念 [来源：match_analyze]。\n*   具备产品经理通用技能，如需求分析、原型设计（Figma）、测试验证及知识库构建 [来源：match_analyze]。\n\n### 3. 提升建议\n为了达到该岗位的录用标准，建议您重点补充以下能力：\n*   **深化技术理解：** 深入学习 Transformer、Token 等底层原理，不仅限于概念了解 [来源：字节跳动-AI 产品经理]。\n*   **强化工程实践：** 实际运用 Python、PyTorch、LangChain 等工具进行项目开发，弥补编程实践记录的缺失 [来源：字节跳动-AI 产品经理]。\n*   **积累实战案例：** 尝试设计 Agent 框架（Planning/Reflection/Memory）[来源：字节跳动-AI 产品经理]，并参与超级工作流编排（如客服、ERP 场景）[来源：字节跳动-AI 产品经理]。\n*   **提升交互与数据能力：** 探索意图驱动的流式 UI 设计 [来源：字节跳动-AI 产品经理]，并学习如何建立交互好感度与任务成功率双重指标 [来源：字节跳动-AI 产品经理]。\n*   **保持技术敏锐度：** 培养 24 小时高频冲浪的习惯，展现对新技术的雷达般嗅觉 [来源：字节跳动-AI 产品经理]。\n\n建议您先通过实际项目弥补技术与经验短板，再尝试投递此类高阶岗位。\n\n请严格按照系统提示中的JSON格式输出评分结果。",
+      "raw_output": "{\n  \"scores\": {\n    \"intent_accuracy\": 5,\n    \"slot_accuracy\": 5,\n    \"tool_correctness\": 5,\n    \"tool_execution\": 5,\n    \"response_accuracy\": 5,\n    \"response_completeness\": 5,\n    \"citation_quality\": 3,\n    \"coherence\": 5,\n    \"tone\": 4,\n    \"efficiency\": 5,\n    \"faithfulness\": 5,\n    \"answer_relevance\": 5\n  },\n  \"resolved\": true,\n  \"reason\": \"系统准确识别了assess意图并调用kb_retrieve和match_analyze工具，槽位提取正确。回复基于检索到的JD证据和简历，给出了详细的匹配度分析、差距和提升建议，所有事实均有证据支撑，无编造。语气专业但略模板化，引用标注未使用数字格式，但不影响整体准确性。所有关键维度得分≥3，未触发否决项，通过。\"\n}"
+    },
+    {
+      "resolved": true,
+      "scores": {
+        "intent_accuracy": 4,
+        "slot_accuracy": 5,
+        "tool_correctness": 4,
+        "tool_execution": 4,
+        "response_accuracy": 3,
+        "response_completeness": 4,
+        "citation_quality": 3,
+        "coherence": 5,
+        "tone": 4,
+        "efficiency": 4,
+        "faithfulness": 4,
+        "answer_relevance": 5
+      },
+      "reason": "系统整体表现良好。意图识别准确（interview_prepare 匹配 prepare），槽位完全正确。工具调用覆盖了预期工具（kb_retrieve、interview_gen），额外调用了 match_analyze 提供了有价值的匹配诊断，但略有冗余。工具执行效果合理，检索结果相关，面试题生成针对性强。回复内容基本准确，但匹配诊断中关于'通常该岗位要求2年以上经验'与 JD 实习生性质不符，略有偏差，因此 response_accuracy 扣至3分。回复完整性较好，涵盖了准备清单、面试题和改进建议。引用标注虽未精确到 chunk 编号，但来源正确，无编造。整体连贯、专业，效率正常。未触发否决项，关键维度均≥3分，通过。",
+      "case_id": "eval_chen_04",
+      "rule_hit": null,
+      "veto": false,
+      "needs_rag": true,
+      "judge_prompt": "【用户消息】面字节AI产品经理要准备什么\n\n【期望意图(gold)】['prepare']\n【期望槽位(gold_slots)】{\"company\": \"字节跳动\", \"position\": \"AI产品经理\"}\n【期望工具(expected_tools)】['kb_retrieve', 'interview_gen']\n【系统识别意图(pred)】['interview_prepare']\n【实际调用工具】[{'tool': 'kb_retrieve', 'status': '✅'}, {'tool': 'match_analyze', 'status': '✅'}, {'tool': 'interview_gen', 'status': '✅'}]\n\n【测试场景】面试准备_指定岗位\n【测试备注】期望生成针对性面试题\n【跟进类型】\n\n【简历信息】\n姓名：陈雨桐\r\n教育背景\r\n江南科技大学\r\n信息工程学院·软件工程（AI应用方向）·硕士\r\n2024.09-2027.06（预计）\r\nGPA: 3.4/4.0 | 主修：机器学习基础、数据库系统、软件项目管理、人机交互设计\r\n\r\n云溪大学\r\n计算机学院·信息管理与信息系统·本科\r\n2020.09-2024.06\r\n荣誉：两次校级三等奖学金 | 主修：数据结构、管理学原理、Web开发技术、统计学\r\n\r\n项目经历\r\n求职助手小程序 — 智能简历匹配与面试模拟工具\r\n2025.03-2025.11\r\n产品经理 | 三人小组\r\n- 需求分析：设计调研问卷回收40余份有效样本，梳理\"简历评估\"与\"定向面试模拟\"核心需求，使用Figma完成低保真原型，输出产品需求文档。\r\n- AI匹配策略：调研开源Embedding模型实现简历与JD语义相似度计算，探索多维度匹配方案，对比整篇匹配与分块匹配效果差异，持续优化推荐排序。\r\n- 内容生成：基于大模型AI设计结构化Prompt，融合岗位关键词与简历信息输出个性化面试题，建立追问机制增强模拟面试针对性。\r\n- 测试验证：组织20人内测收集用户路径与反馈数据，针对复杂PDF格式设计补充录入机制，完成从需求分析到上线测试的完整产品闭环。\r\n\r\n教务问答机器人 — 基于校内政策的RAG问答系统\r\n2024.10-2025.02\r\n产品设计与测试 | 实验室课题项目\r\n- 知识库构建：收集整理教务处政策文件、培养方案及历史问答共80余份，完成扫描件OCR识别、格式转换与结构化清洗，建立可检索的领域知识库。\r\n- 交互设计：设计Web端对话界面，参考主流客服产品布局增加\"推荐提问\"推荐模块降低投入成本，针对政策类回答设计溯源展示功能增强可信度。\r\n- 效果测试：参与搭建检索增强生成链路，完成实验环境下多轮问答测试，验证标准政策类问题回答准确率，整理测试数据与优化建议形成可复用方案。\r\n\r\n校园经历\r\n江南科技大学软件学院学生会·宣传部干事\r\n2024.09-2025.06\r\n- 负责学院官方公众号推文排版与发布，累计输出活动宣传稿件10余篇；协助组织院内编程比赛，负责报名统计与现场签到。\r\n\r\n云溪大学图书馆·勤工助学岗\r\n2022.03-2023.06\r\n- 负责电子阅览室日常值班，协助同学解决基础网络与设备使用问题；参与旧期刊电子目录录入与数据整理工作。\r\n\r\n获奖情况\r\n- 2025.05 江南科技大学研究生学业三等奖学金\r\n- 2024.11 学院AI应用创新赛（课程组）三等奖\r\n- 2022.06 云溪大学优秀共青团员\r\n- 2022.12 校级网页设计比赛优秀奖\r\n\r\n个人技能\r\n- 产品工具：熟练使用Figma进行原型与交互演示，了解Axure基础操作；能够使用Xmind梳理产品架构，通过腾讯文档/飞书写PRD。\r\n- 技术理解：了解大语言模型在应用层的落地方式，具备Prompt Engineering实践经验；理解RAG基本架构与工作流程，了解Embedding与向量检索作用。\r\n- 语言能力：英语CET-4（525分），可阅读英文技术文档与产品资料。\r\n- 办公技能：熟练使用Office办公软件，掌握Excel数据透视表等基础数据分析功能。\n\n【相关JD信息】\n知识库中 字节跳动 的JD：AI产品经理（实习生招聘）(ID=5)\n\n【检索到的证据 chunks】（共5条，用于评判 faithfulness）\n[证据1] ID=ac9973c8-01be-4cd6-9a99-097873a59cf0_chunk_2 [字节跳动/AI产品经理/]\n【字节跳动 · AI产品经理 硬性要求】\n本科及以上学历，兼具C端AIGC敏锐度与B端SaaS/RPA逻辑功底\n\n[证据2] ID=ac9973c8-01be-4cd6-9a99-097873a59cf0_chunk_5 [字节跳动/AI产品经理/]\n【字节跳动 · AI产品经理 硬性要求】\n具备极强的逻辑拆解力，能像指挥交响乐一样控制模型输出\n\n[证据3] ID=ac9973c8-01be-4cd6-9a99-097873a59cf0_chunk_8 [字节跳动/AI产品经理/]\n【字节跳动 · AI产品经理 关键词】\nPython, PyTorch, LangChain, RAG, Agent, 产品经理, AI\n\n[证据4] ID=ac9973c8-01be-4cd6-9a99-097873a59cf0_chunk_0 [字节跳动/AI产品经理/]\n公司：字节跳动，岗位：AI产品经理，地点：北京，薪资：30k-60k\n\n[证据5] ID=ac9973c8-01be-4cd6-9a99-097873a59cf0_chunk_6 [字节跳动/AI产品经理/]\n【字节跳动 · AI产品经理 硬性要求】\n24小时高频冲浪，对新技术有雷达般的嗅觉\n\n【注意】请基于上述【检索到的证据 chunks】评判 faithfulness（忠实度）。\n如果系统回复中的事实声明在上述证据中找不到支撑，则 faithfulness 应低分。\n如果检索结果为空/极少，系统回复\"未找到\"或\"无法确定\"是合理的，faithfulness 应高分。\n\n【系统回复】\n有具体的准备重点，但当前匹配度较低。\n\n### 1. 匹配度诊断\n根据简历与岗位要求的分析，当前匹配评分为 **36 分**，标签为 **不匹配**。\n*   **优势领域**：产品需求分析与原型设计（Figma）、用户调研、RAG 知识库构建、Prompt Engineering、项目管理及基础数据分析。\n*   **核心短板**：\n    1.  缺乏 Python、PyTorch、LangChain 等 AI 开发框架的实际编程经验。\n    2.  无 B 端 SaaS 或 RPA 产品的设计交付经验。\n    3.  无 C 端 AIGC 产品（如智能助手）的完整设计经验。\n    4.  无 Agent 相关项目经验。\n    5.  未体现对前沿 AI 技术的主动追踪与敏锐感知。\n    6.  尚未毕业，无全职工作经验，通常该岗位要求 2 年以上经验。\n\n### 2. 核心准备清单（基于 JD 硬性要求）\n针对字节该岗位，你需要重点准备以下内容：\n*   **学历与思维**：需具备本科及以上学历，且拥有极强的逻辑拆解力，能像指挥交响乐一样控制模型输出 [来源：字节跳动-AI 产品经理]。\n*   **技术栈储备**：必须熟悉 Python, PyTorch, LangChain, RAG, Agent 等关键词及相关技术实现 [来源：字节跳动-AI 产品经理]。\n*   **产品经验**：需兼具 C 端 AIGC 敏锐度与 B 端 SaaS/RPA 逻辑功底 [来源：字节跳动-AI 产品经理]。\n*   **行业嗅觉**：需保持 24 小时高频冲浪，对新技术有雷达般的嗅觉 [来源：字节跳动-AI 产品经理]。\n*   **薪资参考**：该岗位地点北京，薪资范围通常在 30k-60k [来源：字节跳动-AI 产品经理]。\n\n### 3. 面试模拟训练\n基于你的短板，建议重点练习以下面试题：\n*   **场景设计题**：假设你要设计一款面向 C 端用户的 AI 智能笔记助手，能够自动整理用户碎片化记录并生成结构化知识图谱。请你从用户需求分层、核心功能拆解、AI 能力边界三个维度，阐述你的产品设计。\n\n### 4. 提升建议\n为了提高通过率，建议采取以下行动：\n*   **补充技术实战**：尽快在实际项目中应用 Python、PyTorch、LangChain 等框架，而非仅了解概念。\n*   **完善项目经历**：尝试设计完整的 C 端 AIGC 产品或 B 端 SaaS/RPA 方案，特别是 Agent 相关应用。\n*   **展现技术敏感度**：在简历或面试中体现对前沿 AI 技术的主动追踪（如高频使用新工具、阅读行业动态）。\n*   **强化逻辑思维**：准备案例证明你的逻辑拆解与结构化思维能力，这是该岗位的核心要求之一。\n\n请严格按照系统提示中的JSON格式输出评分结果。",
+      "raw_output": "{\n  \"scores\": {\n    \"intent_accuracy\": 4,\n    \"slot_accuracy\": 5,\n    \"tool_correctness\": 4,\n    \"tool_execution\": 4,\n    \"response_accuracy\": 3,\n    \"response_completeness\": 4,\n    \"citation_quality\": 3,\n    \"coherence\": 5,\n    \"tone\": 4,\n    \"efficiency\": 4,\n    \"faithfulness\": 4,\n    \"answer_relevance\": 5\n  },\n  \"resolved\": true,\n  \"reason\": \"系统整体表现良好。意图识别准确（interview_prepare 匹配 prepare），槽位完全正确。工具调用覆盖了预期工具（kb_retrieve、interview_gen），额外调用了 match_analyze 提供了有价值的匹配诊断，但略有冗余。工具执行效果合理，检索结果相关，面试题生成针对性强。回复内容基本准确，但匹配诊断中关于'通常该岗位要求2年以上经验'与 JD 实习生性质不符，略有偏差，因此 response_accuracy 扣至3分。回复完整性较好，涵盖了准备清单、面试题和改进建议。引用标注虽未精确到 chunk 编号，但来源正确，无编造。整体连贯、专业，效率正常。未触发否决项，关键维度均≥3分，通过。\"\n}"
+    },
+    {
+      "resolved": true,
+      "scores": {
+        "intent_accuracy": 5,
+        "slot_accuracy": 5,
+        "tool_correctness": 5,
+        "tool_execution": 5,
+        "response_accuracy": 5,
+        "response_completeness": 5,
+        "citation_quality": 5,
+        "coherence": 5,
+        "tone": 4,
+        "efficiency": 5,
+        "faithfulness": 5,
+        "answer_relevance": 5
+      },
+      "reason": "系统正确识别评估意图（match_assess），准确提取公司=阿里巴巴、岗位=后端开发。调用了预期的kb_retrieve和match_analyze工具并成功执行。回复基于检索到的5条证据和简历信息，进行了完整的匹配分析（85分、优势、待提升、建议），无编造事实，引用标注准确对应来源。未触发任何否决项，关键维度均满分。语气稍显模板化但不影响整体表现。完全达标。",
+      "case_id": "eval_li_02",
+      "rule_hit": null,
+      "veto": false,
+      "needs_rag": true,
+      "judge_prompt": "【用户消息】阿里巴巴后端开发我匹配吗\n\n【期望意图(gold)】['assess']\n【期望槽位(gold_slots)】{\"company\": \"阿里巴巴\", \"position\": \"后端开发\"}\n【期望工具(expected_tools)】['kb_retrieve', 'match_analyze']\n【系统识别意图(pred)】['match_assess']\n【实际调用工具】[{'tool': 'kb_retrieve', 'status': '✅'}, {'tool': 'match_analyze', 'status': '✅'}]\n\n【测试场景】有简历_单JD匹配_阿里巴巴\n【测试备注】阿里ID=1要求3年+Java经验，李工程师3年经验高度匹配\n【跟进类型】\n\n【简历信息】\n姓名：李工程师\n电话：138-XXXX-1234 | 邮箱：lixx_dev@email.com | 现居：北京\nJava后端开发工程师 | 3年经验 | 本科\n\n教育背景\n2018.09 - 2022.06  XX理工大学  计算机科学与技术（本科）\n主修课程：数据结构与算法、操作系统、计算机网络、数据库原理、软件工程\n在校荣誉：校级优秀毕业设计（基于微服务的校园二手交易平台）\n\n专业技能\n熟练掌握Java核心技术，熟悉JVM内存模型、GC机制及常见调优手段\n精通Spring Boot、Spring Cloud微服务生态，熟悉Nacos、Gateway、Sentinel、Seata等组件\n熟悉MySQL索引优化、事务机制、分库分表策略，具备SQL调优及慢查询治理经验\n了解Redis缓存设计、Kafka消息队列，熟悉Docker容器化部署及Jenkins CI/CD流程\n掌握Git版本控制，熟悉Linux日常运维及日志排查\n\n工作经历\n2022.07 - 至今  XX科技有限公司（B轮 / 企业服务 SaaS）  Java后端工程师\n\nSaaS供应链管理平台（2023.03 - 至今）\n负责订单中心、库存中心核心模块设计与开发，采用Spring Cloud Alibaba微服务架构，支撑日均10W+订单处理\n主导MySQL分库分表方案设计（ShardingSphere），解决单表数据量过亿导致的查询性能瓶颈，接口响应时间从800ms降至120ms\n设计多级缓存策略（Redis + Caffeine本地缓存），热点数据命中率提升至95%，降低数据库负载40%\n基于Seata AT模式实现分布式事务，保障订单与库存数据一致性，线上运行半年零资损事故\n\n企业权限中台重构（2022.09 - 2023.02）\n参与RBAC权限中台从单体到微服务的拆分重构，负责鉴权服务、菜单路由模块开发\n引入Gateway统一鉴权过滤器，对接OAuth2.0 + JWT认证体系，支持多租户隔离\n编写核心接口单元测试（Unit + Mockito），模块测试覆盖率从45%提升至82%\n\n自我评价\n具备扎实的计算机基础与3年企业级后端开发经验，擅长高并发场景下的系统设计与性能优化。注重代码质量与工程规范，具备良好的团队协作与跨部门沟通能力。\n\n【相关JD信息】\n知识库中 阿里巴巴 的JD：后端开发(ID=1)；AI产品经理（实习生招聘）(ID=20)；AI产品经理-超级智能体（实习生招聘）(ID=21)\n\n【检索到的证据 chunks】（共5条，用于评判 faithfulness）\n[证据1] ID=9cde8355-dcc0-434e-97c4-67dfc5dae5b8_chunk_1 [阿里巴巴/后端开发/]\n【阿里巴巴 · 后端开发 岗位职责】\n1. 负责电商核心系统的设计与开发。2. 高并发系统架构设计与性能优化。3. 分布式系统开发与微服务治理。4. 数据库设计与优化。\n\n[证据2] ID=9cde8355-dcc0-434e-97c4-67dfc5dae5b8_chunk_6 [阿里巴巴/后端开发/]\n【阿里巴巴 · 后端开发 软性要求/加分项】\n有电商行业经验优先\n\n[证据3] ID=9cde8355-dcc0-434e-97c4-67dfc5dae5b8_chunk_4 [阿里巴巴/后端开发/]\n【阿里巴巴 · 后端开发 硬性要求】\n熟悉分布式系统设计与微服务架构\n\n[证据4] ID=9cde8355-dcc0-434e-97c4-67dfc5dae5b8_chunk_3 [阿里巴巴/后端开发/]\n【阿里巴巴 · 后端开发 硬性要求】\n精通Spring Boot、MySQL、Redis、Kafka\n\n[证据5] ID=9cde8355-dcc0-434e-97c4-67dfc5dae5b8_chunk_2 [阿里巴巴/后端开发/]\n【阿里巴巴 · 后端开发 硬性要求】\n3年以上Java开发经验\n\n【注意】请基于上述【检索到的证据 chunks】评判 faithfulness（忠实度）。\n如果系统回复中的事实声明在上述证据中找不到支撑，则 faithfulness 应低分。\n如果检索结果为空/极少，系统回复\"未找到\"或\"无法确定\"是合理的，faithfulness 应高分。\n\n【系统回复】\n有匹配分析结果。\n\n**1. 综合评估**\n*   **匹配分数**：85 分\n*   **评估标签**：高度契合\n\n**2. 岗位核心要求**\n根据检索到的岗位描述，该职位的主要要求如下：\n*   **经验要求**：3 年以上 Java 开发经验 `[来源：阿里巴巴 - 后端开发]`\n*   **技术栈**：精通 Spring Boot、MySQL、Redis、Kafka `[来源：阿里巴巴 - 后端开发]`\n*   **架构能力**：熟悉分布式系统设计与微服务架构 `[来源：阿里巴巴 - 后端开发]`\n*   **业务能力**：负责电商核心系统的设计与开发 `[来源：阿里巴巴 - 后端开发]`\n*   **加分项**：有电商行业经验优先 `[来源：阿里巴巴 - 后端开发]`\n\n**3. 匹配详情分析**\n*   **优势领域**：\n    *   候选人具备 Java 核心开发、Spring Boot、MySQL 数据库设计与优化、Redis 缓存设计能力。\n    *   拥有微服务架构（Spring Cloud）、分布式系统设计（Seata、Nacos）经验。\n    *   具备高并发性能优化（分库分表、多级缓存）能力。\n*   **待提升领域**：\n    *   **Kafka 消息队列**：候选人目前仅了解，未达到岗位要求的精通程度 `[来源：阿里巴巴 - 后端开发]`。\n    *   **行业经验**：没有电商行业核心系统的直接开发经验，现有项目为 SaaS 供应链管理，虽相关但非电商核心业务 `[来源：阿里巴巴 - 后端开发]`。\n\n**4. 求职建议**\n*   **技术补强**：建议针对 Kafka 消息队列进行深入学习或补充相关项目实践，以满足精通要求 `[来源：阿里巴巴 - 后端开发]`。\n*   **面试策略**：准备具体话术，强调 SaaS 供应链管理与电商核心系统在高并发、分布式架构上的技术共通性，以弥补行业经验差异 `[来源：阿里巴巴 - 后端开发]`。\n\n请严格按照系统提示中的JSON格式输出评分结果。",
+      "raw_output": "{\n  \"scores\": {\n    \"intent_accuracy\": 5,\n    \"slot_accuracy\": 5,\n    \"tool_correctness\": 5,\n    \"tool_execution\": 5,\n    \"response_accuracy\": 5,\n    \"response_completeness\": 5,\n    \"citation_quality\": 5,\n    \"coherence\": 5,\n    \"tone\": 4,\n    \"efficiency\": 5,\n    \"faithfulness\": 5,\n    \"answer_relevance\": 5\n  },\n  \"resolved\": true,\n  \"reason\": \"系统正确识别评估意图（match_assess），准确提取公司=阿里巴巴、岗位=后端开发。调用了预期的kb_retrieve和match_analyze工具并成功执行。回复基于检索到的5条证据和简历信息，进行了完整的匹配分析（85分、优势、待提升、建议），无编造事实，引用标注准确对应来源。未触发任何否决项，关键维度均满分。语气稍显模板化但不影响整体表现。完全达标。\"\n}"
+    },
+    {
+      "resolved": true,
+      "scores": {
+        "intent_accuracy": 3,
+        "slot_accuracy": 5,
+        "tool_correctness": 2,
+        "tool_execution": 3,
+        "response_accuracy": 5,
+        "response_completeness": 3,
+        "citation_quality": 4,
+        "coherence": 5,
+        "tone": 4,
+        "efficiency": 5,
+        "faithfulness": 5,
+        "answer_relevance": 4
+      },
+      "reason": "用户请求包含两个意图：探索岗位（explore）和针对阿里后端开发做匹配评估（assess）。系统仅识别为position_explore，缺少assess意图，导致未调用match_analyze工具（只调用了kb_retrieve和global_rank）。不过系统在回复中通过LLM直接给出了匹配分析（66分），内容准确，所有事实声明均有证据支撑（薪资、地点、硬性要求等），无编造。但缺乏对其他岗位的筛选，explore部分不完整。最终满足通过标准（intent_accuracy≥3, response_accuracy≥3, response_completeness≥3），未触发否决项。",
+      "case_id": "eval_li_07",
+      "rule_hit": null,
+      "veto": false,
+      "needs_rag": true,
+      "judge_prompt": "【用户消息】帮我筛几个岗，重点看看阿里那个后端开发\n\n【期望意图(gold)】['assess', 'explore']\n【期望槽位(gold_slots)】{\"company\": \"阿里巴巴\", \"position\": \"后端开发\"}\n【期望工具(expected_tools)】['kb_retrieve', 'global_rank', 'match_analyze']\n【系统识别意图(pred)】['position_explore']\n【实际调用工具】[{'tool': 'kb_retrieve', 'status': '✅'}, {'tool': 'global_rank', 'status': '✅'}]\n\n【测试场景】多意图_探索+匹配_含指定公司\n【测试备注】explore做全局，assess针对阿里后端开发\n【跟进类型】\n\n【简历信息】\n姓名：李工程师\n电话：138-XXXX-1234 | 邮箱：lixx_dev@email.com | 现居：北京\nJava后端开发工程师 | 3年经验 | 本科\n\n教育背景\n2018.09 - 2022.06  XX理工大学  计算机科学与技术（本科）\n主修课程：数据结构与算法、操作系统、计算机网络、数据库原理、软件工程\n在校荣誉：校级优秀毕业设计（基于微服务的校园二手交易平台）\n\n专业技能\n熟练掌握Java核心技术，熟悉JVM内存模型、GC机制及常见调优手段\n精通Spring Boot、Spring Cloud微服务生态，熟悉Nacos、Gateway、Sentinel、Seata等组件\n熟悉MySQL索引优化、事务机制、分库分表策略，具备SQL调优及慢查询治理经验\n了解Redis缓存设计、Kafka消息队列，熟悉Docker容器化部署及Jenkins CI/CD流程\n掌握Git版本控制，熟悉Linux日常运维及日志排查\n\n工作经历\n2022.07 - 至今  XX科技有限公司（B轮 / 企业服务 SaaS）  Java后端工程师\n\nSaaS供应链管理平台（2023.03 - 至今）\n负责订单中心、库存中心核心模块设计与开发，采用Spring Cloud Alibaba微服务架构，支撑日均10W+订单处理\n主导MySQL分库分表方案设计（ShardingSphere），解决单表数据量过亿导致的查询性能瓶颈，接口响应时间从800ms降至120ms\n设计多级缓存策略（Redis + Caffeine本地缓存），热点数据命中率提升至95%，降低数据库负载40%\n基于Seata AT模式实现分布式事务，保障订单与库存数据一致性，线上运行半年零资损事故\n\n企业权限中台重构（2022.09 - 2023.02）\n参与RBAC权限中台从单体到微服务的拆分重构，负责鉴权服务、菜单路由模块开发\n引入Gateway统一鉴权过滤器，对接OAuth2.0 + JWT认证体系，支持多租户隔离\n编写核心接口单元测试（Unit + Mockito），模块测试覆盖率从45%提升至82%\n\n自我评价\n具备扎实的计算机基础与3年企业级后端开发经验，擅长高并发场景下的系统设计与性能优化。注重代码质量与工程规范，具备良好的团队协作与跨部门沟通能力。\n\n【相关JD信息】\n知识库中 阿里巴巴 的JD：后端开发(ID=1)；AI产品经理（实习生招聘）(ID=20)；AI产品经理-超级智能体（实习生招聘）(ID=21)\n\n【检索到的证据 chunks】（共5条，用于评判 faithfulness）\n[证据1] ID=9cde8355-dcc0-434e-97c4-67dfc5dae5b8_chunk_1 [阿里巴巴/后端开发/]\n【阿里巴巴 · 后端开发 岗位职责】\n1. 负责电商核心系统的设计与开发。2. 高并发系统架构设计与性能优化。3. 分布式系统开发与微服务治理。4. 数据库设计与优化。\n\n[证据2] ID=9cde8355-dcc0-434e-97c4-67dfc5dae5b8_chunk_6 [阿里巴巴/后端开发/]\n【阿里巴巴 · 后端开发 软性要求/加分项】\n有电商行业经验优先\n\n[证据3] ID=9cde8355-dcc0-434e-97c4-67dfc5dae5b8_chunk_0 [阿里巴巴/后端开发/]\n公司：阿里巴巴，岗位：后端开发，地点：杭州，薪资：35k-65k\n\n[证据4] ID=9cde8355-dcc0-434e-97c4-67dfc5dae5b8_chunk_4 [阿里巴巴/后端开发/]\n【阿里巴巴 · 后端开发 硬性要求】\n熟悉分布式系统设计与微服务架构\n\n[证据5] ID=9cde8355-dcc0-434e-97c4-67dfc5dae5b8_chunk_2 [阿里巴巴/后端开发/]\n【阿里巴巴 · 后端开发 硬性要求】\n3年以上Java开发经验\n\n【注意】请基于上述【检索到的证据 chunks】评判 faithfulness（忠实度）。\n如果系统回复中的事实声明在上述证据中找不到支撑，则 faithfulness 应低分。\n如果检索结果为空/极少，系统回复\"未找到\"或\"无法确定\"是合理的，faithfulness 应高分。\n\n【系统回复】\n有。已为您筛选到 1 个相关岗位，但匹配度中等，建议您结合以下详细分析进行评估。\n\n### 1. 匹配度分析\n*   **匹配分数**：66 分 [来源：阿里巴巴 - 后端开发]\n*   **推荐优先级**：中 [来源：阿里巴巴 - 后端开发]\n*   **核心差距**：您的简历侧重通用后端开发，而该岗位 JD 方向侧重电商业务 [来源：阿里巴巴 - 后端开发]\n*   **匹配亮点**：技术栈检索召回匹配 [来源：阿里巴巴 - 后端开发]\n\n### 2. 岗位详细信息\n*   **基本信息**：工作地点位于杭州，薪资范围为 35k-65k [来源：阿里巴巴 - 后端开发]\n*   **硬性要求**：\n    *   需要具备 3 年以上 Java 开发经验 [来源：阿里巴巴 - 后端开发]\n    *   熟悉分布式系统设计与微服务架构 [来源：阿里巴巴 - 后端开发]\n*   **岗位职责**：\n    *   负责电商核心系统的设计与开发 [来源：阿里巴巴 - 后端开发]\n    *   进行高并发系统架构设计与性能优化 [来源：阿里巴巴 - 后端开发]\n    *   负责分布式系统开发与微服务治理 [来源：阿里巴巴 - 后端开发]\n    *   负责数据库设计与优化 [来源：阿里巴巴 - 后端开发]\n*   **加分项**：有电商行业经验优先 [来源：阿里巴巴 - 后端开发]\n\n### 3. 求职建议\n鉴于目前暂未发现高度匹配岗位，该岗位可作为参考 [来源：阿里巴巴 - 后端开发]。建议您进一步评估自身电商业务经验与该岗位的契合度，若决定投递，可在简历中重点突出高并发系统架构设计与性能优化 related 的项目经历，以弥补业务方向上的差异。\n\n请严格按照系统提示中的JSON格式输出评分结果。",
+      "raw_output": "{\n  \"scores\": {\n    \"intent_accuracy\": 3,\n    \"slot_accuracy\": 5,\n    \"tool_correctness\": 2,\n    \"tool_execution\": 3,\n    \"response_accuracy\": 5,\n    \"response_completeness\": 3,\n    \"citation_quality\": 4,\n    \"coherence\": 5,\n    \"tone\": 4,\n    \"efficiency\": 5,\n    \"faithfulness\": 5,\n    \"answer_relevance\": 4\n  },\n  \"resolved\": true,\n  \"reason\": \"用户请求包含两个意图：探索岗位（explore）和针对阿里后端开发做匹配评估（assess）。系统仅识别为position_explore，缺少assess意图，导致未调用match_analyze工具（只调用了kb_retrieve和global_rank）。不过系统在回复中通过LLM直接给出了匹配分析（66分），内容准确，所有事实声明均有证据支撑（薪资、地点、硬性要求等），无编造。但缺乏对其他岗位的筛选，explore部分不完整。最终满足通过标准（intent_accuracy≥3, response_accuracy≥3, response_completeness≥3），未触发否决项。\"\n}"
+    },
+    {
+      "resolved": true,
+      "scores": {
+        "intent_accuracy": 4,
+        "slot_accuracy": 5,
+        "tool_correctness": 3,
+        "tool_execution": 5,
+        "response_accuracy": 4,
+        "response_completeness": 5,
+        "citation_quality": 4,
+        "coherence": 5,
+        "tone": 4,
+        "efficiency": 5,
+        "faithfulness": 5,
+        "answer_relevance": 5
+      },
+      "reason": "系统识别意图为'interview_prepare'，虽与gold'intent'名称不同但本质一致，主要意图命中，扣1分。槽位提取完全正确。工具调用正确包含预期工具'interview_gen'，但额外调用了'kb_retrieve'和'match_analyze'，对于纯准备场景稍显冗余，故扣2分。工具执行均成功且结果合理。回复内容基于简历和检索到的JD信息，未发现明显编造，但使用了特定公司JD（如阿里巴巴、某小公司）可能超出用户询问范围，不过仍准确。回复完整覆盖面试准备需求，包含匹配分析、技能清单、面试题和备考建议。引用标注有来源说明，但无法完全核实真实性，略有保留。整体连贯、语气专业、效率高，忠实度和相关性均良好。未触发否决项，因此通过。",
+      "case_id": "eval_li_10",
+      "rule_hit": null,
+      "veto": false,
+      "needs_rag": false,
+      "judge_prompt": "【用户消息】后端岗面试要准备什么\n\n【期望意图(gold)】['prepare']\n【期望槽位(gold_slots)】{\"position\": \"后端\"}\n【期望工具(expected_tools)】['interview_gen']\n【系统识别意图(pred)】['interview_prepare']\n【实际调用工具】[{'tool': 'kb_retrieve', 'status': '✅'}, {'tool': 'match_analyze', 'status': '✅'}, {'tool': 'interview_gen', 'status': '✅'}]\n\n【测试场景】面试准备_泛化\n【测试备注】期望生成Java后端相关面试题\n【跟进类型】\n\n【简历信息】\n姓名：李工程师\n电话：138-XXXX-1234 | 邮箱：lixx_dev@email.com | 现居：北京\nJava后端开发工程师 | 3年经验 | 本科\n\n教育背景\n2018.09 - 2022.06  XX理工大学  计算机科学与技术（本科）\n主修课程：数据结构与算法、操作系统、计算机网络、数据库原理、软件工程\n在校荣誉：校级优秀毕业设计（基于微服务的校园二手交易平台）\n\n专业技能\n熟练掌握Java核心技术，熟悉JVM内存模型、GC机制及常见调优手段\n精通Spring Boot、Spring Cloud微服务生态，熟悉Nacos、Gateway、Sentinel、Seata等组件\n熟悉MySQL索引优化、事务机制、分库分表策略，具备SQL调优及慢查询治理经验\n了解Redis缓存设计、Kafka消息队列，熟悉Docker容器化部署及Jenkins CI/CD流程\n掌握Git版本控制，熟悉Linux日常运维及日志排查\n\n工作经历\n2022.07 - 至今  XX科技有限公司（B轮 / 企业服务 SaaS）  Java后端工程师\n\nSaaS供应链管理平台（2023.03 - 至今）\n负责订单中心、库存中心核心模块设计与开发，采用Spring Cloud Alibaba微服务架构，支撑日均10W+订单处理\n主导MySQL分库分表方案设计（ShardingSphere），解决单表数据量过亿导致的查询性能瓶颈，接口响应时间从800ms降至120ms\n设计多级缓存策略（Redis + Caffeine本地缓存），热点数据命中率提升至95%，降低数据库负载40%\n基于Seata AT模式实现分布式事务，保障订单与库存数据一致性，线上运行半年零资损事故\n\n企业权限中台重构（2022.09 - 2023.02）\n参与RBAC权限中台从单体到微服务的拆分重构，负责鉴权服务、菜单路由模块开发\n引入Gateway统一鉴权过滤器，对接OAuth2.0 + JWT认证体系，支持多租户隔离\n编写核心接口单元测试（Unit + Mockito），模块测试覆盖率从45%提升至82%\n\n自我评价\n具备扎实的计算机基础与3年企业级后端开发经验，擅长高并发场景下的系统设计与性能优化。注重代码质量与工程规范，具备良好的团队协作与跨部门沟通能力。\n\n【相关JD信息】\n\n\n【系统回复】\n有具体的准备方向，核心在于中间件精通度、分布式架构能力及业务场景设计。\n\n### 1. 简历匹配度分析\n基于您的背景与后端岗位要求的匹配分析，当前综合匹配度为 **78 分（基本匹配）**。\n*   **优势领域**：Java、Spring Boot、MySQL、Redis、分布式系统设计与微服务架构 [来源：match_analyze]。\n*   **待提升短板**：\n    *   **Kafka 消息队列**：目前仅停留在了解层面，未满足部分大厂 JD 中“精通 Kafka\"的硬性要求 [来源：阿里巴巴 - 后端开发]。\n    *   **ERP 业务理解**：虽有 SaaS 供应链经验，但未明确涉及 ERP 领域关键词，匹配度有限 [来源：某小公司-Java 后端]。\n\n### 2. 核心技能准备清单\n根据检索到的岗位通用要求，您需要重点复习以下技术栈：\n*   **架构设计**：熟悉分布式系统设计与微服务架构 [来源：阿里巴巴 - 后端开发]。\n*   **中间件精通**：精通 Spring Boot、MySQL、Redis、Kafka [来源：阿里巴巴 - 后端开发]。\n*   **业务关键词**：部分岗位特别关注 Java、Spring Boot、MySQL 及 ERP 系统经验 [来源：某小公司-Java 后端]。\n\n### 3. 针对性面试题预测\n基于您的匹配短板，建议重点准备以下 5 道高频率面试题：\n1.  **Kafka 高阶设计**：如何保证消息严格顺序性和恰好一次语义？请说明生产者、消费者及 Broker 端的参数配置，以及跨分区顺序与负载均衡的权衡方案。\n2.  **分布式事务方案**：设计跨微服务的订单创建流程（库存、积分、物流），如何基于 Kafka 实现异步确保型方案？请说明分区策略及消息积压处理。\n3.  **数据库分库分表**：针对数十亿级订单表，如何设计分片键、路由策略及跨分片查询方案？如何支持新增查询维度而不影响现有数据？\n4.  **Redis 缓存架构**：高并发下如何设计多级缓存（本地+Redis）？请详述缓存一致性保证方案，以及应对击穿、穿透、雪崩的策略。\n5.  **事件驱动架构**：针对 ERP 采购入库流程，如何设计微服务职责及通信方式？如何利用 Kafka Offset 实现不同服务的不同消费速率要求？\n\n### 4. 备考建议\n*   **深化中间件原理**：重点补齐 Kafka 精通经验，深入理解消息队列的底层机制及生产环境调优。\n*   **强化业务场景映射**：将现有的 SaaS 供应链经验向 ERP 业务领域靠拢，明确阐述在订单、库存等模块的具体实践。\n*   **核心能力闭环**：系统性复习分布式系统设计能力、微服务架构（Spring Cloud）、MySQL 数据库优化（含分库分表）及 Redis 缓存设计 [来源：match_analyze]。\n\n请严格按照系统提示中的JSON格式输出评分结果。",
+      "raw_output": "{\n  \"scores\": {\n    \"intent_accuracy\": 4,\n    \"slot_accuracy\": 5,\n    \"tool_correctness\": 3,\n    \"tool_execution\": 5,\n    \"response_accuracy\": 4,\n    \"response_completeness\": 5,\n    \"citation_quality\": 4,\n    \"coherence\": 5,\n    \"tone\": 4,\n    \"efficiency\": 5,\n    \"faithfulness\": 4,\n    \"answer_relevance\": 5\n  },\n  \"resolved\": true,\n  \"reason\": \"系统识别意图为'interview_prepare'，虽与gold'intent'名称不同但本质一致，主要意图命中，扣1分。槽位提取完全正确。工具调用正确包含预期工具'interview_gen'，但额外调用了'kb_retrieve'和'match_analyze'，对于纯准备场景稍显冗余，故扣2分。工具执行均成功且结果合理。回复内容基于简历和检索到的JD信息，未发现明显编造，但使用了特定公司JD（如阿里巴巴、某小公司）可能超出用户询问范围，不过仍准确。回复完整覆盖面试准备需求，包含匹配分析、技能清单、面试题和备考建议。引用标注有来源说明，但无法完全核实真实性，略有保留。整体连贯、语气专业、效率高，忠实度和相关性均良好。未触发否决项，因此通过。\"\n}"
+    },
+    {
+      "resolved": true,
+      "scores": {
+        "intent_accuracy": 4,
+        "slot_accuracy": 5,
+        "tool_correctness": 4,
+        "tool_execution": 5,
+        "response_accuracy": 5,
+        "response_completeness": 5,
+        "citation_quality": 3,
+        "coherence": 5,
+        "tone": 4,
+        "efficiency": 4,
+        "faithfulness": 5,
+        "answer_relevance": 5
+      },
+      "reason": "系统正确识别了用户意图（attribute_verify，实际为verify的子类），正确提取了槽位（attributes:要求）并引用了上一轮上下文（阿里后端岗）。主要工具qa_synthesize被正确调用，但额外调用了kb_retrieve（不符合‘应复用证据’的期望），属于冗余调用，未导致错误。回复内容覆盖了岗位的各项要求，基于检索结果，无编造，准确性高。连贯性和相关性良好。未触发任何否决项。因此判定通过。",
+      "case_id": "eval_li_11",
+      "rule_hit": null,
+      "veto": false,
+      "needs_rag": false,
+      "judge_prompt": "【用户消息】上面那个岗具体要求是什么\n\n【期望意图(gold)】['verify']\n【期望槽位(gold_slots)】{\"attributes\": [\"要求\"]}\n【期望工具(expected_tools)】['qa_synthesize']\n【系统识别意图(pred)】['attribute_verify']\n【实际调用工具】[{'tool': 'kb_retrieve', 'status': '✅'}, {'tool': 'qa_synthesize', 'status': '✅'}]\n\n【测试场景】多轮_属性查询_上下文引用\n【测试备注】引用上一轮阿里后端岗，应复用kb_retrieve证据\n【跟进类型】expand\n\n【简历信息】\n姓名：李工程师\n电话：138-XXXX-1234 | 邮箱：lixx_dev@email.com | 现居：北京\nJava后端开发工程师 | 3年经验 | 本科\n\n教育背景\n2018.09 - 2022.06  XX理工大学  计算机科学与技术（本科）\n主修课程：数据结构与算法、操作系统、计算机网络、数据库原理、软件工程\n在校荣誉：校级优秀毕业设计（基于微服务的校园二手交易平台）\n\n专业技能\n熟练掌握Java核心技术，熟悉JVM内存模型、GC机制及常见调优手段\n精通Spring Boot、Spring Cloud微服务生态，熟悉Nacos、Gateway、Sentinel、Seata等组件\n熟悉MySQL索引优化、事务机制、分库分表策略，具备SQL调优及慢查询治理经验\n了解Redis缓存设计、Kafka消息队列，熟悉Docker容器化部署及Jenkins CI/CD流程\n掌握Git版本控制，熟悉Linux日常运维及日志排查\n\n工作经历\n2022.07 - 至今  XX科技有限公司（B轮 / 企业服务 SaaS）  Java后端工程师\n\nSaaS供应链管理平台（2023.03 - 至今）\n负责订单中心、库存中心核心模块设计与开发，采用Spring Cloud Alibaba微服务架构，支撑日均10W+订单处理\n主导MySQL分库分表方案设计（ShardingSphere），解决单表数据量过亿导致的查询性能瓶颈，接口响应时间从800ms降至120ms\n设计多级缓存策略（Redis + Caffeine本地缓存），热点数据命中率提升至95%，降低数据库负载40%\n基于Seata AT模式实现分布式事务，保障订单与库存数据一致性，线上运行半年零资损事故\n\n企业权限中台重构（2022.09 - 2023.02）\n参与RBAC权限中台从单体到微服务的拆分重构，负责鉴权服务、菜单路由模块开发\n引入Gateway统一鉴权过滤器，对接OAuth2.0 + JWT认证体系，支持多租户隔离\n编写核心接口单元测试（Unit + Mockito），模块测试覆盖率从45%提升至82%\n\n自我评价\n具备扎实的计算机基础与3年企业级后端开发经验，擅长高并发场景下的系统设计与性能优化。注重代码质量与工程规范，具备良好的团队协作与跨部门沟通能力。\n\n【相关JD信息】\n\n\n【系统回复】\n有明确的任职要求。基于检索到的信息，阿里巴巴后端开发岗位的具体要求如下：\n\n**1. 硬性经验要求**\n*   需具备 3 年以上 Java 开发经验 [来源：阿里巴巴 - 后端开发]。\n\n**2. 核心技术栈**\n*   精通 Spring Boot、MySQL、Redis、Kafka 等技术 [来源：阿里巴巴 - 后端开发]。\n*   熟悉分布式系统设计与微服务架构 [来源：阿里巴巴 - 后端开发]。\n\n**3. 岗位职责**\n*   负责电商核心系统的设计与开发 [来源：阿里巴巴 - 后端开发]。\n*   涉及高并发系统架构设计与性能优化 [来源：阿里巴巴 - 后端开发]。\n*   负责分布式系统开发与微服务治理 [来源：阿里巴巴 - 后端开发]。\n*   负责数据库设计与优化 [来源：阿里巴巴 - 后端开发]。\n\n**4. 加分项**\n*   有电商行业经验优先 [来源：阿里巴巴 - 后端开发]。\n\n建议您根据上述要求检查自身简历匹配度，重点突出高并发处理和分布式架构相关的项目经验。以上信息仅供参考，具体请以该公司官方发布的 JD 为准。\n\n请严格按照系统提示中的JSON格式输出评分结果。",
+      "raw_output": "{\n  \"scores\": {\n    \"intent_accuracy\": 4,\n    \"slot_accuracy\": 5,\n    \"tool_correctness\": 4,\n    \"tool_execution\": 5,\n    \"response_accuracy\": 5,\n    \"response_completeness\": 5,\n    \"citation_quality\": 3,\n    \"coherence\": 5,\n    \"tone\": 4,\n    \"efficiency\": 4,\n    \"faithfulness\": 5,\n    \"answer_relevance\": 5\n  },\n  \"resolved\": true,\n  \"reason\": \"系统正确识别了用户意图（attribute_verify，实际为verify的子类），正确提取了槽位（attributes:要求）并引用了上一轮上下文（阿里后端岗）。主要工具qa_synthesize被正确调用，但额外调用了kb_retrieve（不符合‘应复用证据’的期望），属于冗余调用，未导致错误。回复内容覆盖了岗位的各项要求，基于检索结果，无编造，准确性高。连贯性和相关性良好。未触发任何否决项。因此判定通过。\"\n}"
+    }
+  ],
+  "timestamp": "2026-06-05T16:55:19.809104"
+}

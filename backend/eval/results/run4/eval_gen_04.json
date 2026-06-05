@@ -1,0 +1,63 @@
+{
+  "case_id": "eval_gen_04",
+  "message": "帮我看看有什么岗，然后第一个推荐的具体要求是什么，再帮我准备几道面试题",
+  "gold_intents": [
+    "explore",
+    "prepare",
+    "verify"
+  ],
+  "expected_tools": [
+    "kb_retrieve",
+    "global_rank",
+    "qa_synthesize",
+    "interview_gen"
+  ],
+  "scenario": "复杂多意图_探索+属性查询+面试准备",
+  "status": "success",
+  "error": null,
+  "ttfb": 0.008,
+  "total_latency": 6.3,
+  "event_count": 3,
+  "pred_intent": "attribute_verify",
+  "pred_tools": [],
+  "tools_called": [],
+  "reply": "你是想核实某个具体信息，还是想探索更多相关岗位？",
+  "reply_length": 24,
+  "intent_match": true,
+  "tool_match_rate": 0.0,
+  "has_reply": false,
+  "events": [
+    {
+      "step": "intent",
+      "message": "正在识别您的意图...",
+      "_time": 6.304687023162842,
+      "type": "status"
+    },
+    {
+      "question": "你是想核实某个具体信息，还是想探索更多相关岗位？",
+      "_time": 6.304729700088501,
+      "type": "clarification"
+    },
+    {
+      "session_id": "eval_gen_04_1780480302910",
+      "intent": "attribute_verify",
+      "is_clarification": true,
+      "reply": {
+        "text": "你是想核实某个具体信息，还是想探索更多相关岗位？"
+      },
+      "usage": {
+        "prompt_tokens": 1502,
+        "completion_tokens": 324,
+        "total_tokens": 1826
+      },
+      "_time": 6.304781913757324,
+      "type": "done"
+    }
+  ],
+  "timestamp": "2026-06-03T17:51:42.910221",
+  "prompt_tokens": 1502,
+  "completion_tokens": 324,
+  "total_tokens": 1826,
+  "tool_execution_success_rate": 0.0,
+  "tool_correct_rate": 0.0
+}

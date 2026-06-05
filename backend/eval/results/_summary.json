@@ -4,44 +4,50 @@
   "round_metrics": [
     {
       "total_cases": 53,
-      "success_cases": 53,
-      "error_cases": 0,
-      "success_rate": 1.0,
-      "intent_match_rate": 0.623,
-      "avg_tool_match_rate": 0.692,
-      "full_tool_match_rate": 0.585,
-      "tool_execution_success_rate": 0.849,
-      "tool_correct_rate": 0.664,
-      "reply_completion_rate": 0.906,
-      "avg_ttfb_sec": 1.2,
-      "avg_total_latency_sec": 67.92,
-      "median_total_latency_sec": 67.85,
-      "max_total_latency_sec": 137.61,
+      "success_cases": 51,
+      "error_cases": 2,
+      "success_rate": 0.962,
+      "intent_match_rate": 0.902,
+      "avg_tool_match_rate": 0.791,
+      "full_tool_match_rate": 0.667,
+      "tool_execution_success_rate": 0.681,
+      "tool_correct_rate": 0.667,
+      "reply_completion_rate": 0.902,
+      "avg_ttfb_sec": 0.01,
+      "avg_total_latency_sec": 88.69,
+      "median_total_latency_sec": 87.08,
+      "max_total_latency_sec": 195.87,
       "min_total_latency_sec": 0.01,
+      "total_prompt_tokens": 411730,
+      "total_completion_tokens": 304652,
+      "total_tokens": 716382,
+      "avg_prompt_tokens": 8073.1,
+      "avg_completion_tokens": 5973.6,
+      "avg_total_tokens": 14046.7,
       "intent_breakdown": {
         "explore": {
-          "total": 22,
-          "match": 16,
-          "success": 22
+          "total": 21,
+          "match": 21,
+          "success": 21
         },
         "assess": {
-          "total": 13,
-          "match": 13,
-          "success": 13
+          "total": 12,
+          "match": 11,
+          "success": 12
         },
         "verify": {
           "total": 15,
-          "match": 2,
+          "match": 12,
           "success": 15
         },
         "prepare": {
           "total": 6,
-          "match": 5,
+          "match": 6,
           "success": 6
         },
         "chat": {
           "total": 3,
-          "match": 2,
+          "match": 3,
           "success": 3
         },
         "manage": {
@@ -106,15 +112,15 @@
           "success": 1,
           "error": 0
         },
-        "有简历_单JD匹配_快手": {
+        "有简历_单JD匹配_美团": {
           "total": 2,
           "success": 2,
           "error": 0
         },
-        "澄清后_单JD匹配": {
+        "澄清后_岗位综合分析": {
           "total": 2,
-          "success": 2,
-          "error": 0
+          "success": 1,
+          "error": 1
         },
         "属性查询_经验要求": {
           "total": 2,
@@ -191,6 +197,21 @@
           "success": 1,
           "error": 0
         },
+        "有简历_技能导向探索_Figma": {
+          "total": 1,
+          "success": 1,
+          "error": 0
+        },
+        "属性查询_泛化": {
+          "total": 1,
+          "success": 1,
+          "error": 0
+        },
+        "有简历_单JD匹配_跨领域转型": {
+          "total": 1,
+          "success": 1,
+          "error": 0
+        },
         "有简历_探索_设计经验": {
           "total": 1,
           "success": 1,
@@ -201,7 +222,7 @@
           "success": 1,
           "error": 0
         },
-        "通用咨询_转行建议": {
+        "经验匹配_岗位要求查询": {
           "total": 1,
           "success": 1,
           "error": 0
@@ -228,8 +249,8 @@
         },
         "记忆_偏好引用": {
           "total": 1,
-          "success": 1,
-          "error": 0
+          "success": 0,
+          "error": 1
         },
         "reranker_多结果重排序": {
           "total": 1,
@@ -255,43 +276,64 @@
           "total": 1,
           "success": 1,
           "error": 0
-        },
-        "有简历_技能导向探索_Figma": {
-          "total": 1,
-          "success": 1,
-          "error": 0
-        },
-        "属性查询_泛化": {
-          "total": 1,
-          "success": 1,
-          "error": 0
-        },
-        "有简历_单JD匹配_跨领域转型": {
-          "total": 1,
-          "success": 1,
-          "error": 0
         }
       },
-      "errors": [],
+      "errors": [
+        {
+          "case_id": "eval_chen_14",
+          "error": "ClientPayloadError: Response payload is not completed: <TransferEncodingError: 400, message='Not enough data to satisfy transfer length header.'>"
+        },
+        {
+          "case_id": "eval_sup_03",
+          "error": "ClientPayloadError: Response payload is not completed: <TransferEncodingError: 400, message='Not enough data to satisfy transfer length header.'>"
+        }
+      ],
       "clarification_cases": [
-        "eval_gen_06",
+        "eval_chen_13",
         "eval_li_14",
-        "eval_gen_03",
-        "eval_chen_13"
+        "eval_gen_06",
+        "eval_gen_03"
       ],
       "boundary_cases": [
         "eval_gen_02",
         "eval_gen_03"
       ],
       "excluded_cases": [
-        "eval_gen_02",
-        "eval_li_14",
-        "eval_gen_03",
         "eval_gen_06",
-        "eval_chen_13"
+        "eval_li_14",
+        "eval_chen_13",
+        "eval_gen_02",
+        "eval_gen_03"
       ],
-      "timestamp": "2026-06-02T19:25:14.373161"
+      "timestamp": "2026-06-04T17:33:58.373000",
+      "judge_summary": {
+        "total_cases": 58,
+        "resolved_count": 34,
+        "resolved_rate": 0.5862,
+        "veto_count": 4,
+        "veto_rate": 0.069,
+        "rag_cases_count": 43,
+        "non_rag_cases_count": 15,
+        "dimension_averages": {
+          "intent_accuracy": 3.72,
+          "slot_accuracy": 4.02,
+          "tool_correctness": 3.45,
+          "tool_execution": 3.09,
+          "response_accuracy": 3.09,
+          "response_completeness": 3.43,
+          "citation_quality": 2.97,
+          "coherence": 4.26,
+          "tone": 3.88,
+          "efficiency": 3.76,
+          "faithfulness": 3.28,
+          "answer_relevance": 4.0
+        },
+        "rag_dimension_averages": {
+          "faithfulness": 2.91,
+          "answer_relevance": 3.88
+        }
+      }
     }
   ],
-  "timestamp": "2026-06-02T19:25:14.502359"
+  "timestamp": "2026-06-04T17:45:53.223887"
 }

@@ -1,0 +1,3357 @@
+{
+  "case_id": "eval_sup_05",
+  "message": "帮我看看有什么Java后端岗",
+  "gold_intents": [
+    "explore"
+  ],
+  "expected_tools": [
+    "kb_retrieve",
+    "global_rank"
+  ],
+  "scenario": "交叉_不匹配简历_产品在校生查Java",
+  "eval_context": {
+    "gold_intents": [
+      "explore"
+    ],
+    "gold_slots": {
+      "position": "Java后端"
+    },
+    "relevance_score": 0,
+    "expected_tools": [
+      "kb_retrieve",
+      "global_rank"
+    ],
+    "scenario": "交叉_不匹配简历_产品在校生查Java",
+    "notes": "陈雨桐无Java经验，期望系统推荐时指出技能不匹配，或降低技术岗排序"
+  },
+  "resume_id": "cc50dcfb-aeba-41a3-989a-9e485aa2fc3f",
+  "status": "success",
+  "error": null,
+  "ttfb": 0.01,
+  "total_latency": 90.19,
+  "event_count": 100,
+  "pred_intent": "position_explore",
+  "pred_intents": [
+    "position_explore"
+  ],
+  "pred_tools": [
+    {
+      "tool": "kb_retrieve",
+      "status": "✅",
+      "params": {
+        "query": "帮我看看有什么Java后端岗",
+        "company": null,
+        "pool_k": 15,
+        "rerank_k": 10
+      },
+      "result_preview": "{'chunks': [{'chunk_id': '45bd2600-af57-45fe-a96e-c6cae6838c7a_chunk_1', 'content': '【某小公司 · Java后端 岗位职责】\\n1. 负责传统企业内部管理系统的设计与开发。2. 数据库CRUD操作与报表开发。3. 系统日常维护与bug修复。', 'metadata': {'company': '某小公司', 'i"
+    },
+    {
+      "tool": "kb_retrieve",
+      "status": "✅",
+      "params": {
+        "query": "帮我看看有什么Java后端岗",
+        "company": null,
+        "pool_k": 20,
+        "rerank_k": 12
+      },
+      "result_preview": "{'chunks': [{'chunk_id': '45bd2600-af57-45fe-a96e-c6cae6838c7a_chunk_1', 'content': '【某小公司 · Java后端 岗位职责】\\n1. 负责传统企业内部管理系统的设计与开发。2. 数据库CRUD操作与报表开发。3. 系统日常维护与bug修复。', 'metadata': {'company': '某小公司', 'i"
+    }
+  ],
+  "tools_called": [
+    "kb_retrieve",
+    "kb_retrieve"
+  ],
+  "kb_chunks": [
+    {
+      "chunk_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a_chunk_1",
+      "content": "【某小公司 · Java后端 岗位职责】\n1. 负责传统企业内部管理系统的设计与开发。2. 数据库CRUD操作与报表开发。3. 系统日常维护与bug修复。",
+      "metadata": {
+        "company": "某小公司",
+        "index": 1,
+        "jd_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a",
+        "position": "Java后端",
+        "section": "responsibilities",
+        "strategy": "semantic"
+      },
+      "distance": 0.4479650855064392,
+      "bm25_score": 6.803795908828786,
+      "vec_norm": 1.0,
+      "bm25_norm": 0.551987957773376,
+      "hybrid_score": 0.8655963873320127,
+      "rerank_score": 0.9944
+    },
+    {
+      "chunk_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a_chunk_0",
+      "content": "公司：某小公司，岗位：Java后端，地点：成都，薪资：10k-20k",
+      "metadata": {
+        "category": "技术",
+        "company": "某小公司",
+        "domain": "传统",
+        "index": 0,
+        "jd_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a",
+        "max_years": 3,
+        "min_education": "大专",
+        "min_years": 1,
+        "position": "Java后端",
+        "section": "basic_info",
+        "strategy": "semantic"
+      },
+      "distance": 0.571252703666687,
+      "bm25_score": 9.57143819239722,
+      "vec_norm": 0.7565184216532809,
+      "bm25_norm": 0.8480756173890552,
+      "hybrid_score": 0.7839855803740132,
+      "rerank_score": 0.9451
+    },
+    {
+      "chunk_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a_chunk_5",
+      "content": "【某小公司 · Java后端 软性要求/加分项】\n有ERP系统开发经验优先",
+      "metadata": {
+        "company": "某小公司",
+        "index": 5,
+        "jd_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a",
+        "position": "Java后端",
+        "priority": "medium",
+        "section": "soft_requirements",
+        "strategy": "semantic"
+      },
+      "distance": 0.630220353603363,
+      "bm25_score": 10.991532315079844,
+      "vec_norm": 0.640062797866982,
+      "bm25_norm": 1.0,
+      "hybrid_score": 0.7480439585068873,
+      "rerank_score": 0.9441
+    },
+    {
+      "chunk_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a_chunk_3",
+      "content": "【某小公司 · Java后端 硬性要求】\n熟悉Spring Boot、MySQL",
+      "metadata": {
+        "company": "某小公司",
+        "index": 3,
+        "jd_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a",
+        "position": "Java后端",
+        "priority": "high",
+        "section": "hard_requirements",
+        "strategy": "semantic"
+      },
+      "distance": 0.5873516798019409,
+      "bm25_score": 9.57143819239722,
+      "vec_norm": 0.72472444122223,
+      "bm25_norm": 0.8480756173890552,
+      "hybrid_score": 0.7617297940722776,
+      "rerank_score": 0.9217
+    },
+    {
+      "chunk_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a_chunk_2",
+      "content": "【某小公司 · Java后端 硬性要求】\n1年以上Java开发经验",
+      "metadata": {
+        "company": "某小公司",
+        "index": 2,
+        "jd_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a",
+        "position": "Java后端",
+        "priority": "high",
+        "section": "hard_requirements",
+        "strategy": "semantic"
+      },
+      "distance": 0.5350993871688843,
+      "bm25_score": 10.884970692814257,
+      "vec_norm": 0.8279178589585898,
+      "bm25_norm": 0.9885998340432972,
+      "hybrid_score": 0.876122451484002,
+      "rerank_score": 0.9187
+    },
+    {
+      "chunk_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8_chunk_2",
+      "content": "【阿里巴巴 · 后端开发 硬性要求】\n3年以上Java开发经验",
+      "metadata": {
+        "company": "阿里巴巴",
+        "index": 2,
+        "jd_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8",
+        "position": "后端开发",
+        "priority": "high",
+        "section": "hard_requirements",
+        "strategy": "semantic"
+      },
+      "distance": 0.5302596688270569,
+      "bm25_score": 4.504788801919539,
+      "vec_norm": 0.8374758525203606,
+      "bm25_norm": 0.3060357847754594,
+      "hybrid_score": 0.6780438321968902,
+      "rerank_score": 0.7988
+    },
+    {
+      "chunk_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a_chunk_4",
+      "content": "【某小公司 · Java后端 硬性要求】\n大专及以上学历",
+      "metadata": {
+        "company": "某小公司",
+        "index": 4,
+        "jd_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a",
+        "position": "Java后端",
+        "priority": "high",
+        "section": "hard_requirements",
+        "strategy": "semantic"
+      },
+      "distance": 0.5805367827415466,
+      "bm25_score": 9.57143819239722,
+      "vec_norm": 0.738183229033172,
+      "bm25_norm": 0.8480756173890552,
+      "hybrid_score": 0.771150945539937,
+      "rerank_score": 0.7952
+    },
+    {
+      "chunk_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8_chunk_1",
+      "content": "【阿里巴巴 · 后端开发 岗位职责】\n1. 负责电商核心系统的设计与开发。2. 高并发系统架构设计与性能优化。3. 分布式系统开发与微服务治理。4. 数据库设计与优化。",
+      "metadata": {
+        "company": "阿里巴巴",
+        "index": 1,
+        "jd_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8",
+        "position": "后端开发",
+        "section": "responsibilities",
+        "strategy": "semantic"
+      },
+      "distance": 0.560383141040802,
+      "bm25_score": 0.0,
+      "vec_norm": 0.7779847968139159,
+      "bm25_norm": 0.0,
+      "hybrid_score": 0.544589357769741,
+      "rerank_score": 0.693
+    },
+    {
+      "chunk_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8_chunk_7",
+      "content": "【阿里巴巴 · 后端开发 软性要求/加分项】\n熟悉K8s、Docker优先",
+      "metadata": {
+        "company": "阿里巴巴",
+        "index": 7,
+        "jd_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8",
+        "position": "后端开发",
+        "priority": "medium",
+        "section": "soft_requirements",
+        "strategy": "semantic"
+      },
+      "distance": 0.6421223282814026,
+      "bm25_score": 0.0,
+      "vec_norm": 0.6165575049324954,
+      "bm25_norm": 0.0,
+      "hybrid_score": 0.43159025345274676,
+      "rerank_score": 0.6241
+    },
+    {
+      "chunk_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a_chunk_6",
+      "content": "【某小公司 · Java后端 关键词】\nJava, Spring Boot, MySQL, ERP, 后端",
+      "metadata": {
+        "company": "某小公司",
+        "index": 6,
+        "jd_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a",
+        "position": "Java后端",
+        "section": "keywords",
+        "strategy": "semantic"
+      },
+      "distance": 0.6305882334709167,
+      "bm25_score": 9.906145995550908,
+      "vec_norm": 0.6393362693466764,
+      "bm25_norm": 0.8838832976948727,
+      "hybrid_score": 0.7127003778511353,
+      "rerank_score": 0.4001
+    },
+    {
+      "chunk_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a_chunk_1",
+      "content": "【某小公司 · Java后端 岗位职责】\n1. 负责传统企业内部管理系统的设计与开发。2. 数据库CRUD操作与报表开发。3. 系统日常维护与bug修复。",
+      "metadata": {
+        "company": "某小公司",
+        "index": 1,
+        "jd_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a",
+        "position": "Java后端",
+        "section": "responsibilities",
+        "strategy": "semantic"
+      },
+      "distance": 0.4479650855064392,
+      "bm25_score": 6.803795908828786,
+      "vec_norm": 1.0,
+      "bm25_norm": 0.551987957773376,
+      "hybrid_score": 0.8655963873320127,
+      "rerank_score": 0.9944
+    },
+    {
+      "chunk_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a_chunk_0",
+      "content": "公司：某小公司，岗位：Java后端，地点：成都，薪资：10k-20k",
+      "metadata": {
+        "category": "技术",
+        "company": "某小公司",
+        "domain": "传统",
+        "index": 0,
+        "jd_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a",
+        "max_years": 3,
+        "min_education": "大专",
+        "min_years": 1,
+        "position": "Java后端",
+        "section": "basic_info",
+        "strategy": "semantic"
+      },
+      "distance": 0.571252703666687,
+      "bm25_score": 9.57143819239722,
+      "vec_norm": 0.7565184216532809,
+      "bm25_norm": 0.8480756173890552,
+      "hybrid_score": 0.7839855803740132,
+      "rerank_score": 0.9451
+    },
+    {
+      "chunk_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a_chunk_5",
+      "content": "【某小公司 · Java后端 软性要求/加分项】\n有ERP系统开发经验优先",
+      "metadata": {
+        "company": "某小公司",
+        "index": 5,
+        "jd_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a",
+        "position": "Java后端",
+        "priority": "medium",
+        "section": "soft_requirements",
+        "strategy": "semantic"
+      },
+      "distance": 0.630220353603363,
+      "bm25_score": 10.991532315079844,
+      "vec_norm": 0.640062797866982,
+      "bm25_norm": 1.0,
+      "hybrid_score": 0.7480439585068873,
+      "rerank_score": 0.9441
+    },
+    {
+      "chunk_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a_chunk_3",
+      "content": "【某小公司 · Java后端 硬性要求】\n熟悉Spring Boot、MySQL",
+      "metadata": {
+        "company": "某小公司",
+        "index": 3,
+        "jd_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a",
+        "position": "Java后端",
+        "priority": "high",
+        "section": "hard_requirements",
+        "strategy": "semantic"
+      },
+      "distance": 0.5873516798019409,
+      "bm25_score": 9.57143819239722,
+      "vec_norm": 0.72472444122223,
+      "bm25_norm": 0.8480756173890552,
+      "hybrid_score": 0.7617297940722776,
+      "rerank_score": 0.9217
+    },
+    {
+      "chunk_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a_chunk_2",
+      "content": "【某小公司 · Java后端 硬性要求】\n1年以上Java开发经验",
+      "metadata": {
+        "company": "某小公司",
+        "index": 2,
+        "jd_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a",
+        "position": "Java后端",
+        "priority": "high",
+        "section": "hard_requirements",
+        "strategy": "semantic"
+      },
+      "distance": 0.5350993871688843,
+      "bm25_score": 10.884970692814257,
+      "vec_norm": 0.8279178589585898,
+      "bm25_norm": 0.9885998340432972,
+      "hybrid_score": 0.876122451484002,
+      "rerank_score": 0.9187
+    },
+    {
+      "chunk_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8_chunk_2",
+      "content": "【阿里巴巴 · 后端开发 硬性要求】\n3年以上Java开发经验",
+      "metadata": {
+        "company": "阿里巴巴",
+        "index": 2,
+        "jd_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8",
+        "position": "后端开发",
+        "priority": "high",
+        "section": "hard_requirements",
+        "strategy": "semantic"
+      },
+      "distance": 0.5302596688270569,
+      "bm25_score": 4.504788801919539,
+      "vec_norm": 0.8374758525203606,
+      "bm25_norm": 0.3060357847754594,
+      "hybrid_score": 0.6780438321968902,
+      "rerank_score": 0.7988
+    },
+    {
+      "chunk_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a_chunk_4",
+      "content": "【某小公司 · Java后端 硬性要求】\n大专及以上学历",
+      "metadata": {
+        "company": "某小公司",
+        "index": 4,
+        "jd_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a",
+        "position": "Java后端",
+        "priority": "high",
+        "section": "hard_requirements",
+        "strategy": "semantic"
+      },
+      "distance": 0.5805367827415466,
+      "bm25_score": 9.57143819239722,
+      "vec_norm": 0.738183229033172,
+      "bm25_norm": 0.8480756173890552,
+      "hybrid_score": 0.771150945539937,
+      "rerank_score": 0.7952
+    },
+    {
+      "chunk_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8_chunk_1",
+      "content": "【阿里巴巴 · 后端开发 岗位职责】\n1. 负责电商核心系统的设计与开发。2. 高并发系统架构设计与性能优化。3. 分布式系统开发与微服务治理。4. 数据库设计与优化。",
+      "metadata": {
+        "company": "阿里巴巴",
+        "index": 1,
+        "jd_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8",
+        "position": "后端开发",
+        "section": "responsibilities",
+        "strategy": "semantic"
+      },
+      "distance": 0.560383141040802,
+      "bm25_score": 0.0,
+      "vec_norm": 0.7779847968139159,
+      "bm25_norm": 0.0,
+      "hybrid_score": 0.544589357769741,
+      "rerank_score": 0.693
+    },
+    {
+      "chunk_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8_chunk_7",
+      "content": "【阿里巴巴 · 后端开发 软性要求/加分项】\n熟悉K8s、Docker优先",
+      "metadata": {
+        "company": "阿里巴巴",
+        "index": 7,
+        "jd_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8",
+        "position": "后端开发",
+        "priority": "medium",
+        "section": "soft_requirements",
+        "strategy": "semantic"
+      },
+      "distance": 0.6421223282814026,
+      "bm25_score": 0.0,
+      "vec_norm": 0.6165575049324954,
+      "bm25_norm": 0.0,
+      "hybrid_score": 0.43159025345274676,
+      "rerank_score": 0.6241
+    },
+    {
+      "chunk_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a_chunk_6",
+      "content": "【某小公司 · Java后端 关键词】\nJava, Spring Boot, MySQL, ERP, 后端",
+      "metadata": {
+        "company": "某小公司",
+        "index": 6,
+        "jd_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a",
+        "position": "Java后端",
+        "section": "keywords",
+        "strategy": "semantic"
+      },
+      "distance": 0.6305882334709167,
+      "bm25_score": 9.906145995550908,
+      "vec_norm": 0.6393362693466764,
+      "bm25_norm": 0.8838832976948727,
+      "hybrid_score": 0.7127003778511353,
+      "rerank_score": 0.4001
+    }
+  ],
+  "tool_executions_full": [
+    {
+      "tool_name": "kb_retrieve",
+      "task_id": "T0",
+      "status": "success",
+      "output": {
+        "chunks": [
+          {
+            "chunk_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a_chunk_1",
+            "content": "【某小公司 · Java后端 岗位职责】\n1. 负责传统企业内部管理系统的设计与开发。2. 数据库CRUD操作与报表开发。3. 系统日常维护与bug修复。",
+            "source": "某小公司-Java后端",
+            "metadata": {
+              "company": "某小公司",
+              "position": "Java后端"
+            }
+          },
+          {
+            "chunk_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a_chunk_0",
+            "content": "公司：某小公司，岗位：Java后端，地点：成都，薪资：10k-20k",
+            "source": "某小公司-Java后端",
+            "metadata": {
+              "company": "某小公司",
+              "position": "Java后端"
+            }
+          },
+          {
+            "chunk_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a_chunk_5",
+            "content": "【某小公司 · Java后端 软性要求/加分项】\n有ERP系统开发经验优先",
+            "source": "某小公司-Java后端",
+            "metadata": {
+              "company": "某小公司",
+              "position": "Java后端"
+            }
+          },
+          {
+            "chunk_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a_chunk_3",
+            "content": "【某小公司 · Java后端 硬性要求】\n熟悉Spring Boot、MySQL",
+            "source": "某小公司-Java后端",
+            "metadata": {
+              "company": "某小公司",
+              "position": "Java后端"
+            }
+          },
+          {
+            "chunk_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a_chunk_2",
+            "content": "【某小公司 · Java后端 硬性要求】\n1年以上Java开发经验",
+            "source": "某小公司-Java后端",
+            "metadata": {
+              "company": "某小公司",
+              "position": "Java后端"
+            }
+          },
+          {
+            "chunk_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8_chunk_2",
+            "content": "【阿里巴巴 · 后端开发 硬性要求】\n3年以上Java开发经验",
+            "source": "阿里巴巴-后端开发",
+            "metadata": {
+              "company": "阿里巴巴",
+              "position": "后端开发"
+            }
+          }
+        ],
+        "query": "帮我看看有什么Java后端岗",
+        "filters": {},
+        "strategy": "hybrid(70%vec+30%bm25)+reranker",
+        "pool_k": 15,
+        "rerank_k": 10,
+        "pool_size": 30,
+        "vec_only": 10,
+        "bm25_only": 10,
+        "both": 10,
+        "rerank": {
+          "enabled": true,
+          "candidates": 15,
+          "output": 10,
+          "best_rerank_score": 0.9944
+        }
+      }
+    },
+    {
+      "tool_name": "kb_retrieve",
+      "task_id": "T1",
+      "status": "success",
+      "output": {
+        "chunks": [
+          {
+            "chunk_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a_chunk_1",
+            "content": "【某小公司 · Java后端 岗位职责】\n1. 负责传统企业内部管理系统的设计与开发。2. 数据库CRUD操作与报表开发。3. 系统日常维护与bug修复。",
+            "source": "某小公司-Java后端",
+            "metadata": {
+              "company": "某小公司",
+              "position": "Java后端"
+            }
+          },
+          {
+            "chunk_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a_chunk_0",
+            "content": "公司：某小公司，岗位：Java后端，地点：成都，薪资：10k-20k",
+            "source": "某小公司-Java后端",
+            "metadata": {
+              "company": "某小公司",
+              "position": "Java后端"
+            }
+          },
+          {
+            "chunk_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a_chunk_5",
+            "content": "【某小公司 · Java后端 软性要求/加分项】\n有ERP系统开发经验优先",
+            "source": "某小公司-Java后端",
+            "metadata": {
+              "company": "某小公司",
+              "position": "Java后端"
+            }
+          },
+          {
+            "chunk_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a_chunk_3",
+            "content": "【某小公司 · Java后端 硬性要求】\n熟悉Spring Boot、MySQL",
+            "source": "某小公司-Java后端",
+            "metadata": {
+              "company": "某小公司",
+              "position": "Java后端"
+            }
+          },
+          {
+            "chunk_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a_chunk_2",
+            "content": "【某小公司 · Java后端 硬性要求】\n1年以上Java开发经验",
+            "source": "某小公司-Java后端",
+            "metadata": {
+              "company": "某小公司",
+              "position": "Java后端"
+            }
+          },
+          {
+            "chunk_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8_chunk_2",
+            "content": "【阿里巴巴 · 后端开发 硬性要求】\n3年以上Java开发经验",
+            "source": "阿里巴巴-后端开发",
+            "metadata": {
+              "company": "阿里巴巴",
+              "position": "后端开发"
+            }
+          }
+        ],
+        "query": "帮我看看有什么Java后端岗",
+        "filters": {},
+        "strategy": "hybrid(70%vec+30%bm25)+reranker",
+        "pool_k": 15,
+        "rerank_k": 10,
+        "pool_size": 30,
+        "vec_only": 10,
+        "bm25_only": 10,
+        "both": 10,
+        "rerank": {
+          "enabled": true,
+          "candidates": 15,
+          "output": 10,
+          "best_rerank_score": 0.9944
+        }
+      }
+    },
+    {
+      "tool_name": null,
+      "task_id": "T2",
+      "status": "success",
+      "output": {
+        "aggregation": {
+          "note": "无工具输出"
+        }
+      }
+    }
+  ],
+  "debug_info": {
+    "task_graph": {
+      "tasks": {
+        "T0": {
+          "task_id": "T0",
+          "task_type": "tool_call",
+          "tool_name": "kb_retrieve",
+          "status": "success",
+          "parameters": {
+            "query": "帮我看看有什么Java后端岗",
+            "company": null,
+            "pool_k": 15,
+            "rerank_k": 10
+          },
+          "resolved_params": {
+            "query": "帮我看看有什么Java后端岗",
+            "company": null,
+            "pool_k": 15,
+            "rerank_k": 10
+          },
+          "result": {
+            "chunks": [
+              {
+                "chunk_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a_chunk_1",
+                "content": "【某小公司 · Java后端 岗位职责】\n1. 负责传统企业内部管理系统的设计与开发。2. 数据库CRUD操作与报表开发。3. 系统日常维护与bug修复。",
+                "metadata": {
+                  "company": "某小公司",
+                  "index": 1,
+                  "jd_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a",
+                  "position": "Java后端",
+                  "section": "responsibilities",
+                  "strategy": "semantic"
+                },
+                "distance": 0.4479650855064392,
+                "bm25_score": 6.803795908828786,
+                "vec_norm": 1.0,
+                "bm25_norm": 0.551987957773376,
+                "hybrid_score": 0.8655963873320127,
+                "rerank_score": 0.9944
+              },
+              {
+                "chunk_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a_chunk_0",
+                "content": "公司：某小公司，岗位：Java后端，地点：成都，薪资：10k-20k",
+                "metadata": {
+                  "category": "技术",
+                  "company": "某小公司",
+                  "domain": "传统",
+                  "index": 0,
+                  "jd_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a",
+                  "max_years": 3,
+                  "min_education": "大专",
+                  "min_years": 1,
+                  "position": "Java后端",
+                  "section": "basic_info",
+                  "strategy": "semantic"
+                },
+                "distance": 0.571252703666687,
+                "bm25_score": 9.57143819239722,
+                "vec_norm": 0.7565184216532809,
+                "bm25_norm": 0.8480756173890552,
+                "hybrid_score": 0.7839855803740132,
+                "rerank_score": 0.9451
+              },
+              {
+                "chunk_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a_chunk_5",
+                "content": "【某小公司 · Java后端 软性要求/加分项】\n有ERP系统开发经验优先",
+                "metadata": {
+                  "company": "某小公司",
+                  "index": 5,
+                  "jd_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a",
+                  "position": "Java后端",
+                  "priority": "medium",
+                  "section": "soft_requirements",
+                  "strategy": "semantic"
+                },
+                "distance": 0.630220353603363,
+                "bm25_score": 10.991532315079844,
+                "vec_norm": 0.640062797866982,
+                "bm25_norm": 1.0,
+                "hybrid_score": 0.7480439585068873,
+                "rerank_score": 0.9441
+              },
+              {
+                "chunk_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a_chunk_3",
+                "content": "【某小公司 · Java后端 硬性要求】\n熟悉Spring Boot、MySQL",
+                "metadata": {
+                  "company": "某小公司",
+                  "index": 3,
+                  "jd_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a",
+                  "position": "Java后端",
+                  "priority": "high",
+                  "section": "hard_requirements",
+                  "strategy": "semantic"
+                },
+                "distance": 0.5873516798019409,
+                "bm25_score": 9.57143819239722,
+                "vec_norm": 0.72472444122223,
+                "bm25_norm": 0.8480756173890552,
+                "hybrid_score": 0.7617297940722776,
+                "rerank_score": 0.9217
+              },
+              {
+                "chunk_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a_chunk_2",
+                "content": "【某小公司 · Java后端 硬性要求】\n1年以上Java开发经验",
+                "metadata": {
+                  "company": "某小公司",
+                  "index": 2,
+                  "jd_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a",
+                  "position": "Java后端",
+                  "priority": "high",
+                  "section": "hard_requirements",
+                  "strategy": "semantic"
+                },
+                "distance": 0.5350993871688843,
+                "bm25_score": 10.884970692814257,
+                "vec_norm": 0.8279178589585898,
+                "bm25_norm": 0.9885998340432972,
+                "hybrid_score": 0.876122451484002,
+                "rerank_score": 0.9187
+              },
+              {
+                "chunk_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8_chunk_2",
+                "content": "【阿里巴巴 · 后端开发 硬性要求】\n3年以上Java开发经验",
+                "metadata": {
+                  "company": "阿里巴巴",
+                  "index": 2,
+                  "jd_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8",
+                  "position": "后端开发",
+                  "priority": "high",
+                  "section": "hard_requirements",
+                  "strategy": "semantic"
+                },
+                "distance": 0.5302596688270569,
+                "bm25_score": 4.504788801919539,
+                "vec_norm": 0.8374758525203606,
+                "bm25_norm": 0.3060357847754594,
+                "hybrid_score": 0.6780438321968902,
+                "rerank_score": 0.7988
+              },
+              {
+                "chunk_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a_chunk_4",
+                "content": "【某小公司 · Java后端 硬性要求】\n大专及以上学历",
+                "metadata": {
+                  "company": "某小公司",
+                  "index": 4,
+                  "jd_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a",
+                  "position": "Java后端",
+                  "priority": "high",
+                  "section": "hard_requirements",
+                  "strategy": "semantic"
+                },
+                "distance": 0.5805367827415466,
+                "bm25_score": 9.57143819239722,
+                "vec_norm": 0.738183229033172,
+                "bm25_norm": 0.8480756173890552,
+                "hybrid_score": 0.771150945539937,
+                "rerank_score": 0.7952
+              },
+              {
+                "chunk_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8_chunk_1",
+                "content": "【阿里巴巴 · 后端开发 岗位职责】\n1. 负责电商核心系统的设计与开发。2. 高并发系统架构设计与性能优化。3. 分布式系统开发与微服务治理。4. 数据库设计与优化。",
+                "metadata": {
+                  "company": "阿里巴巴",
+                  "index": 1,
+                  "jd_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8",
+                  "position": "后端开发",
+                  "section": "responsibilities",
+                  "strategy": "semantic"
+                },
+                "distance": 0.560383141040802,
+                "bm25_score": 0.0,
+                "vec_norm": 0.7779847968139159,
+                "bm25_norm": 0.0,
+                "hybrid_score": 0.544589357769741,
+                "rerank_score": 0.693
+              },
+              {
+                "chunk_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8_chunk_7",
+                "content": "【阿里巴巴 · 后端开发 软性要求/加分项】\n熟悉K8s、Docker优先",
+                "metadata": {
+                  "company": "阿里巴巴",
+                  "index": 7,
+                  "jd_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8",
+                  "position": "后端开发",
+                  "priority": "medium",
+                  "section": "soft_requirements",
+                  "strategy": "semantic"
+                },
+                "distance": 0.6421223282814026,
+                "bm25_score": 0.0,
+                "vec_norm": 0.6165575049324954,
+                "bm25_norm": 0.0,
+                "hybrid_score": 0.43159025345274676,
+                "rerank_score": 0.6241
+              },
+              {
+                "chunk_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a_chunk_6",
+                "content": "【某小公司 · Java后端 关键词】\nJava, Spring Boot, MySQL, ERP, 后端",
+                "metadata": {
+                  "company": "某小公司",
+                  "index": 6,
+                  "jd_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a",
+                  "position": "Java后端",
+                  "section": "keywords",
+                  "strategy": "semantic"
+                },
+                "distance": 0.6305882334709167,
+                "bm25_score": 9.906145995550908,
+                "vec_norm": 0.6393362693466764,
+                "bm25_norm": 0.8838832976948727,
+                "hybrid_score": 0.7127003778511353,
+                "rerank_score": 0.4001
+              }
+            ],
+            "query": "帮我看看有什么Java后端岗",
+            "filters": {},
+            "strategy": "hybrid(70%vec+30%bm25)+reranker",
+            "pool_k": 15,
+            "rerank_k": 10,
+            "pool_size": 30,
+            "vec_only": 10,
+            "bm25_only": 10,
+            "both": 10,
+            "rerank": {
+              "enabled": true,
+              "candidates": 15,
+              "output": 10,
+              "best_rerank_score": 0.9944
+            }
+          },
+          "observation": "工具 kb_retrieve 执行成功"
+        },
+        "T1": {
+          "task_id": "T1",
+          "task_type": "tool_call",
+          "tool_name": "kb_retrieve",
+          "status": "success",
+          "parameters": {
+            "query": "帮我看看有什么Java后端岗",
+            "company": null,
+            "pool_k": 20,
+            "rerank_k": 12
+          },
+          "resolved_params": {
+            "query": "帮我看看有什么Java后端岗",
+            "company": null,
+            "pool_k": 20,
+            "rerank_k": 12
+          },
+          "result": {
+            "chunks": [
+              {
+                "chunk_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a_chunk_1",
+                "content": "【某小公司 · Java后端 岗位职责】\n1. 负责传统企业内部管理系统的设计与开发。2. 数据库CRUD操作与报表开发。3. 系统日常维护与bug修复。",
+                "metadata": {
+                  "company": "某小公司",
+                  "index": 1,
+                  "jd_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a",
+                  "position": "Java后端",
+                  "section": "responsibilities",
+                  "strategy": "semantic"
+                },
+                "distance": 0.4479650855064392,
+                "bm25_score": 6.803795908828786,
+                "vec_norm": 1.0,
+                "bm25_norm": 0.551987957773376,
+                "hybrid_score": 0.8655963873320127,
+                "rerank_score": 0.9944
+              },
+              {
+                "chunk_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a_chunk_0",
+                "content": "公司：某小公司，岗位：Java后端，地点：成都，薪资：10k-20k",
+                "metadata": {
+                  "category": "技术",
+                  "company": "某小公司",
+                  "domain": "传统",
+                  "index": 0,
+                  "jd_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a",
+                  "max_years": 3,
+                  "min_education": "大专",
+                  "min_years": 1,
+                  "position": "Java后端",
+                  "section": "basic_info",
+                  "strategy": "semantic"
+                },
+                "distance": 0.571252703666687,
+                "bm25_score": 9.57143819239722,
+                "vec_norm": 0.7565184216532809,
+                "bm25_norm": 0.8480756173890552,
+                "hybrid_score": 0.7839855803740132,
+                "rerank_score": 0.9451
+              },
+              {
+                "chunk_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a_chunk_5",
+                "content": "【某小公司 · Java后端 软性要求/加分项】\n有ERP系统开发经验优先",
+                "metadata": {
+                  "company": "某小公司",
+                  "index": 5,
+                  "jd_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a",
+                  "position": "Java后端",
+                  "priority": "medium",
+                  "section": "soft_requirements",
+                  "strategy": "semantic"
+                },
+                "distance": 0.630220353603363,
+                "bm25_score": 10.991532315079844,
+                "vec_norm": 0.640062797866982,
+                "bm25_norm": 1.0,
+                "hybrid_score": 0.7480439585068873,
+                "rerank_score": 0.9441
+              },
+              {
+                "chunk_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a_chunk_3",
+                "content": "【某小公司 · Java后端 硬性要求】\n熟悉Spring Boot、MySQL",
+                "metadata": {
+                  "company": "某小公司",
+                  "index": 3,
+                  "jd_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a",
+                  "position": "Java后端",
+                  "priority": "high",
+                  "section": "hard_requirements",
+                  "strategy": "semantic"
+                },
+                "distance": 0.5873516798019409,
+                "bm25_score": 9.57143819239722,
+                "vec_norm": 0.72472444122223,
+                "bm25_norm": 0.8480756173890552,
+                "hybrid_score": 0.7617297940722776,
+                "rerank_score": 0.9217
+              },
+              {
+                "chunk_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a_chunk_2",
+                "content": "【某小公司 · Java后端 硬性要求】\n1年以上Java开发经验",
+                "metadata": {
+                  "company": "某小公司",
+                  "index": 2,
+                  "jd_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a",
+                  "position": "Java后端",
+                  "priority": "high",
+                  "section": "hard_requirements",
+                  "strategy": "semantic"
+                },
+                "distance": 0.5350993871688843,
+                "bm25_score": 10.884970692814257,
+                "vec_norm": 0.8279178589585898,
+                "bm25_norm": 0.9885998340432972,
+                "hybrid_score": 0.876122451484002,
+                "rerank_score": 0.9187
+              },
+              {
+                "chunk_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8_chunk_2",
+                "content": "【阿里巴巴 · 后端开发 硬性要求】\n3年以上Java开发经验",
+                "metadata": {
+                  "company": "阿里巴巴",
+                  "index": 2,
+                  "jd_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8",
+                  "position": "后端开发",
+                  "priority": "high",
+                  "section": "hard_requirements",
+                  "strategy": "semantic"
+                },
+                "distance": 0.5302596688270569,
+                "bm25_score": 4.504788801919539,
+                "vec_norm": 0.8374758525203606,
+                "bm25_norm": 0.3060357847754594,
+                "hybrid_score": 0.6780438321968902,
+                "rerank_score": 0.7988
+              },
+              {
+                "chunk_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a_chunk_4",
+                "content": "【某小公司 · Java后端 硬性要求】\n大专及以上学历",
+                "metadata": {
+                  "company": "某小公司",
+                  "index": 4,
+                  "jd_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a",
+                  "position": "Java后端",
+                  "priority": "high",
+                  "section": "hard_requirements",
+                  "strategy": "semantic"
+                },
+                "distance": 0.5805367827415466,
+                "bm25_score": 9.57143819239722,
+                "vec_norm": 0.738183229033172,
+                "bm25_norm": 0.8480756173890552,
+                "hybrid_score": 0.771150945539937,
+                "rerank_score": 0.7952
+              },
+              {
+                "chunk_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8_chunk_1",
+                "content": "【阿里巴巴 · 后端开发 岗位职责】\n1. 负责电商核心系统的设计与开发。2. 高并发系统架构设计与性能优化。3. 分布式系统开发与微服务治理。4. 数据库设计与优化。",
+                "metadata": {
+                  "company": "阿里巴巴",
+                  "index": 1,
+                  "jd_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8",
+                  "position": "后端开发",
+                  "section": "responsibilities",
+                  "strategy": "semantic"
+                },
+                "distance": 0.560383141040802,
+                "bm25_score": 0.0,
+                "vec_norm": 0.7779847968139159,
+                "bm25_norm": 0.0,
+                "hybrid_score": 0.544589357769741,
+                "rerank_score": 0.693
+              },
+              {
+                "chunk_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8_chunk_7",
+                "content": "【阿里巴巴 · 后端开发 软性要求/加分项】\n熟悉K8s、Docker优先",
+                "metadata": {
+                  "company": "阿里巴巴",
+                  "index": 7,
+                  "jd_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8",
+                  "position": "后端开发",
+                  "priority": "medium",
+                  "section": "soft_requirements",
+                  "strategy": "semantic"
+                },
+                "distance": 0.6421223282814026,
+                "bm25_score": 0.0,
+                "vec_norm": 0.6165575049324954,
+                "bm25_norm": 0.0,
+                "hybrid_score": 0.43159025345274676,
+                "rerank_score": 0.6241
+              },
+              {
+                "chunk_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a_chunk_6",
+                "content": "【某小公司 · Java后端 关键词】\nJava, Spring Boot, MySQL, ERP, 后端",
+                "metadata": {
+                  "company": "某小公司",
+                  "index": 6,
+                  "jd_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a",
+                  "position": "Java后端",
+                  "section": "keywords",
+                  "strategy": "semantic"
+                },
+                "distance": 0.6305882334709167,
+                "bm25_score": 9.906145995550908,
+                "vec_norm": 0.6393362693466764,
+                "bm25_norm": 0.8838832976948727,
+                "hybrid_score": 0.7127003778511353,
+                "rerank_score": 0.4001
+              }
+            ],
+            "query": "帮我看看有什么Java后端岗",
+            "filters": {},
+            "strategy": "hybrid(70%vec+30%bm25)+reranker",
+            "pool_k": 15,
+            "rerank_k": 10,
+            "pool_size": 30,
+            "vec_only": 10,
+            "bm25_only": 10,
+            "both": 10,
+            "rerank": {
+              "enabled": true,
+              "candidates": 15,
+              "output": 10,
+              "best_rerank_score": 0.9944
+            }
+          },
+          "observation": "工具 kb_retrieve 执行成功"
+        },
+        "T2": {
+          "task_id": "T2",
+          "task_type": "aggregate",
+          "tool_name": null,
+          "status": "success",
+          "parameters": {
+            "note": "无工具输出"
+          },
+          "resolved_params": {
+            "note": "无工具输出"
+          },
+          "result": {
+            "aggregation": {
+              "note": "无工具输出"
+            }
+          },
+          "observation": "聚合完成"
+        }
+      },
+      "global_status": "success",
+      "replan_reason": "",
+      "replan_count": 0
+    },
+    "intent": {
+      "demands": [
+        {
+          "intent": "position_explore",
+          "entities": {
+            "position": "Java后端",
+            "search_keywords": "帮我看看有什么Java后端岗",
+            "sort_by": "match_score",
+            "top_k": 5
+          },
+          "confidence": 0.88
+        },
+        {
+          "intent": "match_assess",
+          "entities": {
+            "position": "Java后端",
+            "attributes": [
+              "匹配度"
+            ],
+            "jd_source": "kb"
+          },
+          "confidence": 0.75
+        }
+      ],
+      "needs_clarification": false,
+      "clarification_question": ""
+    },
+    "rewrite": {
+      "rewritten_query": "帮我看看有什么Java后端岗",
+      "search_keywords": "帮我看看有什么Java后端岗",
+      "is_follow_up": false,
+      "follow_up_type": "none",
+      "resolved_references": {}
+    },
+    "evidence_cache": [
+      {
+        "chunk_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a_chunk_1",
+        "content": "【某小公司 · Java后端 岗位职责】\n1. 负责传统企业内部管理系统的设计与开发。2. 数据库CRUD操作与报表开发。3. 系统日常维护与bug修复。",
+        "metadata": {
+          "company": "某小公司",
+          "index": 1,
+          "jd_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a",
+          "position": "Java后端",
+          "section": "responsibilities",
+          "strategy": "semantic"
+        },
+        "distance": 0.4479650855064392,
+        "bm25_score": 6.803795908828786,
+        "vec_norm": 1.0,
+        "bm25_norm": 0.551987957773376,
+        "hybrid_score": 0.8655963873320127,
+        "rerank_score": 0.9944
+      },
+      {
+        "chunk_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a_chunk_0",
+        "content": "公司：某小公司，岗位：Java后端，地点：成都，薪资：10k-20k",
+        "metadata": {
+          "category": "技术",
+          "company": "某小公司",
+          "domain": "传统",
+          "index": 0,
+          "jd_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a",
+          "max_years": 3,
+          "min_education": "大专",
+          "min_years": 1,
+          "position": "Java后端",
+          "section": "basic_info",
+          "strategy": "semantic"
+        },
+        "distance": 0.571252703666687,
+        "bm25_score": 9.57143819239722,
+        "vec_norm": 0.7565184216532809,
+        "bm25_norm": 0.8480756173890552,
+        "hybrid_score": 0.7839855803740132,
+        "rerank_score": 0.9451
+      },
+      {
+        "chunk_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a_chunk_5",
+        "content": "【某小公司 · Java后端 软性要求/加分项】\n有ERP系统开发经验优先",
+        "metadata": {
+          "company": "某小公司",
+          "index": 5,
+          "jd_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a",
+          "position": "Java后端",
+          "priority": "medium",
+          "section": "soft_requirements",
+          "strategy": "semantic"
+        },
+        "distance": 0.630220353603363,
+        "bm25_score": 10.991532315079844,
+        "vec_norm": 0.640062797866982,
+        "bm25_norm": 1.0,
+        "hybrid_score": 0.7480439585068873,
+        "rerank_score": 0.9441
+      },
+      {
+        "chunk_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a_chunk_3",
+        "content": "【某小公司 · Java后端 硬性要求】\n熟悉Spring Boot、MySQL",
+        "metadata": {
+          "company": "某小公司",
+          "index": 3,
+          "jd_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a",
+          "position": "Java后端",
+          "priority": "high",
+          "section": "hard_requirements",
+          "strategy": "semantic"
+        },
+        "distance": 0.5873516798019409,
+        "bm25_score": 9.57143819239722,
+        "vec_norm": 0.72472444122223,
+        "bm25_norm": 0.8480756173890552,
+        "hybrid_score": 0.7617297940722776,
+        "rerank_score": 0.9217
+      },
+      {
+        "chunk_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a_chunk_2",
+        "content": "【某小公司 · Java后端 硬性要求】\n1年以上Java开发经验",
+        "metadata": {
+          "company": "某小公司",
+          "index": 2,
+          "jd_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a",
+          "position": "Java后端",
+          "priority": "high",
+          "section": "hard_requirements",
+          "strategy": "semantic"
+        },
+        "distance": 0.5350993871688843,
+        "bm25_score": 10.884970692814257,
+        "vec_norm": 0.8279178589585898,
+        "bm25_norm": 0.9885998340432972,
+        "hybrid_score": 0.876122451484002,
+        "rerank_score": 0.9187
+      },
+      {
+        "chunk_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8_chunk_2",
+        "content": "【阿里巴巴 · 后端开发 硬性要求】\n3年以上Java开发经验",
+        "metadata": {
+          "company": "阿里巴巴",
+          "index": 2,
+          "jd_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8",
+          "position": "后端开发",
+          "priority": "high",
+          "section": "hard_requirements",
+          "strategy": "semantic"
+        },
+        "distance": 0.5302596688270569,
+        "bm25_score": 4.504788801919539,
+        "vec_norm": 0.8374758525203606,
+        "bm25_norm": 0.3060357847754594,
+        "hybrid_score": 0.6780438321968902,
+        "rerank_score": 0.7988
+      },
+      {
+        "chunk_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a_chunk_4",
+        "content": "【某小公司 · Java后端 硬性要求】\n大专及以上学历",
+        "metadata": {
+          "company": "某小公司",
+          "index": 4,
+          "jd_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a",
+          "position": "Java后端",
+          "priority": "high",
+          "section": "hard_requirements",
+          "strategy": "semantic"
+        },
+        "distance": 0.5805367827415466,
+        "bm25_score": 9.57143819239722,
+        "vec_norm": 0.738183229033172,
+        "bm25_norm": 0.8480756173890552,
+        "hybrid_score": 0.771150945539937,
+        "rerank_score": 0.7952
+      },
+      {
+        "chunk_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8_chunk_1",
+        "content": "【阿里巴巴 · 后端开发 岗位职责】\n1. 负责电商核心系统的设计与开发。2. 高并发系统架构设计与性能优化。3. 分布式系统开发与微服务治理。4. 数据库设计与优化。",
+        "metadata": {
+          "company": "阿里巴巴",
+          "index": 1,
+          "jd_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8",
+          "position": "后端开发",
+          "section": "responsibilities",
+          "strategy": "semantic"
+        },
+        "distance": 0.560383141040802,
+        "bm25_score": 0.0,
+        "vec_norm": 0.7779847968139159,
+        "bm25_norm": 0.0,
+        "hybrid_score": 0.544589357769741,
+        "rerank_score": 0.693
+      },
+      {
+        "chunk_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8_chunk_7",
+        "content": "【阿里巴巴 · 后端开发 软性要求/加分项】\n熟悉K8s、Docker优先",
+        "metadata": {
+          "company": "阿里巴巴",
+          "index": 7,
+          "jd_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8",
+          "position": "后端开发",
+          "priority": "medium",
+          "section": "soft_requirements",
+          "strategy": "semantic"
+        },
+        "distance": 0.6421223282814026,
+        "bm25_score": 0.0,
+        "vec_norm": 0.6165575049324954,
+        "bm25_norm": 0.0,
+        "hybrid_score": 0.43159025345274676,
+        "rerank_score": 0.6241
+      },
+      {
+        "chunk_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a_chunk_6",
+        "content": "【某小公司 · Java后端 关键词】\nJava, Spring Boot, MySQL, ERP, 后端",
+        "metadata": {
+          "company": "某小公司",
+          "index": 6,
+          "jd_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a",
+          "position": "Java后端",
+          "section": "keywords",
+          "strategy": "semantic"
+        },
+        "distance": 0.6305882334709167,
+        "bm25_score": 9.906145995550908,
+        "vec_norm": 0.6393362693466764,
+        "bm25_norm": 0.8838832976948727,
+        "hybrid_score": 0.7127003778511353,
+        "rerank_score": 0.4001
+      },
+      {
+        "chunk_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a_chunk_1",
+        "content": "【某小公司 · Java后端 岗位职责】\n1. 负责传统企业内部管理系统的设计与开发。2. 数据库CRUD操作与报表开发。3. 系统日常维护与bug修复。",
+        "metadata": {
+          "company": "某小公司",
+          "index": 1,
+          "jd_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a",
+          "position": "Java后端",
+          "section": "responsibilities",
+          "strategy": "semantic"
+        },
+        "distance": 0.4479650855064392,
+        "bm25_score": 6.803795908828786,
+        "vec_norm": 1.0,
+        "bm25_norm": 0.551987957773376,
+        "hybrid_score": 0.8655963873320127,
+        "rerank_score": 0.9944
+      },
+      {
+        "chunk_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a_chunk_0",
+        "content": "公司：某小公司，岗位：Java后端，地点：成都，薪资：10k-20k",
+        "metadata": {
+          "category": "技术",
+          "company": "某小公司",
+          "domain": "传统",
+          "index": 0,
+          "jd_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a",
+          "max_years": 3,
+          "min_education": "大专",
+          "min_years": 1,
+          "position": "Java后端",
+          "section": "basic_info",
+          "strategy": "semantic"
+        },
+        "distance": 0.571252703666687,
+        "bm25_score": 9.57143819239722,
+        "vec_norm": 0.7565184216532809,
+        "bm25_norm": 0.8480756173890552,
+        "hybrid_score": 0.7839855803740132,
+        "rerank_score": 0.9451
+      },
+      {
+        "chunk_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a_chunk_5",
+        "content": "【某小公司 · Java后端 软性要求/加分项】\n有ERP系统开发经验优先",
+        "metadata": {
+          "company": "某小公司",
+          "index": 5,
+          "jd_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a",
+          "position": "Java后端",
+          "priority": "medium",
+          "section": "soft_requirements",
+          "strategy": "semantic"
+        },
+        "distance": 0.630220353603363,
+        "bm25_score": 10.991532315079844,
+        "vec_norm": 0.640062797866982,
+        "bm25_norm": 1.0,
+        "hybrid_score": 0.7480439585068873,
+        "rerank_score": 0.9441
+      },
+      {
+        "chunk_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a_chunk_3",
+        "content": "【某小公司 · Java后端 硬性要求】\n熟悉Spring Boot、MySQL",
+        "metadata": {
+          "company": "某小公司",
+          "index": 3,
+          "jd_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a",
+          "position": "Java后端",
+          "priority": "high",
+          "section": "hard_requirements",
+          "strategy": "semantic"
+        },
+        "distance": 0.5873516798019409,
+        "bm25_score": 9.57143819239722,
+        "vec_norm": 0.72472444122223,
+        "bm25_norm": 0.8480756173890552,
+        "hybrid_score": 0.7617297940722776,
+        "rerank_score": 0.9217
+      },
+      {
+        "chunk_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a_chunk_2",
+        "content": "【某小公司 · Java后端 硬性要求】\n1年以上Java开发经验",
+        "metadata": {
+          "company": "某小公司",
+          "index": 2,
+          "jd_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a",
+          "position": "Java后端",
+          "priority": "high",
+          "section": "hard_requirements",
+          "strategy": "semantic"
+        },
+        "distance": 0.5350993871688843,
+        "bm25_score": 10.884970692814257,
+        "vec_norm": 0.8279178589585898,
+        "bm25_norm": 0.9885998340432972,
+        "hybrid_score": 0.876122451484002,
+        "rerank_score": 0.9187
+      },
+      {
+        "chunk_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8_chunk_2",
+        "content": "【阿里巴巴 · 后端开发 硬性要求】\n3年以上Java开发经验",
+        "metadata": {
+          "company": "阿里巴巴",
+          "index": 2,
+          "jd_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8",
+          "position": "后端开发",
+          "priority": "high",
+          "section": "hard_requirements",
+          "strategy": "semantic"
+        },
+        "distance": 0.5302596688270569,
+        "bm25_score": 4.504788801919539,
+        "vec_norm": 0.8374758525203606,
+        "bm25_norm": 0.3060357847754594,
+        "hybrid_score": 0.6780438321968902,
+        "rerank_score": 0.7988
+      },
+      {
+        "chunk_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a_chunk_4",
+        "content": "【某小公司 · Java后端 硬性要求】\n大专及以上学历",
+        "metadata": {
+          "company": "某小公司",
+          "index": 4,
+          "jd_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a",
+          "position": "Java后端",
+          "priority": "high",
+          "section": "hard_requirements",
+          "strategy": "semantic"
+        },
+        "distance": 0.5805367827415466,
+        "bm25_score": 9.57143819239722,
+        "vec_norm": 0.738183229033172,
+        "bm25_norm": 0.8480756173890552,
+        "hybrid_score": 0.771150945539937,
+        "rerank_score": 0.7952
+      },
+      {
+        "chunk_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8_chunk_1",
+        "content": "【阿里巴巴 · 后端开发 岗位职责】\n1. 负责电商核心系统的设计与开发。2. 高并发系统架构设计与性能优化。3. 分布式系统开发与微服务治理。4. 数据库设计与优化。",
+        "metadata": {
+          "company": "阿里巴巴",
+          "index": 1,
+          "jd_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8",
+          "position": "后端开发",
+          "section": "responsibilities",
+          "strategy": "semantic"
+        },
+        "distance": 0.560383141040802,
+        "bm25_score": 0.0,
+        "vec_norm": 0.7779847968139159,
+        "bm25_norm": 0.0,
+        "hybrid_score": 0.544589357769741,
+        "rerank_score": 0.693
+      },
+      {
+        "chunk_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8_chunk_7",
+        "content": "【阿里巴巴 · 后端开发 软性要求/加分项】\n熟悉K8s、Docker优先",
+        "metadata": {
+          "company": "阿里巴巴",
+          "index": 7,
+          "jd_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8",
+          "position": "后端开发",
+          "priority": "medium",
+          "section": "soft_requirements",
+          "strategy": "semantic"
+        },
+        "distance": 0.6421223282814026,
+        "bm25_score": 0.0,
+        "vec_norm": 0.6165575049324954,
+        "bm25_norm": 0.0,
+        "hybrid_score": 0.43159025345274676,
+        "rerank_score": 0.6241
+      },
+      {
+        "chunk_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a_chunk_6",
+        "content": "【某小公司 · Java后端 关键词】\nJava, Spring Boot, MySQL, ERP, 后端",
+        "metadata": {
+          "company": "某小公司",
+          "index": 6,
+          "jd_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a",
+          "position": "Java后端",
+          "section": "keywords",
+          "strategy": "semantic"
+        },
+        "distance": 0.6305882334709167,
+        "bm25_score": 9.906145995550908,
+        "vec_norm": 0.6393362693466764,
+        "bm25_norm": 0.8838832976948727,
+        "hybrid_score": 0.7127003778511353,
+        "rerank_score": 0.4001
+      }
+    ],
+    "evidence_cache_query": "帮我看看有什么Java后端岗",
+    "tool_outputs": [
+      {
+        "task_id": "T0",
+        "tool": "kb_retrieve",
+        "description": "检索: 帮我看看有什么Java后端岗...",
+        "result": {
+          "chunks": [
+            {
+              "chunk_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a_chunk_1",
+              "content": "【某小公司 · Java后端 岗位职责】\n1. 负责传统企业内部管理系统的设计与开发。2. 数据库CRUD操作与报表开发。3. 系统日常维护与bug修复。",
+              "source": "某小公司-Java后端",
+              "metadata": {
+                "company": "某小公司",
+                "position": "Java后端"
+              }
+            },
+            {
+              "chunk_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a_chunk_0",
+              "content": "公司：某小公司，岗位：Java后端，地点：成都，薪资：10k-20k",
+              "source": "某小公司-Java后端",
+              "metadata": {
+                "company": "某小公司",
+                "position": "Java后端"
+              }
+            },
+            {
+              "chunk_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a_chunk_5",
+              "content": "【某小公司 · Java后端 软性要求/加分项】\n有ERP系统开发经验优先",
+              "source": "某小公司-Java后端",
+              "metadata": {
+                "company": "某小公司",
+                "position": "Java后端"
+              }
+            },
+            {
+              "chunk_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a_chunk_3",
+              "content": "【某小公司 · Java后端 硬性要求】\n熟悉Spring Boot、MySQL",
+              "source": "某小公司-Java后端",
+              "metadata": {
+                "company": "某小公司",
+                "position": "Java后端"
+              }
+            },
+            {
+              "chunk_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a_chunk_2",
+              "content": "【某小公司 · Java后端 硬性要求】\n1年以上Java开发经验",
+              "source": "某小公司-Java后端",
+              "metadata": {
+                "company": "某小公司",
+                "position": "Java后端"
+              }
+            },
+            {
+              "chunk_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8_chunk_2",
+              "content": "【阿里巴巴 · 后端开发 硬性要求】\n3年以上Java开发经验",
+              "source": "阿里巴巴-后端开发",
+              "metadata": {
+                "company": "阿里巴巴",
+                "position": "后端开发"
+              }
+            }
+          ],
+          "query": "帮我看看有什么Java后端岗",
+          "filters": {},
+          "strategy": "hybrid(70%vec+30%bm25)+reranker",
+          "pool_k": 15,
+          "rerank_k": 10,
+          "pool_size": 30,
+          "vec_only": 10,
+          "bm25_only": 10,
+          "both": 10,
+          "rerank": {
+            "enabled": true,
+            "candidates": 15,
+            "output": 10,
+            "best_rerank_score": 0.9944
+          }
+        }
+      },
+      {
+        "task_id": "T1",
+        "tool": "kb_retrieve",
+        "description": "检索: 帮我看看有什么Java后端岗...",
+        "result": {
+          "chunks": [
+            {
+              "chunk_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a_chunk_1",
+              "content": "【某小公司 · Java后端 岗位职责】\n1. 负责传统企业内部管理系统的设计与开发。2. 数据库CRUD操作与报表开发。3. 系统日常维护与bug修复。",
+              "source": "某小公司-Java后端",
+              "metadata": {
+                "company": "某小公司",
+                "position": "Java后端"
+              }
+            },
+            {
+              "chunk_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a_chunk_0",
+              "content": "公司：某小公司，岗位：Java后端，地点：成都，薪资：10k-20k",
+              "source": "某小公司-Java后端",
+              "metadata": {
+                "company": "某小公司",
+                "position": "Java后端"
+              }
+            },
+            {
+              "chunk_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a_chunk_5",
+              "content": "【某小公司 · Java后端 软性要求/加分项】\n有ERP系统开发经验优先",
+              "source": "某小公司-Java后端",
+              "metadata": {
+                "company": "某小公司",
+                "position": "Java后端"
+              }
+            },
+            {
+              "chunk_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a_chunk_3",
+              "content": "【某小公司 · Java后端 硬性要求】\n熟悉Spring Boot、MySQL",
+              "source": "某小公司-Java后端",
+              "metadata": {
+                "company": "某小公司",
+                "position": "Java后端"
+              }
+            },
+            {
+              "chunk_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a_chunk_2",
+              "content": "【某小公司 · Java后端 硬性要求】\n1年以上Java开发经验",
+              "source": "某小公司-Java后端",
+              "metadata": {
+                "company": "某小公司",
+                "position": "Java后端"
+              }
+            },
+            {
+              "chunk_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8_chunk_2",
+              "content": "【阿里巴巴 · 后端开发 硬性要求】\n3年以上Java开发经验",
+              "source": "阿里巴巴-后端开发",
+              "metadata": {
+                "company": "阿里巴巴",
+                "position": "后端开发"
+              }
+            }
+          ],
+          "query": "帮我看看有什么Java后端岗",
+          "filters": {},
+          "strategy": "hybrid(70%vec+30%bm25)+reranker",
+          "pool_k": 15,
+          "rerank_k": 10,
+          "pool_size": 30,
+          "vec_only": 10,
+          "bm25_only": 10,
+          "both": 10,
+          "rerank": {
+            "enabled": true,
+            "candidates": 15,
+            "output": 10,
+            "best_rerank_score": 0.9944
+          }
+        }
+      },
+      {
+        "task_id": "T2",
+        "tool": null,
+        "description": "聚合所有输出生成回复素材",
+        "result": {
+          "aggregation": {
+            "note": "无工具输出"
+          }
+        }
+      }
+    ],
+    "final_aggregation_prompt": {
+      "system_prompt": "你是一位专业的求职顾问。请基于以下工具执行结果，给用户一个清晰、有帮助的回复。\n要求：\n1. 先直接回答用户的问题（是/否/有/没有），不要绕弯子，不要重复用户的原话\n2. 如果有匹配分析结果，给出具体的分数和建议\n3. 如果有检索结果，基于事实回答，不要编造\n4. 【强制】引用信息时必须标注来源。每个引用的事实后面都要跟 [来源：公司名-岗位名] 格式。   kb_retrieve 结果的 chunks 中带有 'source' 字段（如'字节跳动-AI产品经理'），请直接使用。   external_search 结果带有 'source_name' 字段，也请直接使用。\n5. 当本地知识库与外部搜索结果冲突时，请并列呈现两种说法并标注各自来源，不要替用户做判断\n6. 语气友好、专业、结构化",
+      "user_prompt": "【用户问题】\n帮我看看有什么Java后端岗\n\n【工具执行结果】\n[{\"task_id\": \"T0\", \"tool\": \"kb_retrieve\", \"description\": \"检索: 帮我看看有什么Java后端岗...\", \"result\": {\"chunks\": [{\"chunk_id\": \"45bd2600-af57-45fe-a96e-c6cae6838c7a_chunk_1\", \"content\": \"【某小公司 · Java后端 岗位职责】\\n1. 负责传统企业内部管理系统的设计与开发。2. 数据库CRUD操作与报表开发。3. 系统日常维护与bug修复。\", \"source\": \"某小公司-Java后端\", \"metadata\": {\"company\": \"某小公司\", \"position\": \"Java后端\"}}, {\"chunk_id\": \"45bd2600-af57-45fe-a96e-c6cae6838c7a_chunk_0\", \"content\": \"公司：某小公司，岗位：Java后端，地点：成都，薪资：10k-20k\", \"source\": \"某小公司-Java后端\", \"metadata\": {\"company\": \"某小公司\", \"position\": \"Java后端\"}}, {\"chunk_id\": \"45bd2600-af57-45fe-a96e-c6cae6838c7a_chunk_5\", \"content\": \"【某小公司 · Java后端 软性要求/加分项】\\n有ERP系统开发经验优先\", \"source\": \"某小公司-Java后端\", \"metadata\": {\"company\": \"某小公司\", \"position\": \"Java后端\"}}, {\"chunk_id\": \"45bd2600-af57-45fe-a96e-c6cae6838c7a_chunk_3\", \"content\": \"【某小公司 · Java后端 硬性要求】\\n熟悉Spring Boot、MySQL\", \"source\": \"某小公司-Java后端\", \"metadata\": {\"company\": \"某小公司\", \"position\": \"Java后端\"}}, {\"chunk_id\": \"45bd2600-af57-45fe-a96e-c6cae6838c7a_chunk_2\", \"content\": \"【某小公司 · Java后端 硬性要求】\\n1年以上Java开发经验\", \"source\": \"某小公司-Java后端\", \"metadata\": {\"company\": \"某小公司\", \"position\": \"Java后端\"}}, {\"chunk_id\": \"9cde8355-dcc0-434e-97c4-67dfc5dae5b8_chunk_2\", \"content\": \"【阿里巴巴 · 后端开发 硬性要求】\\n3年以上Java开发经验\", \"source\": \"阿里巴巴-后端开发\", \"metadata\": {\"company\": \"阿里巴巴\", \"position\": \"后端开发\"}}], \"query\": \"帮我看看有什么Java后端岗\", \"filters\": {}, \"strategy\": \"hybrid(70%vec+30%bm25)+reranker\", \"pool_k\": 15, \"rerank_k\": 10, \"pool_size\": 30, \"vec_only\": 10, \"bm25_only\": 10, \"both\": 10, \"rerank\": {\"enabled\": true, \"candidates\": 15, \"output\": 10, \"best_rerank_score\": 0.9944}}}, {\"task_id\": \"T1\", \"tool\": \"kb_retrieve\", \"description\": \"检索: 帮我看看有什么Java后端岗...\", \"result\": {\"chunks\": [{\"chunk_id\": \"45bd2600-af57-45fe-a96e-c6cae6838c7a_chunk_1\", \"content\": \"【某小公司 · Java后端 岗位职责】\\n1. 负责传统企业内部管理系统的设计与开发。2. 数据库CRUD操作与报表开发。3. 系统日常维护与bug修复。\", \"source\": \"某小公司-Java后端\", \"metadata\": {\"company\": \"某小公司\", \"position\": \"Java后端\"}}, {\"chunk_id\": \"45bd2600-af57-45fe-a96e-c6cae6838c7a_chunk_0\", \"content\": \"公司：某小公司，岗位：Java后端，地点：成都，薪资：10k-20k\", \"source\": \"某小公司-Java后端\", \"metadata\": {\"company\": \"某小公司\", \"position\": \"Java后端\"}}, {\"chunk_id\": \"45bd2600-af57-45fe-a96e-c6cae6838c7a_chunk_5\", \"content\": \"【某小公司 · Java后端 软性要求/加分项】\\n有ERP系统开发经验优先\", \"source\": \"某小公司-Java后端\", \"metadata\": {\"company\": \"某小公司\", \"position\": \"Java后端\"}}, {\"chunk_id\": \"45bd2600-af57-45fe-a96e-c6cae6838c7a_chunk_3\", \"content\": \"【某小公司 · Java后端 硬性要求】\\n熟悉Spring Boot、MySQL\", \"source\": \"某小公司-Java后端\", \"metadata\": {\"company\": \"某小公司\", \"position\": \"Java后端\"}}, {\"chunk_id\": \"45bd2600-af57-45fe-a96e-c6cae6838c7a_chunk_2\", \"content\": \"【某小公司 · Java后端 硬性要求】\\n1年以上Java开发经验\", \"source\": \"某小公司-Java后端\", \"metadata\": {\"company\": \"某小公司\", \"position\": \"Java后端\"}}, {\"chunk_id\": \"9cde8355-dcc0-434e-97c4-67dfc5dae5b8_chunk_2\", \"content\": \"【阿里巴巴 · 后端开发 硬性要求】\\n3年以上Java开发经验\", \"source\": \"阿里巴巴-后端开发\", \"metadata\": {\"company\": \"阿里巴巴\", \"position\": \"后端开发\"}}], \"query\": \"帮我看看有什么Java后端岗\", \"filters\": {}, \"strategy\": \"hybrid(70%vec+30%bm25)+reranker\", \"pool_k\": 15, \"rerank_k\": 10, \"pool_siz\n\n请生成回复："
+    }
+  },
+  "reply": "有。\n\n为您检索到以下 Java 后端相关岗位信息：\n\n**1. 某小公司 - Java 后端**\n*   工作地点：成都 [来源：某小公司-Java 后端]\n*   薪资范围：10k-20k [来源：某小公司-Java 后端]\n*   经验要求：1 年以上 Java 开发经验 [来源：某小公司-Java 后端]\n*   技能要求：熟悉 Spring Boot、MySQL [来源：某小公司-Java 后端]\n*   岗位职责：负责传统企业内部管理系统的设计与开发 [来源：某小公司-Java 后端]\n*   岗位职责：数据库 CRUD 操作与报表开发 [来源：某小公司-Java 后端]\n*   岗位职责：系统日常维护与 bug 修复 [来源：某小公司-Java 后端]\n*   加分项：有 ERP 系统开发经验优先 [来源：某小公司-Java 后端]\n\n**2. 阿里巴巴 - 后端开发**\n*   经验要求：3 年以上 Java 开发经验 [来源：阿里巴巴 - 后端开发]\n\n**求职建议：**\n*   若您的 Java 开发经验在 1-3 年之间，某小公司的岗位门槛相对更适合 [来源：某小公司-Java 后端]。\n*   若您的 Java 开发经验已达 3 年以上，可以尝试挑战阿里巴巴的岗位 [来源：阿里巴巴 - 后端开发]。\n*   若有 ERP 系统开发经验，在某小公司的面试中会更具优势 [来源：某小公司-Java 后端]。",
+  "reply_length": 622,
+  "intent_match": true,
+  "tool_match_rate": 0.5,
+  "has_reply": true,
+  "events": [
+    {
+      "step": "intent",
+      "message": "正在识别您的意图...",
+      "_time": 4.657777309417725,
+      "type": "status"
+    },
+    {
+      "step": "plan",
+      "message": "正在规划任务...",
+      "_time": 4.6578168869018555,
+      "type": "status"
+    },
+    {
+      "step": "execute",
+      "message": "正在执行分析...",
+      "_time": 34.37914037704468,
+      "type": "status"
+    },
+    {
+      "step": "aggregate",
+      "message": "正在生成回复...",
+      "_time": 34.879008054733276,
+      "type": "status"
+    },
+    {
+      "text": "有",
+      "_time": 83.69775891304016,
+      "type": "delta"
+    },
+    {
+      "text": "。\n\n为您检索",
+      "_time": 83.78558707237244,
+      "type": "delta"
+    },
+    {
+      "text": "到以下 Java",
+      "_time": 83.78961443901062,
+      "type": "delta"
+    },
+    {
+      "text": " 后端相关岗位",
+      "_time": 83.91294002532959,
+      "type": "delta"
+    },
+    {
+      "text": "信息：\n\n",
+      "_time": 83.91551518440247,
+      "type": "delta"
+    },
+    {
+      "text": "**1. ",
+      "_time": 84.07268118858337,
+      "type": "delta"
+    },
+    {
+      "text": "某小公司 -",
+      "_time": 84.07748174667358,
+      "type": "delta"
+    },
+    {
+      "text": " Java 后端**",
+      "_time": 84.18066549301147,
+      "type": "delta"
+    },
+    {
+      "text": "\n*  ",
+      "_time": 84.18439960479736,
+      "type": "delta"
+    },
+    {
+      "text": " 工作地点：成都",
+      "_time": 84.33853650093079,
+      "type": "delta"
+    },
+    {
+      "text": " [来源：某",
+      "_time": 84.34338283538818,
+      "type": "delta"
+    },
+    {
+      "text": "小公司-Java",
+      "_time": 84.45177149772644,
+      "type": "delta"
+    },
+    {
+      "text": " 后端]\n",
+      "_time": 84.45538544654846,
+      "type": "delta"
+    },
+    {
+      "text": "*   薪资",
+      "_time": 84.59579229354858,
+      "type": "delta"
+    },
+    {
+      "text": "范围：",
+      "_time": 84.60054183006287,
+      "type": "delta"
+    },
+    {
+      "text": "10k-",
+      "_time": 84.73358631134033,
+      "type": "delta"
+    },
+    {
+      "text": "20k [",
+      "_time": 84.73742246627808,
+      "type": "delta"
+    },
+    {
+      "text": "来源：某小",
+      "_time": 84.84467458724976,
+      "type": "delta"
+    },
+    {
+      "text": "公司-Java ",
+      "_time": 84.85044884681702,
+      "type": "delta"
+    },
+    {
+      "text": "后端]\n*",
+      "_time": 84.9906644821167,
+      "type": "delta"
+    },
+    {
+      "text": "  ",
+      "_time": 84.9963150024414,
+      "type": "delta"
+    },
+    {
+      "text": " 经验要求：",
+      "_time": 85.11372876167297,
+      "type": "delta"
+    },
+    {
+      "text": "1 年以上 Java",
+      "_time": 85.11742758750916,
+      "type": "delta"
+    },
+    {
+      "text": " 开发经验 [",
+      "_time": 85.2266161441803,
+      "type": "delta"
+    },
+    {
+      "text": "来源：某小",
+      "_time": 85.23148107528687,
+      "type": "delta"
+    },
+    {
+      "text": "公司-Java ",
+      "_time": 85.43164205551147,
+      "type": "delta"
+    },
+    {
+      "text": "后端]\n*",
+      "_time": 85.43744730949402,
+      "type": "delta"
+    },
+    {
+      "text": "   技能要求",
+      "_time": 85.51359105110168,
+      "type": "delta"
+    },
+    {
+      "text": "：",
+      "_time": 85.5173933506012,
+      "type": "delta"
+    },
+    {
+      "text": "熟悉 Spring Boot、",
+      "_time": 85.63868355751038,
+      "type": "delta"
+    },
+    {
+      "text": "MySQL [来源：",
+      "_time": 85.64332914352417,
+      "type": "delta"
+    },
+    {
+      "text": "某小公司-J",
+      "_time": 85.74779438972473,
+      "type": "delta"
+    },
+    {
+      "text": "ava 后端]",
+      "_time": 85.75234508514404,
+      "type": "delta"
+    },
+    {
+      "text": "\n*   ",
+      "_time": 85.9266369342804,
+      "type": "delta"
+    },
+    {
+      "text": "岗位职责：负责",
+      "_time": 85.92928409576416,
+      "type": "delta"
+    },
+    {
+      "text": "传统企业内部管理系统的设计",
+      "_time": 86.01566886901855,
+      "type": "delta"
+    },
+    {
+      "text": "与开发 [来源",
+      "_time": 86.02054619789124,
+      "type": "delta"
+    },
+    {
+      "text": "：某小公司",
+      "_time": 86.1966643333435,
+      "type": "delta"
+    },
+    {
+      "text": "-Java 后端",
+      "_time": 86.20141935348511,
+      "type": "delta"
+    },
+    {
+      "text": "]\n*  ",
+      "_time": 86.30457901954651,
+      "type": "delta"
+    },
+    {
+      "text": " 岗位职责：数据库",
+      "_time": 86.34859800338745,
+      "type": "delta"
+    },
+    {
+      "text": " CRUD 操作与",
+      "_time": 86.4841775894165,
+      "type": "delta"
+    },
+    {
+      "text": "报表开发 [来源",
+      "_time": 86.48927140235901,
+      "type": "delta"
+    },
+    {
+      "text": "：某小公司",
+      "_time": 86.59256100654602,
+      "type": "delta"
+    },
+    {
+      "text": "-Java 后端",
+      "_time": 86.59856128692627,
+      "type": "delta"
+    },
+    {
+      "text": "]\n*  ",
+      "_time": 86.73776030540466,
+      "type": "delta"
+    },
+    {
+      "text": " 岗位职责：系统",
+      "_time": 86.776526927948,
+      "type": "delta"
+    },
+    {
+      "text": "日常维护与 bug",
+      "_time": 86.88162279129028,
+      "type": "delta"
+    },
+    {
+      "text": " 修复 [来源",
+      "_time": 86.88640022277832,
+      "type": "delta"
+    },
+    {
+      "text": "：某小公司",
+      "_time": 87.02456188201904,
+      "type": "delta"
+    },
+    {
+      "text": "-Java 后端",
+      "_time": 87.0586085319519,
+      "type": "delta"
+    },
+    {
+      "text": "]\n*  ",
+      "_time": 87.16854810714722,
+      "type": "delta"
+    },
+    {
+      "text": " 加分项：",
+      "_time": 87.1733250617981,
+      "type": "delta"
+    },
+    {
+      "text": "有 ERP 系统",
+      "_time": 87.31254363059998,
+      "type": "delta"
+    },
+    {
+      "text": "开发经验优先 [",
+      "_time": 87.35059380531311,
+      "type": "delta"
+    },
+    {
+      "text": "来源：某小",
+      "_time": 87.4585189819336,
+      "type": "delta"
+    },
+    {
+      "text": "公司-Java ",
+      "_time": 87.46423101425171,
+      "type": "delta"
+    },
+    {
+      "text": "后端]\n\n**",
+      "_time": 87.60164833068848,
+      "type": "delta"
+    },
+    {
+      "text": "2. 阿里巴巴",
+      "_time": 87.6053957939148,
+      "type": "delta"
+    },
+    {
+      "text": " - 后端开发",
+      "_time": 87.77750587463379,
+      "type": "delta"
+    },
+    {
+      "text": "**\n*  ",
+      "_time": 87.77914500236511,
+      "type": "delta"
+    },
+    {
+      "text": " 经验要求：",
+      "_time": 87.89245176315308,
+      "type": "delta"
+    },
+    {
+      "text": "3 年以上 Java",
+      "_time": 87.89619278907776,
+      "type": "delta"
+    },
+    {
+      "text": " 开发经验 [",
+      "_time": 88.06755304336548,
+      "type": "delta"
+    },
+    {
+      "text": "来源：阿里巴巴 -",
+      "_time": 88.07224893569946,
+      "type": "delta"
+    },
+    {
+      "text": " 后端开发]",
+      "_time": 88.17847895622253,
+      "type": "delta"
+    },
+    {
+      "text": "\n\n**求职建议",
+      "_time": 88.18335819244385,
+      "type": "delta"
+    },
+    {
+      "text": "：**\n*  ",
+      "_time": 88.3575747013092,
+      "type": "delta"
+    },
+    {
+      "text": " 若您的 Java",
+      "_time": 88.36246156692505,
+      "type": "delta"
+    },
+    {
+      "text": " 开发经验在",
+      "_time": 88.4654815196991,
+      "type": "delta"
+    },
+    {
+      "text": " 1-3",
+      "_time": 88.47031283378601,
+      "type": "delta"
+    },
+    {
+      "text": " 年之间，",
+      "_time": 88.60947895050049,
+      "type": "delta"
+    },
+    {
+      "text": "某小公司的岗位",
+      "_time": 88.64651131629944,
+      "type": "delta"
+    },
+    {
+      "text": "门槛相对更适合 [",
+      "_time": 88.75354766845703,
+      "type": "delta"
+    },
+    {
+      "text": "来源：",
+      "_time": 88.75627374649048,
+      "type": "delta"
+    },
+    {
+      "text": "某小公司-J",
+      "_time": 88.86047577857971,
+      "type": "delta"
+    },
+    {
+      "text": "ava 后端]",
+      "_time": 88.89630699157715,
+      "type": "delta"
+    },
+    {
+      "text": "。\n*  ",
+      "_time": 89.00343418121338,
+      "type": "delta"
+    },
+    {
+      "text": " 若您的 Java",
+      "_time": 89.00621271133423,
+      "type": "delta"
+    },
+    {
+      "text": " 开发经验已达",
+      "_time": 89.14751172065735,
+      "type": "delta"
+    },
+    {
+      "text": " 3 年以上",
+      "_time": 89.15025973320007,
+      "type": "delta"
+    },
+    {
+      "text": "，可以尝试挑战阿里巴巴",
+      "_time": 89.32640027999878,
+      "type": "delta"
+    },
+    {
+      "text": "的",
+      "_time": 89.32905340194702,
+      "type": "delta"
+    },
+    {
+      "text": "岗位 [来源：",
+      "_time": 89.38258266448975,
+      "type": "delta"
+    },
+    {
+      "text": "阿里巴巴 - 后端",
+      "_time": 89.38629269599915,
+      "type": "delta"
+    },
+    {
+      "text": "开发]。\n",
+      "_time": 89.55652236938477,
+      "type": "delta"
+    },
+    {
+      "text": "*  ",
+      "_time": 89.56120610237122,
+      "type": "delta"
+    },
+    {
+      "text": " 若有 ERP ",
+      "_time": 89.6355299949646,
+      "type": "delta"
+    },
+    {
+      "text": "系统开发",
+      "_time": 89.64221334457397,
+      "type": "delta"
+    },
+    {
+      "text": "经验，在某小",
+      "_time": 89.74243521690369,
+      "type": "delta"
+    },
+    {
+      "text": "公司的面试",
+      "_time": 89.74715328216553,
+      "type": "delta"
+    },
+    {
+      "text": "中会更具优势",
+      "_time": 89.8882224559784,
+      "type": "delta"
+    },
+    {
+      "text": " [来源：某",
+      "_time": 89.89317727088928,
+      "type": "delta"
+    },
+    {
+      "text": "小公司-Java",
+      "_time": 89.9952495098114,
+      "type": "delta"
+    },
+    {
+      "text": " 后端]。",
+      "_time": 89.99993300437927,
+      "type": "delta"
+    },
+    {
+      "session_id": "eval_sup_05_1780565209010",
+      "intent": "position_explore",
+      "route_meta": {
+        "layer": "llm",
+        "intent": "position_explore",
+        "confidence": 0.88,
+        "demands": [
+          {
+            "intent": "position_explore",
+            "entities": {
+              "position": "Java后端",
+              "search_keywords": "帮我看看有什么Java后端岗",
+              "sort_by": "match_score",
+              "top_k": 5
+            }
+          },
+          {
+            "intent": "match_assess",
+            "entities": {
+              "position": "Java后端",
+              "attributes": [
+                "匹配度"
+              ],
+              "jd_source": "kb"
+            }
+          }
+        ],
+        "plan_tasks": 3
+      },
+      "agent_mode": "llm",
+      "is_clarification": false,
+      "agent": {
+        "rewritten_query": "帮我看看有什么Java后端岗",
+        "tools": [
+          {
+            "tool": "kb_retrieve",
+            "status": "✅",
+            "params": {
+              "query": "帮我看看有什么Java后端岗",
+              "company": null,
+              "pool_k": 15,
+              "rerank_k": 10
+            },
+            "result_preview": "{'chunks': [{'chunk_id': '45bd2600-af57-45fe-a96e-c6cae6838c7a_chunk_1', 'content': '【某小公司 · Java后端 岗位职责】\\n1. 负责传统企业内部管理系统的设计与开发。2. 数据库CRUD操作与报表开发。3. 系统日常维护与bug修复。', 'metadata': {'company': '某小公司', 'i"
+          },
+          {
+            "tool": "kb_retrieve",
+            "status": "✅",
+            "params": {
+              "query": "帮我看看有什么Java后端岗",
+              "company": null,
+              "pool_k": 20,
+              "rerank_k": 12
+            },
+            "result_preview": "{'chunks': [{'chunk_id': '45bd2600-af57-45fe-a96e-c6cae6838c7a_chunk_1', 'content': '【某小公司 · Java后端 岗位职责】\\n1. 负责传统企业内部管理系统的设计与开发。2. 数据库CRUD操作与报表开发。3. 系统日常维护与bug修复。', 'metadata': {'company': '某小公司', 'i"
+          }
+        ],
+        "kb_chunks_count": 3,
+        "system_prompt_preview": "你是一位专业的求职顾问。请基于以下工具执行结果，给用户一个清晰、有帮助的回复。\n要求：\n1. 先直接回答用户的问题（是/否/有/没有），不要绕弯子，不要重复用户的原话\n2. 如果有匹配分析结果，给出具体的分数和建议\n3. 如果有检索结果，基于事实回答，不要编造\n4. 【强制】引用信息时必须标注来源。每个引用的事实后面都要跟 [来源：公司名-岗位名] 格式。   kb_retrieve 结果的 ch"
+      },
+      "memory": {
+        "working_turns": 1,
+        "compressed_blocks": 0,
+        "current_topic": "general",
+        "evidence_cache_size": 5
+      },
+      "reply": "有。\n\n为您检索到以下 Java 后端相关岗位信息：\n\n**1. 某小公司 - Java 后端**\n*   工作地点：成都 [来源：某小公司-Java 后端]\n*   薪资范围：10k-20k [来源：某小公司-Java 后端]\n*   经验要求：1 年以上 Java 开发经验 [来源：某小公司-Java 后端]\n*   技能要求：熟悉 Spring Boot、MySQL [来源：某小公司-Java 后端]\n*   岗位职责：负责传统企业内部管理系统的设计与开发 [来源：某小公司-Java 后端]\n*   岗位职责：数据库 CRUD 操作与报表开发 [来源：某小公司-Java 后端]\n*   岗位职责：系统日常维护与 bug 修复 [来源：某小公司-Java 后端]\n*   加分项：有 ERP 系统开发经验优先 [来源：某小公司-Java 后端]\n\n**2. 阿里巴巴 - 后端开发**\n*   经验要求：3 年以上 Java 开发经验 [来源：阿里巴巴 - 后端开发]\n\n**求职建议：**\n*   若您的 Java 开发经验在 1-3 年之间，某小公司的岗位门槛相对更适合 [来源：某小公司-Java 后端]。\n*   若您的 Java 开发经验已达 3 年以上，可以尝试挑战阿里巴巴的岗位 [来源：阿里巴巴 - 后端开发]。\n*   若有 ERP 系统开发经验，在某小公司的面试中会更具优势 [来源：某小公司-Java 后端]。",
+      "debug_info": {
+        "task_graph": {
+          "tasks": {
+            "T0": {
+              "task_id": "T0",
+              "task_type": "tool_call",
+              "tool_name": "kb_retrieve",
+              "status": "success",
+              "parameters": {
+                "query": "帮我看看有什么Java后端岗",
+                "company": null,
+                "pool_k": 15,
+                "rerank_k": 10
+              },
+              "resolved_params": {
+                "query": "帮我看看有什么Java后端岗",
+                "company": null,
+                "pool_k": 15,
+                "rerank_k": 10
+              },
+              "result": {
+                "chunks": [
+                  {
+                    "chunk_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a_chunk_1",
+                    "content": "【某小公司 · Java后端 岗位职责】\n1. 负责传统企业内部管理系统的设计与开发。2. 数据库CRUD操作与报表开发。3. 系统日常维护与bug修复。",
+                    "metadata": {
+                      "company": "某小公司",
+                      "index": 1,
+                      "jd_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a",
+                      "position": "Java后端",
+                      "section": "responsibilities",
+                      "strategy": "semantic"
+                    },
+                    "distance": 0.4479650855064392,
+                    "bm25_score": 6.803795908828786,
+                    "vec_norm": 1.0,
+                    "bm25_norm": 0.551987957773376,
+                    "hybrid_score": 0.8655963873320127,
+                    "rerank_score": 0.9944
+                  },
+                  {
+                    "chunk_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a_chunk_0",
+                    "content": "公司：某小公司，岗位：Java后端，地点：成都，薪资：10k-20k",
+                    "metadata": {
+                      "category": "技术",
+                      "company": "某小公司",
+                      "domain": "传统",
+                      "index": 0,
+                      "jd_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a",
+                      "max_years": 3,
+                      "min_education": "大专",
+                      "min_years": 1,
+                      "position": "Java后端",
+                      "section": "basic_info",
+                      "strategy": "semantic"
+                    },
+                    "distance": 0.571252703666687,
+                    "bm25_score": 9.57143819239722,
+                    "vec_norm": 0.7565184216532809,
+                    "bm25_norm": 0.8480756173890552,
+                    "hybrid_score": 0.7839855803740132,
+                    "rerank_score": 0.9451
+                  },
+                  {
+                    "chunk_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a_chunk_5",
+                    "content": "【某小公司 · Java后端 软性要求/加分项】\n有ERP系统开发经验优先",
+                    "metadata": {
+                      "company": "某小公司",
+                      "index": 5,
+                      "jd_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a",
+                      "position": "Java后端",
+                      "priority": "medium",
+                      "section": "soft_requirements",
+                      "strategy": "semantic"
+                    },
+                    "distance": 0.630220353603363,
+                    "bm25_score": 10.991532315079844,
+                    "vec_norm": 0.640062797866982,
+                    "bm25_norm": 1.0,
+                    "hybrid_score": 0.7480439585068873,
+                    "rerank_score": 0.9441
+                  },
+                  {
+                    "chunk_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a_chunk_3",
+                    "content": "【某小公司 · Java后端 硬性要求】\n熟悉Spring Boot、MySQL",
+                    "metadata": {
+                      "company": "某小公司",
+                      "index": 3,
+                      "jd_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a",
+                      "position": "Java后端",
+                      "priority": "high",
+                      "section": "hard_requirements",
+                      "strategy": "semantic"
+                    },
+                    "distance": 0.5873516798019409,
+                    "bm25_score": 9.57143819239722,
+                    "vec_norm": 0.72472444122223,
+                    "bm25_norm": 0.8480756173890552,
+                    "hybrid_score": 0.7617297940722776,
+                    "rerank_score": 0.9217
+                  },
+                  {
+                    "chunk_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a_chunk_2",
+                    "content": "【某小公司 · Java后端 硬性要求】\n1年以上Java开发经验",
+                    "metadata": {
+                      "company": "某小公司",
+                      "index": 2,
+                      "jd_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a",
+                      "position": "Java后端",
+                      "priority": "high",
+                      "section": "hard_requirements",
+                      "strategy": "semantic"
+                    },
+                    "distance": 0.5350993871688843,
+                    "bm25_score": 10.884970692814257,
+                    "vec_norm": 0.8279178589585898,
+                    "bm25_norm": 0.9885998340432972,
+                    "hybrid_score": 0.876122451484002,
+                    "rerank_score": 0.9187
+                  },
+                  {
+                    "chunk_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8_chunk_2",
+                    "content": "【阿里巴巴 · 后端开发 硬性要求】\n3年以上Java开发经验",
+                    "metadata": {
+                      "company": "阿里巴巴",
+                      "index": 2,
+                      "jd_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8",
+                      "position": "后端开发",
+                      "priority": "high",
+                      "section": "hard_requirements",
+                      "strategy": "semantic"
+                    },
+                    "distance": 0.5302596688270569,
+                    "bm25_score": 4.504788801919539,
+                    "vec_norm": 0.8374758525203606,
+                    "bm25_norm": 0.3060357847754594,
+                    "hybrid_score": 0.6780438321968902,
+                    "rerank_score": 0.7988
+                  },
+                  {
+                    "chunk_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a_chunk_4",
+                    "content": "【某小公司 · Java后端 硬性要求】\n大专及以上学历",
+                    "metadata": {
+                      "company": "某小公司",
+                      "index": 4,
+                      "jd_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a",
+                      "position": "Java后端",
+                      "priority": "high",
+                      "section": "hard_requirements",
+                      "strategy": "semantic"
+                    },
+                    "distance": 0.5805367827415466,
+                    "bm25_score": 9.57143819239722,
+                    "vec_norm": 0.738183229033172,
+                    "bm25_norm": 0.8480756173890552,
+                    "hybrid_score": 0.771150945539937,
+                    "rerank_score": 0.7952
+                  },
+                  {
+                    "chunk_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8_chunk_1",
+                    "content": "【阿里巴巴 · 后端开发 岗位职责】\n1. 负责电商核心系统的设计与开发。2. 高并发系统架构设计与性能优化。3. 分布式系统开发与微服务治理。4. 数据库设计与优化。",
+                    "metadata": {
+                      "company": "阿里巴巴",
+                      "index": 1,
+                      "jd_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8",
+                      "position": "后端开发",
+                      "section": "responsibilities",
+                      "strategy": "semantic"
+                    },
+                    "distance": 0.560383141040802,
+                    "bm25_score": 0.0,
+                    "vec_norm": 0.7779847968139159,
+                    "bm25_norm": 0.0,
+                    "hybrid_score": 0.544589357769741,
+                    "rerank_score": 0.693
+                  },
+                  {
+                    "chunk_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8_chunk_7",
+                    "content": "【阿里巴巴 · 后端开发 软性要求/加分项】\n熟悉K8s、Docker优先",
+                    "metadata": {
+                      "company": "阿里巴巴",
+                      "index": 7,
+                      "jd_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8",
+                      "position": "后端开发",
+                      "priority": "medium",
+                      "section": "soft_requirements",
+                      "strategy": "semantic"
+                    },
+                    "distance": 0.6421223282814026,
+                    "bm25_score": 0.0,
+                    "vec_norm": 0.6165575049324954,
+                    "bm25_norm": 0.0,
+                    "hybrid_score": 0.43159025345274676,
+                    "rerank_score": 0.6241
+                  },
+                  {
+                    "chunk_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a_chunk_6",
+                    "content": "【某小公司 · Java后端 关键词】\nJava, Spring Boot, MySQL, ERP, 后端",
+                    "metadata": {
+                      "company": "某小公司",
+                      "index": 6,
+                      "jd_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a",
+                      "position": "Java后端",
+                      "section": "keywords",
+                      "strategy": "semantic"
+                    },
+                    "distance": 0.6305882334709167,
+                    "bm25_score": 9.906145995550908,
+                    "vec_norm": 0.6393362693466764,
+                    "bm25_norm": 0.8838832976948727,
+                    "hybrid_score": 0.7127003778511353,
+                    "rerank_score": 0.4001
+                  }
+                ],
+                "query": "帮我看看有什么Java后端岗",
+                "filters": {},
+                "strategy": "hybrid(70%vec+30%bm25)+reranker",
+                "pool_k": 15,
+                "rerank_k": 10,
+                "pool_size": 30,
+                "vec_only": 10,
+                "bm25_only": 10,
+                "both": 10,
+                "rerank": {
+                  "enabled": true,
+                  "candidates": 15,
+                  "output": 10,
+                  "best_rerank_score": 0.9944
+                }
+              },
+              "observation": "工具 kb_retrieve 执行成功"
+            },
+            "T1": {
+              "task_id": "T1",
+              "task_type": "tool_call",
+              "tool_name": "kb_retrieve",
+              "status": "success",
+              "parameters": {
+                "query": "帮我看看有什么Java后端岗",
+                "company": null,
+                "pool_k": 20,
+                "rerank_k": 12
+              },
+              "resolved_params": {
+                "query": "帮我看看有什么Java后端岗",
+                "company": null,
+                "pool_k": 20,
+                "rerank_k": 12
+              },
+              "result": {
+                "chunks": [
+                  {
+                    "chunk_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a_chunk_1",
+                    "content": "【某小公司 · Java后端 岗位职责】\n1. 负责传统企业内部管理系统的设计与开发。2. 数据库CRUD操作与报表开发。3. 系统日常维护与bug修复。",
+                    "metadata": {
+                      "company": "某小公司",
+                      "index": 1,
+                      "jd_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a",
+                      "position": "Java后端",
+                      "section": "responsibilities",
+                      "strategy": "semantic"
+                    },
+                    "distance": 0.4479650855064392,
+                    "bm25_score": 6.803795908828786,
+                    "vec_norm": 1.0,
+                    "bm25_norm": 0.551987957773376,
+                    "hybrid_score": 0.8655963873320127,
+                    "rerank_score": 0.9944
+                  },
+                  {
+                    "chunk_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a_chunk_0",
+                    "content": "公司：某小公司，岗位：Java后端，地点：成都，薪资：10k-20k",
+                    "metadata": {
+                      "category": "技术",
+                      "company": "某小公司",
+                      "domain": "传统",
+                      "index": 0,
+                      "jd_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a",
+                      "max_years": 3,
+                      "min_education": "大专",
+                      "min_years": 1,
+                      "position": "Java后端",
+                      "section": "basic_info",
+                      "strategy": "semantic"
+                    },
+                    "distance": 0.571252703666687,
+                    "bm25_score": 9.57143819239722,
+                    "vec_norm": 0.7565184216532809,
+                    "bm25_norm": 0.8480756173890552,
+                    "hybrid_score": 0.7839855803740132,
+                    "rerank_score": 0.9451
+                  },
+                  {
+                    "chunk_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a_chunk_5",
+                    "content": "【某小公司 · Java后端 软性要求/加分项】\n有ERP系统开发经验优先",
+                    "metadata": {
+                      "company": "某小公司",
+                      "index": 5,
+                      "jd_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a",
+                      "position": "Java后端",
+                      "priority": "medium",
+                      "section": "soft_requirements",
+                      "strategy": "semantic"
+                    },
+                    "distance": 0.630220353603363,
+                    "bm25_score": 10.991532315079844,
+                    "vec_norm": 0.640062797866982,
+                    "bm25_norm": 1.0,
+                    "hybrid_score": 0.7480439585068873,
+                    "rerank_score": 0.9441
+                  },
+                  {
+                    "chunk_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a_chunk_3",
+                    "content": "【某小公司 · Java后端 硬性要求】\n熟悉Spring Boot、MySQL",
+                    "metadata": {
+                      "company": "某小公司",
+                      "index": 3,
+                      "jd_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a",
+                      "position": "Java后端",
+                      "priority": "high",
+                      "section": "hard_requirements",
+                      "strategy": "semantic"
+                    },
+                    "distance": 0.5873516798019409,
+                    "bm25_score": 9.57143819239722,
+                    "vec_norm": 0.72472444122223,
+                    "bm25_norm": 0.8480756173890552,
+                    "hybrid_score": 0.7617297940722776,
+                    "rerank_score": 0.9217
+                  },
+                  {
+                    "chunk_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a_chunk_2",
+                    "content": "【某小公司 · Java后端 硬性要求】\n1年以上Java开发经验",
+                    "metadata": {
+                      "company": "某小公司",
+                      "index": 2,
+                      "jd_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a",
+                      "position": "Java后端",
+                      "priority": "high",
+                      "section": "hard_requirements",
+                      "strategy": "semantic"
+                    },
+                    "distance": 0.5350993871688843,
+                    "bm25_score": 10.884970692814257,
+                    "vec_norm": 0.8279178589585898,
+                    "bm25_norm": 0.9885998340432972,
+                    "hybrid_score": 0.876122451484002,
+                    "rerank_score": 0.9187
+                  },
+                  {
+                    "chunk_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8_chunk_2",
+                    "content": "【阿里巴巴 · 后端开发 硬性要求】\n3年以上Java开发经验",
+                    "metadata": {
+                      "company": "阿里巴巴",
+                      "index": 2,
+                      "jd_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8",
+                      "position": "后端开发",
+                      "priority": "high",
+                      "section": "hard_requirements",
+                      "strategy": "semantic"
+                    },
+                    "distance": 0.5302596688270569,
+                    "bm25_score": 4.504788801919539,
+                    "vec_norm": 0.8374758525203606,
+                    "bm25_norm": 0.3060357847754594,
+                    "hybrid_score": 0.6780438321968902,
+                    "rerank_score": 0.7988
+                  },
+                  {
+                    "chunk_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a_chunk_4",
+                    "content": "【某小公司 · Java后端 硬性要求】\n大专及以上学历",
+                    "metadata": {
+                      "company": "某小公司",
+                      "index": 4,
+                      "jd_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a",
+                      "position": "Java后端",
+                      "priority": "high",
+                      "section": "hard_requirements",
+                      "strategy": "semantic"
+                    },
+                    "distance": 0.5805367827415466,
+                    "bm25_score": 9.57143819239722,
+                    "vec_norm": 0.738183229033172,
+                    "bm25_norm": 0.8480756173890552,
+                    "hybrid_score": 0.771150945539937,
+                    "rerank_score": 0.7952
+                  },
+                  {
+                    "chunk_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8_chunk_1",
+                    "content": "【阿里巴巴 · 后端开发 岗位职责】\n1. 负责电商核心系统的设计与开发。2. 高并发系统架构设计与性能优化。3. 分布式系统开发与微服务治理。4. 数据库设计与优化。",
+                    "metadata": {
+                      "company": "阿里巴巴",
+                      "index": 1,
+                      "jd_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8",
+                      "position": "后端开发",
+                      "section": "responsibilities",
+                      "strategy": "semantic"
+                    },
+                    "distance": 0.560383141040802,
+                    "bm25_score": 0.0,
+                    "vec_norm": 0.7779847968139159,
+                    "bm25_norm": 0.0,
+                    "hybrid_score": 0.544589357769741,
+                    "rerank_score": 0.693
+                  },
+                  {
+                    "chunk_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8_chunk_7",
+                    "content": "【阿里巴巴 · 后端开发 软性要求/加分项】\n熟悉K8s、Docker优先",
+                    "metadata": {
+                      "company": "阿里巴巴",
+                      "index": 7,
+                      "jd_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8",
+                      "position": "后端开发",
+                      "priority": "medium",
+                      "section": "soft_requirements",
+                      "strategy": "semantic"
+                    },
+                    "distance": 0.6421223282814026,
+                    "bm25_score": 0.0,
+                    "vec_norm": 0.6165575049324954,
+                    "bm25_norm": 0.0,
+                    "hybrid_score": 0.43159025345274676,
+                    "rerank_score": 0.6241
+                  },
+                  {
+                    "chunk_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a_chunk_6",
+                    "content": "【某小公司 · Java后端 关键词】\nJava, Spring Boot, MySQL, ERP, 后端",
+                    "metadata": {
+                      "company": "某小公司",
+                      "index": 6,
+                      "jd_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a",
+                      "position": "Java后端",
+                      "section": "keywords",
+                      "strategy": "semantic"
+                    },
+                    "distance": 0.6305882334709167,
+                    "bm25_score": 9.906145995550908,
+                    "vec_norm": 0.6393362693466764,
+                    "bm25_norm": 0.8838832976948727,
+                    "hybrid_score": 0.7127003778511353,
+                    "rerank_score": 0.4001
+                  }
+                ],
+                "query": "帮我看看有什么Java后端岗",
+                "filters": {},
+                "strategy": "hybrid(70%vec+30%bm25)+reranker",
+                "pool_k": 15,
+                "rerank_k": 10,
+                "pool_size": 30,
+                "vec_only": 10,
+                "bm25_only": 10,
+                "both": 10,
+                "rerank": {
+                  "enabled": true,
+                  "candidates": 15,
+                  "output": 10,
+                  "best_rerank_score": 0.9944
+                }
+              },
+              "observation": "工具 kb_retrieve 执行成功"
+            },
+            "T2": {
+              "task_id": "T2",
+              "task_type": "aggregate",
+              "tool_name": null,
+              "status": "success",
+              "parameters": {
+                "note": "无工具输出"
+              },
+              "resolved_params": {
+                "note": "无工具输出"
+              },
+              "result": {
+                "aggregation": {
+                  "note": "无工具输出"
+                }
+              },
+              "observation": "聚合完成"
+            }
+          },
+          "global_status": "success",
+          "replan_reason": "",
+          "replan_count": 0
+        },
+        "intent": {
+          "demands": [
+            {
+              "intent": "position_explore",
+              "entities": {
+                "position": "Java后端",
+                "search_keywords": "帮我看看有什么Java后端岗",
+                "sort_by": "match_score",
+                "top_k": 5
+              },
+              "confidence": 0.88
+            },
+            {
+              "intent": "match_assess",
+              "entities": {
+                "position": "Java后端",
+                "attributes": [
+                  "匹配度"
+                ],
+                "jd_source": "kb"
+              },
+              "confidence": 0.75
+            }
+          ],
+          "needs_clarification": false,
+          "clarification_question": ""
+        },
+        "rewrite": {
+          "rewritten_query": "帮我看看有什么Java后端岗",
+          "search_keywords": "帮我看看有什么Java后端岗",
+          "is_follow_up": false,
+          "follow_up_type": "none",
+          "resolved_references": {}
+        },
+        "evidence_cache": [
+          {
+            "chunk_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a_chunk_1",
+            "content": "【某小公司 · Java后端 岗位职责】\n1. 负责传统企业内部管理系统的设计与开发。2. 数据库CRUD操作与报表开发。3. 系统日常维护与bug修复。",
+            "metadata": {
+              "company": "某小公司",
+              "index": 1,
+              "jd_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a",
+              "position": "Java后端",
+              "section": "responsibilities",
+              "strategy": "semantic"
+            },
+            "distance": 0.4479650855064392,
+            "bm25_score": 6.803795908828786,
+            "vec_norm": 1.0,
+            "bm25_norm": 0.551987957773376,
+            "hybrid_score": 0.8655963873320127,
+            "rerank_score": 0.9944
+          },
+          {
+            "chunk_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a_chunk_0",
+            "content": "公司：某小公司，岗位：Java后端，地点：成都，薪资：10k-20k",
+            "metadata": {
+              "category": "技术",
+              "company": "某小公司",
+              "domain": "传统",
+              "index": 0,
+              "jd_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a",
+              "max_years": 3,
+              "min_education": "大专",
+              "min_years": 1,
+              "position": "Java后端",
+              "section": "basic_info",
+              "strategy": "semantic"
+            },
+            "distance": 0.571252703666687,
+            "bm25_score": 9.57143819239722,
+            "vec_norm": 0.7565184216532809,
+            "bm25_norm": 0.8480756173890552,
+            "hybrid_score": 0.7839855803740132,
+            "rerank_score": 0.9451
+          },
+          {
+            "chunk_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a_chunk_5",
+            "content": "【某小公司 · Java后端 软性要求/加分项】\n有ERP系统开发经验优先",
+            "metadata": {
+              "company": "某小公司",
+              "index": 5,
+              "jd_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a",
+              "position": "Java后端",
+              "priority": "medium",
+              "section": "soft_requirements",
+              "strategy": "semantic"
+            },
+            "distance": 0.630220353603363,
+            "bm25_score": 10.991532315079844,
+            "vec_norm": 0.640062797866982,
+            "bm25_norm": 1.0,
+            "hybrid_score": 0.7480439585068873,
+            "rerank_score": 0.9441
+          },
+          {
+            "chunk_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a_chunk_3",
+            "content": "【某小公司 · Java后端 硬性要求】\n熟悉Spring Boot、MySQL",
+            "metadata": {
+              "company": "某小公司",
+              "index": 3,
+              "jd_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a",
+              "position": "Java后端",
+              "priority": "high",
+              "section": "hard_requirements",
+              "strategy": "semantic"
+            },
+            "distance": 0.5873516798019409,
+            "bm25_score": 9.57143819239722,
+            "vec_norm": 0.72472444122223,
+            "bm25_norm": 0.8480756173890552,
+            "hybrid_score": 0.7617297940722776,
+            "rerank_score": 0.9217
+          },
+          {
+            "chunk_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a_chunk_2",
+            "content": "【某小公司 · Java后端 硬性要求】\n1年以上Java开发经验",
+            "metadata": {
+              "company": "某小公司",
+              "index": 2,
+              "jd_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a",
+              "position": "Java后端",
+              "priority": "high",
+              "section": "hard_requirements",
+              "strategy": "semantic"
+            },
+            "distance": 0.5350993871688843,
+            "bm25_score": 10.884970692814257,
+            "vec_norm": 0.8279178589585898,
+            "bm25_norm": 0.9885998340432972,
+            "hybrid_score": 0.876122451484002,
+            "rerank_score": 0.9187
+          },
+          {
+            "chunk_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8_chunk_2",
+            "content": "【阿里巴巴 · 后端开发 硬性要求】\n3年以上Java开发经验",
+            "metadata": {
+              "company": "阿里巴巴",
+              "index": 2,
+              "jd_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8",
+              "position": "后端开发",
+              "priority": "high",
+              "section": "hard_requirements",
+              "strategy": "semantic"
+            },
+            "distance": 0.5302596688270569,
+            "bm25_score": 4.504788801919539,
+            "vec_norm": 0.8374758525203606,
+            "bm25_norm": 0.3060357847754594,
+            "hybrid_score": 0.6780438321968902,
+            "rerank_score": 0.7988
+          },
+          {
+            "chunk_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a_chunk_4",
+            "content": "【某小公司 · Java后端 硬性要求】\n大专及以上学历",
+            "metadata": {
+              "company": "某小公司",
+              "index": 4,
+              "jd_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a",
+              "position": "Java后端",
+              "priority": "high",
+              "section": "hard_requirements",
+              "strategy": "semantic"
+            },
+            "distance": 0.5805367827415466,
+            "bm25_score": 9.57143819239722,
+            "vec_norm": 0.738183229033172,
+            "bm25_norm": 0.8480756173890552,
+            "hybrid_score": 0.771150945539937,
+            "rerank_score": 0.7952
+          },
+          {
+            "chunk_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8_chunk_1",
+            "content": "【阿里巴巴 · 后端开发 岗位职责】\n1. 负责电商核心系统的设计与开发。2. 高并发系统架构设计与性能优化。3. 分布式系统开发与微服务治理。4. 数据库设计与优化。",
+            "metadata": {
+              "company": "阿里巴巴",
+              "index": 1,
+              "jd_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8",
+              "position": "后端开发",
+              "section": "responsibilities",
+              "strategy": "semantic"
+            },
+            "distance": 0.560383141040802,
+            "bm25_score": 0.0,
+            "vec_norm": 0.7779847968139159,
+            "bm25_norm": 0.0,
+            "hybrid_score": 0.544589357769741,
+            "rerank_score": 0.693
+          },
+          {
+            "chunk_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8_chunk_7",
+            "content": "【阿里巴巴 · 后端开发 软性要求/加分项】\n熟悉K8s、Docker优先",
+            "metadata": {
+              "company": "阿里巴巴",
+              "index": 7,
+              "jd_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8",
+              "position": "后端开发",
+              "priority": "medium",
+              "section": "soft_requirements",
+              "strategy": "semantic"
+            },
+            "distance": 0.6421223282814026,
+            "bm25_score": 0.0,
+            "vec_norm": 0.6165575049324954,
+            "bm25_norm": 0.0,
+            "hybrid_score": 0.43159025345274676,
+            "rerank_score": 0.6241
+          },
+          {
+            "chunk_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a_chunk_6",
+            "content": "【某小公司 · Java后端 关键词】\nJava, Spring Boot, MySQL, ERP, 后端",
+            "metadata": {
+              "company": "某小公司",
+              "index": 6,
+              "jd_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a",
+              "position": "Java后端",
+              "section": "keywords",
+              "strategy": "semantic"
+            },
+            "distance": 0.6305882334709167,
+            "bm25_score": 9.906145995550908,
+            "vec_norm": 0.6393362693466764,
+            "bm25_norm": 0.8838832976948727,
+            "hybrid_score": 0.7127003778511353,
+            "rerank_score": 0.4001
+          },
+          {
+            "chunk_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a_chunk_1",
+            "content": "【某小公司 · Java后端 岗位职责】\n1. 负责传统企业内部管理系统的设计与开发。2. 数据库CRUD操作与报表开发。3. 系统日常维护与bug修复。",
+            "metadata": {
+              "company": "某小公司",
+              "index": 1,
+              "jd_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a",
+              "position": "Java后端",
+              "section": "responsibilities",
+              "strategy": "semantic"
+            },
+            "distance": 0.4479650855064392,
+            "bm25_score": 6.803795908828786,
+            "vec_norm": 1.0,
+            "bm25_norm": 0.551987957773376,
+            "hybrid_score": 0.8655963873320127,
+            "rerank_score": 0.9944
+          },
+          {
+            "chunk_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a_chunk_0",
+            "content": "公司：某小公司，岗位：Java后端，地点：成都，薪资：10k-20k",
+            "metadata": {
+              "category": "技术",
+              "company": "某小公司",
+              "domain": "传统",
+              "index": 0,
+              "jd_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a",
+              "max_years": 3,
+              "min_education": "大专",
+              "min_years": 1,
+              "position": "Java后端",
+              "section": "basic_info",
+              "strategy": "semantic"
+            },
+            "distance": 0.571252703666687,
+            "bm25_score": 9.57143819239722,
+            "vec_norm": 0.7565184216532809,
+            "bm25_norm": 0.8480756173890552,
+            "hybrid_score": 0.7839855803740132,
+            "rerank_score": 0.9451
+          },
+          {
+            "chunk_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a_chunk_5",
+            "content": "【某小公司 · Java后端 软性要求/加分项】\n有ERP系统开发经验优先",
+            "metadata": {
+              "company": "某小公司",
+              "index": 5,
+              "jd_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a",
+              "position": "Java后端",
+              "priority": "medium",
+              "section": "soft_requirements",
+              "strategy": "semantic"
+            },
+            "distance": 0.630220353603363,
+            "bm25_score": 10.991532315079844,
+            "vec_norm": 0.640062797866982,
+            "bm25_norm": 1.0,
+            "hybrid_score": 0.7480439585068873,
+            "rerank_score": 0.9441
+          },
+          {
+            "chunk_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a_chunk_3",
+            "content": "【某小公司 · Java后端 硬性要求】\n熟悉Spring Boot、MySQL",
+            "metadata": {
+              "company": "某小公司",
+              "index": 3,
+              "jd_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a",
+              "position": "Java后端",
+              "priority": "high",
+              "section": "hard_requirements",
+              "strategy": "semantic"
+            },
+            "distance": 0.5873516798019409,
+            "bm25_score": 9.57143819239722,
+            "vec_norm": 0.72472444122223,
+            "bm25_norm": 0.8480756173890552,
+            "hybrid_score": 0.7617297940722776,
+            "rerank_score": 0.9217
+          },
+          {
+            "chunk_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a_chunk_2",
+            "content": "【某小公司 · Java后端 硬性要求】\n1年以上Java开发经验",
+            "metadata": {
+              "company": "某小公司",
+              "index": 2,
+              "jd_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a",
+              "position": "Java后端",
+              "priority": "high",
+              "section": "hard_requirements",
+              "strategy": "semantic"
+            },
+            "distance": 0.5350993871688843,
+            "bm25_score": 10.884970692814257,
+            "vec_norm": 0.8279178589585898,
+            "bm25_norm": 0.9885998340432972,
+            "hybrid_score": 0.876122451484002,
+            "rerank_score": 0.9187
+          },
+          {
+            "chunk_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8_chunk_2",
+            "content": "【阿里巴巴 · 后端开发 硬性要求】\n3年以上Java开发经验",
+            "metadata": {
+              "company": "阿里巴巴",
+              "index": 2,
+              "jd_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8",
+              "position": "后端开发",
+              "priority": "high",
+              "section": "hard_requirements",
+              "strategy": "semantic"
+            },
+            "distance": 0.5302596688270569,
+            "bm25_score": 4.504788801919539,
+            "vec_norm": 0.8374758525203606,
+            "bm25_norm": 0.3060357847754594,
+            "hybrid_score": 0.6780438321968902,
+            "rerank_score": 0.7988
+          },
+          {
+            "chunk_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a_chunk_4",
+            "content": "【某小公司 · Java后端 硬性要求】\n大专及以上学历",
+            "metadata": {
+              "company": "某小公司",
+              "index": 4,
+              "jd_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a",
+              "position": "Java后端",
+              "priority": "high",
+              "section": "hard_requirements",
+              "strategy": "semantic"
+            },
+            "distance": 0.5805367827415466,
+            "bm25_score": 9.57143819239722,
+            "vec_norm": 0.738183229033172,
+            "bm25_norm": 0.8480756173890552,
+            "hybrid_score": 0.771150945539937,
+            "rerank_score": 0.7952
+          },
+          {
+            "chunk_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8_chunk_1",
+            "content": "【阿里巴巴 · 后端开发 岗位职责】\n1. 负责电商核心系统的设计与开发。2. 高并发系统架构设计与性能优化。3. 分布式系统开发与微服务治理。4. 数据库设计与优化。",
+            "metadata": {
+              "company": "阿里巴巴",
+              "index": 1,
+              "jd_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8",
+              "position": "后端开发",
+              "section": "responsibilities",
+              "strategy": "semantic"
+            },
+            "distance": 0.560383141040802,
+            "bm25_score": 0.0,
+            "vec_norm": 0.7779847968139159,
+            "bm25_norm": 0.0,
+            "hybrid_score": 0.544589357769741,
+            "rerank_score": 0.693
+          },
+          {
+            "chunk_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8_chunk_7",
+            "content": "【阿里巴巴 · 后端开发 软性要求/加分项】\n熟悉K8s、Docker优先",
+            "metadata": {
+              "company": "阿里巴巴",
+              "index": 7,
+              "jd_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8",
+              "position": "后端开发",
+              "priority": "medium",
+              "section": "soft_requirements",
+              "strategy": "semantic"
+            },
+            "distance": 0.6421223282814026,
+            "bm25_score": 0.0,
+            "vec_norm": 0.6165575049324954,
+            "bm25_norm": 0.0,
+            "hybrid_score": 0.43159025345274676,
+            "rerank_score": 0.6241
+          },
+          {
+            "chunk_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a_chunk_6",
+            "content": "【某小公司 · Java后端 关键词】\nJava, Spring Boot, MySQL, ERP, 后端",
+            "metadata": {
+              "company": "某小公司",
+              "index": 6,
+              "jd_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a",
+              "position": "Java后端",
+              "section": "keywords",
+              "strategy": "semantic"
+            },
+            "distance": 0.6305882334709167,
+            "bm25_score": 9.906145995550908,
+            "vec_norm": 0.6393362693466764,
+            "bm25_norm": 0.8838832976948727,
+            "hybrid_score": 0.7127003778511353,
+            "rerank_score": 0.4001
+          }
+        ],
+        "evidence_cache_query": "帮我看看有什么Java后端岗",
+        "tool_outputs": [
+          {
+            "task_id": "T0",
+            "tool": "kb_retrieve",
+            "description": "检索: 帮我看看有什么Java后端岗...",
+            "result": {
+              "chunks": [
+                {
+                  "chunk_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a_chunk_1",
+                  "content": "【某小公司 · Java后端 岗位职责】\n1. 负责传统企业内部管理系统的设计与开发。2. 数据库CRUD操作与报表开发。3. 系统日常维护与bug修复。",
+                  "source": "某小公司-Java后端",
+                  "metadata": {
+                    "company": "某小公司",
+                    "position": "Java后端"
+                  }
+                },
+                {
+                  "chunk_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a_chunk_0",
+                  "content": "公司：某小公司，岗位：Java后端，地点：成都，薪资：10k-20k",
+                  "source": "某小公司-Java后端",
+                  "metadata": {
+                    "company": "某小公司",
+                    "position": "Java后端"
+                  }
+                },
+                {
+                  "chunk_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a_chunk_5",
+                  "content": "【某小公司 · Java后端 软性要求/加分项】\n有ERP系统开发经验优先",
+                  "source": "某小公司-Java后端",
+                  "metadata": {
+                    "company": "某小公司",
+                    "position": "Java后端"
+                  }
+                },
+                {
+                  "chunk_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a_chunk_3",
+                  "content": "【某小公司 · Java后端 硬性要求】\n熟悉Spring Boot、MySQL",
+                  "source": "某小公司-Java后端",
+                  "metadata": {
+                    "company": "某小公司",
+                    "position": "Java后端"
+                  }
+                },
+                {
+                  "chunk_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a_chunk_2",
+                  "content": "【某小公司 · Java后端 硬性要求】\n1年以上Java开发经验",
+                  "source": "某小公司-Java后端",
+                  "metadata": {
+                    "company": "某小公司",
+                    "position": "Java后端"
+                  }
+                },
+                {
+                  "chunk_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8_chunk_2",
+                  "content": "【阿里巴巴 · 后端开发 硬性要求】\n3年以上Java开发经验",
+                  "source": "阿里巴巴-后端开发",
+                  "metadata": {
+                    "company": "阿里巴巴",
+                    "position": "后端开发"
+                  }
+                }
+              ],
+              "query": "帮我看看有什么Java后端岗",
+              "filters": {},
+              "strategy": "hybrid(70%vec+30%bm25)+reranker",
+              "pool_k": 15,
+              "rerank_k": 10,
+              "pool_size": 30,
+              "vec_only": 10,
+              "bm25_only": 10,
+              "both": 10,
+              "rerank": {
+                "enabled": true,
+                "candidates": 15,
+                "output": 10,
+                "best_rerank_score": 0.9944
+              }
+            }
+          },
+          {
+            "task_id": "T1",
+            "tool": "kb_retrieve",
+            "description": "检索: 帮我看看有什么Java后端岗...",
+            "result": {
+              "chunks": [
+                {
+                  "chunk_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a_chunk_1",
+                  "content": "【某小公司 · Java后端 岗位职责】\n1. 负责传统企业内部管理系统的设计与开发。2. 数据库CRUD操作与报表开发。3. 系统日常维护与bug修复。",
+                  "source": "某小公司-Java后端",
+                  "metadata": {
+                    "company": "某小公司",
+                    "position": "Java后端"
+                  }
+                },
+                {
+                  "chunk_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a_chunk_0",
+                  "content": "公司：某小公司，岗位：Java后端，地点：成都，薪资：10k-20k",
+                  "source": "某小公司-Java后端",
+                  "metadata": {
+                    "company": "某小公司",
+                    "position": "Java后端"
+                  }
+                },
+                {
+                  "chunk_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a_chunk_5",
+                  "content": "【某小公司 · Java后端 软性要求/加分项】\n有ERP系统开发经验优先",
+                  "source": "某小公司-Java后端",
+                  "metadata": {
+                    "company": "某小公司",
+                    "position": "Java后端"
+                  }
+                },
+                {
+                  "chunk_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a_chunk_3",
+                  "content": "【某小公司 · Java后端 硬性要求】\n熟悉Spring Boot、MySQL",
+                  "source": "某小公司-Java后端",
+                  "metadata": {
+                    "company": "某小公司",
+                    "position": "Java后端"
+                  }
+                },
+                {
+                  "chunk_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a_chunk_2",
+                  "content": "【某小公司 · Java后端 硬性要求】\n1年以上Java开发经验",
+                  "source": "某小公司-Java后端",
+                  "metadata": {
+                    "company": "某小公司",
+                    "position": "Java后端"
+                  }
+                },
+                {
+                  "chunk_id": "9cde8355-dcc0-434e-97c4-67dfc5dae5b8_chunk_2",
+                  "content": "【阿里巴巴 · 后端开发 硬性要求】\n3年以上Java开发经验",
+                  "source": "阿里巴巴-后端开发",
+                  "metadata": {
+                    "company": "阿里巴巴",
+                    "position": "后端开发"
+                  }
+                }
+              ],
+              "query": "帮我看看有什么Java后端岗",
+              "filters": {},
+              "strategy": "hybrid(70%vec+30%bm25)+reranker",
+              "pool_k": 15,
+              "rerank_k": 10,
+              "pool_size": 30,
+              "vec_only": 10,
+              "bm25_only": 10,
+              "both": 10,
+              "rerank": {
+                "enabled": true,
+                "candidates": 15,
+                "output": 10,
+                "best_rerank_score": 0.9944
+              }
+            }
+          },
+          {
+            "task_id": "T2",
+            "tool": null,
+            "description": "聚合所有输出生成回复素材",
+            "result": {
+              "aggregation": {
+                "note": "无工具输出"
+              }
+            }
+          }
+        ],
+        "final_aggregation_prompt": {
+          "system_prompt": "你是一位专业的求职顾问。请基于以下工具执行结果，给用户一个清晰、有帮助的回复。\n要求：\n1. 先直接回答用户的问题（是/否/有/没有），不要绕弯子，不要重复用户的原话\n2. 如果有匹配分析结果，给出具体的分数和建议\n3. 如果有检索结果，基于事实回答，不要编造\n4. 【强制】引用信息时必须标注来源。每个引用的事实后面都要跟 [来源：公司名-岗位名] 格式。   kb_retrieve 结果的 chunks 中带有 'source' 字段（如'字节跳动-AI产品经理'），请直接使用。   external_search 结果带有 'source_name' 字段，也请直接使用。\n5. 当本地知识库与外部搜索结果冲突时，请并列呈现两种说法并标注各自来源，不要替用户做判断\n6. 语气友好、专业、结构化",
+          "user_prompt": "【用户问题】\n帮我看看有什么Java后端岗\n\n【工具执行结果】\n[{\"task_id\": \"T0\", \"tool\": \"kb_retrieve\", \"description\": \"检索: 帮我看看有什么Java后端岗...\", \"result\": {\"chunks\": [{\"chunk_id\": \"45bd2600-af57-45fe-a96e-c6cae6838c7a_chunk_1\", \"content\": \"【某小公司 · Java后端 岗位职责】\\n1. 负责传统企业内部管理系统的设计与开发。2. 数据库CRUD操作与报表开发。3. 系统日常维护与bug修复。\", \"source\": \"某小公司-Java后端\", \"metadata\": {\"company\": \"某小公司\", \"position\": \"Java后端\"}}, {\"chunk_id\": \"45bd2600-af57-45fe-a96e-c6cae6838c7a_chunk_0\", \"content\": \"公司：某小公司，岗位：Java后端，地点：成都，薪资：10k-20k\", \"source\": \"某小公司-Java后端\", \"metadata\": {\"company\": \"某小公司\", \"position\": \"Java后端\"}}, {\"chunk_id\": \"45bd2600-af57-45fe-a96e-c6cae6838c7a_chunk_5\", \"content\": \"【某小公司 · Java后端 软性要求/加分项】\\n有ERP系统开发经验优先\", \"source\": \"某小公司-Java后端\", \"metadata\": {\"company\": \"某小公司\", \"position\": \"Java后端\"}}, {\"chunk_id\": \"45bd2600-af57-45fe-a96e-c6cae6838c7a_chunk_3\", \"content\": \"【某小公司 · Java后端 硬性要求】\\n熟悉Spring Boot、MySQL\", \"source\": \"某小公司-Java后端\", \"metadata\": {\"company\": \"某小公司\", \"position\": \"Java后端\"}}, {\"chunk_id\": \"45bd2600-af57-45fe-a96e-c6cae6838c7a_chunk_2\", \"content\": \"【某小公司 · Java后端 硬性要求】\\n1年以上Java开发经验\", \"source\": \"某小公司-Java后端\", \"metadata\": {\"company\": \"某小公司\", \"position\": \"Java后端\"}}, {\"chunk_id\": \"9cde8355-dcc0-434e-97c4-67dfc5dae5b8_chunk_2\", \"content\": \"【阿里巴巴 · 后端开发 硬性要求】\\n3年以上Java开发经验\", \"source\": \"阿里巴巴-后端开发\", \"metadata\": {\"company\": \"阿里巴巴\", \"position\": \"后端开发\"}}], \"query\": \"帮我看看有什么Java后端岗\", \"filters\": {}, \"strategy\": \"hybrid(70%vec+30%bm25)+reranker\", \"pool_k\": 15, \"rerank_k\": 10, \"pool_size\": 30, \"vec_only\": 10, \"bm25_only\": 10, \"both\": 10, \"rerank\": {\"enabled\": true, \"candidates\": 15, \"output\": 10, \"best_rerank_score\": 0.9944}}}, {\"task_id\": \"T1\", \"tool\": \"kb_retrieve\", \"description\": \"检索: 帮我看看有什么Java后端岗...\", \"result\": {\"chunks\": [{\"chunk_id\": \"45bd2600-af57-45fe-a96e-c6cae6838c7a_chunk_1\", \"content\": \"【某小公司 · Java后端 岗位职责】\\n1. 负责传统企业内部管理系统的设计与开发。2. 数据库CRUD操作与报表开发。3. 系统日常维护与bug修复。\", \"source\": \"某小公司-Java后端\", \"metadata\": {\"company\": \"某小公司\", \"position\": \"Java后端\"}}, {\"chunk_id\": \"45bd2600-af57-45fe-a96e-c6cae6838c7a_chunk_0\", \"content\": \"公司：某小公司，岗位：Java后端，地点：成都，薪资：10k-20k\", \"source\": \"某小公司-Java后端\", \"metadata\": {\"company\": \"某小公司\", \"position\": \"Java后端\"}}, {\"chunk_id\": \"45bd2600-af57-45fe-a96e-c6cae6838c7a_chunk_5\", \"content\": \"【某小公司 · Java后端 软性要求/加分项】\\n有ERP系统开发经验优先\", \"source\": \"某小公司-Java后端\", \"metadata\": {\"company\": \"某小公司\", \"position\": \"Java后端\"}}, {\"chunk_id\": \"45bd2600-af57-45fe-a96e-c6cae6838c7a_chunk_3\", \"content\": \"【某小公司 · Java后端 硬性要求】\\n熟悉Spring Boot、MySQL\", \"source\": \"某小公司-Java后端\", \"metadata\": {\"company\": \"某小公司\", \"position\": \"Java后端\"}}, {\"chunk_id\": \"45bd2600-af57-45fe-a96e-c6cae6838c7a_chunk_2\", \"content\": \"【某小公司 · Java后端 硬性要求】\\n1年以上Java开发经验\", \"source\": \"某小公司-Java后端\", \"metadata\": {\"company\": \"某小公司\", \"position\": \"Java后端\"}}, {\"chunk_id\": \"9cde8355-dcc0-434e-97c4-67dfc5dae5b8_chunk_2\", \"content\": \"【阿里巴巴 · 后端开发 硬性要求】\\n3年以上Java开发经验\", \"source\": \"阿里巴巴-后端开发\", \"metadata\": {\"company\": \"阿里巴巴\", \"position\": \"后端开发\"}}], \"query\": \"帮我看看有什么Java后端岗\", \"filters\": {}, \"strategy\": \"hybrid(70%vec+30%bm25)+reranker\", \"pool_k\": 15, \"rerank_k\": 10, \"pool_siz\n\n请生成回复："
+        }
+      },
+      "usage": {
+        "prompt_tokens": 8097,
+        "completion_tokens": 5755,
+        "total_tokens": 13852
+      },
+      "_time": 90.19209051132202,
+      "type": "done"
+    }
+  ],
+  "timestamp": "2026-06-04T17:26:49.010944",
+  "prompt_tokens": 8097,
+  "completion_tokens": 5755,
+  "total_tokens": 13852,
+  "tool_execution_success_rate": 1.0,
+  "tool_correct_rate": 0.5
+}

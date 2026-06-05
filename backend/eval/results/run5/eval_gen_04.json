@@ -1,0 +1,87 @@
+{
+  "case_id": "eval_gen_04",
+  "message": "帮我看看有什么岗，然后第一个推荐的具体要求是什么，再帮我准备几道面试题",
+  "gold_intents": [
+    "explore",
+    "prepare",
+    "verify"
+  ],
+  "expected_tools": [
+    "kb_retrieve",
+    "global_rank",
+    "qa_synthesize",
+    "interview_gen"
+  ],
+  "scenario": "复杂多意图_探索+属性查询+面试准备",
+  "eval_context": {
+    "gold_intents": [
+      "explore",
+      "verify",
+      "prepare"
+    ],
+    "gold_slots": {},
+    "relevance_score": 0,
+    "expected_tools": [
+      "kb_retrieve",
+      "global_rank",
+      "qa_synthesize",
+      "interview_gen"
+    ],
+    "scenario": "复杂多意图_探索+属性查询+面试准备",
+    "notes": "单轮三意图，测试Planner多任务并行能力。verify和prepare依赖explore结果"
+  },
+  "resume_id": "cc50dcfb-aeba-41a3-989a-9e485aa2fc3f",
+  "status": "success",
+  "error": null,
+  "ttfb": 0.008,
+  "total_latency": 8.73,
+  "event_count": 3,
+  "pred_intent": "attribute_verify",
+  "pred_intents": [
+    "attribute_verify"
+  ],
+  "pred_tools": [],
+  "tools_called": [],
+  "kb_chunks": [],
+  "tool_executions_full": [],
+  "debug_info": {},
+  "reply": "你是想核实某个具体信息，还是想探索更多相关岗位？",
+  "reply_length": 24,
+  "intent_match": true,
+  "tool_match_rate": 0.0,
+  "has_reply": false,
+  "events": [
+    {
+      "step": "intent",
+      "message": "正在识别您的意图...",
+      "_time": 8.727937936782837,
+      "type": "status"
+    },
+    {
+      "question": "你是想核实某个具体信息，还是想探索更多相关岗位？",
+      "_time": 8.727977514266968,
+      "type": "clarification"
+    },
+    {
+      "session_id": "eval_gen_04_1780564883329",
+      "intent": "attribute_verify",
+      "is_clarification": true,
+      "reply": {
+        "text": "你是想核实某个具体信息，还是想探索更多相关岗位？"
+      },
+      "usage": {
+        "prompt_tokens": 1502,
+        "completion_tokens": 298,
+        "total_tokens": 1800
+      },
+      "_time": 8.728027820587158,
+      "type": "done"
+    }
+  ],
+  "timestamp": "2026-06-04T17:21:23.329019",
+  "prompt_tokens": 1502,
+  "completion_tokens": 298,
+  "total_tokens": 1800,
+  "tool_execution_success_rate": 0.0,
+  "tool_correct_rate": 0.0
+}

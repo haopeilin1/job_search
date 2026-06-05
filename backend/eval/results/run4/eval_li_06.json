@@ -1,0 +1,444 @@
+{
+  "case_id": "eval_li_06",
+  "message": "阿里后端要求几年经验",
+  "gold_intents": [
+    "verify"
+  ],
+  "expected_tools": [
+    "kb_retrieve",
+    "qa_synthesize"
+  ],
+  "scenario": "属性查询_经验要求",
+  "status": "success",
+  "error": null,
+  "ttfb": 0.01,
+  "total_latency": 74.58,
+  "event_count": 60,
+  "pred_intent": "attribute_verify",
+  "pred_tools": [
+    {
+      "tool": "kb_retrieve",
+      "status": "✅",
+      "params": {
+        "query": "{{rewritten_query}}",
+        "top_k": 3,
+        "company": "阿里",
+        "position": "后端"
+      },
+      "result_preview": "{'chunks': [], 'query': '{{rewritten_query}}', 'filters': {'company': '阿里', 'position': '后端'}, 'strategy': 'hybrid(70%vec+30%bm25)+reranker', 'pool_k': 3, 'rerank_k': 10, 'pool_size': 0, 'vec_only': 0"
+    },
+    {
+      "tool": "qa_synthesize",
+      "status": "✅",
+      "params": {
+        "question": "{{rewritten_query}}",
+        "evidence_chunks": [],
+        "qa_type": "factual"
+      },
+      "result_preview": "{'answer': '抱歉，知识库中没有找到相关信息。', 'citations': [], 'confidence': 'low', 'insufficient_note': '未检索到相关证据'}"
+    },
+    {
+      "tool": "external_search",
+      "status": "❌",
+      "params": {
+        "query": "{{rewritten_query}}",
+        "count": 5
+      },
+      "result_preview": "{'chunks': [{'chunk_id': 'tavily_1310225054', 'content': '【来源：en.wikipedia.org】Query rewriting - Wikipedia\\n**Query rewriting** is a typically automatic transformation that takes a set of database tab"
+    }
+  ],
+  "tools_called": [
+    "kb_retrieve",
+    "qa_synthesize",
+    "external_search"
+  ],
+  "reply": "暂无具体数据。\n\n目前基于现有知识库检索，未找到关于阿里后端岗位经验年限的具体要求记录。\n\n**检索情况说明：**\n- 系统已针对“阿里后端岗位 JD\"进行了混合检索（向量 + 关键词），但未匹配到相关文档片段。\n\n**行动建议：**\n由于岗位具体要求会随业务线和职级动态调整，建议您通过以下官方或权威渠道获取最新信息：\n1. **阿里巴巴集团招聘官网**：查看具体职位的详细描述（JD）。\n2. **主流招聘平台**：如 Boss 直聘、拉勾网等，搜索“阿里巴巴 后端”查看在招岗位的具体年限要求。\n3. **内推渠道**：联系阿里内部员工获取更准确的部门用人标准。\n\n希望这些建议能帮助您更精准地准备求职材料。",
+  "reply_length": 307,
+  "intent_match": true,
+  "tool_match_rate": 1.0,
+  "has_reply": true,
+  "events": [
+    {
+      "step": "intent",
+      "message": "正在识别您的意图...",
+      "_time": 5.091318607330322,
+      "type": "status"
+    },
+    {
+      "step": "plan",
+      "message": "正在规划任务...",
+      "_time": 5.091359615325928,
+      "type": "status"
+    },
+    {
+      "step": "execute",
+      "message": "正在执行分析...",
+      "_time": 25.561553955078125,
+      "type": "status"
+    },
+    {
+      "step": "aggregate",
+      "message": "正在生成回复...",
+      "_time": 27.870235681533813,
+      "type": "status"
+    },
+    {
+      "text": "暂无具体数据。",
+      "_time": 71.4396698474884,
+      "type": "delta"
+    },
+    {
+      "text": "\n\n目前基于",
+      "_time": 71.44242715835571,
+      "type": "delta"
+    },
+    {
+      "text": "现有知识库检索，",
+      "_time": 71.56363296508789,
+      "type": "delta"
+    },
+    {
+      "text": "未找到",
+      "_time": 71.56641888618469,
+      "type": "delta"
+    },
+    {
+      "text": "关于阿里后端岗位",
+      "_time": 71.70563745498657,
+      "type": "delta"
+    },
+    {
+      "text": "经验年限",
+      "_time": 71.70722246170044,
+      "type": "delta"
+    },
+    {
+      "text": "的具体要求记录。",
+      "_time": 71.77962827682495,
+      "type": "delta"
+    },
+    {
+      "text": "\n\n**检索",
+      "_time": 71.78230142593384,
+      "type": "delta"
+    },
+    {
+      "text": "情况说明：**\n-",
+      "_time": 71.90566158294678,
+      "type": "delta"
+    },
+    {
+      "text": " 系统已",
+      "_time": 71.94116067886353,
+      "type": "delta"
+    },
+    {
+      "text": "针对“阿里后端",
+      "_time": 72.0295991897583,
+      "type": "delta"
+    },
+    {
+      "text": "岗位",
+      "_time": 72.03436732292175,
+      "type": "delta"
+    },
+    {
+      "text": " JD\"进行了混合",
+      "_time": 72.12365484237671,
+      "type": "delta"
+    },
+    {
+      "text": "检索（",
+      "_time": 72.12736892700195,
+      "type": "delta"
+    },
+    {
+      "text": "向量 + 关键词",
+      "_time": 72.26057457923889,
+      "type": "delta"
+    },
+    {
+      "text": "），但未",
+      "_time": 72.26444911956787,
+      "type": "delta"
+    },
+    {
+      "text": "匹配到相关文档",
+      "_time": 72.33652210235596,
+      "type": "delta"
+    },
+    {
+      "text": "片段。\n\n",
+      "_time": 72.33935379981995,
+      "type": "delta"
+    },
+    {
+      "text": "**行动建议：**",
+      "_time": 72.46463131904602,
+      "type": "delta"
+    },
+    {
+      "text": "\n由于",
+      "_time": 72.49236297607422,
+      "type": "delta"
+    },
+    {
+      "text": "岗位具体要求会随",
+      "_time": 72.57259035110474,
+      "type": "delta"
+    },
+    {
+      "text": "业务",
+      "_time": 72.57643175125122,
+      "type": "delta"
+    },
+    {
+      "text": "线和职级动态",
+      "_time": 72.66048789024353,
+      "type": "delta"
+    },
+    {
+      "text": "调整，建议您",
+      "_time": 72.6632182598114,
+      "type": "delta"
+    },
+    {
+      "text": "通过以下官方或",
+      "_time": 72.78656148910522,
+      "type": "delta"
+    },
+    {
+      "text": "权威渠道获取最新",
+      "_time": 72.82362627983093,
+      "type": "delta"
+    },
+    {
+      "text": "信息：\n1",
+      "_time": 72.9307074546814,
+      "type": "delta"
+    },
+    {
+      "text": ". **",
+      "_time": 72.93095707893372,
+      "type": "delta"
+    },
+    {
+      "text": "阿里巴巴集团招聘官网",
+      "_time": 73.03971576690674,
+      "type": "delta"
+    },
+    {
+      "text": "**：查看具体",
+      "_time": 73.07452154159546,
+      "type": "delta"
+    },
+    {
+      "text": "职位的详细描述（",
+      "_time": 73.18257594108582,
+      "type": "delta"
+    },
+    {
+      "text": "JD）。\n",
+      "_time": 73.18632864952087,
+      "type": "delta"
+    },
+    {
+      "text": "2. **主流",
+      "_time": 73.31050491333008,
+      "type": "delta"
+    },
+    {
+      "text": "招聘平台**",
+      "_time": 73.31214904785156,
+      "type": "delta"
+    },
+    {
+      "text": "：如 Boss ",
+      "_time": 73.47057151794434,
+      "type": "delta"
+    },
+    {
+      "text": "直聘、拉",
+      "_time": 73.47326612472534,
+      "type": "delta"
+    },
+    {
+      "text": "勾网等，",
+      "_time": 73.57868456840515,
+      "type": "delta"
+    },
+    {
+      "text": "搜索“",
+      "_time": 73.5813398361206,
+      "type": "delta"
+    },
+    {
+      "text": "阿里巴巴 后端”",
+      "_time": 73.68749475479126,
+      "type": "delta"
+    },
+    {
+      "text": "查看",
+      "_time": 73.69140338897705,
+      "type": "delta"
+    },
+    {
+      "text": "在招岗位的具体",
+      "_time": 73.81342387199402,
+      "type": "delta"
+    },
+    {
+      "text": "年限",
+      "_time": 73.81732249259949,
+      "type": "delta"
+    },
+    {
+      "text": "要求。\n3",
+      "_time": 73.86847281455994,
+      "type": "delta"
+    },
+    {
+      "text": ". **",
+      "_time": 73.87132358551025,
+      "type": "delta"
+    },
+    {
+      "text": "内推渠道**",
+      "_time": 73.97558760643005,
+      "type": "delta"
+    },
+    {
+      "text": "：联系阿里",
+      "_time": 73.9780797958374,
+      "type": "delta"
+    },
+    {
+      "text": "内部员工获取更",
+      "_time": 74.13470554351807,
+      "type": "delta"
+    },
+    {
+      "text": "准确的部门",
+      "_time": 74.13642048835754,
+      "type": "delta"
+    },
+    {
+      "text": "用人标准。\n\n",
+      "_time": 74.20958948135376,
+      "type": "delta"
+    },
+    {
+      "text": "希望",
+      "_time": 74.2113208770752,
+      "type": "delta"
+    },
+    {
+      "text": "这些建议能帮助您",
+      "_time": 74.29948854446411,
+      "type": "delta"
+    },
+    {
+      "text": "更",
+      "_time": 74.30229902267456,
+      "type": "delta"
+    },
+    {
+      "text": "精准地准备求职",
+      "_time": 74.4285831451416,
+      "type": "delta"
+    },
+    {
+      "text": "材料",
+      "_time": 74.42900085449219,
+      "type": "delta"
+    },
+    {
+      "text": "。",
+      "_time": 74.4803295135498,
+      "type": "delta"
+    },
+    {
+      "session_id": "eval_li_06_1780478077446",
+      "intent": "attribute_verify",
+      "route_meta": {
+        "layer": "llm",
+        "intent": "attribute_verify",
+        "confidence": 0.88,
+        "demands": [
+          {
+            "intent": "attribute_verify",
+            "entities": {
+              "company": "阿里",
+              "position": "后端",
+              "attributes": [
+                "要求",
+                "经验"
+              ],
+              "qa_type": "factual"
+            }
+          }
+        ],
+        "plan_tasks": 3
+      },
+      "agent_mode": "llm",
+      "is_clarification": false,
+      "agent": {
+        "rewritten_query": "阿里后端岗位要求的经验年限",
+        "tools": [
+          {
+            "tool": "kb_retrieve",
+            "status": "✅",
+            "params": {
+              "query": "{{rewritten_query}}",
+              "top_k": 3,
+              "company": "阿里",
+              "position": "后端"
+            },
+            "result_preview": "{'chunks': [], 'query': '{{rewritten_query}}', 'filters': {'company': '阿里', 'position': '后端'}, 'strategy': 'hybrid(70%vec+30%bm25)+reranker', 'pool_k': 3, 'rerank_k': 10, 'pool_size': 0, 'vec_only': 0"
+          },
+          {
+            "tool": "qa_synthesize",
+            "status": "✅",
+            "params": {
+              "question": "{{rewritten_query}}",
+              "evidence_chunks": [],
+              "qa_type": "factual"
+            },
+            "result_preview": "{'answer': '抱歉，知识库中没有找到相关信息。', 'citations': [], 'confidence': 'low', 'insufficient_note': '未检索到相关证据'}"
+          },
+          {
+            "tool": "external_search",
+            "status": "❌",
+            "params": {
+              "query": "{{rewritten_query}}",
+              "count": 5
+            },
+            "result_preview": "{'chunks': [{'chunk_id': 'tavily_1310225054', 'content': '【来源：en.wikipedia.org】Query rewriting - Wikipedia\\n**Query rewriting** is a typically automatic transformation that takes a set of database tab"
+          }
+        ],
+        "kb_chunks_count": 2,
+        "system_prompt_preview": "你是一位专业的求职顾问。请基于以下工具执行结果，给用户一个清晰、有帮助的回复。\n要求：\n1. 先直接回答用户的问题（是/否/有/没有），不要绕弯子，不要重复用户的原话\n2. 如果有匹配分析结果，给出具体的分数和建议\n3. 如果有检索结果，基于事实回答，不要编造\n4. 【强制】引用信息时必须标注来源。每个引用的事实后面都要跟 [来源：公司名-岗位名] 格式。   kb_retrieve 结果的 ch"
+      },
+      "memory": {
+        "working_turns": 1,
+        "compressed_blocks": 0,
+        "current_topic": "general",
+        "evidence_cache_size": 0
+      },
+      "reply": "暂无具体数据。\n\n目前基于现有知识库检索，未找到关于阿里后端岗位经验年限的具体要求记录。\n\n**检索情况说明：**\n- 系统已针对“阿里后端岗位 JD\"进行了混合检索（向量 + 关键词），但未匹配到相关文档片段。\n\n**行动建议：**\n由于岗位具体要求会随业务线和职级动态调整，建议您通过以下官方或权威渠道获取最新信息：\n1. **阿里巴巴集团招聘官网**：查看具体职位的详细描述（JD）。\n2. **主流招聘平台**：如 Boss 直聘、拉勾网等，搜索“阿里巴巴 后端”查看在招岗位的具体年限要求。\n3. **内推渠道**：联系阿里内部员工获取更准确的部门用人标准。\n\n希望这些建议能帮助您更精准地准备求职材料。",
+      "usage": {
+        "prompt_tokens": 6537,
+        "completion_tokens": 5005,
+        "total_tokens": 11542
+      },
+      "_time": 74.58373069763184,
+      "type": "done"
+    }
+  ],
+  "timestamp": "2026-06-03T17:14:37.446135",
+  "prompt_tokens": 6537,
+  "completion_tokens": 5005,
+  "total_tokens": 11542,
+  "tool_execution_success_rate": 0.67,
+  "tool_correct_rate": 1.0
+}

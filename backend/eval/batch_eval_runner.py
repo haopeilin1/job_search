@@ -1,9 +1,16 @@
 #!/usr/bin/env python3
 """
-批量全链路评测脚本 — 三轮稳定性测试
+批量全链路评测脚本 v2 — 集成 Judge 评估
+
+修复内容（v2）：
+1. 从 SSE done 事件的 debug_info 提取完整 kb_chunks，供 Judge 评判 faithfulness
+2. 保存 eval_context 和 resume_id，确保 Judge 能获取完整上下文
+3. 每轮评测结束后自动调用 v3.5 Judge 评估
+4. Judge 结果纳入 _summary.json 和 _report.json
+
 要求：
-1. 每条保存完整过程及中间结果，保证可追溯
-2. 每次跑完计算全部评测指标
+1. 每条保存完整过程及中间结果（含 kb_chunks / tool_executions_full），保证可追溯
+2. 每次跑完计算全部评测指标 + Judge 12 维评分
 3. 每条从前端 SSE 模拟真实用户
 4. 共跑三轮验证稳定性
 5. setsid+nohup 后台运行，SSH 断网不中断
@@ -26,6 +33,8 @@ from typing import List, Dict, Any, Optional
 
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 
+from eval.judge_postprocess import judge_single_case, _build_case_context
+
 BASE_URL = "http://127.0.0.1:8001"
 STREAM_URL = f"{BASE_URL}/api/v1/chat/stream"
 DATASET_PATH = Path(__file__).resolve().parent / "test_dataset.jsonl"
@@ -46,7 +55,7 @@ INTENT_ALIASES = {
     "assess": "assess",
     "prepare": "prepare",
     "verify": "verify",
-    "attribute_verify": "verify",   # 新体系 verify 的旧体系别名
+    "attribute_verify": "verify",
     "clarification": "clarification",
     "chat": "chat",
 }
@@ -64,9 +73,55 @@ def _normalize_intents(intents: List[str]) -> List[str]:
 _session_group_map: Dict[str, str] = {}
 
 
+def _extract_kb_chunks_from_debug(debug_info: dict) -> List[dict]:
+    """从 debug_info 中提取完整的 kb_chunks（不截断）"""
+    if not debug_info:
+        return []
+    # 优先使用 evidence_cache（完整 chunks）
+    evidence_cache = debug_info.get("evidence_cache", [])
+    if evidence_cache:
+        return evidence_cache
+    # 备选：从 task_graph 的 tasks 中提取
+    chunks = []
+    task_graph = debug_info.get("task_graph", {})
+    for tid, task in task_graph.get("tasks", {}).items():
+        if task.get("tool_name") in ("kb_retrieve", "external_search") and task.get("status") == "success":
+            result = task.get("result", {})
+            if isinstance(result, dict):
+                chunks.extend(result.get("chunks", []))
+    return chunks
+
+
+def _build_tool_executions_full(debug_info: dict) -> List[dict]:
+    """从 debug_info 构造 tool_executions_full（供 Judge 使用）"""
+    if not debug_info:
+        return []
+    tool_outputs = debug_info.get("tool_outputs", [])
+    executions = []
+    for o in tool_outputs:
+        executions.append({
+            "tool_name": o.get("tool"),
+            "task_id": o.get("task_id"),
+            "status": "success",
+            "output": o.get("result"),
+        })
+    # 补充 task_graph 中可能的失败任务
+    task_graph = debug_info.get("task_graph", {})
+    seen_task_ids = {e["task_id"] for e in executions}
+    for tid, task in task_graph.get("tasks", {}).items():
+        if tid not in seen_task_ids and task.get("tool_name"):
+            executions.append({
+                "tool_name": task.get("tool_name"),
+                "task_id": tid,
+                "status": "success" if task.get("status") == "success" else "failed",
+                "output": task.get("result"),
+            })
+    return executions
+
+
 async def run_single_case(case: dict, run_dir: Path, session: aiohttp.ClientSession) -> dict:
     """
-    对单条 case 发送 SSE 流式请求，保存完整过程，返回评测结果。
+    对单条 case 发送 SSE 流式请求，保存完整过程（含 kb_chunks / debug_info），返回评测结果。
     支持 session_group 复用 session（多轮对话）。
     """
     global _session_group_map
@@ -98,14 +153,20 @@ async def run_single_case(case: dict, run_dir: Path, session: aiohttp.ClientSess
         "gold_intents": gold_intents,
         "expected_tools": expected_tools,
         "scenario": gold_ctx.get("scenario", ""),
+        "eval_context": gold_ctx,
+        "resume_id": resume_id,
         "status": "pending",
         "error": None,
         "ttfb": None,
         "total_latency": None,
         "event_count": 0,
         "pred_intent": None,
+        "pred_intents": [],
         "pred_tools": [],
         "tools_called": [],
+        "kb_chunks": [],
+        "tool_executions_full": [],
+        "debug_info": {},
         "reply": "",
         "reply_length": 0,
         "intent_match": False,
@@ -173,6 +234,7 @@ async def run_single_case(case: dict, run_dir: Path, session: aiohttp.ClientSess
         # 预测意图
         pred_intent = done_event.get("intent")
         result["pred_intent"] = pred_intent
+        result["pred_intents"] = [pred_intent] if pred_intent else []
         result["intent_match"] = _normalize_intent(pred_intent) in gold_intents if pred_intent else False
 
         # 工具调用
@@ -180,6 +242,12 @@ async def run_single_case(case: dict, run_dir: Path, session: aiohttp.ClientSess
         tools_called = [t.get("tool") for t in agent_tools if t.get("tool")]
         result["tools_called"] = tools_called
         result["pred_tools"] = agent_tools
+
+        # 提取完整 debug_info（含 kb_chunks）
+        debug_info = done_event.get("debug_info", {})
+        result["debug_info"] = debug_info
+        result["kb_chunks"] = _extract_kb_chunks_from_debug(debug_info)
+        result["tool_executions_full"] = _build_tool_executions_full(debug_info)
 
         # 工具匹配率
         if expected_tools:
@@ -229,6 +297,144 @@ async def run_single_case(case: dict, run_dir: Path, session: aiohttp.ClientSess
         json.dump(result, f, ensure_ascii=False, indent=2)
 
     return result
+
+
+async def run_judge_for_case(case_result: dict) -> dict:
+    """对单条 case 结果调用 v3.5 Judge 评估"""
+    case_id = case_result["case_id"]
+    
+    # 构造 Judge 需要的 case_result 格式
+    case_for_judge = {
+        "case_id": case_id,
+        "message": case_result["message"],
+        "gold_intents": case_result.get("gold_intents", []),
+        "reply": case_result.get("reply", ""),
+        "tools_called": [
+            {"tool": t.get("tool", ""), "status": t.get("status", "")}
+            for t in case_result.get("pred_tools", [])
+        ],
+        "pred_intents": case_result.get("pred_intents", []),
+        "kb_chunks": case_result.get("kb_chunks", []),
+        "tool_executions_full": case_result.get("tool_executions_full", []),
+        "eval_context": case_result.get("eval_context", {}),
+        "resume_id": case_result.get("resume_id", ""),
+    }
+    
+    ctx = _build_case_context(case_id, case_for_judge)
+    judge_result = await judge_single_case(case_for_judge, ctx)
+    return judge_result
+
+
+async def run_judge_for_run(results: List[dict], run_dir: Path) -> dict:
+    """对一轮所有 case 调用 Judge，返回汇总报告"""
+    print(f"\n{'='*70}")
+    print(f"【Judge 评估开始】case 数: {len(results)}")
+    print(f"{'='*70}")
+    
+    judge_results = []
+    for idx, r in enumerate(results, 1):
+        case_id = r["case_id"]
+        if r.get("status") != "success":
+            # 失败的 case Judge 直接判不通过
+            judge_results.append({
+                "case_id": case_id,
+                "resolved": False,
+                "scores": {k: 0 for k in [
+                    "intent_accuracy", "slot_accuracy", "tool_correctness", "tool_execution",
+                    "response_accuracy", "response_completeness", "citation_quality",
+                    "coherence", "tone", "efficiency", "faithfulness", "answer_relevance"
+                ]},
+                "reason": f"Case 执行失败: {r.get('error', 'unknown')}",
+                "rule_hit": None,
+                "veto": False,
+                "needs_rag": "kb_retrieve" in r.get("expected_tools", []),
+            })
+            print(f"  [{idx}/{len(results)}] {case_id} -> ❌ 执行失败，跳过 Judge")
+            continue
+        
+        try:
+            jr = await run_judge_for_case(r)
+            judge_results.append(jr)
+            scores = jr.get("scores", {})
+            print(f"  [{idx}/{len(results)}] {case_id} -> resolved={jr['resolved']} "
+                  f"intent={scores.get('intent_accuracy',0)}/5 "
+                  f"faithfulness={scores.get('faithfulness',0)}/5 "
+                  f"relevance={scores.get('answer_relevance',0)}/5")
+        except Exception as e:
+            print(f"  [{idx}/{len(results)}] {case_id} -> Judge 调用失败: {e}")
+            judge_results.append({
+                "case_id": case_id,
+                "resolved": False,
+                "scores": {k: 0 for k in [
+                    "intent_accuracy", "slot_accuracy", "tool_correctness", "tool_execution",
+                    "response_accuracy", "response_completeness", "citation_quality",
+                    "coherence", "tone", "efficiency", "faithfulness", "answer_relevance"
+                ]},
+                "reason": f"Judge 调用失败: {e}",
+                "rule_hit": None,
+                "veto": False,
+                "needs_rag": "kb_retrieve" in r.get("expected_tools", []),
+            })
+    
+    # 汇总统计
+    total = len(judge_results)
+    resolved_count = sum(1 for j in judge_results if j["resolved"])
+    veto_count = sum(1 for j in judge_results if j.get("veto"))
+    rag_cases = [j for j in judge_results if j.get("needs_rag")]
+    non_rag_cases = [j for j in judge_results if not j.get("needs_rag")]
+    
+    dim_avg = {}
+    dim_keys = [
+        "intent_accuracy", "slot_accuracy", "tool_correctness", "tool_execution",
+        "response_accuracy", "response_completeness", "citation_quality",
+        "coherence", "tone", "efficiency", "faithfulness", "answer_relevance"
+    ]
+    for k in dim_keys:
+        vals = [j["scores"].get(k, 0) for j in judge_results]
+        dim_avg[k] = round(sum(vals) / len(vals), 2) if vals else 0
+    
+    # RAG 子集统计
+    rag_dim_avg = {}
+    if rag_cases:
+        for k in ["faithfulness", "answer_relevance"]:
+            vals = [j["scores"].get(k, 0) for j in rag_cases]
+            rag_dim_avg[k] = round(sum(vals) / len(vals), 2) if vals else 0
+    
+    summary = {
+        "total_cases": total,
+        "resolved_count": resolved_count,
+        "resolved_rate": round(resolved_count / total, 4) if total else 0,
+        "veto_count": veto_count,
+        "veto_rate": round(veto_count / total, 4) if total else 0,
+        "rag_cases_count": len(rag_cases),
+        "non_rag_cases_count": len(non_rag_cases),
+        "dimension_averages": dim_avg,
+        "rag_dimension_averages": rag_dim_avg,
+    }
+    
+    report = {
+        "summary": summary,
+        "cases": judge_results,
+        "timestamp": datetime.now().isoformat(),
+    }
+    
+    # 保存 Judge 报告
+    judge_path = run_dir / "_report_judge.json"
+    with open(judge_path, "w", encoding="utf-8") as f:
+        json.dump(report, f, ensure_ascii=False, indent=2)
+    
+    print(f"\n{'='*70}")
+    print(f"【Judge 评估完成】")
+    print(f"{'='*70}")
+    print(f"  总 case: {total}")
+    print(f"  Judge 通过: {resolved_count}/{total} = {summary['resolved_rate']:.2%}")
+    print(f"  否决项: {veto_count}/{total}")
+    print(f"  RAG case: {len(rag_cases)} | 非 RAG: {len(non_rag_cases)}")
+    print(f"  faithfulness(RAG): {rag_dim_avg.get('faithfulness', 'N/A')}/5")
+    print(f"  answer_relevance(RAG): {rag_dim_avg.get('answer_relevance', 'N/A')}/5")
+    print(f"  报告保存: {judge_path}")
+    
+    return summary
 
 
 def compute_metrics(results: List[dict], exclude_special: bool = False) -> dict:
@@ -315,7 +521,6 @@ def compute_metrics(results: List[dict], exclude_special: bool = False) -> dict:
         "median_total_latency_sec": round(sorted(latencies)[len(latencies)//2], 2) if latencies else 0,
         "max_total_latency_sec": round(max(latencies), 2) if latencies else 0,
         "min_total_latency_sec": round(min(ttfs), 2) if ttfs else 0,
-        # 真实 LLM token 消耗（基于 API 返回的 usage 字段）
         "total_prompt_tokens": sum(prompt_tokens_list),
         "total_completion_tokens": sum(completion_tokens_list),
         "total_tokens": sum(total_tokens_list),
@@ -387,8 +592,9 @@ async def run_single_round(cases: List[dict], run_idx: int) -> dict:
             tool_rate = result["tool_match_rate"]
             reply_ok = "✅" if result["has_reply"] else "❌"
             latency = result.get("total_latency", 0)
+            kb_count = len(result.get("kb_chunks", []))
 
-            print(f"  {status_icon} status={result['status']} | intent={intent_ok} | tool_match={tool_rate} | reply={reply_ok} | latency={latency}s")
+            print(f"  {status_icon} status={result['status']} | intent={intent_ok} | tool_match={tool_rate} | reply={reply_ok} | latency={latency}s | kb_chunks={kb_count}")
             if result["error"]:
                 print(f"  ⚠️  error: {result['error'][:100]}")
 
@@ -455,6 +661,19 @@ async def run_single_round(cases: List[dict], run_idx: int) -> dict:
             "timestamp": datetime.now().isoformat(),
         }, f, ensure_ascii=False, indent=2)
 
+    # ════════════════════════════════════════
+    # 自动调用 Judge 评估
+    # ════════════════════════════════════════
+    judge_summary = await run_judge_for_run(results, run_dir)
+    metrics["judge_summary"] = judge_summary
+    metrics_all["judge_summary"] = judge_summary
+    
+    # 更新报告文件（包含 Judge 结果）
+    with open(run_dir / "_report.json", "w", encoding="utf-8") as f:
+        json.dump(metrics, f, ensure_ascii=False, indent=2)
+    with open(run_dir / "_report_all.json", "w", encoding="utf-8") as f:
+        json.dump(metrics_all, f, ensure_ascii=False, indent=2)
+
     # 打印报告
     print(f"\n{'='*70}")
     print(f"【第 {run_idx} 轮评测完成】")
@@ -472,6 +691,8 @@ async def run_single_round(cases: List[dict], run_idx: int) -> dict:
     print(f"  最大延迟: {metrics['max_total_latency_sec']}s")
     print(f"  真实 Token 消耗(平均): prompt={metrics['avg_prompt_tokens']} | completion={metrics['avg_completion_tokens']} | total={metrics['avg_total_tokens']}")
     print(f"  真实 Token 消耗(总计): prompt={metrics['total_prompt_tokens']} | completion={metrics['total_completion_tokens']} | total={metrics['total_tokens']}")
+    print(f"  Judge 通过率: {judge_summary['resolved_rate']:.2%}")
+    print(f"  Judge faithfulness(RAG): {judge_summary.get('rag_dimension_averages', {}).get('faithfulness', 'N/A')}/5")
     if metrics['errors']:
         print(f"  错误列表:")
         for e in metrics['errors'][:5]:
@@ -526,6 +747,13 @@ async def main(runs: int = 3, start_run: int = 1):
         std = round((sum((v - avg) ** 2 for v in values) / len(values)) ** 0.5, 4) if len(values) > 1 else 0
         round_strs = " ".join([f"round{i+1}={v}" for i, v in enumerate(values)])
         print(f"  {key}: {round_strs} | avg={avg} std={std}")
+    
+    # Judge 汇总
+    print(f"\n  Judge 通过率汇总:")
+    for idx, m in enumerate(all_round_metrics, 1):
+        js = m.get("judge_summary", {})
+        print(f"    Round {idx}: {js.get('resolved_rate', 0):.2%} "
+              f"(faithfulness={js.get('rag_dimension_averages', {}).get('faithfulness', 'N/A')}/5)")
 
     # 保存汇总
     summary = {

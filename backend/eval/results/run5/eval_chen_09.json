@@ -1,0 +1,3867 @@
+{
+  "case_id": "eval_chen_09",
+  "message": "我的RAG和Embedding经验对哪个岗最有用",
+  "gold_intents": [
+    "explore"
+  ],
+  "expected_tools": [
+    "kb_retrieve",
+    "global_rank"
+  ],
+  "scenario": "有简历_技能导向探索",
+  "eval_context": {
+    "gold_intents": [
+      "explore"
+    ],
+    "gold_slots": {},
+    "relevance_score": 0,
+    "expected_tools": [
+      "kb_retrieve",
+      "global_rank"
+    ],
+    "scenario": "有简历_技能导向探索",
+    "notes": "期望技能匹配（RAG/Embedding）提升相关JD排序"
+  },
+  "resume_id": "cc50dcfb-aeba-41a3-989a-9e485aa2fc3f",
+  "status": "success",
+  "error": null,
+  "ttfb": 0.01,
+  "total_latency": 65.1,
+  "event_count": 262,
+  "pred_intent": "position_explore",
+  "pred_intents": [
+    "position_explore"
+  ],
+  "pred_tools": [
+    {
+      "tool": "kb_retrieve",
+      "status": "✅",
+      "params": {
+        "query": "我的RAG和Embedding经验对哪个岗位最有用",
+        "top_k": 5
+      },
+      "result_preview": "{'chunks': [{'chunk_id': 'cefd5831-fea0-4676-a46f-cd81c3e67fcc_chunk_9', 'content': '【联想 · 产品经理-AI方向（实习） 软性要求/加分项】\\n有深度学习、RAG、Prompt、知识库学习经历者更佳', 'metadata': {'company': '联想', 'index': 9, 'jd_id': 'ce"
+    },
+    {
+      "tool": "global_rank",
+      "status": "✅",
+      "params": {
+        "resume_text": "姓名：陈雨桐\r\n教育背景\r\n江南科技大学\r\n信息工程学院·软件工程（AI应用方向）·硕士\r\n2024.09-2027.06（预计）\r\nGPA: 3.4/4.0 | 主修：机器学习基础、数据库系统、软件项目管理、人机交互设计\r\n\r\n云溪大学\r\n计算机学院·信息管理与信息系统·本科\r\n2020.09-2024.06\r\n荣誉：两次校级三等奖学金 | 主修：数据结构、管理学原理、Web开发技术、统计学\r\n\r\n项目经历\r\n求职助手小程序 — 智能简历匹配与面试模拟工具\r\n2025.03-2025.11\r\n产品经理 | 三人小组\r\n- 需求分析：设计调研问卷回收40余份有效样本，梳理\"简历评估\"与\"定向面试模拟\"核心需求，使用Figma完成低保真原型，输出产品需求文档。\r\n- AI匹配策略：调研开源Embedding模型实现简历与JD语义相似度计算，探索多维度匹配方案，对比整篇匹配与分块匹配效果差异，持续优化推荐排序。\r\n- 内容生成：基于大模型AI设计结构化Prompt，融合岗位关键词与简历信息输出个性化面试题，建立追问机制增强模拟面试针对性。\r\n- 测试验证：组织20人内测收集用户路径与反馈数据，针对复杂PDF格式设计补充录入机制，完成从需求分析到上线测试的完整产品闭环。\r\n\r\n教务问答机器人 — 基于校内政策的RAG问答系统\r\n2024.10-2025.02\r\n产品设计与测试 | 实验室课题项目\r\n- 知识库构建：收集整理教务处政策文件、培养方案及历史问答共80余份，完成扫描件OCR识别、格式转换与结构化清洗，建立可检索的领域知识库。\r\n- 交互设计：设计Web端对话界面，参考主流客服产品布局增加\"推荐提问\"推荐模块降低投入成本，针对政策类回答设计溯源展示功能增强可信度。\r\n- 效果测试：参与搭建检索增强生成链路，完成实验环境下多轮问答测试，验证标准政策类问题回答准确率，整理测试数据与优化建议形成可复用方案。\r\n\r\n校园经历\r\n江南科技大学软件学院学生会·宣传部干事\r\n2024.09-2025.06\r\n- 负责学院官方公众号推文排版与发布，累计输出活动宣传稿件10余篇；协助组织院内编程比赛，负责报名统计与现场签到。\r\n\r\n云溪大学图书馆·勤工助学岗\r\n2022.03-2023.06\r\n- 负责电子阅览室日常值班，协助同学解决基础网络与设备使用问题；参与旧期刊电子目录录入与数据整理工作。\r\n\r\n获奖情况\r\n- 2025.05 江南科技大学研究生学业三等奖学金\r\n- 2024.11 学院AI应用创新赛（课程组）三等奖\r\n- 2022.06 云溪大学优秀共青团员\r\n- 2022.12 校级网页设计比赛优秀奖\r\n\r\n个人技能\r\n- 产品工具：熟练使用Figma进行原型与交互演示，了解Axure基础操作；能够使用Xmind梳理产品架构，通过腾讯文档/飞书写PRD。\r\n- 技术理解：了解大语言模型在应用层的落地方式，具备Prompt Engineering实践经验；理解RAG基本架构与工作流程，了解Embedding与向量检索作用。\r\n- 语言能力：英语CET-4（525分），可阅读英文技术文档与产品资料。\r\n- 办公技能：熟练使用Office办公软件，掌握Excel数据透视表等基础数据分析功能。",
+        "candidate_jds": [
+          {
+            "chunk_id": "cefd5831-fea0-4676-a46f-cd81c3e67fcc_chunk_9",
+            "content": "【联想 · 产品经理-AI方向（实习） 软性要求/加分项】\n有深度学习、RAG、Prompt、知识库学习经历者更佳",
+            "metadata": {
+              "company": "联想",
+              "index": 9,
+              "jd_id": "cefd5831-fea0-4676-a46f-cd81c3e67fcc",
+              "position": "产品经理-AI方向（实习）",
+              "priority": "medium",
+              "section": "soft_requirements",
+              "strategy": "semantic"
+            },
+            "distance": 0.8611521812980173,
+            "bm25_score": 0.0,
+            "vec_norm": 0.5400230286263517,
+            "bm25_norm": 0.0,
+            "hybrid_score": 0.37801612003844615,
+            "rerank_score": 0.5961
+          },
+          {
+            "chunk_id": "ec233a37-20d0-4df8-a253-42a0d0d00b5b_chunk_8",
+            "content": "【联想 · 产品经理-AI方向 软性要求/加分项】\n有深度学习、RAG、Prompt、知识库学习经历者更佳。",
+            "metadata": {
+              "company": "联想",
+              "index": 8,
+              "jd_id": "ec233a37-20d0-4df8-a253-42a0d0d00b5b",
+              "position": "产品经理-AI方向",
+              "priority": "medium",
+              "section": "soft_requirements",
+              "strategy": "semantic"
+            },
+            "distance": 0.7943503260612488,
+            "bm25_score": 0.0,
+            "vec_norm": 0.8620537862886484,
+            "bm25_norm": 0.0,
+            "hybrid_score": 0.6034376504020538,
+            "rerank_score": 0.4037
+          },
+          {
+            "chunk_id": "51054437-3bd1-4da6-8f09-d5b5d5978de8_chunk_3",
+            "content": "【蚂蚁集团 · AI产品工程师（转正实习） 硬性要求】\n技术直觉与体感：熟悉大模型基础原理，理解 RAG、Prompt Engineering 及 Agent 工作流与局限（如RAG机制、Context Window、模型幻觉等），能够与底层算法/工程团队同频对话，准确评估技术可行性",
+            "metadata": {
+              "company": "蚂蚁集团",
+              "index": 3,
+              "jd_id": "51054437-3bd1-4da6-8f09-d5b5d5978de8",
+              "position": "AI产品工程师（转正实习）",
+              "priority": "high",
+              "section": "hard_requirements",
+              "strategy": "semantic"
+            },
+            "distance": 0.7983732223510742,
+            "bm25_score": 0.0,
+            "vec_norm": 0.8426606671062896,
+            "bm25_norm": 0.0,
+            "hybrid_score": 0.5898624669744027,
+            "rerank_score": 0.1847
+          },
+          {
+            "chunk_id": "2af1570c-e34f-4fb9-8422-e08e3ac3b927_chunk_4",
+            "content": "【蚂蚁集团 · AI产品工程师（搜推方向） 硬性要求】\n熟悉大模型基础原理，理解 RAG、Prompt Engineering 及 Agent 工作流，具备成本评估意识与良好的合规风险判断力",
+            "metadata": {
+              "company": "蚂蚁集团",
+              "index": 4,
+              "jd_id": "2af1570c-e34f-4fb9-8422-e08e3ac3b927",
+              "position": "AI产品工程师（搜推方向）",
+              "priority": "high",
+              "section": "hard_requirements",
+              "strategy": "semantic"
+            },
+            "distance": 0.765734851360321,
+            "bm25_score": 0.0,
+            "vec_norm": 1.0,
+            "bm25_norm": 0.0,
+            "hybrid_score": 0.7,
+            "rerank_score": 0.0893
+          },
+          {
+            "chunk_id": "4dcb6702-c777-4279-b0e9-99e8edbd608f_chunk_3",
+            "content": "【蚂蚁集团 · AI产品经理 硬性要求】\n熟练掌握 Transformer、Token、RAG 等核心概念；对 ReAct、CoT、Multi-Agent 架构有实战理解；",
+            "metadata": {
+              "company": "蚂蚁集团",
+              "index": 3,
+              "jd_id": "4dcb6702-c777-4279-b0e9-99e8edbd608f",
+              "position": "AI产品经理",
+              "priority": "high",
+              "section": "hard_requirements",
+              "strategy": "semantic"
+            },
+            "distance": 0.813711941242218,
+            "bm25_score": 4.3274305446097,
+            "vec_norm": 0.7687175221355906,
+            "bm25_norm": 0.26069917118665115,
+            "hybrid_score": 0.6163120168509086,
+            "rerank_score": 0.0313
+          }
+        ],
+        "sort_by": "match_score"
+      },
+      "result_preview": "{'rankings': [{'rank': 1, 'jd_id': '2af1570c-e34f-4fb9-8422-e08e3ac3b927', 'company': '蚂蚁集团', 'position': 'AI产品工程师（搜推方向）', 'match_score': 81, 'recommend_reason': '检索相关度较高（0.70）', 'key_match': ['检索召回']"
+    }
+  ],
+  "tools_called": [
+    "kb_retrieve",
+    "global_rank"
+  ],
+  "kb_chunks": [
+    {
+      "chunk_id": "cefd5831-fea0-4676-a46f-cd81c3e67fcc_chunk_9",
+      "content": "【联想 · 产品经理-AI方向（实习） 软性要求/加分项】\n有深度学习、RAG、Prompt、知识库学习经历者更佳",
+      "metadata": {
+        "company": "联想",
+        "index": 9,
+        "jd_id": "cefd5831-fea0-4676-a46f-cd81c3e67fcc",
+        "position": "产品经理-AI方向（实习）",
+        "priority": "medium",
+        "section": "soft_requirements",
+        "strategy": "semantic"
+      },
+      "distance": 0.8611521812980173,
+      "bm25_score": 0.0,
+      "vec_norm": 0.5400230286263517,
+      "bm25_norm": 0.0,
+      "hybrid_score": 0.37801612003844615,
+      "rerank_score": 0.5961
+    },
+    {
+      "chunk_id": "ec233a37-20d0-4df8-a253-42a0d0d00b5b_chunk_8",
+      "content": "【联想 · 产品经理-AI方向 软性要求/加分项】\n有深度学习、RAG、Prompt、知识库学习经历者更佳。",
+      "metadata": {
+        "company": "联想",
+        "index": 8,
+        "jd_id": "ec233a37-20d0-4df8-a253-42a0d0d00b5b",
+        "position": "产品经理-AI方向",
+        "priority": "medium",
+        "section": "soft_requirements",
+        "strategy": "semantic"
+      },
+      "distance": 0.7943503260612488,
+      "bm25_score": 0.0,
+      "vec_norm": 0.8620537862886484,
+      "bm25_norm": 0.0,
+      "hybrid_score": 0.6034376504020538,
+      "rerank_score": 0.4037
+    },
+    {
+      "chunk_id": "51054437-3bd1-4da6-8f09-d5b5d5978de8_chunk_3",
+      "content": "【蚂蚁集团 · AI产品工程师（转正实习） 硬性要求】\n技术直觉与体感：熟悉大模型基础原理，理解 RAG、Prompt Engineering 及 Agent 工作流与局限（如RAG机制、Context Window、模型幻觉等），能够与底层算法/工程团队同频对话，准确评估技术可行性",
+      "metadata": {
+        "company": "蚂蚁集团",
+        "index": 3,
+        "jd_id": "51054437-3bd1-4da6-8f09-d5b5d5978de8",
+        "position": "AI产品工程师（转正实习）",
+        "priority": "high",
+        "section": "hard_requirements",
+        "strategy": "semantic"
+      },
+      "distance": 0.7983732223510742,
+      "bm25_score": 0.0,
+      "vec_norm": 0.8426606671062896,
+      "bm25_norm": 0.0,
+      "hybrid_score": 0.5898624669744027,
+      "rerank_score": 0.1847
+    },
+    {
+      "chunk_id": "2af1570c-e34f-4fb9-8422-e08e3ac3b927_chunk_4",
+      "content": "【蚂蚁集团 · AI产品工程师（搜推方向） 硬性要求】\n熟悉大模型基础原理，理解 RAG、Prompt Engineering 及 Agent 工作流，具备成本评估意识与良好的合规风险判断力",
+      "metadata": {
+        "company": "蚂蚁集团",
+        "index": 4,
+        "jd_id": "2af1570c-e34f-4fb9-8422-e08e3ac3b927",
+        "position": "AI产品工程师（搜推方向）",
+        "priority": "high",
+        "section": "hard_requirements",
+        "strategy": "semantic"
+      },
+      "distance": 0.765734851360321,
+      "bm25_score": 0.0,
+      "vec_norm": 1.0,
+      "bm25_norm": 0.0,
+      "hybrid_score": 0.7,
+      "rerank_score": 0.0893
+    },
+    {
+      "chunk_id": "4dcb6702-c777-4279-b0e9-99e8edbd608f_chunk_3",
+      "content": "【蚂蚁集团 · AI产品经理 硬性要求】\n熟练掌握 Transformer、Token、RAG 等核心概念；对 ReAct、CoT、Multi-Agent 架构有实战理解；",
+      "metadata": {
+        "company": "蚂蚁集团",
+        "index": 3,
+        "jd_id": "4dcb6702-c777-4279-b0e9-99e8edbd608f",
+        "position": "AI产品经理",
+        "priority": "high",
+        "section": "hard_requirements",
+        "strategy": "semantic"
+      },
+      "distance": 0.813711941242218,
+      "bm25_score": 4.3274305446097,
+      "vec_norm": 0.7687175221355906,
+      "bm25_norm": 0.26069917118665115,
+      "hybrid_score": 0.6163120168509086,
+      "rerank_score": 0.0313
+    }
+  ],
+  "tool_executions_full": [
+    {
+      "tool_name": "kb_retrieve",
+      "task_id": "T0",
+      "status": "success",
+      "output": {
+        "chunks": [
+          {
+            "chunk_id": "cefd5831-fea0-4676-a46f-cd81c3e67fcc_chunk_9",
+            "content": "【联想 · 产品经理-AI方向（实习） 软性要求/加分项】\n有深度学习、RAG、Prompt、知识库学习经历者更佳",
+            "source": "联想-产品经理-AI方向（实习）",
+            "metadata": {
+              "company": "联想",
+              "position": "产品经理-AI方向（实习）"
+            }
+          },
+          {
+            "chunk_id": "ec233a37-20d0-4df8-a253-42a0d0d00b5b_chunk_8",
+            "content": "【联想 · 产品经理-AI方向 软性要求/加分项】\n有深度学习、RAG、Prompt、知识库学习经历者更佳。",
+            "source": "联想-产品经理-AI方向",
+            "metadata": {
+              "company": "联想",
+              "position": "产品经理-AI方向"
+            }
+          },
+          {
+            "chunk_id": "51054437-3bd1-4da6-8f09-d5b5d5978de8_chunk_3",
+            "content": "【蚂蚁集团 · AI产品工程师（转正实习） 硬性要求】\n技术直觉与体感：熟悉大模型基础原理，理解 RAG、Prompt Engineering 及 Agent 工作流与局限（如RAG机制、Context Window、模型幻觉等），能够与底层算法/工程团队同频对话，准确评估技术可行性",
+            "source": "蚂蚁集团-AI产品工程师（转正实习）",
+            "metadata": {
+              "company": "蚂蚁集团",
+              "position": "AI产品工程师（转正实习）"
+            }
+          },
+          {
+            "chunk_id": "2af1570c-e34f-4fb9-8422-e08e3ac3b927_chunk_4",
+            "content": "【蚂蚁集团 · AI产品工程师（搜推方向） 硬性要求】\n熟悉大模型基础原理，理解 RAG、Prompt Engineering 及 Agent 工作流，具备成本评估意识与良好的合规风险判断力",
+            "source": "蚂蚁集团-AI产品工程师（搜推方向）",
+            "metadata": {
+              "company": "蚂蚁集团",
+              "position": "AI产品工程师（搜推方向）"
+            }
+          },
+          {
+            "chunk_id": "4dcb6702-c777-4279-b0e9-99e8edbd608f_chunk_3",
+            "content": "【蚂蚁集团 · AI产品经理 硬性要求】\n熟练掌握 Transformer、Token、RAG 等核心概念；对 ReAct、CoT、Multi-Agent 架构有实战理解；",
+            "source": "蚂蚁集团-AI产品经理",
+            "metadata": {
+              "company": "蚂蚁集团",
+              "position": "AI产品经理"
+            }
+          }
+        ],
+        "query": "我的RAG和Embedding经验对哪个岗位最有用",
+        "filters": {},
+        "strategy": "hybrid(70%vec+30%bm25)+reranker",
+        "pool_k": 5,
+        "rerank_k": 10,
+        "pool_size": 35,
+        "vec_only": 18,
+        "bm25_only": 15,
+        "both": 2,
+        "rerank": {
+          "enabled": true,
+          "candidates": 5,
+          "output": 5,
+          "best_rerank_score": 0.5961
+        }
+      }
+    },
+    {
+      "tool_name": "global_rank",
+      "task_id": "T1",
+      "status": "success",
+      "output": {
+        "rankings": [
+          {
+            "company": "蚂蚁集团",
+            "position": "AI产品工程师（搜推方向）",
+            "match_score": 81,
+            "recommend_reason": "检索相关度较高（0.70）",
+            "key_match": [
+              "检索召回"
+            ],
+            "key_gap": [
+              "需进一步了解详细匹配情况"
+            ],
+            "apply_priority": "高"
+          },
+          {
+            "company": "蚂蚁集团",
+            "position": "AI产品经理",
+            "match_score": 78,
+            "recommend_reason": "检索相关度较高（0.62）",
+            "key_match": [
+              "检索召回"
+            ],
+            "key_gap": [
+              "需进一步了解详细匹配情况"
+            ],
+            "apply_priority": "中"
+          },
+          {
+            "company": "联想",
+            "position": "产品经理-AI方向",
+            "match_score": 78,
+            "recommend_reason": "检索相关度较高（0.60）",
+            "key_match": [
+              "检索召回"
+            ],
+            "key_gap": [
+              "需进一步了解详细匹配情况"
+            ],
+            "apply_priority": "中"
+          },
+          {
+            "company": "蚂蚁集团",
+            "position": "AI产品工程师（转正实习）",
+            "match_score": 78,
+            "recommend_reason": "检索相关度较高（0.59）",
+            "key_match": [
+              "检索召回"
+            ],
+            "key_gap": [
+              "需进一步了解详细匹配情况"
+            ],
+            "apply_priority": "中"
+          },
+          {
+            "company": "联想",
+            "position": "产品经理-AI方向（实习）",
+            "match_score": 71,
+            "recommend_reason": "检索相关度较高（0.38）",
+            "key_match": [
+              "检索召回"
+            ],
+            "key_gap": [
+              "需进一步了解详细匹配情况"
+            ],
+            "apply_priority": "中"
+          }
+        ],
+        "strategy_advice": "有 1 个高度匹配岗位建议优先投递，其余岗位可根据个人偏好选择性尝试。",
+        "_template_mode": true,
+        "_coarse_filter_meta": {
+          "input_jds": 5,
+          "output_jds": 5,
+          "filter_ratio": 0.0
+        }
+      }
+    },
+    {
+      "tool_name": null,
+      "task_id": "T2",
+      "status": "success",
+      "output": {
+        "aggregation": {
+          "ranked_jds": "{{T1.output.ranked_list}}",
+          "explanation": "{{T1.output.explanation}}",
+          "retrieved_chunks": [
+            {
+              "chunk_id": "cefd5831-fea0-4676-a46f-cd81c3e67fcc_chunk_9",
+              "content": "【联想 · 产品经理-AI方向（实习） 软性要求/加分项】\n有深度学习、RAG、Prompt、知识库学习经历者更佳",
+              "metadata": {
+                "company": "联想",
+                "index": 9,
+                "jd_id": "cefd5831-fea0-4676-a46f-cd81c3e67fcc",
+                "position": "产品经理-AI方向（实习）",
+                "priority": "medium",
+                "section": "soft_requirements",
+                "strategy": "semantic"
+              },
+              "distance": 0.8611521812980173,
+              "bm25_score": 0.0,
+              "vec_norm": 0.5400230286263517,
+              "bm25_norm": 0.0,
+              "hybrid_score": 0.37801612003844615,
+              "rerank_score": 0.5961
+            },
+            {
+              "chunk_id": "ec233a37-20d0-4df8-a253-42a0d0d00b5b_chunk_8",
+              "content": "【联想 · 产品经理-AI方向 软性要求/加分项】\n有深度学习、RAG、Prompt、知识库学习经历者更佳。",
+              "metadata": {
+                "company": "联想",
+                "index": 8,
+                "jd_id": "ec233a37-20d0-4df8-a253-42a0d0d00b5b",
+                "position": "产品经理-AI方向",
+                "priority": "medium",
+                "section": "soft_requirements",
+                "strategy": "semantic"
+              },
+              "distance": 0.7943503260612488,
+              "bm25_score": 0.0,
+              "vec_norm": 0.8620537862886484,
+              "bm25_norm": 0.0,
+              "hybrid_score": 0.6034376504020538,
+              "rerank_score": 0.4037
+            },
+            {
+              "chunk_id": "51054437-3bd1-4da6-8f09-d5b5d5978de8_chunk_3",
+              "content": "【蚂蚁集团 · AI产品工程师（转正实习） 硬性要求】\n技术直觉与体感：熟悉大模型基础原理，理解 RAG、Prompt Engineering 及 Agent 工作流与局限（如RAG机制、Context Window、模型幻觉等），能够与底层算法/工程团队同频对话，准确评估技术可行性",
+              "metadata": {
+                "company": "蚂蚁集团",
+                "index": 3,
+                "jd_id": "51054437-3bd1-4da6-8f09-d5b5d5978de8",
+                "position": "AI产品工程师（转正实习）",
+                "priority": "high",
+                "section": "hard_requirements",
+                "strategy": "semantic"
+              },
+              "distance": 0.7983732223510742,
+              "bm25_score": 0.0,
+              "vec_norm": 0.8426606671062896,
+              "bm25_norm": 0.0,
+              "hybrid_score": 0.5898624669744027,
+              "rerank_score": 0.1847
+            },
+            {
+              "chunk_id": "2af1570c-e34f-4fb9-8422-e08e3ac3b927_chunk_4",
+              "content": "【蚂蚁集团 · AI产品工程师（搜推方向） 硬性要求】\n熟悉大模型基础原理，理解 RAG、Prompt Engineering 及 Agent 工作流，具备成本评估意识与良好的合规风险判断力",
+              "metadata": {
+                "company": "蚂蚁集团",
+                "index": 4,
+                "jd_id": "2af1570c-e34f-4fb9-8422-e08e3ac3b927",
+                "position": "AI产品工程师（搜推方向）",
+                "priority": "high",
+                "section": "hard_requirements",
+                "strategy": "semantic"
+              },
+              "distance": 0.765734851360321,
+              "bm25_score": 0.0,
+              "vec_norm": 1.0,
+              "bm25_norm": 0.0,
+              "hybrid_score": 0.7,
+              "rerank_score": 0.0893
+            },
+            {
+              "chunk_id": "4dcb6702-c777-4279-b0e9-99e8edbd608f_chunk_3",
+              "content": "【蚂蚁集团 · AI产品经理 硬性要求】\n熟练掌握 Transformer、Token、RAG 等核心概念；对 ReAct、CoT、Multi-Agent 架构有实战理解；",
+              "metadata": {
+                "company": "蚂蚁集团",
+                "index": 3,
+                "jd_id": "4dcb6702-c777-4279-b0e9-99e8edbd608f",
+                "position": "AI产品经理",
+                "priority": "high",
+                "section": "hard_requirements",
+                "strategy": "semantic"
+              },
+              "distance": 0.813711941242218,
+              "bm25_score": 4.3274305446097,
+              "vec_norm": 0.7687175221355906,
+              "bm25_norm": 0.26069917118665115,
+              "hybrid_score": 0.6163120168509086,
+              "rerank_score": 0.0313
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "debug_info": {
+    "task_graph": {
+      "tasks": {
+        "T0": {
+          "task_id": "T0",
+          "task_type": "tool_call",
+          "tool_name": "kb_retrieve",
+          "status": "success",
+          "parameters": {
+            "query": "{{global_slots.search_keywords}}",
+            "top_k": 5
+          },
+          "resolved_params": {
+            "query": "我的RAG和Embedding经验对哪个岗位最有用",
+            "top_k": 5
+          },
+          "result": {
+            "chunks": [
+              {
+                "chunk_id": "cefd5831-fea0-4676-a46f-cd81c3e67fcc_chunk_9",
+                "content": "【联想 · 产品经理-AI方向（实习） 软性要求/加分项】\n有深度学习、RAG、Prompt、知识库学习经历者更佳",
+                "metadata": {
+                  "company": "联想",
+                  "index": 9,
+                  "jd_id": "cefd5831-fea0-4676-a46f-cd81c3e67fcc",
+                  "position": "产品经理-AI方向（实习）",
+                  "priority": "medium",
+                  "section": "soft_requirements",
+                  "strategy": "semantic"
+                },
+                "distance": 0.8611521812980173,
+                "bm25_score": 0.0,
+                "vec_norm": 0.5400230286263517,
+                "bm25_norm": 0.0,
+                "hybrid_score": 0.37801612003844615,
+                "rerank_score": 0.5961
+              },
+              {
+                "chunk_id": "ec233a37-20d0-4df8-a253-42a0d0d00b5b_chunk_8",
+                "content": "【联想 · 产品经理-AI方向 软性要求/加分项】\n有深度学习、RAG、Prompt、知识库学习经历者更佳。",
+                "metadata": {
+                  "company": "联想",
+                  "index": 8,
+                  "jd_id": "ec233a37-20d0-4df8-a253-42a0d0d00b5b",
+                  "position": "产品经理-AI方向",
+                  "priority": "medium",
+                  "section": "soft_requirements",
+                  "strategy": "semantic"
+                },
+                "distance": 0.7943503260612488,
+                "bm25_score": 0.0,
+                "vec_norm": 0.8620537862886484,
+                "bm25_norm": 0.0,
+                "hybrid_score": 0.6034376504020538,
+                "rerank_score": 0.4037
+              },
+              {
+                "chunk_id": "51054437-3bd1-4da6-8f09-d5b5d5978de8_chunk_3",
+                "content": "【蚂蚁集团 · AI产品工程师（转正实习） 硬性要求】\n技术直觉与体感：熟悉大模型基础原理，理解 RAG、Prompt Engineering 及 Agent 工作流与局限（如RAG机制、Context Window、模型幻觉等），能够与底层算法/工程团队同频对话，准确评估技术可行性",
+                "metadata": {
+                  "company": "蚂蚁集团",
+                  "index": 3,
+                  "jd_id": "51054437-3bd1-4da6-8f09-d5b5d5978de8",
+                  "position": "AI产品工程师（转正实习）",
+                  "priority": "high",
+                  "section": "hard_requirements",
+                  "strategy": "semantic"
+                },
+                "distance": 0.7983732223510742,
+                "bm25_score": 0.0,
+                "vec_norm": 0.8426606671062896,
+                "bm25_norm": 0.0,
+                "hybrid_score": 0.5898624669744027,
+                "rerank_score": 0.1847
+              },
+              {
+                "chunk_id": "2af1570c-e34f-4fb9-8422-e08e3ac3b927_chunk_4",
+                "content": "【蚂蚁集团 · AI产品工程师（搜推方向） 硬性要求】\n熟悉大模型基础原理，理解 RAG、Prompt Engineering 及 Agent 工作流，具备成本评估意识与良好的合规风险判断力",
+                "metadata": {
+                  "company": "蚂蚁集团",
+                  "index": 4,
+                  "jd_id": "2af1570c-e34f-4fb9-8422-e08e3ac3b927",
+                  "position": "AI产品工程师（搜推方向）",
+                  "priority": "high",
+                  "section": "hard_requirements",
+                  "strategy": "semantic"
+                },
+                "distance": 0.765734851360321,
+                "bm25_score": 0.0,
+                "vec_norm": 1.0,
+                "bm25_norm": 0.0,
+                "hybrid_score": 0.7,
+                "rerank_score": 0.0893
+              },
+              {
+                "chunk_id": "4dcb6702-c777-4279-b0e9-99e8edbd608f_chunk_3",
+                "content": "【蚂蚁集团 · AI产品经理 硬性要求】\n熟练掌握 Transformer、Token、RAG 等核心概念；对 ReAct、CoT、Multi-Agent 架构有实战理解；",
+                "metadata": {
+                  "company": "蚂蚁集团",
+                  "index": 3,
+                  "jd_id": "4dcb6702-c777-4279-b0e9-99e8edbd608f",
+                  "position": "AI产品经理",
+                  "priority": "high",
+                  "section": "hard_requirements",
+                  "strategy": "semantic"
+                },
+                "distance": 0.813711941242218,
+                "bm25_score": 4.3274305446097,
+                "vec_norm": 0.7687175221355906,
+                "bm25_norm": 0.26069917118665115,
+                "hybrid_score": 0.6163120168509086,
+                "rerank_score": 0.0313
+              }
+            ],
+            "query": "我的RAG和Embedding经验对哪个岗位最有用",
+            "filters": {},
+            "strategy": "hybrid(70%vec+30%bm25)+reranker",
+            "pool_k": 5,
+            "rerank_k": 10,
+            "pool_size": 35,
+            "vec_only": 18,
+            "bm25_only": 15,
+            "both": 2,
+            "rerank": {
+              "enabled": true,
+              "candidates": 5,
+              "output": 5,
+              "best_rerank_score": 0.5961
+            }
+          },
+          "observation": "工具 kb_retrieve 执行成功"
+        },
+        "T1": {
+          "task_id": "T1",
+          "task_type": "tool_call",
+          "tool_name": "global_rank",
+          "status": "success",
+          "parameters": {
+            "resume_text": "{{global_slots.resume_text}}",
+            "candidate_jds": "{{T0.output.chunks}}",
+            "sort_by": "match_score"
+          },
+          "resolved_params": {
+            "resume_text": "姓名：陈雨桐\r\n教育背景\r\n江南科技大学\r\n信息工程学院·软件工程（AI应用方向）·硕士\r\n2024.09-2027.06（预计）\r\nGPA: 3.4/4.0 | 主修：机器学习基础、数据库系统、软件项目管理、人机交互设计\r\n\r\n云溪大学\r\n计算机学院·信息管理与信息系统·本科\r\n2020.09-2024.06\r\n荣誉：两次校级三等奖学金 | 主修：数据结构、管理学原理、Web开发技术、统计学\r\n\r\n项目经历\r\n求职助手小程序 — 智能简历匹配与面试模拟工具\r\n2025.03-2025.11\r\n产品经理 | 三人小组\r\n- 需求分析：设计调研问卷回收40余份有效样本，梳理\"简历评估\"与\"定向面试模拟\"核心需求，使用Figma完成低保真原型，输出产品需求文档。\r\n- AI匹配策略：调研开源Embedding模型实现简历与JD语义相似度计算，探索多维度匹配方案，对比整篇匹配与分块匹配效果差异，持续优化推荐排序。\r\n- 内容生成：基于大模型AI设计结构化Prompt，融合岗位关键词与简历信息输出个性化面试题，建立追问机制增强模拟面试针对性。\r\n- 测试验证：组织20人内测收集用户路径与反馈数据，针对复杂PDF格式设计补充录入机制，完成从需求分析到上线测试的完整产品闭环。\r\n\r\n教务问答机器人 — 基于校内政策的RAG问答系统\r\n2024.10-2025.02\r\n产品设计与测试 | 实验室课题项目\r\n- 知识库构建：收集整理教务处政策文件、培养方案及历史问答共80余份，完成扫描件OCR识别、格式转换与结构化清洗，建立可检索的领域知识库。\r\n- 交互设计：设计Web端对话界面，参考主流客服产品布局增加\"推荐提问\"推荐模块降低投入成本，针对政策类回答设计溯源展示功能增强可信度。\r\n- 效果测试：参与搭建检索增强生成链路，完成实验环境下多轮问答测试，验证标准政策类问题回答准确率，整理测试数据与优化建议形成可复用方案。\r\n\r\n校园经历\r\n江南科技大学软件学院学生会·宣传部干事\r\n2024.09-2025.06\r\n- 负责学院官方公众号推文排版与发布，累计输出活动宣传稿件10余篇；协助组织院内编程比赛，负责报名统计与现场签到。\r\n\r\n云溪大学图书馆·勤工助学岗\r\n2022.03-2023.06\r\n- 负责电子阅览室日常值班，协助同学解决基础网络与设备使用问题；参与旧期刊电子目录录入与数据整理工作。\r\n\r\n获奖情况\r\n- 2025.05 江南科技大学研究生学业三等奖学金\r\n- 2024.11 学院AI应用创新赛（课程组）三等奖\r\n- 2022.06 云溪大学优秀共青团员\r\n- 2022.12 校级网页设计比赛优秀奖\r\n\r\n个人技能\r\n- 产品工具：熟练使用Figma进行原型与交互演示，了解Axure基础操作；能够使用Xmind梳理产品架构，通过腾讯文档/飞书写PRD。\r\n- 技术理解：了解大语言模型在应用层的落地方式，具备Prompt Engineering实践经验；理解RAG基本架构与工作流程，了解Embedding与向量检索作用。\r\n- 语言能力：英语CET-4（525分），可阅读英文技术文档与产品资料。\r\n- 办公技能：熟练使用Office办公软件，掌握Excel数据透视表等基础数据分析功能。",
+            "candidate_jds": [
+              {
+                "chunk_id": "cefd5831-fea0-4676-a46f-cd81c3e67fcc_chunk_9",
+                "content": "【联想 · 产品经理-AI方向（实习） 软性要求/加分项】\n有深度学习、RAG、Prompt、知识库学习经历者更佳",
+                "metadata": {
+                  "company": "联想",
+                  "index": 9,
+                  "jd_id": "cefd5831-fea0-4676-a46f-cd81c3e67fcc",
+                  "position": "产品经理-AI方向（实习）",
+                  "priority": "medium",
+                  "section": "soft_requirements",
+                  "strategy": "semantic"
+                },
+                "distance": 0.8611521812980173,
+                "bm25_score": 0.0,
+                "vec_norm": 0.5400230286263517,
+                "bm25_norm": 0.0,
+                "hybrid_score": 0.37801612003844615,
+                "rerank_score": 0.5961
+              },
+              {
+                "chunk_id": "ec233a37-20d0-4df8-a253-42a0d0d00b5b_chunk_8",
+                "content": "【联想 · 产品经理-AI方向 软性要求/加分项】\n有深度学习、RAG、Prompt、知识库学习经历者更佳。",
+                "metadata": {
+                  "company": "联想",
+                  "index": 8,
+                  "jd_id": "ec233a37-20d0-4df8-a253-42a0d0d00b5b",
+                  "position": "产品经理-AI方向",
+                  "priority": "medium",
+                  "section": "soft_requirements",
+                  "strategy": "semantic"
+                },
+                "distance": 0.7943503260612488,
+                "bm25_score": 0.0,
+                "vec_norm": 0.8620537862886484,
+                "bm25_norm": 0.0,
+                "hybrid_score": 0.6034376504020538,
+                "rerank_score": 0.4037
+              },
+              {
+                "chunk_id": "51054437-3bd1-4da6-8f09-d5b5d5978de8_chunk_3",
+                "content": "【蚂蚁集团 · AI产品工程师（转正实习） 硬性要求】\n技术直觉与体感：熟悉大模型基础原理，理解 RAG、Prompt Engineering 及 Agent 工作流与局限（如RAG机制、Context Window、模型幻觉等），能够与底层算法/工程团队同频对话，准确评估技术可行性",
+                "metadata": {
+                  "company": "蚂蚁集团",
+                  "index": 3,
+                  "jd_id": "51054437-3bd1-4da6-8f09-d5b5d5978de8",
+                  "position": "AI产品工程师（转正实习）",
+                  "priority": "high",
+                  "section": "hard_requirements",
+                  "strategy": "semantic"
+                },
+                "distance": 0.7983732223510742,
+                "bm25_score": 0.0,
+                "vec_norm": 0.8426606671062896,
+                "bm25_norm": 0.0,
+                "hybrid_score": 0.5898624669744027,
+                "rerank_score": 0.1847
+              },
+              {
+                "chunk_id": "2af1570c-e34f-4fb9-8422-e08e3ac3b927_chunk_4",
+                "content": "【蚂蚁集团 · AI产品工程师（搜推方向） 硬性要求】\n熟悉大模型基础原理，理解 RAG、Prompt Engineering 及 Agent 工作流，具备成本评估意识与良好的合规风险判断力",
+                "metadata": {
+                  "company": "蚂蚁集团",
+                  "index": 4,
+                  "jd_id": "2af1570c-e34f-4fb9-8422-e08e3ac3b927",
+                  "position": "AI产品工程师（搜推方向）",
+                  "priority": "high",
+                  "section": "hard_requirements",
+                  "strategy": "semantic"
+                },
+                "distance": 0.765734851360321,
+                "bm25_score": 0.0,
+                "vec_norm": 1.0,
+                "bm25_norm": 0.0,
+                "hybrid_score": 0.7,
+                "rerank_score": 0.0893
+              },
+              {
+                "chunk_id": "4dcb6702-c777-4279-b0e9-99e8edbd608f_chunk_3",
+                "content": "【蚂蚁集团 · AI产品经理 硬性要求】\n熟练掌握 Transformer、Token、RAG 等核心概念；对 ReAct、CoT、Multi-Agent 架构有实战理解；",
+                "metadata": {
+                  "company": "蚂蚁集团",
+                  "index": 3,
+                  "jd_id": "4dcb6702-c777-4279-b0e9-99e8edbd608f",
+                  "position": "AI产品经理",
+                  "priority": "high",
+                  "section": "hard_requirements",
+                  "strategy": "semantic"
+                },
+                "distance": 0.813711941242218,
+                "bm25_score": 4.3274305446097,
+                "vec_norm": 0.7687175221355906,
+                "bm25_norm": 0.26069917118665115,
+                "hybrid_score": 0.6163120168509086,
+                "rerank_score": 0.0313
+              }
+            ],
+            "sort_by": "match_score"
+          },
+          "result": {
+            "rankings": [
+              {
+                "rank": 1,
+                "jd_id": "2af1570c-e34f-4fb9-8422-e08e3ac3b927",
+                "company": "蚂蚁集团",
+                "position": "AI产品工程师（搜推方向）",
+                "match_score": 81,
+                "recommend_reason": "检索相关度较高（0.70）",
+                "key_match": [
+                  "检索召回"
+                ],
+                "key_gap": [
+                  "需进一步了解详细匹配情况"
+                ],
+                "apply_priority": "高"
+              },
+              {
+                "rank": 2,
+                "jd_id": "4dcb6702-c777-4279-b0e9-99e8edbd608f",
+                "company": "蚂蚁集团",
+                "position": "AI产品经理",
+                "match_score": 78,
+                "recommend_reason": "检索相关度较高（0.62）",
+                "key_match": [
+                  "检索召回"
+                ],
+                "key_gap": [
+                  "需进一步了解详细匹配情况"
+                ],
+                "apply_priority": "中"
+              },
+              {
+                "rank": 3,
+                "jd_id": "ec233a37-20d0-4df8-a253-42a0d0d00b5b",
+                "company": "联想",
+                "position": "产品经理-AI方向",
+                "match_score": 78,
+                "recommend_reason": "检索相关度较高（0.60）",
+                "key_match": [
+                  "检索召回"
+                ],
+                "key_gap": [
+                  "需进一步了解详细匹配情况"
+                ],
+                "apply_priority": "中"
+              },
+              {
+                "rank": 4,
+                "jd_id": "51054437-3bd1-4da6-8f09-d5b5d5978de8",
+                "company": "蚂蚁集团",
+                "position": "AI产品工程师（转正实习）",
+                "match_score": 78,
+                "recommend_reason": "检索相关度较高（0.59）",
+                "key_match": [
+                  "检索召回"
+                ],
+                "key_gap": [
+                  "需进一步了解详细匹配情况"
+                ],
+                "apply_priority": "中"
+              },
+              {
+                "rank": 5,
+                "jd_id": "cefd5831-fea0-4676-a46f-cd81c3e67fcc",
+                "company": "联想",
+                "position": "产品经理-AI方向（实习）",
+                "match_score": 71,
+                "recommend_reason": "检索相关度较高（0.38）",
+                "key_match": [
+                  "检索召回"
+                ],
+                "key_gap": [
+                  "需进一步了解详细匹配情况"
+                ],
+                "apply_priority": "中"
+              }
+            ],
+            "strategy_advice": "有 1 个高度匹配岗位建议优先投递，其余岗位可根据个人偏好选择性尝试。",
+            "_template_mode": true,
+            "_coarse_filter_meta": {
+              "input_jds": 5,
+              "output_jds": 5,
+              "filter_ratio": 0.0
+            }
+          },
+          "observation": "工具 global_rank 执行成功"
+        },
+        "T2": {
+          "task_id": "T2",
+          "task_type": "aggregate",
+          "tool_name": null,
+          "status": "success",
+          "parameters": {
+            "ranked_jds": "{{T1.output.ranked_list}}",
+            "explanation": "{{T1.output.explanation}}",
+            "retrieved_chunks": "{{T0.output.chunks}}"
+          },
+          "resolved_params": {
+            "ranked_jds": "{{T1.output.ranked_list}}",
+            "explanation": "{{T1.output.explanation}}",
+            "retrieved_chunks": [
+              {
+                "chunk_id": "cefd5831-fea0-4676-a46f-cd81c3e67fcc_chunk_9",
+                "content": "【联想 · 产品经理-AI方向（实习） 软性要求/加分项】\n有深度学习、RAG、Prompt、知识库学习经历者更佳",
+                "metadata": {
+                  "company": "联想",
+                  "index": 9,
+                  "jd_id": "cefd5831-fea0-4676-a46f-cd81c3e67fcc",
+                  "position": "产品经理-AI方向（实习）",
+                  "priority": "medium",
+                  "section": "soft_requirements",
+                  "strategy": "semantic"
+                },
+                "distance": 0.8611521812980173,
+                "bm25_score": 0.0,
+                "vec_norm": 0.5400230286263517,
+                "bm25_norm": 0.0,
+                "hybrid_score": 0.37801612003844615,
+                "rerank_score": 0.5961
+              },
+              {
+                "chunk_id": "ec233a37-20d0-4df8-a253-42a0d0d00b5b_chunk_8",
+                "content": "【联想 · 产品经理-AI方向 软性要求/加分项】\n有深度学习、RAG、Prompt、知识库学习经历者更佳。",
+                "metadata": {
+                  "company": "联想",
+                  "index": 8,
+                  "jd_id": "ec233a37-20d0-4df8-a253-42a0d0d00b5b",
+                  "position": "产品经理-AI方向",
+                  "priority": "medium",
+                  "section": "soft_requirements",
+                  "strategy": "semantic"
+                },
+                "distance": 0.7943503260612488,
+                "bm25_score": 0.0,
+                "vec_norm": 0.8620537862886484,
+                "bm25_norm": 0.0,
+                "hybrid_score": 0.6034376504020538,
+                "rerank_score": 0.4037
+              },
+              {
+                "chunk_id": "51054437-3bd1-4da6-8f09-d5b5d5978de8_chunk_3",
+                "content": "【蚂蚁集团 · AI产品工程师（转正实习） 硬性要求】\n技术直觉与体感：熟悉大模型基础原理，理解 RAG、Prompt Engineering 及 Agent 工作流与局限（如RAG机制、Context Window、模型幻觉等），能够与底层算法/工程团队同频对话，准确评估技术可行性",
+                "metadata": {
+                  "company": "蚂蚁集团",
+                  "index": 3,
+                  "jd_id": "51054437-3bd1-4da6-8f09-d5b5d5978de8",
+                  "position": "AI产品工程师（转正实习）",
+                  "priority": "high",
+                  "section": "hard_requirements",
+                  "strategy": "semantic"
+                },
+                "distance": 0.7983732223510742,
+                "bm25_score": 0.0,
+                "vec_norm": 0.8426606671062896,
+                "bm25_norm": 0.0,
+                "hybrid_score": 0.5898624669744027,
+                "rerank_score": 0.1847
+              },
+              {
+                "chunk_id": "2af1570c-e34f-4fb9-8422-e08e3ac3b927_chunk_4",
+                "content": "【蚂蚁集团 · AI产品工程师（搜推方向） 硬性要求】\n熟悉大模型基础原理，理解 RAG、Prompt Engineering 及 Agent 工作流，具备成本评估意识与良好的合规风险判断力",
+                "metadata": {
+                  "company": "蚂蚁集团",
+                  "index": 4,
+                  "jd_id": "2af1570c-e34f-4fb9-8422-e08e3ac3b927",
+                  "position": "AI产品工程师（搜推方向）",
+                  "priority": "high",
+                  "section": "hard_requirements",
+                  "strategy": "semantic"
+                },
+                "distance": 0.765734851360321,
+                "bm25_score": 0.0,
+                "vec_norm": 1.0,
+                "bm25_norm": 0.0,
+                "hybrid_score": 0.7,
+                "rerank_score": 0.0893
+              },
+              {
+                "chunk_id": "4dcb6702-c777-4279-b0e9-99e8edbd608f_chunk_3",
+                "content": "【蚂蚁集团 · AI产品经理 硬性要求】\n熟练掌握 Transformer、Token、RAG 等核心概念；对 ReAct、CoT、Multi-Agent 架构有实战理解；",
+                "metadata": {
+                  "company": "蚂蚁集团",
+                  "index": 3,
+                  "jd_id": "4dcb6702-c777-4279-b0e9-99e8edbd608f",
+                  "position": "AI产品经理",
+                  "priority": "high",
+                  "section": "hard_requirements",
+                  "strategy": "semantic"
+                },
+                "distance": 0.813711941242218,
+                "bm25_score": 4.3274305446097,
+                "vec_norm": 0.7687175221355906,
+                "bm25_norm": 0.26069917118665115,
+                "hybrid_score": 0.6163120168509086,
+                "rerank_score": 0.0313
+              }
+            ]
+          },
+          "result": {
+            "aggregation": {
+              "ranked_jds": "{{T1.output.ranked_list}}",
+              "explanation": "{{T1.output.explanation}}",
+              "retrieved_chunks": [
+                {
+                  "chunk_id": "cefd5831-fea0-4676-a46f-cd81c3e67fcc_chunk_9",
+                  "content": "【联想 · 产品经理-AI方向（实习） 软性要求/加分项】\n有深度学习、RAG、Prompt、知识库学习经历者更佳",
+                  "metadata": {
+                    "company": "联想",
+                    "index": 9,
+                    "jd_id": "cefd5831-fea0-4676-a46f-cd81c3e67fcc",
+                    "position": "产品经理-AI方向（实习）",
+                    "priority": "medium",
+                    "section": "soft_requirements",
+                    "strategy": "semantic"
+                  },
+                  "distance": 0.8611521812980173,
+                  "bm25_score": 0.0,
+                  "vec_norm": 0.5400230286263517,
+                  "bm25_norm": 0.0,
+                  "hybrid_score": 0.37801612003844615,
+                  "rerank_score": 0.5961
+                },
+                {
+                  "chunk_id": "ec233a37-20d0-4df8-a253-42a0d0d00b5b_chunk_8",
+                  "content": "【联想 · 产品经理-AI方向 软性要求/加分项】\n有深度学习、RAG、Prompt、知识库学习经历者更佳。",
+                  "metadata": {
+                    "company": "联想",
+                    "index": 8,
+                    "jd_id": "ec233a37-20d0-4df8-a253-42a0d0d00b5b",
+                    "position": "产品经理-AI方向",
+                    "priority": "medium",
+                    "section": "soft_requirements",
+                    "strategy": "semantic"
+                  },
+                  "distance": 0.7943503260612488,
+                  "bm25_score": 0.0,
+                  "vec_norm": 0.8620537862886484,
+                  "bm25_norm": 0.0,
+                  "hybrid_score": 0.6034376504020538,
+                  "rerank_score": 0.4037
+                },
+                {
+                  "chunk_id": "51054437-3bd1-4da6-8f09-d5b5d5978de8_chunk_3",
+                  "content": "【蚂蚁集团 · AI产品工程师（转正实习） 硬性要求】\n技术直觉与体感：熟悉大模型基础原理，理解 RAG、Prompt Engineering 及 Agent 工作流与局限（如RAG机制、Context Window、模型幻觉等），能够与底层算法/工程团队同频对话，准确评估技术可行性",
+                  "metadata": {
+                    "company": "蚂蚁集团",
+                    "index": 3,
+                    "jd_id": "51054437-3bd1-4da6-8f09-d5b5d5978de8",
+                    "position": "AI产品工程师（转正实习）",
+                    "priority": "high",
+                    "section": "hard_requirements",
+                    "strategy": "semantic"
+                  },
+                  "distance": 0.7983732223510742,
+                  "bm25_score": 0.0,
+                  "vec_norm": 0.8426606671062896,
+                  "bm25_norm": 0.0,
+                  "hybrid_score": 0.5898624669744027,
+                  "rerank_score": 0.1847
+                },
+                {
+                  "chunk_id": "2af1570c-e34f-4fb9-8422-e08e3ac3b927_chunk_4",
+                  "content": "【蚂蚁集团 · AI产品工程师（搜推方向） 硬性要求】\n熟悉大模型基础原理，理解 RAG、Prompt Engineering 及 Agent 工作流，具备成本评估意识与良好的合规风险判断力",
+                  "metadata": {
+                    "company": "蚂蚁集团",
+                    "index": 4,
+                    "jd_id": "2af1570c-e34f-4fb9-8422-e08e3ac3b927",
+                    "position": "AI产品工程师（搜推方向）",
+                    "priority": "high",
+                    "section": "hard_requirements",
+                    "strategy": "semantic"
+                  },
+                  "distance": 0.765734851360321,
+                  "bm25_score": 0.0,
+                  "vec_norm": 1.0,
+                  "bm25_norm": 0.0,
+                  "hybrid_score": 0.7,
+                  "rerank_score": 0.0893
+                },
+                {
+                  "chunk_id": "4dcb6702-c777-4279-b0e9-99e8edbd608f_chunk_3",
+                  "content": "【蚂蚁集团 · AI产品经理 硬性要求】\n熟练掌握 Transformer、Token、RAG 等核心概念；对 ReAct、CoT、Multi-Agent 架构有实战理解；",
+                  "metadata": {
+                    "company": "蚂蚁集团",
+                    "index": 3,
+                    "jd_id": "4dcb6702-c777-4279-b0e9-99e8edbd608f",
+                    "position": "AI产品经理",
+                    "priority": "high",
+                    "section": "hard_requirements",
+                    "strategy": "semantic"
+                  },
+                  "distance": 0.813711941242218,
+                  "bm25_score": 4.3274305446097,
+                  "vec_norm": 0.7687175221355906,
+                  "bm25_norm": 0.26069917118665115,
+                  "hybrid_score": 0.6163120168509086,
+                  "rerank_score": 0.0313
+                }
+              ]
+            }
+          },
+          "observation": "聚合完成"
+        }
+      },
+      "global_status": "success",
+      "replan_reason": "",
+      "replan_count": 0
+    },
+    "intent": {
+      "demands": [
+        {
+          "intent": "position_explore",
+          "entities": {
+            "search_keywords": "我的RAG和Embedding经验对哪个岗位最有用",
+            "sort_by": "match_score",
+            "top_k": 5
+          },
+          "confidence": 0.88
+        }
+      ],
+      "needs_clarification": false,
+      "clarification_question": ""
+    },
+    "rewrite": {
+      "rewritten_query": "我的RAG和Embedding经验对哪个岗位最有用",
+      "search_keywords": "我的RAG和Embedding经验对哪个岗位最有用",
+      "is_follow_up": false,
+      "follow_up_type": "none",
+      "resolved_references": {}
+    },
+    "evidence_cache": [
+      {
+        "chunk_id": "cefd5831-fea0-4676-a46f-cd81c3e67fcc_chunk_9",
+        "content": "【联想 · 产品经理-AI方向（实习） 软性要求/加分项】\n有深度学习、RAG、Prompt、知识库学习经历者更佳",
+        "metadata": {
+          "company": "联想",
+          "index": 9,
+          "jd_id": "cefd5831-fea0-4676-a46f-cd81c3e67fcc",
+          "position": "产品经理-AI方向（实习）",
+          "priority": "medium",
+          "section": "soft_requirements",
+          "strategy": "semantic"
+        },
+        "distance": 0.8611521812980173,
+        "bm25_score": 0.0,
+        "vec_norm": 0.5400230286263517,
+        "bm25_norm": 0.0,
+        "hybrid_score": 0.37801612003844615,
+        "rerank_score": 0.5961
+      },
+      {
+        "chunk_id": "ec233a37-20d0-4df8-a253-42a0d0d00b5b_chunk_8",
+        "content": "【联想 · 产品经理-AI方向 软性要求/加分项】\n有深度学习、RAG、Prompt、知识库学习经历者更佳。",
+        "metadata": {
+          "company": "联想",
+          "index": 8,
+          "jd_id": "ec233a37-20d0-4df8-a253-42a0d0d00b5b",
+          "position": "产品经理-AI方向",
+          "priority": "medium",
+          "section": "soft_requirements",
+          "strategy": "semantic"
+        },
+        "distance": 0.7943503260612488,
+        "bm25_score": 0.0,
+        "vec_norm": 0.8620537862886484,
+        "bm25_norm": 0.0,
+        "hybrid_score": 0.6034376504020538,
+        "rerank_score": 0.4037
+      },
+      {
+        "chunk_id": "51054437-3bd1-4da6-8f09-d5b5d5978de8_chunk_3",
+        "content": "【蚂蚁集团 · AI产品工程师（转正实习） 硬性要求】\n技术直觉与体感：熟悉大模型基础原理，理解 RAG、Prompt Engineering 及 Agent 工作流与局限（如RAG机制、Context Window、模型幻觉等），能够与底层算法/工程团队同频对话，准确评估技术可行性",
+        "metadata": {
+          "company": "蚂蚁集团",
+          "index": 3,
+          "jd_id": "51054437-3bd1-4da6-8f09-d5b5d5978de8",
+          "position": "AI产品工程师（转正实习）",
+          "priority": "high",
+          "section": "hard_requirements",
+          "strategy": "semantic"
+        },
+        "distance": 0.7983732223510742,
+        "bm25_score": 0.0,
+        "vec_norm": 0.8426606671062896,
+        "bm25_norm": 0.0,
+        "hybrid_score": 0.5898624669744027,
+        "rerank_score": 0.1847
+      },
+      {
+        "chunk_id": "2af1570c-e34f-4fb9-8422-e08e3ac3b927_chunk_4",
+        "content": "【蚂蚁集团 · AI产品工程师（搜推方向） 硬性要求】\n熟悉大模型基础原理，理解 RAG、Prompt Engineering 及 Agent 工作流，具备成本评估意识与良好的合规风险判断力",
+        "metadata": {
+          "company": "蚂蚁集团",
+          "index": 4,
+          "jd_id": "2af1570c-e34f-4fb9-8422-e08e3ac3b927",
+          "position": "AI产品工程师（搜推方向）",
+          "priority": "high",
+          "section": "hard_requirements",
+          "strategy": "semantic"
+        },
+        "distance": 0.765734851360321,
+        "bm25_score": 0.0,
+        "vec_norm": 1.0,
+        "bm25_norm": 0.0,
+        "hybrid_score": 0.7,
+        "rerank_score": 0.0893
+      },
+      {
+        "chunk_id": "4dcb6702-c777-4279-b0e9-99e8edbd608f_chunk_3",
+        "content": "【蚂蚁集团 · AI产品经理 硬性要求】\n熟练掌握 Transformer、Token、RAG 等核心概念；对 ReAct、CoT、Multi-Agent 架构有实战理解；",
+        "metadata": {
+          "company": "蚂蚁集团",
+          "index": 3,
+          "jd_id": "4dcb6702-c777-4279-b0e9-99e8edbd608f",
+          "position": "AI产品经理",
+          "priority": "high",
+          "section": "hard_requirements",
+          "strategy": "semantic"
+        },
+        "distance": 0.813711941242218,
+        "bm25_score": 4.3274305446097,
+        "vec_norm": 0.7687175221355906,
+        "bm25_norm": 0.26069917118665115,
+        "hybrid_score": 0.6163120168509086,
+        "rerank_score": 0.0313
+      }
+    ],
+    "evidence_cache_query": "我的RAG和Embedding经验对哪个岗位最有用",
+    "tool_outputs": [
+      {
+        "task_id": "T0",
+        "tool": "kb_retrieve",
+        "description": "检索与RAG和Embedding经验相关的岗位JD",
+        "result": {
+          "chunks": [
+            {
+              "chunk_id": "cefd5831-fea0-4676-a46f-cd81c3e67fcc_chunk_9",
+              "content": "【联想 · 产品经理-AI方向（实习） 软性要求/加分项】\n有深度学习、RAG、Prompt、知识库学习经历者更佳",
+              "source": "联想-产品经理-AI方向（实习）",
+              "metadata": {
+                "company": "联想",
+                "position": "产品经理-AI方向（实习）"
+              }
+            },
+            {
+              "chunk_id": "ec233a37-20d0-4df8-a253-42a0d0d00b5b_chunk_8",
+              "content": "【联想 · 产品经理-AI方向 软性要求/加分项】\n有深度学习、RAG、Prompt、知识库学习经历者更佳。",
+              "source": "联想-产品经理-AI方向",
+              "metadata": {
+                "company": "联想",
+                "position": "产品经理-AI方向"
+              }
+            },
+            {
+              "chunk_id": "51054437-3bd1-4da6-8f09-d5b5d5978de8_chunk_3",
+              "content": "【蚂蚁集团 · AI产品工程师（转正实习） 硬性要求】\n技术直觉与体感：熟悉大模型基础原理，理解 RAG、Prompt Engineering 及 Agent 工作流与局限（如RAG机制、Context Window、模型幻觉等），能够与底层算法/工程团队同频对话，准确评估技术可行性",
+              "source": "蚂蚁集团-AI产品工程师（转正实习）",
+              "metadata": {
+                "company": "蚂蚁集团",
+                "position": "AI产品工程师（转正实习）"
+              }
+            },
+            {
+              "chunk_id": "2af1570c-e34f-4fb9-8422-e08e3ac3b927_chunk_4",
+              "content": "【蚂蚁集团 · AI产品工程师（搜推方向） 硬性要求】\n熟悉大模型基础原理，理解 RAG、Prompt Engineering 及 Agent 工作流，具备成本评估意识与良好的合规风险判断力",
+              "source": "蚂蚁集团-AI产品工程师（搜推方向）",
+              "metadata": {
+                "company": "蚂蚁集团",
+                "position": "AI产品工程师（搜推方向）"
+              }
+            },
+            {
+              "chunk_id": "4dcb6702-c777-4279-b0e9-99e8edbd608f_chunk_3",
+              "content": "【蚂蚁集团 · AI产品经理 硬性要求】\n熟练掌握 Transformer、Token、RAG 等核心概念；对 ReAct、CoT、Multi-Agent 架构有实战理解；",
+              "source": "蚂蚁集团-AI产品经理",
+              "metadata": {
+                "company": "蚂蚁集团",
+                "position": "AI产品经理"
+              }
+            }
+          ],
+          "query": "我的RAG和Embedding经验对哪个岗位最有用",
+          "filters": {},
+          "strategy": "hybrid(70%vec+30%bm25)+reranker",
+          "pool_k": 5,
+          "rerank_k": 10,
+          "pool_size": 35,
+          "vec_only": 18,
+          "bm25_only": 15,
+          "both": 2,
+          "rerank": {
+            "enabled": true,
+            "candidates": 5,
+            "output": 5,
+            "best_rerank_score": 0.5961
+          }
+        }
+      },
+      {
+        "task_id": "T1",
+        "tool": "global_rank",
+        "description": "对检索到的JD按匹配度排序，找出最适合的岗位",
+        "result": {
+          "rankings": [
+            {
+              "company": "蚂蚁集团",
+              "position": "AI产品工程师（搜推方向）",
+              "match_score": 81,
+              "recommend_reason": "检索相关度较高（0.70）",
+              "key_match": [
+                "检索召回"
+              ],
+              "key_gap": [
+                "需进一步了解详细匹配情况"
+              ],
+              "apply_priority": "高"
+            },
+            {
+              "company": "蚂蚁集团",
+              "position": "AI产品经理",
+              "match_score": 78,
+              "recommend_reason": "检索相关度较高（0.62）",
+              "key_match": [
+                "检索召回"
+              ],
+              "key_gap": [
+                "需进一步了解详细匹配情况"
+              ],
+              "apply_priority": "中"
+            },
+            {
+              "company": "联想",
+              "position": "产品经理-AI方向",
+              "match_score": 78,
+              "recommend_reason": "检索相关度较高（0.60）",
+              "key_match": [
+                "检索召回"
+              ],
+              "key_gap": [
+                "需进一步了解详细匹配情况"
+              ],
+              "apply_priority": "中"
+            },
+            {
+              "company": "蚂蚁集团",
+              "position": "AI产品工程师（转正实习）",
+              "match_score": 78,
+              "recommend_reason": "检索相关度较高（0.59）",
+              "key_match": [
+                "检索召回"
+              ],
+              "key_gap": [
+                "需进一步了解详细匹配情况"
+              ],
+              "apply_priority": "中"
+            },
+            {
+              "company": "联想",
+              "position": "产品经理-AI方向（实习）",
+              "match_score": 71,
+              "recommend_reason": "检索相关度较高（0.38）",
+              "key_match": [
+                "检索召回"
+              ],
+              "key_gap": [
+                "需进一步了解详细匹配情况"
+              ],
+              "apply_priority": "中"
+            }
+          ],
+          "strategy_advice": "有 1 个高度匹配岗位建议优先投递，其余岗位可根据个人偏好选择性尝试。",
+          "_template_mode": true,
+          "_coarse_filter_meta": {
+            "input_jds": 5,
+            "output_jds": 5,
+            "filter_ratio": 0.0
+          }
+        }
+      },
+      {
+        "task_id": "T2",
+        "tool": null,
+        "description": "聚合最终排名结果，生成回复素材",
+        "result": {
+          "aggregation": {
+            "ranked_jds": "{{T1.output.ranked_list}}",
+            "explanation": "{{T1.output.explanation}}",
+            "retrieved_chunks": [
+              {
+                "chunk_id": "cefd5831-fea0-4676-a46f-cd81c3e67fcc_chunk_9",
+                "content": "【联想 · 产品经理-AI方向（实习） 软性要求/加分项】\n有深度学习、RAG、Prompt、知识库学习经历者更佳",
+                "metadata": {
+                  "company": "联想",
+                  "index": 9,
+                  "jd_id": "cefd5831-fea0-4676-a46f-cd81c3e67fcc",
+                  "position": "产品经理-AI方向（实习）",
+                  "priority": "medium",
+                  "section": "soft_requirements",
+                  "strategy": "semantic"
+                },
+                "distance": 0.8611521812980173,
+                "bm25_score": 0.0,
+                "vec_norm": 0.5400230286263517,
+                "bm25_norm": 0.0,
+                "hybrid_score": 0.37801612003844615,
+                "rerank_score": 0.5961
+              },
+              {
+                "chunk_id": "ec233a37-20d0-4df8-a253-42a0d0d00b5b_chunk_8",
+                "content": "【联想 · 产品经理-AI方向 软性要求/加分项】\n有深度学习、RAG、Prompt、知识库学习经历者更佳。",
+                "metadata": {
+                  "company": "联想",
+                  "index": 8,
+                  "jd_id": "ec233a37-20d0-4df8-a253-42a0d0d00b5b",
+                  "position": "产品经理-AI方向",
+                  "priority": "medium",
+                  "section": "soft_requirements",
+                  "strategy": "semantic"
+                },
+                "distance": 0.7943503260612488,
+                "bm25_score": 0.0,
+                "vec_norm": 0.8620537862886484,
+                "bm25_norm": 0.0,
+                "hybrid_score": 0.6034376504020538,
+                "rerank_score": 0.4037
+              },
+              {
+                "chunk_id": "51054437-3bd1-4da6-8f09-d5b5d5978de8_chunk_3",
+                "content": "【蚂蚁集团 · AI产品工程师（转正实习） 硬性要求】\n技术直觉与体感：熟悉大模型基础原理，理解 RAG、Prompt Engineering 及 Agent 工作流与局限（如RAG机制、Context Window、模型幻觉等），能够与底层算法/工程团队同频对话，准确评估技术可行性",
+                "metadata": {
+                  "company": "蚂蚁集团",
+                  "index": 3,
+                  "jd_id": "51054437-3bd1-4da6-8f09-d5b5d5978de8",
+                  "position": "AI产品工程师（转正实习）",
+                  "priority": "high",
+                  "section": "hard_requirements",
+                  "strategy": "semantic"
+                },
+                "distance": 0.7983732223510742,
+                "bm25_score": 0.0,
+                "vec_norm": 0.8426606671062896,
+                "bm25_norm": 0.0,
+                "hybrid_score": 0.5898624669744027,
+                "rerank_score": 0.1847
+              },
+              {
+                "chunk_id": "2af1570c-e34f-4fb9-8422-e08e3ac3b927_chunk_4",
+                "content": "【蚂蚁集团 · AI产品工程师（搜推方向） 硬性要求】\n熟悉大模型基础原理，理解 RAG、Prompt Engineering 及 Agent 工作流，具备成本评估意识与良好的合规风险判断力",
+                "metadata": {
+                  "company": "蚂蚁集团",
+                  "index": 4,
+                  "jd_id": "2af1570c-e34f-4fb9-8422-e08e3ac3b927",
+                  "position": "AI产品工程师（搜推方向）",
+                  "priority": "high",
+                  "section": "hard_requirements",
+                  "strategy": "semantic"
+                },
+                "distance": 0.765734851360321,
+                "bm25_score": 0.0,
+                "vec_norm": 1.0,
+                "bm25_norm": 0.0,
+                "hybrid_score": 0.7,
+                "rerank_score": 0.0893
+              },
+              {
+                "chunk_id": "4dcb6702-c777-4279-b0e9-99e8edbd608f_chunk_3",
+                "content": "【蚂蚁集团 · AI产品经理 硬性要求】\n熟练掌握 Transformer、Token、RAG 等核心概念；对 ReAct、CoT、Multi-Agent 架构有实战理解；",
+                "metadata": {
+                  "company": "蚂蚁集团",
+                  "index": 3,
+                  "jd_id": "4dcb6702-c777-4279-b0e9-99e8edbd608f",
+                  "position": "AI产品经理",
+                  "priority": "high",
+                  "section": "hard_requirements",
+                  "strategy": "semantic"
+                },
+                "distance": 0.813711941242218,
+                "bm25_score": 4.3274305446097,
+                "vec_norm": 0.7687175221355906,
+                "bm25_norm": 0.26069917118665115,
+                "hybrid_score": 0.6163120168509086,
+                "rerank_score": 0.0313
+              }
+            ]
+          }
+        }
+      }
+    ],
+    "final_aggregation_prompt": {
+      "system_prompt": "你是一位专业的求职顾问。请基于以下工具执行结果，给用户一个清晰、有帮助的回复。\n要求：\n1. 先直接回答用户的问题（是/否/有/没有），不要绕弯子，不要重复用户的原话\n2. 如果有匹配分析结果，给出具体的分数和建议\n3. 如果有检索结果，基于事实回答，不要编造\n4. 【强制】引用信息时必须标注来源。每个引用的事实后面都要跟 [来源：公司名-岗位名] 格式。   kb_retrieve 结果的 chunks 中带有 'source' 字段（如'字节跳动-AI产品经理'），请直接使用。   external_search 结果带有 'source_name' 字段，也请直接使用。\n5. 当本地知识库与外部搜索结果冲突时，请并列呈现两种说法并标注各自来源，不要替用户做判断\n6. 语气友好、专业、结构化",
+      "user_prompt": "【用户问题】\n我的RAG和Embedding经验对哪个岗位最有用\n\n【工具执行结果】\n[{\"task_id\": \"T0\", \"tool\": \"kb_retrieve\", \"description\": \"检索与RAG和Embedding经验相关的岗位JD\", \"result\": {\"chunks\": [{\"chunk_id\": \"cefd5831-fea0-4676-a46f-cd81c3e67fcc_chunk_9\", \"content\": \"【联想 · 产品经理-AI方向（实习） 软性要求/加分项】\\n有深度学习、RAG、Prompt、知识库学习经历者更佳\", \"source\": \"联想-产品经理-AI方向（实习）\", \"metadata\": {\"company\": \"联想\", \"position\": \"产品经理-AI方向（实习）\"}}, {\"chunk_id\": \"ec233a37-20d0-4df8-a253-42a0d0d00b5b_chunk_8\", \"content\": \"【联想 · 产品经理-AI方向 软性要求/加分项】\\n有深度学习、RAG、Prompt、知识库学习经历者更佳。\", \"source\": \"联想-产品经理-AI方向\", \"metadata\": {\"company\": \"联想\", \"position\": \"产品经理-AI方向\"}}, {\"chunk_id\": \"51054437-3bd1-4da6-8f09-d5b5d5978de8_chunk_3\", \"content\": \"【蚂蚁集团 · AI产品工程师（转正实习） 硬性要求】\\n技术直觉与体感：熟悉大模型基础原理，理解 RAG、Prompt Engineering 及 Agent 工作流与局限（如RAG机制、Context Window、模型幻觉等），能够与底层算法/工程团队同频对话，准确评估技术可行性\", \"source\": \"蚂蚁集团-AI产品工程师（转正实习）\", \"metadata\": {\"company\": \"蚂蚁集团\", \"position\": \"AI产品工程师（转正实习）\"}}, {\"chunk_id\": \"2af1570c-e34f-4fb9-8422-e08e3ac3b927_chunk_4\", \"content\": \"【蚂蚁集团 · AI产品工程师（搜推方向） 硬性要求】\\n熟悉大模型基础原理，理解 RAG、Prompt Engineering 及 Agent 工作流，具备成本评估意识与良好的合规风险判断力\", \"source\": \"蚂蚁集团-AI产品工程师（搜推方向）\", \"metadata\": {\"company\": \"蚂蚁集团\", \"position\": \"AI产品工程师（搜推方向）\"}}, {\"chunk_id\": \"4dcb6702-c777-4279-b0e9-99e8edbd608f_chunk_3\", \"content\": \"【蚂蚁集团 · AI产品经理 硬性要求】\\n熟练掌握 Transformer、Token、RAG 等核心概念；对 ReAct、CoT、Multi-Agent 架构有实战理解；\", \"source\": \"蚂蚁集团-AI产品经理\", \"metadata\": {\"company\": \"蚂蚁集团\", \"position\": \"AI产品经理\"}}], \"query\": \"我的RAG和Embedding经验对哪个岗位最有用\", \"filters\": {}, \"strategy\": \"hybrid(70%vec+30%bm25)+reranker\", \"pool_k\": 5, \"rerank_k\": 10, \"pool_size\": 35, \"vec_only\": 18, \"bm25_only\": 15, \"both\": 2, \"rerank\": {\"enabled\": true, \"candidates\": 5, \"output\": 5, \"best_rerank_score\": 0.5961}}}, {\"task_id\": \"T1\", \"tool\": \"global_rank\", \"description\": \"对检索到的JD按匹配度排序，找出最适合的岗位\", \"result\": {\"rankings\": [{\"company\": \"蚂蚁集团\", \"position\": \"AI产品工程师（搜推方向）\", \"match_score\": 81, \"recommend_reason\": \"检索相关度较高（0.70）\", \"key_match\": [\"检索召回\"], \"key_gap\": [\"需进一步了解详细匹配情况\"], \"apply_priority\": \"高\"}, {\"company\": \"蚂蚁集团\", \"position\": \"AI产品经理\", \"match_score\": 78, \"recommend_reason\": \"检索相关度较高（0.62）\", \"key_match\": [\"检索召回\"], \"key_gap\": [\"需进一步了解详细匹配情况\"], \"apply_priority\": \"中\"}, {\"company\": \"联想\", \"position\": \"产品经理-AI方向\", \"match_score\": 78, \"recommend_reason\": \"检索相关度较高（0.60）\", \"key_match\": [\"检索召回\"], \"key_gap\": [\"需进一步了解详细匹配情况\"], \"apply_priority\": \"中\"}, {\"company\": \"蚂蚁集团\", \"position\": \"AI产品工程师（转正实习）\", \"match_score\": 78, \"recommend_reason\": \"检索相关度较高（0.59）\", \"key_match\": [\"检索召回\"], \"key_gap\": [\"需进一步了解详细匹配情况\"], \"apply_priority\": \"中\"}, {\"company\": \"联想\", \"position\": \"产品经理-AI方向（实习）\", \"match_score\": 71, \"recommend_reason\": \"检索相关度较高（0.38）\", \"key_match\": [\"检索召回\"], \"key_gap\": [\"需进一步了解详细匹配情况\"], \"apply_priority\": \"中\"}], \"strategy_advice\": \"有 1 个高度匹配岗位建议优先投递，其余岗位可根据个人偏好选择性尝试。\", \"_template_mode\": true, \"_coarse_filter_meta\": {\"input_jds\": 5, \"output_jds\": 5, \"filter_ratio\": 0.0}}}, {\"task_id\": \"T2\", \"tool\": null, \"description\": \"聚合最终排名结果，生成回复素材\", \"result\": {\"aggregation\": {\"ranked_jds\": \"{{T1.output.ranked_list}}\", \"explanation\": \"{{T1.output.explanation}}\", \"retrie\n\n请生成回复："
+    }
+  },
+  "reply": "你的 RAG 和 Embedding 经验对 **蚂蚁集团 - AI 产品工程师（搜推方向）** 最有用。\n\n### 1. 岗位匹配度分析\n根据检索与排序结果，以下是与你经验匹配度最高的岗位排名：\n\n| 排名 | 公司 | 岗位 | 匹配分数 | 投递优先级 |\n| :--- | :--- | :--- | :--- | :--- |\n| 1 | 蚂蚁集团 | AI 产品工程师（搜推方向） | 81 分 | 高 |\n| 2 | 蚂蚁集团 | AI 产品经理 | 78 分 | 中 |\n| 3 | 联想 | 产品经理-AI 方向 | 78 分 | 中 |\n| 4 | 蚂蚁集团 | AI 产品工程师（转正实习） | 78 分 | 中 |\n| 5 | 联想 | 产品经理-AI 方向（实习） | 71 分 | 中 |\n\n### 2. 核心需求证据\n你的经验在以下岗位中被明确列为关键技能，具体依据如下：\n\n*   **蚂蚁集团 - AI 产品工程师（搜推方向）**\n    *   **要求类型：** 硬性要求\n    *   **具体内容：** 熟悉大模型基础原理，理解 RAG、Prompt Engineering 及 Agent 工作流，具备成本评估意识与良好的合规风险判断力 [来源：蚂蚁集团-AI 产品工程师（搜推方向）]。\n    *   **匹配点：** 该岗位直接要求理解 RAG 机制，与你的经验高度重合。\n\n*   **蚂蚁集团 - AI 产品经理**\n    *   **要求类型：** 硬性要求\n    *   **具体内容：** 熟练掌握 Transformer、Token、RAG 等核心概念；对 ReAct、CoT、Multi-Agent 架构有实战理解 [来源：蚂蚁集团-AI 产品经理]。\n    *   **匹配点：** 明确将 RAG 列为核心概念掌握项。\n\n*   **蚂蚁集团 - AI 产品工程师（转正实习）**\n    *   **要求类型：** 硬性要求\n    *   **具体内容：** 技术直觉与体感：熟悉大模型基础原理，理解 RAG、Prompt Engineering 及 Agent 工作流与局限（如 RAG 机制、Context Window、模型幻觉等） [来源：蚂蚁集团-AI 产品工程师（转正实习）]。\n    *   **匹配点：** 强调对 RAG 机制及局限性的深入理解。\n\n*   **联想 - 产品经理-AI 方向**\n    *   **要求类型：** 软性要求/加分项\n    *   **具体内容：** 有深度学习、RAG、Prompt、知识库学习经历者更佳 [来源：联想 - 产品经理-AI 方向]。\n    *   **匹配点：** 你的经验在此处作为加分项，能提升竞争力。\n\n*   **联想 - 产品经理-AI 方向（实习）**\n    *   **要求类型：** 软性要求/加分项\n    *   **具体内容：** 有深度学习、RAG、Prompt、知识库学习经历者更佳 [来源：联想 - 产品经理-AI 方向（实习）]。\n    *   **匹配点：** 实习岗位同样将 RAG 经历视为加分项 [来源：联想 - 产品经理-AI 方向（实习）]。\n\n### 3. 求职建议\n1.  **优先投递：** 建议优先准备 **蚂蚁集团 - AI 产品工程师（搜推方向）** 的简历与面试，该岗位匹配度最高且为硬性要求 [来源：蚂蚁集团-AI 产品工程师（搜推方向）]。\n2.  **简历优化：** 在简历中突出你对 RAG 机制、Context Window 及模型幻觉的理解与实战案例，以匹配蚂蚁集团技术岗位的硬性要求 [来源：蚂蚁集团-AI 产品工程师（转正实习）]。\n3.  **备选方案：** 若倾向于产品侧而非工程侧，可尝试 **蚂蚁集团 - AI 产品经理** 或 **联想 - 产品经理-AI 方向**，前者要求核心概念掌握，后者作为加分项能显著增加录用概率 [来源：蚂蚁集团-AI 产品经理] [来源：联想 - 产品经理-AI 方向]。",
+  "reply_length": 1722,
+  "intent_match": true,
+  "tool_match_rate": 1.0,
+  "has_reply": true,
+  "events": [
+    {
+      "step": "intent",
+      "message": "正在识别您的意图...",
+      "_time": 6.662773847579956,
+      "type": "status"
+    },
+    {
+      "step": "plan",
+      "message": "正在规划任务...",
+      "_time": 6.662814617156982,
+      "type": "status"
+    },
+    {
+      "step": "execute",
+      "message": "正在执行分析...",
+      "_time": 15.569767236709595,
+      "type": "status"
+    },
+    {
+      "step": "aggregate",
+      "message": "正在生成回复...",
+      "_time": 15.953216314315796,
+      "type": "status"
+    },
+    {
+      "text": "你的 R",
+      "_time": 48.36110973358154,
+      "type": "delta"
+    },
+    {
+      "text": "AG 和 Embed",
+      "_time": 48.463279485702515,
+      "type": "delta"
+    },
+    {
+      "text": "ding 经验对",
+      "_time": 48.46808934211731,
+      "type": "delta"
+    },
+    {
+      "text": " **蚂蚁集团 -",
+      "_time": 48.634403228759766,
+      "type": "delta"
+    },
+    {
+      "text": " AI 产品工程师",
+      "_time": 48.64006948471069,
+      "type": "delta"
+    },
+    {
+      "text": "（搜推方向",
+      "_time": 48.74933052062988,
+      "type": "delta"
+    },
+    {
+      "text": "）** 最",
+      "_time": 48.75517773628235,
+      "type": "delta"
+    },
+    {
+      "text": "有用。\n\n###",
+      "_time": 48.878170013427734,
+      "type": "delta"
+    },
+    {
+      "text": " 1",
+      "_time": 48.91322946548462,
+      "type": "delta"
+    },
+    {
+      "text": ". 岗位匹配",
+      "_time": 48.986358642578125,
+      "type": "delta"
+    },
+    {
+      "text": "度分析\n根据",
+      "_time": 48.98998141288757,
+      "type": "delta"
+    },
+    {
+      "text": "检索与排序结果",
+      "_time": 49.129077196121216,
+      "type": "delta"
+    },
+    {
+      "text": "，以下是",
+      "_time": 49.134777545928955,
+      "type": "delta"
+    },
+    {
+      "text": "与你经验匹配度",
+      "_time": 49.27336382865906,
+      "type": "delta"
+    },
+    {
+      "text": "最高的",
+      "_time": 49.276084184646606,
+      "type": "delta"
+    },
+    {
+      "text": "岗位排名：\n\n",
+      "_time": 49.327247619628906,
+      "type": "delta"
+    },
+    {
+      "text": "| 排名",
+      "_time": 49.33205771446228,
+      "type": "delta"
+    },
+    {
+      "text": " | 公司 |",
+      "_time": 49.453298568725586,
+      "type": "delta"
+    },
+    {
+      "text": " 岗位 |",
+      "_time": 49.45606303215027,
+      "type": "delta"
+    },
+    {
+      "text": " 匹配分数 |",
+      "_time": 49.61600852012634,
+      "type": "delta"
+    },
+    {
+      "text": " 投递",
+      "_time": 49.62084078788757,
+      "type": "delta"
+    },
+    {
+      "text": "优先级 |\n|",
+      "_time": 49.68724298477173,
+      "type": "delta"
+    },
+    {
+      "text": " :--- | :",
+      "_time": 49.69086408615112,
+      "type": "delta"
+    },
+    {
+      "text": "--- | :---",
+      "_time": 49.86023449897766,
+      "type": "delta"
+    },
+    {
+      "text": " | :--- |",
+      "_time": 49.86400032043457,
+      "type": "delta"
+    },
+    {
+      "text": " :--- |\n",
+      "_time": 49.976346254348755,
+      "type": "delta"
+    },
+    {
+      "text": "| ",
+      "_time": 49.98303580284119,
+      "type": "delta"
+    },
+    {
+      "text": "1 | 蚂蚁",
+      "_time": 50.082157135009766,
+      "type": "delta"
+    },
+    {
+      "text": "集团 | AI",
+      "_time": 50.11313509941101,
+      "type": "delta"
+    },
+    {
+      "text": " 产品工程师（",
+      "_time": 50.2104856967926,
+      "type": "delta"
+    },
+    {
+      "text": "搜推方向）",
+      "_time": 50.21301984786987,
+      "type": "delta"
+    },
+    {
+      "text": " | 81",
+      "_time": 50.35317254066467,
+      "type": "delta"
+    },
+    {
+      "text": " 分 | ",
+      "_time": 50.35689640045166,
+      "type": "delta"
+    },
+    {
+      "text": "高 |\n|",
+      "_time": 50.541178941726685,
+      "type": "delta"
+    },
+    {
+      "text": " 2 |",
+      "_time": 50.544981718063354,
+      "type": "delta"
+    },
+    {
+      "text": " 蚂蚁集团 |",
+      "_time": 50.62606596946716,
+      "type": "delta"
+    },
+    {
+      "text": " AI 产品经理 |",
+      "_time": 50.62887763977051,
+      "type": "delta"
+    },
+    {
+      "text": " 78 ",
+      "_time": 50.76624250411987,
+      "type": "delta"
+    },
+    {
+      "text": "分 | 中",
+      "_time": 50.79927182197571,
+      "type": "delta"
+    },
+    {
+      "text": " |\n| ",
+      "_time": 50.91229200363159,
+      "type": "delta"
+    },
+    {
+      "text": "3 |",
+      "_time": 50.91356563568115,
+      "type": "delta"
+    },
+    {
+      "text": " 联想 | ",
+      "_time": 51.02010416984558,
+      "type": "delta"
+    },
+    {
+      "text": "产品经理-AI ",
+      "_time": 51.02275848388672,
+      "type": "delta"
+    },
+    {
+      "text": "方向 | 7",
+      "_time": 51.16415619850159,
+      "type": "delta"
+    },
+    {
+      "text": "8 分 |",
+      "_time": 51.21300458908081,
+      "type": "delta"
+    },
+    {
+      "text": " 中 |\n",
+      "_time": 51.30797624588013,
+      "type": "delta"
+    },
+    {
+      "text": "| 4 |",
+      "_time": 51.31179165840149,
+      "type": "delta"
+    },
+    {
+      "text": " 蚂蚁集团 |",
+      "_time": 51.451035499572754,
+      "type": "delta"
+    },
+    {
+      "text": " AI 产品工程师",
+      "_time": 51.48921871185303,
+      "type": "delta"
+    },
+    {
+      "text": "（转正实习）",
+      "_time": 51.59512519836426,
+      "type": "delta"
+    },
+    {
+      "text": " | 78",
+      "_time": 51.599801778793335,
+      "type": "delta"
+    },
+    {
+      "text": " 分 | ",
+      "_time": 51.741162061691284,
+      "type": "delta"
+    },
+    {
+      "text": "中 |\n|",
+      "_time": 51.743204832077026,
+      "type": "delta"
+    },
+    {
+      "text": " 5 | ",
+      "_time": 51.883026123046875,
+      "type": "delta"
+    },
+    {
+      "text": "联想 | 产品经理",
+      "_time": 51.91414213180542,
+      "type": "delta"
+    },
+    {
+      "text": "-AI 方向",
+      "_time": 52.028154611587524,
+      "type": "delta"
+    },
+    {
+      "text": "（实习） |",
+      "_time": 52.03280162811279,
+      "type": "delta"
+    },
+    {
+      "text": " 71 ",
+      "_time": 52.17315101623535,
+      "type": "delta"
+    },
+    {
+      "text": "分 | 中",
+      "_time": 52.17678785324097,
+      "type": "delta"
+    },
+    {
+      "text": " |\n\n### ",
+      "_time": 52.34768342971802,
+      "type": "delta"
+    },
+    {
+      "text": "2",
+      "_time": 52.35142278671265,
+      "type": "delta"
+    },
+    {
+      "text": ". 核心需求",
+      "_time": 52.40594935417175,
+      "type": "delta"
+    },
+    {
+      "text": "证据",
+      "_time": 52.41071391105652,
+      "type": "delta"
+    },
+    {
+      "text": "\n你的经验在",
+      "_time": 52.4948947429657,
+      "type": "delta"
+    },
+    {
+      "text": "以下岗位中被",
+      "_time": 52.49851965904236,
+      "type": "delta"
+    },
+    {
+      "text": "明确列为关键技能",
+      "_time": 52.655117988586426,
+      "type": "delta"
+    },
+    {
+      "text": "，具体",
+      "_time": 52.6597580909729,
+      "type": "delta"
+    },
+    {
+      "text": "依据如下：\n\n",
+      "_time": 52.73006820678711,
+      "type": "delta"
+    },
+    {
+      "text": "*",
+      "_time": 52.7337589263916,
+      "type": "delta"
+    },
+    {
+      "text": "   **蚂蚁集团",
+      "_time": 52.81911373138428,
+      "type": "delta"
+    },
+    {
+      "text": " - AI 产品",
+      "_time": 52.852970361709595,
+      "type": "delta"
+    },
+    {
+      "text": "工程师（搜推",
+      "_time": 52.96198797225952,
+      "type": "delta"
+    },
+    {
+      "text": "方向）**\n",
+      "_time": 52.9666109085083,
+      "type": "delta"
+    },
+    {
+      "text": "    *   **",
+      "_time": 53.0900673866272,
+      "type": "delta"
+    },
+    {
+      "text": "要求",
+      "_time": 53.09258031845093,
+      "type": "delta"
+    },
+    {
+      "text": "类型：** 硬性",
+      "_time": 53.213003396987915,
+      "type": "delta"
+    },
+    {
+      "text": "要求\n    *",
+      "_time": 53.21777057647705,
+      "type": "delta"
+    },
+    {
+      "text": "   **具体内容：**",
+      "_time": 53.32290506362915,
+      "type": "delta"
+    },
+    {
+      "text": " 熟悉",
+      "_time": 53.32779383659363,
+      "type": "delta"
+    },
+    {
+      "text": "大模型基础原理",
+      "_time": 53.46899652481079,
+      "type": "delta"
+    },
+    {
+      "text": "，理解 RAG",
+      "_time": 53.471542835235596,
+      "type": "delta"
+    },
+    {
+      "text": "、Prompt Engineering ",
+      "_time": 53.60703492164612,
+      "type": "delta"
+    },
+    {
+      "text": "及 Agent 工作",
+      "_time": 53.61175847053528,
+      "type": "delta"
+    },
+    {
+      "text": "流，具备成本",
+      "_time": 53.718982458114624,
+      "type": "delta"
+    },
+    {
+      "text": "评估意识与良好的",
+      "_time": 53.72374200820923,
+      "type": "delta"
+    },
+    {
+      "text": "合规风险判断力",
+      "_time": 53.89997887611389,
+      "type": "delta"
+    },
+    {
+      "text": " [来源：蚂蚁",
+      "_time": 53.90472912788391,
+      "type": "delta"
+    },
+    {
+      "text": "集团-AI ",
+      "_time": 54.005945444107056,
+      "type": "delta"
+    },
+    {
+      "text": "产品工程师（搜",
+      "_time": 54.0086829662323,
+      "type": "delta"
+    },
+    {
+      "text": "推方向）]",
+      "_time": 54.15113353729248,
+      "type": "delta"
+    },
+    {
+      "text": "。\n    *",
+      "_time": 54.20099854469299,
+      "type": "delta"
+    },
+    {
+      "text": "   **匹配点",
+      "_time": 54.29609680175781,
+      "type": "delta"
+    },
+    {
+      "text": "：** 该岗位",
+      "_time": 54.29857420921326,
+      "type": "delta"
+    },
+    {
+      "text": "直接要求理解 R",
+      "_time": 54.440969944000244,
+      "type": "delta"
+    },
+    {
+      "text": "AG ",
+      "_time": 54.44578719139099,
+      "type": "delta"
+    },
+    {
+      "text": "机制，与你的",
+      "_time": 54.587140798568726,
+      "type": "delta"
+    },
+    {
+      "text": "经验高度重合",
+      "_time": 54.590622901916504,
+      "type": "delta"
+    },
+    {
+      "text": "。\n\n*  ",
+      "_time": 54.676228046417236,
+      "type": "delta"
+    },
+    {
+      "text": " **蚂蚁集团 -",
+      "_time": 54.67983293533325,
+      "type": "delta"
+    },
+    {
+      "text": " AI 产品经理**",
+      "_time": 54.84790086746216,
+      "type": "delta"
+    },
+    {
+      "text": "\n    *  ",
+      "_time": 54.85157895088196,
+      "type": "delta"
+    },
+    {
+      "text": " **要求类型：**",
+      "_time": 54.96290349960327,
+      "type": "delta"
+    },
+    {
+      "text": " 硬性要求",
+      "_time": 54.96663236618042,
+      "type": "delta"
+    },
+    {
+      "text": "\n    *  ",
+      "_time": 55.13683271408081,
+      "type": "delta"
+    },
+    {
+      "text": " **具体内容：** ",
+      "_time": 55.14165139198303,
+      "type": "delta"
+    },
+    {
+      "text": "熟练掌握 Transformer、Token",
+      "_time": 55.26789093017578,
+      "type": "delta"
+    },
+    {
+      "text": "、RAG ",
+      "_time": 55.27168941497803,
+      "type": "delta"
+    },
+    {
+      "text": "等核心概念；",
+      "_time": 55.373920917510986,
+      "type": "delta"
+    },
+    {
+      "text": "对 ReAct、",
+      "_time": 55.378560066223145,
+      "type": "delta"
+    },
+    {
+      "text": "CoT、Multi",
+      "_time": 55.559810400009155,
+      "type": "delta"
+    },
+    {
+      "text": "-Agent 架构有",
+      "_time": 55.56350564956665,
+      "type": "delta"
+    },
+    {
+      "text": "实战理解 [来源",
+      "_time": 55.664355754852295,
+      "type": "delta"
+    },
+    {
+      "text": "：蚂蚁集团-A",
+      "_time": 55.69572114944458,
+      "type": "delta"
+    },
+    {
+      "text": "I 产品经理]",
+      "_time": 55.8096067905426,
+      "type": "delta"
+    },
+    {
+      "text": "。\n    *",
+      "_time": 55.814828634262085,
+      "type": "delta"
+    },
+    {
+      "text": "   **匹配点",
+      "_time": 55.99380350112915,
+      "type": "delta"
+    },
+    {
+      "text": "：** ",
+      "_time": 56.00257396697998,
+      "type": "delta"
+    },
+    {
+      "text": "明确将 RAG",
+      "_time": 56.09982967376709,
+      "type": "delta"
+    },
+    {
+      "text": " 列为核心",
+      "_time": 56.10249042510986,
+      "type": "delta"
+    },
+    {
+      "text": "概念掌握项。",
+      "_time": 56.1837944984436,
+      "type": "delta"
+    },
+    {
+      "text": "\n\n*   **",
+      "_time": 56.18748903274536,
+      "type": "delta"
+    },
+    {
+      "text": "蚂蚁集团 - AI",
+      "_time": 56.366780042648315,
+      "type": "delta"
+    },
+    {
+      "text": " 产品工程师（",
+      "_time": 56.37248373031616,
+      "type": "delta"
+    },
+    {
+      "text": "转正实习）**\n",
+      "_time": 56.47570276260376,
+      "type": "delta"
+    },
+    {
+      "text": "    *   **",
+      "_time": 56.47825527191162,
+      "type": "delta"
+    },
+    {
+      "text": "要求类型：** ",
+      "_time": 56.6918511390686,
+      "type": "delta"
+    },
+    {
+      "text": "硬性要求",
+      "_time": 56.69675850868225,
+      "type": "delta"
+    },
+    {
+      "text": "\n    *  ",
+      "_time": 56.72477865219116,
+      "type": "delta"
+    },
+    {
+      "text": " **具体内容：** ",
+      "_time": 56.78982710838318,
+      "type": "delta"
+    },
+    {
+      "text": "技术直觉与体",
+      "_time": 56.868786096572876,
+      "type": "delta"
+    },
+    {
+      "text": "感",
+      "_time": 56.87148714065552,
+      "type": "delta"
+    },
+    {
+      "text": "：熟悉大模型",
+      "_time": 56.96069550514221,
+      "type": "delta"
+    },
+    {
+      "text": "基础原理，理解",
+      "_time": 56.965441942214966,
+      "type": "delta"
+    },
+    {
+      "text": " RAG、Prompt",
+      "_time": 57.199742555618286,
+      "type": "delta"
+    },
+    {
+      "text": " Engineering 及 Agent",
+      "_time": 57.20438361167908,
+      "type": "delta"
+    },
+    {
+      "text": " 工作流与",
+      "_time": 57.253703117370605,
+      "type": "delta"
+    },
+    {
+      "text": "局限（如 R",
+      "_time": 57.303728342056274,
+      "type": "delta"
+    },
+    {
+      "text": "AG 机制、",
+      "_time": 57.392640590667725,
+      "type": "delta"
+    },
+    {
+      "text": "Context Window、模型",
+      "_time": 57.39543914794922,
+      "type": "delta"
+    },
+    {
+      "text": "幻觉等） [",
+      "_time": 57.6135950088501,
+      "type": "delta"
+    },
+    {
+      "text": "来源：蚂蚁集团",
+      "_time": 57.61660122871399,
+      "type": "delta"
+    },
+    {
+      "text": "-AI 产品",
+      "_time": 57.70935869216919,
+      "type": "delta"
+    },
+    {
+      "text": "工程师（转正实习",
+      "_time": 57.71414828300476,
+      "type": "delta"
+    },
+    {
+      "text": "）]。\n",
+      "_time": 57.82365679740906,
+      "type": "delta"
+    },
+    {
+      "text": "    *   **",
+      "_time": 57.85458755493164,
+      "type": "delta"
+    },
+    {
+      "text": "匹配点：** ",
+      "_time": 57.96674060821533,
+      "type": "delta"
+    },
+    {
+      "text": "强调对",
+      "_time": 57.969260454177856,
+      "type": "delta"
+    },
+    {
+      "text": " RAG 机制",
+      "_time": 58.07546520233154,
+      "type": "delta"
+    },
+    {
+      "text": "及局限性的",
+      "_time": 58.07891058921814,
+      "type": "delta"
+    },
+    {
+      "text": "深入理解。\n\n",
+      "_time": 58.24664902687073,
+      "type": "delta"
+    },
+    {
+      "text": "*   **联想",
+      "_time": 58.251364946365356,
+      "type": "delta"
+    },
+    {
+      "text": " - 产品经理-A",
+      "_time": 58.34746432304382,
+      "type": "delta"
+    },
+    {
+      "text": "I 方向**",
+      "_time": 58.34806704521179,
+      "type": "delta"
+    },
+    {
+      "text": "\n    *  ",
+      "_time": 58.52417612075806,
+      "type": "delta"
+    },
+    {
+      "text": " **要求类型",
+      "_time": 58.52701711654663,
+      "type": "delta"
+    },
+    {
+      "text": "：** 软性",
+      "_time": 58.615628242492676,
+      "type": "delta"
+    },
+    {
+      "text": "要求/加分",
+      "_time": 58.620272636413574,
+      "type": "delta"
+    },
+    {
+      "text": "项\n    *",
+      "_time": 58.778634548187256,
+      "type": "delta"
+    },
+    {
+      "text": "   **具体内容",
+      "_time": 58.78226399421692,
+      "type": "delta"
+    },
+    {
+      "text": "：** 有深度学习",
+      "_time": 58.86964416503906,
+      "type": "delta"
+    },
+    {
+      "text": "、RAG、",
+      "_time": 58.87226605415344,
+      "type": "delta"
+    },
+    {
+      "text": "Prompt、知识库学习",
+      "_time": 59.059571504592896,
+      "type": "delta"
+    },
+    {
+      "text": "经历者更佳 [",
+      "_time": 59.06444263458252,
+      "type": "delta"
+    },
+    {
+      "text": "来源：联想 -",
+      "_time": 59.156439542770386,
+      "type": "delta"
+    },
+    {
+      "text": " 产品经理-A",
+      "_time": 59.1613290309906,
+      "type": "delta"
+    },
+    {
+      "text": "I 方向]",
+      "_time": 59.318612813949585,
+      "type": "delta"
+    },
+    {
+      "text": "。\n    *",
+      "_time": 59.32234501838684,
+      "type": "delta"
+    },
+    {
+      "text": "   **匹配点",
+      "_time": 59.425591707229614,
+      "type": "delta"
+    },
+    {
+      "text": "：** 你的经验",
+      "_time": 59.43125104904175,
+      "type": "delta"
+    },
+    {
+      "text": "在此处作为加分",
+      "_time": 59.59946298599243,
+      "type": "delta"
+    },
+    {
+      "text": "项，能",
+      "_time": 59.60421299934387,
+      "type": "delta"
+    },
+    {
+      "text": "提升竞争力。\n\n",
+      "_time": 59.694554805755615,
+      "type": "delta"
+    },
+    {
+      "text": "*  ",
+      "_time": 59.697136640548706,
+      "type": "delta"
+    },
+    {
+      "text": " **联想 - ",
+      "_time": 59.8033881187439,
+      "type": "delta"
+    },
+    {
+      "text": "产品经理-AI ",
+      "_time": 59.83344531059265,
+      "type": "delta"
+    },
+    {
+      "text": "方向（实习）**",
+      "_time": 59.94657039642334,
+      "type": "delta"
+    },
+    {
+      "text": "\n    *  ",
+      "_time": 59.950132608413696,
+      "type": "delta"
+    },
+    {
+      "text": " **要求类型：**",
+      "_time": 60.092477560043335,
+      "type": "delta"
+    },
+    {
+      "text": " 软",
+      "_time": 60.16734266281128,
+      "type": "delta"
+    },
+    {
+      "text": "性要求/加分",
+      "_time": 60.20342993736267,
+      "type": "delta"
+    },
+    {
+      "text": "项\n    *",
+      "_time": 60.20718789100647,
+      "type": "delta"
+    },
+    {
+      "text": "   **具体内容：**",
+      "_time": 60.34156346321106,
+      "type": "delta"
+    },
+    {
+      "text": " 有深度学习、",
+      "_time": 60.42236256599426,
+      "type": "delta"
+    },
+    {
+      "text": "RAG、Prompt",
+      "_time": 60.48751425743103,
+      "type": "delta"
+    },
+    {
+      "text": "、知识库学习经历",
+      "_time": 60.49210000038147,
+      "type": "delta"
+    },
+    {
+      "text": "者更佳 [来源",
+      "_time": 60.63040566444397,
+      "type": "delta"
+    },
+    {
+      "text": "：联想 - ",
+      "_time": 60.69852352142334,
+      "type": "delta"
+    },
+    {
+      "text": "产品经理-AI ",
+      "_time": 60.77555537223816,
+      "type": "delta"
+    },
+    {
+      "text": "方向（实习）",
+      "_time": 60.778197288513184,
+      "type": "delta"
+    },
+    {
+      "text": "]。\n   ",
+      "_time": 60.919482707977295,
+      "type": "delta"
+    },
+    {
+      "text": " *   **匹配",
+      "_time": 60.96954941749573,
+      "type": "delta"
+    },
+    {
+      "text": "点：** 实习",
+      "_time": 61.06446361541748,
+      "type": "delta"
+    },
+    {
+      "text": "岗位同样将",
+      "_time": 61.069122314453125,
+      "type": "delta"
+    },
+    {
+      "text": " RAG 经历",
+      "_time": 61.19050073623657,
+      "type": "delta"
+    },
+    {
+      "text": "视为",
+      "_time": 61.19905924797058,
+      "type": "delta"
+    },
+    {
+      "text": "加分项 [来源",
+      "_time": 61.35724496841431,
+      "type": "delta"
+    },
+    {
+      "text": "：联想 -",
+      "_time": 61.36406707763672,
+      "type": "delta"
+    },
+    {
+      "text": " 产品经理-AI",
+      "_time": 61.405303716659546,
+      "type": "delta"
+    },
+    {
+      "text": " 方向（实习",
+      "_time": 61.40999460220337,
+      "type": "delta"
+    },
+    {
+      "text": "）]。\n\n",
+      "_time": 61.54942846298218,
+      "type": "delta"
+    },
+    {
+      "text": "### 3.",
+      "_time": 61.585227489471436,
+      "type": "delta"
+    },
+    {
+      "text": " 求职建议\n",
+      "_time": 61.692389488220215,
+      "type": "delta"
+    },
+    {
+      "text": "1",
+      "_time": 61.69610381126404,
+      "type": "delta"
+    },
+    {
+      "text": ".  **优先",
+      "_time": 61.7843279838562,
+      "type": "delta"
+    },
+    {
+      "text": "投递：** 建议",
+      "_time": 61.79010820388794,
+      "type": "delta"
+    },
+    {
+      "text": "优先准备 **蚂蚁",
+      "_time": 61.9634165763855,
+      "type": "delta"
+    },
+    {
+      "text": "集团 -",
+      "_time": 61.96798038482666,
+      "type": "delta"
+    },
+    {
+      "text": " AI 产品工程师",
+      "_time": 62.035176277160645,
+      "type": "delta"
+    },
+    {
+      "text": "（搜推方向",
+      "_time": 62.038970708847046,
+      "type": "delta"
+    },
+    {
+      "text": "）** 的简历",
+      "_time": 62.18691372871399,
+      "type": "delta"
+    },
+    {
+      "text": "与",
+      "_time": 62.187312841415405,
+      "type": "delta"
+    },
+    {
+      "text": "面试，该岗位",
+      "_time": 62.31033682823181,
+      "type": "delta"
+    },
+    {
+      "text": "匹配度最高且",
+      "_time": 62.31503224372864,
+      "type": "delta"
+    },
+    {
+      "text": "为硬性要求 [",
+      "_time": 62.41520619392395,
+      "type": "delta"
+    },
+    {
+      "text": "来源",
+      "_time": 62.41896295547485,
+      "type": "delta"
+    },
+    {
+      "text": "：蚂蚁集团-A",
+      "_time": 62.50330638885498,
+      "type": "delta"
+    },
+    {
+      "text": "I 产品工程师",
+      "_time": 62.54129457473755,
+      "type": "delta"
+    },
+    {
+      "text": "（搜推方向",
+      "_time": 62.64834642410278,
+      "type": "delta"
+    },
+    {
+      "text": "）]。\n",
+      "_time": 62.65313506126404,
+      "type": "delta"
+    },
+    {
+      "text": "2.  **",
+      "_time": 62.79334807395935,
+      "type": "delta"
+    },
+    {
+      "text": "简历",
+      "_time": 62.79710245132446,
+      "type": "delta"
+    },
+    {
+      "text": "优化：** 在",
+      "_time": 62.88235569000244,
+      "type": "delta"
+    },
+    {
+      "text": "简历",
+      "_time": 62.885977029800415,
+      "type": "delta"
+    },
+    {
+      "text": "中突出你对 R",
+      "_time": 63.01727867126465,
+      "type": "delta"
+    },
+    {
+      "text": "AG 机制",
+      "_time": 63.01998972892761,
+      "type": "delta"
+    },
+    {
+      "text": "、Context Window ",
+      "_time": 63.11134314537048,
+      "type": "delta"
+    },
+    {
+      "text": "及模型幻觉的理解",
+      "_time": 63.137308835983276,
+      "type": "delta"
+    },
+    {
+      "text": "与实战案例，",
+      "_time": 63.24138927459717,
+      "type": "delta"
+    },
+    {
+      "text": "以匹配",
+      "_time": 63.246129512786865,
+      "type": "delta"
+    },
+    {
+      "text": "蚂蚁集团技术岗位的",
+      "_time": 63.34936881065369,
+      "type": "delta"
+    },
+    {
+      "text": "硬性要求 [",
+      "_time": 63.3539834022522,
+      "type": "delta"
+    },
+    {
+      "text": "来源：蚂蚁集团",
+      "_time": 63.508365631103516,
+      "type": "delta"
+    },
+    {
+      "text": "-AI 产品",
+      "_time": 63.510963678359985,
+      "type": "delta"
+    },
+    {
+      "text": "工程师（转正实习",
+      "_time": 63.6343412399292,
+      "type": "delta"
+    },
+    {
+      "text": "）]。\n",
+      "_time": 63.63891577720642,
+      "type": "delta"
+    },
+    {
+      "text": "3.  **",
+      "_time": 63.7652587890625,
+      "type": "delta"
+    },
+    {
+      "text": "备选方案",
+      "_time": 63.79302501678467,
+      "type": "delta"
+    },
+    {
+      "text": "：** 若倾向于",
+      "_time": 63.87125277519226,
+      "type": "delta"
+    },
+    {
+      "text": "产品侧",
+      "_time": 63.87604117393494,
+      "type": "delta"
+    },
+    {
+      "text": "而非工程侧，",
+      "_time": 63.980260133743286,
+      "type": "delta"
+    },
+    {
+      "text": "可尝试",
+      "_time": 63.98502564430237,
+      "type": "delta"
+    },
+    {
+      "text": " **蚂蚁集团 -",
+      "_time": 64.11733222007751,
+      "type": "delta"
+    },
+    {
+      "text": " AI 产品经理**",
+      "_time": 64.12507176399231,
+      "type": "delta"
+    },
+    {
+      "text": " 或 **联想",
+      "_time": 64.23226571083069,
+      "type": "delta"
+    },
+    {
+      "text": " - 产品经理-A",
+      "_time": 64.23492240905762,
+      "type": "delta"
+    },
+    {
+      "text": "I 方向**",
+      "_time": 64.41831254959106,
+      "type": "delta"
+    },
+    {
+      "text": "，前者要求",
+      "_time": 64.42206764221191,
+      "type": "delta"
+    },
+    {
+      "text": "核心概念掌握，",
+      "_time": 64.50019383430481,
+      "type": "delta"
+    },
+    {
+      "text": "后者作为",
+      "_time": 64.50498294830322,
+      "type": "delta"
+    },
+    {
+      "text": "加分项能显著",
+      "_time": 64.6090919971466,
+      "type": "delta"
+    },
+    {
+      "text": "增加录用概率",
+      "_time": 64.6502833366394,
+      "type": "delta"
+    },
+    {
+      "text": " [来源：蚂蚁",
+      "_time": 64.73501586914062,
+      "type": "delta"
+    },
+    {
+      "text": "集团-AI ",
+      "_time": 64.73866820335388,
+      "type": "delta"
+    },
+    {
+      "text": "产品经理] [来源",
+      "_time": 64.88006472587585,
+      "type": "delta"
+    },
+    {
+      "text": "：联想 - ",
+      "_time": 64.90895676612854,
+      "type": "delta"
+    },
+    {
+      "text": "产品经理-AI ",
+      "_time": 65.02522039413452,
+      "type": "delta"
+    },
+    {
+      "text": "方向]。",
+      "_time": 65.02888250350952,
+      "type": "delta"
+    },
+    {
+      "session_id": "eval_chen_09_1780561633192",
+      "intent": "position_explore",
+      "route_meta": {
+        "layer": "llm",
+        "intent": "position_explore",
+        "confidence": 0.88,
+        "demands": [
+          {
+            "intent": "position_explore",
+            "entities": {
+              "search_keywords": "我的RAG和Embedding经验对哪个岗位最有用",
+              "sort_by": "match_score",
+              "top_k": 5
+            }
+          }
+        ],
+        "plan_tasks": 3
+      },
+      "agent_mode": "llm",
+      "is_clarification": false,
+      "agent": {
+        "rewritten_query": "我的RAG和Embedding经验对哪个岗位最有用",
+        "tools": [
+          {
+            "tool": "kb_retrieve",
+            "status": "✅",
+            "params": {
+              "query": "我的RAG和Embedding经验对哪个岗位最有用",
+              "top_k": 5
+            },
+            "result_preview": "{'chunks': [{'chunk_id': 'cefd5831-fea0-4676-a46f-cd81c3e67fcc_chunk_9', 'content': '【联想 · 产品经理-AI方向（实习） 软性要求/加分项】\\n有深度学习、RAG、Prompt、知识库学习经历者更佳', 'metadata': {'company': '联想', 'index': 9, 'jd_id': 'ce"
+          },
+          {
+            "tool": "global_rank",
+            "status": "✅",
+            "params": {
+              "resume_text": "姓名：陈雨桐\r\n教育背景\r\n江南科技大学\r\n信息工程学院·软件工程（AI应用方向）·硕士\r\n2024.09-2027.06（预计）\r\nGPA: 3.4/4.0 | 主修：机器学习基础、数据库系统、软件项目管理、人机交互设计\r\n\r\n云溪大学\r\n计算机学院·信息管理与信息系统·本科\r\n2020.09-2024.06\r\n荣誉：两次校级三等奖学金 | 主修：数据结构、管理学原理、Web开发技术、统计学\r\n\r\n项目经历\r\n求职助手小程序 — 智能简历匹配与面试模拟工具\r\n2025.03-2025.11\r\n产品经理 | 三人小组\r\n- 需求分析：设计调研问卷回收40余份有效样本，梳理\"简历评估\"与\"定向面试模拟\"核心需求，使用Figma完成低保真原型，输出产品需求文档。\r\n- AI匹配策略：调研开源Embedding模型实现简历与JD语义相似度计算，探索多维度匹配方案，对比整篇匹配与分块匹配效果差异，持续优化推荐排序。\r\n- 内容生成：基于大模型AI设计结构化Prompt，融合岗位关键词与简历信息输出个性化面试题，建立追问机制增强模拟面试针对性。\r\n- 测试验证：组织20人内测收集用户路径与反馈数据，针对复杂PDF格式设计补充录入机制，完成从需求分析到上线测试的完整产品闭环。\r\n\r\n教务问答机器人 — 基于校内政策的RAG问答系统\r\n2024.10-2025.02\r\n产品设计与测试 | 实验室课题项目\r\n- 知识库构建：收集整理教务处政策文件、培养方案及历史问答共80余份，完成扫描件OCR识别、格式转换与结构化清洗，建立可检索的领域知识库。\r\n- 交互设计：设计Web端对话界面，参考主流客服产品布局增加\"推荐提问\"推荐模块降低投入成本，针对政策类回答设计溯源展示功能增强可信度。\r\n- 效果测试：参与搭建检索增强生成链路，完成实验环境下多轮问答测试，验证标准政策类问题回答准确率，整理测试数据与优化建议形成可复用方案。\r\n\r\n校园经历\r\n江南科技大学软件学院学生会·宣传部干事\r\n2024.09-2025.06\r\n- 负责学院官方公众号推文排版与发布，累计输出活动宣传稿件10余篇；协助组织院内编程比赛，负责报名统计与现场签到。\r\n\r\n云溪大学图书馆·勤工助学岗\r\n2022.03-2023.06\r\n- 负责电子阅览室日常值班，协助同学解决基础网络与设备使用问题；参与旧期刊电子目录录入与数据整理工作。\r\n\r\n获奖情况\r\n- 2025.05 江南科技大学研究生学业三等奖学金\r\n- 2024.11 学院AI应用创新赛（课程组）三等奖\r\n- 2022.06 云溪大学优秀共青团员\r\n- 2022.12 校级网页设计比赛优秀奖\r\n\r\n个人技能\r\n- 产品工具：熟练使用Figma进行原型与交互演示，了解Axure基础操作；能够使用Xmind梳理产品架构，通过腾讯文档/飞书写PRD。\r\n- 技术理解：了解大语言模型在应用层的落地方式，具备Prompt Engineering实践经验；理解RAG基本架构与工作流程，了解Embedding与向量检索作用。\r\n- 语言能力：英语CET-4（525分），可阅读英文技术文档与产品资料。\r\n- 办公技能：熟练使用Office办公软件，掌握Excel数据透视表等基础数据分析功能。",
+              "candidate_jds": [
+                {
+                  "chunk_id": "cefd5831-fea0-4676-a46f-cd81c3e67fcc_chunk_9",
+                  "content": "【联想 · 产品经理-AI方向（实习） 软性要求/加分项】\n有深度学习、RAG、Prompt、知识库学习经历者更佳",
+                  "metadata": {
+                    "company": "联想",
+                    "index": 9,
+                    "jd_id": "cefd5831-fea0-4676-a46f-cd81c3e67fcc",
+                    "position": "产品经理-AI方向（实习）",
+                    "priority": "medium",
+                    "section": "soft_requirements",
+                    "strategy": "semantic"
+                  },
+                  "distance": 0.8611521812980173,
+                  "bm25_score": 0.0,
+                  "vec_norm": 0.5400230286263517,
+                  "bm25_norm": 0.0,
+                  "hybrid_score": 0.37801612003844615,
+                  "rerank_score": 0.5961
+                },
+                {
+                  "chunk_id": "ec233a37-20d0-4df8-a253-42a0d0d00b5b_chunk_8",
+                  "content": "【联想 · 产品经理-AI方向 软性要求/加分项】\n有深度学习、RAG、Prompt、知识库学习经历者更佳。",
+                  "metadata": {
+                    "company": "联想",
+                    "index": 8,
+                    "jd_id": "ec233a37-20d0-4df8-a253-42a0d0d00b5b",
+                    "position": "产品经理-AI方向",
+                    "priority": "medium",
+                    "section": "soft_requirements",
+                    "strategy": "semantic"
+                  },
+                  "distance": 0.7943503260612488,
+                  "bm25_score": 0.0,
+                  "vec_norm": 0.8620537862886484,
+                  "bm25_norm": 0.0,
+                  "hybrid_score": 0.6034376504020538,
+                  "rerank_score": 0.4037
+                },
+                {
+                  "chunk_id": "51054437-3bd1-4da6-8f09-d5b5d5978de8_chunk_3",
+                  "content": "【蚂蚁集团 · AI产品工程师（转正实习） 硬性要求】\n技术直觉与体感：熟悉大模型基础原理，理解 RAG、Prompt Engineering 及 Agent 工作流与局限（如RAG机制、Context Window、模型幻觉等），能够与底层算法/工程团队同频对话，准确评估技术可行性",
+                  "metadata": {
+                    "company": "蚂蚁集团",
+                    "index": 3,
+                    "jd_id": "51054437-3bd1-4da6-8f09-d5b5d5978de8",
+                    "position": "AI产品工程师（转正实习）",
+                    "priority": "high",
+                    "section": "hard_requirements",
+                    "strategy": "semantic"
+                  },
+                  "distance": 0.7983732223510742,
+                  "bm25_score": 0.0,
+                  "vec_norm": 0.8426606671062896,
+                  "bm25_norm": 0.0,
+                  "hybrid_score": 0.5898624669744027,
+                  "rerank_score": 0.1847
+                },
+                {
+                  "chunk_id": "2af1570c-e34f-4fb9-8422-e08e3ac3b927_chunk_4",
+                  "content": "【蚂蚁集团 · AI产品工程师（搜推方向） 硬性要求】\n熟悉大模型基础原理，理解 RAG、Prompt Engineering 及 Agent 工作流，具备成本评估意识与良好的合规风险判断力",
+                  "metadata": {
+                    "company": "蚂蚁集团",
+                    "index": 4,
+                    "jd_id": "2af1570c-e34f-4fb9-8422-e08e3ac3b927",
+                    "position": "AI产品工程师（搜推方向）",
+                    "priority": "high",
+                    "section": "hard_requirements",
+                    "strategy": "semantic"
+                  },
+                  "distance": 0.765734851360321,
+                  "bm25_score": 0.0,
+                  "vec_norm": 1.0,
+                  "bm25_norm": 0.0,
+                  "hybrid_score": 0.7,
+                  "rerank_score": 0.0893
+                },
+                {
+                  "chunk_id": "4dcb6702-c777-4279-b0e9-99e8edbd608f_chunk_3",
+                  "content": "【蚂蚁集团 · AI产品经理 硬性要求】\n熟练掌握 Transformer、Token、RAG 等核心概念；对 ReAct、CoT、Multi-Agent 架构有实战理解；",
+                  "metadata": {
+                    "company": "蚂蚁集团",
+                    "index": 3,
+                    "jd_id": "4dcb6702-c777-4279-b0e9-99e8edbd608f",
+                    "position": "AI产品经理",
+                    "priority": "high",
+                    "section": "hard_requirements",
+                    "strategy": "semantic"
+                  },
+                  "distance": 0.813711941242218,
+                  "bm25_score": 4.3274305446097,
+                  "vec_norm": 0.7687175221355906,
+                  "bm25_norm": 0.26069917118665115,
+                  "hybrid_score": 0.6163120168509086,
+                  "rerank_score": 0.0313
+                }
+              ],
+              "sort_by": "match_score"
+            },
+            "result_preview": "{'rankings': [{'rank': 1, 'jd_id': '2af1570c-e34f-4fb9-8422-e08e3ac3b927', 'company': '蚂蚁集团', 'position': 'AI产品工程师（搜推方向）', 'match_score': 81, 'recommend_reason': '检索相关度较高（0.70）', 'key_match': ['检索召回']"
+          }
+        ],
+        "kb_chunks_count": 3,
+        "system_prompt_preview": "你是一位专业的求职顾问。请基于以下工具执行结果，给用户一个清晰、有帮助的回复。\n要求：\n1. 先直接回答用户的问题（是/否/有/没有），不要绕弯子，不要重复用户的原话\n2. 如果有匹配分析结果，给出具体的分数和建议\n3. 如果有检索结果，基于事实回答，不要编造\n4. 【强制】引用信息时必须标注来源。每个引用的事实后面都要跟 [来源：公司名-岗位名] 格式。   kb_retrieve 结果的 ch"
+      },
+      "memory": {
+        "working_turns": 1,
+        "compressed_blocks": 0,
+        "current_topic": "general",
+        "evidence_cache_size": 5
+      },
+      "reply": "你的 RAG 和 Embedding 经验对 **蚂蚁集团 - AI 产品工程师（搜推方向）** 最有用。\n\n### 1. 岗位匹配度分析\n根据检索与排序结果，以下是与你经验匹配度最高的岗位排名：\n\n| 排名 | 公司 | 岗位 | 匹配分数 | 投递优先级 |\n| :--- | :--- | :--- | :--- | :--- |\n| 1 | 蚂蚁集团 | AI 产品工程师（搜推方向） | 81 分 | 高 |\n| 2 | 蚂蚁集团 | AI 产品经理 | 78 分 | 中 |\n| 3 | 联想 | 产品经理-AI 方向 | 78 分 | 中 |\n| 4 | 蚂蚁集团 | AI 产品工程师（转正实习） | 78 分 | 中 |\n| 5 | 联想 | 产品经理-AI 方向（实习） | 71 分 | 中 |\n\n### 2. 核心需求证据\n你的经验在以下岗位中被明确列为关键技能，具体依据如下：\n\n*   **蚂蚁集团 - AI 产品工程师（搜推方向）**\n    *   **要求类型：** 硬性要求\n    *   **具体内容：** 熟悉大模型基础原理，理解 RAG、Prompt Engineering 及 Agent 工作流，具备成本评估意识与良好的合规风险判断力 [来源：蚂蚁集团-AI 产品工程师（搜推方向）]。\n    *   **匹配点：** 该岗位直接要求理解 RAG 机制，与你的经验高度重合。\n\n*   **蚂蚁集团 - AI 产品经理**\n    *   **要求类型：** 硬性要求\n    *   **具体内容：** 熟练掌握 Transformer、Token、RAG 等核心概念；对 ReAct、CoT、Multi-Agent 架构有实战理解 [来源：蚂蚁集团-AI 产品经理]。\n    *   **匹配点：** 明确将 RAG 列为核心概念掌握项。\n\n*   **蚂蚁集团 - AI 产品工程师（转正实习）**\n    *   **要求类型：** 硬性要求\n    *   **具体内容：** 技术直觉与体感：熟悉大模型基础原理，理解 RAG、Prompt Engineering 及 Agent 工作流与局限（如 RAG 机制、Context Window、模型幻觉等） [来源：蚂蚁集团-AI 产品工程师（转正实习）]。\n    *   **匹配点：** 强调对 RAG 机制及局限性的深入理解。\n\n*   **联想 - 产品经理-AI 方向**\n    *   **要求类型：** 软性要求/加分项\n    *   **具体内容：** 有深度学习、RAG、Prompt、知识库学习经历者更佳 [来源：联想 - 产品经理-AI 方向]。\n    *   **匹配点：** 你的经验在此处作为加分项，能提升竞争力。\n\n*   **联想 - 产品经理-AI 方向（实习）**\n    *   **要求类型：** 软性要求/加分项\n    *   **具体内容：** 有深度学习、RAG、Prompt、知识库学习经历者更佳 [来源：联想 - 产品经理-AI 方向（实习）]。\n    *   **匹配点：** 实习岗位同样将 RAG 经历视为加分项 [来源：联想 - 产品经理-AI 方向（实习）]。\n\n### 3. 求职建议\n1.  **优先投递：** 建议优先准备 **蚂蚁集团 - AI 产品工程师（搜推方向）** 的简历与面试，该岗位匹配度最高且为硬性要求 [来源：蚂蚁集团-AI 产品工程师（搜推方向）]。\n2.  **简历优化：** 在简历中突出你对 RAG 机制、Context Window 及模型幻觉的理解与实战案例，以匹配蚂蚁集团技术岗位的硬性要求 [来源：蚂蚁集团-AI 产品工程师（转正实习）]。\n3.  **备选方案：** 若倾向于产品侧而非工程侧，可尝试 **蚂蚁集团 - AI 产品经理** 或 **联想 - 产品经理-AI 方向**，前者要求核心概念掌握，后者作为加分项能显著增加录用概率 [来源：蚂蚁集团-AI 产品经理] [来源：联想 - 产品经理-AI 方向]。",
+      "debug_info": {
+        "task_graph": {
+          "tasks": {
+            "T0": {
+              "task_id": "T0",
+              "task_type": "tool_call",
+              "tool_name": "kb_retrieve",
+              "status": "success",
+              "parameters": {
+                "query": "{{global_slots.search_keywords}}",
+                "top_k": 5
+              },
+              "resolved_params": {
+                "query": "我的RAG和Embedding经验对哪个岗位最有用",
+                "top_k": 5
+              },
+              "result": {
+                "chunks": [
+                  {
+                    "chunk_id": "cefd5831-fea0-4676-a46f-cd81c3e67fcc_chunk_9",
+                    "content": "【联想 · 产品经理-AI方向（实习） 软性要求/加分项】\n有深度学习、RAG、Prompt、知识库学习经历者更佳",
+                    "metadata": {
+                      "company": "联想",
+                      "index": 9,
+                      "jd_id": "cefd5831-fea0-4676-a46f-cd81c3e67fcc",
+                      "position": "产品经理-AI方向（实习）",
+                      "priority": "medium",
+                      "section": "soft_requirements",
+                      "strategy": "semantic"
+                    },
+                    "distance": 0.8611521812980173,
+                    "bm25_score": 0.0,
+                    "vec_norm": 0.5400230286263517,
+                    "bm25_norm": 0.0,
+                    "hybrid_score": 0.37801612003844615,
+                    "rerank_score": 0.5961
+                  },
+                  {
+                    "chunk_id": "ec233a37-20d0-4df8-a253-42a0d0d00b5b_chunk_8",
+                    "content": "【联想 · 产品经理-AI方向 软性要求/加分项】\n有深度学习、RAG、Prompt、知识库学习经历者更佳。",
+                    "metadata": {
+                      "company": "联想",
+                      "index": 8,
+                      "jd_id": "ec233a37-20d0-4df8-a253-42a0d0d00b5b",
+                      "position": "产品经理-AI方向",
+                      "priority": "medium",
+                      "section": "soft_requirements",
+                      "strategy": "semantic"
+                    },
+                    "distance": 0.7943503260612488,
+                    "bm25_score": 0.0,
+                    "vec_norm": 0.8620537862886484,
+                    "bm25_norm": 0.0,
+                    "hybrid_score": 0.6034376504020538,
+                    "rerank_score": 0.4037
+                  },
+                  {
+                    "chunk_id": "51054437-3bd1-4da6-8f09-d5b5d5978de8_chunk_3",
+                    "content": "【蚂蚁集团 · AI产品工程师（转正实习） 硬性要求】\n技术直觉与体感：熟悉大模型基础原理，理解 RAG、Prompt Engineering 及 Agent 工作流与局限（如RAG机制、Context Window、模型幻觉等），能够与底层算法/工程团队同频对话，准确评估技术可行性",
+                    "metadata": {
+                      "company": "蚂蚁集团",
+                      "index": 3,
+                      "jd_id": "51054437-3bd1-4da6-8f09-d5b5d5978de8",
+                      "position": "AI产品工程师（转正实习）",
+                      "priority": "high",
+                      "section": "hard_requirements",
+                      "strategy": "semantic"
+                    },
+                    "distance": 0.7983732223510742,
+                    "bm25_score": 0.0,
+                    "vec_norm": 0.8426606671062896,
+                    "bm25_norm": 0.0,
+                    "hybrid_score": 0.5898624669744027,
+                    "rerank_score": 0.1847
+                  },
+                  {
+                    "chunk_id": "2af1570c-e34f-4fb9-8422-e08e3ac3b927_chunk_4",
+                    "content": "【蚂蚁集团 · AI产品工程师（搜推方向） 硬性要求】\n熟悉大模型基础原理，理解 RAG、Prompt Engineering 及 Agent 工作流，具备成本评估意识与良好的合规风险判断力",
+                    "metadata": {
+                      "company": "蚂蚁集团",
+                      "index": 4,
+                      "jd_id": "2af1570c-e34f-4fb9-8422-e08e3ac3b927",
+                      "position": "AI产品工程师（搜推方向）",
+                      "priority": "high",
+                      "section": "hard_requirements",
+                      "strategy": "semantic"
+                    },
+                    "distance": 0.765734851360321,
+                    "bm25_score": 0.0,
+                    "vec_norm": 1.0,
+                    "bm25_norm": 0.0,
+                    "hybrid_score": 0.7,
+                    "rerank_score": 0.0893
+                  },
+                  {
+                    "chunk_id": "4dcb6702-c777-4279-b0e9-99e8edbd608f_chunk_3",
+                    "content": "【蚂蚁集团 · AI产品经理 硬性要求】\n熟练掌握 Transformer、Token、RAG 等核心概念；对 ReAct、CoT、Multi-Agent 架构有实战理解；",
+                    "metadata": {
+                      "company": "蚂蚁集团",
+                      "index": 3,
+                      "jd_id": "4dcb6702-c777-4279-b0e9-99e8edbd608f",
+                      "position": "AI产品经理",
+                      "priority": "high",
+                      "section": "hard_requirements",
+                      "strategy": "semantic"
+                    },
+                    "distance": 0.813711941242218,
+                    "bm25_score": 4.3274305446097,
+                    "vec_norm": 0.7687175221355906,
+                    "bm25_norm": 0.26069917118665115,
+                    "hybrid_score": 0.6163120168509086,
+                    "rerank_score": 0.0313
+                  }
+                ],
+                "query": "我的RAG和Embedding经验对哪个岗位最有用",
+                "filters": {},
+                "strategy": "hybrid(70%vec+30%bm25)+reranker",
+                "pool_k": 5,
+                "rerank_k": 10,
+                "pool_size": 35,
+                "vec_only": 18,
+                "bm25_only": 15,
+                "both": 2,
+                "rerank": {
+                  "enabled": true,
+                  "candidates": 5,
+                  "output": 5,
+                  "best_rerank_score": 0.5961
+                }
+              },
+              "observation": "工具 kb_retrieve 执行成功"
+            },
+            "T1": {
+              "task_id": "T1",
+              "task_type": "tool_call",
+              "tool_name": "global_rank",
+              "status": "success",
+              "parameters": {
+                "resume_text": "{{global_slots.resume_text}}",
+                "candidate_jds": "{{T0.output.chunks}}",
+                "sort_by": "match_score"
+              },
+              "resolved_params": {
+                "resume_text": "姓名：陈雨桐\r\n教育背景\r\n江南科技大学\r\n信息工程学院·软件工程（AI应用方向）·硕士\r\n2024.09-2027.06（预计）\r\nGPA: 3.4/4.0 | 主修：机器学习基础、数据库系统、软件项目管理、人机交互设计\r\n\r\n云溪大学\r\n计算机学院·信息管理与信息系统·本科\r\n2020.09-2024.06\r\n荣誉：两次校级三等奖学金 | 主修：数据结构、管理学原理、Web开发技术、统计学\r\n\r\n项目经历\r\n求职助手小程序 — 智能简历匹配与面试模拟工具\r\n2025.03-2025.11\r\n产品经理 | 三人小组\r\n- 需求分析：设计调研问卷回收40余份有效样本，梳理\"简历评估\"与\"定向面试模拟\"核心需求，使用Figma完成低保真原型，输出产品需求文档。\r\n- AI匹配策略：调研开源Embedding模型实现简历与JD语义相似度计算，探索多维度匹配方案，对比整篇匹配与分块匹配效果差异，持续优化推荐排序。\r\n- 内容生成：基于大模型AI设计结构化Prompt，融合岗位关键词与简历信息输出个性化面试题，建立追问机制增强模拟面试针对性。\r\n- 测试验证：组织20人内测收集用户路径与反馈数据，针对复杂PDF格式设计补充录入机制，完成从需求分析到上线测试的完整产品闭环。\r\n\r\n教务问答机器人 — 基于校内政策的RAG问答系统\r\n2024.10-2025.02\r\n产品设计与测试 | 实验室课题项目\r\n- 知识库构建：收集整理教务处政策文件、培养方案及历史问答共80余份，完成扫描件OCR识别、格式转换与结构化清洗，建立可检索的领域知识库。\r\n- 交互设计：设计Web端对话界面，参考主流客服产品布局增加\"推荐提问\"推荐模块降低投入成本，针对政策类回答设计溯源展示功能增强可信度。\r\n- 效果测试：参与搭建检索增强生成链路，完成实验环境下多轮问答测试，验证标准政策类问题回答准确率，整理测试数据与优化建议形成可复用方案。\r\n\r\n校园经历\r\n江南科技大学软件学院学生会·宣传部干事\r\n2024.09-2025.06\r\n- 负责学院官方公众号推文排版与发布，累计输出活动宣传稿件10余篇；协助组织院内编程比赛，负责报名统计与现场签到。\r\n\r\n云溪大学图书馆·勤工助学岗\r\n2022.03-2023.06\r\n- 负责电子阅览室日常值班，协助同学解决基础网络与设备使用问题；参与旧期刊电子目录录入与数据整理工作。\r\n\r\n获奖情况\r\n- 2025.05 江南科技大学研究生学业三等奖学金\r\n- 2024.11 学院AI应用创新赛（课程组）三等奖\r\n- 2022.06 云溪大学优秀共青团员\r\n- 2022.12 校级网页设计比赛优秀奖\r\n\r\n个人技能\r\n- 产品工具：熟练使用Figma进行原型与交互演示，了解Axure基础操作；能够使用Xmind梳理产品架构，通过腾讯文档/飞书写PRD。\r\n- 技术理解：了解大语言模型在应用层的落地方式，具备Prompt Engineering实践经验；理解RAG基本架构与工作流程，了解Embedding与向量检索作用。\r\n- 语言能力：英语CET-4（525分），可阅读英文技术文档与产品资料。\r\n- 办公技能：熟练使用Office办公软件，掌握Excel数据透视表等基础数据分析功能。",
+                "candidate_jds": [
+                  {
+                    "chunk_id": "cefd5831-fea0-4676-a46f-cd81c3e67fcc_chunk_9",
+                    "content": "【联想 · 产品经理-AI方向（实习） 软性要求/加分项】\n有深度学习、RAG、Prompt、知识库学习经历者更佳",
+                    "metadata": {
+                      "company": "联想",
+                      "index": 9,
+                      "jd_id": "cefd5831-fea0-4676-a46f-cd81c3e67fcc",
+                      "position": "产品经理-AI方向（实习）",
+                      "priority": "medium",
+                      "section": "soft_requirements",
+                      "strategy": "semantic"
+                    },
+                    "distance": 0.8611521812980173,
+                    "bm25_score": 0.0,
+                    "vec_norm": 0.5400230286263517,
+                    "bm25_norm": 0.0,
+                    "hybrid_score": 0.37801612003844615,
+                    "rerank_score": 0.5961
+                  },
+                  {
+                    "chunk_id": "ec233a37-20d0-4df8-a253-42a0d0d00b5b_chunk_8",
+                    "content": "【联想 · 产品经理-AI方向 软性要求/加分项】\n有深度学习、RAG、Prompt、知识库学习经历者更佳。",
+                    "metadata": {
+                      "company": "联想",
+                      "index": 8,
+                      "jd_id": "ec233a37-20d0-4df8-a253-42a0d0d00b5b",
+                      "position": "产品经理-AI方向",
+                      "priority": "medium",
+                      "section": "soft_requirements",
+                      "strategy": "semantic"
+                    },
+                    "distance": 0.7943503260612488,
+                    "bm25_score": 0.0,
+                    "vec_norm": 0.8620537862886484,
+                    "bm25_norm": 0.0,
+                    "hybrid_score": 0.6034376504020538,
+                    "rerank_score": 0.4037
+                  },
+                  {
+                    "chunk_id": "51054437-3bd1-4da6-8f09-d5b5d5978de8_chunk_3",
+                    "content": "【蚂蚁集团 · AI产品工程师（转正实习） 硬性要求】\n技术直觉与体感：熟悉大模型基础原理，理解 RAG、Prompt Engineering 及 Agent 工作流与局限（如RAG机制、Context Window、模型幻觉等），能够与底层算法/工程团队同频对话，准确评估技术可行性",
+                    "metadata": {
+                      "company": "蚂蚁集团",
+                      "index": 3,
+                      "jd_id": "51054437-3bd1-4da6-8f09-d5b5d5978de8",
+                      "position": "AI产品工程师（转正实习）",
+                      "priority": "high",
+                      "section": "hard_requirements",
+                      "strategy": "semantic"
+                    },
+                    "distance": 0.7983732223510742,
+                    "bm25_score": 0.0,
+                    "vec_norm": 0.8426606671062896,
+                    "bm25_norm": 0.0,
+                    "hybrid_score": 0.5898624669744027,
+                    "rerank_score": 0.1847
+                  },
+                  {
+                    "chunk_id": "2af1570c-e34f-4fb9-8422-e08e3ac3b927_chunk_4",
+                    "content": "【蚂蚁集团 · AI产品工程师（搜推方向） 硬性要求】\n熟悉大模型基础原理，理解 RAG、Prompt Engineering 及 Agent 工作流，具备成本评估意识与良好的合规风险判断力",
+                    "metadata": {
+                      "company": "蚂蚁集团",
+                      "index": 4,
+                      "jd_id": "2af1570c-e34f-4fb9-8422-e08e3ac3b927",
+                      "position": "AI产品工程师（搜推方向）",
+                      "priority": "high",
+                      "section": "hard_requirements",
+                      "strategy": "semantic"
+                    },
+                    "distance": 0.765734851360321,
+                    "bm25_score": 0.0,
+                    "vec_norm": 1.0,
+                    "bm25_norm": 0.0,
+                    "hybrid_score": 0.7,
+                    "rerank_score": 0.0893
+                  },
+                  {
+                    "chunk_id": "4dcb6702-c777-4279-b0e9-99e8edbd608f_chunk_3",
+                    "content": "【蚂蚁集团 · AI产品经理 硬性要求】\n熟练掌握 Transformer、Token、RAG 等核心概念；对 ReAct、CoT、Multi-Agent 架构有实战理解；",
+                    "metadata": {
+                      "company": "蚂蚁集团",
+                      "index": 3,
+                      "jd_id": "4dcb6702-c777-4279-b0e9-99e8edbd608f",
+                      "position": "AI产品经理",
+                      "priority": "high",
+                      "section": "hard_requirements",
+                      "strategy": "semantic"
+                    },
+                    "distance": 0.813711941242218,
+                    "bm25_score": 4.3274305446097,
+                    "vec_norm": 0.7687175221355906,
+                    "bm25_norm": 0.26069917118665115,
+                    "hybrid_score": 0.6163120168509086,
+                    "rerank_score": 0.0313
+                  }
+                ],
+                "sort_by": "match_score"
+              },
+              "result": {
+                "rankings": [
+                  {
+                    "rank": 1,
+                    "jd_id": "2af1570c-e34f-4fb9-8422-e08e3ac3b927",
+                    "company": "蚂蚁集团",
+                    "position": "AI产品工程师（搜推方向）",
+                    "match_score": 81,
+                    "recommend_reason": "检索相关度较高（0.70）",
+                    "key_match": [
+                      "检索召回"
+                    ],
+                    "key_gap": [
+                      "需进一步了解详细匹配情况"
+                    ],
+                    "apply_priority": "高"
+                  },
+                  {
+                    "rank": 2,
+                    "jd_id": "4dcb6702-c777-4279-b0e9-99e8edbd608f",
+                    "company": "蚂蚁集团",
+                    "position": "AI产品经理",
+                    "match_score": 78,
+                    "recommend_reason": "检索相关度较高（0.62）",
+                    "key_match": [
+                      "检索召回"
+                    ],
+                    "key_gap": [
+                      "需进一步了解详细匹配情况"
+                    ],
+                    "apply_priority": "中"
+                  },
+                  {
+                    "rank": 3,
+                    "jd_id": "ec233a37-20d0-4df8-a253-42a0d0d00b5b",
+                    "company": "联想",
+                    "position": "产品经理-AI方向",
+                    "match_score": 78,
+                    "recommend_reason": "检索相关度较高（0.60）",
+                    "key_match": [
+                      "检索召回"
+                    ],
+                    "key_gap": [
+                      "需进一步了解详细匹配情况"
+                    ],
+                    "apply_priority": "中"
+                  },
+                  {
+                    "rank": 4,
+                    "jd_id": "51054437-3bd1-4da6-8f09-d5b5d5978de8",
+                    "company": "蚂蚁集团",
+                    "position": "AI产品工程师（转正实习）",
+                    "match_score": 78,
+                    "recommend_reason": "检索相关度较高（0.59）",
+                    "key_match": [
+                      "检索召回"
+                    ],
+                    "key_gap": [
+                      "需进一步了解详细匹配情况"
+                    ],
+                    "apply_priority": "中"
+                  },
+                  {
+                    "rank": 5,
+                    "jd_id": "cefd5831-fea0-4676-a46f-cd81c3e67fcc",
+                    "company": "联想",
+                    "position": "产品经理-AI方向（实习）",
+                    "match_score": 71,
+                    "recommend_reason": "检索相关度较高（0.38）",
+                    "key_match": [
+                      "检索召回"
+                    ],
+                    "key_gap": [
+                      "需进一步了解详细匹配情况"
+                    ],
+                    "apply_priority": "中"
+                  }
+                ],
+                "strategy_advice": "有 1 个高度匹配岗位建议优先投递，其余岗位可根据个人偏好选择性尝试。",
+                "_template_mode": true,
+                "_coarse_filter_meta": {
+                  "input_jds": 5,
+                  "output_jds": 5,
+                  "filter_ratio": 0.0
+                }
+              },
+              "observation": "工具 global_rank 执行成功"
+            },
+            "T2": {
+              "task_id": "T2",
+              "task_type": "aggregate",
+              "tool_name": null,
+              "status": "success",
+              "parameters": {
+                "ranked_jds": "{{T1.output.ranked_list}}",
+                "explanation": "{{T1.output.explanation}}",
+                "retrieved_chunks": "{{T0.output.chunks}}"
+              },
+              "resolved_params": {
+                "ranked_jds": "{{T1.output.ranked_list}}",
+                "explanation": "{{T1.output.explanation}}",
+                "retrieved_chunks": [
+                  {
+                    "chunk_id": "cefd5831-fea0-4676-a46f-cd81c3e67fcc_chunk_9",
+                    "content": "【联想 · 产品经理-AI方向（实习） 软性要求/加分项】\n有深度学习、RAG、Prompt、知识库学习经历者更佳",
+                    "metadata": {
+                      "company": "联想",
+                      "index": 9,
+                      "jd_id": "cefd5831-fea0-4676-a46f-cd81c3e67fcc",
+                      "position": "产品经理-AI方向（实习）",
+                      "priority": "medium",
+                      "section": "soft_requirements",
+                      "strategy": "semantic"
+                    },
+                    "distance": 0.8611521812980173,
+                    "bm25_score": 0.0,
+                    "vec_norm": 0.5400230286263517,
+                    "bm25_norm": 0.0,
+                    "hybrid_score": 0.37801612003844615,
+                    "rerank_score": 0.5961
+                  },
+                  {
+                    "chunk_id": "ec233a37-20d0-4df8-a253-42a0d0d00b5b_chunk_8",
+                    "content": "【联想 · 产品经理-AI方向 软性要求/加分项】\n有深度学习、RAG、Prompt、知识库学习经历者更佳。",
+                    "metadata": {
+                      "company": "联想",
+                      "index": 8,
+                      "jd_id": "ec233a37-20d0-4df8-a253-42a0d0d00b5b",
+                      "position": "产品经理-AI方向",
+                      "priority": "medium",
+                      "section": "soft_requirements",
+                      "strategy": "semantic"
+                    },
+                    "distance": 0.7943503260612488,
+                    "bm25_score": 0.0,
+                    "vec_norm": 0.8620537862886484,
+                    "bm25_norm": 0.0,
+                    "hybrid_score": 0.6034376504020538,
+                    "rerank_score": 0.4037
+                  },
+                  {
+                    "chunk_id": "51054437-3bd1-4da6-8f09-d5b5d5978de8_chunk_3",
+                    "content": "【蚂蚁集团 · AI产品工程师（转正实习） 硬性要求】\n技术直觉与体感：熟悉大模型基础原理，理解 RAG、Prompt Engineering 及 Agent 工作流与局限（如RAG机制、Context Window、模型幻觉等），能够与底层算法/工程团队同频对话，准确评估技术可行性",
+                    "metadata": {
+                      "company": "蚂蚁集团",
+                      "index": 3,
+                      "jd_id": "51054437-3bd1-4da6-8f09-d5b5d5978de8",
+                      "position": "AI产品工程师（转正实习）",
+                      "priority": "high",
+                      "section": "hard_requirements",
+                      "strategy": "semantic"
+                    },
+                    "distance": 0.7983732223510742,
+                    "bm25_score": 0.0,
+                    "vec_norm": 0.8426606671062896,
+                    "bm25_norm": 0.0,
+                    "hybrid_score": 0.5898624669744027,
+                    "rerank_score": 0.1847
+                  },
+                  {
+                    "chunk_id": "2af1570c-e34f-4fb9-8422-e08e3ac3b927_chunk_4",
+                    "content": "【蚂蚁集团 · AI产品工程师（搜推方向） 硬性要求】\n熟悉大模型基础原理，理解 RAG、Prompt Engineering 及 Agent 工作流，具备成本评估意识与良好的合规风险判断力",
+                    "metadata": {
+                      "company": "蚂蚁集团",
+                      "index": 4,
+                      "jd_id": "2af1570c-e34f-4fb9-8422-e08e3ac3b927",
+                      "position": "AI产品工程师（搜推方向）",
+                      "priority": "high",
+                      "section": "hard_requirements",
+                      "strategy": "semantic"
+                    },
+                    "distance": 0.765734851360321,
+                    "bm25_score": 0.0,
+                    "vec_norm": 1.0,
+                    "bm25_norm": 0.0,
+                    "hybrid_score": 0.7,
+                    "rerank_score": 0.0893
+                  },
+                  {
+                    "chunk_id": "4dcb6702-c777-4279-b0e9-99e8edbd608f_chunk_3",
+                    "content": "【蚂蚁集团 · AI产品经理 硬性要求】\n熟练掌握 Transformer、Token、RAG 等核心概念；对 ReAct、CoT、Multi-Agent 架构有实战理解；",
+                    "metadata": {
+                      "company": "蚂蚁集团",
+                      "index": 3,
+                      "jd_id": "4dcb6702-c777-4279-b0e9-99e8edbd608f",
+                      "position": "AI产品经理",
+                      "priority": "high",
+                      "section": "hard_requirements",
+                      "strategy": "semantic"
+                    },
+                    "distance": 0.813711941242218,
+                    "bm25_score": 4.3274305446097,
+                    "vec_norm": 0.7687175221355906,
+                    "bm25_norm": 0.26069917118665115,
+                    "hybrid_score": 0.6163120168509086,
+                    "rerank_score": 0.0313
+                  }
+                ]
+              },
+              "result": {
+                "aggregation": {
+                  "ranked_jds": "{{T1.output.ranked_list}}",
+                  "explanation": "{{T1.output.explanation}}",
+                  "retrieved_chunks": [
+                    {
+                      "chunk_id": "cefd5831-fea0-4676-a46f-cd81c3e67fcc_chunk_9",
+                      "content": "【联想 · 产品经理-AI方向（实习） 软性要求/加分项】\n有深度学习、RAG、Prompt、知识库学习经历者更佳",
+                      "metadata": {
+                        "company": "联想",
+                        "index": 9,
+                        "jd_id": "cefd5831-fea0-4676-a46f-cd81c3e67fcc",
+                        "position": "产品经理-AI方向（实习）",
+                        "priority": "medium",
+                        "section": "soft_requirements",
+                        "strategy": "semantic"
+                      },
+                      "distance": 0.8611521812980173,
+                      "bm25_score": 0.0,
+                      "vec_norm": 0.5400230286263517,
+                      "bm25_norm": 0.0,
+                      "hybrid_score": 0.37801612003844615,
+                      "rerank_score": 0.5961
+                    },
+                    {
+                      "chunk_id": "ec233a37-20d0-4df8-a253-42a0d0d00b5b_chunk_8",
+                      "content": "【联想 · 产品经理-AI方向 软性要求/加分项】\n有深度学习、RAG、Prompt、知识库学习经历者更佳。",
+                      "metadata": {
+                        "company": "联想",
+                        "index": 8,
+                        "jd_id": "ec233a37-20d0-4df8-a253-42a0d0d00b5b",
+                        "position": "产品经理-AI方向",
+                        "priority": "medium",
+                        "section": "soft_requirements",
+                        "strategy": "semantic"
+                      },
+                      "distance": 0.7943503260612488,
+                      "bm25_score": 0.0,
+                      "vec_norm": 0.8620537862886484,
+                      "bm25_norm": 0.0,
+                      "hybrid_score": 0.6034376504020538,
+                      "rerank_score": 0.4037
+                    },
+                    {
+                      "chunk_id": "51054437-3bd1-4da6-8f09-d5b5d5978de8_chunk_3",
+                      "content": "【蚂蚁集团 · AI产品工程师（转正实习） 硬性要求】\n技术直觉与体感：熟悉大模型基础原理，理解 RAG、Prompt Engineering 及 Agent 工作流与局限（如RAG机制、Context Window、模型幻觉等），能够与底层算法/工程团队同频对话，准确评估技术可行性",
+                      "metadata": {
+                        "company": "蚂蚁集团",
+                        "index": 3,
+                        "jd_id": "51054437-3bd1-4da6-8f09-d5b5d5978de8",
+                        "position": "AI产品工程师（转正实习）",
+                        "priority": "high",
+                        "section": "hard_requirements",
+                        "strategy": "semantic"
+                      },
+                      "distance": 0.7983732223510742,
+                      "bm25_score": 0.0,
+                      "vec_norm": 0.8426606671062896,
+                      "bm25_norm": 0.0,
+                      "hybrid_score": 0.5898624669744027,
+                      "rerank_score": 0.1847
+                    },
+                    {
+                      "chunk_id": "2af1570c-e34f-4fb9-8422-e08e3ac3b927_chunk_4",
+                      "content": "【蚂蚁集团 · AI产品工程师（搜推方向） 硬性要求】\n熟悉大模型基础原理，理解 RAG、Prompt Engineering 及 Agent 工作流，具备成本评估意识与良好的合规风险判断力",
+                      "metadata": {
+                        "company": "蚂蚁集团",
+                        "index": 4,
+                        "jd_id": "2af1570c-e34f-4fb9-8422-e08e3ac3b927",
+                        "position": "AI产品工程师（搜推方向）",
+                        "priority": "high",
+                        "section": "hard_requirements",
+                        "strategy": "semantic"
+                      },
+                      "distance": 0.765734851360321,
+                      "bm25_score": 0.0,
+                      "vec_norm": 1.0,
+                      "bm25_norm": 0.0,
+                      "hybrid_score": 0.7,
+                      "rerank_score": 0.0893
+                    },
+                    {
+                      "chunk_id": "4dcb6702-c777-4279-b0e9-99e8edbd608f_chunk_3",
+                      "content": "【蚂蚁集团 · AI产品经理 硬性要求】\n熟练掌握 Transformer、Token、RAG 等核心概念；对 ReAct、CoT、Multi-Agent 架构有实战理解；",
+                      "metadata": {
+                        "company": "蚂蚁集团",
+                        "index": 3,
+                        "jd_id": "4dcb6702-c777-4279-b0e9-99e8edbd608f",
+                        "position": "AI产品经理",
+                        "priority": "high",
+                        "section": "hard_requirements",
+                        "strategy": "semantic"
+                      },
+                      "distance": 0.813711941242218,
+                      "bm25_score": 4.3274305446097,
+                      "vec_norm": 0.7687175221355906,
+                      "bm25_norm": 0.26069917118665115,
+                      "hybrid_score": 0.6163120168509086,
+                      "rerank_score": 0.0313
+                    }
+                  ]
+                }
+              },
+              "observation": "聚合完成"
+            }
+          },
+          "global_status": "success",
+          "replan_reason": "",
+          "replan_count": 0
+        },
+        "intent": {
+          "demands": [
+            {
+              "intent": "position_explore",
+              "entities": {
+                "search_keywords": "我的RAG和Embedding经验对哪个岗位最有用",
+                "sort_by": "match_score",
+                "top_k": 5
+              },
+              "confidence": 0.88
+            }
+          ],
+          "needs_clarification": false,
+          "clarification_question": ""
+        },
+        "rewrite": {
+          "rewritten_query": "我的RAG和Embedding经验对哪个岗位最有用",
+          "search_keywords": "我的RAG和Embedding经验对哪个岗位最有用",
+          "is_follow_up": false,
+          "follow_up_type": "none",
+          "resolved_references": {}
+        },
+        "evidence_cache": [
+          {
+            "chunk_id": "cefd5831-fea0-4676-a46f-cd81c3e67fcc_chunk_9",
+            "content": "【联想 · 产品经理-AI方向（实习） 软性要求/加分项】\n有深度学习、RAG、Prompt、知识库学习经历者更佳",
+            "metadata": {
+              "company": "联想",
+              "index": 9,
+              "jd_id": "cefd5831-fea0-4676-a46f-cd81c3e67fcc",
+              "position": "产品经理-AI方向（实习）",
+              "priority": "medium",
+              "section": "soft_requirements",
+              "strategy": "semantic"
+            },
+            "distance": 0.8611521812980173,
+            "bm25_score": 0.0,
+            "vec_norm": 0.5400230286263517,
+            "bm25_norm": 0.0,
+            "hybrid_score": 0.37801612003844615,
+            "rerank_score": 0.5961
+          },
+          {
+            "chunk_id": "ec233a37-20d0-4df8-a253-42a0d0d00b5b_chunk_8",
+            "content": "【联想 · 产品经理-AI方向 软性要求/加分项】\n有深度学习、RAG、Prompt、知识库学习经历者更佳。",
+            "metadata": {
+              "company": "联想",
+              "index": 8,
+              "jd_id": "ec233a37-20d0-4df8-a253-42a0d0d00b5b",
+              "position": "产品经理-AI方向",
+              "priority": "medium",
+              "section": "soft_requirements",
+              "strategy": "semantic"
+            },
+            "distance": 0.7943503260612488,
+            "bm25_score": 0.0,
+            "vec_norm": 0.8620537862886484,
+            "bm25_norm": 0.0,
+            "hybrid_score": 0.6034376504020538,
+            "rerank_score": 0.4037
+          },
+          {
+            "chunk_id": "51054437-3bd1-4da6-8f09-d5b5d5978de8_chunk_3",
+            "content": "【蚂蚁集团 · AI产品工程师（转正实习） 硬性要求】\n技术直觉与体感：熟悉大模型基础原理，理解 RAG、Prompt Engineering 及 Agent 工作流与局限（如RAG机制、Context Window、模型幻觉等），能够与底层算法/工程团队同频对话，准确评估技术可行性",
+            "metadata": {
+              "company": "蚂蚁集团",
+              "index": 3,
+              "jd_id": "51054437-3bd1-4da6-8f09-d5b5d5978de8",
+              "position": "AI产品工程师（转正实习）",
+              "priority": "high",
+              "section": "hard_requirements",
+              "strategy": "semantic"
+            },
+            "distance": 0.7983732223510742,
+            "bm25_score": 0.0,
+            "vec_norm": 0.8426606671062896,
+            "bm25_norm": 0.0,
+            "hybrid_score": 0.5898624669744027,
+            "rerank_score": 0.1847
+          },
+          {
+            "chunk_id": "2af1570c-e34f-4fb9-8422-e08e3ac3b927_chunk_4",
+            "content": "【蚂蚁集团 · AI产品工程师（搜推方向） 硬性要求】\n熟悉大模型基础原理，理解 RAG、Prompt Engineering 及 Agent 工作流，具备成本评估意识与良好的合规风险判断力",
+            "metadata": {
+              "company": "蚂蚁集团",
+              "index": 4,
+              "jd_id": "2af1570c-e34f-4fb9-8422-e08e3ac3b927",
+              "position": "AI产品工程师（搜推方向）",
+              "priority": "high",
+              "section": "hard_requirements",
+              "strategy": "semantic"
+            },
+            "distance": 0.765734851360321,
+            "bm25_score": 0.0,
+            "vec_norm": 1.0,
+            "bm25_norm": 0.0,
+            "hybrid_score": 0.7,
+            "rerank_score": 0.0893
+          },
+          {
+            "chunk_id": "4dcb6702-c777-4279-b0e9-99e8edbd608f_chunk_3",
+            "content": "【蚂蚁集团 · AI产品经理 硬性要求】\n熟练掌握 Transformer、Token、RAG 等核心概念；对 ReAct、CoT、Multi-Agent 架构有实战理解；",
+            "metadata": {
+              "company": "蚂蚁集团",
+              "index": 3,
+              "jd_id": "4dcb6702-c777-4279-b0e9-99e8edbd608f",
+              "position": "AI产品经理",
+              "priority": "high",
+              "section": "hard_requirements",
+              "strategy": "semantic"
+            },
+            "distance": 0.813711941242218,
+            "bm25_score": 4.3274305446097,
+            "vec_norm": 0.7687175221355906,
+            "bm25_norm": 0.26069917118665115,
+            "hybrid_score": 0.6163120168509086,
+            "rerank_score": 0.0313
+          }
+        ],
+        "evidence_cache_query": "我的RAG和Embedding经验对哪个岗位最有用",
+        "tool_outputs": [
+          {
+            "task_id": "T0",
+            "tool": "kb_retrieve",
+            "description": "检索与RAG和Embedding经验相关的岗位JD",
+            "result": {
+              "chunks": [
+                {
+                  "chunk_id": "cefd5831-fea0-4676-a46f-cd81c3e67fcc_chunk_9",
+                  "content": "【联想 · 产品经理-AI方向（实习） 软性要求/加分项】\n有深度学习、RAG、Prompt、知识库学习经历者更佳",
+                  "source": "联想-产品经理-AI方向（实习）",
+                  "metadata": {
+                    "company": "联想",
+                    "position": "产品经理-AI方向（实习）"
+                  }
+                },
+                {
+                  "chunk_id": "ec233a37-20d0-4df8-a253-42a0d0d00b5b_chunk_8",
+                  "content": "【联想 · 产品经理-AI方向 软性要求/加分项】\n有深度学习、RAG、Prompt、知识库学习经历者更佳。",
+                  "source": "联想-产品经理-AI方向",
+                  "metadata": {
+                    "company": "联想",
+                    "position": "产品经理-AI方向"
+                  }
+                },
+                {
+                  "chunk_id": "51054437-3bd1-4da6-8f09-d5b5d5978de8_chunk_3",
+                  "content": "【蚂蚁集团 · AI产品工程师（转正实习） 硬性要求】\n技术直觉与体感：熟悉大模型基础原理，理解 RAG、Prompt Engineering 及 Agent 工作流与局限（如RAG机制、Context Window、模型幻觉等），能够与底层算法/工程团队同频对话，准确评估技术可行性",
+                  "source": "蚂蚁集团-AI产品工程师（转正实习）",
+                  "metadata": {
+                    "company": "蚂蚁集团",
+                    "position": "AI产品工程师（转正实习）"
+                  }
+                },
+                {
+                  "chunk_id": "2af1570c-e34f-4fb9-8422-e08e3ac3b927_chunk_4",
+                  "content": "【蚂蚁集团 · AI产品工程师（搜推方向） 硬性要求】\n熟悉大模型基础原理，理解 RAG、Prompt Engineering 及 Agent 工作流，具备成本评估意识与良好的合规风险判断力",
+                  "source": "蚂蚁集团-AI产品工程师（搜推方向）",
+                  "metadata": {
+                    "company": "蚂蚁集团",
+                    "position": "AI产品工程师（搜推方向）"
+                  }
+                },
+                {
+                  "chunk_id": "4dcb6702-c777-4279-b0e9-99e8edbd608f_chunk_3",
+                  "content": "【蚂蚁集团 · AI产品经理 硬性要求】\n熟练掌握 Transformer、Token、RAG 等核心概念；对 ReAct、CoT、Multi-Agent 架构有实战理解；",
+                  "source": "蚂蚁集团-AI产品经理",
+                  "metadata": {
+                    "company": "蚂蚁集团",
+                    "position": "AI产品经理"
+                  }
+                }
+              ],
+              "query": "我的RAG和Embedding经验对哪个岗位最有用",
+              "filters": {},
+              "strategy": "hybrid(70%vec+30%bm25)+reranker",
+              "pool_k": 5,
+              "rerank_k": 10,
+              "pool_size": 35,
+              "vec_only": 18,
+              "bm25_only": 15,
+              "both": 2,
+              "rerank": {
+                "enabled": true,
+                "candidates": 5,
+                "output": 5,
+                "best_rerank_score": 0.5961
+              }
+            }
+          },
+          {
+            "task_id": "T1",
+            "tool": "global_rank",
+            "description": "对检索到的JD按匹配度排序，找出最适合的岗位",
+            "result": {
+              "rankings": [
+                {
+                  "company": "蚂蚁集团",
+                  "position": "AI产品工程师（搜推方向）",
+                  "match_score": 81,
+                  "recommend_reason": "检索相关度较高（0.70）",
+                  "key_match": [
+                    "检索召回"
+                  ],
+                  "key_gap": [
+                    "需进一步了解详细匹配情况"
+                  ],
+                  "apply_priority": "高"
+                },
+                {
+                  "company": "蚂蚁集团",
+                  "position": "AI产品经理",
+                  "match_score": 78,
+                  "recommend_reason": "检索相关度较高（0.62）",
+                  "key_match": [
+                    "检索召回"
+                  ],
+                  "key_gap": [
+                    "需进一步了解详细匹配情况"
+                  ],
+                  "apply_priority": "中"
+                },
+                {
+                  "company": "联想",
+                  "position": "产品经理-AI方向",
+                  "match_score": 78,
+                  "recommend_reason": "检索相关度较高（0.60）",
+                  "key_match": [
+                    "检索召回"
+                  ],
+                  "key_gap": [
+                    "需进一步了解详细匹配情况"
+                  ],
+                  "apply_priority": "中"
+                },
+                {
+                  "company": "蚂蚁集团",
+                  "position": "AI产品工程师（转正实习）",
+                  "match_score": 78,
+                  "recommend_reason": "检索相关度较高（0.59）",
+                  "key_match": [
+                    "检索召回"
+                  ],
+                  "key_gap": [
+                    "需进一步了解详细匹配情况"
+                  ],
+                  "apply_priority": "中"
+                },
+                {
+                  "company": "联想",
+                  "position": "产品经理-AI方向（实习）",
+                  "match_score": 71,
+                  "recommend_reason": "检索相关度较高（0.38）",
+                  "key_match": [
+                    "检索召回"
+                  ],
+                  "key_gap": [
+                    "需进一步了解详细匹配情况"
+                  ],
+                  "apply_priority": "中"
+                }
+              ],
+              "strategy_advice": "有 1 个高度匹配岗位建议优先投递，其余岗位可根据个人偏好选择性尝试。",
+              "_template_mode": true,
+              "_coarse_filter_meta": {
+                "input_jds": 5,
+                "output_jds": 5,
+                "filter_ratio": 0.0
+              }
+            }
+          },
+          {
+            "task_id": "T2",
+            "tool": null,
+            "description": "聚合最终排名结果，生成回复素材",
+            "result": {
+              "aggregation": {
+                "ranked_jds": "{{T1.output.ranked_list}}",
+                "explanation": "{{T1.output.explanation}}",
+                "retrieved_chunks": [
+                  {
+                    "chunk_id": "cefd5831-fea0-4676-a46f-cd81c3e67fcc_chunk_9",
+                    "content": "【联想 · 产品经理-AI方向（实习） 软性要求/加分项】\n有深度学习、RAG、Prompt、知识库学习经历者更佳",
+                    "metadata": {
+                      "company": "联想",
+                      "index": 9,
+                      "jd_id": "cefd5831-fea0-4676-a46f-cd81c3e67fcc",
+                      "position": "产品经理-AI方向（实习）",
+                      "priority": "medium",
+                      "section": "soft_requirements",
+                      "strategy": "semantic"
+                    },
+                    "distance": 0.8611521812980173,
+                    "bm25_score": 0.0,
+                    "vec_norm": 0.5400230286263517,
+                    "bm25_norm": 0.0,
+                    "hybrid_score": 0.37801612003844615,
+                    "rerank_score": 0.5961
+                  },
+                  {
+                    "chunk_id": "ec233a37-20d0-4df8-a253-42a0d0d00b5b_chunk_8",
+                    "content": "【联想 · 产品经理-AI方向 软性要求/加分项】\n有深度学习、RAG、Prompt、知识库学习经历者更佳。",
+                    "metadata": {
+                      "company": "联想",
+                      "index": 8,
+                      "jd_id": "ec233a37-20d0-4df8-a253-42a0d0d00b5b",
+                      "position": "产品经理-AI方向",
+                      "priority": "medium",
+                      "section": "soft_requirements",
+                      "strategy": "semantic"
+                    },
+                    "distance": 0.7943503260612488,
+                    "bm25_score": 0.0,
+                    "vec_norm": 0.8620537862886484,
+                    "bm25_norm": 0.0,
+                    "hybrid_score": 0.6034376504020538,
+                    "rerank_score": 0.4037
+                  },
+                  {
+                    "chunk_id": "51054437-3bd1-4da6-8f09-d5b5d5978de8_chunk_3",
+                    "content": "【蚂蚁集团 · AI产品工程师（转正实习） 硬性要求】\n技术直觉与体感：熟悉大模型基础原理，理解 RAG、Prompt Engineering 及 Agent 工作流与局限（如RAG机制、Context Window、模型幻觉等），能够与底层算法/工程团队同频对话，准确评估技术可行性",
+                    "metadata": {
+                      "company": "蚂蚁集团",
+                      "index": 3,
+                      "jd_id": "51054437-3bd1-4da6-8f09-d5b5d5978de8",
+                      "position": "AI产品工程师（转正实习）",
+                      "priority": "high",
+                      "section": "hard_requirements",
+                      "strategy": "semantic"
+                    },
+                    "distance": 0.7983732223510742,
+                    "bm25_score": 0.0,
+                    "vec_norm": 0.8426606671062896,
+                    "bm25_norm": 0.0,
+                    "hybrid_score": 0.5898624669744027,
+                    "rerank_score": 0.1847
+                  },
+                  {
+                    "chunk_id": "2af1570c-e34f-4fb9-8422-e08e3ac3b927_chunk_4",
+                    "content": "【蚂蚁集团 · AI产品工程师（搜推方向） 硬性要求】\n熟悉大模型基础原理，理解 RAG、Prompt Engineering 及 Agent 工作流，具备成本评估意识与良好的合规风险判断力",
+                    "metadata": {
+                      "company": "蚂蚁集团",
+                      "index": 4,
+                      "jd_id": "2af1570c-e34f-4fb9-8422-e08e3ac3b927",
+                      "position": "AI产品工程师（搜推方向）",
+                      "priority": "high",
+                      "section": "hard_requirements",
+                      "strategy": "semantic"
+                    },
+                    "distance": 0.765734851360321,
+                    "bm25_score": 0.0,
+                    "vec_norm": 1.0,
+                    "bm25_norm": 0.0,
+                    "hybrid_score": 0.7,
+                    "rerank_score": 0.0893
+                  },
+                  {
+                    "chunk_id": "4dcb6702-c777-4279-b0e9-99e8edbd608f_chunk_3",
+                    "content": "【蚂蚁集团 · AI产品经理 硬性要求】\n熟练掌握 Transformer、Token、RAG 等核心概念；对 ReAct、CoT、Multi-Agent 架构有实战理解；",
+                    "metadata": {
+                      "company": "蚂蚁集团",
+                      "index": 3,
+                      "jd_id": "4dcb6702-c777-4279-b0e9-99e8edbd608f",
+                      "position": "AI产品经理",
+                      "priority": "high",
+                      "section": "hard_requirements",
+                      "strategy": "semantic"
+                    },
+                    "distance": 0.813711941242218,
+                    "bm25_score": 4.3274305446097,
+                    "vec_norm": 0.7687175221355906,
+                    "bm25_norm": 0.26069917118665115,
+                    "hybrid_score": 0.6163120168509086,
+                    "rerank_score": 0.0313
+                  }
+                ]
+              }
+            }
+          }
+        ],
+        "final_aggregation_prompt": {
+          "system_prompt": "你是一位专业的求职顾问。请基于以下工具执行结果，给用户一个清晰、有帮助的回复。\n要求：\n1. 先直接回答用户的问题（是/否/有/没有），不要绕弯子，不要重复用户的原话\n2. 如果有匹配分析结果，给出具体的分数和建议\n3. 如果有检索结果，基于事实回答，不要编造\n4. 【强制】引用信息时必须标注来源。每个引用的事实后面都要跟 [来源：公司名-岗位名] 格式。   kb_retrieve 结果的 chunks 中带有 'source' 字段（如'字节跳动-AI产品经理'），请直接使用。   external_search 结果带有 'source_name' 字段，也请直接使用。\n5. 当本地知识库与外部搜索结果冲突时，请并列呈现两种说法并标注各自来源，不要替用户做判断\n6. 语气友好、专业、结构化",
+          "user_prompt": "【用户问题】\n我的RAG和Embedding经验对哪个岗位最有用\n\n【工具执行结果】\n[{\"task_id\": \"T0\", \"tool\": \"kb_retrieve\", \"description\": \"检索与RAG和Embedding经验相关的岗位JD\", \"result\": {\"chunks\": [{\"chunk_id\": \"cefd5831-fea0-4676-a46f-cd81c3e67fcc_chunk_9\", \"content\": \"【联想 · 产品经理-AI方向（实习） 软性要求/加分项】\\n有深度学习、RAG、Prompt、知识库学习经历者更佳\", \"source\": \"联想-产品经理-AI方向（实习）\", \"metadata\": {\"company\": \"联想\", \"position\": \"产品经理-AI方向（实习）\"}}, {\"chunk_id\": \"ec233a37-20d0-4df8-a253-42a0d0d00b5b_chunk_8\", \"content\": \"【联想 · 产品经理-AI方向 软性要求/加分项】\\n有深度学习、RAG、Prompt、知识库学习经历者更佳。\", \"source\": \"联想-产品经理-AI方向\", \"metadata\": {\"company\": \"联想\", \"position\": \"产品经理-AI方向\"}}, {\"chunk_id\": \"51054437-3bd1-4da6-8f09-d5b5d5978de8_chunk_3\", \"content\": \"【蚂蚁集团 · AI产品工程师（转正实习） 硬性要求】\\n技术直觉与体感：熟悉大模型基础原理，理解 RAG、Prompt Engineering 及 Agent 工作流与局限（如RAG机制、Context Window、模型幻觉等），能够与底层算法/工程团队同频对话，准确评估技术可行性\", \"source\": \"蚂蚁集团-AI产品工程师（转正实习）\", \"metadata\": {\"company\": \"蚂蚁集团\", \"position\": \"AI产品工程师（转正实习）\"}}, {\"chunk_id\": \"2af1570c-e34f-4fb9-8422-e08e3ac3b927_chunk_4\", \"content\": \"【蚂蚁集团 · AI产品工程师（搜推方向） 硬性要求】\\n熟悉大模型基础原理，理解 RAG、Prompt Engineering 及 Agent 工作流，具备成本评估意识与良好的合规风险判断力\", \"source\": \"蚂蚁集团-AI产品工程师（搜推方向）\", \"metadata\": {\"company\": \"蚂蚁集团\", \"position\": \"AI产品工程师（搜推方向）\"}}, {\"chunk_id\": \"4dcb6702-c777-4279-b0e9-99e8edbd608f_chunk_3\", \"content\": \"【蚂蚁集团 · AI产品经理 硬性要求】\\n熟练掌握 Transformer、Token、RAG 等核心概念；对 ReAct、CoT、Multi-Agent 架构有实战理解；\", \"source\": \"蚂蚁集团-AI产品经理\", \"metadata\": {\"company\": \"蚂蚁集团\", \"position\": \"AI产品经理\"}}], \"query\": \"我的RAG和Embedding经验对哪个岗位最有用\", \"filters\": {}, \"strategy\": \"hybrid(70%vec+30%bm25)+reranker\", \"pool_k\": 5, \"rerank_k\": 10, \"pool_size\": 35, \"vec_only\": 18, \"bm25_only\": 15, \"both\": 2, \"rerank\": {\"enabled\": true, \"candidates\": 5, \"output\": 5, \"best_rerank_score\": 0.5961}}}, {\"task_id\": \"T1\", \"tool\": \"global_rank\", \"description\": \"对检索到的JD按匹配度排序，找出最适合的岗位\", \"result\": {\"rankings\": [{\"company\": \"蚂蚁集团\", \"position\": \"AI产品工程师（搜推方向）\", \"match_score\": 81, \"recommend_reason\": \"检索相关度较高（0.70）\", \"key_match\": [\"检索召回\"], \"key_gap\": [\"需进一步了解详细匹配情况\"], \"apply_priority\": \"高\"}, {\"company\": \"蚂蚁集团\", \"position\": \"AI产品经理\", \"match_score\": 78, \"recommend_reason\": \"检索相关度较高（0.62）\", \"key_match\": [\"检索召回\"], \"key_gap\": [\"需进一步了解详细匹配情况\"], \"apply_priority\": \"中\"}, {\"company\": \"联想\", \"position\": \"产品经理-AI方向\", \"match_score\": 78, \"recommend_reason\": \"检索相关度较高（0.60）\", \"key_match\": [\"检索召回\"], \"key_gap\": [\"需进一步了解详细匹配情况\"], \"apply_priority\": \"中\"}, {\"company\": \"蚂蚁集团\", \"position\": \"AI产品工程师（转正实习）\", \"match_score\": 78, \"recommend_reason\": \"检索相关度较高（0.59）\", \"key_match\": [\"检索召回\"], \"key_gap\": [\"需进一步了解详细匹配情况\"], \"apply_priority\": \"中\"}, {\"company\": \"联想\", \"position\": \"产品经理-AI方向（实习）\", \"match_score\": 71, \"recommend_reason\": \"检索相关度较高（0.38）\", \"key_match\": [\"检索召回\"], \"key_gap\": [\"需进一步了解详细匹配情况\"], \"apply_priority\": \"中\"}], \"strategy_advice\": \"有 1 个高度匹配岗位建议优先投递，其余岗位可根据个人偏好选择性尝试。\", \"_template_mode\": true, \"_coarse_filter_meta\": {\"input_jds\": 5, \"output_jds\": 5, \"filter_ratio\": 0.0}}}, {\"task_id\": \"T2\", \"tool\": null, \"description\": \"聚合最终排名结果，生成回复素材\", \"result\": {\"aggregation\": {\"ranked_jds\": \"{{T1.output.ranked_list}}\", \"explanation\": \"{{T1.output.explanation}}\", \"retrie\n\n请生成回复："
+        }
+      },
+      "usage": {
+        "prompt_tokens": 7960,
+        "completion_tokens": 4232,
+        "total_tokens": 12192
+      },
+      "_time": 65.09837174415588,
+      "type": "done"
+    }
+  ],
+  "timestamp": "2026-06-04T16:27:13.192389",
+  "prompt_tokens": 7960,
+  "completion_tokens": 4232,
+  "total_tokens": 12192,
+  "tool_execution_success_rate": 1.0,
+  "tool_correct_rate": 1.0
+}

@@ -1,0 +1,871 @@
+{
+  "case_id": "eval_li_16",
+  "message": "百度有Java后端岗吗",
+  "gold_intents": [
+    "verify"
+  ],
+  "expected_tools": [
+    "kb_retrieve",
+    "qa_synthesize"
+  ],
+  "scenario": "边界_知识库无命中",
+  "eval_context": {
+    "gold_intents": [
+      "verify"
+    ],
+    "gold_slots": {
+      "company": "百度",
+      "position": "Java后端"
+    },
+    "relevance_score": 0,
+    "expected_tools": [
+      "kb_retrieve",
+      "qa_synthesize"
+    ],
+    "scenario": "边界_知识库无命中",
+    "notes": "百度4条JD全为AI产品，无Java岗。期望kb_retrieve返回空后正确告知用户"
+  },
+  "resume_id": "e30c8b27-cfce-4918-8810-832e3ab5087c",
+  "status": "success",
+  "error": null,
+  "ttfb": 0.007,
+  "total_latency": 88.43,
+  "event_count": 50,
+  "pred_intent": "attribute_verify",
+  "pred_intents": [
+    "attribute_verify"
+  ],
+  "pred_tools": [
+    {
+      "tool": "kb_retrieve",
+      "status": "❌",
+      "params": {
+        "query": "百度 Java后端",
+        "top_k": 5,
+        "company": "百度",
+        "position": "Java后端"
+      },
+      "result_preview": "{'chunks': [{'chunk_id': '45bd2600-af57-45fe-a96e-c6cae6838c7a_chunk_5', 'content': '【某小公司 · Java后端 软性要求/加分项】\\n有ERP系统开发经验优先', 'metadata': {'company': '某小公司', 'index': 5, 'jd_id': '45bd2600-af57-45fe-a"
+    }
+  ],
+  "tools_called": [
+    "kb_retrieve"
+  ],
+  "kb_chunks": [],
+  "tool_executions_full": [
+    {
+      "tool_name": "kb_retrieve",
+      "task_id": "T0",
+      "status": "failed",
+      "output": {
+        "chunks": [
+          {
+            "chunk_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a_chunk_5",
+            "content": "【某小公司 · Java后端 软性要求/加分项】\n有ERP系统开发经验优先",
+            "metadata": {
+              "company": "某小公司",
+              "index": 5,
+              "jd_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a",
+              "position": "Java后端",
+              "priority": "medium",
+              "section": "soft_requirements",
+              "strategy": "semantic"
+            },
+            "distance": null,
+            "bm25_score": 11.258199765726784,
+            "vec_norm": 0.0,
+            "bm25_norm": 0.81247979333699,
+            "hybrid_score": 0.243743938001097,
+            "rerank_score": 0.9226
+          },
+          {
+            "chunk_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a_chunk_2",
+            "content": "【某小公司 · Java后端 硬性要求】\n1年以上Java开发经验",
+            "metadata": {
+              "company": "某小公司",
+              "index": 2,
+              "jd_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a",
+              "position": "Java后端",
+              "priority": "high",
+              "section": "hard_requirements",
+              "strategy": "semantic"
+            },
+            "distance": null,
+            "bm25_score": 12.94854009366867,
+            "vec_norm": 0.0,
+            "bm25_norm": 1.0,
+            "hybrid_score": 0.3,
+            "rerank_score": 0.8252
+          },
+          {
+            "chunk_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a_chunk_4",
+            "content": "【某小公司 · Java后端 硬性要求】\n大专及以上学历",
+            "metadata": {
+              "company": "某小公司",
+              "index": 4,
+              "jd_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a",
+              "position": "Java后端",
+              "priority": "high",
+              "section": "hard_requirements",
+              "strategy": "semantic"
+            },
+            "distance": null,
+            "bm25_score": 11.635007593251636,
+            "vec_norm": 0.0,
+            "bm25_norm": 0.854281482926762,
+            "hybrid_score": 0.2562844448780286,
+            "rerank_score": 0.7721
+          },
+          {
+            "chunk_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a_chunk_3",
+            "content": "【某小公司 · Java后端 硬性要求】\n熟悉Spring Boot、MySQL",
+            "metadata": {
+              "company": "某小公司",
+              "index": 3,
+              "jd_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a",
+              "position": "Java后端",
+              "priority": "high",
+              "section": "hard_requirements",
+              "strategy": "semantic"
+            },
+            "distance": null,
+            "bm25_score": 11.749115130689624,
+            "vec_norm": 0.0,
+            "bm25_norm": 0.8669401580163113,
+            "hybrid_score": 0.2600820474048934,
+            "rerank_score": 0.7049
+          },
+          {
+            "chunk_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a_chunk_6",
+            "content": "【某小公司 · Java后端 关键词】\nJava, Spring Boot, MySQL, ERP, 后端",
+            "metadata": {
+              "company": "某小公司",
+              "index": 6,
+              "jd_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a",
+              "position": "Java后端",
+              "section": "keywords",
+              "strategy": "semantic"
+            },
+            "distance": null,
+            "bm25_score": 12.222497843330014,
+            "vec_norm": 0.0,
+            "bm25_norm": 0.9194555140293249,
+            "hybrid_score": 0.27583665420879744,
+            "rerank_score": 0.1766
+          }
+        ],
+        "query": "百度 Java后端",
+        "filters": {
+          "company": "百度",
+          "position": "Java后端"
+        },
+        "strategy": "hybrid(70%vec+30%bm25)+reranker",
+        "pool_k": 5,
+        "rerank_k": 10,
+        "pool_size": 20,
+        "vec_only": 0,
+        "bm25_only": 20,
+        "both": 0,
+        "rerank": {
+          "enabled": true,
+          "candidates": 5,
+          "output": 5,
+          "best_rerank_score": 0.9226
+        }
+      }
+    },
+    {
+      "tool_name": "qa_synthesize",
+      "task_id": "T1",
+      "status": "failed",
+      "output": null
+    }
+  ],
+  "debug_info": {
+    "task_graph": {
+      "tasks": {
+        "T0": {
+          "task_id": "T0",
+          "task_type": "tool_call",
+          "tool_name": "kb_retrieve",
+          "status": "failed",
+          "parameters": {
+            "query": "百度 Java后端",
+            "top_k": 5,
+            "company": "百度",
+            "position": "Java后端"
+          },
+          "resolved_params": {
+            "query": "百度 Java后端",
+            "top_k": 5,
+            "company": "百度",
+            "position": "Java后端"
+          },
+          "result": {
+            "chunks": [
+              {
+                "chunk_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a_chunk_5",
+                "content": "【某小公司 · Java后端 软性要求/加分项】\n有ERP系统开发经验优先",
+                "metadata": {
+                  "company": "某小公司",
+                  "index": 5,
+                  "jd_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a",
+                  "position": "Java后端",
+                  "priority": "medium",
+                  "section": "soft_requirements",
+                  "strategy": "semantic"
+                },
+                "distance": null,
+                "bm25_score": 11.258199765726784,
+                "vec_norm": 0.0,
+                "bm25_norm": 0.81247979333699,
+                "hybrid_score": 0.243743938001097,
+                "rerank_score": 0.9226
+              },
+              {
+                "chunk_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a_chunk_2",
+                "content": "【某小公司 · Java后端 硬性要求】\n1年以上Java开发经验",
+                "metadata": {
+                  "company": "某小公司",
+                  "index": 2,
+                  "jd_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a",
+                  "position": "Java后端",
+                  "priority": "high",
+                  "section": "hard_requirements",
+                  "strategy": "semantic"
+                },
+                "distance": null,
+                "bm25_score": 12.94854009366867,
+                "vec_norm": 0.0,
+                "bm25_norm": 1.0,
+                "hybrid_score": 0.3,
+                "rerank_score": 0.8252
+              },
+              {
+                "chunk_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a_chunk_4",
+                "content": "【某小公司 · Java后端 硬性要求】\n大专及以上学历",
+                "metadata": {
+                  "company": "某小公司",
+                  "index": 4,
+                  "jd_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a",
+                  "position": "Java后端",
+                  "priority": "high",
+                  "section": "hard_requirements",
+                  "strategy": "semantic"
+                },
+                "distance": null,
+                "bm25_score": 11.635007593251636,
+                "vec_norm": 0.0,
+                "bm25_norm": 0.854281482926762,
+                "hybrid_score": 0.2562844448780286,
+                "rerank_score": 0.7721
+              },
+              {
+                "chunk_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a_chunk_3",
+                "content": "【某小公司 · Java后端 硬性要求】\n熟悉Spring Boot、MySQL",
+                "metadata": {
+                  "company": "某小公司",
+                  "index": 3,
+                  "jd_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a",
+                  "position": "Java后端",
+                  "priority": "high",
+                  "section": "hard_requirements",
+                  "strategy": "semantic"
+                },
+                "distance": null,
+                "bm25_score": 11.749115130689624,
+                "vec_norm": 0.0,
+                "bm25_norm": 0.8669401580163113,
+                "hybrid_score": 0.2600820474048934,
+                "rerank_score": 0.7049
+              },
+              {
+                "chunk_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a_chunk_6",
+                "content": "【某小公司 · Java后端 关键词】\nJava, Spring Boot, MySQL, ERP, 后端",
+                "metadata": {
+                  "company": "某小公司",
+                  "index": 6,
+                  "jd_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a",
+                  "position": "Java后端",
+                  "section": "keywords",
+                  "strategy": "semantic"
+                },
+                "distance": null,
+                "bm25_score": 12.222497843330014,
+                "vec_norm": 0.0,
+                "bm25_norm": 0.9194555140293249,
+                "hybrid_score": 0.27583665420879744,
+                "rerank_score": 0.1766
+              }
+            ],
+            "query": "百度 Java后端",
+            "filters": {
+              "company": "百度",
+              "position": "Java后端"
+            },
+            "strategy": "hybrid(70%vec+30%bm25)+reranker",
+            "pool_k": 5,
+            "rerank_k": 10,
+            "pool_size": 20,
+            "vec_only": 0,
+            "bm25_only": 20,
+            "both": 0,
+            "rerank": {
+              "enabled": true,
+              "candidates": 5,
+              "output": 5,
+              "best_rerank_score": 0.9226
+            }
+          },
+          "observation": "SEMANTIC_MISMATCH|检索结果与用户意图不符|suggested_query=百度 Java后端"
+        },
+        "T1": {
+          "task_id": "T1",
+          "task_type": "tool_call",
+          "tool_name": "qa_synthesize",
+          "status": "skipped",
+          "parameters": {
+            "question": "百度有Java后端岗吗",
+            "evidence_chunks": "{{T0.output.chunks}}",
+            "qa_type": "factual"
+          },
+          "resolved_params": {},
+          "result": null,
+          "observation": "执行器退出时未执行"
+        }
+      },
+      "global_status": "failed",
+      "replan_reason": "T1_tool_failed",
+      "replan_count": 1
+    },
+    "intent": {
+      "demands": [
+        {
+          "intent": "attribute_verify",
+          "entities": {
+            "company": "百度",
+            "position": "Java后端"
+          },
+          "confidence": 0.75
+        }
+      ],
+      "needs_clarification": false,
+      "clarification_question": ""
+    },
+    "rewrite": {
+      "rewritten_query": "百度有Java后端岗吗",
+      "search_keywords": "百度有Java后端岗",
+      "is_follow_up": false,
+      "follow_up_type": "none",
+      "resolved_references": {}
+    },
+    "evidence_cache": [],
+    "evidence_cache_query": "",
+    "tool_outputs": [],
+    "final_aggregation_prompt": {
+      "system_prompt": "你是一位专业的求职顾问。请基于以下工具执行结果，给用户一个清晰、有帮助的回复。\n要求：\n1. 先直接回答用户的问题（是/否/有/没有），不要绕弯子，不要重复用户的原话\n2. 如果有匹配分析结果，给出具体的分数和建议\n3. 如果有检索结果，基于事实回答，不要编造\n4. 【强制】引用信息时必须标注来源。每个引用的事实后面都要跟 [来源：公司名-岗位名] 格式。   kb_retrieve 结果的 chunks 中带有 'source' 字段（如'字节跳动-AI产品经理'），请直接使用。   external_search 结果带有 'source_name' 字段，也请直接使用。\n5. 当本地知识库与外部搜索结果冲突时，请并列呈现两种说法并标注各自来源，不要替用户做判断\n6. 语气友好、专业、结构化",
+      "user_prompt": "【用户问题】\n百度有Java后端岗吗\n\n【工具执行结果】\n[]\n\n请生成回复："
+    }
+  },
+  "reply": "目前检索结果中暂无具体岗位记录。\n\n由于本次工具查询未返回相关数据，我无法基于现有资料库为您提供确切的岗位确认。不过，作为互联网大厂，百度通常会有此类技术岗位的招聘需求。\n\n**顾问建议：**\n\n1.  **官方渠道核实**：建议直接访问百度官方招聘网站或公众号，获取最准确的实时岗位信息。\n2.  **主流平台搜索**：可在主流招聘平台上搜索“百度 Java 后端”，查看最新发布的职位详情。\n3.  **关注内推机会**：如有认识的朋友在该公司，内推往往能获取更具体的部门招聘需求。\n\n希望这些建议能帮助您更高效地获取信息，祝您求职顺利！",
+  "reply_length": 271,
+  "intent_match": true,
+  "tool_match_rate": 0.5,
+  "has_reply": true,
+  "events": [
+    {
+      "step": "intent",
+      "message": "正在识别您的意图...",
+      "_time": 3.8599016666412354,
+      "type": "status"
+    },
+    {
+      "step": "plan",
+      "message": "正在规划任务...",
+      "_time": 3.8599417209625244,
+      "type": "status"
+    },
+    {
+      "step": "execute",
+      "message": "正在执行分析...",
+      "_time": 17.34935426712036,
+      "type": "status"
+    },
+    {
+      "step": "aggregate",
+      "message": "正在生成回复...",
+      "_time": 17.737722158432007,
+      "type": "status"
+    },
+    {
+      "text": "目前",
+      "_time": 85.62534713745117,
+      "type": "delta"
+    },
+    {
+      "text": "检索结果中暂无",
+      "_time": 85.72939610481262,
+      "type": "delta"
+    },
+    {
+      "text": "具体岗位记录。",
+      "_time": 85.73528361320496,
+      "type": "delta"
+    },
+    {
+      "text": "\n\n由于本次工具",
+      "_time": 85.87344694137573,
+      "type": "delta"
+    },
+    {
+      "text": "查询未",
+      "_time": 85.87723922729492,
+      "type": "delta"
+    },
+    {
+      "text": "返回相关数据，",
+      "_time": 86.01460409164429,
+      "type": "delta"
+    },
+    {
+      "text": "我无法",
+      "_time": 86.01924157142639,
+      "type": "delta"
+    },
+    {
+      "text": "基于现有资料库",
+      "_time": 86.07151556015015,
+      "type": "delta"
+    },
+    {
+      "text": "为您提供确切的岗位",
+      "_time": 86.07728886604309,
+      "type": "delta"
+    },
+    {
+      "text": "确认。不过，",
+      "_time": 86.21747541427612,
+      "type": "delta"
+    },
+    {
+      "text": "作为互联网",
+      "_time": 86.2463014125824,
+      "type": "delta"
+    },
+    {
+      "text": "大厂，百度通常",
+      "_time": 86.32332730293274,
+      "type": "delta"
+    },
+    {
+      "text": "会有",
+      "_time": 86.32722210884094,
+      "type": "delta"
+    },
+    {
+      "text": "此类技术岗位的招聘",
+      "_time": 86.43853735923767,
+      "type": "delta"
+    },
+    {
+      "text": "需求。\n\n",
+      "_time": 86.44321203231812,
+      "type": "delta"
+    },
+    {
+      "text": "**顾问建议：**",
+      "_time": 86.57045793533325,
+      "type": "delta"
+    },
+    {
+      "text": "\n\n",
+      "_time": 86.57418441772461,
+      "type": "delta"
+    },
+    {
+      "text": "1.  **",
+      "_time": 86.6291491985321,
+      "type": "delta"
+    },
+    {
+      "text": "官方渠道核实**",
+      "_time": 86.63425397872925,
+      "type": "delta"
+    },
+    {
+      "text": "：建议直接访问",
+      "_time": 86.77230834960938,
+      "type": "delta"
+    },
+    {
+      "text": "百度官方",
+      "_time": 86.81649231910706,
+      "type": "delta"
+    },
+    {
+      "text": "招聘网站或公众号",
+      "_time": 86.88035607337952,
+      "type": "delta"
+    },
+    {
+      "text": "，获取最",
+      "_time": 86.88524413108826,
+      "type": "delta"
+    },
+    {
+      "text": "准确的实时岗位信息",
+      "_time": 87.00857734680176,
+      "type": "delta"
+    },
+    {
+      "text": "。\n",
+      "_time": 87.01325178146362,
+      "type": "delta"
+    },
+    {
+      "text": "2.  **",
+      "_time": 87.14934778213501,
+      "type": "delta"
+    },
+    {
+      "text": "主流平台搜索",
+      "_time": 87.15117645263672,
+      "type": "delta"
+    },
+    {
+      "text": "**：可在主流",
+      "_time": 87.24157619476318,
+      "type": "delta"
+    },
+    {
+      "text": "招聘平台上",
+      "_time": 87.2451868057251,
+      "type": "delta"
+    },
+    {
+      "text": "搜索“百度 Java",
+      "_time": 87.40047025680542,
+      "type": "delta"
+    },
+    {
+      "text": " 后端”，查看",
+      "_time": 87.405109167099,
+      "type": "delta"
+    },
+    {
+      "text": "最新发布的职位详情",
+      "_time": 87.4914128780365,
+      "type": "delta"
+    },
+    {
+      "text": "。\n3.",
+      "_time": 87.49414658546448,
+      "type": "delta"
+    },
+    {
+      "text": "  **关注内",
+      "_time": 87.63846397399902,
+      "type": "delta"
+    },
+    {
+      "text": "推机会**：",
+      "_time": 87.67922782897949,
+      "type": "delta"
+    },
+    {
+      "text": "如有认识的朋友在",
+      "_time": 87.78137016296387,
+      "type": "delta"
+    },
+    {
+      "text": "该公司",
+      "_time": 87.78411269187927,
+      "type": "delta"
+    },
+    {
+      "text": "，内推往往",
+      "_time": 87.87142729759216,
+      "type": "delta"
+    },
+    {
+      "text": "能获取",
+      "_time": 87.8751232624054,
+      "type": "delta"
+    },
+    {
+      "text": "更具体的部门招聘",
+      "_time": 88.0093994140625,
+      "type": "delta"
+    },
+    {
+      "text": "需求。\n\n",
+      "_time": 88.01416492462158,
+      "type": "delta"
+    },
+    {
+      "text": "希望这些建议能",
+      "_time": 88.10516309738159,
+      "type": "delta"
+    },
+    {
+      "text": "帮助您更高效",
+      "_time": 88.10913515090942,
+      "type": "delta"
+    },
+    {
+      "text": "地获取信息，",
+      "_time": 88.21337985992432,
+      "type": "delta"
+    },
+    {
+      "text": "祝您求职顺利！",
+      "_time": 88.25236487388611,
+      "type": "delta"
+    },
+    {
+      "session_id": "eval_li_16_1780563641234",
+      "intent": "attribute_verify",
+      "route_meta": {
+        "layer": "llm",
+        "intent": "attribute_verify",
+        "confidence": 0.75,
+        "demands": [
+          {
+            "intent": "attribute_verify",
+            "entities": {
+              "company": "百度",
+              "position": "Java后端"
+            }
+          }
+        ],
+        "plan_tasks": 2
+      },
+      "agent_mode": "llm",
+      "is_clarification": false,
+      "agent": {
+        "rewritten_query": "百度有Java后端岗吗",
+        "tools": [
+          {
+            "tool": "kb_retrieve",
+            "status": "❌",
+            "params": {
+              "query": "百度 Java后端",
+              "top_k": 5,
+              "company": "百度",
+              "position": "Java后端"
+            },
+            "result_preview": "{'chunks': [{'chunk_id': '45bd2600-af57-45fe-a96e-c6cae6838c7a_chunk_5', 'content': '【某小公司 · Java后端 软性要求/加分项】\\n有ERP系统开发经验优先', 'metadata': {'company': '某小公司', 'index': 5, 'jd_id': '45bd2600-af57-45fe-a"
+          }
+        ],
+        "kb_chunks_count": 0,
+        "system_prompt_preview": "你是一位专业的求职顾问。请基于以下工具执行结果，给用户一个清晰、有帮助的回复。\n要求：\n1. 先直接回答用户的问题（是/否/有/没有），不要绕弯子，不要重复用户的原话\n2. 如果有匹配分析结果，给出具体的分数和建议\n3. 如果有检索结果，基于事实回答，不要编造\n4. 【强制】引用信息时必须标注来源。每个引用的事实后面都要跟 [来源：公司名-岗位名] 格式。   kb_retrieve 结果的 ch"
+      },
+      "memory": {
+        "working_turns": 1,
+        "compressed_blocks": 0,
+        "current_topic": "general",
+        "evidence_cache_size": 0
+      },
+      "reply": "目前检索结果中暂无具体岗位记录。\n\n由于本次工具查询未返回相关数据，我无法基于现有资料库为您提供确切的岗位确认。不过，作为互联网大厂，百度通常会有此类技术岗位的招聘需求。\n\n**顾问建议：**\n\n1.  **官方渠道核实**：建议直接访问百度官方招聘网站或公众号，获取最准确的实时岗位信息。\n2.  **主流平台搜索**：可在主流招聘平台上搜索“百度 Java 后端”，查看最新发布的职位详情。\n3.  **关注内推机会**：如有认识的朋友在该公司，内推往往能获取更具体的部门招聘需求。\n\n希望这些建议能帮助您更高效地获取信息，祝您求职顺利！",
+      "debug_info": {
+        "task_graph": {
+          "tasks": {
+            "T0": {
+              "task_id": "T0",
+              "task_type": "tool_call",
+              "tool_name": "kb_retrieve",
+              "status": "failed",
+              "parameters": {
+                "query": "百度 Java后端",
+                "top_k": 5,
+                "company": "百度",
+                "position": "Java后端"
+              },
+              "resolved_params": {
+                "query": "百度 Java后端",
+                "top_k": 5,
+                "company": "百度",
+                "position": "Java后端"
+              },
+              "result": {
+                "chunks": [
+                  {
+                    "chunk_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a_chunk_5",
+                    "content": "【某小公司 · Java后端 软性要求/加分项】\n有ERP系统开发经验优先",
+                    "metadata": {
+                      "company": "某小公司",
+                      "index": 5,
+                      "jd_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a",
+                      "position": "Java后端",
+                      "priority": "medium",
+                      "section": "soft_requirements",
+                      "strategy": "semantic"
+                    },
+                    "distance": null,
+                    "bm25_score": 11.258199765726784,
+                    "vec_norm": 0.0,
+                    "bm25_norm": 0.81247979333699,
+                    "hybrid_score": 0.243743938001097,
+                    "rerank_score": 0.9226
+                  },
+                  {
+                    "chunk_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a_chunk_2",
+                    "content": "【某小公司 · Java后端 硬性要求】\n1年以上Java开发经验",
+                    "metadata": {
+                      "company": "某小公司",
+                      "index": 2,
+                      "jd_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a",
+                      "position": "Java后端",
+                      "priority": "high",
+                      "section": "hard_requirements",
+                      "strategy": "semantic"
+                    },
+                    "distance": null,
+                    "bm25_score": 12.94854009366867,
+                    "vec_norm": 0.0,
+                    "bm25_norm": 1.0,
+                    "hybrid_score": 0.3,
+                    "rerank_score": 0.8252
+                  },
+                  {
+                    "chunk_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a_chunk_4",
+                    "content": "【某小公司 · Java后端 硬性要求】\n大专及以上学历",
+                    "metadata": {
+                      "company": "某小公司",
+                      "index": 4,
+                      "jd_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a",
+                      "position": "Java后端",
+                      "priority": "high",
+                      "section": "hard_requirements",
+                      "strategy": "semantic"
+                    },
+                    "distance": null,
+                    "bm25_score": 11.635007593251636,
+                    "vec_norm": 0.0,
+                    "bm25_norm": 0.854281482926762,
+                    "hybrid_score": 0.2562844448780286,
+                    "rerank_score": 0.7721
+                  },
+                  {
+                    "chunk_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a_chunk_3",
+                    "content": "【某小公司 · Java后端 硬性要求】\n熟悉Spring Boot、MySQL",
+                    "metadata": {
+                      "company": "某小公司",
+                      "index": 3,
+                      "jd_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a",
+                      "position": "Java后端",
+                      "priority": "high",
+                      "section": "hard_requirements",
+                      "strategy": "semantic"
+                    },
+                    "distance": null,
+                    "bm25_score": 11.749115130689624,
+                    "vec_norm": 0.0,
+                    "bm25_norm": 0.8669401580163113,
+                    "hybrid_score": 0.2600820474048934,
+                    "rerank_score": 0.7049
+                  },
+                  {
+                    "chunk_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a_chunk_6",
+                    "content": "【某小公司 · Java后端 关键词】\nJava, Spring Boot, MySQL, ERP, 后端",
+                    "metadata": {
+                      "company": "某小公司",
+                      "index": 6,
+                      "jd_id": "45bd2600-af57-45fe-a96e-c6cae6838c7a",
+                      "position": "Java后端",
+                      "section": "keywords",
+                      "strategy": "semantic"
+                    },
+                    "distance": null,
+                    "bm25_score": 12.222497843330014,
+                    "vec_norm": 0.0,
+                    "bm25_norm": 0.9194555140293249,
+                    "hybrid_score": 0.27583665420879744,
+                    "rerank_score": 0.1766
+                  }
+                ],
+                "query": "百度 Java后端",
+                "filters": {
+                  "company": "百度",
+                  "position": "Java后端"
+                },
+                "strategy": "hybrid(70%vec+30%bm25)+reranker",
+                "pool_k": 5,
+                "rerank_k": 10,
+                "pool_size": 20,
+                "vec_only": 0,
+                "bm25_only": 20,
+                "both": 0,
+                "rerank": {
+                  "enabled": true,
+                  "candidates": 5,
+                  "output": 5,
+                  "best_rerank_score": 0.9226
+                }
+              },
+              "observation": "SEMANTIC_MISMATCH|检索结果与用户意图不符|suggested_query=百度 Java后端"
+            },
+            "T1": {
+              "task_id": "T1",
+              "task_type": "tool_call",
+              "tool_name": "qa_synthesize",
+              "status": "skipped",
+              "parameters": {
+                "question": "百度有Java后端岗吗",
+                "evidence_chunks": "{{T0.output.chunks}}",
+                "qa_type": "factual"
+              },
+              "resolved_params": {},
+              "result": null,
+              "observation": "执行器退出时未执行"
+            }
+          },
+          "global_status": "failed",
+          "replan_reason": "T1_tool_failed",
+          "replan_count": 1
+        },
+        "intent": {
+          "demands": [
+            {
+              "intent": "attribute_verify",
+              "entities": {
+                "company": "百度",
+                "position": "Java后端"
+              },
+              "confidence": 0.75
+            }
+          ],
+          "needs_clarification": false,
+          "clarification_question": ""
+        },
+        "rewrite": {
+          "rewritten_query": "百度有Java后端岗吗",
+          "search_keywords": "百度有Java后端岗",
+          "is_follow_up": false,
+          "follow_up_type": "none",
+          "resolved_references": {}
+        },
+        "evidence_cache": [],
+        "evidence_cache_query": "",
+        "tool_outputs": [],
+        "final_aggregation_prompt": {
+          "system_prompt": "你是一位专业的求职顾问。请基于以下工具执行结果，给用户一个清晰、有帮助的回复。\n要求：\n1. 先直接回答用户的问题（是/否/有/没有），不要绕弯子，不要重复用户的原话\n2. 如果有匹配分析结果，给出具体的分数和建议\n3. 如果有检索结果，基于事实回答，不要编造\n4. 【强制】引用信息时必须标注来源。每个引用的事实后面都要跟 [来源：公司名-岗位名] 格式。   kb_retrieve 结果的 chunks 中带有 'source' 字段（如'字节跳动-AI产品经理'），请直接使用。   external_search 结果带有 'source_name' 字段，也请直接使用。\n5. 当本地知识库与外部搜索结果冲突时，请并列呈现两种说法并标注各自来源，不要替用户做判断\n6. 语气友好、专业、结构化",
+          "user_prompt": "【用户问题】\n百度有Java后端岗吗\n\n【工具执行结果】\n[]\n\n请生成回复："
+        }
+      },
+      "usage": {
+        "prompt_tokens": 6276,
+        "completion_tokens": 5822,
+        "total_tokens": 12098
+      },
+      "_time": 88.43191719055176,
+      "type": "done"
+    }
+  ],
+  "timestamp": "2026-06-04T17:00:41.234423",
+  "prompt_tokens": 6276,
+  "completion_tokens": 5822,
+  "total_tokens": 12098,
+  "tool_execution_success_rate": 0.0,
+  "tool_correct_rate": 0.0
+}

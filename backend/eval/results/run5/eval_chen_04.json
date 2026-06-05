@@ -1,0 +1,2892 @@
+{
+  "case_id": "eval_chen_04",
+  "message": "面字节AI产品经理要准备什么",
+  "gold_intents": [
+    "prepare"
+  ],
+  "expected_tools": [
+    "kb_retrieve",
+    "interview_gen"
+  ],
+  "scenario": "面试准备_指定岗位",
+  "eval_context": {
+    "gold_intents": [
+      "prepare"
+    ],
+    "gold_slots": {
+      "company": "字节跳动",
+      "position": "AI产品经理"
+    },
+    "relevance_score": 0,
+    "expected_tools": [
+      "kb_retrieve",
+      "interview_gen"
+    ],
+    "scenario": "面试准备_指定岗位",
+    "notes": "期望生成针对性面试题"
+  },
+  "resume_id": "cc50dcfb-aeba-41a3-989a-9e485aa2fc3f",
+  "status": "success",
+  "error": null,
+  "ttfb": 0.011,
+  "total_latency": 106.71,
+  "event_count": 170,
+  "pred_intent": "interview_prepare",
+  "pred_intents": [
+    "interview_prepare"
+  ],
+  "pred_tools": [
+    {
+      "tool": "kb_retrieve",
+      "status": "✅",
+      "params": {
+        "query": "字节 AI产品经理",
+        "top_k": 5,
+        "company": "字节",
+        "position": "AI产品经理"
+      },
+      "result_preview": "{'chunks': [{'chunk_id': 'ac9973c8-01be-4cd6-9a99-097873a59cf0_chunk_8', 'content': '【字节跳动 · AI产品经理 关键词】\\nPython, PyTorch, LangChain, RAG, Agent, 产品经理, AI', 'metadata': {'company': '字节跳动', 'index': 8,"
+    },
+    {
+      "tool": "match_analyze",
+      "status": "✅",
+      "params": {
+        "resume_text": "姓名：陈雨桐\r\n教育背景\r\n江南科技大学\r\n信息工程学院·软件工程（AI应用方向）·硕士\r\n2024.09-2027.06（预计）\r\nGPA: 3.4/4.0 | 主修：机器学习基础、数据库系统、软件项目管理、人机交互设计\r\n\r\n云溪大学\r\n计算机学院·信息管理与信息系统·本科\r\n2020.09-2024.06\r\n荣誉：两次校级三等奖学金 | 主修：数据结构、管理学原理、Web开发技术、统计学\r\n\r\n项目经历\r\n求职助手小程序 — 智能简历匹配与面试模拟工具\r\n2025.03-2025.11\r\n产品经理 | 三人小组\r\n- 需求分析：设计调研问卷回收40余份有效样本，梳理\"简历评估\"与\"定向面试模拟\"核心需求，使用Figma完成低保真原型，输出产品需求文档。\r\n- AI匹配策略：调研开源Embedding模型实现简历与JD语义相似度计算，探索多维度匹配方案，对比整篇匹配与分块匹配效果差异，持续优化推荐排序。\r\n- 内容生成：基于大模型AI设计结构化Prompt，融合岗位关键词与简历信息输出个性化面试题，建立追问机制增强模拟面试针对性。\r\n- 测试验证：组织20人内测收集用户路径与反馈数据，针对复杂PDF格式设计补充录入机制，完成从需求分析到上线测试的完整产品闭环。\r\n\r\n教务问答机器人 — 基于校内政策的RAG问答系统\r\n2024.10-2025.02\r\n产品设计与测试 | 实验室课题项目\r\n- 知识库构建：收集整理教务处政策文件、培养方案及历史问答共80余份，完成扫描件OCR识别、格式转换与结构化清洗，建立可检索的领域知识库。\r\n- 交互设计：设计Web端对话界面，参考主流客服产品布局增加\"推荐提问\"推荐模块降低投入成本，针对政策类回答设计溯源展示功能增强可信度。\r\n- 效果测试：参与搭建检索增强生成链路，完成实验环境下多轮问答测试，验证标准政策类问题回答准确率，整理测试数据与优化建议形成可复用方案。\r\n\r\n校园经历\r\n江南科技大学软件学院学生会·宣传部干事\r\n2024.09-2025.06\r\n- 负责学院官方公众号推文排版与发布，累计输出活动宣传稿件10余篇；协助组织院内编程比赛，负责报名统计与现场签到。\r\n\r\n云溪大学图书馆·勤工助学岗\r\n2022.03-2023.06\r\n- 负责电子阅览室日常值班，协助同学解决基础网络与设备使用问题；参与旧期刊电子目录录入与数据整理工作。\r\n\r\n获奖情况\r\n- 2025.05 江南科技大学研究生学业三等奖学金\r\n- 2024.11 学院AI应用创新赛（课程组）三等奖\r\n- 2022.06 云溪大学优秀共青团员\r\n- 2022.12 校级网页设计比赛优秀奖\r\n\r\n个人技能\r\n- 产品工具：熟练使用Figma进行原型与交互演示，了解Axure基础操作；能够使用Xmind梳理产品架构，通过腾讯文档/飞书写PRD。\r\n- 技术理解：了解大语言模型在应用层的落地方式，具备Prompt Engineering实践经验；理解RAG基本架构与工作流程，了解Embedding与向量检索作用。\r\n- 语言能力：英语CET-4（525分），可阅读英文技术文档与产品资料。\r\n- 办公技能：熟练使用Office办公软件，掌握Excel数据透视表等基础数据分析功能。",
+        "jd_text": [
+          {
+            "chunk_id": "ac9973c8-01be-4cd6-9a99-097873a59cf0_chunk_8",
+            "content": "【字节跳动 · AI产品经理 关键词】\nPython, PyTorch, LangChain, RAG, Agent, 产品经理, AI",
+            "metadata": {
+              "company": "字节跳动",
+              "index": 8,
+              "jd_id": "ac9973c8-01be-4cd6-9a99-097873a59cf0",
+              "position": "AI产品经理",
+              "section": "keywords",
+              "strategy": "semantic"
+            },
+            "distance": null,
+            "bm25_score": 11.224330010093839,
+            "vec_norm": 0.0,
+            "bm25_norm": 1.0,
+            "hybrid_score": 0.3,
+            "rerank_score": 0.9994
+          },
+          {
+            "chunk_id": "ac9973c8-01be-4cd6-9a99-097873a59cf0_chunk_3",
+            "content": "【字节跳动 · AI产品经理 硬性要求】\n熟练掌握Transformer、Token、RAG等核心概念",
+            "metadata": {
+              "company": "字节跳动",
+              "index": 3,
+              "jd_id": "ac9973c8-01be-4cd6-9a99-097873a59cf0",
+              "position": "AI产品经理",
+              "priority": "high",
+              "section": "hard_requirements",
+              "strategy": "semantic"
+            },
+            "distance": null,
+            "bm25_score": 10.353516701863263,
+            "vec_norm": 0.0,
+            "bm25_norm": 0.812684661711699,
+            "hybrid_score": 0.24380539851350969,
+            "rerank_score": 0.9971
+          },
+          {
+            "chunk_id": "ac9973c8-01be-4cd6-9a99-097873a59cf0_chunk_4",
+            "content": "【字节跳动 · AI产品经理 硬性要求】\n深度使用过LangChain、Dify、Coze或LangGraph等框架",
+            "metadata": {
+              "company": "字节跳动",
+              "index": 4,
+              "jd_id": "ac9973c8-01be-4cd6-9a99-097873a59cf0",
+              "position": "AI产品经理",
+              "priority": "high",
+              "section": "hard_requirements",
+              "strategy": "semantic"
+            },
+            "distance": null,
+            "bm25_score": 10.247484396640722,
+            "vec_norm": 0.0,
+            "bm25_norm": 0.7898766993912727,
+            "hybrid_score": 0.2369630098173818,
+            "rerank_score": 0.9945
+          },
+          {
+            "chunk_id": "ac9973c8-01be-4cd6-9a99-097873a59cf0_chunk_6",
+            "content": "【字节跳动 · AI产品经理 硬性要求】\n24小时高频冲浪，对新技术有雷达般的嗅觉",
+            "metadata": {
+              "company": "字节跳动",
+              "index": 6,
+              "jd_id": "ac9973c8-01be-4cd6-9a99-097873a59cf0",
+              "position": "AI产品经理",
+              "priority": "high",
+              "section": "hard_requirements",
+              "strategy": "semantic"
+            },
+            "distance": null,
+            "bm25_score": 10.247484396640722,
+            "vec_norm": 0.0,
+            "bm25_norm": 0.7898766993912727,
+            "hybrid_score": 0.2369630098173818,
+            "rerank_score": 0.9945
+          },
+          {
+            "chunk_id": "ac9973c8-01be-4cd6-9a99-097873a59cf0_chunk_7",
+            "content": "【字节跳动 · AI产品经理 软性要求/加分项】\n有LLM/Agent落地案例者优先",
+            "metadata": {
+              "company": "字节跳动",
+              "index": 7,
+              "jd_id": "ac9973c8-01be-4cd6-9a99-097873a59cf0",
+              "position": "AI产品经理",
+              "priority": "medium",
+              "section": "soft_requirements",
+              "strategy": "semantic"
+            },
+            "distance": null,
+            "bm25_score": 10.353516701863263,
+            "vec_norm": 0.0,
+            "bm25_norm": 0.812684661711699,
+            "hybrid_score": 0.24380539851350969,
+            "rerank_score": 0.9944
+          }
+        ],
+        "company": "字节",
+        "position": "AI产品经理"
+      },
+      "result_preview": "{'score': 48, 'label': '不匹配', 'advantages': ['理解RAG基本架构与工作流程', '了解Embedding与向量检索作用', '具备Prompt Engineering实践经验', '了解大语言模型在应用层的落地方式', '产品经理经验（需求分析、原型设计、测试验证）', '参与过AI相关项目（求职助手、教务问答机器人）'], 'weaknesses':"
+    },
+    {
+      "tool": "interview_gen",
+      "status": "✅",
+      "params": {
+        "match_result": {
+          "score": 48,
+          "label": "不匹配",
+          "advantages": [
+            "理解RAG基本架构与工作流程",
+            "了解Embedding与向量检索作用",
+            "具备Prompt Engineering实践经验",
+            "了解大语言模型在应用层的落地方式",
+            "产品经理经验（需求分析、原型设计、测试验证）",
+            "参与过AI相关项目（求职助手、教务问答机器人）"
+          ],
+          "weaknesses": [
+            "候选人缺乏对Transformer、Token等核心概念的熟练掌握；没有深度使用LangChain、Dify、Coze或LangGraph等框架的实践经验；没有明确的LLM/Agent落地案例（教务问答机器人是RAG系统，但未提及Agent）；且简历中未体现24小时高频冲浪、对新技术有雷达般嗅觉的特质。"
+          ],
+          "suggestions": [
+            "核心能力要求: 熟练掌握Transformer、Token、RAG等核心概念；深度使用过LangChain、Dify、Coze或LangGraph等框架；24小时高频冲浪，对新技术有雷达般的嗅觉；有LLM/Agent落地案例者优先；具备产品经理基本能力（需求分析、原型设计、项目管理等）。"
+          ],
+          "match_score": 48,
+          "covered": [
+            "理解RAG基本架构与工作流程",
+            "了解Embedding与向量检索作用",
+            "具备Prompt Engineering实践经验",
+            "了解大语言模型在应用层的落地方式",
+            "产品经理经验（需求分析、原型设计、测试验证）",
+            "参与过AI相关项目（求职助手、教务问答机器人）"
+          ],
+          "missing_experience": "候选人缺乏对Transformer、Token等核心概念的熟练掌握；没有深度使用LangChain、Dify、Coze或LangGraph等框架的实践经验；没有明确的LLM/Agent落地案例（教务问答机器人是RAG系统，但未提及Agent）；且简历中未体现24小时高频冲浪、对新技术有雷达般嗅觉的特质。",
+          "core_skills": "熟练掌握Transformer、Token、RAG等核心概念；深度使用过LangChain、Dify、Coze或LangGraph等框架；24小时高频冲浪，对新技术有雷达般的嗅觉；有LLM/Agent落地案例者优先；具备产品经理基本能力（需求分析、原型设计、项目管理等）。",
+          "company": "字节",
+          "position": "AI产品经理"
+        },
+        "count": 5,
+        "difficulty": "mixed",
+        "company": "字节",
+        "position": "AI产品经理"
+      },
+      "result_preview": "{'questions': ['假设你负责设计一个基于LLM的文本纠错产品，用户输入一段中文文本，你需要让模型自动纠正错别字、语法错误。请描述从用户输入到模型输出的完整流程，重点说明Tokenization和Transformer的位置编码在这一过程中如何影响输入表示？追问方向：1）如果出现长文本（超过模型上下文窗口），你会如何处理？位置编码超出预训练长度时模型表现会如何？2）如何评估不同Toke"
+    }
+  ],
+  "tools_called": [
+    "kb_retrieve",
+    "match_analyze",
+    "interview_gen"
+  ],
+  "kb_chunks": [
+    {
+      "chunk_id": "ac9973c8-01be-4cd6-9a99-097873a59cf0_chunk_8",
+      "content": "【字节跳动 · AI产品经理 关键词】\nPython, PyTorch, LangChain, RAG, Agent, 产品经理, AI",
+      "metadata": {
+        "company": "字节跳动",
+        "index": 8,
+        "jd_id": "ac9973c8-01be-4cd6-9a99-097873a59cf0",
+        "position": "AI产品经理",
+        "section": "keywords",
+        "strategy": "semantic"
+      },
+      "distance": null,
+      "bm25_score": 11.224330010093839,
+      "vec_norm": 0.0,
+      "bm25_norm": 1.0,
+      "hybrid_score": 0.3,
+      "rerank_score": 0.9994
+    },
+    {
+      "chunk_id": "ac9973c8-01be-4cd6-9a99-097873a59cf0_chunk_3",
+      "content": "【字节跳动 · AI产品经理 硬性要求】\n熟练掌握Transformer、Token、RAG等核心概念",
+      "metadata": {
+        "company": "字节跳动",
+        "index": 3,
+        "jd_id": "ac9973c8-01be-4cd6-9a99-097873a59cf0",
+        "position": "AI产品经理",
+        "priority": "high",
+        "section": "hard_requirements",
+        "strategy": "semantic"
+      },
+      "distance": null,
+      "bm25_score": 10.353516701863263,
+      "vec_norm": 0.0,
+      "bm25_norm": 0.812684661711699,
+      "hybrid_score": 0.24380539851350969,
+      "rerank_score": 0.9971
+    },
+    {
+      "chunk_id": "ac9973c8-01be-4cd6-9a99-097873a59cf0_chunk_4",
+      "content": "【字节跳动 · AI产品经理 硬性要求】\n深度使用过LangChain、Dify、Coze或LangGraph等框架",
+      "metadata": {
+        "company": "字节跳动",
+        "index": 4,
+        "jd_id": "ac9973c8-01be-4cd6-9a99-097873a59cf0",
+        "position": "AI产品经理",
+        "priority": "high",
+        "section": "hard_requirements",
+        "strategy": "semantic"
+      },
+      "distance": null,
+      "bm25_score": 10.247484396640722,
+      "vec_norm": 0.0,
+      "bm25_norm": 0.7898766993912727,
+      "hybrid_score": 0.2369630098173818,
+      "rerank_score": 0.9945
+    },
+    {
+      "chunk_id": "ac9973c8-01be-4cd6-9a99-097873a59cf0_chunk_6",
+      "content": "【字节跳动 · AI产品经理 硬性要求】\n24小时高频冲浪，对新技术有雷达般的嗅觉",
+      "metadata": {
+        "company": "字节跳动",
+        "index": 6,
+        "jd_id": "ac9973c8-01be-4cd6-9a99-097873a59cf0",
+        "position": "AI产品经理",
+        "priority": "high",
+        "section": "hard_requirements",
+        "strategy": "semantic"
+      },
+      "distance": null,
+      "bm25_score": 10.247484396640722,
+      "vec_norm": 0.0,
+      "bm25_norm": 0.7898766993912727,
+      "hybrid_score": 0.2369630098173818,
+      "rerank_score": 0.9945
+    },
+    {
+      "chunk_id": "ac9973c8-01be-4cd6-9a99-097873a59cf0_chunk_7",
+      "content": "【字节跳动 · AI产品经理 软性要求/加分项】\n有LLM/Agent落地案例者优先",
+      "metadata": {
+        "company": "字节跳动",
+        "index": 7,
+        "jd_id": "ac9973c8-01be-4cd6-9a99-097873a59cf0",
+        "position": "AI产品经理",
+        "priority": "medium",
+        "section": "soft_requirements",
+        "strategy": "semantic"
+      },
+      "distance": null,
+      "bm25_score": 10.353516701863263,
+      "vec_norm": 0.0,
+      "bm25_norm": 0.812684661711699,
+      "hybrid_score": 0.24380539851350969,
+      "rerank_score": 0.9944
+    }
+  ],
+  "tool_executions_full": [
+    {
+      "tool_name": "kb_retrieve",
+      "task_id": "T0",
+      "status": "success",
+      "output": {
+        "chunks": [
+          {
+            "chunk_id": "ac9973c8-01be-4cd6-9a99-097873a59cf0_chunk_8",
+            "content": "【字节跳动 · AI产品经理 关键词】\nPython, PyTorch, LangChain, RAG, Agent, 产品经理, AI",
+            "source": "字节跳动-AI产品经理",
+            "metadata": {
+              "company": "字节跳动",
+              "position": "AI产品经理"
+            }
+          },
+          {
+            "chunk_id": "ac9973c8-01be-4cd6-9a99-097873a59cf0_chunk_3",
+            "content": "【字节跳动 · AI产品经理 硬性要求】\n熟练掌握Transformer、Token、RAG等核心概念",
+            "source": "字节跳动-AI产品经理",
+            "metadata": {
+              "company": "字节跳动",
+              "position": "AI产品经理"
+            }
+          },
+          {
+            "chunk_id": "ac9973c8-01be-4cd6-9a99-097873a59cf0_chunk_4",
+            "content": "【字节跳动 · AI产品经理 硬性要求】\n深度使用过LangChain、Dify、Coze或LangGraph等框架",
+            "source": "字节跳动-AI产品经理",
+            "metadata": {
+              "company": "字节跳动",
+              "position": "AI产品经理"
+            }
+          },
+          {
+            "chunk_id": "ac9973c8-01be-4cd6-9a99-097873a59cf0_chunk_6",
+            "content": "【字节跳动 · AI产品经理 硬性要求】\n24小时高频冲浪，对新技术有雷达般的嗅觉",
+            "source": "字节跳动-AI产品经理",
+            "metadata": {
+              "company": "字节跳动",
+              "position": "AI产品经理"
+            }
+          },
+          {
+            "chunk_id": "ac9973c8-01be-4cd6-9a99-097873a59cf0_chunk_7",
+            "content": "【字节跳动 · AI产品经理 软性要求/加分项】\n有LLM/Agent落地案例者优先",
+            "source": "字节跳动-AI产品经理",
+            "metadata": {
+              "company": "字节跳动",
+              "position": "AI产品经理"
+            }
+          }
+        ],
+        "query": "字节 AI产品经理",
+        "filters": {
+          "company": "字节",
+          "position": "AI产品经理"
+        },
+        "strategy": "hybrid(70%vec+30%bm25)+reranker",
+        "pool_k": 5,
+        "rerank_k": 10,
+        "pool_size": 20,
+        "vec_only": 0,
+        "bm25_only": 20,
+        "both": 0,
+        "rerank": {
+          "enabled": true,
+          "candidates": 5,
+          "output": 5,
+          "best_rerank_score": 0.9994
+        }
+      }
+    },
+    {
+      "tool_name": "match_analyze",
+      "task_id": "T1",
+      "status": "success",
+      "output": {
+        "score": 48,
+        "label": "不匹配",
+        "advantages": [
+          "理解RAG基本架构与工作流程",
+          "了解Embedding与向量检索作用",
+          "具备Prompt Engineering实践经验",
+          "了解大语言模型在应用层的落地方式",
+          "产品经理经验（需求分析、原型设计、测试验证）",
+          "参与过AI相关项目（求职助手、教务问答机器人）"
+        ],
+        "weaknesses": [
+          "候选人缺乏对Transformer、Token等核心概念的熟练掌握；没有深度使用LangChain、Dify、Coze或LangGraph等框架的实践经验；没有明确的LLM/Agent落地案例（教务问答机器人是RAG系统，但未提及Agent）；且简历中未体现24小时高频冲浪、对新技术有雷达般嗅觉的特质。"
+        ],
+        "suggestions": [
+          "核心能力要求: 熟练掌握Transformer、Token、RAG等核心概念；深度使用过LangChain、Dify、Coze或LangGraph等框架；24小时高频冲浪，对新技术有雷达般的嗅觉；有LLM/Agent落地案例者优先；具备产品经理基本能力（需求分析、原型设计、项目管理等）。"
+        ],
+        "match_score": 48,
+        "covered": [
+          "理解RAG基本架构与工作流程",
+          "了解Embedding与向量检索作用",
+          "具备Prompt Engineering实践经验",
+          "了解大语言模型在应用层的落地方式",
+          "产品经理经验（需求分析、原型设计、测试验证）",
+          "参与过AI相关项目（求职助手、教务问答机器人）"
+        ],
+        "missing_experience": "候选人缺乏对Transformer、Token等核心概念的熟练掌握；没有深度使用LangChain、Dify、Coze或LangGraph等框架的实践经验；没有明确的LLM/Agent落地案例（教务问答机器人是RAG系统，但未提及Agent）；且简历中未体现24小时高频冲浪、对新技术有雷达般嗅觉的特质。",
+        "core_skills": "熟练掌握Transformer、Token、RAG等核心概念；深度使用过LangChain、Dify、Coze或LangGraph等框架；24小时高频冲浪，对新技术有雷达般的嗅觉；有LLM/Agent落地案例者优先；具备产品经理基本能力（需求分析、原型设计、项目管理等）。",
+        "company": "字节",
+        "position": "AI产品经理"
+      }
+    },
+    {
+      "tool_name": "interview_gen",
+      "task_id": "T2",
+      "status": "success",
+      "output": {
+        "questions": [
+          "假设你负责设计一个基于LLM的文本纠错产品，用户输入一段中文文本，你需要让模型自动纠正错别字、语法错误。请描述从用户输入到模型输出的完整流程，重点说明Tokenization和Transformer的位置编码在这一过程中如何影响输入表示？追问方向：1）如果出现长文本（超过模型上下文窗口），你会如何处理？位置编码超出预训练长度时模型表现会如何？2）如何评估不同Tokenization方法（如BPE vs WordPiece）对中文纠错效果的影响？",
+          "假设你需要在Dify或LangChain上搭建一个能够调用外部工具（如搜索、计算器）的智能客服Agent。请画出系统架构图（口述），并说明你如何实现工具选择、参数填充和结果整合？追问方向：1）你如何设计工具调用的异常处理机制？2）如果希望Agent具备记忆能力（长期记忆），在LangChain中如何实现？",
+          "设计一个智能简历分析Agent，能够从候选人简历中提取技能、经验，并匹配JD进行评分，最后生成面试问题。请从产品经理角度描述这个Agent的交互流程、数据流以及如何保证输出质量？追问方向：1）如何设计闭环反馈机制，让Agent从错误中学习？2）如果Agent需要调用多个LLM（不同角色），你会如何协调它们的工作？",
+          "最近开源社区出现了Mamba架构、Mixture-of-Experts等新模型设计，这些对AI产品经理有什么启示？请结合你了解的一个具体新模型或方法，说明它可能如何影响未来的AI产品设计（比如成本、延迟、功能）。追问方向：1）你认为未来一年LLM在应用层最有可能出现哪些颠覆性变化？2）如果你所在团队资源有限，如何决定是否跟进某项新技术？",
+          "假设你负责在字节内部落地一个AI辅助编程工具（类似Copilot），公司强调数据安全，要求所有代码数据不能出公司网络，且需要支持多种编程语言。请设计一个技术选型方案，包括模型选择（开源/闭源）、部署方式、RAG或微调策略？追问方向：1）如果需要让模型学习公司内部代码规范，推荐使用RAG还是微调？为什么？2）如果用户体验反馈模型生成代码经常有安全漏洞，你会如何改进？"
+        ],
+        "focus_areas": [
+          "短板深挖：候选人缺乏对Transformer、Token等核心概念的熟练掌握；没有深度使用LangChain、Dify、Coze或LangGraph等框架的实践经验；没有明确的LLM/Agent落地案例（教务问",
+          "核心能力：熟练掌握Transformer、Token、RAG等核心概念；深度使用过LangChain、Dify、Coze或LangGraph等框架；24小时高频冲浪，对新技术有雷达般的嗅觉；有LLM/Agent"
+        ],
+        "question_count": 5,
+        "company": "字节",
+        "position": "AI产品经理"
+      }
+    },
+    {
+      "tool_name": null,
+      "task_id": "T3",
+      "status": "success",
+      "output": {
+        "aggregation": {
+          "prepare": {
+            "questions": [
+              "假设你负责设计一个基于LLM的文本纠错产品，用户输入一段中文文本，你需要让模型自动纠正错别字、语法错误。请描述从用户输入到模型输出的完整流程，重点说明Tokenization和Transformer的位置编码在这一过程中如何影响输入表示？追问方向：1）如果出现长文本（超过模型上下文窗口），你会如何处理？位置编码超出预训练长度时模型表现会如何？2）如何评估不同Tokenization方法（如BPE vs WordPiece）对中文纠错效果的影响？",
+              "假设你需要在Dify或LangChain上搭建一个能够调用外部工具（如搜索、计算器）的智能客服Agent。请画出系统架构图（口述），并说明你如何实现工具选择、参数填充和结果整合？追问方向：1）你如何设计工具调用的异常处理机制？2）如果希望Agent具备记忆能力（长期记忆），在LangChain中如何实现？",
+              "设计一个智能简历分析Agent，能够从候选人简历中提取技能、经验，并匹配JD进行评分，最后生成面试问题。请从产品经理角度描述这个Agent的交互流程、数据流以及如何保证输出质量？追问方向：1）如何设计闭环反馈机制，让Agent从错误中学习？2）如果Agent需要调用多个LLM（不同角色），你会如何协调它们的工作？",
+              "最近开源社区出现了Mamba架构、Mixture-of-Experts等新模型设计，这些对AI产品经理有什么启示？请结合你了解的一个具体新模型或方法，说明它可能如何影响未来的AI产品设计（比如成本、延迟、功能）。追问方向：1）你认为未来一年LLM在应用层最有可能出现哪些颠覆性变化？2）如果你所在团队资源有限，如何决定是否跟进某项新技术？",
+              "假设你负责在字节内部落地一个AI辅助编程工具（类似Copilot），公司强调数据安全，要求所有代码数据不能出公司网络，且需要支持多种编程语言。请设计一个技术选型方案，包括模型选择（开源/闭源）、部署方式、RAG或微调策略？追问方向：1）如果需要让模型学习公司内部代码规范，推荐使用RAG还是微调？为什么？2）如果用户体验反馈模型生成代码经常有安全漏洞，你会如何改进？"
+            ],
+            "focus_areas": [
+              "短板深挖：候选人缺乏对Transformer、Token等核心概念的熟练掌握；没有深度使用LangChain、Dify、Coze或LangGraph等框架的实践经验；没有明确的LLM/Agent落地案例（教务问",
+              "核心能力：熟练掌握Transformer、Token、RAG等核心概念；深度使用过LangChain、Dify、Coze或LangGraph等框架；24小时高频冲浪，对新技术有雷达般的嗅觉；有LLM/Agent"
+            ],
+            "question_count": 5,
+            "company": "字节",
+            "position": "AI产品经理"
+          },
+          "match_gaps": "{{T1.output.gaps}}"
+        }
+      }
+    }
+  ],
+  "debug_info": {
+    "task_graph": {
+      "tasks": {
+        "T0": {
+          "task_id": "T0",
+          "task_type": "tool_call",
+          "tool_name": "kb_retrieve",
+          "status": "success",
+          "parameters": {
+            "query": "{{global_slots.company}} {{global_slots.position}}",
+            "top_k": 5,
+            "company": "{{global_slots.company}}",
+            "position": "{{global_slots.position}}"
+          },
+          "resolved_params": {
+            "query": "字节 AI产品经理",
+            "top_k": 5,
+            "company": "字节",
+            "position": "AI产品经理"
+          },
+          "result": {
+            "chunks": [
+              {
+                "chunk_id": "ac9973c8-01be-4cd6-9a99-097873a59cf0_chunk_8",
+                "content": "【字节跳动 · AI产品经理 关键词】\nPython, PyTorch, LangChain, RAG, Agent, 产品经理, AI",
+                "metadata": {
+                  "company": "字节跳动",
+                  "index": 8,
+                  "jd_id": "ac9973c8-01be-4cd6-9a99-097873a59cf0",
+                  "position": "AI产品经理",
+                  "section": "keywords",
+                  "strategy": "semantic"
+                },
+                "distance": null,
+                "bm25_score": 11.224330010093839,
+                "vec_norm": 0.0,
+                "bm25_norm": 1.0,
+                "hybrid_score": 0.3,
+                "rerank_score": 0.9994
+              },
+              {
+                "chunk_id": "ac9973c8-01be-4cd6-9a99-097873a59cf0_chunk_3",
+                "content": "【字节跳动 · AI产品经理 硬性要求】\n熟练掌握Transformer、Token、RAG等核心概念",
+                "metadata": {
+                  "company": "字节跳动",
+                  "index": 3,
+                  "jd_id": "ac9973c8-01be-4cd6-9a99-097873a59cf0",
+                  "position": "AI产品经理",
+                  "priority": "high",
+                  "section": "hard_requirements",
+                  "strategy": "semantic"
+                },
+                "distance": null,
+                "bm25_score": 10.353516701863263,
+                "vec_norm": 0.0,
+                "bm25_norm": 0.812684661711699,
+                "hybrid_score": 0.24380539851350969,
+                "rerank_score": 0.9971
+              },
+              {
+                "chunk_id": "ac9973c8-01be-4cd6-9a99-097873a59cf0_chunk_4",
+                "content": "【字节跳动 · AI产品经理 硬性要求】\n深度使用过LangChain、Dify、Coze或LangGraph等框架",
+                "metadata": {
+                  "company": "字节跳动",
+                  "index": 4,
+                  "jd_id": "ac9973c8-01be-4cd6-9a99-097873a59cf0",
+                  "position": "AI产品经理",
+                  "priority": "high",
+                  "section": "hard_requirements",
+                  "strategy": "semantic"
+                },
+                "distance": null,
+                "bm25_score": 10.247484396640722,
+                "vec_norm": 0.0,
+                "bm25_norm": 0.7898766993912727,
+                "hybrid_score": 0.2369630098173818,
+                "rerank_score": 0.9945
+              },
+              {
+                "chunk_id": "ac9973c8-01be-4cd6-9a99-097873a59cf0_chunk_6",
+                "content": "【字节跳动 · AI产品经理 硬性要求】\n24小时高频冲浪，对新技术有雷达般的嗅觉",
+                "metadata": {
+                  "company": "字节跳动",
+                  "index": 6,
+                  "jd_id": "ac9973c8-01be-4cd6-9a99-097873a59cf0",
+                  "position": "AI产品经理",
+                  "priority": "high",
+                  "section": "hard_requirements",
+                  "strategy": "semantic"
+                },
+                "distance": null,
+                "bm25_score": 10.247484396640722,
+                "vec_norm": 0.0,
+                "bm25_norm": 0.7898766993912727,
+                "hybrid_score": 0.2369630098173818,
+                "rerank_score": 0.9945
+              },
+              {
+                "chunk_id": "ac9973c8-01be-4cd6-9a99-097873a59cf0_chunk_7",
+                "content": "【字节跳动 · AI产品经理 软性要求/加分项】\n有LLM/Agent落地案例者优先",
+                "metadata": {
+                  "company": "字节跳动",
+                  "index": 7,
+                  "jd_id": "ac9973c8-01be-4cd6-9a99-097873a59cf0",
+                  "position": "AI产品经理",
+                  "priority": "medium",
+                  "section": "soft_requirements",
+                  "strategy": "semantic"
+                },
+                "distance": null,
+                "bm25_score": 10.353516701863263,
+                "vec_norm": 0.0,
+                "bm25_norm": 0.812684661711699,
+                "hybrid_score": 0.24380539851350969,
+                "rerank_score": 0.9944
+              }
+            ],
+            "query": "字节 AI产品经理",
+            "filters": {
+              "company": "字节",
+              "position": "AI产品经理"
+            },
+            "strategy": "hybrid(70%vec+30%bm25)+reranker",
+            "pool_k": 5,
+            "rerank_k": 10,
+            "pool_size": 20,
+            "vec_only": 0,
+            "bm25_only": 20,
+            "both": 0,
+            "rerank": {
+              "enabled": true,
+              "candidates": 5,
+              "output": 5,
+              "best_rerank_score": 0.9994
+            }
+          },
+          "observation": "工具 kb_retrieve 执行成功"
+        },
+        "T1": {
+          "task_id": "T1",
+          "task_type": "tool_call",
+          "tool_name": "match_analyze",
+          "status": "success",
+          "parameters": {
+            "resume_text": "{{global_slots.resume_text}}",
+            "jd_text": "{{T0.output.chunks}}",
+            "company": "{{global_slots.company}}",
+            "position": "{{global_slots.position}}"
+          },
+          "resolved_params": {
+            "resume_text": "姓名：陈雨桐\r\n教育背景\r\n江南科技大学\r\n信息工程学院·软件工程（AI应用方向）·硕士\r\n2024.09-2027.06（预计）\r\nGPA: 3.4/4.0 | 主修：机器学习基础、数据库系统、软件项目管理、人机交互设计\r\n\r\n云溪大学\r\n计算机学院·信息管理与信息系统·本科\r\n2020.09-2024.06\r\n荣誉：两次校级三等奖学金 | 主修：数据结构、管理学原理、Web开发技术、统计学\r\n\r\n项目经历\r\n求职助手小程序 — 智能简历匹配与面试模拟工具\r\n2025.03-2025.11\r\n产品经理 | 三人小组\r\n- 需求分析：设计调研问卷回收40余份有效样本，梳理\"简历评估\"与\"定向面试模拟\"核心需求，使用Figma完成低保真原型，输出产品需求文档。\r\n- AI匹配策略：调研开源Embedding模型实现简历与JD语义相似度计算，探索多维度匹配方案，对比整篇匹配与分块匹配效果差异，持续优化推荐排序。\r\n- 内容生成：基于大模型AI设计结构化Prompt，融合岗位关键词与简历信息输出个性化面试题，建立追问机制增强模拟面试针对性。\r\n- 测试验证：组织20人内测收集用户路径与反馈数据，针对复杂PDF格式设计补充录入机制，完成从需求分析到上线测试的完整产品闭环。\r\n\r\n教务问答机器人 — 基于校内政策的RAG问答系统\r\n2024.10-2025.02\r\n产品设计与测试 | 实验室课题项目\r\n- 知识库构建：收集整理教务处政策文件、培养方案及历史问答共80余份，完成扫描件OCR识别、格式转换与结构化清洗，建立可检索的领域知识库。\r\n- 交互设计：设计Web端对话界面，参考主流客服产品布局增加\"推荐提问\"推荐模块降低投入成本，针对政策类回答设计溯源展示功能增强可信度。\r\n- 效果测试：参与搭建检索增强生成链路，完成实验环境下多轮问答测试，验证标准政策类问题回答准确率，整理测试数据与优化建议形成可复用方案。\r\n\r\n校园经历\r\n江南科技大学软件学院学生会·宣传部干事\r\n2024.09-2025.06\r\n- 负责学院官方公众号推文排版与发布，累计输出活动宣传稿件10余篇；协助组织院内编程比赛，负责报名统计与现场签到。\r\n\r\n云溪大学图书馆·勤工助学岗\r\n2022.03-2023.06\r\n- 负责电子阅览室日常值班，协助同学解决基础网络与设备使用问题；参与旧期刊电子目录录入与数据整理工作。\r\n\r\n获奖情况\r\n- 2025.05 江南科技大学研究生学业三等奖学金\r\n- 2024.11 学院AI应用创新赛（课程组）三等奖\r\n- 2022.06 云溪大学优秀共青团员\r\n- 2022.12 校级网页设计比赛优秀奖\r\n\r\n个人技能\r\n- 产品工具：熟练使用Figma进行原型与交互演示，了解Axure基础操作；能够使用Xmind梳理产品架构，通过腾讯文档/飞书写PRD。\r\n- 技术理解：了解大语言模型在应用层的落地方式，具备Prompt Engineering实践经验；理解RAG基本架构与工作流程，了解Embedding与向量检索作用。\r\n- 语言能力：英语CET-4（525分），可阅读英文技术文档与产品资料。\r\n- 办公技能：熟练使用Office办公软件，掌握Excel数据透视表等基础数据分析功能。",
+            "jd_text": [
+              {
+                "chunk_id": "ac9973c8-01be-4cd6-9a99-097873a59cf0_chunk_8",
+                "content": "【字节跳动 · AI产品经理 关键词】\nPython, PyTorch, LangChain, RAG, Agent, 产品经理, AI",
+                "metadata": {
+                  "company": "字节跳动",
+                  "index": 8,
+                  "jd_id": "ac9973c8-01be-4cd6-9a99-097873a59cf0",
+                  "position": "AI产品经理",
+                  "section": "keywords",
+                  "strategy": "semantic"
+                },
+                "distance": null,
+                "bm25_score": 11.224330010093839,
+                "vec_norm": 0.0,
+                "bm25_norm": 1.0,
+                "hybrid_score": 0.3,
+                "rerank_score": 0.9994
+              },
+              {
+                "chunk_id": "ac9973c8-01be-4cd6-9a99-097873a59cf0_chunk_3",
+                "content": "【字节跳动 · AI产品经理 硬性要求】\n熟练掌握Transformer、Token、RAG等核心概念",
+                "metadata": {
+                  "company": "字节跳动",
+                  "index": 3,
+                  "jd_id": "ac9973c8-01be-4cd6-9a99-097873a59cf0",
+                  "position": "AI产品经理",
+                  "priority": "high",
+                  "section": "hard_requirements",
+                  "strategy": "semantic"
+                },
+                "distance": null,
+                "bm25_score": 10.353516701863263,
+                "vec_norm": 0.0,
+                "bm25_norm": 0.812684661711699,
+                "hybrid_score": 0.24380539851350969,
+                "rerank_score": 0.9971
+              },
+              {
+                "chunk_id": "ac9973c8-01be-4cd6-9a99-097873a59cf0_chunk_4",
+                "content": "【字节跳动 · AI产品经理 硬性要求】\n深度使用过LangChain、Dify、Coze或LangGraph等框架",
+                "metadata": {
+                  "company": "字节跳动",
+                  "index": 4,
+                  "jd_id": "ac9973c8-01be-4cd6-9a99-097873a59cf0",
+                  "position": "AI产品经理",
+                  "priority": "high",
+                  "section": "hard_requirements",
+                  "strategy": "semantic"
+                },
+                "distance": null,
+                "bm25_score": 10.247484396640722,
+                "vec_norm": 0.0,
+                "bm25_norm": 0.7898766993912727,
+                "hybrid_score": 0.2369630098173818,
+                "rerank_score": 0.9945
+              },
+              {
+                "chunk_id": "ac9973c8-01be-4cd6-9a99-097873a59cf0_chunk_6",
+                "content": "【字节跳动 · AI产品经理 硬性要求】\n24小时高频冲浪，对新技术有雷达般的嗅觉",
+                "metadata": {
+                  "company": "字节跳动",
+                  "index": 6,
+                  "jd_id": "ac9973c8-01be-4cd6-9a99-097873a59cf0",
+                  "position": "AI产品经理",
+                  "priority": "high",
+                  "section": "hard_requirements",
+                  "strategy": "semantic"
+                },
+                "distance": null,
+                "bm25_score": 10.247484396640722,
+                "vec_norm": 0.0,
+                "bm25_norm": 0.7898766993912727,
+                "hybrid_score": 0.2369630098173818,
+                "rerank_score": 0.9945
+              },
+              {
+                "chunk_id": "ac9973c8-01be-4cd6-9a99-097873a59cf0_chunk_7",
+                "content": "【字节跳动 · AI产品经理 软性要求/加分项】\n有LLM/Agent落地案例者优先",
+                "metadata": {
+                  "company": "字节跳动",
+                  "index": 7,
+                  "jd_id": "ac9973c8-01be-4cd6-9a99-097873a59cf0",
+                  "position": "AI产品经理",
+                  "priority": "medium",
+                  "section": "soft_requirements",
+                  "strategy": "semantic"
+                },
+                "distance": null,
+                "bm25_score": 10.353516701863263,
+                "vec_norm": 0.0,
+                "bm25_norm": 0.812684661711699,
+                "hybrid_score": 0.24380539851350969,
+                "rerank_score": 0.9944
+              }
+            ],
+            "company": "字节",
+            "position": "AI产品经理"
+          },
+          "result": {
+            "score": 48,
+            "label": "不匹配",
+            "advantages": [
+              "理解RAG基本架构与工作流程",
+              "了解Embedding与向量检索作用",
+              "具备Prompt Engineering实践经验",
+              "了解大语言模型在应用层的落地方式",
+              "产品经理经验（需求分析、原型设计、测试验证）",
+              "参与过AI相关项目（求职助手、教务问答机器人）"
+            ],
+            "weaknesses": [
+              "候选人缺乏对Transformer、Token等核心概念的熟练掌握；没有深度使用LangChain、Dify、Coze或LangGraph等框架的实践经验；没有明确的LLM/Agent落地案例（教务问答机器人是RAG系统，但未提及Agent）；且简历中未体现24小时高频冲浪、对新技术有雷达般嗅觉的特质。"
+            ],
+            "suggestions": [
+              "核心能力要求: 熟练掌握Transformer、Token、RAG等核心概念；深度使用过LangChain、Dify、Coze或LangGraph等框架；24小时高频冲浪，对新技术有雷达般的嗅觉；有LLM/Agent落地案例者优先；具备产品经理基本能力（需求分析、原型设计、项目管理等）。"
+            ],
+            "match_score": 48,
+            "covered": [
+              "理解RAG基本架构与工作流程",
+              "了解Embedding与向量检索作用",
+              "具备Prompt Engineering实践经验",
+              "了解大语言模型在应用层的落地方式",
+              "产品经理经验（需求分析、原型设计、测试验证）",
+              "参与过AI相关项目（求职助手、教务问答机器人）"
+            ],
+            "missing_experience": "候选人缺乏对Transformer、Token等核心概念的熟练掌握；没有深度使用LangChain、Dify、Coze或LangGraph等框架的实践经验；没有明确的LLM/Agent落地案例（教务问答机器人是RAG系统，但未提及Agent）；且简历中未体现24小时高频冲浪、对新技术有雷达般嗅觉的特质。",
+            "core_skills": "熟练掌握Transformer、Token、RAG等核心概念；深度使用过LangChain、Dify、Coze或LangGraph等框架；24小时高频冲浪，对新技术有雷达般的嗅觉；有LLM/Agent落地案例者优先；具备产品经理基本能力（需求分析、原型设计、项目管理等）。",
+            "company": "字节",
+            "position": "AI产品经理"
+          },
+          "observation": "工具 match_analyze 执行成功"
+        },
+        "T2": {
+          "task_id": "T2",
+          "task_type": "tool_call",
+          "tool_name": "interview_gen",
+          "status": "success",
+          "parameters": {
+            "match_result": "{{T1.output}}",
+            "count": 5,
+            "difficulty": "mixed",
+            "company": "{{global_slots.company}}",
+            "position": "{{global_slots.position}}"
+          },
+          "resolved_params": {
+            "match_result": {
+              "score": 48,
+              "label": "不匹配",
+              "advantages": [
+                "理解RAG基本架构与工作流程",
+                "了解Embedding与向量检索作用",
+                "具备Prompt Engineering实践经验",
+                "了解大语言模型在应用层的落地方式",
+                "产品经理经验（需求分析、原型设计、测试验证）",
+                "参与过AI相关项目（求职助手、教务问答机器人）"
+              ],
+              "weaknesses": [
+                "候选人缺乏对Transformer、Token等核心概念的熟练掌握；没有深度使用LangChain、Dify、Coze或LangGraph等框架的实践经验；没有明确的LLM/Agent落地案例（教务问答机器人是RAG系统，但未提及Agent）；且简历中未体现24小时高频冲浪、对新技术有雷达般嗅觉的特质。"
+              ],
+              "suggestions": [
+                "核心能力要求: 熟练掌握Transformer、Token、RAG等核心概念；深度使用过LangChain、Dify、Coze或LangGraph等框架；24小时高频冲浪，对新技术有雷达般的嗅觉；有LLM/Agent落地案例者优先；具备产品经理基本能力（需求分析、原型设计、项目管理等）。"
+              ],
+              "match_score": 48,
+              "covered": [
+                "理解RAG基本架构与工作流程",
+                "了解Embedding与向量检索作用",
+                "具备Prompt Engineering实践经验",
+                "了解大语言模型在应用层的落地方式",
+                "产品经理经验（需求分析、原型设计、测试验证）",
+                "参与过AI相关项目（求职助手、教务问答机器人）"
+              ],
+              "missing_experience": "候选人缺乏对Transformer、Token等核心概念的熟练掌握；没有深度使用LangChain、Dify、Coze或LangGraph等框架的实践经验；没有明确的LLM/Agent落地案例（教务问答机器人是RAG系统，但未提及Agent）；且简历中未体现24小时高频冲浪、对新技术有雷达般嗅觉的特质。",
+              "core_skills": "熟练掌握Transformer、Token、RAG等核心概念；深度使用过LangChain、Dify、Coze或LangGraph等框架；24小时高频冲浪，对新技术有雷达般的嗅觉；有LLM/Agent落地案例者优先；具备产品经理基本能力（需求分析、原型设计、项目管理等）。",
+              "company": "字节",
+              "position": "AI产品经理"
+            },
+            "count": 5,
+            "difficulty": "mixed",
+            "company": "字节",
+            "position": "AI产品经理"
+          },
+          "result": {
+            "questions": [
+              "假设你负责设计一个基于LLM的文本纠错产品，用户输入一段中文文本，你需要让模型自动纠正错别字、语法错误。请描述从用户输入到模型输出的完整流程，重点说明Tokenization和Transformer的位置编码在这一过程中如何影响输入表示？追问方向：1）如果出现长文本（超过模型上下文窗口），你会如何处理？位置编码超出预训练长度时模型表现会如何？2）如何评估不同Tokenization方法（如BPE vs WordPiece）对中文纠错效果的影响？",
+              "假设你需要在Dify或LangChain上搭建一个能够调用外部工具（如搜索、计算器）的智能客服Agent。请画出系统架构图（口述），并说明你如何实现工具选择、参数填充和结果整合？追问方向：1）你如何设计工具调用的异常处理机制？2）如果希望Agent具备记忆能力（长期记忆），在LangChain中如何实现？",
+              "设计一个智能简历分析Agent，能够从候选人简历中提取技能、经验，并匹配JD进行评分，最后生成面试问题。请从产品经理角度描述这个Agent的交互流程、数据流以及如何保证输出质量？追问方向：1）如何设计闭环反馈机制，让Agent从错误中学习？2）如果Agent需要调用多个LLM（不同角色），你会如何协调它们的工作？",
+              "最近开源社区出现了Mamba架构、Mixture-of-Experts等新模型设计，这些对AI产品经理有什么启示？请结合你了解的一个具体新模型或方法，说明它可能如何影响未来的AI产品设计（比如成本、延迟、功能）。追问方向：1）你认为未来一年LLM在应用层最有可能出现哪些颠覆性变化？2）如果你所在团队资源有限，如何决定是否跟进某项新技术？",
+              "假设你负责在字节内部落地一个AI辅助编程工具（类似Copilot），公司强调数据安全，要求所有代码数据不能出公司网络，且需要支持多种编程语言。请设计一个技术选型方案，包括模型选择（开源/闭源）、部署方式、RAG或微调策略？追问方向：1）如果需要让模型学习公司内部代码规范，推荐使用RAG还是微调？为什么？2）如果用户体验反馈模型生成代码经常有安全漏洞，你会如何改进？"
+            ],
+            "focus_areas": [
+              "短板深挖：候选人缺乏对Transformer、Token等核心概念的熟练掌握；没有深度使用LangChain、Dify、Coze或LangGraph等框架的实践经验；没有明确的LLM/Agent落地案例（教务问",
+              "核心能力：熟练掌握Transformer、Token、RAG等核心概念；深度使用过LangChain、Dify、Coze或LangGraph等框架；24小时高频冲浪，对新技术有雷达般的嗅觉；有LLM/Agent"
+            ],
+            "question_count": 5,
+            "company": "字节",
+            "position": "AI产品经理"
+          },
+          "observation": "工具 interview_gen 执行成功"
+        },
+        "T3": {
+          "task_id": "T3",
+          "task_type": "aggregate",
+          "tool_name": null,
+          "status": "success",
+          "parameters": {
+            "prepare": "{{T2.output}}",
+            "match_gaps": "{{T1.output.gaps}}"
+          },
+          "resolved_params": {
+            "prepare": {
+              "questions": [
+                "假设你负责设计一个基于LLM的文本纠错产品，用户输入一段中文文本，你需要让模型自动纠正错别字、语法错误。请描述从用户输入到模型输出的完整流程，重点说明Tokenization和Transformer的位置编码在这一过程中如何影响输入表示？追问方向：1）如果出现长文本（超过模型上下文窗口），你会如何处理？位置编码超出预训练长度时模型表现会如何？2）如何评估不同Tokenization方法（如BPE vs WordPiece）对中文纠错效果的影响？",
+                "假设你需要在Dify或LangChain上搭建一个能够调用外部工具（如搜索、计算器）的智能客服Agent。请画出系统架构图（口述），并说明你如何实现工具选择、参数填充和结果整合？追问方向：1）你如何设计工具调用的异常处理机制？2）如果希望Agent具备记忆能力（长期记忆），在LangChain中如何实现？",
+                "设计一个智能简历分析Agent，能够从候选人简历中提取技能、经验，并匹配JD进行评分，最后生成面试问题。请从产品经理角度描述这个Agent的交互流程、数据流以及如何保证输出质量？追问方向：1）如何设计闭环反馈机制，让Agent从错误中学习？2）如果Agent需要调用多个LLM（不同角色），你会如何协调它们的工作？",
+                "最近开源社区出现了Mamba架构、Mixture-of-Experts等新模型设计，这些对AI产品经理有什么启示？请结合你了解的一个具体新模型或方法，说明它可能如何影响未来的AI产品设计（比如成本、延迟、功能）。追问方向：1）你认为未来一年LLM在应用层最有可能出现哪些颠覆性变化？2）如果你所在团队资源有限，如何决定是否跟进某项新技术？",
+                "假设你负责在字节内部落地一个AI辅助编程工具（类似Copilot），公司强调数据安全，要求所有代码数据不能出公司网络，且需要支持多种编程语言。请设计一个技术选型方案，包括模型选择（开源/闭源）、部署方式、RAG或微调策略？追问方向：1）如果需要让模型学习公司内部代码规范，推荐使用RAG还是微调？为什么？2）如果用户体验反馈模型生成代码经常有安全漏洞，你会如何改进？"
+              ],
+              "focus_areas": [
+                "短板深挖：候选人缺乏对Transformer、Token等核心概念的熟练掌握；没有深度使用LangChain、Dify、Coze或LangGraph等框架的实践经验；没有明确的LLM/Agent落地案例（教务问",
+                "核心能力：熟练掌握Transformer、Token、RAG等核心概念；深度使用过LangChain、Dify、Coze或LangGraph等框架；24小时高频冲浪，对新技术有雷达般的嗅觉；有LLM/Agent"
+              ],
+              "question_count": 5,
+              "company": "字节",
+              "position": "AI产品经理"
+            },
+            "match_gaps": "{{T1.output.gaps}}"
+          },
+          "result": {
+            "aggregation": {
+              "prepare": {
+                "questions": [
+                  "假设你负责设计一个基于LLM的文本纠错产品，用户输入一段中文文本，你需要让模型自动纠正错别字、语法错误。请描述从用户输入到模型输出的完整流程，重点说明Tokenization和Transformer的位置编码在这一过程中如何影响输入表示？追问方向：1）如果出现长文本（超过模型上下文窗口），你会如何处理？位置编码超出预训练长度时模型表现会如何？2）如何评估不同Tokenization方法（如BPE vs WordPiece）对中文纠错效果的影响？",
+                  "假设你需要在Dify或LangChain上搭建一个能够调用外部工具（如搜索、计算器）的智能客服Agent。请画出系统架构图（口述），并说明你如何实现工具选择、参数填充和结果整合？追问方向：1）你如何设计工具调用的异常处理机制？2）如果希望Agent具备记忆能力（长期记忆），在LangChain中如何实现？",
+                  "设计一个智能简历分析Agent，能够从候选人简历中提取技能、经验，并匹配JD进行评分，最后生成面试问题。请从产品经理角度描述这个Agent的交互流程、数据流以及如何保证输出质量？追问方向：1）如何设计闭环反馈机制，让Agent从错误中学习？2）如果Agent需要调用多个LLM（不同角色），你会如何协调它们的工作？",
+                  "最近开源社区出现了Mamba架构、Mixture-of-Experts等新模型设计，这些对AI产品经理有什么启示？请结合你了解的一个具体新模型或方法，说明它可能如何影响未来的AI产品设计（比如成本、延迟、功能）。追问方向：1）你认为未来一年LLM在应用层最有可能出现哪些颠覆性变化？2）如果你所在团队资源有限，如何决定是否跟进某项新技术？",
+                  "假设你负责在字节内部落地一个AI辅助编程工具（类似Copilot），公司强调数据安全，要求所有代码数据不能出公司网络，且需要支持多种编程语言。请设计一个技术选型方案，包括模型选择（开源/闭源）、部署方式、RAG或微调策略？追问方向：1）如果需要让模型学习公司内部代码规范，推荐使用RAG还是微调？为什么？2）如果用户体验反馈模型生成代码经常有安全漏洞，你会如何改进？"
+                ],
+                "focus_areas": [
+                  "短板深挖：候选人缺乏对Transformer、Token等核心概念的熟练掌握；没有深度使用LangChain、Dify、Coze或LangGraph等框架的实践经验；没有明确的LLM/Agent落地案例（教务问",
+                  "核心能力：熟练掌握Transformer、Token、RAG等核心概念；深度使用过LangChain、Dify、Coze或LangGraph等框架；24小时高频冲浪，对新技术有雷达般的嗅觉；有LLM/Agent"
+                ],
+                "question_count": 5,
+                "company": "字节",
+                "position": "AI产品经理"
+              },
+              "match_gaps": "{{T1.output.gaps}}"
+            }
+          },
+          "observation": "聚合完成"
+        }
+      },
+      "global_status": "success",
+      "replan_reason": "",
+      "replan_count": 0
+    },
+    "intent": {
+      "demands": [
+        {
+          "intent": "interview_prepare",
+          "entities": {
+            "company": "字节",
+            "position": "AI产品经理"
+          },
+          "confidence": 0.88
+        }
+      ],
+      "needs_clarification": false,
+      "clarification_question": ""
+    },
+    "rewrite": {
+      "rewritten_query": "面字节AI产品经理要准备什么",
+      "search_keywords": "面字节AI产品经理要准备什么",
+      "is_follow_up": false,
+      "follow_up_type": "none",
+      "resolved_references": {}
+    },
+    "evidence_cache": [
+      {
+        "chunk_id": "ac9973c8-01be-4cd6-9a99-097873a59cf0_chunk_8",
+        "content": "【字节跳动 · AI产品经理 关键词】\nPython, PyTorch, LangChain, RAG, Agent, 产品经理, AI",
+        "metadata": {
+          "company": "字节跳动",
+          "index": 8,
+          "jd_id": "ac9973c8-01be-4cd6-9a99-097873a59cf0",
+          "position": "AI产品经理",
+          "section": "keywords",
+          "strategy": "semantic"
+        },
+        "distance": null,
+        "bm25_score": 11.224330010093839,
+        "vec_norm": 0.0,
+        "bm25_norm": 1.0,
+        "hybrid_score": 0.3,
+        "rerank_score": 0.9994
+      },
+      {
+        "chunk_id": "ac9973c8-01be-4cd6-9a99-097873a59cf0_chunk_3",
+        "content": "【字节跳动 · AI产品经理 硬性要求】\n熟练掌握Transformer、Token、RAG等核心概念",
+        "metadata": {
+          "company": "字节跳动",
+          "index": 3,
+          "jd_id": "ac9973c8-01be-4cd6-9a99-097873a59cf0",
+          "position": "AI产品经理",
+          "priority": "high",
+          "section": "hard_requirements",
+          "strategy": "semantic"
+        },
+        "distance": null,
+        "bm25_score": 10.353516701863263,
+        "vec_norm": 0.0,
+        "bm25_norm": 0.812684661711699,
+        "hybrid_score": 0.24380539851350969,
+        "rerank_score": 0.9971
+      },
+      {
+        "chunk_id": "ac9973c8-01be-4cd6-9a99-097873a59cf0_chunk_4",
+        "content": "【字节跳动 · AI产品经理 硬性要求】\n深度使用过LangChain、Dify、Coze或LangGraph等框架",
+        "metadata": {
+          "company": "字节跳动",
+          "index": 4,
+          "jd_id": "ac9973c8-01be-4cd6-9a99-097873a59cf0",
+          "position": "AI产品经理",
+          "priority": "high",
+          "section": "hard_requirements",
+          "strategy": "semantic"
+        },
+        "distance": null,
+        "bm25_score": 10.247484396640722,
+        "vec_norm": 0.0,
+        "bm25_norm": 0.7898766993912727,
+        "hybrid_score": 0.2369630098173818,
+        "rerank_score": 0.9945
+      },
+      {
+        "chunk_id": "ac9973c8-01be-4cd6-9a99-097873a59cf0_chunk_6",
+        "content": "【字节跳动 · AI产品经理 硬性要求】\n24小时高频冲浪，对新技术有雷达般的嗅觉",
+        "metadata": {
+          "company": "字节跳动",
+          "index": 6,
+          "jd_id": "ac9973c8-01be-4cd6-9a99-097873a59cf0",
+          "position": "AI产品经理",
+          "priority": "high",
+          "section": "hard_requirements",
+          "strategy": "semantic"
+        },
+        "distance": null,
+        "bm25_score": 10.247484396640722,
+        "vec_norm": 0.0,
+        "bm25_norm": 0.7898766993912727,
+        "hybrid_score": 0.2369630098173818,
+        "rerank_score": 0.9945
+      },
+      {
+        "chunk_id": "ac9973c8-01be-4cd6-9a99-097873a59cf0_chunk_7",
+        "content": "【字节跳动 · AI产品经理 软性要求/加分项】\n有LLM/Agent落地案例者优先",
+        "metadata": {
+          "company": "字节跳动",
+          "index": 7,
+          "jd_id": "ac9973c8-01be-4cd6-9a99-097873a59cf0",
+          "position": "AI产品经理",
+          "priority": "medium",
+          "section": "soft_requirements",
+          "strategy": "semantic"
+        },
+        "distance": null,
+        "bm25_score": 10.353516701863263,
+        "vec_norm": 0.0,
+        "bm25_norm": 0.812684661711699,
+        "hybrid_score": 0.24380539851350969,
+        "rerank_score": 0.9944
+      }
+    ],
+    "evidence_cache_query": "面字节AI产品经理要准备什么",
+    "tool_outputs": [
+      {
+        "task_id": "T0",
+        "tool": "kb_retrieve",
+        "description": "检索字节AI产品经理JD",
+        "result": {
+          "chunks": [
+            {
+              "chunk_id": "ac9973c8-01be-4cd6-9a99-097873a59cf0_chunk_8",
+              "content": "【字节跳动 · AI产品经理 关键词】\nPython, PyTorch, LangChain, RAG, Agent, 产品经理, AI",
+              "source": "字节跳动-AI产品经理",
+              "metadata": {
+                "company": "字节跳动",
+                "position": "AI产品经理"
+              }
+            },
+            {
+              "chunk_id": "ac9973c8-01be-4cd6-9a99-097873a59cf0_chunk_3",
+              "content": "【字节跳动 · AI产品经理 硬性要求】\n熟练掌握Transformer、Token、RAG等核心概念",
+              "source": "字节跳动-AI产品经理",
+              "metadata": {
+                "company": "字节跳动",
+                "position": "AI产品经理"
+              }
+            },
+            {
+              "chunk_id": "ac9973c8-01be-4cd6-9a99-097873a59cf0_chunk_4",
+              "content": "【字节跳动 · AI产品经理 硬性要求】\n深度使用过LangChain、Dify、Coze或LangGraph等框架",
+              "source": "字节跳动-AI产品经理",
+              "metadata": {
+                "company": "字节跳动",
+                "position": "AI产品经理"
+              }
+            },
+            {
+              "chunk_id": "ac9973c8-01be-4cd6-9a99-097873a59cf0_chunk_6",
+              "content": "【字节跳动 · AI产品经理 硬性要求】\n24小时高频冲浪，对新技术有雷达般的嗅觉",
+              "source": "字节跳动-AI产品经理",
+              "metadata": {
+                "company": "字节跳动",
+                "position": "AI产品经理"
+              }
+            },
+            {
+              "chunk_id": "ac9973c8-01be-4cd6-9a99-097873a59cf0_chunk_7",
+              "content": "【字节跳动 · AI产品经理 软性要求/加分项】\n有LLM/Agent落地案例者优先",
+              "source": "字节跳动-AI产品经理",
+              "metadata": {
+                "company": "字节跳动",
+                "position": "AI产品经理"
+              }
+            }
+          ],
+          "query": "字节 AI产品经理",
+          "filters": {
+            "company": "字节",
+            "position": "AI产品经理"
+          },
+          "strategy": "hybrid(70%vec+30%bm25)+reranker",
+          "pool_k": 5,
+          "rerank_k": 10,
+          "pool_size": 20,
+          "vec_only": 0,
+          "bm25_only": 20,
+          "both": 0,
+          "rerank": {
+            "enabled": true,
+            "candidates": 5,
+            "output": 5,
+            "best_rerank_score": 0.9994
+          }
+        }
+      },
+      {
+        "task_id": "T1",
+        "tool": "match_analyze",
+        "description": "分析简历与字节AI产品经理JD的匹配度",
+        "result": {
+          "score": 48,
+          "label": "不匹配",
+          "advantages": [
+            "理解RAG基本架构与工作流程",
+            "了解Embedding与向量检索作用",
+            "具备Prompt Engineering实践经验",
+            "了解大语言模型在应用层的落地方式",
+            "产品经理经验（需求分析、原型设计、测试验证）",
+            "参与过AI相关项目（求职助手、教务问答机器人）"
+          ],
+          "weaknesses": [
+            "候选人缺乏对Transformer、Token等核心概念的熟练掌握；没有深度使用LangChain、Dify、Coze或LangGraph等框架的实践经验；没有明确的LLM/Agent落地案例（教务问答机器人是RAG系统，但未提及Agent）；且简历中未体现24小时高频冲浪、对新技术有雷达般嗅觉的特质。"
+          ],
+          "suggestions": [
+            "核心能力要求: 熟练掌握Transformer、Token、RAG等核心概念；深度使用过LangChain、Dify、Coze或LangGraph等框架；24小时高频冲浪，对新技术有雷达般的嗅觉；有LLM/Agent落地案例者优先；具备产品经理基本能力（需求分析、原型设计、项目管理等）。"
+          ],
+          "match_score": 48,
+          "covered": [
+            "理解RAG基本架构与工作流程",
+            "了解Embedding与向量检索作用",
+            "具备Prompt Engineering实践经验",
+            "了解大语言模型在应用层的落地方式",
+            "产品经理经验（需求分析、原型设计、测试验证）",
+            "参与过AI相关项目（求职助手、教务问答机器人）"
+          ],
+          "missing_experience": "候选人缺乏对Transformer、Token等核心概念的熟练掌握；没有深度使用LangChain、Dify、Coze或LangGraph等框架的实践经验；没有明确的LLM/Agent落地案例（教务问答机器人是RAG系统，但未提及Agent）；且简历中未体现24小时高频冲浪、对新技术有雷达般嗅觉的特质。",
+          "core_skills": "熟练掌握Transformer、Token、RAG等核心概念；深度使用过LangChain、Dify、Coze或LangGraph等框架；24小时高频冲浪，对新技术有雷达般的嗅觉；有LLM/Agent落地案例者优先；具备产品经理基本能力（需求分析、原型设计、项目管理等）。",
+          "company": "字节",
+          "position": "AI产品经理"
+        }
+      },
+      {
+        "task_id": "T2",
+        "tool": "interview_gen",
+        "description": "基于匹配短板生成面试题",
+        "result": {
+          "questions": [
+            "假设你负责设计一个基于LLM的文本纠错产品，用户输入一段中文文本，你需要让模型自动纠正错别字、语法错误。请描述从用户输入到模型输出的完整流程，重点说明Tokenization和Transformer的位置编码在这一过程中如何影响输入表示？追问方向：1）如果出现长文本（超过模型上下文窗口），你会如何处理？位置编码超出预训练长度时模型表现会如何？2）如何评估不同Tokenization方法（如BPE vs WordPiece）对中文纠错效果的影响？",
+            "假设你需要在Dify或LangChain上搭建一个能够调用外部工具（如搜索、计算器）的智能客服Agent。请画出系统架构图（口述），并说明你如何实现工具选择、参数填充和结果整合？追问方向：1）你如何设计工具调用的异常处理机制？2）如果希望Agent具备记忆能力（长期记忆），在LangChain中如何实现？",
+            "设计一个智能简历分析Agent，能够从候选人简历中提取技能、经验，并匹配JD进行评分，最后生成面试问题。请从产品经理角度描述这个Agent的交互流程、数据流以及如何保证输出质量？追问方向：1）如何设计闭环反馈机制，让Agent从错误中学习？2）如果Agent需要调用多个LLM（不同角色），你会如何协调它们的工作？",
+            "最近开源社区出现了Mamba架构、Mixture-of-Experts等新模型设计，这些对AI产品经理有什么启示？请结合你了解的一个具体新模型或方法，说明它可能如何影响未来的AI产品设计（比如成本、延迟、功能）。追问方向：1）你认为未来一年LLM在应用层最有可能出现哪些颠覆性变化？2）如果你所在团队资源有限，如何决定是否跟进某项新技术？",
+            "假设你负责在字节内部落地一个AI辅助编程工具（类似Copilot），公司强调数据安全，要求所有代码数据不能出公司网络，且需要支持多种编程语言。请设计一个技术选型方案，包括模型选择（开源/闭源）、部署方式、RAG或微调策略？追问方向：1）如果需要让模型学习公司内部代码规范，推荐使用RAG还是微调？为什么？2）如果用户体验反馈模型生成代码经常有安全漏洞，你会如何改进？"
+          ],
+          "focus_areas": [
+            "短板深挖：候选人缺乏对Transformer、Token等核心概念的熟练掌握；没有深度使用LangChain、Dify、Coze或LangGraph等框架的实践经验；没有明确的LLM/Agent落地案例（教务问",
+            "核心能力：熟练掌握Transformer、Token、RAG等核心概念；深度使用过LangChain、Dify、Coze或LangGraph等框架；24小时高频冲浪，对新技术有雷达般的嗅觉；有LLM/Agent"
+          ],
+          "question_count": 5,
+          "company": "字节",
+          "position": "AI产品经理"
+        }
+      },
+      {
+        "task_id": "T3",
+        "tool": null,
+        "description": "聚合准备面试题的所有结果",
+        "result": {
+          "aggregation": {
+            "prepare": {
+              "questions": [
+                "假设你负责设计一个基于LLM的文本纠错产品，用户输入一段中文文本，你需要让模型自动纠正错别字、语法错误。请描述从用户输入到模型输出的完整流程，重点说明Tokenization和Transformer的位置编码在这一过程中如何影响输入表示？追问方向：1）如果出现长文本（超过模型上下文窗口），你会如何处理？位置编码超出预训练长度时模型表现会如何？2）如何评估不同Tokenization方法（如BPE vs WordPiece）对中文纠错效果的影响？",
+                "假设你需要在Dify或LangChain上搭建一个能够调用外部工具（如搜索、计算器）的智能客服Agent。请画出系统架构图（口述），并说明你如何实现工具选择、参数填充和结果整合？追问方向：1）你如何设计工具调用的异常处理机制？2）如果希望Agent具备记忆能力（长期记忆），在LangChain中如何实现？",
+                "设计一个智能简历分析Agent，能够从候选人简历中提取技能、经验，并匹配JD进行评分，最后生成面试问题。请从产品经理角度描述这个Agent的交互流程、数据流以及如何保证输出质量？追问方向：1）如何设计闭环反馈机制，让Agent从错误中学习？2）如果Agent需要调用多个LLM（不同角色），你会如何协调它们的工作？",
+                "最近开源社区出现了Mamba架构、Mixture-of-Experts等新模型设计，这些对AI产品经理有什么启示？请结合你了解的一个具体新模型或方法，说明它可能如何影响未来的AI产品设计（比如成本、延迟、功能）。追问方向：1）你认为未来一年LLM在应用层最有可能出现哪些颠覆性变化？2）如果你所在团队资源有限，如何决定是否跟进某项新技术？",
+                "假设你负责在字节内部落地一个AI辅助编程工具（类似Copilot），公司强调数据安全，要求所有代码数据不能出公司网络，且需要支持多种编程语言。请设计一个技术选型方案，包括模型选择（开源/闭源）、部署方式、RAG或微调策略？追问方向：1）如果需要让模型学习公司内部代码规范，推荐使用RAG还是微调？为什么？2）如果用户体验反馈模型生成代码经常有安全漏洞，你会如何改进？"
+              ],
+              "focus_areas": [
+                "短板深挖：候选人缺乏对Transformer、Token等核心概念的熟练掌握；没有深度使用LangChain、Dify、Coze或LangGraph等框架的实践经验；没有明确的LLM/Agent落地案例（教务问",
+                "核心能力：熟练掌握Transformer、Token、RAG等核心概念；深度使用过LangChain、Dify、Coze或LangGraph等框架；24小时高频冲浪，对新技术有雷达般的嗅觉；有LLM/Agent"
+              ],
+              "question_count": 5,
+              "company": "字节",
+              "position": "AI产品经理"
+            },
+            "match_gaps": "{{T1.output.gaps}}"
+          }
+        }
+      }
+    ],
+    "final_aggregation_prompt": {
+      "system_prompt": "你是一位专业的求职顾问。请基于以下工具执行结果，给用户一个清晰、有帮助的回复。\n要求：\n1. 先直接回答用户的问题（是/否/有/没有），不要绕弯子，不要重复用户的原话\n2. 如果有匹配分析结果，给出具体的分数和建议\n3. 如果有检索结果，基于事实回答，不要编造\n4. 【强制】引用信息时必须标注来源。每个引用的事实后面都要跟 [来源：公司名-岗位名] 格式。   kb_retrieve 结果的 chunks 中带有 'source' 字段（如'字节跳动-AI产品经理'），请直接使用。   external_search 结果带有 'source_name' 字段，也请直接使用。\n5. 当本地知识库与外部搜索结果冲突时，请并列呈现两种说法并标注各自来源，不要替用户做判断\n6. 语气友好、专业、结构化",
+      "user_prompt": "【用户问题】\n面字节AI产品经理要准备什么\n\n【工具执行结果】\n[{\"task_id\": \"T0\", \"tool\": \"kb_retrieve\", \"description\": \"检索字节AI产品经理JD\", \"result\": {\"chunks\": [{\"chunk_id\": \"ac9973c8-01be-4cd6-9a99-097873a59cf0_chunk_8\", \"content\": \"【字节跳动 · AI产品经理 关键词】\\nPython, PyTorch, LangChain, RAG, Agent, 产品经理, AI\", \"source\": \"字节跳动-AI产品经理\", \"metadata\": {\"company\": \"字节跳动\", \"position\": \"AI产品经理\"}}, {\"chunk_id\": \"ac9973c8-01be-4cd6-9a99-097873a59cf0_chunk_3\", \"content\": \"【字节跳动 · AI产品经理 硬性要求】\\n熟练掌握Transformer、Token、RAG等核心概念\", \"source\": \"字节跳动-AI产品经理\", \"metadata\": {\"company\": \"字节跳动\", \"position\": \"AI产品经理\"}}, {\"chunk_id\": \"ac9973c8-01be-4cd6-9a99-097873a59cf0_chunk_4\", \"content\": \"【字节跳动 · AI产品经理 硬性要求】\\n深度使用过LangChain、Dify、Coze或LangGraph等框架\", \"source\": \"字节跳动-AI产品经理\", \"metadata\": {\"company\": \"字节跳动\", \"position\": \"AI产品经理\"}}, {\"chunk_id\": \"ac9973c8-01be-4cd6-9a99-097873a59cf0_chunk_6\", \"content\": \"【字节跳动 · AI产品经理 硬性要求】\\n24小时高频冲浪，对新技术有雷达般的嗅觉\", \"source\": \"字节跳动-AI产品经理\", \"metadata\": {\"company\": \"字节跳动\", \"position\": \"AI产品经理\"}}, {\"chunk_id\": \"ac9973c8-01be-4cd6-9a99-097873a59cf0_chunk_7\", \"content\": \"【字节跳动 · AI产品经理 软性要求/加分项】\\n有LLM/Agent落地案例者优先\", \"source\": \"字节跳动-AI产品经理\", \"metadata\": {\"company\": \"字节跳动\", \"position\": \"AI产品经理\"}}], \"query\": \"字节 AI产品经理\", \"filters\": {\"company\": \"字节\", \"position\": \"AI产品经理\"}, \"strategy\": \"hybrid(70%vec+30%bm25)+reranker\", \"pool_k\": 5, \"rerank_k\": 10, \"pool_size\": 20, \"vec_only\": 0, \"bm25_only\": 20, \"both\": 0, \"rerank\": {\"enabled\": true, \"candidates\": 5, \"output\": 5, \"best_rerank_score\": 0.9994}}}, {\"task_id\": \"T1\", \"tool\": \"match_analyze\", \"description\": \"分析简历与字节AI产品经理JD的匹配度\", \"result\": {\"score\": 48, \"label\": \"不匹配\", \"advantages\": [\"理解RAG基本架构与工作流程\", \"了解Embedding与向量检索作用\", \"具备Prompt Engineering实践经验\", \"了解大语言模型在应用层的落地方式\", \"产品经理经验（需求分析、原型设计、测试验证）\", \"参与过AI相关项目（求职助手、教务问答机器人）\"], \"weaknesses\": [\"候选人缺乏对Transformer、Token等核心概念的熟练掌握；没有深度使用LangChain、Dify、Coze或LangGraph等框架的实践经验；没有明确的LLM/Agent落地案例（教务问答机器人是RAG系统，但未提及Agent）；且简历中未体现24小时高频冲浪、对新技术有雷达般嗅觉的特质。\"], \"suggestions\": [\"核心能力要求: 熟练掌握Transformer、Token、RAG等核心概念；深度使用过LangChain、Dify、Coze或LangGraph等框架；24小时高频冲浪，对新技术有雷达般的嗅觉；有LLM/Agent落地案例者优先；具备产品经理基本能力（需求分析、原型设计、项目管理等）。\"], \"match_score\": 48, \"covered\": [\"理解RAG基本架构与工作流程\", \"了解Embedding与向量检索作用\", \"具备Prompt Engineering实践经验\", \"了解大语言模型在应用层的落地方式\", \"产品经理经验（需求分析、原型设计、测试验证）\", \"参与过AI相关项目（求职助手、教务问答机器人）\"], \"missing_experience\": \"候选人缺乏对Transformer、Token等核心概念的熟练掌握；没有深度使用LangChain、Dify、Coze或LangGraph等框架的实践经验；没有明确的LLM/Agent落地案例（教务问答机器人是RAG系统，但未提及Agent）；且简历中未体现24小时高频冲浪、对新技术有雷达般嗅觉的特质。\", \"core_skills\": \"熟练掌握Transformer、Token、RAG等核心概念；深度使用过LangChain、Dify、Coze或LangGraph等框架；24小时高频冲浪，对新技术有雷达般的嗅觉；有LLM/Agent落地案例者优先；具备产品经理基本能力（需求分析、原型设计、项目管理等）。\", \"company\": \"字节\", \"position\": \"AI产品经理\"}}, {\"task_id\": \"T2\", \"tool\": \"interview_gen\", \"description\": \"基于匹配短板生成面试题\", \"result\": {\"questions\": [\"假设你负责设计一个基于LLM的文本纠错产品，用户输入一段中文文本，你需要让模型自动纠正错别字、语法错误。请描述从用户输入到模型输出的完整流程，重点说明Tokenization和Transformer的位置编码在这一过程中如何影响输入表示？追问方向：1）如果出现长文本（超过模型上下文窗口），你会如何处理？位置编码超出预训练长度时模型表现会如何？2）如何评估不同Tokenization方法（如BPE vs WordPiece）对中文纠错效果的影响？\", \"假设你需要在Dify或LangChain上搭建一个能够调用外部工具（如搜索、计算器）的智能客服Agent。请画出系统架构图（口述）\n\n请生成回复："
+    }
+  },
+  "reply": "有明确的核心技术与案例准备要求。\n\n基于您的简历与岗位要求的匹配分析，当前匹配度为 **48 分**，标签为 **不匹配**。为了帮助您更好地备战，以下是详细的差距分析与准备建议：\n\n### 1. 当前匹配情况分析\n*   **匹配优势**：\n    *   理解 RAG 基本架构与工作流程，了解 Embedding 与向量检索作用。\n    *   具备 Prompt Engineering 实践经验，了解大语言模型在应用层的落地方式。\n    *   拥有产品经理基本经验（需求分析、原型设计、测试验证）。\n    *   参与过 AI 相关项目（如求职助手、教务问答机器人）。\n*   **主要差距**：\n    *   缺乏对 Transformer、Token 等核心概念的熟练掌握。\n    *   没有深度使用 LangChain、Dify、Coze 或 LangGraph 等框架的实践经验。\n    *   没有明确的 LLM/Agent 落地案例（现有项目多为 RAG 系统，未提及 Agent）。\n    *   简历中未体现对新技术的高频关注与敏锐嗅觉。\n\n### 2. 核心准备清单\n根据岗位硬性要求，建议您重点补充以下内容：\n\n*   **核心技术概念**：必须熟练掌握 Transformer、Token、RAG 等核心概念 [来源：字节跳动-AI 产品经理]。\n*   **开发框架实践**：需深度使用过 LangChain、Dify、Coze 或 LangGraph 等框架 [来源：字节跳动-AI 产品经理]。\n*   **行业敏感度**：需体现 24 小时高频冲浪，对新技术有雷达般的嗅觉 [来源：字节跳动-AI 产品经理]。\n*   **落地案例积累**：优先准备有 LLM/Agent 落地案例，关键词涵盖 Python, PyTorch, LangChain, RAG, Agent 等 [来源：字节跳动-AI 产品经理]。\n\n### 3. 针对性面试题预测\n基于您的能力短板，面试中可能会重点考察以下问题，请提前准备：\n\n*   **底层原理题**：假设设计基于 LLM 的文本纠错产品，请描述从用户输入到模型输出的完整流程，重点说明 Tokenization 和 Transformer 的位置编码如何影响输入表示？（追问：长文本处理、位置编码超出预训练长度表现、不同 Tokenization 方法对中文效果的影响）。\n*   **架构设计题**：假设需要在 Dify 或 LangChain 上搭建一个能够调用外部工具（如搜索、计算器）的智能客服 Agent，请口述系统架构图。\n\n建议您针对上述差距进行突击学习，特别是框架的深度使用和 Agent 案例的梳理，以提升匹配度。祝您面试顺利！",
+  "reply_length": 1173,
+  "intent_match": true,
+  "tool_match_rate": 1.0,
+  "has_reply": true,
+  "events": [
+    {
+      "step": "intent",
+      "message": "正在识别您的意图...",
+      "_time": 4.907318115234375,
+      "type": "status"
+    },
+    {
+      "step": "plan",
+      "message": "正在规划任务...",
+      "_time": 4.907359838485718,
+      "type": "status"
+    },
+    {
+      "step": "execute",
+      "message": "正在执行分析...",
+      "_time": 18.839027404785156,
+      "type": "status"
+    },
+    {
+      "step": "aggregate",
+      "message": "正在生成回复...",
+      "_time": 38.32792925834656,
+      "type": "status"
+    },
+    {
+      "text": "有明确的核心技术与",
+      "_time": 96.21184992790222,
+      "type": "delta"
+    },
+    {
+      "text": "案例准备要求",
+      "_time": 96.21531224250793,
+      "type": "delta"
+    },
+    {
+      "text": "。\n\n基于您的",
+      "_time": 96.33875870704651,
+      "type": "delta"
+    },
+    {
+      "text": "简历与岗位要求的",
+      "_time": 96.3654043674469,
+      "type": "delta"
+    },
+    {
+      "text": "匹配分析，当前",
+      "_time": 96.48349142074585,
+      "type": "delta"
+    },
+    {
+      "text": "匹配度",
+      "_time": 96.48720979690552,
+      "type": "delta"
+    },
+    {
+      "text": "为 **48",
+      "_time": 96.5916211605072,
+      "type": "delta"
+    },
+    {
+      "text": " 分**，",
+      "_time": 96.59634137153625,
+      "type": "delta"
+    },
+    {
+      "text": "标签为 **不",
+      "_time": 96.73558616638184,
+      "type": "delta"
+    },
+    {
+      "text": "匹配",
+      "_time": 96.78740739822388,
+      "type": "delta"
+    },
+    {
+      "text": "**。为了帮助您更好地",
+      "_time": 96.82652068138123,
+      "type": "delta"
+    },
+    {
+      "text": "备战",
+      "_time": 96.82812595367432,
+      "type": "delta"
+    },
+    {
+      "text": "，以下是详细的差距",
+      "_time": 96.91368460655212,
+      "type": "delta"
+    },
+    {
+      "text": "分析与准备",
+      "_time": 96.91829776763916,
+      "type": "delta"
+    },
+    {
+      "text": "建议：\n\n###",
+      "_time": 97.0656373500824,
+      "type": "delta"
+    },
+    {
+      "text": " 1. ",
+      "_time": 97.06927299499512,
+      "type": "delta"
+    },
+    {
+      "text": "当前匹配情况分析\n",
+      "_time": 97.16759419441223,
+      "type": "delta"
+    },
+    {
+      "text": "*   **",
+      "_time": 97.17225241661072,
+      "type": "delta"
+    },
+    {
+      "text": "匹配优势**：",
+      "_time": 97.32262825965881,
+      "type": "delta"
+    },
+    {
+      "text": "\n",
+      "_time": 97.32723569869995,
+      "type": "delta"
+    },
+    {
+      "text": "    *   ",
+      "_time": 97.383535861969,
+      "type": "delta"
+    },
+    {
+      "text": "理解 RAG ",
+      "_time": 97.38731265068054,
+      "type": "delta"
+    },
+    {
+      "text": "基本架构与工作流程",
+      "_time": 97.52755117416382,
+      "type": "delta"
+    },
+    {
+      "text": "，了解",
+      "_time": 97.53220176696777,
+      "type": "delta"
+    },
+    {
+      "text": " Embedding 与",
+      "_time": 97.71258354187012,
+      "type": "delta"
+    },
+    {
+      "text": "向量检索作用。",
+      "_time": 97.71621561050415,
+      "type": "delta"
+    },
+    {
+      "text": "\n    *  ",
+      "_time": 97.7803304195404,
+      "type": "delta"
+    },
+    {
+      "text": " 具备 Prompt Engineering",
+      "_time": 97.81131410598755,
+      "type": "delta"
+    },
+    {
+      "text": " 实践经验，了解",
+      "_time": 97.92246794700623,
+      "type": "delta"
+    },
+    {
+      "text": "大语言模型在",
+      "_time": 97.95831441879272,
+      "type": "delta"
+    },
+    {
+      "text": "应用层的落地方式",
+      "_time": 98.06633353233337,
+      "type": "delta"
+    },
+    {
+      "text": "。\n    *",
+      "_time": 98.07128477096558,
+      "type": "delta"
+    },
+    {
+      "text": "   拥有产品经理",
+      "_time": 98.21165919303894,
+      "type": "delta"
+    },
+    {
+      "text": "基本经验",
+      "_time": 98.25034666061401,
+      "type": "delta"
+    },
+    {
+      "text": "（需求分析、",
+      "_time": 98.33841967582703,
+      "type": "delta"
+    },
+    {
+      "text": "原型设计、测试",
+      "_time": 98.34126329421997,
+      "type": "delta"
+    },
+    {
+      "text": "验证）。\n   ",
+      "_time": 98.46544337272644,
+      "type": "delta"
+    },
+    {
+      "text": " *  ",
+      "_time": 98.47028374671936,
+      "type": "delta"
+    },
+    {
+      "text": " 参与过 AI",
+      "_time": 98.60315084457397,
+      "type": "delta"
+    },
+    {
+      "text": " 相关项目（",
+      "_time": 98.6058440208435,
+      "type": "delta"
+    },
+    {
+      "text": "如求职助手、",
+      "_time": 98.71557331085205,
+      "type": "delta"
+    },
+    {
+      "text": "教务问答机器人）。",
+      "_time": 98.71925783157349,
+      "type": "delta"
+    },
+    {
+      "text": "\n*   **",
+      "_time": 98.89952325820923,
+      "type": "delta"
+    },
+    {
+      "text": "主要差距",
+      "_time": 98.92932772636414,
+      "type": "delta"
+    },
+    {
+      "text": "**：\n   ",
+      "_time": 98.96924185752869,
+      "type": "delta"
+    },
+    {
+      "text": " *   缺乏",
+      "_time": 98.9722638130188,
+      "type": "delta"
+    },
+    {
+      "text": "对 Transformer、Token",
+      "_time": 99.1800627708435,
+      "type": "delta"
+    },
+    {
+      "text": " 等核心概念的",
+      "_time": 99.180490732193,
+      "type": "delta"
+    },
+    {
+      "text": "熟练掌握。\n   ",
+      "_time": 99.2564537525177,
+      "type": "delta"
+    },
+    {
+      "text": " *   没有",
+      "_time": 99.29124283790588,
+      "type": "delta"
+    },
+    {
+      "text": "深度使用 LangChain",
+      "_time": 99.39735341072083,
+      "type": "delta"
+    },
+    {
+      "text": "、Dify、",
+      "_time": 99.40225982666016,
+      "type": "delta"
+    },
+    {
+      "text": "Coze 或",
+      "_time": 99.54261088371277,
+      "type": "delta"
+    },
+    {
+      "text": " LangGraph 等",
+      "_time": 99.58026576042175,
+      "type": "delta"
+    },
+    {
+      "text": "框架的实践经验。",
+      "_time": 99.68766379356384,
+      "type": "delta"
+    },
+    {
+      "text": "\n   ",
+      "_time": 99.69017291069031,
+      "type": "delta"
+    },
+    {
+      "text": " *   没有",
+      "_time": 99.7945830821991,
+      "type": "delta"
+    },
+    {
+      "text": "明确的 L",
+      "_time": 99.8314163684845,
+      "type": "delta"
+    },
+    {
+      "text": "LM/Agent ",
+      "_time": 99.9043173789978,
+      "type": "delta"
+    },
+    {
+      "text": "落地案例（现有",
+      "_time": 99.90813183784485,
+      "type": "delta"
+    },
+    {
+      "text": "项目多为 RAG",
+      "_time": 100.0464415550232,
+      "type": "delta"
+    },
+    {
+      "text": " 系统，未",
+      "_time": 100.07525396347046,
+      "type": "delta"
+    },
+    {
+      "text": "提及 Agent）。\n",
+      "_time": 100.19056057929993,
+      "type": "delta"
+    },
+    {
+      "text": "    *   ",
+      "_time": 100.19632339477539,
+      "type": "delta"
+    },
+    {
+      "text": "简历中未体现",
+      "_time": 100.33550381660461,
+      "type": "delta"
+    },
+    {
+      "text": "对",
+      "_time": 100.34021973609924,
+      "type": "delta"
+    },
+    {
+      "text": "新技术的高频关注",
+      "_time": 100.45744180679321,
+      "type": "delta"
+    },
+    {
+      "text": "与敏锐嗅觉",
+      "_time": 100.4611587524414,
+      "type": "delta"
+    },
+    {
+      "text": "。\n\n### ",
+      "_time": 100.55154371261597,
+      "type": "delta"
+    },
+    {
+      "text": "2. 核心",
+      "_time": 100.55615878105164,
+      "type": "delta"
+    },
+    {
+      "text": "准备清单\n根据",
+      "_time": 100.69646334648132,
+      "type": "delta"
+    },
+    {
+      "text": "岗位",
+      "_time": 100.73148894309998,
+      "type": "delta"
+    },
+    {
+      "text": "硬性要求，建议您",
+      "_time": 100.78523254394531,
+      "type": "delta"
+    },
+    {
+      "text": "重点补充",
+      "_time": 100.78805899620056,
+      "type": "delta"
+    },
+    {
+      "text": "以下内容：\n\n*",
+      "_time": 100.91738104820251,
+      "type": "delta"
+    },
+    {
+      "text": "   **核心技术",
+      "_time": 100.92715954780579,
+      "type": "delta"
+    },
+    {
+      "text": "概念**：必须",
+      "_time": 101.01834297180176,
+      "type": "delta"
+    },
+    {
+      "text": "熟练掌握 Transformer、Token",
+      "_time": 101.02413511276245,
+      "type": "delta"
+    },
+    {
+      "text": "、RAG ",
+      "_time": 101.19850325584412,
+      "type": "delta"
+    },
+    {
+      "text": "等核心概念 [",
+      "_time": 101.20197916030884,
+      "type": "delta"
+    },
+    {
+      "text": "来源：字节跳动",
+      "_time": 101.3075110912323,
+      "type": "delta"
+    },
+    {
+      "text": "-AI 产品经理",
+      "_time": 101.31119346618652,
+      "type": "delta"
+    },
+    {
+      "text": "]。\n*",
+      "_time": 101.48331594467163,
+      "type": "delta"
+    },
+    {
+      "text": "   **开发",
+      "_time": 101.48817801475525,
+      "type": "delta"
+    },
+    {
+      "text": "框架实践**：",
+      "_time": 101.57821822166443,
+      "type": "delta"
+    },
+    {
+      "text": "需",
+      "_time": 101.58211183547974,
+      "type": "delta"
+    },
+    {
+      "text": "深度使用过 Lang",
+      "_time": 101.67820191383362,
+      "type": "delta"
+    },
+    {
+      "text": "Chain、Dify",
+      "_time": 101.69907808303833,
+      "type": "delta"
+    },
+    {
+      "text": "、Coze ",
+      "_time": 101.81134247779846,
+      "type": "delta"
+    },
+    {
+      "text": "或 LangGraph ",
+      "_time": 101.81608414649963,
+      "type": "delta"
+    },
+    {
+      "text": "等框架 [来源",
+      "_time": 101.98829054832458,
+      "type": "delta"
+    },
+    {
+      "text": "：字节跳动",
+      "_time": 101.99205350875854,
+      "type": "delta"
+    },
+    {
+      "text": "-AI 产品经理",
+      "_time": 102.08124041557312,
+      "type": "delta"
+    },
+    {
+      "text": "]。\n*",
+      "_time": 102.08708620071411,
+      "type": "delta"
+    },
+    {
+      "text": "   **行业敏感度",
+      "_time": 102.23338389396667,
+      "type": "delta"
+    },
+    {
+      "text": "**：需",
+      "_time": 102.26415419578552,
+      "type": "delta"
+    },
+    {
+      "text": "体现 24",
+      "_time": 102.35123252868652,
+      "type": "delta"
+    },
+    {
+      "text": " ",
+      "_time": 102.35505747795105,
+      "type": "delta"
+    },
+    {
+      "text": "小时高频冲浪，",
+      "_time": 102.44016432762146,
+      "type": "delta"
+    },
+    {
+      "text": "对新技术有雷达",
+      "_time": 102.44407868385315,
+      "type": "delta"
+    },
+    {
+      "text": "般的嗅觉 [来源",
+      "_time": 102.58537006378174,
+      "type": "delta"
+    },
+    {
+      "text": "：字节跳动",
+      "_time": 102.61810398101807,
+      "type": "delta"
+    },
+    {
+      "text": "-AI 产品经理",
+      "_time": 102.71219062805176,
+      "type": "delta"
+    },
+    {
+      "text": "]。\n*",
+      "_time": 102.71806502342224,
+      "type": "delta"
+    },
+    {
+      "text": "   **落地案例",
+      "_time": 102.85424304008484,
+      "type": "delta"
+    },
+    {
+      "text": "积累",
+      "_time": 102.8570945262909,
+      "type": "delta"
+    },
+    {
+      "text": "**：优先准备",
+      "_time": 103.0010507106781,
+      "type": "delta"
+    },
+    {
+      "text": "有",
+      "_time": 103.00670981407166,
+      "type": "delta"
+    },
+    {
+      "text": " LLM/Agent",
+      "_time": 103.03502821922302,
+      "type": "delta"
+    },
+    {
+      "text": " 落地案例，",
+      "_time": 103.03785181045532,
+      "type": "delta"
+    },
+    {
+      "text": "关键词涵盖 Python,",
+      "_time": 103.21327114105225,
+      "type": "delta"
+    },
+    {
+      "text": " PyTorch,",
+      "_time": 103.21702408790588,
+      "type": "delta"
+    },
+    {
+      "text": " LangChain, R",
+      "_time": 103.32536697387695,
+      "type": "delta"
+    },
+    {
+      "text": "AG, Agent ",
+      "_time": 103.35412311553955,
+      "type": "delta"
+    },
+    {
+      "text": "等 [来源：",
+      "_time": 103.46715116500854,
+      "type": "delta"
+    },
+    {
+      "text": "字节跳动-AI",
+      "_time": 103.47004437446594,
+      "type": "delta"
+    },
+    {
+      "text": " 产品经理]。",
+      "_time": 103.61313557624817,
+      "type": "delta"
+    },
+    {
+      "text": "\n\n### 3",
+      "_time": 103.63806676864624,
+      "type": "delta"
+    },
+    {
+      "text": ". 针对性面试题",
+      "_time": 103.75532555580139,
+      "type": "delta"
+    },
+    {
+      "text": "预测\n基于",
+      "_time": 103.76004385948181,
+      "type": "delta"
+    },
+    {
+      "text": "您的能力短板，",
+      "_time": 103.88027143478394,
+      "type": "delta"
+    },
+    {
+      "text": "面试中",
+      "_time": 103.88306522369385,
+      "type": "delta"
+    },
+    {
+      "text": "可能会重点考察以下",
+      "_time": 104.01623463630676,
+      "type": "delta"
+    },
+    {
+      "text": "问题，",
+      "_time": 104.02102613449097,
+      "type": "delta"
+    },
+    {
+      "text": "请提前准备：",
+      "_time": 104.09826922416687,
+      "type": "delta"
+    },
+    {
+      "text": "\n\n*  ",
+      "_time": 104.10199189186096,
+      "type": "delta"
+    },
+    {
+      "text": " **底层原理题",
+      "_time": 104.22524929046631,
+      "type": "delta"
+    },
+    {
+      "text": "**：假设",
+      "_time": 104.25604844093323,
+      "type": "delta"
+    },
+    {
+      "text": "设计基于 LLM",
+      "_time": 104.35722708702087,
+      "type": "delta"
+    },
+    {
+      "text": " 的文本纠错",
+      "_time": 104.36295056343079,
+      "type": "delta"
+    },
+    {
+      "text": "产品，请描述",
+      "_time": 104.49420642852783,
+      "type": "delta"
+    },
+    {
+      "text": "从用户输入",
+      "_time": 104.49782848358154,
+      "type": "delta"
+    },
+    {
+      "text": "到模型输出的完整",
+      "_time": 104.65225100517273,
+      "type": "delta"
+    },
+    {
+      "text": "流程，重点说明",
+      "_time": 104.65693020820618,
+      "type": "delta"
+    },
+    {
+      "text": " Tokenization 和",
+      "_time": 104.76320600509644,
+      "type": "delta"
+    },
+    {
+      "text": " Transformer ",
+      "_time": 104.81399083137512,
+      "type": "delta"
+    },
+    {
+      "text": "的位置编码如何影响",
+      "_time": 104.87101745605469,
+      "type": "delta"
+    },
+    {
+      "text": "输入表示？",
+      "_time": 104.8749189376831,
+      "type": "delta"
+    },
+    {
+      "text": "（追问：长",
+      "_time": 104.99897813796997,
+      "type": "delta"
+    },
+    {
+      "text": "文本处理、",
+      "_time": 105.12432813644409,
+      "type": "delta"
+    },
+    {
+      "text": "位置编码超出预",
+      "_time": 105.12795186042786,
+      "type": "delta"
+    },
+    {
+      "text": "训练长度表现",
+      "_time": 105.13492774963379,
+      "type": "delta"
+    },
+    {
+      "text": "、不同 Tokenization",
+      "_time": 105.28003549575806,
+      "type": "delta"
+    },
+    {
+      "text": " 方法对中文",
+      "_time": 105.28374481201172,
+      "type": "delta"
+    },
+    {
+      "text": "效果的影响）。\n",
+      "_time": 105.39328503608704,
+      "type": "delta"
+    },
+    {
+      "text": "*   **",
+      "_time": 105.39690709114075,
+      "type": "delta"
+    },
+    {
+      "text": "架构设计题**",
+      "_time": 105.55228590965271,
+      "type": "delta"
+    },
+    {
+      "text": "：假设需要在 D",
+      "_time": 105.55488467216492,
+      "type": "delta"
+    },
+    {
+      "text": "ify 或 Lang",
+      "_time": 105.66104435920715,
+      "type": "delta"
+    },
+    {
+      "text": "Chain 上搭建",
+      "_time": 105.6659426689148,
+      "type": "delta"
+    },
+    {
+      "text": "一个能够调用外部",
+      "_time": 105.83916020393372,
+      "type": "delta"
+    },
+    {
+      "text": "工具（如搜索",
+      "_time": 105.8429548740387,
+      "type": "delta"
+    },
+    {
+      "text": "、计算器）的智能",
+      "_time": 105.95014882087708,
+      "type": "delta"
+    },
+    {
+      "text": "客服 Agent，请",
+      "_time": 105.95387864112854,
+      "type": "delta"
+    },
+    {
+      "text": "口述系统架构图",
+      "_time": 106.13220405578613,
+      "type": "delta"
+    },
+    {
+      "text": "。\n\n建议您",
+      "_time": 106.13378429412842,
+      "type": "delta"
+    },
+    {
+      "text": "针对上述差距进行",
+      "_time": 106.22011828422546,
+      "type": "delta"
+    },
+    {
+      "text": "突击",
+      "_time": 106.22292852401733,
+      "type": "delta"
+    },
+    {
+      "text": "学习，特别是框架",
+      "_time": 106.34219241142273,
+      "type": "delta"
+    },
+    {
+      "text": "的深度",
+      "_time": 106.34570217132568,
+      "type": "delta"
+    },
+    {
+      "text": "使用和 Agent 案例",
+      "_time": 106.40300869941711,
+      "type": "delta"
+    },
+    {
+      "text": "的",
+      "_time": 106.40489554405212,
+      "type": "delta"
+    },
+    {
+      "text": "梳理，以提升匹配",
+      "_time": 106.49019742012024,
+      "type": "delta"
+    },
+    {
+      "text": "度。祝您",
+      "_time": 106.49291896820068,
+      "type": "delta"
+    },
+    {
+      "text": "面试顺利！",
+      "_time": 106.65409088134766,
+      "type": "delta"
+    },
+    {
+      "session_id": "eval_chen_04_1780561122828",
+      "intent": "interview_prepare",
+      "route_meta": {
+        "layer": "llm",
+        "intent": "interview_prepare",
+        "confidence": 0.88,
+        "demands": [
+          {
+            "intent": "interview_prepare",
+            "entities": {
+              "company": "字节",
+              "position": "AI产品经理"
+            }
+          }
+        ],
+        "plan_tasks": 4
+      },
+      "agent_mode": "llm",
+      "is_clarification": false,
+      "agent": {
+        "rewritten_query": "面字节AI产品经理要准备什么",
+        "tools": [
+          {
+            "tool": "kb_retrieve",
+            "status": "✅",
+            "params": {
+              "query": "字节 AI产品经理",
+              "top_k": 5,
+              "company": "字节",
+              "position": "AI产品经理"
+            },
+            "result_preview": "{'chunks': [{'chunk_id': 'ac9973c8-01be-4cd6-9a99-097873a59cf0_chunk_8', 'content': '【字节跳动 · AI产品经理 关键词】\\nPython, PyTorch, LangChain, RAG, Agent, 产品经理, AI', 'metadata': {'company': '字节跳动', 'index': 8,"
+          },
+          {
+            "tool": "match_analyze",
+            "status": "✅",
+            "params": {
+              "resume_text": "姓名：陈雨桐\r\n教育背景\r\n江南科技大学\r\n信息工程学院·软件工程（AI应用方向）·硕士\r\n2024.09-2027.06（预计）\r\nGPA: 3.4/4.0 | 主修：机器学习基础、数据库系统、软件项目管理、人机交互设计\r\n\r\n云溪大学\r\n计算机学院·信息管理与信息系统·本科\r\n2020.09-2024.06\r\n荣誉：两次校级三等奖学金 | 主修：数据结构、管理学原理、Web开发技术、统计学\r\n\r\n项目经历\r\n求职助手小程序 — 智能简历匹配与面试模拟工具\r\n2025.03-2025.11\r\n产品经理 | 三人小组\r\n- 需求分析：设计调研问卷回收40余份有效样本，梳理\"简历评估\"与\"定向面试模拟\"核心需求，使用Figma完成低保真原型，输出产品需求文档。\r\n- AI匹配策略：调研开源Embedding模型实现简历与JD语义相似度计算，探索多维度匹配方案，对比整篇匹配与分块匹配效果差异，持续优化推荐排序。\r\n- 内容生成：基于大模型AI设计结构化Prompt，融合岗位关键词与简历信息输出个性化面试题，建立追问机制增强模拟面试针对性。\r\n- 测试验证：组织20人内测收集用户路径与反馈数据，针对复杂PDF格式设计补充录入机制，完成从需求分析到上线测试的完整产品闭环。\r\n\r\n教务问答机器人 — 基于校内政策的RAG问答系统\r\n2024.10-2025.02\r\n产品设计与测试 | 实验室课题项目\r\n- 知识库构建：收集整理教务处政策文件、培养方案及历史问答共80余份，完成扫描件OCR识别、格式转换与结构化清洗，建立可检索的领域知识库。\r\n- 交互设计：设计Web端对话界面，参考主流客服产品布局增加\"推荐提问\"推荐模块降低投入成本，针对政策类回答设计溯源展示功能增强可信度。\r\n- 效果测试：参与搭建检索增强生成链路，完成实验环境下多轮问答测试，验证标准政策类问题回答准确率，整理测试数据与优化建议形成可复用方案。\r\n\r\n校园经历\r\n江南科技大学软件学院学生会·宣传部干事\r\n2024.09-2025.06\r\n- 负责学院官方公众号推文排版与发布，累计输出活动宣传稿件10余篇；协助组织院内编程比赛，负责报名统计与现场签到。\r\n\r\n云溪大学图书馆·勤工助学岗\r\n2022.03-2023.06\r\n- 负责电子阅览室日常值班，协助同学解决基础网络与设备使用问题；参与旧期刊电子目录录入与数据整理工作。\r\n\r\n获奖情况\r\n- 2025.05 江南科技大学研究生学业三等奖学金\r\n- 2024.11 学院AI应用创新赛（课程组）三等奖\r\n- 2022.06 云溪大学优秀共青团员\r\n- 2022.12 校级网页设计比赛优秀奖\r\n\r\n个人技能\r\n- 产品工具：熟练使用Figma进行原型与交互演示，了解Axure基础操作；能够使用Xmind梳理产品架构，通过腾讯文档/飞书写PRD。\r\n- 技术理解：了解大语言模型在应用层的落地方式，具备Prompt Engineering实践经验；理解RAG基本架构与工作流程，了解Embedding与向量检索作用。\r\n- 语言能力：英语CET-4（525分），可阅读英文技术文档与产品资料。\r\n- 办公技能：熟练使用Office办公软件，掌握Excel数据透视表等基础数据分析功能。",
+              "jd_text": [
+                {
+                  "chunk_id": "ac9973c8-01be-4cd6-9a99-097873a59cf0_chunk_8",
+                  "content": "【字节跳动 · AI产品经理 关键词】\nPython, PyTorch, LangChain, RAG, Agent, 产品经理, AI",
+                  "metadata": {
+                    "company": "字节跳动",
+                    "index": 8,
+                    "jd_id": "ac9973c8-01be-4cd6-9a99-097873a59cf0",
+                    "position": "AI产品经理",
+                    "section": "keywords",
+                    "strategy": "semantic"
+                  },
+                  "distance": null,
+                  "bm25_score": 11.224330010093839,
+                  "vec_norm": 0.0,
+                  "bm25_norm": 1.0,
+                  "hybrid_score": 0.3,
+                  "rerank_score": 0.9994
+                },
+                {
+                  "chunk_id": "ac9973c8-01be-4cd6-9a99-097873a59cf0_chunk_3",
+                  "content": "【字节跳动 · AI产品经理 硬性要求】\n熟练掌握Transformer、Token、RAG等核心概念",
+                  "metadata": {
+                    "company": "字节跳动",
+                    "index": 3,
+                    "jd_id": "ac9973c8-01be-4cd6-9a99-097873a59cf0",
+                    "position": "AI产品经理",
+                    "priority": "high",
+                    "section": "hard_requirements",
+                    "strategy": "semantic"
+                  },
+                  "distance": null,
+                  "bm25_score": 10.353516701863263,
+                  "vec_norm": 0.0,
+                  "bm25_norm": 0.812684661711699,
+                  "hybrid_score": 0.24380539851350969,
+                  "rerank_score": 0.9971
+                },
+                {
+                  "chunk_id": "ac9973c8-01be-4cd6-9a99-097873a59cf0_chunk_4",
+                  "content": "【字节跳动 · AI产品经理 硬性要求】\n深度使用过LangChain、Dify、Coze或LangGraph等框架",
+                  "metadata": {
+                    "company": "字节跳动",
+                    "index": 4,
+                    "jd_id": "ac9973c8-01be-4cd6-9a99-097873a59cf0",
+                    "position": "AI产品经理",
+                    "priority": "high",
+                    "section": "hard_requirements",
+                    "strategy": "semantic"
+                  },
+                  "distance": null,
+                  "bm25_score": 10.247484396640722,
+                  "vec_norm": 0.0,
+                  "bm25_norm": 0.7898766993912727,
+                  "hybrid_score": 0.2369630098173818,
+                  "rerank_score": 0.9945
+                },
+                {
+                  "chunk_id": "ac9973c8-01be-4cd6-9a99-097873a59cf0_chunk_6",
+                  "content": "【字节跳动 · AI产品经理 硬性要求】\n24小时高频冲浪，对新技术有雷达般的嗅觉",
+                  "metadata": {
+                    "company": "字节跳动",
+                    "index": 6,
+                    "jd_id": "ac9973c8-01be-4cd6-9a99-097873a59cf0",
+                    "position": "AI产品经理",
+                    "priority": "high",
+                    "section": "hard_requirements",
+                    "strategy": "semantic"
+                  },
+                  "distance": null,
+                  "bm25_score": 10.247484396640722,
+                  "vec_norm": 0.0,
+                  "bm25_norm": 0.7898766993912727,
+                  "hybrid_score": 0.2369630098173818,
+                  "rerank_score": 0.9945
+                },
+                {
+                  "chunk_id": "ac9973c8-01be-4cd6-9a99-097873a59cf0_chunk_7",
+                  "content": "【字节跳动 · AI产品经理 软性要求/加分项】\n有LLM/Agent落地案例者优先",
+                  "metadata": {
+                    "company": "字节跳动",
+                    "index": 7,
+                    "jd_id": "ac9973c8-01be-4cd6-9a99-097873a59cf0",
+                    "position": "AI产品经理",
+                    "priority": "medium",
+                    "section": "soft_requirements",
+                    "strategy": "semantic"
+                  },
+                  "distance": null,
+                  "bm25_score": 10.353516701863263,
+                  "vec_norm": 0.0,
+                  "bm25_norm": 0.812684661711699,
+                  "hybrid_score": 0.24380539851350969,
+                  "rerank_score": 0.9944
+                }
+              ],
+              "company": "字节",
+              "position": "AI产品经理"
+            },
+            "result_preview": "{'score': 48, 'label': '不匹配', 'advantages': ['理解RAG基本架构与工作流程', '了解Embedding与向量检索作用', '具备Prompt Engineering实践经验', '了解大语言模型在应用层的落地方式', '产品经理经验（需求分析、原型设计、测试验证）', '参与过AI相关项目（求职助手、教务问答机器人）'], 'weaknesses':"
+          },
+          {
+            "tool": "interview_gen",
+            "status": "✅",
+            "params": {
+              "match_result": {
+                "score": 48,
+                "label": "不匹配",
+                "advantages": [
+                  "理解RAG基本架构与工作流程",
+                  "了解Embedding与向量检索作用",
+                  "具备Prompt Engineering实践经验",
+                  "了解大语言模型在应用层的落地方式",
+                  "产品经理经验（需求分析、原型设计、测试验证）",
+                  "参与过AI相关项目（求职助手、教务问答机器人）"
+                ],
+                "weaknesses": [
+                  "候选人缺乏对Transformer、Token等核心概念的熟练掌握；没有深度使用LangChain、Dify、Coze或LangGraph等框架的实践经验；没有明确的LLM/Agent落地案例（教务问答机器人是RAG系统，但未提及Agent）；且简历中未体现24小时高频冲浪、对新技术有雷达般嗅觉的特质。"
+                ],
+                "suggestions": [
+                  "核心能力要求: 熟练掌握Transformer、Token、RAG等核心概念；深度使用过LangChain、Dify、Coze或LangGraph等框架；24小时高频冲浪，对新技术有雷达般的嗅觉；有LLM/Agent落地案例者优先；具备产品经理基本能力（需求分析、原型设计、项目管理等）。"
+                ],
+                "match_score": 48,
+                "covered": [
+                  "理解RAG基本架构与工作流程",
+                  "了解Embedding与向量检索作用",
+                  "具备Prompt Engineering实践经验",
+                  "了解大语言模型在应用层的落地方式",
+                  "产品经理经验（需求分析、原型设计、测试验证）",
+                  "参与过AI相关项目（求职助手、教务问答机器人）"
+                ],
+                "missing_experience": "候选人缺乏对Transformer、Token等核心概念的熟练掌握；没有深度使用LangChain、Dify、Coze或LangGraph等框架的实践经验；没有明确的LLM/Agent落地案例（教务问答机器人是RAG系统，但未提及Agent）；且简历中未体现24小时高频冲浪、对新技术有雷达般嗅觉的特质。",
+                "core_skills": "熟练掌握Transformer、Token、RAG等核心概念；深度使用过LangChain、Dify、Coze或LangGraph等框架；24小时高频冲浪，对新技术有雷达般的嗅觉；有LLM/Agent落地案例者优先；具备产品经理基本能力（需求分析、原型设计、项目管理等）。",
+                "company": "字节",
+                "position": "AI产品经理"
+              },
+              "count": 5,
+              "difficulty": "mixed",
+              "company": "字节",
+              "position": "AI产品经理"
+            },
+            "result_preview": "{'questions': ['假设你负责设计一个基于LLM的文本纠错产品，用户输入一段中文文本，你需要让模型自动纠正错别字、语法错误。请描述从用户输入到模型输出的完整流程，重点说明Tokenization和Transformer的位置编码在这一过程中如何影响输入表示？追问方向：1）如果出现长文本（超过模型上下文窗口），你会如何处理？位置编码超出预训练长度时模型表现会如何？2）如何评估不同Toke"
+          }
+        ],
+        "kb_chunks_count": 4,
+        "system_prompt_preview": "你是一位专业的求职顾问。请基于以下工具执行结果，给用户一个清晰、有帮助的回复。\n要求：\n1. 先直接回答用户的问题（是/否/有/没有），不要绕弯子，不要重复用户的原话\n2. 如果有匹配分析结果，给出具体的分数和建议\n3. 如果有检索结果，基于事实回答，不要编造\n4. 【强制】引用信息时必须标注来源。每个引用的事实后面都要跟 [来源：公司名-岗位名] 格式。   kb_retrieve 结果的 ch"
+      },
+      "memory": {
+        "working_turns": 1,
+        "compressed_blocks": 0,
+        "current_topic": "general",
+        "evidence_cache_size": 5
+      },
+      "reply": "有明确的核心技术与案例准备要求。\n\n基于您的简历与岗位要求的匹配分析，当前匹配度为 **48 分**，标签为 **不匹配**。为了帮助您更好地备战，以下是详细的差距分析与准备建议：\n\n### 1. 当前匹配情况分析\n*   **匹配优势**：\n    *   理解 RAG 基本架构与工作流程，了解 Embedding 与向量检索作用。\n    *   具备 Prompt Engineering 实践经验，了解大语言模型在应用层的落地方式。\n    *   拥有产品经理基本经验（需求分析、原型设计、测试验证）。\n    *   参与过 AI 相关项目（如求职助手、教务问答机器人）。\n*   **主要差距**：\n    *   缺乏对 Transformer、Token 等核心概念的熟练掌握。\n    *   没有深度使用 LangChain、Dify、Coze 或 LangGraph 等框架的实践经验。\n    *   没有明确的 LLM/Agent 落地案例（现有项目多为 RAG 系统，未提及 Agent）。\n    *   简历中未体现对新技术的高频关注与敏锐嗅觉。\n\n### 2. 核心准备清单\n根据岗位硬性要求，建议您重点补充以下内容：\n\n*   **核心技术概念**：必须熟练掌握 Transformer、Token、RAG 等核心概念 [来源：字节跳动-AI 产品经理]。\n*   **开发框架实践**：需深度使用过 LangChain、Dify、Coze 或 LangGraph 等框架 [来源：字节跳动-AI 产品经理]。\n*   **行业敏感度**：需体现 24 小时高频冲浪，对新技术有雷达般的嗅觉 [来源：字节跳动-AI 产品经理]。\n*   **落地案例积累**：优先准备有 LLM/Agent 落地案例，关键词涵盖 Python, PyTorch, LangChain, RAG, Agent 等 [来源：字节跳动-AI 产品经理]。\n\n### 3. 针对性面试题预测\n基于您的能力短板，面试中可能会重点考察以下问题，请提前准备：\n\n*   **底层原理题**：假设设计基于 LLM 的文本纠错产品，请描述从用户输入到模型输出的完整流程，重点说明 Tokenization 和 Transformer 的位置编码如何影响输入表示？（追问：长文本处理、位置编码超出预训练长度表现、不同 Tokenization 方法对中文效果的影响）。\n*   **架构设计题**：假设需要在 Dify 或 LangChain 上搭建一个能够调用外部工具（如搜索、计算器）的智能客服 Agent，请口述系统架构图。\n\n建议您针对上述差距进行突击学习，特别是框架的深度使用和 Agent 案例的梳理，以提升匹配度。祝您面试顺利！",
+      "debug_info": {
+        "task_graph": {
+          "tasks": {
+            "T0": {
+              "task_id": "T0",
+              "task_type": "tool_call",
+              "tool_name": "kb_retrieve",
+              "status": "success",
+              "parameters": {
+                "query": "{{global_slots.company}} {{global_slots.position}}",
+                "top_k": 5,
+                "company": "{{global_slots.company}}",
+                "position": "{{global_slots.position}}"
+              },
+              "resolved_params": {
+                "query": "字节 AI产品经理",
+                "top_k": 5,
+                "company": "字节",
+                "position": "AI产品经理"
+              },
+              "result": {
+                "chunks": [
+                  {
+                    "chunk_id": "ac9973c8-01be-4cd6-9a99-097873a59cf0_chunk_8",
+                    "content": "【字节跳动 · AI产品经理 关键词】\nPython, PyTorch, LangChain, RAG, Agent, 产品经理, AI",
+                    "metadata": {
+                      "company": "字节跳动",
+                      "index": 8,
+                      "jd_id": "ac9973c8-01be-4cd6-9a99-097873a59cf0",
+                      "position": "AI产品经理",
+                      "section": "keywords",
+                      "strategy": "semantic"
+                    },
+                    "distance": null,
+                    "bm25_score": 11.224330010093839,
+                    "vec_norm": 0.0,
+                    "bm25_norm": 1.0,
+                    "hybrid_score": 0.3,
+                    "rerank_score": 0.9994
+                  },
+                  {
+                    "chunk_id": "ac9973c8-01be-4cd6-9a99-097873a59cf0_chunk_3",
+                    "content": "【字节跳动 · AI产品经理 硬性要求】\n熟练掌握Transformer、Token、RAG等核心概念",
+                    "metadata": {
+                      "company": "字节跳动",
+                      "index": 3,
+                      "jd_id": "ac9973c8-01be-4cd6-9a99-097873a59cf0",
+                      "position": "AI产品经理",
+                      "priority": "high",
+                      "section": "hard_requirements",
+                      "strategy": "semantic"
+                    },
+                    "distance": null,
+                    "bm25_score": 10.353516701863263,
+                    "vec_norm": 0.0,
+                    "bm25_norm": 0.812684661711699,
+                    "hybrid_score": 0.24380539851350969,
+                    "rerank_score": 0.9971
+                  },
+                  {
+                    "chunk_id": "ac9973c8-01be-4cd6-9a99-097873a59cf0_chunk_4",
+                    "content": "【字节跳动 · AI产品经理 硬性要求】\n深度使用过LangChain、Dify、Coze或LangGraph等框架",
+                    "metadata": {
+                      "company": "字节跳动",
+                      "index": 4,
+                      "jd_id": "ac9973c8-01be-4cd6-9a99-097873a59cf0",
+                      "position": "AI产品经理",
+                      "priority": "high",
+                      "section": "hard_requirements",
+                      "strategy": "semantic"
+                    },
+                    "distance": null,
+                    "bm25_score": 10.247484396640722,
+                    "vec_norm": 0.0,
+                    "bm25_norm": 0.7898766993912727,
+                    "hybrid_score": 0.2369630098173818,
+                    "rerank_score": 0.9945
+                  },
+                  {
+                    "chunk_id": "ac9973c8-01be-4cd6-9a99-097873a59cf0_chunk_6",
+                    "content": "【字节跳动 · AI产品经理 硬性要求】\n24小时高频冲浪，对新技术有雷达般的嗅觉",
+                    "metadata": {
+                      "company": "字节跳动",
+                      "index": 6,
+                      "jd_id": "ac9973c8-01be-4cd6-9a99-097873a59cf0",
+                      "position": "AI产品经理",
+                      "priority": "high",
+                      "section": "hard_requirements",
+                      "strategy": "semantic"
+                    },
+                    "distance": null,
+                    "bm25_score": 10.247484396640722,
+                    "vec_norm": 0.0,
+                    "bm25_norm": 0.7898766993912727,
+                    "hybrid_score": 0.2369630098173818,
+                    "rerank_score": 0.9945
+                  },
+                  {
+                    "chunk_id": "ac9973c8-01be-4cd6-9a99-097873a59cf0_chunk_7",
+                    "content": "【字节跳动 · AI产品经理 软性要求/加分项】\n有LLM/Agent落地案例者优先",
+                    "metadata": {
+                      "company": "字节跳动",
+                      "index": 7,
+                      "jd_id": "ac9973c8-01be-4cd6-9a99-097873a59cf0",
+                      "position": "AI产品经理",
+                      "priority": "medium",
+                      "section": "soft_requirements",
+                      "strategy": "semantic"
+                    },
+                    "distance": null,
+                    "bm25_score": 10.353516701863263,
+                    "vec_norm": 0.0,
+                    "bm25_norm": 0.812684661711699,
+                    "hybrid_score": 0.24380539851350969,
+                    "rerank_score": 0.9944
+                  }
+                ],
+                "query": "字节 AI产品经理",
+                "filters": {
+                  "company": "字节",
+                  "position": "AI产品经理"
+                },
+                "strategy": "hybrid(70%vec+30%bm25)+reranker",
+                "pool_k": 5,
+                "rerank_k": 10,
+                "pool_size": 20,
+                "vec_only": 0,
+                "bm25_only": 20,
+                "both": 0,
+                "rerank": {
+                  "enabled": true,
+                  "candidates": 5,
+                  "output": 5,
+                  "best_rerank_score": 0.9994
+                }
+              },
+              "observation": "工具 kb_retrieve 执行成功"
+            },
+            "T1": {
+              "task_id": "T1",
+              "task_type": "tool_call",
+              "tool_name": "match_analyze",
+              "status": "success",
+              "parameters": {
+                "resume_text": "{{global_slots.resume_text}}",
+                "jd_text": "{{T0.output.chunks}}",
+                "company": "{{global_slots.company}}",
+                "position": "{{global_slots.position}}"
+              },
+              "resolved_params": {
+                "resume_text": "姓名：陈雨桐\r\n教育背景\r\n江南科技大学\r\n信息工程学院·软件工程（AI应用方向）·硕士\r\n2024.09-2027.06（预计）\r\nGPA: 3.4/4.0 | 主修：机器学习基础、数据库系统、软件项目管理、人机交互设计\r\n\r\n云溪大学\r\n计算机学院·信息管理与信息系统·本科\r\n2020.09-2024.06\r\n荣誉：两次校级三等奖学金 | 主修：数据结构、管理学原理、Web开发技术、统计学\r\n\r\n项目经历\r\n求职助手小程序 — 智能简历匹配与面试模拟工具\r\n2025.03-2025.11\r\n产品经理 | 三人小组\r\n- 需求分析：设计调研问卷回收40余份有效样本，梳理\"简历评估\"与\"定向面试模拟\"核心需求，使用Figma完成低保真原型，输出产品需求文档。\r\n- AI匹配策略：调研开源Embedding模型实现简历与JD语义相似度计算，探索多维度匹配方案，对比整篇匹配与分块匹配效果差异，持续优化推荐排序。\r\n- 内容生成：基于大模型AI设计结构化Prompt，融合岗位关键词与简历信息输出个性化面试题，建立追问机制增强模拟面试针对性。\r\n- 测试验证：组织20人内测收集用户路径与反馈数据，针对复杂PDF格式设计补充录入机制，完成从需求分析到上线测试的完整产品闭环。\r\n\r\n教务问答机器人 — 基于校内政策的RAG问答系统\r\n2024.10-2025.02\r\n产品设计与测试 | 实验室课题项目\r\n- 知识库构建：收集整理教务处政策文件、培养方案及历史问答共80余份，完成扫描件OCR识别、格式转换与结构化清洗，建立可检索的领域知识库。\r\n- 交互设计：设计Web端对话界面，参考主流客服产品布局增加\"推荐提问\"推荐模块降低投入成本，针对政策类回答设计溯源展示功能增强可信度。\r\n- 效果测试：参与搭建检索增强生成链路，完成实验环境下多轮问答测试，验证标准政策类问题回答准确率，整理测试数据与优化建议形成可复用方案。\r\n\r\n校园经历\r\n江南科技大学软件学院学生会·宣传部干事\r\n2024.09-2025.06\r\n- 负责学院官方公众号推文排版与发布，累计输出活动宣传稿件10余篇；协助组织院内编程比赛，负责报名统计与现场签到。\r\n\r\n云溪大学图书馆·勤工助学岗\r\n2022.03-2023.06\r\n- 负责电子阅览室日常值班，协助同学解决基础网络与设备使用问题；参与旧期刊电子目录录入与数据整理工作。\r\n\r\n获奖情况\r\n- 2025.05 江南科技大学研究生学业三等奖学金\r\n- 2024.11 学院AI应用创新赛（课程组）三等奖\r\n- 2022.06 云溪大学优秀共青团员\r\n- 2022.12 校级网页设计比赛优秀奖\r\n\r\n个人技能\r\n- 产品工具：熟练使用Figma进行原型与交互演示，了解Axure基础操作；能够使用Xmind梳理产品架构，通过腾讯文档/飞书写PRD。\r\n- 技术理解：了解大语言模型在应用层的落地方式，具备Prompt Engineering实践经验；理解RAG基本架构与工作流程，了解Embedding与向量检索作用。\r\n- 语言能力：英语CET-4（525分），可阅读英文技术文档与产品资料。\r\n- 办公技能：熟练使用Office办公软件，掌握Excel数据透视表等基础数据分析功能。",
+                "jd_text": [
+                  {
+                    "chunk_id": "ac9973c8-01be-4cd6-9a99-097873a59cf0_chunk_8",
+                    "content": "【字节跳动 · AI产品经理 关键词】\nPython, PyTorch, LangChain, RAG, Agent, 产品经理, AI",
+                    "metadata": {
+                      "company": "字节跳动",
+                      "index": 8,
+                      "jd_id": "ac9973c8-01be-4cd6-9a99-097873a59cf0",
+                      "position": "AI产品经理",
+                      "section": "keywords",
+                      "strategy": "semantic"
+                    },
+                    "distance": null,
+                    "bm25_score": 11.224330010093839,
+                    "vec_norm": 0.0,
+                    "bm25_norm": 1.0,
+                    "hybrid_score": 0.3,
+                    "rerank_score": 0.9994
+                  },
+                  {
+                    "chunk_id": "ac9973c8-01be-4cd6-9a99-097873a59cf0_chunk_3",
+                    "content": "【字节跳动 · AI产品经理 硬性要求】\n熟练掌握Transformer、Token、RAG等核心概念",
+                    "metadata": {
+                      "company": "字节跳动",
+                      "index": 3,
+                      "jd_id": "ac9973c8-01be-4cd6-9a99-097873a59cf0",
+                      "position": "AI产品经理",
+                      "priority": "high",
+                      "section": "hard_requirements",
+                      "strategy": "semantic"
+                    },
+                    "distance": null,
+                    "bm25_score": 10.353516701863263,
+                    "vec_norm": 0.0,
+                    "bm25_norm": 0.812684661711699,
+                    "hybrid_score": 0.24380539851350969,
+                    "rerank_score": 0.9971
+                  },
+                  {
+                    "chunk_id": "ac9973c8-01be-4cd6-9a99-097873a59cf0_chunk_4",
+                    "content": "【字节跳动 · AI产品经理 硬性要求】\n深度使用过LangChain、Dify、Coze或LangGraph等框架",
+                    "metadata": {
+                      "company": "字节跳动",
+                      "index": 4,
+                      "jd_id": "ac9973c8-01be-4cd6-9a99-097873a59cf0",
+                      "position": "AI产品经理",
+                      "priority": "high",
+                      "section": "hard_requirements",
+                      "strategy": "semantic"
+                    },
+                    "distance": null,
+                    "bm25_score": 10.247484396640722,
+                    "vec_norm": 0.0,
+                    "bm25_norm": 0.7898766993912727,
+                    "hybrid_score": 0.2369630098173818,
+                    "rerank_score": 0.9945
+                  },
+                  {
+                    "chunk_id": "ac9973c8-01be-4cd6-9a99-097873a59cf0_chunk_6",
+                    "content": "【字节跳动 · AI产品经理 硬性要求】\n24小时高频冲浪，对新技术有雷达般的嗅觉",
+                    "metadata": {
+                      "company": "字节跳动",
+                      "index": 6,
+                      "jd_id": "ac9973c8-01be-4cd6-9a99-097873a59cf0",
+                      "position": "AI产品经理",
+                      "priority": "high",
+                      "section": "hard_requirements",
+                      "strategy": "semantic"
+                    },
+                    "distance": null,
+                    "bm25_score": 10.247484396640722,
+                    "vec_norm": 0.0,
+                    "bm25_norm": 0.7898766993912727,
+                    "hybrid_score": 0.2369630098173818,
+                    "rerank_score": 0.9945
+                  },
+                  {
+                    "chunk_id": "ac9973c8-01be-4cd6-9a99-097873a59cf0_chunk_7",
+                    "content": "【字节跳动 · AI产品经理 软性要求/加分项】\n有LLM/Agent落地案例者优先",
+                    "metadata": {
+                      "company": "字节跳动",
+                      "index": 7,
+                      "jd_id": "ac9973c8-01be-4cd6-9a99-097873a59cf0",
+                      "position": "AI产品经理",
+                      "priority": "medium",
+                      "section": "soft_requirements",
+                      "strategy": "semantic"
+                    },
+                    "distance": null,
+                    "bm25_score": 10.353516701863263,
+                    "vec_norm": 0.0,
+                    "bm25_norm": 0.812684661711699,
+                    "hybrid_score": 0.24380539851350969,
+                    "rerank_score": 0.9944
+                  }
+                ],
+                "company": "字节",
+                "position": "AI产品经理"
+              },
+              "result": {
+                "score": 48,
+                "label": "不匹配",
+                "advantages": [
+                  "理解RAG基本架构与工作流程",
+                  "了解Embedding与向量检索作用",
+                  "具备Prompt Engineering实践经验",
+                  "了解大语言模型在应用层的落地方式",
+                  "产品经理经验（需求分析、原型设计、测试验证）",
+                  "参与过AI相关项目（求职助手、教务问答机器人）"
+                ],
+                "weaknesses": [
+                  "候选人缺乏对Transformer、Token等核心概念的熟练掌握；没有深度使用LangChain、Dify、Coze或LangGraph等框架的实践经验；没有明确的LLM/Agent落地案例（教务问答机器人是RAG系统，但未提及Agent）；且简历中未体现24小时高频冲浪、对新技术有雷达般嗅觉的特质。"
+                ],
+                "suggestions": [
+                  "核心能力要求: 熟练掌握Transformer、Token、RAG等核心概念；深度使用过LangChain、Dify、Coze或LangGraph等框架；24小时高频冲浪，对新技术有雷达般的嗅觉；有LLM/Agent落地案例者优先；具备产品经理基本能力（需求分析、原型设计、项目管理等）。"
+                ],
+                "match_score": 48,
+                "covered": [
+                  "理解RAG基本架构与工作流程",
+                  "了解Embedding与向量检索作用",
+                  "具备Prompt Engineering实践经验",
+                  "了解大语言模型在应用层的落地方式",
+                  "产品经理经验（需求分析、原型设计、测试验证）",
+                  "参与过AI相关项目（求职助手、教务问答机器人）"
+                ],
+                "missing_experience": "候选人缺乏对Transformer、Token等核心概念的熟练掌握；没有深度使用LangChain、Dify、Coze或LangGraph等框架的实践经验；没有明确的LLM/Agent落地案例（教务问答机器人是RAG系统，但未提及Agent）；且简历中未体现24小时高频冲浪、对新技术有雷达般嗅觉的特质。",
+                "core_skills": "熟练掌握Transformer、Token、RAG等核心概念；深度使用过LangChain、Dify、Coze或LangGraph等框架；24小时高频冲浪，对新技术有雷达般的嗅觉；有LLM/Agent落地案例者优先；具备产品经理基本能力（需求分析、原型设计、项目管理等）。",
+                "company": "字节",
+                "position": "AI产品经理"
+              },
+              "observation": "工具 match_analyze 执行成功"
+            },
+            "T2": {
+              "task_id": "T2",
+              "task_type": "tool_call",
+              "tool_name": "interview_gen",
+              "status": "success",
+              "parameters": {
+                "match_result": "{{T1.output}}",
+                "count": 5,
+                "difficulty": "mixed",
+                "company": "{{global_slots.company}}",
+                "position": "{{global_slots.position}}"
+              },
+              "resolved_params": {
+                "match_result": {
+                  "score": 48,
+                  "label": "不匹配",
+                  "advantages": [
+                    "理解RAG基本架构与工作流程",
+                    "了解Embedding与向量检索作用",
+                    "具备Prompt Engineering实践经验",
+                    "了解大语言模型在应用层的落地方式",
+                    "产品经理经验（需求分析、原型设计、测试验证）",
+                    "参与过AI相关项目（求职助手、教务问答机器人）"
+                  ],
+                  "weaknesses": [
+                    "候选人缺乏对Transformer、Token等核心概念的熟练掌握；没有深度使用LangChain、Dify、Coze或LangGraph等框架的实践经验；没有明确的LLM/Agent落地案例（教务问答机器人是RAG系统，但未提及Agent）；且简历中未体现24小时高频冲浪、对新技术有雷达般嗅觉的特质。"
+                  ],
+                  "suggestions": [
+                    "核心能力要求: 熟练掌握Transformer、Token、RAG等核心概念；深度使用过LangChain、Dify、Coze或LangGraph等框架；24小时高频冲浪，对新技术有雷达般的嗅觉；有LLM/Agent落地案例者优先；具备产品经理基本能力（需求分析、原型设计、项目管理等）。"
+                  ],
+                  "match_score": 48,
+                  "covered": [
+                    "理解RAG基本架构与工作流程",
+                    "了解Embedding与向量检索作用",
+                    "具备Prompt Engineering实践经验",
+                    "了解大语言模型在应用层的落地方式",
+                    "产品经理经验（需求分析、原型设计、测试验证）",
+                    "参与过AI相关项目（求职助手、教务问答机器人）"
+                  ],
+                  "missing_experience": "候选人缺乏对Transformer、Token等核心概念的熟练掌握；没有深度使用LangChain、Dify、Coze或LangGraph等框架的实践经验；没有明确的LLM/Agent落地案例（教务问答机器人是RAG系统，但未提及Agent）；且简历中未体现24小时高频冲浪、对新技术有雷达般嗅觉的特质。",
+                  "core_skills": "熟练掌握Transformer、Token、RAG等核心概念；深度使用过LangChain、Dify、Coze或LangGraph等框架；24小时高频冲浪，对新技术有雷达般的嗅觉；有LLM/Agent落地案例者优先；具备产品经理基本能力（需求分析、原型设计、项目管理等）。",
+                  "company": "字节",
+                  "position": "AI产品经理"
+                },
+                "count": 5,
+                "difficulty": "mixed",
+                "company": "字节",
+                "position": "AI产品经理"
+              },
+              "result": {
+                "questions": [
+                  "假设你负责设计一个基于LLM的文本纠错产品，用户输入一段中文文本，你需要让模型自动纠正错别字、语法错误。请描述从用户输入到模型输出的完整流程，重点说明Tokenization和Transformer的位置编码在这一过程中如何影响输入表示？追问方向：1）如果出现长文本（超过模型上下文窗口），你会如何处理？位置编码超出预训练长度时模型表现会如何？2）如何评估不同Tokenization方法（如BPE vs WordPiece）对中文纠错效果的影响？",
+                  "假设你需要在Dify或LangChain上搭建一个能够调用外部工具（如搜索、计算器）的智能客服Agent。请画出系统架构图（口述），并说明你如何实现工具选择、参数填充和结果整合？追问方向：1）你如何设计工具调用的异常处理机制？2）如果希望Agent具备记忆能力（长期记忆），在LangChain中如何实现？",
+                  "设计一个智能简历分析Agent，能够从候选人简历中提取技能、经验，并匹配JD进行评分，最后生成面试问题。请从产品经理角度描述这个Agent的交互流程、数据流以及如何保证输出质量？追问方向：1）如何设计闭环反馈机制，让Agent从错误中学习？2）如果Agent需要调用多个LLM（不同角色），你会如何协调它们的工作？",
+                  "最近开源社区出现了Mamba架构、Mixture-of-Experts等新模型设计，这些对AI产品经理有什么启示？请结合你了解的一个具体新模型或方法，说明它可能如何影响未来的AI产品设计（比如成本、延迟、功能）。追问方向：1）你认为未来一年LLM在应用层最有可能出现哪些颠覆性变化？2）如果你所在团队资源有限，如何决定是否跟进某项新技术？",
+                  "假设你负责在字节内部落地一个AI辅助编程工具（类似Copilot），公司强调数据安全，要求所有代码数据不能出公司网络，且需要支持多种编程语言。请设计一个技术选型方案，包括模型选择（开源/闭源）、部署方式、RAG或微调策略？追问方向：1）如果需要让模型学习公司内部代码规范，推荐使用RAG还是微调？为什么？2）如果用户体验反馈模型生成代码经常有安全漏洞，你会如何改进？"
+                ],
+                "focus_areas": [
+                  "短板深挖：候选人缺乏对Transformer、Token等核心概念的熟练掌握；没有深度使用LangChain、Dify、Coze或LangGraph等框架的实践经验；没有明确的LLM/Agent落地案例（教务问",
+                  "核心能力：熟练掌握Transformer、Token、RAG等核心概念；深度使用过LangChain、Dify、Coze或LangGraph等框架；24小时高频冲浪，对新技术有雷达般的嗅觉；有LLM/Agent"
+                ],
+                "question_count": 5,
+                "company": "字节",
+                "position": "AI产品经理"
+              },
+              "observation": "工具 interview_gen 执行成功"
+            },
+            "T3": {
+              "task_id": "T3",
+              "task_type": "aggregate",
+              "tool_name": null,
+              "status": "success",
+              "parameters": {
+                "prepare": "{{T2.output}}",
+                "match_gaps": "{{T1.output.gaps}}"
+              },
+              "resolved_params": {
+                "prepare": {
+                  "questions": [
+                    "假设你负责设计一个基于LLM的文本纠错产品，用户输入一段中文文本，你需要让模型自动纠正错别字、语法错误。请描述从用户输入到模型输出的完整流程，重点说明Tokenization和Transformer的位置编码在这一过程中如何影响输入表示？追问方向：1）如果出现长文本（超过模型上下文窗口），你会如何处理？位置编码超出预训练长度时模型表现会如何？2）如何评估不同Tokenization方法（如BPE vs WordPiece）对中文纠错效果的影响？",
+                    "假设你需要在Dify或LangChain上搭建一个能够调用外部工具（如搜索、计算器）的智能客服Agent。请画出系统架构图（口述），并说明你如何实现工具选择、参数填充和结果整合？追问方向：1）你如何设计工具调用的异常处理机制？2）如果希望Agent具备记忆能力（长期记忆），在LangChain中如何实现？",
+                    "设计一个智能简历分析Agent，能够从候选人简历中提取技能、经验，并匹配JD进行评分，最后生成面试问题。请从产品经理角度描述这个Agent的交互流程、数据流以及如何保证输出质量？追问方向：1）如何设计闭环反馈机制，让Agent从错误中学习？2）如果Agent需要调用多个LLM（不同角色），你会如何协调它们的工作？",
+                    "最近开源社区出现了Mamba架构、Mixture-of-Experts等新模型设计，这些对AI产品经理有什么启示？请结合你了解的一个具体新模型或方法，说明它可能如何影响未来的AI产品设计（比如成本、延迟、功能）。追问方向：1）你认为未来一年LLM在应用层最有可能出现哪些颠覆性变化？2）如果你所在团队资源有限，如何决定是否跟进某项新技术？",
+                    "假设你负责在字节内部落地一个AI辅助编程工具（类似Copilot），公司强调数据安全，要求所有代码数据不能出公司网络，且需要支持多种编程语言。请设计一个技术选型方案，包括模型选择（开源/闭源）、部署方式、RAG或微调策略？追问方向：1）如果需要让模型学习公司内部代码规范，推荐使用RAG还是微调？为什么？2）如果用户体验反馈模型生成代码经常有安全漏洞，你会如何改进？"
+                  ],
+                  "focus_areas": [
+                    "短板深挖：候选人缺乏对Transformer、Token等核心概念的熟练掌握；没有深度使用LangChain、Dify、Coze或LangGraph等框架的实践经验；没有明确的LLM/Agent落地案例（教务问",
+                    "核心能力：熟练掌握Transformer、Token、RAG等核心概念；深度使用过LangChain、Dify、Coze或LangGraph等框架；24小时高频冲浪，对新技术有雷达般的嗅觉；有LLM/Agent"
+                  ],
+                  "question_count": 5,
+                  "company": "字节",
+                  "position": "AI产品经理"
+                },
+                "match_gaps": "{{T1.output.gaps}}"
+              },
+              "result": {
+                "aggregation": {
+                  "prepare": {
+                    "questions": [
+                      "假设你负责设计一个基于LLM的文本纠错产品，用户输入一段中文文本，你需要让模型自动纠正错别字、语法错误。请描述从用户输入到模型输出的完整流程，重点说明Tokenization和Transformer的位置编码在这一过程中如何影响输入表示？追问方向：1）如果出现长文本（超过模型上下文窗口），你会如何处理？位置编码超出预训练长度时模型表现会如何？2）如何评估不同Tokenization方法（如BPE vs WordPiece）对中文纠错效果的影响？",
+                      "假设你需要在Dify或LangChain上搭建一个能够调用外部工具（如搜索、计算器）的智能客服Agent。请画出系统架构图（口述），并说明你如何实现工具选择、参数填充和结果整合？追问方向：1）你如何设计工具调用的异常处理机制？2）如果希望Agent具备记忆能力（长期记忆），在LangChain中如何实现？",
+                      "设计一个智能简历分析Agent，能够从候选人简历中提取技能、经验，并匹配JD进行评分，最后生成面试问题。请从产品经理角度描述这个Agent的交互流程、数据流以及如何保证输出质量？追问方向：1）如何设计闭环反馈机制，让Agent从错误中学习？2）如果Agent需要调用多个LLM（不同角色），你会如何协调它们的工作？",
+                      "最近开源社区出现了Mamba架构、Mixture-of-Experts等新模型设计，这些对AI产品经理有什么启示？请结合你了解的一个具体新模型或方法，说明它可能如何影响未来的AI产品设计（比如成本、延迟、功能）。追问方向：1）你认为未来一年LLM在应用层最有可能出现哪些颠覆性变化？2）如果你所在团队资源有限，如何决定是否跟进某项新技术？",
+                      "假设你负责在字节内部落地一个AI辅助编程工具（类似Copilot），公司强调数据安全，要求所有代码数据不能出公司网络，且需要支持多种编程语言。请设计一个技术选型方案，包括模型选择（开源/闭源）、部署方式、RAG或微调策略？追问方向：1）如果需要让模型学习公司内部代码规范，推荐使用RAG还是微调？为什么？2）如果用户体验反馈模型生成代码经常有安全漏洞，你会如何改进？"
+                    ],
+                    "focus_areas": [
+                      "短板深挖：候选人缺乏对Transformer、Token等核心概念的熟练掌握；没有深度使用LangChain、Dify、Coze或LangGraph等框架的实践经验；没有明确的LLM/Agent落地案例（教务问",
+                      "核心能力：熟练掌握Transformer、Token、RAG等核心概念；深度使用过LangChain、Dify、Coze或LangGraph等框架；24小时高频冲浪，对新技术有雷达般的嗅觉；有LLM/Agent"
+                    ],
+                    "question_count": 5,
+                    "company": "字节",
+                    "position": "AI产品经理"
+                  },
+                  "match_gaps": "{{T1.output.gaps}}"
+                }
+              },
+              "observation": "聚合完成"
+            }
+          },
+          "global_status": "success",
+          "replan_reason": "",
+          "replan_count": 0
+        },
+        "intent": {
+          "demands": [
+            {
+              "intent": "interview_prepare",
+              "entities": {
+                "company": "字节",
+                "position": "AI产品经理"
+              },
+              "confidence": 0.88
+            }
+          ],
+          "needs_clarification": false,
+          "clarification_question": ""
+        },
+        "rewrite": {
+          "rewritten_query": "面字节AI产品经理要准备什么",
+          "search_keywords": "面字节AI产品经理要准备什么",
+          "is_follow_up": false,
+          "follow_up_type": "none",
+          "resolved_references": {}
+        },
+        "evidence_cache": [
+          {
+            "chunk_id": "ac9973c8-01be-4cd6-9a99-097873a59cf0_chunk_8",
+            "content": "【字节跳动 · AI产品经理 关键词】\nPython, PyTorch, LangChain, RAG, Agent, 产品经理, AI",
+            "metadata": {
+              "company": "字节跳动",
+              "index": 8,
+              "jd_id": "ac9973c8-01be-4cd6-9a99-097873a59cf0",
+              "position": "AI产品经理",
+              "section": "keywords",
+              "strategy": "semantic"
+            },
+            "distance": null,
+            "bm25_score": 11.224330010093839,
+            "vec_norm": 0.0,
+            "bm25_norm": 1.0,
+            "hybrid_score": 0.3,
+            "rerank_score": 0.9994
+          },
+          {
+            "chunk_id": "ac9973c8-01be-4cd6-9a99-097873a59cf0_chunk_3",
+            "content": "【字节跳动 · AI产品经理 硬性要求】\n熟练掌握Transformer、Token、RAG等核心概念",
+            "metadata": {
+              "company": "字节跳动",
+              "index": 3,
+              "jd_id": "ac9973c8-01be-4cd6-9a99-097873a59cf0",
+              "position": "AI产品经理",
+              "priority": "high",
+              "section": "hard_requirements",
+              "strategy": "semantic"
+            },
+            "distance": null,
+            "bm25_score": 10.353516701863263,
+            "vec_norm": 0.0,
+            "bm25_norm": 0.812684661711699,
+            "hybrid_score": 0.24380539851350969,
+            "rerank_score": 0.9971
+          },
+          {
+            "chunk_id": "ac9973c8-01be-4cd6-9a99-097873a59cf0_chunk_4",
+            "content": "【字节跳动 · AI产品经理 硬性要求】\n深度使用过LangChain、Dify、Coze或LangGraph等框架",
+            "metadata": {
+              "company": "字节跳动",
+              "index": 4,
+              "jd_id": "ac9973c8-01be-4cd6-9a99-097873a59cf0",
+              "position": "AI产品经理",
+              "priority": "high",
+              "section": "hard_requirements",
+              "strategy": "semantic"
+            },
+            "distance": null,
+            "bm25_score": 10.247484396640722,
+            "vec_norm": 0.0,
+            "bm25_norm": 0.7898766993912727,
+            "hybrid_score": 0.2369630098173818,
+            "rerank_score": 0.9945
+          },
+          {
+            "chunk_id": "ac9973c8-01be-4cd6-9a99-097873a59cf0_chunk_6",
+            "content": "【字节跳动 · AI产品经理 硬性要求】\n24小时高频冲浪，对新技术有雷达般的嗅觉",
+            "metadata": {
+              "company": "字节跳动",
+              "index": 6,
+              "jd_id": "ac9973c8-01be-4cd6-9a99-097873a59cf0",
+              "position": "AI产品经理",
+              "priority": "high",
+              "section": "hard_requirements",
+              "strategy": "semantic"
+            },
+            "distance": null,
+            "bm25_score": 10.247484396640722,
+            "vec_norm": 0.0,
+            "bm25_norm": 0.7898766993912727,
+            "hybrid_score": 0.2369630098173818,
+            "rerank_score": 0.9945
+          },
+          {
+            "chunk_id": "ac9973c8-01be-4cd6-9a99-097873a59cf0_chunk_7",
+            "content": "【字节跳动 · AI产品经理 软性要求/加分项】\n有LLM/Agent落地案例者优先",
+            "metadata": {
+              "company": "字节跳动",
+              "index": 7,
+              "jd_id": "ac9973c8-01be-4cd6-9a99-097873a59cf0",
+              "position": "AI产品经理",
+              "priority": "medium",
+              "section": "soft_requirements",
+              "strategy": "semantic"
+            },
+            "distance": null,
+            "bm25_score": 10.353516701863263,
+            "vec_norm": 0.0,
+            "bm25_norm": 0.812684661711699,
+            "hybrid_score": 0.24380539851350969,
+            "rerank_score": 0.9944
+          }
+        ],
+        "evidence_cache_query": "面字节AI产品经理要准备什么",
+        "tool_outputs": [
+          {
+            "task_id": "T0",
+            "tool": "kb_retrieve",
+            "description": "检索字节AI产品经理JD",
+            "result": {
+              "chunks": [
+                {
+                  "chunk_id": "ac9973c8-01be-4cd6-9a99-097873a59cf0_chunk_8",
+                  "content": "【字节跳动 · AI产品经理 关键词】\nPython, PyTorch, LangChain, RAG, Agent, 产品经理, AI",
+                  "source": "字节跳动-AI产品经理",
+                  "metadata": {
+                    "company": "字节跳动",
+                    "position": "AI产品经理"
+                  }
+                },
+                {
+                  "chunk_id": "ac9973c8-01be-4cd6-9a99-097873a59cf0_chunk_3",
+                  "content": "【字节跳动 · AI产品经理 硬性要求】\n熟练掌握Transformer、Token、RAG等核心概念",
+                  "source": "字节跳动-AI产品经理",
+                  "metadata": {
+                    "company": "字节跳动",
+                    "position": "AI产品经理"
+                  }
+                },
+                {
+                  "chunk_id": "ac9973c8-01be-4cd6-9a99-097873a59cf0_chunk_4",
+                  "content": "【字节跳动 · AI产品经理 硬性要求】\n深度使用过LangChain、Dify、Coze或LangGraph等框架",
+                  "source": "字节跳动-AI产品经理",
+                  "metadata": {
+                    "company": "字节跳动",
+                    "position": "AI产品经理"
+                  }
+                },
+                {
+                  "chunk_id": "ac9973c8-01be-4cd6-9a99-097873a59cf0_chunk_6",
+                  "content": "【字节跳动 · AI产品经理 硬性要求】\n24小时高频冲浪，对新技术有雷达般的嗅觉",
+                  "source": "字节跳动-AI产品经理",
+                  "metadata": {
+                    "company": "字节跳动",
+                    "position": "AI产品经理"
+                  }
+                },
+                {
+                  "chunk_id": "ac9973c8-01be-4cd6-9a99-097873a59cf0_chunk_7",
+                  "content": "【字节跳动 · AI产品经理 软性要求/加分项】\n有LLM/Agent落地案例者优先",
+                  "source": "字节跳动-AI产品经理",
+                  "metadata": {
+                    "company": "字节跳动",
+                    "position": "AI产品经理"
+                  }
+                }
+              ],
+              "query": "字节 AI产品经理",
+              "filters": {
+                "company": "字节",
+                "position": "AI产品经理"
+              },
+              "strategy": "hybrid(70%vec+30%bm25)+reranker",
+              "pool_k": 5,
+              "rerank_k": 10,
+              "pool_size": 20,
+              "vec_only": 0,
+              "bm25_only": 20,
+              "both": 0,
+              "rerank": {
+                "enabled": true,
+                "candidates": 5,
+                "output": 5,
+                "best_rerank_score": 0.9994
+              }
+            }
+          },
+          {
+            "task_id": "T1",
+            "tool": "match_analyze",
+            "description": "分析简历与字节AI产品经理JD的匹配度",
+            "result": {
+              "score": 48,
+              "label": "不匹配",
+              "advantages": [
+                "理解RAG基本架构与工作流程",
+                "了解Embedding与向量检索作用",
+                "具备Prompt Engineering实践经验",
+                "了解大语言模型在应用层的落地方式",
+                "产品经理经验（需求分析、原型设计、测试验证）",
+                "参与过AI相关项目（求职助手、教务问答机器人）"
+              ],
+              "weaknesses": [
+                "候选人缺乏对Transformer、Token等核心概念的熟练掌握；没有深度使用LangChain、Dify、Coze或LangGraph等框架的实践经验；没有明确的LLM/Agent落地案例（教务问答机器人是RAG系统，但未提及Agent）；且简历中未体现24小时高频冲浪、对新技术有雷达般嗅觉的特质。"
+              ],
+              "suggestions": [
+                "核心能力要求: 熟练掌握Transformer、Token、RAG等核心概念；深度使用过LangChain、Dify、Coze或LangGraph等框架；24小时高频冲浪，对新技术有雷达般的嗅觉；有LLM/Agent落地案例者优先；具备产品经理基本能力（需求分析、原型设计、项目管理等）。"
+              ],
+              "match_score": 48,
+              "covered": [
+                "理解RAG基本架构与工作流程",
+                "了解Embedding与向量检索作用",
+                "具备Prompt Engineering实践经验",
+                "了解大语言模型在应用层的落地方式",
+                "产品经理经验（需求分析、原型设计、测试验证）",
+                "参与过AI相关项目（求职助手、教务问答机器人）"
+              ],
+              "missing_experience": "候选人缺乏对Transformer、Token等核心概念的熟练掌握；没有深度使用LangChain、Dify、Coze或LangGraph等框架的实践经验；没有明确的LLM/Agent落地案例（教务问答机器人是RAG系统，但未提及Agent）；且简历中未体现24小时高频冲浪、对新技术有雷达般嗅觉的特质。",
+              "core_skills": "熟练掌握Transformer、Token、RAG等核心概念；深度使用过LangChain、Dify、Coze或LangGraph等框架；24小时高频冲浪，对新技术有雷达般的嗅觉；有LLM/Agent落地案例者优先；具备产品经理基本能力（需求分析、原型设计、项目管理等）。",
+              "company": "字节",
+              "position": "AI产品经理"
+            }
+          },
+          {
+            "task_id": "T2",
+            "tool": "interview_gen",
+            "description": "基于匹配短板生成面试题",
+            "result": {
+              "questions": [
+                "假设你负责设计一个基于LLM的文本纠错产品，用户输入一段中文文本，你需要让模型自动纠正错别字、语法错误。请描述从用户输入到模型输出的完整流程，重点说明Tokenization和Transformer的位置编码在这一过程中如何影响输入表示？追问方向：1）如果出现长文本（超过模型上下文窗口），你会如何处理？位置编码超出预训练长度时模型表现会如何？2）如何评估不同Tokenization方法（如BPE vs WordPiece）对中文纠错效果的影响？",
+                "假设你需要在Dify或LangChain上搭建一个能够调用外部工具（如搜索、计算器）的智能客服Agent。请画出系统架构图（口述），并说明你如何实现工具选择、参数填充和结果整合？追问方向：1）你如何设计工具调用的异常处理机制？2）如果希望Agent具备记忆能力（长期记忆），在LangChain中如何实现？",
+                "设计一个智能简历分析Agent，能够从候选人简历中提取技能、经验，并匹配JD进行评分，最后生成面试问题。请从产品经理角度描述这个Agent的交互流程、数据流以及如何保证输出质量？追问方向：1）如何设计闭环反馈机制，让Agent从错误中学习？2）如果Agent需要调用多个LLM（不同角色），你会如何协调它们的工作？",
+                "最近开源社区出现了Mamba架构、Mixture-of-Experts等新模型设计，这些对AI产品经理有什么启示？请结合你了解的一个具体新模型或方法，说明它可能如何影响未来的AI产品设计（比如成本、延迟、功能）。追问方向：1）你认为未来一年LLM在应用层最有可能出现哪些颠覆性变化？2）如果你所在团队资源有限，如何决定是否跟进某项新技术？",
+                "假设你负责在字节内部落地一个AI辅助编程工具（类似Copilot），公司强调数据安全，要求所有代码数据不能出公司网络，且需要支持多种编程语言。请设计一个技术选型方案，包括模型选择（开源/闭源）、部署方式、RAG或微调策略？追问方向：1）如果需要让模型学习公司内部代码规范，推荐使用RAG还是微调？为什么？2）如果用户体验反馈模型生成代码经常有安全漏洞，你会如何改进？"
+              ],
+              "focus_areas": [
+                "短板深挖：候选人缺乏对Transformer、Token等核心概念的熟练掌握；没有深度使用LangChain、Dify、Coze或LangGraph等框架的实践经验；没有明确的LLM/Agent落地案例（教务问",
+                "核心能力：熟练掌握Transformer、Token、RAG等核心概念；深度使用过LangChain、Dify、Coze或LangGraph等框架；24小时高频冲浪，对新技术有雷达般的嗅觉；有LLM/Agent"
+              ],
+              "question_count": 5,
+              "company": "字节",
+              "position": "AI产品经理"
+            }
+          },
+          {
+            "task_id": "T3",
+            "tool": null,
+            "description": "聚合准备面试题的所有结果",
+            "result": {
+              "aggregation": {
+                "prepare": {
+                  "questions": [
+                    "假设你负责设计一个基于LLM的文本纠错产品，用户输入一段中文文本，你需要让模型自动纠正错别字、语法错误。请描述从用户输入到模型输出的完整流程，重点说明Tokenization和Transformer的位置编码在这一过程中如何影响输入表示？追问方向：1）如果出现长文本（超过模型上下文窗口），你会如何处理？位置编码超出预训练长度时模型表现会如何？2）如何评估不同Tokenization方法（如BPE vs WordPiece）对中文纠错效果的影响？",
+                    "假设你需要在Dify或LangChain上搭建一个能够调用外部工具（如搜索、计算器）的智能客服Agent。请画出系统架构图（口述），并说明你如何实现工具选择、参数填充和结果整合？追问方向：1）你如何设计工具调用的异常处理机制？2）如果希望Agent具备记忆能力（长期记忆），在LangChain中如何实现？",
+                    "设计一个智能简历分析Agent，能够从候选人简历中提取技能、经验，并匹配JD进行评分，最后生成面试问题。请从产品经理角度描述这个Agent的交互流程、数据流以及如何保证输出质量？追问方向：1）如何设计闭环反馈机制，让Agent从错误中学习？2）如果Agent需要调用多个LLM（不同角色），你会如何协调它们的工作？",
+                    "最近开源社区出现了Mamba架构、Mixture-of-Experts等新模型设计，这些对AI产品经理有什么启示？请结合你了解的一个具体新模型或方法，说明它可能如何影响未来的AI产品设计（比如成本、延迟、功能）。追问方向：1）你认为未来一年LLM在应用层最有可能出现哪些颠覆性变化？2）如果你所在团队资源有限，如何决定是否跟进某项新技术？",
+                    "假设你负责在字节内部落地一个AI辅助编程工具（类似Copilot），公司强调数据安全，要求所有代码数据不能出公司网络，且需要支持多种编程语言。请设计一个技术选型方案，包括模型选择（开源/闭源）、部署方式、RAG或微调策略？追问方向：1）如果需要让模型学习公司内部代码规范，推荐使用RAG还是微调？为什么？2）如果用户体验反馈模型生成代码经常有安全漏洞，你会如何改进？"
+                  ],
+                  "focus_areas": [
+                    "短板深挖：候选人缺乏对Transformer、Token等核心概念的熟练掌握；没有深度使用LangChain、Dify、Coze或LangGraph等框架的实践经验；没有明确的LLM/Agent落地案例（教务问",
+                    "核心能力：熟练掌握Transformer、Token、RAG等核心概念；深度使用过LangChain、Dify、Coze或LangGraph等框架；24小时高频冲浪，对新技术有雷达般的嗅觉；有LLM/Agent"
+                  ],
+                  "question_count": 5,
+                  "company": "字节",
+                  "position": "AI产品经理"
+                },
+                "match_gaps": "{{T1.output.gaps}}"
+              }
+            }
+          }
+        ],
+        "final_aggregation_prompt": {
+          "system_prompt": "你是一位专业的求职顾问。请基于以下工具执行结果，给用户一个清晰、有帮助的回复。\n要求：\n1. 先直接回答用户的问题（是/否/有/没有），不要绕弯子，不要重复用户的原话\n2. 如果有匹配分析结果，给出具体的分数和建议\n3. 如果有检索结果，基于事实回答，不要编造\n4. 【强制】引用信息时必须标注来源。每个引用的事实后面都要跟 [来源：公司名-岗位名] 格式。   kb_retrieve 结果的 chunks 中带有 'source' 字段（如'字节跳动-AI产品经理'），请直接使用。   external_search 结果带有 'source_name' 字段，也请直接使用。\n5. 当本地知识库与外部搜索结果冲突时，请并列呈现两种说法并标注各自来源，不要替用户做判断\n6. 语气友好、专业、结构化",
+          "user_prompt": "【用户问题】\n面字节AI产品经理要准备什么\n\n【工具执行结果】\n[{\"task_id\": \"T0\", \"tool\": \"kb_retrieve\", \"description\": \"检索字节AI产品经理JD\", \"result\": {\"chunks\": [{\"chunk_id\": \"ac9973c8-01be-4cd6-9a99-097873a59cf0_chunk_8\", \"content\": \"【字节跳动 · AI产品经理 关键词】\\nPython, PyTorch, LangChain, RAG, Agent, 产品经理, AI\", \"source\": \"字节跳动-AI产品经理\", \"metadata\": {\"company\": \"字节跳动\", \"position\": \"AI产品经理\"}}, {\"chunk_id\": \"ac9973c8-01be-4cd6-9a99-097873a59cf0_chunk_3\", \"content\": \"【字节跳动 · AI产品经理 硬性要求】\\n熟练掌握Transformer、Token、RAG等核心概念\", \"source\": \"字节跳动-AI产品经理\", \"metadata\": {\"company\": \"字节跳动\", \"position\": \"AI产品经理\"}}, {\"chunk_id\": \"ac9973c8-01be-4cd6-9a99-097873a59cf0_chunk_4\", \"content\": \"【字节跳动 · AI产品经理 硬性要求】\\n深度使用过LangChain、Dify、Coze或LangGraph等框架\", \"source\": \"字节跳动-AI产品经理\", \"metadata\": {\"company\": \"字节跳动\", \"position\": \"AI产品经理\"}}, {\"chunk_id\": \"ac9973c8-01be-4cd6-9a99-097873a59cf0_chunk_6\", \"content\": \"【字节跳动 · AI产品经理 硬性要求】\\n24小时高频冲浪，对新技术有雷达般的嗅觉\", \"source\": \"字节跳动-AI产品经理\", \"metadata\": {\"company\": \"字节跳动\", \"position\": \"AI产品经理\"}}, {\"chunk_id\": \"ac9973c8-01be-4cd6-9a99-097873a59cf0_chunk_7\", \"content\": \"【字节跳动 · AI产品经理 软性要求/加分项】\\n有LLM/Agent落地案例者优先\", \"source\": \"字节跳动-AI产品经理\", \"metadata\": {\"company\": \"字节跳动\", \"position\": \"AI产品经理\"}}], \"query\": \"字节 AI产品经理\", \"filters\": {\"company\": \"字节\", \"position\": \"AI产品经理\"}, \"strategy\": \"hybrid(70%vec+30%bm25)+reranker\", \"pool_k\": 5, \"rerank_k\": 10, \"pool_size\": 20, \"vec_only\": 0, \"bm25_only\": 20, \"both\": 0, \"rerank\": {\"enabled\": true, \"candidates\": 5, \"output\": 5, \"best_rerank_score\": 0.9994}}}, {\"task_id\": \"T1\", \"tool\": \"match_analyze\", \"description\": \"分析简历与字节AI产品经理JD的匹配度\", \"result\": {\"score\": 48, \"label\": \"不匹配\", \"advantages\": [\"理解RAG基本架构与工作流程\", \"了解Embedding与向量检索作用\", \"具备Prompt Engineering实践经验\", \"了解大语言模型在应用层的落地方式\", \"产品经理经验（需求分析、原型设计、测试验证）\", \"参与过AI相关项目（求职助手、教务问答机器人）\"], \"weaknesses\": [\"候选人缺乏对Transformer、Token等核心概念的熟练掌握；没有深度使用LangChain、Dify、Coze或LangGraph等框架的实践经验；没有明确的LLM/Agent落地案例（教务问答机器人是RAG系统，但未提及Agent）；且简历中未体现24小时高频冲浪、对新技术有雷达般嗅觉的特质。\"], \"suggestions\": [\"核心能力要求: 熟练掌握Transformer、Token、RAG等核心概念；深度使用过LangChain、Dify、Coze或LangGraph等框架；24小时高频冲浪，对新技术有雷达般的嗅觉；有LLM/Agent落地案例者优先；具备产品经理基本能力（需求分析、原型设计、项目管理等）。\"], \"match_score\": 48, \"covered\": [\"理解RAG基本架构与工作流程\", \"了解Embedding与向量检索作用\", \"具备Prompt Engineering实践经验\", \"了解大语言模型在应用层的落地方式\", \"产品经理经验（需求分析、原型设计、测试验证）\", \"参与过AI相关项目（求职助手、教务问答机器人）\"], \"missing_experience\": \"候选人缺乏对Transformer、Token等核心概念的熟练掌握；没有深度使用LangChain、Dify、Coze或LangGraph等框架的实践经验；没有明确的LLM/Agent落地案例（教务问答机器人是RAG系统，但未提及Agent）；且简历中未体现24小时高频冲浪、对新技术有雷达般嗅觉的特质。\", \"core_skills\": \"熟练掌握Transformer、Token、RAG等核心概念；深度使用过LangChain、Dify、Coze或LangGraph等框架；24小时高频冲浪，对新技术有雷达般的嗅觉；有LLM/Agent落地案例者优先；具备产品经理基本能力（需求分析、原型设计、项目管理等）。\", \"company\": \"字节\", \"position\": \"AI产品经理\"}}, {\"task_id\": \"T2\", \"tool\": \"interview_gen\", \"description\": \"基于匹配短板生成面试题\", \"result\": {\"questions\": [\"假设你负责设计一个基于LLM的文本纠错产品，用户输入一段中文文本，你需要让模型自动纠正错别字、语法错误。请描述从用户输入到模型输出的完整流程，重点说明Tokenization和Transformer的位置编码在这一过程中如何影响输入表示？追问方向：1）如果出现长文本（超过模型上下文窗口），你会如何处理？位置编码超出预训练长度时模型表现会如何？2）如何评估不同Tokenization方法（如BPE vs WordPiece）对中文纠错效果的影响？\", \"假设你需要在Dify或LangChain上搭建一个能够调用外部工具（如搜索、计算器）的智能客服Agent。请画出系统架构图（口述）\n\n请生成回复："
+        }
+      },
+      "usage": {
+        "prompt_tokens": 10318,
+        "completion_tokens": 7843,
+        "total_tokens": 18161
+      },
+      "_time": 106.70765161514282,
+      "type": "done"
+    }
+  ],
+  "timestamp": "2026-06-04T16:18:42.828421",
+  "prompt_tokens": 10318,
+  "completion_tokens": 7843,
+  "total_tokens": 18161,
+  "tool_execution_success_rate": 1.0,
+  "tool_correct_rate": 1.0
+}
